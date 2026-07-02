@@ -1,0 +1,1624 @@
+{
+  "id": "combinatoria",
+  "title": "Combinatoria e Matematica Discreta",
+  "phase": 1,
+  "phaseLabel": "Fase 1 — Nucleo",
+  "tagline": "A arte de contar, organizar e provar com objetos finitos: dos principios de contagem ate Ramsey e combinatoria extremal.",
+  "summary": "Esta trilha constroi o nucleo da matematica discreta a partir de dois principios elementares — soma e produto — e os eleva ate tecnicas profundas: inclusao-exclusao, casa dos pombos, recorrencias, funcoes geradoras, grafos e teoria de Ramsey. O fio condutor e o rigor: cada formula de contagem e justificada por uma bijecao, uma contagem dupla ou uma inducao, nunca por analogia. Ao final, contar deixa de ser truque e vira demonstracao.",
+  "bigPicture": "Combinatoria e a espinha dorsal da matematica discreta e conversa com quase tudo: probabilidade (espacos finitos equiprovaveis), algebra (coeficientes binomiais, acoes de grupo e contagem de Burnside), analise (funcoes geradoras como series formais e analiticas) e ciencia da computacao (complexidade, algoritmos em grafos). Em concursos de IF/EBTT, analise combinatoria, binomio de Newton, principio da casa dos pombos e nocoes de grafos caem com frequencia em provas objetivas e discursivas. Em mestrado, a combinatoria aparece em provas especificas de programas com linha em matematica discreta e e ferramenta auxiliar em algebra e probabilidade; recorrencias e funcoes geradoras reaparecem em equacoes de diferencas e analise assintotica. Dominar bijecoes e contagem dupla treina o raciocinio estrutural que sustenta qualquer prova rigorosa.",
+  "prereqs": [
+    "prova"
+  ],
+  "difficulty": 3,
+  "estimatedHours": 45,
+  "primaryBooks": [
+    {
+      "title": "Analise Combinatoria e Probabilidade",
+      "author": "Augusto C. Morgado, Joao B. Pitombeira de Carvalho, Paulo C. P. Carvalho, Pedro Fernandez",
+      "note": "Referencia brasileira definitiva (Colecao do Professor de Matematica, SBM); contagem, binomio, recorrencias com rigor acessivel e foco em concurso",
+      "chapters": "caps. 1–5"
+    },
+    {
+      "title": "Introductory Combinatorics",
+      "author": "Richard A. Brualdi",
+      "note": "Curso classico e completo: contagem, inclusao-exclusao, recorrencias, funcoes geradoras e grafos com demonstracoes",
+      "chapters": "caps. 2–8 e 11–13"
+    },
+    {
+      "title": "A Course in Combinatorics",
+      "author": "J. H. van Lint, R. M. Wilson",
+      "note": "Texto de nivel pos-graduacao; grafos, teoria de Ramsey e combinatoria extremal com rigor e profundidade",
+      "chapters": "caps. 1–4 e Ramsey"
+    },
+    {
+      "title": "Concrete Mathematics",
+      "author": "R. Graham, D. Knuth, O. Patashnik",
+      "note": "Recorrencias, coeficientes binomiais e funcoes geradoras com a tecnica de manipulacao de somas mais poderosa que existe",
+      "chapters": "caps. 1, 5 e 7"
+    },
+    {
+      "title": "generatingfunctionology",
+      "author": "Herbert S. Wilf",
+      "note": "Tratado dedicado a funcoes geradoras ordinarias e exponenciais; PDF gratuito do autor",
+      "chapters": "caps. 1–3"
+    },
+    {
+      "title": "Introduction to Graph Theory",
+      "author": "Douglas B. West",
+      "note": "Referencia padrao de teoria dos grafos: graus, arvores, Euler, planaridade, coloracao com provas completas",
+      "chapters": "caps. 1–2 e 5–6"
+    },
+    {
+      "title": "Curso de Algebra, Vol. 1",
+      "author": "Abramo Hefez",
+      "note": "Inducao e principio da boa ordenacao (base de toda demonstracao combinatoria) e divisibilidade para aplicacoes da casa dos pombos",
+      "chapters": "caps. de inducao e aritmetica"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 6.042J Mathematics for Computer Science (contagem, recorrencias, grafos)",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "MIT OCW 18.211 Combinatorial Analysis",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "generatingfunctionology (Herbert Wilf)",
+      "kind": "livro",
+      "ref": "PDF gratuito do autor"
+    },
+    {
+      "title": "POTI / OBMEP — Combinatoria (material de treinamento)",
+      "kind": "pdf",
+      "ref": "portaldosaber.obmep.org.br"
+    },
+    {
+      "title": "Khan Academy — Analise Combinatoria",
+      "kind": "video",
+      "ref": "khanacademy.org"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 4,
+    "mestrado": 3,
+    "note": "Em concurso de IF/EBTT caem com forca os principios de contagem, arranjos/permutacoes/combinacoes, binomio de Newton (termo geral, soma de coeficientes), principio da casa dos pombos e nocoes de grafos (grau, conexidade, arvores); inclusao-exclusao aparece em problemas de 'pelo menos um'. Em mestrado, a relevancia depende do programa: e central em linhas de matematica discreta/combinatoria e serve de ferramenta em algebra e probabilidade; recorrencias lineares, funcoes geradoras e argumentos de contagem dupla sao os topicos que mais reaparecem. Teoria de Ramsey e combinatoria extremal sao mais de mestrado/olimpiada do que de concurso de IF."
+  },
+  "subtopics": [
+    {
+      "id": "combinatoria-01-principios-contagem",
+      "title": "Principios de contagem: soma, produto, bijecao e contagem dupla",
+      "tagline": "Os quatro pilares dos quais TODA formula de contagem deriva — e como nao contar duas vezes.",
+      "objectives": [
+        "Ao final voce consegue decidir entre os principios aditivo e multiplicativo verificando disjuncao e independencia das etapas.",
+        "Ao final voce consegue contar funcoes, sequencias e divisores aplicando a regra do produto.",
+        "Ao final voce consegue reduzir um problema dificil a um facil exibindo uma bijecao explicita.",
+        "Ao final voce consegue provar identidades combinatorias por contagem dupla.",
+        "Ao final voce consegue detectar e corrigir overcounting dividindo por simetrias."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Principio aditivo",
+          "statement": "Se $A_1,\\dots,A_n$ sao conjuntos finitos dois a dois disjuntos, entao $\\left|\\bigcup_{i=1}^n A_i\\right| = \\sum_{i=1}^n |A_i|$. Conta-se por casos que nao se sobrepoem."
+        },
+        {
+          "term": "Principio multiplicativo",
+          "statement": "Se uma configuracao e construida em $m$ etapas, com $n_1,\\dots,n_m$ opcoes em cada etapa (o numero de opcoes de cada etapa nao depende das escolhas anteriores), o total e $n_1 n_2\\cdots n_m$; equivale a $|A_1\\times\\cdots\\times A_m| = \\prod_i |A_i|$."
+        },
+        {
+          "term": "Principio bijetivo",
+          "statement": "Se existe uma bijecao $f:A\\to B$ entre conjuntos finitos, entao $|A|=|B|$. Contar $A$ reduz-se a contar um $B$ mais simples."
+        },
+        {
+          "term": "Contagem dupla",
+          "statement": "Contar os elementos de um mesmo conjunto $S$ (ou os $1$ de uma matriz $0/1$, somando por linhas e por colunas) de duas maneiras produz uma identidade entre as duas expressoes."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Regra do produto",
+          "statement": "Para conjuntos finitos $A_1,\\dots,A_n$, vale $|A_1\\times A_2\\times\\cdots\\times A_n| = \\prod_{i=1}^n |A_i|$.",
+          "whyItMatters": "E a fonte de praticamente toda formula de contagem: arranjos, permutacoes e combinacoes sao corolarios diretos."
+        },
+        {
+          "name": "Numero de funcoes e de subconjuntos",
+          "statement": "O numero de funcoes $f:X\\to Y$ com $|X|=k$ e $|Y|=n$ e $n^k$. Em particular, identificando subconjuntos de $X$ com funcoes $X\\to\\{0,1\\}$, o numero de subconjuntos de $X$ e $2^{|X|}$.",
+          "whyItMatters": "Conecta contagem, representacao binaria e o principio bijetivo num so resultado, usado em todo o resto da trilha."
+        }
+      ],
+      "summary": "Toda a combinatoria enumerativa se apoia em quatro ideias. O principio aditivo soma casos disjuntos; o multiplicativo multiplica opcoes de etapas independentes em sequencia. O erro classico e somar casos que se sobrepoem (gerando dupla contagem) ou multiplicar etapas cujo numero de opcoes muda conforme as escolhas anteriores. Quando isso acontece, ou se reorganiza o problema, ou se corrige depois.\n\nAs duas tecnicas mais elegantes sao a bijecao e a contagem dupla. Uma bijecao explicita entre o conjunto que queremos contar e outro ja conhecido transfere a cardinalidade de graca: e assim que se prova, por exemplo, que ha $2^n$ subconjuntos de um conjunto com $n$ elementos. Ja a contagem dupla — contar o mesmo conjunto de duas formas — transforma identidades algebricas em fatos quase visuais. Dominar esses quatro principios e a diferenca entre decorar formulas e realmente entender por que elas valem.",
+      "commonPitfalls": [
+        "Somar casos que nao sao disjuntos (gera dupla contagem) ou multiplicar etapas que nao sao independentes.",
+        "Aplicar a regra do produto quando o numero de opcoes de uma etapa depende das escolhas anteriores sem ajustar o raciocinio.",
+        "Esquecer de verificar que a 'bijecao' proposta e de fato injetora E sobrejetora antes de igualar cardinalidades.",
+        "Contar configuracoes ordenadas quando a ordem nao importa (ou vice-versa), sem corrigir por simetria."
+      ],
+      "worked": "**Quantos divisores positivos tem $720$?**\n\nFatorando: $720 = 2^4\\cdot 3^2\\cdot 5$. Todo divisor positivo tem a forma $2^a 3^b 5^c$ com\n$$0\\le a\\le 4,\\quad 0\\le b\\le 2,\\quad 0\\le c\\le 1.$$\nA escolha de $(a,b,c)$ e uma sequencia de tres etapas independentes, com $5$, $3$ e $2$ opcoes. Alem disso, a fatoracao e unica, logo $(a,b,c)\\mapsto 2^a3^b5^c$ e uma bijecao entre as triplas e os divisores. Pela regra do produto, o numero de divisores e\n$$5\\cdot 3\\cdot 2 = 30.\\qquad\\blacksquare$$",
+      "exercises": [
+        {
+          "prompt": "Quantas placas no formato 3 letras seguidas de 4 digitos existem, usando 26 letras e 10 digitos, permitindo repeticao?",
+          "hint": "Regra do produto: cada posicao e uma etapa independente.",
+          "difficulty": 1,
+          "solution": "Cada uma das 7 posicoes da placa e uma etapa independente cujo numero de opcoes nao depende das escolhas anteriores (ha repeticao permitida).\n\n- Cada uma das $3$ posicoes de letra tem $26$ opcoes.\n- Cada uma das $4$ posicoes de digito tem $10$ opcoes.\n\nPela regra do produto:\n$$26^3 \\cdot 10^4 = 17576 \\cdot 10000 = 175\\,760\\,000.$$\n\nLogo existem $\\boxed{175\\,760\\,000}$ placas possiveis.",
+          "steps": [
+            "Identifique que cada posicao da placa e uma etapa independente e que a repeticao e permitida, entao o numero de opcoes de cada etapa e constante.",
+            "Conte as opcoes por tipo de posicao: $26$ para cada letra, $10$ para cada digito.",
+            "Aplique a regra do produto multiplicando: $26^3 \\cdot 10^4$.",
+            "Calcule $26^3 = 17576$ e $10^4 = 10000$ e multiplique para obter $175\\,760\\,000$."
+          ]
+        },
+        {
+          "prompt": "Quantas funcoes $f:\\{1,\\dots,k\\}\\to\\{1,\\dots,n\\}$ sao injetoras (com $k\\le n$)?",
+          "hint": "Escolha a imagem de $1$ ($n$ opcoes), depois a de $2$ ($n-1$, pois nao pode repetir) e assim por diante.",
+          "difficulty": 2,
+          "solution": "Construimos a funcao injetora escolhendo as imagens em ordem, uma etapa por elemento do dominio. A injetividade proibe repetir valores ja usados.\n\n- Imagem de $1$: $n$ opcoes.\n- Imagem de $2$: $n-1$ opcoes (nao pode igualar a de $1$).\n- Imagem de $3$: $n-2$ opcoes.\n- $\\vdots$\n- Imagem de $k$: $n-(k-1) = n-k+1$ opcoes.\n\nComo cada etapa tem numero de opcoes bem definido dado o passo anterior, a regra do produto da:\n$$n(n-1)(n-2)\\cdots(n-k+1) = \\frac{n!}{(n-k)!} = A(n,k).$$\n\nEste e exatamente o numero de arranjos de $n$ tomados $k$ a $k$.",
+          "steps": [
+            "Perceba que uma funcao injetora corresponde a escolher imagens distintas para $1,2,\\dots,k$, na ordem.",
+            "Conte as opcoes de cada etapa: a imagem do $j$-esimo elemento tem $n-(j-1)$ opcoes, pois deve evitar as $j-1$ ja usadas.",
+            "Multiplique as opcoes pela regra do produto: $n(n-1)\\cdots(n-k+1)$.",
+            "Reescreva o produto de forma fechada como $\\dfrac{n!}{(n-k)!}$, reconhecendo o arranjo $A(n,k)$."
+          ]
+        },
+        {
+          "prompt": "Prove por contagem dupla que $\\sum_{k=0}^{n} k\\binom{n}{k} = n\\,2^{n-1}$.",
+          "hint": "Conte de duas formas os pares (comissao $S\\subseteq\\{1,\\dots,n\\}$, presidente $p\\in S$): por tamanho de $S$ e escolhendo o presidente primeiro.",
+          "difficulty": 3,
+          "solution": "Contamos de duas maneiras o conjunto\n$$P = \\{(S,p) : S \\subseteq \\{1,\\dots,n\\},\\ p \\in S\\},$$\nou seja, os pares formados por uma comissao $S$ e um presidente $p$ escolhido dentro dela.\n\n**Contagem 1 (fixando o tamanho de $S$).** Para cada $k$, ha $\\binom{n}{k}$ comissoes de tamanho $k$ e, escolhido $S$, ha $k$ modos de eleger o presidente. Somando sobre $k$:\n$$|P| = \\sum_{k=0}^{n} k\\binom{n}{k}.$$\n\n**Contagem 2 (escolhendo o presidente primeiro).** Escolhemos primeiro o presidente $p$: ha $n$ modos. Cada um dos $n-1$ demais elementos entra ou nao em $S$ livremente, dando $2^{n-1}$ modos de completar a comissao. Logo:\n$$|P| = n\\,2^{n-1}.$$\n\nComo os dois lados contam o mesmo conjunto $P$:\n$$\\sum_{k=0}^{n} k\\binom{n}{k} = n\\,2^{n-1}. \\qquad \\blacksquare$$",
+          "steps": [
+            "Defina o conjunto a ser contado: pares $(S,p)$ com $S$ subconjunto e $p$ elemento de $S$ (comissao e seu presidente).",
+            "Primeira contagem: fixe $|S|=k$, obtendo $\\binom{n}{k}$ comissoes e $k$ escolhas de presidente; some sobre $k$ para chegar a $\\sum_k k\\binom{n}{k}$.",
+            "Segunda contagem: escolha o presidente antes ($n$ opcoes) e deixe cada um dos outros $n-1$ elementos entrar ou nao ($2^{n-1}$).",
+            "Iguale as duas expressoes, pois contam o mesmo conjunto, concluindo $\\sum_k k\\binom{n}{k}=n\\,2^{n-1}$."
+          ]
+        },
+        {
+          "prompt": "De uma bijecao que prove que o numero de subconjuntos de tamanho par de um conjunto com $n\\ge 1$ elementos e igual ao de tamanho impar.",
+          "hint": "Fixe um elemento $x$ e considere a involucao $S\\mapsto S\\,\\triangle\\,\\{x\\}$ (adiciona ou remove $x$).",
+          "difficulty": 4,
+          "solution": "Seja $X$ um conjunto com $n\\ge 1$ elementos e fixe um elemento $x\\in X$. Defina\n$$f(S) = S \\,\\triangle\\, \\{x\\} = \\begin{cases} S \\cup \\{x\\}, & \\text{se } x\\notin S,\\\\ S \\setminus \\{x\\}, & \\text{se } x\\in S.\\end{cases}$$\n\n**$f$ e uma involucao.** Aplicar $f$ duas vezes adiciona e depois remove (ou remove e depois adiciona) $x$, retornando ao conjunto original: $f(f(S))=S$. Logo $f$ e bijetora (e sua propria inversa).\n\n**$f$ troca a paridade.** A operacao altera $|S|$ em exatamente $1$ (adiciona ou remove um unico elemento), portanto leva subconjuntos de tamanho par em subconjuntos de tamanho impar e vice-versa.\n\nAssim $f$ restringe-se a uma bijecao entre\n$$\\mathcal{P} = \\{S : |S|\\text{ par}\\} \\quad\\text{e}\\quad \\mathcal{I} = \\{S : |S|\\text{ impar}\\}.$$\nComo existe bijecao, $|\\mathcal{P}| = |\\mathcal{I}|$: ha tantos subconjuntos de tamanho par quanto de tamanho impar. (Cada classe tem $2^{n-1}$ elementos.) $\\qquad \\blacksquare$",
+          "steps": [
+            "Fixe um elemento $x\\in X$ e defina a aplicacao $f(S)=S\\,\\triangle\\,\\{x\\}$, que adiciona $x$ se ausente e remove se presente.",
+            "Mostre que $f$ e involucao: $f(f(S))=S$, logo $f$ e bijecao entre subconjuntos.",
+            "Observe que $f$ muda $|S|$ em $1$, invertendo a paridade do tamanho.",
+            "Conclua que $f$ e uma bijecao entre subconjuntos pares e impares, portanto ha o mesmo numero de cada."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Principio aditivo",
+          "back": "Para finitos dois a dois disjuntos: $\\left|\\bigcup_i A_i\\right| = \\sum_i |A_i|$."
+        },
+        {
+          "front": "Principio multiplicativo",
+          "back": "Etapas independentes em sequencia multiplicam-se: $|A_1\\times\\cdots\\times A_n| = \\prod_i |A_i|$."
+        },
+        {
+          "front": "Quantos subconjuntos tem um conjunto de $n$ elementos?",
+          "back": "$2^n$ (bijecao com funcoes $X\\to\\{0,1\\}$)."
+        },
+        {
+          "front": "Quantas funcoes $f:[k]\\to[n]$ existem?",
+          "back": "$n^k$."
+        },
+        {
+          "front": "O que e contagem dupla?",
+          "back": "Contar o mesmo conjunto de duas maneiras; as duas expressoes obtidas sao iguais."
+        },
+        {
+          "front": "Quando vale o principio bijetivo?",
+          "back": "Quando ha bijecao $f:A\\to B$ entre finitos; entao $|A|=|B|$."
+        },
+        {
+          "front": "Numero de divisores positivos de $\\prod p_i^{a_i}$",
+          "back": "$\\prod_i (a_i+1)$."
+        }
+      ],
+      "estimatedHours": 5,
+      "resources": [
+        {
+          "title": "Morgado et al., Analise Combinatoria e Probabilidade, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 6.042J — Counting",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o cap. 1 de Morgado (Analise Combinatoria e Probabilidade) fixando a diferenca entre o principio aditivo (casos disjuntos) e o multiplicativo (etapas independentes); escreva com suas palavras o teste de disjuncao e o de independencia.",
+          "Assista a uma aula introdutoria de contagem (MIT 6.042J ou Equaciona) e refaca no papel o exemplo dos divisores de um numero para internalizar a regra do produto via fatoracao unica.",
+          "Estude o principio bijetivo: prove sozinho que ha $2^n$ subconjuntos de um conjunto de $n$ elementos usando funcoes para $\\{0,1\\}$, sem olhar a solucao.",
+          "Aprenda contagem dupla resolvendo uma identidade modelo (conte pares comissao-presidente de duas formas); refaca ate conseguir enunciar o padrao 'de que conjunto isto e a cardinalidade?'.",
+          "Faca 8 a 12 exercicios variados de contagem misturando os quatro principios, marcando em cada um qual principio usou e por que.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (o teste de disjuncao/independencia e o esquema da contagem dupla)."
+        ],
+        "searchQueries": [
+          "principio aditivo e multiplicativo contagem exercicios resolvidos",
+          "regra do produto numero de divisores de um numero",
+          "principio bijetivo combinatoria demonstracao 2^n subconjuntos",
+          "double counting combinatorial proof identity",
+          "contagem dupla identidades binomiais Morgado",
+          "numero de funcoes injetoras entre conjuntos finitos"
+        ],
+        "videos": [
+          {
+            "title": "Mathematics for Computer Science - Counting",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas de contagem do 6.042J; foque na regra do produto e no principio da bijecao com provas."
+          },
+          {
+            "title": "Analise Combinatoria - principio fundamental da contagem",
+            "channel": "Equaciona Com Paulo Pereira",
+            "note": "Introducao clara em PT-BR aos principios aditivo e multiplicativo com exemplos de concurso."
+          },
+          {
+            "title": "Combinatorial proofs / double counting",
+            "channel": "Michael Penn",
+            "note": "Procure videos de 'combinatorial proof' para ver contagem dupla aplicada a identidades."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Analise Combinatoria e Probabilidade, cap. 1 (principios de contagem)",
+            "where": "Morgado, Carvalho, Carvalho, Fernandez - Colecao do Professor de Matematica, SBM"
+          },
+          {
+            "title": "Introductory Combinatorics, cap. 2 (Permutations and Combinations)",
+            "where": "Richard A. Brualdi"
+          }
+        ]
+      }
+    },
+    {
+      "id": "combinatoria-02-permutacoes-combinacoes",
+      "title": "Permutacoes e combinacoes",
+      "tagline": "Arranjos, permutacoes, combinacoes — com e sem repeticao — e o binomio de Newton que organiza tudo.",
+      "objectives": [
+        "Ao final voce consegue distinguir arranjo, permutacao e combinacao decidindo se a ordem importa e se ha repeticao.",
+        "Ao final voce consegue contar anagramas e permutacoes com elementos repetidos via coeficiente multinomial.",
+        "Ao final voce consegue resolver problemas de combinacoes com repeticao pelo metodo de barras e estrelas.",
+        "Ao final voce consegue enunciar e aplicar o teorema binomial e as identidades de Pascal e Vandermonde.",
+        "Ao final voce consegue contar permutacoes circulares corrigindo a simetria de rotacao."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Arranjo simples",
+          "statement": "Numero de sequencias ordenadas de $k$ elementos distintos escolhidos de $n$: $A(n,k) = \\dfrac{n!}{(n-k)!} = n(n-1)\\cdots(n-k+1)$. A ordem importa."
+        },
+        {
+          "term": "Combinacao simples",
+          "statement": "Numero de subconjuntos de $k$ elementos de um conjunto de $n$: $\\binom{n}{k} = \\dfrac{n!}{k!\\,(n-k)!}$. A ordem nao importa; e o arranjo dividido pelas $k!$ reordenacoes."
+        },
+        {
+          "term": "Permutacoes com repeticao (multinomial)",
+          "statement": "O numero de arranjos de $n$ objetos com $n_1,\\dots,n_r$ repeticoes de cada tipo ($\\sum n_i = n$) e $\\dfrac{n!}{n_1!\\,n_2!\\cdots n_r!}$, o coeficiente multinomial $\\binom{n}{n_1,\\dots,n_r}$."
+        },
+        {
+          "term": "Combinacoes com repeticao",
+          "statement": "O numero de multiconjuntos de tamanho $k$ tomados de $n$ tipos e $\\binom{n+k-1}{k}$ (barras e estrelas), igual ao numero de solucoes inteiras $\\ge 0$ de $x_1+\\cdots+x_n=k$."
+        },
+        {
+          "term": "Permutacao circular",
+          "statement": "O numero de modos de dispor $n$ objetos distintos em circulo, identificando rotacoes, e $(n-1)!$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema binomial",
+          "statement": "Para todo $n\\in\\mathbb{N}$, $(x+y)^n = \\sum_{k=0}^{n}\\binom{n}{k}x^k y^{n-k}$.",
+          "whyItMatters": "O coeficiente $\\binom{n}{k}$ conta os modos de escolher $k$ fatores que contribuem com $x$; e a ponte entre algebra e contagem e a semente das funcoes geradoras."
+        },
+        {
+          "name": "Identidade de Pascal",
+          "statement": "$\\binom{n}{k} = \\binom{n-1}{k-1} + \\binom{n-1}{k}$ para $1\\le k\\le n-1$.",
+          "whyItMatters": "Prova combinatoria imediata (o elemento $n$ esta ou nao no subconjunto) e base do triangulo de Pascal e de inducoes sobre binomiais."
+        },
+        {
+          "name": "Identidade de Vandermonde",
+          "statement": "$\\binom{m+n}{k} = \\sum_{j=0}^{k}\\binom{m}{j}\\binom{n}{k-j}$.",
+          "whyItMatters": "Exemplo modelo de contagem dupla (escolher $k$ de dois grupos) e ferramenta padrao para simplificar somas de produtos de binomiais."
+        },
+        {
+          "name": "Barras e estrelas",
+          "statement": "O numero de solucoes inteiras nao-negativas de $x_1+x_2+\\cdots+x_n = k$ e $\\binom{n+k-1}{n-1} = \\binom{n+k-1}{k}$.",
+          "whyItMatters": "Resolve de uma vez distribuicao de objetos identicos em caixas, combinacoes com repeticao e termos de funcoes geradoras."
+        }
+      ],
+      "summary": "A pergunta central e dupla: a ordem importa? ha repeticao? As respostas geram quatro casos. Ordem com elementos distintos da arranjos $A(n,k)=n!/(n-k)!$ e, no caso $k=n$, permutacoes $n!$. Sem ordem e sem repeticao, dividimos pelas reordenacoes e obtemos a combinacao $\\binom{n}{k}$. Com objetos repetidos, a permutacao vira o coeficiente multinomial $n!/(n_1!\\cdots n_r!)$, que e exatamente o numero de anagramas de uma palavra com letras repetidas.\n\nO caso mais sutil e o de selecoes com repeticao: contar multiconjuntos equivale a distribuir objetos identicos em caixas, e o metodo de barras e estrelas da $\\binom{n+k-1}{k}$. Tudo isso e amarrado pelo teorema binomial, cujos coeficientes $\\binom{n}{k}$ satisfazem a identidade de Pascal e a de Vandermonde — ambas com demonstracoes combinatorias de uma linha. Essas identidades, mais que formulas, sao o treino de pensar 'de que conjunto isso e a cardinalidade?'.",
+      "commonPitfalls": [
+        "Usar arranjo quando a ordem nao importa (ou combinacao quando importa); decida isso ANTES de pegar a formula.",
+        "Esquecer de dividir pelas repeticoes em anagramas (ex.: tratar as tres letras A de BANANA como distintas).",
+        "Confundir combinacao com repeticao $\\binom{n+k-1}{k}$ com combinacao simples $\\binom{n}{k}$.",
+        "Em permutacao circular, esquecer de dividir por $n$ (rotacoes) — e, se houver simetria de reflexao, por mais um fator $2$."
+      ],
+      "worked": "**Quantos anagramas tem a palavra BANANA?**\n\nSao $6$ letras: $3$ A, $2$ N, $1$ B. Se todas fossem distintas, haveria $6!$ ordenacoes. Mas permutar as $3$ A entre si nao gera anagrama novo (sao $3!$ permutacoes equivalentes), e o mesmo para as $2$ N ($2!$). Pela correcao por simetria,\n$$\\frac{6!}{3!\\,2!\\,1!} = \\frac{720}{6\\cdot 2\\cdot 1} = 60.$$\nEsse e o coeficiente multinomial $\\binom{6}{3,2,1}=60$. $\\qquad\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "De quantos modos 5 pessoas podem se sentar em torno de uma mesa redonda, considerando iguais as disposicoes que diferem por rotacao?",
+          "hint": "Permutacao circular de $n$ objetos: $(n-1)!$.",
+          "difficulty": 1,
+          "solution": "Em uma mesa redonda, disposicoes que diferem apenas por rotacao sao consideradas iguais. Ha duas formas equivalentes de contar:\n\n**Metodo 1 (fixar uma pessoa).** Fixe uma pessoa como referencia (quebra a simetria de rotacao). As outras $4$ pessoas se dispoem nas $4$ cadeiras restantes de $4!$ maneiras.\n\n**Metodo 2 (corrigir a simetria).** Ha $5!$ ordenacoes lineares, mas cada arranjo circular e contado $5$ vezes (uma por rotacao), entao dividimos por $5$: $\\dfrac{5!}{5} = 4!$.\n\nEm ambos:\n$$(5-1)! = 4! = 24.$$\n\nLogo existem $\\boxed{24}$ disposicoes distintas.",
+          "steps": [
+            "Reconheca que rotacoes contam como a mesma disposicao, entao a formula e a de permutacao circular $(n-1)!$.",
+            "Fixe uma pessoa para quebrar a simetria de rotacao (ou divida $5!$ por $5$ rotacoes).",
+            "Conte as $4!$ maneiras de dispor as demais pessoas.",
+            "Calcule $4! = 24$."
+          ]
+        },
+        {
+          "prompt": "Quantas solucoes inteiras com $x_i\\ge 0$ tem a equacao $x_1+x_2+x_3+x_4 = 10$?",
+          "hint": "Barras e estrelas: $\\binom{n+k-1}{n-1}$ com $n=4$, $k=10$.",
+          "difficulty": 2,
+          "solution": "Queremos o numero de solucoes inteiras nao-negativas de\n$$x_1+x_2+x_3+x_4 = 10.$$\n\nPelo metodo de barras e estrelas, distribuimos $10$ estrelas (unidades) em $4$ grupos usando $4-1=3$ barras separadoras. Cada arranjo de $10$ estrelas e $3$ barras em fila corresponde a uma solucao unica, e vice-versa. O numero de tais arranjos e escolher as posicoes das barras (ou das estrelas) entre $10+3=13$ simbolos:\n$$\\binom{n+k-1}{n-1} = \\binom{4+10-1}{4-1} = \\binom{13}{3}.$$\n\nCalculando:\n$$\\binom{13}{3} = \\frac{13\\cdot 12\\cdot 11}{3\\cdot 2\\cdot 1} = \\frac{1716}{6} = 286.$$\n\nLogo ha $\\boxed{286}$ solucoes.",
+          "steps": [
+            "Identifique o problema como contar solucoes inteiras nao-negativas de uma equacao linear.",
+            "Modele por barras e estrelas: $10$ estrelas e $3$ barras separando $4$ variaveis.",
+            "Escreva o total como $\\binom{n+k-1}{n-1}=\\binom{13}{3}$ com $n=4$, $k=10$.",
+            "Calcule $\\binom{13}{3}=286$."
+          ]
+        },
+        {
+          "prompt": "Quantas solucoes inteiras com $x_i\\ge 1$ tem $x_1+x_2+x_3 = 12$?",
+          "hint": "Substitua $y_i = x_i-1\\ge 0$ e reduza ao caso nao-negativo.",
+          "difficulty": 2,
+          "solution": "Agora exigimos $x_i\\ge 1$. Fazemos a substituicao que remove o piso positivo:\n$$y_i = x_i - 1 \\ge 0, \\qquad i=1,2,3.$$\n\nSubstituindo em $x_1+x_2+x_3=12$:\n$$(y_1+1)+(y_2+1)+(y_3+1) = 12 \\;\\Longrightarrow\\; y_1+y_2+y_3 = 9,$$\ncom $y_i\\ge 0$. Este e o caso nao-negativo, resolvido por barras e estrelas com $n=3$ variaveis e soma $k=9$:\n$$\\binom{n+k-1}{n-1} = \\binom{3+9-1}{3-1} = \\binom{11}{2} = \\frac{11\\cdot 10}{2} = 55.$$\n\nLogo ha $\\boxed{55}$ solucoes com $x_i\\ge 1$.",
+          "steps": [
+            "Como cada $x_i\\ge 1$, faca a troca $y_i=x_i-1\\ge 0$ para cair no caso nao-negativo.",
+            "Reescreva a equacao: a soma dos $y_i$ passa a ser $12-3=9$.",
+            "Aplique barras e estrelas com $n=3$ e $k=9$: $\\binom{11}{2}$.",
+            "Calcule $\\binom{11}{2}=55$."
+          ]
+        },
+        {
+          "prompt": "Prove combinatoriamente a identidade de Vandermonde $\\binom{m+n}{k} = \\sum_{j=0}^{k}\\binom{m}{j}\\binom{n}{k-j}$.",
+          "hint": "Conte os subconjuntos de tamanho $k$ de um conjunto com $m$ bolas vermelhas e $n$ azuis, separando por quantas vermelhas entram.",
+          "difficulty": 4,
+          "solution": "Considere um conjunto com $m$ bolas vermelhas e $n$ bolas azuis, total $m+n$ bolas distintas. Contamos de duas maneiras os subconjuntos de tamanho $k$.\n\n**Contagem 1 (direta).** Escolher $k$ bolas quaisquer dentre as $m+n$:\n$$\\binom{m+n}{k}.$$\n\n**Contagem 2 (separando por cor).** Todo subconjunto de tamanho $k$ tem, digamos, $j$ vermelhas e $k-j$ azuis, para algum $0\\le j\\le k$. Escolher $j$ vermelhas dentre $m$ e $k-j$ azuis dentre $n$ da $\\binom{m}{j}\\binom{n}{k-j}$; somando sobre $j$:\n$$\\sum_{j=0}^{k} \\binom{m}{j}\\binom{n}{k-j}.$$\n\n(Convencao: $\\binom{a}{b}=0$ se $b>a$, o que descarta automaticamente os $j$ inviaveis.)\n\nComo ambas contam os mesmos subconjuntos:\n$$\\binom{m+n}{k} = \\sum_{j=0}^{k} \\binom{m}{j}\\binom{n}{k-j}. \\qquad \\blacksquare$$",
+          "steps": [
+            "Monte um universo com $m$ bolas vermelhas e $n$ azuis (total $m+n$ bolas distintas).",
+            "Conte diretamente os subconjuntos de tamanho $k$: $\\binom{m+n}{k}$.",
+            "Conte separando por numero $j$ de vermelhas: $\\binom{m}{j}\\binom{n}{k-j}$, somado sobre $j=0,\\dots,k$.",
+            "Iguale as duas contagens do mesmo conjunto para obter a identidade de Vandermonde."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Arranjo $A(n,k)$",
+          "back": "$\\dfrac{n!}{(n-k)!}$ — sequencias ordenadas de $k$ entre $n$ distintos."
+        },
+        {
+          "front": "Combinacao $\\binom{n}{k}$",
+          "back": "$\\dfrac{n!}{k!\\,(n-k)!}$ — subconjuntos de tamanho $k$; ordem nao importa."
+        },
+        {
+          "front": "Permutacoes de $n$ objetos com repeticoes $n_1,\\dots,n_r$",
+          "back": "$\\dfrac{n!}{n_1!\\,n_2!\\cdots n_r!}$ (coeficiente multinomial)."
+        },
+        {
+          "front": "Combinacoes com repeticao de $k$ entre $n$ tipos",
+          "back": "$\\binom{n+k-1}{k}$ (barras e estrelas)."
+        },
+        {
+          "front": "Permutacao circular de $n$ objetos",
+          "back": "$(n-1)!$."
+        },
+        {
+          "front": "Teorema binomial",
+          "back": "$(x+y)^n = \\sum_{k=0}^n \\binom{n}{k} x^k y^{n-k}$."
+        },
+        {
+          "front": "Identidade de Pascal",
+          "back": "$\\binom{n}{k} = \\binom{n-1}{k-1} + \\binom{n-1}{k}$."
+        },
+        {
+          "front": "Solucoes $\\ge 0$ de $x_1+\\cdots+x_n=k$",
+          "back": "$\\binom{n+k-1}{n-1}$."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Morgado et al., Analise Combinatoria e Probabilidade, caps. 2–3",
+          "ref": "livro"
+        },
+        {
+          "title": "Brualdi, Introductory Combinatorics, caps. 2–3 e 5",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia os caps. 2 e 3 de Morgado montando uma tabela de decisao: ordem importa? ha repeticao? -> arranjo, permutacao, combinacao ou combinacao com repeticao.",
+          "Assista a uma serie sobre arranjos, permutacoes e combinacoes (Ferretto ou Equaciona) e refaca o exemplo dos anagramas de uma palavra com letras repetidas.",
+          "Estude barras e estrelas (stars and bars) numa fonte dedicada e prove que o numero de solucoes inteiras nao-negativas de $x_1+\\cdots+x_n=k$ e $\\binom{n+k-1}{k}$.",
+          "Demonstre voce mesmo o teorema binomial e as identidades de Pascal e Vandermonde por argumento combinatorio (sem inducao algebrica).",
+          "Resolva 10 a 15 problemas mistos incluindo permutacao circular e distribuicao de objetos identicos, classificando cada um antes de calcular.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (a tabela de decisao e as tres identidades binomiais chave)."
+        ],
+        "searchQueries": [
+          "arranjo permutacao combinacao quando usar cada um exercicios",
+          "anagramas com letras repetidas coeficiente multinomial",
+          "stars and bars combinations with repetition proof",
+          "identidade de Vandermonde prova combinatoria",
+          "permutacao circular como corrigir rotacao",
+          "teorema binomial demonstracao combinatoria coeficiente"
+        ],
+        "videos": [
+          {
+            "title": "Analise Combinatoria - arranjos, permutacoes e combinacoes",
+            "channel": "O Professor Ferretto",
+            "note": "Serie completa em PT-BR; assista aos videos de permutacao com repeticao e combinacao simples."
+          },
+          {
+            "title": "Stars and bars / combinations with repetition",
+            "channel": "Michael Penn",
+            "note": "Procure a explicacao de barras e estrelas e de solucoes inteiras de equacoes lineares."
+          },
+          {
+            "title": "Binomial theorem and Pascal's triangle",
+            "channel": "3Blue1Brown",
+            "note": "Para intuicao visual dos coeficientes binomiais e do triangulo de Pascal."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Analise Combinatoria e Probabilidade, caps. 2-3",
+            "where": "Morgado, Carvalho, Carvalho, Fernandez - SBM"
+          },
+          {
+            "title": "Introductory Combinatorics, caps. 2-3 e 5 (combinacoes, multinomial, binomial)",
+            "where": "Richard A. Brualdi"
+          }
+        ]
+      }
+    },
+    {
+      "id": "combinatoria-03-inclusao-exclusao",
+      "title": "Principio da inclusao-exclusao",
+      "tagline": "Contar 'pelo menos um' alternando somas e subtracoes — e suas joias: desarranjos e a funcao de Euler.",
+      "objectives": [
+        "Ao final voce consegue enunciar e provar o principio da inclusao-exclusao (PIE) para $n$ conjuntos.",
+        "Ao final voce consegue contar elementos que satisfazem 'pelo menos uma' de varias propriedades.",
+        "Ao final voce consegue deduzir a formula dos desarranjos $D_n$ e seu limite assintotico.",
+        "Ao final voce consegue calcular $\\varphi(n)$ de Euler e o numero de funcoes sobrejetoras via PIE."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Inclusao-exclusao (uniao)",
+          "statement": "$\\left|\\bigcup_{i=1}^{n} A_i\\right| = \\sum_i |A_i| - \\sum_{i<j}|A_i\\cap A_j| + \\sum_{i<j<k}|A_i\\cap A_j\\cap A_k| - \\cdots + (-1)^{n+1}\\left|\\bigcap_{i=1}^n A_i\\right|.$"
+        },
+        {
+          "term": "Forma complementar",
+          "statement": "O numero de elementos de um universo $U$ que NAO tem nenhuma das propriedades $P_1,\\dots,P_n$ e $\\sum_{S\\subseteq\\{1,\\dots,n\\}} (-1)^{|S|}\\,N(S)$, onde $N(S)$ conta os que tem (pelo menos) todas as propriedades de $S$ e $N(\\varnothing)=|U|$."
+        },
+        {
+          "term": "Desarranjo",
+          "statement": "Permutacao de $\\{1,\\dots,n\\}$ sem pontos fixos ($\\sigma(i)\\neq i$ para todo $i$). Seu numero e $D_n = n!\\sum_{k=0}^{n}\\dfrac{(-1)^k}{k!}$."
+        },
+        {
+          "term": "Funcao $\\varphi$ de Euler",
+          "statement": "$\\varphi(n)$ conta os inteiros em $\\{1,\\dots,n\\}$ coprimos com $n$. Se $n=\\prod_i p_i^{a_i}$, entao $\\varphi(n) = n\\prod_i\\left(1-\\tfrac{1}{p_i}\\right)$, obtida por PIE sobre os primos."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Principio da inclusao-exclusao",
+          "statement": "Para conjuntos finitos $A_1,\\dots,A_n$, $\\left|\\bigcup_{i=1}^n A_i\\right| = \\sum_{\\varnothing\\neq S\\subseteq[n]} (-1)^{|S|+1}\\left|\\bigcap_{i\\in S}A_i\\right|$.",
+          "whyItMatters": "Resolve sistematicamente todo problema de 'pelo menos um' e e a tecnica-mae de desarranjos, sobrejecoes e da funcao de Euler."
+        },
+        {
+          "name": "Numero de funcoes sobrejetoras",
+          "statement": "O numero de funcoes sobrejetoras de um conjunto de $m$ elementos sobre um de $n$ elementos e $\\sum_{k=0}^{n}(-1)^k\\binom{n}{k}(n-k)^m = n!\\,S(m,n)$, onde $S(m,n)$ e o numero de Stirling de 2a especie.",
+          "whyItMatters": "Aplicacao direta do PIE (excluir as funcoes que perdem ao menos um valor) e ponte com particoes de conjuntos."
+        },
+        {
+          "name": "Desarranjos e o limite $1/e$",
+          "statement": "$D_n = n!\\sum_{k=0}^{n}\\dfrac{(-1)^k}{k!}$ e $\\dfrac{D_n}{n!}\\to e^{-1}$ quando $n\\to\\infty$.",
+          "whyItMatters": "O 'problema das cartas' mostra que a probabilidade de nenhuma coincidencia tende a $1/e\\approx 0{,}3679$, resultado contraintuitivo e classico em provas."
+        }
+      ],
+      "summary": "Quando varios conjuntos se sobrepoem, somar suas cardinalidades conta as intersecoes mais de uma vez. O principio da inclusao-exclusao corrige isso com um padrao alternado: soma os conjuntos, subtrai as intersecoes de pares, soma as de ternas, e assim por diante. A demonstracao mais limpa e por contagem dupla: um elemento que pertence a exatamente $t$ dos conjuntos e contado $\\sum_{j\\ge 1}(-1)^{j+1}\\binom{t}{j} = 1$ vez no total, pois $\\sum_{j=0}^t(-1)^j\\binom{t}{j}=0$.\n\nA potencia do PIE aparece em tres aplicacoes celebres. Os desarranjos contam permutacoes sem ponto fixo e revelam o limite $D_n/n!\\to 1/e$. As funcoes sobrejetoras sao contadas excluindo as que deixam de atingir algum valor. E a funcao $\\varphi$ de Euler sai de aplicar o PIE aos multiplos de cada primo que divide $n$. Em todas, a chave e identificar o universo e as 'propriedades ruins' que queremos contar ou evitar.",
+      "commonPitfalls": [
+        "Errar o sinal: o termo das intersecoes de $j$ conjuntos entra com sinal $(-1)^{j+1}$ na formula da uniao.",
+        "Calcular $|A_i\\cap A_j|$ assumindo independencia em vez de contar a intersecao real.",
+        "Confundir 'pelo menos um' (uniao, PIE direto) com 'nenhum' (complemento, forma alternada com $N(\\varnothing)$).",
+        "Parar a soma cedo demais: para $n$ conjuntos a alternancia vai ate o termo de $n$ intersecoes."
+      ],
+      "worked": "**Quantos numeros de $1$ a $100$ NAO sao divisiveis por $2$, nem por $3$, nem por $5$?**\n\nSeja $U=\\{1,\\dots,100\\}$ e $A_p$ o conjunto dos multiplos de $p$. Contamos o complemento. Usando $\\lfloor 100/p\\rfloor$:\n$$|A_2|=50,\\ |A_3|=33,\\ |A_5|=20,$$\n$$|A_2\\cap A_3|=\\lfloor 100/6\\rfloor=16,\\ |A_2\\cap A_5|=10,\\ |A_3\\cap A_5|=6,$$\n$$|A_2\\cap A_3\\cap A_5|=\\lfloor 100/30\\rfloor=3.$$\nPela inclusao-exclusao, os que tem alguma divisibilidade somam\n$$50+33+20-16-10-6+3 = 74.$$\nLogo os coprimos com $30$ no intervalo sao $100-74 = 26$. (Confere com $100\\cdot\\tfrac12\\cdot\\tfrac23\\cdot\\tfrac45 \\approx 26{,}7$, ajustado pelo arredondamento.) $\\qquad\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Quantos inteiros de $1$ a $1000$ sao divisiveis por $2$, por $3$ ou por $7$?",
+          "hint": "Aplique o PIE com $A_2, A_3, A_7$ usando $\\lfloor 1000/d\\rfloor$ para cada divisor e produto de divisores.",
+          "difficulty": 2,
+          "solution": "Seja $U=\\{1,\\dots,1000\\}$ e $A_d$ o conjunto dos multiplos de $d$ em $U$, com $|A_d|=\\lfloor 1000/d\\rfloor$. Queremos $|A_2\\cup A_3\\cup A_7|$.\n\n**Termos individuais:**\n$$|A_2|=\\lfloor 1000/2\\rfloor=500,\\quad |A_3|=\\lfloor 1000/3\\rfloor=333,\\quad |A_7|=\\lfloor 1000/7\\rfloor=142.$$\n\n**Intersecoes de pares** (multiplos do produto, pois $2,3,7$ sao primos):\n$$|A_2\\cap A_3|=\\lfloor 1000/6\\rfloor=166,\\quad |A_2\\cap A_7|=\\lfloor 1000/14\\rfloor=71,\\quad |A_3\\cap A_7|=\\lfloor 1000/21\\rfloor=47.$$\n\n**Intersecao tripla:**\n$$|A_2\\cap A_3\\cap A_7|=\\lfloor 1000/42\\rfloor=23.$$\n\nPela inclusao-exclusao:\n$$|A_2\\cup A_3\\cup A_7| = (500+333+142) - (166+71+47) + 23 = 975 - 284 + 23 = 714.$$\n\nLogo $\\boxed{714}$ inteiros de $1$ a $1000$ sao divisiveis por $2$, $3$ ou $7$.",
+          "steps": [
+            "Defina $A_d$ como os multiplos de $d$ e note que $|A_d|=\\lfloor 1000/d\\rfloor$.",
+            "Calcule os termos simples $|A_2|,|A_3|,|A_7|$.",
+            "Calcule as intersecoes usando os produtos $6,14,21$ e a tripla $42$ (validos por serem primos).",
+            "Combine com sinais do PIE: somar simples, subtrair pares, somar tripla, obtendo $714$."
+          ]
+        },
+        {
+          "prompt": "De quantas formas 4 cartas podem ser colocadas em 4 envelopes de modo que NENHUMA fique no envelope correto?",
+          "hint": "E o desarranjo $D_4 = 4!\\sum_{k=0}^4 (-1)^k/k!$.",
+          "difficulty": 2,
+          "solution": "Colocar cada carta fora do seu envelope correto e contar as permutacoes de $\\{1,2,3,4\\}$ sem ponto fixo, ou seja, o desarranjo $D_4$.\n\n**Via formula do PIE:**\n$$D_n = n!\\sum_{k=0}^{n}\\frac{(-1)^k}{k!}.$$\n\nPara $n=4$:\n$$D_4 = 4!\\left(1 - 1 + \\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24}\\right) = 24\\cdot\\left(\\frac{12 - 4 + 1}{24}\\right) = 24\\cdot\\frac{9}{24} = 9.$$\n\n(Confere com a recorrencia $D_4 = 3(D_3+D_2) = 3(2+1)=9$.)\n\nLogo ha $\\boxed{9}$ formas de nenhuma carta ficar no envelope certo.",
+          "steps": [
+            "Reconheca que 'nenhuma carta no envelope certo' e uma permutacao sem ponto fixo, isto e, um desarranjo $D_4$.",
+            "Escreva a formula $D_n=n!\\sum_{k=0}^n(-1)^k/k!$.",
+            "Substitua $n=4$ e some os termos $1-1+\\tfrac12-\\tfrac16+\\tfrac1{24}=\\tfrac{9}{24}$.",
+            "Multiplique por $4!=24$ para obter $D_4=9$."
+          ]
+        },
+        {
+          "prompt": "Quantas funcoes sobrejetoras existem de um conjunto de 5 elementos sobre um de 3 elementos?",
+          "hint": "$\\sum_{k=0}^{3}(-1)^k\\binom{3}{k}(3-k)^5$.",
+          "difficulty": 3,
+          "solution": "Contamos as funcoes sobrejetoras de um conjunto $X$ com $|X|=5$ sobre $Y=\\{y_1,y_2,y_3\\}$. Usamos o PIE excluindo as funcoes que 'perdem' algum valor.\n\nSeja $B_i$ o conjunto de funcoes cuja imagem evita $y_i$. Uma funcao e sobrejetora sse nao esta em nenhum $B_i$. O total de funcoes e $3^5$, e $|B_{i_1}\\cap\\cdots\\cap B_{i_k}|=(3-k)^5$ (funcoes para os $3-k$ valores restantes). Pela forma complementar:\n$$\\#\\text{sobrejetoras} = \\sum_{k=0}^{3}(-1)^k\\binom{3}{k}(3-k)^5.$$\n\nCalculando:\n$$= \\binom{3}{0}3^5 - \\binom{3}{1}2^5 + \\binom{3}{2}1^5 - \\binom{3}{3}0^5$$\n$$= 243 - 3\\cdot 32 + 3\\cdot 1 - 0 = 243 - 96 + 3 = 150.$$\n\nLogo existem $\\boxed{150}$ funcoes sobrejetoras. (Confere: $3!\\,S(5,3)=6\\cdot 25=150$.)",
+          "steps": [
+            "Defina $B_i$ como as funcoes que evitam o valor $y_i$; sobrejetora = fora de todos os $B_i$.",
+            "Note que uma intersecao de $k$ desses conjuntos tem $(3-k)^5$ funcoes.",
+            "Aplique o PIE: $\\sum_{k=0}^3(-1)^k\\binom{3}{k}(3-k)^5$.",
+            "Calcule $243-96+3=150$."
+          ]
+        },
+        {
+          "prompt": "Use o PIE sobre os primos de $n$ para deduzir $\\varphi(n)=n\\prod_{p\\mid n}\\left(1-\\frac1p\\right)$.",
+          "hint": "Universo $\\{1,\\dots,n\\}$; propriedade 'divisivel por $p$' para cada primo $p\\mid n$; conte o complemento.",
+          "difficulty": 4,
+          "solution": "Seja $n=\\prod_{i=1}^{r}p_i^{a_i}$ a fatoracao em primos distintos. Tome o universo $U=\\{1,2,\\dots,n\\}$ e, para cada primo $p_i\\mid n$, a propriedade 'ser divisivel por $p_i$', com conjunto $A_i=\\{m\\in U : p_i\\mid m\\}$.\n\nUm inteiro e coprimo com $n$ exatamente quando nao e divisivel por nenhum $p_i$, isto e, quando esta no complemento de $\\bigcup_i A_i$. Logo $\\varphi(n)$ conta o complemento, e usamos a forma complementar do PIE.\n\nPara qualquer subconjunto $S\\subseteq\\{1,\\dots,r\\}$, os inteiros de $U$ divisiveis por todos os $p_i$ com $i\\in S$ sao os multiplos de $\\prod_{i\\in S}p_i$, em quantidade\n$$\\left|\\bigcap_{i\\in S}A_i\\right| = \\frac{n}{\\prod_{i\\in S}p_i}.$$\n\nPela inclusao-exclusao:\n$$\\varphi(n) = \\sum_{S\\subseteq\\{1,\\dots,r\\}} (-1)^{|S|}\\frac{n}{\\prod_{i\\in S}p_i} = n\\sum_{S}\\prod_{i\\in S}\\left(-\\frac{1}{p_i}\\right).$$\n\nA soma sobre todos os subconjuntos $S$ fatora como um produto (distributividade):\n$$\\varphi(n) = n\\prod_{i=1}^{r}\\left(1 - \\frac{1}{p_i}\\right). \\qquad \\blacksquare$$",
+          "steps": [
+            "Fixe o universo $\\{1,\\dots,n\\}$ e a propriedade 'divisivel por $p_i$' para cada primo $p_i\\mid n$.",
+            "Reconheca que coprimo com $n$ significa nao ter nenhuma dessas propriedades (complemento da uniao).",
+            "Conte a intersecao das propriedades de um subconjunto $S$: sao $n/\\prod_{i\\in S}p_i$ multiplos.",
+            "Aplique a forma complementar do PIE e fatore a soma sobre subconjuntos como $n\\prod_i(1-1/p_i)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "PIE para dois conjuntos",
+          "back": "$|A\\cup B| = |A|+|B|-|A\\cap B|$."
+        },
+        {
+          "front": "PIE para tres conjuntos",
+          "back": "$|A\\cup B\\cup C| = |A|+|B|+|C| - |A\\cap B|-|A\\cap C|-|B\\cap C| + |A\\cap B\\cap C|$."
+        },
+        {
+          "front": "Sinal do termo de $j$ intersecoes na uniao",
+          "back": "$(-1)^{j+1}$ (positivo para $j$ impar, negativo para $j$ par)."
+        },
+        {
+          "front": "Formula dos desarranjos $D_n$",
+          "back": "$D_n = n!\\sum_{k=0}^{n}\\dfrac{(-1)^k}{k!}$."
+        },
+        {
+          "front": "Limite de $D_n/n!$",
+          "back": "$\\to e^{-1}\\approx 0{,}3679$."
+        },
+        {
+          "front": "Funcao $\\varphi$ de Euler de $n=\\prod p_i^{a_i}$",
+          "back": "$\\varphi(n) = n\\prod_i\\left(1-\\frac{1}{p_i}\\right)$."
+        },
+        {
+          "front": "Numero de sobrejecoes de $[m]$ sobre $[n]$",
+          "back": "$\\sum_{k=0}^{n}(-1)^k\\binom{n}{k}(n-k)^m = n!\\,S(m,n)$."
+        }
+      ],
+      "estimatedHours": 5,
+      "resources": [
+        {
+          "title": "Brualdi, Introductory Combinatorics, cap. 6",
+          "ref": "livro"
+        },
+        {
+          "title": "Morgado et al., Analise Combinatoria e Probabilidade, cap. 4",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o cap. 6 de Brualdi (ou cap. 4 de Morgado) e escreva o enunciado do PIE para 2, 3 e $n$ conjuntos, prestando atencao ao padrao de sinais $(-1)^{j+1}$.",
+          "Estude a demonstracao do PIE por contagem dupla (um elemento em $t$ conjuntos e contado $\\sum_j (-1)^{j+1}\\binom{t}{j}=1$ vez) ate reproduzi-la.",
+          "Assista a uma aula sobre desarranjos (derangements) e refaca a deducao de $D_n$ e do limite $D_n/n!\\to 1/e$.",
+          "Deduza voce mesmo a funcao de Euler $\\varphi(n)$ aplicando o PIE aos primos que dividem $n$.",
+          "Resolva 8 a 10 problemas de 'pelo menos um' / 'nenhum', sempre identificando o universo e as propriedades ruins antes de calcular.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (o esquema universo + propriedades e a formula dos desarranjos)."
+        ],
+        "searchQueries": [
+          "principio da inclusao exclusao exercicios resolvidos",
+          "inclusion exclusion principle proof double counting",
+          "desarranjos derangement formula D_n limite 1/e",
+          "numero de funcoes sobrejetoras inclusao exclusao Stirling",
+          "funcao phi de Euler deducao inclusao exclusao primos",
+          "problema das cartas nos envelopes probabilidade 1/e"
+        ],
+        "videos": [
+          {
+            "title": "Inclusion-Exclusion Principle",
+            "channel": "MIT OpenCourseWare",
+            "note": "6.042J cobre o PIE e desarranjos com demonstracao; foque na prova e nas aplicacoes."
+          },
+          {
+            "title": "Derangements and the number e",
+            "channel": "Mathologer",
+            "note": "Explica desarranjos e o surpreendente limite $1/e$ de forma visual."
+          },
+          {
+            "title": "Principio da inclusao e exclusao",
+            "channel": "Responde Ai",
+            "note": "Introducao em PT-BR com exemplos de contagem de multiplos e 'pelo menos um'."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introductory Combinatorics, cap. 6 (Inclusion-Exclusion)",
+            "where": "Richard A. Brualdi"
+          },
+          {
+            "title": "Analise Combinatoria e Probabilidade, cap. 4",
+            "where": "Morgado, Carvalho, Carvalho, Fernandez - SBM"
+          }
+        ]
+      }
+    },
+    {
+      "id": "combinatoria-04-casa-dos-pombos",
+      "title": "Principio da casa dos pombos",
+      "tagline": "Se ha mais pombos que casas, alguma casa tem dois — o principio mais simples e mais poderoso da combinatoria.",
+      "objectives": [
+        "Ao final voce consegue enunciar e aplicar as versoes simples e generalizada do principio da casa dos pombos.",
+        "Ao final voce consegue modelar um problema escolhendo corretamente 'pombos' e 'casas'.",
+        "Ao final voce consegue provar existencia de coincidencias em problemas de divisibilidade, geometria e somas.",
+        "Ao final voce consegue aplicar o teorema de Erdos-Szekeres sobre subsequencias monotonas."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Casa dos pombos (versao simples)",
+          "statement": "Se $n+1$ objetos sao distribuidos em $n$ caixas, entao alguma caixa contem pelo menos $2$ objetos. Equivalente: nao existe funcao injetora de um conjunto de $n+1$ elementos em um de $n$."
+        },
+        {
+          "term": "Casa dos pombos (versao generalizada)",
+          "statement": "Se $N$ objetos sao distribuidos em $k$ caixas, entao alguma caixa contem pelo menos $\\left\\lceil \\dfrac{N}{k}\\right\\rceil$ objetos. Em particular, se $N>km$, alguma caixa tem mais de $m$."
+        },
+        {
+          "term": "Escolha de pombos e casas",
+          "statement": "A arte do metodo: definir as 'caixas' (geralmente classes de equivalencia, restos, intervalos ou pares de valores) de modo que dois objetos na mesma caixa forneçam exatamente a conclusao desejada."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Principio da casa dos pombos (forma geral)",
+          "statement": "Se $A_1,\\dots,A_k$ sao caixas e $\\sum_{i=1}^k |A_i| = N$ objetos sao colocados nelas, entao $\\max_i |A_i| \\ge \\lceil N/k\\rceil$.",
+          "whyItMatters": "Prova EXISTENCIA sem construir o objeto; e a tecnica nao-construtiva mais elementar e cai direto em concursos e olimpiadas."
+        },
+        {
+          "name": "Erdos-Szekeres",
+          "statement": "Toda sequencia de $mn+1$ numeros reais distintos contem uma subsequencia crescente de comprimento $m+1$ ou uma subsequencia decrescente de comprimento $n+1$.",
+          "whyItMatters": "Aplicacao elegante da casa dos pombos a pares (comprimento da maior crescente, da maior decrescente que terminam em cada termo); resultado-semente da teoria de Ramsey."
+        }
+      ],
+      "summary": "O principio da casa dos pombos afirma algo quase obvio — mais pombos que casas forca duas aves na mesma casa — mas seu poder esta na escolha engenhosa do que sao pombos e casas. A versao generalizada quantifica: com $N$ objetos em $k$ caixas, alguma caixa tem ao menos $\\lceil N/k\\rceil$. Esse argumento prova existencia sem exibir o objeto, o que o torna indispensavel em demonstracoes nao-construtivas.\n\nAplicacoes tipicas: entre quaisquer $n+1$ inteiros ha dois com a mesma classe modulo $n$ (logo sua diferenca e divisivel por $n$); em qualquer grupo de pessoas, duas tem o mesmo numero de conhecidos dentro do grupo; e o teorema de Erdos-Szekeres garante subsequencias monotonas longas. O desafio nunca e o principio em si, e identificar a particao certa. Treinar isso desenvolve o olhar para estrutura escondida em problemas aparentemente caoticos.",
+      "commonPitfalls": [
+        "Escolher caixas demais (mais caixas que pombos), o que torna o principio inaplicavel.",
+        "Confundir o que o principio garante: ele prova existencia de coincidencia, nao diz QUAL nem QUANTAS alem do minimo.",
+        "Esquecer o teto: a versao generalizada da $\\lceil N/k\\rceil$, nao $N/k$ exato.",
+        "Nao verificar que objetos na mesma caixa realmente produzem a conclusao desejada (caixas mal definidas)."
+      ],
+      "worked": "**Escolhidos $51$ numeros quaisquer de $\\{1,2,\\dots,100\\}$, mostre que existem dois em que um divide o outro.**\n\nA ideia e construir caixas em que 'mesma caixa' force a divisibilidade. Escreva cada numero $n$ de forma unica como $n = 2^{a}\\cdot m$ com $m$ impar (extraia toda a potencia de $2$). O fator impar $m$ pertence a $\\{1,3,5,\\dots,99\\}$, que tem exatamente $50$ valores — essas sao as caixas.\n\nTemos $51$ numeros (pombos) e $50$ caixas. Pela casa dos pombos, dois deles, $2^{a}m$ e $2^{b}m$ com $a<b$, tem o mesmo fator impar $m$. Entao $2^{a}m \\mid 2^{b}m$: um divide o outro. $\\qquad\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que entre quaisquer $n+1$ inteiros existem dois cuja diferenca e divisivel por $n$.",
+          "hint": "Caixas = os $n$ restos possiveis modulo $n$; pombos = os $n+1$ inteiros.",
+          "difficulty": 2,
+          "solution": "Sejam $a_1,\\dots,a_{n+1}$ os $n+1$ inteiros (os pombos). As casas sao os $n$ restos possiveis na divisao por $n$:\n$$\\{0,1,2,\\dots,n-1\\}.$$\nCada inteiro cai na casa do seu resto $a_i \\bmod n$.\n\nTemos $n+1$ inteiros e apenas $n$ restos possiveis; pela casa dos pombos, existem indices $i\\neq j$ com o mesmo resto:\n$$a_i \\equiv a_j \\pmod{n}.$$\n\nEntao $n \\mid (a_i - a_j)$, ou seja, a diferenca de dois deles e divisivel por $n$. $\\qquad \\blacksquare$",
+          "steps": [
+            "Escolha as casas: os $n$ restos possiveis modulo $n$.",
+            "Distribua os $n+1$ inteiros (pombos) segundo seu resto.",
+            "Como ha mais inteiros que restos, dois caem no mesmo resto: $a_i\\equiv a_j\\pmod n$.",
+            "Conclua que $n$ divide $a_i-a_j$."
+          ]
+        },
+        {
+          "prompt": "Mostre que em qualquer grupo de $n\\ge 2$ pessoas existem duas com o mesmo numero de conhecidos dentro do grupo.",
+          "hint": "Os graus possiveis vao de $0$ a $n-1$, mas $0$ e $n-1$ nao coexistem; sobram $n-1$ caixas para $n$ pessoas.",
+          "difficulty": 3,
+          "solution": "Modele por um grafo: cada pessoa e um vertice e uma aresta liga duas pessoas que se conhecem. O 'numero de conhecidos' de uma pessoa e seu grau $d(v)\\in\\{0,1,\\dots,n-1\\}$.\n\nA principio ha $n$ valores possiveis de grau para $n$ pessoas, o que nao basta. A observacao chave: os valores $0$ e $n-1$ nao podem ocorrer simultaneamente. Se alguem tem grau $n-1$, conhece todos, logo ninguem tem grau $0$; reciprocamente, se alguem tem grau $0$, ninguem conhece todos.\n\nPortanto os graus efetivamente assumem valores em um conjunto de tamanho $n-1$ (ou $\\{0,\\dots,n-2\\}$ ou $\\{1,\\dots,n-1\\}$). Temos $n$ pessoas (pombos) e apenas $n-1$ valores de grau possiveis (casas). Pela casa dos pombos, duas pessoas tem o mesmo grau, isto e, o mesmo numero de conhecidos. $\\qquad \\blacksquare$",
+          "steps": [
+            "Represente conhecimento por um grafo; o numero de conhecidos e o grau, que varia em $\\{0,\\dots,n-1\\}$.",
+            "Note que $0$ e $n-1$ nao coexistem: um vertice de grau $n-1$ impede grau $0$ e vice-versa.",
+            "Conclua que ha no maximo $n-1$ valores de grau realmente possiveis.",
+            "Aplique a casa dos pombos: $n$ pessoas em $n-1$ valores forcam dois graus iguais."
+          ]
+        },
+        {
+          "prompt": "Dados 5 pontos de coordenadas inteiras no plano, prove que algum par tem ponto medio de coordenadas inteiras.",
+          "hint": "Caixas = paridade $(x \\bmod 2, y\\bmod 2)$, que tem $4$ valores; $5$ pontos.",
+          "difficulty": 3,
+          "solution": "Sejam os $5$ pontos $P_k=(x_k,y_k)$ com $x_k,y_k\\in\\mathbb{Z}$. O ponto medio de $P_i$ e $P_j$ e\n$$\\left(\\frac{x_i+x_j}{2},\\ \\frac{y_i+y_j}{2}\\right),$$\nque tem coordenadas inteiras se, e somente se, $x_i+x_j$ e $y_i+y_j$ sao ambos pares, ou seja, $x_i\\equiv x_j\\pmod 2$ e $y_i\\equiv y_j\\pmod 2$.\n\nAssociamos a cada ponto sua classe de paridade\n$$(x_k \\bmod 2,\\ y_k \\bmod 2) \\in \\{0,1\\}\\times\\{0,1\\},$$\nque tem $4$ valores possiveis (as casas).\n\nTemos $5$ pontos (pombos) e $4$ classes; pela casa dos pombos, dois pontos $P_i,P_j$ tem a mesma classe de paridade. Para esse par, $x_i+x_j$ e $y_i+y_j$ sao pares, logo o ponto medio tem coordenadas inteiras. $\\qquad \\blacksquare$",
+          "steps": [
+            "Observe que o ponto medio e inteiro sse as somas das coordenadas forem pares, isto e, coordenadas de mesma paridade.",
+            "Defina as casas: as $4$ classes de paridade $(x\\bmod 2, y\\bmod 2)$.",
+            "Distribua os $5$ pontos nessas $4$ classes.",
+            "Pela casa dos pombos, dois pontos partilham a classe, garantindo ponto medio inteiro."
+          ]
+        },
+        {
+          "prompt": "Use Erdos-Szekeres para mostrar que toda sequencia de $101$ reais distintos tem subsequencia monotona de comprimento $\\ge 11$.",
+          "hint": "$101 = 10\\cdot 10 + 1$, entao $m=n=10$ garante crescente ou decrescente de $11$.",
+          "difficulty": 4,
+          "solution": "O teorema de Erdos-Szekeres afirma que toda sequencia de $mn+1$ reais distintos contem uma subsequencia crescente de comprimento $m+1$ ou uma decrescente de comprimento $n+1$.\n\nTomamos $m=n=10$, pois\n$$mn+1 = 10\\cdot 10 + 1 = 101.$$\nAssim, toda sequencia de $101$ reais distintos possui uma subsequencia crescente de comprimento $10+1=11$ ou uma decrescente de comprimento $10+1=11$. Em qualquer caso, existe subsequencia monotona de comprimento $\\ge 11$.\n\n**Esboco da prova (para fixar).** Para cada termo $a_i$, seja $c_i$ o comprimento da maior subsequencia crescente terminando em $a_i$ e $d_i$ o da maior decrescente terminando em $a_i$. Se nenhuma monotona atinge $11$, entao $c_i\\le 10$ e $d_i\\le 10$, logo os pares $(c_i,d_i)$ vivem em $\\{1,\\dots,10\\}^2$, que tem $100$ valores. Com $101$ termos (pombos) e $100$ pares (casas), dois termos $a_i,a_j$ ($i<j$) tem $(c_i,d_i)=(c_j,d_j)$. Mas se $a_i<a_j$ entao $c_j\\ge c_i+1$, e se $a_i>a_j$ entao $d_j\\ge d_i+1$ — contradicao em ambos os casos (os reais sao distintos). Logo alguma monotona tem comprimento $\\ge 11$. $\\qquad \\blacksquare$",
+          "steps": [
+            "Escreva $101$ na forma $mn+1$ com $m=n=10$ para aplicar Erdos-Szekeres.",
+            "Conclua que ha crescente de $11$ ou decrescente de $11$.",
+            "Para justificar, associe a cada termo o par (maior crescente, maior decrescente) que nele termina.",
+            "Se nao houvesse monotona de $11$, os $101$ pares caberiam em $10\\times10=100$ casas; a casa dos pombos forca dois pares iguais, o que e impossivel para reais distintos."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Casa dos pombos (versao simples)",
+          "back": "$n+1$ objetos em $n$ caixas $\\Rightarrow$ alguma caixa tem $\\ge 2$."
+        },
+        {
+          "front": "Casa dos pombos (generalizada)",
+          "back": "$N$ objetos em $k$ caixas $\\Rightarrow$ alguma caixa tem $\\ge \\lceil N/k\\rceil$."
+        },
+        {
+          "front": "O que o principio prova?",
+          "back": "Existencia de coincidencia (nao-construtivo); nao diz qual nem quantos alem do minimo."
+        },
+        {
+          "front": "Caixas para 'diferenca divisivel por $n$'",
+          "back": "Os $n$ restos modulo $n$."
+        },
+        {
+          "front": "Teorema de Erdos-Szekeres",
+          "back": "Sequencia de $mn+1$ reais distintos tem crescente de $m+1$ ou decrescente de $n+1$."
+        },
+        {
+          "front": "Caixas para 'ponto medio inteiro' no plano",
+          "back": "As $4$ paridades $(x\\bmod 2, y\\bmod 2)$."
+        }
+      ],
+      "estimatedHours": 5,
+      "resources": [
+        {
+          "title": "Brualdi, Introductory Combinatorics, cap. 3",
+          "ref": "livro"
+        },
+        {
+          "title": "POTI/OBMEP — Casa dos Pombos",
+          "ref": "pdf"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o cap. 3 de Brualdi (ou o material de Casa dos Pombos do POTI/OBMEP) e enuncie as versoes simples e generalizada, com o teto $\\lceil N/k\\rceil$.",
+          "Assista a uma aula de olimpiada sobre o principio e refaca 3 exemplos classicos (divisibilidade, restos, paridade de coordenadas).",
+          "Treine a modelagem: para cada problema, escreva explicitamente 'quem sao os pombos' e 'quem sao as casas' antes de qualquer conta.",
+          "Estude a prova do teorema de Erdos-Szekeres associando a cada termo o par (maior crescente, maior decrescente) e aplicando a casa dos pombos.",
+          "Resolva 10 problemas de dificuldade crescente do material do POTI, priorizando os que exigem escolher a particao certa.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (o roteiro de escolha de pombos e casas e o enunciado de Erdos-Szekeres)."
+        ],
+        "searchQueries": [
+          "principio da casa dos pombos exercicios olimpiada resolvidos",
+          "pigeonhole principle problems divisibility remainder",
+          "casa dos pombos generalizada teto N/k demonstracao",
+          "Erdos Szekeres theorem monotone subsequence proof",
+          "POTI OBMEP casa dos pombos material treinamento pdf",
+          "pigeonhole principle geometry lattice points midpoint"
+        ],
+        "videos": [
+          {
+            "title": "The Pigeonhole Principle",
+            "channel": "MIT OpenCourseWare",
+            "note": "6.042J apresenta o principio e a versao generalizada com aplicacoes de existencia."
+          },
+          {
+            "title": "Casa dos Pombos - principio e aplicacoes",
+            "channel": "Possani (Matematica Universitaria)",
+            "note": "Busque videos de combinatoria/olimpiada com o principio da casa dos pombos em PT-BR."
+          },
+          {
+            "title": "Erdos-Szekeres monotone subsequences",
+            "channel": "Michael Penn",
+            "note": "Procure a prova do teorema de subsequencias monotonas via pigeonhole."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introductory Combinatorics, cap. 3 (Pigeonhole Principle)",
+            "where": "Richard A. Brualdi"
+          },
+          {
+            "title": "Material de Combinatoria - Casa dos Pombos (POTI / OBMEP)",
+            "where": "portaldosaber.obmep.org.br"
+          }
+        ]
+      }
+    },
+    {
+      "id": "combinatoria-05-recorrencias",
+      "title": "Relacoes de recorrencia",
+      "tagline": "Quando o n-esimo termo depende dos anteriores: equacao caracteristica, Fibonacci, Catalan e o metodo geral.",
+      "objectives": [
+        "Ao final voce consegue montar a recorrencia de um problema de contagem a partir de sua estrutura recursiva.",
+        "Ao final voce consegue resolver recorrencias lineares homogeneas de coeficientes constantes via equacao caracteristica.",
+        "Ao final voce consegue tratar raizes repetidas e recorrencias nao-homogeneas (solucao particular).",
+        "Ao final voce consegue deduzir a formula fechada de Fibonacci (Binet) e a dos numeros de Catalan."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Recorrencia linear homogenea de ordem $k$",
+          "statement": "$a_n = c_1 a_{n-1} + c_2 a_{n-2} + \\cdots + c_k a_{n-k}$, com $c_k\\neq 0$ constantes. Fica determinada por $k$ condicoes iniciais."
+        },
+        {
+          "term": "Equacao caracteristica",
+          "statement": "Para a recorrencia acima, o polinomio $x^k - c_1 x^{k-1} - \\cdots - c_k = 0$. Suas raizes geram as solucoes basicas $a_n = r^n$."
+        },
+        {
+          "term": "Solucao geral (raizes simples)",
+          "statement": "Se a caracteristica tem raizes distintas $r_1,\\dots,r_k$, entao $a_n = \\sum_{i=1}^k \\alpha_i r_i^n$, com $\\alpha_i$ fixados pelas condicoes iniciais."
+        },
+        {
+          "term": "Raizes repetidas",
+          "statement": "Se $r$ e raiz de multiplicidade $m$, ela contribui com $(\\alpha_0 + \\alpha_1 n + \\cdots + \\alpha_{m-1}n^{m-1})r^n$ na solucao geral."
+        },
+        {
+          "term": "Recorrencia nao-homogenea",
+          "statement": "$a_n = (\\text{parte linear}) + f(n)$. A solucao geral e $a_n = a_n^{(h)} + a_n^{(p)}$: a homogenea associada mais uma particular do tipo de $f$ (polinomial, exponencial, etc.)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Solucao de recorrencias lineares homogeneas",
+          "statement": "Seja $a_n = c_1 a_{n-1}+\\cdots+c_k a_{n-k}$ com caracteristica $p(x)=x^k-c_1x^{k-1}-\\cdots-c_k$. Se $p$ tem raizes $r_1,\\dots,r_t$ com multiplicidades $m_1,\\dots,m_t$ ($\\sum m_j=k$), entao toda solucao e $a_n = \\sum_{j=1}^{t}\\left(\\sum_{s=0}^{m_j-1}\\alpha_{j,s}n^s\\right)r_j^n$.",
+          "whyItMatters": "Da a forma fechada de qualquer recorrencia linear de coeficientes constantes — o caso que mais aparece em contagem e em equacoes de diferenca."
+        },
+        {
+          "name": "Formula de Binet (Fibonacci)",
+          "statement": "Para $F_0=0$, $F_1=1$, $F_n=F_{n-1}+F_{n-2}$, vale $F_n = \\dfrac{1}{\\sqrt5}\\left(\\varphi^n - \\psi^n\\right)$, com $\\varphi=\\frac{1+\\sqrt5}{2}$ e $\\psi=\\frac{1-\\sqrt5}{2}$.",
+          "whyItMatters": "Exemplo paradigmatico do metodo da equacao caracteristica e revela a razao aurea escondida na recorrencia mais famosa."
+        },
+        {
+          "name": "Numeros de Catalan",
+          "statement": "$C_n = \\sum_{i=0}^{n-1}C_i C_{n-1-i}$ com $C_0=1$ tem formula fechada $C_n = \\dfrac{1}{n+1}\\binom{2n}{n}$.",
+          "whyItMatters": "Conta caminhos de Dyck, triangulacoes de poligono, arvores binarias e parentizacoes; recorrencia nao-linear classica resolvida por funcoes geradoras."
+        }
+      ],
+      "summary": "Uma recorrencia define uma sequencia descrevendo cada termo em funcao dos anteriores, e a contagem recursiva e a forma natural de modelar problemas com estrutura auto-similar (cada configuracao de tamanho $n$ se decompoe em configuracoes menores). O caso resolvel em forma fechada e o linear de coeficientes constantes: monta-se a equacao caracteristica, encontram-se suas raizes e a solucao geral e combinacao das potencias $r^n$, com correcao polinomial quando ha raizes repetidas. As constantes saem das condicoes iniciais.\n\nDois exemplos canonicos ancoram tudo. Fibonacci, $F_n=F_{n-1}+F_{n-2}$, leva a caracteristica $x^2-x-1=0$ e a formula de Binet com a razao aurea. Os numeros de Catalan satisfazem uma recorrencia nao-linear (convolucao) que se resolve por funcoes geradoras, dando $C_n=\\frac1{n+1}\\binom{2n}{n}$ e contando uma colecao impressionante de objetos. Para recorrencias nao-homogeneas, soma-se a solucao da homogenea uma particular adaptada ao termo forcante $f(n)$ — exatamente como em equacoes diferenciais lineares.",
+      "commonPitfalls": [
+        "Esquecer a correcao polinomial $n^s$ quando a equacao caracteristica tem raiz repetida.",
+        "Determinar as constantes $\\alpha_i$ sem usar TODAS as condicoes iniciais necessarias (uma por ordem da recorrencia).",
+        "Tentar equacao caracteristica em recorrencias nao-lineares (como Catalan) — ali o caminho e funcao geradora.",
+        "Na nao-homogenea, escolher a forma da solucao particular sem considerar ressonancia com a homogenea (ajustar com fator $n$)."
+      ],
+      "worked": "**Resolver $a_n = 5a_{n-1} - 6a_{n-2}$, com $a_0=1$, $a_1=4$.**\n\nEquacao caracteristica: $x^2 - 5x + 6 = 0 \\Rightarrow (x-2)(x-3)=0$, raizes $r_1=2$, $r_2=3$ (simples). Logo\n$$a_n = \\alpha\\,2^n + \\beta\\,3^n.$$\nImpondo as iniciais:\n$$a_0 = \\alpha+\\beta = 1,\\qquad a_1 = 2\\alpha + 3\\beta = 4.$$\nDe $\\alpha = 1-\\beta$ vem $2(1-\\beta)+3\\beta = 4$, ou seja $2+\\beta = 4$, $\\beta = 2$ e $\\alpha = -1$. Portanto\n$$a_n = -2^n + 2\\cdot 3^n.$$\nConferindo: $a_2 = -4 + 18 = 14 = 5\\cdot4 - 6\\cdot1$. $\\qquad\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Resolva $a_n = 2a_{n-1} + 3a_{n-2}$ com $a_0=0$, $a_1=1$.",
+          "hint": "Caracteristica $x^2-2x-3=(x-3)(x+1)$; raizes $3$ e $-1$.",
+          "difficulty": 2,
+          "solution": "Recorrencia: $a_n = 2a_{n-1}+3a_{n-2}$, com $a_0=0$, $a_1=1$.\n\n**Equacao caracteristica:**\n$$x^2 - 2x - 3 = 0 \\;\\Longrightarrow\\; (x-3)(x+1)=0,$$\ncom raizes simples $r_1=3$ e $r_2=-1$. Logo\n$$a_n = \\alpha\\, 3^n + \\beta\\,(-1)^n.$$\n\n**Condicoes iniciais:**\n$$a_0 = \\alpha + \\beta = 0,\\qquad a_1 = 3\\alpha - \\beta = 1.$$\nSomando as equacoes: $4\\alpha = 1 \\Rightarrow \\alpha = \\tfrac14$, e $\\beta = -\\tfrac14$.\n\n$$\\boxed{a_n = \\frac{3^n - (-1)^n}{4}.}$$\n\nConferindo: $a_2 = (9-1)/4 = 2 = 2\\cdot1 + 3\\cdot0$. $\\;\\checkmark$",
+          "steps": [
+            "Escreva a equacao caracteristica $x^2-2x-3=0$.",
+            "Fatore em $(x-3)(x+1)$, obtendo raizes $3$ e $-1$.",
+            "Monte a solucao geral $a_n=\\alpha 3^n+\\beta(-1)^n$.",
+            "Use $a_0=0$ e $a_1=1$ para achar $\\alpha=1/4$, $\\beta=-1/4$, chegando a $a_n=(3^n-(-1)^n)/4$."
+          ]
+        },
+        {
+          "prompt": "Resolva $a_n = 4a_{n-1} - 4a_{n-2}$ com $a_0=1$, $a_1=3$.",
+          "hint": "Raiz dupla $r=2$; use a forma $(\\alpha + \\beta n)2^n$.",
+          "difficulty": 3,
+          "solution": "Recorrencia: $a_n = 4a_{n-1} - 4a_{n-2}$, com $a_0=1$, $a_1=3$.\n\n**Equacao caracteristica:**\n$$x^2 - 4x + 4 = 0 \\;\\Longrightarrow\\; (x-2)^2 = 0,$$\nraiz $r=2$ de multiplicidade $2$. Com raiz dupla, a solucao geral ganha o fator polinomial:\n$$a_n = (\\alpha + \\beta n)\\,2^n.$$\n\n**Condicoes iniciais:**\n$$a_0 = \\alpha = 1,$$\n$$a_1 = (\\alpha + \\beta)\\cdot 2 = 3 \\;\\Longrightarrow\\; \\alpha + \\beta = \\tfrac32 \\;\\Longrightarrow\\; \\beta = \\tfrac12.$$\n\n$$\\boxed{a_n = \\left(1 + \\tfrac{n}{2}\\right)2^n = 2^n + n\\,2^{n-1}.}$$\n\nConferindo: $a_2 = (1+1)\\cdot 4 = 8 = 4\\cdot3 - 4\\cdot1$. $\\;\\checkmark$",
+          "steps": [
+            "Forme a equacao caracteristica $x^2-4x+4=0$.",
+            "Identifique a raiz dupla $r=2$ e use a forma $(\\alpha+\\beta n)2^n$ por causa da multiplicidade.",
+            "Aplique $a_0=1$ para obter $\\alpha=1$.",
+            "Aplique $a_1=3$ para obter $\\beta=1/2$, chegando a $a_n=2^n+n\\,2^{n-1}$."
+          ]
+        },
+        {
+          "prompt": "Encontre uma recorrencia para o numero de sequencias binarias de comprimento $n$ sem dois $1$ consecutivos e identifique-a.",
+          "hint": "Condicione no ultimo bit; o resultado e Fibonacci.",
+          "difficulty": 3,
+          "solution": "Seja $a_n$ o numero de sequencias binarias de comprimento $n$ sem dois $1$ consecutivos.\n\n**Montagem da recorrencia (condicionar no ultimo bit):**\n- Se a sequencia termina em $0$, os primeiros $n-1$ bits formam qualquer sequencia valida de comprimento $n-1$: $a_{n-1}$ casos.\n- Se termina em $1$, o bit anterior deve ser $0$ (senao haveria dois $1$), e os primeiros $n-2$ bits formam qualquer sequencia valida: $a_{n-2}$ casos.\n\nComo os dois casos sao disjuntos e cobrem tudo:\n$$a_n = a_{n-1} + a_{n-2}.$$\n\n**Condicoes iniciais:** $a_1 = 2$ (as strings $0$ e $1$) e $a_2 = 3$ ($00,01,10$; exclui $11$).\n\nEsta e a recorrencia de **Fibonacci**. Com $F_1=1,F_2=1,F_3=2,\\dots$, temos $a_1=2=F_3$ e $a_2=3=F_4$, logo\n$$\\boxed{a_n = F_{n+2}.}$$",
+          "steps": [
+            "Condicione no ultimo bit da sequencia (0 ou 1).",
+            "Se termina em 0, sobra qualquer valida de tamanho $n-1$; se termina em 1, o penultimo e 0 e sobra qualquer valida de tamanho $n-2$.",
+            "Some os casos disjuntos: $a_n=a_{n-1}+a_{n-2}$, a recorrencia de Fibonacci.",
+            "Fixe $a_1=2$, $a_2=3$ e identifique $a_n=F_{n+2}$."
+          ]
+        },
+        {
+          "prompt": "Resolva a nao-homogenea $a_n = 3a_{n-1} + 2^n$, com $a_0 = 1$.",
+          "hint": "Homogenea: $\\alpha 3^n$. Particular do tipo $A\\,2^n$; substitua para achar $A$ e ajuste $\\alpha$ pela condicao inicial.",
+          "difficulty": 4,
+          "solution": "Recorrencia nao-homogenea: $a_n = 3a_{n-1} + 2^n$, com $a_0=1$.\n\n**Solucao homogenea.** A homogenea associada $a_n=3a_{n-1}$ tem solucao $a_n^{(h)} = \\alpha\\,3^n$.\n\n**Solucao particular.** Como o termo forcante e $2^n$ (e $2$ nao e raiz da homogenea, que e $3$), tentamos $a_n^{(p)} = A\\,2^n$. Substituindo na recorrencia:\n$$A\\,2^n = 3A\\,2^{n-1} + 2^n \\;\\Longrightarrow\\; A\\,2^n = \\tfrac{3A}{2}2^n + 2^n.$$\nDividindo por $2^n$: $A = \\tfrac{3A}{2} + 1 \\Rightarrow -\\tfrac{A}{2}=1 \\Rightarrow A = -2$. Logo $a_n^{(p)} = -2\\cdot 2^n = -2^{n+1}$.\n\n**Solucao geral e constante.**\n$$a_n = \\alpha\\,3^n - 2^{n+1}.$$\nDe $a_0 = \\alpha - 2 = 1$ vem $\\alpha = 3$. Portanto\n$$\\boxed{a_n = 3^{n+1} - 2^{n+1}.}$$\n\nConferindo: $a_1 = 9-4 = 5 = 3\\cdot1 + 2^1$; $a_2 = 27-8 = 19 = 3\\cdot5 + 2^2$. $\\;\\checkmark$",
+          "steps": [
+            "Resolva a homogenea $a_n=3a_{n-1}$: $a_n^{(h)}=\\alpha 3^n$.",
+            "Como $2$ nao e raiz, tente particular $a_n^{(p)}=A2^n$ e substitua na recorrencia.",
+            "Resolva para $A$: obtem-se $A=-2$, logo $a_n^{(p)}=-2^{n+1}$.",
+            "Some homogenea e particular e use $a_0=1$ para achar $\\alpha=3$, chegando a $a_n=3^{n+1}-2^{n+1}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Equacao caracteristica de $a_n=c_1a_{n-1}+\\cdots+c_k a_{n-k}$",
+          "back": "$x^k - c_1 x^{k-1} - \\cdots - c_k = 0$."
+        },
+        {
+          "front": "Solucao geral com raizes simples $r_1,\\dots,r_k$",
+          "back": "$a_n = \\sum_i \\alpha_i r_i^n$, com $\\alpha_i$ das condicoes iniciais."
+        },
+        {
+          "front": "Contribuicao de uma raiz de multiplicidade $m$",
+          "back": "$(\\alpha_0 + \\alpha_1 n + \\cdots + \\alpha_{m-1}n^{m-1})\\,r^n$."
+        },
+        {
+          "front": "Caracteristica de Fibonacci",
+          "back": "$x^2 - x - 1 = 0$, raizes $\\varphi$ e $\\psi$ (razao aurea)."
+        },
+        {
+          "front": "Formula de Binet",
+          "back": "$F_n = \\dfrac{\\varphi^n - \\psi^n}{\\sqrt5}$."
+        },
+        {
+          "front": "Formula fechada dos numeros de Catalan",
+          "back": "$C_n = \\dfrac{1}{n+1}\\binom{2n}{n}$."
+        },
+        {
+          "front": "Solucao de recorrencia nao-homogenea",
+          "back": "$a_n = a_n^{(h)} + a_n^{(p)}$ (homogenea + particular)."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Morgado et al., Analise Combinatoria e Probabilidade, cap. 5 (recorrencias)",
+          "ref": "livro"
+        },
+        {
+          "title": "Graham, Knuth, Patashnik, Concrete Mathematics, cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o cap. 5 de Morgado sobre recorrencias e o cap. 1 de Concrete Mathematics; monte o passo a passo: recorrencia -> equacao caracteristica -> raizes -> solucao geral -> constantes.",
+          "Assista a uma aula sobre recorrencias lineares e refaca a deducao da formula de Binet para Fibonacci a partir de $x^2-x-1=0$.",
+          "Pratique o caso de raizes repetidas entendendo por que surge o fator polinomial $n^s$; verifique numericamente em um exemplo.",
+          "Estude o caso nao-homogeneo: como escolher a solucao particular conforme $f(n)$ e como tratar a ressonancia com a homogenea.",
+          "Modele 6 a 8 problemas de contagem escrevendo a recorrencia por decomposicao estrutural (condicionar no ultimo passo) antes de resolver.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (o algoritmo da equacao caracteristica e o tratamento de raizes repetidas / nao-homogeneas)."
+        ],
+        "searchQueries": [
+          "recorrencia linear homogenea equacao caracteristica exercicios",
+          "linear recurrence repeated roots general solution",
+          "formula de Binet Fibonacci deducao equacao caracteristica",
+          "recorrencia nao homogenea solucao particular ressonancia",
+          "numeros de Catalan recorrencia funcao geradora deducao",
+          "recurrence relation counting binary strings no two consecutive ones"
+        ],
+        "videos": [
+          {
+            "title": "Solving linear recurrences",
+            "channel": "MIT OpenCourseWare",
+            "note": "6.042J resolve recorrencias lineares homogeneas e nao-homogeneas passo a passo."
+          },
+          {
+            "title": "Fibonacci and the golden ratio / Binet formula",
+            "channel": "Mathologer",
+            "note": "Deducao e intuicao da formula fechada de Fibonacci e da razao aurea."
+          },
+          {
+            "title": "Recorrencias lineares",
+            "channel": "Matematica Universitaria",
+            "note": "Busque a serie de recorrencias em PT-BR para o metodo da equacao caracteristica."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Concrete Mathematics, cap. 1 (Recurrent Problems)",
+            "where": "Graham, Knuth, Patashnik"
+          },
+          {
+            "title": "Analise Combinatoria e Probabilidade, cap. 5 (recorrencias)",
+            "where": "Morgado, Carvalho, Carvalho, Fernandez - SBM"
+          }
+        ]
+      }
+    },
+    {
+      "id": "combinatoria-06-funcoes-geradoras",
+      "title": "Funcoes geradoras",
+      "tagline": "Codificar uma sequencia inteira numa serie de potencias e deixar a algebra contar por voce.",
+      "objectives": [
+        "Ao final voce consegue associar a uma sequencia $(a_n)$ sua funcao geradora ordinaria $\\sum a_n x^n$.",
+        "Ao final voce consegue usar a serie geometrica e o binomio generalizado como blocos de construcao.",
+        "Ao final voce consegue resolver recorrencias lineares passando para funcoes geradoras e fracoes parciais.",
+        "Ao final voce consegue contar particoes e distribuicoes interpretando produtos de series.",
+        "Ao final voce consegue distinguir funcao geradora ordinaria (OGF) de exponencial (EGF) e quando usar cada uma."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Funcao geradora ordinaria (OGF)",
+          "statement": "Para a sequencia $(a_n)_{n\\ge 0}$, e a serie formal $A(x) = \\sum_{n\\ge 0} a_n x^n$. O coeficiente de $x^n$, denotado $[x^n]A(x)$, recupera $a_n$."
+        },
+        {
+          "term": "Serie geometrica e binomio generalizado",
+          "statement": "$\\dfrac{1}{1-x} = \\sum_{n\\ge 0}x^n$ e, para $\\alpha$ real, $(1+x)^\\alpha = \\sum_{n\\ge 0}\\binom{\\alpha}{n}x^n$; em particular $\\dfrac{1}{(1-x)^k} = \\sum_{n\\ge 0}\\binom{n+k-1}{k-1}x^n$."
+        },
+        {
+          "term": "Operacoes e seus efeitos",
+          "statement": "Soma de series soma sequencias; produto $A(x)B(x)$ corresponde a convolucao $\\sum_{k}a_k b_{n-k}$; multiplicar por $x$ desloca indices; derivar/multiplicar por $x$ introduz fatores $n$."
+        },
+        {
+          "term": "Funcao geradora exponencial (EGF)",
+          "statement": "$\\hat A(x) = \\sum_{n\\ge 0} a_n \\dfrac{x^n}{n!}$. Adequada a problemas rotulados (com ordem/etiqueta), onde o produto de EGFs corresponde a particoes de conjuntos rotulados."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Resolucao de recorrencias por OGF",
+          "statement": "Dada uma recorrencia linear, multiplica-se por $x^n$, soma-se em $n$ e obtem-se uma equacao algebrica para $A(x)$; decompondo $A(x)$ em fracoes parciais e expandindo cada termo, le-se $a_n = [x^n]A(x)$ em forma fechada.",
+          "whyItMatters": "Metodo unificado que resolve recorrencias lineares (inclusive nao-homogeneas) e ate algumas nao-lineares, sem adivinhar a forma da solucao."
+        },
+        {
+          "name": "Funcao geradora das particoes",
+          "statement": "O numero $p(n)$ de particoes de $n$ tem OGF $\\sum_{n\\ge 0}p(n)x^n = \\prod_{k\\ge 1}\\dfrac{1}{1-x^k}$. Restringindo as partes, ajusta-se o produto (ex.: partes distintas dao $\\prod_{k\\ge1}(1+x^k)$).",
+          "whyItMatters": "Transforma um problema de contagem dificil (particoes) em manipulacao de produtos infinitos e e a porta para identidades como a de Euler (partes impares = partes distintas)."
+        },
+        {
+          "name": "Catalan via funcao geradora",
+          "statement": "Se $C(x)=\\sum_{n\\ge0}C_n x^n$ e $C_n=\\sum_{i}C_iC_{n-1-i}$, entao $C(x)=1+xC(x)^2$, donde $C(x)=\\dfrac{1-\\sqrt{1-4x}}{2x}$ e $C_n=\\frac{1}{n+1}\\binom{2n}{n}$.",
+          "whyItMatters": "Mostra a forca das OGF em recorrencias nao-lineares de convolucao, onde a equacao caracteristica nao se aplica."
+        }
+      ],
+      "summary": "Uma funcao geradora e um varal: penduramos a sequencia inteira $(a_n)$ como coeficientes de uma serie de potencias $A(x)=\\sum a_n x^n$ e passamos a manipular um unico objeto algebrico em vez de infinitos numeros. Operacoes com series tem significado combinatorio preciso: o produto de duas OGFs e a convolucao das sequencias, o que faz produtos de series codificarem 'escolher independentemente de varias fontes'. Os blocos basicos sao a serie geometrica $1/(1-x)$ e o binomio generalizado, dos quais quase tudo se monta.\n\nO uso mais imediato e resolver recorrencias: multiplica-se a recorrencia por $x^n$, soma-se, resolve-se a equacao algebrica para $A(x)$ e, via fracoes parciais, le-se a forma fechada de $a_n$. Mas o alcance e maior — particoes de inteiros ganham a OGF $\\prod_k 1/(1-x^k)$, e os numeros de Catalan saem de uma equacao quadratica em $C(x)$. Quando os objetos sao rotulados (ordem/etiqueta importam), troca-se para a versao exponencial $\\sum a_n x^n/n!$, cujos produtos correspondem a particoes de conjuntos rotulados. Funcoes geradoras sao, em uma frase, a transformada que converte combinatoria em algebra.",
+      "commonPitfalls": [
+        "Tratar a serie como funcao analitica e se preocupar com convergencia: como serie formal, as manipulacoes sao validas sem isso.",
+        "Confundir OGF e EGF: objetos rotulados pedem EGF (com $n!$ no denominador); nao-rotulados, OGF.",
+        "Errar a convolucao ao multiplicar series (o coeficiente de $x^n$ no produto e $\\sum_{k=0}^n a_k b_{n-k}$).",
+        "Esquecer de usar fracoes parciais antes de tentar ler o coeficiente $[x^n]$ de uma funcao racional."
+      ],
+      "worked": "**Resolver $a_n = 3a_{n-1} - 2a_{n-2}$, $a_0=1$, $a_1=3$, por funcao geradora.**\n\nSeja $A(x)=\\sum_{n\\ge0}a_n x^n$. Multiplicando a recorrencia (valida para $n\\ge 2$) por $x^n$ e somando:\n$$A(x) - a_0 - a_1 x = 3x\\big(A(x)-a_0\\big) - 2x^2 A(x).$$\nSubstituindo $a_0=1$, $a_1=3$:\n$$A(x) - 1 - 3x = 3xA(x) - 3x - 2x^2A(x).$$\nLogo $A(x)(1 - 3x + 2x^2) = 1$, isto e\n$$A(x) = \\frac{1}{1-3x+2x^2} = \\frac{1}{(1-x)(1-2x)}.$$\nFracoes parciais: $\\dfrac{1}{(1-x)(1-2x)} = \\dfrac{-1}{1-x} + \\dfrac{2}{1-2x}$. Expandindo cada serie geometrica,\n$$a_n = -1 + 2\\cdot 2^n = 2^{n+1} - 1.$$\nConferindo: $a_0 = 2-1=1$, $a_1 = 4-1=3$, $a_2 = 8-1 = 7 = 3\\cdot3 - 2\\cdot1$. $\\qquad\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Use $\\frac{1}{(1-x)^2}=\\sum_{n\\ge0}(n+1)x^n$ para encontrar a OGF de $a_n = n$.",
+          "hint": "Note que $a_n=n$ e a sequencia $(n+1)$ deslocada; ou derive $1/(1-x)$ e multiplique por $x$.",
+          "difficulty": 2,
+          "solution": "Queremos a OGF de $a_n = n$, isto e, $A(x)=\\sum_{n\\ge0} n\\,x^n$.\n\n**Metodo (derivar a geometrica).** Partimos de\n$$\\frac{1}{1-x} = \\sum_{n\\ge0} x^n.$$\nDerivando termo a termo:\n$$\\frac{1}{(1-x)^2} = \\sum_{n\\ge1} n\\,x^{n-1} = \\sum_{n\\ge0}(n+1)x^n.$$\nMultiplicando por $x$ para reintroduzir o fator e ajustar o expoente:\n$$\\frac{x}{(1-x)^2} = \\sum_{n\\ge0}(n+1)x^{n+1} = \\sum_{m\\ge1} m\\,x^{m} = \\sum_{n\\ge0} n\\,x^n.$$\n(O termo $n=0$ contribui $0$, entao pode ser incluido.)\n\n$$\\boxed{A(x) = \\sum_{n\\ge0} n\\,x^n = \\frac{x}{(1-x)^2}.}$$",
+          "steps": [
+            "Comece da serie geometrica $\\frac{1}{1-x}=\\sum x^n$.",
+            "Derive para obter $\\frac{1}{(1-x)^2}=\\sum_{n\\ge0}(n+1)x^n$.",
+            "Multiplique por $x$ para deslocar o indice e produzir o coeficiente $n$.",
+            "Conclua $\\sum_{n\\ge0} n\\,x^n=\\dfrac{x}{(1-x)^2}$."
+          ]
+        },
+        {
+          "prompt": "Resolva $a_n = a_{n-1} + 2a_{n-2}$ com $a_0=2$, $a_1=1$ usando funcao geradora.",
+          "hint": "Voce chegara a $A(x)=\\frac{2-x}{1-x-2x^2}$; fatore $1-x-2x^2=(1-2x)(1+x)$.",
+          "difficulty": 3,
+          "solution": "Recorrencia: $a_n = a_{n-1} + 2a_{n-2}$ ($n\\ge2$), com $a_0=2$, $a_1=1$. Seja $A(x)=\\sum_{n\\ge0}a_n x^n$.\n\n**Montar a equacao.** Multiplicando a recorrencia por $x^n$ e somando para $n\\ge2$:\n$$A(x) - a_0 - a_1 x = x\\big(A(x)-a_0\\big) + 2x^2 A(x).$$\nSubstituindo $a_0=2$, $a_1=1$:\n$$A(x) - 2 - x = x A(x) - 2x + 2x^2 A(x).$$\nAgrupando os termos com $A(x)$:\n$$A(x)\\big(1 - x - 2x^2\\big) = 2 - x.$$\n$$A(x) = \\frac{2-x}{1 - x - 2x^2} = \\frac{2-x}{(1-2x)(1+x)}.$$\n\n**Fracoes parciais.** Escreva $\\dfrac{2-x}{(1-2x)(1+x)} = \\dfrac{B}{1-2x} + \\dfrac{C}{1+x}$, ou seja $2-x = B(1+x)+C(1-2x)$.\n- Em $x=\\tfrac12$: $2-\\tfrac12 = \\tfrac32 = B\\cdot\\tfrac32 \\Rightarrow B=1$.\n- Em $x=-1$: $2+1 = 3 = C\\cdot 3 \\Rightarrow C=1$.\n\nAssim $A(x) = \\dfrac{1}{1-2x} + \\dfrac{1}{1+x}$. Expandindo cada serie geometrica:\n$$a_n = 2^n + (-1)^n.$$\n\nConferindo: $a_0 = 1+1=2$, $a_1=2-1=1$, $a_2=4+1=5 = a_1+2a_0 = 1+4$. $\\;\\checkmark$\n\n$$\\boxed{a_n = 2^n + (-1)^n.}$$",
+          "steps": [
+            "Defina $A(x)=\\sum a_n x^n$, multiplique a recorrencia por $x^n$ e some para $n\\ge2$.",
+            "Isole $A(x)$: $A(x)=\\dfrac{2-x}{1-x-2x^2}$ e fatore o denominador em $(1-2x)(1+x)$.",
+            "Decomponha em fracoes parciais, achando $B=1$ e $C=1$.",
+            "Expanda cada geometrica para ler $a_n=2^n+(-1)^n$."
+          ]
+        },
+        {
+          "prompt": "Escreva a OGF do numero de maneiras de pagar $n$ centavos com moedas de 1, 5 e 10 centavos.",
+          "hint": "Produto $\\frac{1}{1-x}\\cdot\\frac{1}{1-x^5}\\cdot\\frac{1}{1-x^{10}}$.",
+          "difficulty": 3,
+          "solution": "Queremos a OGF do numero de maneiras de pagar $n$ centavos com moedas de $1$, $5$ e $10$ centavos (numero de moedas de cada tipo e livre, $\\ge 0$; ordem irrelevante).\n\nPara cada tipo de moeda, o numero usado e uma variavel independente. A contribuicao ao valor total de usar $k$ moedas de $1$ centavo e $x^{k\\cdot 1}$, e todas as escolhas se somam:\n$$\\text{moedas de }1:\\quad 1 + x + x^2 + \\cdots = \\frac{1}{1-x}.$$\n$$\\text{moedas de }5:\\quad 1 + x^5 + x^{10} + \\cdots = \\frac{1}{1-x^5}.$$\n$$\\text{moedas de }10:\\quad 1 + x^{10} + x^{20} + \\cdots = \\frac{1}{1-x^{10}}.$$\n\nComo as escolhas dos tres tipos sao independentes, a OGF e o produto (a convolucao soma os valores):\n$$\\boxed{G(x) = \\frac{1}{(1-x)(1-x^5)(1-x^{10})}.}$$\nO numero de formas de pagar $n$ centavos e $[x^n]\\,G(x)$.",
+          "steps": [
+            "Trate cada tipo de moeda como uma escolha independente do numero de moedas usadas.",
+            "Escreva a serie de cada tipo: valores $0,1,2,\\dots$ moedas de valor $v$ dao $\\sum_k x^{kv}=\\dfrac{1}{1-x^v}$.",
+            "Multiplique as tres series, pois escolhas independentes correspondem a produto (convolucao).",
+            "Obtenha $G(x)=\\dfrac{1}{(1-x)(1-x^5)(1-x^{10})}$, cujo coeficiente de $x^n$ e a resposta."
+          ]
+        },
+        {
+          "prompt": "Prove via funcoes geradoras a identidade de Euler: o numero de particoes de $n$ em partes impares e igual ao numero em partes distintas.",
+          "hint": "Mostre que $\\prod_{k\\ge1}\\frac{1}{1-x^{2k-1}} = \\prod_{k\\ge1}(1+x^k)$ usando $1+x^k=\\frac{1-x^{2k}}{1-x^k}$ e telescopando.",
+          "difficulty": 5,
+          "solution": "Seja $p_o(n)$ o numero de particoes de $n$ em partes impares e $p_d(n)$ o numero em partes distintas. Suas OGFs sao:\n$$\\sum_{n\\ge0} p_o(n)x^n = \\prod_{k\\ge1}\\frac{1}{1-x^{2k-1}}, \\qquad \\sum_{n\\ge0} p_d(n)x^n = \\prod_{k\\ge1}(1+x^k).$$\n(Na primeira, cada parte impar $2k-1$ pode ser usada qualquer numero de vezes; na segunda, cada parte $k$ entra $0$ ou $1$ vez.)\n\n**Provar que os produtos sao iguais.** Use a identidade $1+x^k = \\dfrac{1-x^{2k}}{1-x^k}$:\n$$\\prod_{k\\ge1}(1+x^k) = \\prod_{k\\ge1}\\frac{1-x^{2k}}{1-x^k} = \\frac{\\prod_{k\\ge1}(1-x^{2k})}{\\prod_{k\\ge1}(1-x^k)}.$$\n\nO numerador $\\prod_{k\\ge1}(1-x^{2k})$ e o produto sobre os expoentes **pares**. O denominador $\\prod_{k\\ge1}(1-x^k)$ e sobre **todos** os expoentes, que se separam em pares e impares:\n$$\\prod_{k\\ge1}(1-x^k) = \\Big(\\prod_{k\\ge1}(1-x^{2k})\\Big)\\Big(\\prod_{k\\ge1}(1-x^{2k-1})\\Big).$$\n\nSubstituindo, os fatores pares se cancelam (telescopam):\n$$\\prod_{k\\ge1}(1+x^k) = \\frac{\\prod_{k\\ge1}(1-x^{2k})}{\\prod_{k\\ge1}(1-x^{2k})\\,\\prod_{k\\ge1}(1-x^{2k-1})} = \\prod_{k\\ge1}\\frac{1}{1-x^{2k-1}}.$$\n\nAs duas OGFs coincidem, logo $p_o(n) = p_d(n)$ para todo $n$ (partes impares = partes distintas). $\\qquad \\blacksquare$",
+          "steps": [
+            "Escreva a OGF das particoes em partes impares, $\\prod_k \\frac{1}{1-x^{2k-1}}$, e em partes distintas, $\\prod_k(1+x^k)$.",
+            "Aplique $1+x^k=\\dfrac{1-x^{2k}}{1-x^k}$ ao produto das distintas.",
+            "Separe $\\prod_k(1-x^k)$ em fatores pares e impares e cancele os pares com o numerador.",
+            "Conclua que os dois produtos sao iguais, logo $p_o(n)=p_d(n)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "OGF de uma sequencia $(a_n)$",
+          "back": "$A(x) = \\sum_{n\\ge0} a_n x^n$; $a_n = [x^n]A(x)$."
+        },
+        {
+          "front": "OGF da sequencia constante $1$",
+          "back": "$\\dfrac{1}{1-x} = \\sum_{n\\ge0}x^n$."
+        },
+        {
+          "front": "Expansao de $\\dfrac{1}{(1-x)^k}$",
+          "back": "$\\sum_{n\\ge0}\\binom{n+k-1}{k-1}x^n$."
+        },
+        {
+          "front": "Significado do produto $A(x)B(x)$",
+          "back": "Convolucao: $[x^n]A B = \\sum_{k=0}^n a_k b_{n-k}$."
+        },
+        {
+          "front": "EGF de uma sequencia $(a_n)$",
+          "back": "$\\hat A(x) = \\sum_{n\\ge0} a_n \\dfrac{x^n}{n!}$ (objetos rotulados)."
+        },
+        {
+          "front": "OGF do numero de particoes $p(n)$",
+          "back": "$\\prod_{k\\ge1}\\dfrac{1}{1-x^k}$."
+        },
+        {
+          "front": "Passo-chave para resolver recorrencia por OGF",
+          "back": "Multiplicar por $x^n$, somar, resolver para $A(x)$ e usar fracoes parciais."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Wilf, generatingfunctionology, caps. 1–2",
+          "ref": "livro"
+        },
+        {
+          "title": "Graham, Knuth, Patashnik, Concrete Mathematics, cap. 7",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia os caps. 1-2 de generatingfunctionology (Wilf, PDF gratuito) e associe cada sequencia simples a sua OGF, comecando pela serie geometrica $1/(1-x)$.",
+          "Estude as operacoes com series (soma, produto/convolucao, deslocamento, derivada) e o que cada uma significa combinatoriamente.",
+          "Refaca a resolucao de uma recorrencia linear por OGF: multiplicar por $x^n$, somar, isolar $A(x)$ e usar fracoes parciais para ler $[x^n]A(x)$.",
+          "Estude a funcao geradora de particoes $\\prod_k 1/(1-x^k)$ e interprete produtos como escolhas independentes por tipo de parte.",
+          "Compare OGF e EGF: liste quando usar cada uma (nao-rotulado vs rotulado) e resolva 6 a 8 exercicios mistos.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (o algoritmo OGF -> equacao -> fracoes parciais e o dicionario produto = convolucao)."
+        ],
+        "searchQueries": [
+          "funcao geradora ordinaria resolver recorrencia fracoes parciais",
+          "generating functions solve recurrence partial fractions example",
+          "generatingfunctionology Wilf pdf capitulo 1 2",
+          "funcao geradora particoes de inteiros produto infinito",
+          "Euler partition identity odd parts distinct parts generating function",
+          "ordinary vs exponential generating function when to use"
+        ],
+        "videos": [
+          {
+            "title": "Generating functions (Mathematics for Computer Science)",
+            "channel": "MIT OpenCourseWare",
+            "note": "6.042J introduz OGF, convolucao e resolucao de recorrencias por series."
+          },
+          {
+            "title": "Generating functions",
+            "channel": "Michael Penn",
+            "note": "Varios exemplos de OGF resolvendo recorrencias e contando particoes."
+          },
+          {
+            "title": "Partitions and Euler's identity",
+            "channel": "Mathologer",
+            "note": "Visao intuitiva de particoes de inteiros e da identidade impares = distintas."
+          }
+        ],
+        "articles": [
+          {
+            "title": "generatingfunctionology, caps. 1-2",
+            "where": "Herbert S. Wilf (PDF gratuito do autor)"
+          },
+          {
+            "title": "Concrete Mathematics, cap. 7 (Generating Functions)",
+            "where": "Graham, Knuth, Patashnik"
+          }
+        ]
+      }
+    },
+    {
+      "id": "combinatoria-07-teoria-grafos",
+      "title": "Introducao a teoria dos grafos",
+      "tagline": "Vertices, arestas e o lema do aperto de maos: arvores, Euler, planaridade e coloracao.",
+      "objectives": [
+        "Ao final voce consegue formalizar grafos, graus, caminhos, ciclos e conexidade com precisao.",
+        "Ao final voce consegue aplicar o lema do aperto de maos e suas consequencias de paridade.",
+        "Ao final voce consegue caracterizar arvores e contar suas arestas.",
+        "Ao final voce consegue decidir existencia de trilha/circuito euleriano pelo criterio dos graus.",
+        "Ao final voce consegue usar a formula de Euler para grafos planares e limitar o numero cromatico."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Grafo",
+          "statement": "Par $G=(V,E)$ com $V$ finito de vertices e $E$ um conjunto de pares nao-ordenados de vertices (arestas). O grau $d(v)$ e o numero de arestas incidentes a $v$."
+        },
+        {
+          "term": "Caminho, ciclo e conexidade",
+          "statement": "Um caminho e uma sequencia de vertices distintos ligados por arestas; um ciclo e um caminho fechado. $G$ e conexo se ha caminho entre todo par de vertices."
+        },
+        {
+          "term": "Arvore",
+          "statement": "Grafo conexo e aciclico. Equivalentemente: conexo com $|V|-1$ arestas; ou aciclico maximal; ou ha exatamente um caminho entre cada par de vertices."
+        },
+        {
+          "term": "Grafo bipartido",
+          "statement": "$V$ se parte em $X\\cup Y$ com toda aresta ligando $X$ a $Y$. Caracterizacao: $G$ e bipartido se, e somente se, nao tem ciclo de comprimento impar."
+        },
+        {
+          "term": "Grafo planar",
+          "statement": "Admite desenho no plano sem arestas se cruzando. As regioes do desenho sao as faces; a face externa tambem conta."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Lema do aperto de maos",
+          "statement": "Em todo grafo $G=(V,E)$, $\\sum_{v\\in V} d(v) = 2|E|$. Consequencia: o numero de vertices de grau impar e par.",
+          "whyItMatters": "E a contagem dupla mais usada em grafos (cada aresta contribui $1$ para o grau de cada extremo) e a base de inumeras provas de existencia/paridade."
+        },
+        {
+          "name": "Caracterizacao de arvores",
+          "statement": "Para um grafo $G$ com $n$ vertices, duas quaisquer das tres propriedades implicam a terceira (e que $G$ e arvore): (i) $G$ e conexo; (ii) $G$ e aciclico; (iii) $G$ tem $n-1$ arestas.",
+          "whyItMatters": "Arvores sao a estrutura minima conexa; o resultado liga conexidade, ausencia de ciclo e contagem de arestas num so teorema."
+        },
+        {
+          "name": "Teorema de Euler (trilhas eulerianas)",
+          "statement": "Um grafo conexo possui um circuito euleriano (que percorre cada aresta exatamente uma vez e fecha) se, e somente se, todo vertice tem grau par. Possui trilha euleriana aberta se, e somente se, exatamente dois vertices tem grau impar.",
+          "whyItMatters": "Resolve o problema das pontes de Konigsberg e e o primeiro teorema da teoria dos grafos; criterio puramente local (graus) para uma propriedade global."
+        },
+        {
+          "name": "Formula de Euler para grafos planares",
+          "statement": "Para um grafo planar conexo desenhado no plano com $V$ vertices, $E$ arestas e $F$ faces, $V - E + F = 2$. Corolario: se $V\\ge 3$, entao $E\\le 3V-6$; logo $K_5$ e $K_{3,3}$ nao sao planares.",
+          "whyItMatters": "Invariante topologico que limita arestas de grafos planares e fundamenta o teorema das quatro cores e a nao-planaridade."
+        }
+      ],
+      "summary": "Grafos modelam relacoes: vertices ligados por arestas. O primeiro fato — o lema do aperto de maos, $\\sum_v d(v)=2|E|$ — e contagem dupla pura (cada aresta soma $1$ a dois graus) e ja entrega que o numero de vertices de grau impar e sempre par. A partir dele desdobram-se as estruturas fundamentais: arvores (conexas, aciclicas, com $n-1$ arestas), grafos bipartidos (sem ciclo impar) e os criterios de percurso. O criterio de Euler para circuitos eulerianos e local e elegante: basta olhar a paridade dos graus.\n\nNo lado geometrico, a formula de Euler $V-E+F=2$ governa grafos planares e produz limites como $E\\le 3V-6$, dos quais decorre a nao-planaridade de $K_5$ e $K_{3,3}$. Coloracao de vertices — atribuir cores de modo que vizinhos difiram — leva ao numero cromatico $\\chi(G)$, com cotas elementares ($\\chi\\le \\Delta+1$) e o celebre teorema das quatro cores para mapas planares. Esta aula e a ponte entre combinatoria, topologia e ciencia da computacao: caminhos, arvores e coloracoes sao a linguagem de algoritmos e redes.",
+      "commonPitfalls": [
+        "Esquecer de contar a face externa ao aplicar a formula de Euler (sao $F$ faces incluindo a ilimitada).",
+        "Confundir trilha euleriana (passa por cada ARESTA uma vez) com caminho hamiltoniano (passa por cada VERTICE uma vez) — este nao tem criterio simples.",
+        "Achar que todo grafo sem ciclo impar precisa ser desenhado 'de um lado e do outro'; bipartido e propriedade combinatoria, nao de desenho.",
+        "Aplicar $E\\le 3V-6$ a grafos com $V<3$ ou nao-conexos sem cuidado, ou supor que vale a reciproca (a desigualdade e necessaria, nao suficiente, para planaridade)."
+      ],
+      "worked": "**As pontes de Konigsberg.** A cidade tinha 4 regioes de terra ligadas por 7 pontes; pergunta-se se ha um passeio que cruze cada ponte exatamente uma vez e retorne ao inicio.\n\nModelamos cada regiao como um vertice e cada ponte como uma aresta, obtendo um multigrafo conexo. Os graus das quatro regioes sao $3,3,3,5$ — todos impares. Pelo teorema de Euler, um circuito euleriano exige TODOS os graus pares; uma trilha euleriana aberta exige EXATAMENTE dois vertices de grau impar. Aqui ha quatro vertices de grau impar, logo nao existe nem circuito nem trilha euleriana: o passeio e impossivel. $\\qquad\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que em qualquer festa com pelo menos 2 pessoas existem duas com o mesmo numero de conhecidos presentes (interprete como grafo).",
+          "hint": "Graus possiveis vao de $0$ a $n-1$, mas $0$ e $n-1$ nao coexistem; combine com casa dos pombos.",
+          "difficulty": 3,
+          "solution": "Modele a festa como um grafo $G$ com $n\\ge2$ vertices (pessoas) onde uma aresta liga duas pessoas que se conhecem. O 'numero de conhecidos presentes' de uma pessoa e o grau $d(v)$, com $d(v)\\in\\{0,1,\\dots,n-1\\}$.\n\nHa $n$ valores de grau a princípio, mas $0$ e $n-1$ nao coexistem: se algum vertice tem grau $n-1$ (conhece todos), nenhum pode ter grau $0$; e se algum tem grau $0$ (nao conhece ninguem), nenhum pode ter grau $n-1$.\n\nPortanto os graus assumem valores em um conjunto de tamanho no maximo $n-1$. Com $n$ vertices (pombos) e $\\le n-1$ valores de grau (casas), a casa dos pombos garante dois vertices com o mesmo grau — duas pessoas com o mesmo numero de conhecidos presentes. $\\qquad \\blacksquare$",
+          "steps": [
+            "Modele conhecimento como grafo; o numero de conhecidos e o grau em $\\{0,\\dots,n-1\\}$.",
+            "Argumente que grau $0$ e grau $n-1$ nao podem ocorrer juntos.",
+            "Conclua que ha no maximo $n-1$ valores de grau possiveis para $n$ pessoas.",
+            "Aplique a casa dos pombos para achar duas pessoas de mesmo grau."
+          ]
+        },
+        {
+          "prompt": "Mostre que toda arvore com $n\\ge 2$ vertices tem pelo menos dois vertices de grau 1 (folhas).",
+          "hint": "Use $\\sum_v d(v) = 2(n-1)$ e que cada vertice tem grau $\\ge 1$ numa arvore conexa.",
+          "difficulty": 3,
+          "solution": "Seja $T$ uma arvore com $n\\ge2$ vertices. Por ser conexa com pelo menos $2$ vertices, todo vertice tem grau $\\ge 1$ (nenhum vertice isolado). Alem disso, uma arvore tem exatamente $n-1$ arestas, entao pelo lema do aperto de maos:\n$$\\sum_{v} d(v) = 2|E| = 2(n-1).$$\n\nSuponha, por absurdo, que $T$ tenha no maximo uma folha (vertice de grau $1$). Entao pelo menos $n-1$ vertices tem grau $\\ge 2$, e o restante tem grau $\\ge 1$. A soma dos graus seria pelo menos\n$$\\sum_v d(v) \\ge 2(n-1) + 1\\cdot 1 = 2n - 1.$$\nMas isso contradiz $\\sum_v d(v) = 2n-2$. Logo $T$ tem pelo menos $2$ vertices de grau $1$.\n\n**Argumento alternativo (caminho maximal).** Tome um caminho de comprimento maximo em $T$; suas duas extremidades tem grau $1$ (se tivessem outro vizinho, ou o caminho se estenderia, ou haveria ciclo), fornecendo duas folhas distintas. $\\qquad \\blacksquare$",
+          "steps": [
+            "Use que numa arvore com $n\\ge2$ vertices cada vertice tem grau $\\ge1$ e ha $n-1$ arestas.",
+            "Escreva o lema do aperto de maos: $\\sum_v d(v)=2(n-1)$.",
+            "Suponha no maximo uma folha; entao a soma dos graus seria $\\ge 2n-1$, contradicao.",
+            "Conclua que existem pelo menos duas folhas (ou use as extremidades de um caminho maximal)."
+          ]
+        },
+        {
+          "prompt": "Use a formula de Euler para provar que $K_{3,3}$ nao e planar.",
+          "hint": "$K_{3,3}$ e bipartido (sem triangulos), logo cada face tem $\\ge 4$ arestas; deduza $E\\le 2V-4$ e compare com $E=9$, $V=6$.",
+          "difficulty": 4,
+          "solution": "Suponha, por absurdo, que $K_{3,3}$ seja planar; seja um desenho plano com $V=6$ vertices, $E=9$ arestas e $F$ faces. Pela formula de Euler para grafo planar conexo:\n$$V - E + F = 2 \\;\\Longrightarrow\\; 6 - 9 + F = 2 \\;\\Longrightarrow\\; F = 5.$$\n\n**Cota de faces (bipartido nao tem triangulo).** Como $K_{3,3}$ e bipartido, nao possui ciclos de comprimento impar; em particular, nao tem triangulos, logo toda face e limitada por pelo menos $4$ arestas. Contando incidencias face-aresta (cada aresta faz fronteira com no maximo $2$ faces):\n$$4F \\le 2E \\;\\Longrightarrow\\; 4\\cdot 5 \\le 2\\cdot 9 \\;\\Longrightarrow\\; 20 \\le 18,$$\numa contradicao.\n\nPortanto $K_{3,3}$ nao e planar. (Equivalente: a desigualdade $E\\le 2V-4$ para bipartidos daria $9\\le 2\\cdot6-4=8$, falso.) $\\qquad \\blacksquare$",
+          "steps": [
+            "Suponha $K_{3,3}$ planar e aplique Euler com $V=6$, $E=9$ para obter $F=5$.",
+            "Use que $K_{3,3}$ e bipartido, logo sem triangulos: cada face tem $\\ge 4$ arestas.",
+            "Conte incidencias face-aresta: $4F\\le 2E$, isto e, $20\\le 18$.",
+            "A contradicao mostra que $K_{3,3}$ nao e planar."
+          ]
+        },
+        {
+          "prompt": "Prove que todo grafo $G$ satisfaz $\\chi(G)\\le \\Delta(G)+1$, onde $\\Delta$ e o grau maximo.",
+          "hint": "Coloracao gulosa: ordene os vertices e de a cada um a menor cor nao usada por seus vizinhos ja coloridos.",
+          "difficulty": 4,
+          "solution": "Seja $\\Delta = \\Delta(G)$ o grau maximo. Ordene os vertices arbitrariamente $v_1, v_2, \\dots, v_n$ e aplique a **coloracao gulosa**: percorra os vertices nessa ordem e atribua a cada $v_i$ a menor cor (de $\\{1,2,\\dots\\}$) que nao apareca entre seus vizinhos ja coloridos.\n\n**Por que $\\Delta+1$ cores bastam.** Quando coloramos $v_i$, seus vizinhos ja coloridos sao no maximo $d(v_i)\\le \\Delta$. Eles usam no maximo $\\Delta$ cores distintas, portanto entre as cores $\\{1,2,\\dots,\\Delta+1\\}$ (que sao $\\Delta+1$ cores) ha ao menos uma livre. O algoritmo entao atribui a $v_i$ uma cor em $\\{1,\\dots,\\Delta+1\\}$.\n\nComo cada vertice recebe cor diferente de todos os vizinhos ja coloridos, e a relacao de adjacencia e simetrica, a coloracao final e propria e usa no maximo $\\Delta+1$ cores. Logo\n$$\\chi(G) \\le \\Delta(G) + 1. \\qquad \\blacksquare$$",
+          "steps": [
+            "Ordene os vertices e defina a coloracao gulosa (menor cor livre entre vizinhos ja coloridos).",
+            "Observe que ao colorir um vertice, ele tem no maximo $\\Delta$ vizinhos ja coloridos.",
+            "Conclua que entre $\\Delta+1$ cores sempre sobra uma disponivel.",
+            "Como a coloracao resultante e propria, $\\chi(G)\\le\\Delta+1$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Lema do aperto de maos",
+          "back": "$\\sum_{v} d(v) = 2|E|$; logo o numero de vertices de grau impar e par."
+        },
+        {
+          "front": "Quantas arestas tem uma arvore com $n$ vertices?",
+          "back": "$n-1$."
+        },
+        {
+          "front": "Criterio de circuito euleriano",
+          "back": "Grafo conexo com TODOS os vertices de grau par."
+        },
+        {
+          "front": "Criterio de trilha euleriana aberta",
+          "back": "Conexo com EXATAMENTE dois vertices de grau impar."
+        },
+        {
+          "front": "Caracterizacao de grafo bipartido",
+          "back": "Nao possui ciclo de comprimento impar."
+        },
+        {
+          "front": "Formula de Euler (planar conexo)",
+          "back": "$V - E + F = 2$."
+        },
+        {
+          "front": "Cota de arestas de grafo planar ($V\\ge3$)",
+          "back": "$E \\le 3V - 6$ (donde $K_5$ nao e planar)."
+        },
+        {
+          "front": "Cota gulosa para o numero cromatico",
+          "back": "$\\chi(G) \\le \\Delta(G) + 1$."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "West, Introduction to Graph Theory, caps. 1–2",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 6.042J — Graph Theory",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia os caps. 1-2 de West (Introduction to Graph Theory) fixando as definicoes de grafo, grau, caminho, ciclo, conexidade e arvore.",
+          "Prove voce mesmo o lema do aperto de maos por contagem dupla e deduza que o numero de vertices de grau impar e par.",
+          "Assista a aulas sobre trilhas eulerianas e o problema das pontes de Konigsberg, aplicando o criterio dos graus.",
+          "Estude a formula de Euler $V-E+F=2$ e as cotas $E\\le 3V-6$ e $E\\le 2V-4$ (bipartido); use-as para provar nao-planaridade de $K_5$ e $K_{3,3}$.",
+          "Pratique coloracao: prove a cota gulosa $\\chi\\le\\Delta+1$ e resolva exercicios sobre arvores e bipartidos.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (o lema do aperto de maos, a caracterizacao de arvores e a formula de Euler)."
+        ],
+        "searchQueries": [
+          "lema do aperto de maos grafos demonstracao contagem dupla",
+          "caracterizacao de arvores conexo aciclico n-1 arestas",
+          "trilha euleriana criterio graus pontes de Konigsberg",
+          "formula de Euler grafos planares E menor igual 3V-6 K5 K33",
+          "greedy coloring chromatic number delta plus 1 proof",
+          "graph theory introduction handshake lemma exercises"
+        ],
+        "videos": [
+          {
+            "title": "Graph Theory (Mathematics for Computer Science)",
+            "channel": "MIT OpenCourseWare",
+            "note": "6.042J cobre graus, arvores, coloracao e Euler com provas; base solida do topico."
+          },
+          {
+            "title": "Euler paths and the bridges of Konigsberg",
+            "channel": "Mathologer",
+            "note": "Historia e criterio dos graus para trilhas/circuitos eulerianos de forma visual."
+          },
+          {
+            "title": "Introducao a teoria dos grafos",
+            "channel": "Matematica Universitaria",
+            "note": "Busque a serie de grafos em PT-BR: definicoes, grau, arvores e planaridade."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introduction to Graph Theory, caps. 1-2",
+            "where": "Douglas B. West"
+          },
+          {
+            "title": "A Course in Combinatorics, caps. 1-4 (grafos)",
+            "where": "J. H. van Lint, R. M. Wilson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "combinatoria-08-ramsey-extremal",
+      "title": "Teoria de Ramsey e combinatoria extremal (introducao)",
+      "tagline": "A ordem e inevitavel: em estruturas grandes o bastante, padroes regulares SEMPRE aparecem.",
+      "objectives": [
+        "Ao final voce consegue enunciar o teorema de Ramsey para grafos e interpretar $R(s,t)$.",
+        "Ao final voce consegue provar que $R(3,3)=6$ e a cota $R(s,t)\\le\\binom{s+t-2}{s-1}$.",
+        "Ao final voce consegue enunciar e aplicar o teorema de Mantel/Turan sobre maximo de arestas.",
+        "Ao final voce consegue reconhecer a pergunta extremal: 'qual o maior/menor objeto sem certa subestrutura?'."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Numero de Ramsey",
+          "statement": "$R(s,t)$ e o menor $n$ tal que toda coloracao das arestas de $K_n$ com 2 cores (digamos vermelho/azul) contem um $K_s$ vermelho ou um $K_t$ azul."
+        },
+        {
+          "term": "Pergunta extremal",
+          "statement": "Combinatoria extremal pergunta o tamanho maximo (ou minimo) de uma estrutura sujeita a uma restricao — tipicamente 'quantas arestas/elementos sem conter certa subestrutura proibida'."
+        },
+        {
+          "term": "Grafo livre de triangulos",
+          "statement": "Grafo sem $K_3$ (sem tres vertices mutuamente adjacentes). A pergunta de Mantel e: quantas arestas no maximo ele pode ter?"
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Ramsey (caso 2 cores)",
+          "statement": "Para todos $s,t\\ge 2$, existe um menor inteiro $R(s,t)$ tal que toda 2-coloracao das arestas de $K_n$ com $n\\ge R(s,t)$ contem um $K_s$ monocromatico na 1a cor ou um $K_t$ monocromatico na 2a. Alem disso $R(s,t)\\le R(s-1,t)+R(s,t-1)\\le \\binom{s+t-2}{s-1}$.",
+          "whyItMatters": "Formaliza que 'desordem total e impossivel': estruturas suficientemente grandes contem ordem garantida. Calcular $R(s,t)$ exatamente e notoriamente dificil (poucos valores conhecidos)."
+        },
+        {
+          "name": "$R(3,3) = 6$",
+          "statement": "Em qualquer grupo de 6 pessoas, ha 3 mutuamente conhecidas ou 3 mutuamente estranhas; e 5 pessoas nao bastam (o ciclo $C_5$ 2-colorido e contraexemplo).",
+          "whyItMatters": "Exemplo concreto e demonstravel a mao (via casa dos pombos nas 5 arestas de um vertice) que torna palpavel a teoria de Ramsey."
+        },
+        {
+          "name": "Teorema de Mantel (caso $r=2$ de Turan)",
+          "statement": "Um grafo com $n$ vertices e sem triangulos tem no maximo $\\left\\lfloor n^2/4\\right\\rfloor$ arestas, com igualdade exatamente no grafo bipartido completo balanceado $K_{\\lfloor n/2\\rfloor,\\lceil n/2\\rceil}$.",
+          "whyItMatters": "Prototipo da combinatoria extremal: identifica o objeto extremo e o numero exato; o teorema de Turan generaliza para $K_{r+1}$ proibido."
+        }
+      ],
+      "summary": "A teoria de Ramsey captura uma ideia profunda: padroes regulares sao inevitaveis em estruturas grandes. O numero de Ramsey $R(s,t)$ e o limiar a partir do qual toda 2-coloracao das arestas de um grafo completo forca um grupo monocromatico. O caso $R(3,3)=6$ — entre seis pessoas sempre ha tres mutuamente conhecidas ou tres mutuamente estranhas — prova-se a mao: de um vertice saem cinco arestas, e pela casa dos pombos tres tem a mesma cor; analisar essas tres fecha o argumento. Determinar $R(s,t)$ em geral, porem, e tao dificil que pouquissimos valores sao conhecidos.\n\nA combinatoria extremal faz a pergunta dual: qual o MAIOR objeto que evita uma subestrutura proibida? O teorema de Mantel responde para triangulos — no maximo $\\lfloor n^2/4\\rfloor$ arestas, atingidas pelo bipartido completo balanceado — e o teorema de Turan generaliza para cliques maiores. Esses resultados, alem de bonitos, treinam o raciocinio de 'objeto extremo + cota justa' que permeia a matematica discreta moderna e a pesquisa em combinatoria. Para um aluno rumo ao mestrado, esta aula e a porta de entrada de uma area viva, com forte sabor de olimpiada e conexoes com probabilidade (o metodo probabilistico de Erdos da cotas inferiores para $R(s,t)$).",
+      "commonPitfalls": [
+        "Achar que $R(s,t)$ tem formula fechada conhecida; apenas cotas e poucos valores exatos sao conhecidos.",
+        "Confundir o enunciado de Ramsey (existe subestrutura monocromatica) com extremal (maximo de arestas sem subestrutura).",
+        "Na prova de $R(3,3)=6$, esquecer de tratar AMBOS os casos (tres arestas vermelhas ou tres azuis saindo do vertice).",
+        "Supor que o grafo extremal de Mantel e unico para todo $n$ sem checar a paridade (o balanceamento $\\lfloor n/2\\rfloor,\\lceil n/2\\rceil$)."
+      ],
+      "worked": "**Prova de que $R(3,3)\\le 6$.**\n\nTome $K_6$ com arestas coloridas de vermelho ou azul e fixe um vertice $v$. Dele saem $5$ arestas; pela casa dos pombos (5 arestas, 2 cores), pelo menos $\\lceil 5/2\\rceil = 3$ delas tem a mesma cor, digamos vermelho, ligando $v$ a vertices $a,b,c$.\n\nOlhe as arestas entre $a,b,c$. Se alguma delas, por exemplo $ab$, for vermelha, entao $v,a,b$ formam um triangulo vermelho. Se NENHUMA for vermelha, entao $ab,ac,bc$ sao todas azuis e $a,b,c$ formam um triangulo azul. Em ambos os casos ha um triangulo monocromatico, logo $R(3,3)\\le 6$. Como o ciclo $C_5$ (pentagono vermelho com diagonais azuis) nao tem triangulo monocromatico, $R(3,3)>5$, e portanto $R(3,3)=6$. $\\qquad\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Exiba uma 2-coloracao das arestas de $K_5$ sem triangulo monocromatico, provando que $R(3,3)>5$.",
+          "hint": "Pinte o pentagono (ciclo $C_5$) de vermelho e as 5 diagonais de azul.",
+          "difficulty": 2,
+          "solution": "Precisamos 2-colorir as arestas de $K_5$ sem criar nenhum triangulo monocromatico.\n\n**Construcao.** Rotule os vertices $0,1,2,3,4$ dispostos como um pentagono. Pinte de **vermelho** as $5$ arestas do ciclo (lados do pentagono):\n$$\\{01,\\,12,\\,23,\\,34,\\,40\\},$$\ne de **azul** as $5$ arestas restantes (as diagonais, que formam o pentagrama):\n$$\\{02,\\,13,\\,24,\\,30,\\,41\\}.$$\n\n**Verificacao.** As arestas vermelhas formam o ciclo $C_5$, que nao contem triangulo (o menor ciclo tem comprimento $5$). As arestas azuis tambem formam um $C_5$ (o pentagrama $0\\,2\\,4\\,1\\,3\\,0$), igualmente sem triangulo. Logo nao ha triangulo monocromatico de nenhuma das cores.\n\nEssa coloracao mostra que $K_5$ pode ser 2-colorido sem triangulo monocromatico, portanto\n$$R(3,3) > 5. \\qquad \\blacksquare$$",
+          "steps": [
+            "Disponha os $5$ vertices como um pentagono e separe arestas em lados e diagonais.",
+            "Pinte os $5$ lados (o ciclo $C_5$) de vermelho.",
+            "Pinte as $5$ diagonais (o pentagrama, tambem um $C_5$) de azul.",
+            "Verifique que cada cor forma um $C_5$ sem triangulo, provando $R(3,3)>5$."
+          ]
+        },
+        {
+          "prompt": "Prove a desigualdade $R(s,t)\\le R(s-1,t)+R(s,t-1)$.",
+          "hint": "Fixe um vertice em $K_n$ com $n=R(s-1,t)+R(s,t-1)$; pela casa dos pombos seus vizinhos numa cor ou na outra atingem o tamanho necessario.",
+          "difficulty": 4,
+          "solution": "Seja $n = R(s-1,t) + R(s,t-1)$. Mostraremos que toda 2-coloracao (vermelho/azul) das arestas de $K_n$ contem um $K_s$ vermelho ou um $K_t$ azul; isso prova $R(s,t)\\le n$.\n\n**Passo 1: separar a vizinhanca de um vertice.** Fixe um vertice $v$. Ele tem $n-1 = R(s-1,t)+R(s,t-1)-1$ arestas incidentes, cada uma vermelha ou azul. Seja $M$ o conjunto de vertices ligados a $v$ por aresta vermelha e $N$ os ligados por aresta azul, com $|M|+|N| = n-1$.\n\n**Passo 2: casa dos pombos nos tamanhos.** Se fosse $|M|\\le R(s-1,t)-1$ e $|N|\\le R(s,t-1)-1$, entao\n$$|M|+|N| \\le R(s-1,t)+R(s,t-1)-2 = n-2 < n-1,$$\ncontradicao. Logo $|M|\\ge R(s-1,t)$ ou $|N|\\ge R(s,t-1)$.\n\n**Passo 3: analisar cada caso.**\n- Se $|M|\\ge R(s-1,t)$: pela definicao de $R(s-1,t)$, o subgrafo em $M$ contem um $K_{s-1}$ vermelho ou um $K_t$ azul. No segundo caso ja terminamos. No primeiro, esse $K_{s-1}$ vermelho junto com $v$ (ligado a todo $M$ por vermelho) forma um $K_s$ vermelho.\n- Se $|N|\\ge R(s,t-1)$: simetricamente, $N$ contem um $K_s$ vermelho (pronto) ou um $K_{t-1}$ azul, que com $v$ forma um $K_t$ azul.\n\nEm todos os casos ha um $K_s$ vermelho ou um $K_t$ azul, logo\n$$R(s,t) \\le R(s-1,t)+R(s,t-1). \\qquad \\blacksquare$$",
+          "steps": [
+            "Tome $n=R(s-1,t)+R(s,t-1)$ e fixe um vertice $v$ de $K_n$.",
+            "Divida os demais $n-1$ vertices em vizinhos vermelhos $M$ e azuis $N$ de $v$.",
+            "Pela casa dos pombos, $|M|\\ge R(s-1,t)$ ou $|N|\\ge R(s,t-1)$.",
+            "Em cada caso, use a definicao de Ramsey no subconjunto e junte $v$ para formar $K_s$ vermelho ou $K_t$ azul."
+          ]
+        },
+        {
+          "prompt": "Mostre (Mantel) que um grafo sem triangulos com $n$ vertices tem no maximo $n^2/4$ arestas.",
+          "hint": "Para cada aresta $uv$, vizinhancas de $u$ e $v$ sao disjuntas: $d(u)+d(v)\\le n$; some sobre arestas e use Cauchy-Schwarz ou a media dos graus.",
+          "difficulty": 5,
+          "solution": "Seja $G$ um grafo com $n$ vertices, $m$ arestas e sem triangulos. Provaremos $m\\le n^2/4$.\n\n**Passo 1: vizinhancas de vertices adjacentes.** Se $uv$ e aresta, entao $u$ e $v$ nao tem vizinho comum (senao formariam um triangulo). Logo suas vizinhancas sao disjuntas dentro dos $n$ vertices, e portanto\n$$d(u) + d(v) \\le n \\quad\\text{para toda aresta } uv.$$\n\n**Passo 2: somar sobre as arestas.** Somando a desigualdade acima sobre as $m$ arestas:\n$$\\sum_{uv\\in E}\\big(d(u)+d(v)\\big) \\le mn.$$\nNo lado esquerdo, cada vertice $w$ e contado uma vez por aresta incidente, isto e, $d(w)$ vezes, contribuindo $d(w)^2$. Assim:\n$$\\sum_{w\\in V} d(w)^2 \\le mn.$$\n\n**Passo 3: desigualdade de Cauchy-Schwarz (ou media quadratica).** Como $\\sum_w d(w) = 2m$, por Cauchy-Schwarz:\n$$\\sum_w d(w)^2 \\ge \\frac{\\left(\\sum_w d(w)\\right)^2}{n} = \\frac{(2m)^2}{n} = \\frac{4m^2}{n}.$$\n\n**Passo 4: combinar.** Juntando os passos 2 e 3:\n$$\\frac{4m^2}{n} \\le \\sum_w d(w)^2 \\le mn \\;\\Longrightarrow\\; \\frac{4m^2}{n}\\le mn \\;\\Longrightarrow\\; 4m \\le n^2 \\;\\Longrightarrow\\; m \\le \\frac{n^2}{4}. \\qquad \\blacksquare$$",
+          "steps": [
+            "Para cada aresta $uv$, note que $u$ e $v$ nao tem vizinho comum (senao ha triangulo), logo $d(u)+d(v)\\le n$.",
+            "Some sobre todas as arestas: $\\sum_{uv\\in E}(d(u)+d(v))=\\sum_w d(w)^2\\le mn$.",
+            "Aplique Cauchy-Schwarz: $\\sum_w d(w)^2\\ge (2m)^2/n=4m^2/n$.",
+            "Combine $4m^2/n\\le mn$ para concluir $m\\le n^2/4$."
+          ]
+        },
+        {
+          "prompt": "Quantas arestas tem o grafo extremal de Mantel para $n=10$ e qual e ele?",
+          "hint": "$K_{5,5}$; numero de arestas $=\\lfloor 10^2/4\\rfloor = 25$.",
+          "difficulty": 2,
+          "solution": "Pelo teorema de Mantel, o numero maximo de arestas de um grafo com $n$ vertices sem triangulos e $\\lfloor n^2/4\\rfloor$, atingido pelo grafo bipartido completo balanceado $K_{\\lfloor n/2\\rfloor,\\lceil n/2\\rceil}$.\n\nPara $n=10$ (par), a particao balanceada e $5+5$, dando o grafo extremal\n$$K_{5,5}.$$\n\nSeu numero de arestas e o produto dos tamanhos das partes (toda aresta liga os dois lados):\n$$|E(K_{5,5})| = 5\\cdot 5 = 25 = \\left\\lfloor\\frac{10^2}{4}\\right\\rfloor = \\lfloor 25\\rfloor = 25.$$\n\nLogo o grafo extremal de Mantel para $n=10$ e $K_{5,5}$, com $\\boxed{25}$ arestas.",
+          "steps": [
+            "Lembre que o grafo extremal de Mantel e o bipartido completo balanceado $K_{\\lfloor n/2\\rfloor,\\lceil n/2\\rceil}$.",
+            "Para $n=10$, a particao balanceada e $5+5$, logo o grafo e $K_{5,5}$.",
+            "Conte as arestas de $K_{5,5}$ como o produto $5\\cdot 5$.",
+            "Confirme com $\\lfloor 10^2/4\\rfloor=25$ arestas."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definicao de $R(s,t)$",
+          "back": "Menor $n$ tal que toda 2-coloracao de $K_n$ tem $K_s$ na cor 1 ou $K_t$ na cor 2."
+        },
+        {
+          "front": "Valor de $R(3,3)$",
+          "back": "$6$ (entre 6 pessoas, sempre 3 mutuamente conhecidas ou 3 estranhas)."
+        },
+        {
+          "front": "Cota de recorrencia para $R(s,t)$",
+          "back": "$R(s,t)\\le R(s-1,t)+R(s,t-1)\\le \\binom{s+t-2}{s-1}$."
+        },
+        {
+          "front": "Teorema de Mantel",
+          "back": "Grafo sem triangulo com $n$ vertices tem $\\le \\lfloor n^2/4\\rfloor$ arestas."
+        },
+        {
+          "front": "Grafo extremal de Mantel",
+          "back": "Bipartido completo balanceado $K_{\\lfloor n/2\\rfloor,\\lceil n/2\\rceil}$."
+        },
+        {
+          "front": "Ideia central da teoria de Ramsey",
+          "back": "'Desordem total e impossivel': estruturas grandes contem ordem monocromatica garantida."
+        },
+        {
+          "front": "Pergunta da combinatoria extremal",
+          "back": "Qual o maior/menor objeto que evita uma subestrutura proibida?"
+        }
+      ],
+      "estimatedHours": 5,
+      "resources": [
+        {
+          "title": "van Lint & Wilson, A Course in Combinatorics, cap. de Ramsey",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.211 — Ramsey Theory e Extremal Combinatorics",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o capitulo de Ramsey em van Lint & Wilson e escreva a definicao de $R(s,t)$ e o enunciado do teorema para 2 cores.",
+          "Estude e reproduza a prova de que $R(3,3)=6$ (casa dos pombos nas 5 arestas de um vertice) e o contraexemplo $C_5$ para $R(3,3)>5$.",
+          "Demonstre a cota de recorrencia $R(s,t)\\le R(s-1,t)+R(s,t-1)$ e deduza $R(s,t)\\le\\binom{s+t-2}{s-1}$.",
+          "Passe para combinatoria extremal: estude o teorema de Mantel (max de arestas sem triangulo) e sua prova por $d(u)+d(v)\\le n$.",
+          "Resolva 5 a 8 problemas de Ramsey/extremal de nivel olimpiada, distinguindo sempre a pergunta 'existe padrao' da pergunta 'quanto cabe sem o padrao'.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (a prova de $R(3,3)=6$, a cota de recorrencia e o teorema de Mantel)."
+        ],
+        "searchQueries": [
+          "teorema de Ramsey R(s,t) definicao demonstracao 2 cores",
+          "prova R(3,3)=6 party of six people friends strangers",
+          "Ramsey number recurrence bound R(s-1,t)+R(s,t-1)",
+          "Mantel theorem triangle-free maximum edges proof",
+          "Turan theorem extremal graph theory introduction",
+          "probabilistic method lower bound Ramsey number Erdos"
+        ],
+        "videos": [
+          {
+            "title": "Ramsey Theory / party problem",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aula sobre R(3,3) e o argumento de amigos/estranhos entre 6 pessoas."
+          },
+          {
+            "title": "Ramsey theory and R(3,3)",
+            "channel": "Numberphile",
+            "note": "Introducao acessivel ao problema das 6 pessoas e aos numeros de Ramsey."
+          },
+          {
+            "title": "Extremal graph theory / Turan's theorem",
+            "channel": "Michael Penn",
+            "note": "Procure a prova do teorema de Mantel/Turan sobre grafos livres de triangulo."
+          }
+        ],
+        "articles": [
+          {
+            "title": "A Course in Combinatorics, capitulo de Ramsey Theory",
+            "where": "J. H. van Lint, R. M. Wilson"
+          },
+          {
+            "title": "MIT OCW 18.211 - Ramsey Theory e Extremal Combinatorics (notas)",
+            "where": "ocw.mit.edu"
+          }
+        ]
+      }
+    }
+  ]
+}

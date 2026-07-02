@@ -1,0 +1,1508 @@
+{
+  "id": "topologia-algebrica",
+  "title": "Topologia Algébrica",
+  "phase": 2,
+  "phaseLabel": "Avançado / Pré-Pós",
+  "tagline": "Transformar espaços em álgebra: functores que convertem buracos, laços e colagens em grupos que podemos calcular.",
+  "summary": "Topologia Algébrica é a arte de atribuir invariantes algébricos — grupos, anéis, módulos — a espaços topológicos de modo que aplicações contínuas virem homomorfismos. A ideia central é functorial: espaços homeomorfos (ou apenas homotopicamente equivalentes) recebem invariantes isomorfos, então uma diferença algébrica prova uma diferença topológica. Começamos com homotopia e o grupo fundamental $\\pi_1$, passamos por espaços de recobrimento e pelo Teorema de Seifert-van Kampen para calcular $\\pi_1$, e chegamos à homologia simplicial e singular $H_n$, à sequência exata de Mayer-Vietoris e a uma introdução à cohomologia $H^n$ com produto cup. O resultado é um maquinário que distingue a esfera do toro, prova o Teorema do Ponto Fixo de Brouwer e a invariância da dimensão.",
+  "bigPicture": "Esta é a disciplina que unifica álgebra, topologia e geometria — e a porta de entrada para geometria diferencial, topologia diferencial, geometria algébrica e teoria de homotopia moderna. O paradigma functorial ($X\\mapsto\\pi_1(X)$, $X\\mapsto H_n(X)$) é o mesmo que reaparece em cohomologia de feixes, K-teoria e álgebra homológica. Resultados como invariância da dimensão (não existe homeomorfismo entre $\\mathbb{R}^m$ e $\\mathbb{R}^n$ para $m\\neq n$), o Teorema do Ponto Fixo de Brouwer e a classificação das superfícies só são acessíveis por métodos algébricos. Para o mestrado em matemática pura, Topologia Algébrica é disciplina de qualificação em programas como IMPA, USP, UNICAMP e UFRJ, e exames de seleção cobram grupo fundamental, recobrimentos, van Kampen, homologia de esferas e superfícies, Mayer-Vietoris e grau de aplicações. Em concursos de Instituto Federal o tema quase nunca cai diretamente — é conteúdo de pós — mas o domínio dele revela maturidade matemática e blinda você nas questões de Topologia Geral e Análise que de fato aparecem.",
+  "prereqs": [
+    "topologia",
+    "algebra-abstrata-1"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 62,
+  "primaryBooks": [
+    {
+      "title": "Algebraic Topology",
+      "author": "Allen Hatcher",
+      "note": "A referência mundial moderna, gratuita no site do autor. Geométrica, rica em figuras e exemplos. Cobre toda esta trilha: cap. 0 (homotopia), cap. 1 (grupo fundamental, van Kampen, recobrimentos), cap. 2 (homologia), cap. 3 (cohomologia).",
+      "chapters": "caps. 0 a 3"
+    },
+    {
+      "title": "Grupo Fundamental e Espaços de Recobrimento",
+      "author": "Elon Lages Lima",
+      "note": "Texto brasileiro clássico do IMPA (Projeto Euclides) dedicado à primeira metade da trilha: homotopia, $\\pi_1$, recobrimentos e van Kampen, com o rigor e a elegância do Elon. Português, ideal para fixar a parte de homotopia.",
+      "chapters": "caps. 1 a 6"
+    },
+    {
+      "title": "Homologia Básica",
+      "author": "Elon Lages Lima",
+      "note": "Continuação natural do anterior, do IMPA. Constrói homologia simplicial e singular, sequências exatas, Mayer-Vietoris e aplicações, em português e com demonstrações completas.",
+      "chapters": "caps. 1 a 8"
+    },
+    {
+      "title": "Topology",
+      "author": "James R. Munkres",
+      "note": "A Parte II é uma introdução excepcionalmente cuidadosa a grupo fundamental, recobrimentos e van Kampen, com mais detalhes ponto-a-ponto que Hatcher. Ótimo para a transição da Topologia Geral.",
+      "chapters": "Parte II: caps. 9 a 14"
+    },
+    {
+      "title": "A Concise Course in Algebraic Topology",
+      "author": "J. Peter May",
+      "note": "Visão sofisticada e enxuta, com sabor categórico e homotópico. Use como segunda leitura para mestrado/doutorado, depois de Hatcher.",
+      "chapters": "caps. 1 a 14 (seleção)"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "Hatcher, Algebraic Topology (PDF gratuito do autor)",
+      "kind": "livro",
+      "ref": "pi.math.cornell.edu/~hatcher"
+    },
+    {
+      "title": "MIT OCW 18.905 Algebraic Topology I",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Algebraic Topology — Pierre Albin (UIUC), aulas no YouTube",
+      "kind": "video",
+      "ref": "YouTube"
+    },
+    {
+      "title": "nLab — verbetes fundamental group, singular homology",
+      "kind": "referencia",
+      "ref": "ncatlab.org"
+    },
+    {
+      "title": "Richard Wong / N. J. Wildberger — Algebraic Topology (YouTube)",
+      "kind": "video",
+      "ref": "YouTube"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 1,
+    "mestrado": 4,
+    "note": "Em concursos de Instituto Federal a Topologia Algébrica praticamente não cai: é conteúdo de pós-graduação e está fora dos editais típicos, que param em Análise, Álgebra Linear, Cálculo e, no máximo, Topologia métrica. Já em provas de seleção e qualificação de mestrado em matemática pura (IMPA, USP, UNICAMP, UFRJ, UFMG) é tema recorrente quando há trilha de geometria/topologia. O que costuma cair: calcular o grupo fundamental de $S^1$, do toro, da figura-oito e de wedges de círculos; usar recobrimentos para computar $\\pi_1$ e provar levantamentos; aplicar Seifert-van Kampen; calcular a homologia de esferas, do toro, da garrafa de Klein e de $\\mathbb{R}P^n$; usar a sequência exata longa de um par e Mayer-Vietoris; entender grau de aplicações $S^n\\to S^n$; e provar consequências como o Teorema do Ponto Fixo de Brouwer e a invariância da dimensão. Demonstrar que $S^2$ e o toro não são homeomorfos via $\\pi_1$ ou $H_1$ é uma questão-assinatura."
+  },
+  "subtopics": [
+    {
+      "id": "topologia-algebrica-01-homotopia-tipo-de-homotopia",
+      "title": "Homotopia, tipo de homotopia e retrações",
+      "tagline": "Deformar continuamente é a relação certa: dois espaços com o mesmo tipo de homotopia compartilham todos os invariantes algébricos.",
+      "objectives": [
+        "Definir homotopia entre aplicações contínuas e homotopia de caminhos rel extremos, e provar que ambas são relações de equivalência.",
+        "Definir equivalência homotópica e tipo de homotopia, distinguindo-os de homeomorfismo.",
+        "Definir retração, retração por deformação e espaço contrátil, e relacioná-los.",
+        "Exibir os exemplos canônicos: convexos são contráteis e $\\mathbb{R}^n\\setminus\\{0\\}$ se retrai por deformação em $S^{n-1}$.",
+        "Articular a filosofia functorial da topologia algébrica: invariantes que respeitam homotopia transformam topologia em álgebra."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Homotopia de aplicações",
+          "statement": "Duas aplicações contínuas $f,g:X\\to Y$ são homotópicas, $f\\simeq g$, se existe uma aplicação contínua $H:X\\times[0,1]\\to Y$ com $H(x,0)=f(x)$ e $H(x,1)=g(x)$ para todo $x$. Escrevendo $h_t(x)=H(x,t)$, $H$ é uma família contínua de aplicações deformando $f$ em $g$."
+        },
+        {
+          "term": "Homotopia rel $A$ e homotopia de caminhos",
+          "statement": "$f\\simeq g$ rel $A\\subseteq X$ se existe homotopia $H$ com $H(a,t)=f(a)=g(a)$ para todo $a\\in A$ e todo $t$. Caso especial: dois caminhos $\\gamma,\\delta:[0,1]\\to X$ com os mesmos extremos são homotópicos como caminhos se $\\gamma\\simeq\\delta$ rel $\\{0,1\\}$, ou seja, mantendo as pontas fixas durante toda a deformação."
+        },
+        {
+          "term": "Equivalência homotópica",
+          "statement": "Uma aplicação $f:X\\to Y$ é equivalência homotópica se existe $g:Y\\to X$ com $g\\circ f\\simeq\\mathrm{id}_X$ e $f\\circ g\\simeq\\mathrm{id}_Y$. Dizemos então que $X$ e $Y$ têm o mesmo tipo de homotopia, $X\\simeq Y$. Todo homeomorfismo é equivalência homotópica, mas não vice-versa."
+        },
+        {
+          "term": "Retração e retração por deformação",
+          "statement": "Uma retração de $X$ sobre $A\\subseteq X$ é uma aplicação contínua $r:X\\to A$ com $r(a)=a$ para todo $a\\in A$. É uma retração por deformação se, além disso, $i\\circ r\\simeq\\mathrm{id}_X$ rel $A$, onde $i:A\\hookrightarrow X$ é a inclusão; nesse caso $A\\hookrightarrow X$ é equivalência homotópica."
+        },
+        {
+          "term": "Espaço contrátil",
+          "statement": "$X$ é contrátil se $\\mathrm{id}_X$ é homotópica a uma aplicação constante, equivalentemente se $X$ tem o tipo de homotopia de um ponto. Todo subconjunto convexo (ou estrelado) de $\\mathbb{R}^n$ é contrátil pela homotopia linear $H(x,t)=(1-t)x+tx_0$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Homotopia é relação de equivalência compatível com composição",
+          "statement": "A relação $\\simeq$ em $C(X,Y)$ é reflexiva, simétrica e transitiva. Além disso, se $f_0\\simeq f_1:X\\to Y$ e $g_0\\simeq g_1:Y\\to Z$, então $g_0\\circ f_0\\simeq g_1\\circ f_1:X\\to Z$.",
+          "whyItMatters": "É a compatibilidade com composição que permite definir functores na categoria de homotopia: qualquer invariante que dependa só da classe de homotopia das aplicações estará bem definido e será functorial. Sem isso, nada de $\\pi_1$ nem de homologia."
+        },
+        {
+          "name": "Equivalência homotópica é relação de equivalência",
+          "statement": "A relação $X\\simeq Y$ (existir equivalência homotópica) é reflexiva, simétrica e transitiva sobre a classe dos espaços topológicos. Se $A$ é retrato por deformação de $X$, então $A\\simeq X$.",
+          "whyItMatters": "Reduz cálculos: para computar invariantes de $X$ basta achar um modelo mais simples no mesmo tipo de homotopia. Por isso $\\pi_1$ e $H_n$ de um espaço contrátil coincidem com os de um ponto."
+        },
+        {
+          "name": "Colagem de homotopias (Lema da Colagem)",
+          "statement": "Se $X=A\\cup B$ com $A,B$ fechados e $f:A\\to Y$, $g:B\\to Y$ contínuas coincidem em $A\\cap B$, então a função combinada $X\\to Y$ é contínua. Aplicado a $X\\times[0,1]$, permite emendar homotopias definidas em subintervalos.",
+          "whyItMatters": "É a ferramenta técnica que torna lícito concatenar deformações e caminhos sem perder continuidade; sustenta a transitividade de $\\simeq$ e a boa definição da operação em $\\pi_1$."
+        }
+      ],
+      "summary": "A topologia algébrica nasce de uma escolha de relação de equivalência mais grosseira que homeomorfismo: a homotopia. Duas aplicações são homotópicas quando uma se deforma continuamente na outra; dois espaços têm o mesmo tipo de homotopia quando há aplicações de ida e volta cuja composição é homotópica à identidade. Essa relação é o ambiente natural onde vivem todos os invariantes da matéria, pois eles serão construídos para serem invariantes de homotopia — espaços homotopicamente equivalentes recebem grupos isomorfos. A versão fina e essencial para o grupo fundamental é a homotopia de caminhos, que mantém os extremos fixos.\\n\\nNa prática, o instrumento de cálculo é a retração por deformação: encolher um espaço sobre um subespaço mais simples sem mudar seu tipo de homotopia. Assim, $\\mathbb{R}^n\\setminus\\{0\\}$ encolhe sobre a esfera $S^{n-1}$, uma faixa de Möbius encolhe sobre seu círculo central e qualquer convexo encolhe sobre um ponto (é contrátil). A lição estratégica é functorial: vamos definir associações $X\\mapsto \\pi_1(X)$ e $X\\mapsto H_n(X)$ que mandam aplicações contínuas em homomorfismos e classes de homotopia em igualdades; uma diferença algébrica entre os invariantes prova, então, que os espaços não são sequer homotopicamente equivalentes, quanto mais homeomorfos.",
+      "commonPitfalls": [
+        "Confundir homotopia com homeomorfismo. Um disco e um ponto têm o mesmo tipo de homotopia mas não são homeomorfos; equivalência homotópica perde informação dimensional.",
+        "Esquecer a condição rel extremos ao trabalhar com caminhos. Sem fixar as pontas, todo caminho num espaço conexo por caminhos seria contraível e $\\pi_1$ colapsaria.",
+        "Achar que retração e retração por deformação são a mesma coisa. Toda retração por deformação é retração, mas $S^{n-1}$ é retrato (por deformação) de $\\mathbb{R}^n\\setminus\\{0\\}$ enquanto $S^{n-1}$ não é retrato de todo o disco $D^n$.",
+        "Supor que homotopia exige inversibilidade. $H$ é só uma aplicação contínua em $X\\times[0,1]$; não precisa ser injetora nem sobrejetora em cada nível."
+      ],
+      "worked": "**Exemplo.** Mostremos que $\\mathbb{R}^n\\setminus\\{0\\}$ se retrai por deformação sobre a esfera $S^{n-1}$.\\n\\nDefina $r:\\mathbb{R}^n\\setminus\\{0\\}\\to S^{n-1}$ por $r(x)=x/\\lVert x\\rVert$. É contínua e $r(x)=x$ quando $\\lVert x\\rVert=1$, logo $r$ é retração. Agora a homotopia $H:(\\mathbb{R}^n\\setminus\\{0\\})\\times[0,1]\\to\\mathbb{R}^n\\setminus\\{0\\}$,\\n$$H(x,t)=(1-t)\\,x+t\\,\\frac{x}{\\lVert x\\rVert}.$$\\nPara cada $t$ o vetor $H(x,t)$ é um múltiplo positivo de $x$ (coeficiente $(1-t)+t/\\lVert x\\rVert>0$), portanto nunca se anula e $H$ tem imagem em $\\mathbb{R}^n\\setminus\\{0\\}$. Temos $H(x,0)=x$ e $H(x,1)=x/\\lVert x\\rVert$, e para $x\\in S^{n-1}$ vale $H(x,t)=x$ em todo $t$. Logo $i\\circ r\\simeq\\mathrm{id}$ rel $S^{n-1}$ e $S^{n-1}\\hookrightarrow\\mathbb{R}^n\\setminus\\{0\\}$ é equivalência homotópica. Em particular os dois espaços têm o mesmo $\\pi_1$ e a mesma homologia.",
+      "exercises": [
+        {
+          "prompt": "Prove que se $Y$ é convexo então quaisquer duas aplicações contínuas $f,g:X\\to Y$ são homotópicas. Conclua que todo espaço convexo é contrátil.",
+          "hint": "Use a homotopia linear $H(x,t)=(1-t)f(x)+tg(x)$ e verifique que a imagem permanece em $Y$ por convexidade. Para a contractibilidade tome $g$ constante.",
+          "difficulty": 2,
+          "solution": "**Afirmação.** Se $Y\\subseteq\\mathbb{R}^m$ é convexo, então quaisquer $f,g:X\\to Y$ contínuas são homotópicas; em particular todo convexo é contrátil.\n\n**Homotopia linear.** Defina $H:X\\times[0,1]\\to\\mathbb{R}^m$ por\n$$H(x,t)=(1-t)\\,f(x)+t\\,g(x).$$\nPara cada $x$ fixo, $t\\mapsto H(x,t)$ é o segmento de reta ligando $f(x)$ a $g(x)$. Como $Y$ é convexo e $f(x),g(x)\\in Y$, todo ponto desse segmento está em $Y$; logo $H(x,t)\\in Y$ para todo $(x,t)$, e $H$ tem contradomínio $Y$.\n\n**Continuidade.** $H$ é composição de aplicações contínuas: $(x,t)\\mapsto(f(x),g(x),t)$ é contínua (por $f,g$ contínuas) e $(a,b,t)\\mapsto(1-t)a+tb$ é contínua (polinomial nas coordenadas). Logo $H$ é contínua.\n\n**Extremos.** $H(x,0)=f(x)$ e $H(x,1)=g(x)$. Portanto $f\\simeq g$.\n\n**Contractibilidade.** Tome $X=Y$, $f=\\mathrm{id}_Y$ e $g\\equiv y_0$ constante (qualquer $y_0\\in Y$). Pelo que provamos, $\\mathrm{id}_Y\\simeq\\text{const}_{y_0}$. Isso é exatamente a definição de espaço contrátil. $\\blacksquare$",
+          "steps": [
+            "Ideia: como $Y$ é convexo, o segmento entre $f(x)$ e $g(x)$ fica em $Y$ — isso sugere interpolar linearmente.",
+            "Monte $H(x,t)=(1-t)f(x)+tg(x)$ e verifique, pela convexidade, que $H(x,t)\\in Y$ para todo $t\\in[0,1]$.",
+            "Justifique a continuidade de $H$ como composição de aplicações contínuas e confira os extremos $H(\\cdot,0)=f$, $H(\\cdot,1)=g$.",
+            "Conclua $f\\simeq g$; especialize $f=\\mathrm{id}_Y$ e $g$ constante para obter a contractibilidade de $Y$."
+          ]
+        },
+        {
+          "prompt": "Mostre que a faixa de Möbius se retrai por deformação sobre seu círculo central, e conclua que ela tem o tipo de homotopia de $S^1$.",
+          "hint": "Modele a faixa como quociente de $[0,1]\\times[-1,1]$ e empurre a coordenada vertical para $0$ por $H(\\cdot,s)$ com fator $(1-s)$.",
+          "difficulty": 3,
+          "solution": "**Modelo.** Realize a faixa de Möbius como quociente $M=([0,1]\\times[-1,1])/\\sim$, onde $(0,y)\\sim(1,-y)$. O círculo central é $C=\\{[(x,0)]:x\\in[0,1]\\}$; note que $(0,0)\\sim(1,0)$, então $C$ é um círculo. A inclusão $i:C\\hookrightarrow M$.\n\n**Retração.** Defina $r:M\\to C$ por $r([x,y])=[x,0]$. Está bem definida: se $(0,y)\\sim(1,-y)$, então $r$ manda ambos em $[0,0]$ e $[1,0]$, que são identificados pois $(0,0)\\sim(1,0)$. É contínua (desce ao quociente da aplicação contínua $(x,y)\\mapsto(x,0)$) e $r([x,0])=[x,0]$, logo é retração sobre $C$.\n\n**Retração por deformação.** Defina $H:M\\times[0,1]\\to M$ por\n$$H([x,y],s)=[x,(1-s)y].$$\n*Boa definição:* aplicada aos pontos identificados, $H([0,y],s)=[0,(1-s)y]$ e $H([1,-y],s)=[1,-(1-s)y]$; como $(0,(1-s)y)\\sim(1,-(1-s)y)$, os valores coincidem no quociente. É contínua. Temos $H([x,y],0)=[x,y]$ (identidade), $H([x,y],1)=[x,0]=i(r([x,y]))$, e para pontos de $C$ vale $H([x,0],s)=[x,0]$ fixo. Logo $i\\circ r\\simeq\\mathrm{id}_M$ rel $C$.\n\n**Conclusão.** $C$ é retrato por deformação de $M$, portanto $M\\simeq C$. Como $C\\cong S^1$, a faixa de Möbius tem o tipo de homotopia de $S^1$. $\\blacksquare$",
+          "steps": [
+            "Modele $M$ como quociente de $[0,1]\\times[-1,1]$ pela identificação $(0,y)\\sim(1,-y)$ e identifique o círculo central $C$.",
+            "Defina a retração $r([x,y])=[x,0]$ e verifique que respeita a identificação (é bem definida e contínua).",
+            "Construa a homotopia $H([x,y],s)=[x,(1-s)y]$ que empurra a coordenada vertical a $0$, checando que passa ao quociente.",
+            "Confira extremos e que $C$ fica fixo: conclua $M\\simeq C\\cong S^1$."
+          ]
+        },
+        {
+          "prompt": "Prove que a relação de equivalência homotópica é transitiva: se $X\\simeq Y$ e $Y\\simeq Z$ então $X\\simeq Z$.",
+          "hint": "Componha as equivalências e use que $\\simeq$ é compatível com composição: $g\\circ f\\simeq\\mathrm{id}$ e $g'\\circ f'\\simeq\\mathrm{id}$ levam a $(g\\circ g')$ e $(f'\\circ f)$ inversas a menos de homotopia.",
+          "difficulty": 3,
+          "solution": "**Hipóteses.** $X\\simeq Y$: existem $f:X\\to Y$, $g:Y\\to X$ com $g\\circ f\\simeq\\mathrm{id}_X$ e $f\\circ g\\simeq\\mathrm{id}_Y$. $Y\\simeq Z$: existem $f':Y\\to Z$, $g':Z\\to Y$ com $g'\\circ f'\\simeq\\mathrm{id}_Y$ e $f'\\circ g'\\simeq\\mathrm{id}_Z$.\n\n**Candidatos.** Ponha $F=f'\\circ f:X\\to Z$ e $G=g\\circ g':Z\\to X$.\n\n**Verificação.** Usando a compatibilidade de $\\simeq$ com composição (se $u\\simeq u'$ então $a\\circ u\\circ b\\simeq a\\circ u'\\circ b$):\n$$G\\circ F=g\\circ g'\\circ f'\\circ f=g\\circ(g'\\circ f')\\circ f\\simeq g\\circ\\mathrm{id}_Y\\circ f=g\\circ f\\simeq\\mathrm{id}_X,$$\ne por transitividade de $\\simeq$, $G\\circ F\\simeq\\mathrm{id}_X$. Simetricamente,\n$$F\\circ G=f'\\circ f\\circ g\\circ g'=f'\\circ(f\\circ g)\\circ g'\\simeq f'\\circ\\mathrm{id}_Y\\circ g'=f'\\circ g'\\simeq\\mathrm{id}_Z,$$\nlogo $F\\circ G\\simeq\\mathrm{id}_Z$.\n\n**Conclusão.** $F$ é equivalência homotópica com inversa homotópica $G$, portanto $X\\simeq Z$. Como já valem reflexividade ($\\mathrm{id}$) e simetria (troca de papéis de $f,g$), $\\simeq$ é relação de equivalência. $\\blacksquare$",
+          "steps": [
+            "Escreva explicitamente as quatro homotopias dadas por $X\\simeq Y$ e $Y\\simeq Z$.",
+            "Componha: proponha $F=f'\\circ f$ e $G=g\\circ g'$ como candidatos a equivalência entre $X$ e $Z$.",
+            "Use a compatibilidade de $\\simeq$ com composição para substituir $g'\\circ f'$ e $f\\circ g$ por identidades dentro dos produtos.",
+            "Aplique transitividade de $\\simeq$ para concluir $G\\circ F\\simeq\\mathrm{id}_X$ e $F\\circ G\\simeq\\mathrm{id}_Z$, logo $X\\simeq Z$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $S^1$ não é contrátil admitindo (será provado adiante) que $\\pi_1(S^1)\\cong\\mathbb{Z}$, e explique por que isso impede $S^1$ de ser retrato por deformação de $D^2$.",
+          "hint": "Espaço contrátil tem $\\pi_1$ trivial; um retrato por deformação preserva $\\pi_1$. Compare $\\mathbb{Z}$ com o grupo trivial.",
+          "difficulty": 2,
+          "solution": "**Parte 1: $S^1$ não é contrátil.** Se $X$ é contrátil, então $\\mathrm{id}_X\\simeq\\text{const}$ e $X$ tem o tipo de homotopia de um ponto. Por invariância homotópica de $\\pi_1$, $\\pi_1(X)\\cong\\pi_1(\\{*\\})=0$. Ora, admitindo $\\pi_1(S^1)\\cong\\mathbb{Z}$, temos $\\pi_1(S^1)\\neq0$. Se $S^1$ fosse contrátil teríamos $\\mathbb{Z}\\cong0$, absurdo. Logo $S^1$ não é contrátil.\n\n**Parte 2: $S^1$ não é retrato por deformação de $D^2$.** Um retrato por deformação $A$ de $X$ satisfaz $A\\simeq X$ (a inclusão é equivalência homotópica), logo $\\pi_1(A)\\cong\\pi_1(X)$. O disco $D^2$ é convexo, portanto contrátil, e $\\pi_1(D^2)=0$. Se $S^1$ fosse retrato por deformação de $D^2$, então\n$$\\mathbb{Z}\\cong\\pi_1(S^1)\\cong\\pi_1(D^2)=0,$$\nde novo absurdo. Portanto $S^1$ não é retrato por deformação de $D^2$.\n\n**Observação.** $S^1$ ainda é *retrato* de nada disso — de fato nem retrato simples de $D^2$ ele é (isso é o conteúdo do não-retração $D^2\\to S^1$, base de Brouwer), mas para este exercício basta a versão \"por deformação\", que segue diretamente da diferença $\\mathbb{Z}\\neq0$. $\\blacksquare$",
+          "steps": [
+            "Lembre que espaço contrátil tem $\\pi_1$ trivial (invariância homotópica de $\\pi_1$).",
+            "Compare com $\\pi_1(S^1)\\cong\\mathbb{Z}\\neq0$ para concluir que $S^1$ não é contrátil.",
+            "Use que retrato por deformação preserva o tipo de homotopia, logo preserva $\\pi_1$.",
+            "Como $\\pi_1(D^2)=0\\neq\\mathbb{Z}=\\pi_1(S^1)$, conclua que $S^1$ não pode ser retrato por deformação de $D^2$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de $f\\simeq g$ (homotopia de aplicações).",
+          "back": "Existe $H:X\\times[0,1]\\to Y$ contínua com $H(\\cdot,0)=f$ e $H(\\cdot,1)=g$."
+        },
+        {
+          "front": "O que é homotopia de caminhos (rel extremos)?",
+          "back": "Homotopia entre caminhos com os mesmos extremos que mantém $H(0,t)$ e $H(1,t)$ fixos para todo $t$, isto é, $\\simeq$ rel $\\{0,1\\}$."
+        },
+        {
+          "front": "Quando $X$ e $Y$ têm o mesmo tipo de homotopia?",
+          "back": "Quando existe $f:X\\to Y$ e $g:Y\\to X$ com $g\\circ f\\simeq\\mathrm{id}_X$ e $f\\circ g\\simeq\\mathrm{id}_Y$."
+        },
+        {
+          "front": "Retração vs. retração por deformação.",
+          "back": "Retração: $r:X\\to A$ contínua com $r|_A=\\mathrm{id}$. Por deformação: ainda $i\\circ r\\simeq\\mathrm{id}_X$ rel $A$ (logo $A\\simeq X$)."
+        },
+        {
+          "front": "Definição de espaço contrátil.",
+          "back": "$\\mathrm{id}_X$ é homotópica a uma constante; equivalentemente, $X$ tem o tipo de homotopia de um ponto."
+        },
+        {
+          "front": "Sobre o que $\\mathbb{R}^n\\setminus\\{0\\}$ se retrai por deformação?",
+          "back": "Sobre $S^{n-1}$, via $H(x,t)=(1-t)x+t\\,x/\\lVert x\\rVert$."
+        },
+        {
+          "front": "Todo convexo de $\\mathbb{R}^n$ é o quê, homotopicamente?",
+          "back": "Contrátil: a homotopia linear $H(x,t)=(1-t)x+tx_0$ encolhe tudo a um ponto."
+        },
+        {
+          "front": "Por que homotopia precisa ser compatível com composição?",
+          "back": "Para que invariantes fiquem bem definidos na categoria de homotopia e sejam functoriais (espaços $\\simeq$ recebem invariantes isomorfos)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Hatcher, Algebraic Topology — cap. 0",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Grupo Fundamental e Espaços de Recobrimento — cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia Hatcher, cap. 0 (ou Elon, Grupo Fundamental e Espaços de Recobrimento, cap. 1) e escreva com suas palavras as definições de homotopia, homotopia rel A, equivalência homotópica, retração e retração por deformação, cada uma com um exemplo próprio.",
+          "Assista a uma aula introdutória sobre homotopia e desenhe passo a passo as deformações de $\\mathbb{R}^n\\setminus\\{0\\}$ sobre $S^{n-1}$ e da faixa de Möbius sobre o círculo central, verificando a continuidade de cada $H$.",
+          "Monte uma tabela comparando homotopia x homeomorfismo e retração x retração por deformação, colecionando contraexemplos (disco $\\simeq$ ponto mas não homeomorfos; $S^{n-1}$ não é retrato de $D^n$).",
+          "Prove sozinho que $\\simeq$ é relação de equivalência compatível com composição e que retração por deformação implica equivalência homotópica; confira com o livro.",
+          "Resolva os testes deste tópico aqui no app e anote o principal: as definições-chave, o truque da homotopia linear $H(x,t)=(1-t)x+tx_0$ e por que invariantes de homotopia transformam topologia em álgebra."
+        ],
+        "searchQueries": [
+          "homotopia entre aplicações contínuas definição e exemplos",
+          "retração por deformação faixa de Möbius círculo central",
+          "espaço contrátil convexo homotopia linear demonstração",
+          "homotopy equivalence vs homeomorphism deformation retract example",
+          "deformation retraction of R^n minus origin onto sphere",
+          "Hatcher Algebraic Topology chapter 0 homotopy exercises"
+        ],
+        "videos": [
+          {
+            "title": "Algebraic Topology — curso completo",
+            "channel": "Pierre Albin (YouTube)",
+            "note": "Assista às primeiras aulas sobre homotopia, equivalência homotópica e retrações; acompanhe com Hatcher cap. 0."
+          },
+          {
+            "title": "Introduction to Algebraic Topology",
+            "channel": "Richard Wong (YouTube)",
+            "note": "Série que revisa homotopia e retrações por deformação com bastante intuição visual."
+          },
+          {
+            "title": "18.905 Algebraic Topology I",
+            "channel": "MIT OpenCourseWare",
+            "note": "Use as notas e vídeos da parte inicial sobre homotopia e complexos CW."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Hatcher, Algebraic Topology — Chapter 0",
+            "where": "PDF gratuito do autor em pi.math.cornell.edu/~hatcher"
+          },
+          {
+            "title": "Elon Lages Lima, Grupo Fundamental e Espaços de Recobrimento — cap. 1",
+            "where": "Coleção Projeto Euclides, IMPA"
+          },
+          {
+            "title": "nLab — verbetes 'homotopy' e 'deformation retract'",
+            "where": "ncatlab.org"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-algebrica-02-grupo-fundamental",
+      "title": "Grupo fundamental $\\pi_1$",
+      "tagline": "Os laços baseados em um ponto, módulo deformação, formam um grupo — o primeiro e mais intuitivo invariante algébrico.",
+      "objectives": [
+        "Definir a concatenação de caminhos e provar que ela induz uma operação de grupo nas classes de homotopia de laços.",
+        "Definir $\\pi_1(X,x_0)$ e demonstrar que é um grupo, com inverso dado pelo caminho reverso.",
+        "Analisar a dependência do ponto base via isomorfismo de mudança de base $\\beta_h$.",
+        "Estabelecer a functorialidade: $f\\mapsto f_*$ e a invariância homotópica de $\\pi_1$.",
+        "Calcular $\\pi_1(S^1)\\cong\\mathbb{Z}$ e $\\pi_1(X\\times Y)\\cong\\pi_1(X)\\times\\pi_1(Y)$, e definir espaço simplesmente conexo."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Concatenação de caminhos",
+          "statement": "Se $\\gamma,\\delta:[0,1]\\to X$ satisfazem $\\gamma(1)=\\delta(0)$, o produto $\\gamma\\cdot\\delta$ percorre $\\gamma$ em $[0,1/2]$ e $\\delta$ em $[1/2,1]$: $(\\gamma\\cdot\\delta)(s)=\\gamma(2s)$ se $s\\le 1/2$ e $\\delta(2s-1)$ se $s\\ge 1/2$. A operação é bem definida nas classes de homotopia de caminhos."
+        },
+        {
+          "term": "Grupo fundamental",
+          "statement": "Fixado $x_0\\in X$, o conjunto $\\pi_1(X,x_0)$ das classes de homotopia (rel extremos) de laços baseados em $x_0$, com a operação $[\\gamma][\\delta]=[\\gamma\\cdot\\delta]$, é um grupo. A identidade é a classe do laço constante $e_{x_0}$ e o inverso de $[\\gamma]$ é $[\\bar\\gamma]$, onde $\\bar\\gamma(s)=\\gamma(1-s)$."
+        },
+        {
+          "term": "Isomorfismo de mudança de base",
+          "statement": "Dado um caminho $h$ de $x_0$ a $x_1$, a aplicação $\\beta_h:\\pi_1(X,x_1)\\to\\pi_1(X,x_0)$, $\\beta_h([\\gamma])=[h\\cdot\\gamma\\cdot\\bar h]$, é um isomorfismo de grupos. Logo, em espaço conexo por caminhos, $\\pi_1$ independe do ponto base a menos de isomorfismo (não canônico)."
+        },
+        {
+          "term": "Homomorfismo induzido",
+          "statement": "Uma aplicação contínua $f:(X,x_0)\\to(Y,y_0)$ induz $f_*:\\pi_1(X,x_0)\\to\\pi_1(Y,y_0)$, $f_*([\\gamma])=[f\\circ\\gamma]$. Vale $(\\mathrm{id})_*=\\mathrm{id}$ e $(g\\circ f)_*=g_*\\circ f_*$: $\\pi_1$ é um functor da categoria de espaços pontuados nos grupos."
+        },
+        {
+          "term": "Espaço simplesmente conexo",
+          "statement": "$X$ é simplesmente conexo se é conexo por caminhos e $\\pi_1(X,x_0)=0$ (trivial). Equivalente: quaisquer dois caminhos com os mesmos extremos são homotópicos rel extremos. Convexos e, mais geralmente, contráteis são simplesmente conexos."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "$\\pi_1(X,x_0)$ é grupo",
+          "statement": "A concatenação induz operação associativa nas classes de homotopia de laços; a classe do laço constante é neutro e $[\\bar\\gamma]$ é inverso de $[\\gamma]$. As reparametrizações e as colagens de homotopias fornecem as identidades necessárias.",
+          "whyItMatters": "Dá o primeiro invariante não comutativo da topologia. A não comutatividade já aparece na figura-oito, codificando a estrutura fina de buracos entrelaçados que números (como $H_1$) não enxergam."
+        },
+        {
+          "name": "Invariância homotópica de $\\pi_1$",
+          "statement": "Se $f:X\\to Y$ é equivalência homotópica, então $f_*:\\pi_1(X,x_0)\\to\\pi_1(Y,f(x_0))$ é isomorfismo. Em particular $\\pi_1$ é invariante por homeomorfismo e por retração por deformação.",
+          "whyItMatters": "É o que torna $\\pi_1$ útil: dois espaços com grupos fundamentais não isomorfos não podem ser homotopicamente equivalentes. Daí $S^2\\not\\simeq T^2$, pois $\\pi_1(S^2)=0\\neq\\mathbb{Z}^2=\\pi_1(T^2)$."
+        },
+        {
+          "name": "$\\pi_1(S^1)\\cong\\mathbb{Z}$",
+          "statement": "O grau (winding number) define um isomorfismo $\\pi_1(S^1,1)\\to\\mathbb{Z}$ que leva $[\\gamma]$ ao número de voltas; ele é construído levantando laços pelo recobrimento $p:\\mathbb{R}\\to S^1$, $p(t)=(\\cos 2\\pi t,\\sin 2\\pi t)$.",
+          "whyItMatters": "É o cálculo fundador. Dele saem o Teorema do Ponto Fixo de Brouwer em dimensão 2, o Teorema Fundamental da Álgebra por topologia e o Teorema de Borsuk-Ulam no círculo."
+        },
+        {
+          "name": "Grupo fundamental do produto",
+          "statement": "Se $X$ e $Y$ são conexos por caminhos, então $\\pi_1(X\\times Y,(x_0,y_0))\\cong\\pi_1(X,x_0)\\times\\pi_1(Y,y_0)$, via as projeções.",
+          "whyItMatters": "Permite calcular $\\pi_1(T^n)=\\mathbb{Z}^n$ imediatamente, e mostra que $\\pi_1$ comuta com produtos — coerência categórica esperada de um bom functor."
+        }
+      ],
+      "summary": "O grupo fundamental traduz a pergunta geométrica todo laço se contrai? em álgebra. Fixe um ponto base $x_0$ e considere os laços baseados nele; duas curvas que se deformam uma na outra mantendo os extremos fixos são identificadas. A concatenação justaposta de laços, lida nas classes de homotopia, é associativa, tem neutro (laço constante) e inverso (percorrer ao contrário), produzindo o grupo $\\pi_1(X,x_0)$. Mudar o ponto base por um caminho $h$ conjuga tudo por $h$ e dá um isomorfismo $\\beta_h$; portanto, num espaço conexo por caminhos, falamos de $\\pi_1(X)$ a menos de isomorfismo.\\n\\nO poder vem da functorialidade: aplicações contínuas viram homomorfismos $f_*$ respeitando composição, e equivalências homotópicas viram isomorfismos. Logo $\\pi_1$ é invariante de homotopia e o usamos para distinguir espaços. O cálculo-pedra-fundamental é $\\pi_1(S^1)\\cong\\mathbb{Z}$, obtido levantando laços pela reta $\\mathbb{R}\\to S^1$ e contando voltas; dele decorre o Teorema do Ponto Fixo de Brouwer no disco e a impossibilidade de retrair $D^2$ sobre seu bordo. Como $\\pi_1$ comuta com produtos, segue $\\pi_1(T^n)\\cong\\mathbb{Z}^n$. Note que $\\pi_1$ pode ser não abeliano (a figura-oito tem grupo livre $F_2$), o que o torna mais fino que a homologia $H_1$, sua abelianização.",
+      "commonPitfalls": [
+        "Tratar $\\pi_1$ como sempre abeliano. Para a figura-oito $\\pi_1=F_2$ é livre não abeliano; só $H_1$ (a abelianização) comuta.",
+        "Ignorar o ponto base ao comparar grupos. Embora $\\beta_h$ dê isomorfismo em espaço conexo por caminhos, o isomorfismo não é canônico (depende de $h$ a menos de conjugação).",
+        "Confundir simplesmente conexo com conexo por caminhos. Simplesmente conexo exige conexão por caminhos E $\\pi_1$ trivial; $S^1$ é conexo por caminhos mas não simplesmente conexo.",
+        "Acreditar que $\\pi_1$ detecta buracos de dimensão alta. $\\pi_1(S^2)=0$ apesar do buraco bidimensional; é a homologia $H_2$ que o vê."
+      ],
+      "worked": "**Exemplo (Brouwer em dimensão 2 via $\\pi_1$).** Afirmação: toda aplicação contínua $f:D^2\\to D^2$ tem ponto fixo.\\n\\nSuponha que não: $f(x)\\neq x$ para todo $x$. Defina $r:D^2\\to S^1=\\partial D^2$ traçando a semirreta de $f(x)$ passando por $x$ até encontrar o bordo; $r$ é contínua e, se $x\\in S^1$, então $r(x)=x$. Logo $r$ seria uma retração de $D^2$ sobre $S^1$.\\n\\nApliquemos $\\pi_1$. A inclusão $i:S^1\\hookrightarrow D^2$ e a retração satisfazem $r\\circ i=\\mathrm{id}_{S^1}$, logo $r_*\\circ i_*=\\mathrm{id}$ em $\\pi_1(S^1)\\cong\\mathbb{Z}$. Mas $D^2$ é convexo, logo contrátil, e $\\pi_1(D^2)=0$. Então $i_*$ fatora pelo grupo trivial e $\\mathrm{id}_{\\mathbb{Z}}=r_*\\circ i_*$ fatora por $0$ — impossível, pois a identidade de $\\mathbb{Z}$ não é a aplicação nula. Contradição. Portanto $f$ tem ponto fixo.",
+      "exercises": [
+        {
+          "prompt": "Prove que $\\beta_h:\\pi_1(X,x_1)\\to\\pi_1(X,x_0)$, $[\\gamma]\\mapsto[h\\cdot\\gamma\\cdot\\bar h]$, é homomorfismo e bijeção, exibindo seu inverso.",
+          "hint": "Verifique $\\beta_h([\\gamma][\\delta])=\\beta_h([\\gamma])\\beta_h([\\delta])$ usando $\\bar h\\cdot h\\simeq e$. O inverso é $\\beta_{\\bar h}$.",
+          "difficulty": 3,
+          "solution": "**Objetivo.** Mostrar que $\\beta_h:\\pi_1(X,x_1)\\to\\pi_1(X,x_0)$, $\\beta_h([\\gamma])=[h\\cdot\\gamma\\cdot\\bar h]$, é homomorfismo e bijeção, com $h$ caminho de $x_0$ a $x_1$ e $\\bar h(s)=h(1-s)$.\n\n**Bem definido.** Se $\\gamma\\simeq\\gamma'$ rel $\\{0,1\\}$, então $h\\cdot\\gamma\\cdot\\bar h\\simeq h\\cdot\\gamma'\\cdot\\bar h$ (concatenação respeita homotopia), então $\\beta_h$ independe do representante.\n\n**Homomorfismo.** Sejam $[\\gamma],[\\delta]\\in\\pi_1(X,x_1)$. Como $\\bar h\\cdot h\\simeq e_{x_1}$ (o caminho constante em $x_1$), podemos inserir $\\bar h\\cdot h$ no meio:\n$$\\beta_h([\\gamma][\\delta])=[h\\cdot\\gamma\\cdot\\delta\\cdot\\bar h]=[h\\cdot\\gamma\\cdot(\\bar h\\cdot h)\\cdot\\delta\\cdot\\bar h]=[(h\\cdot\\gamma\\cdot\\bar h)\\cdot(h\\cdot\\delta\\cdot\\bar h)]=\\beta_h([\\gamma])\\,\\beta_h([\\delta]).$$\nAqui usamos associatividade da concatenação em $\\pi_1$ e que $[\\alpha\\cdot e\\cdot\\beta]=[\\alpha\\cdot\\beta]$.\n\n**Inverso.** Afirmo que $\\beta_{\\bar h}:\\pi_1(X,x_0)\\to\\pi_1(X,x_1)$, $[\\eta]\\mapsto[\\bar h\\cdot\\eta\\cdot h]$, é a inversa. De fato,\n$$\\beta_{\\bar h}\\big(\\beta_h([\\gamma])\\big)=[\\bar h\\cdot h\\cdot\\gamma\\cdot\\bar h\\cdot h]=[(\\bar h\\cdot h)\\cdot\\gamma\\cdot(\\bar h\\cdot h)]=[\\gamma],$$\npois $\\bar h\\cdot h\\simeq e_{x_1}$. Analogamente $\\beta_h\\circ\\beta_{\\bar h}=\\mathrm{id}$ em $\\pi_1(X,x_0)$, usando $h\\cdot\\bar h\\simeq e_{x_0}$.\n\n**Conclusão.** $\\beta_h$ é homomorfismo bijetor, isto é, isomorfismo, com $\\beta_h^{-1}=\\beta_{\\bar h}$. $\\blacksquare$",
+          "steps": [
+            "Verifique que $\\beta_h$ está bem definido: homotopias rel extremos de $\\gamma$ produzem homotopias de $h\\cdot\\gamma\\cdot\\bar h$.",
+            "Para o homomorfismo, insira o par $\\bar h\\cdot h\\simeq e_{x_1}$ entre $\\gamma$ e $\\delta$ e reagrupe.",
+            "Proponha $\\beta_{\\bar h}$ como inversa e compute $\\beta_{\\bar h}\\circ\\beta_h$ usando $\\bar h\\cdot h\\simeq e$.",
+            "Compute também $\\beta_h\\circ\\beta_{\\bar h}=\\mathrm{id}$ e conclua que $\\beta_h$ é isomorfismo com inverso $\\beta_{\\bar h}$."
+          ]
+        },
+        {
+          "prompt": "Mostre que se $X$ é conexo por caminhos então $\\pi_1(X,x_0)$ é abeliano se, e só se, $\\beta_h$ independe da escolha do caminho $h$ entre dois pontos fixados.",
+          "hint": "Dois caminhos $h,h'$ de $x_0$ a $x_1$ diferem por um laço $h\\cdot\\bar{h'}$; $\\beta_h=\\beta_{h'}$ equivale à conjugação por esse laço ser trivial para todos.",
+          "difficulty": 4,
+          "solution": "**Enunciado.** $X$ conexo por caminhos. Mostrar: $\\pi_1(X,x_0)$ é abeliano $\\iff$ para todo par de pontos e todo par de caminhos $h,h'$ entre eles, $\\beta_h=\\beta_{h'}$.\n\n**Relação entre $\\beta_h$ e $\\beta_{h'}$.** Sejam $h,h'$ caminhos de $x_0$ a $x_1$. O laço $c=h\\cdot\\bar{h'}$ está baseado em $x_0$. Para $[\\gamma]\\in\\pi_1(X,x_1)$,\n$$\\beta_h([\\gamma])=[h\\cdot\\gamma\\cdot\\bar h]=[(h\\cdot\\bar{h'})\\cdot(h'\\cdot\\gamma\\cdot\\bar{h'})\\cdot(h'\\cdot\\bar h)]=[c]\\,\\beta_{h'}([\\gamma])\\,[c]^{-1},$$\npois $\\bar{h'}\\cdot h'\\simeq e$ e $[c]^{-1}=[h'\\cdot\\bar h]$. Ou seja, $\\beta_h=c_{[c]}\\circ\\beta_{h'}$, onde $c_{[c]}$ é a conjugação por $[c]$ em $\\pi_1(X,x_0)$.\n\n**($\\Leftarrow$).** Suponha que $\\beta_h=\\beta_{h'}$ sempre. Então $c_{[c]}=\\mathrm{id}$, isto é, $[c]$ é central, para todo laço $c$ obtido variando $h,h'$. Como $X$ é conexo por caminhos, fixando $h'$ e variando $h$ o laço $[c]=[h\\cdot\\bar{h'}]$ percorre TODO $\\pi_1(X,x_0)$. Logo todo elemento é central e $\\pi_1(X,x_0)$ é abeliano.\n\n**($\\Rightarrow$).** Se $\\pi_1(X,x_0)$ é abeliano, a conjugação por qualquer $[c]$ é a identidade, então $\\beta_h=c_{[c]}\\circ\\beta_{h'}=\\beta_{h'}$ para todos $h,h'$ com os mesmos extremos.\n\n**Conclusão.** Os dois lados são equivalentes. $\\blacksquare$",
+          "steps": [
+            "Dados dois caminhos $h,h'$ de $x_0$ a $x_1$, forme o laço $c=h\\cdot\\bar{h'}$ baseado em $x_0$.",
+            "Mostre a identidade $\\beta_h([\\gamma])=[c]\\,\\beta_{h'}([\\gamma])\\,[c]^{-1}$, ou seja $\\beta_h=($conjugação por $[c])\\circ\\beta_{h'}$.",
+            "Para ($\\Leftarrow$): $\\beta_h=\\beta_{h'}$ força $[c]$ central; como $X$ é conexo por caminhos, $[c]$ varre todo o grupo, logo é abeliano.",
+            "Para ($\\Rightarrow$): grupo abeliano torna toda conjugação trivial, logo $\\beta_h=\\beta_{h'}$."
+          ]
+        },
+        {
+          "prompt": "Deduza o Teorema Fundamental da Álgebra: todo polinômio complexo não constante tem raiz, usando $\\pi_1(S^1)\\cong\\mathbb{Z}$.",
+          "hint": "Se $p$ não tem raiz, $f_r(z)=p(rz)/|p(rz)|$ define laços em $S^1$; para $r=0$ é constante (grau 0), e para $r$ grande tem grau $=\\deg p$. Continuidade força $\\deg p=0$.",
+          "difficulty": 4,
+          "solution": "**Teorema Fundamental da Álgebra.** Todo polinômio $p(z)=z^n+a_{n-1}z^{n-1}+\\cdots+a_0$ com $n\\ge1$ tem raiz em $\\mathbb{C}$.\n\n**Suposição por absurdo.** Suponha $p(z)\\neq0$ para todo $z$. Para cada $r\\ge0$ defina o laço em $S^1$\n$$f_r(s)=\\frac{p(re^{2\\pi i s})/p(r)}{\\,|p(re^{2\\pi i s})/p(r)|\\,},\\qquad s\\in[0,1],$$\nbaseado em $1$ (normalizamos por $p(r)$ para fixar o ponto base). Como $p$ não tem raiz, $f_r$ está bem definido e é contínuo em $(r,s)$; logo todos os $f_r$ são homotópicos entre si (variando $r$), e $[f_r]\\in\\pi_1(S^1,1)\\cong\\mathbb{Z}$ tem grau constante.\n\n**Grau em $r=0$.** $f_0$ é o laço constante em $1$, logo $\\deg f_0=0$. Por continuidade, $\\deg f_r=0$ para todo $r$.\n\n**Grau em $r$ grande.** Escolha $R>\\max\\{1,\\ |a_{n-1}|+\\cdots+|a_0|\\}$. Para $|z|=R$,\n$$|z^n|=R^n> R^{n-1}(|a_{n-1}|+\\cdots+|a_0|)\\ge|a_{n-1}z^{n-1}+\\cdots+a_0|.$$\nEntão a homotopia $p_t(z)=z^n+t(a_{n-1}z^{n-1}+\\cdots+a_0)$, $t\\in[0,1]$, nunca se anula em $|z|=R$ (o termo dominante $z^n$ supera o resto). Normalizando, $f_R$ é homotópico ao laço $s\\mapsto e^{2\\pi i n s}$, que tem grau $n$. Logo $\\deg f_R=n$.\n\n**Contradição.** $0=\\deg f_R=n$, contrariando $n\\ge1$. Portanto $p$ tem raiz. $\\blacksquare$",
+          "steps": [
+            "Suponha $p$ sem raiz e defina os laços $f_r(s)=p(re^{2\\pi i s})/|p(re^{2\\pi i s})|$ (normalizados) em $S^1$.",
+            "Observe que a família é contínua em $r$, logo $\\deg f_r$ é constante; em $r=0$ o laço é constante e $\\deg=0$.",
+            "Para $R$ grande, use a estimativa $|z^n|>|$termos inferiores$|$ em $|z|=R$ para construir uma homotopia até $z^n$, obtendo $\\deg f_R=n$.",
+            "Iguale os graus: $0=n$, absurdo pois $n\\ge1$; conclua que $p$ tem raiz."
+          ]
+        },
+        {
+          "prompt": "Calcule $\\pi_1$ do cilindro $S^1\\times[0,1]$ e do toro $S^1\\times S^1$, justificando por invariância homotópica e pela fórmula do produto.",
+          "hint": "O cilindro se retrai sobre $S^1$, logo $\\pi_1=\\mathbb{Z}$. Para o toro use $\\pi_1(X\\times Y)\\cong\\pi_1(X)\\times\\pi_1(Y)$.",
+          "difficulty": 2,
+          "solution": "**Cilindro $S^1\\times[0,1]$.** A projeção na primeira coordenada dá uma retração por deformação sobre $S^1\\times\\{0\\}$: $H((x,t),s)=(x,(1-s)t)$ é contínua, começa na identidade, termina em $(x,0)$ e fixa $S^1\\times\\{0\\}$. Logo o cilindro tem o tipo de homotopia de $S^1$, e por invariância homotópica de $\\pi_1$,\n$$\\pi_1(S^1\\times[0,1])\\cong\\pi_1(S^1)\\cong\\mathbb{Z}.$$\n\n**Toro $S^1\\times S^1$.** Como $S^1$ é conexo por caminhos, aplica-se a fórmula do produto\n$$\\pi_1(X\\times Y,(x_0,y_0))\\cong\\pi_1(X,x_0)\\times\\pi_1(Y,y_0),$$\nvia o isomorfismo induzido pelas projeções $(p_{1*},p_{2*})$. Portanto\n$$\\pi_1(S^1\\times S^1)\\cong\\pi_1(S^1)\\times\\pi_1(S^1)\\cong\\mathbb{Z}\\times\\mathbb{Z}=\\mathbb{Z}^2.$$\n\n**Comentário.** Os dois geradores de $\\mathbb{Z}^2$ correspondem aos dois círculos meridiano e paralelo do toro; note que $\\pi_1(T^2)$ é abeliano, coerente com o fato de que produtos de espaços dão produtos diretos de grupos. $\\blacksquare$",
+          "steps": [
+            "Para o cilindro, exiba a retração por deformação $H((x,t),s)=(x,(1-s)t)$ sobre $S^1\\times\\{0\\}$.",
+            "Aplique invariância homotópica de $\\pi_1$ para obter $\\pi_1(\\text{cilindro})\\cong\\pi_1(S^1)=\\mathbb{Z}$.",
+            "Para o toro, invoque a fórmula do produto $\\pi_1(X\\times Y)\\cong\\pi_1(X)\\times\\pi_1(Y)$ (válida pois $S^1$ é conexo por caminhos).",
+            "Conclua $\\pi_1(T^2)\\cong\\mathbb{Z}\\times\\mathbb{Z}=\\mathbb{Z}^2$, gerado pelos dois círculos."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de $\\pi_1(X,x_0)$.",
+          "back": "Grupo das classes de homotopia rel extremos de laços baseados em $x_0$, com operação dada pela concatenação $[\\gamma][\\delta]=[\\gamma\\cdot\\delta]$."
+        },
+        {
+          "front": "Quem é o inverso de $[\\gamma]$ em $\\pi_1$?",
+          "back": "A classe do caminho reverso $[\\bar\\gamma]$, com $\\bar\\gamma(s)=\\gamma(1-s)$."
+        },
+        {
+          "front": "O que faz a mudança de ponto base $\\beta_h$?",
+          "back": "$\\beta_h([\\gamma])=[h\\cdot\\gamma\\cdot\\bar h]$ é isomorfismo $\\pi_1(X,x_1)\\cong\\pi_1(X,x_0)$ (não canônico)."
+        },
+        {
+          "front": "Functorialidade de $\\pi_1$: o que vale para $f_*$?",
+          "back": "$(\\mathrm{id})_*=\\mathrm{id}$ e $(g\\circ f)_*=g_*\\circ f_*$, com $f_*([\\gamma])=[f\\circ\\gamma]$."
+        },
+        {
+          "front": "$\\pi_1(S^1)=?$",
+          "back": "$\\mathbb{Z}$, gerado pela classe do laço de uma volta; o isomorfismo é o número de voltas (grau)."
+        },
+        {
+          "front": "$\\pi_1(X\\times Y)=?$ (espaços conexos por caminhos)",
+          "back": "$\\pi_1(X)\\times\\pi_1(Y)$; em particular $\\pi_1(T^n)=\\mathbb{Z}^n$."
+        },
+        {
+          "front": "O que é espaço simplesmente conexo?",
+          "back": "Conexo por caminhos e com $\\pi_1$ trivial; todo par de caminhos de mesmos extremos é homotópico rel extremos."
+        },
+        {
+          "front": "Por que não há retração $D^2\\to S^1$?",
+          "back": "Daria $r_*\\circ i_*=\\mathrm{id}_{\\mathbb{Z}}$ fatorando por $\\pi_1(D^2)=0$, impossível. (Base do ponto fixo de Brouwer.)"
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Hatcher, Algebraic Topology — seções 1.1, 1.2",
+          "ref": "livro"
+        },
+        {
+          "title": "Munkres, Topology — caps. 9, 11",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude Hatcher §1.1 (ou Munkres cap. 9) e escreva a definição de concatenação de caminhos, a operação em $\\pi_1$ e a verificação dos axiomas de grupo (associatividade via reparametrização, neutro, inverso).",
+          "Assista a uma aula sobre grupo fundamental e reproduza os diagramas de homotopia que provam associatividade e a existência de inverso $[\\bar\\gamma]$.",
+          "Trabalhe o cálculo $\\pi_1(S^1)\\cong\\mathbb{Z}$ (por enquanto como resultado) e a functorialidade $f_*$, aplicando à prova do ponto fixo de Brouwer no disco e ao Teorema Fundamental da Álgebra.",
+          "Pratique: calcule $\\pi_1$ do cilindro, do toro e de espaços contráteis usando invariância homotópica e a fórmula do produto $\\pi_1(X\\times Y)\\cong\\pi_1(X)\\times\\pi_1(Y)$.",
+          "Resolva os testes deste tópico aqui no app e anote o principal: axiomas de grupo, mudança de base $\\beta_h$, functorialidade e o cálculo-pedra $\\pi_1(S^1)=\\mathbb{Z}$."
+        ],
+        "searchQueries": [
+          "grupo fundamental definição concatenação de caminhos demonstração",
+          "isomorfismo de mudança de ponto base beta_h prova",
+          "pi_1 do círculo é Z winding number demonstração",
+          "fundamental group functoriality induced homomorphism proof",
+          "teorema fundamental da álgebra via grupo fundamental do círculo",
+          "Brouwer fixed point theorem D^2 via pi_1 retraction"
+        ],
+        "videos": [
+          {
+            "title": "Algebraic Topology — aulas sobre o grupo fundamental",
+            "channel": "Pierre Albin (YouTube)",
+            "note": "Cobre concatenação, axiomas de grupo, $\\pi_1(S^1)$ e functorialidade em detalhe."
+          },
+          {
+            "title": "The Fundamental Group",
+            "channel": "Richard Wong (YouTube)",
+            "note": "Explica $\\pi_1$ com foco intuitivo em laços e homotopia rel extremos."
+          },
+          {
+            "title": "18.905 Algebraic Topology I — fundamental group",
+            "channel": "MIT OpenCourseWare",
+            "note": "Notas de aula com a construção de $\\pi_1$ e o cálculo de $\\pi_1(S^1)$."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Hatcher, Algebraic Topology — §1.1 (The Fundamental Group)",
+            "where": "PDF gratuito em pi.math.cornell.edu/~hatcher"
+          },
+          {
+            "title": "Munkres, Topology — cap. 9 (The Fundamental Group)",
+            "where": "livro-texto (2ª ed.)"
+          },
+          {
+            "title": "nLab — verbete 'fundamental group'",
+            "where": "ncatlab.org"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-algebrica-03-espacos-de-recobrimento",
+      "title": "Espaços de recobrimento",
+      "tagline": "Desenrolar um espaço numa cobertura múltipla converte laços em caminhos e geometriza os subgrupos de $\\pi_1$.",
+      "objectives": [
+        "Definir recobrimento e vizinhança uniformemente coberta, e reconhecer exemplos como $\\mathbb{R}\\to S^1$ e $S^n\\to\\mathbb{R}P^n$.",
+        "Demonstrar e aplicar o levantamento de caminhos e de homotopias, com unicidade.",
+        "Provar que $p_*$ é injetiva e calcular $\\pi_1(S^1)$ rigorosamente via recobrimento.",
+        "Enunciar o critério de levantamento de aplicações e a ação de monodromia.",
+        "Descrever a correspondência de Galois entre recobrimentos e subgrupos de $\\pi_1$, o recobrimento universal e as transformações de deck."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Espaço de recobrimento",
+          "statement": "Uma aplicação contínua e sobrejetora $p:\\tilde X\\to X$ é um recobrimento se todo $x\\in X$ tem vizinhança aberta $U$ uniformemente coberta: $p^{-1}(U)=\\bigsqcup_{\\alpha}V_\\alpha$ é união disjunta de abertos, cada um aplicado homeomorficamente sobre $U$ por $p$. As $V_\\alpha$ são as folhas sobre $U$."
+        },
+        {
+          "term": "Levantamento",
+          "statement": "Um levantamento de $f:Y\\to X$ por $p$ é uma aplicação contínua $\\tilde f:Y\\to\\tilde X$ com $p\\circ\\tilde f=f$. Para caminhos e homotopias, fixada a imagem inicial, o levantamento existe e é único."
+        },
+        {
+          "term": "Recobrimento universal",
+          "statement": "Um recobrimento $p:\\tilde X\\to X$ com $\\tilde X$ simplesmente conexo. Existe (sob hipóteses brandas: $X$ conexo por caminhos, localmente conexo por caminhos e semilocalmente simplesmente conexo) e é único a menos de isomorfismo; cobre todos os demais recobrimentos conexos."
+        },
+        {
+          "term": "Transformação de deck (automorfismo de recobrimento)",
+          "statement": "Um homeomorfismo $\\varphi:\\tilde X\\to\\tilde X$ com $p\\circ\\varphi=p$. Formam um grupo $\\mathrm{Deck}(\\tilde X/X)$; para o recobrimento universal $\\mathrm{Deck}\\cong\\pi_1(X)$, agindo por permutar as folhas."
+        },
+        {
+          "term": "Recobrimento normal (regular)",
+          "statement": "Recobrimento conexo cujo subgrupo associado $p_*\\pi_1(\\tilde X,\\tilde x_0)$ é normal em $\\pi_1(X,x_0)$; equivale a $\\mathrm{Deck}$ agir transitivamente em cada fibra, e então $\\mathrm{Deck}\\cong\\pi_1(X)/p_*\\pi_1(\\tilde X)$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Levantamento de caminhos e de homotopias",
+          "statement": "Seja $p:\\tilde X\\to X$ recobrimento, $\\tilde x_0\\in p^{-1}(x_0)$. Todo caminho $\\gamma$ em $X$ com $\\gamma(0)=x_0$ admite único levantamento $\\tilde\\gamma$ com $\\tilde\\gamma(0)=\\tilde x_0$. Toda homotopia $H:Y\\times[0,1]\\to X$ se levanta de modo único fixado o nível inicial; em particular homotopias de caminhos levantam a homotopias de caminhos.",
+          "whyItMatters": "É o motor de todos os cálculos com recobrimentos. Garante que o grau de um laço em $S^1$ está bem definido e que $p_*$ é injetiva, transformando perguntas sobre laços em $X$ em perguntas sobre extremos de caminhos em $\\tilde X$."
+        },
+        {
+          "name": "$p_*$ injetiva e $\\pi_1(S^1)\\cong\\mathbb{Z}$",
+          "statement": "Para todo recobrimento, $p_*:\\pi_1(\\tilde X,\\tilde x_0)\\to\\pi_1(X,x_0)$ é injetiva. Aplicando ao recobrimento $p:\\mathbb{R}\\to S^1$, a função que leva $[\\gamma]$ ao extremo $\\tilde\\gamma(1)\\in p^{-1}(1)=\\mathbb{Z}$ é isomorfismo $\\pi_1(S^1)\\cong\\mathbb{Z}$.",
+          "whyItMatters": "Dá a prova limpa e definitiva de $\\pi_1(S^1)=\\mathbb{Z}$ e o modelo de toda a teoria: o grupo fundamental aparece como o grupo de monodromia atuando na fibra."
+        },
+        {
+          "name": "Critério de levantamento",
+          "statement": "Seja $p:(\\tilde X,\\tilde x_0)\\to(X,x_0)$ recobrimento e $f:(Y,y_0)\\to(X,x_0)$ com $Y$ conexo e localmente conexo por caminhos. Existe levantamento $\\tilde f$ com $\\tilde f(y_0)=\\tilde x_0$ se, e somente se, $f_*\\pi_1(Y,y_0)\\subseteq p_*\\pi_1(\\tilde X,\\tilde x_0)$. Quando existe, é único.",
+          "whyItMatters": "Reduz a existência de levantamentos a uma condição puramente algébrica de inclusão de subgrupos — o coração da correspondência de Galois dos recobrimentos."
+        },
+        {
+          "name": "Correspondência de Galois dos recobrimentos",
+          "statement": "Para $X$ conexo, localmente conexo por caminhos e semilocalmente simplesmente conexo, há bijeção entre classes de isomorfismo de recobrimentos conexos pontuados de $X$ e subgrupos de $\\pi_1(X,x_0)$, dada por $(\\tilde X,\\tilde x_0)\\mapsto p_*\\pi_1(\\tilde X,\\tilde x_0)$. Recobrimentos normais correspondem a subgrupos normais; o universal corresponde ao subgrupo trivial.",
+          "whyItMatters": "É o análogo topológico da teoria de Galois: a estrutura de subgrupos de $\\pi_1$ é exatamente a estrutura dos recobrimentos. Permite construir recobrimentos sob medida para resolver problemas (ex.: subgrupos de grupos livres são livres, via recobrimentos de grafos)."
+        }
+      ],
+      "summary": "Um recobrimento $p:\\tilde X\\to X$ é uma projeção que, localmente, é uma pilha de cópias de $X$: cada ponto tem uma vizinhança cujos pré-imagens são folhas homeomorfas a ela. O exemplo arquetípico é a reta enrolando-se no círculo, $p(t)=(\\cos 2\\pi t,\\sin 2\\pi t)$, com fibra $\\mathbb{Z}$. A propriedade técnica central é o levantamento único de caminhos e homotopias: dado o ponto inicial na cobertura, todo caminho lá embaixo sobe de maneira única. Isso converte um laço em $X$ num caminho em $\\tilde X$ cujo extremo final mede quanto o laço deu de volta — a monodromia.\\n\\nDessa máquina saem três frutos. Primeiro, $p_*$ é injetiva, e o recobrimento $\\mathbb{R}\\to S^1$ prova $\\pi_1(S^1)\\cong\\mathbb{Z}$ contando extremos na fibra. Segundo, o critério de levantamento reduz a existência de aplicações levantadas à inclusão algébrica $f_*\\pi_1(Y)\\subseteq p_*\\pi_1(\\tilde X)$. Terceiro, e culminante, a correspondência de Galois: sob hipóteses brandas em $X$, os recobrimentos conexos correspondem biunivocamente aos subgrupos de $\\pi_1(X)$, com o recobrimento universal (simplesmente conexo) no topo correspondendo ao subgrupo trivial, e as transformações de deck do universal recuperando o próprio $\\pi_1(X)$. Recobrimentos não são só exemplos: são a maneira geométrica de enxergar e manipular o grupo fundamental.",
+      "commonPitfalls": [
+        "Confundir recobrimento com fibração ou com aplicação aberta qualquer. A condição é forte: existe vizinhança uniformemente coberta, com folhas DISJUNTAS homeomorfas à base.",
+        "Esquecer a hipótese semilocalmente simplesmente conexo para a existência do recobrimento universal. Sem ela (ex.: brincos havaianos) o universal pode não existir.",
+        "Achar que $p_*$ é sobrejetiva. Em geral $p_*\\pi_1(\\tilde X)$ é subgrupo próprio de $\\pi_1(X)$; o índice é o número de folhas (para recobrimentos conexos).",
+        "Tomar levantamento sem fixar o ponto inicial. O levantamento é único apenas após escolher a imagem de um ponto base; sem isso há tantos quanto a fibra."
+      ],
+      "worked": "**Exemplo ($\\pi_1(S^1)\\cong\\mathbb{Z}$ via recobrimento).** Seja $p:\\mathbb{R}\\to S^1$, $p(t)=(\\cos 2\\pi t,\\sin 2\\pi t)$, recobrimento com $p^{-1}(1)=\\mathbb{Z}$ e ponto base $\\tilde x_0=0$.\\n\\nDado um laço $\\gamma$ em $S^1$ baseado em $1$, o levantamento $\\tilde\\gamma$ com $\\tilde\\gamma(0)=0$ termina em algum inteiro $\\tilde\\gamma(1)=n\\in\\mathbb{Z}$, pois $p(\\tilde\\gamma(1))=\\gamma(1)=1$. Defina $\\deg([\\gamma])=n$.\\n\\n*Bem definido:* homotopias de laços levantam a homotopias rel extremos, logo o extremo final $n$ não muda dentro da classe. *Homomorfismo:* o levantamento de $\\gamma\\cdot\\delta$ é $\\tilde\\gamma$ seguido de uma translação por $n=\\deg\\gamma$ do levantamento de $\\delta$, terminando em $\\deg\\gamma+\\deg\\delta$. *Sobrejetor:* o laço $\\omega_n(s)=p(ns)$ tem grau $n$. *Injetor:* se $\\deg\\gamma=0$, então $\\tilde\\gamma$ é laço em $\\mathbb{R}$, que é contrátil, e descendo a contração obtemos $\\gamma\\simeq e$. Logo $\\deg:\\pi_1(S^1,1)\\to\\mathbb{Z}$ é isomorfismo.",
+      "exercises": [
+        {
+          "prompt": "Mostre que $p:S^n\\to\\mathbb{R}P^n$, $x\\mapsto[x]$ (identificando antípodas), é recobrimento de duas folhas. Use-o para concluir, para $n\\ge 2$, que $\\pi_1(\\mathbb{R}P^n)\\cong\\mathbb{Z}/2$.",
+          "hint": "Vizinhanças pequenas em $\\mathbb{R}P^n$ levantam a dois hemisférios opostos. Como $S^n$ é simplesmente conexo para $n\\ge2$, ele é o recobrimento universal e $\\mathrm{Deck}\\cong\\pi_1=\\mathbb{Z}/2$.",
+          "difficulty": 3,
+          "solution": "**Parte 1: $p:S^n\\to\\mathbb{R}P^n$ é recobrimento de 2 folhas.** Por definição $\\mathbb{R}P^n=S^n/\\{\\pm1\\}$, com $p(x)=[x]=\\{x,-x\\}$; $p$ é contínua e sobrejetora. Dado $[x_0]$, escolha $\\varepsilon<1$ e o aberto $U=\\{[x]:\\ x\\cdot x_0>0,\\ \\|x-x_0/\\|x_0\\|\\|<\\varepsilon\\}$ (uma calota pequena). Sua pré-imagem é $p^{-1}(U)=V_+\\sqcup V_-$, onde $V_+$ é a calota em torno de $x_0$ e $V_-=-V_+$ a calota antipodal; ambas são disjuntas (pois $\\varepsilon$ pequeno impede que uma calota contenha pontos antipodais) e $p|_{V_\\pm}:V_\\pm\\to U$ é homeomorfismo. Logo $U$ é uniformemente coberto por 2 folhas, e $p$ é recobrimento de 2 folhas.\n\n**Parte 2: $\\pi_1(\\mathbb{R}P^n)\\cong\\mathbb{Z}/2$ para $n\\ge2$.** Para $n\\ge2$, $S^n$ é simplesmente conexo ($\\pi_1(S^n)=0$). Um recobrimento com espaço total simplesmente conexo é o recobrimento universal, então $S^n\\to\\mathbb{R}P^n$ é universal. Para recobrimento universal vale $\\mathrm{Deck}(S^n/\\mathbb{R}P^n)\\cong\\pi_1(\\mathbb{R}P^n)$. As transformações de deck são os homeomorfismos $\\varphi$ de $S^n$ com $p\\circ\\varphi=p$: cada $\\varphi(x)\\in\\{x,-x\\}$, e por continuidade $\\varphi=\\mathrm{id}$ ou $\\varphi=(x\\mapsto-x)$. Assim $\\mathrm{Deck}=\\{\\mathrm{id},\\ \\text{antípoda}\\}\\cong\\mathbb{Z}/2$. Logo\n$$\\pi_1(\\mathbb{R}P^n)\\cong\\mathbb{Z}/2\\quad(n\\ge2).\\qquad\\blacksquare$$\n\n**Nota.** Para $n=1$, $\\mathbb{R}P^1\\cong S^1$ e $\\pi_1=\\mathbb{Z}$: aqui $S^1\\to\\mathbb{R}P^1$ NÃO é universal pois $S^1$ não é simplesmente conexo; por isso a hipótese $n\\ge2$.",
+          "steps": [
+            "Verifique que calotas pequenas em $\\mathbb{R}P^n$ têm pré-imagem = duas calotas antipodais disjuntas, cada uma homeomorfa à base: recobrimento de 2 folhas.",
+            "Use $\\pi_1(S^n)=0$ para $n\\ge2$ para concluir que $S^n\\to\\mathbb{R}P^n$ é o recobrimento universal.",
+            "Identifique as transformações de deck: só a identidade e a aplicação antipodal, pois $\\varphi(x)\\in\\{x,-x\\}$ e continuidade fixa o sinal globalmente.",
+            "Aplique $\\mathrm{Deck}\\cong\\pi_1$ (recobrimento universal) para obter $\\pi_1(\\mathbb{R}P^n)\\cong\\mathbb{Z}/2$."
+          ]
+        },
+        {
+          "prompt": "Prove a unicidade do levantamento: se $\\tilde f_1,\\tilde f_2:Y\\to\\tilde X$ levantam $f$ com $Y$ conexo e coincidem num ponto, então $\\tilde f_1=\\tilde f_2$.",
+          "hint": "Mostre que o conjunto onde coincidem é aberto e fechado, usando vizinhanças uniformemente cobertas e que as folhas são disjuntas.",
+          "difficulty": 4,
+          "solution": "**Unicidade do levantamento.** Sejam $\\tilde f_1,\\tilde f_2:Y\\to\\tilde X$ contínuas com $p\\circ\\tilde f_1=p\\circ\\tilde f_2=f$, $Y$ conexo, e suponha que coincidem em algum $y_*\\in Y$. Considere\n$$A=\\{y\\in Y:\\ \\tilde f_1(y)=\\tilde f_2(y)\\}.$$\n$A\\neq\\varnothing$ (contém $y_*$). Mostramos que $A$ é aberto e fechado.\n\n**Cada ponto tem vizinhança onde os levantamentos ficam presos a folhas.** Fixe $y\\in Y$; seja $U$ vizinhança uniformemente coberta de $f(y)$, com $p^{-1}(U)=\\bigsqcup_\\alpha V_\\alpha$ (folhas disjuntas). Sejam $V_1\\ni\\tilde f_1(y)$ e $V_2\\ni\\tilde f_2(y)$ as folhas correspondentes. Por continuidade de $\\tilde f_1,\\tilde f_2$, existe vizinhança $W\\ni y$ com $\\tilde f_i(W)\\subseteq V_i$.\n\n**$A$ aberto.** Se $y\\in A$, então $\\tilde f_1(y)=\\tilde f_2(y)$, logo $V_1=V_2=:V$. Em $W$, ambos $\\tilde f_i$ satisfazem $p\\circ\\tilde f_i=f$ e caem em $V$; como $p|_V:V\\to U$ é homeomorfismo, $\\tilde f_i|_W=(p|_V)^{-1}\\circ f|_W$, logo $\\tilde f_1=\\tilde f_2$ em $W$. Então $W\\subseteq A$ e $A$ é aberto.\n\n**$A$ fechado (complemento aberto).** Se $y\\notin A$, então $\\tilde f_1(y)\\neq\\tilde f_2(y)$; como pertencem à mesma fibra $p^{-1}(f(y))$, estão em folhas DISJUNTAS, $V_1\\cap V_2=\\varnothing$. Em $W$, $\\tilde f_1(W)\\subseteq V_1$ e $\\tilde f_2(W)\\subseteq V_2$ disjuntos, logo $\\tilde f_1\\neq\\tilde f_2$ em todo $W$. Então $W\\subseteq Y\\setminus A$, e $A$ é fechado.\n\n**Conclusão.** $A$ é aberto, fechado e não vazio em $Y$ conexo, logo $A=Y$: $\\tilde f_1=\\tilde f_2$. $\\blacksquare$",
+          "steps": [
+            "Defina $A=\\{y:\\tilde f_1(y)=\\tilde f_2(y)\\}$, não vazio por hipótese; a estratégia é mostrar $A$ aberto e fechado.",
+            "Perto de cada $y$, use uma vizinhança uniformemente coberta e a continuidade para prender $\\tilde f_i$ a folhas $V_i$.",
+            "Se $y\\in A$ as folhas coincidem e $\\tilde f_i=(p|_V)^{-1}\\circ f$ localmente: $A$ é aberto.",
+            "Se $y\\notin A$ as folhas são disjuntas e os levantamentos diferem numa vizinhança: $A$ é fechado. Por conexidade, $A=Y$."
+          ]
+        },
+        {
+          "prompt": "Use o critério de levantamento para mostrar que toda aplicação contínua $f:S^1\\to S^1$ levanta a $\\tilde f:S^1\\to\\mathbb{R}$ se, e só se, $\\deg f=0$.",
+          "hint": "$f_*$ multiplica por $\\deg f$ em $\\mathbb{Z}=\\pi_1(S^1)$; a imagem cabe em $p_*\\pi_1(\\mathbb{R})=0$ exatamente quando $\\deg f=0$.",
+          "difficulty": 4,
+          "solution": "**Enunciado.** $f:S^1\\to S^1$ contínua levanta a $\\tilde f:S^1\\to\\mathbb{R}$ (com $p\\circ\\tilde f=f$, onde $p:\\mathbb{R}\\to S^1$, $p(t)=e^{2\\pi i t}$) se, e só se, $\\deg f=0$.\n\n**Aplicando o critério de levantamento.** $S^1$ é conexo e localmente conexo por caminhos, então vale o critério: existe levantamento $\\tilde f$ (com ponto base compatível) se, e somente se,\n$$f_*\\,\\pi_1(S^1,x_0)\\ \\subseteq\\ p_*\\,\\pi_1(\\mathbb{R},t_0).$$\n\n**Os dois lados.** Como $\\mathbb{R}$ é contrátil, $\\pi_1(\\mathbb{R})=0$, logo $p_*\\pi_1(\\mathbb{R})=0$ (subgrupo trivial de $\\mathbb{Z}$). Por outro lado, identificando $\\pi_1(S^1)=\\mathbb{Z}$, o homomorfismo induzido $f_*:\\mathbb{Z}\\to\\mathbb{Z}$ é a multiplicação por $\\deg f$ (por definição do grau). Assim $f_*\\pi_1(S^1)=\\deg f\\cdot\\mathbb{Z}$.\n\n**Conclusão.** A inclusão $\\deg f\\cdot\\mathbb{Z}\\subseteq0$ vale exatamente quando $\\deg f=0$. Portanto o levantamento $\\tilde f:S^1\\to\\mathbb{R}$ existe se, e só se, $\\deg f=0$. $\\blacksquare$\n\n**Interpretação.** Se $\\deg f\\neq0$, o laço $f$ dá voltas líquidas em $S^1$ e não pode ser \"desenrolado\" na reta; se $\\deg f=0$, $f$ é homotópico a constante e sobe a $\\mathbb{R}$.",
+          "steps": [
+            "Reconheça que se trata de aplicar o critério de levantamento com o recobrimento $p:\\mathbb{R}\\to S^1$.",
+            "Calcule os subgrupos: $p_*\\pi_1(\\mathbb{R})=0$ e $f_*\\pi_1(S^1)=\\deg f\\cdot\\mathbb{Z}$ (o induzido é multiplicação por $\\deg f$).",
+            "Traduza a condição $f_*\\pi_1(S^1)\\subseteq p_*\\pi_1(\\mathbb{R})$ em $\\deg f\\cdot\\mathbb{Z}\\subseteq 0$.",
+            "Conclua que isso ocorre exatamente quando $\\deg f=0$, dando a equivalência."
+          ]
+        },
+        {
+          "prompt": "Para o recobrimento universal $p:\\tilde X\\to X$, prove que $\\mathrm{Deck}(\\tilde X/X)\\cong\\pi_1(X,x_0)$.",
+          "hint": "Fixe $\\tilde x_0$. A cada $[\\gamma]\\in\\pi_1(X)$ associe a única deck que leva $\\tilde x_0$ no extremo do levantamento de $\\gamma$. Mostre que é isomorfismo usando unicidade de levantamento.",
+          "difficulty": 5,
+          "solution": "**Objetivo.** Para $p:\\tilde X\\to X$ recobrimento universal ($\\tilde X$ simplesmente conexo, $X$ conexo, localmente conexo por caminhos), mostrar $\\mathrm{Deck}(\\tilde X/X)\\cong\\pi_1(X,x_0)$.\n\n**Construção do isomorfismo.** Fixe $\\tilde x_0\\in p^{-1}(x_0)$. Dado $[\\gamma]\\in\\pi_1(X,x_0)$, levante $\\gamma$ a $\\tilde\\gamma$ com $\\tilde\\gamma(0)=\\tilde x_0$; seja $\\tilde x_1=\\tilde\\gamma(1)\\in p^{-1}(x_0)$. Pelo critério de levantamento aplicado a $p:(\\tilde X,\\tilde x_0)\\to(X,x_0)$ e à própria $p:(\\tilde X,\\tilde x_1)\\to(X,x_0)$ (a condição de subgrupos é vacuamente satisfeita pois $\\pi_1(\\tilde X)=0$), existe único levantamento $\\varphi_{[\\gamma]}:\\tilde X\\to\\tilde X$ de $p$ com $\\varphi_{[\\gamma]}(\\tilde x_0)=\\tilde x_1$; ele satisfaz $p\\circ\\varphi_{[\\gamma]}=p$. Aplicando o mesmo a $\\tilde x_1\\to\\tilde x_0$ obtém-se a inversa, logo $\\varphi_{[\\gamma]}$ é homeomorfismo, i.e., transformação de deck. Defina $\\Phi([\\gamma])=\\varphi_{[\\gamma]}$.\n\n**Bem definido.** Se $\\gamma\\simeq\\gamma'$ rel extremos, os levantamentos têm o mesmo extremo $\\tilde x_1$ (levantamento de homotopias), logo $\\varphi_{[\\gamma]}=\\varphi_{[\\gamma']}$ pela unicidade de levantamento.\n\n**Homomorfismo.** Levante primeiro $\\gamma$ e depois $\\delta$ transladado por $\\varphi_{[\\gamma]}$: o levantamento de $\\gamma\\cdot\\delta$ a partir de $\\tilde x_0$ termina em $\\varphi_{[\\gamma]}(\\text{extremo do levantamento de }\\delta)$, de onde $\\Phi([\\gamma][\\delta])=\\varphi_{[\\gamma]}\\circ\\varphi_{[\\delta]}=\\Phi([\\gamma])\\circ\\Phi([\\delta])$.\n\n**Injetora.** Se $\\varphi_{[\\gamma]}=\\mathrm{id}$, então $\\tilde x_1=\\tilde x_0$, ou seja $\\tilde\\gamma$ é laço em $\\tilde X$; como $\\pi_1(\\tilde X)=0$, $\\tilde\\gamma\\simeq$ constante e descendo por $p$ obtemos $\\gamma\\simeq e_{x_0}$, i.e., $[\\gamma]=1$.\n\n**Sobrejetora.** Dada uma deck $\\psi$, tome um caminho $\\tilde\\eta$ em $\\tilde X$ de $\\tilde x_0$ a $\\psi(\\tilde x_0)$ (existe, $\\tilde X$ conexo por caminhos); então $\\gamma=p\\circ\\tilde\\eta$ é laço em $x_0$ e $\\varphi_{[\\gamma]}$ e $\\psi$ são ambas decks levando $\\tilde x_0$ a $\\psi(\\tilde x_0)$; por unicidade $\\varphi_{[\\gamma]}=\\psi$.\n\n**Conclusão.** $\\Phi$ é isomorfismo, $\\mathrm{Deck}(\\tilde X/X)\\cong\\pi_1(X,x_0)$. $\\blacksquare$",
+          "steps": [
+            "Fixe $\\tilde x_0$ e associe a cada $[\\gamma]$ o extremo $\\tilde x_1$ do levantamento de $\\gamma$; use o critério de levantamento para obter a deck $\\varphi_{[\\gamma]}$ com $\\varphi_{[\\gamma]}(\\tilde x_0)=\\tilde x_1$.",
+            "Verifique que $\\Phi([\\gamma])=\\varphi_{[\\gamma]}$ está bem definido (levantamento de homotopias) e é homomorfismo (concatenação e translação por $\\varphi_{[\\gamma]}$).",
+            "Injetividade: $\\varphi_{[\\gamma]}=\\mathrm{id}$ força $\\tilde\\gamma$ laço em $\\tilde X$ simplesmente conexo, logo $[\\gamma]=1$.",
+            "Sobrejetividade: qualquer deck $\\psi$ vem do laço $p\\circ\\tilde\\eta$ com $\\tilde\\eta$ ligando $\\tilde x_0$ a $\\psi(\\tilde x_0)$; conclua o isomorfismo."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de recobrimento $p:\\tilde X\\to X$.",
+          "back": "Contínua e sobrejetora tal que todo ponto tem vizinhança $U$ com $p^{-1}(U)=\\bigsqcup V_\\alpha$, cada $V_\\alpha\\xrightarrow{\\ \\sim\\ }U$ homeomorfismo (folhas disjuntas)."
+        },
+        {
+          "front": "Propriedade de levantamento de caminhos.",
+          "back": "Fixado $\\tilde x_0\\in p^{-1}(\\gamma(0))$, todo caminho $\\gamma$ tem único levantamento $\\tilde\\gamma$ com $\\tilde\\gamma(0)=\\tilde x_0$."
+        },
+        {
+          "front": "Por que $\\pi_1(S^1)=\\mathbb{Z}$ via recobrimento?",
+          "back": "No recobrimento $\\mathbb{R}\\to S^1$, levanta-se cada laço e lê-se o extremo final em $p^{-1}(1)=\\mathbb{Z}$: é o grau, e dá isomorfismo."
+        },
+        {
+          "front": "$p_*$ é injetiva ou sobrejetiva?",
+          "back": "Sempre injetiva. Sua imagem $p_*\\pi_1(\\tilde X)$ tem índice em $\\pi_1(X)$ igual ao número de folhas."
+        },
+        {
+          "front": "Critério de levantamento de $f:(Y,y_0)\\to(X,x_0)$.",
+          "back": "Existe $\\tilde f$ ($Y$ conexo, localmente conexo por caminhos) sse $f_*\\pi_1(Y)\\subseteq p_*\\pi_1(\\tilde X)$; e é único."
+        },
+        {
+          "front": "O que é o recobrimento universal?",
+          "back": "Recobrimento com $\\tilde X$ simplesmente conexo; corresponde ao subgrupo trivial e cobre todos os demais."
+        },
+        {
+          "front": "Correspondência de Galois dos recobrimentos.",
+          "back": "Recobrimentos conexos $\\leftrightarrow$ subgrupos de $\\pi_1(X)$ via $p_*\\pi_1(\\tilde X)$; normais $\\leftrightarrow$ subgrupos normais."
+        },
+        {
+          "front": "$\\mathrm{Deck}$ do recobrimento universal $=$ ?",
+          "back": "$\\pi_1(X)$. Para recobrimento normal geral, $\\mathrm{Deck}\\cong\\pi_1(X)/p_*\\pi_1(\\tilde X)$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Hatcher, Algebraic Topology — seção 1.3",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Grupo Fundamental e Espaços de Recobrimento — caps. 4 a 6",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia Hatcher §1.3 (ou Elon, caps. 4-6) e escreva as definições de recobrimento, vizinhança uniformemente coberta, levantamento, recobrimento universal e transformação de deck, com os exemplos $\\mathbb{R}\\to S^1$ e $S^n\\to\\mathbb{R}P^n$.",
+          "Assista a uma aula sobre levantamento de caminhos e homotopias e refaça a demonstração da unicidade (argumento aberto-e-fechado) e da existência.",
+          "Prove novamente $\\pi_1(S^1)\\cong\\mathbb{Z}$ contando extremos na fibra de $\\mathbb{R}\\to S^1$; depois estude o critério de levantamento e a correspondência de Galois dos recobrimentos.",
+          "Faça exemplos concretos: $\\pi_1(\\mathbb{R}P^n)=\\mathbb{Z}/2$ para $n\\ge2$, recobrimentos de grafos, e a relação $\\mathrm{Deck}\\cong\\pi_1(X)$ no recobrimento universal.",
+          "Resolva os testes deste tópico aqui no app e anote o principal: levantamento único, injetividade de $p_*$, critério de levantamento e a analogia de Galois entre subgrupos de $\\pi_1$ e recobrimentos."
+        ],
+        "searchQueries": [
+          "espaço de recobrimento vizinhança uniformemente coberta definição",
+          "levantamento de caminhos e homotopias unicidade demonstração",
+          "critério de levantamento covering space lifting criterion proof",
+          "recobrimento universal transformações de deck pi_1 isomorfismo",
+          "S^n covering RP^n pi_1 = Z/2 antipodal map",
+          "Galois correspondence covering spaces subgroups fundamental group"
+        ],
+        "videos": [
+          {
+            "title": "Algebraic Topology — covering spaces",
+            "channel": "Pierre Albin (YouTube)",
+            "note": "Aulas sobre recobrimentos, levantamento, critério de levantamento e correspondência de Galois."
+          },
+          {
+            "title": "Covering Spaces",
+            "channel": "Richard Wong (YouTube)",
+            "note": "Boa intuição para folhas, monodromia e recobrimento universal."
+          },
+          {
+            "title": "18.905 Algebraic Topology I — covering spaces",
+            "channel": "MIT OpenCourseWare",
+            "note": "Notas com o cálculo de $\\pi_1(S^1)$ via recobrimento e a teoria de deck."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Hatcher, Algebraic Topology — §1.3 (Covering Spaces)",
+            "where": "PDF gratuito em pi.math.cornell.edu/~hatcher"
+          },
+          {
+            "title": "Elon Lages Lima, Grupo Fundamental e Espaços de Recobrimento — caps. 4 a 6",
+            "where": "Coleção Projeto Euclides, IMPA"
+          },
+          {
+            "title": "nLab — verbete 'covering space'",
+            "where": "ncatlab.org"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-algebrica-04-seifert-van-kampen",
+      "title": "Teorema de Seifert-van Kampen",
+      "tagline": "Decomponha o espaço em abertos e o grupo fundamental do todo é a colagem (pushout) dos grupos das partes.",
+      "objectives": [
+        "Definir produto livre de grupos e produto livre amalgamado, e apresentar grupos por geradores e relações.",
+        "Enunciar o Teorema de Seifert-van Kampen na versão de dois abertos com interseção conexa por caminhos.",
+        "Calcular $\\pi_1$ de wedges de círculos (grupos livres) e de $S^n$ para $n\\ge 2$.",
+        "Calcular $\\pi_1$ do toro, da garrafa de Klein e das superfícies compactas via apresentações.",
+        "Usar van Kampen para obter $\\pi_1$ de espaços construídos colando células 2."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Produto livre",
+          "statement": "O produto livre $G*H$ é o grupo das palavras reduzidas alternando letras de $G\\setminus\\{e\\}$ e $H\\setminus\\{e\\}$, com concatenação e redução. Satisfaz a propriedade universal: homomorfismos $G*H\\to K$ correspondem a pares de homomorfismos $G\\to K$, $H\\to K$ (coproduto na categoria de grupos)."
+        },
+        {
+          "term": "Produto livre amalgamado",
+          "statement": "Dado $K$ com homomorfismos $K\\to G$ e $K\\to H$, o amalgamado $G*_K H$ é o quociente de $G*H$ pelas relações que identificam as duas imagens de cada $k\\in K$. É o pushout do diagrama $G\\leftarrow K\\rightarrow H$ na categoria de grupos."
+        },
+        {
+          "term": "Apresentação de grupo",
+          "statement": "Uma apresentação $\\langle S\\mid R\\rangle$ descreve um grupo como o quociente do grupo livre $F(S)$ pelo menor subgrupo normal contendo as relações $R$. Ex.: $\\mathbb{Z}^2=\\langle a,b\\mid aba^{-1}b^{-1}\\rangle$."
+        },
+        {
+          "term": "Wedge (buquê) de espaços",
+          "statement": "O wedge $X\\vee Y$ é a união de $X$ e $Y$ colados num único ponto base. Para wedges de círculos $\\bigvee_{i=1}^n S^1$, van Kampen dá $\\pi_1\\cong F_n$, o grupo livre de posto $n$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Seifert-van Kampen",
+          "statement": "Seja $X=U\\cup V$ com $U,V$ abertos, conexos por caminhos, $U\\cap V$ conexo por caminhos e $x_0\\in U\\cap V$. Então $\\pi_1(X,x_0)$ é o pushout: $\\pi_1(X)\\cong\\pi_1(U)*_{\\pi_1(U\\cap V)}\\pi_1(V)$, isto é, $\\pi_1(U)*\\pi_1(V)$ módulo as relações $i_*(\\omega)=j_*(\\omega)$ para $\\omega\\in\\pi_1(U\\cap V)$, onde $i,j$ são as inclusões.",
+          "whyItMatters": "É a ferramenta-mestra para calcular grupos fundamentais. Reduz o cálculo de espaços complicados à colagem algébrica de pedaços simples, e fornece apresentações explícitas de $\\pi_1$ para superfícies e complexos CW."
+        },
+        {
+          "name": "Grupo fundamental de wedge de círculos",
+          "statement": "$\\pi_1\\!\\left(\\bigvee_{i=1}^n S^1\\right)\\cong F_n$, o grupo livre de posto $n$, com um gerador por círculo. Em particular a figura-oito tem $\\pi_1\\cong F_2$, não abeliano.",
+          "whyItMatters": "Mostra que $\\pi_1$ pode ser livre de posto arbitrário e não abeliano, e dá o protótipo de todo grafo: $\\pi_1$ de um grafo conexo é livre de posto igual ao número de arestas fora de uma árvore geradora."
+        },
+        {
+          "name": "$\\pi_1(S^n)=0$ para $n\\ge 2$",
+          "statement": "Para $n\\ge 2$, cobrindo $S^n$ por dois abertos contráteis (complementos de polos) com interseção conexa por caminhos, van Kampen dá $\\pi_1(S^n)=0$: a esfera de dimensão $\\ge 2$ é simplesmente conexa.",
+          "whyItMatters": "Distingue $S^1$ de $S^n$ ($n\\ge2$) e fundamenta que $\\pi_1$ não vê buracos de dimensão alta — motivação direta para construir a homologia, que os vê."
+        },
+        {
+          "name": "Superfícies compactas",
+          "statement": "A superfície orientável fechada de gênero $g$ tem $\\pi_1=\\langle a_1,b_1,\\dots,a_g,b_g\\mid \\prod_{i=1}^g[a_i,b_i]\\rangle$, e a não orientável de $k$ cross-caps tem $\\pi_1=\\langle a_1,\\dots,a_k\\mid a_1^2\\cdots a_k^2\\rangle$. Em particular $\\pi_1(T^2)=\\mathbb{Z}^2$ e a garrafa de Klein tem $\\langle a,b\\mid abab^{-1}\\rangle$.",
+          "whyItMatters": "Dá invariantes que classificam as superfícies fechadas: a abelianização desses grupos distingue gênero e orientabilidade, completando o Teorema de Classificação das Superfícies."
+        }
+      ],
+      "summary": "Seifert-van Kampen é o teorema que torna o grupo fundamental calculável em larga escala. A ideia: se cortamos o espaço em dois abertos $U$ e $V$ conexos por caminhos cuja interseção também é conexa por caminhos, então um laço qualquer pode ser quebrado em pedaços que vivem em $U$ ou em $V$, e a única ambiguidade está em como os laços da interseção são vistos de cada lado. Algebricamente, isso é exatamente o pushout: $\\pi_1(X)$ é o produto livre $\\pi_1(U)*\\pi_1(V)$ quocientado pelas relações que identificam, para cada laço de $U\\cap V$, sua imagem em $U$ com sua imagem em $V$.\\n\\nAs consequências são imediatas e poderosas. Um wedge de $n$ círculos tem $\\pi_1$ igual ao grupo livre $F_n$ — a fonte canônica de grupos fundamentais não abelianos. A esfera $S^n$ com $n\\ge 2$, coberta por dois discos com interseção conexa, é simplesmente conexa, evidenciando que $\\pi_1$ ignora buracos de dimensão maior que 1. E ao colar uma célula bidimensional a um espaço ao longo de um laço $\\gamma$, van Kampen mostra que o efeito sobre $\\pi_1$ é acrescentar a relação $\\gamma=1$. Isso dá, célula a célula, apresentações por geradores e relações de qualquer complexo CW, em particular das superfícies compactas: o gênero $g$ orientável tem a relação $\\prod[a_i,b_i]=1$, e a abelianização ($=H_1$) revela $\\mathbb{Z}^{2g}$, que distingue as superfícies entre si.",
+      "commonPitfalls": [
+        "Esquecer a hipótese de $U\\cap V$ ser conexo por caminhos. Se a interseção for desconexa o enunciado falha (precisa da versão com grupoides ou múltiplos pontos base).",
+        "Usar abertos. $U$ e $V$ precisam ser abertos; ao decompor superfícies, engorde os pedaços fechados a abertos com o mesmo tipo de homotopia.",
+        "Confundir produto livre $G*H$ com produto direto $G\\times H$. No livre não há comutação entre fatores; $F_2=\\mathbb{Z}*\\mathbb{Z}$ é não abeliano, enquanto $\\mathbb{Z}\\times\\mathbb{Z}$ é abeliano.",
+        "Aplicar a relação de colagem de 2-célula sem cuidado com o ponto base e a orientação do laço de colagem $\\gamma$; a relação adicionada é a classe de $\\gamma$ conjugada ao ponto base."
+      ],
+      "worked": "**Exemplo ($\\pi_1$ do toro via van Kampen).** Modele $T^2$ como o quadrado $[0,1]^2$ com lados identificados pelo padrão $aba^{-1}b^{-1}$. Seu 1-esqueleto é a figura-oito $S^1\\vee S^1$ (os dois círculos $a,b$), e $T^2$ é obtido colando uma 2-célula ao longo do laço $aba^{-1}b^{-1}$.\\n\\nTome $U=T^2$ menos um ponto interior da 2-célula (que se retrai por deformação sobre a figura-oito, $\\pi_1(U)=F_2=\\langle a,b\\rangle$) e $V=$ a 2-célula aberta (contrátil, $\\pi_1(V)=0$). A interseção $U\\cap V$ é um anel, $\\pi_1(U\\cap V)=\\mathbb{Z}$, gerada por um laço que em $U$ é homotópico à palavra de colagem $aba^{-1}b^{-1}$ e em $V$ é trivial.\\n\\nVan Kampen dá $\\pi_1(T^2)=\\langle a,b\\rangle*_{\\mathbb{Z}}0=\\langle a,b\\mid aba^{-1}b^{-1}\\rangle$. A relação $aba^{-1}b^{-1}=1$ diz $ab=ba$, logo $\\pi_1(T^2)\\cong\\mathbb{Z}^2$, confirmando o cálculo via produto.",
+      "exercises": [
+        {
+          "prompt": "Usando van Kampen, prove que $\\pi_1$ da figura-oito $S^1\\vee S^1$ é o grupo livre $F_2$, e conclua que ela não é homotopicamente equivalente ao toro.",
+          "hint": "Cubra cada círculo por um aberto contrátil contendo o ponto de colagem; a interseção é contrátil. Para distinguir do toro, abelianize: $F_2^{ab}=\\mathbb{Z}^2=\\pi_1(T^2)$, mas $F_2$ é não abeliano e $\\mathbb{Z}^2$ é abeliano.",
+          "difficulty": 3,
+          "solution": "**Parte 1: $\\pi_1(S^1\\vee S^1)=F_2$.** Seja $x_0$ o ponto de colagem. Tome $U=$ (primeiro círculo) $\\cup$ (pequeno arco aberto do segundo em torno de $x_0$) e $V=$ (segundo círculo) $\\cup$ (pequeno arco aberto do primeiro em torno de $x_0$). Então $U,V$ são abertos, cada um se retrai por deformação sobre um círculo: $\\pi_1(U)=\\mathbb{Z}=\\langle a\\rangle$, $\\pi_1(V)=\\mathbb{Z}=\\langle b\\rangle$. A interseção $U\\cap V$ é uma pequena vizinhança de $x_0$ em forma de cruz, contrátil, logo $\\pi_1(U\\cap V)=0$. Por Seifert-van Kampen,\n$$\\pi_1(S^1\\vee S^1)\\cong\\pi_1(U)*_{\\pi_1(U\\cap V)}\\pi_1(V)=\\mathbb{Z}*_{1}\\mathbb{Z}=\\mathbb{Z}*\\mathbb{Z}=F_2=\\langle a,b\\mid\\ \\rangle,$$\no grupo livre de posto 2 (sem relações).\n\n**Parte 2: não é homotopicamente equivalente ao toro.** Se $S^1\\vee S^1\\simeq T^2$, então $\\pi_1(S^1\\vee S^1)\\cong\\pi_1(T^2)$. Mas $\\pi_1(T^2)\\cong\\mathbb{Z}^2$ é abeliano, enquanto $F_2$ é não abeliano: em $F_2$, $ab\\neq ba$ (a palavra $aba^{-1}b^{-1}$ é reduzida e não trivial). Um grupo abeliano não pode ser isomorfo a um não abeliano, logo $F_2\\not\\cong\\mathbb{Z}^2$ e os espaços não têm o mesmo tipo de homotopia. $\\blacksquare$\n\n**Nota.** A abelianização $F_2^{\\mathrm{ab}}=\\mathbb{Z}^2$ coincide com $\\pi_1(T^2)$ — por isso $H_1$ não distingue os dois espaços, mas $\\pi_1$ (não abeliano) sim.",
+          "steps": [
+            "Cubra a figura-oito por dois abertos $U,V$, cada um retraindo sobre um dos círculos, com $U\\cap V$ contrátil.",
+            "Aplique van Kampen: $\\pi_1=\\mathbb{Z}*_1\\mathbb{Z}=F_2$, grupo livre de posto 2.",
+            "Observe que $\\pi_1(T^2)=\\mathbb{Z}^2$ é abeliano e $F_2$ não é (por exemplo $ab\\neq ba$).",
+            "Como abeliano $\\not\\cong$ não abeliano, conclua $S^1\\vee S^1\\not\\simeq T^2$."
+          ]
+        },
+        {
+          "prompt": "Calcule $\\pi_1$ da garrafa de Klein e mostre que ela não é abeliana; conclua que a garrafa de Klein não é homeomorfa ao toro.",
+          "hint": "Modelo $abab^{-1}$ dá $\\langle a,b\\mid abab^{-1}\\rangle$, ou seja $aba^{-1}=b^{-1}$: conjugação inverte $b$, logo não abeliano. Compare com $\\mathbb{Z}^2$.",
+          "difficulty": 4,
+          "solution": "**Apresentação.** A garrafa de Klein $K$ é o quadrado $[0,1]^2$ com identificação de bordo dada pela palavra $abab^{-1}$; seu 1-esqueleto é a figura-oito $\\langle a,b\\rangle$ e $K$ resulta de colar uma 2-célula ao longo do laço $abab^{-1}$. Pela regra da 2-célula (van Kampen),\n$$\\pi_1(K)=\\langle a,b\\mid abab^{-1}\\rangle.$$\n\n**Simplificando a relação.** De $abab^{-1}=1$, multiplique à direita por $b$: $\\ aba=b$. Multiplique à esquerda por $a^{-1}$: $\\ ba=a^{-1}b$, ou seja\n$$bab^{-1}=a^{-1}.$$\nA conjugação por $b$ inverte $a$. Logo $\\pi_1(K)\\cong\\mathbb{Z}\\rtimes_{-1}\\mathbb{Z}$: o produto semidireto onde o gerador $b$ age em $\\langle a\\rangle\\cong\\mathbb{Z}$ por $a\\mapsto a^{-1}$.\n\n**Não abeliano.** Se $\\pi_1(K)$ fosse abeliano, a relação $bab^{-1}=a^{-1}$ daria $a=a^{-1}$, isto é $a^2=1$. Mas o subgrupo $\\langle a\\rangle$ é cíclico infinito (a ação $a\\mapsto a^{-1}$ é não trivial num $\\mathbb{Z}$, então o produto semidireto não colapsa $a$), logo $a^2\\neq1$. Contradição: $\\pi_1(K)$ é não abeliano.\n\n**Distinção do toro.** $\\pi_1(T^2)=\\mathbb{Z}^2$ é abeliano; $\\pi_1(K)$ não é. Como $\\pi_1$ é invariante topológico, um homeomorfismo $K\\cong T^2$ induziria $\\pi_1(K)\\cong\\pi_1(T^2)$, impossível (não abeliano vs. abeliano). Logo a garrafa de Klein NÃO é homeomorfa ao toro. $\\blacksquare$\n\n**Observação.** As abelianizações diferem também: $\\pi_1(K)^{\\mathrm{ab}}=\\mathbb{Z}\\oplus\\mathbb{Z}/2$ (de $2a=0$) enquanto $\\pi_1(T^2)^{\\mathrm{ab}}=\\mathbb{Z}^2$, refletindo a não orientabilidade de $K$.",
+          "steps": [
+            "Escreva a apresentação $\\pi_1(K)=\\langle a,b\\mid abab^{-1}\\rangle$ vinda de colar a 2-célula ao longo de $abab^{-1}$.",
+            "Manipule a relação até $bab^{-1}=a^{-1}$ (conjugação por $b$ inverte $a$).",
+            "Argumente: se abeliano, $a=a^{-1}$, mas $\\langle a\\rangle\\cong\\mathbb{Z}$ tem $a^2\\neq1$; logo $\\pi_1(K)$ é não abeliano.",
+            "Compare com $\\pi_1(T^2)=\\mathbb{Z}^2$ abeliano e conclua que $K\\not\\cong T^2$."
+          ]
+        },
+        {
+          "prompt": "Prove que $\\pi_1(S^n)=0$ para $n\\ge 2$ cobrindo $S^n$ por dois abertos contráteis com interseção conexa por caminhos.",
+          "hint": "Tome $U=S^n\\setminus\\{N\\}$ e $V=S^n\\setminus\\{S\\}$, ambos homeomorfos a $\\mathbb{R}^n$ (logo contráteis); $U\\cap V\\simeq S^{n-1}$ é conexo por caminhos quando $n\\ge 2$.",
+          "difficulty": 3,
+          "solution": "**Cobertura.** Sejam $N,S$ os polos norte e sul de $S^n$ e tome\n$$U=S^n\\setminus\\{N\\},\\qquad V=S^n\\setminus\\{S\\}.$$\nSão abertos e $U\\cup V=S^n$. Pela projeção estereográfica, $U\\cong\\mathbb{R}^n\\cong V$, ambos homeomorfos a $\\mathbb{R}^n$, logo contráteis: $\\pi_1(U)=\\pi_1(V)=0$.\n\n**Interseção.** $U\\cap V=S^n\\setminus\\{N,S\\}$. Este espaço se retrai por deformação sobre o equador $S^{n-1}$ (empurrando cada ponto ao longo do meridiano até o equador); em particular $U\\cap V\\simeq S^{n-1}$. Para $n\\ge2$, $S^{n-1}$ é conexo por caminhos (pois $n-1\\ge1$), logo $U\\cap V$ é conexo por caminhos — hipótese essencial de van Kampen.\n\n**Aplicando van Kampen.** Com $x_0\\in U\\cap V$,\n$$\\pi_1(S^n,x_0)\\cong\\pi_1(U)*_{\\pi_1(U\\cap V)}\\pi_1(V)=0*_{\\pi_1(S^{n-1})}0.$$\nO pushout de dois grupos triviais é trivial, qualquer que seja $\\pi_1(U\\cap V)$: todo laço de $S^n$ se decompõe em pedaços em $U$ e em $V$, cada um contraível. Portanto\n$$\\pi_1(S^n)=0\\qquad(n\\ge2),$$\ni.e., $S^n$ é simplesmente conexo. $\\blacksquare$\n\n**Por que $n\\ge2$.** Se $n=1$, $U\\cap V=S^1\\setminus\\{2\\text{ pts}\\}$ é DESCONEXO, van Kampen (versão de um ponto base) falha, e de fato $\\pi_1(S^1)=\\mathbb{Z}\\neq0$.",
+          "steps": [
+            "Cubra $S^n$ por $U=S^n\\setminus\\{N\\}$ e $V=S^n\\setminus\\{S\\}$, ambos $\\cong\\mathbb{R}^n$ contráteis.",
+            "Mostre que $U\\cap V\\simeq S^{n-1}$ e que, para $n\\ge2$, é conexo por caminhos.",
+            "Aplique van Kampen: o pushout $0*_{\\pi_1(S^{n-1})}0$ é trivial.",
+            "Conclua $\\pi_1(S^n)=0$ para $n\\ge2$, notando que a hipótese $n\\ge2$ garante a conexidade de $U\\cap V$."
+          ]
+        },
+        {
+          "prompt": "Seja $X$ obtido de um espaço $A$ conexo por caminhos colando uma 2-célula ao longo de um laço $\\gamma$. Mostre que $\\pi_1(X)\\cong\\pi_1(A)/N$, onde $N$ é o menor subgrupo normal contendo $[\\gamma]$.",
+          "hint": "Aplique van Kampen com $U=$ vizinhança de $A$ que se retrai sobre $A$ e $V=$ célula aberta contrátil; a interseção é anel com $\\pi_1=\\mathbb{Z}$ gerado por $\\gamma$.",
+          "difficulty": 4,
+          "solution": "**Enunciado.** $X=A\\cup_\\varphi e^2$: cola-se uma 2-célula a $A$ (conexo por caminhos) via aplicação de colagem $\\varphi:S^1\\to A$ cujo laço associado é $\\gamma$, baseado em $x_0\\in A$. Mostrar $\\pi_1(X)\\cong\\pi_1(A)/N$, com $N$ = fecho normal de $[\\gamma]$.\n\n**Cobertura para van Kampen.** Seja $y_0$ o centro da 2-célula. Tome\n$$U=X\\setminus\\{y_0\\},\\qquad V=\\text{2-célula aberta}.$$\n$U$ se retrai por deformação sobre $A$ (empurrando o anel da célula para seu bordo, que está colado em $A$), logo $\\pi_1(U)\\cong\\pi_1(A)$. $V$ é um disco aberto, contrátil, $\\pi_1(V)=0$. A interseção $U\\cap V$ é o anel (2-célula sem centro), que se retrai sobre um círculo, $\\pi_1(U\\cap V)=\\mathbb{Z}=\\langle c\\rangle$.\n\n**Imagens do gerador.** O gerador $c$ do anel, visto em $V$ (disco), é homotopicamente trivial: $j_*(c)=1$. Visto em $U\\simeq A$, o círculo do anel é (a menos de homotopia) o laço de colagem $\\varphi$, isto é $i_*(c)=[\\gamma]\\in\\pi_1(A)$ (a menos de conjugação por um caminho até $x_0$, o que não altera o fecho normal).\n\n**Van Kampen.**\n$$\\pi_1(X)\\cong\\pi_1(A)*_{\\mathbb{Z}}0=\\big(\\pi_1(A)*0\\big)\\big/\\langle\\!\\langle\\ i_*(c)\\,j_*(c)^{-1}\\ \\rangle\\!\\rangle=\\pi_1(A)\\big/\\langle\\!\\langle[\\gamma]\\rangle\\!\\rangle,$$\npois a única relação imposta é $i_*(c)=j_*(c)$, ou seja $[\\gamma]=1$. Como o pushout quocienta pelo MENOR subgrupo normal contendo essa relação, obtemos\n$$\\pi_1(X)\\cong\\pi_1(A)/N,\\qquad N=\\langle\\!\\langle[\\gamma]\\rangle\\!\\rangle.\\qquad\\blacksquare$$",
+          "steps": [
+            "Escolha $U=X$ menos o centro da 2-célula (retrai sobre $A$) e $V=$ 2-célula aberta (contrátil).",
+            "Identifique $\\pi_1(U)=\\pi_1(A)$, $\\pi_1(V)=0$ e $\\pi_1(U\\cap V)=\\mathbb{Z}=\\langle c\\rangle$ (o anel).",
+            "Calcule as imagens do gerador: em $V$ é trivial, em $U$ é o laço de colagem $[\\gamma]$.",
+            "Van Kampen impõe $[\\gamma]=1$; conclua $\\pi_1(X)=\\pi_1(A)/\\langle\\!\\langle[\\gamma]\\rangle\\!\\rangle$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Enunciado de Seifert-van Kampen (2 abertos).",
+          "back": "Se $X=U\\cup V$ abertos conexos por caminhos com $U\\cap V$ conexo por caminhos, então $\\pi_1(X)\\cong\\pi_1(U)*_{\\pi_1(U\\cap V)}\\pi_1(V)$ (pushout)."
+        },
+        {
+          "front": "O que é o produto livre $G*H$?",
+          "back": "Grupo das palavras reduzidas alternando letras de $G$ e $H$; é o coproduto de grupos (propriedade universal por pares de homomorfismos)."
+        },
+        {
+          "front": "$\\pi_1$ de um wedge de $n$ círculos.",
+          "back": "$F_n$, o grupo livre de posto $n$ (um gerador por círculo). A figura-oito dá $F_2$, não abeliano."
+        },
+        {
+          "front": "$\\pi_1(S^n)$ para $n\\ge 2$.",
+          "back": "Trivial ($=0$): $S^n$ é simplesmente conexa; dois discos cobrem com interseção $\\simeq S^{n-1}$ conexa."
+        },
+        {
+          "front": "Efeito de colar uma 2-célula ao longo de $\\gamma$ sobre $\\pi_1$.",
+          "back": "Quociente pelo menor subgrupo normal gerado por $[\\gamma]$: adiciona a relação $\\gamma=1$."
+        },
+        {
+          "front": "Apresentação de $\\pi_1$ da superfície orientável de gênero $g$.",
+          "back": "$\\langle a_1,b_1,\\dots,a_g,b_g\\mid \\prod_{i=1}^g[a_i,b_i]\\rangle$; abelianizando dá $\\mathbb{Z}^{2g}$."
+        },
+        {
+          "front": "$\\pi_1$ da garrafa de Klein.",
+          "back": "$\\langle a,b\\mid abab^{-1}\\rangle$, não abeliano (relação $aba^{-1}=b^{-1}$)."
+        },
+        {
+          "front": "Produto livre vs. produto direto.",
+          "back": "$G*H$ não força comutação entre fatores (não abeliano em geral); $G\\times H$ comuta os fatores."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Hatcher, Algebraic Topology — seção 1.2",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Grupo Fundamental e Espaços de Recobrimento — cap. 3",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude Hatcher §1.2 (ou Elon, cap. 3) e escreva o enunciado de Seifert-van Kampen na versão de dois abertos, mais as definições de produto livre, produto livre amalgamado (pushout) e apresentação por geradores e relações.",
+          "Assista a uma aula sobre van Kampen e refaça o cálculo de $\\pi_1$ do wedge de círculos ($F_n$) e de $S^n$ para $n\\ge2$ (trivial).",
+          "Domine o efeito de colar uma 2-célula ao longo de um laço $\\gamma$: adiciona a relação $[\\gamma]=1$; aplique para obter apresentações do toro, da garrafa de Klein e das superfícies compactas.",
+          "Pratique abelianizar apresentações para calcular $H_1$ e distinguir superfícies (gênero e orientabilidade); compare $F_2$ com $\\mathbb{Z}^2$ e a garrafa de Klein com o toro.",
+          "Resolva os testes deste tópico aqui no app e anote o principal: enunciado do teorema, a regra da 2-célula ($\\gamma=1$), e as apresentações-padrão das superfícies."
+        ],
+        "searchQueries": [
+          "teorema de Seifert-van Kampen enunciado e demonstração",
+          "produto livre amalgamado pushout de grupos apresentação",
+          "pi_1 wedge de círculos grupo livre F_n van Kampen",
+          "fundamental group of Klein bottle presentation abab^{-1}",
+          "attaching a 2-cell effect on fundamental group van Kampen",
+          "fundamental group of closed surfaces genus presentation"
+        ],
+        "videos": [
+          {
+            "title": "Algebraic Topology — van Kampen theorem",
+            "channel": "Pierre Albin (YouTube)",
+            "note": "Enunciado, prova e aplicações a wedges, superfícies e colagem de células."
+          },
+          {
+            "title": "Seifert-van Kampen and surface groups",
+            "channel": "Richard Wong (YouTube)",
+            "note": "Exemplos calculando $\\pi_1$ de superfícies via apresentações."
+          },
+          {
+            "title": "Algebraic Topology (WildTop)",
+            "channel": "Insights into Mathematics — N. J. Wildberger (YouTube)",
+            "note": "Série com forte apelo geométrico sobre superfícies, wedges e grupo fundamental."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Hatcher, Algebraic Topology — §1.2 (Van Kampen's Theorem)",
+            "where": "PDF gratuito em pi.math.cornell.edu/~hatcher"
+          },
+          {
+            "title": "Elon Lages Lima, Grupo Fundamental e Espaços de Recobrimento — cap. 3",
+            "where": "Coleção Projeto Euclides, IMPA"
+          },
+          {
+            "title": "nLab — verbete 'van Kampen theorem'",
+            "where": "ncatlab.org"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-algebrica-05-complexos-cw-homologia-simplicial",
+      "title": "Complexos CW e homologia simplicial",
+      "tagline": "Construa espaços colando células e conte buracos de cada dimensão: o complexo de cadeias e o bordo $\\partial$ com $\\partial^2=0$.",
+      "objectives": [
+        "Definir complexos CW por colagem de células e seus esqueletos, e dar estrutura CW a esferas, toro e $\\mathbb{R}P^n$.",
+        "Definir complexos simpliciais e $\\Delta$-complexos, com simplexos e faces.",
+        "Construir o complexo de cadeias simplicial, o operador bordo $\\partial_n$ e verificar $\\partial^2=0$.",
+        "Definir a homologia simplicial $H_n^\\Delta=\\ker\\partial_n/\\mathrm{im}\\,\\partial_{n+1}$ e calcular para $S^1$, $S^2$ e o toro.",
+        "Relacionar números de Betti e a característica de Euler como invariantes combinatórios."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Complexo CW",
+          "statement": "Espaço construído indutivamente: comece com pontos (0-células); obtenha o $n$-esqueleto $X^n$ a partir de $X^{n-1}$ colando $n$-células $e^n_\\alpha$ via aplicações de colagem $\\varphi_\\alpha:S^{n-1}\\to X^{n-1}$, formando $X^n=X^{n-1}\\sqcup_\\varphi\\bigsqcup D^n_\\alpha$. A topologia é a do limite (fraca) sobre os esqueletos."
+        },
+        {
+          "term": "$n$-simplexo e complexo simplicial",
+          "statement": "O $n$-simplexo padrão $\\Delta^n=\\{(t_0,\\dots,t_n):t_i\\ge0,\\sum t_i=1\\}$ é o fecho convexo de $n+1$ vértices em posição geral. Um complexo simplicial é uma coleção de simplexos colados ao longo de faces, fechada por faces e com interseções que são faces comuns. Um $\\Delta$-complexo relaxa essa rigidez, permitindo identificações."
+        },
+        {
+          "term": "Complexo de cadeias e bordo",
+          "statement": "$C_n$ é o grupo abeliano livre gerado pelos $n$-simplexos (orientados). O bordo $\\partial_n:C_n\\to C_{n-1}$ é a soma alternada das faces: $\\partial_n[v_0,\\dots,v_n]=\\sum_{i=0}^n(-1)^i[v_0,\\dots,\\hat v_i,\\dots,v_n]$, onde $\\hat v_i$ indica omissão."
+        },
+        {
+          "term": "Ciclos, bordos e homologia",
+          "statement": "$Z_n=\\ker\\partial_n$ (ciclos) e $B_n=\\mathrm{im}\\,\\partial_{n+1}$ (bordos). Como $\\partial^2=0$, $B_n\\subseteq Z_n$, e $H_n^\\Delta(X)=Z_n/B_n$. Elementos são classes de ciclos módulo bordos: buracos $n$-dimensionais não preenchidos."
+        },
+        {
+          "term": "Números de Betti e característica de Euler",
+          "statement": "O $n$-ésimo número de Betti é $b_n=\\mathrm{rank}\\,H_n$. A característica de Euler é $\\chi(X)=\\sum_n(-1)^n c_n=\\sum_n(-1)^n b_n$, onde $c_n$ é o número de $n$-células; a igualdade entre as duas somas é um invariante notável."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "$\\partial^2=0$",
+          "statement": "A composição $\\partial_{n}\\circ\\partial_{n+1}:C_{n+1}\\to C_{n-1}$ é nula. A prova é o cancelamento aos pares dos termos $(-1)^i(-1)^j$ ao omitir dois vértices em ordens trocadas.",
+          "whyItMatters": "É a identidade fundamental que torna a homologia bem definida (garante $B_n\\subseteq Z_n$). Toda a álgebra homológica — complexos, sequências exatas, cohomologia — repousa sobre $\\partial^2=0$."
+        },
+        {
+          "name": "Homologia das esferas",
+          "statement": "$H_n^\\Delta(S^k)\\cong\\mathbb{Z}$ se $n=0$ ou $n=k$, e $0$ caso contrário (para $k\\ge1$); para $k=0$, $H_0=\\mathbb{Z}^2$. Calcula-se com a estrutura mínima de $S^k$ (dois simplexos, ou uma 0-célula e uma $k$-célula em CW).",
+          "whyItMatters": "É o cálculo-referência: distingue todas as esferas entre si por dimensão e fornece, via grau, a base do Teorema do Ponto Fixo de Brouwer e da invariância da dimensão."
+        },
+        {
+          "name": "Invariância de Euler",
+          "statement": "Para um complexo finito, $\\chi(X)=\\sum_n(-1)^n c_n$ não depende da estrutura celular/simplicial escolhida e iguala $\\sum_n(-1)^n b_n$. Para superfícies fechadas, $\\chi=2-2g$ (orientável de gênero $g$) e $\\chi=2-k$ (não orientável com $k$ cross-caps).",
+          "whyItMatters": "Dá um invariante topológico calculável por mera contagem de células, ligando combinatória (fórmula $V-E+F$) à álgebra (Betti) e classificando superfícies."
+        }
+      ],
+      "summary": "Para calcular invariantes de dimensão alta precisamos de uma maneira sistemática de construir espaços e contar seus buracos. Os complexos CW dão a construção: começa-se com pontos e cola-se células de dimensão crescente por suas bordas. Esferas, toros, garrafas de Klein e $\\mathbb{R}P^n$ ganham descrições com pouquíssimas células. Os $\\Delta$-complexos (e os complexos simpliciais, mais rígidos) dão o modelo combinatório onde a homologia é literalmente computável à mão.\\n\\nA cada espaço associamos o complexo de cadeias: $C_n$ é o grupo livre nos $n$-simplexos, e o bordo $\\partial_n$ é a soma alternada das faces. O fato central, $\\partial^2=0$, garante que todo bordo é um ciclo, e definimos a homologia $H_n=\\ker\\partial_n/\\mathrm{im}\\,\\partial_{n+1}$: classes de ciclos que não são bordo, isto é, buracos $n$-dimensionais. O posto de $H_n$ é o número de Betti $b_n$, e a soma alternada $\\sum(-1)^n b_n$ coincide com a contagem alternada de células $\\sum(-1)^n c_n$, a característica de Euler — invariante que generaliza $V-E+F$ de Euler e distingue superfícies. Computando, $H_*(S^k)$ tem $\\mathbb{Z}$ nos graus $0$ e $k$; o toro tem $H_0=\\mathbb{Z}$, $H_1=\\mathbb{Z}^2$, $H_2=\\mathbb{Z}$; e a garrafa de Klein exibe torção $\\mathbb{Z}/2$ em $H_1$, fenômeno que $\\pi_1$ via abelianização também revela mas que aqui aparece transparente.",
+      "commonPitfalls": [
+        "Errar os sinais alternados em $\\partial_n$. A fórmula $\\sum(-1)^i$ é essencial: sem os sinais, $\\partial^2\\neq0$ e a homologia desmorona.",
+        "Ignorar orientação dos simplexos. As cadeias são geradas por simplexos orientados; trocar a ordem dos vértices muda o sinal do gerador.",
+        "Supor que homologia simplicial depende da triangulação. Ela é invariante topológico (coincide com a singular), mas isso é um teorema; triangulações diferentes dão complexos diferentes com a MESMA homologia.",
+        "Confundir o número de células com o número de Betti. $c_n$ conta células; $b_n=\\mathrm{rank}\\,H_n$ conta buracos. Eles coincidem só em casos sem bordos/ciclos triviais."
+      ],
+      "worked": "**Exemplo (homologia do toro por $\\Delta$-complexo).** Triangule $T^2$ como o quadrado com lados $a,b$ identificados e uma diagonal $c$, formando dois 2-simplexos $U,L$, três 1-simplexos $a,b,c$ e um único 0-simplexo $v$ (todos os cantos coincidem).\\n\\nCadeias: $C_2=\\mathbb{Z}\\langle U,L\\rangle$, $C_1=\\mathbb{Z}\\langle a,b,c\\rangle$, $C_0=\\mathbb{Z}\\langle v\\rangle$. Como todas as arestas são laços em $v$, $\\partial_1=0$, logo $Z_1=C_1=\\mathbb{Z}^3$. Calculando os bordos das faces com a orientação padrão obtém-se $\\partial_2 U=a+b-c$ e $\\partial_2 L=a+b-c$ (mesma combinação), de modo que $\\mathrm{im}\\,\\partial_2=\\mathbb{Z}\\langle a+b-c\\rangle$ tem posto $1$ e $\\ker\\partial_2=\\mathbb{Z}\\langle U-L\\rangle\\cong\\mathbb{Z}$.\\n\\nLogo $H_2=\\ker\\partial_2/0=\\mathbb{Z}$; $H_1=Z_1/B_1=\\mathbb{Z}^3/\\mathbb{Z}\\cong\\mathbb{Z}^2$; e $H_0=\\mathbb{Z}$ (conexo). Resultado: $H_*(T^2)=(\\mathbb{Z},\\mathbb{Z}^2,\\mathbb{Z})$, e $\\chi=1-3+2=0=2-2\\cdot1$, coerente com gênero $1$.",
+      "exercises": [
+        {
+          "prompt": "Dê uma estrutura CW mínima a $S^n$ (uma 0-célula e uma $n$-célula) e calcule $H_*(S^n)$ a partir do complexo celular.",
+          "hint": "O bordo da $n$-célula é colado constante; o complexo celular tem $C_0=C_n=\\mathbb{Z}$ e demais nulos, com bordos nulos. Logo $H_0=H_n=\\mathbb{Z}$.",
+          "difficulty": 2,
+          "solution": "**Estrutura CW mínima de $S^n$ ($n\\ge1$).** Uma 0-célula $v$ e uma $n$-célula $e^n$, com aplicação de colagem $\\varphi:S^{n-1}\\to\\{v\\}$ constante. Isso dá $S^n$ (colar o bordo de $D^n$ todo a um ponto produz $S^n$).\n\n**Complexo de cadeias celular.** Os grupos de cadeias celulares são\n$$C_0=\\mathbb{Z}\\langle v\\rangle,\\qquad C_n=\\mathbb{Z}\\langle e^n\\rangle,\\qquad C_k=0\\ (k\\neq0,n).$$\n\n**Bordos.** Para $n\\ge2$: os únicos grupos não nulos, $C_0$ e $C_n$, não são adjacentes (nenhum $C_{n\\pm1}$ contém células), então TODOS os $\\partial_k=0$. Para $n=1$: $\\partial_1:C_1\\to C_0$ leva a 1-célula em (extremo)$-$(início)$=v-v=0$, também nulo.\n\n**Homologia.** Como todos os bordos são nulos, $H_k=C_k$:\n$$H_0(S^n)=\\mathbb{Z},\\qquad H_n(S^n)=\\mathbb{Z},\\qquad H_k(S^n)=0\\ \\text{caso contrário}.$$\n\n**Conclusão.** Para todo $n\\ge1$, $H_*(S^n)$ tem $\\mathbb{Z}$ nos graus $0$ e $n$ e $0$ nos demais. (Para $n=0$, $S^0$ tem duas 0-células, $H_0=\\mathbb{Z}^2$.) $\\blacksquare$",
+          "steps": [
+            "Dê a $S^n$ a estrutura CW com uma 0-célula e uma $n$-célula colada por aplicação constante.",
+            "Escreva o complexo celular: $C_0=C_n=\\mathbb{Z}$ e demais nulos.",
+            "Argumente que todos os $\\partial_k=0$ (grupos não adjacentes para $n\\ge2$; bordo $v-v=0$ para $n=1$).",
+            "Conclua $H_0=H_n=\\mathbb{Z}$ e os demais nulos."
+          ]
+        },
+        {
+          "prompt": "Prove $\\partial_{n-1}\\circ\\partial_n=0$ a partir da fórmula da soma alternada das faces.",
+          "hint": "Expanda $\\partial\\partial[v_0,\\dots,v_n]$ e mostre que cada termo com dois vértices $v_i,v_j$ omitidos aparece duas vezes com sinais opostos $(-1)^{i+j}$ e $(-1)^{i+j-1}$.",
+          "difficulty": 4,
+          "solution": "**A provar.** $\\partial_{n-1}\\circ\\partial_n=0$, onde $\\partial_n[v_0,\\dots,v_n]=\\sum_{i=0}^n(-1)^i[v_0,\\dots,\\hat v_i,\\dots,v_n]$.\n\n**Expansão dupla.** Aplique $\\partial_{n-1}$ a cada face:\n$$\\partial_{n-1}\\partial_n[v_0,\\dots,v_n]=\\sum_{i=0}^n(-1)^i\\sum_{j}(-1)^{?}[\\dots\\hat v_i\\dots\\hat v_j\\dots].$$\nAo omitir $v_i$ e depois omitir um segundo vértice $v_j$, o sinal do segundo é $(-1)^j$ se $j<i$ (posição inalterada) e $(-1)^{j-1}$ se $j>i$ (a remoção de $v_i$ deslocou uma posição). Logo\n$$\\partial\\partial=\\sum_{j<i}(-1)^{i}(-1)^{j}[\\dots\\hat v_j\\dots\\hat v_i\\dots]+\\sum_{j>i}(-1)^{i}(-1)^{j-1}[\\dots\\hat v_i\\dots\\hat v_j\\dots].$$\n\n**Cancelamento aos pares.** Fixe um par de posições $p<q$ (os dois vértices omitidos). Ele aparece:\n- na PRIMEIRA soma com $(i,j)=(q,p)$: sinal $(-1)^{q}(-1)^{p}=(-1)^{p+q}$;\n- na SEGUNDA soma com $(i,j)=(p,q)$: sinal $(-1)^{p}(-1)^{q-1}=(-1)^{p+q-1}=-(-1)^{p+q}$.\n\nO simplexo resultante (com $v_p,v_q$ omitidos) é o mesmo nos dois casos, e os sinais são opostos. Somando, cada par cancela:\n$$\\partial_{n-1}\\partial_n=0.\\qquad\\blacksquare$$",
+          "steps": [
+            "Escreva $\\partial\\partial[v_0,\\dots,v_n]$ como soma dupla sobre os pares de vértices omitidos.",
+            "Determine o sinal do segundo vértice omitido: $(-1)^j$ se $j<i$, $(-1)^{j-1}$ se $j>i$ (efeito do deslocamento).",
+            "Para um par fixo de posições $p<q$, localize as duas ocorrências: $(i,j)=(q,p)$ e $(i,j)=(p,q)$.",
+            "Compare os sinais $(-1)^{p+q}$ e $-(-1)^{p+q}$: cancelam, logo $\\partial^2=0$."
+          ]
+        },
+        {
+          "prompt": "Calcule a homologia da garrafa de Klein por um $\\Delta$-complexo e exiba a torção $H_1\\cong\\mathbb{Z}\\oplus\\mathbb{Z}/2$.",
+          "hint": "Use o quadrado com identificação $abab^{-1}$, dois 2-simplexos, três arestas, um vértice. O bordo das faces produz a relação $2$ vezes um gerador, gerando torção $\\mathbb{Z}/2$.",
+          "difficulty": 5,
+          "solution": "**$\\Delta$-complexo da garrafa de Klein $K$.** Quadrado com identificação $abab^{-1}$, cortado pela diagonal $c$ em dois 2-simplexos $U$ (inferior) e $L$ (superior); arestas $a,b,c$; um único vértice $v$ (todos os cantos identificados).\n$$C_2=\\mathbb{Z}\\langle U,L\\rangle,\\quad C_1=\\mathbb{Z}\\langle a,b,c\\rangle,\\quad C_0=\\mathbb{Z}\\langle v\\rangle.$$\n\n**$\\partial_1=0$.** Toda aresta é laço em $v$, então $\\partial_1(a)=\\partial_1(b)=\\partial_1(c)=v-v=0$. Logo $Z_1=C_1=\\mathbb{Z}^3$.\n\n**$\\partial_2$.** Com as orientações induzidas pela identificação $abab^{-1}$ (a diagonal $c$ separando os triângulos), obtém-se\n$$\\partial_2 U=a+b-c,\\qquad\\partial_2 L=a-b+c.$$\n(Os sinais refletem que, ao percorrer o bordo de $K$, $b$ aparece com orientações compatíveis — diferença crucial em relação ao toro, onde $\\partial U=\\partial L$.)\n\n**$H_2$.** $\\ker\\partial_2$: resolva $mU+nL\\mapsto m(a+b-c)+n(a-b+c)=(m+n)a+(m-n)b+(-m+n)c=0$. Isso força $m+n=0$ e $m-n=0$, i.e. $m=n=0$. Logo $\\ker\\partial_2=0$ e\n$$H_2(K)=0.$$\n\n**$H_1$.** $B_1=\\mathrm{im}\\,\\partial_2=\\langle a+b-c,\\ a-b+c\\rangle$. Então\n$$H_1(K)=\\mathbb{Z}^3/\\langle a+b-c,\\ a-b+c\\rangle.$$\nDa relação $a+b-c=0$ vem $c=a+b$. Substituindo em $a-b+c=0$: $a-b+a+b=2a=0$. Sobram os geradores $a,b$ com $c=a+b$ e $2a=0$. Portanto\n$$H_1(K)\\cong\\mathbb{Z}\\langle b\\rangle\\oplus(\\mathbb{Z}/2)\\langle a\\rangle=\\mathbb{Z}\\oplus\\mathbb{Z}/2.$$\n\n**$H_0$.** $K$ conexo $\\Rightarrow H_0=\\mathbb{Z}$.\n\n**Resumo.** $H_*(K)=(\\mathbb{Z},\\ \\mathbb{Z}\\oplus\\mathbb{Z}/2,\\ 0)$; a torção $\\mathbb{Z}/2$ em $H_1$ reflete a não orientabilidade. Confere com $\\chi=1-3+2=0$. $\\blacksquare$",
+          "steps": [
+            "Monte o $\\Delta$-complexo: dois 2-simplexos $U,L$, arestas $a,b,c$, um vértice $v$; note $\\partial_1=0$.",
+            "Calcule $\\partial_2U=a+b-c$ e $\\partial_2L=a-b+c$ (orientações da identificação $abab^{-1}$).",
+            "Verifique que $\\partial_2$ é injetora, logo $H_2=0$; e determine $\\mathrm{im}\\,\\partial_2$.",
+            "Reduza $\\mathbb{Z}^3/\\mathrm{im}\\,\\partial_2$ às relações $c=a+b$ e $2a=0$, obtendo $H_1\\cong\\mathbb{Z}\\oplus\\mathbb{Z}/2$."
+          ]
+        },
+        {
+          "prompt": "Verifique a fórmula de Euler $V-E+F=2$ para um poliedro convexo interpretando-o como estrutura CW de $S^2$ e calculando $\\chi$ pela homologia.",
+          "hint": "A superfície do poliedro é homeomorfa a $S^2$, logo $\\chi=\\sum(-1)^n b_n=1-0+1=2$; por outro lado $\\chi=V-E+F$.",
+          "difficulty": 3,
+          "solution": "**Ideia.** A superfície de um poliedro convexo $P$ é homeomorfa a $S^2$; seus vértices, arestas e faces formam uma estrutura CW de $S^2$ com $c_0=V$, $c_1=E$, $c_2=F$ células.\n\n**Característica de Euler por células.** Por definição,\n$$\\chi(P)=\\sum_n(-1)^n c_n=c_0-c_1+c_2=V-E+F.$$\n\n**Característica de Euler por homologia.** $\\chi$ é invariante topológico e vale $\\chi=\\sum_n(-1)^n b_n$, onde $b_n=\\mathrm{rank}\\,H_n$. Como a superfície é homeomorfa a $S^2$, usamos $H_*(S^2)$:\n$$H_0(S^2)=\\mathbb{Z}\\ (b_0=1),\\quad H_1(S^2)=0\\ (b_1=0),\\quad H_2(S^2)=\\mathbb{Z}\\ (b_2=1).$$\nLogo\n$$\\chi(S^2)=b_0-b_1+b_2=1-0+1=2.$$\n\n**Igualdade.** Pela invariância de Euler (a soma alternada de células iguala a soma alternada de Betti, independente da estrutura celular),\n$$V-E+F=\\chi(P)=\\chi(S^2)=2.\\qquad\\blacksquare$$\n\n**Comentário.** É a ponte entre combinatória (contagem $V-E+F$) e álgebra (homologia): o teorema de Euler para poliedros é um caso particular da invariância topológica de $\\chi$.",
+          "steps": [
+            "Reconheça a superfície do poliedro convexo como estrutura CW de $S^2$ com $V$ vértices, $E$ arestas, $F$ faces.",
+            "Escreva $\\chi=V-E+F$ pela contagem alternada de células.",
+            "Calcule $\\chi(S^2)=b_0-b_1+b_2=1-0+1=2$ usando $H_*(S^2)$.",
+            "Iguale pela invariância de $\\chi$: $V-E+F=2$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Como se constrói um complexo CW?",
+          "back": "Indutivamente: do $(n-1)$-esqueleto, cola-se $n$-células via $\\varphi_\\alpha:S^{n-1}\\to X^{n-1}$; topologia fraca sobre os esqueletos."
+        },
+        {
+          "front": "Fórmula do operador bordo $\\partial_n$.",
+          "back": "$\\partial_n[v_0,\\dots,v_n]=\\sum_{i=0}^n(-1)^i[v_0,\\dots,\\hat v_i,\\dots,v_n]$ (omite $v_i$, sinal alternado)."
+        },
+        {
+          "front": "Definição de $H_n$ (homologia).",
+          "back": "$H_n=Z_n/B_n=\\ker\\partial_n/\\mathrm{im}\\,\\partial_{n+1}$: ciclos módulo bordos."
+        },
+        {
+          "front": "Identidade fundamental do complexo de cadeias.",
+          "back": "$\\partial^2=0$ (logo $B_n\\subseteq Z_n$), por cancelamento aos pares dos termos com sinais alternados."
+        },
+        {
+          "front": "$H_*(S^k)$ para $k\\ge1$.",
+          "back": "$H_0=\\mathbb{Z}$, $H_k=\\mathbb{Z}$, demais $0$."
+        },
+        {
+          "front": "$H_*(T^2)$ (toro).",
+          "back": "$H_0=\\mathbb{Z}$, $H_1=\\mathbb{Z}^2$, $H_2=\\mathbb{Z}$."
+        },
+        {
+          "front": "Característica de Euler em termos de células e de Betti.",
+          "back": "$\\chi=\\sum_n(-1)^n c_n=\\sum_n(-1)^n b_n$; para superfície orientável de gênero $g$, $\\chi=2-2g$."
+        },
+        {
+          "front": "Onde aparece torção na homologia de superfícies?",
+          "back": "Na garrafa de Klein e em $\\mathbb{R}P^2$: $H_1$ tem fator $\\mathbb{Z}/2$ (espaços não orientáveis)."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Hatcher, Algebraic Topology — seções 2.1 e apêndice de CW",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Homologia Básica — caps. 1 a 3",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia Hatcher §2.1 (e o apêndice de CW) ou Elon, Homologia Básica, caps. 1-3, e escreva as definições de complexo CW, $\\Delta$-complexo, complexo de cadeias, operador bordo $\\partial_n$ e homologia $H_n=\\ker\\partial_n/\\mathrm{im}\\,\\partial_{n+1}$.",
+          "Assista a uma aula sobre homologia simplicial e refaça o cálculo de $H_*$ de $S^1$, $S^2$ e do toro triangulando cada um explicitamente.",
+          "Verifique à mão a identidade $\\partial^2=0$ (cancelamento aos pares) e o cálculo dos números de Betti e da característica de Euler $\\chi=\\sum(-1)^n c_n=\\sum(-1)^n b_n$.",
+          "Pratique casos com torção: garrafa de Klein e $\\mathbb{R}P^2$ (aparece $\\mathbb{Z}/2$ em $H_1$); confira a fórmula de Euler $V-E+F=2$ para poliedros.",
+          "Resolva os testes deste tópico aqui no app e anote o principal: fórmula de $\\partial_n$, o significado de ciclos/bordos, os cálculos de esferas e toro, e onde surge a torção."
+        ],
+        "searchQueries": [
+          "homologia simplicial complexo de cadeias operador bordo definição",
+          "prova de que del ao quadrado é zero soma alternada faces",
+          "homologia do toro Delta-complexo cálculo H_1 H_2",
+          "homology of Klein bottle torsion Z/2 simplicial computation",
+          "característica de Euler números de Betti V-E+F superfícies",
+          "CW complex cellular homology sphere computation Hatcher"
+        ],
+        "videos": [
+          {
+            "title": "Algebraic Topology — simplicial and cellular homology",
+            "channel": "Pierre Albin (YouTube)",
+            "note": "Constrói o complexo de cadeias, prova $\\partial^2=0$ e calcula homologia de superfícies."
+          },
+          {
+            "title": "Homology of surfaces (torus, Klein bottle)",
+            "channel": "Richard Wong (YouTube)",
+            "note": "Exemplos passo a passo de $\\Delta$-complexos e cálculo de $H_*$."
+          },
+          {
+            "title": "18.905 Algebraic Topology I — homology",
+            "channel": "MIT OpenCourseWare",
+            "note": "Notas com homologia simplicial/celular e característica de Euler."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Hatcher, Algebraic Topology — §2.1 e apêndice sobre CW complexes",
+            "where": "PDF gratuito em pi.math.cornell.edu/~hatcher"
+          },
+          {
+            "title": "Elon Lages Lima, Homologia Básica — caps. 1 a 3",
+            "where": "Coleção Projeto Euclides, IMPA"
+          },
+          {
+            "title": "nLab — verbetes 'simplicial homology' e 'CW complex'",
+            "where": "ncatlab.org"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-algebrica-06-homologia-singular-mayer-vietoris",
+      "title": "Homologia singular, sequências exatas e Mayer-Vietoris",
+      "tagline": "Homologia para todo espaço, invariante de homotopia, com duas máquinas de cálculo: a sequência exata longa do par e Mayer-Vietoris.",
+      "objectives": [
+        "Definir simplexos singulares, o complexo de cadeias singular e a homologia $H_n(X)$ functorial.",
+        "Provar (ou usar) a invariância homotópica e calcular $H_0$ pelas componentes conexas por caminhos.",
+        "Definir homologia relativa $H_n(X,A)$ e a sequência exata longa do par.",
+        "Enunciar e aplicar a excisão e a sequência de Mayer-Vietoris.",
+        "Calcular $\\tilde H_*(S^n)$ por indução e deduzir o Teorema do Ponto Fixo de Brouwer e a invariância da dimensão."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Simplexo singular e cadeia singular",
+          "statement": "Um $n$-simplexo singular em $X$ é uma aplicação contínua $\\sigma:\\Delta^n\\to X$. O grupo $C_n(X)$ é o abeliano livre nesses $\\sigma$, e o bordo $\\partial_n\\sigma=\\sum_i(-1)^i\\,\\sigma|_{[v_0,\\dots,\\hat v_i,\\dots,v_n]}$ é a restrição às faces. Define-se $H_n(X)=\\ker\\partial_n/\\mathrm{im}\\,\\partial_{n+1}$."
+        },
+        {
+          "term": "Homologia reduzida",
+          "statement": "$\\tilde H_n(X)$ coincide com $H_n(X)$ para $n>0$ e satisfaz $H_0(X)\\cong\\tilde H_0(X)\\oplus\\mathbb{Z}$; equivale a aumentar o complexo com $\\varepsilon:C_0\\to\\mathbb{Z}$, $\\varepsilon(\\sum n_i x_i)=\\sum n_i$. Útil para enunciar resultados sem o $\\mathbb{Z}$ extra do grau $0$."
+        },
+        {
+          "term": "Homologia relativa",
+          "statement": "Para $A\\subseteq X$, define-se $C_n(X,A)=C_n(X)/C_n(A)$ e $H_n(X,A)$ sua homologia. Mede ciclos de $X$ módulo o que vive em $A$; geometricamente, buracos relativos ao subespaço $A$."
+        },
+        {
+          "term": "Sequência exata",
+          "statement": "Uma sequência de homomorfismos $\\cdots\\to A_{n+1}\\xrightarrow{f_{n+1}}A_n\\xrightarrow{f_n}A_{n-1}\\to\\cdots$ é exata se $\\mathrm{im}\\,f_{n+1}=\\ker f_n$ em cada termo. Sequências exatas curtas $0\\to A\\to B\\to C\\to 0$ codificam quociente/subobjeto."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Invariância homotópica",
+          "statement": "Se $f\\simeq g:X\\to Y$ então $f_*=g_*:H_n(X)\\to H_n(Y)$ para todo $n$. Em particular equivalências homotópicas induzem isomorfismos em todos os $H_n$, e espaços contráteis têm $\\tilde H_n=0$ para todo $n$.",
+          "whyItMatters": "É o que faz da homologia um invariante utilizável e o que permite substituir espaços por modelos homotópicos simples. Junto com excisão, é um dos axiomas de Eilenberg-Steenrod que caracterizam a teoria."
+        },
+        {
+          "name": "Sequência exata longa do par",
+          "statement": "Para $A\\subseteq X$ existe sequência exata natural $\\cdots\\to H_n(A)\\xrightarrow{i_*}H_n(X)\\xrightarrow{j_*}H_n(X,A)\\xrightarrow{\\partial}H_{n-1}(A)\\to\\cdots$, onde $\\partial$ é o operador de conexão. Existe versão reduzida análoga.",
+          "whyItMatters": "Transforma o cálculo de homologia em álgebra de sequências exatas: conhecendo dois dos três termos, o terceiro fica restringido. É a ferramenta indutiva por excelência."
+        },
+        {
+          "name": "Excisão",
+          "statement": "Se $\\overline{Z}\\subseteq\\mathrm{int}(A)$ com $Z\\subseteq A\\subseteq X$, então a inclusão induz isomorfismo $H_n(X\\setminus Z,A\\setminus Z)\\cong H_n(X,A)$ para todo $n$. Equivalentemente, com $X=A\\cup B$ abertos (a menos de retração), $H_n(X,A)\\cong H_n(B,A\\cap B)$.",
+          "whyItMatters": "Permite cortar pedaços irrelevantes sem mudar a homologia relativa; é o ingrediente que liga homologia local a global e que produz Mayer-Vietoris e o cálculo das esferas."
+        },
+        {
+          "name": "Sequência de Mayer-Vietoris",
+          "statement": "Se $X=\\mathrm{int}(A)\\cup\\mathrm{int}(B)$, há sequência exata longa $\\cdots\\to H_n(A\\cap B)\\xrightarrow{(i_*,j_*)}H_n(A)\\oplus H_n(B)\\xrightarrow{k_*-l_*}H_n(X)\\xrightarrow{\\partial}H_{n-1}(A\\cap B)\\to\\cdots$.",
+          "whyItMatters": "É o análogo homológico de van Kampen: decompõe o espaço em dois pedaços e calcula sua homologia a partir das partes e da interseção. Com ela, $\\tilde H_*(S^n)$ sai por indução em $n$."
+        }
+      ],
+      "summary": "A homologia singular estende a homologia a TODOS os espaços, sem exigir triangulação. Um $n$-simplexo singular é apenas uma aplicação contínua $\\sigma:\\Delta^n\\to X$; tomando o grupo livre nesses $\\sigma$ e o mesmo bordo alternado, definimos $H_n(X)$. Functorial e invariante de homotopia, ela satisfaz $H_0(X)=\\mathbb{Z}^{\\#\\text{componentes por caminho}}$ e coincide com a homologia simplicial quando ambas fazem sentido — o que justifica calcular pela simplicial e usar as propriedades da singular.\\n\\nO cálculo prático repousa em duas sequências exatas. A do par $(X,A)$ encadeia $H_*(A)$, $H_*(X)$ e a homologia relativa $H_*(X,A)$ por um operador de conexão $\\partial$ que baixa o grau; combinada com excisão (cortar um aberto interior não muda a homologia relativa), ela permite indução. A sequência de Mayer-Vietoris é o motor mais usado: escrevendo $X=A\\cup B$, relaciona $H_*(X)$ com $H_*(A)$, $H_*(B)$ e $H_*(A\\cap B)$. Aplicada a $S^n=D^n_+\\cup D^n_-$ com interseção $\\simeq S^{n-1}$, dá por indução $\\tilde H_i(S^n)=\\mathbb{Z}$ se $i=n$ e $0$ caso contrário. Desse cálculo brotam os teoremas-coroa: não há retração $D^n\\to S^{n-1}$, vale o Teorema do Ponto Fixo de Brouwer em toda dimensão, e $\\mathbb{R}^m\\not\\cong\\mathbb{R}^n$ para $m\\neq n$ (invariância da dimensão). O grau de uma aplicação $S^n\\to S^n$, lido em $H_n(S^n)=\\mathbb{Z}$, fecha o quadro.",
+      "commonPitfalls": [
+        "Tentar calcular homologia singular diretamente pela definição. $C_n(X)$ é gigantesco (todas as aplicações $\\Delta^n\\to X$); calcula-se sempre por axiomas, Mayer-Vietoris ou modelos CW.",
+        "Confundir homologia reduzida e não reduzida. A reduzida tira o $\\mathbb{Z}$ extra em grau $0$; enunciados de esferas ficam limpos só com $\\tilde H$.",
+        "Aplicar excisão sem a condição $\\overline{Z}\\subseteq\\mathrm{int}(A)$. O fecho de $Z$ tem de estar no interior de $A$; sem isso o isomorfismo falha.",
+        "Esquecer o operador de conexão $\\partial$ nas sequências exatas longas. Ele baixa o grau e costuma carregar a informação essencial (ex.: gera os geradores de $H_n(S^n)$)."
+      ],
+      "worked": "**Exemplo ($\\tilde H_*(S^n)$ por Mayer-Vietoris).** Escreva $S^n=A\\cup B$ com $A$ e $B$ os hemisférios abertos engordados (cada um $\\simeq$ ponto, contrátil) e $A\\cap B\\simeq S^{n-1}$ (um equador engordado).\\n\\nComo $A,B$ são contráteis, $\\tilde H_i(A)=\\tilde H_i(B)=0$. A sequência de Mayer-Vietoris reduzida dá, em cada grau $i$:\\n$$\\tilde H_i(A)\\oplus\\tilde H_i(B)\\to\\tilde H_i(S^n)\\xrightarrow{\\ \\partial\\ }\\tilde H_{i-1}(A\\cap B)\\to\\tilde H_{i-1}(A)\\oplus\\tilde H_{i-1}(B),$$\\nisto é $0\\to\\tilde H_i(S^n)\\xrightarrow{\\partial}\\tilde H_{i-1}(S^{n-1})\\to 0$. Logo $\\partial$ é isomorfismo: $\\tilde H_i(S^n)\\cong\\tilde H_{i-1}(S^{n-1})$.\\n\\nA base é $S^0=\\{\\pm1\\}$: $\\tilde H_0(S^0)=\\mathbb{Z}$ e $0$ nos demais. Por indução, $\\tilde H_i(S^n)=\\mathbb{Z}$ se $i=n$ e $0$ caso contrário. Em particular $H_n(S^n)=\\mathbb{Z}$, onde mora o grau das aplicações $S^n\\to S^n$.",
+      "exercises": [
+        {
+          "prompt": "Prove que $H_0(X)$ é livre de posto igual ao número de componentes conexas por caminhos de $X$.",
+          "hint": "$\\partial_1$ leva uma 1-cadeia caminho de $a$ a $b$ em $b-a$; logo $H_0=C_0/\\mathrm{im}\\,\\partial_1$ identifica pontos ligados por caminho, sobrando um gerador por componente.",
+          "difficulty": 3,
+          "solution": "**A provar.** $H_0(X)$ é abeliano livre de posto igual ao número de componentes conexas por caminhos de $X$.\n\n**Grupos em jogo.** $C_0(X)$ é o abeliano livre nos pontos de $X$; $C_1(X)$ é o livre nos 1-simplexos singulares $\\sigma:\\Delta^1\\to X$ (caminhos). O bordo $\\partial_1\\sigma=\\sigma(e_1)-\\sigma(e_0)=$ (extremo)$-$(início). Como $C_{-1}=0$, $\\partial_0=0$, então $Z_0=C_0$ e $H_0=C_0/\\mathrm{im}\\,\\partial_1$.\n\n**Augmentação por componentes.** Seja $\\{X_\\lambda\\}$ o conjunto das componentes conexas por caminhos. Defina $\\varepsilon:C_0(X)\\to\\bigoplus_\\lambda\\mathbb{Z}$ que a um ponto $x\\in X_\\lambda$ associa o gerador $e_\\lambda$. É sobrejetora.\n\n**$\\ker\\varepsilon=\\mathrm{im}\\,\\partial_1$.** ($\\supseteq$) Para um caminho $\\sigma$, início e extremo estão na mesma componente, logo $\\varepsilon(\\partial_1\\sigma)=e_\\lambda-e_\\lambda=0$; assim $\\mathrm{im}\\,\\partial_1\\subseteq\\ker\\varepsilon$. ($\\subseteq$) Uma 0-cadeia $\\sum n_i x_i$ está em $\\ker\\varepsilon$ sse, em cada componente, a soma dos coeficientes é zero. Fixe um ponto base $x_\\lambda^0$ em cada componente. Para $x_i\\in X_\\lambda$, existe caminho $\\tau_i$ de $x_\\lambda^0$ a $x_i$, com $\\partial_1\\tau_i=x_i-x_\\lambda^0$. Então $\\sum n_i x_i=\\sum n_i(x_i-x_\\lambda^0)+\\sum_\\lambda\\Big(\\sum_{x_i\\in X_\\lambda}n_i\\Big)x_\\lambda^0=\\partial_1\\big(\\sum n_i\\tau_i\\big)+0$, pois as somas por componente se anulam. Logo $\\sum n_i x_i\\in\\mathrm{im}\\,\\partial_1$.\n\n**Conclusão.** $\\varepsilon$ induz isomorfismo $H_0(X)=C_0/\\mathrm{im}\\,\\partial_1=C_0/\\ker\\varepsilon\\cong\\bigoplus_\\lambda\\mathbb{Z}$, abeliano livre de posto = número de componentes conexas por caminhos. $\\blacksquare$",
+          "steps": [
+            "Note que $H_0=C_0/\\mathrm{im}\\,\\partial_1$ e que $\\partial_1(\\text{caminho})=\\text{extremo}-\\text{início}$.",
+            "Defina a augmentação por componentes $\\varepsilon:C_0\\to\\bigoplus_\\lambda\\mathbb{Z}$, sobrejetora.",
+            "Prove $\\mathrm{im}\\,\\partial_1\\subseteq\\ker\\varepsilon$ (bordos somam zero por componente) e a recíproca usando caminhos até pontos base.",
+            "Conclua $H_0\\cong\\bigoplus_\\lambda\\mathbb{Z}$, livre de posto igual ao número de componentes por caminhos."
+          ]
+        },
+        {
+          "prompt": "Use a sequência exata longa do par $(D^n,S^{n-1})$ e a contractibilidade de $D^n$ para mostrar $H_n(D^n,S^{n-1})\\cong\\tilde H_{n-1}(S^{n-1})\\cong\\mathbb{Z}$.",
+          "hint": "Como $D^n$ é contrátil, $\\tilde H_*(D^n)=0$, e o operador de conexão $\\partial:H_n(D^n,S^{n-1})\\to\\tilde H_{n-1}(S^{n-1})$ vira isomorfismo.",
+          "difficulty": 3,
+          "solution": "**Par $(D^n,S^{n-1})$, $n\\ge1$.** Use a sequência exata longa REDUZIDA do par:\n$$\\cdots\\to\\tilde H_n(D^n)\\to H_n(D^n,S^{n-1})\\xrightarrow{\\ \\partial\\ }\\tilde H_{n-1}(S^{n-1})\\to\\tilde H_{n-1}(D^n)\\to\\cdots$$\n\n**Contractibilidade de $D^n$.** $D^n$ é convexo, logo contrátil, então $\\tilde H_k(D^n)=0$ para todo $k$. Em particular $\\tilde H_n(D^n)=0$ e $\\tilde H_{n-1}(D^n)=0$.\n\n**O trecho relevante fica.** Substituindo, a sequência dá\n$$0=\\tilde H_n(D^n)\\to H_n(D^n,S^{n-1})\\xrightarrow{\\ \\partial\\ }\\tilde H_{n-1}(S^{n-1})\\to\\tilde H_{n-1}(D^n)=0.$$\nExatidão em ambos os lados força que $\\partial$ seja injetora (núcleo $=\\mathrm{im}\\,0=0$) e sobrejetora (imagem $=\\ker 0=$ tudo). Logo $\\partial$ é isomorfismo:\n$$H_n(D^n,S^{n-1})\\ \\cong\\ \\tilde H_{n-1}(S^{n-1}).$$\n\n**Valor.** Já sabemos (por Mayer-Vietoris/indução) que $\\tilde H_{n-1}(S^{n-1})\\cong\\mathbb{Z}$ para $n\\ge1$. Portanto\n$$H_n(D^n,S^{n-1})\\cong\\mathbb{Z}.\\qquad\\blacksquare$$\n\n**Uso.** Este é o gerador que fornece a orientação da célula $D^n$ e alimenta a homologia celular e o grau de aplicações.",
+          "steps": [
+            "Escreva a sequência exata longa reduzida do par $(D^n,S^{n-1})$ em torno do grau $n$.",
+            "Use que $D^n$ é contrátil para anular $\\tilde H_n(D^n)$ e $\\tilde H_{n-1}(D^n)$.",
+            "Conclua, por exatidão, que o operador de conexão $\\partial:H_n(D^n,S^{n-1})\\to\\tilde H_{n-1}(S^{n-1})$ é isomorfismo.",
+            "Substitua $\\tilde H_{n-1}(S^{n-1})=\\mathbb{Z}$ para obter $H_n(D^n,S^{n-1})\\cong\\mathbb{Z}$."
+          ]
+        },
+        {
+          "prompt": "Deduza o Teorema do Ponto Fixo de Brouwer em dimensão $n$: toda $f:D^n\\to D^n$ contínua tem ponto fixo, usando $H_{n-1}(S^{n-1})=\\mathbb{Z}$.",
+          "hint": "Se não houvesse ponto fixo, a projeção radial daria retração $r:D^n\\to S^{n-1}$, forçando $\\mathrm{id}_{\\mathbb{Z}}$ a fatorar por $\\tilde H_{n-1}(D^n)=0$.",
+          "difficulty": 4,
+          "solution": "**Teorema (Brouwer, dim $n$).** Toda $f:D^n\\to D^n$ contínua tem ponto fixo.\n\n**Suposição por absurdo.** Suponha $f(x)\\neq x$ para todo $x\\in D^n$. Defina $r:D^n\\to S^{n-1}$: para cada $x$, trace a semirreta que parte de $f(x)$ e passa por $x$; $r(x)$ é o ponto onde ela encontra $S^{n-1}=\\partial D^n$. Como $f(x)\\neq x$, a direção $x-f(x)$ está bem definida e $r$ é contínua. Se $x\\in S^{n-1}$, a semirreta a partir de $f(x)$ por $x$ já está no bordo em $x$, então $r(x)=x$. Logo $r$ é uma RETRAÇÃO de $D^n$ sobre $S^{n-1}$, i.e. $r\\circ i=\\mathrm{id}_{S^{n-1}}$, onde $i:S^{n-1}\\hookrightarrow D^n$.\n\n**Aplicando $H_{n-1}$.** Functorialidade dá $r_*\\circ i_*=(\\mathrm{id})_*=\\mathrm{id}$ em $H_{n-1}(S^{n-1})$. Para $n\\ge1$ usamos $\\tilde H_{n-1}(S^{n-1})\\cong\\mathbb{Z}$ (para $n\\ge2$; o caso $n=1$ trata-se com $H_0$ reduzido, também $\\mathbb{Z}$). Assim a identidade de $\\mathbb{Z}$ fatora como\n$$\\mathbb{Z}=\\tilde H_{n-1}(S^{n-1})\\xrightarrow{i_*}\\tilde H_{n-1}(D^n)\\xrightarrow{r_*}\\tilde H_{n-1}(S^{n-1})=\\mathbb{Z}.$$\nMas $D^n$ é contrátil, logo $\\tilde H_{n-1}(D^n)=0$. A composição passa pelo grupo trivial, então $\\mathrm{id}_{\\mathbb{Z}}$ seria a aplicação nula — impossível, pois $1\\neq0$.\n\n**Conclusão.** A suposição é falsa: existe $x$ com $f(x)=x$. $\\blacksquare$",
+          "steps": [
+            "Suponha $f$ sem ponto fixo e construa a retração radial $r:D^n\\to S^{n-1}$ (semirreta de $f(x)$ por $x$).",
+            "Verifique $r$ contínua e $r|_{S^{n-1}}=\\mathrm{id}$, logo $r\\circ i=\\mathrm{id}_{S^{n-1}}$.",
+            "Aplique $\\tilde H_{n-1}$: $r_*\\circ i_*=\\mathrm{id}$ na cópia de $\\mathbb{Z}$, mas fatora por $\\tilde H_{n-1}(D^n)=0$.",
+            "A identidade de $\\mathbb{Z}$ não pode fatorar por $0$: contradição, logo há ponto fixo."
+          ]
+        },
+        {
+          "prompt": "Use Mayer-Vietoris para calcular $H_*(T^2)$ decompondo o toro em dois cilindros.",
+          "hint": "Cada cilindro $\\simeq S^1$ e a interseção é dois cilindros $\\simeq S^1\\sqcup S^1$. Monte a sequência e resolva grau a grau; deve obter $(\\mathbb{Z},\\mathbb{Z}^2,\\mathbb{Z})$.",
+          "difficulty": 5,
+          "solution": "**Decomposição.** Escreva o toro $T^2$ como união de dois cilindros abertos $A,B$ (engordados para serem abertos), cada um $\\simeq S^1$, colados ao longo de dois anéis; então $A\\cap B$ é homotopicamente equivalente a $S^1\\sqcup S^1$ (dois círculos disjuntos).\n\n**Dados.** $H_*(A)=H_*(B)=H_*(S^1)$: $H_0=\\mathbb{Z}$, $H_1=\\mathbb{Z}$, resto $0$. $H_*(A\\cap B)=H_*(S^1\\sqcup S^1)$: $H_0=\\mathbb{Z}^2$, $H_1=\\mathbb{Z}^2$.\n\n**Mayer-Vietoris (trecho superior).**\n$$0\\to H_2(T^2)\\to H_1(A\\cap B)\\xrightarrow{\\ \\psi\\ }H_1(A)\\oplus H_1(B)\\to H_1(T^2)\\to\\tilde H_0(A\\cap B)\\xrightarrow{\\ \\phi\\ }\\tilde H_0(A)\\oplus\\tilde H_0(B).$$\n\n**A aplicação $\\psi$.** Gere $H_1(A\\cap B)=\\mathbb{Z}\\langle c_1\\rangle\\oplus\\mathbb{Z}\\langle c_2\\rangle$ (as duas circunferências da interseção). Cada $c_k$, incluída em $A$, é homotópica ao núcleo $a$ do cilindro $A$; incluída em $B$, ao núcleo $b$. Assim $\\psi(c_k)=(a,b)$ para $k=1,2$ (ambas iguais). Em coordenadas $\\mathbb{Z}^2\\to\\mathbb{Z}\\oplus\\mathbb{Z}$, $\\psi(m,n)=(m+n,\\,m+n)$. Logo $\\ker\\psi=\\langle c_1-c_2\\rangle\\cong\\mathbb{Z}$ e $\\mathrm{im}\\,\\psi=\\langle(1,1)\\rangle$, $\\operatorname{coker}\\psi\\cong\\mathbb{Z}$.\n\n**$H_2$.** Exatidão $0\\to H_2(T^2)\\to H_1(A\\cap B)\\xrightarrow{\\psi}\\dots$ dá $H_2(T^2)\\cong\\ker\\psi\\cong\\mathbb{Z}$.\n\n**$H_1$.** O trecho $H_1(A)\\oplus H_1(B)\\to H_1(T^2)\\to\\tilde H_0(A\\cap B)\\xrightarrow{\\phi}\\tilde H_0(A)\\oplus\\tilde H_0(B)$: temos $\\tilde H_0(A\\cap B)=\\mathbb{Z}$ (dois componentes), $\\tilde H_0(A)\\oplus\\tilde H_0(B)=0$ (ambos conexos), logo $\\phi=0$ e $\\ker\\phi=\\mathbb{Z}$. Obtemos a sequência exata curta\n$$0\\to\\operatorname{coker}\\psi\\to H_1(T^2)\\to\\ker\\phi\\to0,\\qquad\\text{i.e.}\\qquad 0\\to\\mathbb{Z}\\to H_1(T^2)\\to\\mathbb{Z}\\to0.$$\nComo $\\mathbb{Z}$ é livre, ela cinde: $H_1(T^2)\\cong\\mathbb{Z}\\oplus\\mathbb{Z}=\\mathbb{Z}^2$.\n\n**$H_0$.** $T^2$ conexo $\\Rightarrow H_0=\\mathbb{Z}$.\n\n**Resultado.** $H_*(T^2)=(\\mathbb{Z},\\ \\mathbb{Z}^2,\\ \\mathbb{Z})$. $\\blacksquare$",
+          "steps": [
+            "Decomponha $T^2=A\\cup B$ em dois cilindros $\\simeq S^1$ com $A\\cap B\\simeq S^1\\sqcup S^1$, e liste as homologias das partes.",
+            "Escreva a sequência de Mayer-Vietoris e identifique $\\psi:H_1(A\\cap B)\\to H_1(A)\\oplus H_1(B)$ mandando cada círculo em $(a,b)$.",
+            "Calcule $\\ker\\psi\\cong\\mathbb{Z}$ (dá $H_2=\\mathbb{Z}$) e $\\operatorname{coker}\\psi\\cong\\mathbb{Z}$.",
+            "Monte a sequência exata curta $0\\to\\mathbb{Z}\\to H_1(T^2)\\to\\mathbb{Z}\\to0$, que cinde, obtendo $H_*(T^2)=(\\mathbb{Z},\\mathbb{Z}^2,\\mathbb{Z})$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "O que é um $n$-simplexo singular?",
+          "back": "Uma aplicação contínua $\\sigma:\\Delta^n\\to X$; geram o grupo livre $C_n(X)$ das cadeias singulares."
+        },
+        {
+          "front": "$H_0(X)=?$",
+          "back": "$\\mathbb{Z}^{\\#}$, com $\\#$ = número de componentes conexas por caminhos de $X$."
+        },
+        {
+          "front": "Invariância homotópica da homologia.",
+          "back": "$f\\simeq g\\Rightarrow f_*=g_*$ em $H_n$; equivalência homotópica dá isomorfismo em todo grau."
+        },
+        {
+          "front": "Sequência exata longa do par $(X,A)$.",
+          "back": "$\\cdots\\to H_n(A)\\to H_n(X)\\to H_n(X,A)\\xrightarrow{\\partial}H_{n-1}(A)\\to\\cdots$, com $\\partial$ baixando o grau."
+        },
+        {
+          "front": "Enunciado de excisão.",
+          "back": "Se $\\overline{Z}\\subseteq\\mathrm{int}(A)$, então $H_n(X\\setminus Z,A\\setminus Z)\\cong H_n(X,A)$."
+        },
+        {
+          "front": "Sequência de Mayer-Vietoris.",
+          "back": "$\\cdots\\to H_n(A\\cap B)\\to H_n(A)\\oplus H_n(B)\\to H_n(X)\\xrightarrow{\\partial}H_{n-1}(A\\cap B)\\to\\cdots$ (para $X=\\mathrm{int}A\\cup\\mathrm{int}B$)."
+        },
+        {
+          "front": "$\\tilde H_i(S^n)=?$",
+          "back": "$\\mathbb{Z}$ se $i=n$, e $0$ caso contrário."
+        },
+        {
+          "front": "Consequências de $H_n(S^n)=\\mathbb{Z}$.",
+          "back": "Grau de $f:S^n\\to S^n$, não retração $D^n\\to S^{n-1}$, ponto fixo de Brouwer, invariância da dimensão."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Hatcher, Algebraic Topology — seções 2.1, 2.2",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Homologia Básica — caps. 4 a 6",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude Hatcher §2.1-2.2 (ou Elon, Homologia Básica, caps. 4-6) e escreva as definições de simplexo singular, complexo singular, homologia reduzida, homologia relativa e sequência exata.",
+          "Assista a uma aula sobre a sequência exata longa do par e sobre excisão; refaça a dedução da sequência de Mayer-Vietoris.",
+          "Calcule $\\tilde H_*(S^n)$ por indução via Mayer-Vietoris e deduza as consequências: não-retração $D^n\\to S^{n-1}$, ponto fixo de Brouwer e invariância da dimensão.",
+          "Pratique montar e resolver sequências exatas grau a grau: pares $(D^n,S^{n-1})$, $H_0$ por componentes, e $H_*(T^2)$ decompondo o toro em cilindros.",
+          "Resolva os testes deste tópico aqui no app e anote o principal: as duas máquinas (LES do par + Mayer-Vietoris), o papel do operador de conexão $\\partial$, e o cálculo indutivo das esferas."
+        ],
+        "searchQueries": [
+          "homologia singular definição functorial invariância homotópica",
+          "sequência exata longa do par homologia relativa operador conexão",
+          "sequência de Mayer-Vietoris demonstração e aplicações",
+          "reduced homology of spheres induction Mayer-Vietoris",
+          "Brouwer fixed point theorem n-dimensional homology proof",
+          "excision theorem singular homology statement proof"
+        ],
+        "videos": [
+          {
+            "title": "Algebraic Topology — singular homology and Mayer-Vietoris",
+            "channel": "Pierre Albin (YouTube)",
+            "note": "Homologia singular, LES do par, excisão e Mayer-Vietoris com aplicações."
+          },
+          {
+            "title": "Long exact sequences and Mayer-Vietoris",
+            "channel": "Richard Wong (YouTube)",
+            "note": "Como manipular sequências exatas para calcular homologia de esferas e superfícies."
+          },
+          {
+            "title": "18.905 Algebraic Topology I — singular homology",
+            "channel": "MIT OpenCourseWare",
+            "note": "Notas cobrindo axiomas de Eilenberg-Steenrod, excisão e cálculo de esferas."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Hatcher, Algebraic Topology — §2.1 e §2.2",
+            "where": "PDF gratuito em pi.math.cornell.edu/~hatcher"
+          },
+          {
+            "title": "Elon Lages Lima, Homologia Básica — caps. 4 a 6",
+            "where": "Coleção Projeto Euclides, IMPA"
+          },
+          {
+            "title": "nLab — verbetes 'singular homology' e 'Mayer-Vietoris sequence'",
+            "where": "ncatlab.org"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-algebrica-07-introducao-a-cohomologia",
+      "title": "Introdução à cohomologia e produto cup",
+      "tagline": "Dualize a homologia para ganhar uma estrutura de anel: o produto cup distingue espaços que a homologia não separa.",
+      "objectives": [
+        "Definir cocadeias, o cobordo $\\delta$ e a cohomologia singular $H^n(X;R)$ como functor contravariante.",
+        "Enunciar o Teorema dos Coeficientes Universais e relacionar $H^n$ a $H_n$ via $\\mathrm{Hom}$ e $\\mathrm{Ext}$.",
+        "Definir o produto cup e a estrutura de anel graduado de $H^*(X;R)$.",
+        "Usar o anel de cohomologia para distinguir espaços com homologia isomorfa (toro vs. wedge).",
+        "Enunciar a dualidade de Poincaré e situar a cohomologia no panorama (de Rham, feixes)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Cocadeia e cobordo",
+          "statement": "Dado um anel $R$, o grupo de $n$-cocadeias é $C^n(X;R)=\\mathrm{Hom}(C_n(X),R)$, e o cobordo $\\delta^n:C^n\\to C^{n+1}$ é o dual do bordo: $(\\delta\\varphi)(\\sigma)=\\varphi(\\partial\\sigma)$. Vale $\\delta^2=0$, e $H^n(X;R)=\\ker\\delta^n/\\mathrm{im}\\,\\delta^{n-1}$."
+        },
+        {
+          "term": "Functor contravariante",
+          "statement": "Uma aplicação $f:X\\to Y$ induz $f^*:H^n(Y;R)\\to H^n(X;R)$ no sentido inverso, com $(g\\circ f)^*=f^*\\circ g^*$. A cohomologia é functor contravariante, ao contrário da homologia (covariante)."
+        },
+        {
+          "term": "Produto cup",
+          "statement": "Para $\\alpha\\in H^p(X;R)$ e $\\beta\\in H^q(X;R)$, o produto cup $\\alpha\\smile\\beta\\in H^{p+q}(X;R)$ é definido em cocadeias por $(\\varphi\\smile\\psi)(\\sigma)=\\varphi(\\sigma|_{[v_0,\\dots,v_p]})\\,\\psi(\\sigma|_{[v_p,\\dots,v_{p+q}]})$. Torna $H^*(X;R)=\\bigoplus_n H^n$ um anel graduado, comutativo no sentido graduado: $\\alpha\\smile\\beta=(-1)^{pq}\\beta\\smile\\alpha$."
+        },
+        {
+          "term": "$\\mathrm{Ext}$ e torção",
+          "statement": "$\\mathrm{Ext}(A,\\mathbb{Z})$ mede a parte de torção: $\\mathrm{Ext}(\\mathbb{Z}/m,\\mathbb{Z})\\cong\\mathbb{Z}/m$ e $\\mathrm{Ext}(\\mathbb{Z},\\mathbb{Z})=0$. É o termo de correção que liga $H^n$ a $H_n$ e $H_{n-1}$ no Teorema dos Coeficientes Universais."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema dos Coeficientes Universais (cohomologia)",
+          "statement": "Para um complexo de cadeias de grupos abelianos livres, há sequência exata curta natural que cinde (não naturalmente): $0\\to\\mathrm{Ext}(H_{n-1}(X),R)\\to H^n(X;R)\\to\\mathrm{Hom}(H_n(X),R)\\to 0$. Logo $H^n(X;R)\\cong\\mathrm{Hom}(H_n(X),R)\\oplus\\mathrm{Ext}(H_{n-1}(X),R)$.",
+          "whyItMatters": "Reduz o cálculo da cohomologia ao da homologia mais álgebra de $\\mathrm{Hom}$ e $\\mathrm{Ext}$. Com $R$ corpo, $\\mathrm{Ext}=0$ e $H^n$ é o dual de $H_n$; sobre $\\mathbb{Z}$, a torção migra um grau para cima."
+        },
+        {
+          "name": "Estrutura de anel de $H^*$",
+          "statement": "O produto cup é associativo, distributivo e graduado-comutativo, com unidade $1\\in H^0(X;R)$ (quando $X$ é conexo). Aplicações contínuas induzem homomorfismos de anéis graduados $f^*$.",
+          "whyItMatters": "A multiplicação carrega informação que os grupos isolados não têm: é um invariante estritamente mais fino que a homologia, capaz de distinguir espaços com os mesmos grupos de (co)homologia."
+        },
+        {
+          "name": "Cup distingue toro de wedge",
+          "statement": "$T^2$ e $X=S^2\\vee S^1\\vee S^1$ têm homologia isomorfa em todo grau, mas anéis de cohomologia diferentes: em $H^*(T^2;\\mathbb{Z})$ os dois geradores $\\alpha,\\beta\\in H^1$ satisfazem $\\alpha\\smile\\beta\\neq 0$ (gera $H^2$), enquanto no wedge todo produto de classes de grau $1$ é nulo.",
+          "whyItMatters": "Exemplo-assinatura de que a estrutura multiplicativa é essencial: prova que $T^2\\not\\simeq S^2\\vee S^1\\vee S^1$ apesar da homologia coincidir. É argumento clássico de prova de mestrado."
+        },
+        {
+          "name": "Dualidade de Poincaré",
+          "statement": "Se $M$ é uma variedade fechada orientável de dimensão $n$, então $H^k(M;\\mathbb{Z})\\cong H_{n-k}(M;\\mathbb{Z})$ para todo $k$ (via produto cap com a classe fundamental). Sem orientabilidade vale a versão com coeficientes em $\\mathbb{Z}/2$.",
+          "whyItMatters": "Impõe simetria rígida nos invariantes de variedades fechadas e conecta cohomologia, orientação e classe fundamental; é a pedra angular da topologia de variedades e da teoria de interseção."
+        }
+      ],
+      "summary": "A cohomologia nasce de dualizar o complexo de cadeias: em vez de cadeias, funções nas cadeias (cocadeias com valores num anel $R$), e o cobordo $\\delta$ é a transposta do bordo $\\partial$. Como $\\delta^2=0$, define-se $H^n(X;R)$, um functor contravariante — aplicações puxam classes para trás. À primeira vista a cohomologia parece apenas o dual da homologia, e de fato o Teorema dos Coeficientes Universais expressa $H^n$ em termos de $\\mathrm{Hom}(H_n,R)$ mais um termo de torção $\\mathrm{Ext}(H_{n-1},R)$; sobre um corpo, é exatamente o espaço dual.\\n\\nO que torna a cohomologia indispensável é o produto cup, que multiplica uma $p$-classe por uma $q$-classe produzindo uma $(p+q)$-classe e faz de $H^*(X;R)$ um anel graduado comutativo (no sentido graduado). Essa estrutura multiplicativa é estritamente mais fina que os grupos isolados: o toro $T^2$ e o buquê $S^2\\vee S^1\\vee S^1$ têm exatamente a mesma homologia e cohomologia como grupos, mas o produto cup dos dois geradores de grau $1$ é não nulo no toro e nulo no buquê — prova de que não têm o mesmo tipo de homotopia. Coroando o assunto, a dualidade de Poincaré revela que variedades fechadas orientáveis de dimensão $n$ têm cohomologia simétrica, $H^k\\cong H_{n-k}$, ligando orientação, classe fundamental e produto cap. A partir daqui abrem-se a cohomologia de de Rham (formas diferenciais), a cohomologia de feixes e a teoria de homotopia estável — o território da pesquisa contemporânea.",
+      "commonPitfalls": [
+        "Pensar que cohomologia é só o dual da homologia. Sobre $\\mathbb{Z}$ há o termo $\\mathrm{Ext}$ (torção sobe um grau), e, mais importante, a cohomologia tem produto cup — estrutura que a homologia não possui.",
+        "Inverter a variância. Homologia é covariante ($f_*$), cohomologia é contravariante ($f^*$); trocar isso quebra functorialidade.",
+        "Esquecer a comutatividade graduada do cup. $\\alpha\\smile\\beta=(-1)^{pq}\\beta\\smile\\alpha$: classes de grau ímpar anticomutam, então $\\alpha\\smile\\alpha$ pode ser $2$-torção.",
+        "Aplicar dualidade de Poincaré sem orientabilidade ou sem compacidade. Para variedades não orientáveis use coeficientes $\\mathbb{Z}/2$; para abertas, a dualidade é com cohomologia de suporte compacto."
+      ],
+      "worked": "**Exemplo (anel de cohomologia de $T^2$ vs. wedge).** Sobre $\\mathbb{Z}$, tanto $T^2$ quanto $X=S^2\\vee S^1\\vee S^1$ têm $H^0=\\mathbb{Z}$, $H^1=\\mathbb{Z}^2$, $H^2=\\mathbb{Z}$ e zero acima — homologia e cohomologia coincidem como grupos.\\n\\nPara distinguir, olhe o produto cup. Em $T^2=S^1\\times S^1$ sejam $\\alpha,\\beta\\in H^1(T^2)$ os pullbacks dos geradores de cada fator. Pela fórmula de Künneth/estrutura do produto, $\\alpha\\smile\\beta$ gera $H^2(T^2)\\cong\\mathbb{Z}$; em particular $\\alpha\\smile\\beta\\neq 0$ e $\\alpha\\smile\\alpha=\\beta\\smile\\beta=0$.\\n\\nJá em $X=S^2\\vee S^1\\vee S^1$, as classes de grau $1$ vêm dos dois círculos e qualquer produto cup de duas delas é representado por cocadeias suportadas em pedaços que não se cruzam no espaço colado por um ponto: todo produto de classes de grau $\\ge1$ é nulo, pois $H^2$ vem da esfera, desconectada multiplicativamente dos círculos. Logo os anéis $H^*(T^2)$ e $H^*(X)$ não são isomorfos como anéis graduados, e portanto $T^2\\not\\simeq X$ — embora sejam indistinguíveis pela homologia sozinha.",
+      "exercises": [
+        {
+          "prompt": "Calcule $H^*(S^n;\\mathbb{Z})$ como grupos via Coeficientes Universais a partir de $H_*(S^n)$, e descreva o anel.",
+          "hint": "Como $H_*(S^n)$ é livre, $\\mathrm{Ext}=0$ e $H^k=\\mathrm{Hom}(H_k,\\mathbb{Z})$. O anel é $\\mathbb{Z}[\\alpha]/(\\alpha^2)$ com $|\\alpha|=n$ (álgebra exterior num gerador).",
+          "difficulty": 2,
+          "solution": "**Homologia de partida.** $H_*(S^n;\\mathbb{Z})$: $H_0=\\mathbb{Z}$, $H_n=\\mathbb{Z}$ ($n\\ge1$), demais $0$. Todos livres.\n\n**Coeficientes Universais.** Para cada grau,\n$$H^k(S^n;\\mathbb{Z})\\cong\\mathrm{Hom}(H_k(S^n),\\mathbb{Z})\\oplus\\mathrm{Ext}(H_{k-1}(S^n),\\mathbb{Z}).$$\nComo os $H_k$ são livres (ou nulos), $\\mathrm{Ext}(H_{k-1},\\mathbb{Z})=0$ em todo grau (Ext de grupo livre é nulo). Logo $H^k=\\mathrm{Hom}(H_k,\\mathbb{Z})$:\n$$H^0(S^n)=\\mathbb{Z},\\qquad H^n(S^n)=\\mathbb{Z},\\qquad H^k(S^n)=0\\ (k\\neq0,n).$$\n\n**Estrutura de anel.** Seja $\\alpha$ gerador de $H^n(S^n)$ e $1\\in H^0$ a unidade. O único produto não trivial a considerar é $\\alpha\\smile\\alpha\\in H^{2n}(S^n)$. Para $n\\ge1$, $H^{2n}(S^n)=0$ (pois $2n\\neq0,n$), então $\\alpha\\smile\\alpha=0$. Portanto\n$$H^*(S^n;\\mathbb{Z})\\cong\\mathbb{Z}[\\alpha]/(\\alpha^2),\\qquad|\\alpha|=n,$$\na álgebra exterior num gerador de grau $n$: apenas $H^0$ e $H^n$ não nulos e todo produto de classes de grau positivo é zero. $\\blacksquare$",
+          "steps": [
+            "Parta de $H_*(S^n)$ livre: $H_0=H_n=\\mathbb{Z}$, resto $0$.",
+            "Aplique UCT: como tudo é livre, $\\mathrm{Ext}=0$ e $H^k=\\mathrm{Hom}(H_k,\\mathbb{Z})$.",
+            "Conclua $H^0=H^n=\\mathbb{Z}$, demais nulos.",
+            "Para o anel, observe $\\alpha\\smile\\alpha\\in H^{2n}=0$, logo $H^*(S^n)=\\mathbb{Z}[\\alpha]/(\\alpha^2)$, $|\\alpha|=n$."
+          ]
+        },
+        {
+          "prompt": "Usando Coeficientes Universais, calcule $H^*(\\mathbb{R}P^2;\\mathbb{Z})$ a partir de $H_*=(\\mathbb{Z},\\mathbb{Z}/2,0)$ e identifique onde aparece a torção.",
+          "hint": "$\\mathrm{Hom}(\\mathbb{Z}/2,\\mathbb{Z})=0$ mas $\\mathrm{Ext}(\\mathbb{Z}/2,\\mathbb{Z})=\\mathbb{Z}/2$; a torção de $H_1$ reaparece em $H^2$. Resultado: $H^0=\\mathbb{Z}$, $H^1=0$, $H^2=\\mathbb{Z}/2$.",
+          "difficulty": 4,
+          "solution": "**Homologia de partida.** $H_*(\\mathbb{R}P^2;\\mathbb{Z})=(H_0,H_1,H_2)=(\\mathbb{Z},\\ \\mathbb{Z}/2,\\ 0)$.\n\n**Coeficientes Universais** (com $R=\\mathbb{Z}$):\n$$H^k(\\mathbb{R}P^2;\\mathbb{Z})\\cong\\mathrm{Hom}(H_k,\\mathbb{Z})\\oplus\\mathrm{Ext}(H_{k-1},\\mathbb{Z}).$$\n\n**Grau 0.** $H^0=\\mathrm{Hom}(H_0,\\mathbb{Z})\\oplus\\mathrm{Ext}(0,\\mathbb{Z})=\\mathrm{Hom}(\\mathbb{Z},\\mathbb{Z})\\oplus0=\\mathbb{Z}.$\n\n**Grau 1.** $H^1=\\mathrm{Hom}(H_1,\\mathbb{Z})\\oplus\\mathrm{Ext}(H_0,\\mathbb{Z})=\\mathrm{Hom}(\\mathbb{Z}/2,\\mathbb{Z})\\oplus\\mathrm{Ext}(\\mathbb{Z},\\mathbb{Z}).$\nComo $\\mathrm{Hom}(\\mathbb{Z}/2,\\mathbb{Z})=0$ (não há elemento de ordem 2 em $\\mathbb{Z}$) e $\\mathrm{Ext}(\\mathbb{Z},\\mathbb{Z})=0$ ($\\mathbb{Z}$ livre), $H^1=0.$\n\n**Grau 2.** $H^2=\\mathrm{Hom}(H_2,\\mathbb{Z})\\oplus\\mathrm{Ext}(H_1,\\mathbb{Z})=\\mathrm{Hom}(0,\\mathbb{Z})\\oplus\\mathrm{Ext}(\\mathbb{Z}/2,\\mathbb{Z})=0\\oplus\\mathbb{Z}/2=\\mathbb{Z}/2.$\n\n**Resultado.**\n$$H^0(\\mathbb{R}P^2;\\mathbb{Z})=\\mathbb{Z},\\quad H^1=0,\\quad H^2=\\mathbb{Z}/2.$$\n\n**Onde a torção aparece.** A torção $\\mathbb{Z}/2$ de $H_1$ NÃO aparece em $H^1$ (o funtor $\\mathrm{Hom}(-,\\mathbb{Z})$ mata torção), mas ressurge um grau ACIMA, em $H^2$, via o termo $\\mathrm{Ext}(H_1,\\mathbb{Z})=\\mathrm{Ext}(\\mathbb{Z}/2,\\mathbb{Z})=\\mathbb{Z}/2$. Este é o fenômeno típico: sobre $\\mathbb{Z}$, a torção \"sobe\" da homologia para a cohomologia. $\\blacksquare$",
+          "steps": [
+            "Liste $H_*(\\mathbb{R}P^2)=(\\mathbb{Z},\\mathbb{Z}/2,0)$ e escreva a fórmula UCT com $\\mathrm{Hom}$ e $\\mathrm{Ext}$.",
+            "Calcule grau a grau: $H^0=\\mathbb{Z}$; $H^1=\\mathrm{Hom}(\\mathbb{Z}/2,\\mathbb{Z})\\oplus\\mathrm{Ext}(\\mathbb{Z},\\mathbb{Z})=0$.",
+            "No grau 2, use $\\mathrm{Ext}(\\mathbb{Z}/2,\\mathbb{Z})=\\mathbb{Z}/2$ para obter $H^2=\\mathbb{Z}/2$.",
+            "Destaque que a torção de $H_1$ reaparece em $H^2$ (subiu um grau via Ext)."
+          ]
+        },
+        {
+          "prompt": "Mostre que o produto cup é graduado-comutativo no nível de cohomologia: $\\alpha\\smile\\beta=(-1)^{pq}\\beta\\smile\\alpha$ para $\\alpha\\in H^p$, $\\beta\\in H^q$.",
+          "hint": "No nível de cocadeias o produto não é comutativo, mas a aplicação de reversão de vértices fornece uma homotopia de cadeias entre $\\varphi\\smile\\psi$ e $(-1)^{pq}\\psi\\smile\\varphi$.",
+          "difficulty": 5,
+          "solution": "**Objetivo.** Provar, em cohomologia, $\\alpha\\smile\\beta=(-1)^{pq}\\beta\\smile\\alpha$ para $\\alpha\\in H^p(X;R)$, $\\beta\\in H^q(X;R)$.\n\n**O problema no nível de cocadeias.** A fórmula de Alexander-Whitney,\n$$(\\varphi\\smile\\psi)(\\sigma)=\\varphi(\\sigma|_{[v_0,\\dots,v_p]})\\,\\psi(\\sigma|_{[v_p,\\dots,v_{p+q}]}),$$\nNÃO é comutativa: $\\varphi\\smile\\psi\\neq\\pm\\psi\\smile\\varphi$ em geral no nível de cocadeias. A comutatividade só emerge na cohomologia, via uma homotopia de cadeias.\n\n**Operador de reversão.** No complexo de cadeias singular defina $\\rho:C_n(X)\\to C_n(X)$ pela reversão da ordem dos vértices,\n$$\\rho(\\sigma)=(-1)^{n(n+1)/2}\\,\\bar\\sigma,\\qquad \\bar\\sigma=\\sigma\\circ(\\text{permutação }v_i\\mapsto v_{n-i}).$$\nVerifica-se que $\\rho$ é um MAP DE CADEIAS (comuta com $\\partial$; o sinal $(-1)^{n(n+1)/2}$ é exatamente o necessário) e que $\\rho$ preserva a augmentação.\n\n**Modelos acíclicos.** Tanto $\\mathrm{id}$ quanto $\\rho$ são maps de cadeias naturais que preservam augmentação; pelo Teorema dos Modelos Acíclicos, eles são naturalmente homotópicos por cadeias: existe $D$ natural com $\\partial D+D\\partial=\\rho-\\mathrm{id}$. Consequentemente $\\rho^*=\\mathrm{id}$ em cohomologia.\n\n**Efeito no cup.** Um cálculo direto com a fórmula de Alexander-Whitney mostra, ao aplicar $\\rho$ (reverter vértices), a relação em cocadeias\n$$\\rho^*(\\varphi\\smile\\psi)=(-1)^{pq}\\,(\\rho^*\\psi)\\smile(\\rho^*\\varphi).$$\nO sinal $(-1)^{pq}$ vem de reordenar os blocos $[v_0,\\dots,v_p]$ e $[v_p,\\dots,v_{p+q}]$ ao inverter todos os vértices.\n\n**Passagem à cohomologia.** Como $\\rho^*=\\mathrm{id}$ nas classes, aplicando a identidade acima às classes $\\alpha=[\\varphi]$, $\\beta=[\\psi]$:\n$$\\alpha\\smile\\beta=\\rho^*(\\alpha\\smile\\beta)=(-1)^{pq}\\,(\\rho^*\\beta)\\smile(\\rho^*\\alpha)=(-1)^{pq}\\,\\beta\\smile\\alpha.\\qquad\\blacksquare$$\n\n**Nota.** Em particular, para $\\alpha$ de grau ímpar, $\\alpha\\smile\\alpha=-\\alpha\\smile\\alpha$, logo $2(\\alpha\\smile\\alpha)=0$: quadrados de classes ímpares são 2-torção.",
+          "steps": [
+            "Constate que a fórmula de Alexander-Whitney do cup não é comutativa no nível de cocadeias.",
+            "Introduza o operador de reversão de vértices $\\rho$ com o sinal $(-1)^{n(n+1)/2}$ e verifique que é map de cadeias.",
+            "Pelo Teorema dos Modelos Acíclicos, $\\rho\\simeq\\mathrm{id}$ por cadeias, logo $\\rho^*=\\mathrm{id}$ em cohomologia.",
+            "Use $\\rho^*(\\varphi\\smile\\psi)=(-1)^{pq}(\\rho^*\\psi)\\smile(\\rho^*\\varphi)$ e passe às classes para obter $\\alpha\\smile\\beta=(-1)^{pq}\\beta\\smile\\alpha$."
+          ]
+        },
+        {
+          "prompt": "Use a dualidade de Poincaré para determinar os postos de $H^k(\\Sigma_g;\\mathbb{Q})$ da superfície orientável de gênero $g$, e cheque a característica de Euler.",
+          "hint": "Dimensão $2$: $H^0\\cong H^2\\cong\\mathbb{Q}$ e $H^1\\cong\\mathbb{Q}^{2g}$. Então $\\chi=1-2g+1=2-2g$.",
+          "difficulty": 3,
+          "solution": "**Superfície.** $\\Sigma_g$ = superfície fechada orientável de gênero $g$, dimensão $n=2$. Sobre $\\mathbb{Q}$ (corpo), a cohomologia é o dual da homologia (UCT sem Ext), e a dualidade de Poincaré dá $H^k(\\Sigma_g;\\mathbb{Q})\\cong H_{2-k}(\\Sigma_g;\\mathbb{Q})$.\n\n**Postos por Poincaré.** Como $\\Sigma_g$ é conexa e orientável de dimensão 2:\n- $H^0(\\Sigma_g;\\mathbb{Q})\\cong H_2(\\Sigma_g;\\mathbb{Q})\\cong\\mathbb{Q}$ (a classe fundamental gera $H_2$), posto 1.\n- $H^2(\\Sigma_g;\\mathbb{Q})\\cong H_0(\\Sigma_g;\\mathbb{Q})\\cong\\mathbb{Q}$ (conexa), posto 1.\n- $H^1(\\Sigma_g;\\mathbb{Q})\\cong H_1(\\Sigma_g;\\mathbb{Q})\\cong\\mathbb{Q}^{2g}$ (a abelianização de $\\pi_1$ tem posto $2g$), posto $2g$.\n\nResumindo os postos (números de Betti): $b_0=1$, $b_1=2g$, $b_2=1$.\n\n**Característica de Euler.**\n$$\\chi(\\Sigma_g)=\\sum_{k}(-1)^k b_k=b_0-b_1+b_2=1-2g+1=2-2g.$$\nIsto confirma a fórmula clássica $\\chi(\\Sigma_g)=2-2g$ para a superfície orientável de gênero $g$ (esfera $g=0$: $\\chi=2$; toro $g=1$: $\\chi=0$). $\\blacksquare$",
+          "steps": [
+            "Note que $\\Sigma_g$ é fechada orientável de dimensão $2$, então $H^k\\cong H_{2-k}$ (Poincaré) e sobre $\\mathbb{Q}$ tudo é dual da homologia.",
+            "Aplique a dualidade: $H^0\\cong H_2\\cong\\mathbb{Q}$, $H^2\\cong H_0\\cong\\mathbb{Q}$, $H^1\\cong H_1\\cong\\mathbb{Q}^{2g}$.",
+            "Registre os postos $b_0=1$, $b_1=2g$, $b_2=1$.",
+            "Calcule $\\chi=1-2g+1=2-2g$ e confira com a fórmula clássica."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de cocadeia e cobordo.",
+          "back": "$C^n(X;R)=\\mathrm{Hom}(C_n(X),R)$ e $(\\delta\\varphi)(\\sigma)=\\varphi(\\partial\\sigma)$; vale $\\delta^2=0$, $H^n=\\ker\\delta^n/\\mathrm{im}\\,\\delta^{n-1}$."
+        },
+        {
+          "front": "Homologia vs. cohomologia: variância.",
+          "back": "Homologia é covariante ($f_*$); cohomologia é contravariante ($f^*$, puxa para trás)."
+        },
+        {
+          "front": "Teorema dos Coeficientes Universais.",
+          "back": "$0\\to\\mathrm{Ext}(H_{n-1},R)\\to H^n(X;R)\\to\\mathrm{Hom}(H_n,R)\\to 0$, cindida; sobre corpo $H^n$ é o dual de $H_n$."
+        },
+        {
+          "front": "O que é o produto cup?",
+          "back": "$\\smile:H^p\\otimes H^q\\to H^{p+q}$ tornando $H^*$ anel graduado; graduado-comutativo: $\\alpha\\smile\\beta=(-1)^{pq}\\beta\\smile\\alpha$."
+        },
+        {
+          "front": "Por que cup é mais fino que homologia?",
+          "back": "$T^2$ e $S^2\\vee S^1\\vee S^1$ têm a mesma homologia, mas no toro $\\alpha\\smile\\beta\\neq0$ e no wedge todo cup de grau 1 é zero."
+        },
+        {
+          "front": "$\\mathrm{Ext}(\\mathbb{Z}/m,\\mathbb{Z})$ e $\\mathrm{Ext}(\\mathbb{Z},\\mathbb{Z})$.",
+          "back": "$\\mathrm{Ext}(\\mathbb{Z}/m,\\mathbb{Z})\\cong\\mathbb{Z}/m$ e $\\mathrm{Ext}(\\mathbb{Z},\\mathbb{Z})=0$ (torção sobe um grau na cohomologia)."
+        },
+        {
+          "front": "Enunciado da dualidade de Poincaré.",
+          "back": "Para $M$ variedade fechada orientável de dimensão $n$: $H^k(M;\\mathbb{Z})\\cong H_{n-k}(M;\\mathbb{Z})$ (versão $\\mathbb{Z}/2$ sem orientação)."
+        },
+        {
+          "front": "Anel de cohomologia de $S^n$.",
+          "back": "$\\mathbb{Z}[\\alpha]/(\\alpha^2)$ com $|\\alpha|=n$: só $H^0$ e $H^n$ não nulos, produto trivial fora da unidade."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Hatcher, Algebraic Topology — seções 3.1, 3.2, 3.3",
+          "ref": "livro"
+        },
+        {
+          "title": "Munkres, Elements of Algebraic Topology — caps. 5, 8",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia Hatcher §3.1-3.3 (ou Munkres, Elements of Algebraic Topology, caps. 5 e 8) e escreva as definições de cocadeia, cobordo $\\delta$, cohomologia $H^n(X;R)$ (contravariante), Teorema dos Coeficientes Universais e produto cup.",
+          "Assista a uma aula sobre coeficientes universais e produto cup; refaça o cálculo de $H^*(S^n)$, $H^*(\\mathbb{R}P^2)$ e a estrutura de anel.",
+          "Domine o exemplo-assinatura: $T^2$ vs. $S^2\\vee S^1\\vee S^1$ têm a mesma (co)homologia como grupos, mas anéis de cup diferentes; entenda por que isso prova $T^2\\not\\simeq S^2\\vee S^1\\vee S^1$.",
+          "Estude o enunciado da dualidade de Poincaré e use-a para calcular os postos de $H^k$ de superfícies e checar a característica de Euler; situe de Rham e feixes no panorama.",
+          "Resolva os testes deste tópico aqui no app e anote o principal: UCT (com $\\mathrm{Hom}$ e $\\mathrm{Ext}$), o produto cup e a graduada-comutatividade, e a dualidade de Poincaré."
+        ],
+        "searchQueries": [
+          "cohomologia singular cocadeia cobordo definição functor contravariante",
+          "teorema dos coeficientes universais Ext Hom cohomologia",
+          "produto cup estrutura de anel graduado cohomologia",
+          "cup product torus vs wedge S^2 v S^1 v S^1 distinguishing",
+          "Poincaré duality closed orientable manifold statement",
+          "cohomology of RP^2 with Z coefficients universal coefficient theorem"
+        ],
+        "videos": [
+          {
+            "title": "Algebraic Topology — cohomology and cup product",
+            "channel": "Pierre Albin (YouTube)",
+            "note": "Cobordo, coeficientes universais, produto cup e dualidade de Poincaré."
+          },
+          {
+            "title": "Cup products and cohomology rings",
+            "channel": "Richard Wong (YouTube)",
+            "note": "Exemplos do anel de cohomologia distinguindo espaços com mesma homologia."
+          },
+          {
+            "title": "18.906 Algebraic Topology II — cohomology",
+            "channel": "MIT OpenCourseWare",
+            "note": "Notas avançadas sobre produto cup, coeficientes universais e Poincaré."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Hatcher, Algebraic Topology — §3.1, §3.2, §3.3",
+            "where": "PDF gratuito em pi.math.cornell.edu/~hatcher"
+          },
+          {
+            "title": "Munkres, Elements of Algebraic Topology — caps. 5 e 8",
+            "where": "livro-texto"
+          },
+          {
+            "title": "nLab — verbetes 'cup product' e 'Poincaré duality'",
+            "where": "ncatlab.org"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1257 @@
+{
+  "id": "teoria-representacao",
+  "title": "Teoria de Representações",
+  "phase": 2,
+  "phaseLabel": "Avançado / Pré-Pós",
+  "tagline": "Transforme grupos abstratos em matrizes concretas e descubra que toda a simetria de um grupo finito cabe numa pequena tabela de números.",
+  "summary": "Uma representação é um homomorfismo $\\rho:G\\to GL(V)$: faz um grupo agir linearmente num espaço vetorial, convertendo álgebra abstrata em álgebra linear computável. Sobre $\\mathbb{C}$ e para $G$ finito, a teoria é espantosamente limpa: o Teorema de Maschke garante semissimplicidade, o Lema de Schur controla os morfismos, e os caracteres $\\chi_\\rho(g)=\\operatorname{tr}\\rho(g)$ codificam toda a representação numa função de classe. As relações de ortogonalidade transformam tudo numa geometria de produto interno, culminando na tabela de caracteres e na decomposição da representação regular. Fechamos com a porta de entrada para a teoria contínua: representações de álgebras de Lie, via o caso modelo $\\mathfrak{sl}_2(\\mathbb{C})$.",
+  "bigPicture": "A teoria de representações é o ponto onde grupos, anéis e álgebra linear se encontram, e é uma das ferramentas mais poderosas da matemática e da física moderna. Ela linealiza simetrias: problemas sobre um grupo abstrato $G$ viram problemas sobre matrizes, onde temos traços, autovalores e produto interno. O slogan é que estudar $G$ é o mesmo que estudar os módulos sobre a álgebra de grupo $\\mathbb{C}[G]$, conectando diretamente com o teorema de estrutura de módulos e com a teoria de anéis semissimples (Wedderburn) que você viu em Álgebra Abstrata 2. As mesmas ideias reaparecem em mecânica quântica (multipletos, spin via $\\mathfrak{sl}_2$), em cristalografia, em combinatória (representações de $S_n$ e funções simétricas) e em teoria de números (formas modulares, programa de Langlands). Para concursos de IF o tema raramente cai de forma direta, mas o domínio de classes de conjugação, traço, mudança de base e diagonalização que ele exige é exatamente o que separa um candidato mediano de um excelente em álgebra linear e álgebra abstrata. Para o mestrado em matemática pura é tema de disciplina de pós e de área de pesquisa: aparece em exames de qualificação de álgebra em programas fortes e é pré-requisito para teoria de grupos de Lie, álgebra homológica e geometria.",
+  "prereqs": [
+    "algebra-abstrata-2",
+    "algebra-linear"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 42,
+  "primaryBooks": [
+    {
+      "title": "Linear Representations of Finite Groups",
+      "author": "Jean-Pierre Serre",
+      "note": "O clássico definitivo, curto e cirúrgico. A Parte I (caps. 1-6) é a melhor exposição existente de representações de grupos finitos sobre $\\mathbb{C}$, caracteres e ortogonalidade. Leitura obrigatória.",
+      "chapters": "Parte I, caps. 1-6"
+    },
+    {
+      "title": "Representation Theory: A First Course",
+      "author": "William Fulton & Joe Harris",
+      "note": "GTM 129. Começa com grupos finitos (caps. 1-3) e segue para álgebras e grupos de Lie com muitíssimos exemplos explícitos. Ótimo para construir intuição geométrica e para a ponte com $\\mathfrak{sl}_2$.",
+      "chapters": "caps. 1-3 (grupos finitos), caps. 8 e 11 (álgebras de Lie, $\\mathfrak{sl}_2$)"
+    },
+    {
+      "title": "Representation Theory of Finite Groups: An Introductory Approach",
+      "author": "Benjamin Steinberg",
+      "note": "Texto moderno, autocontido e amigável, com provas detalhadas e foco em quem está vendo o assunto pela primeira vez. Excelente para o primeiro contato e para exercícios graduados.",
+      "chapters": "caps. 1-5"
+    },
+    {
+      "title": "Abstract Algebra",
+      "author": "David S. Dummit & Richard M. Foote",
+      "note": "Para conectar com o que você já sabe: a álgebra de grupo, módulos semissimples e o teorema de Wedderburn aparecem aqui de forma alinhada com Álgebra Abstrata 2.",
+      "chapters": "caps. 18-19 (teoria de representações e caracteres)"
+    },
+    {
+      "title": "Álgebras de Lie",
+      "author": "Luiz A. B. San Martin",
+      "note": "Referência brasileira de excelência (Editora da Unicamp) para a parte final da trilha. Tratamento rigoroso de álgebras de Lie, $\\mathfrak{sl}_2$ e teoria de pesos, escrito em português.",
+      "chapters": "caps. iniciais sobre definições, e o capítulo sobre representações de $\\mathfrak{sl}(2)$"
+    },
+    {
+      "title": "Elementos de Álgebra",
+      "author": "Arnaldo Garcia & Yves Lequain",
+      "note": "Clássico brasileiro do IMPA (Projeto Euclides). Não cobre representações, mas é a base ideal de grupos, classes de conjugação e ações que esta trilha pressupõe.",
+      "chapters": "capítulos sobre grupos e ações de grupos"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.712 Introduction to Representation Theory",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Introduction to Representation Theory (Etingof, Golberg, Hensel, Liu, Schwendner, Vaintrob, Yudovina) - notas livres da AMS/arXiv",
+      "kind": "livro",
+      "ref": "arxiv.org/abs/0901.0827"
+    },
+    {
+      "title": "Serre - Linear Representations of Finite Groups (Parte I)",
+      "kind": "livro",
+      "ref": "Springer GTM 42"
+    },
+    {
+      "title": "Pavel Etingof - vídeos e notas do curso de teoria de representações no MIT",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 2,
+    "mestrado": 3,
+    "note": "Em concursos de Instituto Federal a teoria de representações praticamente não cai de forma direta: o foco dos editais é cálculo, álgebra linear, análise real e álgebra básica. O retorno do tema para o IF é indireto mas real: ele consolida classes de conjugação, traço, mudança de base, diagonalização simultânea e produto interno hermitiano, que aparecem com frequência em álgebra linear. Em provas de mestrado o cenário muda: em programas com linha de álgebra é tema de disciplina de pós e de exame de qualificação. O que costuma ser cobrado: enunciar e demonstrar o Teorema de Maschke, o Lema de Schur e as relações de ortogonalidade dos caracteres; calcular a tabela de caracteres de grupos pequenos ($S_3$, $S_4$, $D_4$, $Q_8$, $\\mathbb{Z}/n$, $A_4$); usar $\\sum_i (\\dim V_i)^2=|G|$ e a decomposição da representação regular; e, em cursos mais avançados, classificar as representações irredutíveis de $\\mathfrak{sl}_2(\\mathbb{C})$ pelo peso máximo."
+  },
+  "subtopics": [
+    {
+      "id": "teoria-representacao-01-representacoes-e-algebra-de-grupo",
+      "title": "Representações de grupos finitos e a álgebra de grupo",
+      "tagline": "Fazer um grupo abstrato agir por matrizes, e perceber que isso é o mesmo que estudar módulos sobre a álgebra de grupo.",
+      "objectives": [
+        "Definir com precisão uma representação $\\rho:G\\to GL(V)$, seu grau e dar exemplos canônicos (trivial, sinal, permutação, regular).",
+        "Traduzir entre a linguagem de homomorfismos $\\rho$, a linguagem de $G$-módulos e a linguagem matricial.",
+        "Construir a álgebra de grupo $\\mathbb{C}[G]$ e enunciar a equivalência entre representações de $G$ e $\\mathbb{C}[G]$-módulos.",
+        "Definir morfismo e equivalência (isomorfismo) de representações e reconhecer quando duas representações são 'a mesma'.",
+        "Construir novas representações a partir de antigas: soma direta, produto tensorial e a representação dual."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Representação",
+          "statement": "Dado um grupo $G$ e um espaço vetorial $V$ sobre um corpo $k$ (em geral $k=\\mathbb{C}$), uma representação é um homomorfismo de grupos $\\rho:G\\to GL(V)$, onde $GL(V)$ é o grupo dos operadores lineares invertíveis de $V$. Equivalentemente, $\\rho(g)\\rho(h)=\\rho(gh)$ e $\\rho(e)=\\mathrm{id}_V$ para todos $g,h\\in G$. A dimensão $\\dim_k V$ é chamada de grau (ou dimensão) da representação."
+        },
+        {
+          "term": "$G$-módulo",
+          "statement": "Um espaço $V$ com uma ação linear de $G$, isto é, $g\\cdot v$ definido para $g\\in G,\\ v\\in V$ com $g\\cdot(av+bw)=a(g\\cdot v)+b(g\\cdot w)$, $e\\cdot v=v$ e $g\\cdot(h\\cdot v)=(gh)\\cdot v$. Dar um $G$-módulo é exatamente o mesmo que dar uma representação $\\rho$, via $g\\cdot v:=\\rho(g)v$."
+        },
+        {
+          "term": "Álgebra de grupo $\\mathbb{C}[G]$",
+          "statement": "Para $G$ finito, $\\mathbb{C}[G]$ é o espaço vetorial com base $\\{e_g\\}_{g\\in G}$ (formalmente, as funções $G\\to\\mathbb{C}$), com produto induzido por $e_g\\cdot e_h=e_{gh}$ e estendido bilinearmente: $(\\sum_g a_g e_g)(\\sum_h b_h e_h)=\\sum_{g,h} a_g b_h\\, e_{gh}$. É uma $\\mathbb{C}$-álgebra associativa com unidade $e_e$, de dimensão $|G|$."
+        },
+        {
+          "term": "Morfismo e equivalência de representações",
+          "statement": "Um morfismo (ou aplicação $G$-equivariante) entre $(\\rho,V)$ e $(\\rho',W)$ é uma transformação linear $T:V\\to W$ com $T\\rho(g)=\\rho'(g)T$ para todo $g\\in G$. Se $T$ é bijetora, as representações são equivalentes (isomorfas): em termos matriciais, existe base em que as matrizes $\\rho(g)$ e $\\rho'(g)$ coincidem, ou seja, $\\rho'(g)=T\\rho(g)T^{-1}$."
+        },
+        {
+          "term": "Construções (soma, tensor, dual)",
+          "statement": "De $(\\rho,V)$ e $(\\sigma,W)$ obtemos: a soma direta em $V\\oplus W$ com $(\\rho\\oplus\\sigma)(g)=\\rho(g)\\oplus\\sigma(g)$; o produto tensorial em $V\\otimes W$ com $g\\cdot(v\\otimes w)=\\rho(g)v\\otimes\\sigma(g)w$; e a representação dual em $V^*$ com $(g\\cdot f)(v)=f(\\rho(g^{-1})v)$, escolha de $g^{-1}$ feita para preservar a regra do homomorfismo."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Dicionário representações = $\\mathbb{C}[G]$-módulos",
+          "statement": "Há uma equivalência: dar uma representação $(\\rho,V)$ de $G$ é o mesmo que dar um módulo (à esquerda) sobre a álgebra $\\mathbb{C}[G]$, com a ação $(\\sum_g a_g e_g)\\cdot v=\\sum_g a_g\\,\\rho(g)v$. Morfismos de representações correspondem exatamente a homomorfismos de $\\mathbb{C}[G]$-módulos.",
+          "whyItMatters": "Esse dicionário é o motor de toda a teoria: ele importa para grupos finitos toda a maquinaria de módulos e de anéis semissimples (Wedderburn) vista em Álgebra Abstrata 2. Em particular, 'representação irredutível' vira 'módulo simples', e a estrutura de $\\mathbb{C}[G]$ como produto de anéis de matrizes explica de uma vez por que os graus ao quadrado somam $|G|$."
+        },
+        {
+          "name": "Existência de forma hermitiana invariante",
+          "statement": "Toda representação complexa de dimensão finita de um grupo finito $G$ admite um produto interno hermitiano $\\langle\\cdot,\\cdot\\rangle$ tal que $\\langle\\rho(g)v,\\rho(g)w\\rangle=\\langle v,w\\rangle$ para todo $g$. Consequentemente, cada $\\rho(g)$ pode ser tomado unitário em uma base ortonormal adequada.",
+          "whyItMatters": "Obtém-se por média: parte-se de qualquer $\\langle\\cdot,\\cdot\\rangle_0$ e define-se $\\langle v,w\\rangle=\\frac{1}{|G|}\\sum_{g}\\langle\\rho(g)v,\\rho(g)w\\rangle_0$. Esse 'truque da média' é a semente da demonstração do Teorema de Maschke e mostra desde já por que representações de grupos finitos sobre $\\mathbb{C}$ se comportam tão bem."
+        }
+      ],
+      "summary": "Uma representação é a forma de dar 'corpo concreto' a um grupo abstrato: em vez de uma tabela de multiplicação, cada elemento $g$ vira uma matriz invertível $\\rho(g)$, de modo que multiplicar no grupo corresponda a multiplicar matrizes. O grau é o tamanho dessas matrizes. Os exemplos fundamentais já dizem muito: a representação trivial ($\\rho(g)=1$ para todo $g$), a representação sinal de $S_n$ ($\\rho(\\sigma)=\\operatorname{sgn}(\\sigma)$), as representações de permutação vindas de uma ação de $G$ num conjunto, e a estrela do espetáculo, a representação regular, em que $G$ age sobre $\\mathbb{C}[G]$ por multiplicação à esquerda. A grande mudança de perspectiva é perceber que tudo isso é equivalente a estudar módulos sobre a álgebra de grupo $\\mathbb{C}[G]$, transportando para cá toda a teoria de módulos.\n\nDuas representações que diferem apenas por uma mudança de base carregam a mesma informação: por isso a noção central não é a matriz, mas a classe de equivalência. Os morfismos que respeitam a ação (operadores que comutam com todos os $\\rho(g)$, chamados de entrelaçadores) serão a ferramenta do próximo passo, via Lema de Schur. Por fim, soma direta, produto tensorial e dual nos dão um cálculo com representações, do mesmo modo que somamos e multiplicamos números; o objetivo da trilha será decompor qualquer representação em 'átomos' irredutíveis usando esse cálculo.",
+      "commonPitfalls": [
+        "Confundir grau da representação ($\\dim V$, o tamanho das matrizes) com a ordem do grupo $|G|$ (o número de matrizes).",
+        "Achar que toda representação é fiel: $\\rho$ pode ter núcleo não trivial (a trivial tem núcleo $G$ inteiro); fidelidade é $\\rho$ injetora, propriedade extra e não obrigatória.",
+        "Esquecer o $g^{-1}$ na definição da representação dual: usar $f(\\rho(g)v)$ daria um anti-homomorfismo, não uma representação.",
+        "Tratar $\\mathbb{C}[G]$ como comutativa: ela só é comutativa quando $G$ é abeliano, pois $e_g e_h=e_{gh}$ e $e_h e_g=e_{hg}$."
+      ],
+      "worked": "**Exemplo (representação de permutação de $S_3$ e sua decomposição inicial).** Seja $G=S_3$ agindo em $\\mathbb{C}^3$ permutando coordenadas: para $\\sigma\\in S_3$, $\\rho(\\sigma)(x_1,x_2,x_3)=(x_{\\sigma^{-1}(1)},x_{\\sigma^{-1}(2)},x_{\\sigma^{-1}(3)})$. Isso é uma representação de grau $3$. O subespaço $U=\\{(x,x,x)\\}$ é fixado por todo $\\sigma$, logo é uma cópia da representação trivial dentro de $\\mathbb{C}^3$. O subespaço complementar $V_0=\\{(x_1,x_2,x_3):x_1+x_2+x_3=0\\}$ também é invariante (a ação preserva a soma das coordenadas), de dimensão $2$. Assim $\\mathbb{C}^3\\cong U\\oplus V_0$ como $G$-módulos: já decompusemos a representação de permutação em uma parte trivial mais uma parte de grau $2$ (que será irredutível, a representação 'padrão' de $S_3$). Repare que escrevemos a matriz de $\\rho((12))$ na base canônica como a matriz de permutação que troca as duas primeiras coordenadas, e $\\operatorname{tr}\\rho((12))=1$ conta os pontos fixos da permutação $\\{1,2,3\\}\\to\\{2,1,3\\}$, a saber, o ponto $3$.",
+      "exercises": [
+        {
+          "prompt": "Liste todas as representações de grau $1$ do grupo cíclico $\\mathbb{Z}/n$. Mostre que elas são exatamente $\\rho_k(\\bar 1)=\\zeta^k$, com $\\zeta=e^{2\\pi i/n}$ e $k=0,1,\\dots,n-1$, e que duas delas são equivalentes sse $k$ coincide.",
+          "hint": "Uma representação de grau $1$ é um homomorfismo $\\mathbb{Z}/n\\to\\mathbb{C}^\\times$. O gerador $\\bar 1$ deve ir num número complexo $z$ com $z^n=1$.",
+          "difficulty": 2,
+          "solution": "Uma representação de grau $1$ de $G=\\mathbb{Z}/n$ é um homomorfismo $\\rho:\\mathbb{Z}/n\\to GL_1(\\mathbb{C})=\\mathbb{C}^\\times$. Como $\\mathbb{Z}/n$ é cíclico gerado por $\\bar 1$, o homomorfismo fica inteiramente determinado por $z:=\\rho(\\bar 1)\\in\\mathbb{C}^\\times$. A única restrição é a compatibilidade com a relação $n\\cdot\\bar 1=\\bar 0$:\n$$\\rho(\\bar 1)^n=\\rho(n\\cdot\\bar 1)=\\rho(\\bar 0)=1,$$\nou seja, $z^n=1$. Logo $z$ é uma raiz $n$-ésima da unidade, e todas elas são da forma $z=\\zeta^k$ com $\\zeta=e^{2\\pi i/n}$ e $k\\in\\{0,1,\\dots,n-1\\}$. Reciprocamente, para cada tal $k$ a fórmula $\\rho_k(\\bar m)=\\zeta^{km}$ está bem definida (não depende do representante de $\\bar m$, pois $\\zeta^{kn}=1$) e é homomorfismo, pois $\\rho_k(\\bar m+\\bar{m'})=\\zeta^{k(m+m')}=\\zeta^{km}\\zeta^{km'}$. Assim há exatamente $n$ representações de grau $1$, indexadas por $k=0,\\dots,n-1$.\n\n**Equivalência.** Duas representações de grau $1$ são equivalentes sse existe $T\\in GL_1(\\mathbb{C})=\\mathbb{C}^\\times$ (um escalar não nulo) com $T\\rho_k(g)=\\rho_l(g)T$. Como $T$ e os valores são escalares, isso é $\\rho_k(g)=\\rho_l(g)$ para todo $g$; em grau $1$ a conjugação é trivial. Avaliando em $\\bar 1$: $\\zeta^k=\\zeta^l$, o que ocorre sse e só se $k\\equiv l\\pmod n$, isto é, $k=l$ no conjunto $\\{0,\\dots,n-1\\}$. Portanto as $n$ representações são duas a duas não equivalentes, e são equivalentes exatamente quando o índice $k$ coincide. $\\blacksquare$",
+          "steps": [
+            "Observe que grau $1$ significa $\\rho:G\\to GL_1(\\mathbb{C})=\\mathbb{C}^\\times$: uma representação de grau $1$ é um homomorfismo de $G$ no grupo multiplicativo dos complexos não nulos.",
+            "Use que $\\mathbb{Z}/n$ é gerado por $\\bar 1$: o homomorfismo é determinado por $z=\\rho(\\bar 1)$, e a relação $n\\bar 1=\\bar 0$ força $z^n=1$.",
+            "Conclua que $z$ percorre exatamente as raízes $n$-ésimas da unidade $\\zeta^k$, $k=0,\\dots,n-1$, e verifique que cada $\\rho_k(\\bar m)=\\zeta^{km}$ é de fato um homomorfismo bem definido.",
+            "Para a equivalência, note que em grau $1$ a conjugação por $T\\in\\mathbb{C}^\\times$ é trivial, logo equivalência $=$ igualdade das funções; avalie em $\\bar 1$ e conclua $\\zeta^k=\\zeta^l\\iff k=l$ em $\\{0,\\dots,n-1\\}$."
+          ]
+        },
+        {
+          "prompt": "Mostre que a representação regular de $G$ (ação por multiplicação à esquerda em $\\mathbb{C}[G]$) é fiel, e que seu grau é $|G|$. Escreva explicitamente a matriz de $\\rho_{\\text{reg}}(g)$ na base $\\{e_h\\}$.",
+          "hint": "$\\rho_{\\text{reg}}(g)e_h=e_{gh}$, logo a matriz é uma matriz de permutação; fidelidade segue de $ge=e\\Rightarrow g=e$.",
+          "difficulty": 2,
+          "solution": "A representação regular age em $\\mathbb{C}[G]$, cuja base é $\\{e_h\\}_{h\\in G}$; portanto $\\dim\\mathbb{C}[G]=|G|$, que é o **grau** da representação regular.\n\n**Matriz na base $\\{e_h\\}$.** Por definição $\\rho_{\\text{reg}}(g)e_h=e_{gh}$. Fixado $g$, o operador $\\rho_{\\text{reg}}(g)$ leva o vetor de base $e_h$ no vetor de base $e_{gh}$; como $h\\mapsto gh$ é uma bijeção de $G$ (a translação à esquerda), a matriz é uma **matriz de permutação**: em cada coluna e em cada linha há exatamente um $1$ e o resto $0$. Explicitamente, a entrada $(k,h)$ (linha indexada por $e_k$, coluna por $e_h$) é\n$$[\\rho_{\\text{reg}}(g)]_{k,h}=\\begin{cases}1,& k=gh,\\\\ 0,& \\text{caso contrário}.\\end{cases}$$\n\n**Fidelidade.** Precisamos mostrar que $\\rho_{\\text{reg}}$ é injetora, isto é, $\\ker\\rho_{\\text{reg}}=\\{e\\}$. Suponha $\\rho_{\\text{reg}}(g)=\\mathrm{id}$. Aplicando ao vetor de base $e_e$ (correspondente ao elemento neutro):\n$$e_g=e_{g\\cdot e}=\\rho_{\\text{reg}}(g)e_e=\\mathrm{id}(e_e)=e_e.$$\nComo $\\{e_h\\}$ é base, $e_g=e_e$ implica $g=e$. Logo o núcleo é trivial e $\\rho_{\\text{reg}}$ é fiel. $\\blacksquare$\n\n**Observação.** O traço dessa matriz de permutação conta os pontos fixos de $h\\mapsto gh$; como $gh=h\\iff g=e$, temos $\\chi_{\\text{reg}}(g)=0$ para $g\\neq e$ e $\\chi_{\\text{reg}}(e)=|G|$, fato central da aula 5.",
+          "steps": [
+            "Identifique o espaço: a regular vive em $\\mathbb{C}[G]$, que tem base $\\{e_h\\}_{h\\in G}$, logo dimensão (grau) igual a $|G|$.",
+            "Escreva a ação $\\rho_{\\text{reg}}(g)e_h=e_{gh}$ e conclua que, como $h\\mapsto gh$ é bijeção, a matriz é de permutação: entrada $(k,h)$ é $1$ sse $k=gh$, senão $0$.",
+            "Para a fidelidade, suponha $\\rho_{\\text{reg}}(g)=\\mathrm{id}$ e aplique ao vetor $e_e$ para obter $e_g=e_e$.",
+            "Use que $\\{e_h\\}$ é base para concluir $g=e$, logo $\\ker\\rho_{\\text{reg}}=\\{e\\}$ e a representação é fiel."
+          ]
+        },
+        {
+          "prompt": "Sejam $(\\rho,V)$ e $(\\sigma,W)$ representações de $G$. Verifique em detalhe que a fórmula $g\\cdot(v\\otimes w)=\\rho(g)v\\otimes\\sigma(g)w$ define de fato uma representação em $V\\otimes W$ (isto é, está bem definida e é homomorfismo).",
+          "hint": "Use a propriedade universal do produto tensorial para a boa definição, e cheque $g\\cdot(h\\cdot(v\\otimes w))=(gh)\\cdot(v\\otimes w)$ nos tensores puros.",
+          "difficulty": 3,
+          "solution": "Queremos mostrar que $g\\cdot(v\\otimes w):=\\rho(g)v\\otimes\\sigma(g)w$ define uma representação de $G$ em $V\\otimes W$.\n\n**1. Boa definição (cada $g$ dá um operador linear).** Fixe $g\\in G$. Considere a aplicação\n$$B_g:V\\times W\\to V\\otimes W,\\qquad B_g(v,w)=\\rho(g)v\\otimes\\sigma(g)w.$$\nEla é **bilinear**: em $v$, $B_g(av+a'v',w)=\\rho(g)(av+a'v')\\otimes\\sigma(g)w=a\\,\\rho(g)v\\otimes\\sigma(g)w+a'\\,\\rho(g)v'\\otimes\\sigma(g)w$ pela linearidade de $\\rho(g)$ e do tensor; analogamente em $w$. Pela **propriedade universal do produto tensorial**, existe uma única aplicação linear\n$$\\Phi_g:V\\otimes W\\to V\\otimes W,\\qquad \\Phi_g(v\\otimes w)=\\rho(g)v\\otimes\\sigma(g)w.$$\nDefinimos $(\\rho\\otimes\\sigma)(g):=\\Phi_g$. Isso resolve o risco de a fórmula 'depender da escrita' de um tensor: ela está definida sobre os tensores puros e estendida de modo único e linear.\n\n**2. Invertibilidade.** $\\Phi_{g^{-1}}$ é a inversa de $\\Phi_g$: em tensores puros, $\\Phi_{g^{-1}}\\Phi_g(v\\otimes w)=\\rho(g^{-1})\\rho(g)v\\otimes\\sigma(g^{-1})\\sigma(g)w=v\\otimes w$, e por linearidade em todo $V\\otimes W$. Logo $(\\rho\\otimes\\sigma)(g)\\in GL(V\\otimes W)$.\n\n**3. Homomorfismo.** Basta verificar em tensores puros (eles geram $V\\otimes W$) e usar linearidade. Para $g,h\\in G$:\n$$(\\rho\\otimes\\sigma)(g)\\,(\\rho\\otimes\\sigma)(h)\\,(v\\otimes w)=(\\rho\\otimes\\sigma)(g)\\big(\\rho(h)v\\otimes\\sigma(h)w\\big)=\\rho(g)\\rho(h)v\\otimes\\sigma(g)\\sigma(h)w.$$\nComo $\\rho,\\sigma$ são homomorfismos, $\\rho(g)\\rho(h)=\\rho(gh)$ e $\\sigma(g)\\sigma(h)=\\sigma(gh)$, logo isso é\n$$\\rho(gh)v\\otimes\\sigma(gh)w=(\\rho\\otimes\\sigma)(gh)(v\\otimes w).$$\nAlém disso $(\\rho\\otimes\\sigma)(e)(v\\otimes w)=\\rho(e)v\\otimes\\sigma(e)w=v\\otimes w$, ou seja $(\\rho\\otimes\\sigma)(e)=\\mathrm{id}$. Portanto $\\rho\\otimes\\sigma:G\\to GL(V\\otimes W)$ é homomorfismo, isto é, uma representação. $\\blacksquare$",
+          "steps": [
+            "Fixe $g$ e defina a aplicação $B_g(v,w)=\\rho(g)v\\otimes\\sigma(g)w$ em $V\\times W$; verifique que ela é bilinear usando a linearidade de $\\rho(g)$, $\\sigma(g)$ e do produto tensorial.",
+            "Invoque a propriedade universal do produto tensorial para obter uma única aplicação linear $\\Phi_g:V\\otimes W\\to V\\otimes W$ com $\\Phi_g(v\\otimes w)=\\rho(g)v\\otimes\\sigma(g)w$; isso garante boa definição.",
+            "Mostre que $\\Phi_{g^{-1}}$ inverte $\\Phi_g$ em tensores puros, logo cada $(\\rho\\otimes\\sigma)(g)$ é invertível.",
+            "Verifique a propriedade de homomorfismo nos tensores puros: $(\\rho\\otimes\\sigma)(g)(\\rho\\otimes\\sigma)(h)(v\\otimes w)=\\rho(gh)v\\otimes\\sigma(gh)w$, usando que $\\rho,\\sigma$ são homomorfismos; conclua por linearidade e cheque a identidade em $e$."
+          ]
+        },
+        {
+          "prompt": "Prove o 'truque da média': dada $\\langle\\cdot,\\cdot\\rangle_0$ qualquer em $V$, a fórmula $\\langle v,w\\rangle=\\frac{1}{|G|}\\sum_{g\\in G}\\langle\\rho(g)v,\\rho(g)w\\rangle_0$ é um produto interno hermitiano $G$-invariante.",
+          "hint": "Para a invariância, na soma sobre $g$ faça a mudança de variável $g\\mapsto gh$ e use que somar sobre $G$ é o mesmo que somar sobre $Gh$.",
+          "difficulty": 3,
+          "solution": "Seja $\\langle\\cdot,\\cdot\\rangle_0$ um produto interno hermitiano qualquer em $V$ (existe, basta tomar uma base e a forma padrão). Defina\n$$\\langle v,w\\rangle:=\\frac{1}{|G|}\\sum_{g\\in G}\\langle\\rho(g)v,\\rho(g)w\\rangle_0.$$\n\n**1. É sesquilinear e hermitiano.** Cada parcela $\\langle\\rho(g)\\cdot,\\rho(g)\\cdot\\rangle_0$ é linear na primeira entrada e antilinear na segunda (pois $\\rho(g)$ é linear e $\\langle\\cdot,\\cdot\\rangle_0$ é sesquilinear), e a soma finita e a divisão por $|G|$ preservam isso. Simetria hermitiana:\n$$\\overline{\\langle w,v\\rangle}=\\frac{1}{|G|}\\sum_g\\overline{\\langle\\rho(g)w,\\rho(g)v\\rangle_0}=\\frac{1}{|G|}\\sum_g\\langle\\rho(g)v,\\rho(g)w\\rangle_0=\\langle v,w\\rangle.$$\n\n**2. Positividade definida.** Para $v\\neq0$,\n$$\\langle v,v\\rangle=\\frac{1}{|G|}\\sum_g\\langle\\rho(g)v,\\rho(g)v\\rangle_0=\\frac{1}{|G|}\\sum_g\\|\\rho(g)v\\|_0^2\\ge0,$$\ne cada termo é $\\ge0$. Como $\\rho(e)v=v\\neq0$, o termo $g=e$ já dá $\\|v\\|_0^2>0$, logo a soma é estritamente positiva. Assim $\\langle v,v\\rangle>0$ para $v\\neq0$: é um produto interno.\n\n**3. Invariância por $G$.** Fixe $h\\in G$. Então\n$$\\langle\\rho(h)v,\\rho(h)w\\rangle=\\frac{1}{|G|}\\sum_{g\\in G}\\langle\\rho(g)\\rho(h)v,\\rho(g)\\rho(h)w\\rangle_0=\\frac{1}{|G|}\\sum_{g\\in G}\\langle\\rho(gh)v,\\rho(gh)w\\rangle_0.$$\nFaça a mudança de variável $g'=gh$. Como $g\\mapsto gh$ é uma bijeção de $G$ (percorre todo $G$ quando $g$ percorre $G$), somar sobre $g$ é o mesmo que somar sobre $g'$:\n$$=\\frac{1}{|G|}\\sum_{g'\\in G}\\langle\\rho(g')v,\\rho(g')w\\rangle_0=\\langle v,w\\rangle.$$\nPortanto $\\langle\\rho(h)v,\\rho(h)w\\rangle=\\langle v,w\\rangle$ para todo $h$: o produto interno é $G$-invariante. Consequentemente cada $\\rho(h)$ é unitário para $\\langle\\cdot,\\cdot\\rangle$. $\\blacksquare$",
+          "steps": [
+            "Parta de um produto interno hermitiano arbitrário $\\langle\\cdot,\\cdot\\rangle_0$ e defina a média $\\langle v,w\\rangle=\\frac{1}{|G|}\\sum_g\\langle\\rho(g)v,\\rho(g)w\\rangle_0$.",
+            "Verifique sesquilinearidade e simetria hermitiana termo a termo, usando que cada $\\rho(g)$ é linear e $\\langle\\cdot,\\cdot\\rangle_0$ é hermitiano.",
+            "Prove positividade: $\\langle v,v\\rangle=\\frac{1}{|G|}\\sum_g\\|\\rho(g)v\\|_0^2$ é soma de termos $\\ge0$, e o termo $g=e$ garante $>0$ quando $v\\neq0$.",
+            "Para a invariância, substitua $v,w$ por $\\rho(h)v,\\rho(h)w$, use $\\rho(g)\\rho(h)=\\rho(gh)$ e reindexe a soma por $g'=gh$ (bijeção de $G$) para recuperar $\\langle v,w\\rangle$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de representação de $G$ sobre $V$",
+          "back": "Homomorfismo de grupos $\\rho:G\\to GL(V)$; equivalentemente, ação linear de $G$ em $V$ com $\\rho(gh)=\\rho(g)\\rho(h)$ e $\\rho(e)=\\mathrm{id}$."
+        },
+        {
+          "front": "Grau de uma representação",
+          "back": "A dimensão $\\dim_k V$ do espaço onde $G$ age (o tamanho das matrizes), não a ordem do grupo."
+        },
+        {
+          "front": "O que é a álgebra de grupo $\\mathbb{C}[G]$?",
+          "back": "$\\mathbb{C}$-álgebra de dimensão $|G|$ com base $\\{e_g\\}$ e produto $e_g e_h=e_{gh}$; seus módulos são exatamente as representações de $G$."
+        },
+        {
+          "front": "Quando duas representações são equivalentes?",
+          "back": "Quando existe isomorfismo linear $T$ com $T\\rho(g)=\\rho'(g)T$ para todo $g$, isto é, $\\rho'(g)=T\\rho(g)T^{-1}$ (mesma representação em base diferente)."
+        },
+        {
+          "front": "Morfismo (entrelaçador) de representações",
+          "back": "Linear $T:V\\to W$ com $T\\rho(g)=\\rho'(g)T$ para todo $g\\in G$; comuta com toda a ação."
+        },
+        {
+          "front": "Representação regular de $G$",
+          "back": "$G$ age em $\\mathbb{C}[G]$ por $\\rho_{\\text{reg}}(g)e_h=e_{gh}$; tem grau $|G|$ e é fiel."
+        },
+        {
+          "front": "Representação dual em $V^*$",
+          "back": "$(g\\cdot f)(v)=f(\\rho(g^{-1})v)$; o $g^{-1}$ garante que seja homomorfismo."
+        },
+        {
+          "front": "Toda representação complexa de $G$ finito é...",
+          "back": "...unitarizável: existe produto interno hermitiano $G$-invariante (obtido por média), logo cada $\\rho(g)$ é unitário em base adequada."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Serre, Linear Representations, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "Steinberg, Representation Theory of Finite Groups, caps. 1-3",
+          "ref": "livro"
+        },
+        {
+          "title": "Dummit & Foote, cap. 18.1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Antes de tudo, revise os pré-requisitos: homomorfismo de grupos, $GL(V)$ como grupo de operadores invertíveis, e o teorema de estrutura básico de módulos (de Álgebra Abstrata 2). Anote a definição de ação de grupo num conjunto, pois a representação de permutação nasce dela.",
+          "Leia Serre, cap. 1 (seções 1.1-1.3) com papel e lápis, reconstruindo os exemplos canônicos (trivial, sinal, permutação, regular). Para cada exemplo, escreva você mesmo a matriz de $\\rho(g)$ numa base concreta.",
+          "Assista a uma introdução em vídeo para fixar a intuição 'grupo abstrato vira matrizes', e só depois formalize o dicionário representação $=$ $\\mathbb{C}[G]$-módulo lendo Steinberg caps. 1-2, que é mais detalhado que Serre.",
+          "Faça um mini-glossário próprio distinguindo os quatro pontos de vista da mesma coisa: homomorfismo $\\rho$, ação $g\\cdot v$, $G$-módulo, e $\\mathbb{C}[G]$-módulo. Escreva a tradução explícita entre eles.",
+          "Pratique as três construções (soma direta, produto tensorial, dual) num exemplo pequeno como $S_3$ ou $\\mathbb{Z}/3$, verificando a regra do homomorfismo em cada caso, com atenção especial ao $g^{-1}$ do dual.",
+          "Resolver os testes desta aula e anotar o principal aqui no app: registre a distinção grau vs. ordem, a definição de equivalência via $T\\rho(g)=\\rho'(g)T$, e o truque da média que reaparecerá em Maschke."
+        ],
+        "searchQueries": [
+          "definição representação de grupo homomorfismo GL(V) exemplos",
+          "álgebra de grupo C[G] módulos equivalência representações",
+          "representação regular grupo finito matriz permutação",
+          "produto tensorial e representação dual de grupos",
+          "group representation theory introduction Serre chapter 1",
+          "group algebra kG modules equivalence of categories"
+        ],
+        "videos": [
+          {
+            "title": "Introdução à teoria de representações de grupos",
+            "channel": "MIT OpenCourseWare (18.712, Pavel Etingof)",
+            "note": "Assista às primeiras aulas: definição de representação, exemplos e a álgebra de grupo. É a fonte de onde saem as notas gratuitas da AMS."
+          },
+          {
+            "title": "Group theory / symmetry (série visual)",
+            "channel": "3Blue1Brown",
+            "note": "Procure os vídeos sobre grupos e simetria para construir a intuição de 'grupo agindo por transformações' antes de formalizar $\\rho:G\\to GL(V)$."
+          },
+          {
+            "title": "Representation theory lectures",
+            "channel": "Richard E. Borcherds (canal do próprio)",
+            "note": "Veja a aula inicial sobre representações e álgebra de grupo; exposição de nível de pós, direta e rigorosa."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Linear Representations of Finite Groups, Parte I, cap. 1",
+            "where": "Jean-Pierre Serre, Springer GTM 42 (capítulo sobre generalidades e representação regular)"
+          },
+          {
+            "title": "Introduction to Representation Theory, cap. 1-2",
+            "where": "Etingof et al., notas livres em arxiv.org/abs/0901.0827"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-representacao-02-irredutibilidade-e-maschke",
+      "title": "Sub-representações, irredutibilidade e o Teorema de Maschke",
+      "tagline": "Quebrar representações em blocos indivisíveis e provar que, sobre $\\mathbb{C}$ e $G$ finito, todo bloco se separa em soma direta.",
+      "objectives": [
+        "Definir sub-representação como subespaço $G$-invariante e reconhecer irredutibilidade.",
+        "Distinguir representação irredutível, indecomponível e completamente redutível (semissimples).",
+        "Enunciar e demonstrar o Teorema de Maschke via projeção média e via produto interno invariante.",
+        "Compreender por que a hipótese $\\operatorname{char}(k)\\nmid|G|$ é essencial, com um contraexemplo em característica $p$.",
+        "Concluir que toda representação de dimensão finita de $G$ finito (sobre $\\mathbb{C}$) é soma direta de irredutíveis."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Sub-representação",
+          "statement": "Um subespaço $W\\subseteq V$ é uma sub-representação (ou subespaço invariante) se $\\rho(g)W\\subseteq W$ para todo $g\\in G$. Nesse caso a restrição $\\rho|_W:G\\to GL(W)$ é, ela mesma, uma representação, e há também a representação quociente em $V/W$."
+        },
+        {
+          "term": "Representação irredutível",
+          "statement": "Uma representação $V\\neq 0$ é irredutível (ou simples) se suas únicas sub-representações são $0$ e $V$. São os 'átomos' da teoria: o objetivo é escrever qualquer representação em termos delas."
+        },
+        {
+          "term": "Indecomponível vs. irredutível",
+          "statement": "$V$ é indecomponível se não pode ser escrita como soma direta $V=W_1\\oplus W_2$ de duas sub-representações não nulas. Toda irredutível é indecomponível; a recíproca falha em geral (por exemplo em característica $p$), mas vale sobre $\\mathbb{C}$ para $G$ finito justamente por causa de Maschke."
+        },
+        {
+          "term": "Completamente redutível (semissimples)",
+          "statement": "$V$ é completamente redutível se é soma direta de sub-representações irredutíveis, $V\\cong V_1\\oplus\\cdots\\oplus V_r$. Equivale a dizer que todo subespaço invariante admite um complementar invariante."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Maschke",
+          "statement": "Seja $G$ um grupo finito e $k$ um corpo com $\\operatorname{char}(k)\\nmid|G|$ (em particular $k=\\mathbb{C}$). Então toda representação de dimensão finita de $G$ sobre $k$ é completamente redutível. Equivalentemente: para toda sub-representação $W\\subseteq V$ existe uma sub-representação $W'$ com $V=W\\oplus W'$.",
+          "whyItMatters": "É o pilar de toda a teoria sobre $\\mathbb{C}$: garante que decompor em irredutíveis é sempre possível, transformando o estudo das representações de $G$ no estudo do catálogo (finito) de suas irredutíveis. Sem Maschke, a teoria seria a de módulos sobre uma álgebra não semissimples, muito mais complicada."
+        },
+        {
+          "name": "Prova por projeção média",
+          "statement": "Dada $W\\subseteq V$ invariante, escolha qualquer projeção linear $\\pi_0:V\\to W$ (com $\\pi_0|_W=\\mathrm{id}$) e defina $\\pi=\\frac{1}{|G|}\\sum_{g\\in G}\\rho(g)\\,\\pi_0\\,\\rho(g)^{-1}$. Então $\\pi$ é uma projeção $G$-equivariante sobre $W$, e $W'=\\ker\\pi$ é uma sub-representação com $V=W\\oplus W'$.",
+          "whyItMatters": "Mostra a técnica central (média sobre o grupo) que reaparece em Schur e nas relações de ortogonalidade. A divisão por $|G|$ deixa explícita a razão da hipótese sobre a característica: precisamos que $|G|$ seja invertível em $k$."
+        }
+      ],
+      "summary": "Decompor é o verbo central da teoria de representações. Uma sub-representação é simplesmente um subespaço que a ação de $G$ não consegue 'tirar de dentro de si mesmo'; quando os únicos desses são $0$ e o espaço todo, a representação é irredutível, indivisível. O sonho é que toda representação seja uma soma direta de irredutíveis, e o Teorema de Maschke realiza esse sonho sempre que $G$ é finito e a característica do corpo não divide $|G|$ (caso, em particular, de $\\mathbb{C}$). A demonstração é uma joia: pegamos qualquer complementar e qualquer projeção sobre $W$ e a 'simetrizamos' fazendo a média $\\frac{1}{|G|}\\sum_g \\rho(g)\\pi_0\\rho(g)^{-1}$. O resultado é uma projeção que comuta com todo $\\rho(g)$, e seu núcleo é o complementar invariante procurado. Alternativamente, o produto interno invariante construído na aula anterior fornece o complementar como o complemento ortogonal $W^{\\perp}$, que é automaticamente invariante.\n\nA hipótese sobre a característica é genuína, não um detalhe técnico. Sobre $\\mathbb{F}_p$, o grupo $\\mathbb{Z}/p$ agindo em $\\mathbb{F}_p^2$ por $\\begin{psmallmatrix}1&1\\\\0&1\\end{psmallmatrix}$ tem uma única reta invariante e nenhum complementar invariante: é indecomponível mas não irredutível. Esse é o portal para a teoria de representações modulares, bem mais sutil. Para nós, com $k=\\mathbb{C}$, a mensagem é definitiva: classificar todas as representações de $G$ se reduz a classificar suas irredutíveis e saber com que multiplicidade cada uma aparece, o que as próximas aulas resolverão completamente via Schur e caracteres.",
+      "commonPitfalls": [
+        "Confundir irredutível com indecomponível: são equivalentes sob Maschke, mas não em geral (contraexemplo em característica $p$).",
+        "Usar Maschke sem checar a hipótese: ele FALHA se $\\operatorname{char}(k)\\mid|G|$; nesse caso a divisão por $|G|$ não existe.",
+        "Pensar que o complementar de $W$ é único: complementares invariantes existem (Maschke) mas em geral não são únicos; só a decomposição em isotípicas é canônica.",
+        "Tomar um complementar qualquer (não invariante) e supor que ele é sub-representação: quase nunca é; o ponto de Maschke é justamente fabricar um que seja invariante."
+      ],
+      "worked": "**Exemplo (a representação padrão de $S_3$ é irredutível).** Retomamos $V_0=\\{(x_1,x_2,x_3):\\sum x_i=0\\}\\subset\\mathbb{C}^3$, de dimensão $2$, com $S_3$ permutando coordenadas. Suponha, por absurdo, que exista uma sub-representação $W$ com $0\\neq W\\subsetneq V_0$; então $\\dim W=1$, digamos $W=\\mathbb{C}\\,v$ com $v=(a,b,c)$, $a+b+c=0$. Invariância sob a transposição $(12)$ exige que trocar as duas primeiras coordenadas leve $v$ a um múltiplo de $v$: $(b,a,c)=\\lambda(a,b,c)$. Se $\\lambda=1$ então $a=b$; aplicando também $(23)$ obtemos $b=c$, logo $a=b=c$ e $3a=0$, dando $v=0$, contradição. Se $\\lambda=-1$ então $b=-a$ e $c=-c\\Rightarrow c=0$, donde $v=(a,-a,0)$; mas aí $(13)$ leva $v$ a $(0,-a,a)$, que não é múltiplo de $(a,-a,0)$ para $a\\neq 0$. Em todos os casos há contradição, logo $V_0$ não tem reta invariante: é irredutível. Combinando com a aula 1, $\\mathbb{C}^3\\cong \\text{trivial}\\oplus V_0$ é a decomposição em irredutíveis da representação de permutação de $S_3$.",
+      "exercises": [
+        {
+          "prompt": "Demonstre o Teorema de Maschke pela via do produto interno: dado $W\\subseteq V$ invariante e um produto interno hermitiano $G$-invariante em $V$, mostre que $W^{\\perp}$ é uma sub-representação e que $V=W\\oplus W^{\\perp}$.",
+          "hint": "Para $w'\\in W^{\\perp}$ e $g\\in G$, mostre $\\rho(g)w'\\in W^{\\perp}$ usando invariância de $\\langle\\cdot,\\cdot\\rangle$ e que $\\rho(g^{-1})W\\subseteq W$.",
+          "difficulty": 3,
+          "solution": "Seja $W\\subseteq V$ uma sub-representação e $\\langle\\cdot,\\cdot\\rangle$ um produto interno hermitiano $G$-invariante em $V$ (existe pela aula 1). Defina $W^{\\perp}=\\{v\\in V:\\langle v,w\\rangle=0\\ \\forall w\\in W\\}$.\n\n**$W^{\\perp}$ é sub-representação.** Seja $v\\in W^{\\perp}$ e $g\\in G$; queremos $\\rho(g)v\\in W^{\\perp}$, ou seja $\\langle\\rho(g)v,w\\rangle=0$ para todo $w\\in W$. Pela invariância do produto interno, $\\langle\\rho(g)v,w\\rangle=\\langle v,\\rho(g)^{-1}w\\rangle=\\langle v,\\rho(g^{-1})w\\rangle$. Como $W$ é invariante, $\\rho(g^{-1})w\\in W$; e como $v\\in W^{\\perp}$, $\\langle v,\\rho(g^{-1})w\\rangle=0$. Logo $\\langle\\rho(g)v,w\\rangle=0$ para todo $w\\in W$, isto é, $\\rho(g)v\\in W^{\\perp}$. Assim $\\rho(g)W^{\\perp}\\subseteq W^{\\perp}$ para todo $g$: $W^{\\perp}$ é $G$-invariante.\n\n**$V=W\\oplus W^{\\perp}$.** Como $\\langle\\cdot,\\cdot\\rangle$ é um produto interno (positivo definido) e $\\dim V<\\infty$, vale a decomposição ortogonal padrão $V=W\\oplus W^{\\perp}$: $W\\cap W^{\\perp}=0$ (se $w\\in W\\cap W^{\\perp}$ então $\\langle w,w\\rangle=0$, logo $w=0$) e $\\dim W+\\dim W^{\\perp}=\\dim V$. Como ambos são sub-representações, esta é uma decomposição de $G$-módulos, exibindo o complementar invariante de $W$. $\\blacksquare$\n\n**Comentário.** Aplicando isso repetidamente (a $W^{\\perp}$, e assim por diante) até esgotar a dimensão, obtém-se que $V$ é soma direta de irredutíveis: é o Teorema de Maschke.",
+          "steps": [
+            "Fixe um produto interno hermitiano $G$-invariante em $V$ (garantido pela aula 1) e defina $W^{\\perp}$ como o complemento ortogonal de $W$.",
+            "Para mostrar invariância de $W^{\\perp}$, tome $v\\in W^{\\perp}$ e use $\\langle\\rho(g)v,w\\rangle=\\langle v,\\rho(g^{-1})w\\rangle$ pela invariância.",
+            "Como $W$ é invariante, $\\rho(g^{-1})w\\in W$, e como $v\\perp W$ o produto se anula; conclua $\\rho(g)v\\in W^{\\perp}$.",
+            "Invoque a decomposição ortogonal $V=W\\oplus W^{\\perp}$ (válida porque o produto é positivo definido e $\\dim V<\\infty$); ambos são sub-representações, então é uma decomposição de $G$-módulos."
+          ]
+        },
+        {
+          "prompt": "Verifique em detalhe que a projeção média $\\pi=\\frac{1}{|G|}\\sum_g\\rho(g)\\pi_0\\rho(g)^{-1}$ satisfaz $\\pi|_W=\\mathrm{id}_W$, $\\operatorname{im}\\pi\\subseteq W$ e $\\pi\\rho(h)=\\rho(h)\\pi$ para todo $h\\in G$.",
+          "hint": "Use $\\rho(g)\\pi_0\\rho(g)^{-1}|_W=\\mathrm{id}$ pois $\\rho(g)^{-1}W\\subseteq W$ e $\\pi_0|_W=\\mathrm{id}$; para a equivariância, reindexe a soma por $g\\mapsto hg$.",
+          "difficulty": 3,
+          "solution": "Seja $W\\subseteq V$ invariante, $\\pi_0:V\\to W$ uma projeção linear qualquer com $\\pi_0|_W=\\mathrm{id}_W$ e $\\operatorname{im}\\pi_0=W$. Defina $\\pi=\\frac{1}{|G|}\\sum_{g\\in G}\\rho(g)\\pi_0\\rho(g)^{-1}$.\n\n**(a) $\\operatorname{im}\\pi\\subseteq W$.** Para cada $g$, $\\rho(g)^{-1}v\\in V$, $\\pi_0(\\rho(g)^{-1}v)\\in W$ (imagem de $\\pi_0$), e $\\rho(g)$ preserva $W$ (invariância), logo $\\rho(g)\\pi_0\\rho(g)^{-1}v\\in W$. Somando e dividindo, $\\pi v\\in W$.\n\n**(b) $\\pi|_W=\\mathrm{id}_W$.** Seja $w\\in W$. Como $W$ é invariante, $\\rho(g)^{-1}w\\in W$, então $\\pi_0\\rho(g)^{-1}w=\\rho(g)^{-1}w$ (pois $\\pi_0|_W=\\mathrm{id}$). Logo\n$$\\rho(g)\\pi_0\\rho(g)^{-1}w=\\rho(g)\\rho(g)^{-1}w=w,$$\ne portanto $\\pi w=\\frac{1}{|G|}\\sum_g w=\\frac{|G|}{|G|}w=w$. Em particular $\\pi$ é sobrejetora sobre $W$, e com (a) segue $\\operatorname{im}\\pi=W$ e $\\pi^2=\\pi$ (é projeção): para $v\\in V$, $\\pi v\\in W$ e $\\pi(\\pi v)=\\pi v$.\n\n**(c) Equivariância: $\\pi\\rho(h)=\\rho(h)\\pi$.** Calcule\n$$\\rho(h)\\pi\\rho(h)^{-1}=\\frac{1}{|G|}\\sum_{g}\\rho(h)\\rho(g)\\pi_0\\rho(g)^{-1}\\rho(h)^{-1}=\\frac{1}{|G|}\\sum_{g}\\rho(hg)\\pi_0\\rho(hg)^{-1}.$$\nReindexando $g'=hg$ (bijeção de $G$), a soma é $\\frac{1}{|G|}\\sum_{g'}\\rho(g')\\pi_0\\rho(g')^{-1}=\\pi$. Logo $\\rho(h)\\pi\\rho(h)^{-1}=\\pi$, isto é, $\\rho(h)\\pi=\\pi\\rho(h)$ para todo $h$.\n\n**Conclusão.** $\\pi$ é uma projeção $G$-equivariante sobre $W$; então $\\ker\\pi$ é uma sub-representação (por (c), $\\rho(h)\\ker\\pi\\subseteq\\ker\\pi$) e $V=\\operatorname{im}\\pi\\oplus\\ker\\pi=W\\oplus\\ker\\pi$. $\\blacksquare$",
+          "steps": [
+            "Mostre $\\operatorname{im}\\pi\\subseteq W$: em cada termo $\\rho(g)\\pi_0\\rho(g)^{-1}v$, aplique $\\pi_0$ (cai em $W$) e note que $\\rho(g)$ preserva $W$.",
+            "Mostre $\\pi|_W=\\mathrm{id}$: para $w\\in W$, use $\\rho(g)^{-1}w\\in W$ e $\\pi_0|_W=\\mathrm{id}$ para obter $\\rho(g)\\pi_0\\rho(g)^{-1}w=w$; a média de $w$ é $w$.",
+            "Deduza que $\\pi$ é idempotente ($\\pi^2=\\pi$) com imagem exatamente $W$, combinando (a) e (b).",
+            "Prove a equivariância conjugando por $\\rho(h)$ e reindexando a soma por $g'=hg$; conclua $V=W\\oplus\\ker\\pi$ com $\\ker\\pi$ invariante."
+          ]
+        },
+        {
+          "prompt": "Considere $G=\\mathbb{Z}/p$ agindo em $\\mathbb{F}_p^2$ por $\\rho(\\bar 1)=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$. Mostre que a única reta invariante é a gerada por $(1,0)$ e que não há complementar invariante; conclua que a representação é indecomponível mas redutível, e por que isso não contradiz Maschke.",
+          "hint": "Procure autovetores de $\\rho(\\bar 1)$; a hipótese de Maschke $\\operatorname{char}(k)\\nmid|G|$ falha pois $\\operatorname{char}=p$ divide $|G|=p$.",
+          "difficulty": 3,
+          "solution": "Aqui $G=\\mathbb{Z}/p$ age em $\\mathbb{F}_p^2$ com $\\rho(\\bar 1)=A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$ (e $\\rho(\\bar k)=A^k$). Note que $A^p=\\begin{pmatrix}1&p\\\\0&1\\end{pmatrix}=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$ em $\\mathbb{F}_p$, então de fato $A$ tem ordem $p$ e a ação está bem definida.\n\n**Retas invariantes.** Uma reta $\\ell=\\mathbb{F}_p\\,v$ é invariante sse $Av\\in\\ell$, isto é, $v$ é autovetor de $A$. O polinômio característico é $(1-t)^2$, logo o único autovalor é $t=1$. Resolvendo $(A-I)v=0$: $A-I=\\begin{pmatrix}0&1\\\\0&0\\end{pmatrix}$, e $(A-I)\\binom{x}{y}=\\binom{y}{0}=0\\iff y=0$. Logo o autoespaço é $\\{(x,0)\\}=\\mathbb{F}_p\\,(1,0)$, uma única reta invariante, gerada por $(1,0)$.\n\n**Não há complementar invariante.** Um complementar de $\\ell=\\mathbb{F}_p(1,0)$ seria outra reta $\\ell'=\\mathbb{F}_p\\,v'$ com $\\ell\\oplus\\ell'=\\mathbb{F}_p^2$, e para ser invariante $\\ell'$ teria de ser gerada por um autovetor de $A$. Mas o único autoespaço é $\\ell$ mesmo; qualquer outra reta não é invariante. Concretamente, se $\\ell'=\\mathbb{F}_p(a,b)$ com $b\\neq0$ (para ser transversal a $\\ell$), então $A(a,b)=(a+b,b)$, que é múltiplo de $(a,b)$ só se $a+b=\\lambda a,\\ b=\\lambda b$, forçando $\\lambda=1$ e $b=0$, contradição. Logo não existe complementar invariante.\n\n**Conclusão.** A representação é **redutível** (tem a sub-representação própria não trivial $\\ell$) mas **indecomponível** (não se escreve como soma direta de duas sub-representações não nulas, pois $\\ell$ não tem complementar invariante). Isso **não contradiz Maschke** porque a hipótese $\\operatorname{char}(k)\\nmid|G|$ falha: aqui $k=\\mathbb{F}_p$ tem característica $p$, que divide $|G|=p$. Na prova de Maschke seria preciso dividir por $|G|=p=0$ em $\\mathbb{F}_p$, o que é impossível. $\\blacksquare$",
+          "steps": [
+            "Confirme que a ação está bem definida: $A^p=I$ em $\\mathbb{F}_p$, logo $A$ tem ordem $p$.",
+            "Procure retas invariantes achando autovetores de $A$: o polinômio característico é $(1-t)^2$, autovalor único $1$, e $(A-I)v=0$ dá $y=0$, isto é, a única reta $\\mathbb{F}_p(1,0)$.",
+            "Mostre que qualquer reta transversal $\\mathbb{F}_p(a,b)$ com $b\\neq0$ não é invariante, pois $A(a,b)=(a+b,b)$ não é múltiplo de $(a,b)$; logo não há complementar invariante.",
+            "Conclua redutível mas indecomponível, e explique que Maschke não se aplica porque $\\operatorname{char}(\\mathbb{F}_p)=p$ divide $|G|=p$ (não se pode dividir por $|G|$)."
+          ]
+        },
+        {
+          "prompt": "Mostre que se $V$ é completamente redutível então toda sub-representação $W\\subseteq V$ também é, e admite complementar invariante (mesmo sem invocar Maschke diretamente).",
+          "hint": "Use que somar todas as irredutíveis contidas em $V$ que intersectam $W$ trivialmente produz um complementar; ou aplique indução no número de fatores.",
+          "difficulty": 4,
+          "solution": "Suponha $V$ completamente redutível: $V=\\bigoplus_{j=1}^{r}S_j$, com cada $S_j$ irredutível. Seja $W\\subseteq V$ uma sub-representação qualquer. Queremos: (i) $W$ admite complementar invariante em $V$; (ii) $W$ é completamente redutível.\n\n**(i) Complementar invariante (argumento maximal).** Considere a família de sub-representações $U\\subseteq V$ com $U\\cap W=0$; ela é não vazia ($U=0$ serve). Como $\\dim V<\\infty$, escolha $U$ **maximal** (de dimensão máxima) com $U\\cap W=0$. Afirmo que $V=W\\oplus U$. Já temos $W\\cap U=0$; falta $W+U=V$. Suponha que não; então algum somando $S_j$ não está contido em $W+U$. Como $S_j$ é irredutível e $S_j\\cap(W+U)$ é uma sub-representação de $S_j$ diferente de $S_j$, temos $S_j\\cap(W+U)=0$. Então $U'=U\\oplus S_j$ ainda satisfaz $U'\\cap W=0$: se $w\\in W$ e $w=u+s$ com $u\\in U,s\\in S_j$, então $s=w-u\\in(W+U)\\cap S_j=0$, logo $s=0$ e $w=u\\in W\\cap U=0$. Isso contradiz a maximalidade de $U$. Portanto $W+U=V$ e $V=W\\oplus U$ com $U$ invariante.\n\n**(ii) $W$ é completamente redutível.** Pela decomposição $V=W\\oplus U$, a projeção $p:V\\to W$ ao longo de $U$ é $G$-equivariante (pois $W,U$ são invariantes). Restringindo a decomposição $V=\\bigoplus_j S_j$: cada $S_j$ é irredutível, e $p(S_j)$ é uma sub-representação de $W$, imagem de irredutível, logo $p(S_j)=0$ ou $p|_{S_j}$ é injetora com imagem irredutível $\\cong S_j$ (Schur/irredutibilidade). Como $p$ é sobrejetora sobre $W$ e $W=p(V)=\\sum_j p(S_j)$, $W$ é soma de sub-representações irredutíveis. Toda soma (não necessariamente direta) de irredutíveis é completamente redutível: extraindo uma subfamília cuja soma seja direta e ainda gere $W$ (novamente por maximalidade), obtemos $W=\\bigoplus_{k}p(S_{j_k})$, soma direta de irredutíveis. Logo $W$ é completamente redutível. $\\blacksquare$\n\n**Observação.** O passo (ii) usa o lema geral: 'se $M=\\sum_i M_i$ com cada $M_i$ irredutível, então $M$ é soma direta de alguns dos $M_i$', provado escolhendo um subconjunto maximal de índices cuja soma seja direta.",
+          "steps": [
+            "Escreva $V=\\bigoplus_j S_j$ com $S_j$ irredutíveis e fixe uma sub-representação $W$; o objetivo é achar complementar invariante.",
+            "Tome $U$ maximal entre as sub-representações com $U\\cap W=0$; suponha $W+U\\neq V$ e ache um somando $S_j\\not\\subseteq W+U$.",
+            "Use a irredutibilidade de $S_j$ para concluir $S_j\\cap(W+U)=0$ e mostre que $U\\oplus S_j$ ainda tem interseção nula com $W$, contradizendo a maximalidade; logo $V=W\\oplus U$.",
+            "Para a completa redutibilidade de $W$, use a projeção $G$-equivariante $p:V\\to W$ ao longo de $U$: $W=\\sum_j p(S_j)$ é soma de irredutíveis, e todo somatório de irredutíveis é soma direta de uma subfamília, logo $W$ é semissimples."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Sub-representação",
+          "back": "Subespaço $W\\subseteq V$ com $\\rho(g)W\\subseteq W$ para todo $g\\in G$ (subespaço $G$-invariante)."
+        },
+        {
+          "front": "Representação irredutível",
+          "back": "$V\\neq 0$ cujas únicas sub-representações são $0$ e $V$; os 'átomos' da teoria."
+        },
+        {
+          "front": "Completamente redutível (semissimples)",
+          "back": "Soma direta de irredutíveis; equivale a: todo subespaço invariante tem complementar invariante."
+        },
+        {
+          "front": "Teorema de Maschke (enunciado)",
+          "back": "Se $G$ finito e $\\operatorname{char}(k)\\nmid|G|$, toda representação de dimensão finita é completamente redutível."
+        },
+        {
+          "front": "Ideia da prova de Maschke",
+          "back": "Simetrizar uma projeção: $\\pi=\\frac{1}{|G|}\\sum_g\\rho(g)\\pi_0\\rho(g)^{-1}$ é projeção $G$-equivariante; $\\ker\\pi$ é o complementar invariante."
+        },
+        {
+          "front": "Por que a hipótese sobre a característica?",
+          "back": "A prova divide por $|G|$; se $\\operatorname{char}(k)\\mid|G|$, $|G|=0$ em $k$ e o argumento (e o teorema) falham."
+        },
+        {
+          "front": "Irredutível vs. indecomponível",
+          "back": "Irredutível $\\Rightarrow$ indecomponível sempre; a recíproca vale sob Maschke (sobre $\\mathbb{C}$, $G$ finito), mas falha em característica $p$."
+        },
+        {
+          "front": "Contraexemplo clássico em característica $p$",
+          "back": "$\\mathbb{Z}/p$ em $\\mathbb{F}_p^2$ via $\\begin{psmallmatrix}1&1\\\\0&1\\end{psmallmatrix}$: redutível (uma reta invariante) mas indecomponível."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Serre, Linear Representations, cap. 1 (1.3-1.4)",
+          "ref": "livro"
+        },
+        {
+          "title": "Fulton & Harris, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "Steinberg, cap. 3 (Teorema de Maschke)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reative o que aprendeu na aula 1 sobre produto interno $G$-invariante e sobre a matriz de permutação da regular; Maschke será provado de duas formas e ambas dependem do 'truque da média'.",
+          "Leia Serre 1.3-1.4 e o capítulo de Maschke em Steinberg, anotando as duas provas (via projeção média e via complemento ortogonal) lado a lado, pois cada uma ilumina um aspecto diferente.",
+          "Assista a uma aula que enfatize a distinção irredutível vs. indecomponível e o papel da hipótese sobre a característica; procure especificamente o contraexemplo $\\mathbb{Z}/p$ em $\\mathbb{F}_p^2$.",
+          "Refaça na mão o exemplo trabalhado (a representação padrão de $S_3$ é irredutível), depois generalize a técnica: 'suponha uma reta invariante e derive contradição'.",
+          "Monte um quadro de decisão: dado $V$, como testar irredutibilidade agora (por definição / por reta invariante) e como será depois (por caracteres, aula 4); deixe explícito o que ainda falta.",
+          "Resolver os testes desta aula e anotar o principal aqui no app: registre o enunciado exato de Maschke, a fórmula da projeção simetrizada, e por que a divisão por $|G|$ exige $\\operatorname{char}(k)\\nmid|G|$."
+        ],
+        "searchQueries": [
+          "teorema de Maschke demonstração projeção média",
+          "representação irredutível indecomponível diferença exemplo",
+          "Maschke theorem characteristic divides group order counterexample",
+          "sub-representação complemento invariante semissimples",
+          "Z/p representation F_p^2 unipotent not completely reducible",
+          "completamente redutível semissimples grupo finito"
+        ],
+        "videos": [
+          {
+            "title": "Maschke's theorem e semissimplicidade",
+            "channel": "MIT OpenCourseWare (18.712, Etingof)",
+            "note": "Aula sobre completa redutibilidade e a prova de Maschke; observe como o argumento de média aparece."
+          },
+          {
+            "title": "Representation theory: irreducibility",
+            "channel": "Richard E. Borcherds",
+            "note": "Procure a aula sobre subrepresentações e Maschke; boa discussão da hipótese sobre a característica."
+          },
+          {
+            "title": "Modular representation theory (visão geral)",
+            "channel": "Michael Penn",
+            "note": "Para curiosidade, veja discussões de álgebra abstrata que ilustram por que característica $p$ quebra a semissimplicidade."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Linear Representations of Finite Groups, cap. 1 (1.3-1.4)",
+            "where": "Serre, Springer GTM 42 (teorema de Maschke e completa redutibilidade)"
+          },
+          {
+            "title": "Representation Theory of Finite Groups, cap. sobre Maschke",
+            "where": "Benjamin Steinberg, Springer Universitext"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-representacao-03-lema-de-schur",
+      "title": "O Lema de Schur e suas consequências",
+      "tagline": "Entender que entre irredutíveis só existem morfismos triviais ou isomorfismos, e que sobre $\\mathbb{C}$ todo entrelaçador é um escalar.",
+      "objectives": [
+        "Enunciar e demonstrar o Lema de Schur nas suas duas formas (qualitativa e sobre corpo algebricamente fechado).",
+        "Deduzir que $\\operatorname{End}_G(V)=\\mathbb{C}\\,\\mathrm{id}$ quando $V$ é irredutível sobre $\\mathbb{C}$.",
+        "Provar que toda representação irredutível de um grupo abeliano (sobre $\\mathbb{C}$) tem grau $1$.",
+        "Usar Schur para garantir unicidade da decomposição isotípica e para projetar sobre componentes irredutíveis.",
+        "Caracterizar quando um operador comuta com toda a ação, ligando isso a autovalores e diagonalização."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Espaço de entrelaçadores $\\operatorname{Hom}_G(V,W)$",
+          "statement": "Conjunto dos morfismos de representações $T:V\\to W$ (lineares com $T\\rho_V(g)=\\rho_W(g)T$). É um espaço vetorial; quando $V=W$ escrevemos $\\operatorname{End}_G(V)$, que é uma álgebra com a composição."
+        },
+        {
+          "term": "Núcleo e imagem são sub-representações",
+          "statement": "Se $T:V\\to W$ é morfismo de $G$-módulos, então $\\ker T\\subseteq V$ e $\\operatorname{im}T\\subseteq W$ são sub-representações. Esta observação simples é o coração da prova do Lema de Schur."
+        },
+        {
+          "term": "Componente isotípica",
+          "statement": "Dada uma irredutível $S$, a $S$-componente isotípica de $V$ é a soma de todas as sub-representações de $V$ isomorfas a $S$. É canônica (não depende de escolhas) e $V$ é a soma direta de suas componentes isotípicas."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Lema de Schur (forma geral)",
+          "statement": "Sejam $V,W$ representações irredutíveis de $G$ e $T:V\\to W$ um morfismo de $G$-módulos. Então $T=0$ ou $T$ é um isomorfismo. Em particular, se $V\\not\\cong W$ então $\\operatorname{Hom}_G(V,W)=0$.",
+          "whyItMatters": "É o princípio de rigidez da teoria: irredutíveis ou são 'incompatíveis' (sem morfismos não nulos) ou 'a mesma coisa' (isomorfas). Isso força a unicidade das decomposições e torna possível separar componentes por projeções."
+        },
+        {
+          "name": "Lema de Schur (sobre $\\mathbb{C}$)",
+          "statement": "Se $V$ é irredutível de dimensão finita sobre um corpo algebricamente fechado (em particular $\\mathbb{C}$) e $T\\in\\operatorname{End}_G(V)$, então $T=\\lambda\\,\\mathrm{id}_V$ para algum escalar $\\lambda$. Assim $\\operatorname{End}_G(V)\\cong\\mathbb{C}$.",
+          "whyItMatters": "Como $T$ tem um autovalor $\\lambda$ (corpo algebricamente fechado), $T-\\lambda\\,\\mathrm{id}$ é um endomorfismo $G$-equivariante com núcleo não nulo, logo é $0$ pela forma geral. Esta é a versão que alimenta as relações de ortogonalidade: ela diz que o único operador que comuta com uma irredutível é o escalar."
+        },
+        {
+          "name": "Irredutíveis de grupos abelianos têm grau 1",
+          "statement": "Se $G$ é abeliano e $V$ é uma representação irredutível de dimensão finita sobre $\\mathbb{C}$, então $\\dim V=1$.",
+          "whyItMatters": "Para $G$ abeliano cada $\\rho(h)$ comuta com todos os $\\rho(g)$, logo $\\rho(h)\\in\\operatorname{End}_G(V)=\\mathbb{C}\\,\\mathrm{id}$ por Schur. Então todo subespaço é invariante, e irredutibilidade força $\\dim V=1$. Consequência: as irredutíveis de $\\mathbb{Z}/n$ são os $n$ caracteres $\\bar 1\\mapsto\\zeta^k$, e diagonalizar uma matriz que comuta com um grupo abeliano vira simultaneamente diagonalizar."
+        }
+      ],
+      "summary": "O Lema de Schur é o resultado mais usado de toda a teoria, e sua prova cabe em duas linhas. Como núcleo e imagem de um entrelaçador são sub-representações, se $V$ e $W$ são irredutíveis um morfismo não nulo $T:V\\to W$ tem $\\ker T\\neq V$ (logo $\\ker T=0$, injetora) e $\\operatorname{im}T\\neq 0$ (logo $\\operatorname{im}T=W$, sobrejetora): é um isomorfismo. Donde, ou não há morfismos não nulos entre irredutíveis distintas, ou elas são isomorfas. Sobre $\\mathbb{C}$ vem o golpe final: todo endomorfismo $G$-equivariante de uma irredutível tem um autovalor $\\lambda$, e $T-\\lambda\\,\\mathrm{id}$ é equivariante com núcleo não trivial, portanto nulo; logo $T=\\lambda\\,\\mathrm{id}$. Em uma frase: o único operador que comuta com uma representação irredutível complexa é um escalar.\n\nAs consequências são imediatas e profundas. Primeiro, grupos abelianos só têm irredutíveis de grau $1$, porque cada $\\rho(h)$ comuta com a ação e portanto é escalar; isso reduz a teoria de $\\mathbb{Z}/n$ (e de qualquer abeliano finito) a caracteres unidimensionais e está por trás da diagonalização simultânea. Segundo, a decomposição de qualquer representação em componentes isotípicas é única e canônica: o número de cópias de cada irredutível é um invariante bem definido, a multiplicidade. Terceiro, Schur transforma a contagem de morfismos em geometria: $\\dim\\operatorname{Hom}_G(V,W)$ conta multiplicidades comuns, e é exatamente essa contagem que, na próxima aula, vira o produto interno de caracteres e as relações de ortogonalidade.",
+      "commonPitfalls": [
+        "Aplicar a forma 'escalar' de Schur sem que o corpo seja algebricamente fechado: sobre $\\mathbb{R}$, $\\operatorname{End}_G(V)$ pode ser $\\mathbb{C}$ ou os quatérnios $\\mathbb{H}$, não apenas $\\mathbb{R}$.",
+        "Esquecer a hipótese de irredutibilidade: para $V$ redutível há muitos endomorfismos equivariantes (por exemplo projeções), e Schur não se aplica.",
+        "Concluir que grupos abelianos só têm representações de grau 1: só as IRREDUTÍVEIS têm grau 1; uma representação geral é soma direta delas e pode ter grau alto.",
+        "Confundir 'comuta com $\\rho(g)$ para todo $g$' com 'comuta com uma matriz específica': Schur exige comutar com a ação inteira do grupo."
+      ],
+      "worked": "**Exemplo (operadores que comutam com $S_3$ na padrão).** Seja $V_0$ a representação padrão (grau $2$, irredutível) de $S_3$. Pelo Lema de Schur sobre $\\mathbb{C}$, qualquer $T:V_0\\to V_0$ que comute com todos os $\\rho(\\sigma)$ é da forma $T=\\lambda\\,\\mathrm{id}$. Vamos ver isso concretamente. Na base $u=(1,-1,0)$, $w=(0,1,-1)$ de $V_0$, a transposição $(12)$ e o $3$-ciclo $(123)$ agem por matrizes $2\\times 2$ que não compartilham nenhum autovetor comum (pois $V_0$ é irredutível). Um operador $T$ que comute com ambas precisa preservar cada autoespaço de cada uma; como não há reta comum invariante, os autoespaços de $T$ teriam de ser $0$ ou todo $V_0$, forçando $T$ escalar. Aplicação típica: para decidir se uma representação $V$ contém a padrão, calculamos $\\dim\\operatorname{Hom}_{S_3}(V_0,V)$, que por Schur é igual à multiplicidade de $V_0$ em $V$. Por exemplo, na representação de permutação $\\mathbb{C}^3=\\text{trivial}\\oplus V_0$ temos $\\dim\\operatorname{Hom}_{S_3}(V_0,\\mathbb{C}^3)=1$.",
+      "exercises": [
+        {
+          "prompt": "Demonstre o Lema de Schur na forma geral usando que núcleo e imagem de um morfismo de $G$-módulos são sub-representações. Em seguida, deduza a forma sobre $\\mathbb{C}$ usando existência de autovalor.",
+          "hint": "Para a primeira parte, analise $\\ker T$ e $\\operatorname{im}T$ pela irredutibilidade; para a segunda, considere $T-\\lambda\\,\\mathrm{id}$ com $\\lambda$ autovalor de $T$.",
+          "difficulty": 2,
+          "solution": "**Forma geral.** Sejam $V,W$ irredutíveis e $T:V\\to W$ morfismo de $G$-módulos ($T\\rho_V(g)=\\rho_W(g)T$). Já sabemos que $\\ker T\\subseteq V$ e $\\operatorname{im}T\\subseteq W$ são sub-representações (pois $T$ comuta com a ação: se $v\\in\\ker T$ então $T\\rho_V(g)v=\\rho_W(g)Tv=0$, logo $\\rho_V(g)v\\in\\ker T$; e $\\operatorname{im}T$ é claramente invariante). Como $V$ é irredutível, $\\ker T\\in\\{0,V\\}$; como $W$ é irredutível, $\\operatorname{im}T\\in\\{0,W\\}$.\n\n- Se $T\\neq0$, então $\\ker T\\neq V$, logo $\\ker T=0$ ($T$ injetora); e $\\operatorname{im}T\\neq0$, logo $\\operatorname{im}T=W$ ($T$ sobrejetora). Portanto $T$ é bijetora, isto é, um **isomorfismo** de representações.\n- Se $T=0$, nada a fazer.\n\nAssim todo morfismo entre irredutíveis é $0$ ou isomorfismo; em particular, se $V\\not\\cong W$, o único morfismo é $0$, ou seja $\\operatorname{Hom}_G(V,W)=0$.\n\n**Forma sobre $\\mathbb{C}$.** Seja $V$ irredutível de dimensão finita sobre $\\mathbb{C}$ (algebricamente fechado) e $T\\in\\operatorname{End}_G(V)$. Como $\\mathbb{C}$ é algebricamente fechado e $\\dim V<\\infty$, o operador $T$ possui um autovalor $\\lambda\\in\\mathbb{C}$ (raiz do polinômio característico). Considere $S=T-\\lambda\\,\\mathrm{id}_V$. Ele ainda é $G$-equivariante (combinação de $T$ e da identidade, ambos equivariantes), logo $S\\in\\operatorname{End}_G(V)$. Mas $\\ker S\\neq0$ (contém um autovetor de $T$ para $\\lambda$). Pela forma geral aplicada a $S:V\\to V$ (com $V=W$ irredutível), $S$ é $0$ ou isomorfismo; como $\\ker S\\neq0$, $S$ não é injetora, portanto $S=0$. Logo $T=\\lambda\\,\\mathrm{id}_V$. Como todo escalar dá um endomorfismo equivariante, concluímos $\\operatorname{End}_G(V)=\\mathbb{C}\\,\\mathrm{id}\\cong\\mathbb{C}$. $\\blacksquare$",
+          "steps": [
+            "Verifique que, para um morfismo $T$ entre representações, $\\ker T$ e $\\operatorname{im}T$ são sub-representações (comutação de $T$ com a ação).",
+            "Aplique irredutibilidade de $V$ e $W$: $\\ker T\\in\\{0,V\\}$ e $\\operatorname{im}T\\in\\{0,W\\}$; se $T\\neq0$, force $\\ker T=0$ e $\\operatorname{im}T=W$, logo isomorfismo.",
+            "Para a forma sobre $\\mathbb{C}$, tome $T\\in\\operatorname{End}_G(V)$ e um autovalor $\\lambda$ (existe pois $\\mathbb{C}$ é algebricamente fechado e $\\dim V<\\infty$).",
+            "Considere $S=T-\\lambda\\,\\mathrm{id}$, equivariante com $\\ker S\\neq0$; pela forma geral $S=0$, logo $T=\\lambda\\,\\mathrm{id}$ e $\\operatorname{End}_G(V)=\\mathbb{C}$."
+          ]
+        },
+        {
+          "prompt": "Prove que se $G$ é abeliano finito, então $G$ possui exatamente $|G|$ representações irredutíveis (não isomorfas), todas de grau $1$.",
+          "hint": "Use que cada irredutível tem grau 1 (via Schur) e que o número de irredutíveis de um abeliano finito iguala $|G|$; descreva-as como homomorfismos $G\\to\\mathbb{C}^\\times$.",
+          "difficulty": 3,
+          "solution": "Seja $G$ abeliano finito.\n\n**Toda irredutível tem grau 1.** Seja $V$ irredutível sobre $\\mathbb{C}$. Fixe $h\\in G$; como $G$ é abeliano, $\\rho(h)$ comuta com $\\rho(g)$ para todo $g$, isto é, $\\rho(h)\\in\\operatorname{End}_G(V)$. Pela forma de Schur sobre $\\mathbb{C}$, $\\rho(h)=\\lambda_h\\,\\mathrm{id}$ para algum escalar $\\lambda_h$. Como isso vale para todo $h$, **todo** subespaço de $V$ é invariante (cada $\\rho(h)$ é escalar, preserva qualquer reta). Se $\\dim V\\ge2$, qualquer reta seria uma sub-representação própria não nula, contradizendo a irredutibilidade. Logo $\\dim V=1$.\n\n**São exatamente $|G|$ (não isomorfas).** Pela decomposição da representação regular (aula 5), o número $r$ de irredutíveis não isomorfas satisfaz $\\sum_{i=1}^{r}(\\dim V_i)^2=|G|$. Como cada $\\dim V_i=1$, isso dá $r=|G|$. (Alternativamente: para $G$ abeliano, toda classe de conjugação é um único elemento, logo há $|G|$ classes; e o número de irredutíveis iguala o número de classes.)\n\n**Descrição como homomorfismos $G\\to\\mathbb{C}^\\times$.** Uma irredutível de grau 1 é um homomorfismo $\\chi:G\\to GL_1(\\mathbb{C})=\\mathbb{C}^\\times$; como $G$ é finito, a imagem cai nas raízes da unidade. Esses homomorfismos são os **caracteres** de $G$ e formam, sob multiplicação pontual, o grupo dual $\\widehat G=\\operatorname{Hom}(G,\\mathbb{C}^\\times)$. Para $G$ abeliano finito, $\\widehat G\\cong G$, confirmando $|\\widehat G|=|G|$: há exatamente $|G|$ representações irredutíveis, todas de grau 1, duas a duas não isomorfas (pois homomorfismos distintos dão representações não equivalentes, já que em grau 1 equivalência é igualdade). $\\blacksquare$",
+          "steps": [
+            "Para $V$ irredutível e $G$ abeliano, observe que cada $\\rho(h)$ comuta com toda a ação, logo $\\rho(h)\\in\\operatorname{End}_G(V)$.",
+            "Aplique Schur sobre $\\mathbb{C}$: $\\rho(h)=\\lambda_h\\,\\mathrm{id}$ para todo $h$, então todo subespaço é invariante; irredutibilidade força $\\dim V=1$.",
+            "Conte as irredutíveis: por $\\sum(\\dim V_i)^2=|G|$ com todos os graus $1$, há $r=|G|$; ou note que um abeliano tem $|G|$ classes de conjugação.",
+            "Identifique-as com os homomorfismos $G\\to\\mathbb{C}^\\times$ (caracteres), formando o dual $\\widehat G\\cong G$, todos não isomorfos entre si."
+          ]
+        },
+        {
+          "prompt": "Sejam $V=mS$ (soma direta de $m$ cópias da irredutível $S$) e $W=nS$. Mostre, usando Schur, que $\\operatorname{Hom}_G(V,W)\\cong M_{n\\times m}(\\mathbb{C})$ e em particular $\\dim\\operatorname{Hom}_G(V,W)=mn$.",
+          "hint": "Um morfismo $V\\to W$ é uma matriz de morfismos $S\\to S$, e cada bloco é um escalar por Schur.",
+          "difficulty": 3,
+          "solution": "Sejam $V=mS=S^{\\oplus m}$ e $W=nS=S^{\\oplus n}$, com $S$ irredutível. Denote as inclusões e projeções canônicas dos somandos por $\\iota_a:S\\hookrightarrow V$ ($a=1,\\dots,m$) e $\\pi_b:W\\twoheadrightarrow S$ ($b=1,\\dots,n$), todas $G$-equivariantes.\n\n**Estrutura de um morfismo.** Seja $T\\in\\operatorname{Hom}_G(V,W)$. Para cada par $(b,a)$ defina o 'bloco'\n$$T_{ba}:=\\pi_b\\circ T\\circ\\iota_a:S\\to S,$$\nque é composição de morfismos equivariantes, logo $T_{ba}\\in\\operatorname{End}_G(S)$. Pela forma de Schur sobre $\\mathbb{C}$, $\\operatorname{End}_G(S)=\\mathbb{C}\\,\\mathrm{id}_S$, então existe um único escalar $t_{ba}\\in\\mathbb{C}$ com $T_{ba}=t_{ba}\\,\\mathrm{id}_S$.\n\n**Bijeção com matrizes.** A aplicação\n$$\\Psi:\\operatorname{Hom}_G(V,W)\\to M_{n\\times m}(\\mathbb{C}),\\qquad \\Psi(T)=(t_{ba})_{b,a},$$\né linear (pois $T\\mapsto\\pi_b T\\iota_a$ é linear e a identificação com o escalar também). É injetora: se todos os $t_{ba}=0$, então $\\pi_b T\\iota_a=0$ para todos $b,a$; como $V=\\bigoplus_a\\iota_a(S)$ e $W=\\bigoplus_b\\iota'_b(S)$ (com $\\pi_b$ detectando cada componente), isso força $T=0$ (o morfismo $T$ é reconstruído por $T=\\sum_{a,b}\\iota'_b T_{ba}\\pi'_a$). É sobrejetora: dada $(t_{ba})$, defina $T=\\sum_{a,b}t_{ba}\\,\\iota'_b\\,\\pi'_a$ (onde $\\pi'_a:V\\to S$ é a projeção no $a$-ésimo somando e $\\iota'_b:S\\to W$ a inclusão no $b$-ésimo); então $T$ é equivariante e $\\Psi(T)=(t_{ba})$. Logo\n$$\\operatorname{Hom}_G(V,W)\\cong M_{n\\times m}(\\mathbb{C}),\\qquad \\dim\\operatorname{Hom}_G(V,W)=mn.\\qquad\\blacksquare$$\n\n**Comentário.** Isso generaliza $\\dim\\operatorname{Hom}_G(V,W)=\\sum_S m_S(V)\\,m_S(W)$ para representações semissimples, onde $m_S$ são multiplicidades — a base combinatória das relações de ortogonalidade.",
+          "steps": [
+            "Escreva $V=S^{\\oplus m}$, $W=S^{\\oplus n}$ e defina, para um morfismo $T$, os blocos $T_{ba}=\\pi_b T\\iota_a:S\\to S$ usando inclusões/projeções equivariantes.",
+            "Aplique Schur sobre $\\mathbb{C}$ a cada bloco: $T_{ba}\\in\\operatorname{End}_G(S)=\\mathbb{C}\\,\\mathrm{id}$, logo $T_{ba}=t_{ba}\\,\\mathrm{id}$ para um único escalar.",
+            "Defina $\\Psi(T)=(t_{ba})\\in M_{n\\times m}(\\mathbb{C})$ e mostre que é linear e injetora (blocos nulos $\\Rightarrow T=0$).",
+            "Mostre sobrejetividade reconstruindo $T=\\sum_{a,b}t_{ba}\\,\\iota'_b\\pi'_a$; conclua $\\operatorname{Hom}_G(V,W)\\cong M_{n\\times m}(\\mathbb{C})$ e a dimensão $mn$."
+          ]
+        },
+        {
+          "prompt": "Mostre que se $V$ é uma representação complexa de $G$ tal que $\\operatorname{End}_G(V)=\\mathbb{C}\\,\\mathrm{id}$, então $V$ é irredutível. (É a recíproca de Schur sob Maschke.)",
+          "hint": "Se $V=W_1\\oplus W_2$ com ambos não nulos invariantes, a projeção sobre $W_1$ é um endomorfismo equivariante que não é escalar.",
+          "difficulty": 3,
+          "solution": "Seja $V$ uma representação complexa de dimensão finita de $G$ com $\\operatorname{End}_G(V)=\\mathbb{C}\\,\\mathrm{id}$. Queremos concluir que $V$ é irredutível. Argumentamos por contrapositiva, usando Maschke.\n\nSuponha que $V$ **não** seja irredutível. Então existe uma sub-representação $W$ com $0\\neq W\\subsetneq V$. Pelo Teorema de Maschke (válido pois $G$ é finito e $k=\\mathbb{C}$), $W$ admite um complementar invariante: $V=W\\oplus W'$ com $W'$ sub-representação e $W'\\neq0$ (já que $W\\neq V$). Considere a projeção $p:V\\to V$ sobre $W$ ao longo de $W'$ (isto é, $p|_W=\\mathrm{id}$, $p|_{W'}=0$).\n\n- $p$ é **$G$-equivariante**: como $W$ e $W'$ são invariantes, para $v=w+w'$ e $g\\in G$ temos $\\rho(g)v=\\rho(g)w+\\rho(g)w'$ com $\\rho(g)w\\in W$, $\\rho(g)w'\\in W'$; então $p(\\rho(g)v)=\\rho(g)w=\\rho(g)(pv)$. Logo $p\\in\\operatorname{End}_G(V)$.\n- $p$ **não é escalar**: $p\\neq0$ (pois $W\\neq0$, $p|_W=\\mathrm{id}$) e $p\\neq\\mathrm{id}$ (pois $W'\\neq0$, $p|_{W'}=0$). Um escalar $\\lambda\\,\\mathrm{id}$ com $0<\\lambda<1$? Não: $p^2=p$ e um múltiplo escalar $\\lambda\\,\\mathrm{id}$ idempotente satisfaz $\\lambda^2=\\lambda$, logo $\\lambda\\in\\{0,1\\}$; mas $p\\neq0$ e $p\\neq\\mathrm{id}$, então $p$ não é escalar.\n\nAssim $\\operatorname{End}_G(V)$ contém um elemento não escalar, contradizendo $\\operatorname{End}_G(V)=\\mathbb{C}\\,\\mathrm{id}$. Portanto $V$ é irredutível. $\\blacksquare$\n\n**Observação.** A hipótese $G$ finito (Maschke) é essencial: em característica $p$ ou para grupos infinitos, uma representação indecomponível não irredutível pode ter $\\operatorname{End}_G(V)$ maior que $\\mathbb{C}$ (com nilpotentes), e o argumento falha.",
+          "steps": [
+            "Argumente por contrapositiva: suponha $V$ redutível, com sub-representação própria não nula $W$.",
+            "Use Maschke ($G$ finito, $\\mathbb{C}$) para obter $V=W\\oplus W'$ com $W'$ invariante não nulo, e considere a projeção $p$ sobre $W$ ao longo de $W'$.",
+            "Mostre que $p$ é $G$-equivariante (pois $W,W'$ são invariantes), logo $p\\in\\operatorname{End}_G(V)$.",
+            "Mostre que $p$ não é escalar (é idempotente com $p\\neq0,\\mathrm{id}$), contradizendo $\\operatorname{End}_G(V)=\\mathbb{C}\\,\\mathrm{id}$; conclua que $V$ é irredutível."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Lema de Schur (forma geral)",
+          "back": "Morfismo $T:V\\to W$ entre irredutíveis é $0$ ou isomorfismo; logo $\\operatorname{Hom}_G(V,W)=0$ se $V\\not\\cong W$."
+        },
+        {
+          "front": "Lema de Schur sobre $\\mathbb{C}$",
+          "back": "Se $V$ é irredutível complexa, todo $T\\in\\operatorname{End}_G(V)$ é $\\lambda\\,\\mathrm{id}$; ou seja, $\\operatorname{End}_G(V)\\cong\\mathbb{C}$."
+        },
+        {
+          "front": "Por que núcleo/imagem importam em Schur?",
+          "back": "São sub-representações; irredutibilidade força $\\ker T\\in\\{0,V\\}$ e $\\operatorname{im}T\\in\\{0,W\\}$, donde $T=0$ ou iso."
+        },
+        {
+          "front": "Irredutíveis de grupo abeliano (sobre $\\mathbb{C}$)",
+          "back": "Têm grau 1: cada $\\rho(h)$ comuta com a ação, logo é escalar por Schur, logo toda reta é invariante."
+        },
+        {
+          "front": "Multiplicidade via Schur",
+          "back": "A multiplicidade da irredutível $S$ em $V$ é $\\dim\\operatorname{Hom}_G(S,V)$ (e também $\\dim\\operatorname{Hom}_G(V,S)$)."
+        },
+        {
+          "front": "Schur sobre $\\mathbb{R}$ (cuidado)",
+          "back": "$\\operatorname{End}_G(V)$ pode ser $\\mathbb{R}$, $\\mathbb{C}$ ou $\\mathbb{H}$ (tipos real/complexo/quaterniônico); não vale 'só escalares'."
+        },
+        {
+          "front": "Recíproca de Schur (sob Maschke)",
+          "back": "Se $\\operatorname{End}_G(V)=\\mathbb{C}\\,\\mathrm{id}$ então $V$ é irredutível (uma decomposição não trivial daria uma projeção não escalar)."
+        },
+        {
+          "front": "Componente isotípica",
+          "back": "Soma de todas as sub-representações isomorfas a uma irredutível $S$ fixada; é canônica e $V$ é a soma direta delas."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Serre, Linear Representations, cap. 2 (2.2)",
+          "ref": "livro"
+        },
+        {
+          "title": "Fulton & Harris, cap. 1 (Schur's Lemma)",
+          "ref": "livro"
+        },
+        {
+          "title": "Etingof et al., Introduction to Representation Theory, cap. 2",
+          "ref": "arxiv.org/abs/0901.0827"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise: núcleo e imagem de uma aplicação linear, existência de autovalor sobre corpo algebricamente fechado, e a noção de morfismo (entrelaçador) da aula 1. Essas três coisas são exatamente os ingredientes da prova de Schur.",
+          "Leia Serre 2.2 e o trecho de Fulton & Harris cap. 1 sobre Schur's Lemma; escreva você mesmo a prova de duas linhas (forma geral) e a de três linhas (forma sobre $\\mathbb{C}$).",
+          "Assista a uma aula curta sobre o Lema de Schur focando em duas consequências: irredutíveis de grupo abeliano têm grau 1, e multiplicidade $=\\dim\\operatorname{Hom}_G$.",
+          "Explore, nas notas de Etingof (arXiv), a variante real de Schur (tipos real/complexo/quaterniônico) só para entender por que a hipótese 'algebricamente fechado' é indispensável; não precisa dominar, apenas registrar o alerta.",
+          "Refaça o exemplo trabalhado (operadores que comutam com $S_3$ na padrão) e conecte-o com a ideia de que 'comutar com toda a ação' é muito mais forte que comutar com uma matriz.",
+          "Resolver os testes desta aula e anotar o principal aqui no app: registre as duas formas de Schur, a igualdade multiplicidade $=\\dim\\operatorname{Hom}_G(S,V)$, e o cuidado com corpos não algebricamente fechados."
+        ],
+        "searchQueries": [
+          "lema de Schur demonstração núcleo imagem irredutível",
+          "Schur's lemma algebraically closed field endomorphism scalar",
+          "representações irredutíveis grupo abeliano grau 1",
+          "End_G(V) igual a C escalar Schur multiplicidade Hom",
+          "Schur lemma real representations complex quaternionic type",
+          "multiplicity irreducible dim Hom_G intertwiner"
+        ],
+        "videos": [
+          {
+            "title": "Schur's Lemma e suas consequências",
+            "channel": "MIT OpenCourseWare (18.712, Etingof)",
+            "note": "Aula onde Schur é provado e aplicado a grupos abelianos e a multiplicidades."
+          },
+          {
+            "title": "Schur's lemma (prova e uso)",
+            "channel": "Richard E. Borcherds",
+            "note": "Exposição sucinta das duas formas do lema, com atenção ao papel do corpo algebricamente fechado."
+          },
+          {
+            "title": "Linear algebra: eigenvalues over C",
+            "channel": "3Blue1Brown",
+            "note": "Revise a série de Essence of Linear Algebra sobre autovalores/autovetores; a existência de autovalor sobre $\\mathbb{C}$ é o coração da forma escalar de Schur."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Linear Representations of Finite Groups, cap. 2 (2.2)",
+            "where": "Serre, Springer GTM 42 (Schur e primeiras consequências)"
+          },
+          {
+            "title": "Introduction to Representation Theory, cap. 2",
+            "where": "Etingof et al., arxiv.org/abs/0901.0827 (Schur e tipos real/complexo/quaterniônico)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-representacao-04-caracteres-e-ortogonalidade",
+      "title": "Caracteres e relações de ortogonalidade",
+      "tagline": "Comprimir uma representação inteira numa única função de classe e descobrir que os caracteres irredutíveis formam uma base ortonormal.",
+      "objectives": [
+        "Definir o caráter $\\chi_\\rho(g)=\\operatorname{tr}\\rho(g)$ e listar suas propriedades básicas (função de classe, $\\chi(e)=\\dim V$, $\\chi(g^{-1})=\\overline{\\chi(g)}$).",
+        "Definir o produto interno hermitiano no espaço das funções de classe e calcular $\\langle\\chi,\\psi\\rangle$.",
+        "Enunciar e usar a primeira relação de ortogonalidade: os caracteres irredutíveis são ortonormais.",
+        "Aplicar o critério $\\langle\\chi,\\chi\\rangle=1\\iff$ irredutível e calcular multiplicidades $\\langle\\chi_V,\\chi_S\\rangle$.",
+        "Concluir que o número de irredutíveis é igual ao número de classes de conjugação."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Caráter de uma representação",
+          "statement": "O caráter de $(\\rho,V)$ é a função $\\chi_\\rho:G\\to\\mathbb{C}$, $\\chi_\\rho(g)=\\operatorname{tr}\\rho(g)$. Propriedades imediatas: $\\chi_\\rho(e)=\\dim V$; $\\chi_\\rho$ é constante em classes de conjugação (pois $\\operatorname{tr}(ABA^{-1})=\\operatorname{tr}B$); $\\chi_\\rho(g^{-1})=\\overline{\\chi_\\rho(g)}$ (autovalores são raízes da unidade); e $\\chi_{V\\oplus W}=\\chi_V+\\chi_W$, $\\chi_{V\\otimes W}=\\chi_V\\chi_W$."
+        },
+        {
+          "term": "Função de classe",
+          "statement": "Função $f:G\\to\\mathbb{C}$ constante em cada classe de conjugação ($f(hgh^{-1})=f(g)$). Formam um espaço vetorial de dimensão igual ao número de classes de conjugação, no qual vivem todos os caracteres."
+        },
+        {
+          "term": "Produto interno de funções de classe",
+          "statement": "$\\langle f_1,f_2\\rangle=\\dfrac{1}{|G|}\\sum_{g\\in G} f_1(g)\\,\\overline{f_2(g)}$. Equivalente a $\\dfrac{1}{|G|}\\sum_{C}|C|\\,f_1(g_C)\\overline{f_2(g_C)}$ somando sobre classes $C$ com representante $g_C$."
+        },
+        {
+          "term": "Caráter irredutível",
+          "statement": "Caráter de uma representação irredutível. Há exatamente um por classe de isomorfismo de irredutível; o conjunto deles é o objeto central da teoria, pois caracteriza completamente a representação."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Primeira relação de ortogonalidade",
+          "statement": "Sejam $\\chi_1,\\dots,\\chi_r$ os caracteres das representações irredutíveis (não isomorfas) de $G$ sobre $\\mathbb{C}$. Então $\\langle\\chi_i,\\chi_j\\rangle=\\delta_{ij}$. Em particular, caracteres de irredutíveis distintas são ortogonais e $\\langle\\chi_i,\\chi_i\\rangle=1$.",
+          "whyItMatters": "É o teorema central da teoria de caracteres. Transforma 'contar morfismos' (Schur) em geometria de produto interno: $\\langle\\chi_V,\\chi_W\\rangle=\\dim\\operatorname{Hom}_G(V,W)$. Daí saem todas as ferramentas práticas: extrair multiplicidades, testar irredutibilidade e provar que o caráter determina a representação."
+        },
+        {
+          "name": "Multiplicidades e determinação por caracteres",
+          "statement": "Se $V\\cong\\bigoplus_i m_i\\,V_i$ (decomposição em irredutíveis com multiplicidades $m_i$), então $m_i=\\langle\\chi_V,\\chi_i\\rangle$ e $\\langle\\chi_V,\\chi_V\\rangle=\\sum_i m_i^2$. Em particular $V$ é irredutível $\\iff\\langle\\chi_V,\\chi_V\\rangle=1$, e duas representações com o mesmo caráter são isomorfas.",
+          "whyItMatters": "Dá um algoritmo concreto: para decompor $V$, basta conhecer seu caráter e calcular produtos internos. O critério $\\langle\\chi,\\chi\\rangle=1$ é o teste de irredutibilidade mais usado em exercícios e provas de mestrado."
+        },
+        {
+          "name": "Número de irredutíveis = número de classes",
+          "statement": "O número $r$ de representações irredutíveis de $G$ (a menos de isomorfismo) é igual ao número de classes de conjugação de $G$. Os caracteres irredutíveis $\\chi_1,\\dots,\\chi_r$ formam uma base ortonormal do espaço das funções de classe.",
+          "whyItMatters": "Diz que a tabela de caracteres é quadrada e fixa de antemão quantas irredutíveis procurar. É a chave para montar tabelas de caracteres: sabemos exatamente quantas linhas (irredutíveis) e colunas (classes) teremos."
+        }
+      ],
+      "summary": "O caráter é a ideia genial que torna a teoria computável: em vez de carregar todas as matrizes $\\rho(g)$, guardamos apenas seus traços, $\\chi_\\rho(g)=\\operatorname{tr}\\rho(g)$. Por que isso basta? Porque o traço é invariante por conjugação e por mudança de base, de modo que $\\chi_\\rho$ é uma função de classe e não vê a escolha de coordenadas, exatamente o que queremos para classificar a menos de equivalência. As propriedades básicas já são surpreendentemente úteis: $\\chi(e)$ recupera o grau, $\\chi(g^{-1})=\\overline{\\chi(g)}$ porque os autovalores de $\\rho(g)$ são raízes da unidade, e os caracteres somam na soma direta e multiplicam no produto tensorial. O espaço natural onde tudo vive é o das funções de classe, com o produto interno hermitiano $\\langle f_1,f_2\\rangle=\\frac{1}{|G|}\\sum_g f_1(g)\\overline{f_2(g)}$.\n\nO milagre é a primeira relação de ortogonalidade: os caracteres irredutíveis são ortonormais. A demonstração é uma aplicação direta do Lema de Schur, pois $\\langle\\chi_V,\\chi_W\\rangle=\\dim\\operatorname{Hom}_G(V,W)$, que vale $\\delta_{ij}$ entre irredutíveis. A partir daí, decompor uma representação vira um exercício de projeção ortogonal: a multiplicidade de cada irredutível é $m_i=\\langle\\chi_V,\\chi_i\\rangle$, e o teste de irredutibilidade é simplesmente $\\langle\\chi,\\chi\\rangle=1$. Como os caracteres irredutíveis são ortonormais e geram o espaço das funções de classe, eles formam uma base, e o número de irredutíveis coincide com o número de classes de conjugação. Esse é o esqueleto da tabela de caracteres, que montaremos na próxima aula, e a razão pela qual o caráter determina completamente a representação.",
+      "commonPitfalls": [
+        "Esquecer a conjugação complexa no produto interno: $\\langle\\chi,\\psi\\rangle=\\frac{1}{|G|}\\sum_g\\chi(g)\\overline{\\psi(g)}$, e não $\\sum_g\\chi(g)\\psi(g)$.",
+        "Pesar errado a soma por classes: ao somar sobre classes em vez de elementos, é preciso multiplicar por $|C|$ (tamanho da classe).",
+        "Confundir o número de irredutíveis com $|G|$: ele é o número de CLASSES de conjugação (igual a $|G|$ só no caso abeliano).",
+        "Achar que $\\langle\\chi,\\chi\\rangle=1$ vale para qualquer representação: ele caracteriza irredutibilidade; para uma soma direta de $m$ cópias dá $m^2$ se for a mesma irredutível."
+      ],
+      "worked": "**Exemplo (decompondo uma representação pelo caráter, em $S_3$).** As classes de conjugação de $S_3$ são $\\{e\\}$, as transposições $T=\\{(12),(13),(23)\\}$ e os $3$-ciclos $C=\\{(123),(132)\\}$, com tamanhos $1,3,2$. Considere a representação de permutação $P=\\mathbb{C}^3$. Seu caráter é o número de pontos fixos: $\\chi_P(e)=3$, $\\chi_P(\\text{transposição})=1$, $\\chi_P(3\\text{-ciclo})=0$. Sabendo os caracteres irredutíveis trivial $\\chi_{\\mathrm{tr}}=(1,1,1)$ e sinal $\\chi_{\\mathrm{sgn}}=(1,-1,1)$ (valores nas classes $e,T,C$), calculamos as multiplicidades. $\\langle\\chi_P,\\chi_{\\mathrm{tr}}\\rangle=\\frac{1}{6}\\big(1\\cdot3\\cdot1+3\\cdot1\\cdot1+2\\cdot0\\cdot1\\big)=\\frac{6}{6}=1$, logo a trivial aparece uma vez. $\\langle\\chi_P,\\chi_{\\mathrm{sgn}}\\rangle=\\frac{1}{6}\\big(1\\cdot3\\cdot1+3\\cdot1\\cdot(-1)+2\\cdot0\\cdot1\\big)=\\frac{0}{6}=0$, a sinal não aparece. Como $\\langle\\chi_P,\\chi_P\\rangle=\\frac{1}{6}(1\\cdot9+3\\cdot1+2\\cdot0)=\\frac{12}{6}=2$, e já temos uma trivial, sobra uma irredutível de grau $2$ aparecendo uma vez ($2=1^2+1^2$). Conclusão: $\\mathbb{C}^3\\cong\\text{trivial}\\oplus V_{\\text{padrão}}$, com $\\chi_{\\text{padrão}}=\\chi_P-\\chi_{\\mathrm{tr}}=(2,0,-1)$, e como $\\langle\\chi_{\\text{padrão}},\\chi_{\\text{padrão}}\\rangle=\\frac{1}{6}(4+0+2)=1$, ela é de fato irredutível.",
+      "exercises": [
+        {
+          "prompt": "Prove que $\\langle\\chi_V,\\chi_W\\rangle=\\dim\\operatorname{Hom}_G(V,W)$. Conclua a primeira relação de ortogonalidade a partir do Lema de Schur.",
+          "hint": "Mostre primeiro que $\\dim\\operatorname{Hom}_G(V,W)=\\frac{1}{|G|}\\sum_g\\chi_{W}(g)\\overline{\\chi_V(g)}$ usando o operador de média sobre $\\operatorname{Hom}(V,W)$ e que sua traço calcula a dimensão do espaço de invariantes.",
+          "difficulty": 4,
+          "solution": "**Objetivo.** Mostrar $\\langle\\chi_V,\\chi_W\\rangle=\\dim\\operatorname{Hom}_G(V,W)$ e deduzir a primeira relação de ortogonalidade.\n\n**Passo 1: o espaço de invariantes.** Sobre $\\operatorname{Hom}(V,W)$ (todas as aplicações lineares) há uma ação natural de $G$: $(g\\cdot T)=\\rho_W(g)\\,T\\,\\rho_V(g)^{-1}$. Os pontos fixos dessa ação são exatamente os morfismos equivariantes:\n$$\\operatorname{Hom}(V,W)^G=\\{T:g\\cdot T=T\\ \\forall g\\}=\\{T:\\rho_W(g)T=T\\rho_V(g)\\}=\\operatorname{Hom}_G(V,W).$$\n\n**Passo 2: dimensão dos invariantes via média.** Para qualquer representação $U$ de $G$, o operador $P=\\frac{1}{|G|}\\sum_{g}\\rho_U(g)$ é uma projeção sobre $U^G$ (subespaço dos invariantes): $P^2=P$, $\\operatorname{im}P=U^G$. Logo $\\dim U^G=\\operatorname{tr}P=\\frac{1}{|G|}\\sum_g\\operatorname{tr}\\rho_U(g)=\\frac{1}{|G|}\\sum_g\\chi_U(g)$. Aplique isso a $U=\\operatorname{Hom}(V,W)$.\n\n**Passo 3: caráter de $\\operatorname{Hom}(V,W)$.** Como $G$-módulo, $\\operatorname{Hom}(V,W)\\cong V^*\\otimes W$, com caráter $\\chi(g)=\\overline{\\chi_V(g)}\\,\\chi_W(g)$ (pois $\\chi_{V^*}(g)=\\chi_V(g^{-1})=\\overline{\\chi_V(g)}$ e o caráter do tensor multiplica). Logo\n$$\\dim\\operatorname{Hom}_G(V,W)=\\dim\\operatorname{Hom}(V,W)^G=\\frac{1}{|G|}\\sum_g\\overline{\\chi_V(g)}\\,\\chi_W(g)=\\langle\\chi_W,\\chi_V\\rangle=\\overline{\\langle\\chi_V,\\chi_W\\rangle}.$$\nComo esse número é a dimensão de um espaço (real, inteiro), ele é igual ao seu conjugado, e portanto $\\langle\\chi_V,\\chi_W\\rangle=\\dim\\operatorname{Hom}_G(V,W)$.\n\n**Passo 4: primeira relação de ortogonalidade.** Sejam $V=V_i$, $W=V_j$ irredutíveis. Pelo Lema de Schur, $\\dim\\operatorname{Hom}_G(V_i,V_j)=1$ se $V_i\\cong V_j$ (endomorfismos $=\\mathbb{C}\\,\\mathrm{id}$) e $=0$ se $V_i\\not\\cong V_j$. Logo\n$$\\langle\\chi_i,\\chi_j\\rangle=\\dim\\operatorname{Hom}_G(V_i,V_j)=\\delta_{ij}.\\qquad\\blacksquare$$",
+          "steps": [
+            "Introduza a ação de $G$ em $\\operatorname{Hom}(V,W)$ por $(g\\cdot T)=\\rho_W(g)T\\rho_V(g)^{-1}$ e identifique os invariantes com $\\operatorname{Hom}_G(V,W)$.",
+            "Use o operador de média $P=\\frac{1}{|G|}\\sum_g\\rho_U(g)$: é projeção sobre $U^G$, logo $\\dim U^G=\\operatorname{tr}P=\\frac{1}{|G|}\\sum_g\\chi_U(g)$.",
+            "Calcule o caráter de $U=\\operatorname{Hom}(V,W)\\cong V^*\\otimes W$: $\\chi_U(g)=\\overline{\\chi_V(g)}\\chi_W(g)$, obtendo $\\dim\\operatorname{Hom}_G(V,W)=\\langle\\chi_V,\\chi_W\\rangle$.",
+            "Especialize a irredutíveis $V_i,V_j$ e aplique Schur ($\\dim\\operatorname{Hom}_G=\\delta_{ij}$) para concluir $\\langle\\chi_i,\\chi_j\\rangle=\\delta_{ij}$."
+          ]
+        },
+        {
+          "prompt": "Uma representação $V$ de um grupo $G$ tem caráter $\\chi_V$ com $\\langle\\chi_V,\\chi_V\\rangle=3$. O que se pode afirmar sobre a decomposição de $V$ em irredutíveis? Liste todas as possibilidades.",
+          "hint": "$\\langle\\chi_V,\\chi_V\\rangle=\\sum m_i^2=3$ com $m_i\\in\\mathbb{Z}_{\\ge0}$; as únicas soluções são $3=1+1+1$.",
+          "difficulty": 2,
+          "solution": "Escreva a decomposição em irredutíveis $V\\cong\\bigoplus_i m_i V_i$ com multiplicidades $m_i\\in\\mathbb{Z}_{\\ge0}$. Então $\\chi_V=\\sum_i m_i\\chi_i$, e pela primeira relação de ortogonalidade\n$$\\langle\\chi_V,\\chi_V\\rangle=\\Big\\langle\\sum_i m_i\\chi_i,\\sum_j m_j\\chi_j\\Big\\rangle=\\sum_{i,j}m_i m_j\\langle\\chi_i,\\chi_j\\rangle=\\sum_i m_i^2.$$\nA hipótese é $\\sum_i m_i^2=3$ com $m_i$ inteiros $\\ge0$. As soluções de $\\sum m_i^2=3$ em inteiros não negativos: um quadrado $m^2\\le3$ só pode ser $0$ ou $1$ (pois $2^2=4>3$). Logo cada $m_i\\in\\{0,1\\}$ e precisamos de exatamente **três** valores iguais a $1$. Assim\n$$3=1^2+1^2+1^2,$$\ne não há outra possibilidade (não se pode usar um $m_i=2$, pois $4>3$; nem repetir uma irredutível, pois $m_i\\ge2$ já daria $\\ge4$).\n\n**Conclusão.** $V$ é a soma direta de **três irredutíveis distintas**, cada uma com multiplicidade $1$:\n$$V\\cong V_{i_1}\\oplus V_{i_2}\\oplus V_{i_3},\\qquad i_1,i_2,i_3\\ \\text{distintos}.$$\nEm particular $V$ é livre de multiplicidade (multiplicity-free) e não é irredutível (seria $\\langle\\chi,\\chi\\rangle=1$), nem contém qualquer irredutível repetida. $\\blacksquare$",
+          "steps": [
+            "Use $\\langle\\chi_V,\\chi_V\\rangle=\\sum_i m_i^2$, que vem de $\\chi_V=\\sum m_i\\chi_i$ e da ortonormalidade dos $\\chi_i$.",
+            "Resolva $\\sum_i m_i^2=3$ em inteiros $\\ge0$: como $2^2=4>3$, todo $m_i\\in\\{0,1\\}$.",
+            "Conte: são necessários exatamente três $m_i=1$, dando $3=1+1+1$; nenhuma outra combinação funciona.",
+            "Conclua que $V$ é soma direta de três irredutíveis distintas, cada uma com multiplicidade 1 (multiplicity-free)."
+          ]
+        },
+        {
+          "prompt": "Mostre que $\\chi(g^{-1})=\\overline{\\chi(g)}$ para todo caráter de um grupo finito. Deduza que $\\chi$ é real em $g$ sempre que $g$ é conjugado a $g^{-1}$ (elemento 'real').",
+          "hint": "Os autovalores de $\\rho(g)$ são raízes da unidade $\\lambda$, com $\\lambda^{-1}=\\overline{\\lambda}$; some sobre os autovalores.",
+          "difficulty": 2,
+          "solution": "Seja $(\\rho,V)$ com caráter $\\chi$, e $g\\in G$. Como $G$ é finito, $g$ tem ordem finita $d$ ($g^d=e$), logo $\\rho(g)^d=\\mathrm{id}$: o operador $\\rho(g)$ satisfaz $x^d-1=0$, que tem raízes distintas, então $\\rho(g)$ é **diagonalizável** e seus autovalores $\\lambda_1,\\dots,\\lambda_n$ (com $n=\\dim V$) são **raízes $d$-ésimas da unidade**. Em particular $|\\lambda_k|=1$, donde $\\lambda_k^{-1}=\\overline{\\lambda_k}$.\n\n**Cálculo.** $\\chi(g)=\\operatorname{tr}\\rho(g)=\\sum_k\\lambda_k$. Por outro lado, $\\rho(g^{-1})=\\rho(g)^{-1}$ tem autovalores $\\lambda_k^{-1}$, logo\n$$\\chi(g^{-1})=\\operatorname{tr}\\rho(g)^{-1}=\\sum_k\\lambda_k^{-1}=\\sum_k\\overline{\\lambda_k}=\\overline{\\sum_k\\lambda_k}=\\overline{\\chi(g)}.$$\nPortanto $\\chi(g^{-1})=\\overline{\\chi(g)}$ para todo $g$.\n\n**Elementos reais.** Suponha que $g$ seja conjugado a $g^{-1}$, isto é, existe $h$ com $hgh^{-1}=g^{-1}$ (elemento 'real'). Como $\\chi$ é função de classe, $\\chi(g^{-1})=\\chi(hgh^{-1})=\\chi(g)$. Combinando com o resultado acima, $\\chi(g)=\\chi(g^{-1})=\\overline{\\chi(g)}$, ou seja $\\chi(g)\\in\\mathbb{R}$. Logo o caráter é real em todo elemento real. $\\blacksquare$\n\n**Observação.** Em grupos onde todo elemento é conjugado ao seu inverso (por exemplo $S_n$, pois $\\sigma$ e $\\sigma^{-1}$ têm o mesmo tipo de ciclo), **todos** os caracteres são reais.",
+          "steps": [
+            "Use que $g$ tem ordem finita $d$: $\\rho(g)^d=\\mathrm{id}$, logo $\\rho(g)$ é diagonalizável com autovalores raízes $d$-ésimas da unidade $\\lambda_k$, satisfazendo $\\lambda_k^{-1}=\\overline{\\lambda_k}$.",
+            "Escreva $\\chi(g)=\\sum_k\\lambda_k$ e $\\chi(g^{-1})=\\sum_k\\lambda_k^{-1}=\\sum_k\\overline{\\lambda_k}=\\overline{\\chi(g)}$.",
+            "Para elementos reais, use que $g\\sim g^{-1}$ e $\\chi$ é função de classe para obter $\\chi(g)=\\chi(g^{-1})$.",
+            "Combine as duas igualdades: $\\chi(g)=\\overline{\\chi(g)}$, portanto $\\chi(g)\\in\\mathbb{R}$."
+          ]
+        },
+        {
+          "prompt": "Verifique, para $G=\\mathbb{Z}/4$, que os quatro caracteres $\\chi_k(\\bar 1)=i^k$ ($k=0,1,2,3$) são ortonormais sob o produto interno de funções de classe, ilustrando a primeira relação de ortogonalidade num grupo abeliano.",
+          "hint": "Cada classe é um único elemento; calcule $\\frac{1}{4}\\sum_{j=0}^{3} i^{kj}\\overline{i^{lj}}$ e some a P.G.",
+          "difficulty": 3,
+          "solution": "Para $G=\\mathbb{Z}/4=\\{\\bar0,\\bar1,\\bar2,\\bar3\\}$ (abeliano), cada classe de conjugação é um único elemento; há $4$ elementos e $4$ caracteres irredutíveis $\\chi_k$, $k=0,1,2,3$, dados por $\\chi_k(\\bar j)=(i^k)^{\\,j}=i^{kj}$ (onde $i=e^{2\\pi i/4}$). O produto interno de funções de classe, como cada classe tem tamanho $1$ e $|G|=4$, é\n$$\\langle\\chi_k,\\chi_l\\rangle=\\frac{1}{4}\\sum_{j=0}^{3}\\chi_k(\\bar j)\\,\\overline{\\chi_l(\\bar j)}=\\frac{1}{4}\\sum_{j=0}^{3} i^{kj}\\,\\overline{i^{lj}}=\\frac{1}{4}\\sum_{j=0}^{3} i^{kj}\\,i^{-lj}=\\frac{1}{4}\\sum_{j=0}^{3}\\big(i^{\\,k-l}\\big)^{j}.$$\nSeja $\\omega=i^{\\,k-l}$. A soma é uma progressão geométrica $\\sum_{j=0}^{3}\\omega^j$.\n\n**Caso $k=l$.** Então $\\omega=i^0=1$ e $\\sum_{j=0}^{3}1=4$, logo $\\langle\\chi_k,\\chi_k\\rangle=\\frac{4}{4}=1$.\n\n**Caso $k\\neq l$ (com $k,l\\in\\{0,1,2,3\\}$).** Então $k-l\\not\\equiv0\\pmod4$, logo $\\omega=i^{k-l}\\neq1$ mas $\\omega^4=i^{4(k-l)}=1$. A soma da P.G. é\n$$\\sum_{j=0}^{3}\\omega^j=\\frac{\\omega^4-1}{\\omega-1}=\\frac{1-1}{\\omega-1}=0,$$\nlogo $\\langle\\chi_k,\\chi_l\\rangle=0$.\n\n**Conclusão.** $\\langle\\chi_k,\\chi_l\\rangle=\\delta_{kl}$: os quatro caracteres são ortonormais, ilustrando a primeira relação de ortogonalidade num grupo abeliano. (Concretamente: $\\chi_0=(1,1,1,1)$, $\\chi_1=(1,i,-1,-i)$, $\\chi_2=(1,-1,1,-1)$, $\\chi_3=(1,-i,-1,i)$ nas entradas $\\bar0,\\bar1,\\bar2,\\bar3$ — as linhas da matriz de Fourier $4\\times4$ normalizada.) $\\blacksquare$",
+          "steps": [
+            "Escreva $\\chi_k(\\bar j)=i^{kj}$ e monte o produto interno $\\langle\\chi_k,\\chi_l\\rangle=\\frac{1}{4}\\sum_{j=0}^3 i^{kj}\\overline{i^{lj}}$, lembrando que cada classe é um único elemento.",
+            "Simplifique $\\overline{i^{lj}}=i^{-lj}$ para obter $\\frac{1}{4}\\sum_j(i^{k-l})^j$, uma progressão geométrica de razão $\\omega=i^{k-l}$.",
+            "Caso $k=l$: $\\omega=1$, a soma vale $4$, produto interno $1$.",
+            "Caso $k\\neq l$: $\\omega\\neq1$ com $\\omega^4=1$, a soma da P.G. é $\\frac{\\omega^4-1}{\\omega-1}=0$; conclua $\\langle\\chi_k,\\chi_l\\rangle=\\delta_{kl}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Caráter $\\chi_\\rho(g)$",
+          "back": "$\\chi_\\rho(g)=\\operatorname{tr}\\rho(g)$; é função de classe, com $\\chi_\\rho(e)=\\dim V$."
+        },
+        {
+          "front": "Produto interno de funções de classe",
+          "back": "$\\langle f_1,f_2\\rangle=\\frac{1}{|G|}\\sum_{g\\in G} f_1(g)\\overline{f_2(g)}$ (com conjugação complexa)."
+        },
+        {
+          "front": "Primeira relação de ortogonalidade",
+          "back": "$\\langle\\chi_i,\\chi_j\\rangle=\\delta_{ij}$: os caracteres irredutíveis são ortonormais."
+        },
+        {
+          "front": "Multiplicidade via caráter",
+          "back": "Se $V=\\bigoplus_i m_i V_i$, então $m_i=\\langle\\chi_V,\\chi_i\\rangle$ e $\\langle\\chi_V,\\chi_V\\rangle=\\sum_i m_i^2$."
+        },
+        {
+          "front": "Teste de irredutibilidade por caráter",
+          "back": "$V$ é irredutível $\\iff\\langle\\chi_V,\\chi_V\\rangle=1$."
+        },
+        {
+          "front": "Caráter determina a representação?",
+          "back": "Sim (sobre $\\mathbb{C}$, $G$ finito): duas representações com o mesmo caráter são isomorfas."
+        },
+        {
+          "front": "Quantas representações irredutíveis tem $G$?",
+          "back": "Tantas quantas as classes de conjugação de $G$; os caracteres irredutíveis são base das funções de classe."
+        },
+        {
+          "front": "$\\chi(g^{-1})$ em termos de $\\chi(g)$",
+          "back": "$\\chi(g^{-1})=\\overline{\\chi(g)}$ (autovalores são raízes da unidade)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Serre, Linear Representations, cap. 2 (relações de ortogonalidade)",
+          "ref": "livro"
+        },
+        {
+          "title": "Steinberg, cap. 4 (Character Theory)",
+          "ref": "livro"
+        },
+        {
+          "title": "James & Liebeck, Representations and Characters of Groups, caps. 13-15",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise traço de operador (invariância por conjugação e por mudança de base), autovalores de $\\rho(g)$ como raízes da unidade, e classes de conjugação. O caráter é 'só' o traço, mas essas propriedades são o que o torna poderoso.",
+          "Leia Serre cap. 2 (relações de ortogonalidade) devagar, e complemente com Steinberg cap. 4 (Character Theory), que traz mais exemplos e a conta do operador de média sobre $\\operatorname{Hom}(V,W)$.",
+          "Assista a uma aula sobre caracteres e ortogonalidade; foque em como $\\langle\\chi_V,\\chi_W\\rangle=\\dim\\operatorname{Hom}_G(V,W)$ conecta Schur com o produto interno.",
+          "Pratique o algoritmo de decomposição num exemplo pequeno (a representação de permutação de $S_3$ ou de $S_4$): calcule pontos fixos, monte o caráter e projete contra trivial/sinal.",
+          "Confira, para um grupo abeliano ($\\mathbb{Z}/4$ ou $\\mathbb{Z}/n$), que os caracteres $\\zeta^{jk}$ são ortonormais, ligando isso à transformada discreta de Fourier.",
+          "Resolver os testes desta aula e anotar o principal aqui no app: registre o produto interno com conjugação complexa, o teste $\\langle\\chi,\\chi\\rangle=1\\iff$ irredutível, e 'nº de irredutíveis $=$ nº de classes'."
+        ],
+        "searchQueries": [
+          "caráter de representação traço função de classe propriedades",
+          "relações de ortogonalidade caracteres irredutíveis demonstração",
+          "character inner product dim Hom_G Schur orthogonality",
+          "número de representações irredutíveis igual número classes conjugação",
+          "critério irredutibilidade produto interno caráter igual 1",
+          "characters abelian group discrete Fourier orthogonality"
+        ],
+        "videos": [
+          {
+            "title": "Teoria de caracteres e ortogonalidade",
+            "channel": "MIT OpenCourseWare (18.712, Etingof)",
+            "note": "Aulas sobre caracteres, produto interno de funções de classe e a primeira relação de ortogonalidade."
+          },
+          {
+            "title": "Character theory of finite groups",
+            "channel": "Richard E. Borcherds",
+            "note": "Boa dedução de $\\langle\\chi_V,\\chi_W\\rangle=\\dim\\operatorname{Hom}_G(V,W)$ e das relações de ortogonalidade."
+          },
+          {
+            "title": "Group representations / characters",
+            "channel": "Michael Penn",
+            "note": "Procure exemplos concretos de cálculo de caracteres de grupos pequenos para treinar as contas."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Linear Representations of Finite Groups, cap. 2 (relações de ortogonalidade)",
+            "where": "Serre, Springer GTM 42"
+          },
+          {
+            "title": "Representations and Characters of Groups, caps. 13-15",
+            "where": "Gordon James & Martin Liebeck, Cambridge University Press"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-representacao-05-tabela-de-caracteres-e-regular",
+      "title": "Tabela de caracteres e decomposição da representação regular",
+      "tagline": "Montar a tabela quadrada que resume todas as simetrias de um grupo e ver a representação regular conter cada irredutível com multiplicidade igual ao seu grau.",
+      "objectives": [
+        "Organizar caracteres irredutíveis e classes de conjugação numa tabela de caracteres e ler suas propriedades.",
+        "Calcular o caráter da representação regular e demonstrar $\\chi_{\\text{reg}}(g)=0$ para $g\\neq e$ e $\\chi_{\\text{reg}}(e)=|G|$.",
+        "Provar a decomposição da regular: cada irredutível $V_i$ aparece com multiplicidade $\\dim V_i$, donde $\\sum_i(\\dim V_i)^2=|G|$.",
+        "Enunciar e usar a segunda relação de ortogonalidade (ortogonalidade das colunas).",
+        "Construir explicitamente a tabela de caracteres de grupos concretos ($S_3$, $\\mathbb{Z}/n$, $D_4$ ou $Q_8$, $A_4$)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Tabela de caracteres",
+          "statement": "Matriz quadrada $r\\times r$ cujas linhas são os caracteres irredutíveis $\\chi_1,\\dots,\\chi_r$ e cujas colunas são as classes de conjugação $C_1,\\dots,C_r$ (com $C_1=\\{e\\}$). A entrada $(i,j)$ é $\\chi_i(g_j)$. A primeira coluna lista os graus $\\chi_i(e)=\\dim V_i$ e a primeira linha (trivial) é toda $1$."
+        },
+        {
+          "term": "Caráter da representação regular",
+          "statement": "Para a regular $R=\\mathbb{C}[G]$ vale $\\chi_R(g)=|\\{h:gh=h\\}|=0$ se $g\\neq e$ e $\\chi_R(e)=|G|$. Isto porque a matriz de $\\rho_{\\text{reg}}(g)$ na base $\\{e_h\\}$ é de permutação sem pontos fixos quando $g\\neq e$."
+        },
+        {
+          "term": "Operadores de projeção isotípica",
+          "statement": "Para cada irredutível $V_i$, o elemento $p_i=\\frac{\\dim V_i}{|G|}\\sum_{g\\in G}\\overline{\\chi_i(g)}\\,g\\in\\mathbb{C}[G]$ age em qualquer representação como a projeção sobre a $V_i$-componente isotípica. São idempotentes centrais ortogonais que somam $1$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Decomposição da representação regular",
+          "statement": "A representação regular decompõe-se como $\\mathbb{C}[G]\\cong\\bigoplus_i (\\dim V_i)\\,V_i$, isto é, cada irredutível $V_i$ aparece com multiplicidade exatamente $\\dim V_i$. Em particular, $\\sum_{i=1}^{r}(\\dim V_i)^2=|G|$.",
+          "whyItMatters": "É a identidade mais poderosa para construir tabelas de caracteres: conhecendo o número de irredutíveis (número de classes) e que os quadrados dos graus somam $|G|$, muitas vezes os graus ficam determinados. Também explica estruturalmente o teorema de Wedderburn: $\\mathbb{C}[G]\\cong\\prod_i M_{\\dim V_i}(\\mathbb{C})$."
+        },
+        {
+          "name": "Segunda relação de ortogonalidade (colunas)",
+          "statement": "Para classes de conjugação com representantes $g,h$: $\\sum_{i=1}^{r}\\chi_i(g)\\overline{\\chi_i(h)}=0$ se $g$ e $h$ não são conjugados, e $=|C_G(g)|=\\dfrac{|G|}{|\\text{classe de }g|}$ se são conjugados. Em particular $\\sum_i|\\chi_i(g)|^2=|C_G(g)|$.",
+          "whyItMatters": "É a ortogonalidade das colunas da tabela de caracteres (a das linhas é a primeira relação). Serve para completar tabelas: permite recuperar entradas faltantes e verificar uma tabela já montada, além de calcular tamanhos de centralizadores."
+        },
+        {
+          "name": "Critério: a tabela é uma matriz (quase) unitária",
+          "statement": "Definindo a matriz $U$ com entradas $U_{ij}=\\sqrt{|C_j|/|G|}\\,\\chi_i(g_j)$, onde $|C_j|$ é o tamanho da classe $j$, as relações de ortogonalidade dizem que $U$ é unitária: $UU^*=U^*U=I$. As relações por linhas e por colunas são, respectivamente, $UU^*=I$ e $U^*U=I$.",
+          "whyItMatters": "Unifica as duas relações de ortogonalidade num único fato de álgebra linear e fornece um método de verificação rápido de qualquer tabela de caracteres construída na prática."
+        }
+      ],
+      "summary": "Chegamos ao retrato completo de um grupo finito: a tabela de caracteres. Como o número de irredutíveis iguala o número de classes de conjugação, essa tabela é quadrada; suas linhas (caracteres irredutíveis) são ortonormais pela primeira relação, e suas colunas (indexadas pelas classes) também são ortogonais pela segunda relação. A representação regular é a peça que amarra tudo: seu caráter é trivial de computar, $\\chi_{\\text{reg}}(e)=|G|$ e $\\chi_{\\text{reg}}(g)=0$ para $g\\neq e$, porque a multiplicação à esquerda por $g\\neq e$ não fixa nenhum elemento da base. Projetando esse caráter contra cada irredutível, $m_i=\\langle\\chi_{\\text{reg}},\\chi_i\\rangle=\\frac{1}{|G|}\\cdot|G|\\cdot\\overline{\\chi_i(e)}=\\dim V_i$: cada irredutível aparece na regular com multiplicidade igual ao seu próprio grau. Avaliando em $e$ obtemos a identidade fundamental $\\sum_i(\\dim V_i)^2=|G|$, que sozinha já fixa os graus de muitos grupos.\n\nNa prática, montar uma tabela de caracteres é resolver um quebra-cabeça com regras rígidas: (1) há tantas linhas quanto classes; (2) a trivial é uma linha de uns; (3) os graus dividem $|G|$ e seus quadrados somam $|G|$; (4) linhas e colunas são ortonormais com os pesos certos. Para $S_3$ isso dá imediatamente os graus $1,1,2$ (pois $1^2+1^2+2^2=6$) e a tabela com a trivial, a sinal e a padrão. Para grupos abelianos como $\\mathbb{Z}/n$, todas as irredutíveis têm grau $1$ e a tabela é a matriz de caracteres aditivos $\\zeta^{jk}$. Casos mais ricos como $D_4$ e $Q_8$ têm a mesma tabela de caracteres (graus $1,1,1,1,2$) apesar de não serem isomorfos, um lembrete honesto de que a tabela vê quase tudo, mas não absolutamente tudo. E $A_4$, com $12=1^2+1^2+1^2+3^2$, ilustra graus $1,1,1,3$ e o aparecimento de raízes da unidade não reais na tabela.",
+      "commonPitfalls": [
+        "Confundir as duas relações de ortogonalidade: linhas (primeira, caracteres) vs. colunas (segunda, classes), com pesos diferentes ($1/|G|$ vs. centralizador).",
+        "Errar o caráter da regular: $\\chi_{\\text{reg}}(g)=0$ para todo $g\\neq e$; só $\\chi_{\\text{reg}}(e)=|G|$ é não nulo.",
+        "Supor que a tabela de caracteres determina o grupo: $D_4$ e $Q_8$ têm tabelas idênticas e não são isomorfos.",
+        "Esquecer o peso $|C_j|$ (tamanho da classe) ao usar ortogonalidade somando sobre classes em vez de elementos."
+      ],
+      "worked": "**Exemplo (tabela de caracteres completa de $S_3$).** Classes: $\\{e\\}$ (tamanho 1), transposições $T$ (tamanho 3), $3$-ciclos $C$ (tamanho 2). São $3$ classes, logo $3$ irredutíveis. A identidade dos graus dá $d_1^2+d_2^2+d_3^2=6$ com cada $d_i\\ge1$ e ao menos um igual a $1$ (a trivial); a única solução é $\\{1,1,2\\}$. As de grau $1$ são a trivial $\\chi_{\\mathrm{tr}}$ e a sinal $\\chi_{\\mathrm{sgn}}$; a de grau $2$ é a padrão, cujo caráter obtemos da permutação menos a trivial, $\\chi_{\\mathrm{st}}=(2,0,-1)$. Tabela (colunas $e,T,C$):\n\n$$\\begin{array}{c|ccc} & e\\ (1) & T\\ (3) & C\\ (2)\\\\\\hline \\chi_{\\mathrm{tr}} & 1 & 1 & 1\\\\ \\chi_{\\mathrm{sgn}} & 1 & -1 & 1\\\\ \\chi_{\\mathrm{st}} & 2 & 0 & -1\\end{array}$$\n\n**Verificações.** Linhas ortonormais: $\\langle\\chi_{\\mathrm{st}},\\chi_{\\mathrm{st}}\\rangle=\\frac{1}{6}(1\\cdot4+3\\cdot0+2\\cdot1)=1$; $\\langle\\chi_{\\mathrm{tr}},\\chi_{\\mathrm{sgn}}\\rangle=\\frac{1}{6}(1-3+2)=0$. Colunas (segunda relação): na coluna de $e$, $\\sum_i\\chi_i(e)^2=1+1+4=6=|C_G(e)|=|G|$; na coluna de $T$, $\\sum_i|\\chi_i(T)|^2=1+1+0=2=|C_G(\\text{transposição})|=6/3$. Tudo confere. A decomposição da regular é $\\mathbb{C}[S_3]\\cong\\text{tr}\\oplus\\text{sgn}\\oplus 2\\,\\text{st}$, de dimensão $1+1+2\\cdot2=6$, como deve ser.",
+      "exercises": [
+        {
+          "prompt": "Demonstre que $\\chi_{\\text{reg}}(g)=0$ para $g\\neq e$ e $=|G|$ para $g=e$, e deduza que a multiplicidade de cada irredutível $V_i$ na regular é $\\dim V_i$. Conclua $\\sum_i(\\dim V_i)^2=|G|$.",
+          "hint": "A matriz de $\\rho_{\\text{reg}}(g)$ é de permutação; seu traço conta os $h$ com $gh=h$. Depois use $m_i=\\langle\\chi_{\\text{reg}},\\chi_i\\rangle$.",
+          "difficulty": 2,
+          "solution": "**Caráter da regular.** Na base $\\{e_h\\}_{h\\in G}$ de $R=\\mathbb{C}[G]$, o operador $\\rho_{\\text{reg}}(g)$ leva $e_h\\mapsto e_{gh}$, uma matriz de permutação. O traço de uma matriz de permutação conta os pontos fixos, isto é, os $h$ com $gh=h$:\n$$\\chi_{\\text{reg}}(g)=\\#\\{h\\in G:gh=h\\}.$$\nMas $gh=h\\iff g=e$. Logo, para $g\\neq e$ não há ponto fixo e $\\chi_{\\text{reg}}(g)=0$; para $g=e$, todo $h$ é fixo e $\\chi_{\\text{reg}}(e)=|G|$.\n\n**Multiplicidade de $V_i$ na regular.** Por caracteres, $m_i=\\langle\\chi_{\\text{reg}},\\chi_i\\rangle$. Usando que só o termo $g=e$ contribui:\n$$m_i=\\frac{1}{|G|}\\sum_{g\\in G}\\chi_{\\text{reg}}(g)\\,\\overline{\\chi_i(g)}=\\frac{1}{|G|}\\,\\chi_{\\text{reg}}(e)\\,\\overline{\\chi_i(e)}=\\frac{1}{|G|}\\cdot|G|\\cdot\\overline{\\dim V_i}=\\dim V_i.$$\n(usamos $\\chi_i(e)=\\dim V_i\\in\\mathbb{R}$). Logo cada irredutível $V_i$ aparece na regular com multiplicidade exatamente $\\dim V_i$:\n$$\\mathbb{C}[G]\\cong\\bigoplus_i(\\dim V_i)\\,V_i.$$\n\n**Identidade dos graus.** Compare dimensões (ou avalie o caráter em $e$). A dimensão do lado esquerdo é $|G|$; a do lado direito é $\\sum_i(\\dim V_i)(\\dim V_i)=\\sum_i(\\dim V_i)^2$. Equivalentemente, $\\chi_{\\text{reg}}(e)=\\sum_i(\\dim V_i)\\chi_i(e)=\\sum_i(\\dim V_i)^2$. Como $\\chi_{\\text{reg}}(e)=|G|$,\n$$\\boxed{\\sum_{i=1}^{r}(\\dim V_i)^2=|G|.}\\qquad\\blacksquare$$",
+          "steps": [
+            "Escreva $\\rho_{\\text{reg}}(g)$ como matriz de permutação na base $\\{e_h\\}$ e observe que seu traço conta $\\{h:gh=h\\}$.",
+            "Conclua $\\chi_{\\text{reg}}(g)=0$ para $g\\neq e$ (nenhum ponto fixo) e $\\chi_{\\text{reg}}(e)=|G|$.",
+            "Calcule a multiplicidade $m_i=\\langle\\chi_{\\text{reg}},\\chi_i\\rangle$; só o termo $g=e$ sobrevive, dando $m_i=\\dim V_i$.",
+            "Avalie a decomposição $\\mathbb{C}[G]\\cong\\bigoplus_i(\\dim V_i)V_i$ em $e$ (ou compare dimensões) para obter $\\sum_i(\\dim V_i)^2=|G|$."
+          ]
+        },
+        {
+          "prompt": "Construa a tabela de caracteres completa de $A_4$ (ordem 12, com 4 classes de conjugação). Determine os graus a partir de $\\sum d_i^2=12$ e use as raízes cúbicas da unidade para as três irredutíveis de grau 1.",
+          "hint": "$A_4$ tem $A_4/V_4\\cong\\mathbb{Z}/3$, fornecendo os três caracteres de grau 1; o grau 3 fecha $1+1+1+9=12$. Use $\\omega=e^{2\\pi i/3}$.",
+          "difficulty": 4,
+          "solution": "$A_4$ tem ordem $12$ e $4$ classes de conjugação: $\\{e\\}$ (tam. 1); os produtos de duas transposições disjuntas $V=\\{e,(12)(34),(13)(24),(14)(23)\\}\\setminus\\{e\\}$ (3 elementos, tam. 3); e os $3$-ciclos, que se **partem em duas** classes de tamanho $4$ cada — chame-as $C$ (ex.: $(123)$ e conjugados) e $C'$ (ex.: $(132)$ e conjugados). Total: $1+3+4+4=12$, e $4$ classes, logo $4$ irredutíveis.\n\n**Graus.** $\\sum d_i^2=12$ com $4$ parcelas, a trivial dando $d=1$. A única solução com $4$ inteiros positivos é $1^2+1^2+1^2+3^2=1+1+1+9=12$. Logo três irredutíveis de grau 1 e uma de grau 3.\n\n**As de grau 1.** Elas se fatoram pelo quociente abeliano $A_4/V\\cong\\mathbb{Z}/3$ (pois $V\\cong\\mathbb{Z}/2\\times\\mathbb{Z}/2$ é normal de índice 3). Os três caracteres de $\\mathbb{Z}/3$ dão, com $\\omega=e^{2\\pi i/3}$: em $e$ e em $V$ valem $1$ (pois $V$ é o núcleo); nos $3$-ciclos, $\\chi(C)=\\omega^k$, $\\chi(C')=\\omega^{2k}=\\overline{\\omega^k}$ (as duas classes de $3$-ciclos são inversas uma da outra). Assim: $\\chi_1=(1,1,1,1)$ (trivial), $\\chi_2=(1,1,\\omega,\\omega^2)$, $\\chi_3=(1,1,\\omega^2,\\omega)$ nas colunas $(e,V,C,C')$.\n\n**A de grau 3.** Chame $\\chi_4=(3,a,b,c)$ com $\\chi_4(e)=3$. Use a segunda relação de ortogonalidade (ortogonalidade das colunas com a coluna de $e$), ou a primeira contra os $\\chi_j$ de grau 1. Ortogonalidade da coluna de $V$ com a de $e$: $\\sum_i\\chi_i(e)\\overline{\\chi_i(V)}=0\\Rightarrow 1+1+1+3\\bar a=0\\Rightarrow a=-1$. Coluna de $C$ com $e$: $1+\\omega^2+\\omega+3\\bar b=0$; como $1+\\omega+\\omega^2=0$, resta $3\\bar b=0\\Rightarrow b=0$. Analogamente $c=0$. (Alternativamente, $\\chi_4$ é o caráter da representação padrão $3$-dimensional de $A_4\\subset S_4$ em $\\{\\sum x_i=0\\}$: pontos fixos menos 1 dá $3,-1,0,0$.) Verificação: $\\langle\\chi_4,\\chi_4\\rangle=\\frac{1}{12}(1\\cdot9+3\\cdot1+4\\cdot0+4\\cdot0)=\\frac{12}{12}=1$, irredutível.\n\n**Tabela de caracteres de $A_4$** (colunas $e\\,(1),\\ V\\,(3),\\ C\\,(4),\\ C'\\,(4)$, com $\\omega=e^{2\\pi i/3}$):\n$$\\begin{array}{c|cccc} & e & (12)(34) & (123) & (132)\\\\\\hline \\chi_1 & 1 & 1 & 1 & 1\\\\ \\chi_2 & 1 & 1 & \\omega & \\omega^2\\\\ \\chi_3 & 1 & 1 & \\omega^2 & \\omega\\\\ \\chi_4 & 3 & -1 & 0 & 0\\end{array}$$\n$\\blacksquare$",
+          "steps": [
+            "Liste as 4 classes de $A_4$: $\\{e\\}$ (1), duplas transposições (3), e os 3-ciclos partidos em duas classes $C,C'$ (4 e 4); confirme $1+3+4+4=12$.",
+            "Resolva $\\sum d_i^2=12$ com 4 parcelas: única solução $1+1+1+9$, logo graus $1,1,1,3$.",
+            "Obtenha as três de grau 1 via o quociente $A_4/V\\cong\\mathbb{Z}/3$: valem 1 em $e,V$ e $\\omega^k,\\omega^{2k}$ nas classes de 3-ciclos.",
+            "Determine $\\chi_4=(3,-1,0,0)$ pela ortogonalidade das colunas (ou como a representação padrão de $A_4\\subset S_4$) e verifique $\\langle\\chi_4,\\chi_4\\rangle=1$; monte a tabela."
+          ]
+        },
+        {
+          "prompt": "Mostre que $D_4$ (diedral de ordem 8) e $Q_8$ (quatérnios) possuem a mesma tabela de caracteres (graus $1,1,1,1,2$), apesar de não serem isomorfos. O que isso ensina sobre o poder dos caracteres?",
+          "hint": "Ambos têm 5 classes e $\\sum d_i^2=8=1+1+1+1+4$; o quociente por seu centro $\\mathbb{Z}/2$ é $\\mathbb{Z}/2\\times\\mathbb{Z}/2$, dando os quatro caracteres de grau 1.",
+          "difficulty": 4,
+          "solution": "**Classes e graus.** Ambos $D_4$ (simetrias do quadrado) e $Q_8=\\{\\pm1,\\pm i,\\pm j,\\pm k\\}$ têm ordem $8$ e **$5$ classes de conjugação**, logo $5$ irredutíveis. Ambos têm centro $Z\\cong\\mathbb{Z}/2$ e quociente $G/Z\\cong\\mathbb{Z}/2\\times\\mathbb{Z}/2$.\n\n- $D_4=\\langle r,s\\mid r^4=s^2=e,\\ srs=r^{-1}\\rangle$. Classes: $\\{e\\}$, $\\{r^2\\}$, $\\{r,r^3\\}$, $\\{s,r^2s\\}$, $\\{rs,r^3s\\}$. Centro $=\\{e,r^2\\}$.\n- $Q_8$. Classes: $\\{1\\}$, $\\{-1\\}$, $\\{\\pm i\\}$, $\\{\\pm j\\}$, $\\{\\pm k\\}$. Centro $=\\{1,-1\\}$.\n\n**Graus.** Em ambos, $\\sum d_i^2=8$ com $5$ parcelas: única solução $1^2+1^2+1^2+1^2+2^2=4+4=8$. Logo quatro irredutíveis de grau 1 e uma de grau 2.\n\n**As de grau 1.** Fatoram-se pelo quociente abeliano $G/Z\\cong\\mathbb{Z}/2\\times\\mathbb{Z}/2$, que tem exatamente $4$ caracteres, todos com valores $\\pm1$. Como o quociente é o **mesmo** ($\\mathbb{Z}/2\\times\\mathbb{Z}/2$) e, em ambos os grupos, as classes se organizam da mesma maneira relativa ao centro (o elemento central não trivial $z$ — $r^2$ ou $-1$ — está na classe de tamanho 1, e as outras três classes de tamanho 2 correspondem às três involuções não triviais de $G/Z$), os quatro caracteres de grau 1 têm exatamente os mesmos valores nas classes correspondentes: $1$ em $e$ e em $z$, e sinais $\\pm1$ nas três classes restantes segundo a tabela de $\\mathbb{Z}/2\\times\\mathbb{Z}/2$.\n\n**A de grau 2.** Determina-se pela ortogonalidade das colunas com a de $e$: $\\chi_5(e)=2$, $\\chi_5(z)=-2$ (o elemento central age por $-\\mathrm{id}$: $z$ é escalar por Schur, e $\\chi_5(z)=2\\lambda$ com $\\lambda^2=1$, $\\lambda\\neq1$ pois $\\chi_5$ é ortogonal à trivial), e $\\chi_5=0$ nas três classes de tamanho 2. Assim, nas colunas $(e,\\,z,\\,A,\\,B,\\,C)$ (com $A,B,C$ as três classes de tamanho 2):\n$$\\begin{array}{c|ccccc} & e & z & A & B & C\\\\\\hline \\chi_1 & 1 & 1 & 1 & 1 & 1\\\\ \\chi_2 & 1 & 1 & 1 & -1 & -1\\\\ \\chi_3 & 1 & 1 & -1 & 1 & -1\\\\ \\chi_4 & 1 & 1 & -1 & -1 & 1\\\\ \\chi_5 & 2 & -2 & 0 & 0 & 0\\end{array}$$\nEssa é simultaneamente a tabela de $D_4$ e de $Q_8$: são **idênticas**.\n\n**Não isomorfos.** $D_4$ tem $5$ elementos de ordem $2$ (a saber $r^2,s,rs,r^2s,r^3s$), enquanto $Q_8$ tem **um único** elemento de ordem 2 (o $-1$); número de elementos de ordem 2 é invariante de isomorfismo, logo $D_4\\not\\cong Q_8$.\n\n**Lição.** A tabela de caracteres é um invariante muito forte (vê graus, classes, centro, abelianização), mas **não completo**: grupos não isomorfos podem ter a mesma tabela. Ela captura a 'sombra linear' do grupo, não sua estrutura multiplicativa fina (como a ordem dos elementos individuais). $\\blacksquare$",
+          "steps": [
+            "Observe que ambos têm ordem 8, 5 classes de conjugação, centro $\\cong\\mathbb{Z}/2$ e quociente $G/Z\\cong\\mathbb{Z}/2\\times\\mathbb{Z}/2$.",
+            "Resolva $\\sum d_i^2=8$ com 5 parcelas: única solução $1+1+1+1+4$, logo quatro graus 1 e um grau 2.",
+            "Obtenha os quatro caracteres de grau 1 pelo quociente comum $\\mathbb{Z}/2\\times\\mathbb{Z}/2$ (valores $\\pm1$) e a de grau 2 por ortogonalidade: $(2,-2,0,0,0)$; as tabelas coincidem.",
+            "Distinga os grupos por um invariante que a tabela não vê: $Q_8$ tem só 1 elemento de ordem 2, $D_4$ tem 5; conclua $D_4\\not\\cong Q_8$ e que a tabela não determina o grupo."
+          ]
+        },
+        {
+          "prompt": "Use a segunda relação de ortogonalidade para mostrar que, se um elemento $g\\neq e$ satisfaz $\\chi_i(g)=\\dim V_i$ para todo $i$, então $g\\in\\bigcap_i\\ker\\rho_i$. Conclua, para $G$ com uma representação fiel, que tal $g$ não existe a menos que $g=e$.",
+          "hint": "$|\\chi_i(g)|\\le\\chi_i(e)$ com igualdade sse $\\rho_i(g)$ é escalar; combine com a coluna de $e$ via a segunda relação.",
+          "difficulty": 3,
+          "solution": "**Parte 1: $\\chi_i(g)=\\dim V_i$ para todo $i$ $\\Rightarrow g\\in\\bigcap_i\\ker\\rho_i$.** Fixe $i$. Como $g$ tem ordem finita, $\\rho_i(g)$ é diagonalizável com autovalores $\\lambda_1,\\dots,\\lambda_{d}$ (raízes da unidade, $d=\\dim V_i$), e $\\chi_i(g)=\\sum_k\\lambda_k$. Pela desigualdade triangular,\n$$|\\chi_i(g)|=\\Big|\\sum_k\\lambda_k\\Big|\\le\\sum_k|\\lambda_k|=d=\\dim V_i,$$\ncom **igualdade** apenas quando todos os $\\lambda_k$ apontam na mesma direção, isto é, são iguais a um mesmo $\\lambda$ com $|\\lambda|=1$. Aqui temos $\\chi_i(g)=\\dim V_i=d$ (real positivo, o valor máximo), o que força $\\lambda_1=\\cdots=\\lambda_d=1$ (única forma de $\\sum\\lambda_k=d$ com $|\\lambda_k|=1$). Como $\\rho_i(g)$ é diagonalizável com todos os autovalores iguais a $1$, $\\rho_i(g)=\\mathrm{id}$. Isso vale para todo $i$, logo $g\\in\\ker\\rho_i$ para todo $i$, isto é, $g\\in\\bigcap_i\\ker\\rho_i$.\n\n(Conexão com a segunda relação de ortogonalidade: $\\sum_i|\\chi_i(g)|^2=|C_G(g)|$; se $\\chi_i(g)=\\dim V_i$ para todo $i$, então $\\sum_i(\\dim V_i)^2=|G|=|C_G(g)|$, o que só ocorre quando $|C_G(g)|=|G|$, ou seja $g$ é central e age por escalar em cada irredutível — coerente com $\\rho_i(g)=\\mathrm{id}$.)\n\n**Parte 2: se $G$ tem representação fiel, tal $g$ é $e$.** A representação regular $\\mathbb{C}[G]$ é fiel e decompõe-se como $\\bigoplus_i(\\dim V_i)V_i$; portanto $\\bigcap_i\\ker\\rho_i=\\ker\\rho_{\\text{reg}}=\\{e\\}$. (Mesmo sem invocar a regular: qualquer representação fiel $\\rho$ se decompõe em irredutíveis $V_{i_1},\\dots$; seu núcleo $\\{e\\}$ contém $\\bigcap_i\\ker\\rho_i$, e como as irredutíveis que aparecem em $\\rho$ têm interseção de núcleos contida em $\\ker\\rho=\\{e\\}$... de fato $\\bigcap_{\\text{todas }i}\\ker\\rho_i\\subseteq\\ker\\rho=\\{e\\}$ pois toda irredutível aparece na regular fiel.) Logo, do que provamos, $g\\in\\bigcap_i\\ker\\rho_i=\\{e\\}$, isto é, $g=e$. Em outras palavras, num grupo com representação fiel, nenhum $g\\neq e$ satisfaz $\\chi_i(g)=\\dim V_i$ para todas as irredutíveis. $\\blacksquare$",
+          "steps": [
+            "Para cada $i$, escreva $\\chi_i(g)=\\sum_k\\lambda_k$ com $\\lambda_k$ raízes da unidade e aplique $|\\chi_i(g)|\\le\\dim V_i$, com igualdade sse todos os autovalores coincidem.",
+            "Da hipótese $\\chi_i(g)=\\dim V_i$ (o máximo, real positivo) conclua $\\lambda_k=1$ para todo $k$, logo $\\rho_i(g)=\\mathrm{id}$, isto é, $g\\in\\ker\\rho_i$.",
+            "Como isso vale para todo $i$, obtenha $g\\in\\bigcap_i\\ker\\rho_i$ (relacione com a segunda relação: $\\sum_i(\\dim V_i)^2=|G|=|C_G(g)|$).",
+            "Use que a regular $\\bigoplus_i(\\dim V_i)V_i$ é fiel, logo $\\bigcap_i\\ker\\rho_i=\\{e\\}$; conclua que tal $g$ deve ser $e$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Tabela de caracteres: formato",
+          "back": "Matriz quadrada $r\\times r$; linhas = caracteres irredutíveis, colunas = classes de conjugação; primeira coluna = graus, primeira linha = trivial (uns)."
+        },
+        {
+          "front": "Caráter da representação regular",
+          "back": "$\\chi_{\\text{reg}}(e)=|G|$ e $\\chi_{\\text{reg}}(g)=0$ para $g\\neq e$."
+        },
+        {
+          "front": "Multiplicidade de $V_i$ na regular",
+          "back": "Exatamente $\\dim V_i$; logo $\\mathbb{C}[G]\\cong\\bigoplus_i(\\dim V_i)V_i$."
+        },
+        {
+          "front": "Identidade dos graus",
+          "back": "$\\sum_{i=1}^r(\\dim V_i)^2=|G|$ (avaliação da regular em $e$)."
+        },
+        {
+          "front": "Segunda relação de ortogonalidade",
+          "back": "$\\sum_i\\chi_i(g)\\overline{\\chi_i(h)}=0$ se $g\\not\\sim h$, e $=|C_G(g)|$ se $g\\sim h$ (ortogonalidade das colunas)."
+        },
+        {
+          "front": "Projetor isotípico em $\\mathbb{C}[G]$",
+          "back": "$p_i=\\frac{\\dim V_i}{|G|}\\sum_g\\overline{\\chi_i(g)}\\,g$: idempotente central que projeta na $V_i$-componente."
+        },
+        {
+          "front": "A tabela determina o grupo?",
+          "back": "Não: $D_4$ e $Q_8$ têm a mesma tabela de caracteres mas não são isomorfos."
+        },
+        {
+          "front": "Graus de $S_3$, $A_4$ (exemplos)",
+          "back": "$S_3$: $1,1,2$ ($1+1+4=6$). $A_4$: $1,1,1,3$ ($1+1+1+9=12$)."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Serre, Linear Representations, cap. 2 (decomposição da regular)",
+          "ref": "livro"
+        },
+        {
+          "title": "Dummit & Foote, cap. 18.3 (tabelas de caracteres)",
+          "ref": "livro"
+        },
+        {
+          "title": "Fulton & Harris, caps. 2-3 (exemplos $S_3,S_4,A_4$)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reative as duas relações de ortogonalidade (linhas e colunas) e a igualdade 'nº de irredutíveis $=$ nº de classes'. A tabela de caracteres é a materialização visual disso.",
+          "Leia Serre cap. 2 (decomposição da regular) e Dummit & Foote 18.3 (tabelas de caracteres), e depois estude os exemplos completos de $S_3,S_4,A_4$ em Fulton & Harris caps. 2-3.",
+          "Assista a uma aula que construa uma tabela de caracteres do zero (ex.: $S_3$ ou $A_4$), prestando atenção em como $\\sum d_i^2=|G|$ fixa os graus.",
+          "Treine o 'quebra-cabeça': para um grupo dado, liste classes, determine o nº de irredutíveis, resolva $\\sum d_i^2=|G|$ e preencha as linhas usando quocientes abelianos e ortogonalidade.",
+          "Estude o par $D_4$ vs. $Q_8$ (mesma tabela, grupos não isomorfos) para calibrar o que os caracteres veem e o que não veem; e a segunda relação para completar/verificar tabelas.",
+          "Resolver os testes desta aula e anotar o principal aqui no app: registre $\\chi_{\\text{reg}}(g)=0\\,(g\\neq e)$, a decomposição $\\mathbb{C}[G]\\cong\\bigoplus(\\dim V_i)V_i$, e a identidade $\\sum(\\dim V_i)^2=|G|$."
+        ],
+        "searchQueries": [
+          "tabela de caracteres S3 A4 construção passo a passo",
+          "decomposição representação regular multiplicidade grau",
+          "sum of squares of dimensions equals group order proof",
+          "segunda relação ortogonalidade colunas centralizador",
+          "D4 Q8 same character table not isomorphic",
+          "character table A4 roots of unity degree 3 irreducible"
+        ],
+        "videos": [
+          {
+            "title": "Construindo tabelas de caracteres",
+            "channel": "MIT OpenCourseWare (18.712, Etingof)",
+            "note": "Aulas sobre a representação regular, $\\sum d_i^2=|G|$ e exemplos de tabelas."
+          },
+          {
+            "title": "Character tables of small groups",
+            "channel": "Richard E. Borcherds",
+            "note": "Veja a construção da tabela de $S_3$, $S_4$ e $A_4$ com as duas relações de ortogonalidade."
+          },
+          {
+            "title": "Symmetric group representations",
+            "channel": "Michael Penn",
+            "note": "Exemplos concretos de caracteres de $S_n$ úteis para treinar a montagem de tabelas."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 18.3 (tabelas de caracteres)",
+            "where": "David Dummit & Richard Foote, Wiley"
+          },
+          {
+            "title": "Representation Theory: A First Course, caps. 2-3 (exemplos $S_3,S_4,A_4$)",
+            "where": "William Fulton & Joe Harris, Springer GTM 129"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-representacao-06-intro-algebras-de-lie",
+      "title": "Introdução a representações de álgebras de Lie e o caso $\\mathfrak{sl}_2(\\mathbb{C})$",
+      "tagline": "Passar do discreto ao contínuo: linearizar simetrias contínuas e classificar todas as representações irredutíveis de $\\mathfrak{sl}_2$ pelo peso máximo.",
+      "objectives": [
+        "Definir álgebra de Lie (colchete bilinear, antissimétrico, identidade de Jacobi) e dar exemplos ($\\mathfrak{gl}_n$, $\\mathfrak{sl}_n$, $\\mathfrak{so}_n$).",
+        "Definir representação de álgebra de Lie como homomorfismo $\\phi:\\mathfrak{g}\\to\\mathfrak{gl}(V)$ preservando o colchete.",
+        "Apresentar $\\mathfrak{sl}_2(\\mathbb{C})$ com base $\\{e,f,h\\}$ e as relações $[h,e]=2e$, $[h,f]=-2f$, $[e,f]=h$.",
+        "Classificar as representações irredutíveis de dimensão finita de $\\mathfrak{sl}_2$ pelo peso máximo, obtendo $V(n)$ de dimensão $n+1$.",
+        "Entender a ponte grupo de Lie $\\to$ álgebra de Lie (diferencial em $e$) e por que o caso $\\mathfrak{sl}_2$ é o modelo de toda a teoria semissimples."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Álgebra de Lie",
+          "statement": "Espaço vetorial $\\mathfrak{g}$ sobre $k$ com uma operação $[\\cdot,\\cdot]:\\mathfrak{g}\\times\\mathfrak{g}\\to\\mathfrak{g}$ bilinear, antissimétrica ($[x,x]=0$) e satisfazendo a identidade de Jacobi $[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0$. Exemplo central: $\\mathfrak{gl}(V)$, as matrizes/operadores com colchete comutador $[A,B]=AB-BA$."
+        },
+        {
+          "term": "$\\mathfrak{sl}_2(\\mathbb{C})$",
+          "statement": "A álgebra de Lie das matrizes $2\\times2$ complexas de traço zero, de dimensão $3$, com base $e=\\begin{psmallmatrix}0&1\\\\0&0\\end{psmallmatrix}$, $f=\\begin{psmallmatrix}0&0\\\\1&0\\end{psmallmatrix}$, $h=\\begin{psmallmatrix}1&0\\\\0&-1\\end{psmallmatrix}$ e relações $[h,e]=2e$, $[h,f]=-2f$, $[e,f]=h$."
+        },
+        {
+          "term": "Representação de álgebra de Lie",
+          "statement": "Homomorfismo de álgebras de Lie $\\phi:\\mathfrak{g}\\to\\mathfrak{gl}(V)$, ou seja, linear com $\\phi([x,y])=\\phi(x)\\phi(y)-\\phi(y)\\phi(x)$. Equivale a um módulo sobre a álgebra envolvente universal $U(\\mathfrak{g})$, o análogo da álgebra de grupo no mundo de Lie."
+        },
+        {
+          "term": "Peso e vetor de peso máximo",
+          "statement": "Em uma representação de $\\mathfrak{sl}_2$, um peso é um autovalor de $h$; um vetor $v$ é de peso $\\lambda$ se $h\\cdot v=\\lambda v$. Um vetor de peso máximo satisfaz $e\\cdot v=0$. O operador $e$ sobe o peso em $2$ e $f$ abaixa em $2$ (pois $h(e v)=(\\lambda+2)ev$)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Classificação das irredutíveis de $\\mathfrak{sl}_2(\\mathbb{C})$",
+          "statement": "Para cada inteiro $n\\ge0$ existe, a menos de isomorfismo, uma única representação irredutível de dimensão finita $V(n)$ de $\\mathfrak{sl}_2(\\mathbb{C})$, com $\\dim V(n)=n+1$. Numa base de vetores de peso $v_0,\\dots,v_n$ (com $h\\,v_k=(n-2k)v_k$), os pesos são $n,n-2,\\dots,-n$, cada um com multiplicidade $1$; $e$ sobe e $f$ abaixa ao longo dessa 'escada'.",
+          "whyItMatters": "É o exemplo fundamental de toda a teoria de Lie semissimples: a estrutura de peso máximo, a simetria dos pesos e o papel do trio $\\{e,f,h\\}$ ($\\mathfrak{sl}_2$-triplo) reaparecem em qualquer álgebra semissimples. Na física, $V(n)$ é o multipleto de spin $n/2$: o spin $1/2$ é $V(1)$, o spin $1$ é $V(2)$, etc."
+        },
+        {
+          "name": "Semissimplicidade (Teorema de Weyl)",
+          "statement": "Toda representação de dimensão finita de uma álgebra de Lie semissimples sobre $\\mathbb{C}$ (em particular $\\mathfrak{sl}_2$) é completamente redutível, isto é, soma direta de irredutíveis.",
+          "whyItMatters": "É o análogo do Teorema de Maschke no mundo de Lie. Combinado com a classificação das $V(n)$, ele reduz o estudo de toda representação de dimensão finita de $\\mathfrak{sl}_2$ a saber com que multiplicidade cada $V(n)$ aparece, exatamente como caracteres faziam para grupos finitos."
+        }
+      ],
+      "summary": "As representações de grupos finitos contam apenas metade da história das simetrias; a outra metade é contínua, e seu modelo linearizado são as álgebras de Lie. Uma álgebra de Lie é um espaço vetorial com um colchete $[x,y]$ que mede a 'não comutatividade infinitesimal'; o exemplo universal é $\\mathfrak{gl}(V)$ com o comutador $[A,B]=AB-BA$, e uma representação de $\\mathfrak{g}$ nada mais é que um homomorfismo $\\phi:\\mathfrak{g}\\to\\mathfrak{gl}(V)$ que respeita esse colchete. A ponte com a teoria de grupos contínuos (grupos de Lie) é que a álgebra de Lie é o espaço tangente na identidade: derivar uma representação de grupo dá uma representação da álgebra, transformando equações de grupo em álgebra linear pura. É por isso que o assunto é tão poderoso na física e na geometria.\n\nO coração da introdução é $\\mathfrak{sl}_2(\\mathbb{C})$, a álgebra das matrizes $2\\times2$ de traço zero, com seu trio $\\{e,f,h\\}$ e as relações $[h,e]=2e$, $[h,f]=-2f$, $[e,f]=h$. A análise é um clássico que vale a pena reproduzir com as próprias mãos: numa representação irredutível de dimensão finita, $h$ é diagonalizável e $e$ aumenta o autovalor de $h$ em $2$ enquanto $f$ o diminui em $2$. Como a dimensão é finita, há um vetor de peso máximo $v_0$ aniquilado por $e$; aplicando $f$ repetidamente geramos uma escada $v_0,v_1,\\dots,v_n$ que precisa terminar, e a álgebra força o peso máximo a ser um inteiro $n\\ge0$, com pesos $n,n-2,\\dots,-n$ simétricos em torno de zero. Isso classifica completamente: uma irredutível $V(n)$ por inteiro $n\\ge0$, de dimensão $n+1$. O Teorema de Weyl (o Maschke contínuo) garante que toda representação de dimensão finita é soma dessas, fechando o paralelo com tudo o que fizemos para grupos finitos e abrindo a porta da teoria de Lie semissimples, da teoria de pesos e dos diagramas de Dynkin que você verá na pós.",
+      "commonPitfalls": [
+        "Tratar a representação de álgebra de Lie como homomorfismo de álgebras associativas: ela preserva o COLCHETE, $\\phi([x,y])=[\\phi(x),\\phi(y)]$, não o produto.",
+        "Esquecer que o peso máximo de uma irredutível de $\\mathfrak{sl}_2$ deve ser inteiro $\\ge0$: pesos não inteiros não geram representações de dimensão finita.",
+        "Confundir $\\dim V(n)=n+1$ com $n$: $V(0)$ é a trivial (dim 1), $V(1)$ é a padrão (dim 2, spin $1/2$).",
+        "Achar que toda álgebra de Lie é semissimples e tem teoria tão limpa: Weyl exige semissimplicidade; álgebras solúveis/nilpotentes (ex.: a de Heisenberg) têm representações que não se decompõem."
+      ],
+      "worked": "**Exemplo (a 'escada' de $\\mathfrak{sl}_2$ e a unicidade de $V(n)$).** Seja $V$ irredutível de dimensão finita sobre $\\mathbb{C}$. Como $V$ tem dimensão finita, $h$ possui um autovetor; entre os pesos (autovalores de $h$) escolha um de parte real máxima e um autovetor $v_0$ com $h v_0=\\lambda v_0$. De $[h,e]=2e$ vem $h(e v_0)=(\\lambda+2)(e v_0)$, e a maximalidade força $e v_0=0$: $v_0$ é vetor de peso máximo. Defina $v_k=f^k v_0$. Por indução, usando $[h,f]=-2f$, obtemos $h v_k=(\\lambda-2k)v_k$, e usando $[e,f]=h$ obtemos a relação-chave $e\\,v_k=k(\\lambda-k+1)v_{k-1}$. Como a dimensão é finita, existe um menor $m$ com $v_{m+1}=0$ mas $v_m\\neq0$. Aplicando a fórmula de $e$ a $v_{m+1}$: $0=e\\,v_{m+1}=(m+1)(\\lambda-m)v_m$, e como $v_m\\neq0$ concluímos $\\lambda=m$, um inteiro $\\ge0$. Assim os vetores $v_0,\\dots,v_m$ formam uma base, os pesos são $m,m-2,\\dots,-m$, e a representação é exatamente $V(m)$ de dimensão $m+1$. Como cada espaço de peso tem dimensão $1$, qualquer outra irredutível com mesmo peso máximo é isomorfa: temos unicidade. Por exemplo, $V(2)$ (dim 3) tem $h$ com autovalores $2,0,-2$; é a representação adjunta de $\\mathfrak{sl}_2$ em si mesma e o multipleto de spin $1$.",
+      "exercises": [
+        {
+          "prompt": "Verifique que $\\mathfrak{sl}_2(\\mathbb{C})$ com base $\\{e,f,h\\}$ satisfaz a identidade de Jacobi conferindo-a nos geradores, e confirme as relações $[h,e]=2e$, $[h,f]=-2f$, $[e,f]=h$ calculando comutadores das matrizes.",
+          "hint": "Basta checar Jacobi nos tripos de geradores por bilinearidade e antissimetria; os comutadores são produtos de matrizes $2\\times2$.",
+          "difficulty": 2,
+          "solution": "Base: $e=\\begin{psmallmatrix}0&1\\\\0&0\\end{psmallmatrix}$, $f=\\begin{psmallmatrix}0&0\\\\1&0\\end{psmallmatrix}$, $h=\\begin{psmallmatrix}1&0\\\\0&-1\\end{psmallmatrix}$, com colchete $[X,Y]=XY-YX$.\n\n**Relações.** Calcule os produtos:\n- $he=\\begin{psmallmatrix}1&0\\\\0&-1\\end{psmallmatrix}\\begin{psmallmatrix}0&1\\\\0&0\\end{psmallmatrix}=\\begin{psmallmatrix}0&1\\\\0&0\\end{psmallmatrix}=e$, e $eh=\\begin{psmallmatrix}0&1\\\\0&0\\end{psmallmatrix}\\begin{psmallmatrix}1&0\\\\0&-1\\end{psmallmatrix}=\\begin{psmallmatrix}0&-1\\\\0&0\\end{psmallmatrix}=-e$. Logo $[h,e]=he-eh=e-(-e)=2e$. \n- $hf=\\begin{psmallmatrix}1&0\\\\0&-1\\end{psmallmatrix}\\begin{psmallmatrix}0&0\\\\1&0\\end{psmallmatrix}=\\begin{psmallmatrix}0&0\\\\-1&0\\end{psmallmatrix}=-f$, e $fh=\\begin{psmallmatrix}0&0\\\\1&0\\end{psmallmatrix}\\begin{psmallmatrix}1&0\\\\0&-1\\end{psmallmatrix}=\\begin{psmallmatrix}0&0\\\\1&0\\end{psmallmatrix}=f$. Logo $[h,f]=hf-fh=-f-f=-2f$. \n- $ef=\\begin{psmallmatrix}0&1\\\\0&0\\end{psmallmatrix}\\begin{psmallmatrix}0&0\\\\1&0\\end{psmallmatrix}=\\begin{psmallmatrix}1&0\\\\0&0\\end{psmallmatrix}$, e $fe=\\begin{psmallmatrix}0&0\\\\1&0\\end{psmallmatrix}\\begin{psmallmatrix}0&1\\\\0&0\\end{psmallmatrix}=\\begin{psmallmatrix}0&0\\\\0&1\\end{psmallmatrix}$. Logo $[e,f]=ef-fe=\\begin{psmallmatrix}1&0\\\\0&-1\\end{psmallmatrix}=h$. \n\nConfirmadas $[h,e]=2e$, $[h,f]=-2f$, $[e,f]=h$.\n\n**Identidade de Jacobi.** O colchete comutador $[X,Y]=XY-YX$ em qualquer álgebra associativa satisfaz **automaticamente** a identidade de Jacobi; de fato, expandindo\n$$[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]$$\nem termos de produtos associativos, cada monômio $XYZ,XZY,\\dots$ aparece com coeficientes que se cancelam (é a verificação padrão). Portanto $\\mathfrak{gl}_2$ satisfaz Jacobi, e $\\mathfrak{sl}_2\\subset\\mathfrak{gl}_2$ herda a identidade. Ainda assim, verifiquemos nos geradores por bilinearidade e antissimetria (basta um trio, o único não trivialmente nulo): tome $(x,y,z)=(e,f,h)$. \n$$[e,[f,h]]+[f,[h,e]]+[h,[e,f]].$$\nUsando $[f,h]=-[h,f]=2f$, $[h,e]=2e$, $[e,f]=h$: \n$$[e,2f]+[f,2e]+[h,h]=2[e,f]+2[f,e]+0=2h+2(-h)+0=0.$$\nA identidade de Jacobi vale (os demais trios com repetição ou permutação reduzem a este por antissimetria e multilinearidade). $\\blacksquare$",
+          "steps": [
+            "Escreva as três matrizes $e,f,h$ e calcule os produtos $he,eh,hf,fh,ef,fe$ diretamente.",
+            "Forme os comutadores: $[h,e]=he-eh=2e$, $[h,f]=hf-fh=-2f$, $[e,f]=ef-fe=h$.",
+            "Note que todo comutador $[X,Y]=XY-YX$ satisfaz Jacobi automaticamente em uma álgebra associativa; $\\mathfrak{sl}_2\\subset\\mathfrak{gl}_2$ herda isso.",
+            "Confirme Jacobi no trio gerador $(e,f,h)$: $[e,[f,h]]+[f,[h,e]]+[h,[e,f]]=2h-2h+0=0$."
+          ]
+        },
+        {
+          "prompt": "Prove por indução a fórmula $e\\,v_k=k(\\lambda-k+1)v_{k-1}$ na escada $v_k=f^k v_0$, partindo de $e v_0=0$ e $[e,f]=h$. Use-a para concluir que o peso máximo de uma irredutível de dimensão finita é um inteiro $\\ge0$.",
+          "hint": "Escreva $e v_k=e f v_{k-1}=([e,f]+fe)v_{k-1}=h v_{k-1}+f(e v_{k-1})$ e use a hipótese de indução.",
+          "difficulty": 4,
+          "solution": "Seja $V$ uma representação de $\\mathfrak{sl}_2$, $v_0$ um vetor de peso máximo com $e\\,v_0=0$ e $h\\,v_0=\\lambda v_0$. Defina $v_k=f^k v_0$ para $k\\ge0$ (com $v_{-1}:=0$).\n\n**Peso de $v_k$.** Por indução, usando $[h,f]=-2f$ (isto é, $hf=fh-2f$): $h v_k=h f v_{k-1}=(fh-2f)v_{k-1}=f(h v_{k-1})-2v_k$. Se $h v_{k-1}=(\\lambda-2(k-1))v_{k-1}$, então $h v_k=(\\lambda-2(k-1))v_k-2v_k=(\\lambda-2k)v_k$. Base $k=0$ ok. Logo $h v_k=(\\lambda-2k)v_k$.\n\n**Fórmula para $e\\,v_k$ (indução em $k$).** Base $k=0$: $e\\,v_0=0=0\\cdot(\\lambda-0+1)v_{-1}$, ok (a fórmula dá coeficiente $0$). Passo: suponha $e\\,v_{k-1}=(k-1)(\\lambda-k+2)v_{k-2}$. Escreva\n$$e\\,v_k=e\\,f\\,v_{k-1}=(ef)v_{k-1}=([e,f]+fe)v_{k-1}=[e,f]v_{k-1}+f(e\\,v_{k-1}).$$\nUse $[e,f]=h$ e $h v_{k-1}=(\\lambda-2(k-1))v_{k-1}$:\n$$e\\,v_k=(\\lambda-2(k-1))v_{k-1}+f\\big[(k-1)(\\lambda-k+2)v_{k-2}\\big]=(\\lambda-2k+2)v_{k-1}+(k-1)(\\lambda-k+2)v_{k-1},$$\npois $f v_{k-2}=v_{k-1}$. Some os coeficientes:\n$$(\\lambda-2k+2)+(k-1)(\\lambda-k+2)=\\lambda-2k+2+(k-1)\\lambda-(k-1)k+2(k-1).$$\nAgrupe: coeficiente de $\\lambda$: $1+(k-1)=k$. Termos constantes: $-2k+2-(k^2-k)+2k-2=-k^2+k=-k(k-1)=k(-(k-1))$. Assim o total é $k\\lambda-k(k-1)=k(\\lambda-k+1)$. Logo\n$$\\boxed{e\\,v_k=k(\\lambda-k+1)v_{k-1}.}$$\n\n**Peso máximo inteiro $\\ge0$.** Como $\\dim V<\\infty$ e os $v_k$ não nulos têm pesos distintos $\\lambda-2k$ (autovetores de $h$ para autovalores distintos, logo linearmente independentes), a sequência $v_0,v_1,\\dots$ não pode ser toda não nula. Seja $m\\ge0$ o maior índice com $v_m\\neq0$ (então $v_{m+1}=0$). Aplique a fórmula em $k=m+1$:\n$$0=e\\,v_{m+1}=(m+1)(\\lambda-(m+1)+1)v_m=(m+1)(\\lambda-m)v_m.$$\nComo $v_m\\neq0$ e $m+1\\neq0$, segue $\\lambda-m=0$, isto é, $\\lambda=m\\in\\mathbb{Z}_{\\ge0}$. O peso máximo é um inteiro $\\ge0$, e a representação gerada por $v_0$ tem base $v_0,\\dots,v_m$ com pesos $m,m-2,\\dots,-m$: é a $V(m)$ de dimensão $m+1$. $\\blacksquare$",
+          "steps": [
+            "Estabeleça primeiro o peso de $v_k$: por indução com $[h,f]=-2f$, $h v_k=(\\lambda-2k)v_k$.",
+            "Escreva $e\\,v_k=(ef)v_{k-1}=([e,f]+fe)v_{k-1}=h\\,v_{k-1}+f(e\\,v_{k-1})$, usando $[e,f]=h$.",
+            "Aplique a hipótese de indução em $e\\,v_{k-1}$ e $h v_{k-1}$, use $f v_{k-2}=v_{k-1}$ e some os coeficientes para obter $e\\,v_k=k(\\lambda-k+1)v_{k-1}$.",
+            "Como $\\dim V<\\infty$, seja $m$ o último índice com $v_m\\neq0$; aplique a fórmula em $k=m+1$: $0=(m+1)(\\lambda-m)v_m$ força $\\lambda=m\\in\\mathbb{Z}_{\\ge0}$."
+          ]
+        },
+        {
+          "prompt": "Decomponha o produto tensorial $V(1)\\otimes V(1)$ de $\\mathfrak{sl}_2$ em irredutíveis. (É o análogo de Lie da 'composição de spins $1/2$'.)",
+          "hint": "Os pesos de $V(1)$ são $\\{1,-1\\}$; os pesos do tensor são as somas, $\\{2,0,0,-2\\}$. Identifique o peso máximo 2 e o que sobra: $V(1)\\otimes V(1)\\cong V(2)\\oplus V(0)$.",
+          "difficulty": 3,
+          "solution": "$V(1)$ é a representação padrão (dim 2, spin $1/2$), com base de vetores de peso $u_+,u_-$ satisfazendo $h u_+=+1\\,u_+$, $h u_-=-1\\,u_-$; os pesos de $V(1)$ são $\\{+1,-1\\}$.\n\n**Pesos do produto tensorial.** Numa representação tensorial de $\\mathfrak{sl}_2$, o elemento $h$ age por $h\\cdot(a\\otimes b)=(h a)\\otimes b+a\\otimes(h b)$ (derivação: a ação de álgebra de Lie no tensor é a soma, não o produto, ao contrário de grupos). Logo os pesos de $V(1)\\otimes V(1)$ são as **somas** dos pesos, sobre a base $\\{u_\\pm\\otimes u_\\pm\\}$:\n$$\\begin{aligned}&u_+\\otimes u_+:\\ 1+1=2,\\\\ &u_+\\otimes u_-:\\ 1-1=0,\\\\ &u_-\\otimes u_+:\\ -1+1=0,\\\\ &u_-\\otimes u_-:\\ -1-1=-2.\\end{aligned}$$\nMulticonjunto de pesos: $\\{2,0,0,-2\\}$.\n\n**Decomposição.** Pelo Teorema de Weyl, $V(1)\\otimes V(1)$ é soma de irredutíveis $V(n)$, cada $V(n)$ contribuindo com os pesos $n,n-2,\\dots,-n$ (cada um uma vez). O maior peso presente é $2$, com multiplicidade 1, logo há exatamente uma cópia de $V(2)$ (pesos $2,0,-2$). Removendo esses pesos $\\{2,0,-2\\}$ do multiconjunto $\\{2,0,0,-2\\}$, sobra o peso $\\{0\\}$, que é a representação $V(0)$ (trivial, dim 1). Não sobra mais nada. Portanto\n$$V(1)\\otimes V(1)\\cong V(2)\\oplus V(0).$$\n\n**Verificação dimensional:** $\\dim(V(1)\\otimes V(1))=2\\cdot2=4=3+1=\\dim V(2)+\\dim V(0)$. Fisicamente, é a composição de dois spins $1/2$ no spin $1$ (tripleto, $V(2)$) mais o spin $0$ (singleto, $V(0)$). $\\blacksquare$",
+          "steps": [
+            "Liste os pesos de $V(1)$: $\\{+1,-1\\}$, com base de peso $u_+,u_-$.",
+            "Use que $h$ age no tensor como derivação (soma dos pesos): os pesos de $V(1)\\otimes V(1)$ são $\\{2,0,0,-2\\}$.",
+            "Identifique o peso máximo $2$: gera uma cópia de $V(2)$ com pesos $\\{2,0,-2\\}$; remova-os do multiconjunto.",
+            "O peso restante $\\{0\\}$ é $V(0)$; conclua $V(1)\\otimes V(1)\\cong V(2)\\oplus V(0)$ e cheque dimensões $4=3+1$."
+          ]
+        },
+        {
+          "prompt": "Mostre que a representação adjunta $\\operatorname{ad}:\\mathfrak{sl}_2\\to\\mathfrak{gl}(\\mathfrak{sl}_2)$, $\\operatorname{ad}(x)(y)=[x,y]$, é uma representação de álgebra de Lie e identifique-a com $V(2)$.",
+          "hint": "A identidade de Jacobi é exatamente $\\operatorname{ad}([x,y])=[\\operatorname{ad}x,\\operatorname{ad}y]$; calcule os autovalores de $\\operatorname{ad}(h)$ na base $\\{e,f,h\\}$ e compare com os pesos $2,0,-2$.",
+          "difficulty": 3,
+          "solution": "**A adjunta é representação.** Defina $\\operatorname{ad}:\\mathfrak{sl}_2\\to\\mathfrak{gl}(\\mathfrak{sl}_2)$ por $\\operatorname{ad}(x)(y)=[x,y]$. É linear em $x$ (bilinearidade do colchete). Falta $\\operatorname{ad}([x,y])=[\\operatorname{ad}x,\\operatorname{ad}y]$ (colchete em $\\mathfrak{gl}(\\mathfrak{sl}_2)$ é o comutador de operadores). Aplicando a um $z$ arbitrário:\n$$[\\operatorname{ad}x,\\operatorname{ad}y](z)=\\operatorname{ad}x(\\operatorname{ad}y(z))-\\operatorname{ad}y(\\operatorname{ad}x(z))=[x,[y,z]]-[y,[x,z]].$$\nPor outro lado, $\\operatorname{ad}([x,y])(z)=[[x,y],z]$. A igualdade $[[x,y],z]=[x,[y,z]]-[y,[x,z]]$ é exatamente a **identidade de Jacobi** reorganizada:\n$$[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0\\ \\Longleftrightarrow\\ [x,[y,z]]-[y,[x,z]]=[[x,y],z].$$\n(usando antissimetria $[y,[z,x]]=-[y,[x,z]]$ e $[z,[x,y]]=-[[x,y],z]$). Logo $\\operatorname{ad}$ preserva o colchete: é uma representação de álgebra de Lie, de dimensão $\\dim\\mathfrak{sl}_2=3$.\n\n**Identificação com $V(2)$.** Calcule os pesos, isto é, os autovalores de $\\operatorname{ad}(h)$ na base $\\{e,f,h\\}$:\n$$\\operatorname{ad}(h)(e)=[h,e]=2e,\\quad \\operatorname{ad}(h)(f)=[h,f]=-2f,\\quad \\operatorname{ad}(h)(h)=[h,h]=0.$$\nLogo os pesos são $2,\\,0,\\,-2$, cada um com multiplicidade $1$ — exatamente os pesos de $V(2)$ (pesos $n,n-2,\\dots,-n$ com $n=2$: $2,0,-2$). Além disso, $e$ é vetor de peso máximo da adjunta: $\\operatorname{ad}(e)(e)=[e,e]=0$, peso $2$. Uma representação de dimensão finita de $\\mathfrak{sl}_2$ com peso máximo $2$ e espaços de peso de dimensão 1 é, pela classificação, irredutível e isomorfa a $V(2)$. Como a adjunta tem dimensão $3=\\dim V(2)$ e a mesma lista de pesos, e é gerada por seu vetor de peso máximo $e$ (aplicando $\\operatorname{ad}(f)$: $[f,e]=-h$, $[f,-h]=-[f,h]=2f\\cdot(-1)$... gera $h$ e $f$), conclui-se\n$$\\big(\\operatorname{ad},\\mathfrak{sl}_2\\big)\\cong V(2).$$\nÉ o multipleto de spin $1$. $\\blacksquare$",
+          "steps": [
+            "Mostre que $\\operatorname{ad}(x)(y)=[x,y]$ é linear e que $\\operatorname{ad}([x,y])=[\\operatorname{ad}x,\\operatorname{ad}y]$ equivale à identidade de Jacobi.",
+            "Conclua que $\\operatorname{ad}$ é uma representação de $\\mathfrak{sl}_2$ em si mesma, de dimensão 3.",
+            "Calcule os autovalores de $\\operatorname{ad}(h)$ na base $\\{e,f,h\\}$: $[h,e]=2e$, $[h,f]=-2f$, $[h,h]=0$, dando pesos $2,0,-2$.",
+            "Identifique $e$ como vetor de peso máximo (peso 2, $[e,e]=0$); pela classificação, dimensão 3 e pesos $2,0,-2$ dão $\\operatorname{ad}\\cong V(2)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Álgebra de Lie: axiomas",
+          "back": "Colchete bilinear, antissimétrico ($[x,x]=0$) e com identidade de Jacobi $[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0$."
+        },
+        {
+          "front": "Representação de álgebra de Lie",
+          "back": "Homomorfismo $\\phi:\\mathfrak{g}\\to\\mathfrak{gl}(V)$ com $\\phi([x,y])=\\phi(x)\\phi(y)-\\phi(y)\\phi(x)$ (preserva o colchete)."
+        },
+        {
+          "front": "Relações de $\\mathfrak{sl}_2(\\mathbb{C})$",
+          "back": "$[h,e]=2e$, $[h,f]=-2f$, $[e,f]=h$, com $e,f,h$ matrizes $2\\times2$ de traço zero."
+        },
+        {
+          "front": "Irredutíveis de dim. finita de $\\mathfrak{sl}_2$",
+          "back": "Uma $V(n)$ por inteiro $n\\ge0$, com $\\dim V(n)=n+1$ e pesos $n,n-2,\\dots,-n$."
+        },
+        {
+          "front": "Papel de $e$, $f$, $h$ na escada",
+          "back": "$h$ mede o peso; $e$ sobe o peso em $2$ (aniquila o topo), $f$ abaixa em $2$ (aniquila a base)."
+        },
+        {
+          "front": "Teorema de Weyl",
+          "back": "Toda representação de dim. finita de uma álgebra de Lie semissimples sobre $\\mathbb{C}$ é completamente redutível (o 'Maschke' de Lie)."
+        },
+        {
+          "front": "Ponte grupo de Lie -> álgebra de Lie",
+          "back": "A álgebra de Lie é o espaço tangente na identidade; derivar uma representação do grupo dá uma da álgebra."
+        },
+        {
+          "front": "$V(n)$ e spin",
+          "back": "$V(n)$ é o multipleto de spin $n/2$: $V(0)$ trivial, $V(1)$ spin $1/2$ (dim 2), $V(2)$ spin $1$ (adjunta, dim 3)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Fulton & Harris, caps. 8 e 11 (álgebras de Lie e $\\mathfrak{sl}_2$)",
+          "ref": "livro"
+        },
+        {
+          "title": "San Martin, Álgebras de Lie (representações de $\\mathfrak{sl}(2)$)",
+          "ref": "livro"
+        },
+        {
+          "title": "Humphreys, Introduction to Lie Algebras and Representation Theory, caps. 1-7",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise comutador de matrizes $[A,B]=AB-BA$, traço, e diagonalização; e relembre a lógica de Maschke/Schur, pois o enredo (peso máximo, semissimplicidade) é o análogo contínuo do que você fez para grupos finitos.",
+          "Leia Fulton & Harris cap. 8 (definições de álgebra de Lie) e cap. 11 ($\\mathfrak{sl}_2$), ou, em português, San Martin nos capítulos de definições e de representações de $\\mathfrak{sl}(2)$.",
+          "Assista a uma série sobre álgebras de Lie e $\\mathfrak{sl}_2$; foque na 'escada' de vetores de peso e na simetria dos pesos em torno de zero.",
+          "Estude a demonstração da classificação das $V(n)$ reproduzindo à mão a relação $e\\,v_k=k(\\lambda-k+1)v_{k-1}$ e o argumento de que o peso máximo é inteiro $\\ge0$ (Humphreys caps. 1-7 é a referência rigorosa).",
+          "Conecte com a física: identifique $V(n)$ como multipleto de spin $n/2$ e faça a decomposição de Clebsch-Gordan $V(1)\\otimes V(1)=V(2)\\oplus V(0)$ com as próprias mãos, somando pesos.",
+          "Resolver os testes desta aula e anotar o principal aqui no app: registre as relações $[h,e]=2e,[h,f]=-2f,[e,f]=h$, a classificação $V(n)$ com $\\dim=n+1$, e o Teorema de Weyl como 'Maschke de Lie'."
+        ],
+        "searchQueries": [
+          "álgebra de Lie definição colchete identidade de Jacobi exemplos",
+          "sl2 representações irredutíveis peso máximo classificação V(n)",
+          "sl2(C) highest weight theory ladder operators e f h",
+          "teorema de Weyl semissimplicidade representações álgebra de Lie",
+          "clebsch gordan sl2 tensor product V(m) V(n) decomposition",
+          "representação adjunta sl2 identificação V(2) spin 1"
+        ],
+        "videos": [
+          {
+            "title": "Lie algebras e representações de sl(2)",
+            "channel": "MIT OpenCourseWare (18.745 / 18.755, álgebras e grupos de Lie)",
+            "note": "Cursos de Lie do MIT; procure as aulas sobre $\\mathfrak{sl}_2$ e teoria de peso máximo."
+          },
+          {
+            "title": "Representation theory of sl_2",
+            "channel": "Richard E. Borcherds",
+            "note": "Exposição rigorosa da classificação das irredutíveis de $\\mathfrak{sl}_2$ pela escada de pesos."
+          },
+          {
+            "title": "Lie algebras / sl2 e spin",
+            "channel": "Michael Penn",
+            "note": "Vídeos sobre álgebras de Lie e comutadores; bom para fixar as relações de $\\mathfrak{sl}_2$ e a ligação com spin."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Representation Theory: A First Course, caps. 8 e 11",
+            "where": "Fulton & Harris, Springer GTM 129 ($\\mathfrak{sl}_2$ e teoria de peso máximo)"
+          },
+          {
+            "title": "Introduction to Lie Algebras and Representation Theory, caps. 1-7",
+            "where": "James E. Humphreys, Springer GTM 9 (referência rigorosa; classificação de $\\mathfrak{sl}_2$)"
+          }
+        ]
+      }
+    }
+  ]
+}

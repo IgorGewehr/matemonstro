@@ -1,0 +1,12 @@
+# Deploy do Matemonstro na Netlify (Next.js 15, App Router, local-first).
+# O @netlify/plugin-nextjs é instalado automaticamente ao detectar o Next.
+
+[build]
+  # roda o bundle do currículo (gera lib/curriculum-data.json) e depois o next build
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

@@ -1,0 +1,1535 @@
+{
+  "id": "analise-real-2",
+  "title": "Análise Real II",
+  "phase": 1,
+  "phaseLabel": "Núcleo",
+  "tagline": "O cálculo refeito do zero com rigor de matemático: derivação, integração de Riemann, convergência uniforme e o cálculo diferencial em $\\mathbb{R}^n$.",
+  "summary": "Esta trilha reconstrói todo o cálculo diferencial e integral sobre alicerces rigorosos. Partimos da definição $\\varepsilon$-$\\delta$ da derivada e do Teorema do Valor Médio, passamos por Taylor, pela integral de Riemann-Darboux e pelo Teorema Fundamental do Cálculo, dominamos a convergência uniforme de sequências e séries de funções (incluindo Arzelà-Ascoli) e culminamos no cálculo diferencial em $\\mathbb{R}^n$ com a derivada de Fréchet e os teoremas da função inversa e implícita. É a ponte entre o cálculo da graduação e a análise de mestrado.",
+  "bigPicture": "Análise Real II é o coração técnico de qualquer pós-graduação em matemática pura. A convergência uniforme prepara o terreno para espaços de funções, séries de Fourier e análise funcional; Arzelà-Ascoli é o protótipo de todo teorema de compacidade em dimensão infinita; o Teorema da Função Implícita é o motor da geometria diferencial e das EDPs. Em concursos de Instituto Federal (IF) e em provas de mestrado (ENA, exames de admissão do IMPA, UFRJ, USP, UFMG), os temas desta trilha — TVM, Taylor, integrabilidade de Riemann, troca de limite com integral/derivada, teste M de Weierstrass e o Teorema da Função Inversa — são presença garantida. Quem domina esta trilha resolve a maioria das questões de análise dessas provas.",
+  "prereqs": [
+    "analise-real-1",
+    "calculo3",
+    "algebra-linear"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 60,
+  "primaryBooks": [
+    {
+      "title": "Principles of Mathematical Analysis",
+      "author": "Walter Rudin",
+      "note": "O texto-padrão; rigor enxuto. Use para derivação, Riemann-Stieltjes, sequências de funções e funções de várias variáveis.",
+      "chapters": "caps. 5, 6, 7, 9"
+    },
+    {
+      "title": "Curso de Análise, vol. 1",
+      "author": "Elon Lages Lima (IMPA)",
+      "note": "Referência brasileira definitiva para derivada, fórmula de Taylor e integral de Riemann em uma variável; demonstrações detalhadas em PT-BR.",
+      "chapters": "caps. VIII, IX, X"
+    },
+    {
+      "title": "Curso de Análise, vol. 2",
+      "author": "Elon Lages Lima (IMPA)",
+      "note": "Cálculo diferencial em $\\mathbb{R}^n$: derivada de Fréchet, regra da cadeia, função inversa e implícita.",
+      "chapters": "caps. I-VI"
+    },
+    {
+      "title": "Análise Real, vol. 1 e vol. 2",
+      "author": "Elon Lages Lima (Coleção Matemática Universitária, IMPA)",
+      "note": "Versão mais leve e didática; vol. 1 cobre funções de uma variável, vol. 2 cobre várias variáveis. Ótimo para primeira leitura.",
+      "chapters": "vol.1 caps. 8-11; vol.2 caps. 1-6"
+    },
+    {
+      "title": "Calculus on Manifolds",
+      "author": "Michael Spivak",
+      "note": "Tratamento elegante e moderno da diferenciação em $\\mathbb{R}^n$, função inversa e implícita.",
+      "chapters": "caps. 2-3"
+    },
+    {
+      "title": "Mathematical Analysis",
+      "author": "Tom Apostol",
+      "note": "Complemento rigoroso para integral de Riemann, convergência uniforme e equicontinuidade.",
+      "chapters": "caps. 7, 9, 11"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.100 Real Analysis",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "MIT OCW 18.101 Analysis on Manifolds",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Terence Tao - Analysis II",
+      "kind": "livro",
+      "ref": "Springer / notas do autor"
+    },
+    {
+      "title": "Videoaulas de Análise do IMPA (PAPMEM / canal IMPA)",
+      "kind": "video",
+      "ref": "YouTube IMPA"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 4,
+    "mestrado": 5,
+    "note": "Em concursos de IF caem aplicações do TVM, Taylor, cálculo de integrais via TFC, integrabilidade de funções e às vezes convergência uniforme. Em provas de mestrado é tema central: demonstrar o TVM e Rolle, integrabilidade de Riemann pelo critério de Darboux, troca de limite com integral/derivada sob convergência uniforme, teste M de Weierstrass, Arzelà-Ascoli e o Teorema da Função Inversa/Implícita aparecem com altíssima frequência."
+  },
+  "subtopics": [
+    {
+      "id": "analise-real-2-01-derivacao-tvm",
+      "title": "Derivação Rigorosa e o Teorema do Valor Médio",
+      "tagline": "Da definição $\\varepsilon$-$\\delta$ da derivada aos teoremas que controlam o comportamento global de uma função.",
+      "objectives": [
+        "Definir a derivada como limite do quociente de Newton e provar que diferenciabilidade implica continuidade.",
+        "Demonstrar com rigor as regras de derivação, incluindo a regra da cadeia via a decomposição linear da derivada.",
+        "Provar os teoremas de Fermat, Rolle, Lagrange (Valor Médio) e Cauchy (Valor Médio generalizado).",
+        "Caracterizar monotonia, constância e injetividade de uma função a partir do sinal de sua derivada.",
+        "Provar e aplicar a regra de L'Hôpital e o Teorema de Darboux para derivadas."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Derivada",
+          "statement": "$f'(a)=\\lim_{x\\to a}\\dfrac{f(x)-f(a)}{x-a}=\\lim_{h\\to 0}\\dfrac{f(a+h)-f(a)}{h}$, quando o limite existe e é finito."
+        },
+        {
+          "term": "Aproximação linear",
+          "statement": "$f$ é diferenciável em $a$ se e só se $f(a+h)=f(a)+f'(a)h+r(h)$ com $\\lim_{h\\to 0}\\dfrac{r(h)}{h}=0$. A derivada é o coeficiente da melhor aproximação afim."
+        },
+        {
+          "term": "Ponto crítico",
+          "statement": "Um ponto $c$ é crítico de $f$ quando $f'(c)=0$ ou $f$ não é diferenciável em $c$."
+        },
+        {
+          "term": "Função de classe $C^1$",
+          "statement": "$f\\in C^1(I)$ quando $f$ é diferenciável em $I$ e $f'$ é contínua em $I$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Fermat (ponto interior)",
+          "statement": "Se $f$ tem máximo ou mínimo local num ponto interior $c$ do domínio e $f$ é diferenciável em $c$, então $f'(c)=0$.",
+          "whyItMatters": "É a base de toda otimização: candidatos a extremo no interior estão entre os pontos críticos. Justifica o método de procurar zeros da derivada."
+        },
+        {
+          "name": "Teorema de Rolle",
+          "statement": "Se $f$ é contínua em $[a,b]$, diferenciável em $(a,b)$ e $f(a)=f(b)$, então existe $c\\in(a,b)$ com $f'(c)=0$.",
+          "whyItMatters": "É o caso particular que, via uma função auxiliar, gera todo o TVM. Geometricamente garante uma tangente horizontal."
+        },
+        {
+          "name": "Teorema do Valor Médio (Lagrange)",
+          "statement": "Se $f$ é contínua em $[a,b]$ e diferenciável em $(a,b)$, então existe $c\\in(a,b)$ tal que $f(b)-f(a)=f'(c)(b-a)$.",
+          "whyItMatters": "Conecta o comportamento global (variação total) com o local (derivada num ponto). É a ferramenta central para estimativas, monotonia e desigualdades."
+        },
+        {
+          "name": "TVM de Cauchy",
+          "statement": "Se $f,g$ são contínuas em $[a,b]$ e diferenciáveis em $(a,b)$, existe $c\\in(a,b)$ com $\\bigl(f(b)-f(a)\\bigr)g'(c)=\\bigl(g(b)-g(a)\\bigr)f'(c)$.",
+          "whyItMatters": "Generaliza Lagrange e é o passo-chave na demonstração da regra de L'Hôpital e da fórmula de Taylor com resto."
+        },
+        {
+          "name": "Teorema de Darboux",
+          "statement": "Se $f$ é diferenciável em $[a,b]$, então $f'$ assume todo valor entre $f'(a)$ e $f'(b)$ — mesmo que $f'$ não seja contínua.",
+          "whyItMatters": "Mostra que derivadas têm a propriedade do valor intermediário: uma derivada nunca tem descontinuidade de salto. Limita drasticamente quais funções podem ser derivadas."
+        }
+      ],
+      "summary": "A derivada formaliza a ideia de taxa de variação instantânea como o limite do quociente de Newton; equivalentemente, $f$ é diferenciável em $a$ quando admite uma boa aproximação afim $f(a)+f'(a)h$ com resto de ordem superior a $h$. Dessa caracterização linear seguem de imediato as regras operacionais — em particular a regra da cadeia, cuja prova limpa usa a forma $\\Delta f=f'(a)h+o(h)$ para evitar a divisão por zero ingênua. O ponto culminante é o Teorema do Valor Médio: combinando o Teorema de Fermat (extremos interiores anulam a derivada) com Rolle, obtemos que a variação média de $f$ num intervalo é realizada pela derivada em algum ponto interior.\n\nO TVM é o cavalo de batalha da análise de uma variável: dele se deduz que $f'>0$ em um intervalo implica $f$ estritamente crescente, que $f'\\equiv 0$ implica $f$ constante, e estimativas finas como $|f(x)-f(y)|\\le M|x-y|$ quando $|f'|\\le M$ (Lipschitz). O TVM de Cauchy estende o resultado a pares de funções e abre caminho para L'Hôpital e Taylor. Por fim, o Teorema de Darboux revela uma rigidez surpreendente: ainda que $f'$ possa ser descontínua, ela sempre satisfaz a propriedade do valor intermediário.",
+      "commonPitfalls": [
+        "Aplicar Rolle ou o TVM sem checar a continuidade no intervalo FECHADO $[a,b]$ e a diferenciabilidade no ABERTO $(a,b)$ — as hipóteses nos extremos são diferentes do interior.",
+        "Achar que o ponto $c$ do TVM é único ou calculável explicitamente; ele apenas existe e em geral não é dado por fórmula.",
+        "Concluir que $f'$ é contínua só porque $f$ é diferenciável: existem funções diferenciáveis com derivada descontínua (ex.: $x^2\\sin(1/x)$).",
+        "Aplicar L'Hôpital fora de uma indeterminação $0/0$ ou $\\infty/\\infty$, ou esquecer de verificar que o limite do quociente das derivadas existe antes de afirmar a igualdade."
+      ],
+      "worked": "**Afirmação:** $|\\sin x-\\sin y|\\le|x-y|$ para todos $x,y\\in\\mathbb{R}$.\n\n**Prova.** Fixados $x\\neq y$, a função $f(t)=\\sin t$ é contínua em $[\\,\\min(x,y),\\max(x,y)\\,]$ e diferenciável no interior, com $f'(t)=\\cos t$. Pelo Teorema do Valor Médio existe $c$ entre $x$ e $y$ tal que\n$$\\sin x-\\sin y=\\cos(c)\\,(x-y).$$\nComo $|\\cos c|\\le 1$, tomando módulos obtemos $|\\sin x-\\sin y|=|\\cos c|\\,|x-y|\\le|x-y|$. O caso $x=y$ é trivial. $\\blacksquare$\n\nEsse argumento é o paradigma: o TVM transforma uma cota sobre $f'$ numa cota sobre a variação de $f$.",
+      "exercises": [
+        {
+          "prompt": "Seja $f:\\mathbb{R}\\to\\mathbb{R}$ diferenciável com $f'(x)=0$ para todo $x$. Prove que $f$ é constante. Em seguida, dê um exemplo mostrando que a hipótese de o domínio ser um intervalo é essencial.",
+          "hint": "Use o TVM entre dois pontos quaisquer para a primeira parte. Para o contra-exemplo, considere uma função em $(-\\infty,0)\\cup(0,\\infty)$.",
+          "difficulty": 2,
+          "solution": "**Parte 1 (f'=0 em R implica f constante).** Sejam $x<y$ dois pontos quaisquer de $\\mathbb{R}$. Como $f$ e diferenciavel em todo $\\mathbb{R}$, em particular e continua em $[x,y]$ e diferenciavel em $(x,y)$. Pelo Teorema do Valor Medio existe $c\\in(x,y)$ com\n$$f(y)-f(x)=f'(c)\\,(y-x).$$\nPor hipotese $f'(c)=0$, logo $f(y)-f(x)=0$, ou seja $f(x)=f(y)$. Como $x,y$ eram arbitrarios, $f$ assume o mesmo valor em todos os pontos, isto e, $f$ e constante. $\\blacksquare$\n\n**Parte 2 (a hipotese de dominio ser intervalo e essencial).** Considere o dominio $D=(-\\infty,0)\\cup(0,\\infty)$, que NAO e um intervalo, e a funcao\n$$f(x)=\\begin{cases}0,&x<0,\\\\1,&x>0.\\end{cases}$$\nEm cada componente $f$ e constante, logo $f'(x)=0$ para todo $x\\in D$. No entanto $f$ NAO e constante (vale $0$ a esquerda e $1$ a direita). O TVM nao pode ser aplicado entre um ponto negativo e um positivo porque nao ha um intervalo contido no dominio ligando os dois. Isso mostra que a conexidade do dominio (ser intervalo) e indispensavel. $\\blacksquare$",
+          "steps": [
+            "Para provar constancia, nao tente calcular f: compare dois pontos arbitrarios x<y usando uma ferramenta que ligue variacao global a derivada.",
+            "Aplique o TVM em [x,y]: existe c com f(y)-f(x)=f'(c)(y-x).",
+            "Substitua f'(c)=0 para concluir f(x)=f(y); como x,y sao arbitrarios, f e constante.",
+            "Para o contra-exemplo, quebre o dominio em dois pedacos desconexos (retire o 0) e defina valores diferentes em cada pedaco.",
+            "Verifique que a derivada e 0 em todo o dominio mas f nao e constante, e observe que o TVM falha por nao existir intervalo ligando os pedacos."
+          ]
+        },
+        {
+          "prompt": "Mostre que a equação $x^3-3x+c=0$ tem no máximo uma raiz no intervalo $[-1,1]$, qualquer que seja a constante $c$.",
+          "hint": "Suponha duas raízes e aplique Rolle; analise o sinal de $f'$ em $[-1,1]$.",
+          "difficulty": 3,
+          "solution": "Seja $f(x)=x^3-3x+c$. Suponha, por absurdo, que $f$ tenha duas raizes distintas $\\alpha<\\beta$ em $[-1,1]$, isto e, $f(\\alpha)=f(\\beta)=0$.\n\nComo $f$ e um polinomio, e continua em $[\\alpha,\\beta]$ e diferenciavel em $(\\alpha,\\beta)$, com $f(\\alpha)=f(\\beta)$. Pelo Teorema de Rolle existe $\\xi\\in(\\alpha,\\beta)\\subseteq(-1,1)$ tal que $f'(\\xi)=0$.\n\nMas $f'(x)=3x^2-3=3(x^2-1)$. Em $(-1,1)$ temos $x^2<1$, logo $f'(x)=3(x^2-1)<0$ para todo $x\\in(-1,1)$. Em particular $f'(\\xi)\\neq0$, contradizendo Rolle.\n\nLogo nao podem existir duas raizes em $[-1,1]$; ou seja, $f$ tem no maximo uma raiz nesse intervalo, qualquer que seja $c$. $\\blacksquare$\n\n*Observacao:* de fato $f'<0$ em $(-1,1)$ significa que $f$ e estritamente decrescente ai, portanto injetiva, o que ja garante no maximo uma raiz.",
+          "steps": [
+            "Suponha por contradicao que existam duas raizes distintas em [-1,1].",
+            "Como f(alpha)=f(beta)=0, as hipoteses de Rolle estao satisfeitas em [alpha,beta].",
+            "Rolle fornece um ponto interior xi com f'(xi)=0.",
+            "Calcule f'(x)=3(x^2-1) e observe que f'(x)<0 estritamente em (-1,1).",
+            "Isso contradiz f'(xi)=0, logo nao ha duas raizes: no maximo uma."
+          ]
+        },
+        {
+          "prompt": "Prove a regra da cadeia: se $g$ é diferenciável em $a$ e $f$ é diferenciável em $g(a)$, então $(f\\circ g)'(a)=f'(g(a))\\,g'(a)$. Cuide do caso em que $g(x)=g(a)$ para $x$ próximos de $a$.",
+          "hint": "Defina $\\varphi(y)=\\frac{f(y)-f(g(a))}{y-g(a)}$ para $y\\neq g(a)$ e $\\varphi(g(a))=f'(g(a))$; mostre que $\\varphi$ é contínua em $g(a)$.",
+          "difficulty": 4,
+          "solution": "Queremos provar que se $g$ e diferenciavel em $a$ e $f$ e diferenciavel em $b:=g(a)$, entao $(f\\circ g)'(a)=f'(b)\\,g'(a)$.\n\n**Definicao da funcao auxiliar.** Defina $\\varphi$ numa vizinhanca de $b$ por\n$$\\varphi(y)=\\begin{cases}\\dfrac{f(y)-f(b)}{y-b},&y\\neq b,\\\\[6pt] f'(b),&y=b.\\end{cases}$$\nComo $f$ e diferenciavel em $b$, $\\lim_{y\\to b}\\varphi(y)=f'(b)=\\varphi(b)$, logo **$\\varphi$ e continua em $b$**. Alem disso, para TODO $y$ (inclusive $y=b$, trivialmente) vale a identidade\n$$f(y)-f(b)=\\varphi(y)\\,(y-b).\\qquad(\\ast)$$\nEssa e a chave: $(\\ast)$ vale mesmo quando $y=b$, evitando qualquer divisao por zero.\n\n**Montagem.** Para $x\\neq a$ proximo de $a$, ponha $y=g(x)$ em $(\\ast)$:\n$$f(g(x))-f(g(a))=\\varphi(g(x))\\,\\bigl(g(x)-g(a)\\bigr).$$\nDividindo por $x-a$:\n$$\\frac{f(g(x))-f(g(a))}{x-a}=\\varphi(g(x))\\cdot\\frac{g(x)-g(a)}{x-a}.$$\n\n**Passagem ao limite.** Quando $x\\to a$: como $g$ e diferenciavel (logo continua) em $a$, $g(x)\\to g(a)=b$, e pela continuidade de $\\varphi$ em $b$, $\\varphi(g(x))\\to\\varphi(b)=f'(b)$. Alem disso $\\dfrac{g(x)-g(a)}{x-a}\\to g'(a)$. Portanto\n$$(f\\circ g)'(a)=\\lim_{x\\to a}\\frac{f(g(x))-f(g(a))}{x-a}=f'(b)\\,g'(a)=f'(g(a))\\,g'(a).$$\n\n**Por que o truque resolve o caso $g(x)=g(a)$.** Na tentativa ingenua escreve-se $\\frac{f(g(x))-f(g(a))}{g(x)-g(a)}\\cdot\\frac{g(x)-g(a)}{x-a}$, o que e invalido quando $g(x)=g(a)$ (denominador nulo) para $x$ arbitrariamente proximos de $a$. Com $\\varphi$, a identidade $(\\ast)$ dispensa a divisao: se $g(x)=g(a)$, ambos os lados sao $0$ e tudo permanece consistente. $\\blacksquare$",
+          "steps": [
+            "Identifique o obstaculo: a prova ingenua divide por g(x)-g(a), que pode ser 0 para x perto de a.",
+            "Contorne definindo phi(y) igual ao quociente de Newton de f para y diferente de b e igual a f'(b) em y=b.",
+            "Mostre que phi e continua em b (usando a diferenciabilidade de f) e que vale a identidade f(y)-f(b)=phi(y)(y-b) para todo y.",
+            "Substitua y=g(x), divida por x-a e obtenha o produto phi(g(x)) vezes o quociente de Newton de g.",
+            "Passe ao limite x->a usando continuidade de g e de phi, chegando a f'(g(a))g'(a)."
+          ]
+        },
+        {
+          "prompt": "Use o Teorema de Darboux para provar que a função $g(x)=1$ se $x\\ge 0$ e $g(x)=-1$ se $x<0$ não é a derivada de nenhuma função em $\\mathbb{R}$.",
+          "hint": "Se fosse $g=f'$, $f'$ deveria assumir o valor $0$ entre $-1$ e $1$; verifique que $g$ nunca vale $0$.",
+          "difficulty": 2,
+          "solution": "Seja $g(x)=1$ para $x\\ge0$ e $g(x)=-1$ para $x<0$. Suponha, por absurdo, que exista $f:\\mathbb{R}\\to\\mathbb{R}$ diferenciavel com $f'=g$ em todo $\\mathbb{R}$.\n\nTome os pontos $-1$ e $1$. Temos $f'(-1)=g(-1)=-1$ e $f'(1)=g(1)=1$. Pelo **Teorema de Darboux**, como $f$ e diferenciavel em $[-1,1]$, a derivada $f'$ assume TODO valor intermediario entre $f'(-1)=-1$ e $f'(1)=1$. Em particular, o valor $0$ (que esta entre $-1$ e $1$) deve ser assumido: existe $c\\in(-1,1)$ com $f'(c)=0$.\n\nMas $f'=g$, e $g$ so assume os valores $\\pm1$ — nunca vale $0$. Logo $f'(c)=g(c)\\in\\{-1,1\\}$, contradizendo $f'(c)=0$.\n\nPortanto nao existe $f$ diferenciavel com $f'=g$: a funcao degrau $g$ nao e derivada de nenhuma funcao. $\\blacksquare$\n\n*Moral:* uma derivada nunca tem descontinuidade de salto, pois deve satisfazer a propriedade do valor intermediario (Darboux).",
+          "steps": [
+            "Suponha por absurdo que g=f' para alguma f diferenciavel.",
+            "Escolha dois pontos onde g toma valores opostos: f'(-1)=-1 e f'(1)=1.",
+            "Aplique Darboux: f' deve assumir o valor 0, intermediario entre -1 e 1.",
+            "Observe que g so vale +1 ou -1, nunca 0, gerando contradicao.",
+            "Conclua que g nao e derivada de funcao alguma."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de derivada em $a$",
+          "back": "$f'(a)=\\lim_{h\\to0}\\dfrac{f(a+h)-f(a)}{h}$, quando existe e é finito."
+        },
+        {
+          "front": "Diferenciável $\\Rightarrow$ ?",
+          "back": "Diferenciável em $a$ implica contínua em $a$. A recíproca é falsa (ex.: $|x|$ em $0$)."
+        },
+        {
+          "front": "Hipóteses do Teorema do Valor Médio",
+          "back": "$f$ contínua em $[a,b]$ e diferenciável em $(a,b)$. Conclusão: $\\exists\\,c\\in(a,b)$ com $f(b)-f(a)=f'(c)(b-a)$."
+        },
+        {
+          "front": "Teorema de Fermat",
+          "back": "Extremo local num ponto interior $c$ com $f$ diferenciável $\\Rightarrow f'(c)=0$."
+        },
+        {
+          "front": "$f'>0$ num intervalo implica",
+          "back": "$f$ é estritamente crescente nesse intervalo (consequência do TVM)."
+        },
+        {
+          "front": "Teorema de Darboux (1 frase)",
+          "back": "Derivadas têm a propriedade do valor intermediário, mesmo sem serem contínuas."
+        },
+        {
+          "front": "TVM de Cauchy",
+          "back": "$\\bigl(f(b)-f(a)\\bigr)g'(c)=\\bigl(g(b)-g(a)\\bigr)f'(c)$ para algum $c\\in(a,b)$."
+        },
+        {
+          "front": "Critério de Lipschitz via derivada",
+          "back": "Se $|f'|\\le M$ num intervalo, então $|f(x)-f(y)|\\le M|x-y|$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Rudin, cap. 5 (Differentiation)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lima, Curso de Análise vol. 1, cap. VIII",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise a definicao de limite e de continuidade (Analise Real I): a derivada e um limite do quociente de Newton, entao voce precisa dominar a manipulacao epsilon-delta antes de tudo.",
+          "Leia Elon Lima, Curso de Analise vol. 1, cap. VIII, ou Rudin cap. 5, focando na equivalencia entre 'quociente de Newton' e 'aproximacao afim f(a+h)=f(a)+f'(a)h+o(h)'. Escreva voce mesmo a demonstracao de que diferenciavel implica continuo.",
+          "Estude as demonstracoes de Fermat, Rolle e do TVM de Lagrange nessa ordem: cada um usa o anterior. Refaca a prova do TVM construindo a funcao auxiliar g(x)=f(x)-[reta secante] e aplicando Rolle.",
+          "Trabalhe as aplicacoes do TVM: monotonia (f'>0 => crescente), constancia (f'=0 => constante), Lipschitz (|f'|<=M) e a regra de L'Hopital via TVM de Cauchy. Prove o Teorema de Darboux para ver a rigidez das derivadas.",
+          "Assista a uma videoaula sobre TVM e Darboux para fixar a intuicao geometrica das tangentes horizontais e da propriedade do valor intermediario para derivadas.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (a lista de hipoteses exatas de Rolle/TVM e o esquema da funcao auxiliar)."
+        ],
+        "searchQueries": [
+          "teorema do valor medio demonstracao funcao auxiliar Rolle",
+          "regra da cadeia demonstracao rigorosa caso g(x)=g(a)",
+          "teorema de Darboux derivada propriedade valor intermediario prova",
+          "funcao diferenciavel com derivada descontinua x^2 sin(1/x)",
+          "mean value theorem Cauchy L'Hopital proof",
+          "Darboux theorem derivatives intermediate value property"
+        ],
+        "videos": [
+          {
+            "title": "Analise Real - Derivadas e Teorema do Valor Medio",
+            "channel": "IMPA (PAPMEM / canal IMPA)",
+            "note": "Procure as aulas de Analise na Reta sobre derivacao e TVM para o tratamento rigoroso em PT-BR usado no IMPA."
+          },
+          {
+            "title": "MIT 18.100 Real Analysis - Differentiation",
+            "channel": "MIT OpenCourseWare",
+            "note": "Assista as aulas sobre derivada, mean value theorem e Taylor; boa fonte para as demonstracoes no estilo Rudin."
+          },
+          {
+            "title": "The Mean Value Theorem",
+            "channel": "Dr. Peyam",
+            "note": "Explicacoes intuitivas e exemplos do TVM, TVM de Cauchy e L'Hopital, uteis para fixar as hipoteses."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap. 5 (Differentiation)",
+            "where": "Walter Rudin - livro texto padrao"
+          },
+          {
+            "title": "Curso de Analise vol. 1, cap. VIII",
+            "where": "Elon Lages Lima (IMPA) - demonstracoes detalhadas em PT-BR"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-2-02-taylor",
+      "title": "Fórmula de Taylor com Resto",
+      "tagline": "Aproximar funções por polinômios e controlar exatamente o erro cometido.",
+      "objectives": [
+        "Definir o polinômio de Taylor de ordem $n$ e interpretá-lo como a melhor aproximação polinomial local.",
+        "Demonstrar a fórmula de Taylor com resto de Lagrange via o TVM de Cauchy.",
+        "Enunciar e usar as formas de Peano (infinitesimal) e integral do resto.",
+        "Aplicar Taylor para classificar pontos críticos e calcular limites indeterminados.",
+        "Distinguir funções analíticas de funções $C^\\infty$ não analíticas."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Polinômio de Taylor",
+          "statement": "$P_n(x)=\\sum_{k=0}^{n}\\dfrac{f^{(k)}(a)}{k!}(x-a)^k$, o único polinômio de grau $\\le n$ que coincide com $f$ e suas $n$ primeiras derivadas em $a$."
+        },
+        {
+          "term": "Resto de Lagrange",
+          "statement": "$R_n(x)=\\dfrac{f^{(n+1)}(\\xi)}{(n+1)!}(x-a)^{n+1}$ para algum $\\xi$ entre $a$ e $x$."
+        },
+        {
+          "term": "Resto de Peano",
+          "statement": "$f(x)=P_n(x)+o\\bigl((x-a)^n\\bigr)$ quando $x\\to a$; exige apenas $f^{(n)}(a)$ existente."
+        },
+        {
+          "term": "Função analítica",
+          "statement": "$f$ é (real-)analítica em $a$ se coincide com sua série de Taylor numa vizinhança de $a$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Fórmula de Taylor com resto de Lagrange",
+          "statement": "Se $f$ tem $n+1$ derivadas em $(a-\\delta,a+\\delta)$, então para cada $x$ nesse intervalo existe $\\xi$ entre $a$ e $x$ tal que $f(x)=\\sum_{k=0}^{n}\\frac{f^{(k)}(a)}{k!}(x-a)^k+\\frac{f^{(n+1)}(\\xi)}{(n+1)!}(x-a)^{n+1}$.",
+          "whyItMatters": "Fornece uma cota explícita do erro de aproximação polinomial, base de toda estimativa numérica e de convergência de séries de Taylor."
+        },
+        {
+          "name": "Fórmula de Taylor infinitesimal (Peano)",
+          "statement": "Se $f^{(n)}(a)$ existe, então $f(x)=P_n(x)+r(x)(x-a)^n$ com $\\lim_{x\\to a}r(x)=0$.",
+          "whyItMatters": "É a forma certa para calcular limites e estudar comportamento local com hipóteses mínimas de regularidade."
+        },
+        {
+          "name": "Resto integral",
+          "statement": "Se $f\\in C^{n+1}$, então $R_n(x)=\\dfrac{1}{n!}\\displaystyle\\int_a^x (x-t)^n f^{(n+1)}(t)\\,dt$.",
+          "whyItMatters": "Dá a forma exata do resto sem ponto intermediário desconhecido; conecta Taylor ao Teorema Fundamental do Cálculo e a integração por partes."
+        },
+        {
+          "name": "Critério da $n$-ésima derivada",
+          "statement": "Se $f'(a)=\\dots=f^{(n-1)}(a)=0$ e $f^{(n)}(a)\\neq 0$: se $n$ é par, $a$ é extremo (mínimo se $f^{(n)}(a)>0$, máximo se $<0$); se $n$ é ímpar, $a$ é ponto de inflexão (não é extremo).",
+          "whyItMatters": "Generaliza o teste da segunda derivada e resolve casos degenerados onde $f''(a)=0$."
+        }
+      ],
+      "summary": "A fórmula de Taylor responde à pergunta: qual é o polinômio de grau $\\le n$ que melhor aproxima $f$ perto de $a$, e quão bom é esse ajuste? O polinômio de Taylor $P_n$ é caracterizado por compartilhar com $f$ o valor e as $n$ primeiras derivadas em $a$. O conteúdo profundo está no resto $R_n=f-P_n$: a forma de Lagrange, obtida aplicando repetidamente o TVM de Cauchy, expressa o erro como um termo de ordem $(x-a)^{n+1}$ com uma derivada de ordem $n+1$ avaliada num ponto intermediário desconhecido; a forma de Peano dá só a ordem infinitesimal do erro mas com hipóteses mínimas; e a forma integral dá o erro exato em termos de uma integral.\n\nAs aplicações são vastas. Para limites, Taylor com resto de Peano substitui malabarismos algébricos por contas diretas de coeficientes. Para otimização, o sinal da primeira derivada não nula classifica o ponto crítico. Para análise numérica e séries, a cota de Lagrange determina se a série de Taylor converge para a função. Aqui surge uma sutileza fundamental: ser $C^\\infty$ não basta para ser analítica. O exemplo de Cauchy $f(x)=e^{-1/x^2}$ (com $f(0)=0$) tem todas as derivadas nulas na origem, logo sua série de Taylor é identicamente zero, mas $f$ não é zero — uma função suave que sua própria série de Taylor não consegue reconstruir.",
+      "commonPitfalls": [
+        "Supor que a série de Taylor de uma função $C^\\infty$ sempre converge para a função: $e^{-1/x^2}$ é o contra-exemplo clássico.",
+        "Confundir as hipóteses: a forma de Peano exige só $f^{(n)}(a)$; a de Lagrange exige $f^{(n+1)}$ em todo um intervalo.",
+        "Tratar o ponto $\\xi$ do resto de Lagrange como conhecido ou fixo — ele depende de $x$ e em geral é inacessível; só usamos cotas sobre $f^{(n+1)}$.",
+        "Esquecer o fatorial $(n+1)!$ no denominador do resto, gerando estimativas de erro incorretas."
+      ],
+      "worked": "**Cálculo de limite com Taylor (resto de Peano).** Vamos achar $\\displaystyle\\lim_{x\\to 0}\\frac{e^{x}-1-x-\\tfrac{x^2}{2}}{x^3}$.\n\nUsando a expansão $e^{x}=1+x+\\dfrac{x^2}{2}+\\dfrac{x^3}{6}+o(x^3)$ quando $x\\to 0$, o numerador vale\n$$e^x-1-x-\\tfrac{x^2}{2}=\\frac{x^3}{6}+o(x^3).$$\nLogo\n$$\\frac{e^{x}-1-x-\\tfrac{x^2}{2}}{x^3}=\\frac{1}{6}+\\frac{o(x^3)}{x^3}\\xrightarrow[x\\to0]{}\\frac{1}{6}.$$\nO mesmo limite por L'Hôpital exigiria três derivações sucessivas; Taylor o resolve lendo um único coeficiente. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Escreva a fórmula de Taylor de ordem 2 com resto de Lagrange para $f(x)=\\sqrt{1+x}$ em torno de $a=0$ e use-a para estimar $\\sqrt{1{,}1}$ com cota explícita do erro.",
+          "hint": "Calcule $f,f',f'',f'''$; o resto é $\\frac{f'''(\\xi)}{6}x^3$ com $\\xi\\in(0,x)$; majore $|f'''|$ em $[0,0{,}1]$.",
+          "difficulty": 3,
+          "solution": "Seja $f(x)=\\sqrt{1+x}=(1+x)^{1/2}$, expandida em torno de $a=0$.\n\n**Derivadas.**\n$$f(x)=(1+x)^{1/2},\\quad f'(x)=\\tfrac12(1+x)^{-1/2},\\quad f''(x)=-\\tfrac14(1+x)^{-3/2},\\quad f'''(x)=\\tfrac38(1+x)^{-5/2}.$$\nEm $a=0$: $f(0)=1$, $f'(0)=\\tfrac12$, $f''(0)=-\\tfrac14$.\n\n**Polinomio de Taylor de ordem 2 com resto de Lagrange.**\n$$\\sqrt{1+x}=1+\\frac12 x-\\frac18 x^2+R_2(x),\\qquad R_2(x)=\\frac{f'''(\\xi)}{3!}x^3=\\frac{1}{6}\\cdot\\frac{3}{8}(1+\\xi)^{-5/2}x^3=\\frac{x^3}{16}(1+\\xi)^{-5/2},$$\ncom $\\xi$ entre $0$ e $x$.\n\n**Estimativa de $\\sqrt{1{,}1}$.** Tome $x=0{,}1$:\n$$\\sqrt{1{,}1}\\approx 1+\\frac12(0{,}1)-\\frac18(0{,}1)^2=1+0{,}05-0{,}00125=1{,}04875.$$\n\n**Cota do erro.** Para $\\xi\\in(0,\\,0{,}1)$ vale $(1+\\xi)^{-5/2}\\le(1+0)^{-5/2}=1$ (a funcao e decrescente em $\\xi$). Logo\n$$|R_2(0{,}1)|=\\frac{(0{,}1)^3}{16}(1+\\xi)^{-5/2}\\le\\frac{10^{-3}}{16}=6{,}25\\times10^{-5}.$$\nPortanto $\\sqrt{1{,}1}=1{,}04875\\pm6{,}25\\times10^{-5}$. (De fato $\\sqrt{1{,}1}=1{,}048808\\ldots$, dentro da cota.) $\\blacksquare$",
+          "steps": [
+            "Calcule f, f', f'', f''' de (1+x)^{1/2} e avalie f, f', f'' em 0.",
+            "Monte P_2(x)=1+x/2-x^2/8 e escreva o resto de Lagrange R_2=f'''(xi)/6 * x^3.",
+            "Substitua x=0,1 no polinomio para obter a estimativa numerica 1,04875.",
+            "Majore |f'''(xi)| usando que (1+xi)^{-5/2}<=1 para xi em (0, 0,1).",
+            "Combine para obter a cota de erro 6,25e-5 e enuncie o resultado com incerteza."
+          ]
+        },
+        {
+          "prompt": "Prove que $e^{-1/x^2}$ (com valor $0$ em $x=0$) é $C^\\infty$ em $\\mathbb{R}$ e que todas as suas derivadas se anulam na origem.",
+          "hint": "Mostre por indução que $f^{(n)}(x)=P_n(1/x)e^{-1/x^2}$ para $x\\neq0$ e calcule o limite do quociente de Newton usando que exponencial domina polinômio.",
+          "difficulty": 4,
+          "solution": "Seja $f(x)=e^{-1/x^2}$ para $x\\neq0$ e $f(0)=0$.\n\n**Passo 1: forma das derivadas para $x\\neq0$.** Afirmamos que existe, para cada $n\\ge0$, um polinomio $P_n$ tal que\n$$f^{(n)}(x)=P_n\\!\\left(\\tfrac1x\\right)e^{-1/x^2},\\qquad x\\neq0.$$\nProva por inducao. Caso $n=0$: $P_0\\equiv1$. Suponha valido para $n$. Derivando (regra do produto e da cadeia, com $\\tfrac{d}{dx}\\tfrac1x=-\\tfrac1{x^2}$ e $\\tfrac{d}{dx}e^{-1/x^2}=\\tfrac{2}{x^3}e^{-1/x^2}$):\n$$f^{(n+1)}(x)=\\left[-\\tfrac1{x^2}P_n'\\!\\left(\\tfrac1x\\right)+\\tfrac{2}{x^3}P_n\\!\\left(\\tfrac1x\\right)\\right]e^{-1/x^2}=P_{n+1}\\!\\left(\\tfrac1x\\right)e^{-1/x^2},$$\nonde $P_{n+1}(t)=-t^2P_n'(t)+2t^3P_n(t)$ e polinomio. Isso fecha a inducao.\n\n**Passo 2: as derivadas na origem sao todas nulas.** Provamos por inducao que $f^{(n)}(0)=0$. Caso $n=0$: $f(0)=0$. Suponha $f^{(n)}(0)=0$. Entao\n$$f^{(n+1)}(0)=\\lim_{h\\to0}\\frac{f^{(n)}(h)-f^{(n)}(0)}{h}=\\lim_{h\\to0}\\frac{P_n(1/h)e^{-1/h^2}}{h}=\\lim_{h\\to0}Q\\!\\left(\\tfrac1h\\right)e^{-1/h^2},$$\ncom $Q(t)=t\\,P_n(t)$ polinomio. Ponha $t=1/h\\to\\pm\\infty$. Como a exponencial $e^{-t^2}$ domina qualquer polinomio, $\\lim_{t\\to\\pm\\infty}Q(t)e^{-t^2}=0$. Logo $f^{(n+1)}(0)=0$.\n\n**Conclusao.** Para $x\\neq0$, $f$ e composicao de funcoes suaves, logo $C^\\infty$; e nos pontos $x=0$ acabamos de mostrar que todas as derivadas existem e valem $0$. Assim $f\\in C^\\infty(\\mathbb{R})$ e $f^{(n)}(0)=0$ para todo $n$. Consequentemente a serie de Taylor de $f$ em $0$ e identicamente nula, embora $f(x)>0$ para $x\\neq0$ — o exemplo classico de funcao suave nao analitica. $\\blacksquare$",
+          "steps": [
+            "Estabeleca por inducao a forma f^{(n)}(x)=P_n(1/x)e^{-1/x^2} para x diferente de 0.",
+            "Ao derivar, use d/dx(1/x)=-1/x^2 e d/dx e^{-1/x^2}=(2/x^3)e^{-1/x^2} para achar a recorrencia de P_{n+1}.",
+            "Prove por inducao que f^{(n)}(0)=0 calculando o quociente de Newton de f^{(n)} na origem.",
+            "Reduza o limite a Q(1/h)e^{-1/h^2} e faca t=1/h tender a infinito.",
+            "Use que a exponencial e^{-t^2} domina qualquer polinomio para concluir que o limite e 0, logo todas as derivadas se anulam."
+          ]
+        },
+        {
+          "prompt": "Seja $f\\in C^3$ com $f'(a)=f''(a)=0$ e $f'''(a)\\neq 0$. Prove, via Taylor, que $a$ NÃO é extremo local de $f$.",
+          "hint": "Use $f(x)=f(a)+\\frac{f'''(a)}{6}(x-a)^3+o((x-a)^3)$ e analise o sinal de cada lado de $a$.",
+          "difficulty": 3,
+          "solution": "Seja $f\\in C^3$ numa vizinhanca de $a$ com $f'(a)=f''(a)=0$ e $f'''(a)\\neq0$. Queremos mostrar que $a$ nao e extremo local.\n\n**Taylor de ordem 3 (Peano).** Como $f\\in C^3$, vale\n$$f(x)=f(a)+f'(a)(x-a)+\\frac{f''(a)}{2}(x-a)^2+\\frac{f'''(a)}{6}(x-a)^3+o\\bigl((x-a)^3\\bigr).$$\nSubstituindo $f'(a)=f''(a)=0$:\n$$f(x)-f(a)=\\frac{f'''(a)}{6}(x-a)^3+o\\bigl((x-a)^3\\bigr)=(x-a)^3\\left[\\frac{f'''(a)}{6}+\\frac{o((x-a)^3)}{(x-a)^3}\\right].$$\n\n**Analise do sinal.** Denote $c=\\frac{f'''(a)}{6}\\neq0$ e $\\varepsilon(x)=\\frac{o((x-a)^3)}{(x-a)^3}\\to0$ quando $x\\to a$. Existe $\\delta>0$ tal que $|\\varepsilon(x)|<|c|$ para $0<|x-a|<\\delta$; assim o colchete $c+\\varepsilon(x)$ tem o **mesmo sinal de $c$** nessa vizinhanca perfurada. Portanto, para $0<|x-a|<\\delta$,\n$$\\operatorname{sinal}\\bigl(f(x)-f(a)\\bigr)=\\operatorname{sinal}\\bigl((x-a)^3\\bigr)\\cdot\\operatorname{sinal}(c).$$\nComo $(x-a)^3$ muda de sinal ao cruzar $a$ (negativo para $x<a$, positivo para $x>a$), a diferenca $f(x)-f(a)$ tambem muda de sinal: de um lado de $a$ e positiva, do outro negativa.\n\n**Conclusao.** Em qualquer vizinhanca de $a$ existem pontos com $f(x)>f(a)$ e pontos com $f(x)<f(a)$. Logo $a$ nao e maximo nem minimo local — e um ponto de inflexao (com tangente horizontal). $\\blacksquare$",
+          "steps": [
+            "Escreva Taylor de ordem 3 com resto de Peano em torno de a.",
+            "Anule f'(a) e f''(a) para obter f(x)-f(a)=(f'''(a)/6)(x-a)^3+o((x-a)^3).",
+            "Fatore (x-a)^3 e isole o colchete c+epsilon(x), com c=f'''(a)/6 diferente de 0.",
+            "Mostre que perto de a o colchete mantem o sinal de c, entao o sinal de f(x)-f(a) e o de (x-a)^3.",
+            "Como (x-a)^3 troca de sinal em a, f(x)-f(a) troca de sinal: a nao e extremo (e inflexao)."
+          ]
+        },
+        {
+          "prompt": "Demonstre a forma integral do resto a partir do Teorema Fundamental do Cálculo, integrando por partes sucessivamente.",
+          "hint": "Comece de $f(x)=f(a)+\\int_a^x f'(t)\\,dt$ e integre por partes usando $u=f'(t)$, $dv=dt$ com a primitiva conveniente $-(x-t)$.",
+          "difficulty": 4,
+          "solution": "Seja $f\\in C^{n+1}$ num intervalo contendo $a$ e $x$. Provamos a forma integral do resto\n$$R_n(x)=f(x)-\\sum_{k=0}^n\\frac{f^{(k)}(a)}{k!}(x-a)^k=\\frac{1}{n!}\\int_a^x(x-t)^n f^{(n+1)}(t)\\,dt.$$\n\n**Base ($n=0$).** Pelo Teorema Fundamental do Calculo,\n$$f(x)=f(a)+\\int_a^x f'(t)\\,dt,$$\nou seja $R_0(x)=\\int_a^x f'(t)\\,dt=\\frac{1}{0!}\\int_a^x(x-t)^0 f^{(1)}(t)\\,dt$. A formula vale para $n=0$.\n\n**Passo indutivo.** Suponha valida a forma para $n-1$:\n$$R_{n-1}(x)=\\frac{1}{(n-1)!}\\int_a^x(x-t)^{n-1}f^{(n)}(t)\\,dt.$$\nIntegramos por partes escolhendo\n$$u=f^{(n)}(t),\\ du=f^{(n+1)}(t)\\,dt,\\qquad dv=(x-t)^{n-1}dt,\\ v=-\\frac{(x-t)^{n}}{n}.$$\n(Note que $v$ e primitiva de $(x-t)^{n-1}$ em $t$, pois $\\frac{d}{dt}\\!\\left[-\\frac{(x-t)^n}{n}\\right]=(x-t)^{n-1}$.) Entao\n$$\\int_a^x(x-t)^{n-1}f^{(n)}(t)\\,dt=\\Bigl[-\\frac{(x-t)^n}{n}f^{(n)}(t)\\Bigr]_{t=a}^{t=x}+\\frac{1}{n}\\int_a^x(x-t)^n f^{(n+1)}(t)\\,dt.$$\nO termo de fronteira em $t=x$ e $0$ (pois $(x-x)^n=0$); em $t=a$ vale $+\\frac{(x-a)^n}{n}f^{(n)}(a)$. Logo\n$$\\int_a^x(x-t)^{n-1}f^{(n)}(t)\\,dt=\\frac{(x-a)^n}{n}f^{(n)}(a)+\\frac{1}{n}\\int_a^x(x-t)^n f^{(n+1)}(t)\\,dt.$$\nMultiplicando por $\\frac{1}{(n-1)!}$:\n$$R_{n-1}(x)=\\frac{f^{(n)}(a)}{n!}(x-a)^n+\\frac{1}{n!}\\int_a^x(x-t)^n f^{(n+1)}(t)\\,dt.$$\nComo $R_{n-1}(x)=\\frac{f^{(n)}(a)}{n!}(x-a)^n+R_n(x)$ (o proximo termo de Taylor mais o novo resto), comparando obtemos exatamente\n$$R_n(x)=\\frac{1}{n!}\\int_a^x(x-t)^n f^{(n+1)}(t)\\,dt.$$\nIsso completa a inducao. $\\blacksquare$",
+          "steps": [
+            "Comece do TFC: f(x)=f(a)+integral de a a x de f'(t)dt, que e o caso n=0 da formula.",
+            "Assuma a formula integral para o resto de ordem n-1 como hipotese de inducao.",
+            "Integre por partes com u=f^{(n)}(t) e dv=(x-t)^{n-1}dt, usando v=-(x-t)^n/n.",
+            "Avalie o termo de fronteira: em t=x da 0, em t=a da (x-a)^n f^{(n)}(a)/n.",
+            "Reorganize para separar o proximo termo de Taylor do novo resto e identifique R_n com a integral desejada."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Polinômio de Taylor de ordem $n$",
+          "back": "$P_n(x)=\\sum_{k=0}^{n}\\dfrac{f^{(k)}(a)}{k!}(x-a)^k$."
+        },
+        {
+          "front": "Resto de Lagrange",
+          "back": "$R_n(x)=\\dfrac{f^{(n+1)}(\\xi)}{(n+1)!}(x-a)^{n+1}$, $\\xi$ entre $a$ e $x$."
+        },
+        {
+          "front": "Resto de Peano (hipótese)",
+          "back": "Basta $f^{(n)}(a)$ existir; então $R_n=o((x-a)^n)$ quando $x\\to a$."
+        },
+        {
+          "front": "Resto integral",
+          "back": "$R_n(x)=\\dfrac{1}{n!}\\int_a^x(x-t)^n f^{(n+1)}(t)\\,dt$, válido para $f\\in C^{n+1}$."
+        },
+        {
+          "front": "$C^\\infty$ implica analítica?",
+          "back": "Não. Contra-exemplo: $e^{-1/x^2}$ tem série de Taylor nula na origem mas não é nula."
+        },
+        {
+          "front": "Critério da $n$-ésima derivada (n par)",
+          "back": "Se as derivadas até ordem $n-1$ se anulam e $f^{(n)}(a)\\neq0$ com $n$ par: mínimo se $>0$, máximo se $<0$."
+        },
+        {
+          "front": "Critério da $n$-ésima derivada (n ímpar)",
+          "back": "Primeira derivada não nula de ordem ímpar $\\Rightarrow$ ponto de inflexão, não extremo."
+        },
+        {
+          "front": "Série de Taylor de $\\frac{1}{1-x}$ em 0",
+          "back": "$\\sum_{k\\ge0}x^k$, convergente para $|x|<1$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Rudin, cap. 5 (Taylor's theorem)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lima, Curso de Análise vol. 1, cap. VIII (Fórmula de Taylor)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Garanta o dominio do TVM de Cauchy (subtopico anterior): a forma de Lagrange do resto sai dele por aplicacao iterada.",
+          "Leia Rudin cap. 5 (Taylor's theorem) ou Elon Lima vol. 1 cap. VIII: escreva a definicao do polinomio de Taylor P_n e verifique que ele compartilha valor e n derivadas com f em a.",
+          "Estude as tres formas do resto separadamente (Lagrange, Peano, integral), anotando as hipoteses de cada uma. Demonstre a forma integral a partir do TFC por integracao por partes.",
+          "Pratique aplicacoes: calculo de limites com resto de Peano (substituindo L'Hopital), classificacao de pontos criticos pela primeira derivada nao nula e estimativas de erro com a cota de Lagrange.",
+          "Estude o exemplo de Cauchy e^(-1/x^2) para entender a diferenca entre C-infinito e analitica; assista a um video sobre esse contra-exemplo.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (as tres formas do resto com suas hipoteses e o exemplo e^(-1/x^2))."
+        ],
+        "searchQueries": [
+          "formula de Taylor resto de Lagrange demonstracao TVM de Cauchy",
+          "resto integral de Taylor prova integracao por partes",
+          "calcular limite usando polinomio de Taylor resto de Peano",
+          "funcao C infinito nao analitica e^{-1/x^2} derivadas na origem",
+          "Taylor theorem Lagrange remainder proof induction",
+          "smooth non analytic function flat function example"
+        ],
+        "videos": [
+          {
+            "title": "Taylor's Theorem and Remainder",
+            "channel": "MIT OpenCourseWare (18.100)",
+            "note": "Assista a aula sobre o teorema de Taylor no estilo Rudin, com a deducao do resto de Lagrange."
+          },
+          {
+            "title": "A function that is smooth but not analytic",
+            "channel": "Dr. Peyam",
+            "note": "Analise detalhada de e^(-1/x^2): por que todas as derivadas se anulam na origem e a serie de Taylor falha."
+          },
+          {
+            "title": "Formula de Taylor com resto",
+            "channel": "Equaciona / Matematica Universitaria",
+            "note": "Procure videos em PT-BR sobre a formula de Taylor e aplicacoes a limites para reforcar a intuicao."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap. 5 (Taylor's theorem)",
+            "where": "Walter Rudin - livro"
+          },
+          {
+            "title": "Curso de Analise vol. 1, cap. VIII (Formula de Taylor)",
+            "where": "Elon Lages Lima (IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-2-03-riemann-darboux",
+      "title": "A Integral de Riemann-Darboux",
+      "tagline": "Construir a integral do zero por somas superiores e inferiores e provar o Teorema Fundamental do Cálculo.",
+      "objectives": [
+        "Definir partições, somas de Darboux superior e inferior e as integrais superior e inferior.",
+        "Enunciar e usar o critério de integrabilidade de Riemann ($\\varepsilon$-critério de Darboux).",
+        "Provar que funções contínuas e funções monótonas em $[a,b]$ são integráveis.",
+        "Demonstrar as propriedades da integral: linearidade, monotonia e aditividade nos intervalos.",
+        "Provar as duas partes do Teorema Fundamental do Cálculo.",
+        "Enunciar o critério de Lebesgue para integrabilidade de Riemann."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Somas de Darboux",
+          "statement": "Para uma partição $P=\\{a=x_0<\\dots<x_n=b\\}$ e $m_i=\\inf_{[x_{i-1},x_i]}f$, $M_i=\\sup_{[x_{i-1},x_i]}f$: $\\underline{S}(f,P)=\\sum m_i\\Delta x_i$ e $\\overline{S}(f,P)=\\sum M_i\\Delta x_i$."
+        },
+        {
+          "term": "Integrais inferior e superior",
+          "statement": "$\\underline{\\int_a^b}f=\\sup_P\\underline{S}(f,P)$ e $\\overline{\\int_a^b}f=\\inf_P\\overline{S}(f,P)$. Vale sempre $\\underline{\\int}\\le\\overline{\\int}$."
+        },
+        {
+          "term": "Integrabilidade",
+          "statement": "$f$ é Riemann-integrável em $[a,b]$ quando $\\underline{\\int_a^b}f=\\overline{\\int_a^b}f$, e o valor comum é $\\int_a^b f$."
+        },
+        {
+          "term": "Oscilação",
+          "statement": "A oscilação de $f$ em um conjunto é $\\omega=\\sup f-\\inf f$; controlar $\\sum_i \\omega_i\\,\\Delta x_i$ é o coração do critério de integrabilidade."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Critério de Riemann (Darboux)",
+          "statement": "$f$ limitada é integrável em $[a,b]$ se e só se para todo $\\varepsilon>0$ existe uma partição $P$ tal que $\\overline{S}(f,P)-\\underline{S}(f,P)<\\varepsilon$.",
+          "whyItMatters": "É a ferramenta prática para decidir integrabilidade sem calcular a integral; reduz tudo a controlar a soma das oscilações vezes os comprimentos."
+        },
+        {
+          "name": "Contínua $\\Rightarrow$ integrável",
+          "statement": "Toda função contínua em $[a,b]$ é Riemann-integrável.",
+          "whyItMatters": "Garante que a imensa maioria das funções do cálculo tem integral; a prova usa continuidade uniforme no compacto $[a,b]$."
+        },
+        {
+          "name": "Monótona $\\Rightarrow$ integrável",
+          "statement": "Toda função monótona em $[a,b]$ é Riemann-integrável (mesmo com infinitas descontinuidades de salto).",
+          "whyItMatters": "Mostra que integrabilidade não exige continuidade; a soma telescópica das oscilações é controlada por $\\bigl(f(b)-f(a)\\bigr)$ vezes a malha."
+        },
+        {
+          "name": "Teorema Fundamental do Cálculo (parte 1)",
+          "statement": "Se $f$ é integrável em $[a,b]$ e $F(x)=\\int_a^x f$, então $F$ é contínua; e em todo ponto $x_0$ onde $f$ é contínua, $F$ é diferenciável com $F'(x_0)=f(x_0)$.",
+          "whyItMatters": "Diz que integrar e depois derivar recupera a função: a integral indefinida é uma antiderivada nos pontos de continuidade."
+        },
+        {
+          "name": "Teorema Fundamental do Cálculo (parte 2 / Newton-Leibniz)",
+          "statement": "Se $f$ é integrável em $[a,b]$ e $F$ é uma primitiva de $f$ (i.e. $F'=f$ em $[a,b]$), então $\\int_a^b f=F(b)-F(a)$.",
+          "whyItMatters": "Converte o cálculo de integrais (limites de somas) em avaliação de uma primitiva nos extremos — a regra que torna o cálculo praticável."
+        },
+        {
+          "name": "Critério de Lebesgue (enunciado)",
+          "statement": "$f$ limitada é Riemann-integrável em $[a,b]$ se e só se o conjunto de seus pontos de descontinuidade tem medida nula.",
+          "whyItMatters": "Caracteriza completamente a integrabilidade de Riemann e antecipa a teoria da medida; explica por que a função de Dirichlet (descontínua em toda parte) não é integrável."
+        }
+      ],
+      "summary": "A integral de Riemann é construída comprimindo a área sob o gráfico entre estimativas por baixo (somas inferiores) e por cima (somas superiores). Refinar a partição faz as somas inferiores crescerem e as superiores decrescerem; o supremo das inferiores é a integral inferior, o ínfimo das superiores é a integral superior, e a função é integrável precisamente quando esses dois valores coincidem. O critério de Darboux traduz isso operacionalmente: $f$ é integrável se e só se podemos tornar a diferença entre soma superior e inferior — isto é, $\\sum_i \\omega_i \\Delta x_i$, a soma das oscilações vezes os comprimentos — arbitrariamente pequena.\n\nDesse critério deduzimos que funções contínuas (via continuidade uniforme em $[a,b]$) e funções monótonas são integráveis. As propriedades estruturais — linearidade, monotonia, aditividade no domínio e a desigualdade $|\\int f|\\le\\int|f|$ — fazem da integral um funcional bem-comportado. O ápice é o Teorema Fundamental do Cálculo, que amarra integração e derivação: a integral indefinida é uma antiderivada nos pontos de continuidade (parte 1), e qualquer primitiva calcula a integral definida por diferença nos extremos (parte 2). Por fim, o critério de Lebesgue dá a palavra final: ser Riemann-integrável equivale a ser descontínua apenas num conjunto de medida nula, esclarecendo exatamente onde a integral de Riemann encontra seu limite.",
+      "commonPitfalls": [
+        "Confundir refinamento: ao refinar a partição a soma INFERIOR não diminui e a SUPERIOR não aumenta — inverter isso destrói toda a teoria.",
+        "Pensar que toda função limitada é integrável; a função de Dirichlet ($1$ nos racionais, $0$ nos irracionais) tem integral inferior $0$ e superior $1$.",
+        "Aplicar a parte 2 do TFC sem que $F$ seja primitiva de $f$ em TODO o intervalo, ou supor que $F'=f$ em todo ponto quando $f$ só é integrável.",
+        "Acreditar que integrabilidade exige continuidade: funções com infinitas (mas medida nula) descontinuidades ainda são integráveis."
+      ],
+      "worked": "**A função de Dirichlet não é Riemann-integrável.** Seja $f:[0,1]\\to\\mathbb{R}$ com $f(x)=1$ se $x\\in\\mathbb{Q}$ e $f(x)=0$ caso contrário.\n\nEm qualquer subintervalo $[x_{i-1},x_i]$ de comprimento positivo existem racionais e irracionais (densidade), logo $M_i=\\sup f=1$ e $m_i=\\inf f=0$. Assim, para toda partição $P$,\n$$\\overline{S}(f,P)=\\sum_i 1\\cdot\\Delta x_i=1,\\qquad \\underline{S}(f,P)=\\sum_i 0\\cdot\\Delta x_i=0.$$\nPortanto $\\overline{\\int_0^1}f=1$ e $\\underline{\\int_0^1}f=0$. Como $0\\neq 1$, $f$ não é integrável. (Pelo critério de Lebesgue isso já era esperado: $f$ é descontínua em todo ponto, e $[0,1]$ não tem medida nula.) $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que toda função monótona crescente $f:[a,b]\\to\\mathbb{R}$ é integrável, mostrando que com a partição uniforme de $n$ pontos vale $\\overline{S}-\\underline{S}=\\frac{b-a}{n}\\bigl(f(b)-f(a)\\bigr)$.",
+          "hint": "Em cada subintervalo $M_i=f(x_i)$ e $m_i=f(x_{i-1})$; a soma das diferenças é telescópica.",
+          "difficulty": 3,
+          "solution": "Seja $f:[a,b]\\to\\mathbb{R}$ monotona crescente (logo limitada, pois $f(a)\\le f\\le f(b)$). Considere a particao uniforme $P_n$ com pontos $x_i=a+i\\,\\tfrac{b-a}{n}$, $i=0,\\dots,n$, de modo que $\\Delta x_i=\\tfrac{b-a}{n}$.\n\n**Sup e inf em cada subintervalo.** Como $f$ e crescente, em $[x_{i-1},x_i]$ o supremo e atingido a direita e o infimo a esquerda:\n$$M_i=\\sup_{[x_{i-1},x_i]}f=f(x_i),\\qquad m_i=\\inf_{[x_{i-1},x_i]}f=f(x_{i-1}).$$\n\n**Diferenca das somas.**\n$$\\overline{S}(f,P_n)-\\underline{S}(f,P_n)=\\sum_{i=1}^n (M_i-m_i)\\,\\Delta x_i=\\frac{b-a}{n}\\sum_{i=1}^n\\bigl(f(x_i)-f(x_{i-1})\\bigr).$$\nA soma $\\sum_{i=1}^n\\bigl(f(x_i)-f(x_{i-1})\\bigr)$ e telescopica e vale $f(x_n)-f(x_0)=f(b)-f(a)$. Logo\n$$\\overline{S}(f,P_n)-\\underline{S}(f,P_n)=\\frac{b-a}{n}\\bigl(f(b)-f(a)\\bigr).$$\n\n**Conclusao pela criterio de Darboux.** Dado $\\varepsilon>0$, escolha $n$ com $\\frac{(b-a)(f(b)-f(a))}{n}<\\varepsilon$ (possivel pois o lado esquerdo $\\to0$). Entao $\\overline{S}(f,P_n)-\\underline{S}(f,P_n)<\\varepsilon$, e pelo criterio de Riemann-Darboux $f$ e integravel em $[a,b]$. (Se $f(b)=f(a)$, $f$ e constante e trivialmente integravel.) $\\blacksquare$",
+          "steps": [
+            "Use a particao uniforme e observe que, por f ser crescente, M_i=f(x_i) e m_i=f(x_{i-1}).",
+            "Escreva a diferenca das somas como (b-a)/n vezes a soma de f(x_i)-f(x_{i-1}).",
+            "Reconheca a soma telescopica, igual a f(b)-f(a).",
+            "Obtenha S_sup - S_inf = (b-a)(f(b)-f(a))/n.",
+            "Dado epsilon, escolha n grande para tornar isso menor que epsilon e aplique o criterio de Darboux."
+          ]
+        },
+        {
+          "prompt": "Seja $f$ contínua em $[a,b]$ com $f\\ge 0$ e $\\int_a^b f=0$. Prove que $f\\equiv 0$.",
+          "hint": "Por contradição: se $f(x_0)>0$, use continuidade para obter um subintervalo onde $f\\ge f(x_0)/2$ e estime a integral por baixo.",
+          "difficulty": 3,
+          "solution": "Seja $f$ continua em $[a,b]$, $f\\ge0$, com $\\int_a^b f=0$. Queremos $f\\equiv0$.\n\n**Por contradicao.** Suponha que exista $x_0\\in[a,b]$ com $f(x_0)>0$. Ponha $\\mu=f(x_0)>0$. Pela continuidade de $f$ em $x_0$, tomando $\\varepsilon=\\mu/2$, existe $\\delta>0$ tal que\n$$|x-x_0|<\\delta\\ \\Rightarrow\\ |f(x)-f(x_0)|<\\frac{\\mu}{2}\\ \\Rightarrow\\ f(x)>f(x_0)-\\frac{\\mu}{2}=\\frac{\\mu}{2}.$$\nSeja $I=[c,d]$ um subintervalo de $[a,b]$ de comprimento positivo $\\ell=d-c>0$ contido em $(x_0-\\delta,x_0+\\delta)\\cap[a,b]$ (existe: se $x_0$ e interior, tome um intervalo centrado; se e extremo, tome um intervalo lateral). Em $I$ vale $f\\ge\\mu/2$.\n\n**Estimativa por baixo.** Como $f\\ge0$ em todo $[a,b]$ e $f\\ge\\mu/2$ em $I$, pela monotonia da integral\n$$\\int_a^b f\\ \\ge\\ \\int_c^d f\\ \\ge\\ \\int_c^d\\frac{\\mu}{2}\\,dx=\\frac{\\mu}{2}\\,\\ell>0.$$\nIsso contradiz $\\int_a^b f=0$.\n\n**Conclusao.** Nao pode existir ponto com $f(x_0)>0$; como $f\\ge0$, segue $f\\equiv0$ em $[a,b]$. $\\blacksquare$",
+          "steps": [
+            "Assuma por contradicao que f(x_0)>0 em algum ponto e chame mu=f(x_0).",
+            "Use continuidade com epsilon=mu/2 para achar uma vizinhanca onde f>mu/2.",
+            "Tome um subintervalo [c,d] de comprimento positivo dentro dessa vizinhanca.",
+            "Estime a integral por baixo: integral de a a b >= (mu/2)(d-c)>0, usando f>=0 fora de [c,d].",
+            "Contradicao com a integral nula; logo f nao pode ser positiva em ponto algum, entao f=0."
+          ]
+        },
+        {
+          "prompt": "Demonstre a parte 1 do TFC: se $f$ é integrável e contínua em $x_0$, então $F(x)=\\int_a^x f$ satisfaz $F'(x_0)=f(x_0)$.",
+          "hint": "Estime $\\left|\\frac{F(x_0+h)-F(x_0)}{h}-f(x_0)\\right|=\\left|\\frac{1}{h}\\int_{x_0}^{x_0+h}(f-f(x_0))\\right|$ usando continuidade em $x_0$.",
+          "difficulty": 4,
+          "solution": "Seja $f$ integravel em $[a,b]$ e continua em $x_0\\in(a,b)$; defina $F(x)=\\int_a^x f$. Provamos $F'(x_0)=f(x_0)$.\n\n**Montagem do quociente de Newton.** Para $h\\neq0$ pequeno (tal que $x_0+h\\in[a,b]$), pela aditividade da integral,\n$$F(x_0+h)-F(x_0)=\\int_{x_0}^{x_0+h} f(t)\\,dt.$$\nComo $\\int_{x_0}^{x_0+h} f(x_0)\\,dt=f(x_0)\\,h$, temos\n$$\\frac{F(x_0+h)-F(x_0)}{h}-f(x_0)=\\frac{1}{h}\\int_{x_0}^{x_0+h}\\bigl(f(t)-f(x_0)\\bigr)\\,dt.$$\n\n**Uso da continuidade em $x_0$.** Dado $\\varepsilon>0$, existe $\\delta>0$ tal que $|t-x_0|<\\delta\\Rightarrow|f(t)-f(x_0)|<\\varepsilon$. Suponha $0<|h|<\\delta$. Entao todo $t$ entre $x_0$ e $x_0+h$ satisfaz $|t-x_0|<\\delta$, logo $|f(t)-f(x_0)|<\\varepsilon$. Estimando a integral (com o cuidado do sinal de $h$):\n$$\\left|\\frac{1}{h}\\int_{x_0}^{x_0+h}\\bigl(f(t)-f(x_0)\\bigr)\\,dt\\right|\\le\\frac{1}{|h|}\\left|\\int_{x_0}^{x_0+h}|f(t)-f(x_0)|\\,dt\\right|\\le\\frac{1}{|h|}\\cdot\\varepsilon\\,|h|=\\varepsilon.$$\n\n**Conclusao.** Mostramos que para $0<|h|<\\delta$,\n$$\\left|\\frac{F(x_0+h)-F(x_0)}{h}-f(x_0)\\right|\\le\\varepsilon.$$\nComo $\\varepsilon>0$ e arbitrario, $\\lim_{h\\to0}\\frac{F(x_0+h)-F(x_0)}{h}=f(x_0)$, isto e, $F'(x_0)=f(x_0)$. $\\blacksquare$",
+          "steps": [
+            "Escreva F(x_0+h)-F(x_0) como a integral de f de x_0 a x_0+h, pela aditividade.",
+            "Subtraia f(x_0) na forma (1/h) vezes a integral de f(t)-f(x_0).",
+            "Use continuidade em x_0: dado epsilon, escolha delta com |f(t)-f(x_0)|<epsilon perto de x_0.",
+            "Para |h|<delta, majore a integral por epsilon|h|, obtendo cota epsilon para o quociente menos f(x_0).",
+            "Como epsilon e arbitrario, o limite do quociente e f(x_0), ou seja F'(x_0)=f(x_0)."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo de função integrável em $[0,1]$ com infinitos pontos de descontinuidade e justifique a integrabilidade.",
+          "hint": "Considere $f(x)=1$ para $x=1/n$, $n\\in\\mathbb{N}$, e $f=0$ caso contrário; o conjunto de descontinuidades é enumerável, logo de medida nula.",
+          "difficulty": 3,
+          "solution": "**Exemplo.** Defina $f:[0,1]\\to\\mathbb{R}$ por\n$$f(x)=\\begin{cases}1,&x=\\tfrac1n\\ \\text{para algum }n\\in\\mathbb{N},\\\\0,&\\text{caso contrario.}\\end{cases}$$\nO conjunto de descontinuidades e $D=\\{1,\\tfrac12,\\tfrac13,\\dots\\}\\cup\\{0\\}$ (em cada ponto $1/n$ e em $0$, ponto de acumulacao), que e **enumeravel**, logo tem **medida nula**.\n\n**Justificativa direta (criterio de Darboux).** Dado $\\varepsilon>0$, escolha $N$ com $\\tfrac1N<\\tfrac{\\varepsilon}{2}$. Os pontos onde $f=1$ e que sao $\\ge\\tfrac1N$ formam o conjunto finito $\\{1,\\tfrac12,\\dots,\\tfrac1N\\}$ (no maximo $N$ pontos). Construa uma particao $P$ de $[0,1]$ que:\n- cubra o intervalo $[0,\\tfrac1N]$, onde $f\\le1$, contribuindo com soma superior $\\le1\\cdot\\tfrac1N<\\tfrac{\\varepsilon}{2}$;\n- em $[\\tfrac1N,1]$ envolva cada um dos $\\le N$ pontos $1/k$ ($k\\le N$) por um subintervalo de comprimento total $<\\tfrac{\\varepsilon}{2}$; fora desses subintervalos $f\\equiv0$.\n\nComo $m_i=0$ em todo subintervalo (todo subintervalo de comprimento positivo contem pontos onde $f=0$) e $M_i=1$ apenas nos subintervalos que contem algum $1/k$ ou estao em $[0,1/N]$, obtemos\n$$\\overline{S}(f,P)-\\underline{S}(f,P)=\\overline{S}(f,P)\\le\\underbrace{\\tfrac1N}_{[0,1/N]}+\\underbrace{\\text{(soma dos comprimentos ao redor dos }1/k)}_{<\\varepsilon/2}<\\frac{\\varepsilon}{2}+\\frac{\\varepsilon}{2}=\\varepsilon.$$\nPelo criterio de Riemann-Darboux, $f$ e integravel, e como $\\underline{S}=0$ sempre, $\\int_0^1 f=0$.\n\n**Justificativa alternativa (criterio de Lebesgue).** $f$ e descontinua apenas em $D=\\{1/n\\}\\cup\\{0\\}$, conjunto enumeravel e portanto de medida nula. Pelo criterio de Lebesgue, $f$ e Riemann-integravel em $[0,1]$. $\\blacksquare$",
+          "steps": [
+            "Escolha uma funcao que valha 1 nos pontos 1/n e 0 nos demais, com infinitas descontinuidades.",
+            "Identifique o conjunto de descontinuidades: {1/n} unido a {0}, que e enumeravel.",
+            "Argumento de Darboux: dado epsilon, isole [0,1/N] e envolva os finitos pontos 1/k, k<=N, por intervalos curtos.",
+            "Mostre que a soma inferior e 0 e a superior fica menor que epsilon, provando integrabilidade.",
+            "Alternativamente cite o criterio de Lebesgue: descontinuidades enumeraveis tem medida nula, logo f e integravel com integral 0."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de Riemann-integrável (Darboux)",
+          "back": "$f$ limitada é integrável quando $\\underline{\\int_a^b}f=\\overline{\\int_a^b}f$ (integrais inferior e superior coincidem)."
+        },
+        {
+          "front": "Critério prático de integrabilidade",
+          "back": "$\\forall\\varepsilon>0$ existe partição $P$ com $\\overline{S}(f,P)-\\underline{S}(f,P)<\\varepsilon$."
+        },
+        {
+          "front": "Ao refinar a partição...",
+          "back": "A soma inferior não decresce e a soma superior não cresce."
+        },
+        {
+          "front": "Contínua em $[a,b]$ implica",
+          "back": "Integrável (usa continuidade uniforme no compacto)."
+        },
+        {
+          "front": "Monótona em $[a,b]$ implica",
+          "back": "Integrável, mesmo com infinitas descontinuidades de salto."
+        },
+        {
+          "front": "TFC parte 2 (Newton-Leibniz)",
+          "back": "Se $F'=f$ em $[a,b]$ e $f$ integrável, então $\\int_a^b f=F(b)-F(a)$."
+        },
+        {
+          "front": "Critério de Lebesgue",
+          "back": "Riemann-integrável $\\iff$ conjunto de descontinuidades tem medida nula."
+        },
+        {
+          "front": "Função de Dirichlet é integrável?",
+          "back": "Não: integral inferior $0$, superior $1$ em $[0,1]$."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Rudin, cap. 6 (The Riemann-Stieltjes Integral)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lima, Curso de Análise vol. 1, cap. X (A Integral)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise supremo e infimo e continuidade uniforme em compactos (Analise Real I): sao a base de todo o argumento de Darboux e da prova de que continua implica integravel.",
+          "Leia Rudin cap. 6 ou Elon Lima vol. 1 cap. X: escreva as definicoes de particao, somas de Darboux inferior/superior e integrais inferior/superior, e prove que refinar aumenta a inferior e diminui a superior.",
+          "Demonstre o criterio de Darboux (S_sup - S_inf < epsilon) e use-o para provar que funcoes continuas e monotonas sao integraveis. Anote onde entra a continuidade uniforme.",
+          "Estude as duas partes do Teorema Fundamental do Calculo com suas provas, e enuncie (sem provar) o criterio de Lebesgue via medida nula.",
+          "Assista a uma videoaula sobre a construcao da integral de Riemann-Darboux e sobre a funcao de Dirichlet como exemplo de nao-integrabilidade.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (o criterio de Darboux, o esquema da soma telescopica para monotonas e as duas partes do TFC)."
+        ],
+        "searchQueries": [
+          "criterio de integrabilidade de Darboux somas superior inferior demonstracao",
+          "funcao continua em intervalo fechado e integravel prova continuidade uniforme",
+          "funcao monotona e Riemann integravel soma telescopica",
+          "teorema fundamental do calculo parte 1 demonstracao",
+          "Lebesgue criterion Riemann integrable measure zero discontinuities",
+          "Riemann Darboux integral upper lower sums proof"
+        ],
+        "videos": [
+          {
+            "title": "The Riemann Integral (Darboux approach)",
+            "channel": "MIT OpenCourseWare (18.100)",
+            "note": "Aulas sobre construcao da integral por somas de Darboux e o criterio de integrabilidade."
+          },
+          {
+            "title": "Integral de Riemann e TFC",
+            "channel": "IMPA (PAPMEM)",
+            "note": "Procure as aulas de Analise sobre a integral e o Teorema Fundamental do Calculo, no tratamento de Elon Lima."
+          },
+          {
+            "title": "Riemann Integrability and Lebesgue's Criterion",
+            "channel": "Michael Penn",
+            "note": "Discussao do criterio de Lebesgue e exemplos como a funcao de Dirichlet e a de Thomae."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap. 6 (The Riemann-Stieltjes Integral)",
+            "where": "Walter Rudin - livro"
+          },
+          {
+            "title": "Curso de Analise vol. 1, cap. X (A Integral)",
+            "where": "Elon Lages Lima (IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-2-04-convergencia-uniforme",
+      "title": "Sequências e Séries de Funções: Convergência Uniforme",
+      "tagline": "Quando podemos trocar limite com limite, com integral e com derivada — e por que a convergência pontual não basta.",
+      "objectives": [
+        "Distinguir rigorosamente convergência pontual de convergência uniforme.",
+        "Usar o critério de Cauchy uniforme e o teste M de Weierstrass para séries de funções.",
+        "Provar os teoremas de troca: continuidade, integração e derivação do limite uniforme.",
+        "Determinar o raio de convergência de uma série de potências e suas propriedades.",
+        "Reconhecer fenômenos patológicos que a convergência apenas pontual permite."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Convergência pontual",
+          "statement": "$f_n\\to f$ pontualmente em $E$ se para cada $x\\in E$ e cada $\\varepsilon>0$ existe $N$ (dependendo de $x$ e $\\varepsilon$) com $|f_n(x)-f(x)|<\\varepsilon$ para $n\\ge N$."
+        },
+        {
+          "term": "Convergência uniforme",
+          "statement": "$f_n\\to f$ uniformemente em $E$ se $\\sup_{x\\in E}|f_n(x)-f(x)|\\to 0$; o $N$ serve para todos os $x$ simultaneamente."
+        },
+        {
+          "term": "Norma do sup",
+          "statement": "$\\|g\\|_\\infty=\\sup_{x\\in E}|g(x)|$; convergência uniforme é convergência nesta norma, e $(C(K),\\|\\cdot\\|_\\infty)$ é completo."
+        },
+        {
+          "term": "Raio de convergência",
+          "statement": "Para $\\sum a_n(x-c)^n$, $R=\\dfrac{1}{\\limsup_n |a_n|^{1/n}}$ (Cauchy-Hadamard); converge absolutamente para $|x-c|<R$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Critério de Cauchy uniforme",
+          "statement": "$(f_n)$ converge uniformemente em $E$ se e só se $\\forall\\varepsilon>0\\,\\exists N$ tal que $m,n\\ge N\\Rightarrow \\sup_{x\\in E}|f_n(x)-f_m(x)|<\\varepsilon$.",
+          "whyItMatters": "Permite provar convergência uniforme sem conhecer o limite, explorando a completude do espaço das funções limitadas."
+        },
+        {
+          "name": "Teste M de Weierstrass",
+          "statement": "Se $|f_n(x)|\\le M_n$ para todo $x\\in E$ e $\\sum M_n<\\infty$, então $\\sum f_n$ converge uniforme (e absolutamente) em $E$.",
+          "whyItMatters": "É o teste mais usado para garantir convergência uniforme de séries de funções; reduz tudo a uma série numérica convergente."
+        },
+        {
+          "name": "Limite uniforme de contínuas é contínua",
+          "statement": "Se cada $f_n$ é contínua em $E$ e $f_n\\to f$ uniformemente, então $f$ é contínua. (Troca de limites: $\\lim_{x\\to x_0}\\lim_n f_n=\\lim_n\\lim_{x\\to x_0}f_n$.)",
+          "whyItMatters": "Justifica que séries de potências, séries de Fourier uniformemente convergentes etc. definem funções contínuas; é o primeiro 'teorema de troca'."
+        },
+        {
+          "name": "Integração do limite",
+          "statement": "Se $f_n\\to f$ uniformemente em $[a,b]$ e cada $f_n$ é integrável, então $f$ é integrável e $\\int_a^b f=\\lim_n\\int_a^b f_n$.",
+          "whyItMatters": "Autoriza integrar termo a termo; a convergência uniforme é a hipótese clássica que torna isso legítimo."
+        },
+        {
+          "name": "Derivação do limite",
+          "statement": "Se $f_n\\to f$ pontualmente em $[a,b]$, cada $f_n\\in C^1$, e $f_n'\\to g$ uniformemente, então $f$ é diferenciável e $f'=g=\\lim_n f_n'$.",
+          "whyItMatters": "Mostra que derivar termo a termo exige a convergência uniforme das DERIVADAS (não basta a das funções), corrigindo um erro comum."
+        }
+      ],
+      "summary": "A convergência pontual de $f_n$ a $f$ apenas pede que, em cada ponto fixo, os valores se aproximem — e isso é fraco demais: o limite pontual de funções contínuas pode ser descontínuo (ex.: $x^n$ em $[0,1]$), e o limite de integrais pode diferir da integral do limite. A convergência uniforme corrige isso exigindo que o erro máximo $\\sup_x|f_n(x)-f(x)|$ vá a zero, ou seja, convergência na norma do supremo. Essa única condição é o que faz a continuidade, a integral e (com cuidado extra) a derivada 'passarem ao limite'.\n\nOs teoremas de troca formam o núcleo prático: limite uniforme de contínuas é contínua; sob convergência uniforme integra-se termo a termo; e — atenção — para derivar termo a termo precisamos da convergência uniforme das DERIVADAS, não das funções. O critério de Cauchy uniforme permite estabelecer convergência sem exibir o limite, e o teste M de Weierstrass reduz a convergência uniforme de uma série $\\sum f_n$ à convergência de uma série numérica majorante $\\sum M_n$. Como caso de ouro, séries de potências convergem uniformemente em compactos dentro do disco de raio $R=1/\\limsup|a_n|^{1/n}$, podendo ser derivadas e integradas termo a termo livremente — a fonte das funções analíticas.",
+      "commonPitfalls": [
+        "Concluir que o limite pontual de funções contínuas é contínuo — falso sem uniformidade (ex.: $f_n(x)=x^n$ em $[0,1]$ converge para função descontínua).",
+        "Trocar $\\lim$ com $\\int$ ou com $\\frac{d}{dx}$ usando só convergência pontual; é preciso convergência uniforme (e, para derivar, das derivadas).",
+        "Achar que convergência uniforme das funções $f_n$ implica convergência das derivadas $f_n'$ — não implica; o oposto (mais a convergência num ponto) é que dá o teorema.",
+        "Esquecer de verificar a convergência nos extremos $x=c\\pm R$ de uma série de potências: o comportamento na fronteira é caso a caso."
+      ],
+      "worked": "**Convergência pontual não preserva continuidade.** Seja $f_n(x)=x^n$ em $[0,1]$.\n\nPara $0\\le x<1$, $x^n\\to 0$; para $x=1$, $x^n=1\\to 1$. Logo o limite pontual é\n$$f(x)=\\begin{cases}0,&0\\le x<1,\\\\ 1,&x=1,\\end{cases}$$\numa função descontínua, apesar de cada $f_n$ ser contínua. A convergência NÃO é uniforme: $\\sup_{x\\in[0,1)}|x^n-0|=1$ para todo $n$ (tomando $x\\to1^-$), logo $\\|f_n-f\\|_\\infty\\not\\to0$. Esse é o exemplo-padrão de que sem uniformidade a continuidade se perde. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre que $\\sum_{n=1}^\\infty \\frac{\\sin(nx)}{n^2}$ converge uniformemente em $\\mathbb{R}$ e que a soma é uma função contínua.",
+          "hint": "Aplique o teste M de Weierstrass com $M_n=1/n^2$ e use o teorema do limite uniforme de contínuas.",
+          "difficulty": 2,
+          "solution": "Considere $\\sum_{n=1}^\\infty \\dfrac{\\sin(nx)}{n^2}$ com termos $f_n(x)=\\dfrac{\\sin(nx)}{n^2}$.\n\n**Cota uniforme (teste M de Weierstrass).** Para todo $x\\in\\mathbb{R}$,\n$$|f_n(x)|=\\frac{|\\sin(nx)|}{n^2}\\le\\frac{1}{n^2}=:M_n.$$\nA serie numerica $\\sum_{n=1}^\\infty M_n=\\sum \\frac{1}{n^2}=\\frac{\\pi^2}{6}<\\infty$ converge (p-serie com $p=2>1$). Pelo **teste M de Weierstrass**, $\\sum f_n$ converge uniformemente (e absolutamente) em $\\mathbb{R}$.\n\n**Continuidade da soma.** Cada $f_n(x)=\\frac{\\sin(nx)}{n^2}$ e continua em $\\mathbb{R}$. As somas parciais $S_N=\\sum_{n=1}^N f_n$ sao continuas (soma finita de continuas) e convergem uniformemente para $S=\\sum_{n=1}^\\infty f_n$. Pelo teorema **limite uniforme de funcoes continuas e continuo**, $S$ e continua em $\\mathbb{R}$. $\\blacksquare$",
+          "steps": [
+            "Majore cada termo: |sin(nx)/n^2| <= 1/n^2, uma cota independente de x.",
+            "Observe que a soma dos M_n = sum 1/n^2 converge (p-serie, p=2).",
+            "Conclua convergencia uniforme pelo teste M de Weierstrass.",
+            "Note que cada termo e continuo, logo as somas parciais tambem sao.",
+            "Aplique o teorema do limite uniforme de continuas para concluir que a soma e continua."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo de $f_n\\to f$ uniformemente em $[0,1]$ com cada $f_n\\in C^1$, mas $f_n'$ NÃO convergindo para $f'$. Conclua que a hipótese sobre as derivadas é essencial.",
+          "hint": "Tente $f_n(x)=\\frac{\\sin(nx)}{\\sqrt{n}}$: as funções vão a $0$ uniformemente, mas $f_n'(x)=\\sqrt{n}\\cos(nx)$ não converge.",
+          "difficulty": 4,
+          "solution": "**Exemplo.** Seja $f_n(x)=\\dfrac{\\sin(nx)}{\\sqrt{n}}$ em $[0,1]$.\n\n**Convergencia uniforme de $f_n$ a $f\\equiv0$.** Para todo $x$,\n$$|f_n(x)-0|=\\frac{|\\sin(nx)|}{\\sqrt n}\\le\\frac{1}{\\sqrt n}\\xrightarrow[n\\to\\infty]{}0,$$\nlogo $\\|f_n-0\\|_\\infty\\le\\frac{1}{\\sqrt n}\\to0$: a convergencia e uniforme e o limite e $f\\equiv0$, que satisfaz $f'\\equiv0$. Cada $f_n\\in C^1$.\n\n**As derivadas nao convergem para $f'$.** Derivando,\n$$f_n'(x)=\\frac{n\\cos(nx)}{\\sqrt n}=\\sqrt{n}\\,\\cos(nx).$$\nEm $x=0$: $f_n'(0)=\\sqrt{n}\\cos(0)=\\sqrt{n}\\to+\\infty$. Portanto $(f_n'(0))$ nem sequer e limitada, muito menos converge para $f'(0)=0$. Assim $f_n'\\not\\to f'$ (nem pontualmente em $x=0$, nem uniformemente).\n\n**Conclusao.** Temos $f_n\\to f$ uniformemente, cada $f_n\\in C^1$, mas $f_n'\\not\\to f'$. Isso mostra que a convergencia uniforme das *funcoes* nao implica nada sobre as derivadas: para poder derivar termo a termo e legitimar $(\\lim f_n)'=\\lim f_n'$ e indispensavel a hipotese de convergencia uniforme das *derivadas*. $\\blacksquare$",
+          "steps": [
+            "Escolha f_n(x)=sin(nx)/sqrt(n), com cada f_n de classe C^1.",
+            "Mostre que ||f_n||_inf <= 1/sqrt(n) -> 0, logo f_n -> 0 uniformemente e f=0 com f'=0.",
+            "Derive: f_n'(x)=sqrt(n) cos(nx).",
+            "Avalie em x=0: f_n'(0)=sqrt(n) -> infinito, entao f_n' nao converge para f'.",
+            "Conclua que uniformidade das funcoes nao garante convergencia das derivadas: a hipotese sobre f_n' e essencial."
+          ]
+        },
+        {
+          "prompt": "Prove o teorema da integração do limite: se $f_n\\to f$ uniformemente em $[a,b]$ e cada $f_n$ é integrável, então $\\int_a^b f_n\\to\\int_a^b f$.",
+          "hint": "Estime $|\\int_a^b f_n-\\int_a^b f|\\le (b-a)\\,\\|f_n-f\\|_\\infty$; lembre de justificar que $f$ é integrável.",
+          "difficulty": 3,
+          "solution": "Sejam $f_n\\to f$ uniformemente em $[a,b]$, com cada $f_n$ integravel. Provamos que $f$ e integravel e $\\int_a^b f_n\\to\\int_a^b f$.\n\n**Passo 1: $f$ e limitada.** Seja $\\varepsilon_n=\\|f_n-f\\|_\\infty\\to0$. Para $n$ fixo, $|f(x)|\\le|f_n(x)|+\\varepsilon_n$; como $f_n$ e integravel (logo limitada), $f$ e limitada.\n\n**Passo 2: $f$ e integravel (criterio de Darboux).** Dado $\\varepsilon>0$, escolha $n$ com $\\varepsilon_n=\\|f_n-f\\|_\\infty<\\frac{\\varepsilon}{4(b-a)}$. Entao $f_n-\\varepsilon_n\\le f\\le f_n+\\varepsilon_n$. Em qualquer subintervalo $I$, a oscilacao satisfaz $\\omega(f,I)\\le\\omega(f_n,I)+2\\varepsilon_n$. Como $f_n$ e integravel, existe particao $P$ com $\\overline{S}(f_n,P)-\\underline{S}(f_n,P)<\\frac{\\varepsilon}{2}$. Somando as oscilacoes,\n$$\\overline{S}(f,P)-\\underline{S}(f,P)=\\sum_i\\omega(f,I_i)\\Delta x_i\\le\\sum_i\\omega(f_n,I_i)\\Delta x_i+2\\varepsilon_n(b-a)<\\frac{\\varepsilon}{2}+2\\cdot\\frac{\\varepsilon}{4(b-a)}(b-a)=\\varepsilon.$$\nPelo criterio de Darboux, $f$ e integravel.\n\n**Passo 3: convergencia das integrais.** Pela monotonia e linearidade da integral,\n$$\\left|\\int_a^b f_n-\\int_a^b f\\right|=\\left|\\int_a^b (f_n-f)\\right|\\le\\int_a^b|f_n-f|\\le\\int_a^b\\|f_n-f\\|_\\infty\\,dx=(b-a)\\,\\|f_n-f\\|_\\infty.$$\nComo $\\|f_n-f\\|_\\infty\\to0$, o lado direito $\\to0$, logo $\\int_a^b f_n\\to\\int_a^b f$. $\\blacksquare$",
+          "steps": [
+            "Defina epsilon_n = ||f_n - f||_inf, que tende a 0 por hipotese.",
+            "Note que f e limitada, pois difere de uma f_n integravel por no maximo epsilon_n.",
+            "Prove integrabilidade de f por Darboux: a oscilacao de f em cada subintervalo excede a de f_n em no maximo 2 epsilon_n.",
+            "Escolha n e uma particao que tornem S_sup - S_inf de f menor que epsilon.",
+            "Estime |integral f_n - integral f| <= (b-a)||f_n-f||_inf -> 0 para concluir a convergencia das integrais."
+          ]
+        },
+        {
+          "prompt": "Determine o raio de convergência de $\\sum_{n\\ge1}\\frac{x^n}{n}$ e analise a convergência em $x=1$ e $x=-1$.",
+          "hint": "Cauchy-Hadamard dá $R=1$; em $x=1$ é a série harmônica (diverge), em $x=-1$ é a série harmônica alternada (converge).",
+          "difficulty": 3,
+          "solution": "Considere $\\sum_{n\\ge1}\\dfrac{x^n}{n}$, com $a_n=\\dfrac1n$.\n\n**Raio de convergencia (Cauchy-Hadamard).**\n$$\\frac1R=\\limsup_{n\\to\\infty}|a_n|^{1/n}=\\limsup_{n\\to\\infty}\\left(\\frac1n\\right)^{1/n}=\\lim_{n\\to\\infty}n^{-1/n}=1,$$\npois $n^{1/n}\\to1$. Logo $R=1$: a serie converge absolutamente para $|x|<1$ e diverge para $|x|>1$.\n\n**Fronteira $x=1$.** A serie torna-se $\\sum_{n\\ge1}\\dfrac{1}{n}$, a **serie harmonica**, que **diverge**.\n\n**Fronteira $x=-1$.** A serie torna-se $\\sum_{n\\ge1}\\dfrac{(-1)^n}{n}$, a **serie harmonica alternada**. Pelo criterio de Leibniz (termos $\\tfrac1n$ decrescentes a $0$), ela **converge** (condicionalmente; de fato para $-\\ln2$).\n\n**Resumo.** A serie converge para $x\\in[-1,1)$ e diverge para $x=1$ e $|x|>1$. $\\blacksquare$",
+          "steps": [
+            "Identifique a_n = 1/n e aplique Cauchy-Hadamard: 1/R = limsup (1/n)^{1/n}.",
+            "Use que n^{1/n} -> 1 para obter R=1.",
+            "Substitua x=1: obtem a serie harmonica sum 1/n, que diverge.",
+            "Substitua x=-1: obtem a serie harmonica alternada sum (-1)^n/n, que converge por Leibniz.",
+            "Conclua o intervalo de convergencia [-1, 1)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Convergência uniforme (definição)",
+          "back": "$\\sup_{x\\in E}|f_n(x)-f(x)|\\to 0$; o mesmo $N$ serve para todos os $x$."
+        },
+        {
+          "front": "Pontual vs uniforme: diferença chave",
+          "back": "Na pontual o $N$ depende de $x$; na uniforme um único $N$ funciona para todo $x$ de $E$."
+        },
+        {
+          "front": "Teste M de Weierstrass",
+          "back": "Se $|f_n(x)|\\le M_n$ em $E$ e $\\sum M_n<\\infty$, então $\\sum f_n$ converge uniformemente em $E$."
+        },
+        {
+          "front": "Limite uniforme de contínuas",
+          "back": "É contínuo (troca $\\lim_{x\\to x_0}$ com $\\lim_n$ é legítima)."
+        },
+        {
+          "front": "Trocar limite com integral exige",
+          "back": "Convergência uniforme em $[a,b]$; então $\\int\\lim=\\lim\\int$."
+        },
+        {
+          "front": "Derivação termo a termo exige",
+          "back": "Convergência uniforme das DERIVADAS $f_n'$ (mais convergência num ponto)."
+        },
+        {
+          "front": "Raio de convergência (Cauchy-Hadamard)",
+          "back": "$R=1/\\limsup_n|a_n|^{1/n}$ para $\\sum a_n(x-c)^n$."
+        },
+        {
+          "front": "Exemplo de pontual que perde continuidade",
+          "back": "$f_n(x)=x^n$ em $[0,1]$: limite descontínuo, convergência não uniforme."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Rudin, cap. 7 (Sequences and Series of Functions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lima, Curso de Análise vol. 1, cap. IX (Sequências e Séries de Funções)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe as definicoes de convergencia pontual e uniforme lado a lado, prestando atencao a ordem dos quantificadores (na uniforme, o N nao depende de x). Escreva a norma do sup.",
+          "Leia Rudin cap. 7 ou Elon Lima vol. 1 cap. IX: estude o criterio de Cauchy uniforme e o teste M de Weierstrass, e o exemplo x^n em [0,1] que perde continuidade.",
+          "Demonstre os tres teoremas de troca: continuidade do limite uniforme, integracao termo a termo e — com cuidado — derivacao termo a termo (que exige convergencia uniforme das derivadas).",
+          "Estude series de potencias: raio de convergencia por Cauchy-Hadamard, convergencia uniforme em compactos internos e derivacao/integracao termo a termo.",
+          "Assista a uma videoaula sobre convergencia uniforme e sobre por que a pontual e insuficiente, com os contra-exemplos classicos.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (as hipoteses exatas de cada teorema de troca e o teste M de Weierstrass)."
+        ],
+        "searchQueries": [
+          "convergencia uniforme versus pontual definicao quantificadores norma do sup",
+          "teste M de Weierstrass demonstracao convergencia uniforme serie",
+          "derivacao termo a termo convergencia uniforme das derivadas contra-exemplo",
+          "raio de convergencia Cauchy-Hadamard serie de potencias fronteira",
+          "uniform convergence integral term by term theorem proof",
+          "sequence of functions pointwise limit discontinuous x^n"
+        ],
+        "videos": [
+          {
+            "title": "Sequences and Series of Functions - Uniform Convergence",
+            "channel": "MIT OpenCourseWare (18.100)",
+            "note": "Aulas cobrindo convergencia uniforme, teste M de Weierstrass e os teoremas de troca, no estilo Rudin cap. 7."
+          },
+          {
+            "title": "Uniform Convergence",
+            "channel": "Dr. Peyam",
+            "note": "Explicacoes com exemplos de por que a convergencia pontual falha e a uniforme corrige continuidade/integral."
+          },
+          {
+            "title": "Series de funcoes e convergencia uniforme",
+            "channel": "Matematica Universitaria / Equaciona",
+            "note": "Procure videos em PT-BR sobre convergencia uniforme e teste de Weierstrass para reforco."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap. 7 (Sequences and Series of Functions)",
+            "where": "Walter Rudin - livro"
+          },
+          {
+            "title": "Curso de Analise vol. 1, cap. IX (Sequencias e Series de Funcoes)",
+            "where": "Elon Lages Lima (IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-2-05-arzela-ascoli",
+      "title": "Equicontinuidade e o Teorema de Arzelà-Ascoli",
+      "tagline": "O critério de compacidade no espaço das funções contínuas — o protótipo de toda compacidade em dimensão infinita.",
+      "objectives": [
+        "Definir equicontinuidade pontual e uniforme de uma família de funções.",
+        "Compreender por que limitação não basta para extrair subsequência convergente em $C(K)$.",
+        "Enunciar e demonstrar o Teorema de Arzelà-Ascoli.",
+        "Caracterizar os subconjuntos relativamente compactos de $C(K)$.",
+        "Reconhecer aplicações: existência de soluções de EDO (Peano) e operadores compactos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Família equicontínua",
+          "statement": "$\\mathcal{F}\\subseteq C(K)$ é equicontínua em $x_0$ se $\\forall\\varepsilon>0\\,\\exists\\delta>0$ tal que $|x-x_0|<\\delta\\Rightarrow|f(x)-f(x_0)|<\\varepsilon$ para TODA $f\\in\\mathcal{F}$ (mesmo $\\delta$ para toda a família)."
+        },
+        {
+          "term": "Equicontinuidade uniforme",
+          "statement": "O $\\delta$ acima serve para todos os $x_0\\in K$ simultaneamente; num compacto, equicontinuidade pontual em todo ponto implica equicontinuidade uniforme."
+        },
+        {
+          "term": "Família uniformemente limitada",
+          "statement": "Existe $M$ com $|f(x)|\\le M$ para toda $f\\in\\mathcal{F}$ e todo $x\\in K$."
+        },
+        {
+          "term": "Relativamente compacto",
+          "statement": "Um conjunto cujo fecho é compacto; em $C(K)$ equivale a: toda sequência admite subsequência uniformemente convergente."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Arzelà-Ascoli",
+          "statement": "Seja $K$ compacto. Uma família $\\mathcal{F}\\subseteq C(K)$ é relativamente compacta na norma do sup se e só se $\\mathcal{F}$ é uniformemente limitada e equicontínua. Em particular, toda sequência $(f_n)$ uniformemente limitada e equicontínua possui subsequência uniformemente convergente.",
+          "whyItMatters": "É o teorema de compacidade fundamental em espaços de funções: substitui Bolzano-Weierstrass (que falha em dimensão infinita) e é a base de teoremas de existência em EDO, EDP e cálculo variacional."
+        },
+        {
+          "name": "Equicontinuidade pontual $\\Rightarrow$ uniforme em compacto",
+          "statement": "Se $K$ é compacto e $\\mathcal{F}$ é equicontínua em cada ponto de $K$, então $\\mathcal{F}$ é uniformemente equicontínua.",
+          "whyItMatters": "Permite, na prática, verificar a hipótese ponto a ponto; é o análogo, para famílias, do teorema de Heine sobre continuidade uniforme."
+        },
+        {
+          "name": "Critério via derivada limitada",
+          "statement": "Se $(f_n)$ é uma sequência de funções $C^1$ em $[a,b]$ com $\\sup_n\\|f_n'\\|_\\infty\\le L$ e $(f_n)$ uniformemente limitada, então $(f_n)$ tem subsequência uniformemente convergente.",
+          "whyItMatters": "Uma cota uniforme na derivada produz equicontinuidade (via TVM: $|f_n(x)-f_n(y)|\\le L|x-y|$), tornando Arzelà-Ascoli imediatamente aplicável — situação comuníssima em EDO."
+        }
+      ],
+      "summary": "Em dimensão finita, Bolzano-Weierstrass garante que todo conjunto limitado é relativamente compacto. Em $C(K)$, com a norma do sup, isso falha espetacularmente: a sequência $f_n(x)=\\sin(nx)$ é limitada por $1$ mas não tem subsequência uniformemente convergente, porque suas oscilações ficam cada vez mais rápidas. O que falta é controle uniforme da 'velocidade de variação' de toda a família — exatamente a equicontinuidade. Uma família é equicontínua quando um mesmo $\\delta$ funciona, dado $\\varepsilon$, para todas as funções ao mesmo tempo.\n\nO Teorema de Arzelà-Ascoli afirma que, num compacto $K$, ser relativamente compacto em $C(K)$ equivale exatamente a ser uniformemente limitado e equicontínuo. A demonstração combina dois ingredientes elegantes: um argumento diagonal de Cantor extrai uma subsequência que converge sobre um conjunto enumerável denso, e a equicontinuidade 'preenche os buracos', promovendo essa convergência a uniforme em todo $K$. Na prática, a equicontinuidade costuma vir de uma cota uniforme nas derivadas (via TVM, isso dá Lipschitz com constante comum). Arzelà-Ascoli é o motor de teoremas de existência — como o Teorema de Peano para EDOs, em que se aproximam soluções por poligonais de Euler e se extrai uma subsequência convergente — e é o protótipo conceitual da compacidade de operadores em análise funcional.",
+      "commonPitfalls": [
+        "Esquecer a equicontinuidade e tentar usar apenas limitação para extrair subsequência convergente — $\\sin(nx)$ mostra que limitação sozinha não basta.",
+        "Confundir convergência da subsequência com convergência da sequência inteira: Arzelà-Ascoli fornece uma SUBsequência.",
+        "Verificar continuidade de cada $f_n$ individualmente e achar que isso é equicontinuidade — equicontinuidade exige um $\\delta$ COMUM a toda a família.",
+        "Aplicar o teorema sem que o domínio $K$ seja compacto; em domínios não compactos o resultado precisa de hipóteses adicionais."
+      ],
+      "worked": "**Limitação sem equicontinuidade falha.** Seja $f_n(x)=\\sin(nx)$ em $K=[0,\\pi]$. Claramente $|f_n(x)|\\le1$ (uniformemente limitada).\n\nSuponha, por absurdo, que alguma subsequência $f_{n_k}\\to f$ uniformemente. Então $(f_{n_k})$ seria de Cauchy na norma do sup, logo $\\int_0^\\pi (f_{n_k}-f_{n_j})^2\\to0$. Mas, por ortogonalidade, $\\int_0^\\pi \\sin(n_k x)\\sin(n_j x)\\,dx=0$ para $n_k\\neq n_j$ e $\\int_0^\\pi\\sin^2(n_k x)\\,dx=\\pi/2$, donde\n$$\\int_0^\\pi (f_{n_k}-f_{n_j})^2\\,dx=\\frac{\\pi}{2}+\\frac{\\pi}{2}=\\pi\\not\\to0,$$\ncontradição. Logo nenhuma subsequência converge uniformemente. A família NÃO é equicontínua (as derivadas $n\\cos(nx)$ explodem), e é por isso que Arzelà-Ascoli não se aplica. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Seja $(f_n)$ uma sequência de funções em $[0,1]$ com $f_n(0)=0$ e $|f_n'(x)|\\le 5$ para todo $n,x$. Prove que $(f_n)$ admite subsequência uniformemente convergente.",
+          "hint": "Pelo TVM, $|f_n(x)|\\le 5$ (limitação) e $|f_n(x)-f_n(y)|\\le 5|x-y|$ (equicontinuidade); aplique Arzelà-Ascoli.",
+          "difficulty": 3,
+          "solution": "Seja $(f_n)$ em $[0,1]$ com $f_n(0)=0$ e $|f_n'(x)|\\le5$ para todo $n$ e todo $x$. Provamos que $(f_n)$ tem subsequencia uniformemente convergente aplicando Arzela-Ascoli.\n\n**Uniformemente limitada.** Pelo TVM aplicado a $f_n$ entre $0$ e $x$: existe $\\xi$ com $f_n(x)-f_n(0)=f_n'(\\xi)\\,x$. Logo\n$$|f_n(x)|=|f_n(x)-f_n(0)|=|f_n'(\\xi)|\\,|x|\\le5\\cdot1=5\\quad\\text{para todo }x\\in[0,1],\\ \\text{todo }n.$$\nEntao $\\|f_n\\|_\\infty\\le5$: a familia e uniformemente limitada.\n\n**Equicontinua.** Para $x,y\\in[0,1]$, novamente pelo TVM aplicado a $f_n$ entre $x$ e $y$:\n$$|f_n(x)-f_n(y)|=|f_n'(\\eta)|\\,|x-y|\\le5\\,|x-y|.$$\nDado $\\varepsilon>0$, tome $\\delta=\\varepsilon/5$ (independente de $n$ e de $x,y$): $|x-y|<\\delta\\Rightarrow|f_n(x)-f_n(y)|<\\varepsilon$ para toda $f_n$. Logo a familia e (uniformemente) equicontinua.\n\n**Conclusao.** $[0,1]$ e compacto, a familia $(f_n)$ e uniformemente limitada e equicontinua; pelo **Teorema de Arzela-Ascoli**, $(f_n)$ possui subsequencia uniformemente convergente. $\\blacksquare$",
+          "steps": [
+            "Use o TVM entre 0 e x e f_n(0)=0 para limitar |f_n(x)| por 5, obtendo limitacao uniforme.",
+            "Use o TVM entre x e y para obter |f_n(x)-f_n(y)| <= 5|x-y| (Lipschitz com constante comum).",
+            "Dado epsilon, escolha delta=epsilon/5, independente de n, verificando equicontinuidade.",
+            "Note que [0,1] e compacto.",
+            "Aplique Arzela-Ascoli para extrair a subsequencia uniformemente convergente."
+          ]
+        },
+        {
+          "prompt": "Mostre que a família $\\mathcal{F}=\\{x\\mapsto x^n:n\\in\\mathbb{N}\\}$ em $[0,1]$ NÃO é equicontínua, exibindo a falha perto de $x=1$.",
+          "hint": "Fixe $\\varepsilon=1/2$ e mostre que nenhum $\\delta$ controla $|x^n-1^n|$ uniformemente em $n$ ao se aproximar de $1$.",
+          "difficulty": 3,
+          "solution": "Seja $\\mathcal{F}=\\{g_n:g_n(x)=x^n,\\ n\\in\\mathbb{N}\\}$ em $[0,1]$. Mostramos que $\\mathcal{F}$ NAO e equicontinua, com a falha perto de $x=1$.\n\n**Negacao da equicontinuidade.** Equicontinuidade (uniforme) exigiria: para $\\varepsilon=\\tfrac12$ existir $\\delta>0$ tal que, para todo $n$ e todos $x,y$ com $|x-y|<\\delta$, $|x^n-y^n|<\\tfrac12$. Vamos mostrar que nenhum $\\delta$ serve.\n\nFixe $\\delta>0$ qualquer e tome $y=1$. Escolha $x=1-\\tfrac{\\delta}{2}\\in(0,1)$, de modo que $|x-y|=\\tfrac{\\delta}{2}<\\delta$. Entao\n$$|g_n(x)-g_n(y)|=|x^n-1|=1-x^n=1-\\Bigl(1-\\tfrac{\\delta}{2}\\Bigr)^{n}.$$\nComo $0<1-\\tfrac{\\delta}{2}<1$, temos $\\bigl(1-\\tfrac{\\delta}{2}\\bigr)^n\\to0$ quando $n\\to\\infty$. Logo existe $n$ grande com $\\bigl(1-\\tfrac{\\delta}{2}\\bigr)^n<\\tfrac12$, e para esse $n$,\n$$|g_n(x)-g_n(y)|=1-\\Bigl(1-\\tfrac{\\delta}{2}\\Bigr)^n>\\frac12=\\varepsilon.$$\nOu seja, por menor que seja $\\delta$, ha um par $x,y$ (com $y=1$) a distancia $<\\delta$ e um indice $n$ para o qual a variacao excede $\\tfrac12$.\n\n**Conclusao.** Nao existe $\\delta$ uniforme; $\\mathcal{F}$ nao e equicontinua. A falha se concentra em $x=1$: ali as potencias $x^n$ passam de $\\approx1$ (em $x=1$) a valores pequenos (para $x$ um pouco menor) tao mais abruptamente quanto maior $n$. (Consequentemente, embora limitada por $1$, a familia nao satisfaz as hipoteses de Arzela-Ascoli e seu limite pontual e descontinuo em $1$.) $\\blacksquare$",
+          "steps": [
+            "Fixe epsilon=1/2 e assuma por contradicao que algum delta uniforme funcione.",
+            "Tome y=1 e x=1-delta/2, de modo que |x-y|<delta.",
+            "Calcule |x^n - 1| = 1 - (1-delta/2)^n.",
+            "Use que (1-delta/2)^n -> 0 para achar n com (1-delta/2)^n < 1/2, tornando a diferenca > 1/2.",
+            "Conclua que nenhum delta serve: a familia nao e equicontinua, com falha em x=1."
+          ]
+        },
+        {
+          "prompt": "Prove que equicontinuidade pontual em todo ponto de um compacto $K$ implica equicontinuidade uniforme.",
+          "hint": "Imite a prova do teorema de Heine usando a cobertura de $K$ por bolas onde o $\\delta$ pontual funciona e a compacidade para extrair subcobertura finita.",
+          "difficulty": 4,
+          "solution": "Seja $K$ compacto e $\\mathcal{F}$ equicontinua em cada ponto de $K$. Provamos que $\\mathcal{F}$ e uniformemente equicontinua (imitando a prova do teorema de Heine). Assumimos $K\\subseteq\\mathbb{R}^d$ (ou espaco metrico) com metrica $d$.\n\n**Equicontinuidade pontual.** Para cada $p\\in K$ e cada $\\varepsilon>0$ existe $\\delta_p>0$ tal que\n$$d(x,p)<\\delta_p\\ \\Rightarrow\\ |f(x)-f(p)|<\\frac{\\varepsilon}{2}\\quad\\text{para toda }f\\in\\mathcal{F}.$$\n\n**Cobertura e subcobertura finita.** As bolas $B(p,\\delta_p/2)$, $p\\in K$, cobrem $K$. Por compacidade, existem $p_1,\\dots,p_N$ com $K\\subseteq\\bigcup_{j=1}^N B(p_j,\\delta_{p_j}/2)$. Ponha\n$$\\delta=\\min_{1\\le j\\le N}\\frac{\\delta_{p_j}}{2}>0.$$\n\n**Verificacao da uniformidade.** Sejam $x,y\\in K$ com $d(x,y)<\\delta$. Como as bolas cobrem $K$, existe $j$ com $x\\in B(p_j,\\delta_{p_j}/2)$, isto e $d(x,p_j)<\\delta_{p_j}/2$. Entao\n$$d(y,p_j)\\le d(y,x)+d(x,p_j)<\\delta+\\frac{\\delta_{p_j}}{2}\\le\\frac{\\delta_{p_j}}{2}+\\frac{\\delta_{p_j}}{2}=\\delta_{p_j}.$$\nLogo tanto $x$ quanto $y$ estao a distancia $<\\delta_{p_j}$ de $p_j$, e para toda $f\\in\\mathcal{F}$,\n$$|f(x)-f(y)|\\le|f(x)-f(p_j)|+|f(p_j)-f(y)|<\\frac{\\varepsilon}{2}+\\frac{\\varepsilon}{2}=\\varepsilon.$$\n\n**Conclusao.** O $\\delta$ encontrado depende so de $\\varepsilon$ (e da familia), nao de $x,y$ nem de $f$: $\\mathcal{F}$ e uniformemente equicontinua. $\\blacksquare$",
+          "steps": [
+            "Escreva a equicontinuidade pontual: para cada p existe delta_p com |f(x)-f(p)|<epsilon/2 se d(x,p)<delta_p, valido para toda f.",
+            "Cubra K pelas bolas B(p, delta_p/2) e use compacidade para extrair subcobertura finita p_1,...,p_N.",
+            "Defina delta como o minimo dos delta_{p_j}/2, positivo por ser minimo finito.",
+            "Para x,y com d(x,y)<delta, ache j com x proximo de p_j e mostre por desigualdade triangular que y tambem esta a menos de delta_{p_j} de p_j.",
+            "Some |f(x)-f(p_j)| + |f(p_j)-f(y)| < epsilon para toda f, obtendo equicontinuidade uniforme."
+          ]
+        },
+        {
+          "prompt": "Esboce como Arzelà-Ascoli é usado para provar o Teorema de Peano (existência de solução de $y'=f(t,y)$, $f$ contínua). Identifique onde entram limitação e equicontinuidade.",
+          "hint": "Aproxime por poligonais de Euler $y_n$; a cota $|f|\\le M$ dá $|y_n'|\\le M$, logo equicontinuidade; extraia subsequência convergente e passe ao limite na equação integral.",
+          "difficulty": 5,
+          "solution": "**Esboco: Arzela-Ascoli na prova do Teorema de Peano.** Considera-se o problema de valor inicial\n$$y'(t)=F(t,y(t)),\\qquad y(t_0)=y_0,$$\ncom $F$ continua num retangulo $R=[t_0-a,t_0+a]\\times\\overline{B}(y_0,b)$. Como $R$ e compacto e $F$ e continua, $F$ e limitada: $|F(t,y)|\\le M$ em $R$. Escolha $h=\\min\\{a,\\ b/M\\}$ e trabalhe em $I=[t_0-h,t_0+h]$.\n\n**Passo 1: poligonais de Euler.** Para cada $n$, particione $I$ e defina a poligonal de Euler $y_n$: comeca em $y_0$ e em cada subintervalo avanca com inclinacao $F(t_k,y_n(t_k))$. Por construcao, $|y_n'(t)|\\le M$ em cada trecho (a inclinacao e um valor de $F$, logo $\\le M$).\n\n**Passo 2: onde entra a LIMITACAO.** Como $|y_n'|\\le M$ e $y_n(t_0)=y_0$, integrando/aplicando o TVM: $|y_n(t)-y_0|\\le M|t-t_0|\\le Mh\\le b$. Logo cada $y_n$ permanece em $\\overline{B}(y_0,b)$ e a familia $(y_n)$ e **uniformemente limitada** (por $|y_0|+b$).\n\n**Passo 3: onde entra a EQUICONTINUIDADE.** Ainda de $|y_n'|\\le M$, o TVM da\n$$|y_n(t)-y_n(s)|\\le M|t-s|\\quad\\text{para todos }n,\\ t,s\\in I,$$\nisto e, as poligonais sao $M$-Lipschitz com a MESMA constante $M$: a familia e **equicontinua** (dado $\\varepsilon$, $\\delta=\\varepsilon/M$ serve para todas).\n\n**Passo 4: Arzela-Ascoli + passagem ao limite.** Como $I$ e compacto e $(y_n)$ e uniformemente limitada e equicontinua, **Arzela-Ascoli** fornece uma subsequencia $y_{n_k}\\to y$ uniformemente em $I$. Escrevendo cada poligonal na forma integral aproximada $y_{n_k}(t)\\approx y_0+\\int_{t_0}^t F(s,y_{n_k}(s))\\,ds$ e usando a convergencia uniforme (mais a continuidade uniforme de $F$ em $R$) para passar ao limite dentro da integral, obtem-se\n$$y(t)=y_0+\\int_{t_0}^t F(s,y(s))\\,ds,$$\nque, pelo TFC, equivale a $y'=F(t,y)$ com $y(t_0)=y_0$. Logo $y$ e solucao.\n\n**Resumo dos papeis.** A cota $|F|\\le M$ produz simultaneamente a **limitacao uniforme** (Passo 2) e a **equicontinuidade** (Passo 3) das poligonais; sem essas duas hipoteses Arzela-Ascoli nao se aplicaria e nao haveria como extrair a subsequencia convergente cuja limite e a solucao. $\\blacksquare$",
+          "steps": [
+            "Use compacidade do retangulo R para obter a cota |F|<=M e definir o intervalo I via h=min{a,b/M}.",
+            "Construa as poligonais de Euler y_n, cujas inclinacoes sao valores de F, logo |y_n'|<=M.",
+            "Mostre limitacao uniforme: |y_n(t)-y_0|<=M|t-t_0|<=b, entao as y_n ficam em B(y_0,b).",
+            "Mostre equicontinuidade: pelo TVM, |y_n(t)-y_n(s)|<=M|t-s|, Lipschitz com constante comum M.",
+            "Aplique Arzela-Ascoli para extrair y_{n_k}->y uniforme e passe ao limite na forma integral, obtendo a solucao pelo TFC."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Família equicontínua (definição)",
+          "back": "$\\forall\\varepsilon\\,\\exists\\delta$ (comum a TODA a família) tal que $|x-y|<\\delta\\Rightarrow|f(x)-f(y)|<\\varepsilon$ para toda $f$."
+        },
+        {
+          "front": "Hipóteses de Arzelà-Ascoli",
+          "back": "$K$ compacto, família uniformemente limitada e equicontínua $\\Rightarrow$ relativamente compacta em $C(K)$."
+        },
+        {
+          "front": "Por que limitação não basta em $C(K)$?",
+          "back": "Ex.: $\\sin(nx)$ é limitada mas oscila cada vez mais rápido; sem equicontinuidade não há subsequência uniformemente convergente."
+        },
+        {
+          "front": "Como obter equicontinuidade na prática?",
+          "back": "Cota uniforme nas derivadas: $\\|f_n'\\|_\\infty\\le L \\Rightarrow |f_n(x)-f_n(y)|\\le L|x-y|$ (via TVM)."
+        },
+        {
+          "front": "Ferramenta central da prova de Arzelà-Ascoli",
+          "back": "Argumento diagonal de Cantor sobre um denso enumerável + equicontinuidade para promover a uniforme."
+        },
+        {
+          "front": "Equicontinuidade pontual em compacto implica",
+          "back": "Equicontinuidade uniforme (análogo de Heine para famílias)."
+        },
+        {
+          "front": "Aplicação clássica de Arzelà-Ascoli em EDO",
+          "back": "Teorema de Peano: poligonais de Euler são equicontínuas e limitadas; extrai-se solução por subsequência."
+        },
+        {
+          "front": "Relativamente compacto em $C(K)$ significa",
+          "back": "Toda sequência da família tem subsequência uniformemente convergente."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Rudin, cap. 7 (Equicontinuous families, Ascoli)",
+          "ref": "livro"
+        },
+        {
+          "title": "Apostol, Mathematical Analysis, cap. 9",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise compacidade em espacos metricos, Bolzano-Weierstrass e completude de C(K) com a norma do sup; sao o pano de fundo de Arzela-Ascoli.",
+          "Leia Rudin cap. 7 (Equicontinuous families, Ascoli) ou Apostol cap. 9: escreva as definicoes de equicontinuidade pontual/uniforme e de familia uniformemente limitada.",
+          "Entenda por que limitacao nao basta em dimensao infinita estudando sin(nx); depois estude a demonstracao de Arzela-Ascoli, isolando o argumento diagonal de Cantor e o papel da equicontinuidade.",
+          "Estude o criterio pratico via cota nas derivadas (TVM => Lipschitz => equicontinuidade) e a aplicacao ao Teorema de Peano em EDO.",
+          "Assista a uma videoaula sobre Arzela-Ascoli e o argumento diagonal para fixar a construcao da subsequencia.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (as duas hipoteses do teorema, o argumento diagonal e a producao de equicontinuidade via derivada limitada)."
+        ],
+        "searchQueries": [
+          "teorema de Arzela-Ascoli demonstracao argumento diagonal de Cantor",
+          "equicontinuidade definicao familia funcoes exemplo sin(nx)",
+          "cota uniforme derivada implica equicontinuidade TVM Lipschitz",
+          "teorema de Peano existencia EDO poligonais de Euler Arzela-Ascoli",
+          "Arzela Ascoli theorem relatively compact C(K) proof",
+          "equicontinuity pointwise implies uniform compact Heine"
+        ],
+        "videos": [
+          {
+            "title": "The Arzela-Ascoli Theorem",
+            "channel": "MIT OpenCourseWare (18.100)",
+            "note": "Aula sobre equicontinuidade e o teorema de Ascoli, com o argumento diagonal, no estilo Rudin cap. 7."
+          },
+          {
+            "title": "Arzela-Ascoli and Equicontinuity",
+            "channel": "Michael Penn",
+            "note": "Demonstracao passo a passo do teorema e discussao de exemplos de familias equicontinuas e nao equicontinuas."
+          },
+          {
+            "title": "Compacidade em espacos de funcoes",
+            "channel": "IMPA (canal IMPA / PAPMEM)",
+            "note": "Procure aulas de analise funcional/analise sobre compacidade em C(K) e Arzela-Ascoli."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap. 7 (Equicontinuous families, Ascoli's theorem)",
+            "where": "Walter Rudin - livro"
+          },
+          {
+            "title": "Mathematical Analysis, cap. 9",
+            "where": "Tom Apostol - livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-2-06-calculo-rn-frechet",
+      "title": "Cálculo Diferencial em $\\mathbb{R}^n$ e a Derivada de Fréchet",
+      "tagline": "A derivada como transformação linear: diferenciabilidade total, jacobiana e a regra da cadeia em várias variáveis.",
+      "objectives": [
+        "Trabalhar com normas em $\\mathbb{R}^n$ e usar a equivalência de todas as normas.",
+        "Definir a derivada de Fréchet como a melhor aproximação linear e distingui-la das derivadas parciais e direcionais (Gateaux).",
+        "Relacionar a diferencial total com a matriz Jacobiana e o gradiente.",
+        "Provar que diferenciável implica contínua e que classe $C^1$ (parciais contínuas) implica diferenciável.",
+        "Demonstrar a regra da cadeia e a desigualdade do valor médio em $\\mathbb{R}^n$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Derivada de Fréchet",
+          "statement": "$f:U\\subseteq\\mathbb{R}^n\\to\\mathbb{R}^m$ é diferenciável em $a$ se existe uma transformação linear $Df(a):\\mathbb{R}^n\\to\\mathbb{R}^m$ tal que $\\lim_{h\\to0}\\dfrac{\\|f(a+h)-f(a)-Df(a)h\\|}{\\|h\\|}=0$."
+        },
+        {
+          "term": "Derivada parcial / direcional (Gateaux)",
+          "statement": "$\\dfrac{\\partial f}{\\partial x_j}(a)=\\lim_{t\\to0}\\dfrac{f(a+te_j)-f(a)}{t}$; a direcional na direção $v$ é $\\lim_{t\\to0}\\frac{f(a+tv)-f(a)}{t}$. Existirem não garante diferenciabilidade."
+        },
+        {
+          "term": "Matriz Jacobiana",
+          "statement": "Se $f$ é diferenciável em $a$, a matriz de $Df(a)$ é $J_f(a)=\\left(\\dfrac{\\partial f_i}{\\partial x_j}(a)\\right)_{m\\times n}$. Para $m=1$, $Df(a)h=\\nabla f(a)\\cdot h$."
+        },
+        {
+          "term": "Equivalência de normas",
+          "statement": "Em $\\mathbb{R}^n$ (dimensão finita) toda norma é equivalente: existem $c,C>0$ com $c\\|x\\|_a\\le\\|x\\|_b\\le C\\|x\\|_a$. Logo continuidade, limites e diferenciabilidade não dependem da norma escolhida."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Unicidade da derivada e diferenciável $\\Rightarrow$ contínua",
+          "statement": "Se $f$ é diferenciável em $a$, a transformação linear $Df(a)$ é única e $f$ é contínua em $a$.",
+          "whyItMatters": "Garante que 'a derivada' é bem definida como objeto linear e que diferenciabilidade é uma condição mais forte que continuidade, como em uma variável."
+        },
+        {
+          "name": "Diferenciável $\\Rightarrow$ parciais existem e dão a jacobiana",
+          "statement": "Se $f$ é diferenciável em $a$, então todas as derivadas parciais existem e $Df(a)$ é representada pela matriz Jacobiana. A recíproca é FALSA.",
+          "whyItMatters": "Esclarece a hierarquia: existência de parciais é necessária mas não suficiente para diferenciabilidade; evita o erro de 'derivar parcialmente e declarar diferenciável'."
+        },
+        {
+          "name": "Critério $C^1$",
+          "statement": "Se todas as derivadas parciais de $f$ existem numa vizinhança de $a$ e são contínuas em $a$, então $f$ é diferenciável (no sentido de Fréchet) em $a$.",
+          "whyItMatters": "É o critério prático para verificar diferenciabilidade: basta checar que as parciais são contínuas, o que é fácil para funções dadas por fórmulas."
+        },
+        {
+          "name": "Regra da cadeia em $\\mathbb{R}^n$",
+          "statement": "Se $g$ é diferenciável em $a$ e $f$ é diferenciável em $g(a)$, então $f\\circ g$ é diferenciável em $a$ e $D(f\\circ g)(a)=Df(g(a))\\circ Dg(a)$ (produto das jacobianas).",
+          "whyItMatters": "É a base de toda a manipulação de funções compostas em várias variáveis, da mudança de coordenadas ao backpropagation."
+        },
+        {
+          "name": "Desigualdade do valor médio",
+          "statement": "Se $f:U\\to\\mathbb{R}^m$ é diferenciável e o segmento $[a,b]\\subseteq U$, então $\\|f(b)-f(a)\\|\\le\\Bigl(\\sup_{t\\in[0,1]}\\|Df(a+t(b-a))\\|\\Bigr)\\,\\|b-a\\|$.",
+          "whyItMatters": "O TVM com igualdade NÃO vale para $m>1$; a versão correta é uma desigualdade que ainda permite todas as estimativas necessárias (Lipschitz, contrações etc.)."
+        }
+      ],
+      "summary": "Em várias variáveis, a derivada deixa de ser um número e passa a ser uma transformação linear: $f$ é diferenciável (Fréchet) em $a$ quando existe $Df(a)$ linear tal que $f(a+h)=f(a)+Df(a)h+o(\\|h\\|)$. Essa é a definição correta — a que generaliza a aproximação afim de uma variável e implica continuidade e a regra da cadeia. As derivadas parciais e direcionais (Gateaux) são apenas sombras unidimensionais dessa derivada: se $f$ é diferenciável, elas existem e montam a matriz Jacobiana; mas a recíproca falha — há funções com todas as parciais existentes que nem sequer são contínuas. O critério salvador é a classe $C^1$: parciais contínuas garantem diferenciabilidade de Fréchet.\n\nO maquinário se completa com a regra da cadeia, que diz que a jacobiana de uma composta é o produto das jacobianas — transformando cálculo em álgebra linear de matrizes. Um ponto delicado e muito cobrado: o Teorema do Valor Médio com igualdade NÃO sobrevive em $\\mathbb{R}^m$ com $m\\ge2$ (não há um único ponto intermediário que sirva para todas as componentes); a versão correta é a desigualdade do valor médio, que limita $\\|f(b)-f(a)\\|$ pelo supremo da norma da derivada ao longo do segmento. Como $\\mathbb{R}^n$ tem dimensão finita, todas as normas são equivalentes, de modo que noções topológicas e a própria diferenciabilidade independem da norma escolhida — uma simplificação que desaparece em dimensão infinita.",
+      "commonPitfalls": [
+        "Achar que existir todas as derivadas parciais implica diferenciabilidade — falso; pode até falhar a continuidade (ex.: $f(x,y)=\\frac{xy}{x^2+y^2}$ com $f(0,0)=0$).",
+        "Esperar o TVM com igualdade em $\\mathbb{R}^m$, $m\\ge2$; só vale a DESIGUALDADE do valor médio.",
+        "Confundir derivada direcional/Gateaux com diferenciabilidade de Fréchet: existirem todas as direcionais não garante a diferencial total.",
+        "Tratar o gradiente como a 'derivada' em vez da transformação linear $h\\mapsto\\nabla f(a)\\cdot h$; e esquecer que a jacobiana é $m\\times n$ (linhas = componentes, colunas = variáveis)."
+      ],
+      "worked": "**Parciais existem, mas $f$ não é contínua (logo não diferenciável).** Seja\n$$f(x,y)=\\begin{cases}\\dfrac{xy}{x^2+y^2},&(x,y)\\neq(0,0),\\\\[4pt]0,&(x,y)=(0,0).\\end{cases}$$\n\nNa origem, $\\dfrac{\\partial f}{\\partial x}(0,0)=\\lim_{t\\to0}\\dfrac{f(t,0)-0}{t}=\\lim_{t\\to0}\\dfrac{0}{t}=0$, e analogamente $\\dfrac{\\partial f}{\\partial y}(0,0)=0$. Ambas as parciais existem.\n\nNo entanto, ao longo da reta $y=x$ temos $f(x,x)=\\dfrac{x^2}{2x^2}=\\dfrac12$ para $x\\neq0$, que não tende a $f(0,0)=0$. Logo $f$ é descontínua em $(0,0)$ e, portanto, NÃO é diferenciável ali — mesmo com as duas parciais existindo. A moral: parciais são insuficientes; precisa-se da definição de Fréchet (ou do critério $C^1$). $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre, direto pela definição de Fréchet, que $f(x,y)=x^2+y^2$ é diferenciável em todo ponto $(a,b)$ e identifique $Df(a,b)$.",
+          "hint": "Calcule $f(a+h,b+k)-f(a,b)$, separe a parte linear $2a\\,h+2b\\,k$ e mostre que o resto $h^2+k^2$ é $o(\\|(h,k)\\|)$.",
+          "difficulty": 2,
+          "solution": "Seja $f(x,y)=x^2+y^2$ e $(a,b)\\in\\mathbb{R}^2$. Provamos diferenciabilidade de Fréchet direto pela definicao e identificamos $Df(a,b)$.\n\n**Incremento.** Para $h=(h_1,h_2)$,\n$$f(a+h_1,b+h_2)-f(a,b)=(a+h_1)^2+(b+h_2)^2-a^2-b^2=2a\\,h_1+2b\\,h_2+(h_1^2+h_2^2).$$\n\n**Parte linear e resto.** A parte linear em $h$ e $L(h)=2a\\,h_1+2b\\,h_2$; o resto e $r(h)=h_1^2+h_2^2=\\|h\\|^2$ (norma euclidiana). Verifiquemos que $r(h)=o(\\|h\\|)$:\n$$\\frac{|r(h)|}{\\|h\\|}=\\frac{\\|h\\|^2}{\\|h\\|}=\\|h\\|\\xrightarrow[h\\to0]{}0.$$\n\n**Conclusao.** Existe a transformacao linear $L(h)=2a\\,h_1+2b\\,h_2$ com\n$$\\lim_{h\\to0}\\frac{\\|f(a+h)-f(a)-L(h)\\|}{\\|h\\|}=\\lim_{h\\to0}\\frac{\\|h\\|^2}{\\|h\\|}=0,$$\nlogo $f$ e diferenciavel em $(a,b)$ e $Df(a,b)=L$, isto e,\n$$Df(a,b)(h_1,h_2)=2a\\,h_1+2b\\,h_2=\\nabla f(a,b)\\cdot h,\\qquad \\nabla f(a,b)=(2a,2b).$$\nA matriz jacobiana (aqui $1\\times2$) e $J_f(a,b)=[\\,2a\\ \\ 2b\\,]$. $\\blacksquare$",
+          "steps": [
+            "Expanda f(a+h1, b+h2) - f(a,b) e agrupe termos lineares e quadraticos em h.",
+            "Identifique a parte linear L(h)=2a h1 + 2b h2 e o resto r(h)=h1^2+h2^2=||h||^2.",
+            "Mostre que |r(h)|/||h|| = ||h|| -> 0, logo r e o(||h||).",
+            "Conclua pela definicao de Fréchet que f e diferenciavel com Df(a,b)=L.",
+            "Escreva Df(a,b) como o funcional h -> nabla f(a,b) . h, com gradiente (2a,2b)."
+          ]
+        },
+        {
+          "prompt": "Prove o critério $C^1$ no caso $n=2$: se $f_x,f_y$ existem numa vizinhança de $a$ e são contínuas em $a$, então $f$ é diferenciável em $a$.",
+          "hint": "Escreva o incremento $f(a+h,b+k)-f(a,b)$ como soma de dois incrementos parciais e aplique o TVM de uma variável em cada, usando a continuidade das parciais.",
+          "difficulty": 4,
+          "solution": "Provamos o criterio $C^1$ em $n=2$: se $f_x,f_y$ existem numa vizinhanca de $(a,b)$ e sao continuas em $(a,b)$, entao $f$ e diferenciavel (Fréchet) em $(a,b)$.\n\n**Decomposicao do incremento em dois passos.** Para $h=(h,k)$ pequeno,\n$$\\Delta f=f(a+h,b+k)-f(a,b)=\\underbrace{[f(a+h,b+k)-f(a,b+k)]}_{\\text{variacao em }x}+\\underbrace{[f(a,b+k)-f(a,b)]}_{\\text{variacao em }y}.$$\n\n**TVM de uma variavel em cada parcela.** Fixado $b+k$, a funcao $t\\mapsto f(t,b+k)$ e diferenciavel (as parciais existem numa vizinhanca), logo pelo TVM existe $\\theta_1\\in(0,1)$ com\n$$f(a+h,b+k)-f(a,b+k)=f_x(a+\\theta_1 h,\\,b+k)\\,h.$$\nAnalogamente, para $s\\mapsto f(a,s)$ existe $\\theta_2\\in(0,1)$ com\n$$f(a,b+k)-f(a,b)=f_y(a,\\,b+\\theta_2 k)\\,k.$$\nPortanto\n$$\\Delta f=f_x(a+\\theta_1 h,b+k)\\,h+f_y(a,b+\\theta_2 k)\\,k.$$\n\n**Introduzir a parte linear candidata.** Some e subtraia $f_x(a,b)\\,h+f_y(a,b)\\,k$:\n$$\\Delta f=\\bigl[f_x(a,b)h+f_y(a,b)k\\bigr]+\\underbrace{\\bigl[f_x(a+\\theta_1 h,b+k)-f_x(a,b)\\bigr]}_{=:\\,\\alpha(h,k)}h+\\underbrace{\\bigl[f_y(a,b+\\theta_2 k)-f_y(a,b)\\bigr]}_{=:\\,\\beta(h,k)}k.$$\n\n**Resto e o(\\|(h,k)\\|).** Pela **continuidade** de $f_x,f_y$ em $(a,b)$, quando $(h,k)\\to0$ os pontos $(a+\\theta_1 h,b+k)$ e $(a,b+\\theta_2 k)$ tendem a $(a,b)$, logo $\\alpha(h,k)\\to0$ e $\\beta(h,k)\\to0$. O resto $R=\\alpha h+\\beta k$ satisfaz\n$$\\frac{|R|}{\\|(h,k)\\|}\\le\\frac{|\\alpha|\\,|h|+|\\beta|\\,|k|}{\\|(h,k)\\|}\\le|\\alpha|+|\\beta|\\xrightarrow[(h,k)\\to0]{}0,$$\nusando $|h|,|k|\\le\\|(h,k)\\|$. Logo $R=o(\\|(h,k)\\|)$.\n\n**Conclusao.** $f(a+h,b+k)-f(a,b)=f_x(a,b)h+f_y(a,b)k+o(\\|(h,k)\\|)$, isto e, $f$ e diferenciavel em $(a,b)$ com $Df(a,b)(h,k)=f_x(a,b)h+f_y(a,b)k$. $\\blacksquare$",
+          "steps": [
+            "Escreva o incremento total como soma de uma variacao so em x (fixando b+k) mais uma variacao so em y (fixando a).",
+            "Aplique o TVM de uma variavel a cada parcela, obtendo f_x e f_y avaliados em pontos intermediarios vezes h e k.",
+            "Some e subtraia f_x(a,b)h + f_y(a,b)k para separar a parte linear candidata do resto.",
+            "Use a continuidade das parciais em (a,b) para concluir que os coeficientes alpha, beta do resto tendem a 0.",
+            "Estime |R|/||(h,k)|| <= |alpha|+|beta| -> 0, mostrando que o resto e o(||(h,k)||), logo f e diferenciavel."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo de $f:\\mathbb{R}^2\\to\\mathbb{R}$ cujas derivadas direcionais existem em TODAS as direções na origem, mas que não é diferenciável em $(0,0)$.",
+          "hint": "Tente $f(x,y)=\\frac{x^2 y}{x^4+y^2}$ (com $f(0,0)=0$); calcule as direcionais e mostre a falha ao longo de $y=x^2$.",
+          "difficulty": 5,
+          "solution": "**Exemplo.** Seja\n$$f(x,y)=\\begin{cases}\\dfrac{x^2 y}{x^4+y^2},&(x,y)\\neq(0,0),\\\\0,&(x,y)=(0,0).\\end{cases}$$\n\n**Todas as derivadas direcionais na origem existem.** Seja $v=(\\cos\\theta,\\sin\\theta)=(v_1,v_2)$ uma direcao unitaria. Para $t\\neq0$,\n$$\\frac{f(t v_1,t v_2)-0}{t}=\\frac{1}{t}\\cdot\\frac{(t v_1)^2(t v_2)}{(t v_1)^4+(t v_2)^2}=\\frac{1}{t}\\cdot\\frac{t^3 v_1^2 v_2}{t^4 v_1^4+t^2 v_2^2}=\\frac{t^3 v_1^2 v_2}{t\\,(t^4 v_1^4+t^2 v_2^2)}=\\frac{v_1^2 v_2}{t^2 v_1^4+v_2^2}.$$\n- Se $v_2\\neq0$: quando $t\\to0$, isso tende a $\\dfrac{v_1^2 v_2}{v_2^2}=\\dfrac{v_1^2}{v_2}$. Existe.\n- Se $v_2=0$ (direcao $\\pm e_1$): o numerador $v_1^2 v_2=0$, entao o quociente e $0$ para todo $t$, e a direcional vale $0$. Existe.\n\nLogo **a derivada direcional existe em toda direcao** na origem.\n\n**$f$ NAO e diferenciavel (nem continua) em $(0,0)$.** Aproxime-se pela parabola $y=x^2$ (com $x\\to0$):\n$$f(x,x^2)=\\frac{x^2\\cdot x^2}{x^4+(x^2)^2}=\\frac{x^4}{x^4+x^4}=\\frac{x^4}{2x^4}=\\frac12\\quad(x\\neq0).$$\nEntao $f(x,x^2)\\to\\tfrac12\\neq0=f(0,0)$. Ao longo dos eixos $f\\equiv0\\to0$. Como o limite de $f$ em $(0,0)$ depende do caminho, $f$ e **descontinua** em $(0,0)$, logo **nao diferenciavel** ali.\n\n**Moral.** Existencia de todas as direcionais (Gateaux) nao implica diferenciabilidade de Fréchet: aqui todas as direcionais existem, mas $f$ nem e continua. (Note tambem que $\\theta\\mapsto D_v f(0)$ nao e linear em $v$, o que ja denuncia a nao-diferenciabilidade.) $\\blacksquare$",
+          "steps": [
+            "Tome uma direcao unitaria v=(v1,v2) e monte o quociente (f(t v)-0)/t na origem.",
+            "Simplifique para v1^2 v2 / (t^2 v1^4 + v2^2) e tome t->0, obtendo v1^2/v2 (ou 0 se v2=0): a direcional existe sempre.",
+            "Para testar diferenciabilidade, aproxime-se pela curva y=x^2.",
+            "Calcule f(x, x^2)=1/2 para todo x diferente de 0, enquanto ao longo dos eixos f=0.",
+            "Conclua que o limite depende do caminho, logo f e descontinua e nao diferenciavel, apesar de todas as direcionais existirem."
+          ]
+        },
+        {
+          "prompt": "Sejam $g:\\mathbb{R}\\to\\mathbb{R}^2$ e $f:\\mathbb{R}^2\\to\\mathbb{R}$ diferenciáveis. Use a regra da cadeia para escrever $\\frac{d}{dt}f(g(t))$ em termos de $\\nabla f$ e $g'$.",
+          "hint": "$D(f\\circ g)(t)=Df(g(t))\\,Dg(t)=\\nabla f(g(t))\\cdot g'(t)$.",
+          "difficulty": 2,
+          "solution": "Sejam $g:\\mathbb{R}\\to\\mathbb{R}^2$, $g(t)=(g_1(t),g_2(t))$, e $f:\\mathbb{R}^2\\to\\mathbb{R}$, ambas diferenciaveis. Queremos $\\dfrac{d}{dt}f(g(t))$.\n\n**Regra da cadeia (produto de jacobianas).** A composta $h=f\\circ g:\\mathbb{R}\\to\\mathbb{R}$ e diferenciavel e\n$$Dh(t)=Df(g(t))\\circ Dg(t).$$\nAqui:\n- $Dg(t)$ e a jacobiana $2\\times1$ (uma coluna): $Dg(t)=\\begin{pmatrix}g_1'(t)\\\\ g_2'(t)\\end{pmatrix}=g'(t)$;\n- $Df(g(t))$ e a jacobiana $1\\times2$ (uma linha): $Df(g(t))=\\bigl[\\,\\partial_x f(g(t))\\ \\ \\partial_y f(g(t))\\,\\bigr]=\\nabla f(g(t))^{\\!\\top}$.\n\n**Produto.** O produto (linha por coluna) da o escalar\n$$Dh(t)=\\bigl[\\partial_x f\\ \\ \\partial_y f\\bigr]_{g(t)}\\begin{pmatrix}g_1'(t)\\\\ g_2'(t)\\end{pmatrix}=\\partial_x f(g(t))\\,g_1'(t)+\\partial_y f(g(t))\\,g_2'(t).$$\nEm notacao vetorial,\n$$\\boxed{\\ \\frac{d}{dt}f(g(t))=\\nabla f(g(t))\\cdot g'(t)\\ }=\\frac{\\partial f}{\\partial x}(g(t))\\,g_1'(t)+\\frac{\\partial f}{\\partial y}(g(t))\\,g_2'(t).$$\nEsse e o produto interno do gradiente de $f$ (avaliado ao longo da curva) com o vetor velocidade $g'(t)$. $\\blacksquare$",
+          "steps": [
+            "Reconheca a composta h=f o g de R em R e aplique a regra da cadeia D h(t)=Df(g(t)) Dg(t).",
+            "Escreva Dg(t) como a coluna (g_1'(t), g_2'(t)) = g'(t).",
+            "Escreva Df(g(t)) como a linha [partial_x f, partial_y f] = gradiente transposto.",
+            "Multiplique linha por coluna para obter partial_x f * g_1' + partial_y f * g_2'.",
+            "Reescreva como o produto interno nabla f(g(t)) . g'(t)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Derivada de Fréchet (definição)",
+          "back": "$Df(a)$ linear com $\\lim_{h\\to0}\\frac{\\|f(a+h)-f(a)-Df(a)h\\|}{\\|h\\|}=0$."
+        },
+        {
+          "front": "Parciais existem $\\Rightarrow$ diferenciável?",
+          "back": "Não. Pode até não ser contínua. Contra-exemplo: $\\frac{xy}{x^2+y^2}$ na origem."
+        },
+        {
+          "front": "Critério prático de diferenciabilidade",
+          "back": "Parciais existem numa vizinhança e são contínuas no ponto ($C^1$) $\\Rightarrow$ diferenciável (Fréchet)."
+        },
+        {
+          "front": "Matriz da derivada $Df(a)$",
+          "back": "A Jacobiana $J_f(a)=(\\partial f_i/\\partial x_j)$, de tamanho $m\\times n$."
+        },
+        {
+          "front": "Regra da cadeia em $\\mathbb{R}^n$",
+          "back": "$D(f\\circ g)(a)=Df(g(a))\\circ Dg(a)$ (produto de jacobianas)."
+        },
+        {
+          "front": "TVM em $\\mathbb{R}^m$ com $m\\ge2$",
+          "back": "Não vale com igualdade; só a DESIGUALDADE do valor médio $\\|f(b)-f(a)\\|\\le \\sup\\|Df\\|\\,\\|b-a\\|$."
+        },
+        {
+          "front": "Equivalência de normas em $\\mathbb{R}^n$",
+          "back": "Todas as normas em dimensão finita são equivalentes; topologia e diferenciabilidade independem da norma."
+        },
+        {
+          "front": "Gradiente vs derivada (para $m=1$)",
+          "back": "A derivada é o funcional linear $h\\mapsto\\nabla f(a)\\cdot h$; o gradiente é o vetor que o representa."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Rudin, cap. 9 (Functions of Several Variables)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lima, Curso de Análise vol. 2, caps. I-III",
+          "ref": "livro"
+        },
+        {
+          "title": "Spivak, Calculus on Manifolds, cap. 2",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise algebra linear (transformacoes lineares, matrizes, norma de operador) e normas em R^n; a derivada agora e uma transformacao linear, entao esse vocabulario e pre-requisito.",
+          "Leia Rudin cap. 9, Elon Lima vol. 2 caps. I-III ou Spivak cap. 2: escreva a definicao de derivada de Fréchet e contraste com derivadas parciais e direcionais (Gateaux).",
+          "Estude a hierarquia: diferenciavel => continua e parciais existem (=> jacobiana), mas parciais NAO implicam diferenciavel. Trabalhe o contra-exemplo xy/(x^2+y^2).",
+          "Demonstre o criterio C^1 (parciais continuas => diferenciavel) e a regra da cadeia como produto de jacobianas; entenda por que o TVM vira DESIGUALDADE para m>=2.",
+          "Assista a uma videoaula sobre a derivada total/jacobiana e a diferenca entre parciais e diferenciabilidade.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (definicao de Fréchet, criterio C^1, contra-exemplos e a desigualdade do valor medio)."
+        ],
+        "searchQueries": [
+          "derivada de Fréchet definicao diferenciabilidade R^n aproximacao linear",
+          "parciais existem mas funcao nao diferenciavel contra-exemplo xy/(x^2+y^2)",
+          "criterio C^1 parciais continuas implica diferenciavel demonstracao",
+          "desigualdade do valor medio R^m nao vale igualdade",
+          "Frechet derivative Jacobian chain rule several variables proof",
+          "directional derivatives exist not differentiable example"
+        ],
+        "videos": [
+          {
+            "title": "Functions of Several Variables - Differentiation",
+            "channel": "MIT OpenCourseWare (18.100 / 18.101)",
+            "note": "Aulas sobre derivada total, jacobiana e regra da cadeia em R^n, no estilo Rudin cap. 9."
+          },
+          {
+            "title": "The Frechet derivative / total derivative",
+            "channel": "Dr. Peyam",
+            "note": "Explicacao da derivada como transformacao linear e por que parciais nao bastam."
+          },
+          {
+            "title": "Calculo em varias variaveis: diferenciabilidade",
+            "channel": "Matematica Universitaria / Possani",
+            "note": "Procure videos em PT-BR sobre diferenciabilidade total, jacobiana e a diferenca para as parciais."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap. 9 (Functions of Several Variables)",
+            "where": "Walter Rudin - livro"
+          },
+          {
+            "title": "Curso de Analise vol. 2, caps. I-III",
+            "where": "Elon Lages Lima (IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-2-07-funcao-inversa-implicita",
+      "title": "Teoremas da Função Inversa e da Função Implícita",
+      "tagline": "Quando uma aplicação é localmente invertível e quando uma equação define uma função — os dois pilares do cálculo em variedades.",
+      "objectives": [
+        "Enunciar e usar o Teorema do Ponto Fixo de Banach (contrações) em espaços métricos completos.",
+        "Demonstrar o Teorema da Função Inversa via o método das contrações.",
+        "Enunciar e provar (ou deduzir) o Teorema da Função Implícita a partir do Teorema da Função Inversa.",
+        "Aplicar os teoremas para resolver sistemas, parametrizar conjuntos de nível e reconhecer variedades.",
+        "Compreender o papel da hipótese de invertibilidade da Jacobiana (não anulamento do determinante)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Contração",
+          "statement": "$T:X\\to X$ num espaço métrico é contração se existe $0\\le\\lambda<1$ com $d(Tx,Ty)\\le\\lambda\\,d(x,y)$ para todos $x,y$."
+        },
+        {
+          "term": "Difeomorfismo local",
+          "statement": "$f$ é um difeomorfismo de classe $C^1$ entre abertos se é bijetiva, $C^1$, com inversa $C^1$. O Teorema da Função Inversa garante isso localmente."
+        },
+        {
+          "term": "Jacobiano não nulo",
+          "statement": "A hipótese central: $\\det Df(a)\\neq0$, isto é, $Df(a)$ é um isomorfismo linear. É a condição que torna a aproximação linear invertível."
+        },
+        {
+          "term": "Conjunto de nível como gráfico",
+          "statement": "Se $F(a,b)=0$ e $\\partial F/\\partial y$ é invertível em $(a,b)$, o nível $\\{F=0\\}$ é, perto de $(a,b)$, o gráfico de uma função $y=g(x)$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema do Ponto Fixo de Banach",
+          "statement": "Toda contração $T$ num espaço métrico completo $X$ tem um único ponto fixo $x^*$, e $T^n x_0\\to x^*$ para qualquer $x_0$, com $d(x_n,x^*)\\le\\frac{\\lambda^n}{1-\\lambda}d(x_1,x_0)$.",
+          "whyItMatters": "É a máquina de existência e unicidade da análise: prova o Teorema da Função Inversa, o de existência de EDO (Picard) e inúmeros métodos iterativos. A estimativa dá controle quantitativo da convergência."
+        },
+        {
+          "name": "Teorema da Função Inversa",
+          "statement": "Seja $f:U\\to\\mathbb{R}^n$ de classe $C^1$ num aberto $U\\subseteq\\mathbb{R}^n$ e $a\\in U$ com $\\det Df(a)\\neq0$. Então existem abertos $V\\ni a$ e $W\\ni f(a)$ tais que $f:V\\to W$ é uma bijeção com inversa $C^1$, e $D(f^{-1})(f(x))=\\bigl(Df(x)\\bigr)^{-1}$.",
+          "whyItMatters": "Diz que a invertibilidade da aproximação linear se propaga para $f$ localmente: derivada invertível num ponto garante difeomorfismo local. É a base da mudança de coordenadas e da teoria de variedades."
+        },
+        {
+          "name": "Teorema da Função Implícita",
+          "statement": "Seja $F:U\\subseteq\\mathbb{R}^{n}\\times\\mathbb{R}^{m}\\to\\mathbb{R}^{m}$ de classe $C^1$ com $F(a,b)=0$ e $\\det\\,\\partial_y F(a,b)\\neq0$. Então existem vizinhanças de $a$ e $b$ e uma única função $C^1$ $g$ com $g(a)=b$ e $F(x,g(x))=0$; além disso $Dg(a)=-\\bigl(\\partial_y F(a,b)\\bigr)^{-1}\\partial_x F(a,b)$.",
+          "whyItMatters": "Garante que uma equação (ou sistema) resolve implicitamente algumas variáveis em função das outras, sem precisar de fórmula explícita. É o fundamento da geometria diferencial (variedades como conjuntos de nível) e dos multiplicadores de Lagrange."
+        }
+      ],
+      "summary": "Esta aula reúne os dois teoremas mais poderosos do cálculo em $\\mathbb{R}^n$, ambos descendentes de uma única ideia: o Teorema do Ponto Fixo de Banach. Uma contração num espaço completo tem um único ponto fixo, atingido por iteração — e essa máquina de existência-e-unicidade, aplicada à equação $f(x)=y$ reescrita como ponto fixo, produz o Teorema da Função Inversa. A hipótese decisiva é $\\det Df(a)\\neq0$: a aproximação linear de $f$ em $a$ é um isomorfismo, e o teorema garante que essa invertibilidade linear local se transfere para a própria $f$, que se torna um difeomorfismo $C^1$ entre vizinhanças. A derivada da inversa é simplesmente a inversa da derivada.\n\nO Teorema da Função Implícita é o reverso da mesma moeda: dada uma equação $F(x,y)=0$ com a derivada parcial em $y$ invertível em um ponto-solução, podemos resolver $y$ como função $C^1$ de $x$ localmente, mesmo quando nenhuma fórmula explícita existe — e a fórmula $Dg=-(\\partial_y F)^{-1}\\partial_x F$ sai por derivação implícita. Esses teoremas são o alicerce conceitual da geometria diferencial: conjuntos de nível com derivada de posto máximo são variedades suaves; são também a justificativa rigorosa dos multiplicadores de Lagrange e das mudanças de coordenadas (polares, esféricas) onde o jacobiano não se anula. Em provas de mestrado, demonstrar a Função Inversa via contrações e aplicar a Função Implícita a sistemas concretos são clássicos absolutos.",
+      "commonPitfalls": [
+        "Esperar invertibilidade GLOBAL: o teorema é estritamente LOCAL. Ex.: $f(x,y)=(e^x\\cos y,e^x\\sin y)$ tem jacobiano nunca nulo, mas não é injetiva globalmente (periodicidade em $y$).",
+        "Esquecer a hipótese $\\det Df(a)\\neq0$ / $\\det\\partial_y F\\neq0$; sem ela o teorema pode falhar (ex.: $f(x)=x^3$ em $0$ é invertível, mas o teorema $C^1$ não se aplica e a inversa não é $C^1$).",
+        "Na Função Implícita, derivar em relação ao bloco de variáveis ERRADO — é a parcial no bloco que se quer 'isolar' ($y$) que precisa ser invertível.",
+        "Confundir 'existe função implícita' com 'existe fórmula explícita': o teorema garante existência e regularidade, não uma expressão fechada."
+      ],
+      "worked": "**Resolvendo implicitamente uma equação.** Considere $F(x,y)=x^2+y^2-1$ e o ponto $(a,b)=(0,1)$ sobre o círculo $F=0$.\n\nTemos $\\partial_y F=2y$, que em $(0,1)$ vale $2\\neq0$. Pelo Teorema da Função Implícita, perto de $(0,1)$ existe uma única $y=g(x)$ de classe $C^1$ com $g(0)=1$ e $x^2+g(x)^2=1$ — aqui explicitamente $g(x)=\\sqrt{1-x^2}$. A fórmula da derivada dá\n$$g'(x)=-\\frac{\\partial_x F}{\\partial_y F}=-\\frac{2x}{2y}=-\\frac{x}{g(x)},$$\nlogo $g'(0)=0$, coerente com a tangente horizontal no topo do círculo. Note que em $(\\pm1,0)$ temos $\\partial_y F=0$: ali NÃO podemos resolver $y$ em função de $x$ (a tangente é vertical) — exatamente onde a hipótese falha. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Use o Teorema do Ponto Fixo de Banach para provar que a equação $x=\\frac{1}{2}\\cos x$ tem uma única solução real, e descreva a iteração que a aproxima.",
+          "hint": "Mostre que $T(x)=\\frac12\\cos x$ é contração em $\\mathbb{R}$ com $\\lambda=1/2$ (pois $|T'(x)|=\\frac12|\\sin x|\\le\\frac12$); itere a partir de qualquer $x_0$.",
+          "difficulty": 3,
+          "solution": "Seja $T(x)=\\tfrac12\\cos x$. Provamos que $x=T(x)$ tem solucao unica em $\\mathbb{R}$ via o Teorema do Ponto Fixo de Banach.\n\n**$T$ e contracao em $\\mathbb{R}$.** $\\mathbb{R}$ (com a metrica usual) e completo. Para $x,y\\in\\mathbb{R}$, pelo TVM aplicado a $T$, existe $\\xi$ entre $x$ e $y$ com\n$$|T(x)-T(y)|=|T'(\\xi)|\\,|x-y|=\\tfrac12|\\sin\\xi|\\,|x-y|\\le\\tfrac12|x-y|.$$\nLogo $T$ e contracao com constante $\\lambda=\\tfrac12<1$.\n\n**Existencia e unicidade.** Pelo **Teorema do Ponto Fixo de Banach**, $T$ tem um unico ponto fixo $x^*\\in\\mathbb{R}$, isto e, existe uma unica solucao de $x=\\tfrac12\\cos x$.\n\n**Iteracao que a aproxima.** Partindo de qualquer $x_0$ (por exemplo $x_0=0$), defina\n$$x_{n+1}=T(x_n)=\\tfrac12\\cos x_n.$$\nEntao $x_n\\to x^*$, com a estimativa de erro geometrica\n$$|x_n-x^*|\\le\\frac{\\lambda^n}{1-\\lambda}|x_1-x_0|=\\frac{(1/2)^n}{1/2}|x_1-x_0|=2^{1-n}|x_1-x_0|.$$\nCom $x_0=0$: $x_1=\\tfrac12\\cos0=\\tfrac12$, $x_2=\\tfrac12\\cos\\tfrac12\\approx0{,}4388$, $x_3\\approx\\tfrac12\\cos(0{,}4388)\\approx0{,}4526,\\dots$, convergindo rapidamente ao valor $x^*\\approx0{,}4502$. $\\blacksquare$",
+          "steps": [
+            "Reescreva a equacao como ponto fixo x=T(x) com T(x)=cos(x)/2.",
+            "Use o TVM: |T(x)-T(y)|=|sin(xi)|/2 |x-y| <= (1/2)|x-y|, logo T e contracao com lambda=1/2.",
+            "Como R e completo, aplique o Teorema do Ponto Fixo de Banach para existencia e unicidade.",
+            "Descreva a iteracao x_{n+1}=cos(x_n)/2 a partir de qualquer x_0.",
+            "Cite a estimativa geometrica |x_n - x*| <= lambda^n/(1-lambda) |x_1-x_0| garantindo convergencia."
+          ]
+        },
+        {
+          "prompt": "Seja $f(x,y)=(e^x\\cos y,\\,e^x\\sin y)$. Calcule $\\det Df$ e mostre que, apesar de nunca se anular, $f$ não é globalmente injetiva. ConcILie com o Teorema da Função Inversa.",
+          "hint": "$\\det Df=e^{2x}>0$ sempre, então $f$ é difeomorfismo LOCAL em todo ponto; a não injetividade global vem da periodicidade $y\\mapsto y+2\\pi$.",
+          "difficulty": 3,
+          "solution": "Seja $f(x,y)=(e^x\\cos y,\\ e^x\\sin y)$.\n\n**Jacobiana e seu determinante.**\n$$Df(x,y)=\\begin{pmatrix}\\partial_x(e^x\\cos y)&\\partial_y(e^x\\cos y)\\\\ \\partial_x(e^x\\sin y)&\\partial_y(e^x\\sin y)\\end{pmatrix}=\\begin{pmatrix}e^x\\cos y&-e^x\\sin y\\\\ e^x\\sin y&e^x\\cos y\\end{pmatrix}.$$\n$$\\det Df(x,y)=e^x\\cos y\\cdot e^x\\cos y-(-e^x\\sin y)(e^x\\sin y)=e^{2x}(\\cos^2 y+\\sin^2 y)=e^{2x}>0.$$\nLogo $\\det Df$ **nunca se anula**.\n\n**$f$ nao e globalmente injetiva.** A funcao e periodica em $y$: para todo $(x,y)$,\n$$f(x,y+2\\pi)=(e^x\\cos(y+2\\pi),\\,e^x\\sin(y+2\\pi))=(e^x\\cos y,\\,e^x\\sin y)=f(x,y).$$\nPor exemplo $f(0,0)=(1,0)=f(0,2\\pi)$, com $(0,0)\\neq(0,2\\pi)$. Portanto $f$ nao e injetiva em $\\mathbb{R}^2$.\n\n**Conciliacao com o Teorema da Funcao Inversa.** O teorema e estritamente **LOCAL**: como $\\det Df(x,y)\\neq0$ em todo ponto e $f\\in C^1$, o teorema garante que $f$ e um difeomorfismo $C^1$ de uma **vizinhanca** de cada ponto sobre sua imagem — isto e, $f$ e um difeomorfismo local em toda parte. Ele NAO afirma injetividade global, e o exemplo mostra exatamente isso: pontos distantes (diferindo por $2\\pi$ em $y$) podem ter a mesma imagem. (De fato $f$ e essencialmente a exponencial complexa $z=x+iy\\mapsto e^z$, cuja natureza local-injetiva mas global-periodica e classica.) $\\blacksquare$",
+          "steps": [
+            "Calcule as quatro parciais e monte a jacobiana de f.",
+            "Calcule o determinante: e^{2x}(cos^2 y + sin^2 y) = e^{2x} > 0, nunca nulo.",
+            "Mostre a periodicidade f(x, y+2pi)=f(x,y), exibindo pontos distintos com mesma imagem (ex.: (0,0) e (0,2pi)).",
+            "Conclua que f nao e injetiva globalmente.",
+            "Concilie: o Teorema da Funcao Inversa e local, garante difeomorfismo em vizinhancas, nao injetividade global."
+          ]
+        },
+        {
+          "prompt": "Mostre que o sistema $\\{u=x+y,\\ v=x y\\}$ pode ser resolvido para $(x,y)$ em função de $(u,v)$ perto de um ponto com $x\\neq y$, e identifique onde a hipótese falha.",
+          "hint": "Calcule a jacobiana de $(x,y)\\mapsto(u,v)$; seu determinante é $y-x$, que se anula exatamente na diagonal $x=y$.",
+          "difficulty": 4,
+          "solution": "Considere a aplicacao $\\Psi(x,y)=(u,v)$ com $u=x+y$, $v=xy$, e queremos resolver $(x,y)$ em funcao de $(u,v)$.\n\n**Jacobiana de $\\Psi$.**\n$$D\\Psi(x,y)=\\begin{pmatrix}\\partial_x u&\\partial_y u\\\\ \\partial_x v&\\partial_y v\\end{pmatrix}=\\begin{pmatrix}1&1\\\\ y&x\\end{pmatrix},\\qquad \\det D\\Psi(x,y)=1\\cdot x-1\\cdot y=x-y.$$\n\n**Aplicacao do Teorema da Funcao Inversa.** $\\Psi$ e de classe $C^1$ (polinomial). Num ponto $(x_0,y_0)$ com $x_0\\neq y_0$, temos $\\det D\\Psi(x_0,y_0)=x_0-y_0\\neq0$. Pelo **Teorema da Funcao Inversa**, existem vizinhancas de $(x_0,y_0)$ e de $(u_0,v_0)=\\Psi(x_0,y_0)$ nas quais $\\Psi$ e um difeomorfismo $C^1$; ou seja, podemos resolver **localmente** $(x,y)$ como funcao $C^1$ de $(u,v)$ perto de qualquer ponto com $x_0\\neq y_0$.\n\n**Onde a hipotese falha.** O determinante $x-y$ se anula exatamente na **diagonal** $\\{x=y\\}$. Ali a hipotese do teorema falha e nao podemos garantir a inversao local. Isso e coerente com a estrutura do problema: $x,y$ sao as raizes de $t^2-ut+v=0$, cuja formula $t=\\tfrac{u\\pm\\sqrt{u^2-4v}}{2}$ tem discriminante $u^2-4v=(x-y)^2$; na diagonal $x=y$ o discriminante e nulo (raiz dupla), a troca $x\\leftrightarrow y$ se confunde e a raiz quadrada perde diferenciabilidade — exatamente a singularidade prevista pelo jacobiano nulo. $\\blacksquare$",
+          "steps": [
+            "Monte a jacobiana de (x,y) -> (u,v)=(x+y, xy): linhas (1,1) e (y,x).",
+            "Calcule o determinante x - y.",
+            "Num ponto com x0 diferente de y0, o determinante e nao nulo; aplique o Teorema da Funcao Inversa para inversao local C^1.",
+            "Identifique a falha na diagonal x=y, onde o determinante se anula.",
+            "Relacione com t^2 - u t + v = 0, cujo discriminante (x-y)^2 se anula em x=y (raiz dupla), confirmando a singularidade."
+          ]
+        },
+        {
+          "prompt": "A partir do Teorema da Função Inversa, deduza o Teorema da Função Implícita, aplicando a inversa à aplicação auxiliar $\\Phi(x,y)=(x,F(x,y))$.",
+          "hint": "Mostre que $\\det D\\Phi(a,b)=\\det\\partial_y F(a,b)\\neq0$; inverta $\\Phi$ localmente e leia a função implícita $g$ na segunda componente da inversa.",
+          "difficulty": 5,
+          "solution": "Deduzimos o Teorema da Funcao Implicita a partir do da Funcao Inversa. Seja $F:U\\subseteq\\mathbb{R}^n\\times\\mathbb{R}^m\\to\\mathbb{R}^m$ de classe $C^1$, com $F(a,b)=0$ e $\\det\\partial_y F(a,b)\\neq0$.\n\n**Aplicacao auxiliar.** Defina $\\Phi:U\\to\\mathbb{R}^n\\times\\mathbb{R}^m$ por\n$$\\Phi(x,y)=(x,\\,F(x,y)).$$\n$\\Phi$ e $C^1$. Sua derivada em $(a,b)$, em blocos (variaveis $x\\in\\mathbb{R}^n$, $y\\in\\mathbb{R}^m$), e\n$$D\\Phi(a,b)=\\begin{pmatrix}I_n&0\\\\ \\partial_x F(a,b)&\\partial_y F(a,b)\\end{pmatrix}.$$\nComo e triangular por blocos,\n$$\\det D\\Phi(a,b)=\\det(I_n)\\cdot\\det\\partial_y F(a,b)=\\det\\partial_y F(a,b)\\neq0.$$\n\n**Inversao local.** Pelo **Teorema da Funcao Inversa**, $\\Phi$ e um difeomorfismo $C^1$ de uma vizinhanca de $(a,b)$ sobre uma vizinhanca de $\\Phi(a,b)=(a,F(a,b))=(a,0)$. Seja $\\Psi=\\Phi^{-1}$, tambem $C^1$. Como $\\Phi$ preserva a primeira coordenada, $\\Psi$ tem a forma\n$$\\Psi(u,w)=(u,\\ \\psi(u,w)),\\qquad \\psi\\ \\text{de classe }C^1,$$\npois a primeira componente de $\\Phi^{-1}$ deve devolver $x=u$.\n\n**Leitura da funcao implicita.** Por definicao de inversa, $\\Phi(\\Psi(u,w))=(u,w)$. Escrevendo $\\Phi(u,\\psi(u,w))=(u,\\ F(u,\\psi(u,w)))=(u,w)$, obtemos\n$$F(u,\\psi(u,w))=w.$$\nTome $w=0$ e defina $g(u):=\\psi(u,0)$, que e $C^1$. Entao\n$$F(u,g(u))=0\\quad\\text{para }u\\ \\text{perto de }a,\\qquad g(a)=\\psi(a,0)=b$$\n(a ultima igualdade pois $\\Psi(a,0)=\\Phi^{-1}(a,0)=(a,b)$, ja que $\\Phi(a,b)=(a,0)$). A unicidade de $g$ segue da injetividade local de $\\Phi$: numa vizinhanca, $y$ com $F(x,y)=0$ e determinado por $x$.\n\n**Formula da derivada.** Derivando $F(x,g(x))=0$ pela regra da cadeia em $x=a$:\n$$\\partial_x F(a,b)+\\partial_y F(a,b)\\,Dg(a)=0\\ \\Longrightarrow\\ Dg(a)=-\\bigl(\\partial_y F(a,b)\\bigr)^{-1}\\partial_x F(a,b).$$\nIsto completa a deducao do Teorema da Funcao Implicita. $\\blacksquare$",
+          "steps": [
+            "Defina a aplicacao auxiliar Phi(x,y)=(x, F(x,y)), de classe C^1.",
+            "Calcule DPhi(a,b) em blocos: matriz triangular com I_n e partial_y F, cujo determinante e det(partial_y F(a,b)) diferente de 0.",
+            "Aplique o Teorema da Funcao Inversa: Phi e difeomorfismo local; sua inversa Psi tem forma (u, psi(u,w)) por preservar a primeira coordenada.",
+            "De F(u, psi(u,w))=w e w=0 defina g(u)=psi(u,0), obtendo F(u,g(u))=0 e g(a)=b, com unicidade pela injetividade local.",
+            "Derive F(x,g(x))=0 pela regra da cadeia para obter Dg(a) = -(partial_y F)^{-1} partial_x F."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Contração (definição)",
+          "back": "$d(Tx,Ty)\\le\\lambda\\,d(x,y)$ com $0\\le\\lambda<1$."
+        },
+        {
+          "front": "Teorema do Ponto Fixo de Banach",
+          "back": "Contração em espaço métrico COMPLETO tem ponto fixo único, atingido por iteração."
+        },
+        {
+          "front": "Hipótese central do Teorema da Função Inversa",
+          "back": "$f\\in C^1$ e $\\det Df(a)\\neq0$ (derivada é isomorfismo)."
+        },
+        {
+          "front": "Conclusão do Teorema da Função Inversa",
+          "back": "$f$ é difeomorfismo $C^1$ LOCAL e $D(f^{-1})(f(x))=(Df(x))^{-1}$."
+        },
+        {
+          "front": "Local vs global na Função Inversa",
+          "back": "Garante invertibilidade só LOCAL; ex.: $(e^x\\cos y,e^x\\sin y)$ tem jacobiano $\\neq0$ mas não é injetiva global."
+        },
+        {
+          "front": "Hipótese do Teorema da Função Implícita",
+          "back": "$F(a,b)=0$ e $\\det\\partial_y F(a,b)\\neq0$ (bloco a isolar é invertível)."
+        },
+        {
+          "front": "Derivada da função implícita",
+          "back": "$Dg(a)=-(\\partial_y F(a,b))^{-1}\\,\\partial_x F(a,b)$."
+        },
+        {
+          "front": "Como se prova a Função Inversa?",
+          "back": "Reescrevendo $f(x)=y$ como ponto fixo e aplicando o Teorema da Contração de Banach."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Rudin, cap. 9 (Inverse and Implicit Function Theorems)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lima, Curso de Análise vol. 2, caps. V-VI",
+          "ref": "livro"
+        },
+        {
+          "title": "Spivak, Calculus on Manifolds, cap. 2 (Inverse/Implicit)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise espacos metricos completos, sequencias de Cauchy e a norma de operador em R^n; o Teorema do Ponto Fixo de Banach e a maquina por tras de tudo aqui.",
+          "Leia Rudin cap. 9, Elon Lima vol. 2 caps. V-VI ou Spivak cap. 2: demonstre o Teorema do Ponto Fixo de Banach com a estimativa de convergencia geometrica.",
+          "Estude a demonstracao do Teorema da Funcao Inversa reescrevendo f(x)=y como ponto fixo; identifique onde entra det Df(a) diferente de 0 e a formula D(f^-1)=(Df)^-1.",
+          "Deduza o Teorema da Funcao Implicita do da Inversa via a aplicacao auxiliar Phi(x,y)=(x,F(x,y)); pratique a formula Dg=-(partial_y F)^-1 partial_x F em exemplos.",
+          "Assista a uma videoaula sobre os teoremas da funcao inversa e implicita e sua interpretacao geometrica (difeomorfismo local, conjuntos de nivel como graficos).",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (contracoes, a hipotese do jacobiano nao nulo e a construcao Phi(x,y)=(x,F(x,y)))."
+        ],
+        "searchQueries": [
+          "teorema do ponto fixo de Banach demonstracao contracao espaco completo",
+          "teorema da funcao inversa demonstracao metodo das contracoes",
+          "teorema da funcao implicita deducao a partir da funcao inversa Phi(x,y)",
+          "jacobiano nao nulo difeomorfismo local exemplo e^x cos y e^x sin y",
+          "inverse function theorem proof contraction mapping Rudin",
+          "implicit function theorem derivative formula partial_y F inverse"
+        ],
+        "videos": [
+          {
+            "title": "Inverse and Implicit Function Theorems",
+            "channel": "MIT OpenCourseWare (18.101 Analysis on Manifolds)",
+            "note": "Aulas sobre os teoremas da funcao inversa/implicita via contracoes, alinhadas com Rudin/Spivak."
+          },
+          {
+            "title": "The Contraction Mapping / Banach Fixed Point Theorem",
+            "channel": "Dr. Peyam",
+            "note": "Prova e intuicao do ponto fixo de Banach, base da funcao inversa e do teorema de Picard."
+          },
+          {
+            "title": "Inverse Function Theorem",
+            "channel": "Michael Penn",
+            "note": "Discussao do enunciado, hipoteses e da natureza local do teorema, com exemplos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap. 9 (Inverse and Implicit Function Theorems)",
+            "where": "Walter Rudin - livro"
+          },
+          {
+            "title": "Calculus on Manifolds, cap. 2 (Inverse/Implicit Function Theorems)",
+            "where": "Michael Spivak - livro"
+          }
+        ]
+      }
+    }
+  ]
+}

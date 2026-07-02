@@ -1,0 +1,24 @@
+/node_modules
+/.next
+/out
+/build
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+.env*
+# o exemplo é documentação (sem segredos) e deve ser versionado
+!.env.example
+# artefatos de planejamento/geração (já aplicados em data/curriculum) — não precisam no deploy
+/plan
+/plan-backend
+.netlify
+# banco SQLite local (self-hosted / dev) — nunca versionar
+/.data
+/data/*.db
+*.sqlite
+*.sqlite3
+
+# gerados por `npm run bundle` a partir de data/curriculum/
+# (lib/curriculum-meta.json É versionado: o typecheck importa ele)
+/public/curriculum-data.json
+/lib/curriculum-data.json

@@ -1,0 +1,1348 @@
+{
+  "id": "category-theory",
+  "title": "Teoria das Categorias",
+  "phase": 2,
+  "phaseLabel": "Avançado / Pré-Pós",
+  "tagline": "A matemática da matemática: categorias, functores, transformações naturais, o Lema de Yoneda, limites, adjunções e functores derivados — a linguagem estrutural que unifica álgebra, topologia e geometria.",
+  "summary": "Teoria das Categorias é o estudo abstrato de estruturas matemáticas e dos morfismos que as preservam, organizados em categorias. Em vez de olhar para os elementos de um objeto, olhamos para como ele se relaciona com todos os outros — o ponto de vista que o Lema de Yoneda torna preciso: um objeto é determinado, a menos de isomorfismo, por seu functor de pontos. Construímos a maquinaria completa: functores e transformações naturais (e a categoria de functores $[\\mathcal{C},\\mathcal{D}]$), monomorfismos e epimorfismos como cancelamento, dualidade, limites e colimites como propriedades universais, functores adjuntos $F\\dashv G$ com unidade e counidade, equivalência de categorias e, por fim, categorias abelianas, sequências exatas e functores derivados ($\\mathrm{Ext}$ e $\\mathrm{Tor}$). É um curso no espírito de Mac Lane e Riehl, com o rigor de um seminário de pós.",
+  "bigPicture": "Teoria das Categorias é o idioma comum da matemática moderna. Surgida em 1945 com Eilenberg e Mac Lane para formalizar a naturalidade em topologia algébrica, ela se tornou a língua franca que conecta áreas: produtos e coprodutos, núcleos e conúcleos, completamentos e localizações, grupos livres e grupos abelianizados — todos viram instâncias de um mesmo conceito (limite, colimite, adjunção). O Lema de Yoneda é o teorema mais usado e mais subestimado da área: explica por que provas 'naturais' funcionam e por que objetos representáveis governam tudo. Functores adjuntos capturam, num só golpe, construções livres, quocientes universais e a dualidade Galois. As categorias abelianas e os functores derivados são a base da álgebra homológica — $\\mathrm{Ext}$, $\\mathrm{Tor}$, cohomologia de feixes, sequências espectrais — e o alicerce sobre o qual Grothendieck reconstruiu a geometria algébrica. Para concursos de Instituto Federal (IF), o tema praticamente não cai de forma direta; seu valor é indireto e enorme: quem pensa categoricamente enxerga estrutura onde outros veem cálculo, e resolve questões de álgebra e topologia com clareza incomum. Para o mestrado em matemática pura, a teoria das categorias é pré-requisito implícito de Álgebra Homológica, Topologia Algébrica, Geometria Algébrica e Teoria de Representações; programas como IMPA, USP, UFRJ, UFMG e UnB ensinam essa linguagem (via Mac Lane, Riehl, Weibel) já nos primeiros cursos da pós. Dominar Yoneda, adjunções e functores derivados é chegar à pós falando a língua dos pesquisadores.",
+  "prereqs": [
+    "algebra-abstrata-2",
+    "topologia"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 53,
+  "primaryBooks": [
+    {
+      "title": "Category Theory in Context",
+      "author": "Emily Riehl",
+      "note": "O texto principal desta trilha: moderno, rigoroso e cheio de exemplos vindos de álgebra e topologia. Ordem pedagógica excelente — categorias, Yoneda, limites, adjunções. Disponível gratuitamente em PDF no site da autora.",
+      "chapters": "caps. 1-5 (categorias e functores, universalidade e Yoneda, limites e colimites, adjunções)"
+    },
+    {
+      "title": "Categories for the Working Mathematician",
+      "author": "Saunders Mac Lane",
+      "note": "A bíblia da área, escrita por um dos fundadores. Conciso, definitivo e a referência citada em qualquer pós. Use como fonte canônica de enunciados e como aprofundamento.",
+      "chapters": "caps. 1-5 (categorias, functores, naturalidade, universais e limites, adjuntos)"
+    },
+    {
+      "title": "Basic Category Theory",
+      "author": "Tom Leinster",
+      "note": "Introdução curta, limpa e muito bem motivada; o melhor primeiro contato. Trata adjuntos antes de limites, com ótima discussão do Lema de Yoneda. Disponível gratuitamente (arXiv).",
+      "chapters": "todo o livro (caps. 1-6)"
+    },
+    {
+      "title": "Category Theory",
+      "author": "Steve Awodey",
+      "note": "Texto da série Oxford Logic Guides, com viés lógico-fundacional e provas detalhadas; bom para quem quer rigor extra em adjunções e em construções universais.",
+      "chapters": "caps. 1-9 (categorias, dualidade, grupos e categorias, Yoneda, limites, colimites, exponenciais, functores naturais, adjunções)"
+    },
+    {
+      "title": "An Introduction to Homological Algebra",
+      "author": "Charles A. Weibel",
+      "note": "A referência moderna para a parte final da trilha: categorias abelianas, complexos, functores derivados, $\\mathrm{Ext}$ e $\\mathrm{Tor}$, sequências espectrais. Padrão em cursos de pós.",
+      "chapters": "caps. 1-3 (complexos de cadeias, functores derivados, $\\mathrm{Tor}$ e $\\mathrm{Ext}$) e Apêndice A (categorias abelianas)"
+    },
+    {
+      "title": "An Introduction to Homological Algebra",
+      "author": "Joseph J. Rotman",
+      "note": "Mais detalhado e didático que o Weibel para a primeira passagem; excelente nas resoluções projetivas/injetivas e no cálculo concreto de $\\mathrm{Ext}$ e $\\mathrm{Tor}$.",
+      "chapters": "caps. sobre categorias abelianas, functores derivados, $\\mathrm{Tor}$ e $\\mathrm{Ext}$"
+    },
+    {
+      "title": "Abstract Algebra",
+      "author": "David S. Dummit & Richard M. Foote",
+      "note": "Para conectar a teoria com módulos, sequências exatas, produto tensorial e functores Hom no contexto concreto de $R$-módulos, base para a parte abeliana/homológica.",
+      "chapters": "caps. 10 (módulos, sequências exatas, $\\mathrm{Hom}$ e $\\otimes$), 17 (introdução à álgebra homológica)"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "Emily Riehl — Category Theory in Context (PDF gratuito)",
+      "kind": "livro",
+      "ref": "site da autora (Emily Riehl)"
+    },
+    {
+      "title": "Tom Leinster — Basic Category Theory",
+      "kind": "livro",
+      "ref": "arXiv:1612.09375"
+    },
+    {
+      "title": "The Catsters — playlists de Teoria das Categorias",
+      "kind": "video",
+      "ref": "YouTube"
+    },
+    {
+      "title": "nLab — enciclopédia colaborativa de teoria das categorias",
+      "kind": "notas",
+      "ref": "ncatlab.org"
+    },
+    {
+      "title": "The Stacks Project — Categories & Homological Algebra",
+      "kind": "notas",
+      "ref": "stacks.math.columbia.edu"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 1,
+    "mestrado": 3,
+    "note": "Em concursos de Instituto Federal, teoria das categorias praticamente não cai de forma direta — não é tema de prova de graduação. Seu valor é indireto: pensar em termos de morfismos, propriedades universais e dualidade dá clareza imediata nas questões de Álgebra (anéis, módulos, grupos quociente, produtos) e de Topologia (espaços produto/quociente, functor $\\pi_1$). Em provas e exames de mestrado/qualificação a situação muda: raramente há uma prova só de categorias, mas a linguagem é cobrada implicitamente em cursos de Álgebra Homológica, Topologia Algébrica, Geometria Algébrica e Teoria de Representações. O que de fato aparece: enunciar e usar o Lema de Yoneda, reconhecer e construir limites/colimites (produtos, pullbacks, núcleos), provar que um par de functores é adjunto e que adjuntos à direita preservam limites, distinguir mono/epi de injetivo/sobrejetivo, caracterizar equivalência de categorias por pleno+fiel+essencialmente sobrejetivo, e calcular $\\mathrm{Ext}$ e $\\mathrm{Tor}$ via resoluções. Dominar isso transforma a pós inteira em terreno conhecido."
+  },
+  "subtopics": [
+    {
+      "id": "category-theory-01-categorias-morfismos-dualidade",
+      "title": "Categorias, Morfismos Especiais e Dualidade",
+      "tagline": "Uma categoria é objetos e setas com composição associativa e identidades; mono, epi e iso são cancelamento, e o princípio da dualidade dá dois teoremas pelo preço de um.",
+      "objectives": [
+        "Enunciar com precisão a definição de categoria (objetos, morfismos, composição, identidades, axiomas) e distinguir categorias pequenas, localmente pequenas e grandes.",
+        "Exibir e classificar exemplos canônicos: $\\mathbf{Set}$, $\\mathbf{Grp}$, $\\mathbf{Ring}$, $\\mathbf{Top}$, $R\\text{-}\\mathbf{Mod}$, um monoide como categoria de um objeto e um conjunto pré-ordenado como categoria.",
+        "Definir monomorfismo, epimorfismo, isomorfismo, seções e retrações via cancelamento, e provar que iso $\\Rightarrow$ mono e epi.",
+        "Construir a categoria oposta $\\mathcal{C}^{\\mathrm{op}}$ e aplicar o princípio da dualidade para obter resultados duais automaticamente.",
+        "Exibir morfismos que são mono e epi mas não iso (bimorfismos não invertíveis), distinguindo a teoria das categorias da teoria de conjuntos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Categoria",
+          "statement": "Uma categoria $\\mathcal{C}$ consiste em uma classe de objetos $\\mathrm{ob}(\\mathcal{C})$ e, para cada par $(a,b)$, um conjunto $\\mathcal{C}(a,b)$ de morfismos, com composição $\\circ:\\mathcal{C}(b,c)\\times\\mathcal{C}(a,b)\\to\\mathcal{C}(a,c)$ associativa e identidades $1_a$ neutras: $f\\circ 1_a=f=1_b\\circ f$."
+        },
+        {
+          "term": "Monomorfismo / Epimorfismo",
+          "statement": "$f:a\\to b$ é mono se $f g=f h\\Rightarrow g=h$ (cancelável à esquerda); é epi se $g f=h f\\Rightarrow g=h$ (cancelável à direita). Em $\\mathbf{Set}$, mono $\\iff$ injetiva e epi $\\iff$ sobrejetiva, mas isso é particular de $\\mathbf{Set}$."
+        },
+        {
+          "term": "Isomorfismo, seção e retração",
+          "statement": "$f$ é iso se existe $g$ com $gf=1$ e $fg=1$. Uma seção (split mono) tem inversa à esquerda; uma retração (split epi) tem inversa à direita. Split mono $\\Rightarrow$ mono e split epi $\\Rightarrow$ epi."
+        },
+        {
+          "term": "Categoria oposta e dualidade",
+          "statement": "$\\mathcal{C}^{\\mathrm{op}}$ tem os mesmos objetos e $\\mathcal{C}^{\\mathrm{op}}(a,b)=\\mathcal{C}(b,a)$, com composição invertida. Todo conceito tem um dual (mono $\\leftrightarrow$ epi, produto $\\leftrightarrow$ coproduto) e todo teorema vale na forma dual."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Unicidade do inverso e iso = mono + split epi",
+          "statement": "Se $f$ é isomorfismo, seu inverso é único. Um morfismo é isomorfismo se, e somente se, é simultaneamente monomorfismo e retração (split epi) — equivalentemente, epimorfismo e seção (split mono).",
+          "whyItMatters": "Mostra que invertibilidade é estritamente mais forte que ser mono e epi: precisa-se de uma inversa lateral genuína, não apenas de cancelamento. É a fonte dos contraexemplos bimorfismo vs. iso."
+        },
+        {
+          "name": "Princípio da dualidade",
+          "statement": "Para toda afirmação $P$ verdadeira em todas as categorias, a afirmação dual $P^{\\mathrm{op}}$ (obtida invertendo todas as setas e a ordem das composições) também é verdadeira em todas as categorias, pois $P^{\\mathrm{op}}$ vale em $\\mathcal{C}$ exatamente quando $P$ vale em $\\mathcal{C}^{\\mathrm{op}}$.",
+          "whyItMatters": "É um princípio de economia: cada definição e cada teorema vem acompanhado de graça de seu dual. Limite/colimite, mono/epi, produto/coproduto, inicial/terminal são todos pares duais."
+        },
+        {
+          "name": "Split mono/epi implica mono/epi",
+          "statement": "Se $f$ tem inversa à esquerda ($gf=1$), então $f$ é monomorfismo. Dualmente, se $f$ tem inversa à direita ($fg=1$), então $f$ é epimorfismo.",
+          "whyItMatters": "Fornece o critério prático mais comum para verificar mono/epi e separa as noções 'split' (que sobrevivem a qualquer functor) das noções puramente diagramáticas."
+        }
+      ],
+      "summary": "Uma categoria abstrai o que há de comum entre $\\mathbf{Set}$, $\\mathbf{Grp}$, $\\mathbf{Top}$ e tantas outras estruturas: objetos e morfismos (setas) que se compõem de modo associativo e têm identidades. O salto conceitual é parar de olhar para dentro dos objetos (seus elementos) e olhar para fora, para a teia de morfismos. Tudo o que sabemos sobre um objeto vai estar codificado em como ele recebe e envia setas. Por isso as propriedades-chave dos morfismos são formuladas por cancelamento: $f$ é mono quando pode ser cancelado à esquerda, epi quando pode ser cancelado à direita, e iso quando tem inversa bilateral. Em $\\mathbf{Set}$ essas noções coincidem com injetiva, sobrejetiva e bijetiva, mas essa coincidência é uma propriedade especial de $\\mathbf{Set}$, não uma lei geral.\n\nO exemplo decisivo é $\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$ na categoria $\\mathbf{Ring}$ dos anéis: a inclusão é mono e epi, mas não é iso. Logo bimorfismo não implica isomorfismo — uma das primeiras lições que separam o pensamento categórico do conjuntístico. O segundo grande tema é a dualidade: a categoria oposta $\\mathcal{C}^{\\mathrm{op}}$ inverte todas as setas, e o princípio da dualidade garante que cada teorema produz automaticamente seu dual. Mono e epi são duais; produto e coproduto, objeto inicial e terminal, limite e colimite também. Aprender a 'ler ao contrário' duplica imediatamente o poder de cada resultado e é um hábito que acompanha toda a trilha.",
+      "commonPitfalls": [
+        "Confundir epimorfismo com sobrejeção em qualquer categoria: em $\\mathbf{Ring}$ a inclusão $\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$ é epi sem ser sobrejetiva.",
+        "Achar que mono + epi $\\Rightarrow$ iso: isso vale em $\\mathbf{Set}$, mas é falso em geral (categorias onde vale chamam-se balanceadas).",
+        "Esquecer que a composição é de funções/morfismos, e que $g\\circ f$ exige domínio de $g$ igual ao codomínio de $f$ — categorias não são 'um monte de setas soltas'.",
+        "Tratar uma classe própria de objetos (como $\\mathrm{ob}(\\mathbf{Set})$) como se fosse um conjunto, ignorando as questões de tamanho (pequena vs. localmente pequena vs. grande)."
+      ],
+      "worked": "**Afirmação.** Na categoria $\\mathbf{Ring}$ dos anéis comutativos com unidade, a inclusão $\\iota:\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$ é simultaneamente monomorfismo e epimorfismo, mas não é isomorfismo.\n\n**Mono.** Imediato: $\\iota$ é injetiva como função, e funções injetivas são canceláveis à esquerda — se $\\iota g=\\iota h$ então $g=h$.\n\n**Epi.** Sejam $f,g:\\mathbb{Q}\\to R$ homomorfismos de anéis com $f\\circ\\iota=g\\circ\\iota$, isto é, $f$ e $g$ coincidem em $\\mathbb{Z}$. Para $\\tfrac{a}{b}\\in\\mathbb{Q}$ (com $b\\neq 0$), note que $f(\\tfrac{1}{b})$ é o inverso de $f(b)$ em $R$, pois $f(b)f(\\tfrac1b)=f(1)=1$; como $f(b)=g(b)$ é inversível, o inverso é único, logo $f(\\tfrac1b)=g(\\tfrac1b)$. Então $f(\\tfrac{a}{b})=f(a)f(\\tfrac1b)=g(a)g(\\tfrac1b)=g(\\tfrac{a}{b})$. Portanto $f=g$, e $\\iota$ é epi.\n\n**Não iso.** Se $\\iota$ fosse isomorfismo existiria homomorfismo de anéis $\\mathbb{Q}\\to\\mathbb{Z}$ inverso; em particular $\\mathbb{Z}\\cong\\mathbb{Q}$ como anéis, o que é falso ($\\mathbb{Q}$ é corpo, $\\mathbb{Z}$ não). Logo $\\iota$ é um bimorfismo que não é isomorfismo. $\\blacksquare$\n\nMoral: cancelamento (mono + epi) é estritamente mais fraco que invertibilidade, fora de categorias balanceadas como $\\mathbf{Set}$.",
+      "exercises": [
+        {
+          "prompt": "Mostre que um monoide $(M,\\cdot,e)$ é exatamente uma categoria com um único objeto, e que um conjunto pré-ordenado $(P,\\le)$ é exatamente uma categoria em que há no máximo um morfismo entre dois objetos quaisquer. O que é um isomorfismo em cada caso?",
+          "hint": "No monoide, os morfismos são os elementos e a composição é o produto; iso = elemento inversível. Na pré-ordem, $a\\to b$ existe sse $a\\le b$; iso força $a\\le b$ e $b\\le a$.",
+          "difficulty": 2,
+          "solution": "**Monoide como categoria de um objeto.** Dado um monoide $(M,\\cdot,e)$, defina uma categoria $\\mathbf{B}M$ com um único objeto $\\ast$ e $\\mathbf{B}M(\\ast,\\ast)=M$. A composição é o produto do monoide, $g\\circ f:=g\\cdot f$, e a identidade é $1_\\ast:=e$. Os axiomas de categoria são exatamente os axiomas de monoide: a associatividade da composição é a associatividade de $\\cdot$, e as leis $f\\circ 1_\\ast=f=1_\\ast\\circ f$ são $f\\cdot e=f=e\\cdot f$. Reciprocamente, qualquer categoria com um só objeto tem por Hom-set um monoide sob composição. **Iso:** um morfismo $f\\in M$ é isomorfismo sse existe $g$ com $g\\cdot f=e=f\\cdot g$, ou seja, sse $f$ é um elemento **inversível** de $M$.\n\n**Pré-ordem como categoria.** Dado $(P,\\le)$ reflexiva e transitiva, defina a categoria $\\mathbf{P}$ com $\\mathrm{ob}(\\mathbf{P})=P$ e, para $a,b\\in P$, exatamente um morfismo $a\\to b$ se $a\\le b$ e **nenhum** caso contrário. A composição $a\\to b\\to c$ existe e é o único morfismo $a\\to c$: isso é possível porque $a\\le b\\le c\\Rightarrow a\\le c$ (transitividade). A identidade $1_a:a\\to a$ existe porque $a\\le a$ (reflexividade). Como há no máximo um morfismo entre dois objetos, a associatividade e as leis de identidade valem trivialmente (há um único morfismo a comparar). Reciprocamente, uma categoria com no máximo um morfismo entre objetos define a relação $a\\le b:\\iff\\mathbf{P}(a,b)\\neq\\varnothing$, que é reflexiva e transitiva. **Iso:** um iso $a\\to b$ exige morfismos $a\\to b$ e $b\\to a$, isto é, $a\\le b$ **e** $b\\le a$; assim $a\\cong b$ sse $a$ e $b$ são mutuamente relacionados. Se $(P,\\le)$ é uma ordem parcial (antissimétrica), isso força $a=b$, logo os únicos isos são as identidades. $\\blacksquare$",
+          "steps": [
+            "Para o monoide: proponha a categoria com um objeto $\\ast$ e morfismos $=$ elementos de $M$, com composição $=$ produto.",
+            "Traduza cada axioma de categoria para um axioma de monoide (associatividade $\\leftrightarrow$ associatividade; identidades $\\leftrightarrow$ elemento neutro $e$).",
+            "Para a pré-ordem: ponha um morfismo $a\\to b$ exatamente quando $a\\le b$, e verifique que composição/identidade correspondem a transitividade/reflexividade.",
+            "Observe que 'no máximo um morfismo' torna associatividade e leis de identidade automáticas.",
+            "Conclua os isos: no monoide são os elementos inversíveis; na pré-ordem são os pares com $a\\le b$ e $b\\le a$ (só identidades se for ordem parcial)."
+          ]
+        },
+        {
+          "prompt": "Prove que toda seção (morfismo com inversa à esquerda) é monomorfismo e que toda retração (inversa à direita) é epimorfismo. Em seguida, dê um exemplo em $\\mathbf{Set}$ de mono que não é seção.",
+          "hint": "Para o mono: de $sf=sg$ multiplique pela inversa à esquerda. Para o exemplo, lembre que toda função injetiva de um conjunto não vazio cinde, mas uma injeção a partir do conjunto vazio $\\varnothing\\to X$ com $X\\neq\\varnothing$ não tem inversa à esquerda.",
+          "difficulty": 3,
+          "solution": "**Seção $\\Rightarrow$ mono.** Seja $f:a\\to b$ com inversa à esquerda $g:b\\to a$, isto é, $g f=1_a$. Suponha $f h=f k$ para $h,k:x\\to a$. Compondo à esquerda por $g$: $g f h=g f k$, ou seja $1_a h=1_a k$, logo $h=k$. Portanto $f$ é monomorfismo.\n\n**Retração $\\Rightarrow$ epi.** Dualmente, seja $f:a\\to b$ com inversa à direita $g:b\\to a$, $f g=1_b$. Suponha $h f=k f$ para $h,k:b\\to y$. Compondo à direita por $g$: $h f g=k f g$, isto é $h=k$. Logo $f$ é epimorfismo. (Equivalente: aplique o argumento anterior em $\\mathcal{C}^{\\mathrm{op}}$, onde retração vira seção.)\n\n**Mono que não é seção em $\\mathbf{Set}$.** Considere a única função $f:\\varnothing\\to X$ com $X\\neq\\varnothing$. Ela é monomorfismo: a condição $f h=f k$ para $h,k:S\\to\\varnothing$ só pode ocorrer se $S=\\varnothing$ (não há funções para $\\varnothing$ a partir de conjunto não vazio), e então $h=k$ vacuamente. Mas $f$ **não** tem inversa à esquerda: uma tal $g:X\\to\\varnothing$ seria uma função de um conjunto não vazio para o vazio, que não existe. Logo $f$ é mono sem ser seção.\n\n*(Observação: em $\\mathbf{Set}$ toda função injetiva com domínio não vazio cinde, escolhendo imagens arbitrárias fora da imagem; a obstrução aparece apenas no caso do domínio vazio.)* $\\blacksquare$",
+          "steps": [
+            "Escreva a hipótese de seção como $gf=1_a$ e a de mono como cancelamento à esquerda.",
+            "Componha $fh=fk$ à esquerda por $g$ e use $gf=1$ para obter $h=k$.",
+            "Dualize (ou passe a $\\mathcal{C}^{\\mathrm{op}}$) para provar retração $\\Rightarrow$ epi.",
+            "Para o contraexemplo, lembre que $\\varnothing\\to X$ é mono por vacuidade.",
+            "Argumente que não pode existir $g:X\\to\\varnothing$ quando $X\\neq\\varnothing$, logo não há inversa à esquerda."
+          ]
+        },
+        {
+          "prompt": "Em $\\mathbf{Top}$, considere a aplicação contínua $f:[0,1)\\to S^1$, $t\\mapsto(\\cos 2\\pi t,\\sin 2\\pi t)$. Mostre que $f$ é mono e epi (bijetiva contínua) mas não é isomorfismo (homeomorfismo). Compare com o caso $\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$ em $\\mathbf{Ring}$.",
+          "hint": "Bijeção contínua é mono e epi em $\\mathbf{Top}$; mas a inversa não é contínua pois $[0,1)$ não é compacto e $S^1$ é. Conclua que $\\mathbf{Top}$ não é balanceada.",
+          "difficulty": 3,
+          "solution": "**$f$ é mono e epi.** Em $\\mathbf{Top}$, os monomorfismos são exatamente as aplicações contínuas **injetivas** e os epimorfismos são exatamente as **sobrejetivas** (o functor esquecimento $\\mathbf{Top}\\to\\mathbf{Set}$ é fiel e reflete essas noções: uma contínua injetiva é cancelável à esquerda e uma contínua sobrejetiva é cancelável à direita). A aplicação $f:[0,1)\\to S^1$, $t\\mapsto(\\cos 2\\pi t,\\sin 2\\pi t)$, é contínua e **bijetiva**: injetiva porque $\\cos,\\sin$ têm período $1$ e $t,t'\\in[0,1)$ com mesma imagem coincidem; sobrejetiva porque todo ponto de $S^1$ tem ângulo em $[0,2\\pi)$. Logo $f$ é simultaneamente mono e epi.\n\n**$f$ não é iso (homeomorfismo).** Se $f$ fosse isomorfismo em $\\mathbf{Top}$, seria homeomorfismo, e sua inversa $f^{-1}$ seria contínua. Mas $[0,1)$ **não é compacto** (não é fechado e limitado como subespaço de $\\mathbb{R}$; a sequência $t_n=1-\\tfrac1n$ não tem subsequência convergente em $[0,1)$), enquanto $S^1$ **é compacto**. Homeomorfismos preservam compacidade; portanto não pode haver homeomorfismo $[0,1)\\cong S^1$. Concretamente, $f^{-1}$ falha a continuidade em $(1,0)=f(0)$: pontos de $S^1$ que se aproximam de $(1,0)$ 'por baixo' têm preimagem $t\\to 1^-$, longe de $0=f^{-1}(1,0)$.\n\n**Comparação.** Assim como $\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$ é bimorfismo não-iso em $\\mathbf{Ring}$, $f$ é bimorfismo não-iso em $\\mathbf{Top}$. Ambos mostram que a categoria **não é balanceada**: mono $+$ epi não implica iso. A obstrução não está no conjunto subjacente (lá $f$ é bijeção), mas na estrutura extra (topologia / estrutura de anel) que a inversa deveria preservar. $\\blacksquare$",
+          "steps": [
+            "Lembre que em $\\mathbf{Top}$ mono $=$ contínua injetiva e epi $=$ contínua sobrejetiva.",
+            "Verifique que $f$ é contínua e bijetiva, logo mono e epi.",
+            "Suponha por absurdo que $f$ seja homeomorfismo e observe que forçaria $[0,1)\\cong S^1$.",
+            "Use compacidade: $S^1$ é compacto, $[0,1)$ não, e homeomorfismos preservam compacidade.",
+            "Conclua que $\\mathbf{Top}$ não é balanceada, em paralelo com $\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$ em $\\mathbf{Ring}$."
+          ]
+        },
+        {
+          "prompt": "Enuncie o conceito dual de 'objeto inicial' (um objeto $0$ tal que há exatamente um morfismo $0\\to x$ para todo $x$) e prove que objetos iniciais, quando existem, são únicos a menos de isomorfismo único.",
+          "hint": "O dual é o objeto terminal $1$ ($\\exists!\\,x\\to 1$). Dados dois iniciais $0,0'$, há únicos $0\\to 0'$ e $0'\\to 0$; componha e use unicidade contra $1_0$.",
+          "difficulty": 2,
+          "solution": "**Conceito dual.** O dual de 'objeto inicial' obtém-se invertendo todas as setas. Um objeto inicial $0$ satisfaz: para todo $x$ existe **exatamente um** morfismo $0\\to x$. Invertendo, um **objeto terminal** $1$ satisfaz: para todo $x$ existe exatamente um morfismo $x\\to 1$. (Formalmente, $1$ é terminal em $\\mathcal{C}$ sse $1$ é inicial em $\\mathcal{C}^{\\mathrm{op}}$.)\n\n**Unicidade a menos de isomorfismo único.** Sejam $0$ e $0'$ ambos iniciais. Pela propriedade de $0$, existe um único $u:0\\to 0'$; pela de $0'$, existe um único $v:0'\\to 0$. Considere $v\\circ u:0\\to 0$. Mas $0$ é inicial, logo há **exatamente um** morfismo $0\\to 0$, e $1_0$ é um deles; por unicidade, $v\\circ u=1_0$. Simetricamente, $u\\circ v:0'\\to 0'$ e a inicialidade de $0'$ dão $u\\circ v=1_{0'}$. Portanto $u$ é isomorfismo com inversa $v$. Além disso, $u$ é o **único** morfismo $0\\to 0'$ (pela inicialidade de $0$), logo o isomorfismo entre dois objetos iniciais é único. Assim objetos iniciais, quando existem, são únicos a menos de isomorfismo único. Por dualidade, o mesmo vale para objetos terminais. $\\blacksquare$",
+          "steps": [
+            "Inverta as setas na definição de inicial para obter a de terminal ($\\exists!\\,x\\to 1$).",
+            "Dados dois iniciais $0,0'$, produza os únicos morfismos $u:0\\to0'$ e $v:0'\\to0$.",
+            "Forme $vu:0\\to0$ e use que a inicialidade de $0$ força um único morfismo $0\\to0$, a saber $1_0$.",
+            "Conclua $vu=1_0$ e, simetricamente, $uv=1_{0'}$, logo $u$ é iso.",
+            "Note que $u$ é o único morfismo $0\\to0'$, garantindo unicidade do isomorfismo."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Axiomas de uma categoria",
+          "back": "Composição associativa de morfismos compatíveis e identidades $1_a$ neutras à esquerda e à direita."
+        },
+        {
+          "front": "$f$ monomorfismo",
+          "back": "Cancelável à esquerda: $fg=fh\\Rightarrow g=h$. Em $\\mathbf{Set}$, equivale a injetiva."
+        },
+        {
+          "front": "$f$ epimorfismo",
+          "back": "Cancelável à direita: $gf=hf\\Rightarrow g=h$. Em $\\mathbf{Set}$, equivale a sobrejetiva (mas não em geral)."
+        },
+        {
+          "front": "Mono + epi implica iso?",
+          "back": "Não em geral; só em categorias balanceadas. Contraexemplo: $\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$ em $\\mathbf{Ring}$."
+        },
+        {
+          "front": "Seção vs. retração",
+          "back": "Seção = inversa à esquerda ($gf=1$, é split mono); retração = inversa à direita ($fg=1$, é split epi)."
+        },
+        {
+          "front": "Categoria oposta $\\mathcal{C}^{\\mathrm{op}}$",
+          "back": "Mesmos objetos, $\\mathcal{C}^{\\mathrm{op}}(a,b)=\\mathcal{C}(b,a)$, composição invertida."
+        },
+        {
+          "front": "Princípio da dualidade",
+          "back": "Todo teorema sobre categorias tem versão dual válida, obtida invertendo todas as setas."
+        },
+        {
+          "front": "Iso = mono + ?",
+          "back": "Iso $\\iff$ mono e split epi (retração) $\\iff$ epi e split mono (seção)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Riehl, Category Theory in Context — cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "Mac Lane, CWM — cap. 1 (Categories, Functors)",
+          "ref": "livro"
+        },
+        {
+          "title": "Leinster, Basic Category Theory — cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe primeiro a definição de categoria com um exemplo na mão: escreva os axiomas (composição associativa, identidades) verificando-os em $\\mathbf{Set}$ e em um monoide visto como categoria de um objeto.",
+          "Leia Riehl, cap. 1, seções sobre morfismos: refaça no papel as definições de mono, epi, iso, seção e retração, sempre traduzindo 'cancelamento' para o exemplo $\\mathbf{Set}$.",
+          "Construa você mesmo os contraexemplos-chave: $\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$ em $\\mathbf{Ring}$ (mono+epi sem ser iso) e a bijeção contínua $[0,1)\\to S^1$ em $\\mathbf{Top}$.",
+          "Estude o princípio da dualidade construindo $\\mathcal{C}^{\\mathrm{op}}$ explicitamente e listando os pares duais (mono/epi, inicial/terminal, produto/coproduto).",
+          "Assista a um vídeo introdutório de motivação para consolidar a mudança de ponto de vista (olhar para as setas, não para os elementos).",
+          "Volte ao app: resolva os testes deste subtópico e anote aqui o principal (definição de categoria, os três tipos de morfismo e o contraexemplo bimorfismo≠iso)."
+        ],
+        "searchQueries": [
+          "definição de categoria teoria das categorias monomorfismo epimorfismo",
+          "categoria oposta princípio da dualidade exemplos",
+          "Z inclusão Q epimorfismo em Ring anéis prova",
+          "category theory monomorphism epimorphism section retraction",
+          "balanced category mono epi iso counterexample",
+          "monoid as one-object category preorder as category"
+        ],
+        "videos": [
+          {
+            "title": "The Catsters — playlist de teoria das categorias (definições básicas)",
+            "channel": "The Catsters",
+            "note": "Assista aos primeiros vídeos sobre categorias, functores e dualidade; curtos e feitos por categoristas (Cheng e Willerton)."
+          },
+          {
+            "title": "Category Theory course — aulas iniciais",
+            "channel": "Richard Southwell",
+            "note": "Veja as primeiras aulas sobre a definição de categoria e morfismos especiais; ritmo lento e visual, bom primeiro contato."
+          },
+          {
+            "title": "Category Theory for Programmers — Categories great and small",
+            "channel": "Bartosz Milewski",
+            "note": "Assista às aulas iniciais para a intuição de composição e identidade; ignore o viés de programação e foque nos exemplos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Category Theory in Context, cap. 1 (Categories, Functors, Natural Transformations)",
+            "where": "livro de Emily Riehl, PDF gratuito no site da autora"
+          },
+          {
+            "title": "Verbetes 'category', 'monomorphism', 'epimorphism', 'duality'",
+            "where": "nLab (ncatlab.org)"
+          },
+          {
+            "title": "Basic Category Theory, cap. 1",
+            "where": "livro de Tom Leinster, arXiv:1612.09375"
+          }
+        ]
+      }
+    },
+    {
+      "id": "category-theory-02-functores-transformacoes-naturais",
+      "title": "Functores e Transformações Naturais",
+      "tagline": "Functores são morfismos entre categorias; transformações naturais são morfismos entre functores — e a 'naturalidade' é o que esta teoria nasceu para precisar.",
+      "objectives": [
+        "Definir functor covariante e contravariante, verificar functorialidade ($F(g f)=F(g)F(f)$, $F(1)=1$) e classificá-los como fiéis, plenos e essencialmente sobrejetivos.",
+        "Provar que todo functor preserva isomorfismos, seções e retrações, e analisar quando preserva (ou não) monos e epis.",
+        "Definir transformação natural $\\alpha:F\\Rightarrow G$ via os quadrados de naturalidade e reconhecer isomorfismos naturais.",
+        "Construir a categoria de functores $[\\mathcal{C},\\mathcal{D}]$ e entender a composição horizontal e vertical (lei do intercâmbio).",
+        "Identificar os functores Hom covariante $\\mathcal{C}(a,-)$ e contravariante $\\mathcal{C}(-,b)$ e o functor bidual em $\\mathbf{Vect}$ como exemplos centrais de naturalidade."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Functor",
+          "statement": "$F:\\mathcal{C}\\to\\mathcal{D}$ associa a cada objeto $c$ um objeto $Fc$ e a cada morfismo $f:a\\to b$ um morfismo $Ff:Fa\\to Fb$ (covariante) ou $Ff:Fb\\to Fa$ (contravariante), respeitando composição e identidades."
+        },
+        {
+          "term": "Fiel, pleno, essencialmente sobrejetivo",
+          "statement": "$F$ é fiel se cada $\\mathcal{C}(a,b)\\to\\mathcal{D}(Fa,Fb)$ é injetiva; pleno se é sobrejetiva; plenamente fiel se é bijetiva; essencialmente sobrejetivo se todo objeto de $\\mathcal{D}$ é isomorfo a algum $Fc$."
+        },
+        {
+          "term": "Transformação natural",
+          "statement": "$\\alpha:F\\Rightarrow G$ entre functores $F,G:\\mathcal{C}\\to\\mathcal{D}$ é uma família de morfismos $\\alpha_c:Fc\\to Gc$ tal que, para todo $f:a\\to b$, o quadrado comuta: $Gf\\circ\\alpha_a=\\alpha_b\\circ Ff$. É isomorfismo natural se cada $\\alpha_c$ é iso."
+        },
+        {
+          "term": "Categoria de functores",
+          "statement": "$[\\mathcal{C},\\mathcal{D}]$ (ou $\\mathcal{D}^{\\mathcal{C}}$) tem por objetos os functores $\\mathcal{C}\\to\\mathcal{D}$ e por morfismos as transformações naturais, com composição vertical $(\\beta\\alpha)_c=\\beta_c\\alpha_c$."
+        },
+        {
+          "term": "Functor Hom",
+          "statement": "Fixado $a$, $\\mathcal{C}(a,-):\\mathcal{C}\\to\\mathbf{Set}$ é covariante (pós-composição) e $\\mathcal{C}(-,b):\\mathcal{C}^{\\mathrm{op}}\\to\\mathbf{Set}$ é contravariante (pré-composição). São os functores representáveis, peças centrais do Lema de Yoneda."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Functores preservam isomorfismos",
+          "statement": "Se $F:\\mathcal{C}\\to\\mathcal{D}$ é functor e $f$ é isomorfismo em $\\mathcal{C}$, então $Ff$ é isomorfismo em $\\mathcal{D}$, com $(Ff)^{-1}=F(f^{-1})$. O mesmo vale para seções e retrações.",
+          "whyItMatters": "Garante que toda construção functorial respeita 'igualdade estrutural' (isomorfismo). É a razão pela qual functores transportam classificações: objetos isomorfos vão para objetos isomorfos."
+        },
+        {
+          "name": "Naturalidade do bidual em dimensão finita",
+          "statement": "Sobre um corpo $k$, a aplicação $\\eta_V:V\\to V^{**}$, $v\\mapsto(\\varphi\\mapsto\\varphi(v))$, define uma transformação natural $\\eta:\\mathrm{id}\\Rightarrow(-)^{**}$ entre functores $\\mathbf{Vect}_k\\to\\mathbf{Vect}_k$, que é isomorfismo natural quando restrita aos espaços de dimensão finita. Não existe isomorfismo natural análogo $V\\cong V^{*}$.",
+          "whyItMatters": "É o exemplo histórico que motivou a definição de 'natural': $V\\cong V^{*}$ existe mas depende de escolher base (não é natural), enquanto $V\\cong V^{**}$ é canônico. A teoria das categorias nasceu para tornar essa distinção rigorosa."
+        },
+        {
+          "name": "Lei do intercâmbio (interchange law)",
+          "statement": "Para transformações naturais componíveis horizontal e verticalmente, $(\\beta'\\ast\\alpha')\\circ(\\beta\\ast\\alpha)=(\\beta'\\circ\\beta)\\ast(\\alpha'\\circ\\alpha)$, onde $\\circ$ é composição vertical e $\\ast$ é composição horizontal.",
+          "whyItMatters": "É a identidade que faz das transformações naturais uma 2-categoria coerente e justifica manipular diagramas de functores como se fossem cálculos algébricos."
+        }
+      ],
+      "summary": "Se categorias são as 'estruturas', functores são os morfismos entre elas: levam objetos em objetos e setas em setas preservando composição e identidades. Functores contravariantes invertem o sentido das setas (equivalentemente, são functores covariantes a partir de $\\mathcal{C}^{\\mathrm{op}}$). As três propriedades que mais importam — fiel (injetivo nos Hom-sets), pleno (sobrejetivo nos Hom-sets) e essencialmente sobrejetivo (atinge todo objeto a menos de iso) — são exatamente os ingredientes que, juntos, caracterizam uma equivalência de categorias (próximo subtópico). Um fato gratuito e poderoso: todo functor preserva isomorfismos, pois transporta a inversa. Já monos e epis nem sempre são preservados, o que torna 'preservar monomorfismos' uma condição não trivial (e ligada à exatidão, no fim da trilha).\n\nO segundo conceito, mais sutil e mais importante, é o de transformação natural: um modo de transformar um functor $F$ em outro functor $G$ de maneira coerente com todas as setas, expresso pelos quadrados de naturalidade $Gf\\circ\\alpha_a=\\alpha_b\\circ Ff$. A teoria das categorias foi literalmente inventada para dar sentido preciso à palavra 'natural'. O paradigma é o bidual: $V\\cong V^{**}$ é natural (canônico, sem escolher base), enquanto $V\\cong V^{*}$ existe em dimensão finita mas não é natural. Empacotando functores como objetos e transformações naturais como morfismos, obtemos a categoria de functores $[\\mathcal{C},\\mathcal{D}]$, palco onde vivem o Lema de Yoneda, os limites (como functores) e as adjunções (via unidade e counidade).",
+      "commonPitfalls": [
+        "Confundir functor pleno e fiel com sobrejetivo/injetivo nos objetos: pleno/fiel falam dos Hom-sets, não dos objetos. Um functor pode ser plenamente fiel sem atingir todos os objetos.",
+        "Esquecer de verificar o quadrado de naturalidade: uma família de morfismos $\\alpha_c$ que não comuta com todos os $Ff$ não é transformação natural, ainda que cada $\\alpha_c$ pareça 'óbvio'.",
+        "Achar que $V\\cong V^{*}$ é natural só porque têm a mesma dimensão: a existência do iso não basta — naturalidade exige comutar com todos os morfismos, e a transposta inverte o sentido.",
+        "Misturar composição horizontal e vertical de transformações naturais sem respeitar a lei do intercâmbio."
+      ],
+      "worked": "**Afirmação.** Seja $(-)^{*}:\\mathbf{Vect}_k^{\\mathrm{op}}\\to\\mathbf{Vect}_k$ o functor dual ($V\\mapsto V^{*}=\\mathrm{Hom}(V,k)$, $f\\mapsto f^{*}$ a transposta). A aplicação de avaliação $\\eta_V:V\\to V^{**}$, $\\eta_V(v)(\\varphi)=\\varphi(v)$, é uma transformação natural $\\eta:\\mathrm{id}_{\\mathbf{Vect}_k}\\Rightarrow(-)^{**}$.\n\n**Verificação do quadrado de naturalidade.** Seja $f:V\\to W$ linear. Precisamos de $\\eta_W\\circ f=f^{**}\\circ\\eta_V$ como aplicações $V\\to W^{**}$, onde $f^{**}=(f^{*})^{*}$. Tome $v\\in V$ e $\\psi\\in W^{*}$. Por um lado,\n$$\\big(\\eta_W(f(v))\\big)(\\psi)=\\psi(f(v)).$$\nPor outro,\n$$\\big(f^{**}(\\eta_V(v))\\big)(\\psi)=\\big(\\eta_V(v)\\big)(f^{*}\\psi)=(f^{*}\\psi)(v)=\\psi(f(v)),$$\nusando $f^{*}\\psi=\\psi\\circ f$. Os dois lados coincidem para todo $\\psi$, logo $\\eta_W\\circ f=f^{**}\\circ\\eta_V$. Assim $\\eta$ é natural. $\\blacksquare$\n\n**Comentário.** Quando $\\dim V<\\infty$, cada $\\eta_V$ é isomorfismo (injetiva por separação de pontos e dimensões iguais), então $\\eta$ é isomorfismo natural em $\\mathbf{Vect}_k^{\\mathrm{fin}}$. Já $V\\cong V^{*}$ vale dimensionalmente mas não pode ser tornado natural — não há família comutando com todos os $f$ —, exatamente a distinção que a noção de naturalidade captura.",
+      "exercises": [
+        {
+          "prompt": "Seja $U:\\mathbf{Grp}\\to\\mathbf{Set}$ o functor esquecimento. Mostre que $U$ é fiel mas não pleno, e que não é injetivo nos objetos (grupos não isomorfos podem ter conjuntos subjacentes em bijeção). Por que functores fiéis são chamados de 'concretizações'?",
+          "hint": "Fiel: homomorfismos distintos são funções distintas. Não pleno: nem toda função entre conjuntos subjacentes é homomorfismo. Pense em $\\mathbb{Z}/4$ e $\\mathbb{Z}/2\\times\\mathbb{Z}/2$.",
+          "difficulty": 2,
+          "solution": "**$U$ é fiel.** Para grupos $G,H$, um homomorfismo $\\varphi:G\\to H$ é, em particular, uma função entre os conjuntos subjacentes $UG\\to UH$, e $U\\varphi$ é essa mesma função. Se $\\varphi\\neq\\psi$ como homomorfismos, então diferem em algum elemento, logo $U\\varphi\\neq U\\psi$ como funções. Assim $U:\\mathbf{Grp}(G,H)\\to\\mathbf{Set}(UG,UH)$ é **injetiva**, isto é, $U$ é fiel.\n\n**$U$ não é pleno.** Nem toda função entre conjuntos subjacentes é homomorfismo. Por exemplo, $G=H=\\mathbb{Z}$ e a função $s:\\mathbb{Z}\\to\\mathbb{Z}$, $s(n)=n+1$: temos $s(0)=1\\neq 0$, logo $s$ não preserva o neutro e não é homomorfismo. Como $s\\in\\mathbf{Set}(U\\mathbb{Z},U\\mathbb{Z})$ não está na imagem de $U$, a aplicação nos Hom-sets não é sobrejetiva. Logo $U$ não é pleno.\n\n**$U$ não é injetivo nos objetos.** Tome $G=\\mathbb{Z}/4$ e $H=\\mathbb{Z}/2\\times\\mathbb{Z}/2$. Ambos têm $4$ elementos, logo $UG$ e $UH$ estão em bijeção (e poderíamos até ter $UG=UH$ escolhendo os rótulos). Mas $\\mathbb{Z}/4$ é cíclico (tem elemento de ordem $4$) e $\\mathbb{Z}/2\\times\\mathbb{Z}/2$ não (todo elemento tem ordem $\\le 2$), logo $G\\not\\cong H$. Portanto $U$ não é injetivo (nem 'injetivo a menos de iso') nos objetos.\n\n**Por que 'concretização'.** Um functor fiel $U:\\mathcal{C}\\to\\mathbf{Set}$ realiza cada objeto de $\\mathcal{C}$ como um **conjunto com estrutura** e cada morfismo como uma **função genuína** entre esses conjuntos, sem identificar morfismos distintos. Isso permite 'ver' objetos abstratos como conjuntos e provar igualdades de morfismos verificando-as elemento a elemento. Uma categoria com tal functor fiel para $\\mathbf{Set}$ chama-se **categoria concreta**, e $U$ é a concretização. $\\blacksquare$",
+          "steps": [
+            "Observe que $U\\varphi$ é literalmente a função subjacente ao homomorfismo $\\varphi$; homomorfismos distintos diferem como funções.",
+            "Conclua injetividade nos Hom-sets, isto é, fidelidade.",
+            "Exiba uma função entre conjuntos subjacentes que não é homomorfismo (ex.: $n\\mapsto n+1$ em $\\mathbb{Z}$) para negar plenitude.",
+            "Compare $\\mathbb{Z}/4$ e $\\mathbb{Z}/2\\times\\mathbb{Z}/2$: mesmo cardinal, grupos não isomorfos, logo $U$ não é injetivo nos objetos.",
+            "Explique que fidelidade permite tratar objetos como conjuntos estruturados e verificar igualdades ponto a ponto (concretização)."
+          ]
+        },
+        {
+          "prompt": "Mostre que o functor de abelianização $(-)^{\\mathrm{ab}}:\\mathbf{Grp}\\to\\mathbf{Ab}$, $G\\mapsto G/[G,G]$, está bem definido em morfismos e que a projeção $\\pi_G:G\\to G^{\\mathrm{ab}}$ é uma transformação natural do functor (esquecimento composto com inclusão) para a abelianização.",
+          "hint": "Todo homomorfismo $f:G\\to H$ leva $[G,G]$ em $[H,H]$, induzindo $f^{\\mathrm{ab}}$. Verifique $f^{\\mathrm{ab}}\\circ\\pi_G=\\pi_H\\circ f$.",
+          "difficulty": 3,
+          "solution": "**Boa definição em morfismos.** Seja $f:G\\to H$ homomorfismo. Como $f$ preserva comutadores, $f([a,b])=f(aba^{-1}b^{-1})=[f(a),f(b)]\\in[H,H]$, logo $f([G,G])\\subseteq[H,H]$. A projeção $\\pi_H:H\\to H^{\\mathrm{ab}}=H/[H,H]$ compõe com $f$ dando $\\pi_H\\circ f:G\\to H^{\\mathrm{ab}}$, cujo núcleo contém $[G,G]$ (pois $\\pi_H f([G,G])\\subseteq\\pi_H([H,H])=0$). Pela propriedade universal do quociente, existe um único homomorfismo\n$$f^{\\mathrm{ab}}:G^{\\mathrm{ab}}\\to H^{\\mathrm{ab}}\\quad\\text{tal que}\\quad f^{\\mathrm{ab}}\\circ\\pi_G=\\pi_H\\circ f.$$\n**Functorialidade.** $\\mathrm{id}_G$ induz $\\mathrm{id}_{G^{\\mathrm{ab}}}$ (pela unicidade, pois $\\mathrm{id}\\circ\\pi_G=\\pi_G\\circ\\mathrm{id}$). Para $G\\xrightarrow{f}H\\xrightarrow{g}K$, tanto $(gf)^{\\mathrm{ab}}$ quanto $g^{\\mathrm{ab}}f^{\\mathrm{ab}}$ satisfazem a mesma equação $(\\,\\cdot\\,)\\circ\\pi_G=\\pi_K\\circ (gf)$; por unicidade, $(gf)^{\\mathrm{ab}}=g^{\\mathrm{ab}}f^{\\mathrm{ab}}$. Logo $(-)^{\\mathrm{ab}}:\\mathbf{Grp}\\to\\mathbf{Ab}$ é functor.\n\n**Naturalidade de $\\pi$.** Considere o functor 'inclusão composta com abelianização' $J\\circ(-)^{\\mathrm{ab}}:\\mathbf{Grp}\\to\\mathbf{Grp}$ (onde $J:\\mathbf{Ab}\\hookrightarrow\\mathbf{Grp}$) e o functor identidade $\\mathrm{Id}:\\mathbf{Grp}\\to\\mathbf{Grp}$. A família $\\pi_G:G\\to G^{\\mathrm{ab}}$ é uma transformação natural $\\mathrm{Id}\\Rightarrow J\\circ(-)^{\\mathrm{ab}}$: o quadrado de naturalidade para $f:G\\to H$ é exatamente\n$$f^{\\mathrm{ab}}\\circ\\pi_G=\\pi_H\\circ f,$$\nque foi a equação que **definiu** $f^{\\mathrm{ab}}$. Logo o quadrado comuta para todo $f$, e $\\pi$ é natural. (De fato, $\\pi$ é a unidade da adjunção abelianização $\\dashv$ inclusão.) $\\blacksquare$",
+          "steps": [
+            "Mostre que todo homomorfismo leva comutadores em comutadores, logo $f([G,G])\\subseteq[H,H]$.",
+            "Use a propriedade universal do quociente para obter o único $f^{\\mathrm{ab}}$ com $f^{\\mathrm{ab}}\\pi_G=\\pi_H f$.",
+            "Verifique functorialidade (identidade e composição) via unicidade do morfismo induzido.",
+            "Identifique os dois functores $\\mathrm{Id}$ e inclusão$\\circ$abelianização entre os quais $\\pi$ vive.",
+            "Reconheça que a equação definidora de $f^{\\mathrm{ab}}$ é o próprio quadrado de naturalidade de $\\pi$."
+          ]
+        },
+        {
+          "prompt": "Prove que se $\\alpha:F\\Rightarrow G$ é transformação natural e cada componente $\\alpha_c$ é isomorfismo, então a família $(\\alpha_c^{-1})$ é uma transformação natural $G\\Rightarrow F$ (logo isomorfismo natural). Conclua que isomorfismo em $[\\mathcal{C},\\mathcal{D}]$ = isomorfismo natural.",
+          "hint": "Inverta o quadrado de naturalidade: de $Gf\\,\\alpha_a=\\alpha_b\\,Ff$ deduza $\\alpha_b^{-1}Gf=Ff\\,\\alpha_a^{-1}$ multiplicando pelos inversos.",
+          "difficulty": 3,
+          "solution": "**Construção da inversa.** Seja $\\alpha:F\\Rightarrow G$ com cada $\\alpha_c:Fc\\to Gc$ isomorfismo, e defina $\\beta_c:=\\alpha_c^{-1}:Gc\\to Fc$. Afirmamos que $\\beta=(\\beta_c)$ é transformação natural $G\\Rightarrow F$.\n\n**Verificação do quadrado.** Seja $f:a\\to b$. A naturalidade de $\\alpha$ diz\n$$Gf\\circ\\alpha_a=\\alpha_b\\circ Ff.$$\nCompondo à esquerda por $\\alpha_b^{-1}=\\beta_b$ e à direita por $\\alpha_a^{-1}=\\beta_a$:\n$$\\beta_b\\circ Gf\\circ\\alpha_a\\circ\\beta_a=\\beta_b\\circ\\alpha_b\\circ Ff\\circ\\beta_a.$$\nComo $\\alpha_a\\beta_a=1_{Ga}$ e $\\beta_b\\alpha_b=1_{Fb}$, isso simplifica para\n$$\\beta_b\\circ Gf=Ff\\circ\\beta_a,$$\nque é exatamente o quadrado de naturalidade de $\\beta:G\\Rightarrow F$. Logo $\\beta$ é natural.\n\n**$\\beta$ é inversa de $\\alpha$ em $[\\mathcal{C},\\mathcal{D}]$.** As composições verticais são $(\\beta\\alpha)_c=\\beta_c\\alpha_c=\\alpha_c^{-1}\\alpha_c=1_{Fc}=(\\mathrm{id}_F)_c$ e $(\\alpha\\beta)_c=\\alpha_c\\alpha_c^{-1}=1_{Gc}=(\\mathrm{id}_G)_c$. Portanto $\\beta\\alpha=\\mathrm{id}_F$ e $\\alpha\\beta=\\mathrm{id}_G$ em $[\\mathcal{C},\\mathcal{D}]$, ou seja, $\\alpha$ é isomorfismo na categoria de functores.\n\n**Conclusão.** Reciprocamente, se $\\alpha$ é iso em $[\\mathcal{C},\\mathcal{D}]$ com inversa $\\beta$, então $(\\beta\\alpha)_c=1_{Fc}$ e $(\\alpha\\beta)_c=1_{Gc}$ mostram que cada $\\alpha_c$ é iso. Logo **isomorfismo em $[\\mathcal{C},\\mathcal{D}]$ $=$ isomorfismo natural** (componente a componente iso). $\\blacksquare$",
+          "steps": [
+            "Defina $\\beta_c:=\\alpha_c^{-1}$ como candidato à inversa.",
+            "Parta do quadrado de naturalidade de $\\alpha$: $Gf\\,\\alpha_a=\\alpha_b\\,Ff$.",
+            "Componha com $\\beta_b$ à esquerda e $\\beta_a$ à direita e cancele para obter $\\beta_b\\,Gf=Ff\\,\\beta_a$.",
+            "Conclua que $\\beta$ é transformação natural $G\\Rightarrow F$.",
+            "Verifique $\\beta\\alpha=\\mathrm{id}_F$ e $\\alpha\\beta=\\mathrm{id}_G$ componente a componente, identificando iso natural com iso em $[\\mathcal{C},\\mathcal{D}]$."
+          ]
+        },
+        {
+          "prompt": "Dê um functor que não preserva monomorfismos e um que não preserva epimorfismos. Sugestão: analise $-\\otimes_{\\mathbb{Z}}\\mathbb{Z}/2$ em $\\mathbf{Ab}$ aplicado a $\\mathbb{Z}\\xrightarrow{\\times 2}\\mathbb{Z}$.",
+          "hint": "A multiplicação por $2$ é mono em $\\mathbf{Ab}$, mas após $-\\otimes\\mathbb{Z}/2$ vira a aplicação nula $\\mathbb{Z}/2\\to\\mathbb{Z}/2$, que não é mono. Isso antecipa a não exatidão do produto tensorial.",
+          "difficulty": 3,
+          "solution": "**Functor que não preserva monomorfismos: $-\\otimes_{\\mathbb{Z}}\\mathbb{Z}/2$ em $\\mathbf{Ab}$.** Considere o monomorfismo $\\mu:\\mathbb{Z}\\xrightarrow{\\ \\cdot 2\\ }\\mathbb{Z}$ (multiplicação por $2$), que é injetivo, logo mono em $\\mathbf{Ab}$. Aplique o functor $T=-\\otimes_{\\mathbb{Z}}\\mathbb{Z}/2$. Usando $\\mathbb{Z}\\otimes_{\\mathbb{Z}}\\mathbb{Z}/2\\cong\\mathbb{Z}/2$, o morfismo $T\\mu$ é\n$$\\mathbb{Z}/2\\xrightarrow{\\ \\cdot 2\\ }\\mathbb{Z}/2,\\qquad x\\mapsto 2x=0,$$\ni.e. a **aplicação nula**. A aplicação nula $\\mathbb{Z}/2\\to\\mathbb{Z}/2$ não é injetiva (leva $1\\mapsto 0$), logo não é mono. Portanto $T$ não preserva monomorfismos. (Isso antecipa que $-\\otimes M$ é apenas exato à direita, e a falha é medida por $\\mathrm{Tor}_1$.)\n\n**Functor que não preserva epimorfismos: $\\mathrm{Hom}_{\\mathbb{Z}}(\\mathbb{Z}/2,-)$ em $\\mathbf{Ab}$.** Considere o epimorfismo $\\pi:\\mathbb{Z}\\twoheadrightarrow\\mathbb{Z}/2$ (projeção), sobrejetivo, logo epi. Aplique $H=\\mathrm{Hom}_{\\mathbb{Z}}(\\mathbb{Z}/2,-)$. Como $\\mathrm{Hom}(\\mathbb{Z}/2,\\mathbb{Z})=0$ (não há elemento de ordem $2$ em $\\mathbb{Z}$) e $\\mathrm{Hom}(\\mathbb{Z}/2,\\mathbb{Z}/2)\\cong\\mathbb{Z}/2$, o morfismo $H\\pi$ é\n$$0\\longrightarrow\\mathbb{Z}/2,$$\nque não é sobrejetivo, logo não é epi. Portanto $H$ não preserva epimorfismos. (Isso reflete que $\\mathrm{Hom}(M,-)$ é apenas exato à esquerda; a falha é medida por $\\mathrm{Ext}^1$.)\n\n*(Nota: functores sempre preservam **isomorfismos**, mas mono/epi podem ser destruídos, precisamente porque não são noções puramente 'split'.)* $\\blacksquare$",
+          "steps": [
+            "Escolha o mono $\\mathbb{Z}\\xrightarrow{\\cdot 2}\\mathbb{Z}$ em $\\mathbf{Ab}$.",
+            "Aplique $-\\otimes\\mathbb{Z}/2$ e identifique o resultado com $\\mathbb{Z}/2\\xrightarrow{\\cdot 2=0}\\mathbb{Z}/2$, a aplicação nula, que não é mono.",
+            "Para epis, escolha a projeção $\\mathbb{Z}\\twoheadrightarrow\\mathbb{Z}/2$.",
+            "Aplique $\\mathrm{Hom}(\\mathbb{Z}/2,-)$ e calcule $\\mathrm{Hom}(\\mathbb{Z}/2,\\mathbb{Z})=0$ e $\\mathrm{Hom}(\\mathbb{Z}/2,\\mathbb{Z}/2)=\\mathbb{Z}/2$.",
+            "Conclua que $0\\to\\mathbb{Z}/2$ não é epi, conectando as falhas a $\\mathrm{Tor}_1$ e $\\mathrm{Ext}^1$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Functor (covariante)",
+          "back": "$F:\\mathcal{C}\\to\\mathcal{D}$ com $F(gf)=Fg\\,Ff$ e $F(1_c)=1_{Fc}$."
+        },
+        {
+          "front": "Functor contravariante",
+          "back": "Inverte setas: $Ff:Fb\\to Fa$ e $F(gf)=Ff\\,Fg$; equivale a um functor covariante de $\\mathcal{C}^{\\mathrm{op}}$."
+        },
+        {
+          "front": "Functor fiel / pleno",
+          "back": "Fiel = injetivo em cada $\\mathcal{C}(a,b)\\to\\mathcal{D}(Fa,Fb)$; pleno = sobrejetivo nesses Hom-sets."
+        },
+        {
+          "front": "Functores preservam isos?",
+          "back": "Sim, sempre: $(Ff)^{-1}=F(f^{-1})$. Monos e epis nem sempre."
+        },
+        {
+          "front": "Transformação natural $\\alpha:F\\Rightarrow G$",
+          "back": "Família $\\alpha_c:Fc\\to Gc$ com $Gf\\circ\\alpha_a=\\alpha_b\\circ Ff$ para todo $f:a\\to b$."
+        },
+        {
+          "front": "$V\\cong V^{**}$ vs. $V\\cong V^{*}$",
+          "back": "O bidual é isomorfismo natural (canônico) em dim. finita; o dual simples é isomorfismo mas não natural."
+        },
+        {
+          "front": "Categoria de functores $[\\mathcal{C},\\mathcal{D}]$",
+          "back": "Objetos = functores $\\mathcal{C}\\to\\mathcal{D}$; morfismos = transformações naturais."
+        },
+        {
+          "front": "Functores Hom",
+          "back": "$\\mathcal{C}(a,-)$ covariante (pós-compõe); $\\mathcal{C}(-,b)$ contravariante (pré-compõe)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Riehl, Category Theory in Context — cap. 1 (functores, naturalidade)",
+          "ref": "livro"
+        },
+        {
+          "title": "Mac Lane, CWM — caps. 1-2",
+          "ref": "livro"
+        },
+        {
+          "title": "Awodey, Category Theory — caps. 7-8",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise a definição de functor (covariante e contravariante) e verifique functorialidade em exemplos concretos: esquecimento $\\mathbf{Grp}\\to\\mathbf{Set}$, functor livre, $\\pi_1$.",
+          "Estude fiel / pleno / essencialmente sobrejetivo em Riehl cap. 1, sempre distinguindo o que acontece nos Hom-sets do que acontece nos objetos.",
+          "Trabalhe a definição de transformação natural desenhando explicitamente os quadrados de naturalidade; refaça o exemplo do bidual $V\\to V^{**}$ à mão.",
+          "Compare naturalidade de $V\\cong V^{**}$ (natural) com $V\\cong V^{*}$ (não natural): entenda por que a existência do iso não basta.",
+          "Assista a um vídeo sobre transformações naturais para fixar composição vertical e horizontal e a lei do intercâmbio.",
+          "Volte ao app: resolva os testes e anote aqui o principal (functorialidade, os três atributos de functor, quadrado de naturalidade e o paradigma do bidual)."
+        ],
+        "searchQueries": [
+          "functor covariante contravariante fiel pleno essencialmente sobrejetivo",
+          "transformação natural quadrado de naturalidade exemplo",
+          "natural isomorphism double dual V naturally isomorphic V**",
+          "functor category interchange law vertical horizontal composition",
+          "por que V não é naturalmente isomorfo ao dual V*",
+          "forgetful functor faithful not full abelianization natural transformation"
+        ],
+        "videos": [
+          {
+            "title": "The Catsters — Natural transformations",
+            "channel": "The Catsters",
+            "note": "Assista à mini-série sobre transformações naturais e composição horizontal/vertical (interchange law)."
+          },
+          {
+            "title": "Category Theory for Programmers — Functors / Natural transformations",
+            "channel": "Bartosz Milewski",
+            "note": "Veja as aulas sobre functores e transformações naturais para a intuição dos quadrados comutativos."
+          },
+          {
+            "title": "Aulas sobre functores e naturalidade",
+            "channel": "Richard Southwell",
+            "note": "Assista às aulas dedicadas a functores e transformações naturais; ótimas para ver os diagramas passo a passo."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Category Theory in Context, cap. 1 (functores e transformações naturais)",
+            "where": "livro de Emily Riehl, PDF gratuito"
+          },
+          {
+            "title": "Verbetes 'functor', 'natural transformation', 'faithful functor', 'full functor'",
+            "where": "nLab (ncatlab.org)"
+          },
+          {
+            "title": "Categories for the Working Mathematician, caps. I-II",
+            "where": "livro de Saunders Mac Lane"
+          }
+        ]
+      }
+    },
+    {
+      "id": "category-theory-03-yoneda-equivalencia",
+      "title": "Lema de Yoneda, Representabilidade e Equivalência de Categorias",
+      "tagline": "Um objeto é conhecido por suas setas: o Lema de Yoneda mergulha qualquer categoria em functores, e a equivalência de categorias é pleno + fiel + essencialmente sobrejetivo.",
+      "objectives": [
+        "Enunciar e demonstrar o Lema de Yoneda: $\\mathrm{Nat}(\\mathcal{C}(c,-),F)\\cong Fc$, natural em $c$ e em $F$.",
+        "Deduzir o mergulho de Yoneda $\\mathcal{C}\\hookrightarrow[\\mathcal{C}^{\\mathrm{op}},\\mathbf{Set}]$ é plenamente fiel e a consequência: $a\\cong b\\iff$ functores representáveis naturalmente isomorfos.",
+        "Definir functor representável e objeto representante, e reconhecer propriedades universais como representabilidade.",
+        "Definir equivalência de categorias por functores quasi-inversos e provar o critério: $F$ é equivalência $\\iff$ é pleno, fiel e essencialmente sobrejetivo.",
+        "Distinguir equivalência de isomorfismo de categorias e aplicar a exemplos (matrizes vs. espaços vetoriais de dimensão finita)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Functor representável",
+          "statement": "Um functor $F:\\mathcal{C}\\to\\mathbf{Set}$ é representável se existe objeto $c$ e isomorfismo natural $F\\cong\\mathcal{C}(c,-)$; $c$ é o objeto representante, único a menos de isomorfismo único. Dualmente para $\\mathcal{C}^{\\mathrm{op}}\\to\\mathbf{Set}$."
+        },
+        {
+          "term": "Mergulho de Yoneda",
+          "statement": "$\\sharp:\\mathcal{C}\\to[\\mathcal{C}^{\\mathrm{op}},\\mathbf{Set}]$, $c\\mapsto\\mathcal{C}(-,c)$ e $f\\mapsto\\mathcal{C}(-,f)$. É plenamente fiel: $\\mathcal{C}(a,b)\\cong\\mathrm{Nat}(\\mathcal{C}(-,a),\\mathcal{C}(-,b))$. Identifica $\\mathcal{C}$ com uma subcategoria plena de pré-feixes."
+        },
+        {
+          "term": "Equivalência de categorias",
+          "statement": "$F:\\mathcal{C}\\to\\mathcal{D}$ é equivalência se existe $G:\\mathcal{D}\\to\\mathcal{C}$ com isomorfismos naturais $GF\\cong\\mathrm{id}_{\\mathcal{C}}$ e $FG\\cong\\mathrm{id}_{\\mathcal{D}}$ ($G$ é quasi-inverso). Mais fraco que isomorfismo de categorias (que exige igualdade)."
+        },
+        {
+          "term": "Essencialmente sobrejetivo",
+          "statement": "$F$ é essencialmente sobrejetivo se todo objeto $d\\in\\mathcal{D}$ é isomorfo a $Fc$ para algum $c$. Junto com pleno e fiel, caracteriza as equivalências."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Lema de Yoneda",
+          "statement": "Seja $\\mathcal{C}$ localmente pequena, $c\\in\\mathcal{C}$ e $F:\\mathcal{C}\\to\\mathbf{Set}$ functor. Então a aplicação $\\Phi:\\mathrm{Nat}(\\mathcal{C}(c,-),F)\\to Fc$ dada por $\\Phi(\\alpha)=\\alpha_c(1_c)$ é uma bijeção, natural em $c$ e em $F$. (Versão contravariante: $\\mathrm{Nat}(\\mathcal{C}(-,c),F)\\cong Fc$ para $F:\\mathcal{C}^{\\mathrm{op}}\\to\\mathbf{Set}$.)",
+          "whyItMatters": "É o teorema central da teoria: transformações naturais a partir de um representável são apenas elementos de $Fc$. Implica que um objeto é determinado por seu functor de pontos e que toda propriedade universal vira representabilidade. É a ferramenta de prova mais usada da área."
+        },
+        {
+          "name": "Mergulho de Yoneda é plenamente fiel",
+          "statement": "$\\mathcal{C}(a,b)\\cong\\mathrm{Nat}(\\mathcal{C}(-,a),\\mathcal{C}(-,b))$ via $f\\mapsto\\mathcal{C}(-,f)$. Consequência: $a\\cong b$ em $\\mathcal{C}$ se, e somente se, $\\mathcal{C}(-,a)\\cong\\mathcal{C}(-,b)$ como functores.",
+          "whyItMatters": "Permite estudar objetos via seus functores representáveis, num espaço (pré-feixes) que é completo e cocompleto. É a base do 'pensamento por pontos generalizados' e da geometria de Grothendieck."
+        },
+        {
+          "name": "Critério de equivalência",
+          "statement": "Um functor $F:\\mathcal{C}\\to\\mathcal{D}$ é uma equivalência de categorias se, e somente se, é pleno, fiel e essencialmente sobrejetivo. (A construção do quasi-inverso usa o axioma da escolha.)",
+          "whyItMatters": "Transforma a verificação de equivalência — que pediria construir um quasi-inverso e duas transformações naturais — em três checagens locais e concretas. É o teste padrão usado em toda a matemática."
+        }
+      ],
+      "summary": "O Lema de Yoneda formaliza um slogan: 'você é definido por suas relações'. Concretamente, as transformações naturais do functor representável $\\mathcal{C}(c,-)$ para um functor qualquer $F$ estão em bijeção com os elementos de $Fc$, e a bijeção é dada por avaliar a transformação na identidade $1_c$. A prova é curta e instrutiva: dado $x\\in Fc$, a fórmula $\\alpha_d(g)=(Fg)(x)$ define a única transformação natural com $\\alpha_c(1_c)=x$; verificar que é natural e que as duas construções são inversas é um exercício de seguir setas. Como caso particular com $F=\\mathcal{C}(-,b)$, obtemos que o mergulho de Yoneda é plenamente fiel, ou seja, $\\mathcal{C}$ se realiza como subcategoria plena dos pré-feixes $[\\mathcal{C}^{\\mathrm{op}},\\mathbf{Set}]$. A moral operacional é poderosíssima: dois objetos são isomorfos exatamente quando seus functores representáveis o são, e qualquer propriedade universal pode ser reformulada como 'tal functor é representável'.\n\nO segundo eixo é a noção correta de 'mesma categoria'. Exigir isomorfismo de categorias (functores inversos na ponta da igualdade) é cego demais — ignora que objetos isomorfos deveriam ser intercambiáveis. A noção certa é equivalência: functores $F,G$ com $GF\\cong\\mathrm{id}$ e $FG\\cong\\mathrm{id}$ apenas a menos de isomorfismo natural. O teorema decisivo reduz isso a três testes: $F$ é equivalência se, e somente se, é pleno, fiel e essencialmente sobrejetivo. O exemplo emblemático é a categoria das matrizes (objetos = naturais, morfismos = matrizes) equivalente — mas não isomorfa — à categoria dos espaços vetoriais de dimensão finita sobre $k$: escolher bases dá um functor essencialmente sobrejetivo, pleno e fiel.",
+      "commonPitfalls": [
+        "Tentar memorizar o Lema de Yoneda em vez de reconstruí-lo: a chave é que tudo está determinado pelo valor em $1_c$. Quem entende isso nunca mais esquece o enunciado.",
+        "Confundir equivalência com isomorfismo de categorias: equivalência só pede $GF\\cong\\mathrm{id}$ (iso natural), não $GF=\\mathrm{id}$. Quase nenhuma equivalência interessante é isomorfismo.",
+        "Esquecer a hipótese de localmente pequena: o Lema de Yoneda precisa que os $\\mathcal{C}(a,b)$ sejam conjuntos para que $\\mathrm{Nat}$ e $Fc$ sejam conjuntos comparáveis.",
+        "Achar que essencialmente sobrejetivo é sobrejetivo nos objetos: basta atingir cada objeto a menos de isomorfismo, não exatamente."
+      ],
+      "worked": "**Lema de Yoneda (prova).** Seja $\\mathcal{C}$ localmente pequena, $F:\\mathcal{C}\\to\\mathbf{Set}$ e $c\\in\\mathcal{C}$. Defina $\\Phi:\\mathrm{Nat}(\\mathcal{C}(c,-),F)\\to Fc$ por $\\Phi(\\alpha)=\\alpha_c(1_c)$ e $\\Psi:Fc\\to\\mathrm{Nat}(\\mathcal{C}(c,-),F)$ por $\\Psi(x)=\\alpha^{x}$, onde $\\alpha^{x}_d:\\mathcal{C}(c,d)\\to Fd$, $\\alpha^x_d(g)=(Fg)(x)$.\n\n**$\\alpha^x$ é natural.** Para $h:d\\to e$ e $g\\in\\mathcal{C}(c,d)$: $\\big(Fh\\circ\\alpha^x_d\\big)(g)=Fh\\big((Fg)(x)\\big)=F(hg)(x)=\\alpha^x_e(hg)=\\alpha^x_e\\big(\\mathcal{C}(c,h)(g)\\big)$. Logo o quadrado de naturalidade comuta.\n\n**$\\Phi\\circ\\Psi=\\mathrm{id}$.** $\\Phi(\\alpha^x)=\\alpha^x_c(1_c)=(F1_c)(x)=x$.\n\n**$\\Psi\\circ\\Phi=\\mathrm{id}$.** Seja $\\alpha$ natural e $x=\\alpha_c(1_c)$. Para $g:c\\to d$, a naturalidade aplicada a $g$ dá $\\alpha_d\\big(\\mathcal{C}(c,g)(1_c)\\big)=(Fg)\\big(\\alpha_c(1_c)\\big)$, isto é, $\\alpha_d(g)=(Fg)(x)=\\alpha^x_d(g)$. Como vale para todo $d,g$, temos $\\alpha=\\alpha^x=\\Psi(\\Phi(\\alpha))$.\n\nPortanto $\\Phi$ é bijeção. A naturalidade em $c$ e $F$ segue verificando os respectivos quadrados. $\\blacksquare$\n\n**Corolário (Yoneda pleno e fiel).** Tomando $F=\\mathcal{C}(b,-)$, obtemos $\\mathrm{Nat}(\\mathcal{C}(c,-),\\mathcal{C}(b,-))\\cong\\mathcal{C}(b,c)$. Assim cada transformação natural entre representáveis vem de um único morfismo, e $a\\cong b\\iff\\mathcal{C}(a,-)\\cong\\mathcal{C}(b,-)$.",
+      "exercises": [
+        {
+          "prompt": "Use o Lema de Yoneda para provar a unicidade do objeto que representa um functor: se $\\mathcal{C}(a,-)\\cong\\mathcal{C}(b,-)$ naturalmente, então $a\\cong b$ por um isomorfismo único compatível.",
+          "hint": "O iso natural corresponde, por Yoneda, a um morfismo $b\\to a$; o iso inverso a $a\\to b$. Mostre que se compõem nas identidades.",
+          "difficulty": 3,
+          "solution": "**Objetivo.** Mostrar que se há isomorfismo natural $\\Theta:\\mathcal{C}(a,-)\\xRightarrow{\\ \\cong\\ }\\mathcal{C}(b,-)$, então $a\\cong b$ por isomorfismo único compatível com $\\Theta$.\n\n**Traduzindo por Yoneda.** Pelo Lema de Yoneda (versão covariante, com $F=\\mathcal{C}(b,-)$),\n$$\\mathrm{Nat}\\big(\\mathcal{C}(a,-),\\mathcal{C}(b,-)\\big)\\;\\cong\\;\\mathcal{C}(b,a),\\qquad \\Theta\\longmapsto \\Theta_a(1_a)=:\\varphi\\in\\mathcal{C}(b,a).$$\nAnalogamente, a inversa $\\Theta^{-1}:\\mathcal{C}(b,-)\\Rightarrow\\mathcal{C}(a,-)$ corresponde a $\\psi:=(\\Theta^{-1})_b(1_b)\\in\\mathcal{C}(a,b)$. Sob a correspondência de Yoneda, a transformação natural associada a um morfismo $g:b\\to a$ é a pós-composição $g^{*}=\\mathcal{C}(g,-)$, e a composição de transformações naturais corresponde (contravariantemente) à composição de morfismos.\n\n**As composições dão identidades.** Como $\\Theta\\circ\\Theta^{-1}=\\mathrm{id}_{\\mathcal{C}(b,-)}$ e a bijeção de Yoneda é natural (functorial), o morfismo correspondente é $1_b$; a composição de $\\varphi$ e $\\psi$ que corresponde a $\\Theta\\circ\\Theta^{-1}$ é $\\varphi\\circ\\psi$ (a ordem inverte pela contravariância do mergulho covariante). Concretamente, avaliando: $\\big(\\Theta\\circ\\Theta^{-1}\\big)_b(1_b)=1_b$ força $\\varphi\\psi=1_b$; e $\\big(\\Theta^{-1}\\circ\\Theta\\big)_a(1_a)=1_a$ força $\\psi\\varphi=1_a$. (Para ver $\\varphi\\psi=1_b$: $\\Theta_b(\\Theta^{-1}_b(1_b))=1_b$; pela fórmula de Yoneda $\\Theta_b(h)=\\mathcal{C}(\\varphi,-)$... aplique a naturalidade a $\\psi$ e $\\varphi$.) Assim $\\varphi:b\\to a$ e $\\psi:a\\to b$ são mutuamente inversos, logo $a\\cong b$.\n\n**Unicidade.** O morfismo $\\varphi$ é **determinado** por $\\Theta$ via $\\varphi=\\Theta_a(1_a)$, e o mergulho de Yoneda é plenamente fiel, de modo que a correspondência $\\{$isos naturais $\\mathcal{C}(a,-)\\cong\\mathcal{C}(b,-)\\}\\leftrightarrow\\{$isos $b\\cong a\\}$ é bijetiva. Portanto o isomorfismo $a\\cong b$ compatível com $\\Theta$ é único. $\\blacksquare$",
+          "steps": [
+            "Aplique o Lema de Yoneda com $F=\\mathcal{C}(b,-)$ para converter $\\Theta$ num morfismo $\\varphi=\\Theta_a(1_a):b\\to a$.",
+            "Converta $\\Theta^{-1}$ no morfismo $\\psi=(\\Theta^{-1})_b(1_b):a\\to b$.",
+            "Use que a composição de transformações naturais corresponde à composição de morfismos sob Yoneda.",
+            "Deduza $\\varphi\\psi=1_b$ e $\\psi\\varphi=1_a$ a partir de $\\Theta\\Theta^{-1}=\\mathrm{id}$ e $\\Theta^{-1}\\Theta=\\mathrm{id}$.",
+            "Conclua $a\\cong b$ e use a plena fidelidade do mergulho para a unicidade."
+          ]
+        },
+        {
+          "prompt": "Mostre que a categoria $\\mathbf{Mat}_k$ (objetos: $n\\in\\mathbb{N}$; morfismos $m\\to n$: matrizes $n\\times m$ sobre $k$; composição: produto de matrizes) é equivalente, mas não isomorfa, à categoria $\\mathbf{Vect}_k^{\\mathrm{fin}}$ dos espaços de dimensão finita.",
+          "hint": "Defina $F(n)=k^n$ e $F(\\text{matriz})=$ aplicação linear. Verifique pleno, fiel e essencialmente sobrejetivo. Não é iso pois os objetos de $\\mathbf{Vect}^{\\mathrm{fin}}$ são uma classe própria, não $\\mathbb{N}$.",
+          "difficulty": 3,
+          "solution": "**O functor.** Defina $F:\\mathbf{Mat}_k\\to\\mathbf{Vect}_k^{\\mathrm{fin}}$ por $F(n)=k^n$ nos objetos e, para uma matriz $A\\in k^{n\\times m}$ (morfismo $m\\to n$), $F(A)=T_A:k^m\\to k^n$, $x\\mapsto Ax$, a aplicação linear associada. **Functorialidade:** $F(\\mathrm{Id}_m)=F(I_m)=\\mathrm{id}_{k^m}$ e $F(AB)=T_{AB}=T_A\\circ T_B=F(A)\\circ F(B)$, pois multiplicação de matrizes corresponde a composição de aplicações lineares (nas bases canônicas).\n\n**Pleno e fiel.** Para $m,n$ fixos, a aplicação $\\mathbf{Mat}_k(m,n)=k^{n\\times m}\\to\\mathbf{Vect}_k^{\\mathrm{fin}}(k^m,k^n)=\\mathrm{Hom}(k^m,k^n)$, $A\\mapsto T_A$, é uma **bijeção**: toda aplicação linear $k^m\\to k^n$ tem uma única matriz na base canônica, e matrizes distintas dão aplicações distintas. Bijeção nos Hom-sets $=$ pleno $+$ fiel.\n\n**Essencialmente sobrejetivo.** Todo espaço $V\\in\\mathbf{Vect}_k^{\\mathrm{fin}}$ tem dimensão finita $n=\\dim V$; escolhendo uma base obtemos um isomorfismo $V\\cong k^n=F(n)$. Logo todo objeto é isomorfo a algum $F(n)$.\n\n**Conclusão: equivalência.** Pelo critério, $F$ é pleno, fiel e essencialmente sobrejetivo, logo é equivalência de categorias.\n\n**Não é isomorfismo.** Um isomorfismo de categorias exigiria uma **bijeção nos objetos**. Mas $\\mathrm{ob}(\\mathbf{Mat}_k)=\\mathbb{N}$ é um conjunto, enquanto $\\mathrm{ob}(\\mathbf{Vect}_k^{\\mathrm{fin}})$ é uma **classe própria** (há um espaço vetorial de dimensão $n$ para cada 'realização', e a coleção de todos os espaços de dimensão finita não é um conjunto). Não pode existir bijeção entre um conjunto e uma classe própria; logo $F$ não é isomorfismo, apenas equivalência. (Moral: equivalência identifica $\\mathbf{Vect}^{\\mathrm{fin}}$ com um 'esqueleto' $\\mathbf{Mat}_k$, colapsando objetos isomorfos.) $\\blacksquare$",
+          "steps": [
+            "Defina $F(n)=k^n$ e $F(A)=$ aplicação linear $x\\mapsto Ax$, e cheque functorialidade via produto de matrizes = composição.",
+            "Mostre que $A\\mapsto T_A$ é bijeção nos Hom-sets, obtendo pleno e fiel de uma vez.",
+            "Prove essencialmente sobrejetivo escolhendo base: $V\\cong k^{\\dim V}=F(\\dim V)$.",
+            "Aplique o critério (pleno+fiel+ess. sobrejetivo) para concluir equivalência.",
+            "Argumente que não há bijeção entre $\\mathbb{N}$ e a classe própria dos objetos de $\\mathbf{Vect}^{\\mathrm{fin}}$, logo não é isomorfismo."
+          ]
+        },
+        {
+          "prompt": "Reconheça o produto $a\\times b$ em $\\mathcal{C}$ como objeto que representa o functor $\\mathcal{C}(-,a)\\times\\mathcal{C}(-,b):\\mathcal{C}^{\\mathrm{op}}\\to\\mathbf{Set}$. Conclua que produtos, quando existem, são únicos a menos de isomorfismo único.",
+          "hint": "Um cone sobre $a,b$ a partir de $x$ é um elemento de $\\mathcal{C}(x,a)\\times\\mathcal{C}(x,b)$; a propriedade universal diz que $\\mathcal{C}(-,a\\times b)\\cong\\mathcal{C}(-,a)\\times\\mathcal{C}(-,b)$. Aplique Yoneda.",
+          "difficulty": 3,
+          "solution": "**O functor a representar.** Considere $P:=\\mathcal{C}(-,a)\\times\\mathcal{C}(-,b):\\mathcal{C}^{\\mathrm{op}}\\to\\mathbf{Set}$, $P(x)=\\mathcal{C}(x,a)\\times\\mathcal{C}(x,b)$. Um elemento de $P(x)$ é um par $(p,q)$ com $p:x\\to a$, $q:x\\to b$ — ou seja, um **cone** de vértice $x$ sobre o diagrama discreto $\\{a,b\\}$.\n\n**Representabilidade $=$ propriedade universal do produto.** Suponha que exista o produto $a\\times b$ com projeções $\\pi_a:a\\times b\\to a$, $\\pi_b:a\\times b\\to b$. A propriedade universal diz: para cada par $(p,q)$ existe um único $\\langle p,q\\rangle:x\\to a\\times b$ com $\\pi_a\\langle p,q\\rangle=p$ e $\\pi_b\\langle p,q\\rangle=q$. Isso é exatamente uma bijeção\n$$\\Phi_x:\\mathcal{C}(x,a\\times b)\\xrightarrow{\\ \\cong\\ }\\mathcal{C}(x,a)\\times\\mathcal{C}(x,b)=P(x),\\qquad h\\mapsto(\\pi_a h,\\pi_b h),$$\ncom inversa $(p,q)\\mapsto\\langle p,q\\rangle$. **Naturalidade em $x$:** para $g:x'\\to x$, ambos os caminhos $\\mathcal{C}(x,a\\times b)\\to P(x')$ dão $h\\mapsto(\\pi_a h g,\\pi_b h g)$ — a pré-composição por $g$ comuta com as projeções. Logo $\\Phi$ é isomorfismo natural $\\mathcal{C}(-,a\\times b)\\cong P$, isto é, $a\\times b$ **representa** $P$.\n\n**Unicidade a menos de iso único.** O representante de um functor representável é único a menos de isomorfismo único (corolário do Lema de Yoneda / mergulho plenamente fiel): se $c$ e $c'$ ambos representam $P$, então $\\mathcal{C}(-,c)\\cong P\\cong\\mathcal{C}(-,c')$, logo $\\mathcal{C}(-,c)\\cong\\mathcal{C}(-,c')$, e por Yoneda $c\\cong c'$ por isomorfismo único (compatível com as projeções). Portanto **produtos, quando existem, são únicos a menos de isomorfismo único**. $\\blacksquare$",
+          "steps": [
+            "Identifique um elemento de $\\mathcal{C}(x,a)\\times\\mathcal{C}(x,b)$ com um cone de vértice $x$ sobre $\\{a,b\\}$.",
+            "Escreva a propriedade universal do produto como a bijeção $h\\mapsto(\\pi_a h,\\pi_b h)$.",
+            "Verifique a naturalidade em $x$ (pré-composição comuta com projeções).",
+            "Conclua $\\mathcal{C}(-,a\\times b)\\cong\\mathcal{C}(-,a)\\times\\mathcal{C}(-,b)$: $a\\times b$ representa o functor.",
+            "Aplique o corolário de Yoneda (representante único a menos de iso único) para a unicidade do produto."
+          ]
+        },
+        {
+          "prompt": "Prove que se $F$ é uma equivalência com quasi-inverso $G$, então $F$ preserva e reflete monomorfismos, epimorfismos e isomorfismos. Em particular, equivalências preservam todos os limites e colimites que existirem.",
+          "hint": "Pleno e fiel reflete monos/epis; essencialmente sobrejetivo transporta a propriedade universal de volta. Use que iso naturais comutam com tudo.",
+          "difficulty": 4,
+          "solution": "Seja $F:\\mathcal{C}\\to\\mathcal{D}$ equivalência com quasi-inverso $G:\\mathcal{D}\\to\\mathcal{C}$, e isos naturais $\\eta:\\mathrm{id}_{\\mathcal{C}}\\cong GF$, $\\varepsilon:FG\\cong\\mathrm{id}_{\\mathcal{D}}$. Toda equivalência é, em particular, **plena, fiel e essencialmente sobrejetiva** (critério), e $G$ também é equivalência (com quasi-inverso $F$).\n\n**Fiel + pleno reflete monos.** Suponha $Ff$ mono e sejam $g,h$ com $fg=fh$. Então $F(fg)=F(fh)$, i.e. $Ff\\cdot Fg=Ff\\cdot Fh$; como $Ff$ é mono, $Fg=Fh$; como $F$ é fiel, $g=h$. Logo $f$ é mono. Assim functores plenamente fiéis **refletem** monos; dualmente refletem epis.\n\n**$F$ preserva monos.** Seja $f:a\\to b$ mono em $\\mathcal{C}$. Pela naturalidade de $\\eta$, o quadrado $\\eta_b\\circ f=GFf\\circ\\eta_a$ com $\\eta_a,\\eta_b$ isos mostra que $GFf$ é conjugado de $f$ por isos, logo $GFf$ é mono (isos preservam e refletem monos). Como $G$ é plenamente fiel, $G$ reflete monos, então de '$GFf$ mono' segue '$Ff$ mono'. Portanto $F$ **preserva** monos. Dualmente preserva epis. Como functores sempre preservam isos, e mono+epi refletidos/preservados, $F$ preserva e reflete monos, epis e isos.\n\n**Limites e colimites.** Uma equivalência $F$ admite quasi-inverso $G$ que é **tanto adjunto à esquerda quanto à direita** de $F$ (as unidades/counidades são isos, então as identidades triangulares valem). Por RAPL/LAPC, um adjunto à direita preserva limites e um à esquerda preserva colimites; como $F$ é ambos, $F$ **preserva todos os limites e colimites** que existirem — e o mesmo para $G$. Alternativamente: para um diagrama $D$ com limite $\\lim D$, aplique $\\mathcal{C}(c,-)$ e a plena fidelidade para transportar a propriedade universal via $F$ e $G$, usando os isos naturais $\\eta,\\varepsilon$. Logo $F(\\lim D)\\cong\\lim(FD)$ e $F(\\mathrm{colim}\\,D)\\cong\\mathrm{colim}(FD)$. $\\blacksquare$",
+          "steps": [
+            "Registre que uma equivalência é plena, fiel e essencialmente sobrejetiva, e que $G$ também é equivalência.",
+            "Prove que plenamente fiel reflete monos (e, dualmente, epis) via cancelamento e fidelidade.",
+            "Use a naturalidade de $\\eta$ para ver $GFf$ como conjugado de $f$ por isos, logo mono, e reflita por $G$ para obter $Ff$ mono (preservação).",
+            "Lembre que functores sempre preservam isos, fechando preservação/reflexão de mono, epi e iso.",
+            "Note que $G$ é adjunto bilateral de $F$ (counidades isos), aplique RAPL/LAPC para limites e colimites."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Lema de Yoneda (enunciado)",
+          "back": "$\\mathrm{Nat}(\\mathcal{C}(c,-),F)\\cong Fc$, natural em $c$ e $F$; a bijeção é $\\alpha\\mapsto\\alpha_c(1_c)$."
+        },
+        {
+          "front": "Mergulho de Yoneda",
+          "back": "$c\\mapsto\\mathcal{C}(-,c)$ de $\\mathcal{C}$ em $[\\mathcal{C}^{\\mathrm{op}},\\mathbf{Set}]$; é plenamente fiel."
+        },
+        {
+          "front": "Consequência de Yoneda sobre isos",
+          "back": "$a\\cong b\\iff\\mathcal{C}(-,a)\\cong\\mathcal{C}(-,b)$ (functores representáveis naturalmente isomorfos)."
+        },
+        {
+          "front": "Functor representável",
+          "back": "$F\\cong\\mathcal{C}(c,-)$ para algum $c$; $c$ é o representante, único a menos de iso único."
+        },
+        {
+          "front": "Equivalência de categorias",
+          "back": "Existe $G$ com $GF\\cong\\mathrm{id}$ e $FG\\cong\\mathrm{id}$ (isos naturais), não igualdades."
+        },
+        {
+          "front": "Critério de equivalência",
+          "back": "$F$ é equivalência $\\iff$ pleno + fiel + essencialmente sobrejetivo."
+        },
+        {
+          "front": "Equivalência vs. isomorfismo de categorias",
+          "back": "Isomorfismo exige $GF=\\mathrm{id}$; equivalência só $GF\\cong\\mathrm{id}$. Equivalência é a noção correta."
+        },
+        {
+          "front": "Exemplo de equivalência não iso",
+          "back": "$\\mathbf{Mat}_k\\simeq\\mathbf{Vect}_k^{\\mathrm{fin}}$ via $n\\mapsto k^n$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Riehl, Category Theory in Context — cap. 2 (Yoneda) e seção sobre equivalência",
+          "ref": "livro"
+        },
+        {
+          "title": "Mac Lane, CWM — cap. 3 (Universals and Limits), III.2 Yoneda",
+          "ref": "livro"
+        },
+        {
+          "title": "Leinster, Basic Category Theory — caps. 4 (representáveis) e 1 (equivalência)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Antes de tudo, reescreva do zero a prova do Lema de Yoneda seguindo Riehl cap. 2: a chave é que tudo é determinado pelo valor em $1_c$.",
+          "Deduza os corolários: mergulho plenamente fiel e '$a\\cong b\\iff$ representáveis naturalmente isomorfos'; refaça cada dedução no papel.",
+          "Estude representabilidade traduzindo propriedades universais (produto, objeto livre) em 'tal functor é representável'.",
+          "Trabalhe equivalência de categorias: defina quasi-inverso e demonstre o critério pleno+fiel+essencialmente sobrejetivo; teste no exemplo $\\mathbf{Mat}_k\\simeq\\mathbf{Vect}_k^{\\mathrm{fin}}$.",
+          "Assista a um vídeo sobre o Lema de Yoneda para consolidar a intuição de 'você é definido pelas suas setas'.",
+          "Volte ao app: resolva os testes e anote aqui o enunciado de Yoneda, o esquema da prova e o critério de equivalência."
+        ],
+        "searchQueries": [
+          "Lema de Yoneda enunciado demonstração teoria das categorias",
+          "Yoneda embedding fully faithful proof representable functor",
+          "equivalência de categorias pleno fiel essencialmente sobrejetivo critério",
+          "Yoneda lemma intuition you are defined by your relationships",
+          "Mat_k equivalente Vect finito dimensional exemplo equivalência",
+          "representable functor universal property unique representing object"
+        ],
+        "videos": [
+          {
+            "title": "The Catsters — Yoneda / representables",
+            "channel": "The Catsters",
+            "note": "Assista aos vídeos sobre functores representáveis e o Lema de Yoneda para ver a prova em diagramas."
+          },
+          {
+            "title": "Category Theory for Programmers — The Yoneda Lemma",
+            "channel": "Bartosz Milewski",
+            "note": "Veja a aula dedicada ao Lema de Yoneda; excelente para a intuição do 'functor de pontos'."
+          },
+          {
+            "title": "Aulas sobre equivalência de categorias e Yoneda",
+            "channel": "Richard Southwell",
+            "note": "Assista às aulas sobre transformações naturais representáveis e equivalência; ritmo detalhado."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Category Theory in Context, cap. 2 (Universal Properties and the Yoneda Lemma)",
+            "where": "livro de Emily Riehl, PDF gratuito"
+          },
+          {
+            "title": "Verbetes 'Yoneda lemma', 'representable functor', 'equivalence of categories'",
+            "where": "nLab (ncatlab.org)"
+          },
+          {
+            "title": "Basic Category Theory, caps. 4 (representáveis) e sobre equivalência",
+            "where": "livro de Tom Leinster, arXiv:1612.09375"
+          }
+        ]
+      }
+    },
+    {
+      "id": "category-theory-04-limites-colimites",
+      "title": "Limites e Colimites",
+      "tagline": "Produtos, núcleos, pullbacks e seus duais são todos a mesma ideia: o objeto universal de um diagrama — e os functores Hom os enxergam todos.",
+      "objectives": [
+        "Definir diagrama, cone e cone limite (limite) e o conceito dual de cocone e colimite via propriedade universal.",
+        "Reconhecer produtos, equalizadores, pullbacks e objetos terminais como limites, e coprodutos, coequalizadores, pushouts e objetos iniciais como colimites.",
+        "Provar que toda categoria com produtos (pequenos) e equalizadores é completa, construindo limites gerais a partir desses dois.",
+        "Demonstrar que functores representáveis $\\mathcal{C}(c,-)$ preservam limites e que limites comutam com limites.",
+        "Calcular limites e colimites concretos em $\\mathbf{Set}$, $\\mathbf{Grp}$, $\\mathbf{Ab}$ e $R\\text{-}\\mathbf{Mod}$ e interpretar pullback de mono e quociente como pushout."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Cone e limite",
+          "statement": "Dado $D:\\mathcal{J}\\to\\mathcal{C}$, um cone de vértice $x$ é uma família $(\\lambda_j:x\\to Dj)$ comutando com os $Df$. O limite $\\lim D$ é o cone universal: todo cone fatora unicamente por ele. Notação $\\lim D$ ou $\\varprojlim$."
+        },
+        {
+          "term": "Colimite",
+          "statement": "Dual de limite: um cocone $(\\iota_j:Dj\\to x)$ universal. Inclui coproduto $\\coprod$, coequalizador, pushout, objeto inicial e colimites filtrados (limites diretos $\\varinjlim$)."
+        },
+        {
+          "term": "Pullback e pushback",
+          "statement": "O pullback de $f:a\\to c$ e $g:b\\to c$ é o limite do diagrama em $\\Lambda$; em $\\mathbf{Set}$, $a\\times_c b=\\{(x,y):f(x)=g(y)\\}$. O dual, pushout, cola $a$ e $b$ ao longo de um objeto comum."
+        },
+        {
+          "term": "Categoria completa / cocompleta",
+          "statement": "$\\mathcal{C}$ é (pequena) completa se todo diagrama pequeno $D:\\mathcal{J}\\to\\mathcal{C}$ tem limite; cocompleta se todo tal diagrama tem colimite. $\\mathbf{Set}$, $\\mathbf{Grp}$, $\\mathbf{Ab}$, $R\\text{-}\\mathbf{Mod}$ são completas e cocompletas."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Construção de limites por produtos e equalizadores",
+          "statement": "Se $\\mathcal{C}$ tem todos os produtos pequenos e todos os equalizadores, então $\\mathcal{C}$ é completa: para $D:\\mathcal{J}\\to\\mathcal{C}$ com $\\mathcal{J}$ pequena, $\\lim D$ é o equalizador de duas aplicações naturais $\\prod_{j}Dj\\rightrightarrows\\prod_{(f:j\\to k)}Dk$. Dualmente, coprodutos + coequalizadores $\\Rightarrow$ cocompleta.",
+          "whyItMatters": "Reduz a existência de todos os limites a dois casos básicos. É como se verifica, na prática, que uma categoria é completa, e é o esqueleto da prova do teorema do functor adjunto."
+        },
+        {
+          "name": "Functores Hom preservam limites",
+          "statement": "Para todo $c$, o functor $\\mathcal{C}(c,-):\\mathcal{C}\\to\\mathbf{Set}$ preserva todos os limites: $\\mathcal{C}(c,\\lim_j Dj)\\cong\\lim_j\\mathcal{C}(c,Dj)$. Dualmente, $\\mathcal{C}(-,c)$ leva colimites em limites.",
+          "whyItMatters": "É a razão pela qual 'um cone para o limite' equivale a 'cones compatíveis para cada peça': a propriedade universal do limite é exatamente a comutação com Hom. Base da prova de que adjuntos à direita preservam limites."
+        },
+        {
+          "name": "Limites comutam com limites",
+          "statement": "Se $D:\\mathcal{I}\\times\\mathcal{J}\\to\\mathcal{C}$ é um bidiagrama e os limites envolvidos existem, então $\\lim_i\\lim_j D(i,j)\\cong\\lim_{(i,j)}D(i,j)\\cong\\lim_j\\lim_i D(i,j)$.",
+          "whyItMatters": "Permite calcular limites complicados por etapas e garante que a ordem de tomar limites não importa. (O fenômeno análogo entre limite e colimite NÃO vale em geral — só para colimites filtrados em $\\mathbf{Set}$.)"
+        }
+      ],
+      "summary": "Limites e colimites são a forma categórica de dizer 'a melhor solução universal para um problema de diagrama'. Um diagrama é um functor $D:\\mathcal{J}\\to\\mathcal{C}$ a partir de uma categoria-índice; um cone é uma maneira coerente de mapear um vértice fixo para todas as peças; e o limite é o cone universal, do qual todos os outros derivam de modo único. Esse molde único captura, de uma vez, construções que pareciam não relacionadas: o objeto terminal (limite do diagrama vazio), o produto (índice discreto), o equalizador (duas setas paralelas) e o pullback (um canto). Virando todas as setas, obtemos os colimites — objeto inicial, coproduto, coequalizador, pushout — e os limites diretos filtrados, onipresentes em álgebra (localização, completamento, união crescente de subgrupos). O resultado estrutural-chave é que produtos mais equalizadores geram todos os limites: monta-se $\\lim D$ como o equalizador de duas projeções entre dois grandes produtos, o que torna concreto verificar completude.\n\nO elo com Yoneda é fundamental: o functor $\\mathcal{C}(c,-)$ preserva limites, ou seja, dar um morfismo de $c$ para $\\lim D$ é o mesmo que dar uma família compatível de morfismos de $c$ para cada $Dj$. Essa é, na verdade, a tradução da propriedade universal. Dualmente, $\\mathcal{C}(-,c)$ converte colimites em limites — é por isso que $\\mathrm{Hom}(\\coprod A_i,B)\\cong\\prod\\mathrm{Hom}(A_i,B)$. Em categorias concretas, os limites se calculam no conjunto subjacente (o limite herda a estrutura), enquanto colimites costumam exigir um quociente ou uma construção livre (o coproduto de grupos é o produto livre, não o produto direto). Dominar esse dicionário — qual construção é limite, qual é colimite, e como Hom interage com cada lado — é o que torna a álgebra e a topologia subsequentes quase automáticas.",
+      "commonPitfalls": [
+        "Calcular colimite no conjunto subjacente como se fosse limite: o coproduto em $\\mathbf{Grp}$ é o produto livre, não a união disjunta nem o produto direto; o conjunto subjacente do colimite não é o colimite dos conjuntos em geral.",
+        "Confundir pullback com produto: o pullback é um produto 'fibrado' sobre um objeto comum; só coincide com o produto quando o objeto-base é terminal.",
+        "Supor que limites e colimites comutam entre si: limites comutam com limites e colimites com colimites, mas a troca limite-colimite falha (exceto colimites filtrados vs. limites finitos em $\\mathbf{Set}$).",
+        "Esquecer a unicidade na propriedade universal: um cone que fatora os outros mas não unicamente não é limite."
+      ],
+      "worked": "**Afirmação.** Se $\\mathcal{C}$ tem todos os produtos indexados por conjuntos e todos os equalizadores, então todo diagrama $D:\\mathcal{J}\\to\\mathcal{C}$ com $\\mathcal{J}$ pequena tem limite.\n\n**Construção.** Forme os dois produtos\n$$P=\\prod_{j\\in\\mathrm{ob}\\,\\mathcal{J}}Dj,\\qquad Q=\\prod_{(u:j\\to k)\\in\\mathrm{mor}\\,\\mathcal{J}}Dk,$$\no segundo indexado por todos os morfismos de $\\mathcal{J}$. Defina dois morfismos $s,t:P\\to Q$ pelas componentes: para o morfismo $u:j\\to k$,\n$$\\mathrm{pr}_u\\circ s=\\pi_k\\quad(\\text{a projeção de }P\\text{ no fator }k),\\qquad \\mathrm{pr}_u\\circ t=Du\\circ\\pi_j.$$\nIntuitivamente, $s$ lê a componente de destino e $t$ aplica $Du$ à componente de origem. Seja $e:L\\to P$ o equalizador de $s,t$.\n\n**$L$ é o limite.** Um morfismo $x\\to P$ é uma família $(\\lambda_j:x\\to Dj)_j$; a condição $s\\circ(\\lambda)=t\\circ(\\lambda)$ diz exatamente que $\\lambda_k=Du\\circ\\lambda_j$ para todo $u:j\\to k$, ou seja, que $(\\lambda_j)$ é um cone sobre $D$. Pela propriedade universal do equalizador, cones sobre $D$ com vértice $x$ correspondem bijetivamente a morfismos $x\\to L$, naturalmente em $x$. Logo $\\mathcal{C}(x,L)\\cong\\{\\text{cones sobre }D\\text{ de vértice }x\\}$ naturalmente, e $L$ com as componentes $\\pi_j\\circ e$ é o cone universal, isto é, $L=\\lim D$. $\\blacksquare$\n\n**Exemplo.** Em $\\mathbf{Set}$ isso reproduz $\\lim D=\\{(x_j)\\in\\prod Dj:\\;x_k=Du(x_j)\\ \\forall u:j\\to k\\}$, o subconjunto compatível do produto.",
+      "exercises": [
+        {
+          "prompt": "Descreva o pullback em $\\mathbf{Set}$ de $f:A\\to C$ e $g:B\\to C$ e prove que, se $g$ é mono, então a projeção $A\\times_C B\\to A$ também é mono (pullbacks preservam monomorfismos).",
+          "hint": "$A\\times_C B=\\{(a,b):f(a)=g(b)\\}$. Se $g$ é injetiva, cada $a$ com $f(a)\\in\\mathrm{im}\\,g$ determina no máximo um $b$.",
+          "difficulty": 3,
+          "solution": "**Pullback em $\\mathbf{Set}$.** Dados $f:A\\to C$ e $g:B\\to C$, o pullback é\n$$A\\times_C B=\\{(a,b)\\in A\\times B:\\ f(a)=g(b)\\},$$\ncom projeções $p:A\\times_C B\\to A$, $p(a,b)=a$ e $q:A\\times_C B\\to B$, $q(a,b)=b$. **Propriedade universal:** dado $x$ com $u:x\\to A$, $v:x\\to B$ satisfazendo $fu=gv$, a função $x\\to A\\times_C B$, $t\\mapsto(u(t),v(t))$, é a única que compõe corretamente com $p,q$ (está bem definida pois $f(u(t))=g(v(t))$).\n\n**Se $g$ é mono, então $p$ é mono.** Em $\\mathbf{Set}$ mono $=$ injetiva; $g$ mono significa $g$ injetiva. Suponha $p(a,b)=p(a',b')$, i.e. $a=a'$. Queremos $(a,b)=(a',b')$, ou seja $b=b'$. Da pertença ao pullback, $f(a)=g(b)$ e $f(a')=g(b')$. Como $a=a'$, temos $g(b)=f(a)=f(a')=g(b')$; sendo $g$ injetiva, $b=b'$. Logo $(a,b)=(a',b')$ e $p$ é injetiva, isto é, mono.\n\n**Versão categórica (mesma prova sem elementos).** Em qualquer categoria, considere o quadrado de pullback com projeções $p,q$. Sejam $h,k:Z\\to A\\times_C B$ com $ph=pk$. Então $f p h=f p k$; usando a comutatividade do quadrado ($fp=gq$), $g q h=g q k$; como $g$ é mono, $qh=qk$. Agora $h$ e $k$ têm as mesmas composições com $p$ ($ph=pk$) e com $q$ ($qh=qk$); pela unicidade na propriedade universal do pullback, $h=k$. Logo $p$ é mono. Isto prova o slogan **'o pullback de um monomorfismo é um monomorfismo'** em qualquer categoria. $\\blacksquare$",
+          "steps": [
+            "Escreva o pullback em $\\mathbf{Set}$ como $\\{(a,b):f(a)=g(b)\\}$ com as duas projeções.",
+            "Traduza 'g mono' para 'g injetiva' em $\\mathbf{Set}$.",
+            "Suponha $p(a,b)=p(a',b')$, deduza $a=a'$ e use $g(b)=g(b')$ com injetividade para obter $b=b'$.",
+            "Conclua que $p$ é injetiva (mono).",
+            "Opcional: refaça sem elementos, usando $fp=gq$, $g$ mono e a unicidade do pullback, provando o resultado em qualquer categoria."
+          ]
+        },
+        {
+          "prompt": "Mostre que o coproduto em $\\mathbf{Ab}$ de uma família $(A_i)$ é a soma direta $\\bigoplus_i A_i$ (somas finitas), enquanto o produto é $\\prod_i A_i$; e que coincidem para famílias finitas mas não para infinitas.",
+          "hint": "Verifique as propriedades universais: morfismos a partir de $\\bigoplus$ = famílias de morfismos; morfismos para $\\prod$ = famílias. Para infinitos, $\\bigoplus\\neq\\prod$.",
+          "difficulty": 3,
+          "solution": "**Coproduto em $\\mathbf{Ab}$ = soma direta.** Seja $(A_i)_{i\\in I}$ família de grupos abelianos. A **soma direta** $\\bigoplus_{i}A_i=\\{(a_i)_i:\\ a_i=0$ exceto para finitos $i\\}$ com inclusões $\\kappa_j:A_j\\to\\bigoplus_i A_i$ tem a propriedade universal do coproduto: dado um grupo $B$ e morfismos $\\varphi_i:A_i\\to B$, existe **único** $\\varphi:\\bigoplus_i A_i\\to B$ com $\\varphi\\kappa_i=\\varphi_i$, dado por $\\varphi((a_i)_i)=\\sum_i\\varphi_i(a_i)$ (soma finita, bem definida por suporte finito). Logo\n$$\\mathrm{Hom}\\Big(\\bigoplus_i A_i,\\ B\\Big)\\cong\\prod_i\\mathrm{Hom}(A_i,B).$$\n\n**Produto em $\\mathbf{Ab}$ = produto direto.** O **produto direto** $\\prod_i A_i=\\{(a_i)_i:\\ a_i\\in A_i\\}$ (sem restrição de suporte) com projeções $\\pi_j$ tem a propriedade universal do produto: dado $B$ com $\\psi_i:B\\to A_i$, existe único $\\psi:B\\to\\prod_i A_i$, $\\psi(b)=(\\psi_i(b))_i$, com $\\pi_i\\psi=\\psi_i$. Logo\n$$\\mathrm{Hom}\\Big(B,\\ \\prod_i A_i\\Big)\\cong\\prod_i\\mathrm{Hom}(B,A_i).$$\n\n**Coincidência no caso finito.** Se $I$ é finito, a condição 'suporte finito' é vazia, logo $\\bigoplus_i A_i=\\prod_i A_i$ como conjuntos e grupos: é o **biproduto** $A_1\\oplus\\cdots\\oplus A_n$, simultaneamente produto e coproduto (fenômeno das categorias aditivas).\n\n**Diferença no caso infinito.** Se $I$ é infinito e infinitos $A_i\\neq 0$, então $\\bigoplus_i A_i\\subsetneq\\prod_i A_i$: por exemplo, $\\bigoplus_{n\\in\\mathbb{N}}\\mathbb{Z}$ consiste nas sequências de inteiros **quase todas nulas**, enquanto $\\prod_{n\\in\\mathbb{N}}\\mathbb{Z}$ admite sequências arbitrárias (ex.: $(1,1,1,\\dots)$ está no produto mas não na soma direta). Como coleções, $\\bigoplus\\neq\\prod$, mostrando que produto e coproduto **divergem** para famílias infinitas. $\\blacksquare$",
+          "steps": [
+            "Descreva $\\bigoplus_i A_i$ (suporte finito) e prove sua propriedade universal de coproduto via $\\varphi((a_i))=\\sum\\varphi_i(a_i)$.",
+            "Descreva $\\prod_i A_i$ (sem restrição) e prove sua propriedade universal de produto via $\\psi(b)=(\\psi_i(b))$.",
+            "Observe que para $I$ finito as duas construções coincidem (biproduto).",
+            "Para $I$ infinito, exiba $(1,1,1,\\dots)\\in\\prod$ que não está em $\\bigoplus$.",
+            "Conclua que coproduto e produto diferem em $\\mathbf{Ab}$ para famílias infinitas."
+          ]
+        },
+        {
+          "prompt": "Prove que em qualquer categoria o functor $\\mathcal{C}(c,-)$ preserva produtos e equalizadores, e conclua que preserva todos os limites pequenos quando estes existem.",
+          "hint": "$\\mathcal{C}(c,\\prod Dj)\\cong\\prod\\mathcal{C}(c,Dj)$ é a propriedade universal do produto; idem equalizador. Combine via a construção do exercício resolvido.",
+          "difficulty": 3,
+          "solution": "**$\\mathcal{C}(c,-)$ preserva produtos.** Seja $(D_j)_{j\\in J}$ com produto $\\prod_j D_j$ e projeções $\\pi_j$. A propriedade universal do produto diz: dar um morfismo $c\\to\\prod_j D_j$ é o mesmo que dar uma família $(c\\to D_j)_j$. Em fórmula, a aplicação\n$$\\mathcal{C}\\Big(c,\\prod_j D_j\\Big)\\xrightarrow{\\ h\\mapsto(\\pi_j h)_j\\ }\\prod_j\\mathcal{C}(c,D_j)$$\né uma bijeção (injetiva por unicidade, sobrejetiva por existência do fatorador $\\langle f_j\\rangle$). Como $\\prod_j\\mathcal{C}(c,D_j)$ é o produto em $\\mathbf{Set}$, isso é exatamente '$\\mathcal{C}(c,-)$ leva $\\prod_j D_j$ no produto dos $\\mathcal{C}(c,D_j)$'.\n\n**$\\mathcal{C}(c,-)$ preserva equalizadores.** Seja $e:E\\to a$ o equalizador de $f,g:a\\rightrightarrows b$. Um morfismo $u:c\\to a$ fatora por $e$ (i.e. $u=eh$ para único $h$) sse $fu=gu$. Isso diz que\n$$\\mathcal{C}(c,E)\\xrightarrow{\\ e\\circ-\\ }\\mathcal{C}(c,a)\\rightrightarrows\\mathcal{C}(c,b)$$\né o equalizador em $\\mathbf{Set}$ de $\\mathcal{C}(c,f)$ e $\\mathcal{C}(c,g)$: a imagem de $e\\circ-$ é exatamente $\\{u:fu=gu\\}$, o equalizador dessas duas funções. Logo $\\mathcal{C}(c,-)$ preserva equalizadores.\n\n**Preserva todos os limites pequenos.** Pelo teorema de construção (exemplo resolvido do subtópico), todo limite pequeno $\\lim D$ existe como equalizador de duas aplicações entre produtos: $\\lim D=\\mathrm{eq}\\big(\\prod_j Dj\\rightrightarrows\\prod_{u}Dk\\big)$. Como $\\mathcal{C}(c,-)$ preserva produtos e equalizadores, e a construção de $\\lim D$ usa **apenas** produtos e equalizadores, aplicá-la e depois $\\mathcal{C}(c,-)$ dá o mesmo que aplicar $\\mathcal{C}(c,-)$ e depois construir o limite em $\\mathbf{Set}$. Portanto\n$$\\mathcal{C}(c,\\lim_j D_j)\\cong\\lim_j\\mathcal{C}(c,D_j)$$\nnaturalmente em $c$: $\\mathcal{C}(c,-)$ preserva todos os limites pequenos existentes. $\\blacksquare$",
+          "steps": [
+            "Escreva a propriedade universal do produto como a bijeção $h\\mapsto(\\pi_j h)_j$ entre $\\mathcal{C}(c,\\prod D_j)$ e $\\prod\\mathcal{C}(c,D_j)$.",
+            "Escreva a propriedade universal do equalizador como identificação de $\\mathcal{C}(c,E)$ com $\\{u:fu=gu\\}$, o equalizador em $\\mathbf{Set}$.",
+            "Lembre a construção $\\lim D=\\mathrm{eq}(\\prod Dj\\rightrightarrows\\prod Dk)$ só usa produtos e equalizadores.",
+            "Combine: $\\mathcal{C}(c,-)$ comuta com essa construção por preservar as duas peças.",
+            "Conclua $\\mathcal{C}(c,\\lim D)\\cong\\lim\\mathcal{C}(c,D)$ natural em $c$."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo mostrando que colimites filtrados comutam com limites finitos em $\\mathbf{Set}$ (ex.: $\\varinjlim$ de um sistema dirigido preserva interseções finitas), mas que colimites arbitrários não comutam com limites finitos.",
+          "hint": "Use que em $\\mathbf{Set}$ o colimite filtrado é uma união/identificação 'eventual'. Para o contraexemplo, tome um coproduto (colimite não filtrado) e um produto binário.",
+          "difficulty": 4,
+          "solution": "**Colimites filtrados comutam com limites finitos em $\\mathbf{Set}$ (exemplo).** Seja $(X_n)_{n\\in\\mathbb{N}}$ um sistema dirigido de conjuntos com inclusões $X_0\\subseteq X_1\\subseteq\\cdots$, cujo colimite filtrado é a união $X=\\bigcup_n X_n$. Sejam $A,B\\subseteq X$ subconjuntos tais que $A=\\bigcup_n A_n$, $B=\\bigcup_n B_n$ com $A_n=A\\cap X_n$, $B_n=B\\cap X_n$ (também dirigidos). A **interseção finita** (um limite finito, um pullback sobre $X$) comuta com o colimite:\n$$\\Big(\\varinjlim_n A_n\\Big)\\cap\\Big(\\varinjlim_n B_n\\Big)=A\\cap B=\\bigcup_n(A_n\\cap B_n)=\\varinjlim_n(A_n\\cap B_n).$$\nA igualdade $A\\cap B=\\bigcup_n(A_n\\cap B_n)$ vale porque, se $x\\in A\\cap B$, então $x\\in A_m$ e $x\\in B_{m'}$ para alguns $m,m'$; sendo o sistema **dirigido**, existe $k\\ge m,m'$ com $x\\in A_k\\cap B_k$. É exatamente a filtragem (todo par de índices tem cota superior) que permite 'sincronizar' os dois elementos num mesmo estágio — daí colimites filtrados comutarem com limites finitos em $\\mathbf{Set}$.\n\n**Colimites arbitrários NÃO comutam com limites finitos.** A filtragem é essencial. Tome o **objeto terminal** $1=\\{\\ast\\}$, que é o limite finito do diagrama vazio, e o diagrama constante em $1$ sobre a categoria índice **discreta** $\\mathbf{2}=\\{1,2\\}$ (não conexa, não filtrada). O colimite de um diagrama constante em $1$ sobre uma categoria conexa é $1$; mas sobre $\\mathbf{2}$ é o coproduto\n$$\\varinjlim_{\\mathbf{2}}1=1\\sqcup 1=\\{\\ast_1,\\ast_2\\}\\cong\\{0,1\\}\\neq 1.$$\nAssim 'tomar o limite finito (terminal) e depois o colimite' dá $1\\sqcup 1$, mas o limite finito da coleção de colimites daria $1$: a ordem **não** pode ser trocada. A obstrução é a **não conexidade** (não filtragem) da categoria índice — um colimite arbitrário sente a diferença entre 'um' e 'dois' pedaços, o que limites finitos como o terminal não conseguem corrigir. $\\blacksquare$",
+          "steps": [
+            "Modele um colimite filtrado em $\\mathbf{Set}$ como união dirigida $X=\\bigcup X_n$.",
+            "Mostre $A\\cap B=\\bigcup(A_n\\cap B_n)$ usando que o sistema é dirigido para sincronizar dois elementos num mesmo estágio.",
+            "Conclua que a interseção finita (limite finito) comuta com o colimite filtrado.",
+            "Para o contraexemplo, use o terminal $1$ (limite do diagrama vazio) e o colimite sobre a categoria discreta $\\{1,2\\}$.",
+            "Observe $1\\sqcup 1\\neq 1$: a não conexidade impede a troca limite finito $\\leftrightarrow$ colimite arbitrário."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Limite de $D:\\mathcal{J}\\to\\mathcal{C}$",
+          "back": "O cone universal: todo cone sobre $D$ fatora unicamente pelo limite."
+        },
+        {
+          "front": "Quatro limites básicos",
+          "back": "Objeto terminal, produto, equalizador, pullback (índices: vazio, discreto, paralelo, canto)."
+        },
+        {
+          "front": "Quatro colimites básicos",
+          "back": "Objeto inicial, coproduto, coequalizador, pushout (duais dos limites básicos)."
+        },
+        {
+          "front": "Completude a partir de quê?",
+          "back": "Produtos pequenos + equalizadores $\\Rightarrow$ todos os limites pequenos."
+        },
+        {
+          "front": "Pullback em $\\mathbf{Set}$",
+          "back": "$A\\times_C B=\\{(a,b):f(a)=g(b)\\}$; preserva monomorfismos."
+        },
+        {
+          "front": "$\\mathcal{C}(c,-)$ e limites",
+          "back": "Preserva todos os limites: $\\mathcal{C}(c,\\lim D)\\cong\\lim\\mathcal{C}(c,D)$."
+        },
+        {
+          "front": "Coproduto em $\\mathbf{Grp}$",
+          "back": "Produto livre $G\\ast H$, não o produto direto."
+        },
+        {
+          "front": "Limites comutam com limites?",
+          "back": "Sim; mas limite e colimite não comutam em geral (exceto filtrados vs. finitos em $\\mathbf{Set}$)."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Riehl, Category Theory in Context — cap. 3 (Limits and Colimits)",
+          "ref": "livro"
+        },
+        {
+          "title": "Mac Lane, CWM — caps. 3 e 5 (Limits)",
+          "ref": "livro"
+        },
+        {
+          "title": "Leinster, Basic Category Theory — cap. 5",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe as definições de diagrama, cone e cone limite em Riehl cap. 3; desenhe os quatro limites básicos (terminal, produto, equalizador, pullback) e seus duais.",
+          "Refaça a construção 'produtos + equalizadores $\\Rightarrow$ completude' seguindo o exemplo resolvido do subtópico, montando $\\lim D$ como equalizador de dois produtos.",
+          "Calcule limites e colimites concretos em $\\mathbf{Set}$, $\\mathbf{Ab}$, $\\mathbf{Grp}$ e $R\\text{-}\\mathbf{Mod}$; preste atenção especial ao coproduto em $\\mathbf{Grp}$ (produto livre) e à soma direta vs. produto em $\\mathbf{Ab}$.",
+          "Estude 'functores Hom preservam limites' e 'limites comutam com limites', ligando à propriedade universal via $\\mathcal{C}(c,-)$.",
+          "Assista a um vídeo sobre limites/colimites para consolidar pullbacks e pushouts com exemplos.",
+          "Volte ao app: resolva os testes e anote aqui a construção de limites por produtos+equalizadores e o dicionário limite/colimite em categorias concretas."
+        ],
+        "searchQueries": [
+          "limite colimite cone propriedade universal teoria das categorias",
+          "produto equalizador construção de todos os limites completude",
+          "pullback pushout Set exemplos preserva monomorfismo",
+          "coproduto em Grp produto livre soma direta Ab",
+          "filtered colimits commute with finite limits Set proof",
+          "Hom functor preserves limits representable colimit"
+        ],
+        "videos": [
+          {
+            "title": "The Catsters — Limits and colimits",
+            "channel": "The Catsters",
+            "note": "Assista às séries sobre produtos, equalizadores, pullbacks e seus duais; concisos e corretos."
+          },
+          {
+            "title": "Category Theory for Programmers — Products, coproducts, limits",
+            "channel": "Bartosz Milewski",
+            "note": "Veja as aulas sobre produtos/coprodutos e limites; boas para a intuição das propriedades universais."
+          },
+          {
+            "title": "Aulas sobre limites e colimites",
+            "channel": "Richard Southwell",
+            "note": "Assista às aulas que constroem limites gerais a partir de produtos e equalizadores, com diagramas passo a passo."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Category Theory in Context, cap. 3 (Limits and Colimits)",
+            "where": "livro de Emily Riehl, PDF gratuito"
+          },
+          {
+            "title": "Verbetes 'limit', 'colimit', 'pullback', 'filtered colimit'",
+            "where": "nLab (ncatlab.org)"
+          },
+          {
+            "title": "Categories for the Working Mathematician, caps. III e V (Limits)",
+            "where": "livro de Saunders Mac Lane"
+          }
+        ]
+      }
+    },
+    {
+      "id": "category-theory-05-functores-adjuntos",
+      "title": "Functores Adjuntos",
+      "tagline": "$F\\dashv G$: a bijeção natural $\\mathcal{D}(Fc,d)\\cong\\mathcal{C}(c,Gd)$ que unifica construções livres, quocientes universais e o teorema 'adjuntos à direita preservam limites'.",
+      "objectives": [
+        "Definir adjunção pelas três descrições equivalentes: bijeção natural de Hom-sets, unidade e counidade com identidades triangulares, e objetos iniciais/terminais em categorias de vírgula.",
+        "Reconhecer adjunções canônicas: livre $\\dashv$ esquecimento, produto $\\dashv$ diagonal $\\dashv$ coproduto, $-\\otimes M\\dashv\\mathrm{Hom}(M,-)$ (tensor-hom).",
+        "Provar que adjuntos à esquerda preservam colimites e adjuntos à direita preservam limites (RAPL/LAPC).",
+        "Construir a unidade $\\eta:\\mathrm{id}\\Rightarrow GF$ e a counidade $\\varepsilon:FG\\Rightarrow\\mathrm{id}$ a partir da bijeção e verificar as identidades triangulares.",
+        "Enunciar (sem prova completa) o Teorema do Functor Adjoint e relacionar adjunções com mônadas."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Adjunção (Hom-set)",
+          "statement": "$F:\\mathcal{C}\\to\\mathcal{D}$ é adjunto à esquerda de $G:\\mathcal{D}\\to\\mathcal{C}$ (escreve-se $F\\dashv G$) se há bijeção natural em $c$ e $d$: $\\mathcal{D}(Fc,d)\\cong\\mathcal{C}(c,Gd)$. $F$ é o adjunto à esquerda, $G$ o adjunto à direita."
+        },
+        {
+          "term": "Unidade e counidade",
+          "statement": "$\\eta:\\mathrm{id}_{\\mathcal{C}}\\Rightarrow GF$ (unidade) e $\\varepsilon:FG\\Rightarrow\\mathrm{id}_{\\mathcal{D}}$ (counidade), satisfazendo as identidades triangulares $\\varepsilon F\\circ F\\eta=\\mathrm{id}_F$ e $G\\varepsilon\\circ\\eta G=\\mathrm{id}_G$. Determinam a adjunção e vice-versa."
+        },
+        {
+          "term": "Adjunção livre-esquecimento",
+          "statement": "Para o esquecimento $U:\\mathbf{Grp}\\to\\mathbf{Set}$, o functor grupo livre $F$ satisfaz $\\mathbf{Grp}(FX,H)\\cong\\mathbf{Set}(X,UH)$: homomorfismos do grupo livre = funções do conjunto gerador. Padrão para toda construção 'livre'."
+        },
+        {
+          "term": "RAPL / LAPC",
+          "statement": "Right Adjoints Preserve Limits / Left Adjoints Preserve Colimits: se $F\\dashv G$, então $G$ preserva todos os limites e $F$ preserva todos os colimites que existirem."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Equivalência das definições de adjunção",
+          "statement": "Para $F:\\mathcal{C}\\to\\mathcal{D}$ e $G:\\mathcal{D}\\to\\mathcal{C}$, são equivalentes: (i) existe bijeção natural $\\mathcal{D}(Fc,d)\\cong\\mathcal{C}(c,Gd)$; (ii) existem $\\eta,\\varepsilon$ satisfazendo as identidades triangulares; (iii) para cada $c$, $Fc$ com $\\eta_c$ é objeto inicial na categoria de vírgula $(c\\downarrow G)$.",
+          "whyItMatters": "Cada descrição serve a um propósito: (i) para cálculos com Hom, (ii) para manipulações 2-categóricas, (iii) para construir o adjunto objeto a objeto via propriedade universal. Saber transitar entre elas é a habilidade central do tema."
+        },
+        {
+          "name": "Adjuntos à direita preservam limites (RAPL)",
+          "statement": "Se $F\\dashv G$ e $D:\\mathcal{J}\\to\\mathcal{D}$ tem limite, então $G(\\lim D)\\cong\\lim(GD)$, e $G$ leva o cone limite no cone limite. Dualmente, adjuntos à esquerda preservam colimites.",
+          "whyItMatters": "É o teorema mais útil sobre adjunções: explica por que o esquecimento preserva produtos (tem adjunto à esquerda) e por que functores livres preservam coprodutos. Também serve como teste: um functor que não preserva limites não pode ter adjunto à esquerda."
+        },
+        {
+          "name": "Unicidade de adjuntos",
+          "statement": "Se $F$ tem adjunto à direita, ele é único a menos de isomorfismo natural; o mesmo para adjuntos à esquerda. Equivalentemente, adjuntos são determinados a menos de iso pela bijeção natural de Hom.",
+          "whyItMatters": "Garante que 'o' grupo livre, 'a' abelianização, 'o' completamento são bem definidos como functores: a propriedade universal fixa a construção. Justifica falar do adjunto."
+        }
+      ],
+      "summary": "A adjunção é, segundo muitos, o conceito mais importante da teoria das categorias depois de Yoneda. Dizer $F\\dashv G$ é exibir uma bijeção natural $\\mathcal{D}(Fc,d)\\cong\\mathcal{C}(c,Gd)$: morfismos saindo de $Fc$ correspondem a morfismos entrando em $Gd$. Esse padrão único organiza um número espantoso de construções. O grupo livre é adjunto à esquerda do esquecimento (funções do gerador = homomorfismos do livre); a abelianização é adjunta à esquerda da inclusão $\\mathbf{Ab}\\hookrightarrow\\mathbf{Grp}$; o produto é adjunto à direita da diagonal e o coproduto à esquerda; tensorizar por $M$ é adjunto à esquerda de $\\mathrm{Hom}(M,-)$ (a adjunção tensor-hom, base do produto tensorial de módulos). Há três línguas para a mesma estrutura: a bijeção de Hom-sets, o par unidade-counidade $(\\eta,\\varepsilon)$ com as identidades triangulares, e a descrição por objetos iniciais em categorias de vírgula — e fluência é justamente traduzir entre elas conforme a conveniência.\n\nO teorema operacional decisivo é RAPL/LAPC: adjuntos à direita preservam limites, adjuntos à esquerda preservam colimites. A prova é uma cadeia elegante de isomorfismos naturais que usa a bijeção da adjunção, a preservação de limites por Hom e o Lema de Yoneda — três pilares da trilha se encontrando. As consequências são imediatas e práticas: o functor esquecimento $\\mathbf{Grp}\\to\\mathbf{Set}$ preserva produtos e limites (pois é adjunto à direita do livre); functores livres preservam coprodutos; e, contrapositivamente, se um functor não preserva certos limites, ele não pode ter adjunto à esquerda — um teste negativo poderoso. No nível mais alto, toda adjunção gera uma mônada $GF$, e a teoria de mônadas (álgebras de Eilenberg-Moore) descreve quando uma categoria é 'algébrica' sobre outra; o Teorema do Functor Adjoint (General/Special Adjoint Functor Theorem) dá condições — preservação de limites mais uma condição de conjunto-solução — para a existência do adjunto, fechando o ciclo com limites e completude.",
+      "commonPitfalls": [
+        "Trocar a direção da adjunção: $F\\dashv G$ significa $F$ à esquerda e a bijeção é $\\mathcal{D}(Fc,d)\\cong\\mathcal{C}(c,Gd)$ — $Fc$ aparece no Hom de saída. Inverter isso é o erro mais comum.",
+        "Achar que todo functor tem adjunto: a existência exige (no mínimo) preservar os limites/colimites apropriados; o esquecimento de $\\mathbf{Field}$ não tem adjunto à esquerda (não há corpo livre).",
+        "Esquecer as identidades triangulares: uma unidade e uma counidade quaisquer não formam adjunção; precisam satisfazer $\\varepsilon F\\circ F\\eta=\\mathrm{id}_F$ e $G\\varepsilon\\circ\\eta G=\\mathrm{id}_G$.",
+        "Usar RAPL no sentido errado: adjuntos à direita preservam LIMITES (não colimites). O esquecimento (adjunto à direita) preserva produtos, mas o coproduto de grupos não é o de conjuntos."
+      ],
+      "worked": "**Teorema (RAPL).** Se $F\\dashv G$ com $F:\\mathcal{C}\\to\\mathcal{D}$, $G:\\mathcal{D}\\to\\mathcal{C}$, e $D:\\mathcal{J}\\to\\mathcal{D}$ tem limite $\\lim D$, então $G(\\lim D)\\cong\\lim(GD)$.\n\n**Prova (via Yoneda).** Para um objeto arbitrário $c\\in\\mathcal{C}$, calculamos $\\mathcal{C}(c,G(\\lim D))$ usando, em ordem: a adjunção, a preservação de limites pelo Hom em $\\mathcal{D}$, a adjunção de novo, e a preservação de limites pelo Hom em $\\mathcal{C}$:\n$$\\mathcal{C}\\big(c,\\,G(\\textstyle\\lim D)\\big)\\;\\cong\\;\\mathcal{D}\\big(Fc,\\,\\textstyle\\lim D\\big)\\;\\cong\\;\\textstyle\\lim_j\\,\\mathcal{D}(Fc,\\,Dj)\\;\\cong\\;\\textstyle\\lim_j\\,\\mathcal{C}(c,\\,GDj)\\;\\cong\\;\\mathcal{C}\\big(c,\\,\\textstyle\\lim_j GDj\\big).$$\nTodos os isomorfismos são naturais em $c$. Logo os functores $\\mathcal{C}(-,G(\\lim D))$ e $\\mathcal{C}(-,\\lim_j GDj)$ são naturalmente isomorfos. Pelo corolário do Lema de Yoneda (mergulho plenamente fiel), os objetos representantes são isomorfos:\n$$G(\\textstyle\\lim D)\\;\\cong\\;\\textstyle\\lim_j GDj.$$\nUm rastreamento das identidades mostra que o isomorfismo identifica os cones, logo $G$ leva o cone limite no cone limite. $\\blacksquare$\n\n**Aplicação.** O esquecimento $U:\\mathbf{Grp}\\to\\mathbf{Set}$ é adjunto à direita do grupo livre $F$ ($F\\dashv U$). Por RAPL, $U$ preserva limites: o conjunto subjacente de um produto/equalizador/pullback de grupos é o produto/equalizador/pullback dos conjuntos subjacentes — exatamente o que se observa na prática.",
+      "exercises": [
+        {
+          "prompt": "Verifique diretamente a adjunção grupo livre $\\dashv$ esquecimento: dada uma função $f:X\\to UH$, mostre que existe um único homomorfismo $\\bar f:FX\\to H$ com $\\bar f|_X=f$, e que isso é natural em $X$ e $H$.",
+          "hint": "Elementos de $FX$ são palavras reduzidas nos geradores; defina $\\bar f$ pela imagem dos geradores e estenda multiplicativamente. Unicidade vem de os geradores gerarem.",
+          "difficulty": 3,
+          "solution": "**Existência e unicidade de $\\bar f$.** Seja $F X$ o grupo livre sobre o conjunto $X$: seus elementos são palavras reduzidas $x_{1}^{e_1}\\cdots x_{k}^{e_k}$ com $x_i\\in X$, $e_i\\in\\{\\pm 1\\}$, sem cancelamentos $x x^{-1}$. Há inclusão $\\iota_X:X\\to U(FX)$, $x\\mapsto x$ (a palavra de comprimento $1$). Dada $f:X\\to UH$, defina\n$$\\bar f(x_1^{e_1}\\cdots x_k^{e_k}):=f(x_1)^{e_1}\\cdots f(x_k)^{e_k}\\in H.$$\n*Bem definida:* o valor não muda sob reduções $x x^{-1}\\rightsquigarrow\\varnothing$, pois $f(x)f(x)^{-1}=e_H$; logo depende só da palavra reduzida. *Homomorfismo:* $\\bar f(wv)=\\bar f(w)\\bar f(v)$ por concatenação (após reduzir, os valores em $H$ já compõem multiplicativamente). *Estende $f$:* $\\bar f(x)=f(x)$, i.e. $\\bar f\\circ\\iota_X=f$ (como funções, $U\\bar f\\circ\\iota_X=f$). *Unicidade:* qualquer homomorfismo $\\phi:FX\\to H$ com $U\\phi\\circ\\iota_X=f$ coincide com $\\bar f$ nos geradores $X$; como $X$ **gera** $FX$, dois homomorfismos que concordam nos geradores são iguais, logo $\\phi=\\bar f$.\n\n**A bijeção de adjunção.** As construções\n$$\\mathbf{Grp}(FX,H)\\xrightarrow{\\ \\phi\\ \\mapsto\\ U\\phi\\circ\\iota_X\\ }\\mathbf{Set}(X,UH),\\qquad f\\ \\mapsto\\ \\bar f$$\nsão mutuamente inversas (acabamos de ver existência e unicidade), logo bijeção $\\mathbf{Grp}(FX,H)\\cong\\mathbf{Set}(X,UH)$.\n\n**Naturalidade.** Em $H$: dado $h:H\\to H'$, o quadrado $\\phi\\mapsto U(h\\phi)\\circ\\iota_X=Uh\\circ(U\\phi\\circ\\iota_X)$ comuta (pós-compor com $h$ à esquerda corresponde a pós-compor com $Uh$). Em $X$: dado $g:X'\\to X$, pré-compor com $Fg$ corresponde a pré-compor com $g$, pois $Fg$ leva geradores em geradores. Logo a bijeção é natural em ambas as variáveis, estabelecendo $F\\dashv U$. $\\blacksquare$",
+          "steps": [
+            "Descreva os elementos de $FX$ como palavras reduzidas nos geradores $X$.",
+            "Defina $\\bar f$ pela imagem dos geradores, estendendo multiplicativamente, e cheque que respeita reduções (bem definida) e é homomorfismo.",
+            "Verifique $\\bar f|_X=f$ e a unicidade (geradores determinam o homomorfismo).",
+            "Monte as aplicações inversas $\\phi\\mapsto U\\phi\\circ\\iota_X$ e $f\\mapsto\\bar f$, obtendo a bijeção.",
+            "Cheque naturalidade em $X$ (via $Fg$) e em $H$ (via $Uh$), concluindo $F\\dashv U$."
+          ]
+        },
+        {
+          "prompt": "Mostre que o functor diagonal $\\Delta:\\mathcal{C}\\to\\mathcal{C}\\times\\mathcal{C}$ tem adjunto à direita dado pelo produto e adjunto à esquerda dado pelo coproduto, isto é, $\\sqcup\\dashv\\Delta\\dashv\\times$. Interprete as bijeções de Hom resultantes.",
+          "hint": "$\\mathcal{C}\\times\\mathcal{C}((a,b),\\Delta c)=\\mathcal{C}(a,c)\\times\\mathcal{C}(b,c)\\cong\\mathcal{C}(a\\sqcup b,c)$ dá $\\sqcup\\dashv\\Delta$; dualmente para o produto.",
+          "difficulty": 3,
+          "solution": "**Functor diagonal.** $\\Delta:\\mathcal{C}\\to\\mathcal{C}\\times\\mathcal{C}$, $\\Delta c=(c,c)$, $\\Delta f=(f,f)$.\n\n**$\\Delta\\dashv\\times$ (produto é adjunto à direita).** Suponha $\\mathcal{C}$ com produtos binários, definindo $\\times:\\mathcal{C}\\times\\mathcal{C}\\to\\mathcal{C}$, $(a,b)\\mapsto a\\times b$. Um morfismo em $\\mathcal{C}\\times\\mathcal{C}$ de $\\Delta c=(c,c)$ para $(a,b)$ é um par $(p,q)$ com $p:c\\to a$, $q:c\\to b$, ou seja um elemento de $\\mathcal{C}(c,a)\\times\\mathcal{C}(c,b)$. Pela propriedade universal do produto,\n$$(\\mathcal{C}\\times\\mathcal{C})\\big(\\Delta c,(a,b)\\big)=\\mathcal{C}(c,a)\\times\\mathcal{C}(c,b)\\cong\\mathcal{C}(c,a\\times b),\\quad (p,q)\\mapsto\\langle p,q\\rangle,$$\nnatural em $c$ e em $(a,b)$. Isso é a adjunção $\\Delta\\dashv\\times$: o produto é o adjunto à **direita** da diagonal. A **counidade** é o par de projeções $(\\pi_a,\\pi_b):\\Delta(a\\times b)\\to(a,b)$; a **unidade** é a diagonal $\\langle 1_c,1_c\\rangle:c\\to c\\times c$.\n\n**$\\sqcup\\dashv\\Delta$ (coproduto é adjunto à esquerda).** Dualmente, suponha coprodutos, $\\sqcup:(a,b)\\mapsto a\\sqcup b$. Um morfismo em $\\mathcal{C}\\times\\mathcal{C}$ de $(a,b)$ para $\\Delta c=(c,c)$ é um par $(u,v)$ com $u:a\\to c$, $v:b\\to c$, i.e. um elemento de $\\mathcal{C}(a,c)\\times\\mathcal{C}(b,c)$. Pela propriedade universal do coproduto,\n$$(\\mathcal{C}\\times\\mathcal{C})\\big((a,b),\\Delta c\\big)=\\mathcal{C}(a,c)\\times\\mathcal{C}(b,c)\\cong\\mathcal{C}(a\\sqcup b,c),\\quad (u,v)\\mapsto[u,v],$$\nnatural. Isso é $\\sqcup\\dashv\\Delta$: o coproduto é o adjunto à **esquerda** da diagonal. Juntando, $\\sqcup\\dashv\\Delta\\dashv\\times$.\n\n**Interpretação.** As bijeções são exatamente as propriedades universais: 'um morfismo $c\\to a\\times b$ = um par de morfismos $c\\to a$, $c\\to b$' (produto) e 'um morfismo $a\\sqcup b\\to c$ = um par de morfismos $a\\to c$, $b\\to c$' (coproduto). Assim produto e coproduto são as maneiras universais de, respectivamente, **receber** e **emitir** pares de setas — capturadas pela adjunção com a diagonal. $\\blacksquare$",
+          "steps": [
+            "Defina $\\Delta c=(c,c)$ e identifique morfismos $\\Delta c\\to(a,b)$ com pares $(p,q)\\in\\mathcal{C}(c,a)\\times\\mathcal{C}(c,b)$.",
+            "Aplique a propriedade universal do produto para obter $\\cong\\mathcal{C}(c,a\\times b)$: adjunção $\\Delta\\dashv\\times$.",
+            "Dualmente, identifique morfismos $(a,b)\\to\\Delta c$ com pares em $\\mathcal{C}(a,c)\\times\\mathcal{C}(b,c)$.",
+            "Aplique a propriedade universal do coproduto para $\\cong\\mathcal{C}(a\\sqcup b,c)$: adjunção $\\sqcup\\dashv\\Delta$.",
+            "Interprete as bijeções como as propriedades universais de produto e coproduto, obtendo $\\sqcup\\dashv\\Delta\\dashv\\times$."
+          ]
+        },
+        {
+          "prompt": "Use RAPL/LAPC para concluir que o functor $-\\otimes_R M:\\mathbf{Mod}\\text{-}R\\to\\mathbf{Ab}$ preserva colimites (em particular é exato à direita), enquanto $\\mathrm{Hom}_R(M,-)$ preserva limites (é exato à esquerda).",
+          "hint": "A adjunção tensor-hom é $-\\otimes_R M\\dashv\\mathrm{Hom}(M,-)$. Aplique LAPC ao primeiro e RAPL ao segundo; conecte 'preservar colimite finito' com 'exato à direita'.",
+          "difficulty": 4,
+          "solution": "**A adjunção tensor-hom.** Para um $R$-módulo (bi)módulo $M$ apropriado há a adjunção\n$$-\\otimes_R M\\ \\dashv\\ \\mathrm{Hom}_R(M,-),\\qquad \\mathrm{Hom}\\big(A\\otimes_R M,\\ B\\big)\\cong\\mathrm{Hom}\\big(A,\\ \\mathrm{Hom}_R(M,B)\\big),$$\nnatural em $A$ e $B$. Assim $-\\otimes_R M$ é adjunto à **esquerda** e $\\mathrm{Hom}_R(M,-)$ é adjunto à **direita**.\n\n**$-\\otimes_R M$ preserva colimites (LAPC), logo é exato à direita.** Por LAPC (Left Adjoints Preserve Colimits), $-\\otimes_R M$ preserva **todos** os colimites que existirem: coprodutos ($\\bigoplus$), coequalizadores, pushouts, colimites filtrados. Em particular preserva **conúcleos** (coequalizadores de um par com o zero). Um functor aditivo é **exato à direita** precisamente quando preserva conúcleos / sequências $A\\to B\\to C\\to 0$; portanto\n$$A'\\to A\\to A''\\to 0\\ \\text{exata}\\ \\Longrightarrow\\ A'\\otimes M\\to A\\otimes M\\to A''\\otimes M\\to 0\\ \\text{exata}.$$\nLogo $-\\otimes_R M$ é exato à direita. (Ele **não** é exato à esquerda em geral: não preserva monos, como no exemplo $\\mathbb{Z}\\xrightarrow{\\cdot 2}\\mathbb{Z}$ tensorizado por $\\mathbb{Z}/2$; a falha é medida por $\\mathrm{Tor}_1$.)\n\n**$\\mathrm{Hom}_R(M,-)$ preserva limites (RAPL), logo é exato à esquerda.** Por RAPL (Right Adjoints Preserve Limits), $\\mathrm{Hom}_R(M,-)$ preserva todos os limites: produtos, equalizadores, pullbacks, **núcleos**. Um functor aditivo é **exato à esquerda** exatamente quando preserva núcleos / sequências $0\\to A'\\to A\\to A''$; portanto\n$$0\\to A'\\to A\\to A''\\ \\text{exata}\\ \\Longrightarrow\\ 0\\to\\mathrm{Hom}(M,A')\\to\\mathrm{Hom}(M,A)\\to\\mathrm{Hom}(M,A'')\\ \\text{exata}.$$\nLogo $\\mathrm{Hom}_R(M,-)$ é exato à esquerda. (Não é exato à direita: não preserva epis em geral; a falha é medida por $\\mathrm{Ext}^1$.)\n\n**Síntese.** A adjunção explica a assimetria: o lado esquerdo ($\\otimes$) preserva colimites e é exato à direita; o lado direito ($\\mathrm{Hom}$) preserva limites e é exato à esquerda. Sequências exatas curtas $0\\to A'\\to A\\to A''\\to 0$ são preservadas apenas parcialmente, e os functores derivados $\\mathrm{Tor}$ e $\\mathrm{Ext}$ medem precisamente as pontas que faltam. $\\blacksquare$",
+          "steps": [
+            "Escreva a adjunção tensor-hom $-\\otimes_R M\\dashv\\mathrm{Hom}_R(M,-)$ com a bijeção natural de Hom.",
+            "Aplique LAPC ao adjunto à esquerda $-\\otimes M$: preserva colimites, em particular conúcleos.",
+            "Traduza 'preserva conúcleos' em 'exato à direita' e escreva a sequência $A'\\otimes M\\to A\\otimes M\\to A''\\otimes M\\to 0$.",
+            "Aplique RAPL ao adjunto à direita $\\mathrm{Hom}(M,-)$: preserva limites, em particular núcleos.",
+            "Traduza 'preserva núcleos' em 'exato à esquerda', notando que as falhas restantes são medidas por $\\mathrm{Tor}_1$ e $\\mathrm{Ext}^1$."
+          ]
+        },
+        {
+          "prompt": "Construa a counidade e a unidade da adjunção $F\\dashv G$ a partir da bijeção natural, e verifique uma das duas identidades triangulares.",
+          "hint": "$\\eta_c$ corresponde a $1_{Fc}$ sob $\\mathcal{D}(Fc,Fc)\\cong\\mathcal{C}(c,GFc)$; $\\varepsilon_d$ corresponde a $1_{Gd}$. A identidade triangular sai aplicando a naturalidade da bijeção a esses elementos.",
+          "difficulty": 4,
+          "solution": "**Notação.** Seja a bijeção natural da adjunção $F\\dashv G$\n$$\\varphi=\\varphi_{c,d}:\\ \\mathcal{D}(Fc,d)\\xrightarrow{\\ \\cong\\ }\\mathcal{C}(c,Gd),$$\nnatural em $c$ e $d$. Naturalidade significa: para $k:d\\to d'$, $\\varphi(k\\circ h)=Gk\\circ\\varphi(h)$; e para $g:c'\\to c$, $\\varphi(h\\circ Fg)=\\varphi(h)\\circ g$.\n\n**Unidade.** Defina $\\eta_c:=\\varphi_{c,Fc}(1_{Fc})\\in\\mathcal{C}(c,GFc)$. Isto é, $\\eta_c$ é o transposto (mate) de $1_{Fc}$. A família $(\\eta_c)$ é transformação natural $\\eta:\\mathrm{id}_{\\mathcal{C}}\\Rightarrow GF$ (naturalidade herdada da de $\\varphi$).\n\n**Counidade.** Defina $\\varepsilon_d:=\\varphi^{-1}_{Gd,d}(1_{Gd})\\in\\mathcal{D}(FGd,d)$, o transposto inverso de $1_{Gd}$. A família $(\\varepsilon_d)$ é natural $\\varepsilon:FG\\Rightarrow\\mathrm{id}_{\\mathcal{D}}$.\n\n**Fórmulas úteis.** Da naturalidade seguem: para $h:Fc\\to d$, $\\varphi(h)=Gh\\circ\\eta_c$; e para $g:c\\to Gd$, $\\varphi^{-1}(g)=\\varepsilon_d\\circ Fg$.\n\n**Verificação da identidade triangular $\\varepsilon_{Fc}\\circ F\\eta_c=1_{Fc}$.** Aplique a segunda fórmula com $d=Fc$ e $g=\\eta_c:c\\to GFc$:\n$$\\varphi^{-1}(\\eta_c)=\\varepsilon_{Fc}\\circ F\\eta_c.$$\nMas $\\eta_c=\\varphi(1_{Fc})$ por definição, logo $\\varphi^{-1}(\\eta_c)=\\varphi^{-1}(\\varphi(1_{Fc}))=1_{Fc}$. Combinando,\n$$\\varepsilon_{Fc}\\circ F\\eta_c=1_{Fc}.$$\nEsta é a primeira identidade triangular ($\\varepsilon F\\circ F\\eta=\\mathrm{id}_F$). *(A segunda, $G\\varepsilon\\circ\\eta G=\\mathrm{id}_G$, sai simetricamente aplicando a primeira fórmula $\\varphi(h)=Gh\\circ\\eta_c$ a $h=\\varepsilon_d$: $\\varphi(\\varepsilon_d)=G\\varepsilon_d\\circ\\eta_{Gd}$, e como $\\varepsilon_d=\\varphi^{-1}(1_{Gd})$ temos $\\varphi(\\varepsilon_d)=1_{Gd}$, dando $G\\varepsilon_d\\circ\\eta_{Gd}=1_{Gd}$.)* $\\blacksquare$",
+          "steps": [
+            "Escreva a bijeção natural $\\varphi:\\mathcal{D}(Fc,d)\\cong\\mathcal{C}(c,Gd)$ e explicite a naturalidade em ambas as variáveis.",
+            "Defina $\\eta_c=\\varphi(1_{Fc})$ e $\\varepsilon_d=\\varphi^{-1}(1_{Gd})$.",
+            "Deduza as fórmulas $\\varphi(h)=Gh\\circ\\eta_c$ e $\\varphi^{-1}(g)=\\varepsilon_d\\circ Fg$ da naturalidade.",
+            "Aplique $\\varphi^{-1}$ a $g=\\eta_c$ para obter $\\varepsilon_{Fc}\\circ F\\eta_c=\\varphi^{-1}(\\eta_c)$.",
+            "Use $\\eta_c=\\varphi(1_{Fc})$ para concluir $\\varepsilon_{Fc}\\circ F\\eta_c=1_{Fc}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "$F\\dashv G$ (definição Hom)",
+          "back": "Bijeção natural $\\mathcal{D}(Fc,d)\\cong\\mathcal{C}(c,Gd)$; $F$ à esquerda, $G$ à direita."
+        },
+        {
+          "front": "Unidade e counidade",
+          "back": "$\\eta:\\mathrm{id}\\Rightarrow GF$ e $\\varepsilon:FG\\Rightarrow\\mathrm{id}$, com identidades triangulares."
+        },
+        {
+          "front": "RAPL",
+          "back": "Right Adjoints Preserve Limits: $F\\dashv G\\Rightarrow G$ preserva limites."
+        },
+        {
+          "front": "LAPC",
+          "back": "Left Adjoints Preserve Colimits: $F\\dashv G\\Rightarrow F$ preserva colimites."
+        },
+        {
+          "front": "Adjunção livre-esquecimento",
+          "back": "$F\\dashv U$: $\\mathbf{Grp}(FX,H)\\cong\\mathbf{Set}(X,UH)$. Padrão de 'objeto livre'."
+        },
+        {
+          "front": "Adjunção tensor-hom",
+          "back": "$-\\otimes_R M\\dashv\\mathrm{Hom}_R(M,-)$; explica exatidão à direita do $\\otimes$."
+        },
+        {
+          "front": "$\\Delta$ e produto/coproduto",
+          "back": "$\\sqcup\\dashv\\Delta\\dashv\\times$: coproduto e produto são adjuntos da diagonal."
+        },
+        {
+          "front": "Adjuntos são únicos?",
+          "back": "Sim, a menos de isomorfismo natural; a propriedade universal fixa o functor."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Riehl, Category Theory in Context — cap. 4 (Adjunctions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Mac Lane, CWM — cap. 4 (Adjoints)",
+          "ref": "livro"
+        },
+        {
+          "title": "Leinster, Basic Category Theory — caps. 2 e 6",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Comece pela definição via bijeção de Hom-sets ($\\mathcal{D}(Fc,d)\\cong\\mathcal{C}(c,Gd)$) em Riehl cap. 4, cuidando da direção $F$ à esquerda / $G$ à direita.",
+          "Reconheça as adjunções canônicas: livre $\\dashv$ esquecimento, $\\sqcup\\dashv\\Delta\\dashv\\times$, tensor-hom; refaça cada bijeção de Hom no papel.",
+          "Passe às descrições por unidade e counidade $(\\eta,\\varepsilon)$ e às identidades triangulares; derive uma a partir da outra.",
+          "Estude e reprove RAPL/LAPC seguindo o exemplo resolvido (cadeia de isos via Yoneda) e extraia consequências (esquecimento preserva limites).",
+          "Assista a um vídeo sobre adjunções para consolidar a intuição de 'melhor aproximação de um functor'.",
+          "Volte ao app: resolva os testes e anote aqui a definição de adjunção, o enunciado de RAPL/LAPC e o dicionário das adjunções canônicas."
+        ],
+        "searchQueries": [
+          "functor adjunto definição bijeção Hom unidade counidade",
+          "adjunção grupo livre esquecimento propriedade universal",
+          "right adjoints preserve limits RAPL proof Yoneda",
+          "tensor hom adjunction exact functor left right",
+          "triangular identities unit counit adjunction derivation",
+          "diagonal functor product coproduct adjoint left right"
+        ],
+        "videos": [
+          {
+            "title": "The Catsters — Adjunctions",
+            "channel": "The Catsters",
+            "note": "Assista à série sobre adjunções, unidade/counidade e identidades triangulares."
+          },
+          {
+            "title": "Category Theory for Programmers — Adjunctions",
+            "channel": "Bartosz Milewski",
+            "note": "Veja as aulas sobre adjunções; boa intuição de 'free/forgetful' e da bijeção natural de Hom."
+          },
+          {
+            "title": "Aulas sobre functores adjuntos",
+            "channel": "Richard Southwell",
+            "note": "Assista às aulas que constroem a adjunção pelas três descrições equivalentes, com diagramas."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Category Theory in Context, cap. 4 (Adjunctions)",
+            "where": "livro de Emily Riehl, PDF gratuito"
+          },
+          {
+            "title": "Verbetes 'adjoint functor', 'unit of an adjunction', 'RAPL'",
+            "where": "nLab (ncatlab.org)"
+          },
+          {
+            "title": "Categories for the Working Mathematician, cap. IV (Adjoints)",
+            "where": "livro de Saunders Mac Lane"
+          }
+        ]
+      }
+    },
+    {
+      "id": "category-theory-06-categorias-abelianas-functores-derivados",
+      "title": "Categorias Abelianas e Functores Derivados",
+      "tagline": "Onde mora a álgebra homológica: núcleos e conúcleos, sequências exatas, o lema da serpente e os functores derivados $\\mathrm{Ext}$ e $\\mathrm{Tor}$.",
+      "objectives": [
+        "Definir categoria aditiva e categoria abeliana (núcleos, conúcleos, mono = núcleo, epi = conúcleo) e exibir $\\mathbf{Ab}$ e $R\\text{-}\\mathbf{Mod}$ como exemplos.",
+        "Manipular sequências exatas curtas e longas, reconhecer functores exatos, exatos à esquerda/direita, e situar $\\mathrm{Hom}$ e $\\otimes$ nesse quadro.",
+        "Enunciar e aplicar o Lema da Serpente e o Lema dos Cinco como ferramentas-padrão de diagram chasing.",
+        "Construir resoluções projetivas e injetivas e definir os functores derivados à direita $R^iF$ e à esquerda $L_iF$.",
+        "Calcular $\\mathrm{Ext}^i_R$ e $\\mathrm{Tor}_i^R$ em exemplos concretos sobre $\\mathbb{Z}$ e interpretá-los (extensões, torção)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Categoria aditiva",
+          "statement": "Categoria com objeto zero, biprodutos finitos $A\\oplus B$ e Hom-sets que são grupos abelianos com composição bilinear. Functores entre aditivas que respeitam essa estrutura chamam-se aditivos."
+        },
+        {
+          "term": "Categoria abeliana",
+          "statement": "Categoria aditiva em que todo morfismo tem núcleo e conúcleo, todo monomorfismo é núcleo de algum morfismo e todo epimorfismo é conúcleo de algum morfismo. Nela vale o teorema do isomorfismo $\\mathrm{coim}\\,f\\cong\\mathrm{im}\\,f$. Exemplos: $\\mathbf{Ab}$, $R\\text{-}\\mathbf{Mod}$, feixes de grupos abelianos."
+        },
+        {
+          "term": "Sequência exata e functor exato",
+          "statement": "$A\\xrightarrow{f}B\\xrightarrow{g}C$ é exata em $B$ se $\\mathrm{im}\\,f=\\ker g$. Um functor aditivo é exato se preserva sequências exatas curtas; exato à esquerda se preserva $0\\to A\\to B\\to C$, à direita se preserva $A\\to B\\to C\\to 0$."
+        },
+        {
+          "term": "Resolução projetiva/injetiva",
+          "statement": "Uma resolução projetiva de $A$ é uma sequência exata $\\cdots\\to P_1\\to P_0\\to A\\to 0$ com cada $P_i$ projetivo; injetiva é o dual $0\\to A\\to I^0\\to I^1\\to\\cdots$ com $I^j$ injetivos. Existem em $R\\text{-}\\mathbf{Mod}$."
+        },
+        {
+          "term": "Functor derivado",
+          "statement": "Para $F$ exato à direita, $L_iF(A)=H_i(F(P_\\bullet))$ usando uma resolução projetiva $P_\\bullet$ de $A$ (independe da resolução). Para $F$ exato à esquerda, $R^iF(A)=H^i(F(I^\\bullet))$ via resolução injetiva. $\\mathrm{Tor}_i=L_i(-\\otimes-)$, $\\mathrm{Ext}^i=R^i\\mathrm{Hom}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Hom e tensor: exatidão",
+          "statement": "Em $R\\text{-}\\mathbf{Mod}$, $\\mathrm{Hom}_R(M,-)$ e $\\mathrm{Hom}_R(-,N)$ são exatos à esquerda; $-\\otimes_R M$ é exato à direita. $M$ é projetivo $\\iff\\mathrm{Hom}(M,-)$ é exato; $M$ é injetivo $\\iff\\mathrm{Hom}(-,M)$ é exato; $M$ é plano $\\iff-\\otimes M$ é exato.",
+          "whyItMatters": "Mede o quanto cada functor fundamental falha em ser exato. Essa falha é precisamente o que os functores derivados $\\mathrm{Ext}$ e $\\mathrm{Tor}$ quantificam, e a ligação adjunção (tensor-hom) explica a assimetria esquerda/direita."
+        },
+        {
+          "name": "Lema da Serpente",
+          "statement": "Dado um diagrama comutativo com linhas exatas e três morfismos verticais $f,g,h$, há uma sequência exata longa $\\ker f\\to\\ker g\\to\\ker h\\xrightarrow{\\partial}\\mathrm{coker}\\,f\\to\\mathrm{coker}\\,g\\to\\mathrm{coker}\\,h$, com morfismo de conexão $\\partial$ natural.",
+          "whyItMatters": "É o motor da álgebra homológica: produz a sequência exata longa de homologia a partir de uma sequência exata curta de complexos. Toda sequência exata longa de $\\mathrm{Ext}$/$\\mathrm{Tor}$/cohomologia nasce dele."
+        },
+        {
+          "name": "Sequência exata longa dos derivados",
+          "statement": "Para uma sequência exata curta $0\\to A'\\to A\\to A''\\to 0$ e um functor $F$ exato à esquerda, há sequência exata longa $0\\to FA'\\to FA\\to FA''\\xrightarrow{\\delta}R^1FA'\\to R^1FA\\to\\cdots$, com $\\delta$ natural (functor $\\delta$). Análogo com $L_iF$ para exatos à direita.",
+          "whyItMatters": "É a propriedade que torna os functores derivados calculáveis e úteis: relaciona os derivados de uma extensão por uma sequência longa, permitindo computar $\\mathrm{Ext}$ e $\\mathrm{Tor}$ por indução e desmontar problemas em peças."
+        },
+        {
+          "name": "Independência da resolução",
+          "statement": "Os functores derivados $L_iF(A)$ e $R^iF(A)$ não dependem (a menos de isomorfismo canônico) da resolução projetiva/injetiva escolhida, pois quaisquer duas resoluções são homotópicas (lema da comparação) e functores aditivos preservam homotopias de cadeias.",
+          "whyItMatters": "É o que legitima a definição: $\\mathrm{Ext}$ e $\\mathrm{Tor}$ são invariantes do par de módulos, não da escolha de resolução. Sem isso, a álgebra homológica não faria sentido."
+        }
+      ],
+      "summary": "As categorias abelianas são o ambiente onde a álgebra homológica acontece. Partindo de uma categoria aditiva (Hom-sets que são grupos abelianos, biprodutos, objeto zero), exige-se que todo morfismo tenha núcleo e conúcleo e que monos e epis sejam, respectivamente, núcleos e conúcleos — axiomas que capturam exatamente as propriedades de $\\mathbf{Ab}$ e de $R\\text{-}\\mathbf{Mod}$ sem mencionar elementos. Nelas faz sentido falar de sequências exatas ($\\mathrm{im}\\,f=\\ker g$), e a pergunta central passa a ser: quão exato é um functor? Os functores fundamentais têm exatidão parcial: $\\mathrm{Hom}(M,-)$ e $\\mathrm{Hom}(-,N)$ são exatos à esquerda, $-\\otimes_R M$ é exato à direita. A falha de exatidão não é defeito a ser ignorado — é informação. Projetividade, injetividade e planura são exatamente as condições que restauram a exatidão total, e o lema da serpente é a ferramenta que costura sequências exatas curtas em sequências exatas longas.\n\nOs functores derivados medem essa falha de modo sistemático. Para calcular o derivado de $F$ em $A$, troca-se $A$ por uma resolução (projetiva, se $F$ é exato à direita; injetiva, se à esquerda), aplica-se $F$ e toma-se a homologia do complexo resultante. O ponto não trivial — garantido pelo lema da comparação e pela invariância por homotopia — é que o resultado não depende da resolução. Assim nascem $\\mathrm{Tor}_i^R(-,M)=L_i(-\\otimes M)$, que detecta torção, e $\\mathrm{Ext}^i_R(M,-)=R^i\\mathrm{Hom}(M,-)$, que classifica extensões ($\\mathrm{Ext}^1$ parametriza as sequências exatas curtas $0\\to N\\to E\\to M\\to 0$ a menos de equivalência). A sequência exata longa dos derivados, consequência direta do lema da serpente, transforma esses objetos em algo calculável. Esta é a fundação sobre a qual se erguem a cohomologia de grupos, a cohomologia de feixes e a geometria algébrica moderna — e o destino natural de quem domina functores, limites e adjunções.",
+      "commonPitfalls": [
+        "Aplicar functores derivados a functores não aditivos ou usar resolução errada: derivados à direita ($R^iF$) de functor exato à esquerda usam resolução injetiva; derivados à esquerda ($L_iF$) de functor exato à direita usam projetiva. Trocar os lados leva a lixo.",
+        "Achar que $\\mathrm{Hom}$ e $\\otimes$ são exatos: $\\mathrm{Hom}(M,-)$ só preserva $0\\to A\\to B\\to C$ (não a sobrejeção $B\\to C$); $-\\otimes M$ só preserva $A\\to B\\to C\\to 0$. É a falha que $\\mathrm{Ext}^1$ e $\\mathrm{Tor}_1$ medem.",
+        "Esquecer que mono em categoria abeliana é núcleo e epi é conúcleo: sem esse axioma a categoria é só aditiva e o teorema do isomorfismo $\\mathrm{coim}\\cong\\mathrm{im}$ pode falhar (ex.: feixes/filtrados não abelianos).",
+        "Confundir a numeração: $\\mathrm{Tor}$ e $L_i$ têm índices inferiores (homológicos, descem); $\\mathrm{Ext}$ e $R^i$ têm índices superiores (cohomológicos, sobem). Misturar os graus quebra as sequências longas."
+      ],
+      "worked": "**Cálculo de $\\mathrm{Ext}$ e $\\mathrm{Tor}$ sobre $\\mathbb{Z}$.** Vamos computar os derivados de $\\mathbb{Z}/n$ usando uma resolução projetiva (livre) curta.\n\n**Resolução.** Em $\\mathbf{Ab}=\\mathbb{Z}\\text{-}\\mathbf{Mod}$, temos a sequência exata\n$$0\\longrightarrow\\mathbb{Z}\\xrightarrow{\\;\\cdot n\\;}\\mathbb{Z}\\xrightarrow{\\;\\pi\\;}\\mathbb{Z}/n\\longrightarrow 0,$$\nlogo $P_\\bullet:\\;0\\to\\mathbb{Z}\\xrightarrow{\\cdot n}\\mathbb{Z}\\to 0$ (em graus $1$ e $0$) é uma resolução projetiva de $\\mathbb{Z}/n$.\n\n**$\\mathrm{Ext}^i_{\\mathbb{Z}}(\\mathbb{Z}/n,A)$.** Aplique $\\mathrm{Hom}_{\\mathbb{Z}}(-,A)$ à parte $\\mathbb{Z}\\xrightarrow{\\cdot n}\\mathbb{Z}$ e tome cohomologia do cocomplexo $A\\xrightarrow{\\cdot n}A$:\n$$\\mathrm{Ext}^0=\\ker(\\cdot n:A\\to A)=A[n]\\ (=\\mathrm{Hom}(\\mathbb{Z}/n,A)),\\qquad \\mathrm{Ext}^1=\\mathrm{coker}(\\cdot n)=A/nA,$$\ne $\\mathrm{Ext}^i=0$ para $i\\ge 2$. Em particular $\\mathrm{Ext}^1_{\\mathbb{Z}}(\\mathbb{Z}/n,\\mathbb{Z})=\\mathbb{Z}/n$, refletindo que a extensão $0\\to\\mathbb{Z}\\to\\mathbb{Z}\\to\\mathbb{Z}/n\\to 0$ é não trivial.\n\n**$\\mathrm{Tor}_i^{\\mathbb{Z}}(\\mathbb{Z}/n,A)$.** Aplique $-\\otimes_{\\mathbb{Z}}A$ à mesma parte e tome homologia de $A\\xrightarrow{\\cdot n}A$:\n$$\\mathrm{Tor}_0=\\mathrm{coker}(\\cdot n)=A/nA\\ (=\\mathbb{Z}/n\\otimes A),\\qquad \\mathrm{Tor}_1=\\ker(\\cdot n:A\\to A)=A[n],$$\ne $\\mathrm{Tor}_i=0$ para $i\\ge 2$. Assim $\\mathrm{Tor}_1^{\\mathbb{Z}}(\\mathbb{Z}/n,A)=A[n]$ detecta a $n$-torção de $A$ — daí o nome 'Tor'. $\\blacksquare$\n\n**Leitura.** A não exatidão de $\\mathrm{Hom}$ e $\\otimes$ se materializa nos termos $\\mathrm{Ext}^1=A/nA$ e $\\mathrm{Tor}_1=A[n]$; quando $A$ é livre de torção e $n$-divisível eles somem, recuperando a exatidão.",
+      "exercises": [
+        {
+          "prompt": "Prove o Lema dos Cinco: num diagrama comutativo com linhas exatas e morfismos verticais $f_1,\\dots,f_5$, se $f_1$ é epi, $f_5$ é mono e $f_2,f_4$ são isos, então $f_3$ é iso. Faça por diagram chasing (ou por elementos generalizados).",
+          "hint": "Mostre $f_3$ mono e $f_3$ epi separadamente. Para mono, parta de $f_3(x)=0$ e empurre pela exatidão usando $f_2,f_4$ isos e $f_5$ mono.",
+          "difficulty": 4,
+          "solution": "**Enunciado.** Diagrama comutativo com linhas exatas\n$$\\begin{array}{ccccccccc}A_1&\\to&A_2&\\to&A_3&\\to&A_4&\\to&A_5\\\\ \\downarrow{\\scriptstyle f_1}&&\\downarrow{\\scriptstyle f_2}&&\\downarrow{\\scriptstyle f_3}&&\\downarrow{\\scriptstyle f_4}&&\\downarrow{\\scriptstyle f_5}\\\\ B_1&\\to&B_2&\\to&B_3&\\to&B_4&\\to&B_5\\end{array}$$\nSe $f_1$ é epi, $f_5$ é mono e $f_2,f_4$ são isos, então $f_3$ é iso. Fazemos diagram chasing (via elementos generalizados; vale em qualquer categoria abeliana). Denote as horizontais superiores $a_i:A_i\\to A_{i+1}$ e inferiores $b_i:B_i\\to B_{i+1}$.\n\n**$f_3$ é mono.** Seja $x\\in A_3$ com $f_3(x)=0$. Então $b_3 f_3(x)=0$, e por comutatividade $f_4 a_3(x)=0$; como $f_4$ é iso (logo mono), $a_3(x)=0$, i.e. $x\\in\\ker a_3=\\mathrm{im}\\,a_2$. Escreva $x=a_2(y)$, $y\\in A_2$. Então $b_2 f_2(y)=f_3 a_2(y)=f_3(x)=0$, logo $f_2(y)\\in\\ker b_2=\\mathrm{im}\\,b_1$: existe $z\\in B_1$ com $b_1(z)=f_2(y)$. Como $f_1$ é epi, $z=f_1(w)$ para $w\\in A_1$. Então $f_2(a_1(w))=b_1(f_1(w))=b_1(z)=f_2(y)$; sendo $f_2$ mono, $a_1(w)=y$. Logo $x=a_2(y)=a_2 a_1(w)=0$, pois $a_2 a_1=0$ (exatidão em $A_2$: $\\mathrm{im}\\,a_1\\subseteq\\ker a_2$). Portanto $f_3(x)=0\\Rightarrow x=0$: $f_3$ é mono.\n\n**$f_3$ é epi.** Seja $v\\in B_3$. Como $f_4$ é iso, $b_3(v)=f_4(t)$ para único $t\\in A_4$. Então $f_5 a_4(t)=b_4 f_4(t)=b_4 b_3(v)=0$ (exatidão inferior em $B_4$: $b_4 b_3=0$); como $f_5$ é mono, $a_4(t)=0$, i.e. $t\\in\\ker a_4=\\mathrm{im}\\,a_3$: $t=a_3(s)$, $s\\in A_3$. Considere $v-f_3(s)$: $b_3(v-f_3(s))=b_3(v)-b_3 f_3(s)=f_4(t)-f_4 a_3(s)=f_4(t)-f_4(t)=0$, logo $v-f_3(s)\\in\\ker b_3=\\mathrm{im}\\,b_2$: escreva $v-f_3(s)=b_2(u)$, $u\\in B_2$. Como $f_2$ é iso, $u=f_2(r)$, $r\\in A_2$. Então $f_3(a_2(r))=b_2 f_2(r)=b_2(u)=v-f_3(s)$, donde $v=f_3(a_2(r)+s)$. Portanto $f_3$ é sobrejetivo (epi).\n\n**Conclusão.** $f_3$ mono e epi numa categoria abeliana $\\Rightarrow$ $f_3$ iso. $\\blacksquare$",
+          "steps": [
+            "Organize o diagrama e nomeie as setas horizontais $a_i$, $b_i$; a estratégia é provar $f_3$ mono e $f_3$ epi separadamente.",
+            "Para mono: parta de $f_3(x)=0$, empurre por $a_3$ usando $f_4$ mono, e recue por exatidão até $A_1$ usando $f_1$ epi e $f_2$ mono.",
+            "Conclua $x=0$ usando $a_2 a_1=0$.",
+            "Para epi: dado $v\\in B_3$, use $f_4$ iso e $f_5$ mono para achar $s\\in A_3$ com $b_3 f_3(s)=b_3(v)$.",
+            "Corrija por $\\mathrm{im}\\,b_2$ e $f_2$ iso para escrever $v=f_3(\\cdot)$, obtendo epi; junte mono+epi $\\Rightarrow$ iso."
+          ]
+        },
+        {
+          "prompt": "Mostre que $M$ é projetivo se, e somente se, $\\mathrm{Hom}_R(M,-)$ é exato, se e somente se $M$ é somando direto de um livre. Conclua que sobre um DIP (ex.: $\\mathbb{Z}$) projetivo = livre para módulos finitamente gerados.",
+          "hint": "Projetivo = todo epi $B\\twoheadrightarrow M$ cinde. Levantar a identidade ao longo de um livre $\\twoheadrightarrow M$ exibe $M$ como somando.",
+          "difficulty": 3,
+          "solution": "Provamos a cadeia de equivalências para um $R$-módulo $M$: (i) $M$ projetivo $\\iff$ (ii) $\\mathrm{Hom}_R(M,-)$ exato $\\iff$ (iii) $M$ é somando direto de um livre.\n\n**Recordação.** $\\mathrm{Hom}_R(M,-)$ é sempre exato à esquerda, i.e. preserva $0\\to A\\to B\\to C$. Ser **exato** significa, adicionalmente, preservar epimorfismos: para todo epi $\\beta:B\\twoheadrightarrow C$, a aplicação $\\beta_*:\\mathrm{Hom}(M,B)\\to\\mathrm{Hom}(M,C)$ é sobrejetiva.\n\n**(i) $\\Rightarrow$ (ii).** $M$ projetivo significa: para todo epi $\\beta:B\\twoheadrightarrow C$ e todo $g:M\\to C$, existe levantamento $\\tilde g:M\\to B$ com $\\beta\\tilde g=g$. Isso é exatamente a sobrejetividade de $\\beta_*$, logo $\\mathrm{Hom}(M,-)$ leva epis em epis; combinado com a exatidão à esquerda, é exato.\n\n**(ii) $\\Rightarrow$ (iii).** Todo módulo é quociente de um livre: escolha um livre $L$ e um epi $\\pi:L\\twoheadrightarrow M$. Por (ii), $\\pi_*:\\mathrm{Hom}(M,L)\\to\\mathrm{Hom}(M,M)$ é sobrejetiva, logo existe $s:M\\to L$ com $\\pi s=\\mathrm{id}_M$. Assim $\\pi$ **cinde** e $M$ é somando direto de $L$: $L\\cong M\\oplus\\ker\\pi$.\n\n**(iii) $\\Rightarrow$ (i).** Se $M$ é somando direto de um livre $L=M\\oplus N$, então $M$ herda a propriedade de levantamento: dado epi $\\beta:B\\twoheadrightarrow C$ e $g:M\\to C$, estenda $g$ a $L$ (por $0$ em $N$), levante ao longo do livre $L$ (livres são projetivos: levantam-se definindo imagens de uma base) e restrinja a $M$. Logo $M$ é projetivo.\n\n**Sobre um DIP (ex.: $\\mathbb{Z}$).** Sobre um domínio de ideais principais, todo submódulo de um livre é livre. Em particular, se $M$ é projetivo f.g., é somando (logo submódulo) de um livre f.g., portanto **livre**. Assim, para módulos finitamente gerados sobre um DIP, **projetivo $=$ livre** — por exemplo, um grupo abeliano f.g. é projetivo (em $\\mathbf{Ab}$) sse, e só se, é livre, i.e. $\\cong\\mathbb{Z}^n$ (sem torção). $\\blacksquare$",
+          "steps": [
+            "Traduza 'projetivo' na propriedade de levantamento ao longo de epis e 'Hom(M,-) exato' em 'preserva epis'.",
+            "Mostre (i)$\\Rightarrow$(ii): a propriedade de levantamento é a sobrejetividade de $\\beta_*$.",
+            "Mostre (ii)$\\Rightarrow$(iii): tome epi $L\\twoheadrightarrow M$ de um livre; a exatidão fornece uma seção, exibindo $M$ como somando.",
+            "Mostre (iii)$\\Rightarrow$(i): somando de livre herda levantamento, pois livres são projetivos.",
+            "Sobre um DIP, use 'submódulo de livre é livre' para concluir projetivo f.g. = livre."
+          ]
+        },
+        {
+          "prompt": "Calcule $\\mathrm{Tor}_1^{\\mathbb{Z}}(\\mathbb{Z}/m,\\mathbb{Z}/n)$ e $\\mathrm{Ext}^1_{\\mathbb{Z}}(\\mathbb{Z}/m,\\mathbb{Z}/n)$ usando a resolução $0\\to\\mathbb{Z}\\xrightarrow{\\cdot m}\\mathbb{Z}\\to\\mathbb{Z}/m\\to 0$. Interprete o resultado em termos de $\\gcd(m,n)$.",
+          "hint": "Ambos dão $\\mathbb{Z}/\\gcd(m,n)$. Para $\\mathrm{Tor}_1$, $\\ker(\\cdot m:\\mathbb{Z}/n\\to\\mathbb{Z}/n)$; para $\\mathrm{Ext}^1$, $\\mathrm{coker}(\\cdot m:\\mathbb{Z}/n\\to\\mathbb{Z}/n)$.",
+          "difficulty": 3,
+          "solution": "Usamos a resolução projetiva livre de $\\mathbb{Z}/m$ em $\\mathbf{Ab}$:\n$$0\\longrightarrow\\mathbb{Z}\\xrightarrow{\\ \\cdot m\\ }\\mathbb{Z}\\longrightarrow\\mathbb{Z}/m\\longrightarrow 0,\\qquad P_\\bullet:\\ 0\\to\\mathbb{Z}\\xrightarrow{\\cdot m}\\mathbb{Z}\\to 0.$$\n\n**$\\mathrm{Tor}_i^{\\mathbb{Z}}(\\mathbb{Z}/m,\\mathbb{Z}/n)$.** Aplique $-\\otimes_{\\mathbb{Z}}\\mathbb{Z}/n$ à parte $\\mathbb{Z}\\xrightarrow{\\cdot m}\\mathbb{Z}$, obtendo o complexo (usando $\\mathbb{Z}\\otimes\\mathbb{Z}/n\\cong\\mathbb{Z}/n$)\n$$\\mathbb{Z}/n\\xrightarrow{\\ \\cdot m\\ }\\mathbb{Z}/n.$$\nEntão:\n$$\\mathrm{Tor}_0=\\mathrm{coker}(\\cdot m)=\\mathbb{Z}/n\\big/m\\,\\mathbb{Z}/n=\\mathbb{Z}/\\gcd(m,n),$$\n$$\\mathrm{Tor}_1=\\ker(\\cdot m:\\mathbb{Z}/n\\to\\mathbb{Z}/n).$$\nO núcleo de 'multiplicar por $m$' em $\\mathbb{Z}/n$ é $\\{x:\\ mx\\equiv 0\\ (\\mathrm{mod}\\ n)\\}$. Escrevendo $d=\\gcd(m,n)$, isso é $\\tfrac{n}{d}\\,\\mathbb{Z}/n\\mathbb{Z}$, um grupo cíclico de ordem $d$, logo $\\mathrm{Tor}_1\\cong\\mathbb{Z}/\\gcd(m,n)$. E $\\mathrm{Tor}_i=0$ para $i\\ge 2$ (a resolução tem comprimento $1$).\n\n**$\\mathrm{Ext}^1_{\\mathbb{Z}}(\\mathbb{Z}/m,\\mathbb{Z}/n)$.** Aplique $\\mathrm{Hom}_{\\mathbb{Z}}(-,\\mathbb{Z}/n)$ à mesma parte, obtendo o cocomplexo (usando $\\mathrm{Hom}(\\mathbb{Z},\\mathbb{Z}/n)\\cong\\mathbb{Z}/n$, e a transposta de $\\cdot m$ é $\\cdot m$)\n$$\\mathbb{Z}/n\\xrightarrow{\\ \\cdot m\\ }\\mathbb{Z}/n.$$\nEntão:\n$$\\mathrm{Ext}^0=\\ker(\\cdot m)=\\mathbb{Z}/\\gcd(m,n)\\ (=\\mathrm{Hom}(\\mathbb{Z}/m,\\mathbb{Z}/n)),$$\n$$\\mathrm{Ext}^1=\\mathrm{coker}(\\cdot m)=\\mathbb{Z}/n\\big/m\\,\\mathbb{Z}/n=\\mathbb{Z}/\\gcd(m,n),$$\ne $\\mathrm{Ext}^i=0$ para $i\\ge 2$.\n\n**Interpretação via $\\gcd$.** Ambos dão $\\mathbb{Z}/\\gcd(m,n)$:\n$$\\mathrm{Tor}_1^{\\mathbb{Z}}(\\mathbb{Z}/m,\\mathbb{Z}/n)\\cong\\mathrm{Ext}^1_{\\mathbb{Z}}(\\mathbb{Z}/m,\\mathbb{Z}/n)\\cong\\mathbb{Z}/\\gcd(m,n).$$\nSe $\\gcd(m,n)=1$ (coprimos), ambos são $0$: $\\mathbb{Z}/m$ e $\\mathbb{Z}/n$ não têm torção comum e a única extensão é a trivial ($\\mathbb{Z}/mn\\cong\\mathbb{Z}/m\\times\\mathbb{Z}/n$ cinde). Quanto maior $\\gcd(m,n)$, mais 'interação' de torção: $\\mathrm{Tor}_1$ mede a torção comum e $\\mathrm{Ext}^1$ classifica as extensões $0\\to\\mathbb{Z}/n\\to E\\to\\mathbb{Z}/m\\to 0$ a menos de equivalência. $\\blacksquare$",
+          "steps": [
+            "Escreva a resolução projetiva $0\\to\\mathbb{Z}\\xrightarrow{\\cdot m}\\mathbb{Z}\\to\\mathbb{Z}/m\\to 0$.",
+            "Aplique $-\\otimes\\mathbb{Z}/n$ e reduza ao complexo $\\mathbb{Z}/n\\xrightarrow{\\cdot m}\\mathbb{Z}/n$.",
+            "Calcule $\\mathrm{Tor}_0=\\mathrm{coker}$ e $\\mathrm{Tor}_1=\\ker$ dessa multiplicação, identificando ambos via $d=\\gcd(m,n)$.",
+            "Aplique $\\mathrm{Hom}(-,\\mathbb{Z}/n)$ à mesma parte, obtendo $\\mathbb{Z}/n\\xrightarrow{\\cdot m}\\mathbb{Z}/n$, e calcule $\\mathrm{Ext}^0,\\mathrm{Ext}^1$.",
+            "Conclua $\\mathrm{Tor}_1\\cong\\mathrm{Ext}^1\\cong\\mathbb{Z}/\\gcd(m,n)$ e interprete (coprimos $\\Rightarrow 0$)."
+          ]
+        },
+        {
+          "prompt": "Dada a sequência exata curta $0\\to A'\\to A\\to A''\\to 0$ de $R$-módulos e um $R$-módulo $M$, escreva a sequência exata longa de $\\mathrm{Tor}_\\bullet(-,M)$ e use-a para provar que se $M$ é plano então $\\mathrm{Tor}_i(N,M)=0$ para todo $i\\ge 1$ e todo $N$.",
+          "hint": "Plano $\\iff-\\otimes M$ exato $\\iff$ a sequência longa colapsa, forçando os termos $\\mathrm{Tor}_{\\ge 1}$ a se anularem. Recíproca via resolução.",
+          "difficulty": 4,
+          "solution": "**A sequência exata longa de $\\mathrm{Tor}$.** Dada a sequência exata curta de $R$-módulos $0\\to A'\\xrightarrow{i}A\\xrightarrow{p}A''\\to 0$ e um $R$-módulo $M$, os functores derivados à esquerda de $-\\otimes_R M$ produzem (via lema da serpente aplicado a uma resolução) a sequência exata longa\n$$\\cdots\\to\\mathrm{Tor}_2(A'',M)\\xrightarrow{\\partial}\\mathrm{Tor}_1(A',M)\\to\\mathrm{Tor}_1(A,M)\\to\\mathrm{Tor}_1(A'',M)\\xrightarrow{\\ \\partial\\ }$$\n$$\\xrightarrow{\\ \\partial\\ }A'\\otimes M\\xrightarrow{i\\otimes 1}A\\otimes M\\xrightarrow{p\\otimes 1}A''\\otimes M\\to 0,$$\ncom morfismos de conexão $\\partial$ naturais (aqui $\\mathrm{Tor}_0(-,M)=-\\otimes M$).\n\n**$M$ plano $\\Rightarrow$ $\\mathrm{Tor}_i(N,M)=0$ para $i\\ge 1$.** Definição: $M$ é **plano** sse $-\\otimes_R M$ é exato, i.e. preserva monomorfismos (já é exato à direita). Prova direta pela definição de $\\mathrm{Tor}$: seja $N$ qualquer módulo e tome uma resolução projetiva\n$$\\cdots\\to P_2\\xrightarrow{d_2}P_1\\xrightarrow{d_1}P_0\\to N\\to 0,\\quad\\text{exata}.$$\nAplicando $-\\otimes M$ obtemos o complexo $\\cdots\\to P_2\\otimes M\\to P_1\\otimes M\\to P_0\\otimes M\\to 0$, e por definição $\\mathrm{Tor}_i(N,M)=H_i$ desse complexo. Como $M$ é plano, $-\\otimes M$ é **exato**, logo preserva a exatidão da resolução em cada ponto (a resolução truncada é uma sucessão de sequências exatas curtas $0\\to Z_k\\to P_k\\to B_{k-1}\\to 0$; a exatidão de $-\\otimes M$ preserva essas SES). Portanto o complexo $P_\\bullet\\otimes M$ permanece exato em todos os graus $\\ge 1$, de modo que sua homologia se anula: $H_i(P_\\bullet\\otimes M)=0$ para $i\\ge 1$. Assim $\\mathrm{Tor}_i(N,M)=0$ para todo $i\\ge 1$ e todo $N$.\n\n**Leitura via LES.** Consistentemente, na sequência exata longa acima, planura de $M$ força $i\\otimes 1$ a permanecer injetiva (i.e. $-\\otimes M$ preserva o mono $i$), logo o morfismo de conexão $\\partial:\\mathrm{Tor}_1(A'',M)\\to A'\\otimes M$ é nulo; empurrando isso por indução (usando que todo módulo se encaixa numa SES com um projetivo), os termos $\\mathrm{Tor}_{\\ge 1}$ colapsam. **Recíproca:** se $\\mathrm{Tor}_1(N,M)=0$ para todo $N$, então em cada SES $0\\to A'\\to A\\to A''\\to 0$ a LES dá $0=\\mathrm{Tor}_1(A'',M)\\to A'\\otimes M\\to A\\otimes M$, logo $i\\otimes 1$ é mono e $-\\otimes M$ é exato, i.e. $M$ é plano. $\\blacksquare$",
+          "steps": [
+            "Escreva a sequência exata longa de $\\mathrm{Tor}_\\bullet(-,M)$ associada a $0\\to A'\\to A\\to A''\\to 0$, terminando em $A'\\otimes M\\to A\\otimes M\\to A''\\otimes M\\to 0$.",
+            "Recorde a definição: $M$ plano $\\iff$ $-\\otimes M$ exato (preserva monos).",
+            "Tome uma resolução projetiva de $N$ e aplique $-\\otimes M$.",
+            "Use a exatidão de $-\\otimes M$ para concluir que o complexo permanece exato em graus $\\ge 1$, anulando a homologia.",
+            "Conclua $\\mathrm{Tor}_i(N,M)=0$ para $i\\ge 1$; observe a recíproca via a LES ($\\mathrm{Tor}_1=0\\Rightarrow$ mono preservado)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Categoria abeliana (axiomas)",
+          "back": "Aditiva + todo morfismo tem núcleo/conúcleo + todo mono é núcleo e todo epi é conúcleo."
+        },
+        {
+          "front": "Exemplos de categoria abeliana",
+          "back": "$\\mathbf{Ab}$, $R\\text{-}\\mathbf{Mod}$, feixes de grupos abelianos sobre um espaço."
+        },
+        {
+          "front": "Exatidão de $\\mathrm{Hom}$",
+          "back": "$\\mathrm{Hom}(M,-)$ e $\\mathrm{Hom}(-,N)$ são exatos à esquerda."
+        },
+        {
+          "front": "Exatidão de $\\otimes$",
+          "back": "$-\\otimes_R M$ é exato à direita; $M$ plano $\\iff$ exato."
+        },
+        {
+          "front": "$M$ projetivo / injetivo / plano",
+          "back": "$\\mathrm{Hom}(M,-)$ exato / $\\mathrm{Hom}(-,M)$ exato / $-\\otimes M$ exato, respectivamente."
+        },
+        {
+          "front": "$\\mathrm{Tor}$ e $\\mathrm{Ext}$ (definição)",
+          "back": "$\\mathrm{Tor}_i=L_i(-\\otimes-)$ via resolução projetiva; $\\mathrm{Ext}^i=R^i\\mathrm{Hom}$ via projetiva/injetiva."
+        },
+        {
+          "front": "Lema da Serpente",
+          "back": "Liga núcleos e conúcleos numa sequência exata $\\ker f\\to\\ker g\\to\\ker h\\xrightarrow{\\partial}\\mathrm{coker}f\\to\\mathrm{coker}g\\to\\mathrm{coker}h$."
+        },
+        {
+          "front": "$\\mathrm{Ext}^1_{\\mathbb{Z}}(\\mathbb{Z}/n,\\mathbb{Z})$",
+          "back": "$\\mathbb{Z}/n$; classifica a extensão não trivial $0\\to\\mathbb{Z}\\to\\mathbb{Z}\\to\\mathbb{Z}/n\\to 0$."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Weibel, An Introduction to Homological Algebra — caps. 1-3 e Apêndice A",
+          "ref": "livro"
+        },
+        {
+          "title": "Rotman, An Introduction to Homological Algebra — categorias abelianas, Tor e Ext",
+          "ref": "livro"
+        },
+        {
+          "title": "Dummit & Foote, Abstract Algebra — caps. 10 e 17",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe os axiomas de categoria aditiva e abeliana em Weibel (Apêndice A) e verifique-os em $\\mathbf{Ab}$ e $R\\text{-}\\mathbf{Mod}$.",
+          "Domine sequências exatas curtas/longas e a exatidão parcial de $\\mathrm{Hom}$ e $\\otimes$ (esquerda vs. direita) em Rotman/Weibel cap. 1-2.",
+          "Aprenda diagram chasing praticando o Lema dos Cinco e o Lema da Serpente; refaça as provas linha a linha.",
+          "Construa resoluções projetivas/injetivas e defina $L_iF$, $R^iF$; refaça o cálculo de $\\mathrm{Ext}$ e $\\mathrm{Tor}$ de $\\mathbb{Z}/n$ do exemplo resolvido.",
+          "Assista a um vídeo/curso sobre álgebra homológica para consolidar functores derivados e sequência exata longa (tema com material em português escasso — use fontes em inglês).",
+          "Volte ao app: resolva os testes e anote aqui os axiomas de categoria abeliana, o Lema da Serpente e o cálculo de $\\mathrm{Ext}^i$/$\\mathrm{Tor}_i$ via resolução."
+        ],
+        "searchQueries": [
+          "categoria abeliana axiomas núcleo conúcleo mono é núcleo",
+          "sequência exata Hom tensor exato à esquerda direita módulos",
+          "lema da serpente lema dos cinco diagram chasing prova",
+          "resolução projetiva injetiva functor derivado Ext Tor definição",
+          "compute Ext Tor Z/n Z homological algebra resolution",
+          "derived functor long exact sequence snake lemma Weibel"
+        ],
+        "videos": [
+          {
+            "title": "Commutative Algebra / Homological Algebra — aulas",
+            "channel": "Richard E. Borcherds",
+            "note": "Assista às aulas sobre módulos, sequências exatas, Tor e Ext; rigor de pesquisa, em inglês."
+          },
+          {
+            "title": "Homological algebra — Ext, Tor, resoluções",
+            "channel": "MIT OpenCourseWare / Mathdoctorbob",
+            "note": "Procure aulas sobre resoluções projetivas e cálculo de Ext/Tor; material em português é escasso, use estas fontes em inglês."
+          },
+          {
+            "title": "Aulas sobre categorias abelianas e functores derivados",
+            "channel": "The Catsters",
+            "note": "Veja os vídeos sobre categorias abelianas, complexos e homologia para a linguagem categórica."
+          }
+        ],
+        "articles": [
+          {
+            "title": "An Introduction to Homological Algebra, caps. 1-3 e Apêndice A",
+            "where": "livro de Charles A. Weibel"
+          },
+          {
+            "title": "An Introduction to Homological Algebra (categorias abelianas, Tor, Ext)",
+            "where": "livro de Joseph J. Rotman"
+          },
+          {
+            "title": "Verbetes 'abelian category', 'derived functor', 'Ext', 'Tor', 'snake lemma'",
+            "where": "nLab (ncatlab.org) e The Stacks Project (stacks.math.columbia.edu)"
+          }
+        ]
+      }
+    }
+  ]
+}

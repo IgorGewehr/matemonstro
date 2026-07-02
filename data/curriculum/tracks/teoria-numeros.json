@@ -1,0 +1,1749 @@
+{
+  "id": "teoria-numeros",
+  "title": "Teoria dos Números",
+  "phase": 1,
+  "phaseLabel": "Núcleo",
+  "tagline": "A aritmética dos inteiros levada ao rigor: de $\\gcd(a,b)$ e do algoritmo de Euclides até a Lei de Reciprocidade Quadrática e a distribuição dos primos.",
+  "summary": "Esta trilha constrói a Teoria Elementar dos Números do alicerce ao teto, sempre com demonstrações completas. Partimos da divisibilidade e do algoritmo de Euclides, estabelecemos o Teorema Fundamental da Aritmética, desenvolvemos a aritmética de congruências e a estrutura do anel $\\mathbb{Z}/n\\mathbb{Z}$, e chegamos aos teoremas de Fermat e Euler, às raízes primitivas, à Lei de Reciprocidade Quadrática, às funções aritméticas multiplicativas com a convolução de Dirichlet, e a uma introdução honesta às equações diofantinas e à distribuição dos primos. O fio condutor é transformar fatos aritméticos familiares em teoremas provados.",
+  "bigPicture": "A Teoria dos Números é o laboratório onde a Álgebra Abstrata ganha carne: $\\mathbb{Z}$ é o domínio euclidiano modelo, $\\mathbb{Z}/n\\mathbb{Z}$ é o anel quociente modelo, $(\\mathbb{Z}/n\\mathbb{Z})^\\times$ é o grupo abeliano finito modelo e $\\mathbb{Z}/p\\mathbb{Z}$ é o corpo finito modelo. Quase todo conceito de Álgebra 1 (ideais, quocientes, ordem de elemento, grupos cíclicos, homomorfismos) reaparece aqui em forma concreta e calculável, e isso fixa a abstração. Os resultados desta trilha alimentam diretamente Álgebra 2 (corpos finitos, teoria de Galois), Criptografia (RSA, Diffie-Hellman, testes de primalidade) e Teoria Analítica e Algébrica dos Números no mestrado. Em concursos de Instituto Federal, divisibilidade, congruências, pequeno teorema de Fermat e o Teorema Chinês do Resto aparecem com frequência em questões objetivas e discursivas; em processos seletivos de mestrado, a aritmética modular e a estrutura de $(\\mathbb{Z}/n\\mathbb{Z})^\\times$ comparecem na parte de Álgebra. Além do valor utilitário, é a área com os enunciados mais simples e as demonstrações mais elegantes da matemática — ideal para treinar o raciocínio dedutivo.",
+  "prereqs": [
+    "algebra-abstrata-1"
+  ],
+  "difficulty": 4,
+  "estimatedHours": 55,
+  "primaryBooks": [
+    {
+      "title": "Elementos de Aritmética",
+      "author": "Abramo Hefez",
+      "note": "Referência brasileira canônica (SBM, Coleção do Professor de Matemática); cobre divisibilidade, congruências, Fermat/Euler e diofantinas com rigor e didática. Use como espinha dorsal.",
+      "chapters": "caps. 1–11"
+    },
+    {
+      "title": "Aritmética",
+      "author": "Abramo Hefez",
+      "note": "Versão da Coleção PROFMAT (SBM), alinhada ao programa de mestrado profissional; ótima para concursos de IF e exercícios graduados.",
+      "chapters": "caps. 1–10"
+    },
+    {
+      "title": "Introdução à Teoria dos Números",
+      "author": "José Plínio O. Santos",
+      "note": "Texto brasileiro do IMPA (Coleção Matemática Universitária); enxuto, com congruências, reciprocidade quadrática e funções aritméticas.",
+      "chapters": "caps. 1–7"
+    },
+    {
+      "title": "Teoria dos Números: um passeio com primos e outros números familiares pelo mundo inteiro",
+      "author": "F. Brochero, C. G. Moreira, N. Saldanha e E. Tengan",
+      "note": "Texto avançado do IMPA (Projeto Euclides); excelente para aprofundar raízes primitivas, reciprocidade e diofantinas, e para preparar olimpíadas e mestrado.",
+      "chapters": "caps. 1–5"
+    },
+    {
+      "title": "An Introduction to the Theory of Numbers",
+      "author": "I. Niven, H. Zuckerman e H. Montgomery",
+      "note": "Clássico internacional completo e rigoroso; padrão para congruências, raízes primitivas e reciprocidade quadrática.",
+      "chapters": "caps. 1–5"
+    },
+    {
+      "title": "An Introduction to the Theory of Numbers",
+      "author": "G. H. Hardy e E. M. Wright",
+      "note": "O clássico dos clássicos; rico em primos, funções aritméticas e história. Use como referência de consulta e aprofundamento.",
+      "chapters": "caps. 1–8, 16–18"
+    },
+    {
+      "title": "Elementary Number Theory",
+      "author": "David M. Burton",
+      "note": "Didático e com muitos exemplos resolvidos; bom para a primeira passagem e para treinar cálculos.",
+      "chapters": "caps. 2–9"
+    },
+    {
+      "title": "Introduction to Analytic Number Theory",
+      "author": "Tom M. Apostol",
+      "note": "Para o capítulo de funções aritméticas, convolução de Dirichlet, inversão de Möbius e distribuição de primos (Chebyshev, PNT).",
+      "chapters": "caps. 2–4"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.781 Theory of Numbers",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "William Stein — Elementary Number Theory: Primes, Congruences, and Secrets (livro gratuito)",
+      "kind": "livro",
+      "ref": "wstein.org"
+    },
+    {
+      "title": "PROFMAT / SBM — materiais de Aritmética (MA14)",
+      "kind": "curso",
+      "ref": "profmat-sbm.org.br"
+    },
+    {
+      "title": "Canal IMPA — minicursos e palestras de Teoria dos Números",
+      "kind": "video",
+      "ref": "YouTube / impa.br"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 3,
+    "mestrado": 3,
+    "note": "Em concursos de IF (professor de Matemática), costumam cair: critérios de divisibilidade e o algoritmo de Euclides, MDC/MMC, congruências e aritmética de restos, o Pequeno Teorema de Fermat e o Teorema Chinês do Resto (problemas do tipo restos simultâneos), além de equações diofantinas lineares. São tópicos de enunciado simples, ótimos para questões objetivas e discursivas. Em mestrado, a Teoria dos Números costuma entrar pela porta da Álgebra: estrutura de $\\mathbb{Z}/n\\mathbb{Z}$ e de $(\\mathbb{Z}/n\\mathbb{Z})^\\times$, teoremas de Fermat/Euler, ordem e raízes primitivas, e $\\mathbb{Z}$ como domínio euclidiano/ DIP/DFU. Reciprocidade quadrática e distribuição de primos são menos cobrados em provas elementares, mas são pré-requisito cultural e técnico para as disciplinas de Teoria dos Números do mestrado. Saber demonstrar (não só calcular) é o diferencial."
+  },
+  "subtopics": [
+    {
+      "id": "teoria-numeros-01-divisibilidade-euclides",
+      "title": "Divisibilidade e o algoritmo de Euclides",
+      "tagline": "Algoritmo da divisão, MDC, identidade de Bézout e o algoritmo que move toda a aritmética.",
+      "objectives": [
+        "Ao final você consegue definir divisibilidade em $\\mathbb{Z}$ e demonstrar suas propriedades básicas (transitividade, combinação linear, antissimetria nos positivos).",
+        "Ao final você consegue enunciar e demonstrar o algoritmo da divisão, com existência e unicidade de quociente e resto.",
+        "Ao final você consegue calcular $\\gcd(a,b)$ pelo algoritmo de Euclides e obter os coeficientes de Bézout pelo algoritmo estendido.",
+        "Ao final você consegue provar a identidade de Bézout e usá-la para deduzir propriedades de coprimalidade.",
+        "Ao final você consegue relacionar $\\gcd$ e $\\operatorname{lcm}$ pela fórmula $\\gcd(a,b)\\cdot\\operatorname{lcm}(a,b)=|ab|$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Divisibilidade",
+          "statement": "Para $a,b\\in\\mathbb{Z}$, dizemos $a\\mid b$ (\"$a$ divide $b$\") se existe $c\\in\\mathbb{Z}$ com $b=ac$. Vale: se $a\\mid b$ e $a\\mid c$ então $a\\mid(bx+cy)$ para quaisquer $x,y\\in\\mathbb{Z}$."
+        },
+        {
+          "term": "Algoritmo da divisão",
+          "statement": "Dados $a\\in\\mathbb{Z}$ e $b\\in\\mathbb{Z}$ com $b>0$, existem únicos $q,r\\in\\mathbb{Z}$ com $a=bq+r$ e $0\\le r<b$. Chamamos $q$ de quociente e $r$ de resto."
+        },
+        {
+          "term": "Máximo divisor comum",
+          "statement": "$d=\\gcd(a,b)$ é o maior inteiro que divide $a$ e $b$ (com a convenção $\\gcd(0,0)=0$). Equivalentemente, $d>0$, $d\\mid a$, $d\\mid b$, e todo divisor comum de $a,b$ divide $d$."
+        },
+        {
+          "term": "Coprimos",
+          "statement": "$a$ e $b$ são primos entre si (coprimos) quando $\\gcd(a,b)=1$, isto é, não têm fator primo em comum. Equivale a existirem $x,y$ com $ax+by=1$."
+        },
+        {
+          "term": "Mínimo múltiplo comum",
+          "statement": "$\\operatorname{lcm}(a,b)$ é o menor inteiro positivo múltiplo de $a$ e de $b$. Relaciona-se ao MDC por $\\gcd(a,b)\\cdot\\operatorname{lcm}(a,b)=|ab|$ (para $a,b\\ne 0$)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Algoritmo da divisão (existência e unicidade)",
+          "statement": "Para todo $a\\in\\mathbb{Z}$ e todo $b\\in\\mathbb{Z}_{>0}$ existem únicos $q,r\\in\\mathbb{Z}$ com $a=bq+r$ e $0\\le r<b$.",
+          "whyItMatters": "É o motor de toda a Teoria dos Números elementar: dá sentido a \"resto\", fundamenta as congruências e faz de $\\mathbb{Z}$ um domínio euclidiano."
+        },
+        {
+          "name": "Identidade de Bézout",
+          "statement": "Para $a,b\\in\\mathbb{Z}$ não ambos nulos, $\\gcd(a,b)$ é o menor inteiro positivo da forma $ax+by$ com $x,y\\in\\mathbb{Z}$. Em particular, existem $x,y$ com $ax+by=\\gcd(a,b)$.",
+          "whyItMatters": "Transforma o MDC em combinação linear, ferramenta usada para inverter elementos módulo $n$, provar o Lema de Euclides e resolver equações diofantinas."
+        },
+        {
+          "name": "Lema de Euclides",
+          "statement": "Se $\\gcd(a,b)=1$ e $a\\mid bc$, então $a\\mid c$.",
+          "whyItMatters": "É o passo decisivo para a unicidade da fatoração em primos (próximo subtópico); sem coprimalidade, $a\\mid bc$ não força $a\\mid c$."
+        },
+        {
+          "name": "Algoritmo de Euclides",
+          "statement": "Se $a=bq+r$ então $\\gcd(a,b)=\\gcd(b,r)$. Iterando, a sequência de restos decresce estritamente até $0$, e o último resto não nulo é $\\gcd(a,b)$.",
+          "whyItMatters": "Calcula o MDC em tempo logarítmico sem fatorar, e sua versão estendida produz os coeficientes de Bézout, base de toda a aritmética computacional."
+        }
+      ],
+      "summary": "A pedra fundamental é o algoritmo da divisão: ele converte a relação de ordem de $\\mathbb{Z}$ em uma operação com resto controlado $0\\le r<b$, e é dele que nasce tudo. A partir da divisão, o algoritmo de Euclides calcula o MDC pela identidade $\\gcd(a,b)=\\gcd(b,r)$, onde $r$ é o resto de $a$ por $b$: como os restos formam uma sequência estritamente decrescente de inteiros não negativos, o processo termina, e o último resto não nulo é o MDC. Esse mesmo cálculo, lido de baixo para cima (algoritmo de Euclides estendido), exibe inteiros $x,y$ tais que $ax+by=\\gcd(a,b)$ — a identidade de Bézout.\n\nBézout é a chave de fenda universal da aritmética: dela seguem o Lema de Euclides (se $\\gcd(a,b)=1$ e $a\\mid bc$ então $a\\mid c$), a existência de inversos módulo $n$, e a solubilidade das equações diofantinas lineares. Vale lembrar a leitura algébrica: a identidade de Bézout diz que o ideal $a\\mathbb{Z}+b\\mathbb{Z}$ é gerado por $\\gcd(a,b)$, ou seja, $\\mathbb{Z}$ é um domínio de ideais principais. Por fim, a relação $\\gcd(a,b)\\cdot\\operatorname{lcm}(a,b)=|ab|$ conecta os dois invariantes e será revisitada via fatoração.",
+      "commonPitfalls": [
+        "Aplicar o algoritmo da divisão com $b<0$ ou esquecer a restrição $0\\le r<b$: o resto é sempre não negativo e menor que $|b|$.",
+        "Confundir \"$d$ divide $a$ e $b$\" com \"$d=\\gcd(a,b)$\": o MDC é o maior tal $d$, e todo divisor comum o divide.",
+        "Achar que $a\\mid bc$ implica $a\\mid b$ ou $a\\mid c$ sem a hipótese de coprimalidade (isso só vale em geral quando $a$ é primo).",
+        "Usar $ax+by=c$ como se sempre tivesse solução: só tem quando $\\gcd(a,b)\\mid c$.",
+        "Esquecer que os coeficientes de Bézout não são únicos: $x,y$ podem ser substituídos por $x+kb/d,\\ y-ka/d$."
+      ],
+      "worked": "**Problema.** Calcule $\\gcd(252,198)$ e escreva-o como combinação linear de $252$ e $198$.\n\n**Euclides.** $252=1\\cdot 198+54$; $198=3\\cdot 54+36$; $54=1\\cdot 36+18$; $36=2\\cdot 18+0$. O último resto não nulo é $18$, logo $\\gcd(252,198)=18$.\n\n**Bézout (de baixo para cima).** $18=54-1\\cdot 36$. Como $36=198-3\\cdot 54$, temos $18=54-(198-3\\cdot 54)=4\\cdot 54-198$. Como $54=252-198$, segue $18=4(252-198)-198=4\\cdot 252-5\\cdot 198$. Verificação: $4\\cdot 252-5\\cdot 198=1008-990=18$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Demonstre a unicidade do quociente e do resto no algoritmo da divisão.",
+          "hint": "Suponha $a=bq_1+r_1=bq_2+r_2$ com $0\\le r_1,r_2<b$; subtraia para obter $b\\mid(r_1-r_2)$ e use $|r_1-r_2|<b$.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Dados $a\\in\\mathbb{Z}$ e $b>0$, mostre que o par $(q,r)$ com $a=bq+r$ e $0\\le r<b$ e unico.\n\n**Demonstracao.** Suponha duas representacoes\n$$a=bq_1+r_1=bq_2+r_2,\\qquad 0\\le r_1<b,\\quad 0\\le r_2<b.$$\nSubtraindo as duas igualdades:\n$$0=b(q_1-q_2)+(r_1-r_2)\\ \\Longrightarrow\\ r_2-r_1=b(q_1-q_2).$$\nLogo $b\\mid(r_2-r_1)$. Por outro lado, de $0\\le r_1<b$ e $0\\le r_2<b$ segue $-b<r_2-r_1<b$, ou seja $|r_2-r_1|<b$.\n\nO unico multiplo de $b$ com valor absoluto estritamente menor que $b$ e $0$. Portanto $r_2-r_1=0$, isto e, $r_1=r_2$. Voltando a $r_2-r_1=b(q_1-q_2)$ com $b>0$, obtemos $b(q_1-q_2)=0$ e, como $b\\ne 0$, $q_1=q_2$.\n\nAssim $(q_1,r_1)=(q_2,r_2)$: o quociente e o resto sao unicos. $\\blacksquare$",
+          "steps": [
+            "Dica: assuma que existem duas representacoes $a=bq_1+r_1=bq_2+r_2$, ambas com resto no intervalo $[0,b)$.",
+            "Montagem: subtraia as igualdades para isolar $r_2-r_1=b(q_1-q_2)$, concluindo que $b\\mid(r_2-r_1)$.",
+            "Execucao: use $0\\le r_1,r_2<b$ para deduzir $|r_2-r_1|<b$.",
+            "Conclusao: o unico multiplo de $b$ com modulo menor que $b$ e $0$, logo $r_1=r_2$ e, em seguida, $q_1=q_2$."
+          ]
+        },
+        {
+          "prompt": "Prove a identidade de Bézout a partir do Princípio da Boa Ordenação aplicado ao conjunto $S=\\{ax+by:x,y\\in\\mathbb{Z}\\}\\cap\\mathbb{Z}_{>0}$.",
+          "hint": "Seja $d$ o menor elemento de $S$. Use o algoritmo da divisão para mostrar que $d\\mid a$ e $d\\mid b$, e que qualquer divisor comum divide $d$.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Prove a identidade de Bezout: para $a,b$ nao ambos nulos, existe $d=\\gcd(a,b)$ da forma $d=ax_0+by_0$, e $d$ e o menor inteiro positivo dessa forma.\n\n**Demonstracao.** Considere\n$$S=\\{ax+by:\\ x,y\\in\\mathbb{Z}\\}\\cap\\mathbb{Z}_{>0}.$$\nComo $a,b$ nao sao ambos nulos, algum dentre $\\pm a,\\pm b$ e positivo, logo $S\\ne\\varnothing$. Pelo Principio da Boa Ordenacao, $S$ tem menor elemento $d=ax_0+by_0>0$.\n\n**(i) $d\\mid a$ e $d\\mid b$.** Pelo algoritmo da divisao, $a=dq+r$ com $0\\le r<d$. Entao\n$$r=a-dq=a-q(ax_0+by_0)=a(1-qx_0)+b(-qy_0),$$\nque e da forma $ax+by$. Se fosse $r>0$, teriamos $r\\in S$ com $r<d$, contradizendo a minimalidade de $d$. Logo $r=0$ e $d\\mid a$. O mesmo argumento com $b$ da $d\\mid b$. Portanto $d$ e divisor comum de $a$ e $b$.\n\n**(ii) $d$ e o maior divisor comum.** Seja $c$ qualquer divisor comum de $a$ e $b$. Entao $c\\mid(ax_0+by_0)=d$, e como $d>0$ segue $c\\le d$. Isso mostra que todo divisor comum divide $d$ (e em particular $c\\le d$), logo $d=\\gcd(a,b)$.\n\nPor construcao $d$ e o menor inteiro positivo da forma $ax+by$. $\\blacksquare$",
+          "steps": [
+            "Dica: aplique o Principio da Boa Ordenacao ao conjunto $S$ das combinacoes $ax+by$ estritamente positivas, garantindo primeiro que $S\\ne\\varnothing$.",
+            "Montagem: chame $d$ o menor elemento de $S$, com $d=ax_0+by_0$.",
+            "Execucao: divida $a$ por $d$ e mostre que o resto $r$ tambem esta na forma $ax+by$; a minimalidade de $d$ forca $r=0$, logo $d\\mid a$ (idem para $b$).",
+            "Conclusao: qualquer divisor comum $c$ divide $ax_0+by_0=d$, portanto $c\\mid d$ e $c\\le d$; assim $d=\\gcd(a,b)$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $\\gcd(a,b)\\cdot\\operatorname{lcm}(a,b)=|ab|$ para $a,b\\ne 0$.",
+          "hint": "Escreva $d=\\gcd(a,b)$, $a=da'$, $b=db'$ com $\\gcd(a',b')=1$, e verifique que $\\operatorname{lcm}(a,b)=da'b'$ usando o Lema de Euclides.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Prove que $\\gcd(a,b)\\cdot\\operatorname{lcm}(a,b)=|ab|$ para $a,b\\ne 0$.\n\n**Demonstracao.** Seja $d=\\gcd(a,b)$ e escreva $a=da'$, $b=db'$ com $\\gcd(a',b')=1$ (dividir por $d$ torna as partes coprimas).\n\nAfirmo que $L:=da'b'$ (a menos de sinal, tomamos $|da'b'|$) e o $\\operatorname{lcm}(a,b)$.\n\n**$L$ e multiplo comum.** $L=da'b'=(da')b'=ab'$ e multiplo de $a$; tambem $L=da'b'=a'(db')=a'b$ e multiplo de $b$.\n\n**$L$ e o menor.** Seja $m$ um multiplo comum positivo de $a$ e $b$. De $a\\mid m$ escreva $m=ak=da'k$. Como $b\\mid m$, temos $db'\\mid da'k$, isto e $b'\\mid a'k$. Como $\\gcd(a',b')=1$, o Lema de Euclides da $b'\\mid k$, digamos $k=b'k'$. Entao $m=da'b'k'=Lk'$, ou seja $L\\mid m$. Logo $L\\le m$: $L$ e o menor multiplo comum positivo.\n\n**Produto.** Assim $\\operatorname{lcm}(a,b)=|da'b'|$ e\n$$\\gcd(a,b)\\cdot\\operatorname{lcm}(a,b)=d\\cdot|da'b'|=|d^2a'b'|=|(da')(db')|=|ab|.\\qquad\\blacksquare$$",
+          "steps": [
+            "Dica: fatore o MDC escrevendo $a=da'$, $b=db'$ com $d=\\gcd(a,b)$ e $\\gcd(a',b')=1$.",
+            "Montagem: proponha $L=|da'b'|$ como candidato a $\\operatorname{lcm}(a,b)$ e verifique que $L$ e multiplo de $a$ e de $b$.",
+            "Execucao: para qualquer multiplo comum $m$, use $a\\mid m$ e $b\\mid m$ mais o Lema de Euclides ($\\gcd(a',b')=1$) para obter $L\\mid m$.",
+            "Conclusao: logo $\\operatorname{lcm}(a,b)=|da'b'|$ e $\\gcd\\cdot\\operatorname{lcm}=d\\cdot|da'b'|=|ab|$."
+          ]
+        },
+        {
+          "prompt": "Prove que para todo $n\\ge 1$ vale $\\gcd(F_n,F_{n+1})=1$, onde $F_n$ é a sequência de Fibonacci ($F_1=F_2=1$).",
+          "hint": "Use $F_{n+1}=F_n+F_{n-1}$ e o passo de Euclides $\\gcd(F_{n+1},F_n)=\\gcd(F_n,F_{n-1})$, descendo por indução até $\\gcd(F_2,F_1)$.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Prove que $\\gcd(F_n,F_{n+1})=1$ para todo $n\\ge 1$, onde $F_1=F_2=1$ e $F_{k+1}=F_k+F_{k-1}$.\n\n**Demonstracao (inducao / Euclides).** Base: $\\gcd(F_1,F_2)=\\gcd(1,1)=1$.\n\nPasso: suponha $\\gcd(F_{n-1},F_n)=1$ para algum $n\\ge 2$. Como $F_{n+1}=F_n+F_{n-1}$, o passo do algoritmo de Euclides da\n$$\\gcd(F_{n+1},F_n)=\\gcd(F_n+F_{n-1},F_n)=\\gcd(F_{n-1},F_n)=1,$$\nusando a propriedade $\\gcd(u+v,v)=\\gcd(u,v)$ (aqui $u=F_{n-1}$, $v=F_n$).\n\nPor inducao, $\\gcd(F_n,F_{n+1})=1$ para todo $n\\ge 1$.\n\n**Alternativa direta (Bezout).** A recorrencia da $F_{n+1}\\cdot 1+F_n\\cdot(-1)=F_{n-1}$; iterando para tras chega-se a uma combinacao linear de $F_n$ e $F_{n+1}$ igual a $F_1=1$, logo $\\gcd(F_n,F_{n+1})\\mid 1$. $\\blacksquare$",
+          "steps": [
+            "Dica: trate como inducao em $n$, com base $\\gcd(F_1,F_2)=1$.",
+            "Montagem: use $F_{n+1}=F_n+F_{n-1}$ para reescrever o MDC do par consecutivo.",
+            "Execucao: aplique $\\gcd(F_n+F_{n-1},F_n)=\\gcd(F_{n-1},F_n)$, que e exatamente um passo de Euclides.",
+            "Conclusao: a hipotese de inducao $\\gcd(F_{n-1},F_n)=1$ transfere para $\\gcd(F_n,F_{n+1})=1$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de $a\\mid b$",
+          "back": "Existe $c\\in\\mathbb{Z}$ com $b=ac$."
+        },
+        {
+          "front": "Algoritmo da divisão (enunciado)",
+          "back": "Para $a\\in\\mathbb{Z}$, $b>0$: existem únicos $q,r$ com $a=bq+r$ e $0\\le r<b$."
+        },
+        {
+          "front": "Identidade de Bézout",
+          "back": "Existem $x,y\\in\\mathbb{Z}$ com $ax+by=\\gcd(a,b)$; e $\\gcd(a,b)$ é o menor inteiro positivo dessa forma."
+        },
+        {
+          "front": "Passo do algoritmo de Euclides",
+          "back": "Se $a=bq+r$ então $\\gcd(a,b)=\\gcd(b,r)$."
+        },
+        {
+          "front": "Lema de Euclides",
+          "back": "Se $\\gcd(a,b)=1$ e $a\\mid bc$, então $a\\mid c$."
+        },
+        {
+          "front": "Caracterização de coprimalidade",
+          "back": "$\\gcd(a,b)=1$ sse existem $x,y$ com $ax+by=1$."
+        },
+        {
+          "front": "Relação MDC–MMC",
+          "back": "$\\gcd(a,b)\\cdot\\operatorname{lcm}(a,b)=|ab|$ para $a,b\\ne 0$."
+        },
+        {
+          "front": "Leitura algébrica de Bézout",
+          "back": "$a\\mathbb{Z}+b\\mathbb{Z}=\\gcd(a,b)\\,\\mathbb{Z}$: todo ideal de $\\mathbb{Z}$ é principal."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Abramo Hefez, Elementos de Aritmética, caps. 1–4",
+          "ref": "livro"
+        },
+        {
+          "title": "Niven, Zuckerman e Montgomery, An Introduction to the Theory of Numbers, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.781 Theory of Numbers — aulas iniciais",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o algoritmo da divisão em Hefez, Elementos de Aritmetica (caps. 1-4), e reescreva a demonstracao de existencia e unicidade do quociente e resto com suas proprias palavras.",
+          "Faca a mao 5 exemplos de algoritmo de Euclides (numeros de 2-3 digitos) e, em cada um, suba a conta para obter os coeficientes de Bezout; confira que $ax+by=\\gcd(a,b)$.",
+          "Assista a uma aula sobre MDC e algoritmo de Euclides, pausando para refazer cada passo no papel antes de o video mostrar a resposta.",
+          "Prove voce mesmo o Lema de Euclides e a relacao $\\gcd(a,b)\\cdot\\operatorname{lcm}(a,b)=|ab|$ sem olhar o texto; so depois compare.",
+          "Releia a leitura algebrica: $a\\mathbb{Z}+b\\mathbb{Z}=\\gcd(a,b)\\mathbb{Z}$ (ideais principais em $\\mathbb{Z}$), conectando com Algebra 1.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (enunciados-chave, o pulo do gato de cada prova e seus erros)."
+        ],
+        "searchQueries": [
+          "algoritmo da divisao euclidiana existencia e unicidade demonstracao",
+          "algoritmo de Euclides estendido coeficientes de Bezout passo a passo",
+          "identidade de Bezout demonstracao principio da boa ordenacao",
+          "lema de Euclides prova gcd(a,b)=1 e a|bc entao a|c",
+          "relacao mdc mmc gcd lcm produto ab demonstracao",
+          "extended euclidean algorithm proof Bezout coefficients"
+        ],
+        "videos": [
+          {
+            "title": "Aritmetica dos inteiros: divisibilidade e MDC",
+            "channel": "Equaciona com Paulo Pereira",
+            "note": "Procure a serie de Teoria dos Numeros / aritmetica para a base de divisibilidade e algoritmo de Euclides com muitos exemplos."
+          },
+          {
+            "title": "Number Theory playlist",
+            "channel": "Michael Penn",
+            "note": "Busque os videos iniciais sobre division algorithm, gcd e Bezout para ver as demonstracoes formais."
+          },
+          {
+            "title": "18.781 / abordagem de teoria dos numeros",
+            "channel": "MIT OpenCourseWare",
+            "note": "Assista as aulas iniciais sobre divisibility e Euclidean algorithm para o tratamento rigoroso."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Elementos de Aritmetica, caps. 1-4 (divisibilidade, divisao euclidiana, MDC)",
+            "where": "Abramo Hefez (SBM, Colecao do Professor de Matematica)"
+          },
+          {
+            "title": "An Introduction to the Theory of Numbers, cap. 1",
+            "where": "Niven, Zuckerman e Montgomery"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-numeros-02-primos-tfa",
+      "title": "Números primos e o Teorema Fundamental da Aritmética",
+      "tagline": "Fatoração única, infinitude dos primos e a valuação $p$-ádica como linguagem da divisibilidade.",
+      "objectives": [
+        "Ao final você consegue definir número primo e composto e demonstrar a existência de fatoração em primos por indução forte.",
+        "Ao final você consegue demonstrar a unicidade da fatoração (Teorema Fundamental da Aritmética) via Lema de Euclides.",
+        "Ao final você consegue demonstrar a infinitude dos primos pelo argumento de Euclides e discutir variantes.",
+        "Ao final você consegue usar a valuação $p$-ádica $v_p$ para descrever $\\gcd$, $\\operatorname{lcm}$ e divisibilidade.",
+        "Ao final você consegue provar a irracionalidade de $\\sqrt{p}$ e estimar fatores via crivo de Eratóstenes."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Número primo",
+          "statement": "$p\\in\\mathbb{Z}_{>1}$ é primo se seus únicos divisores positivos são $1$ e $p$. Caso contrário (e sendo $>1$) é composto. Note que $1$ não é primo nem composto."
+        },
+        {
+          "term": "Valuação $p$-ádica",
+          "statement": "Para $n\\ge 1$ e $p$ primo, $v_p(n)$ é o maior expoente $k$ tal que $p^k\\mid n$. Assim $n=\\prod_p p^{\\,v_p(n)}$ (produto finito) é a fatoração canônica."
+        },
+        {
+          "term": "Primo versus irredutível",
+          "statement": "Em $\\mathbb{Z}$, $p$ \"primo\" (se $p\\mid ab$ então $p\\mid a$ ou $p\\mid b$) e $p$ \"irredutível\" (não fatora não trivialmente) coincidem — é exatamente isso que o Lema de Euclides garante e que torna a fatoração única."
+        },
+        {
+          "term": "Crivo de Eratóstenes",
+          "statement": "Procedimento que lista os primos até $N$ removendo múltiplos de cada primo $p\\le\\sqrt{N}$; baseia-se no fato de que todo composto $n\\le N$ tem um fator primo $\\le\\sqrt{n}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema Fundamental da Aritmética",
+          "statement": "Todo inteiro $n>1$ se escreve como produto de primos, e essa escrita é única a menos da ordem dos fatores: $n=p_1^{a_1}\\cdots p_k^{a_k}$ com primos distintos $p_i$ e expoentes $a_i\\ge 1$.",
+          "whyItMatters": "É a estrutura fundamental de $\\mathbb{Z}$: faz de $\\mathbb{Z}$ um domínio de fatoração única e permite reduzir questões de divisibilidade ao estudo independente de cada primo."
+        },
+        {
+          "name": "Infinitude dos primos (Euclides)",
+          "statement": "Existem infinitos números primos.",
+          "whyItMatters": "Garante que a aritmética não \"acaba\": a prova por $N=p_1\\cdots p_k+1$ é o protótipo de argumento por contradição e abre a teoria da distribuição de primos."
+        },
+        {
+          "name": "Fatoração e divisibilidade via $v_p$",
+          "statement": "Para $m,n\\ge 1$: $m\\mid n$ sse $v_p(m)\\le v_p(n)$ para todo primo $p$; além disso $v_p(\\gcd)=\\min(v_p(m),v_p(n))$ e $v_p(\\operatorname{lcm})=\\max(v_p(m),v_p(n))$.",
+          "whyItMatters": "Converte divisibilidade, MDC e MMC em comparações de expoentes primo a primo — a forma mais limpa de pensar a aritmética multiplicativa."
+        },
+        {
+          "name": "Fórmula de Legendre",
+          "statement": "O expoente do primo $p$ em $n!$ é $v_p(n!)=\\sum_{i\\ge 1}\\left\\lfloor n/p^i\\right\\rfloor$.",
+          "whyItMatters": "Calcula a potência exata de $p$ que divide um fatorial; aparece em coeficientes binomiais, contagem e em estimativas de Chebyshev."
+        }
+      ],
+      "summary": "A existência da fatoração em primos é fácil: por indução forte, ou $n$ é primo, ou $n=ab$ com $1<a,b<n$, e cada fator já se fatora. O conteúdo profundo é a unicidade, que NÃO é automática (há domínios onde a fatoração não é única). A unicidade decorre do Lema de Euclides na forma para primos: se $p\\mid a_1\\cdots a_r$ então $p$ divide algum $a_i$. Com isso, duas fatorações de $n$ devem ter exatamente os mesmos primos com os mesmos expoentes. Esse é o Teorema Fundamental da Aritmética, que torna $v_p(n)$ bem definido e faz da divisibilidade uma comparação de expoentes: $m\\mid n$ sse $v_p(m)\\le v_p(n)$ para todo $p$.\n\nA infinitude dos primos é o segundo pilar: se houvesse apenas $p_1,\\dots,p_k$, o número $N=p_1\\cdots p_k+1$ teria um fator primo, que não pode ser nenhum dos $p_i$ (deixa resto $1$) — contradição. A partir daqui abrem-se duas grandes estradas: a algébrica, que generaliza fatoração única para anéis (domínios euclidianos, DIPs, DFUs), e a analítica, que pergunta quão densos são os primos — tema do último subtópico. Como aplicações imediatas, a fatoração única dá a irracionalidade de $\\sqrt{p}$ e a fórmula de Legendre para $v_p(n!)$.",
+      "commonPitfalls": [
+        "Tratar a unicidade da fatoração como óbvia: ela depende do Lema de Euclides e falha em estruturas como $\\mathbb{Z}[\\sqrt{-5}]$.",
+        "Incluir $1$ como primo: isso quebraria a unicidade da fatoração (poderíamos acrescentar fatores $1$ à vontade).",
+        "Concluir que o número de Euclides $N=p_1\\cdots p_k+1$ é sempre primo: ele apenas tem um fator primo novo (ex.: $2\\cdot 3\\cdot 5\\cdot 7\\cdot 11\\cdot 13+1=30031=59\\cdot 509$).",
+        "Confundir $v_p(\\gcd)=\\min$ com $v_p(\\operatorname{lcm})=\\min$: gcd usa o mínimo, lcm usa o máximo dos expoentes."
+      ],
+      "worked": "**Irracionalidade de $\\sqrt{2}$ via fatoração única.** Suponha $\\sqrt{2}=a/b$ com $a,b\\in\\mathbb{Z}_{>0}$, logo $a^2=2b^2$. Compare a valuação $2$-ádica dos dois lados: $v_2(a^2)=2\\,v_2(a)$ é par, enquanto $v_2(2b^2)=1+2\\,v_2(b)$ é ímpar. Um número não pode ter $v_2$ par e ímpar simultaneamente — contradição. Logo $\\sqrt{2}\\notin\\mathbb{Q}$. O mesmo argumento prova que $\\sqrt{p}$ é irracional para todo primo $p$, e que $\\sqrt[k]{n}$ é irracional sempre que $n$ não for uma $k$-ésima potência perfeita. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Demonstre, por indução forte, que todo inteiro $n>1$ admite fatoração em primos.",
+          "hint": "Caso base $n=2$. No passo, ou $n$ é primo (pronto), ou $n=ab$ com $1<a,b<n$ e aplica-se a hipótese de indução a $a$ e $b$.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Prove, por inducao forte, que todo inteiro $n>1$ admite fatoracao em primos.\n\n**Demonstracao.** Inducao forte sobre $n\\ge 2$.\n\n**Base.** $n=2$ e primo, logo ja e o proprio produto (de um unico fator).\n\n**Passo.** Seja $n>2$ e suponha que todo inteiro $m$ com $1<m<n$ se fatora em primos (hipotese de inducao forte). Ha dois casos:\n\n- Se $n$ e primo, entao $n$ e sua propria fatoracao.\n- Se $n$ e composto, existe $a$ com $1<a<n$ e $a\\mid n$; escreva $n=ab$ com $1<b<n$. Pela hipotese de inducao aplicada a $a$ e a $b$ (ambos entre $1$ e $n$), cada um se fatora em primos: $a=q_1\\cdots q_s$ e $b=r_1\\cdots r_t$. Entao\n$$n=ab=q_1\\cdots q_s\\, r_1\\cdots r_t$$\ne uma fatoracao de $n$ em primos.\n\nEm ambos os casos $n$ se fatora. Por inducao forte, todo $n>1$ admite fatoracao em primos. $\\blacksquare$",
+          "steps": [
+            "Dica: use inducao forte, com base no menor caso $n=2$ (primo).",
+            "Montagem: no passo, separe em 'n primo' (pronto) e 'n composto'.",
+            "Execucao: se $n$ e composto, escreva $n=ab$ com $1<a,b<n$ e aplique a hipotese de inducao a $a$ e a $b$.",
+            "Conclusao: o produto das fatoracoes de $a$ e $b$ e uma fatoracao de $n$; existencia provada."
+          ]
+        },
+        {
+          "prompt": "Use o Lema de Euclides para provar a unicidade da fatoração.",
+          "hint": "Suponha duas fatorações de $n$; o primo $p_1$ da primeira divide o produto da segunda, logo divide (e iguala) algum primo dela. Cancele e use indução em $n$.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Use o Lema de Euclides (versao para primos: $p\\mid a_1\\cdots a_r\\Rightarrow p\\mid a_i$ para algum $i$) para provar a unicidade da fatoracao.\n\n**Demonstracao.** Inducao forte sobre $n>1$. Suponha duas fatoracoes\n$$n=p_1p_2\\cdots p_s=q_1q_2\\cdots q_t,$$\ncom $p_i,q_j$ primos (nao necessariamente distintos), ordenados.\n\nComo $p_1\\mid n=q_1\\cdots q_t$, o Lema de Euclides garante que $p_1\\mid q_j$ para algum $j$. Sendo $q_j$ primo e $p_1>1$, isso forca $p_1=q_j$. Reordenando, podemos supor $j=1$, logo $p_1=q_1$.\n\nCancele esse fator comum:\n$$\\frac{n}{p_1}=p_2\\cdots p_s=q_2\\cdots q_t.$$\nEsse numero e $<n$ (ou igual a $1$). Se for $1$, entao $s=t=1$ e acabou. Caso contrario, pela hipotese de inducao forte a fatoracao de $n/p_1$ e unica; logo $s-1=t-1$ (mesmo numero de fatores) e, apos reordenar, $p_i=q_i$ para todo $i\\ge 2$.\n\nJuntando com $p_1=q_1$, as duas fatoracoes coincidem a menos da ordem. $\\blacksquare$",
+          "steps": [
+            "Dica: assuma duas fatoracoes de $n$ e aplique inducao forte no tamanho de $n$.",
+            "Montagem: observe que $p_1$ divide o produto $q_1\\cdots q_t$.",
+            "Execucao: pelo Lema de Euclides, $p_1\\mid q_j$ para algum $j$; como $q_j$ e primo, $p_1=q_j$.",
+            "Conclusao: cancele o fator comum e aplique a hipotese de inducao a $n/p_1<n$, obtendo igualdade das duas listas a menos da ordem."
+          ]
+        },
+        {
+          "prompt": "Prove que existem infinitos primos da forma $4k+3$.",
+          "hint": "Imite Euclides com $N=4p_1\\cdots p_k-1$; argumente que $N$ tem fator primo $\\equiv 3\\pmod 4$, pois nem todos os fatores podem ser $\\equiv 1\\pmod 4$.",
+          "difficulty": 4,
+          "solution": "**Enunciado.** Prove que existem infinitos primos da forma $4k+3$.\n\n**Observacao inicial.** Todo primo impar e $\\equiv 1$ ou $\\equiv 3\\pmod 4$. O produto de numeros $\\equiv 1\\pmod 4$ tambem e $\\equiv 1\\pmod 4$. Logo, se um inteiro impar $N\\equiv 3\\pmod 4$, ele deve ter pelo menos um fator primo $\\equiv 3\\pmod 4$ (nao poderiam ser todos $\\equiv 1$).\n\n**Demonstracao (por contradicao).** Suponha que haja apenas finitos primos $\\equiv 3\\pmod 4$, digamos $p_1,\\dots,p_k$ (note que $3$ e um deles). Considere\n$$N=4\\,p_1p_2\\cdots p_k-1.$$\nEntao $N\\equiv -1\\equiv 3\\pmod 4$ e $N$ e impar. Pela observacao, $N$ tem um fator primo $q\\equiv 3\\pmod 4$.\n\nAfirmo que $q$ nao esta na lista. De fato, se $q=p_i$ para algum $i$, entao $q\\mid 4p_1\\cdots p_k$ e $q\\mid N$, logo $q\\mid\\big(4p_1\\cdots p_k-N\\big)=1$, absurdo pois $q>1$.\n\nAssim $q$ e um primo $\\equiv 3\\pmod 4$ fora da lista, contradizendo a suposicao de finitude. Portanto ha infinitos primos $\\equiv 3\\pmod 4$. $\\blacksquare$",
+          "steps": [
+            "Dica: imite Euclides, mas construa um numero que seja forcosamente $\\equiv 3\\pmod 4$.",
+            "Montagem: suponha finitos $p_1,\\dots,p_k\\equiv 3\\pmod4$ e tome $N=4p_1\\cdots p_k-1$.",
+            "Execucao: como $N\\equiv 3\\pmod 4$ e produto de primos $\\equiv 1\\pmod4$ ficaria $\\equiv 1$, algum fator primo de $N$ e $\\equiv 3\\pmod 4$.",
+            "Conclusao: esse fator nao pode ser nenhum $p_i$ (senao dividiria $1$), gerando um primo novo e a contradicao."
+          ]
+        },
+        {
+          "prompt": "Determine $v_5(1000!)$ usando a fórmula de Legendre.",
+          "hint": "Some $\\lfloor 1000/5\\rfloor+\\lfloor 1000/25\\rfloor+\\lfloor 1000/125\\rfloor+\\lfloor 1000/625\\rfloor$.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Determine $v_5(1000!)$ pela formula de Legendre.\n\n**Formula de Legendre.**\n$$v_5(1000!)=\\sum_{i\\ge 1}\\left\\lfloor\\frac{1000}{5^i}\\right\\rfloor.$$\n\n**Calculo dos termos.**\n$$\\left\\lfloor\\tfrac{1000}{5}\\right\\rfloor=200,\\quad\\left\\lfloor\\tfrac{1000}{25}\\right\\rfloor=40,\\quad\\left\\lfloor\\tfrac{1000}{125}\\right\\rfloor=8,\\quad\\left\\lfloor\\tfrac{1000}{625}\\right\\rfloor=1,\\quad\\left\\lfloor\\tfrac{1000}{3125}\\right\\rfloor=0.$$\n\n**Soma.**\n$$v_5(1000!)=200+40+8+1=249.$$\n\nPortanto $5^{249}\\mid 1000!$ e $5^{250}\\nmid 1000!$. (Como $v_2(1000!)>249$, o numero de zeros no final de $1000!$ e exatamente $249$.) $\\blacksquare$",
+          "steps": [
+            "Dica: aplique $v_5(n!)=\\sum_{i\\ge1}\\lfloor n/5^i\\rfloor$ com $n=1000$.",
+            "Montagem: liste as potencias de $5$ ate ultrapassar $1000$: $5,25,125,625$.",
+            "Execucao: calcule cada piso: $200,40,8,1$ (o termo seguinte, $\\lfloor1000/3125\\rfloor$, ja e $0$).",
+            "Conclusao: some para obter $v_5(1000!)=249$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Teorema Fundamental da Aritmética",
+          "back": "Todo $n>1$ fatora-se em primos de modo único a menos da ordem."
+        },
+        {
+          "front": "Por que $1$ não é primo?",
+          "back": "Para preservar a unicidade da fatoração (senão poderíamos inserir fatores $1$)."
+        },
+        {
+          "front": "Definição de $v_p(n)$",
+          "back": "O maior $k$ com $p^k\\mid n$; então $n=\\prod_p p^{v_p(n)}$."
+        },
+        {
+          "front": "$m\\mid n$ em termos de valuações",
+          "back": "$m\\mid n$ sse $v_p(m)\\le v_p(n)$ para todo primo $p$."
+        },
+        {
+          "front": "$v_p$ de gcd e lcm",
+          "back": "$v_p(\\gcd)=\\min(v_p(m),v_p(n))$, $v_p(\\operatorname{lcm})=\\max(v_p(m),v_p(n))$."
+        },
+        {
+          "front": "Prova de Euclides da infinitude dos primos",
+          "back": "Se fossem finitos, $N=p_1\\cdots p_k+1$ teria fator primo novo (deixa resto 1) — contradição."
+        },
+        {
+          "front": "Fórmula de Legendre",
+          "back": "$v_p(n!)=\\sum_{i\\ge 1}\\lfloor n/p^i\\rfloor$."
+        },
+        {
+          "front": "Por que todo composto $n$ tem fator primo $\\le\\sqrt{n}$?",
+          "back": "Se $n=ab$ com $a\\le b$, então $a\\le\\sqrt{n}$; daí o crivo só precisa de primos até $\\sqrt{N}$."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Abramo Hefez, Elementos de Aritmética, cap. 5 (números primos)",
+          "ref": "livro"
+        },
+        {
+          "title": "Hardy e Wright, An Introduction to the Theory of Numbers, caps. 1–2",
+          "ref": "livro"
+        },
+        {
+          "title": "William Stein, Elementary Number Theory, cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia a existencia e a unicidade da fatoracao em Hefez (cap. 5) e destaque exatamente onde o Lema de Euclides e usado na unicidade.",
+          "Refaca a prova de Euclides da infinitude dos primos e teste o numero $N=p_1\\cdots p_k+1$ em casos pequenos, observando que $N$ nem sempre e primo.",
+          "Pratique a valuacao $p$-adica: calcule $v_p(\\gcd)$, $v_p(\\operatorname{lcm})$ e use a formula de Legendre em varios fatoriais.",
+          "Assista a um video sobre fatoracao unica e/ou irracionalidade de $\\sqrt2$ e reproduza o argumento por paridade de $v_2$.",
+          "Estude a variante 'infinitos primos $4k+3$' e compare com o argumento classico para ver a adaptacao.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (esqueleto da prova de unicidade, formula de Legendre e as pegadinhas)."
+        ],
+        "searchQueries": [
+          "teorema fundamental da aritmetica demonstracao unicidade lema de Euclides",
+          "existencia fatoracao em primos inducao forte demonstracao",
+          "infinitude dos primos Euclides demonstracao",
+          "infinitos primos da forma 4k+3 demonstracao",
+          "formula de Legendre expoente de p em n fatorial",
+          "fundamental theorem of arithmetic uniqueness proof"
+        ],
+        "videos": [
+          {
+            "title": "Prime Numbers and Unique Factorization",
+            "channel": "Michael Penn",
+            "note": "Procure os videos sobre fundamental theorem of arithmetic e infinitude dos primos para ver as demonstracoes completas."
+          },
+          {
+            "title": "Numeros primos e fatoracao",
+            "channel": "Equaciona com Paulo Pereira",
+            "note": "Assista a parte de numeros primos, crivo de Eratostenes e fatoracao para consolidar a intuicao."
+          },
+          {
+            "title": "Irracionalidade de raiz de 2 / infinitos primos",
+            "channel": "Mathologer",
+            "note": "Busque episodios sobre primos e irracionais para uma visao geometrica e historica motivadora."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Elementos de Aritmetica, cap. 5 (numeros primos)",
+            "where": "Abramo Hefez (SBM)"
+          },
+          {
+            "title": "An Introduction to the Theory of Numbers, caps. 1-2",
+            "where": "Hardy e Wright"
+          },
+          {
+            "title": "Elementary Number Theory (livro gratuito), cap. 1",
+            "where": "William Stein (wstein.org)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-numeros-03-congruencias-crt",
+      "title": "Congruências, $\\mathbb{Z}/n\\mathbb{Z}$ e o Teorema Chinês do Resto",
+      "tagline": "Aritmética de restos como relação de equivalência, congruências lineares e a decomposição $\\mathbb{Z}/mn\\mathbb{Z}\\cong\\mathbb{Z}/m\\mathbb{Z}\\times\\mathbb{Z}/n\\mathbb{Z}$.",
+      "objectives": [
+        "Ao final você consegue definir congruência módulo $n$ e demonstrar que é uma relação de equivalência compatível com soma e produto.",
+        "Ao final você consegue operar no anel $\\mathbb{Z}/n\\mathbb{Z}$ e caracterizar suas unidades como as classes coprimas com $n$.",
+        "Ao final você consegue decidir e resolver a congruência linear $ax\\equiv b\\pmod n$, contando o número de soluções.",
+        "Ao final você consegue enunciar e demonstrar o Teorema Chinês do Resto e usá-lo para resolver sistemas de congruências.",
+        "Ao final você consegue interpretar o TCR como isomorfismo de anéis e aplicar critérios de divisibilidade via congruências."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Congruência",
+          "statement": "$a\\equiv b\\pmod n$ significa $n\\mid(a-b)$. É uma relação de equivalência cujas classes são os restos $0,1,\\dots,n-1$, e é compatível com $+$ e $\\cdot$: de $a\\equiv a'$ e $b\\equiv b'$ segue $a+b\\equiv a'+b'$ e $ab\\equiv a'b'$."
+        },
+        {
+          "term": "Anel $\\mathbb{Z}/n\\mathbb{Z}$",
+          "statement": "Conjunto das classes $\\{\\overline{0},\\dots,\\overline{n-1}\\}$ com soma e produto induzidos; é um anel comutativo com unidade. É corpo sse $n$ é primo."
+        },
+        {
+          "term": "Unidades e cancelamento",
+          "statement": "A classe $\\overline{a}$ é invertível em $\\mathbb{Z}/n\\mathbb{Z}$ sse $\\gcd(a,n)=1$. O grupo das unidades é $(\\mathbb{Z}/n\\mathbb{Z})^\\times$, de ordem $\\varphi(n)$. Só se pode \"cancelar\" $a$ numa congruência quando $\\gcd(a,n)=1$."
+        },
+        {
+          "term": "Congruência linear",
+          "statement": "A equação $ax\\equiv b\\pmod n$ tem solução sse $d=\\gcd(a,n)$ divide $b$; nesse caso há exatamente $d$ soluções distintas módulo $n$."
+        },
+        {
+          "term": "Sistema de congruências",
+          "statement": "Um sistema $x\\equiv a_i\\pmod{n_i}$ pergunta por $x$ que deixe restos prescritos por vários módulos simultaneamente; é o objeto do Teorema Chinês do Resto."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Inverso modular e congruência linear",
+          "statement": "$\\overline{a}$ é invertível módulo $n$ sse $\\gcd(a,n)=1$, e então o inverso vem dos coeficientes de Bézout. A congruência $ax\\equiv b\\pmod n$ é solúvel sse $\\gcd(a,n)\\mid b$, com exatamente $\\gcd(a,n)$ soluções módulo $n$.",
+          "whyItMatters": "É a versão modular de resolver equações lineares; sustenta a aritmética de $\\mathbb{Z}/n\\mathbb{Z}$ e algoritmos criptográficos."
+        },
+        {
+          "name": "Teorema Chinês do Resto",
+          "statement": "Se $n_1,\\dots,n_k$ são dois a dois coprimos e $N=n_1\\cdots n_k$, então o sistema $x\\equiv a_i\\pmod{n_i}$ ($i=1,\\dots,k$) tem solução única módulo $N$.",
+          "whyItMatters": "Reduz problemas módulo $N$ a problemas módulo cada fator de potência prima — a ferramenta de \"dividir para conquistar\" da aritmética modular."
+        },
+        {
+          "name": "Isomorfismo do TCR",
+          "statement": "Se $\\gcd(m,n)=1$, a aplicação $\\overline{x}\\mapsto(\\overline{x}\\bmod m,\\ \\overline{x}\\bmod n)$ é um isomorfismo de anéis $\\mathbb{Z}/mn\\mathbb{Z}\\xrightarrow{\\;\\sim\\;}\\mathbb{Z}/m\\mathbb{Z}\\times\\mathbb{Z}/n\\mathbb{Z}$, que restringe a um isomorfismo de grupos $(\\mathbb{Z}/mn\\mathbb{Z})^\\times\\cong(\\mathbb{Z}/m\\mathbb{Z})^\\times\\times(\\mathbb{Z}/n\\mathbb{Z})^\\times$.",
+          "whyItMatters": "Dá a leitura estrutural do TCR e prova a multiplicatividade de $\\varphi$: $\\varphi(mn)=\\varphi(m)\\varphi(n)$ quando $\\gcd(m,n)=1$."
+        }
+      ],
+      "summary": "A congruência módulo $n$ é a relação de equivalência $a\\sim b\\iff n\\mid(a-b)$. Como ela é compatível com as operações de $\\mathbb{Z}$, o quociente herda estrutura de anel: $\\mathbb{Z}/n\\mathbb{Z}$. Trabalhar módulo $n$ é trocar infinitos inteiros por $n$ classes, sem perder soma nem produto. A diferença crucial em relação a $\\mathbb{Q}$ é que nem toda classe não nula tem inverso: $\\overline{a}$ é invertível exatamente quando $\\gcd(a,n)=1$, e por isso só se pode cancelar fatores coprimos com o módulo. Daí a regra das congruências lineares: $ax\\equiv b\\pmod n$ é solúvel sse $\\gcd(a,n)\\mid b$, com $\\gcd(a,n)$ soluções.\n\nO Teorema Chinês do Resto resolve sistemas com módulos coprimos: existe e é única módulo $N=\\prod n_i$ a solução que satisfaz simultaneamente $x\\equiv a_i\\pmod{n_i}$. A construção é explícita: para cada $i$, monta-se $N_i=N/n_i$, calcula-se seu inverso módulo $n_i$ e soma-se $\\sum a_i N_i (N_i^{-1}\\bmod n_i)$. A leitura estrutural é o isomorfismo $\\mathbb{Z}/mn\\mathbb{Z}\\cong\\mathbb{Z}/m\\mathbb{Z}\\times\\mathbb{Z}/n\\mathbb{Z}$, que reduz qualquer questão módulo $n$ ao estudo das potências primárias $p^{a}$ na fatoração de $n$ — princípio que reaparece no cálculo de $\\varphi$, na contagem de raízes e em raízes primitivas.",
+      "commonPitfalls": [
+        "Cancelar um fator comum sem checar coprimalidade: de $6\\equiv 0\\pmod{6}$ não se conclui $3\\equiv 0$ dividindo por $2$.",
+        "Aplicar o TCR com módulos não coprimos: o sistema pode não ter solução, ou ter (mas a unicidade/contagem muda) — verifique compatibilidade nos fatores comuns.",
+        "Reduzir o expoente módulo $n$: em $a^k\\pmod n$ não se reduz $k$ módulo $n$, e sim módulo a ordem de $a$ (assunto dos próximos subtópicos).",
+        "Esquecer que $ax\\equiv b\\pmod n$ pode ter várias soluções (exatamente $\\gcd(a,n)$ quando solúvel), não apenas uma."
+      ],
+      "worked": "**Problema.** Resolva o sistema $x\\equiv 2\\pmod 3$, $x\\equiv 3\\pmod 5$, $x\\equiv 2\\pmod 7$.\n\n**Solução (TCR).** $N=3\\cdot 5\\cdot 7=105$. Para cada módulo: $N_1=35$, e $35\\equiv 2\\pmod 3$, com $2^{-1}\\equiv 2\\pmod 3$; $N_2=21$, e $21\\equiv 1\\pmod 5$, com inverso $1$; $N_3=15$, e $15\\equiv 1\\pmod 7$, com inverso $1$. Então\n$$x\\equiv 2\\cdot 35\\cdot 2+3\\cdot 21\\cdot 1+2\\cdot 15\\cdot 1=140+63+30=233\\pmod{105}.$$\nReduzindo, $233-2\\cdot 105=23$, logo $x\\equiv 23\\pmod{105}$. Verificação: $23=3\\cdot 7+2$ (resto $2$ mod $3$); $23=5\\cdot 4+3$ (resto $3$ mod $5$); $23=7\\cdot 3+2$ (resto $2$ mod $7$). $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que $\\overline{a}$ é invertível em $\\mathbb{Z}/n\\mathbb{Z}$ sse $\\gcd(a,n)=1$.",
+          "hint": "Se $\\gcd(a,n)=1$, use Bézout $ax+ny=1$ para exibir o inverso. Se $\\gcd(a,n)=d>1$, mostre que $a$ é divisor de zero, logo não invertível.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Prove que $\\overline{a}$ e invertivel em $\\mathbb{Z}/n\\mathbb{Z}$ se, e somente se, $\\gcd(a,n)=1$.\n\n**($\\Leftarrow$).** Suponha $\\gcd(a,n)=1$. Por Bezout existem $x,y\\in\\mathbb{Z}$ com\n$$ax+ny=1.$$\nReduzindo modulo $n$: $ax\\equiv 1\\pmod n$, isto e $\\overline{a}\\cdot\\overline{x}=\\overline{1}$. Logo $\\overline{a}$ e invertivel, com inverso $\\overline{x}$.\n\n**($\\Rightarrow$).** Suponha $\\overline{a}$ invertivel, digamos $\\overline{a}\\cdot\\overline{x}=\\overline{1}$. Entao $ax\\equiv 1\\pmod n$, ou seja existe $y$ com $ax-1=ny$, isto e\n$$ax-ny=1.$$\nSeja $d=\\gcd(a,n)$. Como $d\\mid a$ e $d\\mid n$, temos $d\\mid(ax-ny)=1$, logo $d=1$.\n\n**Complemento (divisor de zero).** Se $d=\\gcd(a,n)>1$, entao $\\overline{a}\\cdot\\overline{(n/d)}=\\overline{a n/d}=\\overline{0}$ com $\\overline{n/d}\\ne\\overline{0}$; assim $\\overline{a}$ e divisor de zero, o que impede ser unidade. $\\blacksquare$",
+          "steps": [
+            "Dica: lembre que unidade em $\\mathbb{Z}/n\\mathbb{Z}$ significa existir $\\overline{x}$ com $\\overline{a}\\,\\overline{x}=\\overline{1}$.",
+            "Montagem (ida facil): de $\\gcd(a,n)=1$ escreva Bezout $ax+ny=1$ e reduza mod $n$.",
+            "Execucao (volta): de $ax\\equiv1$ obtenha $ax-ny=1$ e conclua $\\gcd(a,n)\\mid1$.",
+            "Conclusao: as duas implicacoes fecham a equivalencia; opcionalmente exiba o divisor de zero quando $d>1$."
+          ]
+        },
+        {
+          "prompt": "Demonstre o Teorema Chinês do Resto para dois módulos coprimos $m,n$, exibindo a solução e provando unicidade módulo $mn$.",
+          "hint": "Tome $u,v$ com $mu+nv=1$; verifique que $x=a_2 m u+a_1 n v$ resolve o sistema. Para unicidade, mostre que duas soluções diferem por múltiplo de $\\operatorname{lcm}(m,n)=mn$.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Demonstre o TCR para dois modulos coprimos $m,n$: o sistema $x\\equiv a_1\\pmod m$, $x\\equiv a_2\\pmod n$ tem solucao unica modulo $mn$.\n\n**Existencia.** Como $\\gcd(m,n)=1$, por Bezout existem $u,v$ com\n$$mu+nv=1.$$\nDefina\n$$x=a_2\\,mu+a_1\\,nv.$$\nModulo $m$: $mu\\equiv 0$ e $nv=1-mu\\equiv 1\\pmod m$, logo $x\\equiv a_1\\cdot 1=a_1\\pmod m$. Modulo $n$: $nv\\equiv 0$ e $mu=1-nv\\equiv 1\\pmod n$, logo $x\\equiv a_2\\cdot 1=a_2\\pmod n$. Assim $x$ resolve o sistema.\n\n**Unicidade.** Se $x$ e $x'$ ambos resolvem o sistema, entao $m\\mid(x-x')$ e $n\\mid(x-x')$. Como $\\gcd(m,n)=1$, temos $\\operatorname{lcm}(m,n)=mn$, e um numero divisivel por $m$ e por $n$ coprimos e divisivel por $mn$. Logo $mn\\mid(x-x')$, isto e $x\\equiv x'\\pmod{mn}$.\n\nPortanto ha exatamente uma classe solucao modulo $mn$. $\\blacksquare$",
+          "steps": [
+            "Dica: use Bezout $mu+nv=1$, que existe pois $\\gcd(m,n)=1$.",
+            "Montagem: proponha $x=a_2mu+a_1nv$ como candidato.",
+            "Execucao: verifique $x\\equiv a_1\\pmod m$ e $x\\equiv a_2\\pmod n$ usando que $nv\\equiv1\\pmod m$ e $mu\\equiv1\\pmod n$.",
+            "Conclusao: para a unicidade, duas solucoes diferem por multiplo de $m$ e de $n$; como sao coprimos, diferem por multiplo de $mn$."
+          ]
+        },
+        {
+          "prompt": "Deduza do isomorfismo do TCR que $\\varphi(mn)=\\varphi(m)\\varphi(n)$ quando $\\gcd(m,n)=1$.",
+          "hint": "Conte as unidades: $(\\mathbb{Z}/mn\\mathbb{Z})^\\times\\cong(\\mathbb{Z}/m\\mathbb{Z})^\\times\\times(\\mathbb{Z}/n\\mathbb{Z})^\\times$ e tome cardinalidades.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Deduza do isomorfismo do TCR que $\\varphi(mn)=\\varphi(m)\\varphi(n)$ quando $\\gcd(m,n)=1$.\n\n**Demonstracao.** O TCR fornece o isomorfismo de aneis\n$$\\mathbb{Z}/mn\\mathbb{Z}\\ \\xrightarrow{\\ \\sim\\ }\\ \\mathbb{Z}/m\\mathbb{Z}\\times\\mathbb{Z}/n\\mathbb{Z},\\qquad \\overline{x}\\mapsto(\\overline{x}\\bmod m,\\ \\overline{x}\\bmod n).$$\nUm isomorfismo de aneis leva unidades em unidades e, portanto, restringe a um isomorfismo de grupos multiplicativos:\n$$(\\mathbb{Z}/mn\\mathbb{Z})^\\times\\ \\cong\\ (\\mathbb{Z}/m\\mathbb{Z})^\\times\\times(\\mathbb{Z}/n\\mathbb{Z})^\\times.$$\n(De fato, $\\overline{x}$ e unidade em $\\mathbb{Z}/mn\\mathbb{Z}$ sse $\\gcd(x,mn)=1$ sse $\\gcd(x,m)=1$ e $\\gcd(x,n)=1$, isto e, sse ambas as coordenadas sao unidades.)\n\nTomando cardinalidades e usando que $|(\\mathbb{Z}/k\\mathbb{Z})^\\times|=\\varphi(k)$ e que a cardinalidade de um produto e o produto das cardinalidades:\n$$\\varphi(mn)=\\big|(\\mathbb{Z}/mn\\mathbb{Z})^\\times\\big|=\\big|(\\mathbb{Z}/m\\mathbb{Z})^\\times\\big|\\cdot\\big|(\\mathbb{Z}/n\\mathbb{Z})^\\times\\big|=\\varphi(m)\\varphi(n).\\qquad\\blacksquare$$",
+          "steps": [
+            "Dica: parta do isomorfismo de aneis dado pelo TCR (valido pois $\\gcd(m,n)=1$).",
+            "Montagem: observe que isomorfismo de aneis leva unidades em unidades, restringindo aos grupos $(\\cdot)^\\times$.",
+            "Execucao: justifique que $\\gcd(x,mn)=1\\iff\\gcd(x,m)=1$ e $\\gcd(x,n)=1$.",
+            "Conclusao: iguale as cardinalidades dos dois lados, obtendo $\\varphi(mn)=\\varphi(m)\\varphi(n)$."
+          ]
+        },
+        {
+          "prompt": "Use congruências para provar o critério de divisibilidade por $11$ (soma alternada dos dígitos).",
+          "hint": "Note que $10\\equiv -1\\pmod{11}$, logo $10^k\\equiv(-1)^k$, e some os dígitos com sinais alternados.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Prove o criterio de divisibilidade por $11$: um inteiro e divisivel por $11$ sse a soma alternada de seus digitos o for.\n\n**Demonstracao.** Escreva $N$ na base $10$:\n$$N=\\sum_{k=0}^{r} d_k\\,10^k,\\qquad d_k\\in\\{0,\\dots,9\\}.$$\nComo $10\\equiv -1\\pmod{11}$, elevando a potencia:\n$$10^k\\equiv(-1)^k\\pmod{11}.$$\nLogo, modulo $11$,\n$$N=\\sum_{k=0}^{r} d_k\\,10^k\\equiv\\sum_{k=0}^{r} d_k(-1)^k=d_0-d_1+d_2-d_3+\\cdots\\pmod{11}.$$\nChamando $A=\\sum_k(-1)^k d_k$ a soma alternada dos digitos (comecando pelas unidades), temos $N\\equiv A\\pmod{11}$.\n\nPortanto $11\\mid N\\iff 11\\mid A$, ou seja, $N$ e divisivel por $11$ exatamente quando a soma alternada de seus digitos e divisivel por $11$.\n\n**Exemplo.** $N=90728$: $A=8-2+7-0+9=22=2\\cdot 11$, logo $11\\mid 90728$ (de fato $90728=11\\cdot 8248$). $\\blacksquare$",
+          "steps": [
+            "Dica: escreva $N$ como soma dos digitos vezes potencias de $10$ e trabalhe modulo $11$.",
+            "Montagem: use a congruencia-chave $10\\equiv-1\\pmod{11}$.",
+            "Execucao: eleve a potencia para obter $10^k\\equiv(-1)^k$ e substitua na expansao de $N$.",
+            "Conclusao: $N\\equiv d_0-d_1+d_2-\\cdots\\pmod{11}$, logo $11\\mid N$ sse $11$ divide a soma alternada."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de $a\\equiv b\\pmod n$",
+          "back": "$n\\mid(a-b)$; equivalentemente, $a$ e $b$ têm o mesmo resto na divisão por $n$."
+        },
+        {
+          "front": "Quando $\\overline{a}$ é unidade em $\\mathbb{Z}/n\\mathbb{Z}$?",
+          "back": "Sse $\\gcd(a,n)=1$; o inverso vem de Bézout."
+        },
+        {
+          "front": "$\\mathbb{Z}/n\\mathbb{Z}$ é corpo quando?",
+          "back": "Exatamente quando $n$ é primo."
+        },
+        {
+          "front": "Solubilidade de $ax\\equiv b\\pmod n$",
+          "back": "Solúvel sse $\\gcd(a,n)\\mid b$; então há $\\gcd(a,n)$ soluções mod $n$."
+        },
+        {
+          "front": "Teorema Chinês do Resto (hipótese-chave)",
+          "back": "Módulos dois a dois coprimos; solução única módulo o produto."
+        },
+        {
+          "front": "Isomorfismo do TCR",
+          "back": "$\\gcd(m,n)=1\\Rightarrow \\mathbb{Z}/mn\\mathbb{Z}\\cong\\mathbb{Z}/m\\mathbb{Z}\\times\\mathbb{Z}/n\\mathbb{Z}$."
+        },
+        {
+          "front": "Posso cancelar $a$ numa congruência?",
+          "back": "Só se $\\gcd(a,n)=1$; em geral $ac\\equiv ad\\pmod n\\Rightarrow c\\equiv d\\pmod{n/\\gcd(a,n)}$."
+        },
+        {
+          "front": "Critério de divisibilidade por 11",
+          "back": "$10\\equiv -1\\pmod{11}$, logo $n\\equiv$ soma alternada dos dígitos."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Abramo Hefez, Elementos de Aritmética, caps. 6–7 (congruências)",
+          "ref": "livro"
+        },
+        {
+          "title": "Niven, Zuckerman e Montgomery, cap. 2 (congruences)",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.781 — congruences e CRT",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia congruencias como relacao de equivalencia em Hefez (caps. 6-7) e verifique voce mesmo a compatibilidade com soma e produto.",
+          "Construa as tabuas de soma e multiplicacao de $\\mathbb{Z}/6\\mathbb{Z}$ e de $\\mathbb{Z}/7\\mathbb{Z}$; identifique unidades, divisores de zero e confirme quando e corpo.",
+          "Pratique inverter classes usando Bezout e resolver $ax\\equiv b\\pmod n$ contando as $\\gcd(a,n)$ solucoes.",
+          "Assista a uma aula sobre o Teorema Chines do Resto e refaca o exemplo do texto ($x\\equiv2,3,2$) montando os $N_i$ e inversos.",
+          "Releia o TCR como isomorfismo de aneis $\\mathbb{Z}/mn\\mathbb{Z}\\cong\\mathbb{Z}/m\\mathbb{Z}\\times\\mathbb{Z}/n\\mathbb{Z}$ e conecte com produto de grupos de unidades.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (construcao explicita do TCR, criterio de solubilidade linear e os erros de cancelamento)."
+        ],
+        "searchQueries": [
+          "congruencia modulo n relacao de equivalencia demonstracao",
+          "inverso modular quando existe gcd(a,n)=1 demonstracao",
+          "congruencia linear ax congruente b mod n numero de solucoes",
+          "teorema chines do resto demonstracao e exemplo",
+          "TCR isomorfismo de aneis Z/mnZ demonstracao",
+          "criterio de divisibilidade por 11 congruencias"
+        ],
+        "videos": [
+          {
+            "title": "Aritmetica modular e congruencias",
+            "channel": "Equaciona com Paulo Pereira",
+            "note": "Assista a serie sobre congruencias e restos para dominar operacoes em $\\mathbb{Z}/n\\mathbb{Z}$."
+          },
+          {
+            "title": "Chinese Remainder Theorem",
+            "channel": "Michael Penn",
+            "note": "Procure o video sobre CRT com a construcao explicita da solucao e a prova de unicidade."
+          },
+          {
+            "title": "Modular arithmetic e CRT",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas de 18.781 sobre congruences e Chinese Remainder Theorem para o tratamento estrutural."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Elementos de Aritmetica, caps. 6-7 (congruencias)",
+            "where": "Abramo Hefez (SBM)"
+          },
+          {
+            "title": "An Introduction to the Theory of Numbers, cap. 2 (Congruences)",
+            "where": "Niven, Zuckerman e Montgomery"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-numeros-04-fermat-euler",
+      "title": "Os teoremas de Fermat e Euler e a função $\\varphi$",
+      "tagline": "A função totiente, o Pequeno Teorema de Fermat, o Teorema de Euler, Wilson — e por que o RSA funciona.",
+      "objectives": [
+        "Ao final você consegue definir a função de Euler $\\varphi$, provar sua multiplicatividade e deduzir a fórmula $\\varphi(n)=n\\prod_{p\\mid n}(1-1/p)$.",
+        "Ao final você consegue demonstrar o Teorema de Euler e, como caso particular, o Pequeno Teorema de Fermat.",
+        "Ao final você consegue usar Fermat/Euler para calcular potências módulo $n$ e reduzir expoentes.",
+        "Ao final você consegue enunciar e demonstrar o Teorema de Wilson e usá-lo como teste teórico de primalidade.",
+        "Ao final você consegue explicar o esquema RSA como aplicação direta do Teorema de Euler."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Função totiente de Euler",
+          "statement": "$\\varphi(n)$ é o número de inteiros em $\\{1,\\dots,n\\}$ coprimos com $n$; equivale a $|(\\mathbb{Z}/n\\mathbb{Z})^\\times|$. Para $p$ primo, $\\varphi(p)=p-1$ e $\\varphi(p^k)=p^k-p^{k-1}$."
+        },
+        {
+          "term": "Sistema reduzido de resíduos",
+          "statement": "Um conjunto de $\\varphi(n)$ inteiros, dois a dois incongruentes módulo $n$ e todos coprimos com $n$; representa exatamente as unidades de $\\mathbb{Z}/n\\mathbb{Z}$."
+        },
+        {
+          "term": "Multiplicatividade de $\\varphi$",
+          "statement": "$\\varphi$ é multiplicativa: $\\varphi(mn)=\\varphi(m)\\varphi(n)$ sempre que $\\gcd(m,n)=1$ (consequência do TCR). Não é completamente multiplicativa: $\\varphi(2\\cdot 2)\\ne\\varphi(2)^2$."
+        },
+        {
+          "term": "Ordem multiplicativa (prévia)",
+          "statement": "Para $\\gcd(a,n)=1$, a menor potência $a^k\\equiv 1\\pmod n$ define a ordem de $a$; Euler garante que $\\varphi(n)$ é uma tal potência, donde a ordem divide $\\varphi(n)$ (detalhado no próximo subtópico)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Fórmula do totiente",
+          "statement": "Se $n=p_1^{a_1}\\cdots p_k^{a_k}$, então $\\varphi(n)=\\prod_{i=1}^k\\left(p_i^{a_i}-p_i^{a_i-1}\\right)=n\\prod_{p\\mid n}\\left(1-\\tfrac1p\\right)$.",
+          "whyItMatters": "Dá uma expressão fechada para o tamanho de $(\\mathbb{Z}/n\\mathbb{Z})^\\times$, essencial em Euler, RSA e contagens."
+        },
+        {
+          "name": "Teorema de Euler",
+          "statement": "Se $\\gcd(a,n)=1$, então $a^{\\varphi(n)}\\equiv 1\\pmod n$.",
+          "whyItMatters": "Generaliza Fermat a módulos compostos e é o coração matemático do RSA; permite reduzir expoentes módulo $\\varphi(n)$."
+        },
+        {
+          "name": "Pequeno Teorema de Fermat",
+          "statement": "Se $p$ é primo e $p\\nmid a$, então $a^{p-1}\\equiv 1\\pmod p$. Em geral, $a^p\\equiv a\\pmod p$ para todo $a$.",
+          "whyItMatters": "É a ferramenta mais usada em cálculos modulares e na base de testes de primalidade (Fermat, Miller-Rabin)."
+        },
+        {
+          "name": "Teorema de Wilson",
+          "statement": "$(p-1)!\\equiv -1\\pmod p$ se, e somente se, $p$ é primo.",
+          "whyItMatters": "Caracteriza primalidade por uma única congruência; teoricamente elegante, mostra como emparelhar cada unidade com seu inverso."
+        }
+      ],
+      "summary": "A função $\\varphi$ conta as unidades de $\\mathbb{Z}/n\\mathbb{Z}$. Sua multiplicatividade (via TCR) e os valores $\\varphi(p^k)=p^k-p^{k-1}$ dão a fórmula fechada $\\varphi(n)=n\\prod_{p\\mid n}(1-1/p)$. O Teorema de Euler diz que, em $(\\mathbb{Z}/n\\mathbb{Z})^\\times$, elevar à potência $\\varphi(n)$ devolve $1$: é simplesmente o Teorema de Lagrange da Álgebra (a ordem de um elemento divide a ordem do grupo) traduzido para a aritmética. A demonstração clássica e autocontida multiplica todos os elementos de um sistema reduzido de resíduos por $a$: como isso permuta o sistema, o produto se conserva e $a^{\\varphi(n)}\\equiv 1$. O caso $n=p$ recupera Fermat: $a^{p-1}\\equiv 1\\pmod p$.\n\nFermat e Euler são as ferramentas de cálculo do dia a dia: para computar $a^k\\bmod n$ com $\\gcd(a,n)=1$, reduz-se $k$ módulo $\\varphi(n)$ (mais finamente, módulo a ordem de $a$). O Teorema de Wilson, por sua vez, emparelha cada $a$ com seu inverso em $(\\mathbb{Z}/p\\mathbb{Z})^\\times$: só $1$ e $p-1$ são seus próprios inversos, e os demais se cancelam aos pares, sobrando $(p-1)!\\equiv 1\\cdot(p-1)\\equiv -1$. A aplicação estelar é o RSA: escolhem-se primos $p,q$, expoentes $e,d$ com $ed\\equiv 1\\pmod{\\varphi(pq)}$, e a cifra $m\\mapsto m^e$ é invertida por $c\\mapsto c^d$ graças a Euler — a segurança vem da dificuldade de fatorar $n=pq$.",
+      "commonPitfalls": [
+        "Aplicar Fermat/Euler sem a hipótese $\\gcd(a,n)=1$: $a^{\\varphi(n)}\\equiv 1$ exige $a$ coprimo com $n$.",
+        "Reduzir o expoente módulo $n$ em vez de módulo $\\varphi(n)$ (ou módulo a ordem de $a$).",
+        "Usar $a^{n-1}\\equiv 1\\pmod n$ para $n$ composto como prova de primalidade: existem pseudoprimos (e os números de Carmichael enganam para toda base coprima).",
+        "Achar que $\\varphi$ é completamente multiplicativa: $\\varphi(mn)=\\varphi(m)\\varphi(n)$ só vale para $\\gcd(m,n)=1$."
+      ],
+      "worked": "**Problema.** Calcule $7^{222}\\bmod 100$.\n\n**Solução.** Como $\\gcd(7,100)=1$ e $\\varphi(100)=100\\left(1-\\tfrac12\\right)\\left(1-\\tfrac15\\right)=100\\cdot\\tfrac12\\cdot\\tfrac45=40$, o Teorema de Euler dá $7^{40}\\equiv 1\\pmod{100}$. Reduzimos o expoente: $222=5\\cdot 40+22$, logo $7^{222}\\equiv 7^{22}\\pmod{100}$. Agora $7^2=49$, $7^4\\equiv 49^2=2401\\equiv 1\\pmod{100}$. Então $7^{22}=(7^4)^5\\cdot 7^2\\equiv 1^5\\cdot 49=49\\pmod{100}$. Portanto $7^{222}\\equiv 49\\pmod{100}$. (Note como a ordem real de $7$ é $4$, menor que $\\varphi(100)=40$.) $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Demonstre o Teorema de Euler multiplicando um sistema reduzido de resíduos por $a$.",
+          "hint": "Se $r_1,\\dots,r_{\\varphi(n)}$ é sistema reduzido e $\\gcd(a,n)=1$, então $ar_1,\\dots,ar_{\\varphi(n)}$ também é; iguale os produtos e cancele $\\prod r_i$ (que é unidade).",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Demonstre o Teorema de Euler: se $\\gcd(a,n)=1$, entao $a^{\\varphi(n)}\\equiv 1\\pmod n$.\n\n**Demonstracao.** Seja $\\{r_1,r_2,\\dots,r_{\\varphi(n)}\\}$ um sistema reduzido de residuos modulo $n$ (todos coprimos com $n$, dois a dois incongruentes). Como $\\gcd(a,n)=1$, considere os produtos\n$$ar_1,\\ ar_2,\\ \\dots,\\ ar_{\\varphi(n)}.$$\n\n**(i) Formam outro sistema reduzido.** Cada $ar_i$ e coprimo com $n$ (produto de coprimos). Alem disso, sao dois a dois incongruentes: se $ar_i\\equiv ar_j\\pmod n$, como $\\overline{a}$ e invertivel podemos cancelar $a$ e obter $r_i\\equiv r_j$, logo $i=j$. Assim $\\{ar_i\\}$ e permutacao de $\\{r_i\\}$ modulo $n$.\n\n**(ii) Igualar os produtos.** Multiplicando todos os elementos,\n$$\\prod_{i=1}^{\\varphi(n)}(ar_i)\\equiv\\prod_{i=1}^{\\varphi(n)} r_i\\pmod n,$$\nporque os dois lados percorrem o mesmo conjunto de classes. O lado esquerdo e $a^{\\varphi(n)}\\prod_i r_i$. Logo\n$$a^{\\varphi(n)}\\Big(\\prod_i r_i\\Big)\\equiv\\prod_i r_i\\pmod n.$$\n\n**(iii) Cancelar.** Cada $r_i$ e coprimo com $n$, portanto $R=\\prod_i r_i$ e coprimo com $n$ (unidade). Cancelando $R$:\n$$a^{\\varphi(n)}\\equiv 1\\pmod n.\\qquad\\blacksquare$$\n\n(Caso particular $n=p$: $\\varphi(p)=p-1$, recuperando o Pequeno Teorema de Fermat.)",
+          "steps": [
+            "Dica: tome um sistema reduzido de residuos $r_1,\\dots,r_{\\varphi(n)}$ e multiplique cada um por $a$.",
+            "Montagem: mostre que $\\{ar_i\\}$ e novamente um sistema reduzido (coprimos e incongruentes, usando cancelamento por $a$).",
+            "Execucao: iguale os produtos $\\prod(ar_i)\\equiv\\prod r_i$, fatorando $a^{\\varphi(n)}$ do lado esquerdo.",
+            "Conclusao: cancele $R=\\prod r_i$ (unidade) para obter $a^{\\varphi(n)}\\equiv1\\pmod n$."
+          ]
+        },
+        {
+          "prompt": "Demonstre o Teorema de Wilson emparelhando inversos em $(\\mathbb{Z}/p\\mathbb{Z})^\\times$.",
+          "hint": "Mostre que $x^2\\equiv 1\\pmod p$ só tem soluções $x\\equiv\\pm 1$; os demais fatores de $(p-1)!$ se cancelam em pares $a\\cdot a^{-1}$.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Demonstre o Teorema de Wilson: para $p$ primo, $(p-1)!\\equiv -1\\pmod p$.\n\n**Passo 1: quem e o proprio inverso.** Em $(\\mathbb{Z}/p\\mathbb{Z})^\\times$ (corpo, pois $p$ e primo), $x$ e seu proprio inverso sse $x^2\\equiv 1\\pmod p$, isto e $p\\mid(x-1)(x+1)$. Como $p$ e primo, $p\\mid x-1$ ou $p\\mid x+1$, ou seja $x\\equiv 1$ ou $x\\equiv -1\\equiv p-1$. Logo apenas $1$ e $p-1$ sao seus proprios inversos.\n\n**Passo 2: emparelhamento.** Considere o produto $(p-1)!=1\\cdot 2\\cdots(p-1)$, isto e, o produto de todas as unidades. Os elementos diferentes de $1$ e $p-1$ agrupam-se em pares $\\{a,a^{-1}\\}$ com $a\\ne a^{-1}$, e cada par contribui $a\\cdot a^{-1}\\equiv 1$. Portanto o produto de todos esses termos intermediarios e $\\equiv 1\\pmod p$.\n\n**Passo 3: sobra.** Restam apenas os fatores $1$ e $p-1$:\n$$(p-1)!\\equiv 1\\cdot(p-1)\\cdot 1\\equiv p-1\\equiv -1\\pmod p.$$\n\nAssim $(p-1)!\\equiv -1\\pmod p$. (A reciproca: se $n>1$ e composto, $(n-1)!\\not\\equiv -1$, o que caracteriza primalidade.) $\\blacksquare$",
+          "steps": [
+            "Dica: trabalhe no corpo $(\\mathbb{Z}/p\\mathbb{Z})^\\times$ e pergunte quais elementos sao o proprio inverso.",
+            "Montagem: resolva $x^2\\equiv1\\pmod p$ e conclua que so $1$ e $p-1$ satisfazem.",
+            "Execucao: no produto $(p-1)!$, emparelhe cada elemento com seu inverso distinto (cada par vale $1$).",
+            "Conclusao: sobram $1$ e $p-1$, dando $(p-1)!\\equiv1\\cdot(p-1)\\equiv-1\\pmod p$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $a^{561}\\equiv a\\pmod{561}$ para todo $a$, embora $561=3\\cdot 11\\cdot 17$ seja composto (número de Carmichael).",
+          "hint": "Use TCR: basta verificar módulo cada primo $p\\in\\{3,11,17\\}$ que $(p-1)\\mid 560$ e aplicar Fermat ($a^{561}\\equiv a\\pmod p$).",
+          "difficulty": 4,
+          "solution": "**Enunciado.** Mostre que $a^{561}\\equiv a\\pmod{561}$ para todo $a$, embora $561=3\\cdot 11\\cdot 17$ seja composto (numero de Carmichael).\n\n**Estrategia (TCR).** Como $561=3\\cdot 11\\cdot 17$ e os primos sao distintos, pelo TCR basta provar $a^{561}\\equiv a$ modulo cada um de $3,11,17$; a congruencia modulo o produto segue.\n\n**Modulo cada primo $p\\in\\{3,11,17\\}$.** Fixe tal $p$. Dois casos:\n\n- Se $p\\mid a$: entao $a\\equiv 0$ e $a^{561}\\equiv 0\\equiv a\\pmod p$.\n- Se $p\\nmid a$: pelo Pequeno Teorema de Fermat, $a^{p-1}\\equiv 1\\pmod p$. Verifico que $(p-1)\\mid 560$:\n $$p=3:\\ p-1=2\\mid 560;\\quad p=11:\\ p-1=10\\mid 560;\\quad p=17:\\ p-1=16\\mid 560.$$\n (De fato $560=2^4\\cdot 5\\cdot 7$, e $2\\mid560$, $10\\mid560$, $16=2^4\\mid560$.) Escrevendo $560=(p-1)t$, temos\n $$a^{561}=a\\cdot a^{560}=a\\cdot(a^{p-1})^{t}\\equiv a\\cdot 1^{t}=a\\pmod p.$$\n\nEm ambos os casos $a^{561}\\equiv a\\pmod p$ para $p=3,11,17$. Pelo TCR, $a^{561}\\equiv a\\pmod{561}$ para todo $a$. $\\blacksquare$",
+          "steps": [
+            "Dica: fatore $561=3\\cdot11\\cdot17$ e reduza o problema a cada primo via TCR.",
+            "Montagem: para cada primo $p$, separe os casos $p\\mid a$ (trivial) e $p\\nmid a$.",
+            "Execucao: no caso coprimo, use Fermat $a^{p-1}\\equiv1$ e verifique que $(p-1)\\mid560$ para $p=3,11,17$.",
+            "Conclusao: entao $a^{561}=a\\cdot(a^{p-1})^t\\equiv a$ mod cada primo; pelo TCR, vale mod $561$."
+          ]
+        },
+        {
+          "prompt": "No RSA com $p=11$, $q=13$ e $e=7$, encontre a chave de decifração $d$.",
+          "hint": "$\\varphi(143)=10\\cdot 12=120$; resolva $7d\\equiv 1\\pmod{120}$ pelo algoritmo de Euclides estendido.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** No RSA com $p=11$, $q=13$ e $e=7$, encontre a chave de decifracao $d$.\n\n**Passo 1: totiente.** $n=pq=143$ e\n$$\\varphi(143)=(p-1)(q-1)=10\\cdot 12=120.$$\n\n**Passo 2: montar a congruencia.** $d$ e o inverso de $e$ modulo $\\varphi(n)$:\n$$7d\\equiv 1\\pmod{120}.$$\n\n**Passo 3: Euclides estendido.** $\\gcd(7,120)$: $120=17\\cdot 7+1$, logo $1=120-17\\cdot 7$. Lendo modulo $120$: $-17\\cdot 7\\equiv 1\\pmod{120}$, ou seja $7\\cdot(-17)\\equiv 1$. Assim $d\\equiv -17\\equiv 120-17=103\\pmod{120}$.\n\n**Passo 4: verificacao.** $7\\cdot 103=721=6\\cdot 120+1$, logo $7\\cdot 103\\equiv 1\\pmod{120}$. $\\checkmark$\n\nPortanto $d=103$. (Cifra: $c\\equiv m^{7}\\pmod{143}$; decifra: $m\\equiv c^{103}\\pmod{143}$, valido por Euler.) $\\blacksquare$",
+          "steps": [
+            "Dica: a chave privada $d$ e o inverso de $e$ modulo $\\varphi(n)$.",
+            "Montagem: calcule $\\varphi(143)=10\\cdot12=120$ e monte $7d\\equiv1\\pmod{120}$.",
+            "Execucao: aplique Euclides estendido: $120=17\\cdot7+1\\Rightarrow1=120-17\\cdot7$.",
+            "Conclusao: $d\\equiv-17\\equiv103\\pmod{120}$; confira $7\\cdot103=721\\equiv1\\pmod{120}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de $\\varphi(n)$",
+          "back": "Quantidade de $1\\le k\\le n$ com $\\gcd(k,n)=1$; igual a $|(\\mathbb{Z}/n\\mathbb{Z})^\\times|$."
+        },
+        {
+          "front": "Fórmula de $\\varphi(n)$",
+          "back": "$\\varphi(n)=n\\prod_{p\\mid n}(1-1/p)$; em particular $\\varphi(p^k)=p^k-p^{k-1}$."
+        },
+        {
+          "front": "Teorema de Euler",
+          "back": "$\\gcd(a,n)=1\\Rightarrow a^{\\varphi(n)}\\equiv 1\\pmod n$."
+        },
+        {
+          "front": "Pequeno Teorema de Fermat",
+          "back": "$p$ primo, $p\\nmid a\\Rightarrow a^{p-1}\\equiv 1\\pmod p$; e $a^p\\equiv a\\pmod p$ sempre."
+        },
+        {
+          "front": "Teorema de Wilson",
+          "back": "$(p-1)!\\equiv -1\\pmod p$ sse $p$ é primo."
+        },
+        {
+          "front": "Como reduzir o expoente em $a^k\\bmod n$?",
+          "back": "Reduza $k$ módulo $\\varphi(n)$ (ou, melhor, módulo $\\operatorname{ord}_n(a)$), supondo $\\gcd(a,n)=1$."
+        },
+        {
+          "front": "Por que Euler é Lagrange disfarçado?",
+          "back": "A ordem de $a$ em $(\\mathbb{Z}/n\\mathbb{Z})^\\times$ divide $|(\\mathbb{Z}/n\\mathbb{Z})^\\times|=\\varphi(n)$."
+        },
+        {
+          "front": "Ideia central do RSA",
+          "back": "Com $ed\\equiv 1\\pmod{\\varphi(n)}$, $(m^e)^d\\equiv m\\pmod n$ por Euler; segurança = dificuldade de fatorar $n$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Abramo Hefez, Elementos de Aritmética, cap. 8 (Fermat, Euler, Wilson)",
+          "ref": "livro"
+        },
+        {
+          "title": "David M. Burton, Elementary Number Theory, caps. 5–6",
+          "ref": "livro"
+        },
+        {
+          "title": "William Stein, Elementary Number Theory, cap. 2 (e aplicação a RSA)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia a definicao e as propriedades de $\\varphi$ em Hefez (cap. 8) e deduza a formula fechada a partir de $\\varphi(p^k)=p^k-p^{k-1}$ e da multiplicatividade.",
+          "Estude a demonstracao do Teorema de Euler via sistema reduzido de residuos e reconheca que ela e o Teorema de Lagrange de grupos disfarcado.",
+          "Pratique reduzir expoentes: calcule varios $a^k\\bmod n$ usando Euler e, quando possivel, a ordem real de $a$.",
+          "Assista a um video sobre Fermat/Euler e outro sobre o funcionamento do RSA, refazendo a conta $ed\\equiv1\\pmod{\\varphi(n)}$.",
+          "Estude o Teorema de Wilson pelo emparelhamento de inversos e revise por que numeros de Carmichael enganam o teste de Fermat.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (prova de Euler, emparelhamento de Wilson, passo a passo do RSA)."
+        ],
+        "searchQueries": [
+          "funcao totiente de Euler formula demonstracao multiplicatividade",
+          "teorema de Euler demonstracao sistema reduzido de residuos",
+          "pequeno teorema de Fermat demonstracao",
+          "teorema de Wilson demonstracao emparelhamento de inversos",
+          "numeros de Carmichael 561 demonstracao",
+          "RSA algorithm number theory Euler theorem explained"
+        ],
+        "videos": [
+          {
+            "title": "Euler's theorem and Fermat's little theorem",
+            "channel": "Michael Penn",
+            "note": "Procure as demonstracoes de Fermat e Euler e o calculo de $\\varphi$."
+          },
+          {
+            "title": "RSA e criptografia",
+            "channel": "Equaciona com Paulo Pereira",
+            "note": "Assista a explicacao de aritmetica modular aplicada ao RSA, reproduzindo os passos de chave publica/privada."
+          },
+          {
+            "title": "How does RSA / public key cryptography work",
+            "channel": "3Blue1Brown",
+            "note": "Busque o material sobre modular exponentiation e a intuicao de por que $m^{ed}\\equiv m$ funciona."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Elementos de Aritmetica, cap. 8 (Fermat, Euler, Wilson)",
+            "where": "Abramo Hefez (SBM)"
+          },
+          {
+            "title": "Elementary Number Theory, cap. 2 (Fermat, Euler e aplicacao a RSA)",
+            "where": "William Stein (wstein.org)"
+          },
+          {
+            "title": "Elementary Number Theory, caps. 5-6",
+            "where": "David M. Burton"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-numeros-05-raizes-primitivas",
+      "title": "Ordem multiplicativa e raízes primitivas",
+      "tagline": "A estrutura de $(\\mathbb{Z}/n\\mathbb{Z})^\\times$: ordem de um elemento, ciclicidade e geradores.",
+      "objectives": [
+        "Ao final você consegue definir a ordem multiplicativa $\\operatorname{ord}_n(a)$ e provar que $a^m\\equiv 1\\pmod n$ sse, e somente se, $\\operatorname{ord}_n(a)\\mid m$.",
+        "Ao final você consegue provar que $\\operatorname{ord}_n(a)\\mid\\varphi(n)$ e calcular ordens de elementos.",
+        "Ao final você consegue enunciar o Teorema de Lagrange para polinômios sobre $\\mathbb{Z}/p\\mathbb{Z}$ e usá-lo para contar raízes.",
+        "Ao final você consegue demonstrar que $(\\mathbb{Z}/p\\mathbb{Z})^\\times$ é cíclico e enunciar para quais $n$ existem raízes primitivas.",
+        "Ao final você consegue usar raízes primitivas e índices (logaritmo discreto) para resolver congruências de potência."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Ordem multiplicativa",
+          "statement": "Para $\\gcd(a,n)=1$, $\\operatorname{ord}_n(a)$ é o menor inteiro $k\\ge 1$ com $a^k\\equiv 1\\pmod n$. É a ordem do elemento $\\overline{a}$ no grupo $(\\mathbb{Z}/n\\mathbb{Z})^\\times$."
+        },
+        {
+          "term": "Raiz primitiva",
+          "statement": "$g$ é raiz primitiva módulo $n$ se $\\operatorname{ord}_n(g)=\\varphi(n)$, isto é, se $g$ gera $(\\mathbb{Z}/n\\mathbb{Z})^\\times$. Equivale a $(\\mathbb{Z}/n\\mathbb{Z})^\\times$ ser cíclico com gerador $g$."
+        },
+        {
+          "term": "Índice (logaritmo discreto)",
+          "statement": "Fixada uma raiz primitiva $g$ módulo $n$, todo $a$ coprimo com $n$ é $a\\equiv g^{\\,\\operatorname{ind}_g a}\\pmod n$, com $\\operatorname{ind}_g a$ definido módulo $\\varphi(n)$; ele transforma produtos em somas, como um logaritmo."
+        },
+        {
+          "term": "Grupo cíclico de unidades",
+          "statement": "$(\\mathbb{Z}/n\\mathbb{Z})^\\times$ é cíclico sse $n\\in\\{1,2,4,p^k,2p^k\\}$ com $p$ primo ímpar. Nesses casos existem $\\varphi(\\varphi(n))$ raízes primitivas."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Propriedades da ordem",
+          "statement": "Se $\\gcd(a,n)=1$, então $a^m\\equiv 1\\pmod n$ sse $\\operatorname{ord}_n(a)\\mid m$. Em particular $\\operatorname{ord}_n(a)\\mid\\varphi(n)$, e $\\operatorname{ord}_n(a^k)=\\operatorname{ord}_n(a)/\\gcd(k,\\operatorname{ord}_n(a))$.",
+          "whyItMatters": "É a aritmética fina dos expoentes: diz exatamente quando uma potência volta a $1$ e governa a redução de expoentes."
+        },
+        {
+          "name": "Teorema de Lagrange (polinômios mod $p$)",
+          "statement": "Um polinômio não nulo de grau $d$ com coeficientes em $\\mathbb{Z}/p\\mathbb{Z}$ tem no máximo $d$ raízes em $\\mathbb{Z}/p\\mathbb{Z}$.",
+          "whyItMatters": "Como $\\mathbb{Z}/p\\mathbb{Z}$ é corpo, vale o limite de raízes pelo grau; é o ingrediente que força a existência de raízes primitivas."
+        },
+        {
+          "name": "Existência de raiz primitiva módulo $p$",
+          "statement": "Para todo primo $p$, o grupo $(\\mathbb{Z}/p\\mathbb{Z})^\\times$ é cíclico de ordem $p-1$; logo existem raízes primitivas, em número $\\varphi(p-1)$.",
+          "whyItMatters": "É o resultado estrutural central do subtópico: todo corpo finito tem grupo multiplicativo cíclico, base para logaritmos discretos e criptografia."
+        },
+        {
+          "name": "Classificação dos $n$ com raiz primitiva",
+          "statement": "$(\\mathbb{Z}/n\\mathbb{Z})^\\times$ é cíclico (existe raiz primitiva módulo $n$) se, e somente se, $n=1,2,4,p^k$ ou $2p^k$ com $p$ primo ímpar.",
+          "whyItMatters": "Delimita exatamente onde a estrutura cíclica simplifica a aritmética; por exemplo, não há raiz primitiva módulo $8$ nem módulo $12$."
+        }
+      ],
+      "summary": "A ordem $\\operatorname{ord}_n(a)$ é a ordem de $\\overline{a}$ no grupo $(\\mathbb{Z}/n\\mathbb{Z})^\\times$. A propriedade fundamental — $a^m\\equiv 1\\iff\\operatorname{ord}_n(a)\\mid m$ — decorre do algoritmo da divisão aplicado ao expoente, e dela sai $\\operatorname{ord}_n(a)\\mid\\varphi(n)$ via Euler. Calcular ordens, portanto, reduz-se a testar os divisores de $\\varphi(n)$. Uma raiz primitiva é um elemento de ordem máxima $\\varphi(n)$: quando existe, ela gera todas as unidades, e $(\\mathbb{Z}/n\\mathbb{Z})^\\times$ é cíclico.\n\nA existência de raízes primitivas módulo um primo $p$ é um teorema delicado e bonito. A peça-chave é o Teorema de Lagrange para polinômios: em um corpo, $x^d-1$ tem no máximo $d$ raízes. Combinando isso com a contagem de elementos de cada ordem $d\\mid p-1$ (no máximo $\\varphi(d)$ deles) e a identidade $\\sum_{d\\mid p-1}\\varphi(d)=p-1$, força-se que existem exatamente $\\varphi(d)$ elementos de cada ordem $d$ — em particular $\\varphi(p-1)>0$ de ordem $p-1$, as raízes primitivas. A classificação completa diz que há raiz primitiva exatamente para $n\\in\\{1,2,4,p^k,2p^k\\}$. Quando há, o índice $\\operatorname{ind}_g a$ é um logaritmo discreto que converte $x^k\\equiv a\\pmod n$ na congruência linear $k\\cdot\\operatorname{ind}_g x\\equiv\\operatorname{ind}_g a\\pmod{\\varphi(n)}$ — a ponte entre este subtópico e os resíduos quadráticos.",
+      "commonPitfalls": [
+        "Confundir $\\operatorname{ord}_n(a)$ com $\\varphi(n)$: a ordem apenas divide $\\varphi(n)$ e costuma ser menor.",
+        "Supor que sempre existe raiz primitiva: não há módulo $8$, $15$, $16$ ou qualquer $n$ fora da lista $\\{1,2,4,p^k,2p^k\\}$.",
+        "Usar o Teorema de Lagrange dos polinômios módulo composto: o limite \"grau = número máximo de raízes\" exige um corpo, falha em $\\mathbb{Z}/n\\mathbb{Z}$ com $n$ composto.",
+        "Calcular $\\operatorname{ord}_n(a)$ testando todos os expoentes: basta testar os divisores de $\\varphi(n)$."
+      ],
+      "worked": "**Problema.** Mostre que $2$ é raiz primitiva módulo $13$ e use isso para resolver $x^4\\equiv 3\\pmod{13}$.\n\n**Parte 1.** Aqui $\\varphi(13)=12$, com divisores $1,2,3,4,6,12$. Basta checar que $2^{12/q}\\not\\equiv 1$ para os primos $q\\mid 12$, isto é, $q=2,3$: $2^6=64\\equiv 12\\equiv -1\\pmod{13}$ (não é $1$) e $2^4=16\\equiv 3\\pmod{13}$ (não é $1$). Logo $\\operatorname{ord}_{13}(2)=12$ e $2$ é raiz primitiva.\n\n**Parte 2.** As potências de $2$ módulo $13$ são $2^1=2,\\,2^2=4,\\,2^3=8,\\,2^4=3,\\,2^5=6,\\,2^6=12,\\dots$ Então $\\operatorname{ind}_2 3=4$. Escrevendo $x\\equiv 2^y$, a equação vira $2^{4y}\\equiv 2^4$, ou $4y\\equiv 4\\pmod{12}$, isto é $y\\equiv 1\\pmod 3$, logo $y\\in\\{1,4,7,10\\}$. As soluções são $x\\equiv 2^1,2^4,2^7,2^{10}\\equiv 2,3,11,10\\pmod{13}$. Verificação rápida: $2^4=16\\equiv 3$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que, se $\\gcd(a,n)=1$, então $a^m\\equiv 1\\pmod n$ se, e somente se, $\\operatorname{ord}_n(a)\\mid m$.",
+          "hint": "Escreva $m=\\operatorname{ord}_n(a)\\cdot q+r$ com $0\\le r<\\operatorname{ord}_n(a)$ e mostre que $a^r\\equiv 1$ força $r=0$ pela minimalidade.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Se $\\gcd(a,n)=1$, prove que $a^m\\equiv 1\\pmod n$ se, e somente se, $\\operatorname{ord}_n(a)\\mid m$.\n\nSeja $t=\\operatorname{ord}_n(a)$, o menor inteiro positivo com $a^t\\equiv 1\\pmod n$.\n\n**($\\Leftarrow$).** Se $t\\mid m$, escreva $m=tq$. Entao\n$$a^m=(a^t)^q\\equiv 1^q=1\\pmod n.$$\n\n**($\\Rightarrow$).** Suponha $a^m\\equiv 1\\pmod n$. Pelo algoritmo da divisao, $m=tq+r$ com $0\\le r<t$. Entao\n$$1\\equiv a^m=(a^t)^q\\cdot a^r\\equiv 1^q\\cdot a^r=a^r\\pmod n.$$\nLogo $a^r\\equiv 1\\pmod n$ com $0\\le r<t$. Pela minimalidade de $t$ (menor expoente positivo que devolve $1$), a unica possibilidade e $r=0$. Portanto $t\\mid m$.\n\nAs duas implicacoes dao a equivalencia. (Em particular, como $a^{\\varphi(n)}\\equiv 1$ por Euler, segue $t\\mid\\varphi(n)$.) $\\blacksquare$",
+          "steps": [
+            "Dica: chame $t=\\operatorname{ord}_n(a)$ e trate as duas direcoes separadamente.",
+            "Montagem (facil): se $t\\mid m$, escreva $m=tq$ e eleve $a^t\\equiv1$ a potencia $q$.",
+            "Execucao (dificil): divida $m=tq+r$ com $0\\le r<t$ e substitua em $a^m\\equiv1$ para obter $a^r\\equiv1$.",
+            "Conclusao: a minimalidade de $t$ forca $r=0$, logo $t\\mid m$; combinando com Euler, $t\\mid\\varphi(n)$."
+          ]
+        },
+        {
+          "prompt": "Mostre que não existe raiz primitiva módulo $8$.",
+          "hint": "Verifique que $1^2,3^2,5^2,7^2\\equiv 1\\pmod 8$; logo todo elemento de $(\\mathbb{Z}/8\\mathbb{Z})^\\times$ tem ordem $\\le 2<\\varphi(8)=4$.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Mostre que nao existe raiz primitiva modulo $8$.\n\n**Demonstracao.** As unidades de $\\mathbb{Z}/8\\mathbb{Z}$ sao as classes coprimas com $8$: $\\{1,3,5,7\\}$, logo $\\varphi(8)=4$. Uma raiz primitiva precisaria ter ordem $\\varphi(8)=4$.\n\nCalcule os quadrados:\n$$1^2=1,\\quad 3^2=9\\equiv 1,\\quad 5^2=25\\equiv 1,\\quad 7^2=49\\equiv 1\\pmod 8.$$\nAssim todo elemento $x\\in(\\mathbb{Z}/8\\mathbb{Z})^\\times$ satisfaz $x^2\\equiv 1\\pmod 8$, ou seja tem ordem $1$ ou $2$.\n\nComo a ordem maxima e $2<4=\\varphi(8)$, nenhum elemento gera o grupo inteiro. Portanto nao existe raiz primitiva modulo $8$. (Estruturalmente, $(\\mathbb{Z}/8\\mathbb{Z})^\\times\\cong\\mathbb{Z}/2\\times\\mathbb{Z}/2$, que nao e ciclico.) $\\blacksquare$",
+          "steps": [
+            "Dica: identifique as unidades modulo $8$ e o valor $\\varphi(8)$.",
+            "Montagem: uma raiz primitiva deveria ter ordem $\\varphi(8)=4$.",
+            "Execucao: calcule $x^2\\bmod8$ para $x=1,3,5,7$ e observe que todos dao $1$.",
+            "Conclusao: toda ordem e $\\le2<4$, logo nenhum elemento gera $(\\mathbb{Z}/8\\mathbb{Z})^\\times$; nao ha raiz primitiva."
+          ]
+        },
+        {
+          "prompt": "Prove a identidade $\\sum_{d\\mid m}\\varphi(d)=m$ e explique seu papel na contagem de elementos de cada ordem módulo $p$.",
+          "hint": "Particione $\\{1,\\dots,m\\}$ pelo valor de $\\gcd(k,m)=m/d$; cada classe tem $\\varphi(d)$ elementos.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Prove $\\sum_{d\\mid m}\\varphi(d)=m$ e explique seu papel na contagem de elementos de cada ordem modulo $p$.\n\n**Prova da identidade.** Particione o conjunto $\\{1,2,\\dots,m\\}$ pelo valor de $\\gcd(k,m)$. Para cada divisor $d\\mid m$, seja\n$$A_d=\\{k:\\ 1\\le k\\le m,\\ \\gcd(k,m)=d\\}.$$\nEsses conjuntos particionam $\\{1,\\dots,m\\}$, logo $\\sum_{d\\mid m}|A_d|=m$.\n\nAgora conte $|A_d|$. Se $\\gcd(k,m)=d$, escreva $k=d k'$; entao $\\gcd(k',m/d)=1$ e $1\\le k'\\le m/d$. Reciprocamente, cada tal $k'$ da um $k$ valido. Logo\n$$|A_d|=\\#\\{k':\\ 1\\le k'\\le m/d,\\ \\gcd(k',m/d)=1\\}=\\varphi(m/d).$$\nPortanto\n$$m=\\sum_{d\\mid m}\\varphi(m/d)=\\sum_{d'\\mid m}\\varphi(d'),$$\nreindexando $d'=m/d$ (que percorre os mesmos divisores).\n\n**Papel na contagem de ordens modulo $p$.** Para cada $d\\mid p-1$, seja $\\psi(d)$ o numero de elementos de $(\\mathbb{Z}/p\\mathbb{Z})^\\times$ de ordem exatamente $d$. Pelo Teorema de Lagrange dos polinomios, $x^d-1$ tem no maximo $d$ raizes no corpo $\\mathbb{Z}/p\\mathbb{Z}$; se existe algum elemento de ordem $d$, ele gera um subgrupo ciclico de $d$ raizes de $x^d-1$, e nesse subgrupo ha exatamente $\\varphi(d)$ elementos de ordem $d$ - logo $\\psi(d)\\in\\{0,\\varphi(d)\\}$. Como todo elemento tem alguma ordem $d\\mid p-1$,\n$$\\sum_{d\\mid p-1}\\psi(d)=p-1=\\sum_{d\\mid p-1}\\varphi(d).$$\nComo $\\psi(d)\\le\\varphi(d)$ termo a termo e as somas coincidem, deve valer $\\psi(d)=\\varphi(d)$ para todo $d$. Em particular $\\psi(p-1)=\\varphi(p-1)>0$: existem raizes primitivas. $\\blacksquare$",
+          "steps": [
+            "Dica: agrupe $\\{1,\\dots,m\\}$ segundo o valor de $\\gcd(k,m)$.",
+            "Montagem: mostre que a classe com $\\gcd(k,m)=d$ tem exatamente $\\varphi(m/d)$ elementos (escrevendo $k=dk'$).",
+            "Execucao: somando sobre os divisores obtem-se $\\sum_{d\\mid m}\\varphi(m/d)=m$, que e $\\sum_{d\\mid m}\\varphi(d)$.",
+            "Conclusao: aplique a $m=p-1$ com $\\psi(d)\\le\\varphi(d)$ e somas iguais para forcar $\\psi(d)=\\varphi(d)$, garantindo raizes primitivas."
+          ]
+        },
+        {
+          "prompt": "Determine todas as raízes primitivas módulo $11$.",
+          "hint": "Ache uma (teste $2$); as demais são $2^k$ com $\\gcd(k,10)=1$, ou seja, $k\\in\\{1,3,7,9\\}$.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Determine todas as raizes primitivas modulo $11$.\n\n**Passo 1: uma raiz primitiva.** $\\varphi(11)=10$, com divisores $1,2,5,10$. Basta checar que $2^{10/q}\\not\\equiv 1$ para os primos $q\\mid 10$, isto e $q=2,5$:\n$$2^{5}=32\\equiv 10\\equiv -1\\pmod{11}\\ (\\ne 1),\\qquad 2^{2}=4\\pmod{11}\\ (\\ne 1).$$\nComo nenhuma das potencias 'de teste' e $1$, $\\operatorname{ord}_{11}(2)=10$: logo $2$ e raiz primitiva.\n\n**Passo 2: todas as outras.** As raizes primitivas sao exatamente as potencias $2^{k}$ com $\\gcd(k,10)=1$, isto e $k\\in\\{1,3,7,9\\}$ (sao $\\varphi(10)=4$ delas). Calculando:\n$$2^{1}=2,\\quad 2^{3}=8,\\quad 2^{7}=128\\equiv 7,\\quad 2^{9}=512\\equiv 6\\pmod{11}.$$\n(Detalhe: $2^{4}=16\\equiv5$, $2^{5}\\equiv10$, $2^{6}\\equiv9$, $2^{7}\\equiv7$, $2^{8}\\equiv3$, $2^{9}\\equiv6$.)\n\n**Resposta.** As raizes primitivas modulo $11$ sao $\\{2,\\ 6,\\ 7,\\ 8\\}$. $\\blacksquare$",
+          "steps": [
+            "Dica: ache primeiro uma raiz primitiva testando $2$ apenas nos expoentes $\\varphi(11)/q$ para $q$ primo dividindo $10$.",
+            "Montagem: confirme $2^5\\equiv-1$ e $2^2\\equiv4$, ambos $\\ne1$, logo $\\operatorname{ord}_{11}(2)=10$.",
+            "Execucao: as demais raizes sao $2^k$ com $\\gcd(k,10)=1$, ou seja $k\\in\\{1,3,7,9\\}$.",
+            "Conclusao: calcule essas potencias mod $11$, obtendo $\\{2,8,7,6\\}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de $\\operatorname{ord}_n(a)$",
+          "back": "Menor $k\\ge 1$ com $a^k\\equiv 1\\pmod n$ (para $\\gcd(a,n)=1$)."
+        },
+        {
+          "front": "Critério $a^m\\equiv 1\\pmod n$",
+          "back": "Vale sse $\\operatorname{ord}_n(a)\\mid m$; em particular $\\operatorname{ord}_n(a)\\mid\\varphi(n)$."
+        },
+        {
+          "front": "Ordem de uma potência",
+          "back": "$\\operatorname{ord}_n(a^k)=\\operatorname{ord}_n(a)/\\gcd(k,\\operatorname{ord}_n(a))$."
+        },
+        {
+          "front": "Definição de raiz primitiva mod $n$",
+          "back": "Elemento $g$ com $\\operatorname{ord}_n(g)=\\varphi(n)$; gera $(\\mathbb{Z}/n\\mathbb{Z})^\\times$."
+        },
+        {
+          "front": "Para quais $n$ existe raiz primitiva?",
+          "back": "Exatamente $n=1,2,4,p^k,2p^k$ com $p$ primo ímpar."
+        },
+        {
+          "front": "Teorema de Lagrange (polinômios mod $p$)",
+          "back": "Polinômio de grau $d$ sobre o corpo $\\mathbb{Z}/p\\mathbb{Z}$ tem $\\le d$ raízes."
+        },
+        {
+          "front": "Quantas raízes primitivas módulo $p$?",
+          "back": "$\\varphi(p-1)$."
+        },
+        {
+          "front": "Para que serve o índice $\\operatorname{ind}_g a$?",
+          "back": "Logaritmo discreto: transforma $x^k\\equiv a$ na congruência linear $k\\,\\operatorname{ind}_g x\\equiv\\operatorname{ind}_g a\\pmod{\\varphi(n)}$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Niven, Zuckerman e Montgomery, cap. 2 (primitive roots)",
+          "ref": "livro"
+        },
+        {
+          "title": "José Plínio O. Santos, Introdução à Teoria dos Números, cap. 5",
+          "ref": "livro"
+        },
+        {
+          "title": "Brochero, Moreira, Saldanha e Tengan, Teoria dos Números (IMPA), cap. 3",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia ordem multiplicativa em Niven-Zuckerman-Montgomery (cap. 2) e prove por conta propria que $a^m\\equiv1\\iff\\operatorname{ord}_n(a)\\mid m$.",
+          "Calcule a ordem de varios elementos modulo primos pequenos testando apenas os divisores de $\\varphi(n)$.",
+          "Estude a demonstracao de que $(\\mathbb{Z}/p\\mathbb{Z})^\\times$ e ciclico, seguindo a contagem via $\\sum_{d\\mid p-1}\\varphi(d)=p-1$ e o Teorema de Lagrange para polinomios.",
+          "Assista a um video sobre primitive roots e reproduza a verificacao de que $2$ e raiz primitiva mod $13$ (checando $2^{6}$ e $2^{4}$).",
+          "Pratique logaritmo discreto: use uma raiz primitiva para resolver uma congruencia de potencia $x^k\\equiv a$.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (criterio da ordem, prova da ciclicidade e a lista $\\{1,2,4,p^k,2p^k\\}$)."
+        ],
+        "searchQueries": [
+          "ordem multiplicativa modulo n propriedades demonstracao",
+          "grupo multiplicativo Z/pZ ciclico demonstracao raiz primitiva",
+          "soma sobre divisores phi(d) igual a n demonstracao",
+          "para quais n existe raiz primitiva classificacao 2 4 p^k 2p^k",
+          "logaritmo discreto indice raiz primitiva resolver x^k congruente a",
+          "primitive root existence proof finite field cyclic"
+        ],
+        "videos": [
+          {
+            "title": "Primitive roots and order modulo n",
+            "channel": "Michael Penn",
+            "note": "Procure a serie sobre order of an element e primitive roots com as demonstracoes."
+          },
+          {
+            "title": "Cyclic groups and generators",
+            "channel": "Dr. Peyam",
+            "note": "Assista aos videos de teoria de grupos sobre grupos ciclicos e geradores, que sustentam a ideia de raiz primitiva."
+          },
+          {
+            "title": "Multiplicative group of a finite field is cyclic",
+            "channel": "MIT OpenCourseWare",
+            "note": "Busque as aulas de algebra/teoria dos numeros que provam a ciclicidade de $(\\mathbb{Z}/p\\mathbb{Z})^\\times$."
+          }
+        ],
+        "articles": [
+          {
+            "title": "An Introduction to the Theory of Numbers, cap. 2 (primitive roots)",
+            "where": "Niven, Zuckerman e Montgomery"
+          },
+          {
+            "title": "Introducao a Teoria dos Numeros, cap. 5",
+            "where": "Jose Plinio O. Santos (IMPA)"
+          },
+          {
+            "title": "Teoria dos Numeros (IMPA), cap. 3",
+            "where": "Brochero, Moreira, Saldanha e Tengan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-numeros-06-reciprocidade-quadratica",
+      "title": "Resíduos quadráticos e a Lei de Reciprocidade Quadrática",
+      "tagline": "Quando $x^2\\equiv a\\pmod p$ tem solução: critério de Euler, símbolo de Legendre e a joia de Gauss.",
+      "objectives": [
+        "Ao final você consegue definir resíduo quadrático e o símbolo de Legendre $\\left(\\tfrac{a}{p}\\right)$ e listar suas propriedades multiplicativas.",
+        "Ao final você consegue demonstrar o critério de Euler e usá-lo para decidir se $a$ é resíduo quadrático módulo $p$.",
+        "Ao final você consegue calcular as leis suplementares para $\\left(\\tfrac{-1}{p}\\right)$ e $\\left(\\tfrac{2}{p}\\right)$.",
+        "Ao final você consegue enunciar a Lei de Reciprocidade Quadrática e aplicá-la (com o símbolo de Jacobi) para avaliar símbolos de Legendre rapidamente.",
+        "Ao final você consegue decidir a solubilidade de congruências quadráticas $x^2\\equiv a\\pmod n$ via TCR."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Resíduo quadrático",
+          "statement": "Para $p$ primo ímpar e $\\gcd(a,p)=1$, $a$ é resíduo quadrático (RQ) módulo $p$ se $x^2\\equiv a\\pmod p$ tem solução; caso contrário é não resíduo. Há exatamente $(p-1)/2$ RQs e $(p-1)/2$ não resíduos."
+        },
+        {
+          "term": "Símbolo de Legendre",
+          "statement": "$\\left(\\tfrac{a}{p}\\right)=+1$ se $a$ é RQ módulo $p$, $-1$ se é não resíduo, e $0$ se $p\\mid a$. É completamente multiplicativo em $a$: $\\left(\\tfrac{ab}{p}\\right)=\\left(\\tfrac{a}{p}\\right)\\left(\\tfrac{b}{p}\\right)$."
+        },
+        {
+          "term": "Lema de Gauss",
+          "statement": "Para $\\gcd(a,p)=1$, $\\left(\\tfrac{a}{p}\\right)=(-1)^{\\mu}$, onde $\\mu$ é o número de elementos de $\\{a,2a,\\dots,\\tfrac{p-1}{2}a\\}$ cujo resto módulo $p$ excede $p/2$. É a ferramenta combinatória que prova as leis suplementares e a reciprocidade."
+        },
+        {
+          "term": "Símbolo de Jacobi",
+          "statement": "Para $n$ ímpar positivo com fatoração $n=\\prod p_i^{e_i}$, define-se $\\left(\\tfrac{a}{n}\\right)=\\prod\\left(\\tfrac{a}{p_i}\\right)^{e_i}$. Satisfaz as mesmas leis (reciprocidade e suplementares) e permite calcular sem fatorar, embora $\\left(\\tfrac{a}{n}\\right)=1$ não garanta que $a$ seja RQ módulo $n$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Critério de Euler",
+          "statement": "Para $p$ primo ímpar e $\\gcd(a,p)=1$, $\\left(\\tfrac{a}{p}\\right)\\equiv a^{(p-1)/2}\\pmod p$.",
+          "whyItMatters": "Liga resíduos quadráticos à exponenciação modular e dá uma demonstração imediata da multiplicatividade do símbolo de Legendre."
+        },
+        {
+          "name": "Primeira lei suplementar",
+          "statement": "$\\left(\\tfrac{-1}{p}\\right)=(-1)^{(p-1)/2}$; ou seja, $-1$ é resíduo quadrático módulo $p$ sse $p\\equiv 1\\pmod 4$.",
+          "whyItMatters": "Determina quais primos são somas de dois quadrados e quando $i=\\sqrt{-1}$ existe em $\\mathbb{Z}/p\\mathbb{Z}$."
+        },
+        {
+          "name": "Segunda lei suplementar",
+          "statement": "$\\left(\\tfrac{2}{p}\\right)=(-1)^{(p^2-1)/8}$; ou seja, $2$ é resíduo quadrático módulo $p$ sse $p\\equiv\\pm 1\\pmod 8$.",
+          "whyItMatters": "Resolve o caso do $2$, frequentemente o passo final de qualquer cálculo de símbolo de Legendre."
+        },
+        {
+          "name": "Lei de Reciprocidade Quadrática (Gauss)",
+          "statement": "Para primos ímpares distintos $p,q$: $\\left(\\tfrac{p}{q}\\right)\\left(\\tfrac{q}{p}\\right)=(-1)^{\\frac{p-1}{2}\\cdot\\frac{q-1}{2}}$. Assim os dois símbolos coincidem, exceto quando $p\\equiv q\\equiv 3\\pmod 4$, caso em que são opostos.",
+          "whyItMatters": "É um dos teoremas mais profundos da aritmética elementar: relaciona dois problemas de solubilidade aparentemente independentes e dá um algoritmo eficiente para calcular $\\left(\\tfrac{a}{p}\\right)$."
+        }
+      ],
+      "summary": "A pergunta \"quando $x^2\\equiv a\\pmod p$ tem solução?\" organiza-se pelo símbolo de Legendre $\\left(\\tfrac{a}{p}\\right)$. O critério de Euler $\\left(\\tfrac{a}{p}\\right)\\equiv a^{(p-1)/2}\\pmod p$ vem direto da ciclicidade de $(\\mathbb{Z}/p\\mathbb{Z})^\\times$: fixada uma raiz primitiva $g$, $a=g^k$ é RQ sse $k$ é par, e $a^{(p-1)/2}=g^{k(p-1)/2}$ vale $+1$ ou $-1$ conforme a paridade de $k$. Disso segue a multiplicatividade do símbolo (RQ vezes RQ é RQ; não resíduo vezes não resíduo é RQ) e o fato de haver $(p-1)/2$ de cada tipo.\n\nAs duas leis suplementares resolvem $-1$ e $2$: $-1$ é RQ sse $p\\equiv 1\\pmod 4$, e $2$ é RQ sse $p\\equiv\\pm 1\\pmod 8$. O coração do subtópico é a Lei de Reciprocidade Quadrática de Gauss, que conecta $\\left(\\tfrac{p}{q}\\right)$ a $\\left(\\tfrac{q}{p}\\right)$ por um sinal que só depende das classes de $p,q$ módulo $4$. Com a multiplicatividade, as suplementares e a reciprocidade (estendida via símbolo de Jacobi para evitar fatorar), calcula-se qualquer $\\left(\\tfrac{a}{p}\\right)$ por um algoritmo tipo Euclides, alternando reciprocidade e redução módulo. Para módulos compostos, o TCR reduz $x^2\\equiv a\\pmod n$ ao caso de potências de primos. Essa teoria é o portal histórico para a Teoria Algébrica dos Números (corpos quadráticos, leis de reciprocidade superiores).",
+      "commonPitfalls": [
+        "Tratar $\\left(\\tfrac{a}{n}\\right)$ de Jacobi como teste de RQ: $\\left(\\tfrac{a}{n}\\right)=1$ com $n$ composto NÃO garante que $a$ seja resíduo quadrático módulo $n$.",
+        "Esquecer hipóteses da reciprocidade: $p,q$ devem ser primos ímpares distintos; o $2$ e o sinal de $-1$ são tratados pelas leis suplementares.",
+        "Aplicar o critério de Euler como congruência de inteiros: $a^{(p-1)/2}$ é congruente a $\\pm 1$, e é esse sinal (não o número) que dá o símbolo.",
+        "Confundir as condições: $-1$ depende de $p\\bmod 4$, enquanto $2$ depende de $p\\bmod 8$."
+      ],
+      "worked": "**Problema.** $5$ é resíduo quadrático módulo $103$? (Note que $103$ é primo.)\n\n**Solução.** Pela reciprocidade, como $5\\equiv 1\\pmod 4$, temos $\\left(\\tfrac{5}{103}\\right)=\\left(\\tfrac{103}{5}\\right)$ (o sinal $(-1)^{\\frac{5-1}{2}\\cdot\\frac{103-1}{2}}=(-1)^{2\\cdot 51}=+1$). Agora $103\\equiv 3\\pmod 5$, logo $\\left(\\tfrac{103}{5}\\right)=\\left(\\tfrac{3}{5}\\right)$. Os RQs módulo $5$ são $1$ e $4$; como $3\\notin\\{1,4\\}$, $\\left(\\tfrac{3}{5}\\right)=-1$. Portanto $\\left(\\tfrac{5}{103}\\right)=-1$: $5$ NÃO é resíduo quadrático módulo $103$, isto é, $x^2\\equiv 5\\pmod{103}$ não tem solução. (Confirme pelo critério de Euler, se quiser: $5^{51}\\equiv -1\\pmod{103}$.) $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Demonstre o critério de Euler usando uma raiz primitiva módulo $p$.",
+          "hint": "Escreva $a\\equiv g^k$; então $a$ é RQ sse $k$ é par, e $a^{(p-1)/2}\\equiv g^{k(p-1)/2}\\equiv(g^{(p-1)/2})^k\\equiv(-1)^k$.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Demonstre o criterio de Euler: para $p$ primo impar e $\\gcd(a,p)=1$, $\\left(\\tfrac{a}{p}\\right)\\equiv a^{(p-1)/2}\\pmod p$.\n\n**Demonstracao (via raiz primitiva).** Como $p$ e primo, $(\\mathbb{Z}/p\\mathbb{Z})^\\times$ e ciclico; fixe uma raiz primitiva $g$, de ordem $p-1$. Escreva $a\\equiv g^{k}\\pmod p$.\n\n**(i) $a$ e residuo quadratico sse $k$ e par.** Se $k=2j$, entao $a\\equiv(g^{j})^2$ e RQ. Reciprocamente, se $a\\equiv x^2$ com $x\\equiv g^{s}$, entao $g^{k}\\equiv g^{2s}$, logo $k\\equiv 2s\\pmod{p-1}$; como $p-1$ e par, $k$ e par. Assim $\\left(\\tfrac{a}{p}\\right)=+1\\iff k$ par.\n\n**(ii) Calculo de $a^{(p-1)/2}$.** Note que $g^{(p-1)/2}$ tem ordem $2$ (pois $(g^{(p-1)/2})^2=g^{p-1}\\equiv 1$ e $g^{(p-1)/2}\\not\\equiv 1$ por $g$ ter ordem $p-1$). O unico elemento de ordem $2$ em $(\\mathbb{Z}/p\\mathbb{Z})^\\times$ e $-1$, logo $g^{(p-1)/2}\\equiv -1\\pmod p$. Entao\n$$a^{(p-1)/2}\\equiv g^{k(p-1)/2}=\\big(g^{(p-1)/2}\\big)^{k}\\equiv(-1)^{k}\\pmod p.$$\n\n**(iii) Conclusao.** $(-1)^k=+1$ se $k$ par e $-1$ se $k$ impar, exatamente como $\\left(\\tfrac{a}{p}\\right)$ por (i). Logo\n$$a^{(p-1)/2}\\equiv\\left(\\tfrac{a}{p}\\right)\\pmod p.\\qquad\\blacksquare$$",
+          "steps": [
+            "Dica: use a ciclicidade de $(\\mathbb{Z}/p\\mathbb{Z})^\\times$ e escreva $a\\equiv g^k$ para uma raiz primitiva $g$.",
+            "Montagem: mostre que $a$ e residuo quadratico exatamente quando o expoente $k$ e par.",
+            "Execucao: prove que $g^{(p-1)/2}\\equiv-1$ (unico elemento de ordem $2$), logo $a^{(p-1)/2}\\equiv(-1)^k$.",
+            "Conclusao: $(-1)^k$ coincide com $\\left(\\tfrac{a}{p}\\right)$, provando o criterio."
+          ]
+        },
+        {
+          "prompt": "Prove que $-1$ é resíduo quadrático módulo $p$ sse $p\\equiv 1\\pmod 4$.",
+          "hint": "Aplique o critério de Euler a $a=-1$: $(-1)^{(p-1)/2}=1$ sse $(p-1)/2$ é par.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Prove que $-1$ e residuo quadratico modulo $p$ (primo impar) se, e somente se, $p\\equiv 1\\pmod 4$.\n\n**Demonstracao.** Pelo criterio de Euler, com $a=-1$:\n$$\\left(\\tfrac{-1}{p}\\right)\\equiv(-1)^{(p-1)/2}\\pmod p.$$\nAmbos os lados sao $\\pm 1$, e como $p>2$, $+1\\not\\equiv -1\\pmod p$; portanto a congruencia e de fato uma igualdade de sinais:\n$$\\left(\\tfrac{-1}{p}\\right)=(-1)^{(p-1)/2}.$$\n\nAgora analise a paridade de $\\tfrac{p-1}{2}$:\n\n- Se $p\\equiv 1\\pmod 4$, entao $p-1\\equiv 0\\pmod 4$, logo $\\tfrac{p-1}{2}$ e par e $(-1)^{(p-1)/2}=+1$: $-1$ e RQ.\n- Se $p\\equiv 3\\pmod 4$, entao $p-1\\equiv 2\\pmod 4$, logo $\\tfrac{p-1}{2}$ e impar e $(-1)^{(p-1)/2}=-1$: $-1$ nao e RQ.\n\nPortanto $-1$ e residuo quadratico modulo $p$ se, e somente se, $p\\equiv 1\\pmod 4$. $\\blacksquare$",
+          "steps": [
+            "Dica: aplique o criterio de Euler ao caso particular $a=-1$.",
+            "Montagem: obtenha $\\left(\\tfrac{-1}{p}\\right)=(-1)^{(p-1)/2}$ (a congruencia vira igualdade de sinais pois $p>2$).",
+            "Execucao: estude a paridade de $(p-1)/2$ conforme $p\\equiv1$ ou $3\\pmod4$.",
+            "Conclusao: sinal $+1$ sse $p\\equiv1\\pmod4$, isto e, $-1$ e RQ exatamente nesse caso."
+          ]
+        },
+        {
+          "prompt": "Use a primeira lei suplementar para mostrar que existem infinitos primos $\\equiv 1\\pmod 4$.",
+          "hint": "Se fossem finitos, considere $N=(2p_1\\cdots p_k)^2+1$; todo fator primo ímpar de $N$ satisfaz $-1$ ser RQ, logo $\\equiv 1\\pmod 4$, gerando um primo novo.",
+          "difficulty": 4,
+          "solution": "**Enunciado.** Use a primeira lei suplementar para mostrar que existem infinitos primos $\\equiv 1\\pmod 4$.\n\n**Demonstracao (por contradicao).** Suponha que existam apenas finitos primos $\\equiv 1\\pmod 4$, digamos $p_1,\\dots,p_k$. Considere\n$$N=(2\\,p_1 p_2\\cdots p_k)^2+1.$$\nEntao $N$ e impar e $N>1$; seja $q$ um fator primo de $N$. Como $N$ e impar, $q$ e impar.\n\nDe $q\\mid N$ segue $(2p_1\\cdots p_k)^2\\equiv -1\\pmod q$, isto e, $-1$ e residuo quadratico modulo $q$. Pela primeira lei suplementar, isso forca\n$$q\\equiv 1\\pmod 4.$$\n\nMas $q$ nao pode ser nenhum dos $p_i$: se $q=p_i$, entao $q\\mid(2p_1\\cdots p_k)^2$ e $q\\mid N$, logo $q\\mid\\big(N-(2p_1\\cdots p_k)^2\\big)=1$, absurdo.\n\nAssim $q$ e um primo $\\equiv 1\\pmod 4$ fora da lista, contradicao. Logo ha infinitos primos $\\equiv 1\\pmod 4$. $\\blacksquare$",
+          "steps": [
+            "Dica: construa um numero cujos fatores primos sejam forcados a ser $\\equiv1\\pmod4$.",
+            "Montagem: suponha finitos $p_1,\\dots,p_k\\equiv1\\pmod4$ e tome $N=(2p_1\\cdots p_k)^2+1$.",
+            "Execucao: um fator primo impar $q$ de $N$ satisfaz $-1\\equiv(\\cdots)^2\\pmod q$, logo $-1$ e RQ e $q\\equiv1\\pmod4$.",
+            "Conclusao: $q$ nao esta na lista (senao dividiria $1$), produzindo primo novo e a contradicao."
+          ]
+        },
+        {
+          "prompt": "Calcule $\\left(\\tfrac{30}{53}\\right)$ usando multiplicatividade, reciprocidade e as leis suplementares.",
+          "hint": "Fatore $30=2\\cdot 3\\cdot 5$; use $\\left(\\tfrac{2}{53}\\right)$ (lei suplementar, $53\\equiv 5\\pmod 8$), e reciprocidade para $\\left(\\tfrac{3}{53}\\right)$ e $\\left(\\tfrac{5}{53}\\right)$.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Calcule $\\left(\\tfrac{30}{53}\\right)$ ($53$ e primo).\n\n**Passo 1: multiplicatividade.** $30=2\\cdot 3\\cdot 5$, logo\n$$\\left(\\tfrac{30}{53}\\right)=\\left(\\tfrac{2}{53}\\right)\\left(\\tfrac{3}{53}\\right)\\left(\\tfrac{5}{53}\\right).$$\n\n**Passo 2: $\\left(\\tfrac{2}{53}\\right)$ (segunda lei suplementar).** $2$ e RQ mod $p$ sse $p\\equiv\\pm 1\\pmod 8$. Como $53=6\\cdot 8+5$, temos $53\\equiv 5\\pmod 8$, logo $\\left(\\tfrac{2}{53}\\right)=-1$.\n\n**Passo 3: $\\left(\\tfrac{3}{53}\\right)$ (reciprocidade).** $3\\equiv 3\\pmod 4$ e $53\\equiv 1\\pmod 4$; como um deles e $\\equiv 1\\pmod 4$, o sinal e $+1$: $\\left(\\tfrac{3}{53}\\right)=\\left(\\tfrac{53}{3}\\right)$. Ora $53\\equiv 2\\pmod 3$, entao $\\left(\\tfrac{53}{3}\\right)=\\left(\\tfrac{2}{3}\\right)$. E $3\\equiv 3\\pmod 8\\Rightarrow\\left(\\tfrac{2}{3}\\right)=-1$. Logo $\\left(\\tfrac{3}{53}\\right)=-1$.\n\n**Passo 4: $\\left(\\tfrac{5}{53}\\right)$ (reciprocidade).** $5\\equiv 1\\pmod 4$, sinal $+1$: $\\left(\\tfrac{5}{53}\\right)=\\left(\\tfrac{53}{5}\\right)$. Como $53\\equiv 3\\pmod 5$ e os RQs mod $5$ sao $\\{1,4\\}$, $3$ nao e RQ: $\\left(\\tfrac{53}{5}\\right)=-1$. Logo $\\left(\\tfrac{5}{53}\\right)=-1$.\n\n**Passo 5: combinar.**\n$$\\left(\\tfrac{30}{53}\\right)=(-1)(-1)(-1)=-1.$$\nPortanto $30$ NAO e residuo quadratico modulo $53$: $x^2\\equiv 30\\pmod{53}$ nao tem solucao. $\\blacksquare$",
+          "steps": [
+            "Dica: fatore $30=2\\cdot3\\cdot5$ e use a multiplicatividade do simbolo de Legendre.",
+            "Montagem: trate o fator $2$ pela segunda lei suplementar ($53\\equiv5\\pmod8\\Rightarrow-1$).",
+            "Execucao: para $3$ e $5$ aplique reciprocidade, reduzindo a $\\left(\\tfrac{2}{3}\\right)=-1$ e $\\left(\\tfrac{3}{5}\\right)=-1$.",
+            "Conclusao: multiplique os tres sinais $(-1)(-1)(-1)=-1$, logo $30$ nao e residuo quadratico mod $53$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição do símbolo de Legendre",
+          "back": "$\\left(\\tfrac{a}{p}\\right)=+1$ se $a$ é RQ mod $p$, $-1$ se não, $0$ se $p\\mid a$."
+        },
+        {
+          "front": "Critério de Euler",
+          "back": "$\\left(\\tfrac{a}{p}\\right)\\equiv a^{(p-1)/2}\\pmod p$."
+        },
+        {
+          "front": "Quando $-1$ é RQ módulo $p$?",
+          "back": "Sse $p\\equiv 1\\pmod 4$; em geral $\\left(\\tfrac{-1}{p}\\right)=(-1)^{(p-1)/2}$."
+        },
+        {
+          "front": "Quando $2$ é RQ módulo $p$?",
+          "back": "Sse $p\\equiv\\pm 1\\pmod 8$; em geral $\\left(\\tfrac{2}{p}\\right)=(-1)^{(p^2-1)/8}$."
+        },
+        {
+          "front": "Lei de Reciprocidade Quadrática",
+          "back": "$\\left(\\tfrac{p}{q}\\right)\\left(\\tfrac{q}{p}\\right)=(-1)^{\\frac{p-1}{2}\\frac{q-1}{2}}$ para primos ímpares distintos."
+        },
+        {
+          "front": "Quando $\\left(\\tfrac{p}{q}\\right)$ e $\\left(\\tfrac{q}{p}\\right)$ diferem?",
+          "back": "Só quando $p\\equiv q\\equiv 3\\pmod 4$ (aí são opostos); caso contrário, iguais."
+        },
+        {
+          "front": "Quantos RQs há módulo $p$?",
+          "back": "Exatamente $(p-1)/2$ resíduos e $(p-1)/2$ não resíduos."
+        },
+        {
+          "front": "Cuidado com o símbolo de Jacobi",
+          "back": "$\\left(\\tfrac{a}{n}\\right)=1$ ($n$ composto) NÃO implica que $a$ seja RQ módulo $n$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Niven, Zuckerman e Montgomery, cap. 3 (quadratic reciprocity)",
+          "ref": "livro"
+        },
+        {
+          "title": "José Plínio O. Santos, Introdução à Teoria dos Números, cap. 6",
+          "ref": "livro"
+        },
+        {
+          "title": "Ireland e Rosen, A Classical Introduction to Modern Number Theory, cap. 5",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia a definicao de residuo quadratico e do simbolo de Legendre em Niven-Zuckerman-Montgomery (cap. 3), listando as propriedades multiplicativas.",
+          "Prove o criterio de Euler usando uma raiz primitiva e verifique-o numericamente em um primo pequeno.",
+          "Estude as duas leis suplementares ($-1$ depende de $p\\bmod4$, $2$ de $p\\bmod8$) e memorize as condicoes com exemplos.",
+          "Assista a um video sobre quadratic reciprocity e refaca o algoritmo tipo Euclides para calcular um simbolo de Legendre.",
+          "Pratique com o simbolo de Jacobi para calcular sem fatorar, atento ao aviso de que Jacobi $=1$ nao garante residuo.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (criterio de Euler, leis suplementares, enunciado da reciprocidade e o algoritmo de calculo)."
+        ],
+        "searchQueries": [
+          "residuo quadratico simbolo de Legendre propriedades",
+          "criterio de Euler simbolo de Legendre demonstracao raiz primitiva",
+          "lei de reciprocidade quadratica enunciado e calculo",
+          "leis suplementares (-1/p) (2/p) demonstracao",
+          "simbolo de Jacobi calculo sem fatorar exemplo",
+          "quadratic reciprocity law proof Gauss"
+        ],
+        "videos": [
+          {
+            "title": "Quadratic residues and Legendre symbol",
+            "channel": "Michael Penn",
+            "note": "Procure os videos sobre criterio de Euler e simbolo de Legendre com demonstracoes."
+          },
+          {
+            "title": "Quadratic Reciprocity",
+            "channel": "Richard E. Borcherds",
+            "note": "Busque a serie de teoria dos numeros/algebra com a discussao da lei de reciprocidade quadratica."
+          },
+          {
+            "title": "Reciprocidade quadratica e residuos",
+            "channel": "IMPA",
+            "note": "Procure minicursos/palestras do canal do IMPA sobre teoria dos numeros que abordem residuos quadraticos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "An Introduction to the Theory of Numbers, cap. 3 (quadratic reciprocity)",
+            "where": "Niven, Zuckerman e Montgomery"
+          },
+          {
+            "title": "A Classical Introduction to Modern Number Theory, cap. 5",
+            "where": "Ireland e Rosen"
+          },
+          {
+            "title": "Introducao a Teoria dos Numeros, cap. 6",
+            "where": "Jose Plinio O. Santos (IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-numeros-07-funcoes-aritmeticas",
+      "title": "Funções aritméticas e convolução de Dirichlet",
+      "tagline": "Funções multiplicativas $\\tau,\\sigma,\\varphi,\\mu$, convolução de Dirichlet e a inversão de Möbius.",
+      "objectives": [
+        "Ao final você consegue definir função aritmética multiplicativa e completamente multiplicativa e calcular $\\tau$, $\\sigma$, $\\varphi$ e $\\mu$.",
+        "Ao final você consegue definir a convolução de Dirichlet e mostrar que ela preserva multiplicatividade.",
+        "Ao final você consegue demonstrar e aplicar a fórmula de inversão de Möbius.",
+        "Ao final você consegue deduzir identidades clássicas como $\\sum_{d\\mid n}\\varphi(d)=n$ e $\\sum_{d\\mid n}\\mu(d)=[n=1]$.",
+        "Ao final você consegue caracterizar números perfeitos pares (Euclides-Euler) via $\\sigma$ e primos de Mersenne."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Função multiplicativa",
+          "statement": "$f:\\mathbb{Z}_{>0}\\to\\mathbb{C}$ é multiplicativa se $f(1)=1$ e $f(mn)=f(m)f(n)$ sempre que $\\gcd(m,n)=1$; é completamente multiplicativa se a igualdade vale para todos $m,n$. Multiplicativas ficam determinadas pelos valores nas potências de primos."
+        },
+        {
+          "term": "Funções clássicas",
+          "statement": "$\\tau(n)=\\sum_{d\\mid n}1$ (número de divisores), $\\sigma(n)=\\sum_{d\\mid n}d$ (soma dos divisores), $\\varphi(n)$ (totiente) e $\\mu(n)$ (Möbius) são todas multiplicativas. Fórmulas: $\\tau(p^a)=a+1$, $\\sigma(p^a)=\\tfrac{p^{a+1}-1}{p-1}$."
+        },
+        {
+          "term": "Função de Möbius",
+          "statement": "$\\mu(1)=1$; $\\mu(n)=(-1)^k$ se $n$ é produto de $k$ primos distintos (livre de quadrados); $\\mu(n)=0$ se algum primo aparece ao quadrado em $n$."
+        },
+        {
+          "term": "Convolução de Dirichlet",
+          "statement": "$(f*g)(n)=\\sum_{d\\mid n}f(d)\\,g(n/d)$. É comutativa, associativa, tem identidade $\\varepsilon(n)=[n=1]$, e o conjunto das funções com $f(1)\\ne 0$ é um grupo abeliano sob $*$. O produto de duas multiplicativas é multiplicativo."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Multiplicatividade da convolução",
+          "statement": "Se $f$ e $g$ são multiplicativas, então $f*g$ é multiplicativa. Em particular, a função somatória $F(n)=\\sum_{d\\mid n}f(d)=(f*\\mathbf{1})(n)$ é multiplicativa quando $f$ é.",
+          "whyItMatters": "Reduz o cálculo de somas sobre divisores ao caso de potências de primos, padronizando a obtenção de fórmulas para $\\tau,\\sigma$ etc."
+        },
+        {
+          "name": "Relação $\\mu*\\mathbf{1}=\\varepsilon$",
+          "statement": "$\\sum_{d\\mid n}\\mu(d)=[n=1]$, isto é, $\\mu$ é o inverso de Dirichlet da função constante $\\mathbf{1}$.",
+          "whyItMatters": "É a identidade que faz a inversão de Möbius funcionar e aparece em incontáveis somas com filtragem de coprimalidade."
+        },
+        {
+          "name": "Inversão de Möbius",
+          "statement": "$g(n)=\\sum_{d\\mid n}f(d)$ para todo $n$ se, e somente se, $f(n)=\\sum_{d\\mid n}\\mu(d)\\,g(n/d)$ para todo $n$.",
+          "whyItMatters": "Permite recuperar uma função a partir de sua função somatória; ferramenta central em combinatória, teoria dos números e contagem de polinômios irredutíveis sobre corpos finitos."
+        },
+        {
+          "name": "Teorema de Euclides-Euler",
+          "statement": "Um número par é perfeito (isto é, $\\sigma(n)=2n$) se, e somente se, $n=2^{p-1}(2^p-1)$ com $2^p-1$ primo (primo de Mersenne).",
+          "whyItMatters": "Conecta a função $\\sigma$ a um problema clássico em aberto (existem perfeitos ímpares? há infinitos primos de Mersenne?) e ilustra o poder de $\\sigma$ ser multiplicativa."
+        }
+      ],
+      "summary": "Funções aritméticas multiplicativas são o vocabulário natural da aritmética: $\\tau,\\sigma,\\varphi,\\mu$ codificam, respectivamente, quantos divisores há, quanto eles somam, quantos resíduos são coprimos e como filtrar por livres-de-quadrado. O segredo operacional é que, para uma função multiplicativa, basta conhecer os valores $f(p^a)$ nas potências de primos: o valor em $n=\\prod p_i^{a_i}$ é o produto $\\prod f(p_i^{a_i})$. Daí saem na hora $\\tau(n)=\\prod(a_i+1)$ e $\\sigma(n)=\\prod\\frac{p_i^{a_i+1}-1}{p_i-1}$.\n\nA convolução de Dirichlet $(f*g)(n)=\\sum_{d\\mid n}f(d)g(n/d)$ organiza tudo isso em uma álgebra: ela é comutativa, associativa, tem identidade $\\varepsilon=[n=1]$ e preserva multiplicatividade. A função constante $\\mathbf 1$ e a função de Möbius $\\mu$ são inversas nessa álgebra ($\\mu*\\mathbf 1=\\varepsilon$), e isso É a fórmula de inversão de Möbius: somar sobre divisores e \"desfazer\" a soma são operações inversas mediadas por $\\mu$. Como aplicações, $\\sum_{d\\mid n}\\varphi(d)=n$ diz que $\\varphi*\\mathbf 1=\\mathrm{Id}$ (donde, por inversão, $\\varphi=\\mu*\\mathrm{Id}$ e a fórmula do totiente), e o Teorema de Euclides-Euler descreve todos os perfeitos pares via $\\sigma$ e os primos de Mersenne. Essa maquinaria reaparece na Teoria Analítica dos Números (séries de Dirichlet, $\\zeta(s)$) e na contagem de objetos sobre corpos finitos.",
+      "commonPitfalls": [
+        "Aplicar $f(mn)=f(m)f(n)$ sem $\\gcd(m,n)=1$: multiplicativa não é completamente multiplicativa (ex.: $\\varphi$, $\\sigma$, $\\tau$).",
+        "Esquecer $\\mu(n)=0$ quando $n$ tem fator quadrado: $\\mu$ só é $\\pm 1$ em inteiros livres de quadrados.",
+        "Confundir $\\sum_{d\\mid n}\\varphi(d)=n$ com $\\sum_{d\\mid n}\\mu(d)=[n=1]$: são identidades diferentes (uma reconstrói $n$, a outra é a delta de Dirichlet).",
+        "Trocar a ordem de $d$ e $n/d$ achando que muda a convolução: $f*g$ é comutativa, mas $f*g\\ne fg$ (não é o produto pontual)."
+      ],
+      "worked": "**Identidade $\\sum_{d\\mid n}\\varphi(d)=n$.** Como $\\varphi$ é multiplicativa, a função somatória $F(n)=\\sum_{d\\mid n}\\varphi(d)$ também é (convolução com $\\mathbf 1$). Basta então calcular em potências de primos: $F(p^a)=\\sum_{j=0}^{a}\\varphi(p^j)=1+\\sum_{j=1}^{a}(p^j-p^{j-1})=1+(p^a-1)=p^a$, onde a soma telescopa. Logo $F(p^a)=p^a$, e por multiplicatividade $F(n)=\\prod p_i^{a_i}=n$.\n\n**Releitura por inversão de Möbius.** A relação $\\mathrm{Id}=\\varphi*\\mathbf 1$ inverte-se para $\\varphi=\\mathrm{Id}*\\mu$, ou seja $\\varphi(n)=\\sum_{d\\mid n}\\mu(d)\\,\\tfrac{n}{d}=n\\sum_{d\\mid n}\\tfrac{\\mu(d)}{d}=n\\prod_{p\\mid n}\\left(1-\\tfrac1p\\right)$, recuperando a fórmula do totiente sem contar diretamente. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que se $f$ é multiplicativa então $F(n)=\\sum_{d\\mid n}f(d)$ é multiplicativa.",
+          "hint": "Para $\\gcd(m,n)=1$, todo divisor de $mn$ se escreve unicamente como produto $d_1 d_2$ com $d_1\\mid m$, $d_2\\mid n$; reorganize a soma dupla.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Prove que se $f$ e multiplicativa entao $F(n)=\\sum_{d\\mid n}f(d)$ e multiplicativa.\n\n**Demonstracao.** Primeiro, $F(1)=f(1)=1$. Agora tome $m,n$ com $\\gcd(m,n)=1$.\n\n**Fatoracao dos divisores.** Todo divisor $d$ de $mn$ se escreve de modo unico como $d=d_1 d_2$ com $d_1\\mid m$ e $d_2\\mid n$; alem disso $\\gcd(d_1,d_2)=1$ (pois $d_1\\mid m$, $d_2\\mid n$ e $\\gcd(m,n)=1$). Reciprocamente, todo par $(d_1,d_2)$ com $d_1\\mid m$, $d_2\\mid n$ produz um divisor $d_1 d_2$ de $mn$. Isso e uma bijecao entre divisores de $mn$ e pares $(d_1,d_2)$.\n\n**Reorganizar a soma.** Usando a bijecao e $f(d_1 d_2)=f(d_1)f(d_2)$ (valido pois $\\gcd(d_1,d_2)=1$ e $f$ multiplicativa):\n$$F(mn)=\\sum_{d\\mid mn}f(d)=\\sum_{d_1\\mid m}\\sum_{d_2\\mid n}f(d_1 d_2)=\\sum_{d_1\\mid m}\\sum_{d_2\\mid n}f(d_1)f(d_2).$$\nFatorando a soma dupla:\n$$F(mn)=\\Big(\\sum_{d_1\\mid m}f(d_1)\\Big)\\Big(\\sum_{d_2\\mid n}f(d_2)\\Big)=F(m)\\,F(n).$$\n\nLogo $F$ e multiplicativa. (Isto e o caso particular $F=f*\\mathbf 1$ do fato geral: convolucao de multiplicativas e multiplicativa.) $\\blacksquare$",
+          "steps": [
+            "Dica: verifique $F(1)=1$ e depois tome $m,n$ coprimos.",
+            "Montagem: use que cada divisor de $mn$ fatora unicamente como $d_1d_2$ com $d_1\\mid m$, $d_2\\mid n$ (e $\\gcd(d_1,d_2)=1$).",
+            "Execucao: escreva $F(mn)$ como soma dupla e aplique $f(d_1d_2)=f(d_1)f(d_2)$.",
+            "Conclusao: fatore a soma dupla no produto $F(m)F(n)$."
+          ]
+        },
+        {
+          "prompt": "Demonstre que $\\sum_{d\\mid n}\\mu(d)=[n=1]$.",
+          "hint": "A soma é multiplicativa; em $p^a$ ($a\\ge 1$) só $d=1$ e $d=p$ contribuem, dando $1+(-1)=0$.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Demonstre que $\\sum_{d\\mid n}\\mu(d)=[n=1]$ (vale $1$ se $n=1$, senao $0$).\n\n**Demonstracao.** Seja $M(n)=\\sum_{d\\mid n}\\mu(d)=(\\mu*\\mathbf 1)(n)$. Como $\\mu$ e multiplicativa e $\\mathbf 1$ e multiplicativa, $M$ e multiplicativa (exercicio anterior). Logo basta calcular $M$ nas potencias de primos.\n\n**Caso $n=1$.** $M(1)=\\mu(1)=1$.\n\n**Caso $n=p^a$, $a\\ge 1$.** Os divisores sao $1,p,p^2,\\dots,p^a$. Mas $\\mu(p^j)=0$ para $j\\ge 2$ (fator quadrado), $\\mu(p)=-1$ e $\\mu(1)=1$. Assim\n$$M(p^a)=\\mu(1)+\\mu(p)+\\underbrace{\\mu(p^2)+\\cdots+\\mu(p^a)}_{=0}=1+(-1)=0.$$\n\n**Caso geral.** Para $n>1$, escreva $n=p_1^{a_1}\\cdots p_k^{a_k}$. Por multiplicatividade,\n$$M(n)=\\prod_{i=1}^k M(p_i^{a_i})=\\prod_{i=1}^k 0=0.$$\n\nPortanto $\\sum_{d\\mid n}\\mu(d)=1$ se $n=1$ e $0$ se $n>1$, isto e $\\mu*\\mathbf 1=\\varepsilon$. $\\blacksquare$",
+          "steps": [
+            "Dica: reconheca a soma como $(\\mu*\\mathbf1)(n)$, que e multiplicativa.",
+            "Montagem: por multiplicatividade, basta avaliar em $1$ e em potencias de primos $p^a$.",
+            "Execucao: em $p^a$ apenas $d=1$ e $d=p$ contribuem ($\\mu(p^j)=0$ para $j\\ge2$), dando $1+(-1)=0$.",
+            "Conclusao: para $n>1$ o produto de zeros anula tudo; para $n=1$ vale $1$. Logo $\\mu*\\mathbf1=\\varepsilon$."
+          ]
+        },
+        {
+          "prompt": "Demonstre a fórmula de inversão de Möbius a partir de $\\mu*\\mathbf 1=\\varepsilon$.",
+          "hint": "Se $g=f*\\mathbf 1$, convolva ambos os lados com $\\mu$ e use associatividade: $g*\\mu=f*(\\mathbf 1*\\mu)=f*\\varepsilon=f$.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Demonstre a formula de inversao de Mobius a partir de $\\mu*\\mathbf 1=\\varepsilon$: se $g(n)=\\sum_{d\\mid n}f(d)$ para todo $n$, entao $f(n)=\\sum_{d\\mid n}\\mu(d)g(n/d)$, e reciprocamente.\n\n**Ferramentas.** A convolucao de Dirichlet $*$ e comutativa e associativa, tem identidade $\\varepsilon$ (com $\\varepsilon(n)=[n=1]$), e vale $\\mu*\\mathbf 1=\\varepsilon$, onde $\\mathbf 1(n)=1$.\n\n**($\\Rightarrow$).** A hipotese $g(n)=\\sum_{d\\mid n}f(d)$ e exatamente $g=f*\\mathbf 1$. Convolvendo ambos os lados com $\\mu$ e usando associatividade:\n$$g*\\mu=(f*\\mathbf 1)*\\mu=f*(\\mathbf 1*\\mu)=f*\\varepsilon=f.$$\nEscrevendo $g*\\mu$ explicitamente (usando comutatividade $g*\\mu=\\mu*g$),\n$$f(n)=(g*\\mu)(n)=\\sum_{d\\mid n}\\mu(d)\\,g(n/d).$$\n\n**($\\Leftarrow$).** Suponha agora $f=g*\\mu$. Convolvendo com $\\mathbf 1$:\n$$f*\\mathbf 1=(g*\\mu)*\\mathbf 1=g*(\\mu*\\mathbf 1)=g*\\varepsilon=g,$$\nisto e $g(n)=\\sum_{d\\mid n}f(d)$.\n\nAs duas direcoes mostram a equivalencia da inversao de Mobius. $\\blacksquare$",
+          "steps": [
+            "Dica: traduza as somas sobre divisores em convolucoes de Dirichlet: $g=f*\\mathbf1$.",
+            "Montagem: use a identidade central $\\mu*\\mathbf1=\\varepsilon$ e a associatividade de $*$.",
+            "Execucao: convolva $g=f*\\mathbf1$ com $\\mu$ para obter $g*\\mu=f*\\varepsilon=f$.",
+            "Conclusao: reescreva $f=g*\\mu$ como $f(n)=\\sum_{d\\mid n}\\mu(d)g(n/d)$; a reciproca segue convolvendo com $\\mathbf1$."
+          ]
+        },
+        {
+          "prompt": "Prove a metade de Euclides do Teorema de Euclides-Euler: se $2^p-1$ é primo, então $2^{p-1}(2^p-1)$ é perfeito.",
+          "hint": "Use $\\sigma$ multiplicativa: $\\sigma(2^{p-1})=2^p-1$ e $\\sigma(2^p-1)=2^p$ (primo). Multiplique e compare com $2\\cdot 2^{p-1}(2^p-1)$.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Prove a metade de Euclides do Teorema de Euclides-Euler: se $2^p-1$ e primo, entao $N=2^{p-1}(2^p-1)$ e perfeito (isto e, $\\sigma(N)=2N$).\n\n**Demonstracao.** Escreva $q=2^p-1$, primo por hipotese. Entao $N=2^{p-1}\\cdot q$ com $q$ primo impar (para $p\\ge 2$), e $\\gcd(2^{p-1},q)=1$. Como $\\sigma$ e multiplicativa,\n$$\\sigma(N)=\\sigma(2^{p-1})\\,\\sigma(q).$$\n\n**Calculo de cada fator.**\n$$\\sigma(2^{p-1})=1+2+2^2+\\cdots+2^{p-1}=2^{p}-1=q,$$\n$$\\sigma(q)=1+q=1+(2^p-1)=2^p\\quad(\\text{pois }q\\text{ e primo}).$$\n\n**Multiplicar.**\n$$\\sigma(N)=q\\cdot 2^p=(2^p-1)\\cdot 2^p.$$\n\n**Comparar com $2N$.**\n$$2N=2\\cdot 2^{p-1}(2^p-1)=2^{p}(2^p-1)=\\sigma(N).$$\n\nPortanto $\\sigma(N)=2N$, ou seja, $N=2^{p-1}(2^p-1)$ e um numero perfeito. $\\blacksquare$",
+          "steps": [
+            "Dica: ponha $q=2^p-1$ (primo) e note que $N=2^{p-1}q$ com fatores coprimos.",
+            "Montagem: use $\\sigma$ multiplicativa para escrever $\\sigma(N)=\\sigma(2^{p-1})\\sigma(q)$.",
+            "Execucao: calcule $\\sigma(2^{p-1})=2^p-1=q$ (soma geometrica) e $\\sigma(q)=1+q=2^p$ (q primo).",
+            "Conclusao: multiplique para obter $\\sigma(N)=2^p(2^p-1)=2N$, logo $N$ e perfeito."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Função multiplicativa",
+          "back": "$f(1)=1$ e $f(mn)=f(m)f(n)$ quando $\\gcd(m,n)=1$."
+        },
+        {
+          "front": "$\\tau(n)$ e $\\sigma(n)$ em $p^a$",
+          "back": "$\\tau(p^a)=a+1$; $\\sigma(p^a)=\\dfrac{p^{a+1}-1}{p-1}$."
+        },
+        {
+          "front": "Definição de $\\mu(n)$",
+          "back": "$1$ se $n=1$; $(-1)^k$ se $n$ é produto de $k$ primos distintos; $0$ se há fator quadrado."
+        },
+        {
+          "front": "Convolução de Dirichlet",
+          "back": "$(f*g)(n)=\\sum_{d\\mid n}f(d)g(n/d)$; identidade $\\varepsilon(n)=[n=1]$."
+        },
+        {
+          "front": "Relação fundamental de $\\mu$",
+          "back": "$\\sum_{d\\mid n}\\mu(d)=[n=1]$, isto é, $\\mu*\\mathbf 1=\\varepsilon$."
+        },
+        {
+          "front": "Inversão de Möbius",
+          "back": "$g=\\sum_{d\\mid n}f(d)\\iff f(n)=\\sum_{d\\mid n}\\mu(d)g(n/d)$."
+        },
+        {
+          "front": "Identidade do totiente somado",
+          "back": "$\\sum_{d\\mid n}\\varphi(d)=n$."
+        },
+        {
+          "front": "Números perfeitos pares (Euclides-Euler)",
+          "back": "São exatamente $2^{p-1}(2^p-1)$ com $2^p-1$ primo de Mersenne."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Tom M. Apostol, Introduction to Analytic Number Theory, cap. 2",
+          "ref": "livro"
+        },
+        {
+          "title": "Hardy e Wright, An Introduction to the Theory of Numbers, caps. 16–17",
+          "ref": "livro"
+        },
+        {
+          "title": "Abramo Hefez, Aritmética (PROFMAT), capítulo de funções aritméticas",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia funcoes multiplicativas e convolucao de Dirichlet em Apostol (cap. 2), destacando por que basta conhecer $f$ nas potencias de primos.",
+          "Calcule $\\tau,\\sigma,\\varphi,\\mu$ em varios inteiros e confira as formulas $\\tau(p^a)=a+1$, $\\sigma(p^a)=\\tfrac{p^{a+1}-1}{p-1}$.",
+          "Estude a algebra da convolucao ($*$ comutativa, associativa, identidade $\\varepsilon$) e prove que $\\mu*\\mathbf1=\\varepsilon$.",
+          "Assista a um video sobre a funcao de Mobius e a inversao de Mobius, refazendo a deducao de $\\varphi=\\mu*\\mathrm{Id}$.",
+          "Estude o Teorema de Euclides-Euler sobre perfeitos pares e conecte com primos de Mersenne.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (multiplicatividade da convolucao, inversao de Mobius e identidades classicas)."
+        ],
+        "searchQueries": [
+          "funcao aritmetica multiplicativa convolucao de Dirichlet",
+          "funcao de Mobius inversao de Mobius demonstracao",
+          "soma sobre divisores mu(d) igual delta demonstracao",
+          "funcao sigma tau formula divisores multiplicativa",
+          "teorema de Euclides Euler numeros perfeitos pares Mersenne",
+          "Dirichlet convolution Mobius inversion proof"
+        ],
+        "videos": [
+          {
+            "title": "Arithmetic functions and Dirichlet convolution",
+            "channel": "Michael Penn",
+            "note": "Procure os videos sobre multiplicative functions, Mobius function e Dirichlet convolution."
+          },
+          {
+            "title": "Mobius function e inversao",
+            "channel": "Mathologer",
+            "note": "Busque episodios sobre a funcao de Mobius e suas aplicacoes surpreendentes para intuicao."
+          },
+          {
+            "title": "Analytic Number Theory - arithmetic functions",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas que introduzem $\\tau,\\sigma,\\varphi,\\mu$ e a convolucao de Dirichlet com rigor."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introduction to Analytic Number Theory, cap. 2",
+            "where": "Tom M. Apostol"
+          },
+          {
+            "title": "An Introduction to the Theory of Numbers, caps. 16-17",
+            "where": "Hardy e Wright"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-numeros-08-diofantinas-distribuicao",
+      "title": "Equações diofantinas e distribuição de primos",
+      "tagline": "Soluções inteiras (lineares, ternas pitagóricas, somas de dois quadrados) e quão densos são os primos: de Chebyshev ao Teorema dos Números Primos.",
+      "objectives": [
+        "Ao final você consegue resolver completamente a equação diofantina linear $ax+by=c$ e descrever todas as soluções.",
+        "Ao final você consegue parametrizar as ternas pitagóricas primitivas e demonstrar a parametrização.",
+        "Ao final você consegue enunciar (e esboçar a ideia de) o teorema de Fermat sobre primos como soma de dois quadrados.",
+        "Ao final você consegue enunciar o Teorema dos Números Primos, as estimativas de Chebyshev, o Postulado de Bertrand e o Teorema de Dirichlet.",
+        "Ao final você consegue demonstrar a divergência de $\\sum_p 1/p$ e interpretar o que ela diz sobre a densidade dos primos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Equação diofantina linear",
+          "statement": "$ax+by=c$ com $a,b,c\\in\\mathbb{Z}$ tem solução inteira sse $d=\\gcd(a,b)\\mid c$. Dada uma solução particular $(x_0,y_0)$, todas as soluções são $x=x_0+\\tfrac{b}{d}t$, $y=y_0-\\tfrac{a}{d}t$, $t\\in\\mathbb{Z}$."
+        },
+        {
+          "term": "Terna pitagórica primitiva",
+          "statement": "Solução $(a,b,c)$ de $a^2+b^2=c^2$ com $\\gcd(a,b,c)=1$. São parametrizadas por $a=m^2-n^2$, $b=2mn$, $c=m^2+n^2$, com $m>n>0$, $\\gcd(m,n)=1$ e $m,n$ de paridades opostas."
+        },
+        {
+          "term": "Função contadora de primos",
+          "statement": "$\\pi(x)=\\#\\{p\\le x:p\\text{ primo}\\}$. O Teorema dos Números Primos afirma $\\pi(x)\\sim\\dfrac{x}{\\ln x}$, equivalentemente $\\pi(x)\\sim\\operatorname{Li}(x)=\\int_2^x\\tfrac{dt}{\\ln t}$ (melhor aproximação)."
+        },
+        {
+          "term": "Primos em progressão aritmética",
+          "statement": "Para $\\gcd(a,m)=1$, há infinitos primos $\\equiv a\\pmod m$ (Teorema de Dirichlet); eles se distribuem assintoticamente de modo equitativo entre as $\\varphi(m)$ classes coprimas."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Ternas pitagóricas primitivas",
+          "statement": "As ternas primitivas com $b$ par são exatamente $(a,b,c)=(m^2-n^2,\\ 2mn,\\ m^2+n^2)$ com $m>n>0$ coprimos e de paridades opostas.",
+          "whyItMatters": "É o protótipo de \"resolver uma equação diofantina completamente\"; o método (fatoração e coprimalidade) inspira a descida infinita e o estudo de $\\mathbb{Z}[i]$."
+        },
+        {
+          "name": "Teorema dos dois quadrados (Fermat)",
+          "statement": "Um primo ímpar $p$ é soma de dois quadrados $p=a^2+b^2$ se, e somente se, $p\\equiv 1\\pmod 4$. Mais geralmente, $n$ é soma de dois quadrados sse, e somente se, todo primo $\\equiv 3\\pmod 4$ aparece com expoente par em $n$.",
+          "whyItMatters": "Liga resíduos quadráticos (subtópico anterior) à aritmética dos inteiros de Gauss $\\mathbb{Z}[i]$ e abre a Teoria Algébrica dos Números."
+        },
+        {
+          "name": "Estimativas de Chebyshev e Postulado de Bertrand",
+          "statement": "Existem constantes $0<c_1<c_2$ com $c_1\\tfrac{x}{\\ln x}\\le\\pi(x)\\le c_2\\tfrac{x}{\\ln x}$ para $x\\ge 2$. Em particular (Bertrand), para todo $n\\ge 1$ existe um primo $p$ com $n<p\\le 2n$.",
+          "whyItMatters": "Dá o tamanho correto de $\\pi(x)$ por métodos elementares (coeficientes binomiais) antes do Teorema dos Números Primos, e garante primos em intervalos curtos."
+        },
+        {
+          "name": "Teorema dos Números Primos",
+          "statement": "$\\displaystyle\\lim_{x\\to\\infty}\\frac{\\pi(x)\\ln x}{x}=1$, isto é, $\\pi(x)\\sim\\dfrac{x}{\\ln x}$. Consequência: o $n$-ésimo primo satisfaz $p_n\\sim n\\ln n$.",
+          "whyItMatters": "É o resultado central da teoria analítica dos números, descrevendo a densidade média dos primos; sua prova usa a função zeta de Riemann e análise complexa."
+        }
+      ],
+      "summary": "Uma equação diofantina pergunta por soluções inteiras. O caso linear $ax+by=c$ é totalmente resolvido por Bézout: há solução sse $\\gcd(a,b)\\mid c$, e a partir de uma solução particular todas as outras formam uma progressão. Subindo de grau, $a^2+b^2=c^2$ tem suas soluções primitivas parametrizadas por $(m^2-n^2,2mn,m^2+n^2)$ — a demonstração explora fatoração e coprimalidade, técnicas que reaparecem na descida infinita de Fermat (por exemplo, para mostrar que $x^4+y^4=z^2$ não tem solução não trivial). O teorema dos dois quadrados conecta diofantinas a resíduos quadráticos: $p=a^2+b^2$ é possível exatamente quando $-1$ é resíduo quadrático módulo $p$, ou seja, $p\\equiv 1\\pmod 4$. É a porta para os inteiros de Gauss e a Teoria Algébrica dos Números.\n\nA segunda metade muda de pergunta: quão densos são os primos? Euclides garante infinitude; Euler refina mostrando que $\\sum_p 1/p$ diverge — os primos são \"mais densos\" que os quadrados. Chebyshev obtém, por argumentos elementares com coeficientes binomiais, que $\\pi(x)$ tem a ordem de $x/\\ln x$, e Bertrand garante sempre um primo entre $n$ e $2n$. O ápice é o Teorema dos Números Primos, $\\pi(x)\\sim x/\\ln x$, cuja prova passa pela função zeta de Riemann $\\zeta(s)$ e pelo fato de ela não se anular sobre a reta $\\Re(s)=1$. Dirichlet, por sua vez, garante infinitos primos em cada progressão aritmética $a\\pmod m$ com $\\gcd(a,m)=1$. Estes enunciados encerram a trilha apontando para a Teoria Analítica dos Números — o próximo horizonte.",
+      "commonPitfalls": [
+        "Esquecer a condição $\\gcd(a,b)\\mid c$ ao afirmar que $ax+by=c$ tem solução; sem ela, não há solução inteira alguma.",
+        "Listar como pitagórica primitiva uma terna sem checar $\\gcd(m,n)=1$ e paridades opostas (senão a terna sai não primitiva ou repetida).",
+        "Ler $\\pi(x)\\sim x/\\ln x$ como igualdade ou como aproximação válida para $x$ pequeno: é um limite assintótico, e $\\operatorname{Li}(x)$ aproxima muito melhor.",
+        "Confundir \"infinitos primos $\\equiv a\\pmod m$\" (Dirichlet, exige $\\gcd(a,m)=1$) com afirmações sobre primos gêmeos ou Goldbach, que permanecem em aberto."
+      ],
+      "worked": "**Problema.** Encontre todas as soluções inteiras de $15x+21y=9$.\n\n**Solução.** $d=\\gcd(15,21)=3$ e $3\\mid 9$, logo há solução. Dividindo por $3$: $5x+7y=3$. Por Euclides, $\\gcd(5,7)=1$ com $3\\cdot 5-2\\cdot 7=1$, isto é, $5\\cdot 3+7\\cdot(-2)=1$; multiplicando por $3$: $5\\cdot 9+7\\cdot(-6)=3$. Uma solução particular é $(x_0,y_0)=(9,-6)$. Como $a/d=5$ e $b/d=7$ (após simplificar a equação original $15x+21y=9$ tem $a/d=5,\\ b/d=7$), a solução geral é\n$$x=9+7t,\\qquad y=-6-5t,\\qquad t\\in\\mathbb{Z}.$$\nVerificação para $t=0$: $15\\cdot 9+21\\cdot(-6)=135-126=9$. Para $t=-1$: $x=2,\\ y=-1$, e $15\\cdot 2+21\\cdot(-1)=30-21=9$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Descreva todas as soluções inteiras de $ax+by=c$ a partir de uma solução particular $(x_0,y_0)$.",
+          "hint": "Se $(x,y)$ e $(x_0,y_0)$ são soluções, então $a(x-x_0)=-b(y-y_0)$; divida por $d=\\gcd(a,b)$ e use coprimalidade de $a/d,b/d$.",
+          "difficulty": 2,
+          "solution": "**Enunciado.** Descreva todas as solucoes inteiras de $ax+by=c$ (com $a,b$ nao ambos nulos) a partir de uma solucao particular $(x_0,y_0)$.\n\n**Hipotese de existencia.** Suponha que exista solucao; entao $d=\\gcd(a,b)\\mid c$, e por Bezout obtem-se uma solucao particular $(x_0,y_0)$ com $ax_0+by_0=c$.\n\n**Descricao das solucoes.** Seja $(x,y)$ outra solucao qualquer. Subtraindo,\n$$a x+b y=c=a x_0+b y_0\\ \\Longrightarrow\\ a(x-x_0)=-b(y-y_0).$$\nDivida por $d$, escrevendo $a=d a'$, $b=d b'$ com $\\gcd(a',b')=1$:\n$$a'(x-x_0)=-b'(y-y_0).$$\nLogo $b'\\mid a'(x-x_0)$; como $\\gcd(a',b')=1$, o Lema de Euclides da $b'\\mid(x-x_0)$, digamos $x-x_0=b' t$ para algum $t\\in\\mathbb{Z}$. Substituindo, $a' b' t=-b'(y-y_0)$, logo $y-y_0=-a' t$. Isto e,\n$$\\boxed{\\ x=x_0+\\frac{b}{d}\\,t,\\qquad y=y_0-\\frac{a}{d}\\,t,\\qquad t\\in\\mathbb{Z}.\\ }$$\n\n**Reciproca.** Para todo $t\\in\\mathbb{Z}$, esses $(x,y)$ satisfazem $ax+by=ax_0+by_0+\\tfrac{t}{d}(ab-ab)=c$. Logo o conjunto acima e exatamente o conjunto de todas as solucoes. $\\blacksquare$",
+          "steps": [
+            "Dica: parta de $ax+by=c=ax_0+by_0$ e subtraia para relacionar as diferencas.",
+            "Montagem: obtenha $a(x-x_0)=-b(y-y_0)$ e divida por $d=\\gcd(a,b)$.",
+            "Execucao: com $\\gcd(a/d,b/d)=1$, o Lema de Euclides forca $x-x_0=(b/d)t$.",
+            "Conclusao: substitua para achar $y=y_0-(a/d)t$ e verifique que todo $t\\in\\mathbb{Z}$ da solucao."
+          ]
+        },
+        {
+          "prompt": "Prove a parametrização das ternas pitagóricas primitivas com $b$ par.",
+          "hint": "De $a^2+b^2=c^2$ com $a$ ímpar, escreva $b^2=(c-a)(c+a)$; mostre que $\\gcd(c-a,c+a)=2$ e que $\\tfrac{c-a}{2},\\tfrac{c+a}{2}$ são coprimos, logo quadrados $n^2,m^2$.",
+          "difficulty": 4,
+          "solution": "**Enunciado.** Prove a parametrizacao das ternas pitagoricas primitivas com $b$ par: as solucoes de $a^2+b^2=c^2$ com $\\gcd(a,b,c)=1$ e $b$ par sao $(a,b,c)=(m^2-n^2,\\,2mn,\\,m^2+n^2)$, $m>n>0$ coprimos de paridades opostas.\n\n**Passo 1: paridades.** Numa terna primitiva, $a,b,c$ nao sao todos pares. Modulo $4$, quadrados sao $0$ ou $1$; nao podem $a,b$ ser ambos impares (daria $c^2\\equiv 2\\pmod 4$, impossivel). Como $\\gcd=1$, exatamente um de $a,b$ e par; por hipotese $b$ e par, logo $a,c$ sao impares.\n\n**Passo 2: fatorar.** Escreva\n$$b^2=c^2-a^2=(c-a)(c+a).$$\nComo $a,c$ sao impares, $c-a$ e $c+a$ sao pares; ponha $c-a=2u$, $c+a=2v$. Entao $b^2=4uv$, isto e $(b/2)^2=uv$, com $u+v=c$, $v-u=a$.\n\n**Passo 3: coprimalidade.** $\\gcd(u,v)$ divide $u+v=c$ e $v-u=a$; como $\\gcd(a,c)=1$ (senao um primo comum dividiria tambem $b$, contra a primitividade), segue $\\gcd(u,v)=1$.\n\n**Passo 4: $u,v$ sao quadrados.** De $uv=(b/2)^2$ com $\\gcd(u,v)=1$, a fatoracao unica garante que $u$ e $v$ sao, cada um, quadrados perfeitos: $u=n^2$, $v=m^2$, com $m>n>0$ e $\\gcd(m,n)=1$.\n\n**Passo 5: recompor.**\n$$c=u+v=m^2+n^2,\\quad a=v-u=m^2-n^2,\\quad b=2\\sqrt{uv}=2mn.$$\nComo $a=m^2-n^2$ e impar, $m,n$ tem paridades opostas. Reciprocamente, para $m>n>0$ coprimos de paridades opostas, $(m^2-n^2,2mn,m^2+n^2)$ e uma terna pitagorica primitiva (verificacao direta de $a^2+b^2=c^2$ e de $\\gcd=1$). $\\blacksquare$",
+          "steps": [
+            "Dica: fixe as paridades - numa terna primitiva com $b$ par, $a$ e $c$ sao impares.",
+            "Montagem: fatore $b^2=(c-a)(c+a)$ e ponha $c-a=2u$, $c+a=2v$, obtendo $uv=(b/2)^2$.",
+            "Execucao: mostre $\\gcd(u,v)=1$ (usando $\\gcd(a,c)=1$); pela fatoracao unica, $u=n^2$ e $v=m^2$.",
+            "Conclusao: recomponha $a=m^2-n^2$, $b=2mn$, $c=m^2+n^2$, com $m>n>0$ coprimos de paridades opostas."
+          ]
+        },
+        {
+          "prompt": "Demonstre que $\\sum_{p\\le x}1/p\\to\\infty$ (divergência da série dos recíprocos dos primos).",
+          "hint": "Use a identidade de Euler $\\prod_{p\\le x}(1-1/p)^{-1}\\ge\\sum_{n\\le x}1/n\\to\\infty$ e tome logaritmos, comparando $-\\ln(1-1/p)$ com $1/p$.",
+          "difficulty": 4,
+          "solution": "**Enunciado.** Demonstre que $\\sum_{p\\le x}\\tfrac1p\\to\\infty$ (a serie dos reciprocos dos primos diverge).\n\n**Passo 1: produto de Euler parcial.** Para cada primo $p\\le x$, some a serie geometrica:\n$$\\frac{1}{1-1/p}=1+\\frac1p+\\frac1{p^2}+\\cdots.$$\nMultiplicando sobre todos os primos $p\\le x$ e expandindo, obtem-se (por fatoracao unica) uma soma que inclui $\\tfrac1n$ para todo $n$ cujos fatores primos sao $\\le x$; em particular, todos os $n\\le x$:\n$$\\prod_{p\\le x}\\frac{1}{1-1/p}\\ \\ge\\ \\sum_{n\\le x}\\frac1n.$$\n\n**Passo 2: divergencia harmonica.** A serie harmonica diverge: $\\sum_{n\\le x}\\tfrac1n\\ge\\ln x\\to\\infty$. Logo o produto do lado esquerdo tambem tende a $\\infty$.\n\n**Passo 3: tomar logaritmo.**\n$$\\ln\\prod_{p\\le x}\\frac{1}{1-1/p}=\\sum_{p\\le x}-\\ln\\!\\Big(1-\\frac1p\\Big)\\ \\to\\ \\infty.$$\n\n**Passo 4: comparar com $\\sum 1/p$.** Use a expansao $-\\ln(1-t)=t+\\tfrac{t^2}{2}+\\tfrac{t^3}{3}+\\cdots$ com $t=1/p\\le 1/2$:\n$$-\\ln\\!\\Big(1-\\frac1p\\Big)=\\frac1p+\\sum_{k\\ge 2}\\frac{1}{k\\,p^k}\\le\\frac1p+\\sum_{k\\ge 2}\\frac{1}{p^k}=\\frac1p+\\frac{1/p^2}{1-1/p}\\le\\frac1p+\\frac{2}{p^2}.$$\nSomando sobre $p\\le x$:\n$$\\sum_{p\\le x}-\\ln\\!\\Big(1-\\frac1p\\Big)\\le\\sum_{p\\le x}\\frac1p+2\\sum_{p}\\frac1{p^2}.$$\nO termo $\\sum_p 1/p^2\\le\\sum_{n\\ge 2}1/n^2$ e finito (converge). Como o lado esquerdo diverge, obrigatoriamente\n$$\\sum_{p\\le x}\\frac1p\\ \\to\\ \\infty.\\qquad\\blacksquare$$",
+          "steps": [
+            "Dica: parta da identidade/produto de Euler $\\prod_{p\\le x}(1-1/p)^{-1}\\ge\\sum_{n\\le x}1/n$.",
+            "Montagem: como a serie harmonica diverge, o produto tende a infinito; tome logaritmos.",
+            "Execucao: expanda $-\\ln(1-1/p)$ e limite-o por $\\tfrac1p+\\tfrac{2}{p^2}$.",
+            "Conclusao: como $\\sum_p1/p^2$ converge e a soma dos logaritmos diverge, $\\sum_p1/p$ diverge."
+          ]
+        },
+        {
+          "prompt": "Use o Teorema dos dois quadrados para decidir se $245$ e $3\\cdot 7^2$ são somas de dois quadrados.",
+          "hint": "Fatore e verifique os primos $\\equiv 3\\pmod 4$: eles devem aparecer com expoente par. $245=5\\cdot 7^2$; $3\\cdot 7^2$ tem o $3$ com expoente ímpar.",
+          "difficulty": 3,
+          "solution": "**Enunciado.** Use o Teorema dos dois quadrados para decidir se $245$ e $3\\cdot 7^2$ sao somas de dois quadrados.\n\n**Criterio.** Um inteiro $n\\ge 1$ e soma de dois quadrados se, e somente se, todo primo $\\equiv 3\\pmod 4$ aparece com expoente par na fatoracao de $n$.\n\n**Caso $245$.** Fatore: $245=5\\cdot 49=5\\cdot 7^2$. Os primos sao $5$ ($\\equiv 1\\pmod 4$) e $7$ ($\\equiv 3\\pmod 4$). O primo $7\\equiv 3\\pmod 4$ aparece com expoente $2$ (par). Logo o criterio e satisfeito: $245$ E soma de dois quadrados.\n\nDe fato, $245=14^2+7^2=196+49$. $\\checkmark$\n\n**Caso $3\\cdot 7^2=147$.** Fatore: $147=3\\cdot 7^2$. Aqui o primo $3\\equiv 3\\pmod 4$ aparece com expoente $1$ (impar). O criterio falha, logo $147$ NAO e soma de dois quadrados.\n\n(Verificacao: nenhum par $(a,b)$ com $a^2+b^2=147$ existe; por exemplo, modulo $4$, $147\\equiv 3$, e somas de dois quadrados nunca sao $\\equiv 3\\pmod 4$.) $\\blacksquare$",
+          "steps": [
+            "Dica: aplique o criterio - todo primo $\\equiv3\\pmod4$ deve ter expoente par na fatoracao.",
+            "Montagem: fatore $245=5\\cdot7^2$ e $147=3\\cdot7^2$ e identifique os primos $\\equiv3\\pmod4$.",
+            "Execucao: em $245$, o $7$ (que e $\\equiv3\\pmod4$) tem expoente $2$ (par); em $147$, o $3$ tem expoente $1$ (impar).",
+            "Conclusao: $245$ e soma de dois quadrados ($=14^2+7^2$); $147$ nao e."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Quando $ax+by=c$ tem solução inteira?",
+          "back": "Sse $\\gcd(a,b)\\mid c$."
+        },
+        {
+          "front": "Solução geral de $ax+by=c$",
+          "back": "$x=x_0+\\tfrac{b}{d}t,\\ y=y_0-\\tfrac{a}{d}t$, com $d=\\gcd(a,b)$, $t\\in\\mathbb{Z}$."
+        },
+        {
+          "front": "Ternas pitagóricas primitivas",
+          "back": "$(m^2-n^2,\\,2mn,\\,m^2+n^2)$, $m>n>0$ coprimos de paridades opostas."
+        },
+        {
+          "front": "Primo como soma de dois quadrados",
+          "back": "Primo ímpar $p=a^2+b^2$ sse $p\\equiv 1\\pmod 4$."
+        },
+        {
+          "front": "Teorema dos Números Primos",
+          "back": "$\\pi(x)\\sim x/\\ln x$; equivalentemente $p_n\\sim n\\ln n$."
+        },
+        {
+          "front": "Postulado de Bertrand",
+          "back": "Para todo $n\\ge 1$ existe primo $p$ com $n<p\\le 2n$."
+        },
+        {
+          "front": "Teorema de Dirichlet",
+          "back": "$\\gcd(a,m)=1\\Rightarrow$ há infinitos primos $\\equiv a\\pmod m$."
+        },
+        {
+          "front": "$\\sum_p 1/p$ converge?",
+          "back": "Diverge (Euler); os primos são mais densos que os quadrados, cuja soma de recíprocos converge."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Abramo Hefez, Elementos de Aritmética, cap. 9 (equações diofantinas)",
+          "ref": "livro"
+        },
+        {
+          "title": "Tom M. Apostol, Introduction to Analytic Number Theory, caps. 3–4 (Chebyshev, PNT, Dirichlet)",
+          "ref": "livro"
+        },
+        {
+          "title": "Brochero, Moreira, Saldanha e Tengan, Teoria dos Números (IMPA), caps. 4–5",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia a resolucao completa de $ax+by=c$ em Hefez (cap. 9) e reproduza a passagem de uma solucao particular para a solucao geral.",
+          "Estude a parametrizacao das ternas pitagoricas primitivas, acompanhando o argumento de coprimalidade em $b^2=(c-a)(c+a)$.",
+          "Estude os enunciados de Chebyshev, Bertrand, Teorema dos Numeros Primos e Dirichlet em Apostol (caps. 3-4), distinguindo o que e elementar do que exige analise complexa.",
+          "Assista a um video sobre a distribuicao dos primos / Teorema dos Numeros Primos e outro sobre a divergencia de $\\sum 1/p$.",
+          "Pratique aplicar o Teorema dos dois quadrados: decida varios inteiros olhando os primos $\\equiv3\\pmod4$ e seus expoentes.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (solucao geral diofantina, parametrizacao pitagorica e os enunciados assintoticos)."
+        ],
+        "searchQueries": [
+          "equacao diofantina linear ax+by=c solucao geral demonstracao",
+          "ternas pitagoricas primitivas parametrizacao demonstracao",
+          "teorema dos dois quadrados de Fermat soma de dois quadrados",
+          "divergencia da serie dos reciprocos dos primos Euler demonstracao",
+          "teorema dos numeros primos enunciado pi(x) x/ln x",
+          "prime number theorem Chebyshev Bertrand postulate proof"
+        ],
+        "videos": [
+          {
+            "title": "Distribution of primes / Prime Number Theorem",
+            "channel": "Michael Penn",
+            "note": "Procure os videos sobre distribuicao dos primos, divergencia de $\\sum1/p$ e enunciado do PNT."
+          },
+          {
+            "title": "Equacoes diofantinas lineares",
+            "channel": "Equaciona com Paulo Pereira",
+            "note": "Assista a resolucao de $ax+by=c$ e ternas pitagoricas com exemplos numericos."
+          },
+          {
+            "title": "Pi and primes / prime counting",
+            "channel": "3Blue1Brown",
+            "note": "Busque videos sobre a distribuicao dos primos e a funcao contadora para intuicao visual."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Elementos de Aritmetica, cap. 9 (equacoes diofantinas)",
+            "where": "Abramo Hefez (SBM)"
+          },
+          {
+            "title": "Introduction to Analytic Number Theory, caps. 3-4 (Chebyshev, PNT, Dirichlet)",
+            "where": "Tom M. Apostol"
+          },
+          {
+            "title": "Teoria dos Numeros (IMPA), caps. 4-5",
+            "where": "Brochero, Moreira, Saldanha e Tengan"
+          }
+        ]
+      }
+    }
+  ]
+}

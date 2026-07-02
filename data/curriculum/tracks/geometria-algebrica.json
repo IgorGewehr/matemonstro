@@ -1,0 +1,1352 @@
+{
+  "id": "geometria-algebrica",
+  "title": "Geometria Algébrica (Introdução)",
+  "phase": 2,
+  "phaseLabel": "Avançado / Pré-Pós",
+  "tagline": "O dicionário que traduz geometria em álgebra: pontos viram ideais maximais, variedades viram primos, e o Nullstellensatz de Hilbert costura tudo — a porta de entrada para a matemática da pós-graduação.",
+  "summary": "Esta trilha apresenta a geometria algébrica clássica sobre um corpo algebricamente fechado $k$, no espírito do Capítulo 1 de Hartshorne e do Shafarevich, mas com os pés fincados na Álgebra Comutativa. O fio condutor é um único dicionário: a cada objeto geométrico (conjunto algébrico, variedade, ponto) corresponde um objeto algébrico (ideal radical, ideal primo, ideal maximal), e a cada construção geométrica (morfismo, função racional) corresponde uma construção algébrica (homomorfismo de $k$-álgebras, extensão de corpos).\n\nPartimos das variedades afins e da topologia de Zariski, provamos o \\emph{Nullstellensatz} de Hilbert e dele extraímos a correspondência ideal-variedade. Em seguida estudamos o anel de coordenadas $A(X)$ e as funções regulares, passamos ao mundo projetivo $\\mathbb{P}^n$, formalizamos morfismos e aplicações racionais (com a anti-equivalência de categorias entre variedades afins e $k$-álgebras), e fechamos com dimensão de Krull, suavidade via critério jacobiano e uma introdução honesta a feixes e esquemas ($\\operatorname{Spec} R$). É a ponte entre a álgebra de graduação e a geometria de pós.",
+  "bigPicture": "A geometria algébrica é o lugar onde álgebra comutativa, topologia, análise complexa e teoria dos números se encontram. A frase-chave é a de Grothendieck levada à prática: \\emph{estudar geometria através do anel de funções}. O Nullstellensatz transforma o problema geométrico de resolver sistemas polinomiais no problema algébrico de entender ideais radicais; a topologia de Zariski importa a linguagem topológica para anéis; o espectro $\\operatorname{Spec} R$ generaliza tudo isso e funda a geometria moderna (esquemas), base de avanços como a prova de Fermat por Wiles e o programa de Langlands.\n\nPara concursos de Instituto Federal (IF) a geometria algébrica praticamente não cai de forma direta — as bancas focam em cálculo, álgebra linear, análise e álgebra básica. O valor desta trilha é estratégico para o \\emph{mestrado}: ela consolida e dá significado geométrico a tudo da Álgebra Comutativa (primos, maximais, radical, localização, dimensão, Noether), que é tema recorrente de exames de qualificação e de disciplinas obrigatórias nas linhas de álgebra/geometria do IMPA, USP, UNICAMP, UFRJ, UFMG e UnB. Quem domina o dicionário ideal-variedade chega à pós sabendo \\emph{por que} a álgebra comutativa existe — e larga na frente em qualquer eletiva de geometria algébrica, curvas algébricas ou teoria dos números.",
+  "prereqs": [
+    "algebra-comutativa"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 58,
+  "primaryBooks": [
+    {
+      "title": "Algebraic Geometry",
+      "author": "Robin Hartshorne",
+      "note": "A referência canônica. Para esta trilha use APENAS o Capítulo 1 (Variedades), que cobre conjuntos algébricos, Nullstellensatz, anel de coordenadas, projetivo, morfismos, racionais, dimensão e suavidade exatamente nesta ordem. Os capítulos 2-3 (esquemas/cohomologia) ficam para depois.",
+      "chapters": "cap. I (Varieties), seções I.1-I.6"
+    },
+    {
+      "title": "Basic Algebraic Geometry 1",
+      "author": "Igor R. Shafarevich",
+      "note": "Tratamento geométrico, concreto e rico em exemplos, sobre corpos algebricamente fechados; excelente complemento intuitivo a Hartshorne, com muitas figuras e cônicas/cúbicas.",
+      "chapters": "cap. 1 (variedades afins e projetivas), cap. 2 (dimensão, suavidade)"
+    },
+    {
+      "title": "Algebraic Curves",
+      "author": "William Fulton",
+      "note": "Disponível gratuitamente pelo autor. Introdução clássica via curvas planas; ótimo para fixar Nullstellensatz, anel local, multiplicidade e o caso de dimensão 1. Muitos exercícios.",
+      "chapters": "caps. 1-2 (conjuntos algébricos afins, propriedades locais)"
+    },
+    {
+      "title": "Undergraduate Algebraic Geometry",
+      "author": "Miles Reid",
+      "note": "Curto, motivador e legível; bom primeiro contato antes de Hartshorne, com ênfase em curvas e superfícies e na filosofia do dicionário álgebra-geometria.",
+      "chapters": "todo o livro"
+    },
+    {
+      "title": "Introduction to Commutative Algebra",
+      "author": "M. F. Atiyah & I. G. MacDonald",
+      "note": "O ferramental algébrico subjacente: radical, primos/maximais, localização, Nullstellensatz (exercícios do cap. 7), Noether e dimensão. Use como referência de apoio em paralelo.",
+      "chapters": "caps. 1, 3, 7, 11 (dimensão)"
+    },
+    {
+      "title": "Introdução às Curvas Algébricas Planas",
+      "author": "Israel Vainsencher (IMPA, Coleção Matemática Universitária)",
+      "note": "Referência brasileira em PT-BR; desenvolve conjuntos algébricos, Nullstellensatz, anel local e curvas planas com rigor e em português, ideal para o aluno brasileiro.",
+      "chapters": "caps. iniciais sobre curvas afins e projetivas e Nullstellensatz"
+    },
+    {
+      "title": "Curvas Algébricas",
+      "author": "Abramo Hefez (IMPA)",
+      "note": "Notas/livro em português sobre curvas algébricas planas; complementa Vainsencher com mais aritmética e exemplos, útil para a parte projetiva e de pontos singulares.",
+      "chapters": "curvas afins/projetivas, pontos singulares"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "Algebraic Geometry — notas de Andreas Gathmann",
+      "kind": "notas",
+      "ref": "notas de curso (TU Kaiserslautern)"
+    },
+    {
+      "title": "Foundations of Algebraic Geometry (The Rising Sea) — Ravi Vakil",
+      "kind": "notas",
+      "ref": "notas de curso (Stanford)"
+    },
+    {
+      "title": "Algebraic Geometry — J. S. Milne",
+      "kind": "notas",
+      "ref": "jmilne.org"
+    },
+    {
+      "title": "Algebraic Curves — William Fulton (PDF livre)",
+      "kind": "livro",
+      "ref": "PDF do autor"
+    },
+    {
+      "title": "MIT OCW 18.726 Algebraic Geometry",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 1,
+    "mestrado": 3,
+    "note": "Em concursos de IF a geometria algébrica praticamente não aparece de forma direta — as provas cobrem cálculo, álgebra linear, análise real e álgebra básica. Em provas de mestrado ela raramente é cobrada como disciplina própria em exames de admissão (ENA/IMPA), mas o seu núcleo algébrico cai com frequência nas questões de Álgebra Comutativa: caracterizar ideais primos/maximais, calcular radical $\\sqrt{I}$, enunciar e aplicar o Nullstellensatz, reconhecer a correspondência pontos $\\leftrightarrow$ ideais maximais, calcular dimensão de Krull e usar o critério jacobiano para singularidades. Como disciplina de pós-graduação (eletiva ou obrigatória nas linhas de álgebra/geometria), esta trilha é exatamente o conteúdo das primeiras semanas; dominá-la é uma vantagem enorme em qualquer programa que ofereça geometria algébrica, curvas algébricas ou teoria dos números."
+  },
+  "subtopics": [
+    {
+      "id": "geometria-algebrica-01-variedades-afins-zariski",
+      "title": "Variedades Afins e a Topologia de Zariski",
+      "tagline": "Conjuntos algébricos como zeros de polinômios, a topologia em que os fechados são esses zeros, e a tradução irredutível $\\leftrightarrow$ primo.",
+      "objectives": [
+        "Definir o espaço afim $\\mathbb{A}^n_k$, conjuntos algébricos $V(S)$ e o ideal $I(X)$ de um conjunto.",
+        "Provar que os $V(\\mathfrak{a})$ são os fechados de uma topologia (a de Zariski) em $\\mathbb{A}^n$.",
+        "Usar o Teorema da Base de Hilbert para concluir que todo conjunto algébrico é zero de finitos polinômios e que a topologia é noetheriana.",
+        "Definir variedade afim (conjunto algébrico irredutível) e provar que $X$ é irredutível se, e só se, $I(X)$ é primo.",
+        "Enunciar e usar a decomposição de um conjunto algébrico em componentes irredutíveis."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Espaço afim $\\mathbb{A}^n_k$",
+          "statement": "O conjunto $k^n$ visto sem origem nem estrutura de espaço vetorial privilegiadas, apenas como conjunto de pontos $p=(a_1,\\dots,a_n)$, onde polinômios de $k[x_1,\\dots,x_n]$ podem ser avaliados."
+        },
+        {
+          "term": "Conjunto algébrico $V(S)$",
+          "statement": "Para $S\\subseteq k[x_1,\\dots,x_n]$, $V(S)=\\{p\\in\\mathbb{A}^n: f(p)=0\\ \\forall f\\in S\\}$. Vale $V(S)=V(\\langle S\\rangle)=V(\\sqrt{\\langle S\\rangle})$, logo só interessam ideais radicais."
+        },
+        {
+          "term": "Ideal de um conjunto $I(X)$",
+          "statement": "$I(X)=\\{f\\in k[x_1,\\dots,x_n]: f(p)=0\\ \\forall p\\in X\\}$. É sempre um ideal radical, e $X\\subseteq Y\\Rightarrow I(Y)\\subseteq I(X)$ (reverte inclusões)."
+        },
+        {
+          "term": "Topologia de Zariski",
+          "statement": "A topologia em $\\mathbb{A}^n$ cujos fechados são exatamente os conjuntos algébricos $V(\\mathfrak{a})$. É $T_1$ (pontos são fechados) mas não Hausdorff, e os abertos não vazios são densos."
+        },
+        {
+          "term": "Espaço irredutível / variedade afim",
+          "statement": "Um espaço topológico é irredutível se não é união de dois fechados próprios; uma variedade afim é um conjunto algébrico irredutível não vazio. Irredutível $\\Rightarrow$ conexo, mas não vice-versa."
+        },
+        {
+          "term": "Espaço noetheriano",
+          "statement": "Espaço em que toda cadeia descendente de fechados estabiliza (equivalente: ACC nos ideais via Hilbert). Garante a existência e finitude da decomposição em componentes irredutíveis."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "$V$ define os fechados de uma topologia",
+          "statement": "$V(0)=\\mathbb{A}^n$, $V(1)=\\varnothing$, $\\bigcap_\\alpha V(\\mathfrak{a}_\\alpha)=V\\!\\big(\\sum_\\alpha\\mathfrak{a}_\\alpha\\big)$ e $V(\\mathfrak{a})\\cup V(\\mathfrak{b})=V(\\mathfrak{a}\\cap\\mathfrak{b})=V(\\mathfrak{a}\\mathfrak{b})$.",
+          "whyItMatters": "Interseções arbitrárias e uniões finitas de conjuntos algébricos são algébricas — exatamente os axiomas de fechados. É o que torna $\\mathbb{A}^n$ um espaço topológico e permite importar toda a linguagem topológica para a geometria algébrica."
+        },
+        {
+          "name": "Base de Hilbert e noetherianidade",
+          "statement": "Como $k[x_1,\\dots,x_n]$ é noetheriano (Teorema da Base de Hilbert), todo ideal é finitamente gerado; logo todo conjunto algébrico é $V(f_1,\\dots,f_r)$ para finitos $f_i$, e a topologia de Zariski é noetheriana.",
+          "whyItMatters": "Sistemas polinomiais 'infinitos' reduzem-se a finitos. A noetherianidade é o motor da decomposição em componentes irredutíveis e de quase toda finitude na teoria."
+        },
+        {
+          "name": "Irredutível $\\iff$ ideal primo",
+          "statement": "Um conjunto algébrico $X$ é irredutível se, e somente se, $I(X)$ é um ideal primo. Em particular $\\mathbb{A}^n$ é irredutível, pois $I(\\mathbb{A}^n)=\\langle 0\\rangle$ é primo.",
+          "whyItMatters": "É o primeiro elo do dicionário álgebra-geometria: a irredutibilidade geométrica vira primalidade algébrica. Prepara a correspondência completa do Nullstellensatz."
+        },
+        {
+          "name": "Decomposição em componentes irredutíveis",
+          "statement": "Todo conjunto algébrico não vazio $X$ se escreve, de modo único, como união finita $X=X_1\\cup\\cdots\\cup X_m$ de variedades (irredutíveis) com $X_i\\not\\subseteq X_j$ para $i\\neq j$. Os $X_i$ são as componentes irredutíveis.",
+          "whyItMatters": "Reduz o estudo de qualquer conjunto algébrico ao de suas peças irredutíveis, assim como a fatoração reduz inteiros a primos. A unicidade vem da noetherianidade."
+        }
+      ],
+      "summary": "A geometria algébrica começa olhando para o conjunto-solução de equações polinomiais. Fixado um corpo $k$ (que logo tomaremos algebricamente fechado), o espaço afim $\\mathbb{A}^n_k$ é simplesmente $k^n$ como conjunto de pontos, e a cada família $S$ de polinômios associamos seu lugar de zeros $V(S)$. A operação inversa associa a cada conjunto $X$ o ideal $I(X)$ dos polinômios que se anulam em $X$. As regras básicas $V(S)=V(\\langle S\\rangle)$ e a reversão de inclusões mostram que o objeto algébrico certo a considerar não é o conjunto de polinômios, mas o ideal que ele gera.\n\nO fato decisivo é que os $V(\\mathfrak{a})$ satisfazem os axiomas de fechados de uma topologia — a topologia de Zariski — e que, graças ao Teorema da Base de Hilbert, todo conjunto algébrico é cortado por finitos polinômios. Essa topologia é estranha à intuição analítica: ela é $T_1$ mas não Hausdorff, e em $\\mathbb{A}^1$ os fechados são apenas os conjuntos finitos e a reta toda, de modo que dois abertos não vazios sempre se intersectam. O conceito central é o de irredutibilidade: um conjunto é irredutível quando não se parte em dois fechados próprios, e o teorema-chave traduz isso em álgebra pura — $X$ é irredutível exatamente quando $I(X)$ é primo. Por noetherianidade, todo conjunto algébrico se decompõe de forma única em componentes irredutíveis, a versão geométrica da fatoração em primos.",
+      "commonPitfalls": [
+        "Pensar na topologia de Zariski com intuição métrica/Hausdorff: em $\\mathbb{A}^1$ os únicos fechados são finitos ou tudo, e abertos não vazios são sempre densos — não há bolas pequenas.",
+        "Confundir a topologia de Zariski de $\\mathbb{A}^2$ com a topologia produto de $\\mathbb{A}^1\\times\\mathbb{A}^1$: ela é estritamente mais fina (a diagonal $V(x-y)$ é fechada em Zariski mas não na produto).",
+        "Trocar irredutível por conexo: $V(xy)$ é conexo mas redutível (dois eixos); irredutível é estritamente mais forte.",
+        "Trabalhar com o conjunto $S$ em vez do ideal $\\langle S\\rangle$: sempre vale $V(S)=V(\\langle S\\rangle)=V(\\sqrt{\\langle S\\rangle})$, então passe ao ideal radical."
+      ],
+      "worked": "**Problema.** Em $\\mathbb{A}^2$, descreva $V(xy)$, mostre que é redutível e exiba suas componentes irredutíveis e os ideais correspondentes.\n\n**Solução.** Um ponto $(a,b)$ satisfaz $ab=0$ se, e só se, $a=0$ ou $b=0$. Logo\n\n$$V(xy)=\\{x=0\\}\\cup\\{y=0\\}=V(x)\\cup V(y),$$\n\na união do eixo $y$ com o eixo $x$. Cada eixo é irredutível: $I(V(x))=\\langle x\\rangle$, e $k[x,y]/\\langle x\\rangle\\cong k[y]$ é um domínio, logo $\\langle x\\rangle$ é primo e o eixo é irredutível (idem para $\\langle y\\rangle$).\n\nJá $V(xy)$ é redutível, pois é união de dois fechados próprios distintos. Algebricamente, $I(V(xy))=\\langle xy\\rangle$ não é primo: $x\\cdot y\\in\\langle xy\\rangle$ mas nem $x$ nem $y$ pertencem a $\\langle xy\\rangle$. A decomposição em componentes irredutíveis é $V(xy)=V(x)\\cup V(y)$, e ela é única. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre que em $\\mathbb{A}^1$ os conjuntos algébricos são exatamente $\\varnothing$, os subconjuntos finitos e $\\mathbb{A}^1$ todo. Conclua que a topologia de Zariski de $\\mathbb{A}^1$ é a topologia cofinita.",
+          "hint": "Um polinômio não nulo em uma variável tem finitas raízes; $V(\\mathfrak a)$ com $\\mathfrak a\\neq 0$ é finito.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** Em $\\mathbb{A}^1_k$ os conjuntos algebricos sao exatamente: o vazio $\\varnothing$, os subconjuntos finitos, e a reta toda $\\mathbb{A}^1$.\n\n**Passo 1 — estes conjuntos sao algebricos.** Temos $\\varnothing=V(1)$ e $\\mathbb{A}^1=V(0)$. Dado um conjunto finito $\\{a_1,\\dots,a_r\\}$, tome $f(x)=\\prod_{i=1}^r (x-a_i)$; entao $V(f)=\\{a_1,\\dots,a_r\\}$, pois um produto se anula exatamente onde algum fator se anula. Logo todo finito e algebrico.\n\n**Passo 2 — todo conjunto algebrico proprio e finito.** Seja $X=V(\\mathfrak a)$ com $\\mathfrak a\\neq\\langle 0\\rangle$. Como $k[x]$ e um DIP (dominio de ideais principais), $\\mathfrak a=\\langle f\\rangle$ para algum $f\\neq 0$. Se $f$ e constante nao nula, $V(\\mathfrak a)=\\varnothing$. Se $\\deg f=d\\ge 1$, entao $f$ tem no maximo $d$ raizes em $k$ (um polinomio nao nulo de grau $d$ tem no maximo $d$ raizes em qualquer corpo), portanto $X=V(f)$ e finito com $|X|\\le d$. O unico caso restante e $\\mathfrak a=\\langle 0\\rangle$, que da $X=\\mathbb{A}^1$.\n\n**Passo 3 — conclusao: e a topologia cofinita.** Os fechados de Zariski sao os conjuntos algebricos; pelos passos anteriores sao exatamente $\\varnothing$, os finitos e $\\mathbb{A}^1$. Essa e precisamente a definicao da topologia cofinita: os fechados proprios sao os subconjuntos finitos. (Note que aqui usamos $k$ infinito — verdadeiro para $k$ algebricamente fechado — para que $\\mathbb{A}^1$ nao seja ele proprio finito.) $\\blacksquare$",
+          "steps": [
+            "Mostre a inclusao facil: exiba polinomios cujos zeros dao $\\varnothing$, um finito qualquer e $\\mathbb{A}^1$ (use o produto $\\prod(x-a_i)$).",
+            "Use que $k[x]$ e um DIP para escrever qualquer ideal como $\\langle f\\rangle$.",
+            "Aplique que um polinomio nao nulo de grau $d$ tem no maximo $d$ raizes, concluindo que $V(f)$ e finito quando $f\\neq 0$.",
+            "Separe os casos $f$ constante nao nula ($V=\\varnothing$) e $f=0$ ($V=\\mathbb{A}^1$).",
+            "Identifique a lista de fechados obtida com a definicao de topologia cofinita."
+          ]
+        },
+        {
+          "prompt": "Prove que $X$ é irredutível se, e somente se, $I(X)$ é primo.",
+          "hint": "Se $I(X)$ não é primo, $fg\\in I(X)$ com $f,g\\notin I(X)$; tome $X_1=X\\cap V(f)$, $X_2=X\\cap V(g)$ e mostre que $X=X_1\\cup X_2$ com inclusões próprias.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Um conjunto algebrico $X$ (nao vazio) e irredutivel se, e somente se, $I(X)$ e um ideal primo.\n\n**($\\Rightarrow$) irredutivel $\\Rightarrow$ $I(X)$ primo.** Suponha $X$ irredutivel. Como $X\\neq\\varnothing$, $I(X)\\neq k[x_1,\\dots,x_n]$ (o $1$ nunca se anula), logo $I(X)$ e proprio. Sejam $f,g$ com $fg\\in I(X)$. Considere os fechados $X_1=X\\cap V(f)$ e $X_2=X\\cap V(g)$. Para todo $p\\in X$ temos $(fg)(p)=0$, isto e, $f(p)=0$ ou $g(p)=0$; logo $X=X_1\\cup X_2$. Como $X$ e irredutivel, $X=X_1$ ou $X=X_2$. Se $X=X_1$, entao $f$ se anula em todo $X$, ou seja $f\\in I(X)$; analogamente $X=X_2$ da $g\\in I(X)$. Portanto $I(X)$ e primo.\n\n**($\\Leftarrow$) $I(X)$ primo $\\Rightarrow$ irredutivel.** Suponha $I(X)$ primo (em particular proprio, logo $X\\neq\\varnothing$) e escreva $X=X_1\\cup X_2$ com $X_1,X_2$ fechados. Suponha, por absurdo, que ambas as inclusoes sejam proprias: $X_1\\subsetneq X$ e $X_2\\subsetneq X$. Entao $I(X)\\subsetneq I(X_1)$ e $I(X)\\subsetneq I(X_2)$ (inclusao propria de conjuntos algebricos reverte para inclusao propria de ideais radicais, pois $V(I(X_i))=X_i$). Tome $f\\in I(X_1)\\setminus I(X)$ e $g\\in I(X_2)\\setminus I(X)$. Para $p\\in X=X_1\\cup X_2$: se $p\\in X_1$ entao $f(p)=0$; se $p\\in X_2$ entao $g(p)=0$; em ambos os casos $(fg)(p)=0$. Logo $fg\\in I(X)$, mas $f\\notin I(X)$ e $g\\notin I(X)$, contradizendo a primalidade. Portanto $X=X_1$ ou $X=X_2$, ou seja, $X$ e irredutivel. $\\blacksquare$",
+          "steps": [
+            "Traduza 'irredutivel' e 'primo' para a linguagem de $V$ e $I$: a chave e $X=X_1\\cup X_2$ versus $fg\\in I(X)$.",
+            "Na ida, dado $fg\\in I(X)$, monte $X_1=X\\cap V(f)$ e $X_2=X\\cap V(g)$ e verifique $X=X_1\\cup X_2$.",
+            "Use a irredutibilidade para concluir $X=X_i$ e traduza de volta para $f\\in I(X)$ ou $g\\in I(X)$.",
+            "Na volta, suponha por absurdo decomposicao propria e escolha $f\\in I(X_1)\\setminus I(X)$, $g\\in I(X_2)\\setminus I(X)$.",
+            "Mostre $fg\\in I(X)$ ponto a ponto e obtenha contradicao com a primalidade."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo de conjunto algébrico conexo mas redutível e outro de conjunto algébrico desconexo. Justifique.",
+          "hint": "Use $V(xy)$ (conexo, redutível) e $V(x^2-1)=\\{-1,1\\}\\subset\\mathbb{A}^1$ (desconexo).",
+          "difficulty": 2,
+          "solution": "**Objetivo.** Exibir (a) um conjunto algebrico conexo mas redutivel e (b) um conjunto algebrico desconexo, justificando.\n\n**(a) Conexo e redutivel: $V(xy)\\subseteq\\mathbb{A}^2$.** Ja vimos que $V(xy)=V(x)\\cup V(y)$ e a uniao dos dois eixos, uma decomposicao em dois fechados proprios distintos, logo $V(xy)$ e **redutivel**. Ainda assim ele e **conexo**: os dois eixos se intersectam na origem $(0,0)\\in V(x)\\cap V(y)$. Se $V(xy)=A\\sqcup B$ fosse uma cisao em dois fechados nao vazios disjuntos, a origem estaria, digamos, em $A$; como $V(x)$ e irredutivel, ele e conexo e nao pode ser partido, logo $V(x)\\subseteq A$; idem $V(y)\\subseteq A$; entao $B=\\varnothing$. Portanto nao ha cisao propria e $V(xy)$ e conexo. (Intuicao: irredutivel $\\Rightarrow$ conexo, e dois irredutiveis que se tocam formam um conexo.)\n\n**(b) Desconexo: $V(x^2-1)=\\{-1,1\\}\\subseteq\\mathbb{A}^1$.** Como $x^2-1=(x-1)(x+1)$, temos $V(x^2-1)=\\{1\\}\\cup\\{-1\\}$. Os dois pontos sao fechados (Zariski e $T_1$) e disjuntos, e cada um e aberto no subespaco $\\{-1,1\\}$ (o complementar do outro ponto). Logo $\\{-1,1\\}=\\{1\\}\\sqcup\\{-1\\}$ e uma cisao em dois abertos-fechados nao vazios: o conjunto e **desconexo**. $\\blacksquare$",
+          "steps": [
+            "Para o exemplo conexo-redutivel, reuse $V(xy)=V(x)\\cup V(y)$ (redutivel por construcao).",
+            "Prove a conexidade observando que os eixos compartilham a origem e que cada eixo, sendo irredutivel, e conexo e nao se parte.",
+            "Para o exemplo desconexo, fatore $x^2-1$ e obtenha dois pontos isolados.",
+            "Justifique a desconexao exibindo os dois pontos como abertos-fechados disjuntos no subespaco."
+          ]
+        },
+        {
+          "prompt": "Mostre que todo espaço topológico noetheriano não vazio se escreve como união finita de fechados irredutíveis, e que removendo redundâncias a decomposição é única.",
+          "hint": "Argumento noetheriano: o conjunto dos fechados que NÃO admitem tal decomposição teria elemento minimal; derive contradição partindo-o em dois fechados próprios.",
+          "difficulty": 4,
+          "solution": "**Teorema.** Todo espaco topologico noetheriano nao vazio $X$ se escreve como uniao finita $X=X_1\\cup\\cdots\\cup X_m$ de fechados irredutiveis; removendo os $X_i$ contidos em outros ($X_i\\not\\subseteq X_j$), a decomposicao e unica a menos de ordem.\n\n**Passo 1 — existencia (argumento noetheriano).** Seja $\\Sigma$ a colecao dos fechados nao vazios de $X$ que NAO admitem decomposicao como uniao finita de fechados irredutiveis. Suponha, por absurdo, $\\Sigma\\neq\\varnothing$. Como $X$ e noetheriano, toda cadeia descendente de fechados estabiliza, logo $\\Sigma$ possui um elemento minimal $Y$ (se nao houvesse minimal, construiriamos uma cadeia descendente infinita estrita). Esse $Y$ nao pode ser irredutivel (senao $Y=Y$ ja seria a decomposicao), logo $Y=Y_1\\cup Y_2$ com $Y_1,Y_2$ fechados proprios de $Y$. Por minimalidade de $Y$, nem $Y_1$ nem $Y_2$ estao em $\\Sigma$, isto e, ambos admitem decomposicao finita em irredutiveis. Unindo as duas decomposicoes, $Y$ tambem admite — contradicao. Logo $\\Sigma=\\varnothing$ e todo fechado (em particular $X$) se decompoe.\n\n**Passo 2 — reducao a decomposicao irredundante.** Descartando cada $X_i$ que esteja contido em algum $X_j$ ($j\\neq i$), obtemos $X=X_1\\cup\\cdots\\cup X_m$ com os $X_i$ irredutiveis e sem inclusoes mutuas; chamamos os $X_i$ de componentes irredutiveis.\n\n**Passo 3 — unicidade.** Suponha duas tais decomposicoes irredundantes $X=X_1\\cup\\cdots\\cup X_m=Y_1\\cup\\cdots\\cup Y_r$. Fixe $X_i$. Entao $X_i=X_i\\cap X=\\bigcup_j (X_i\\cap Y_j)$; como $X_i$ e irredutivel, $X_i=X_i\\cap Y_j$ para algum $j$, ou seja $X_i\\subseteq Y_j$. Aplicando o mesmo a $Y_j$ na outra decomposicao, existe $k$ com $Y_j\\subseteq X_k$. Logo $X_i\\subseteq Y_j\\subseteq X_k$; pela irredundancia dos $X$'s, $i=k$ e todas as inclusoes sao igualdades: $X_i=Y_j$. Assim cada $X_i$ e algum $Y_j$ e vice-versa, e a bijeticao mostra que as decomposicoes coincidem a menos de ordem. $\\blacksquare$",
+          "steps": [
+            "Para a existencia, considere o conjunto $\\Sigma$ dos fechados 'ruins' (sem decomposicao) e suponha-o nao vazio.",
+            "Use a noetherianidade para extrair um elemento minimal $Y$ de $\\Sigma$.",
+            "Parta $Y$ em dois fechados proprios; pela minimalidade cada pedaco se decompoe, e a uniao decompoe $Y$ — contradicao.",
+            "Torne a decomposicao irredundante removendo componentes contidas em outras.",
+            "Para a unicidade, intersecte um $X_i$ com a outra decomposicao e use irredutibilidade para achar $X_i\\subseteq Y_j\\subseteq X_k$.",
+            "Conclua $i=k$ e $X_i=Y_j$, estabelecendo a bijecao entre as componentes."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "$V(S)$ é o quê?",
+          "back": "O conjunto dos pontos de $\\mathbb{A}^n$ onde todos os polinômios de $S$ se anulam: $\\{p: f(p)=0\\ \\forall f\\in S\\}$."
+        },
+        {
+          "front": "$I(X)$ é o quê?",
+          "back": "O ideal dos polinômios que se anulam em todo $X$; é sempre um ideal radical."
+        },
+        {
+          "front": "Fechados da topologia de Zariski",
+          "back": "Exatamente os conjuntos algébricos $V(\\mathfrak a)$."
+        },
+        {
+          "front": "$\\mathbb{A}^1$ em Zariski é qual topologia?",
+          "back": "A cofinita: fechados são os finitos e o espaço todo."
+        },
+        {
+          "front": "Irredutível $\\iff$ ?",
+          "back": "$I(X)$ é ideal primo."
+        },
+        {
+          "front": "Por que todo conjunto algébrico é $V$ de finitos polinômios?",
+          "back": "Pelo Teorema da Base de Hilbert, $k[x_1,\\dots,x_n]$ é noetheriano, logo todo ideal é finitamente gerado."
+        },
+        {
+          "front": "Irredutível vs conexo",
+          "back": "Irredutível $\\Rightarrow$ conexo, mas não vice-versa: $V(xy)$ é conexo e redutível."
+        },
+        {
+          "front": "Componentes irredutíveis",
+          "back": "As variedades maximais $X_i$ numa decomposição $X=X_1\\cup\\dots\\cup X_m$ sem inclusões; existem e são únicas em espaço noetheriano."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Hartshorne, Algebraic Geometry, I.1",
+          "ref": "livro"
+        },
+        {
+          "title": "Gathmann, notas de Algebraic Geometry (cap. sobre afins e Zariski)",
+          "ref": "notas"
+        },
+        {
+          "title": "Vainsencher, Introdução às Curvas Algébricas Planas",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe o vocabulario base relendo Hartshorne I.1 (ou Vainsencher, caps. iniciais): escreva com suas palavras as definicoes de $\\mathbb{A}^n$, $V(S)$, $I(X)$ e as identidades $V(S)=V(\\langle S\\rangle)=V(\\sqrt{\\langle S\\rangle})$.",
+          "Prove voce mesmo os tres axiomas de fechado (interseccao arbitraria, uniao finita, vazio/total) antes de olhar a demonstracao — e uma verificacao mecanica que fixa a topologia de Zariski.",
+          "Revise o Teorema da Base de Hilbert em Atiyah-MacDonald (cap. 7) so o suficiente para entender por que $k[x_1,\\dots,x_n]$ e noetheriano e por que isso da finitude e a topologia noetheriana.",
+          "Estude o par irredutivel/primo com exemplos concretos em $\\mathbb{A}^2$: $V(xy)$, $V(x)$, $V(y)$, e a diagonal; desenhe os conjuntos e escreva os ideais.",
+          "Assista a um video introdutorio de topologia de Zariski para consolidar a intuicao 'nao-Hausdorff' e a cofinita em $\\mathbb{A}^1$.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (as identidades de $V$, o teorema irredutivel$\\iff$primo e a decomposicao em componentes)."
+        ],
+        "searchQueries": [
+          "topologia de Zariski conjuntos algebricos definicao exemplos",
+          "irredutivel se e somente se ideal primo demonstracao",
+          "teorema da base de Hilbert anel noetheriano prova",
+          "decomposicao em componentes irredutiveis espaco noetheriano",
+          "Zariski topology affine variety irreducible prime ideal",
+          "Noetherian topological space irreducible decomposition uniqueness"
+        ],
+        "videos": [
+          {
+            "title": "Introduction to Algebraic Geometry / Zariski topology",
+            "channel": "Andreas Gathmann / cursos de Algebraic Geometry no YouTube",
+            "note": "Procure as primeiras aulas sobre affine varieties e Zariski topology; acompanham as notas gratuitas de Gathmann que sao a referencia ideal aqui."
+          },
+          {
+            "title": "MIT OpenCourseWare / Commutative Algebra e Algebraic Geometry",
+            "channel": "MIT OpenCourseWare",
+            "note": "Busque aulas sobre Noetherian rings e Hilbert basis theorem para fundamentar a finitude usada na topologia noetheriana."
+          },
+          {
+            "title": "Curvas algebricas planas (introducao)",
+            "channel": "IMPA / canais de matematica universitaria em PT-BR",
+            "note": "Procure videos introdutorios sobre conjuntos algebricos afins e Nullstellensatz em portugues para reforcar a intuicao geometrica."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Algebraic Geometry, Cap. I.1 (Affine Varieties)",
+            "where": "Robin Hartshorne, Algebraic Geometry (Springer GTM 52)"
+          },
+          {
+            "title": "Notas de Algebraic Geometry, capitulo sobre affine varieties e Zariski topology",
+            "where": "Andreas Gathmann (notas de curso, TU Kaiserslautern)"
+          },
+          {
+            "title": "Introducao as Curvas Algebricas Planas, capitulos iniciais",
+            "where": "Israel Vainsencher (IMPA, Colecao Matematica Universitaria)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-algebrica-02-nullstellensatz",
+      "title": "O Nullstellensatz de Hilbert e a Correspondência Ideal-Variedade",
+      "tagline": "O teorema dos zeros de Hilbert: sobre $k$ algebricamente fechado, $I(V(\\mathfrak a))=\\sqrt{\\mathfrak a}$ — e geometria vira álgebra de forma exata.",
+      "objectives": [
+        "Enunciar o Nullstellensatz fraco e o forte, deixando explícita a hipótese de corpo algebricamente fechado.",
+        "Compreender o Lema de Zariski como motor algébrico e o truque de Rabinowitsch que deriva o forte do fraco.",
+        "Estabelecer a correspondência bijetiva (revertendo inclusões) entre conjuntos algébricos e ideais radicais.",
+        "Refinar a correspondência: variedades $\\leftrightarrow$ ideais primos e pontos $\\leftrightarrow$ ideais maximais.",
+        "Calcular $I(V(\\mathfrak a))=\\sqrt{\\mathfrak a}$ em exemplos e reconhecer onde a hipótese de $k$ fechado é indispensável."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Corpo algebricamente fechado",
+          "statement": "$k$ é algebricamente fechado se todo polinômio não constante de $k[x]$ tem raiz em $k$ (ex.: $\\mathbb{C}$, $\\overline{\\mathbb{Q}}$, $\\overline{\\mathbb{F}_p}$). É a hipótese sem a qual o Nullstellensatz falha."
+        },
+        {
+          "term": "Radical de um ideal",
+          "statement": "$\\sqrt{\\mathfrak a}=\\{f: f^m\\in\\mathfrak a\\text{ para algum }m\\ge 1\\}$; é um ideal, e $\\mathfrak a$ é radical quando $\\sqrt{\\mathfrak a}=\\mathfrak a$. O Nullstellensatz identifica $I(V(\\mathfrak a))$ com $\\sqrt{\\mathfrak a}$."
+        },
+        {
+          "term": "Ideal maximal de ponto",
+          "statement": "Para $p=(a_1,\\dots,a_n)$, $\\mathfrak m_p=\\langle x_1-a_1,\\dots,x_n-a_n\\rangle$ é maximal e $k[x_1,\\dots,x_n]/\\mathfrak m_p\\cong k$ (avaliação em $p$)."
+        },
+        {
+          "term": "Correspondência ideal-variedade",
+          "statement": "As aplicações $X\\mapsto I(X)$ e $\\mathfrak a\\mapsto V(\\mathfrak a)$ são bijeções mutuamente inversas e revertem inclusões entre $\\{$conjuntos algébricos$\\}$ e $\\{$ideais radicais$\\}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Lema de Zariski",
+          "statement": "Se $k$ é um corpo e uma extensão $K\\supseteq k$ é uma $k$-álgebra finitamente gerada (como álgebra) que também é um corpo, então $K$ é uma extensão finita (algébrica) de $k$.",
+          "whyItMatters": "É o coração algébrico do Nullstellensatz. Com $k$ algebricamente fechado, força $K=k$, o que identifica os quocientes por maximais com $k$ e localiza os pontos."
+        },
+        {
+          "name": "Nullstellensatz fraco",
+          "statement": "Seja $k$ algebricamente fechado. Se $\\mathfrak a\\subsetneq k[x_1,\\dots,x_n]$ é um ideal próprio, então $V(\\mathfrak a)\\neq\\varnothing$. Equivalentemente, os ideais maximais de $k[x_1,\\dots,x_n]$ são exatamente os $\\mathfrak m_p=\\langle x_1-a_1,\\dots,x_n-a_n\\rangle$.",
+          "whyItMatters": "Garante que todo sistema polinomial sem solução tem '$1$' no ideal gerado ($\\mathfrak a=(1)$). É a base do dicionário pontos $\\leftrightarrow$ maximais e da geometria sobre corpos fechados."
+        },
+        {
+          "name": "Nullstellensatz forte",
+          "statement": "Seja $k$ algebricamente fechado e $\\mathfrak a\\subseteq k[x_1,\\dots,x_n]$ um ideal. Então $I(V(\\mathfrak a))=\\sqrt{\\mathfrak a}$.",
+          "whyItMatters": "Mede exatamente quanta informação $V$ perde: nenhuma além de potências. É o que torna $X\\mapsto I(X)$ e $\\mathfrak a\\mapsto V(\\mathfrak a)$ inversas entre conjuntos algébricos e ideais radicais."
+        },
+        {
+          "name": "Dicionário fundamental",
+          "statement": "Sobre $k$ algebricamente fechado há bijeções que revertem inclusões: $\\{$conjuntos algébricos$\\}\\leftrightarrow\\{$ideais radicais$\\}$, restringindo-se a $\\{$variedades$\\}\\leftrightarrow\\{$ideais primos$\\}$ e a $\\{$pontos$\\}\\leftrightarrow\\{$ideais maximais$\\}$.",
+          "whyItMatters": "É o teorema que organiza toda a trilha. Toda afirmação geométrica passa a ter tradução algébrica exata, e vice-versa."
+        }
+      ],
+      "summary": "O Nullstellensatz ('teorema dos zeros') de Hilbert é o resultado que faz a geometria algébrica funcionar. Sua versão fraca diz que, sobre um corpo algebricamente fechado $k$, todo ideal próprio de $k[x_1,\\dots,x_n]$ tem algum zero comum — ou seja, a única obstrução a um sistema polinomial ter solução é a 'razão estúpida' $1\\in\\mathfrak a$. Reformulada, ela classifica os ideais maximais: são precisamente os $\\mathfrak m_p=\\langle x_1-a_1,\\dots,x_n-a_n\\rangle$, em bijeção com os pontos $p\\in\\mathbb{A}^n$. O motor por trás disso é o Lema de Zariski, segundo o qual um corpo que é $k$-álgebra finitamente gerada já é finito sobre $k$; com $k$ fechado, esse corpo é o próprio $k$, e o quociente por um maximal devolve as coordenadas do ponto.\n\nA versão forte vai além e calcula $I(V(\\mathfrak a))=\\sqrt{\\mathfrak a}$ para qualquer ideal $\\mathfrak a$: tomar zeros e depois o ideal recupera $\\mathfrak a$ a menos de radical. A passagem do fraco para o forte é o elegante truque de Rabinowitsch, que adiciona uma variável auxiliar $x_{n+1}$ e usa $1-x_{n+1}f$ para 'limpar' a função $f$. A consequência é o dicionário fundamental: conjuntos algébricos correspondem biunivocamente a ideais radicais, variedades a primos e pontos a maximais — sempre revertendo inclusões. Tudo isso exige $k$ algebricamente fechado: sobre $\\mathbb{R}$, o ideal próprio $\\langle x^2+1\\rangle$ tem $V=\\varnothing$, e o dicionário desmorona.",
+      "commonPitfalls": [
+        "Esquecer a hipótese 'algebricamente fechado': sobre $\\mathbb{R}$, $\\langle x^2+1\\rangle\\subsetneq\\mathbb{R}[x]$ é próprio mas $V=\\varnothing$, e os maximais não são todos da forma $\\langle x-a\\rangle$.",
+        "Achar que $I(V(\\mathfrak a))=\\mathfrak a$: a igualdade correta é $I(V(\\mathfrak a))=\\sqrt{\\mathfrak a}$. Por exemplo $V(x^2)=\\{0\\}$ e $I(\\{0\\})=\\langle x\\rangle\\supsetneq\\langle x^2\\rangle$.",
+        "Confundir o Nullstellensatz fraco (existência de zeros) com o forte (cálculo de $I(V(\\mathfrak a))$); são enunciados distintos, com o forte deduzido do fraco.",
+        "Supor que pontos correspondem a maximais sobre qualquer corpo: isso vale na correspondência clássica apenas com $k$ algebricamente fechado (em geral usa-se $\\operatorname{Spec}$ e maximais com corpo residual extensão de $k$)."
+      ],
+      "worked": "**Problema.** Em $\\mathbb{A}^2$ sobre $k=\\mathbb{C}$, calcule $I\\big(V(\\langle x^2,\\,xy\\rangle)\\big)$ e confirme o Nullstellensatz forte.\n\n**Solução.** Primeiro o lado geométrico. Um ponto $(a,b)$ está em $V(\\langle x^2,xy\\rangle)$ sse $a^2=0$ e $ab=0$, ou seja, sse $a=0$. Logo\n\n$$V(\\langle x^2,xy\\rangle)=\\{x=0\\}=V(x),$$\n\no eixo $y$. Portanto $I(V(\\langle x^2,xy\\rangle))=I(V(x))=\\langle x\\rangle$.\n\nAgora o lado algébrico: precisamos de $\\sqrt{\\langle x^2,xy\\rangle}$. Como $x^2\\in\\langle x^2,xy\\rangle$, temos $x\\in\\sqrt{\\langle x^2,xy\\rangle}$, donde $\\langle x\\rangle\\subseteq\\sqrt{\\langle x^2,xy\\rangle}$. Reciprocamente, qualquer gerador está em $\\langle x\\rangle$ (pois $x^2,xy\\in\\langle x\\rangle$ e $\\langle x\\rangle$ é radical, sendo primo), logo $\\sqrt{\\langle x^2,xy\\rangle}\\subseteq\\langle x\\rangle$. Concluímos $\\sqrt{\\langle x^2,xy\\rangle}=\\langle x\\rangle=I(V(\\langle x^2,xy\\rangle))$, exatamente como prevê o Nullstellensatz forte. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Use o Nullstellensatz fraco para provar que, sobre $k$ algebricamente fechado, um sistema $f_1=\\cdots=f_r=0$ não tem solução em $\\mathbb{A}^n$ se, e somente se, existem $g_1,\\dots,g_r$ com $g_1 f_1+\\cdots+g_r f_r=1$.",
+          "hint": "Sem solução $\\iff V(\\langle f_1,\\dots,f_r\\rangle)=\\varnothing\\iff \\langle f_1,\\dots,f_r\\rangle=(1)$.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** Sobre $k$ algebricamente fechado, o sistema $f_1=\\cdots=f_r=0$ NAO tem solucao em $\\mathbb{A}^n$ se, e somente se, existem $g_1,\\dots,g_r\\in k[x_1,\\dots,x_n]$ com $g_1f_1+\\cdots+g_rf_r=1$.\n\n**Passo 1 — traduzir 'sem solucao'.** O sistema nao ter solucao significa exatamente $V(\\langle f_1,\\dots,f_r\\rangle)=\\varnothing$, pois um zero comum dos $f_i$ e um ponto de $V(\\langle f_1,\\dots,f_r\\rangle)$.\n\n**Passo 2 — aplicar o Nullstellensatz fraco.** Seja $\\mathfrak a=\\langle f_1,\\dots,f_r\\rangle$. O Nullstellensatz fraco afirma: se $\\mathfrak a$ e um ideal PROPRIO ($\\mathfrak a\\neq(1)$), entao $V(\\mathfrak a)\\neq\\varnothing$. Contrapositivamente, $V(\\mathfrak a)=\\varnothing$ forca $\\mathfrak a=(1)=k[x_1,\\dots,x_n]$. Reciprocamente, se $\\mathfrak a=(1)$ entao $1$ se anularia em qualquer ponto de $V(\\mathfrak a)$, o que e impossivel, logo $V(\\mathfrak a)=\\varnothing$. Assim\n$$V(\\langle f_1,\\dots,f_r\\rangle)=\\varnothing\\iff \\langle f_1,\\dots,f_r\\rangle=(1).$$\n\n**Passo 3 — traduzir $(1)$ em combinacao linear.** Dizer que $\\langle f_1,\\dots,f_r\\rangle=(1)$ e o mesmo que dizer que $1$ pertence a esse ideal, isto e, $1=\\sum_{i=1}^r g_i f_i$ para certos $g_i\\in k[x_1,\\dots,x_n]$ (definicao de ideal gerado). Combinando os passos:\n$$\\text{sem solucao}\\iff V(\\mathfrak a)=\\varnothing\\iff \\mathfrak a=(1)\\iff \\exists\\,g_i:\\ \\textstyle\\sum_i g_i f_i=1.\\qquad\\blacksquare$$\nEsta e a forma 'certificado de inconsistencia' do Nullstellensatz: um sistema polinomial e inconsistente sse, e so se, existe uma prova algebrica $\\sum g_if_i=1$.",
+          "steps": [
+            "Reescreva 'sem solucao' como $V(\\langle f_1,\\dots,f_r\\rangle)=\\varnothing$.",
+            "Aplique o Nullstellensatz fraco na forma contrapositiva: $V(\\mathfrak a)=\\varnothing\\Rightarrow\\mathfrak a=(1)$.",
+            "Verifique a reciproca trivial: $\\mathfrak a=(1)\\Rightarrow V(\\mathfrak a)=\\varnothing$ porque $1$ nunca se anula.",
+            "Traduza $\\mathfrak a=(1)$ como $1\\in\\mathfrak a$, ou seja $1=\\sum_i g_i f_i$, encadeando as equivalencias."
+          ]
+        },
+        {
+          "prompt": "Deduza o Nullstellensatz forte do fraco pelo truque de Rabinowitsch.",
+          "hint": "Se $f$ se anula em $V(\\mathfrak a)$, considere o ideal $\\langle \\mathfrak a, 1-x_{n+1}f\\rangle$ em $k[x_1,\\dots,x_{n+1}]$, que tem $V=\\varnothing$; aplique o fraco e substitua $x_{n+1}=1/f$.",
+          "difficulty": 4,
+          "solution": "**Objetivo.** Deduzir o Nullstellensatz forte ($I(V(\\mathfrak a))=\\sqrt{\\mathfrak a}$) a partir do fraco, via truque de Rabinowitsch.\n\n**Passo 0 — a inclusao facil.** Sempre $\\sqrt{\\mathfrak a}\\subseteq I(V(\\mathfrak a))$: se $f^m\\in\\mathfrak a$, entao para todo $p\\in V(\\mathfrak a)$ vale $f(p)^m=0$, logo $f(p)=0$ (corpo), donde $f\\in I(V(\\mathfrak a))$. Falta a inclusao nao trivial $I(V(\\mathfrak a))\\subseteq\\sqrt{\\mathfrak a}$.\n\n**Passo 1 — hipotese.** Seja $\\mathfrak a=\\langle f_1,\\dots,f_r\\rangle\\subseteq k[x_1,\\dots,x_n]$ e $f\\in I(V(\\mathfrak a))$, isto e, $f$ se anula em todos os zeros comuns dos $f_i$. Podemos supor $f\\neq 0$. Queremos $f^N\\in\\mathfrak a$ para algum $N$.\n\n**Passo 2 — variavel auxiliar.** Trabalhe em $k[x_1,\\dots,x_n,x_{n+1}]$ e considere o ideal\n$$\\mathfrak b=\\langle f_1,\\dots,f_r,\\ 1-x_{n+1}f\\rangle.$$\nAfirmamos $V(\\mathfrak b)=\\varnothing$ em $\\mathbb{A}^{n+1}$. De fato, seja $(a_1,\\dots,a_n,b)\\in V(\\mathfrak b)$. Como todos os $f_i$ se anulam em $(a_1,\\dots,a_n)$, esse ponto esta em $V(\\mathfrak a)$, logo $f(a_1,\\dots,a_n)=0$ (pois $f\\in I(V(\\mathfrak a))$). Mas entao $1-x_{n+1}f$ avaliado no ponto vale $1-b\\cdot 0=1\\neq 0$, contradizendo que o ponto anula $1-x_{n+1}f$. Logo $V(\\mathfrak b)=\\varnothing$.\n\n**Passo 3 — aplicar o fraco.** Pelo Nullstellensatz fraco, $\\mathfrak b=(1)$ em $k[x_1,\\dots,x_{n+1}]$, isto e, existem $g_i,h\\in k[x_1,\\dots,x_{n+1}]$ com\n$$1=\\sum_{i=1}^r g_i(x_1,\\dots,x_{n+1})\\,f_i+h(x_1,\\dots,x_{n+1})\\,(1-x_{n+1}f).$$\n\n**Passo 4 — substituir $x_{n+1}=1/f$.** Passe ao corpo de fracoes $k(x_1,\\dots,x_n)$ e substitua $x_{n+1}\\mapsto 1/f$. O termo $(1-x_{n+1}f)$ se anula, restando\n$$1=\\sum_{i=1}^r g_i(x_1,\\dots,x_n,1/f)\\,f_i.$$\nCada $g_i(\\dots,1/f)$ e uma expressao com denominador uma potencia de $f$; seja $N$ o maior expoente que aparece. Multiplicando a igualdade por $f^N$ eliminamos os denominadores e obtemos, ja em $k[x_1,\\dots,x_n]$,\n$$f^N=\\sum_{i=1}^r \\tilde g_i\\,f_i\\in\\mathfrak a,\\qquad \\tilde g_i\\in k[x_1,\\dots,x_n].$$\nLogo $f\\in\\sqrt{\\mathfrak a}$. Isso prova $I(V(\\mathfrak a))\\subseteq\\sqrt{\\mathfrak a}$; com o Passo 0, $I(V(\\mathfrak a))=\\sqrt{\\mathfrak a}$. $\\blacksquare$",
+          "steps": [
+            "Estabeleca primeiro a inclusao trivial $\\sqrt{\\mathfrak a}\\subseteq I(V(\\mathfrak a))$ usando que potencias se anulam.",
+            "Introduza a variavel extra $x_{n+1}$ e o ideal $\\mathfrak b=\\langle f_1,\\dots,f_r,1-x_{n+1}f\\rangle$.",
+            "Mostre $V(\\mathfrak b)=\\varnothing$: onde os $f_i$ se anulam, $f$ tambem, e $1-x_{n+1}f=1$.",
+            "Aplique o fraco para escrever $1=\\sum g_i f_i+h(1-x_{n+1}f)$.",
+            "Substitua $x_{n+1}=1/f$, mate o termo com $h$ e limpe denominadores multiplicando por $f^N$.",
+            "Conclua $f^N\\in\\mathfrak a$, isto e, $f\\in\\sqrt{\\mathfrak a}$, fechando a igualdade."
+          ]
+        },
+        {
+          "prompt": "Mostre, sobre $\\mathbb{C}$, que $\\sqrt{\\langle x^2+y^2\\rangle}=\\langle x^2+y^2\\rangle$ (o ideal já é radical) descrevendo $V(x^2+y^2)$. O mesmo vale sobre $\\mathbb{R}$?",
+          "hint": "Sobre $\\mathbb{C}$, $x^2+y^2=(x+iy)(x-iy)$ define duas retas; sobre $\\mathbb{R}$, $V(x^2+y^2)=\\{(0,0)\\}$ e $I$ é maior.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Sobre $\\mathbb{C}$, o ideal $\\langle x^2+y^2\\rangle\\subseteq\\mathbb{C}[x,y]$ ja e radical, isto e, $\\sqrt{\\langle x^2+y^2\\rangle}=\\langle x^2+y^2\\rangle$. Sobre $\\mathbb{R}$ isso falha.\n\n**Passo 1 — fatorar sobre $\\mathbb{C}$.** Em $\\mathbb{C}[x,y]$ vale $x^2+y^2=(x+iy)(x-iy)$, produto de dois polinomios de grau $1$, irredutiveis e nao associados. Portanto\n$$V(x^2+y^2)=V(x+iy)\\cup V(x-iy)$$\ne a uniao de duas retas distintas por a origem em $\\mathbb{A}^2_{\\mathbb{C}}$.\n\n**Passo 2 — o ideal e radical.** Como $x+iy$ e $x-iy$ sao primos entre si (nao associados, ambos irredutiveis num DFU), $\\langle x^2+y^2\\rangle=\\langle x+iy\\rangle\\cap\\langle x-iy\\rangle$, interseccao de dois ideais primos. Uma interseccao de ideais primos e sempre radical (interseccao de radicais e radical), logo\n$$\\sqrt{\\langle x^2+y^2\\rangle}=\\langle x^2+y^2\\rangle.$$\nAlternativamente, via Nullstellensatz forte: $I(V(x^2+y^2))=\\sqrt{\\langle x^2+y^2\\rangle}$; e como $V(x^2+y^2)$ e a uniao de duas retas, $I$ dessa uniao e $\\langle x+iy\\rangle\\cap\\langle x-iy\\rangle=\\langle x^2+y^2\\rangle$. (Note que $x^2+y^2$ e livre de quadrados, o criterio pratico para radicalidade de um ideal principal num DFU.)\n\n**Passo 3 — sobre $\\mathbb{R}$ e diferente.** Em $\\mathbb{R}[x,y]$, $x^2+y^2$ e irredutivel (nao fatora, pois nao ha raizes reais de $t^2+1$) e o unico ponto real onde se anula e a origem: $V_{\\mathbb{R}}(x^2+y^2)=\\{(0,0)\\}$. Entao $I(V_{\\mathbb{R}}(x^2+y^2))=I(\\{(0,0)\\})=\\langle x,y\\rangle$, que e ESTRITAMENTE maior que $\\langle x^2+y^2\\rangle$ (por exemplo $x\\in\\langle x,y\\rangle$ mas $x\\notin\\langle x^2+y^2\\rangle$ por grau). Aqui $I(V(\\mathfrak a))=\\langle x,y\\rangle\\neq\\sqrt{\\langle x^2+y^2\\rangle}=\\langle x^2+y^2\\rangle$: o Nullstellensatz forte FALHA, exatamente porque $\\mathbb{R}$ nao e algebricamente fechado. $\\blacksquare$",
+          "steps": [
+            "Fatore $x^2+y^2=(x+iy)(x-iy)$ sobre $\\mathbb{C}$ e descreva $V$ como uniao de duas retas.",
+            "Use que os dois fatores sao irredutiveis nao associados para escrever o ideal como interseccao de dois primos.",
+            "Conclua que a interseccao de primos e radical (equivalente: $x^2+y^2$ e livre de quadrados).",
+            "Sobre $\\mathbb{R}$, observe que $V$ se reduz a origem e $I(\\{0\\})=\\langle x,y\\rangle$.",
+            "Compare: sobre $\\mathbb{R}$ vale $I(V(\\mathfrak a))\\neq\\sqrt{\\mathfrak a}$, evidenciando a necessidade de $k$ fechado."
+          ]
+        },
+        {
+          "prompt": "Prove que os ideais maximais de $\\mathbb{C}[x_1,\\dots,x_n]$ são exatamente os $\\langle x_1-a_1,\\dots,x_n-a_n\\rangle$.",
+          "hint": "Um maximal $\\mathfrak m$ dá um corpo $\\mathbb{C}[x]/\\mathfrak m$ que, pelo Lema de Zariski, é finito sobre $\\mathbb{C}$, logo é $\\mathbb{C}$; as imagens dos $x_i$ são as coordenadas $a_i$.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** Os ideais maximais de $R=\\mathbb{C}[x_1,\\dots,x_n]$ sao exatamente os $\\mathfrak m_p=\\langle x_1-a_1,\\dots,x_n-a_n\\rangle$, $p=(a_1,\\dots,a_n)\\in\\mathbb{C}^n$.\n\n**Passo 1 — cada $\\mathfrak m_p$ e maximal.** A avaliacao $\\mathrm{ev}_p:R\\to\\mathbb{C}$, $f\\mapsto f(p)$, e um homomorfismo sobrejetor de $\\mathbb{C}$-algebras (as constantes ja cobrem $\\mathbb{C}$) com nucleo $\\mathfrak m_p$. De fato, $\\ker\\mathrm{ev}_p\\supseteq\\langle x_i-a_i\\rangle$ e, por Taylor/divisao, todo $f$ com $f(p)=0$ esta em $\\langle x_i-a_i\\rangle$. Logo $R/\\mathfrak m_p\\cong\\mathbb{C}$ e um corpo, portanto $\\mathfrak m_p$ e maximal.\n\n**Passo 2 — todo maximal e desse tipo.** Seja $\\mathfrak m\\subseteq R$ maximal. O quociente $K=R/\\mathfrak m$ e um corpo que, por construcao, e uma $\\mathbb{C}$-algebra finitamente gerada (imagens de $x_1,\\dots,x_n$). Pelo **Lema de Zariski**, $K$ e uma extensao FINITA de $\\mathbb{C}$. Mas $\\mathbb{C}$ e algebricamente fechado, logo nao admite extensoes finitas proprias: $K=\\mathbb{C}$.\n\n**Passo 3 — extrair as coordenadas.** Seja $\\pi:R\\to R/\\mathfrak m=\\mathbb{C}$ a projecao ($\\mathbb{C}$-linear, identidade nas constantes). Ponha $a_i:=\\pi(x_i)\\in\\mathbb{C}$. Entao $\\pi(x_i-a_i)=a_i-a_i=0$, ou seja $x_i-a_i\\in\\mathfrak m$ para todo $i$; logo $\\mathfrak m\\supseteq\\langle x_1-a_1,\\dots,x_n-a_n\\rangle=\\mathfrak m_p$ com $p=(a_1,\\dots,a_n)$. Como $\\mathfrak m_p$ ja e maximal e $\\mathfrak m$ e proprio, a inclusao forca $\\mathfrak m=\\mathfrak m_p$.\n\n**Conclusao.** Os maximais sao precisamente os $\\mathfrak m_p$, e $p\\mapsto\\mathfrak m_p$ e uma bijecao entre $\\mathbb{C}^n=\\mathbb{A}^n$ e $\\mathrm{Max}(R)$. $\\blacksquare$",
+          "steps": [
+            "Mostre que $\\mathfrak m_p$ e maximal exibindo o isomorfismo $R/\\mathfrak m_p\\cong\\mathbb{C}$ via avaliacao em $p$.",
+            "Para a reciproca, tome um maximal $\\mathfrak m$ e olhe o corpo $K=R/\\mathfrak m$ como $\\mathbb{C}$-algebra f.g.",
+            "Aplique o Lema de Zariski: $K$ e finito sobre $\\mathbb{C}$, e como $\\mathbb{C}$ e fechado, $K=\\mathbb{C}$.",
+            "Defina $a_i$ como a imagem de $x_i$ na projecao e conclua $x_i-a_i\\in\\mathfrak m$.",
+            "Deduza $\\mathfrak m\\supseteq\\mathfrak m_p$ e use maximalidade para obter igualdade."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Nullstellensatz fraco",
+          "back": "Sobre $k$ algebricamente fechado, todo ideal próprio de $k[x_1,\\dots,x_n]$ tem zero comum; equivalentemente $\\mathfrak a=(1)\\iff V(\\mathfrak a)=\\varnothing$."
+        },
+        {
+          "front": "Nullstellensatz forte",
+          "back": "Sobre $k$ algebricamente fechado, $I(V(\\mathfrak a))=\\sqrt{\\mathfrak a}$."
+        },
+        {
+          "front": "Maximais de $k[x_1,\\dots,x_n]$ ($k$ fechado)",
+          "back": "Exatamente $\\mathfrak m_p=\\langle x_1-a_1,\\dots,x_n-a_n\\rangle$, em bijeção com os pontos $p$."
+        },
+        {
+          "front": "Pontos $\\leftrightarrow$ ?",
+          "back": "Ideais maximais (sobre $k$ algebricamente fechado)."
+        },
+        {
+          "front": "Variedades $\\leftrightarrow$ ?",
+          "back": "Ideais primos."
+        },
+        {
+          "front": "Conjuntos algébricos $\\leftrightarrow$ ?",
+          "back": "Ideais radicais."
+        },
+        {
+          "front": "Lema de Zariski",
+          "back": "Um corpo que é $k$-álgebra finitamente gerada é uma extensão finita de $k$."
+        },
+        {
+          "front": "Contraexemplo sobre $\\mathbb{R}$",
+          "back": "$\\langle x^2+1\\rangle$ é próprio mas $V=\\varnothing$: o Nullstellensatz precisa de $k$ algebricamente fechado."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Hartshorne, Algebraic Geometry, I.1 (Nullstellensatz)",
+          "ref": "livro"
+        },
+        {
+          "title": "Atiyah & MacDonald, cap. 7 (exercícios sobre Nullstellensatz)",
+          "ref": "livro"
+        },
+        {
+          "title": "Milne, Algebraic Geometry (notas, seção sobre Nullstellensatz)",
+          "ref": "notas"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Comece pelo enunciado: escreva lado a lado o Nullstellensatz fraco e o forte, sublinhando a hipotese 'k algebricamente fechado' em ambos.",
+          "Estude o Lema de Zariski (Atiyah-MacDonald cap. 5/7 ou Milne): entenda por que uma k-algebra f.g. que e corpo e finita sobre k, sem ainda memorizar a prova.",
+          "Aprenda o truque de Rabinowitsch derivando o forte do fraco em papel, com a variavel auxiliar $x_{n+1}$ e $1-x_{n+1}f$.",
+          "Calcule $I(V(\\mathfrak a))=\\sqrt{\\mathfrak a}$ em 3-4 exemplos ($\\langle x^2\\rangle$, $\\langle x^2,xy\\rangle$, $\\langle x^2+1\\rangle$ sobre $\\mathbb{R}$ vs $\\mathbb{C}$) para sentir onde a hipotese e essencial.",
+          "Assista a um video sobre o Nullstellensatz para fixar a intuicao do dicionario pontos$\\leftrightarrow$maximais.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (fraco vs forte, Rabinowitsch, e o contraexemplo real $\\langle x^2+1\\rangle$)."
+        ],
+        "searchQueries": [
+          "Nullstellensatz de Hilbert enunciado e demonstracao",
+          "truque de Rabinowitsch Nullstellensatz forte a partir do fraco",
+          "lema de Zariski k-algebra finitamente gerada corpo",
+          "correspondencia ideais maximais pontos corpo algebricamente fechado",
+          "Hilbert Nullstellensatz weak strong proof Rabinowitsch trick",
+          "Zariski lemma field finitely generated algebra proof"
+        ],
+        "videos": [
+          {
+            "title": "Hilbert's Nullstellensatz",
+            "channel": "Andreas Gathmann / cursos de Algebraic Geometry",
+            "note": "Procure a aula dedicada ao Nullstellensatz; segue as notas gratuitas e explica fraco, forte e a correspondencia."
+          },
+          {
+            "title": "Commutative Algebra lectures (Nullstellensatz e Zariski lemma)",
+            "channel": "Richard Borcherds",
+            "note": "Busque as aulas sobre Nullstellensatz e Zariski's lemma; demonstracao limpa do lema de Zariski via Noether normalization."
+          },
+          {
+            "title": "Michael Penn / algebra abstrata",
+            "channel": "Michael Penn",
+            "note": "Procure videos sobre radical de ideais e nilradical para solidificar o conceito de $\\sqrt{\\mathfrak a}$ usado no forte."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Algebraic Geometry, Cap. I.1 (o teorema 1.3A, Nullstellensatz)",
+            "where": "Robin Hartshorne, Algebraic Geometry (Springer GTM 52)"
+          },
+          {
+            "title": "Introduction to Commutative Algebra, cap. 7 e exercicios sobre Nullstellensatz",
+            "where": "M. F. Atiyah & I. G. MacDonald"
+          },
+          {
+            "title": "Algebraic Geometry (notas), secao sobre o Nullstellensatz e o lema de Zariski",
+            "where": "J. S. Milne (jmilne.org)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-algebrica-03-anel-coordenadas-funcoes-regulares",
+      "title": "Anel de Coordenadas, Funções Regulares e Anéis Locais",
+      "tagline": "A variedade $X$ vista pelo seu anel de funções $A(X)$: pontos são maximais, germes são localizações, e o corpo de funções é $\\operatorname{Frac} A(X)$.",
+      "objectives": [
+        "Definir o anel de coordenadas $A(X)=k[x_1,\\dots,x_n]/I(X)$ e reconhecê-lo como o anel das funções polinomiais em $X$.",
+        "Estabelecer a tradução: $A(X)$ é $k$-álgebra reduzida finitamente gerada; é domínio se, e só se, $X$ é variedade.",
+        "Identificar os pontos de $X$ com os ideais maximais de $A(X)$ (sobre $k$ fechado).",
+        "Definir função regular numa variedade quase-afim como quociente local $g/h$ e provar que as funções regulares globais numa variedade afim são $A(X)$.",
+        "Construir o anel local $\\mathcal{O}_{X,p}=A(X)_{\\mathfrak m_p}$ e o corpo de funções $k(X)=\\operatorname{Frac}A(X)$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Anel de coordenadas $A(X)$",
+          "statement": "$A(X)=k[x_1,\\dots,x_n]/I(X)$. Seus elementos são as funções polinomiais $X\\to k$; é uma $k$-álgebra finitamente gerada e reduzida (sem nilpotentes), pois $I(X)$ é radical."
+        },
+        {
+          "term": "Função regular",
+          "statement": "Numa variedade quase-afim $Y$, $f:Y\\to k$ é regular em $p$ se há vizinhança $U\\ni p$ e $g,h\\in k[x_1,\\dots,x_n]$ com $h$ não nula em $U$ e $f=g/h$ em $U$. É regular em $Y$ se o é em todo ponto."
+        },
+        {
+          "term": "Anel local $\\mathcal{O}_{X,p}$",
+          "statement": "O anel dos germes de funções regulares em $p$: $\\mathcal{O}_{X,p}=A(X)_{\\mathfrak m_p}=\\{g/h: g,h\\in A(X),\\ h(p)\\neq 0\\}$. É local, com ideal maximal $\\mathfrak m_p\\mathcal{O}_{X,p}$ e corpo residual $k$."
+        },
+        {
+          "term": "Corpo de funções $k(X)$",
+          "statement": "Para $X$ variedade (irredutível), $A(X)$ é domínio e $k(X)=\\operatorname{Frac}A(X)=A(X)_{\\langle 0\\rangle}$ é o corpo das funções racionais em $X$. É o invariante birracional fundamental."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Anti-correspondência objetos $\\leftrightarrow$ álgebras",
+          "statement": "Sobre $k$ algebricamente fechado, $X\\mapsto A(X)$ é uma bijeção (a menos de isomorfismo) entre conjuntos algébricos afins e $k$-álgebras reduzidas finitamente geradas, restringindo-se a variedades $\\leftrightarrow$ domínios finitamente gerados.",
+          "whyItMatters": "Permite estudar a geometria de $X$ apenas pela álgebra de $A(X)$: tudo o que é geométrico se lê no anel. É a base da anti-equivalência de categorias da próxima aula."
+        },
+        {
+          "name": "Pontos $\\leftrightarrow$ maximais de $A(X)$",
+          "statement": "A aplicação $p\\mapsto \\mathfrak m_p=\\{f\\in A(X): f(p)=0\\}$ é uma bijeção entre os pontos de $X$ e os ideais maximais de $A(X)$ (sobre $k$ algebricamente fechado).",
+          "whyItMatters": "Reformula 'ponto' como 'ideal maximal', o passo conceitual que leva ao espectro $\\operatorname{Spec}$ e à geometria de esquemas, onde pontos são todos os primos."
+        },
+        {
+          "name": "Funções regulares globais $=A(X)$",
+          "statement": "Se $X$ é uma variedade afim, então o anel das funções regulares $\\mathcal{O}_X(X)$ coincide com $A(X)$; além disso $\\mathcal{O}_{X,p}\\cong A(X)_{\\mathfrak m_p}$ e $k(X)\\cong\\operatorname{Frac}A(X)$.",
+          "whyItMatters": "Mostra que a definição 'local' de função regular (quociente $g/h$) recupera exatamente os polinômios no caso afim, conectando o ponto de vista de feixes com o anel de coordenadas."
+        }
+      ],
+      "summary": "Uma vez fixada a correspondência do Nullstellensatz, a estratégia da geometria algébrica é estudar uma variedade $X$ pelo seu anel de funções. O anel de coordenadas $A(X)=k[x_1,\\dots,x_n]/I(X)$ é, por definição, o anel das funções polinomiais $X\\to k$; como $I(X)$ é radical, $A(X)$ não tem nilpotentes (é reduzido), e é um domínio exatamente quando $X$ é irredutível. Os pontos de $X$ reaparecem como os ideais maximais de $A(X)$, e a inclusão de subvariedades vira inclusão reversa de ideais. Assim, toda a informação geométrica de $X$ está codificada na $k$-álgebra $A(X)$ — esta é a primeira metade do dicionário funcional.\n\nPara fazer geometria local precisamos de funções definidas só perto de um ponto: uma função regular é, localmente, um quociente $g/h$ de polinômios com $h\\neq 0$. Numa variedade afim, esse conceito aparentemente mais geral não traz nada de novo globalmente — as funções regulares em todo $X$ são exatamente os elementos de $A(X)$. Mas em cada ponto $p$ obtemos o anel local $\\mathcal{O}_{X,p}$, a localização $A(X)_{\\mathfrak m_p}$ dos germes regulares em $p$, com um único ideal maximal; e, tomando a localização no ideal $\\langle 0\\rangle$, obtemos o corpo de funções $k(X)=\\operatorname{Frac}A(X)$. Esses três níveis — global $A(X)$, local $\\mathcal{O}_{X,p}$ e genérico $k(X)$ — são a infraestrutura para morfismos, dimensão e suavidade.",
+      "commonPitfalls": [
+        "Confundir $A(X)$ (funções globais), $\\mathcal{O}_{X,p}$ (germes em $p$, localização no maximal) e $k(X)$ (funções racionais, localização em $\\langle 0\\rangle$): são três anéis diferentes, encaixados $A(X)\\subseteq\\mathcal{O}_{X,p}\\subseteq k(X)$.",
+        "Definir função regular como 'quociente global $g/h$': a definição correta é local — pode ser preciso usar representações $g/h$ diferentes em pontos diferentes.",
+        "Esquecer que $A(X)$ é reduzido mas pode não ser domínio: só é domínio quando $X$ é irredutível (variedade).",
+        "Falar em corpo de funções $k(X)$ para conjuntos algébricos redutíveis: $\\operatorname{Frac}A(X)$ só é corpo quando $A(X)$ é domínio, isto é, $X$ irredutível."
+      ],
+      "worked": "**Problema.** Seja $X=V(y-x^2)\\subseteq\\mathbb{A}^2$ a parábola. Calcule $A(X)$, descreva $\\mathcal{O}_{X,p}$ no ponto $p=(0,0)$ e o corpo de funções $k(X)$.\n\n**Solução.** O ideal é $I(X)=\\langle y-x^2\\rangle$ (que é primo, pois $k[x,y]/\\langle y-x^2\\rangle$ é domínio). Logo\n\n$$A(X)=k[x,y]/\\langle y-x^2\\rangle.$$\n\nComo em $A(X)$ vale $y=x^2$, toda função se escreve em termos de $x$; o homomorfismo $k[x,y]/\\langle y-x^2\\rangle\\to k[t]$, $x\\mapsto t$, $y\\mapsto t^2$, é um isomorfismo de $k$-álgebras. Portanto\n\n$$A(X)\\cong k[t],$$\n\no anel de coordenadas da reta afim $\\mathbb{A}^1$ — algebricamente, a parábola 'é' a reta.\n\nO ponto $p=(0,0)$ corresponde ao maximal $\\mathfrak m_p=\\langle t\\rangle$, e o anel local é\n\n$$\\mathcal{O}_{X,p}\\cong k[t]_{\\langle t\\rangle}=\\Big\\{\\tfrac{g(t)}{h(t)}: h(0)\\neq 0\\Big\\},$$\n\nas frações racionais regulares na origem. Finalmente, $k(X)\\cong\\operatorname{Frac}k[t]=k(t)$, o corpo das funções racionais em uma variável. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre que $A(\\mathbb{A}^n)=k[x_1,\\dots,x_n]$ e que os pontos de $\\mathbb{A}^n$ correspondem aos maximais $\\langle x_1-a_1,\\dots,x_n-a_n\\rangle$.",
+          "hint": "$I(\\mathbb{A}^n)=\\langle 0\\rangle$; aplique a bijeção pontos $\\leftrightarrow$ maximais.",
+          "difficulty": 1,
+          "solution": "**Afirmacao.** $A(\\mathbb{A}^n)=k[x_1,\\dots,x_n]$ e os pontos de $\\mathbb{A}^n$ correspondem aos maximais $\\langle x_1-a_1,\\dots,x_n-a_n\\rangle$.\n\n**Passo 1 — o anel de coordenadas.** Por definicao $A(\\mathbb{A}^n)=k[x_1,\\dots,x_n]/I(\\mathbb{A}^n)$. Como $k$ e algebricamente fechado (logo infinito), o unico polinomio que se anula em TODOS os pontos de $\\mathbb{A}^n$ e o polinomio nulo: $I(\\mathbb{A}^n)=\\langle 0\\rangle$. (Prova por inducao em $n$: um polinomio nao nulo em $n$ variaveis, visto como polinomio em $x_n$ com coeficientes em $k[x_1,\\dots,x_{n-1}]$, nao pode anular-se em todo lugar pois um corpo infinito nao e coberto por finitas raizes.) Logo\n$$A(\\mathbb{A}^n)=k[x_1,\\dots,x_n]/\\langle 0\\rangle=k[x_1,\\dots,x_n].$$\n\n**Passo 2 — pontos e maximais.** Pela correspondencia pontos $\\leftrightarrow$ maximais (Nullstellensatz, $k$ fechado), a aplicacao $p=(a_1,\\dots,a_n)\\mapsto\\mathfrak m_p=\\{f\\in A(\\mathbb{A}^n):f(p)=0\\}$ e uma bijecao entre $\\mathbb{A}^n$ e $\\mathrm{Max}(A(\\mathbb{A}^n))$. Concretamente $\\mathfrak m_p=\\langle x_1-a_1,\\dots,x_n-a_n\\rangle$: essa inclusao e clara ($x_i-a_i$ se anula em $p$), e como $\\langle x_i-a_i\\rangle$ ja e maximal (quociente $\\cong k$), coincide com $\\mathfrak m_p$. $\\blacksquare$",
+          "steps": [
+            "Calcule $I(\\mathbb{A}^n)=\\langle 0\\rangle$ usando que sobre corpo infinito so o polinomio nulo se anula identicamente.",
+            "Conclua $A(\\mathbb{A}^n)=k[x_1,\\dots,x_n]/\\langle 0\\rangle=k[x_1,\\dots,x_n]$.",
+            "Invoque a bijecao pontos $\\leftrightarrow$ maximais para $k$ fechado.",
+            "Identifique explicitamente $\\mathfrak m_p=\\langle x_1-a_1,\\dots,x_n-a_n\\rangle$."
+          ]
+        },
+        {
+          "prompt": "Para a hipérbole $X=V(xy-1)\\subseteq\\mathbb{A}^2$, prove que $A(X)\\cong k[x,x^{-1}]$ (anel de Laurent) e conclua que $X$ não é isomorfa a $\\mathbb{A}^1$.",
+          "hint": "Em $A(X)$, $y=x^{-1}$. Compare unidades: em $k[x]$ as unidades são as constantes, em $k[x,x^{-1}]$ há $x^{\\pm 1}$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Para a hiperbole $X=V(xy-1)\\subseteq\\mathbb{A}^2$ vale $A(X)\\cong k[t,t^{-1}]$ (anel de Laurent), e $X$ nao e isomorfa a $\\mathbb{A}^1$.\n\n**Passo 1 — o anel de coordenadas.** Como $xy-1$ e irredutivel, $\\langle xy-1\\rangle$ e primo e $I(X)=\\langle xy-1\\rangle$; logo $A(X)=k[x,y]/\\langle xy-1\\rangle$. Em $A(X)$ a relacao $xy=1$ diz que $x$ e invertivel com inverso $y=x^{-1}$. Defina o homomorfismo de $k$-algebras\n$$\\varphi:k[x,y]\\to k[t,t^{-1}],\\quad x\\mapsto t,\\ y\\mapsto t^{-1}.$$\nEle e sobrejetor (a imagem contem $t$ e $t^{-1}$, que geram $k[t,t^{-1}]$) e $xy-1\\mapsto t\\cdot t^{-1}-1=0$, logo $\\langle xy-1\\rangle\\subseteq\\ker\\varphi$, induzindo $\\bar\\varphi:A(X)\\to k[t,t^{-1}]$. Para ver que $\\bar\\varphi$ e injetor: todo elemento de $A(X)$ tem representante $\\sum c_{ij}x^iy^j$; usando $xy=1$ reduz-se a forma $\\sum_{m\\in\\mathbb{Z}} c_m\\,x^{m}$ (com $x^{-k}:=y^k$), que $\\bar\\varphi$ envia em $\\sum c_m t^m$; se essa imagem e nula, todos os $c_m$ sao nulos. Portanto $A(X)\\cong k[t,t^{-1}]$.\n\n**Passo 2 — comparar unidades.** Um isomorfismo de $k$-algebras preserva o grupo de unidades. As unidades de $A(\\mathbb{A}^1)=k[t]$ sao apenas as constantes nao nulas $k^\\times$ (grau $0$). Ja em $k[t,t^{-1}]$ os elementos $t^{\\pm 1}$ sao unidades nao constantes: o grupo de unidades e $\\{c\\,t^m: c\\in k^\\times,\\ m\\in\\mathbb{Z}\\}\\cong k^\\times\\times\\mathbb{Z}$, estritamente maior que $k^\\times$.\n\n**Passo 3 — conclusao.** Como $A(X)^\\times\\cong k^\\times\\times\\mathbb{Z}\\not\\cong k^\\times\\cong k[t]^\\times$, os aneis $A(X)$ e $k[t]$ nao sao $k$-isomorfos. Pelo criterio 'isomorfismo de variedades afins $\\iff$ isomorfismo dos aneis de coordenadas', $X\\not\\cong\\mathbb{A}^1$. (Geometricamente: em $\\mathbb{A}^1$ a funcao coordenada nao tem inverso regular, mas em $X$ a funcao $x$ e uma unidade — a hiperbole 'perdeu' os pontos onde $x=0$.) $\\blacksquare$",
+          "steps": [
+            "Escreva $A(X)=k[x,y]/\\langle xy-1\\rangle$ e note que $x$ vira invertivel com $y=x^{-1}$.",
+            "Construa o isomorfismo $\\bar\\varphi:A(X)\\to k[t,t^{-1}]$ enviando $x\\mapsto t$, $y\\mapsto t^{-1}$, verificando bijetividade.",
+            "Calcule os grupos de unidades: $k[t]^\\times=k^\\times$ versus $k[t,t^{-1}]^\\times\\cong k^\\times\\times\\mathbb{Z}$.",
+            "Como isomorfismo preserva unidades e os grupos diferem, conclua $A(X)\\not\\cong k[t]$, logo $X\\not\\cong\\mathbb{A}^1$."
+          ]
+        },
+        {
+          "prompt": "Prove que $\\mathcal{O}_{X,p}$ é um anel local, exibindo seu único ideal maximal e mostrando que todo elemento fora dele é invertível.",
+          "hint": "O maximal é $\\{g/h: g(p)=0\\}$; se $g(p)\\neq 0$ então $h/g$ está no anel.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** $\\mathcal{O}_{X,p}=A(X)_{\\mathfrak m_p}=\\{g/h: g,h\\in A(X),\\ h(p)\\neq 0\\}$ e um anel local, com unico ideal maximal $\\mathfrak M=\\{g/h: g(p)=0,\\ h(p)\\neq 0\\}$.\n\n**Passo 1 — $\\mathfrak M$ e um ideal proprio.** A avaliacao em $p$ induz $\\mathrm{ev}_p:\\mathcal{O}_{X,p}\\to k$, $g/h\\mapsto g(p)/h(p)$ (bem definida pois $h(p)\\neq 0$; e homomorfismo de aneis). Seu nucleo e exatamente $\\mathfrak M=\\{g/h: g(p)=0\\}$, logo $\\mathfrak M$ e um ideal. Ele e proprio pois $\\mathrm{ev}_p(1)=1\\neq 0$, isto e, $1\\notin\\mathfrak M$.\n\n**Passo 2 — todo elemento fora de $\\mathfrak M$ e invertivel.** Seja $u=g/h\\in\\mathcal{O}_{X,p}$ com $u\\notin\\mathfrak M$, ou seja $g(p)\\neq 0$. Entao tambem $h/g$ pertence a $\\mathcal{O}_{X,p}$ (pois seu denominador $g$ satisfaz $g(p)\\neq 0$), e\n$$\\frac{g}{h}\\cdot\\frac{h}{g}=1.$$\nLogo $u$ e invertivel em $\\mathcal{O}_{X,p}$.\n\n**Passo 3 — conclusao (criterio de anel local).** Um anel comutativo $R$ e local, com maximal $\\mathfrak M$, se, e somente se, os elementos fora de $\\mathfrak M$ sao todos invertiveis (entao $\\mathfrak M$ = conjunto dos nao invertiveis, que e o unico maximal). Acabamos de mostrar isso: os elementos de $\\mathfrak M$ nao sao invertiveis (se $g/h$ fosse invertivel, sua imagem por $\\mathrm{ev}_p$ seria invertivel em $k$, mas e $0$) e todo elemento fora de $\\mathfrak M$ e invertivel. Portanto $\\mathcal{O}_{X,p}$ e local com maximal $\\mathfrak M=\\mathfrak m_p\\mathcal{O}_{X,p}$ e corpo residual $\\mathcal{O}_{X,p}/\\mathfrak M\\cong k$. $\\blacksquare$",
+          "steps": [
+            "Defina a avaliacao $\\mathrm{ev}_p:\\mathcal{O}_{X,p}\\to k$ e identifique seu nucleo como $\\mathfrak M=\\{g/h:g(p)=0\\}$.",
+            "Verifique que $\\mathfrak M$ e um ideal proprio ($1\\notin\\mathfrak M$).",
+            "Dado $g/h$ com $g(p)\\neq 0$, exiba o inverso $h/g$ dentro do anel.",
+            "Invoque o criterio: 'nao invertiveis formam ideal' $\\Rightarrow$ anel local, com $\\mathfrak M$ o unico maximal."
+          ]
+        },
+        {
+          "prompt": "Mostre que $A(X)$ é reduzido para todo conjunto algébrico $X$ e dê um exemplo de quociente $k[x,y]/\\mathfrak a$ com nilpotentes (logo $\\mathfrak a$ não é radical e não vem de um $I(X)$).",
+          "hint": "$I(X)$ é radical $\\Rightarrow$ sem nilpotentes. Para o exemplo, tome $\\mathfrak a=\\langle x^2\\rangle$: a classe de $x$ é nilpotente.",
+          "difficulty": 2,
+          "solution": "**Parte 1 — $A(X)$ e reduzido para todo conjunto algebrico $X$.** Por definicao $A(X)=k[x_1,\\dots,x_n]/I(X)$, e $I(X)$ e sempre um ideal RADICAL: se $f^m\\in I(X)$, entao $f(p)^m=0$ para todo $p\\in X$, donde $f(p)=0$ (corpo, sem nilpotentes), logo $f\\in I(X)$; assim $\\sqrt{I(X)}=I(X)$. Agora, um quociente $R/\\mathfrak a$ e reduzido (sem nilpotentes nao nulos) se, e somente se, $\\mathfrak a$ e radical: de fato, $\\bar f$ nilpotente em $R/\\mathfrak a$ significa $f^m\\in\\mathfrak a$ para algum $m$, isto e $f\\in\\sqrt{\\mathfrak a}=\\mathfrak a$, ou seja $\\bar f=0$. Como $I(X)$ e radical, $A(X)$ e reduzido. $\\blacksquare$\n\n**Parte 2 — exemplo com nilpotentes.** Tome $\\mathfrak a=\\langle x^2\\rangle\\subseteq k[x,y]$. No quociente $B=k[x,y]/\\langle x^2\\rangle$, a classe $\\bar x$ satisfaz $\\bar x^2=\\overline{x^2}=0$, mas $\\bar x\\neq 0$ (pois $x\\notin\\langle x^2\\rangle$, ja que qualquer multiplo de $x^2$ tem grau $\\ge 2$ em $x$). Logo $\\bar x$ e um nilpotente nao nulo e $B$ NAO e reduzido.\n\nConsequentemente $\\mathfrak a=\\langle x^2\\rangle$ nao e radical: $\\sqrt{\\langle x^2\\rangle}=\\langle x\\rangle\\supsetneq\\langle x^2\\rangle$. E $\\mathfrak a$ nao pode ser da forma $I(X)$ para nenhum conjunto algebrico $X$, pois todo $I(X)$ e radical. (Coerente com a geometria: $V(x^2)=\\{x=0\\}=V(x)$, mas $I(V(x^2))=\\langle x\\rangle\\neq\\langle x^2\\rangle$ — o Nullstellensatz forte devolve o radical, nao $\\mathfrak a$.) $\\blacksquare$",
+          "steps": [
+            "Mostre que $I(X)$ e radical: potencia que se anula implica a funcao se anula (corpo).",
+            "Use o fato geral: $R/\\mathfrak a$ e reduzido $\\iff\\mathfrak a$ radical; conclua que $A(X)$ e reduzido.",
+            "Para o exemplo, tome $\\mathfrak a=\\langle x^2\\rangle$ e observe que $\\bar x\\neq 0$ mas $\\bar x^2=0$.",
+            "Note que $\\sqrt{\\langle x^2\\rangle}=\\langle x\\rangle\\supsetneq\\langle x^2\\rangle$, logo $\\mathfrak a$ nao e radical e nao vem de um $I(X)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Anel de coordenadas $A(X)$",
+          "back": "$A(X)=k[x_1,\\dots,x_n]/I(X)$, o anel das funções polinomiais em $X$; reduzido, finitamente gerado."
+        },
+        {
+          "front": "$A(X)$ é domínio quando?",
+          "back": "Exatamente quando $X$ é irredutível (variedade)."
+        },
+        {
+          "front": "Pontos de $X$ $\\leftrightarrow$ ?",
+          "back": "Ideais maximais de $A(X)$ (sobre $k$ fechado), via $p\\mapsto\\mathfrak m_p=\\{f:f(p)=0\\}$."
+        },
+        {
+          "front": "Função regular (definição)",
+          "back": "Localmente um quociente $g/h$ de polinômios com $h$ não nula na vizinhança."
+        },
+        {
+          "front": "Funções regulares globais numa variedade afim",
+          "back": "Coincidem com $A(X)$: $\\mathcal{O}_X(X)=A(X)$."
+        },
+        {
+          "front": "Anel local $\\mathcal{O}_{X,p}$",
+          "back": "A localização $A(X)_{\\mathfrak m_p}=\\{g/h:h(p)\\neq 0\\}$; local, maximal $\\mathfrak m_p\\mathcal{O}_{X,p}$, residual $k$."
+        },
+        {
+          "front": "Corpo de funções $k(X)$",
+          "back": "Para $X$ irredutível, $k(X)=\\operatorname{Frac}A(X)$; invariante birracional."
+        },
+        {
+          "front": "Cadeia dos três anéis",
+          "back": "$A(X)\\subseteq\\mathcal{O}_{X,p}\\subseteq k(X)$: global, local em $p$, genérico."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Hartshorne, Algebraic Geometry, I.3 (Morphisms / regular functions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Fulton, Algebraic Curves, cap. 2 (anel local, funções regulares)",
+          "ref": "livro"
+        },
+        {
+          "title": "Atiyah & MacDonald, cap. 3 (localização)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja a definicao de $A(X)=k[x_1,\\dots,x_n]/I(X)$ e por que seus elementos sao funcoes polinomiais em $X$ (Hartshorne I.3 / Fulton cap. 2).",
+          "Reforce localizacao em Atiyah-MacDonald cap. 3: entenda $S^{-1}R$, $R_{\\mathfrak p}$ e $\\operatorname{Frac}R$, pois $\\mathcal{O}_{X,p}$ e $k(X)$ sao localizacoes.",
+          "Faca a tabela dos tres aneis $A(X)\\subseteq\\mathcal{O}_{X,p}\\subseteq k(X)$ para 2-3 exemplos ($\\mathbb{A}^1$, parabola, hiperbole), escrevendo cada um explicitamente.",
+          "Trabalhe a definicao LOCAL de funcao regular e prove no caso afim que as regulares globais sao $A(X)$; observe onde a irredutibilidade entra.",
+          "Assista a um video sobre localizacao/aneis locais para fixar a intuicao geometrica de 'germes de funcoes'.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (A(X) reduzido, dominio sse irredutivel; os tres aneis; pontos = maximais)."
+        ],
+        "searchQueries": [
+          "anel de coordenadas variedade afim funcoes regulares",
+          "localizacao anel local germes de funcoes regulares geometria algebrica",
+          "corpo de funcoes k(X) variedade irredutivel frac A(X)",
+          "pontos de X correspondem a ideais maximais de A(X)",
+          "coordinate ring regular functions local ring O_{X,p} algebraic geometry",
+          "function field variety localization prime ideal proof"
+        ],
+        "videos": [
+          {
+            "title": "Regular functions and the coordinate ring",
+            "channel": "Andreas Gathmann / cursos de Algebraic Geometry",
+            "note": "Procure as aulas sobre coordinate ring e regular functions; conectam a definicao local ao anel de coordenadas no caso afim."
+          },
+          {
+            "title": "Localization of rings",
+            "channel": "Richard Borcherds",
+            "note": "Busque a aula de commutative algebra sobre localization; base algebrica de $\\mathcal{O}_{X,p}$ e $k(X)$."
+          },
+          {
+            "title": "Aneis quocientes e localizacao (algebra)",
+            "channel": "Responde Ai / Matematica Universitaria em PT-BR",
+            "note": "Procure videos sobre aneis quocientes e corpo de fracoes para reforcar $A(X)=k[x]/I$ e $\\operatorname{Frac}$."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Algebraic Geometry, Cap. I.3 (Morphisms / regular functions)",
+            "where": "Robin Hartshorne, Algebraic Geometry (Springer GTM 52)"
+          },
+          {
+            "title": "Algebraic Curves, cap. 2 (anel local, funcoes regulares)",
+            "where": "William Fulton (PDF livre do autor)"
+          },
+          {
+            "title": "Introduction to Commutative Algebra, cap. 3 (localizacao)",
+            "where": "M. F. Atiyah & I. G. MacDonald"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-algebrica-04-variedades-projetivas",
+      "title": "Variedades Projetivas e o Espaço $\\mathbb{P}^n$",
+      "tagline": "Adicionando pontos no infinito: coordenadas homogêneas, ideais homogêneos, o Nullstellensatz projetivo e a cobertura por cartas afins.",
+      "objectives": [
+        "Construir $\\mathbb{P}^n_k$ como retas por $0$ em $k^{n+1}$ e trabalhar com coordenadas homogêneas $[x_0:\\cdots:x_n]$.",
+        "Definir polinômio homogêneo, ideal homogêneo e o lugar de zeros $V_+(S)$, obtendo a topologia de Zariski projetiva.",
+        "Enunciar o Nullstellensatz projetivo e o papel do ideal irrelevante $S_+=\\langle x_0,\\dots,x_n\\rangle$.",
+        "Cobrir $\\mathbb{P}^n$ por cartas afins $U_i\\cong\\mathbb{A}^n$ e relacionar homogeneização/desomogeneização.",
+        "Calcular o fecho projetivo de uma variedade afim e identificar seus pontos no infinito."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Espaço projetivo $\\mathbb{P}^n$",
+          "statement": "$\\mathbb{P}^n_k=(k^{n+1}\\setminus\\{0\\})/\\!\\sim$, onde $x\\sim\\lambda x$ para $\\lambda\\in k^\\times$. Um ponto é uma reta por $0$, com coordenadas homogêneas $[x_0:\\cdots:x_n]$ definidas a menos de escalar."
+        },
+        {
+          "term": "Polinômio homogêneo",
+          "statement": "$f\\in k[x_0,\\dots,x_n]$ é homogêneo de grau $d$ se todos os monômios têm grau $d$; então $f(\\lambda x)=\\lambda^d f(x)$, de modo que $f(p)=0$ está bem definido em $\\mathbb{P}^n$ (embora $f(p)$ não esteja)."
+        },
+        {
+          "term": "Ideal homogêneo",
+          "statement": "$\\mathfrak a$ é homogêneo se é gerado por elementos homogêneos, equivalentemente $\\mathfrak a=\\bigoplus_d(\\mathfrak a\\cap S_d)$. Conjuntos algébricos projetivos são $V_+(\\mathfrak a)$ com $\\mathfrak a$ homogêneo."
+        },
+        {
+          "term": "Ideal irrelevante $S_+$",
+          "statement": "$S_+=\\langle x_0,\\dots,x_n\\rangle$, a soma das partes de grau positivo. Como $0\\notin\\mathbb{P}^n$, vale $V_+(S_+)=\\varnothing$: é o ideal homogêneo próprio cujos zeros 'somem' no projetivo."
+        },
+        {
+          "term": "Cartas afins $U_i$",
+          "statement": "$U_i=\\{[x]:x_i\\neq 0\\}\\cong\\mathbb{A}^n$ via $[x_0:\\cdots:x_n]\\mapsto(x_0/x_i,\\dots,\\widehat{x_i/x_i},\\dots,x_n/x_i)$. Os $U_0,\\dots,U_n$ cobrem $\\mathbb{P}^n$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "$\\mathbb{P}^n$ é coberto por afins",
+          "statement": "$\\mathbb{P}^n=\\bigcup_{i=0}^n U_i$, cada $U_i\\cong\\mathbb{A}^n$ como espaço com topologia de Zariski, e em $U_i\\cap U_j$ as identificações se colam por funções racionais. Assim $\\mathbb{P}^n$ é localmente afim.",
+          "whyItMatters": "Permite reduzir questões locais sobre variedades projetivas ao caso afim já desenvolvido (funções regulares, anel local, dimensão), e é o protótipo de como esquemas são colados a partir de pedaços afins."
+        },
+        {
+          "name": "Nullstellensatz projetivo",
+          "statement": "Seja $k$ algebricamente fechado e $\\mathfrak a\\subseteq S=k[x_0,\\dots,x_n]$ homogêneo. (i) $V_+(\\mathfrak a)=\\varnothing$ se, e só se, $\\sqrt{\\mathfrak a}\\supseteq S_+$. (ii) Se $V_+(\\mathfrak a)\\neq\\varnothing$, então $I(V_+(\\mathfrak a))=\\sqrt{\\mathfrak a}$.",
+          "whyItMatters": "É a versão graduada do dicionário: variedades projetivas correspondem a ideais homogêneos radicais $\\neq S_+$. O ideal irrelevante é a única novidade frente ao caso afim."
+        },
+        {
+          "name": "Fecho projetivo",
+          "statement": "Toda variedade afim $X\\subseteq\\mathbb{A}^n=U_0$ tem um fecho $\\overline{X}\\subseteq\\mathbb{P}^n$, a menor variedade projetiva que a contém; $I(\\overline{X})$ é gerado pelas homogeneizações dos elementos de $I(X)$, e $\\overline{X}\\setminus X$ são os pontos no infinito.",
+          "whyItMatters": "Formaliza a ideia de 'completar' uma variedade afim acrescentando pontos no infinito — onde, por exemplo, retas paralelas passam a se encontrar e o Teorema de Bézout funciona."
+        }
+      ],
+      "summary": "O espaço projetivo $\\mathbb{P}^n$ resolve as 'exceções no infinito' da geometria afim: ele é o conjunto das retas por $0$ em $k^{n+1}$, com coordenadas homogêneas $[x_0:\\cdots:x_n]$ definidas a menos de escala. Um polinômio comum não define função em $\\mathbb{P}^n$, mas se $f$ é homogêneo de grau $d$ então $f(\\lambda x)=\\lambda^d f(x)$, e portanto a condição $f=0$ faz sentido. Assim nascem os conjuntos algébricos projetivos $V_+(\\mathfrak a)$ com $\\mathfrak a$ homogêneo, e com eles a topologia de Zariski projetiva. A única sutileza nova é o ideal irrelevante $S_+=\\langle x_0,\\dots,x_n\\rangle$: como a origem foi removida, $V_+(S_+)=\\varnothing$, e o Nullstellensatz projetivo precisa excluí-lo.\n\nA ferramenta operacional é a cobertura de $\\mathbb{P}^n$ por $n+1$ cartas afins $U_i=\\{x_i\\neq 0\\}$, cada uma isomorfa a $\\mathbb{A}^n$. Por isso variedades projetivas são localmente afins, e tudo o que aprendemos no afim (funções regulares, anéis locais, dimensão) se transporta carta a carta. A passagem entre os dois mundos é a desomogeneização (fazer $x_i=1$) e a homogeneização (inserir $x_i$ nas potências certas); ela produz, para cada variedade afim, seu fecho projetivo, a menor variedade projetiva que a contém. Os pontos extras, no infinito, são onde a geometria projetiva ganha sua elegância: cônicas se unificam, retas paralelas se encontram e teoremas de interseção como o de Bézout passam a valer sem exceções.",
+      "commonPitfalls": [
+        "Tratar um polinômio qualquer como função em $\\mathbb{P}^n$: só faz sentido o LUGAR DE ZEROS de polinômios homogêneos; o valor $f(p)$ não está bem definido.",
+        "Esquecer o ideal irrelevante: $V_+(\\langle x_0,\\dots,x_n\\rangle)=\\varnothing$, então no Nullstellensatz projetivo a obstrução a 'ter zeros' é $\\sqrt{\\mathfrak a}\\supseteq S_+$, não $\\mathfrak a=(1)$.",
+        "Homogeneizar errado: para subir $f(x_1,\\dots,x_n)$ a $\\mathbb{P}^n$ multiplica-se cada monômio por potência de $x_0$ até o grau total $\\deg f$; não basta acrescentar $x_0$ avulso.",
+        "Confundir o cone afim $\\widehat{X}\\subseteq\\mathbb{A}^{n+1}$ com a variedade projetiva $X=V_+(\\mathfrak a)\\subseteq\\mathbb{P}^n$: o cone inclui a origem e a estrutura de escala."
+      ],
+      "worked": "**Problema.** Encontre o fecho projetivo em $\\mathbb{P}^2$ da parábola afim $X=V(y-x^2)\\subseteq\\mathbb{A}^2$ e identifique seus pontos no infinito.\n\n**Solução.** Use coordenadas homogêneas $[X:Y:Z]$ em $\\mathbb{P}^2$ com a carta afim $U_2=\\{Z\\neq 0\\}\\cong\\mathbb{A}^2$ via $x=X/Z$, $y=Y/Z$. Homogeneizamos $y-x^2$: substituindo $x=X/Z$, $y=Y/Z$ e multiplicando pelo menor grau que limpa denominadores ($Z^2$),\n\n$$y-x^2=\\frac{Y}{Z}-\\frac{X^2}{Z^2}=\\frac{YZ-X^2}{Z^2}\\ \\rightsquigarrow\\ F=YZ-X^2.$$\n\nLogo $\\overline{X}=V_+(YZ-X^2)\\subseteq\\mathbb{P}^2$, uma cônica lisa.\n\nOs pontos no infinito são os de $\\overline{X}$ com $Z=0$: aí $F=YZ-X^2=-X^2=0$ força $X=0$, e como $[0:Y:0]=[0:1:0]$, há um único ponto no infinito,\n\n$$\\overline{X}\\setminus X=\\{[0:1:0]\\}.$$\n\nGeometricamente, a parábola 'fecha' adicionando o ponto na direção vertical — a direção para a qual seus dois ramos apontam. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre que $\\mathbb{P}^1=U_0\\cup\\{[0:1]\\}$, isto é, $\\mathbb{P}^1$ é a reta afim $\\mathbb{A}^1$ mais um único ponto no infinito.",
+          "hint": "$U_0=\\{[1:t]\\}\\cong\\mathbb{A}^1$; o que falta é $[0:1]$.",
+          "difficulty": 1,
+          "solution": "**Afirmacao.** $\\mathbb{P}^1=U_0\\cup\\{[0:1]\\}$, com $U_0\\cong\\mathbb{A}^1$; logo $\\mathbb{P}^1$ e a reta afim mais um unico ponto no infinito.\n\n**Passo 1 — a carta $U_0$.** Por definicao $U_0=\\{[x_0:x_1]:x_0\\neq 0\\}$. Se $x_0\\neq 0$, podemos normalizar dividindo por $x_0$: $[x_0:x_1]=[1:x_1/x_0]$. Assim cada ponto de $U_0$ tem representante unico $[1:t]$ com $t=x_1/x_0\\in k$. A aplicacao\n$$\\Phi:U_0\\to\\mathbb{A}^1,\\quad [x_0:x_1]\\mapsto x_1/x_0,\\qquad \\Phi^{-1}(t)=[1:t],$$\ne uma bijecao (e homeomorfismo Zariski), logo $U_0\\cong\\mathbb{A}^1$.\n\n**Passo 2 — o complementar.** Um ponto $[x_0:x_1]\\notin U_0$ tem $x_0=0$. Como as coordenadas nao podem ser todas nulas, $x_1\\neq 0$, e normalizando por $x_1$ obtemos $[0:x_1]=[0:1]$. Portanto ha um UNICO ponto fora de $U_0$, a saber $[0:1]$.\n\n**Passo 3 — conclusao.** $\\mathbb{P}^1=U_0\\sqcup\\{[0:1]\\}\\cong\\mathbb{A}^1\\cup\\{\\infty\\}$: a reta afim compactificada por um unico ponto no infinito (a reta projetiva, ou esfera de Riemann quando $k=\\mathbb{C}$). $\\blacksquare$",
+          "steps": [
+            "Normalize os pontos de $U_0$ dividindo por $x_0$: cada um e $[1:t]$ com $t=x_1/x_0$.",
+            "Exiba a bijecao $[x_0:x_1]\\mapsto x_1/x_0$ entre $U_0$ e $\\mathbb{A}^1$.",
+            "Analise o complementar $x_0=0$: forcosamente $x_1\\neq 0$, dando o unico ponto $[0:1]$.",
+            "Junte: $\\mathbb{P}^1=U_0\\cup\\{[0:1]\\}$, reta afim mais um ponto no infinito."
+          ]
+        },
+        {
+          "prompt": "Prove que se $f\\in k[x_0,\\dots,x_n]$ é homogêneo então $V_+(f)$ está bem definido em $\\mathbb{P}^n$, e dê um exemplo mostrando que um polinômio não homogêneo não define um subconjunto bem definido de $\\mathbb{P}^n$.",
+          "hint": "Use $f(\\lambda x)=\\lambda^{\\deg f}f(x)$. Para o contraexemplo, teste $f=x_0-1$ em $[1:0]$ e $[2:0]$.",
+          "difficulty": 2,
+          "solution": "**Parte 1 — $f$ homogeneo $\\Rightarrow$ $V_+(f)$ bem definido.** Um ponto de $\\mathbb{P}^n$ e uma classe $[x]=[x_0:\\cdots:x_n]$, e dois representantes diferem por escala: $x'=\\lambda x$ com $\\lambda\\in k^\\times$. Precisamos que a condicao '$f(x)=0$' independa do representante. Se $f$ e homogeneo de grau $d$, entao\n$$f(\\lambda x)=\\lambda^d f(x).$$\nComo $\\lambda\\neq 0$, temos $\\lambda^d\\neq 0$, logo $f(\\lambda x)=0\\iff f(x)=0$. Portanto a condicao $f=0$ e invariante por escala e o conjunto\n$$V_+(f)=\\{[x]\\in\\mathbb{P}^n: f(x)=0\\}$$\nesta BEM DEFINIDO (independe da escolha do representante). $\\blacksquare$\n\n**Parte 2 — contraexemplo nao homogeneo.** Tome $f=x_0-1$ em $\\mathbb{P}^1$ (grau $1$ mas nao homogeneo, pois mistura o monomio $x_0$ de grau $1$ com a constante $-1$ de grau $0$). Considere o ponto $[1:0]$ e o representante escalado $[2:0]$ (mesma classe em $\\mathbb{P}^1$, pois $[2:0]=2\\cdot[1:0]$). Avaliando:\n$$f(1,0)=1-1=0,\\qquad f(2,0)=2-1=1\\neq 0.$$\nAssim o mesmo ponto $[1:0]=[2:0]$ ora satisfaz $f=0$, ora nao — dependendo do representante. Logo '$f=0$' NAO define um subconjunto bem definido de $\\mathbb{P}^1$ quando $f$ nao e homogeneo. (E por isso que so lugares de zeros de polinomios homogeneos fazem sentido no projetivo.) $\\blacksquare$",
+          "steps": [
+            "Escreva a acao da escala $x\\mapsto\\lambda x$ nos representantes de um ponto projetivo.",
+            "Use $f(\\lambda x)=\\lambda^d f(x)$ com $\\lambda^d\\neq 0$ para mostrar que anular-se independe do representante.",
+            "Para o contraexemplo, escolha $f=x_0-1$ (nao homogeneo) e o ponto $[1:0]=[2:0]$.",
+            "Avalie nos dois representantes e obtenha valores $0$ e $1$, mostrando que $V(f)$ nao esta bem definido."
+          ]
+        },
+        {
+          "prompt": "Determine os pontos no infinito do fecho projetivo da hipérbole $V(xy-1)\\subseteq\\mathbb{A}^2$.",
+          "hint": "Homogeneíze para $XY-Z^2$ e faça $Z=0$: obtém $XY=0$, dando $[1:0:0]$ e $[0:1:0]$ (as direções das assíntotas).",
+          "difficulty": 3,
+          "solution": "**Objetivo.** Determinar os pontos no infinito do fecho projetivo em $\\mathbb{P}^2$ da hiperbole $X=V(xy-1)\\subseteq\\mathbb{A}^2$.\n\n**Passo 1 — homogeneizar.** Use coordenadas $[X:Y:Z]$ com a carta $Z\\neq 0$, $x=X/Z$, $y=Y/Z$. Homogeneizamos $xy-1$ ate o grau total $2$:\n$$xy-1=\\frac{X}{Z}\\cdot\\frac{Y}{Z}-1=\\frac{XY-Z^2}{Z^2}\\ \\rightsquigarrow\\ F=XY-Z^2.$$\nLogo o fecho projetivo e $\\overline{X}=V_+(XY-Z^2)\\subseteq\\mathbb{P}^2$ (uma conica lisa).\n\n**Passo 2 — impor $Z=0$ (o infinito).** Os pontos no infinito sao os de $\\overline{X}$ que estao na reta no infinito $\\{Z=0\\}$. Substituindo $Z=0$ em $F$:\n$$F|_{Z=0}=XY-0=XY=0\\ \\Longrightarrow\\ X=0\\ \\text{ou}\\ Y=0.$$\n\n**Passo 3 — listar os pontos.** Com $Z=0$:\n- Se $X=0$: ponto $[0:Y:0]=[0:1:0]$ (nao pode ter $Y=0$ tambem, senao seria $[0:0:0]$).\n- Se $Y=0$: ponto $[X:0:0]=[1:0:0]$.\n\nPortanto\n$$\\overline{X}\\setminus X=\\{[1:0:0],\\ [0:1:0]\\}.$$\nGeometricamente, esses sao os dois pontos no infinito correspondentes as direcoes das duas assintotas da hiperbole (os eixos $x$ e $y$): a hiperbole 'fecha' encontrando cada assintota em um ponto no infinito. $\\blacksquare$",
+          "steps": [
+            "Homogeneize $xy-1$ ate grau $2$ obtendo $F=XY-Z^2$ e o fecho $V_+(F)$.",
+            "Intersecte com a reta no infinito impondo $Z=0$.",
+            "Resolva $XY=0$ para $X=0$ ou $Y=0$.",
+            "Escreva os dois pontos $[0:1:0]$ e $[1:0:0]$ e interprete como as direcoes das assintotas."
+          ]
+        },
+        {
+          "prompt": "Mostre que toda variedade projetiva $V_+(\\mathfrak a)$ com $\\mathfrak a$ homogêneo é coberta pelas suas interseções com as cartas $U_i$, e que cada interseção é uma variedade afim.",
+          "hint": "$V_+(\\mathfrak a)\\cap U_i$ é o lugar de zeros das desomogeneizações ($x_i=1$) dos geradores de $\\mathfrak a$ em $\\mathbb{A}^n$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Toda variedade projetiva $Y=V_+(\\mathfrak a)$ ($\\mathfrak a$ homogeneo) e coberta por $Y\\cap U_0,\\dots,Y\\cap U_n$, e cada $Y\\cap U_i$ e (isomorfa a) uma variedade afim.\n\n**Passo 1 — cobertura.** Como $\\mathbb{P}^n=\\bigcup_{i=0}^n U_i$ (todo ponto tem alguma coordenada $x_i\\neq 0$), intersectando com $Y$ obtemos\n$$Y=Y\\cap\\mathbb{P}^n=\\bigcup_{i=0}^n (Y\\cap U_i).$$\nLogo os $Y\\cap U_i$ cobrem $Y$.\n\n**Passo 2 — cada pedaco e afim (desomogeneizacao).** Fixe $i$ e o isomorfismo $U_i\\cong\\mathbb{A}^n$ dado por $[x_0:\\cdots:x_n]\\mapsto (x_0/x_i,\\dots,\\widehat{x_i/x_i},\\dots,x_n/x_i)$; chame as coordenadas afins de $u_j=x_j/x_i$ ($j\\neq i$). Podemos supor $\\mathfrak a=\\langle F_1,\\dots,F_r\\rangle$ com cada $F_\\ell$ homogeneo. Para um ponto $[x]\\in U_i$ (onde $x_i\\neq 0$), como $F_\\ell$ e homogeneo de grau $d_\\ell$,\n$$F_\\ell(x_0,\\dots,x_n)=x_i^{d_\\ell}\\,F_\\ell\\!\\left(\\tfrac{x_0}{x_i},\\dots,1,\\dots,\\tfrac{x_n}{x_i}\\right)=x_i^{d_\\ell}\\,f_\\ell(u),$$\nonde $f_\\ell(u):=F_\\ell(u_0,\\dots,1,\\dots,u_n)$ e a DESOMOGENEIZACAO (poe-se $x_i=1$), um polinomio nas coordenadas afins $u_j$. Como $x_i^{d_\\ell}\\neq 0$ em $U_i$, temos $F_\\ell(x)=0\\iff f_\\ell(u)=0$. Portanto, sob o isomorfismo $U_i\\cong\\mathbb{A}^n$,\n$$Y\\cap U_i\\ \\cong\\ V(f_1,\\dots,f_r)\\subseteq\\mathbb{A}^n,$$\num conjunto algebrico afim. (Se $Y$ e irredutivel, cada $Y\\cap U_i$ nao vazio e um aberto denso de $Y$, tambem irredutivel, logo uma variedade afim.) $\\blacksquare$",
+          "steps": [
+            "Use $\\mathbb{P}^n=\\bigcup U_i$ e intersecte com $Y$ para obter a cobertura $Y=\\bigcup(Y\\cap U_i)$.",
+            "Fixe a carta $U_i\\cong\\mathbb{A}^n$ com coordenadas $u_j=x_j/x_i$.",
+            "Para geradores homogeneos $F_\\ell$, fatore $F_\\ell(x)=x_i^{d_\\ell}f_\\ell(u)$ com $f_\\ell$ a desomogeneizacao.",
+            "Como $x_i\\neq 0$ em $U_i$, conclua $Y\\cap U_i\\cong V(f_1,\\dots,f_r)\\subseteq\\mathbb{A}^n$, um conjunto afim."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "$\\mathbb{P}^n$ é o quê?",
+          "back": "As retas por $0$ em $k^{n+1}$: $(k^{n+1}\\setminus\\{0\\})/\\sim$ com $x\\sim\\lambda x$; pontos $[x_0:\\cdots:x_n]$."
+        },
+        {
+          "front": "Por que exigir polinômios homogêneos?",
+          "back": "Só para $f$ homogêneo a condição $f=0$ é invariante por escala ($f(\\lambda x)=\\lambda^d f(x)$), logo bem definida em $\\mathbb{P}^n$."
+        },
+        {
+          "front": "Ideal homogêneo",
+          "back": "Gerado por elementos homogêneos; equivalentemente $\\mathfrak a=\\bigoplus_d(\\mathfrak a\\cap S_d)$."
+        },
+        {
+          "front": "Ideal irrelevante $S_+$",
+          "back": "$\\langle x_0,\\dots,x_n\\rangle$; satisfaz $V_+(S_+)=\\varnothing$."
+        },
+        {
+          "front": "Nullstellensatz projetivo (vazio)",
+          "back": "$V_+(\\mathfrak a)=\\varnothing\\iff\\sqrt{\\mathfrak a}\\supseteq S_+$."
+        },
+        {
+          "front": "Cartas afins de $\\mathbb{P}^n$",
+          "back": "$U_i=\\{x_i\\neq 0\\}\\cong\\mathbb{A}^n$; os $U_0,\\dots,U_n$ cobrem $\\mathbb{P}^n$."
+        },
+        {
+          "front": "Fecho projetivo de $V(y-x^2)$",
+          "back": "$V_+(YZ-X^2)\\subseteq\\mathbb{P}^2$, com um ponto no infinito $[0:1:0]$."
+        },
+        {
+          "front": "Homogeneização de $f$",
+          "back": "Multiplica-se cada monômio por potência de $x_0$ até o grau total $\\deg f$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Hartshorne, Algebraic Geometry, I.2 (Projective Varieties)",
+          "ref": "livro"
+        },
+        {
+          "title": "Shafarevich, Basic Algebraic Geometry 1 (espaço projetivo)",
+          "ref": "livro"
+        },
+        {
+          "title": "Gathmann, notas de Algebraic Geometry (variedades projetivas)",
+          "ref": "notas"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a construcao de $\\mathbb{P}^n$ como retas por $0$ e coordenadas homogeneas (Hartshorne I.2 / Shafarevich cap. 1); escreva a relacao $x\\sim\\lambda x$.",
+          "Entenda por que so polinomios homogeneos definem zeros em $\\mathbb{P}^n$ via $f(\\lambda x)=\\lambda^d f(x)$; treine homogeneizacao/desomogeneizacao em exemplos.",
+          "Leia o Nullstellensatz projetivo com atencao ao ideal irrelevante $S_+$; compare com o caso afim.",
+          "Pratique a cobertura por cartas $U_i\\cong\\mathbb{A}^n$ e calcule fechos projetivos e pontos no infinito de parabola, hiperbole e retas paralelas.",
+          "Assista a um video sobre espaco projetivo e pontos no infinito para consolidar a intuicao geometrica.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (homogeneidade, ideal irrelevante, cartas afins, fecho projetivo)."
+        ],
+        "searchQueries": [
+          "espaco projetivo coordenadas homogeneas pontos no infinito",
+          "ideal irrelevante Nullstellensatz projetivo",
+          "homogeneizacao fecho projetivo variedade afim exemplos",
+          "cartas afins P^n cobertura U_i isomorfo A^n",
+          "projective space homogeneous coordinates projective Nullstellensatz",
+          "projective closure affine variety points at infinity"
+        ],
+        "videos": [
+          {
+            "title": "Projective varieties and P^n",
+            "channel": "Andreas Gathmann / cursos de Algebraic Geometry",
+            "note": "Procure as aulas sobre projective space e projective varieties; cobrem cartas afins e o Nullstellensatz projetivo."
+          },
+          {
+            "title": "Projective geometry / points at infinity",
+            "channel": "Mathologer / 3Blue1Brown",
+            "note": "Busque videos introdutorios sobre projective geometry e o plano projetivo para a intuicao dos pontos no infinito."
+          },
+          {
+            "title": "Espaco projetivo e coordenadas homogeneas",
+            "channel": "IMPA / canais de matematica universitaria em PT-BR",
+            "note": "Procure material em portugues sobre curvas projetivas planas e coordenadas homogeneas (linha de Vainsencher/Hefez)."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Algebraic Geometry, Cap. I.2 (Projective Varieties)",
+            "where": "Robin Hartshorne, Algebraic Geometry (Springer GTM 52)"
+          },
+          {
+            "title": "Basic Algebraic Geometry 1, capitulo sobre espaco projetivo",
+            "where": "Igor R. Shafarevich"
+          },
+          {
+            "title": "Notas de Algebraic Geometry, capitulo sobre variedades projetivas",
+            "where": "Andreas Gathmann (notas de curso, TU Kaiserslautern)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-algebrica-05-morfismos-aplicacoes-racionais",
+      "title": "Morfismos, Aplicações Racionais e Equivalência Birracional",
+      "tagline": "As 'funções' entre variedades: morfismos $\\leftrightarrow$ homomorfismos de $k$-álgebras, racionais $\\leftrightarrow$ extensões de $k(X)$, e quando duas variedades são 'a mesma a menos de fechados'.",
+      "objectives": [
+        "Definir morfismo de variedades (continuidade que preserva funções regulares) e descrevê-lo por polinômios no caso afim.",
+        "Provar a anti-equivalência: morfismos afins $X\\to Y$ $\\leftrightarrow$ homomorfismos de $k$-álgebras $A(Y)\\to A(X)$.",
+        "Concluir que variedades afins são isomorfas se, e só se, seus anéis de coordenadas são $k$-isomorfos.",
+        "Definir aplicação racional, aplicação dominante e equivalência birracional, e relacioná-las a $k(X)$.",
+        "Reconhecer que morfismo bijetivo não implica isomorfismo (cúspide, normalização) e analisar exemplos clássicos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Morfismo de variedades",
+          "statement": "$\\varphi:X\\to Y$ é morfismo se é contínuo e, para todo aberto $V\\subseteq Y$ e toda $g$ regular em $V$, a composta $g\\circ\\varphi$ é regular em $\\varphi^{-1}(V)$. No caso afim, equivale a $\\varphi=(f_1,\\dots,f_m)$ com $f_i\\in A(X)$."
+        },
+        {
+          "term": "Homomorfismo pullback $\\varphi^\\#$",
+          "statement": "Um morfismo $\\varphi:X\\to Y$ induz $\\varphi^\\#:A(Y)\\to A(X)$, $g\\mapsto g\\circ\\varphi$, homomorfismo de $k$-álgebras. A construção $X\\mapsto A(X)$, $\\varphi\\mapsto\\varphi^\\#$ é um functor CONTRAVARIANTE."
+        },
+        {
+          "term": "Aplicação racional",
+          "statement": "Uma aplicação racional $\\varphi:X\\dashrightarrow Y$ é uma classe de pares $(U,\\varphi_U)$ com $U\\subseteq X$ aberto denso e $\\varphi_U:U\\to Y$ morfismo, identificando pares que coincidem na interseção. Pode não estar definida em todo $X$."
+        },
+        {
+          "term": "Aplicação dominante e birracional",
+          "statement": "$\\varphi:X\\dashrightarrow Y$ é dominante se sua imagem é densa; então induz $\\varphi^\\#:k(Y)\\hookrightarrow k(X)$. É birracional se tem inversa racional, i.e. $\\varphi^\\#$ é isomorfismo $k(Y)\\cong k(X)$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Anti-equivalência afim",
+          "statement": "Sobre $k$ algebricamente fechado, $X\\mapsto A(X)$ define uma anti-equivalência entre a categoria das variedades afins e a das $k$-álgebras finitamente geradas, reduzidas (domínios, no caso irredutível); em particular $\\operatorname{Hom}(X,Y)\\cong\\operatorname{Hom}_{k\\text{-alg}}(A(Y),A(X))$ via $\\varphi\\mapsto\\varphi^\\#$.",
+          "whyItMatters": "É o teorema central da trilha: geometria afim e álgebra comutativa finitamente gerada são a MESMA teoria, lida em sentidos opostos. Todo problema geométrico afim é um problema sobre $k$-álgebras."
+        },
+        {
+          "name": "Isomorfismo $\\iff$ anéis isomorfos",
+          "statement": "Duas variedades afins $X,Y$ são isomorfas se, e somente se, $A(X)\\cong A(Y)$ como $k$-álgebras.",
+          "whyItMatters": "Transforma 'classificar variedades a menos de isomorfismo' em 'classificar $k$-álgebras a menos de isomorfismo'. Ex.: a parábola é isomorfa à reta porque $k[x,y]/\\langle y-x^2\\rangle\\cong k[t]$."
+        },
+        {
+          "name": "Birracional $\\iff$ corpos de funções isomorfos",
+          "statement": "Duas variedades (irredutíveis) $X,Y$ são birracionalmente equivalentes se, e somente se, $k(X)\\cong k(Y)$ como $k$-álgebras (extensões de $k$).",
+          "whyItMatters": "Define a classificação birracional, mais grosseira que o isomorfismo e central na geometria algébrica: classificar variedades a menos de fechados de menor dimensão é classificar corpos de funções."
+        }
+      ],
+      "summary": "Tendo o anel de funções de cada variedade, é natural perguntar quais são as aplicações 'algébricas' entre elas. Um morfismo $\\varphi:X\\to Y$ é uma aplicação contínua que leva funções regulares em funções regulares por composição; no caso afim isso é o mesmo que dar $\\varphi$ por uma lista de funções coordenadas $f_i\\in A(X)$. Cada morfismo induz, em sentido oposto, um homomorfismo de $k$-álgebras $\\varphi^\\#:A(Y)\\to A(X)$ (puxar funções para trás), e o teorema central afirma que essa associação é uma bijeção: morfismos $X\\to Y$ correspondem exatamente a homomorfismos $A(Y)\\to A(X)$. Isso é a anti-equivalência de categorias entre variedades afins e $k$-álgebras finitamente geradas reduzidas — o ponto mais alto do dicionário, do qual decorre que duas variedades afins são isomorfas se, e só se, têm anéis de coordenadas isomorfos.\n\nNem toda aplicação interessante está definida em toda parte: uma aplicação racional $X\\dashrightarrow Y$ é dada apenas num aberto denso, podendo ter pontos de indeterminação. Quando a imagem é densa (aplicação dominante), ela induz uma inclusão dos corpos de funções $k(Y)\\hookrightarrow k(X)$; e quando essa inclusão é um isomorfismo, dizemos que $X$ e $Y$ são birracionalmente equivalentes — 'a mesma variedade a menos de subconjuntos fechados menores'. A classificação birracional, mais flexível que o isomorfismo, é um dos eixos da geometria algébrica. Um alerta conceitual fecha a aula: morfismo bijetivo NÃO implica isomorfismo. A normalização da cúbica cuspidal $t\\mapsto(t^2,t^3)$ é uma bijeção contínua, mas seu pullback identifica $A(X)$ com a subálgebra $k[t^2,t^3]\\subsetneq k[t]$ — geometria e álgebra detectam a singularidade que a mera bijeção esconde.",
+      "commonPitfalls": [
+        "Inverter a variância: $\\varphi:X\\to Y$ induz $\\varphi^\\#:A(Y)\\to A(X)$ (vai ao contrário); o functor $X\\mapsto A(X)$ é CONTRAVARIANTE.",
+        "Achar que morfismo bijetivo é isomorfismo: $t\\mapsto(t^2,t^3)$ sobre a cúbica cuspidal é bijetivo mas não isomorfismo; idem o Frobenius em característica $p$.",
+        "Tratar aplicação racional como função total: ela só está definida num aberto denso e pode ter pontos de indeterminação (ex.: $[x:y]\\mapsto[1/x:1/y]$).",
+        "Confundir birracional com isomorfo: a cúbica cuspidal é birracional a $\\mathbb{A}^1$ (mesmo $k(X)$) mas não isomorfa a $\\mathbb{A}^1$."
+      ],
+      "worked": "**Problema.** Mostre que a parábola $X=V(y-x^2)$ é ISOMORFA a $\\mathbb{A}^1$, mas que a cúbica cuspidal $C=V(y^2-x^3)$ é apenas BIRRACIONAL a $\\mathbb{A}^1$, não isomorfa.\n\n**Parábola.** Defina $\\varphi:\\mathbb{A}^1\\to X$, $t\\mapsto(t,t^2)$, e $\\psi:X\\to\\mathbb{A}^1$, $(x,y)\\mapsto x$. Ambos são morfismos (dados por polinômios) e mutuamente inversos, logo $X\\cong\\mathbb{A}^1$. No nível de anéis, $\\psi^\\#:A(X)=k[x,y]/\\langle y-x^2\\rangle\\to k[t]$ é o isomorfismo $x\\mapsto t,\\ y\\mapsto t^2$.\n\n**Cúspide.** Defina $\\nu:\\mathbb{A}^1\\to C$, $t\\mapsto(t^2,t^3)$. Ela é um morfismo bijetivo (a inversa em pontos é $(x,y)\\mapsto y/x$ para $x\\neq 0$ e $0\\mapsto 0$). Mas o pullback é\n\n$$\\nu^\\#:A(C)=k[x,y]/\\langle y^2-x^3\\rangle\\to k[t],\\qquad x\\mapsto t^2,\\ y\\mapsto t^3,$$\n\ncuja imagem é a subálgebra $k[t^2,t^3]\\subsetneq k[t]$ (falta $t$). Como $\\nu^\\#$ não é sobrejetiva, NÃO é isomorfismo de $k$-álgebras; pela anti-equivalência, $\\nu$ não é isomorfismo de variedades.\n\nPor outro lado, $\\nu$ é dominante e induz $k(C)\\xrightarrow{\\sim}k(t)$ (pois $t=y/x\\in k(C)$), logo $C$ é BIRRACIONAL a $\\mathbb{A}^1$. A diferença entre 'isomorfo' e 'birracional' é exatamente a singularidade (a cúspide) na origem. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que todo homomorfismo de $k$-álgebras $\\alpha:A(Y)\\to A(X)$ provém de um único morfismo $\\varphi:X\\to Y$ com $\\varphi^\\#=\\alpha$ (sobre $k$ fechado, $X,Y$ afins).",
+          "hint": "Escreva $Y\\subseteq\\mathbb{A}^m$ com coordenadas $\\bar y_1,\\dots,\\bar y_m\\in A(Y)$ e defina $\\varphi=(\\alpha(\\bar y_1),\\dots,\\alpha(\\bar y_m))$; verifique que cai em $Y$ usando $I(Y)$.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** Sobre $k$ algebricamente fechado, com $X,Y$ afins, todo homomorfismo de $k$-algebras $\\alpha:A(Y)\\to A(X)$ provem de um UNICO morfismo $\\varphi:X\\to Y$ com $\\varphi^\\#=\\alpha$.\n\n**Passo 1 — construir $\\varphi$.** Realize $Y\\subseteq\\mathbb{A}^m$ com coordenadas restritas $\\bar y_1,\\dots,\\bar y_m\\in A(Y)$ (imagens de $y_1,\\dots,y_m$). Defina as $m$ funcoes\n$$f_j:=\\alpha(\\bar y_j)\\in A(X)\\qquad(j=1,\\dots,m),$$\ne ponha $\\varphi:=(f_1,\\dots,f_m):X\\to\\mathbb{A}^m$. Isso e um morfismo em $\\mathbb{A}^m$ pois cada componente e um elemento de $A(X)$ (funcao polinomial em $X$).\n\n**Passo 2 — a imagem cai em $Y$.** Precisamos $\\varphi(X)\\subseteq Y=V(I(Y))$, ou seja, $g(\\varphi(p))=0$ para todo $g\\in I(Y)$ e $p\\in X$. Seja $g\\in I(Y)\\subseteq k[y_1,\\dots,y_m]$; entao $g(\\bar y_1,\\dots,\\bar y_m)=0$ em $A(Y)$ (por definicao de $A(Y)=k[y]/I(Y)$). Aplicando o homomorfismo de $k$-algebras $\\alpha$ (que comuta com polinomios e fixa $k$):\n$$g(f_1,\\dots,f_m)=g(\\alpha(\\bar y_1),\\dots,\\alpha(\\bar y_m))=\\alpha\\big(g(\\bar y_1,\\dots,\\bar y_m)\\big)=\\alpha(0)=0\\ \\text{em }A(X).$$\nLogo $g\\circ\\varphi=0$ como funcao em $X$, isto e $g(\\varphi(p))=0\\ \\forall p$. Assim $\\varphi(X)\\subseteq Y$ e $\\varphi:X\\to Y$ e morfismo.\n\n**Passo 3 — $\\varphi^\\#=\\alpha$.** O pullback $\\varphi^\\#:A(Y)\\to A(X)$ e o unico homomorfismo de $k$-algebras determinado por seus valores nos geradores $\\bar y_j$. Ora, $\\varphi^\\#(\\bar y_j)=\\bar y_j\\circ\\varphi=f_j=\\alpha(\\bar y_j)$. Como $\\varphi^\\#$ e $\\alpha$ coincidem nos geradores $\\bar y_1,\\dots,\\bar y_m$ de $A(Y)$ e ambos sao homomorfismos de $k$-algebras, $\\varphi^\\#=\\alpha$.\n\n**Passo 4 — unicidade.** Se $\\psi:X\\to Y$ tambem satisfaz $\\psi^\\#=\\alpha$, entao para cada $j$ a $j$-esima coordenada de $\\psi$ e $\\bar y_j\\circ\\psi=\\psi^\\#(\\bar y_j)=\\alpha(\\bar y_j)=f_j$, igual a de $\\varphi$. Um morfismo em $\\mathbb{A}^m$ e determinado por suas coordenadas, logo $\\psi=\\varphi$. Isso estabelece a bijecao $\\operatorname{Hom}(X,Y)\\cong\\operatorname{Hom}_{k\\text{-alg}}(A(Y),A(X))$. $\\blacksquare$",
+          "steps": [
+            "Mergulhe $Y\\subseteq\\mathbb{A}^m$ e defina as coordenadas de $\\varphi$ por $f_j=\\alpha(\\bar y_j)$.",
+            "Verifique $\\varphi(X)\\subseteq Y$ aplicando $\\alpha$ a relacao $g(\\bar y)=0$ para $g\\in I(Y)$.",
+            "Cheque $\\varphi^\\#=\\alpha$ comparando os valores nos geradores $\\bar y_j$.",
+            "Prove a unicidade: as coordenadas de qualquer $\\psi$ com $\\psi^\\#=\\alpha$ sao forcadas a serem os $f_j$."
+          ]
+        },
+        {
+          "prompt": "Mostre que a reta $\\mathbb{A}^1$ e a hipérbole $V(xy-1)$ NÃO são isomorfas, mas SÃO birracionais.",
+          "hint": "$A(\\mathbb{A}^1)=k[t]$ tem só constantes como unidades, enquanto $A(V(xy-1))\\cong k[t,t^{-1}]$ tem $t^{\\pm1}$; já $k(t)\\cong k(t)$ dá a birracionalidade.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** $\\mathbb{A}^1$ e a hiperbole $H=V(xy-1)$ nao sao isomorfas, mas sao birracionalmente equivalentes.\n\n**Passo 1 — nao sao isomorfas.** Ja calculamos $A(H)\\cong k[t,t^{-1}]$ (anel de Laurent) e $A(\\mathbb{A}^1)=k[t]$. Um isomorfismo de variedades afins corresponderia a um isomorfismo de $k$-algebras $A(\\mathbb{A}^1)\\cong A(H)$, que preservaria unidades. Mas $k[t]^\\times=k^\\times$ (so constantes), enquanto $k[t,t^{-1}]^\\times=\\{c\\,t^m:c\\in k^\\times,m\\in\\mathbb{Z}\\}\\supsetneq k^\\times$ (por exemplo $t$ e unidade nao constante). Como os grupos de unidades diferem, $A(\\mathbb{A}^1)\\not\\cong A(H)$, logo $\\mathbb{A}^1\\not\\cong H$.\n\n**Passo 2 — sao birracionais.** Basta ver que os corpos de funcoes sao $k$-isomorfos. Como $A(\\mathbb{A}^1)=k[t]$, temos $k(\\mathbb{A}^1)=\\operatorname{Frac}k[t]=k(t)$. Para $H$: $A(H)\\cong k[t,t^{-1}]$, e $\\operatorname{Frac}k[t,t^{-1}]=k(t)$ tambem (o corpo de fracoes de um anel e o mesmo de qualquer localizacao sua nao trivial). Logo\n$$k(H)\\cong k(t)\\cong k(\\mathbb{A}^1),$$\ne pela caracterizacao 'birracional $\\iff$ corpos de funcoes $k$-isomorfos', $H$ e $\\mathbb{A}^1$ sao birracionais.\n\n**Passo 3 — a aplicacao racional explicita.** A projecao $H\\to\\mathbb{A}^1$, $(x,y)\\mapsto x$, e um morfismo dominante com inversa racional $\\mathbb{A}^1\\dashrightarrow H$, $x\\mapsto(x,1/x)$, definida no aberto denso $\\{x\\neq 0\\}$. Ela e um isomorfismo entre $H$ e $\\mathbb{A}^1\\setminus\\{0\\}$, portanto birracional mas nao um isomorfismo global — coerente com o Passo 1. $\\blacksquare$",
+          "steps": [
+            "Recupere $A(\\mathbb{A}^1)=k[t]$ e $A(H)\\cong k[t,t^{-1}]$.",
+            "Compare grupos de unidades ($k^\\times$ vs $k^\\times\\times\\mathbb{Z}$) para concluir que nao ha isomorfismo de aneis, logo nao ha isomorfismo de variedades.",
+            "Calcule os corpos de fracoes: ambos dao $k(t)$, logo $k(H)\\cong k(\\mathbb{A}^1)$.",
+            "Exiba a aplicacao racional $x\\mapsto(x,1/x)$ definida em $\\{x\\neq0\\}$ como testemunha da birracionalidade."
+          ]
+        },
+        {
+          "prompt": "Considere a projeção a partir de um ponto $\\pi:\\mathbb{P}^2\\dashrightarrow\\mathbb{P}^1$, $[x:y:z]\\mapsto[x:y]$. Determine onde $\\pi$ NÃO está definida e explique por que é apenas racional.",
+          "hint": "$\\pi$ falha onde $[x:y]=[0:0]$, isto é, no ponto-centro $[0:0:1]$.",
+          "difficulty": 3,
+          "solution": "**Objetivo.** Analisar a projecao a partir de um ponto $\\pi:\\mathbb{P}^2\\dashrightarrow\\mathbb{P}^1$, $[x:y:z]\\mapsto[x:y]$: onde nao esta definida e por que e apenas racional.\n\n**Passo 1 — quando a formula falha.** As coordenadas de saida $[x:y]$ so definem um ponto de $\\mathbb{P}^1$ quando NAO sao ambas nulas (o ponto $[0:0]$ nao existe em $\\mathbb{P}^1$). A formula quebra exatamente onde $x=0$ e $y=0$ simultaneamente, isto e, no ponto\n$$P_0=[0:0:1]\\in\\mathbb{P}^2$$\n(o unico ponto com $x=y=0; z$ pode ser normalizado a $1$). Esse $P_0$ e o CENTRO da projecao.\n\n**Passo 2 — $\\pi$ e morfismo em $\\mathbb{P}^2\\setminus\\{P_0\\}$.** Em $U=\\mathbb{P}^2\\setminus\\{P_0\\}=\\{[x:y:z]:(x,y)\\neq(0,0)\\}$, as funcoes $x,y$ nunca se anulam juntas, logo $[x:y]$ e um ponto bem definido de $\\mathbb{P}^1$ e $\\pi$ e dada por polinomios homogeneos de mesmo grau — um morfismo. Como $U$ e aberto denso de $\\mathbb{P}^2$ (complementar de um ponto), $\\pi$ e uma aplicacao racional definida em $U$.\n\n**Passo 3 — por que apenas racional.** $\\pi$ NAO se estende a um morfismo global em $P_0$: geometricamente, $\\pi$ envia cada ponto $Q\\neq P_0$ na direcao da reta $\\overline{P_0Q}$ (parametrizada por $[x:y]$); ao aproximar-se de $P_0$ por retas diferentes, o limite de $[x:y]$ depende da direcao de aproximacao, logo nenhum valor unico pode ser atribuido a $\\pi(P_0)$. Assim $P_0$ e um ponto de INDETERMINACAO genuino, e $\\pi$ e uma aplicacao racional (definida num aberto denso, nao em todo $\\mathbb{P}^2$), nao um morfismo. $\\blacksquare$",
+          "steps": [
+            "Identifique quando $[x:y]$ deixa de ser um ponto de $\\mathbb{P}^1$: quando $x=y=0$.",
+            "Localize o unico ponto ruim $P_0=[0:0:1]$, o centro da projecao.",
+            "Verifique que em $\\mathbb{P}^2\\setminus\\{P_0\\}$ a formula da um morfismo por polinomios homogeneos de mesmo grau.",
+            "Argumente que o limite em $P_0$ depende da direcao, logo $P_0$ e indeterminacao e $\\pi$ e so racional."
+          ]
+        },
+        {
+          "prompt": "Parametrize a cônica $V_+(YZ-X^2)\\subseteq\\mathbb{P}^2$ por $\\mathbb{P}^1$ e mostre que se trata de um isomorfismo (logo a cônica lisa é isomorfa a $\\mathbb{P}^1$).",
+          "hint": "Use $[s:t]\\mapsto[st:s^2:t^2]$ e verifique que cobre a cônica com inversa também dada por polinômios homogêneos.",
+          "difficulty": 4,
+          "solution": "**Objetivo.** Parametrizar a conica $C=V_+(YZ-X^2)\\subseteq\\mathbb{P}^2$ por $\\mathbb{P}^1$ e mostrar que e um isomorfismo, concluindo $C\\cong\\mathbb{P}^1$.\n\n**Passo 1 — a parametrizacao.** Defina\n$$\\phi:\\mathbb{P}^1\\to\\mathbb{P}^2,\\qquad [s:t]\\mapsto[st:s^2:t^2].$$\nAs tres componentes sao homogeneas de grau $2$ em $(s,t)$, logo $\\phi$ esta bem definida em $\\mathbb{P}^1$ (escala $\\lambda$ sai como $\\lambda^2$). Ela nunca da $[0:0:0]$: se $s^2=t^2=0$ entao $s=t=0$, impossivel em $\\mathbb{P}^1$. A imagem cai em $C$:\n$$Y Z-X^2=(s^2)(t^2)-(st)^2=s^2t^2-s^2t^2=0.$$\nLogo $\\phi:\\mathbb{P}^1\\to C$ e um morfismo.\n\n**Passo 2 — a inversa.** Defina, por partes (colando num aberto que cobre $C$),\n$$\\psi:C\\to\\mathbb{P}^1,\\qquad \\psi[X:Y:Z]=\\begin{cases}[X:Z], & (X,Z)\\neq(0,0),\\\\[2pt] [Y:X], & (Y,X)\\neq(0,0).\\end{cases}$$\nAs duas formulas concordam onde ambas fazem sentido: em $C$ vale $X^2=YZ$, logo $[X:Z]=[XY:ZY]=[XY:X^2]=[Y:X]$ (usando $ZY=X^2$ e cancelando $X$ quando $X\\neq0$). Cada formula e dada por polinomios homogeneos de grau $1$, logo $\\psi$ e morfismo, e as duas cartas cobrem $C$ (nao ha ponto de $C$ com $X=Z=0$ e $Y=X=0$ simultaneamente, o que forcaria $X=Y=Z=0$).\n\n**Passo 3 — sao inversas.** Verifique $\\psi\\circ\\phi=\\mathrm{id}_{\\mathbb{P}^1}$: para $[s:t]$ com $s\\neq 0$,\n$$\\psi[st:s^2:t^2]=[st:t^2]=[s:t]\\quad(\\text{cancelando }t\\text{, valido onde }t\\neq0;\\ \\text{a outra carta trata }t=0).$$\nMais direto: $[X:Z]=[st:t^2]=[s:t]$ (cancelando $t$) e, na carta $[Y:X]=[s^2:st]=[s:t]$ (cancelando $s$); juntas cobrem tudo e dao $[s:t]$. E $\\phi\\circ\\psi=\\mathrm{id}_C$: para $[X:Y:Z]\\in C$, digamos com $X\\neq0$, $\\psi=[X:Z]$ e\n$$\\phi[X:Z]=[XZ:X^2:Z^2]=[XZ:YZ:Z^2]=[X:Y:Z]$$\n(usando $X^2=YZ$ e cancelando $Z$; os casos de fronteira sao cobertos pela outra carta). Logo $\\phi$ e $\\psi$ sao morfismos mutuamente inversos.\n\n**Conclusao.** $C\\cong\\mathbb{P}^1$: a conica lisa e isomorfa a reta projetiva. (Toda conica lisa em $\\mathbb{P}^2$, sobre $k$ fechado, e isomorfa a $\\mathbb{P}^1$ pela mesma ideia — parametrizacao racional de grau $2$.) $\\blacksquare$",
+          "steps": [
+            "Escreva $\\phi[s:t]=[st:s^2:t^2]$ e verifique boa definicao (grau homogeneo) e que a imagem satisfaz $YZ=X^2$.",
+            "Construa a inversa $\\psi$ por duas cartas $[X:Z]$ e $[Y:X]$, mostrando que concordam via $X^2=YZ$.",
+            "Confirme que as cartas cobrem $C$ e que $\\psi$ e dada por polinomios homogeneos (morfismo).",
+            "Cheque $\\psi\\circ\\phi=\\mathrm{id}$ e $\\phi\\circ\\psi=\\mathrm{id}$ usando a relacao $X^2=YZ$.",
+            "Conclua que $\\phi$ e isomorfismo, logo $C\\cong\\mathbb{P}^1$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Morfismo afim em coordenadas",
+          "back": "$\\varphi:X\\to Y\\subseteq\\mathbb{A}^m$ dado por $(f_1,\\dots,f_m)$ com $f_i\\in A(X)$ e $\\varphi(X)\\subseteq Y$."
+        },
+        {
+          "front": "Pullback $\\varphi^\\#$",
+          "back": "$\\varphi^\\#:A(Y)\\to A(X)$, $g\\mapsto g\\circ\\varphi$; functor CONTRAVARIANTE."
+        },
+        {
+          "front": "Anti-equivalência afim",
+          "back": "Variedades afins $\\leftrightarrow$ $k$-álgebras f.g. reduzidas; $\\operatorname{Hom}(X,Y)\\cong\\operatorname{Hom}_{k\\text{-alg}}(A(Y),A(X))$."
+        },
+        {
+          "front": "$X\\cong Y$ (afim) $\\iff$ ?",
+          "back": "$A(X)\\cong A(Y)$ como $k$-álgebras."
+        },
+        {
+          "front": "Aplicação racional",
+          "back": "Morfismo definido só num aberto denso; pode ter pontos de indeterminação."
+        },
+        {
+          "front": "Birracional $\\iff$ ?",
+          "back": "$k(X)\\cong k(Y)$ como extensões de $k$."
+        },
+        {
+          "front": "Morfismo bijetivo é isomorfismo?",
+          "back": "Não: a normalização $t\\mapsto(t^2,t^3)$ da cúspide é bijetiva mas não isomorfismo."
+        },
+        {
+          "front": "Cúbica cuspidal vs $\\mathbb{A}^1$",
+          "back": "Birracional (mesmo $k(t)$), mas não isomorfa: $A(C)\\cong k[t^2,t^3]\\subsetneq k[t]$."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Hartshorne, Algebraic Geometry, I.3-I.4 (Morphisms, Rational Maps)",
+          "ref": "livro"
+        },
+        {
+          "title": "Shafarevich, Basic Algebraic Geometry 1 (aplicações racionais, birracional)",
+          "ref": "livro"
+        },
+        {
+          "title": "Reid, Undergraduate Algebraic Geometry (morfismos e exemplos)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja a definicao de morfismo (continuo + preserva regulares) e sua forma afim por coordenadas $f_i\\in A(X)$ (Hartshorne I.3-I.4).",
+          "Estude o pullback $\\varphi^\\#$ e a variancia CONTRAVARIANTE do functor $X\\mapsto A(X)$; deduza a anti-equivalencia afim com cuidado.",
+          "Trabalhe exemplos-chave a mao: parabola $\\cong\\mathbb{A}^1$ (isomorfa) vs cuspide $t\\mapsto(t^2,t^3)$ (birracional, nao isomorfa) e a hiperbole.",
+          "Leia sobre aplicacoes racionais, dominantes e birracionais em Shafarevich; entenda a inclusao $k(Y)\\hookrightarrow k(X)$ e pontos de indeterminacao.",
+          "Assista a um video sobre morfismos/aplicacoes racionais e normalizacao para fixar 'bijetivo nao e isomorfismo'.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (anti-equivalencia, isomorfo vs birracional, contravariancia do pullback)."
+        ],
+        "searchQueries": [
+          "morfismo de variedades afins homomorfismo k-algebras anti-equivalencia",
+          "aplicacao racional dominante birracional corpo de funcoes",
+          "morfismo bijetivo nao e isomorfismo cuspide normalizacao",
+          "parametrizacao conica P^1 isomorfismo variedade projetiva",
+          "morphism affine varieties equivalence category coordinate rings",
+          "birational equivalence function field rational map cusp normalization"
+        ],
+        "videos": [
+          {
+            "title": "Morphisms of varieties and the coordinate ring functor",
+            "channel": "Andreas Gathmann / cursos de Algebraic Geometry",
+            "note": "Procure as aulas sobre morphisms e rational maps; explicam pullback, anti-equivalencia e exemplos de cuspide."
+          },
+          {
+            "title": "Rational maps and birational geometry (intro)",
+            "channel": "Michael Penn / Richard Borcherds",
+            "note": "Busque videos sobre rational maps e function fields para fixar dominante/birracional e a inclusao $k(Y)\\hookrightarrow k(X)$."
+          },
+          {
+            "title": "Parametrizacao de conicas e curvas racionais",
+            "channel": "canais de matematica universitaria em PT-BR (Responde Ai / IMPA)",
+            "note": "Procure material sobre parametrizacao de conicas por reta projetiva para o ultimo exercicio."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Algebraic Geometry, Cap. I.3-I.4 (Morphisms, Rational Maps)",
+            "where": "Robin Hartshorne, Algebraic Geometry (Springer GTM 52)"
+          },
+          {
+            "title": "Basic Algebraic Geometry 1 (aplicacoes racionais, equivalencia birracional)",
+            "where": "Igor R. Shafarevich"
+          },
+          {
+            "title": "Undergraduate Algebraic Geometry (morfismos e exemplos)",
+            "where": "Miles Reid"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-algebrica-06-dimensao-suavidade-esquemas",
+      "title": "Dimensão, Suavidade e Introdução a Feixes e Esquemas",
+      "tagline": "Quão grande e quão lisa é uma variedade: dimensão de Krull = grau de transcendência, espaço tangente, critério jacobiano — e a virada para $\\operatorname{Spec}$ e esquemas.",
+      "objectives": [
+        "Definir dimensão de uma variedade via cadeias de fechados irredutíveis e identificá-la com a dimensão de Krull de $A(X)$.",
+        "Provar (enunciar) que, para variedades, $\\dim X=\\operatorname{trdeg}_k k(X)$ e calcular dimensões de exemplos.",
+        "Definir o espaço tangente de Zariski $T_pX=(\\mathfrak m_p/\\mathfrak m_p^2)^*$ e relacioná-lo ao critério jacobiano.",
+        "Caracterizar pontos suaves vs singulares e usar o critério jacobiano para localizar singularidades.",
+        "Introduzir feixes, o espectro $\\operatorname{Spec}R$ e a ideia de esquema como generalização de variedade."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Dimensão (de Krull / combinatória)",
+          "statement": "$\\dim X$ é o supremo dos comprimentos $n$ de cadeias $Z_0\\subsetneq Z_1\\subsetneq\\cdots\\subsetneq Z_n$ de fechados irredutíveis de $X$; equivale à dimensão de Krull do anel $A(X)$ (cadeias de primos). Para $\\mathbb{A}^n$, $\\dim=n$."
+        },
+        {
+          "term": "Grau de transcendência",
+          "statement": "Para $X$ variedade, $\\dim X=\\operatorname{trdeg}_k k(X)$: o número máximo de funções racionais algebricamente independentes sobre $k$. Curvas têm dimensão $1$, superfícies $2$."
+        },
+        {
+          "term": "Espaço tangente de Zariski",
+          "statement": "$T_pX=(\\mathfrak m_p/\\mathfrak m_p^2)^*$, o dual do $k$-espaço $\\mathfrak m_p/\\mathfrak m_p^2$, onde $\\mathfrak m_p$ é o maximal de $\\mathcal{O}_{X,p}$. Sempre $\\dim_k T_pX\\ge\\dim_pX$."
+        },
+        {
+          "term": "Ponto suave / regular",
+          "statement": "$p\\in X$ é suave (regular) se $\\dim_k T_pX=\\dim_pX$, equivalentemente se $\\mathcal{O}_{X,p}$ é anel local regular; caso contrário é singular. Os pontos suaves formam um aberto denso."
+        },
+        {
+          "term": "Espectro $\\operatorname{Spec}R$",
+          "statement": "O conjunto dos ideais primos de $R$, com topologia de Zariski (fechados $V(\\mathfrak a)=\\{\\mathfrak p\\supseteq\\mathfrak a\\}$) e o feixe estrutural $\\mathcal{O}_{\\operatorname{Spec}R}$. É o bloco básico (esquema afim) da geometria moderna."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Dimensão = grau de transcendência",
+          "statement": "Se $X$ é uma variedade afim sobre $k$, então $\\dim X$ (de Krull, de $A(X)$) é igual a $\\operatorname{trdeg}_k k(X)$. Em particular $\\dim\\mathbb{A}^n=n$ e toda hipersuperfície $V(f)\\subsetneq\\mathbb{A}^n$ ($f$ não constante) tem dimensão $n-1$.",
+          "whyItMatters": "Fornece uma forma efetiva de calcular dimensão (contando funções independentes) e conecta a noção topológica/algébrica de dimensão à teoria de corpos. A queda de dimensão por uma equação é a base da teoria de interseção."
+        },
+        {
+          "name": "Desigualdade tangente e suavidade",
+          "statement": "Para todo $p\\in X$, $\\dim_k T_pX\\ge\\dim_pX$, com igualdade se, e somente se, $\\mathcal{O}_{X,p}$ é um anel local regular (ponto suave).",
+          "whyItMatters": "Dá um critério intrínseco (independente de mergulho) de suavidade e mostra que singularidades são detectadas pelo 'excesso' de dimensão tangente — exatamente o que o cálculo da geometria diferencial mede via posto."
+        },
+        {
+          "name": "Critério jacobiano",
+          "statement": "Seja $X=V(f_1,\\dots,f_r)\\subseteq\\mathbb{A}^n$ irredutível de dimensão $d$, sobre $k$ algebricamente fechado. Um ponto $p\\in X$ é suave se, e somente se, a matriz jacobiana $J(p)=\\big(\\partial f_i/\\partial x_j(p)\\big)$ tem posto $n-d$. O lugar singular é um fechado próprio.",
+          "whyItMatters": "É a ferramenta computacional para achar singularidades: basta derivar e calcular postos. Garante também que 'quase todo' ponto de uma variedade é suave."
+        },
+        {
+          "name": "Esquema afim",
+          "statement": "Para todo anel comutativo $R$, $(\\operatorname{Spec}R,\\mathcal{O}_{\\operatorname{Spec}R})$ é um espaço localmente anelado, com $\\mathcal{O}_{\\operatorname{Spec}R,\\mathfrak p}=R_{\\mathfrak p}$; um esquema é um espaço localmente anelado que é localmente isomorfo a algum $\\operatorname{Spec}R$.",
+          "whyItMatters": "Generaliza variedades para qualquer anel — admitindo nilpotentes, corpos não fechados, $\\mathbb{Z}$ e construções relativas. É a linguagem da geometria algébrica contemporânea (Grothendieck)."
+        }
+      ],
+      "summary": "As duas perguntas quantitativas básicas sobre uma variedade são 'qual a sua dimensão?' e 'onde ela é lisa?'. A dimensão é definida topologicamente pelo maior comprimento de uma cadeia de subvariedades $Z_0\\subsetneq\\cdots\\subsetneq Z_n$, o que corresponde exatamente à dimensão de Krull do anel de coordenadas $A(X)$ (cadeias de ideais primos). Para variedades irredutíveis há ainda uma terceira face, analítica: $\\dim X=\\operatorname{trdeg}_k k(X)$, o número de funções racionais algebricamente independentes. Essas três descrições coincidem e dão $\\dim\\mathbb{A}^n=n$, dimensão $1$ para curvas, $2$ para superfícies, e $n-1$ para qualquer hipersuperfície $V(f)$. A intuição-guia é que cada equação independente baixa a dimensão em $1$.\n\nA suavidade é local. O espaço tangente de Zariski $T_pX=(\\mathfrak m_p/\\mathfrak m_p^2)^*$ é construído só a partir do anel local $\\mathcal{O}_{X,p}$, sem referência a mergulho, e satisfaz $\\dim_k T_pX\\ge\\dim_pX$; a igualdade define ponto suave (anel local regular). Na prática usamos o critério jacobiano: para $X=V(f_1,\\dots,f_r)$ de dimensão $d$, $p$ é suave exatamente quando a jacobiana tem posto $n-d$ em $p$. O lugar singular é sempre um fechado próprio, logo 'quase todo' ponto é liso. A trilha termina apontando para o horizonte: ao substituir 'pontos = maximais' por 'pontos = todos os primos', chega-se ao espectro $\\operatorname{Spec}R$, com sua topologia de Zariski e seu feixe estrutural. Um esquema é um espaço colado a partir de pedaços $\\operatorname{Spec}R$, exatamente como $\\mathbb{P}^n$ é colado de cartas afins. Esquemas admitem nilpotentes (multiplicidades infinitesimais), corpos não algebricamente fechados, e até $\\operatorname{Spec}\\mathbb{Z}$ — fundindo geometria e aritmética. É o ponto de partida da geometria algébrica moderna.",
+      "commonPitfalls": [
+        "Calcular dimensão como 'número de variáveis': a dimensão é o comprimento de cadeias de primos / grau de transcendência, e uma subvariedade de $\\mathbb{A}^n$ pode ter qualquer dimensão entre $0$ e $n$.",
+        "Esquecer a desigualdade $\\dim_k T_pX\\ge\\dim_pX$: o ponto é singular precisamente quando a dimensão tangente é ESTRITAMENTE maior que a da variedade.",
+        "Aplicar o critério jacobiano com a codimensão errada: o posto procurado é $n-d=\\operatorname{codim}X$, não o número $r$ de equações (que pode ser maior).",
+        "Pensar que os pontos de $\\operatorname{Spec}R$ são só os maximais: incluem TODOS os primos, inclusive os não fechados (pontos genéricos), e o esquema pode ter nilpotentes — $\\operatorname{Spec}k[x]/\\langle x^2\\rangle$ não é um ponto reduzido."
+      ],
+      "worked": "**Problema.** Para a cúbica cuspidal $C=V(y^2-x^3)\\subseteq\\mathbb{A}^2$ sobre $k$ algebricamente fechado, determine $\\dim C$, encontre os pontos singulares pelo critério jacobiano e calcule a dimensão tangente na origem.\n\n**Dimensão.** $C$ é uma hipersuperfície $V(f)$ com $f=y^2-x^3$ não constante em $\\mathbb{A}^2$, logo $\\dim C=2-1=1$: é uma curva. (Confere com $\\operatorname{trdeg}$: em $k(C)$, $x$ é transcendente e $y$ é algébrico sobre $k(x)$.)\n\n**Singularidades.** A jacobiana de $f$ é o gradiente\n\n$$J=\\Big(\\frac{\\partial f}{\\partial x},\\ \\frac{\\partial f}{\\partial y}\\Big)=(-3x^2,\\ 2y).$$\n\nComo $d=\\dim C=1$ e $n=2$, suavidade pede $\\operatorname{posto}J(p)=n-d=1$, isto é, $J(p)\\neq(0,0)$. O posto cai a $0$ quando $-3x^2=0$ e $2y=0$, ou seja $x=y=0$ (assumindo $\\operatorname{char}k\\neq 2,3$). O ponto $(0,0)$ está em $C$, logo é o ÚNICO ponto singular: a cúspide.\n\n**Tangente na origem.** Em $p=(0,0)$, $\\mathfrak m_p=\\langle x,y\\rangle$ e em $\\mathfrak m_p/\\mathfrak m_p^2$ a relação $y^2-x^3$ é de ordem $\\ge 2$, logo não impõe condição linear: $\\dim_k T_pC=\\dim_k\\langle x,y\\rangle/\\langle x,y\\rangle^2=2$. Como $2>1=\\dim C$, a desigualdade $\\dim_k T_pX\\ge\\dim_pX$ é estrita — confirmando que a origem é singular. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre que $\\dim\\mathbb{A}^n=n$ exibindo uma cadeia de subvariedades $\\{p\\}\\subsetneq\\cdots\\subsetneq\\mathbb{A}^n$ de comprimento $n$ e identifique a cadeia de primos correspondente em $k[x_1,\\dots,x_n]$.",
+          "hint": "Use $\\langle 0\\rangle\\subsetneq\\langle x_1\\rangle\\subsetneq\\langle x_1,x_2\\rangle\\subsetneq\\cdots\\subsetneq\\langle x_1,\\dots,x_n\\rangle$.",
+          "difficulty": 2,
+          "solution": "**Objetivo.** Mostrar $\\dim\\mathbb{A}^n=n$ exibindo uma cadeia de subvariedades de comprimento $n$ e a cadeia de primos correspondente.\n\n**Passo 1 — a cadeia geometrica.** Considere os subespacos lineares\n$$\\{p\\}=Z_0\\subsetneq Z_1\\subsetneq\\cdots\\subsetneq Z_{n-1}\\subsetneq Z_n=\\mathbb{A}^n,$$\nonde $Z_i=V(x_{i+1},\\dots,x_n)=\\{(a_1,\\dots,a_i,0,\\dots,0)\\}\\cong\\mathbb{A}^i$ e $p=(0,\\dots,0)=Z_0$. Cada $Z_i$ e um $\\mathbb{A}^i$ mergulhado, irredutivel (e um espaco afim), e as inclusoes sao proprias pois as dimensoes crescem. Isso e uma cadeia de $n+1$ fechados irredutiveis, isto e, de comprimento $n$; logo $\\dim\\mathbb{A}^n\\ge n$.\n\n**Passo 2 — a cadeia de primos correspondente.** Aplicando $I(\\cdot)$ (que reverte inclusoes), obtemos em $k[x_1,\\dots,x_n]$:\n$$I(Z_n)\\subsetneq I(Z_{n-1})\\subsetneq\\cdots\\subsetneq I(Z_0),$$\nou seja\n$$\\langle 0\\rangle\\subsetneq\\langle x_n\\rangle\\subsetneq\\langle x_{n-1},x_n\\rangle\\subsetneq\\cdots\\subsetneq\\langle x_1,\\dots,x_n\\rangle.$$\nReindexando de modo crescente, e a cadeia\n$$\\langle 0\\rangle\\subsetneq\\langle x_1\\rangle\\subsetneq\\langle x_1,x_2\\rangle\\subsetneq\\cdots\\subsetneq\\langle x_1,\\dots,x_n\\rangle.$$\nCada $\\langle x_1,\\dots,x_i\\rangle$ e primo, pois $k[x_1,\\dots,x_n]/\\langle x_1,\\dots,x_i\\rangle\\cong k[x_{i+1},\\dots,x_n]$ e um dominio. Sao $n+1$ primos encaixados, uma cadeia de comprimento $n$ na dimensao de Krull. Logo $\\dim_{\\mathrm{Krull}}k[x_1,\\dots,x_n]\\ge n$.\n\n**Passo 3 — igualdade.** A desigualdade oposta $\\dim\\mathbb{A}^n\\le n$ segue de $\\dim X=\\operatorname{trdeg}_k k(X)$: $k(\\mathbb{A}^n)=k(x_1,\\dots,x_n)$ tem grau de transcendencia $n$ sobre $k$, limitando o comprimento de qualquer cadeia de primos a $n$. Combinando, $\\dim\\mathbb{A}^n=n$. $\\blacksquare$",
+          "steps": [
+            "Construa os subespacos lineares $Z_i=V(x_{i+1},\\dots,x_n)\\cong\\mathbb{A}^i$ formando uma cadeia de fechados irredutiveis.",
+            "Aplique $I(\\cdot)$ para obter a cadeia de ideais $\\langle 0\\rangle\\subsetneq\\langle x_1\\rangle\\subsetneq\\cdots\\subsetneq\\langle x_1,\\dots,x_n\\rangle$.",
+            "Verifique que cada $\\langle x_1,\\dots,x_i\\rangle$ e primo via o quociente dominio $k[x_{i+1},\\dots,x_n]$.",
+            "Conclua $\\dim\\ge n$ e feche com $\\operatorname{trdeg}_k k(x_1,\\dots,x_n)=n$ para a igualdade."
+          ]
+        },
+        {
+          "prompt": "Para a cúbica nodal $V(y^2-x^2(x+1))$, encontre os pontos singulares via critério jacobiano e compare com a cúspide.",
+          "hint": "Derive $f=y^2-x^3-x^2$: $\\partial_x=-3x^2-2x$, $\\partial_y=2y$; resolva $\\partial_x=\\partial_y=f=0$ e ache o nó na origem.",
+          "difficulty": 3,
+          "solution": "**Objetivo.** Achar os pontos singulares da cubica nodal $D=V(f)$, $f=y^2-x^2(x+1)=y^2-x^3-x^2$, via criterio jacobiano, e comparar com a cuspide.\n\n**Passo 1 — dimensao e o posto pedido.** $D$ e hipersuperficie em $\\mathbb{A}^2$ definida por $f$ nao constante, logo $\\dim D=2-1=1$ ($d=1$, $n=2$). O criterio jacobiano diz: $p\\in D$ e suave $\\iff\\operatorname{posto}J(p)=n-d=1$, isto e, o gradiente $\\nabla f(p)\\neq(0,0)$. Singular $\\iff\\nabla f(p)=(0,0)$.\n\n**Passo 2 — o gradiente.** \n$$\\frac{\\partial f}{\\partial x}=-3x^2-2x=-x(3x+2),\\qquad \\frac{\\partial f}{\\partial y}=2y.$$\nSingularidade exige (assumindo $\\operatorname{char}k\\neq 2,3$):\n$$2y=0\\Rightarrow y=0;\\qquad -x(3x+2)=0\\Rightarrow x=0\\ \\text{ou}\\ x=-\\tfrac{2}{3}.$$\n\n**Passo 3 — filtrar por $p\\in D$.** Os candidatos $(0,0)$ e $(-2/3,0)$ precisam satisfazer $f=0$:\n- $(0,0)$: $f=0-0-0=0$. Esta em $D$. **Singular.**\n- $(-2/3,0)$: $f=0-(-2/3)^3-(-2/3)^2=\\tfrac{8}{27}-\\tfrac{4}{9}=\\tfrac{8}{27}-\\tfrac{12}{27}=-\\tfrac{4}{27}\\neq 0$. NAO esta em $D$; descartado.\n\nLogo o unico ponto singular de $D$ e a origem $(0,0)$.\n\n**Passo 4 — natureza do ponto (no vs cuspide).** Na origem, a parte de menor grau de $f=y^2-x^2-x^3$ e a forma quadratica $y^2-x^2=(y-x)(y+x)$, que fatora em DUAS retas tangentes distintas $y=x$ e $y=-x$. Isso caracteriza um NO (ponto duplo ordinario): dois ramos lisos cruzando-se transversalmente. Ja na cuspide $C=V(y^2-x^3)$, a parte de menor grau e $y^2$ (fator duplo $y=0$): uma unica direcao tangente com multiplicidade $2$ — os dois ramos sao tangentes entre si. Em ambos os casos $\\dim_k T_pD=\\dim_k T_pC=2>1=\\dim$, confirmando singularidade; a diferenca (duas tangentes distintas no no, uma tangente dupla na cuspide) e o que distingue geometricamente os dois tipos de singularidade. $\\blacksquare$",
+          "steps": [
+            "Note $\\dim D=1$, logo suavidade pede posto $1$ do jacobiano, i.e. gradiente nao nulo.",
+            "Calcule $\\partial_x f=-3x^2-2x$ e $\\partial_y f=2y$.",
+            "Resolva $\\nabla f=0$: obtenha candidatos $(0,0)$ e $(-2/3,0)$.",
+            "Filtre pela condicao $f=0$: so $(0,0)$ pertence a $D$, o unico ponto singular.",
+            "Compare a parte quadratica: $y^2-x^2$ (duas tangentes = no) versus $y^2$ da cuspide (tangente dupla)."
+          ]
+        },
+        {
+          "prompt": "Prove que se $X$ é uma variedade afim então o lugar suave $X_{\\mathrm{sm}}$ é um aberto denso não vazio de $X$.",
+          "hint": "O lugar singular é definido pelo anulamento dos menores $(n-d)\\times(n-d)$ da jacobiana — um fechado; mostre que é próprio usando que $k(X)$ é separável/genericamente liso.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** Se $X$ e uma variedade afim (irredutivel), o lugar suave $X_{\\mathrm{sm}}$ e um aberto denso nao vazio de $X$.\n\n**Passo 1 — o lugar singular e fechado.** Realize $X=V(f_1,\\dots,f_r)\\subseteq\\mathbb{A}^n$ de dimensao $d$. Pelo criterio jacobiano, $p\\in X$ e singular sse $\\operatorname{posto}J(p)<n-d$, onde $J=(\\partial f_i/\\partial x_j)$. Ter posto $<n-d$ equivale ao anulamento de TODOS os menores $(n-d)\\times(n-d)$ de $J$. Cada menor e um polinomio, logo o lugar singular\n$$X_{\\mathrm{sing}}=X\\cap V\\big(\\text{todos os menores }(n-d)\\times(n-d)\\text{ de }J\\big)$$\ne um subconjunto FECHADO de $X$ (interseccao de $X$ com um conjunto algebrico). Portanto $X_{\\mathrm{sm}}=X\\setminus X_{\\mathrm{sing}}$ e aberto.\n\n**Passo 2 — $X_{\\mathrm{sing}}$ e proprio (existe ponto suave).** Precisamos $X_{\\mathrm{sing}}\\neq X$. Aqui usa-se a suavidade generica: sobre um corpo perfeito (em particular $k$ algebricamente fechado), a extensao $k(X)/k$ e separavelmente gerada, e o teorema da suavidade generica garante que existe um aberto nao vazio de $X$ formado por pontos suaves. Equivalentemente, no ponto generico $\\eta$ (o primo $\\langle 0\\rangle$ de $A(X)$) o anel local $\\mathcal{O}_{X,\\eta}=k(X)$ e um corpo, logo regular; a regularidade e uma condicao aberta, entao vale num aberto nao vazio $U\\subseteq X$. Logo $X_{\\mathrm{sm}}\\supseteq U\\neq\\varnothing$, isto e, $X_{\\mathrm{sing}}\\subsetneq X$.\n\n**Passo 3 — denso.** Como $X$ e irredutivel e $X_{\\mathrm{sm}}$ e um aberto NAO VAZIO de $X$, ele e automaticamente denso: em um espaco irredutivel todo aberto nao vazio e denso (seu complementar e um fechado proprio, que nao pode ser todo $X$). Portanto $X_{\\mathrm{sm}}$ e um aberto denso nao vazio de $X$. $\\blacksquare$",
+          "steps": [
+            "Escreva $X=V(f_1,\\dots,f_r)$ e caracterize $X_{\\mathrm{sing}}$ pelo anulamento dos menores $(n-d)\\times(n-d)$ do jacobiano.",
+            "Conclua que $X_{\\mathrm{sing}}$ e fechado (zeros de polinomios), logo $X_{\\mathrm{sm}}$ e aberto.",
+            "Use a suavidade generica (k perfeito / separabilidade) para garantir um aberto nao vazio de pontos suaves, isto e $X_{\\mathrm{sing}}\\subsetneq X$.",
+            "Invoque a irredutibilidade: todo aberto nao vazio de um espaco irredutivel e denso."
+          ]
+        },
+        {
+          "prompt": "Descreva os pontos de $\\operatorname{Spec}\\mathbb{Z}$ e de $\\operatorname{Spec}k[x]$ ($k$ fechado), identificando os pontos fechados e o ponto genérico em cada caso.",
+          "hint": "Primos de $\\mathbb{Z}$: $\\langle 0\\rangle$ (genérico) e $\\langle p\\rangle$ (fechados). Primos de $k[x]$: $\\langle 0\\rangle$ e $\\langle x-a\\rangle$.",
+          "difficulty": 2,
+          "solution": "**Objetivo.** Descrever $\\operatorname{Spec}\\mathbb{Z}$ e $\\operatorname{Spec}k[x]$ ($k$ algebricamente fechado), identificando pontos fechados e ponto generico.\n\n**Passo 1 — $\\operatorname{Spec}\\mathbb{Z}$.** Os ideais primos de $\\mathbb{Z}$ sao:\n- $\\langle 0\\rangle$ (pois $\\mathbb{Z}$ e dominio);\n- $\\langle p\\rangle$ para cada primo racional $p=2,3,5,7,\\dots$ (pois $\\mathbb{Z}/\\langle p\\rangle=\\mathbb{F}_p$ e corpo, logo $\\langle p\\rangle$ e maximal).\nNao ha outros: todo ideal e $\\langle m\\rangle$, e $\\langle m\\rangle$ e primo sse $m=0$ ou $m$ e primo. Assim\n$$\\operatorname{Spec}\\mathbb{Z}=\\{\\langle 0\\rangle\\}\\cup\\{\\langle p\\rangle:p\\text{ primo}\\}.$$\n**Pontos fechados:** os $\\langle p\\rangle$ (maximais), cujo fecho e $\\{\\langle p\\rangle\\}$ pois $V(\\langle p\\rangle)=\\{\\mathfrak q\\supseteq\\langle p\\rangle\\}=\\{\\langle p\\rangle\\}$. **Ponto generico:** $\\langle 0\\rangle$, cujo fecho $\\overline{\\{\\langle 0\\rangle\\}}=V(\\langle 0\\rangle)=\\{\\mathfrak q\\supseteq 0\\}=\\operatorname{Spec}\\mathbb{Z}$ e o espaco todo — $\\langle 0\\rangle$ e denso, o ponto generico. (Analogia geometrica: $\\operatorname{Spec}\\mathbb{Z}$ e uma 'curva' cujos pontos fechados sao os primos e cujo ponto generico e $\\langle 0\\rangle$.)\n\n**Passo 2 — $\\operatorname{Spec}k[x]$, $k$ fechado.** $k[x]$ e um DIP, logo os primos sao:\n- $\\langle 0\\rangle$ (dominio);\n- $\\langle f\\rangle$ com $f$ irredutivel. Como $k$ e algebricamente fechado, os irredutiveis sao exatamente os lineares $x-a$ (a menos de escalar). Logo os primos nao nulos sao $\\langle x-a\\rangle$, $a\\in k$, todos maximais ($k[x]/\\langle x-a\\rangle\\cong k$).\nAssim\n$$\\operatorname{Spec}k[x]=\\{\\langle 0\\rangle\\}\\cup\\{\\langle x-a\\rangle:a\\in k\\}.$$\n**Pontos fechados:** os $\\langle x-a\\rangle$, em bijecao com $k=\\mathbb{A}^1$ (recuperamos os pontos classicos da reta afim). **Ponto generico:** $\\langle 0\\rangle$, denso, com fecho $\\operatorname{Spec}k[x]$ inteiro.\n\n**Sintese.** Em ambos os casos a estrutura e a mesma: um dominio de ideais principais de dimensao $1$ tem $\\operatorname{Spec}$ formado por um unico ponto generico $\\langle 0\\rangle$ (denso) e uma familia de pontos fechados (maximais). Isso ilustra por que $\\operatorname{Spec}$ generaliza variedades: os pontos incluem TODOS os primos, e o ponto generico (nao fechado) e a novidade frente ao ponto de vista classico 'pontos = maximais'. $\\blacksquare$",
+          "steps": [
+            "Liste os primos de $\\mathbb{Z}$: $\\langle 0\\rangle$ e os $\\langle p\\rangle$ com $p$ primo.",
+            "Identifique os $\\langle p\\rangle$ como pontos fechados (maximais) e $\\langle 0\\rangle$ como ponto generico (fecho = tudo).",
+            "Liste os primos de $k[x]$ usando que e DIP e que os irredutiveis sobre $k$ fechado sao $x-a$.",
+            "Identifique $\\langle x-a\\rangle$ (fechados, $\\cong\\mathbb{A}^1$) e $\\langle 0\\rangle$ (generico).",
+            "Compare: ambos sao DIPs de dimensao 1, com um generico denso e pontos fechados maximais."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Dimensão (combinatória)",
+          "back": "Maior comprimento de cadeia de fechados irredutíveis $Z_0\\subsetneq\\cdots\\subsetneq Z_n$; igual à dimensão de Krull de $A(X)$."
+        },
+        {
+          "front": "$\\dim X$ via corpo de funções",
+          "back": "$\\dim X=\\operatorname{trdeg}_k k(X)$ (para $X$ variedade)."
+        },
+        {
+          "front": "$\\dim$ de uma hipersuperfície $V(f)\\subseteq\\mathbb{A}^n$",
+          "back": "$n-1$ (cada equação não trivial baixa a dimensão em $1$)."
+        },
+        {
+          "front": "Espaço tangente de Zariski",
+          "back": "$T_pX=(\\mathfrak m_p/\\mathfrak m_p^2)^*$; sempre $\\dim_k T_pX\\ge\\dim_pX$."
+        },
+        {
+          "front": "Ponto suave $\\iff$ ?",
+          "back": "$\\dim_k T_pX=\\dim_pX$, equivalentemente $\\mathcal{O}_{X,p}$ é anel local regular."
+        },
+        {
+          "front": "Critério jacobiano",
+          "back": "$X=V(f_1,\\dots,f_r)$ de dim $d$ em $\\mathbb{A}^n$: $p$ suave $\\iff\\operatorname{posto}J(p)=n-d$."
+        },
+        {
+          "front": "$\\operatorname{Spec}R$",
+          "back": "Conjunto dos ideais primos de $R$ com topologia de Zariski e feixe estrutural $\\mathcal{O}$, $\\mathcal{O}_{\\mathfrak p}=R_{\\mathfrak p}$."
+        },
+        {
+          "front": "O que um esquema admite que uma variedade não?",
+          "back": "Nilpotentes (multiplicidade), corpos não fechados, $\\operatorname{Spec}\\mathbb{Z}$, pontos genéricos e construções relativas."
+        }
+      ],
+      "estimatedHours": 11,
+      "resources": [
+        {
+          "title": "Hartshorne, Algebraic Geometry, I.1 (dimensão), I.5 (suavidade), II.1-II.2 (feixes, esquemas)",
+          "ref": "livro"
+        },
+        {
+          "title": "Shafarevich, Basic Algebraic Geometry 1-2 (dimensão, suavidade, esquemas)",
+          "ref": "livro"
+        },
+        {
+          "title": "Vakil, Foundations of Algebraic Geometry (Spec, feixes, esquemas)",
+          "ref": "notas"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude as tres faces da dimensao (cadeias de fechados irredutiveis, Krull de $A(X)$, $\\operatorname{trdeg}_k k(X)$) em Hartshorne I.1 e Atiyah-MacDonald cap. 11.",
+          "Reveja grau de transcendencia em teoria de corpos para dominar $\\dim X=\\operatorname{trdeg}_k k(X)$.",
+          "Aprenda o espaco tangente de Zariski $T_pX=(\\mathfrak m_p/\\mathfrak m_p^2)^*$ e o criterio jacobiano (Hartshorne I.5); pratique achando singularidades de cuspide e no.",
+          "Faca uma primeira leitura de feixes e $\\operatorname{Spec}R$ em Vakil ou Hartshorne II.1-II.2, focando em $\\operatorname{Spec}\\mathbb{Z}$ e $\\operatorname{Spec}k[x]$.",
+          "Assista a um video sobre dimensao de Krull, criterio jacobiano e uma introducao a esquemas para amarrar o horizonte da trilha.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (dimensao = trdeg, criterio jacobiano posto $n-d$, $\\operatorname{Spec}$ e primos)."
+        ],
+        "searchQueries": [
+          "dimensao de Krull grau de transcendencia variedade afim",
+          "criterio jacobiano ponto singular suave posto matriz",
+          "espaco tangente de Zariski m/m^2 anel local regular",
+          "Spec de um anel pontos primos ponto generico topologia de Zariski",
+          "Krull dimension transcendence degree function field variety",
+          "Jacobian criterion smooth singular points scheme Spec introduction"
+        ],
+        "videos": [
+          {
+            "title": "Dimension, tangent space and the Jacobian criterion",
+            "channel": "Andreas Gathmann / cursos de Algebraic Geometry",
+            "note": "Procure as aulas sobre dimension, smoothness e Jacobian criterion; seguem as notas gratuitas com exemplos de curvas singulares."
+          },
+          {
+            "title": "Introduction to schemes and Spec",
+            "channel": "Richard Borcherds",
+            "note": "Busque a serie sobre schemes/Spec R; boa ponte de variedades a esquemas com $\\operatorname{Spec}\\mathbb{Z}$."
+          },
+          {
+            "title": "Krull dimension e localizacao (algebra comutativa)",
+            "channel": "Michael Penn / canais de matematica universitaria",
+            "note": "Procure videos sobre Krull dimension e cadeias de primos para reforcar a definicao algebrica de dimensao."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Algebraic Geometry, Cap. I.1 (dimensao), I.5 (suavidade), II.1-II.2 (feixes, esquemas)",
+            "where": "Robin Hartshorne, Algebraic Geometry (Springer GTM 52)"
+          },
+          {
+            "title": "Foundations of Algebraic Geometry (Spec, feixes, esquemas)",
+            "where": "Ravi Vakil, The Rising Sea (notas de curso, Stanford)"
+          },
+          {
+            "title": "Introduction to Commutative Algebra, cap. 11 (teoria de dimensao)",
+            "where": "M. F. Atiyah & I. G. MacDonald"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1542 @@
+{
+  "id": "edp",
+  "title": "Equações Diferenciais Parciais",
+  "phase": 2,
+  "phaseLabel": "Avançado / Pré-Pós",
+  "tagline": "Da equação do transporte às soluções fracas: aprenda a domar o calor, a onda e o potencial com rigor de pós-graduação.",
+  "summary": "Equações Diferenciais Parciais (EDPs) descrevem fenômenos em que uma grandeza depende de várias variáveis e suas taxas de variação se relacionam: difusão de calor, propagação de ondas, equilíbrio de potenciais. Esta trilha constrói a teoria a partir das EDPs de primeira ordem e do método das características, passa pela classificação ($\\delta=B^2-AC$) e pelas três equações-modelo — calor $u_t=k\\Delta u$, onda $u_{tt}=c^2\\Delta u$ e Laplace $\\Delta u=0$ — e culmina nos princípios do máximo, funções de Green e na noção moderna de solução fraca. O foco é o rigor: enunciar com precisão, provar o essencial e entender por que cada técnica funciona.",
+  "bigPicture": "EDPs são o ponto de encontro entre análise, geometria e física-matemática. Elas consolidam tudo que você aprendeu em EDO (problemas de Cauchy, existência e unicidade) e em Análise Real 2 (convergência de séries, integração, completude) e abrem a porta para Análise Funcional, Teoria da Medida e Geometria Diferencial — os pilares do mestrado em matemática pura. As séries de Fourier nascidas aqui reaparecem em análise harmônica; os espaços de Sobolev sustentam a teoria moderna de EDPs e o método de elementos finitos. Em concursos de Instituto Federal, EDP raramente é um tópico isolado, mas separação de variáveis, séries de Fourier e as equações clássicas aparecem em editais de Matemática Aplicada e Física-Matemática. Em provas de mestrado e exames de qualificação, classificação, método das características, separação de variáveis, fórmula de d'Alembert e princípio do máximo são clássicos recorrentes, e o vocabulário de soluções fracas é exigido em qualquer programa sério de PDE/Análise.",
+  "prereqs": [
+    "edo",
+    "analise-real-2"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 52,
+  "primaryBooks": [
+    {
+      "title": "Partial Differential Equations",
+      "author": "Lawrence C. Evans",
+      "note": "A referência de pós-graduação por excelência (AMS GSM 19); rigor e generalidade. Use o cap. 2 para as quatro equações-modelo e fórmulas de representação, e os caps. 5-6 para espaços de Sobolev e soluções fracas.",
+      "chapters": "caps. 2, 3 (método das características), 5-6"
+    },
+    {
+      "title": "Partial Differential Equations: An Introduction",
+      "author": "Walter A. Strauss",
+      "note": "Texto introdutório claríssimo; ideal para construir intuição de separação de variáveis, séries de Fourier e as equações clássicas antes de encarar o Evans.",
+      "chapters": "caps. 1-7"
+    },
+    {
+      "title": "Análise de Fourier e Equações Diferenciais Parciais",
+      "author": "Djairo Guedes de Figueiredo",
+      "note": "Clássico brasileiro (Projeto Euclides, IMPA). Excelente para séries de Fourier com rigor, problemas de Sturm-Liouville e as equações do calor, onda e Laplace em domínios limitados.",
+      "chapters": "caps. 1-5"
+    },
+    {
+      "title": "EDP: Um Curso de Graduação",
+      "author": "Valéria Iório",
+      "note": "Texto brasileiro (Coleção Matemática Universitária, IMPA) com forte ênfase em distribuições e soluções fracas em nível acessível; ótimo complemento ao último subtópico.",
+      "chapters": "caps. 1-4"
+    },
+    {
+      "title": "Partial Differential Equations",
+      "author": "Fritz John",
+      "note": "Clássico conciso e rigoroso; tratamento elegante do método das características, classificação e do problema de Cauchy. Bom para aprofundar a teoria de primeira ordem.",
+      "chapters": "caps. 1-3"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.152 Introduction to Partial Differential Equations",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "MIT OCW 18.303 Linear Partial Differential Equations: Analysis and Numerics",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Lecture Notes on PDE (acompanham o livro de L. C. Evans)",
+      "kind": "notas",
+      "ref": "Evans, Partial Differential Equations, AMS"
+    },
+    {
+      "title": "Paul's Online Math Notes — Partial Differential Equations",
+      "kind": "notas",
+      "ref": "tutorial.math.lamar.edu"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 2,
+    "mestrado": 4,
+    "note": "Em concurso de IF, EDP aparece sobretudo em editais com viés de Matemática Aplicada ou Física-Matemática: separação de variáveis, séries de Fourier e resolução das equações do calor/onda/Laplace em barras e membranas. Em editais de matemática pura é menos frequente que cálculo, álgebra linear e EDO. Em mestrado e exames de qualificação, EDP é tópico padrão: espere classificar EDPs de segunda ordem pelo discriminante, aplicar o método das características a equações quase-lineares, deduzir a fórmula de d'Alembert e a solução por separação de variáveis, usar o princípio do máximo para unicidade do problema de Dirichlet, e reconhecer a fórmula de representação por funções de Green. O vocabulário de derivada fraca, espaços de Sobolev e formulação variacional (Lax-Milgram) é cobrado em programas com ênfase em Análise/EDP."
+  },
+  "subtopics": [
+    {
+      "id": "edp-01-primeira-ordem-caracteristicas",
+      "title": "EDPs de Primeira Ordem e o Método das Características",
+      "tagline": "Transforme uma EDP em um sistema de EDOs viajando ao longo de curvas privilegiadas.",
+      "objectives": [
+        "Classificar uma EDP de primeira ordem como linear, semilinear, quase-linear ou totalmente não linear.",
+        "Resolver a equação do transporte $u_t + b\\cdot Du = 0$ e interpretar a solução como propagação a velocidade constante.",
+        "Aplicar o método das características para reduzir uma EDP quase-linear a um sistema de EDOs (o sistema característico).",
+        "Enunciar e usar a condição de transversalidade que garante solução local do problema de Cauchy.",
+        "Reconhecer a formação de choques (perda de regularidade) em equações como a de Burgers."
+      ],
+      "keyConcepts": [
+        {
+          "term": "EDP de primeira ordem",
+          "statement": "Uma relação $F(x,u(x),Du(x))=0$ envolvendo a incógnita $u$ e apenas suas derivadas parciais de primeira ordem; em duas variáveis, $F(x,y,u,u_x,u_y)=0$."
+        },
+        {
+          "term": "Equação quase-linear",
+          "statement": "Tem a forma $a(x,y,u)\\,u_x + b(x,y,u)\\,u_y = c(x,y,u)$: linear nas derivadas de mais alta ordem ($u_x,u_y$), mas os coeficientes podem depender de $u$. Se $a,b$ não dependem de $u$, é semilinear; se além disso $c$ é afim em $u$, é linear."
+        },
+        {
+          "term": "Curva característica",
+          "statement": "Curva no espaço $(x,y,z)$ traçada pelo sistema característico $\\dot x = a,\\ \\dot y = b,\\ \\dot z = c$. Sua projeção no plano $(x,y)$ é a característica base; ao longo dela a EDP vira uma EDO para $z=u$."
+        },
+        {
+          "term": "Equação do transporte",
+          "statement": "A EDP linear $u_t + b\\cdot D_x u = 0$ em $\\mathbb{R}^n\\times(0,\\infty)$, com $b\\in\\mathbb{R}^n$ constante; descreve uma quantidade que é simplesmente arrastada (advectada) com velocidade $b$."
+        },
+        {
+          "term": "Condição de transversalidade",
+          "statement": "A curva inicial $\\Gamma$ que carrega o dado de Cauchy não pode ser tangente às características: o jacobiano da mudança de variáveis $(s,t)\\mapsto(x,y)$ deve ser não nulo, $a\\,y_s - b\\,x_s \\neq 0$, onde $s$ parametriza $\\Gamma$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Solução da equação do transporte",
+          "statement": "O problema de valor inicial $u_t + b\\cdot D u = 0$ em $\\mathbb{R}^n\\times(0,\\infty)$, $u(\\cdot,0)=g$, com $g\\in C^1(\\mathbb{R}^n)$, tem solução única $u(x,t)=g(x-tb)$. Ela é constante ao longo das retas características $\\{x-tb = \\text{const}\\}$.",
+          "whyItMatters": "É o exemplo mais simples e o paradigma de toda a teoria: a informação propaga a velocidade finita e constante. A fórmula $u(x,t)=g(x-tb)$ mostra que a regularidade do dado inicial é exatamente preservada — não há suavização, ao contrário do calor."
+        },
+        {
+          "name": "Método das características (existência local)",
+          "statement": "Para a EDP quase-linear $a\\,u_x + b\\,u_y = c$ com dado $u=u_0$ sobre uma curva inicial $\\Gamma$ de classe $C^1$, se $a,b,c$ são $C^1$ e a condição de transversalidade vale num ponto de $\\Gamma$, então existe uma única solução $C^1$ de classe definida numa vizinhança desse ponto, obtida resolvendo o sistema característico $\\dot x=a,\\ \\dot y=b,\\ \\dot z=c$.",
+          "whyItMatters": "Reduz uma EDP a um sistema de EDOs, transferindo todo o poder do Teorema de Picard-Lindelöf para EDPs de primeira ordem. A transversalidade é o que impede que os dados se contradigam ao serem transportados — quando ela falha, ou não há solução, ou há infinitas."
+        },
+        {
+          "name": "Quebra de regularidade (choques)",
+          "statement": "Para a lei de conservação escalar $u_t + (F(u))_x = 0$ (por exemplo Burgers, $F(u)=u^2/2$, isto é $u_t+u\\,u_x=0$) com dado inicial $u(\\cdot,0)=g$ suave e decrescente em algum ponto, as características se cruzam num tempo finito $t^* = -1/\\min g'$, e não existe solução clássica $C^1$ além de $t^*$.",
+          "whyItMatters": "Mostra que mesmo com dado inicial $C^\\infty$ a solução clássica pode deixar de existir — a motivação física e matemática para a noção de solução fraca, retomada no último subtópico."
+        }
+      ],
+      "summary": "O método das características é a ideia de que, ao longo de certas curvas privilegiadas no domínio, uma EDP de primeira ordem se reduz a uma EDO ordinária. Para a equação quase-linear $a(x,y,u)u_x+b(x,y,u)u_y=c(x,y,u)$, escrevemos o sistema característico $\\dot x = a,\\ \\dot y = b,\\ \\dot z = c$, parametrizamos o dado inicial sobre uma curva $\\Gamma$ por $s$ e integramos cada característica a partir de $\\Gamma$. Geometricamente, $(a,b,c)$ é o campo vetorial tangente ao gráfico da solução $z=u(x,y)$, vista como superfície em $\\mathbb{R}^3$: a solução é uma superfície tecida por curvas características. Para que essa construção produza uma função bem definida $u(x,y)$, precisamos da condição de transversalidade, que garante que a aplicação $(s,t)\\mapsto(x,y)$ seja inversível localmente (jacobiano não nulo).\n\nQuando $\\Gamma$ é tangente a uma característica, o problema de Cauchy é mal-posto: ou os dados são incompatíveis (nenhuma solução) ou redundantes (infinitas). E mesmo quando começamos bem, no caso não linear as características podem se cruzar, ponto em que a solução clássica deixa de existir e nasce um choque — o caso modelo é a equação de Burgers. Esse fenômeno é a razão histórica para se ampliar o conceito de solução, o que será feito no estudo das soluções fracas.",
+      "commonPitfalls": [
+        "Confundir o parâmetro $t$ ao longo da característica com a variável temporal física: em equações evolutivas eles coincidem só após escolher a parametrização certa; em geral $t$ é apenas o parâmetro de integração da EDO.",
+        "Esquecer de verificar a condição de transversalidade antes de afirmar existência/unicidade — sem ela, a 'solução' pode ser inconsistente.",
+        "Tratar a equação de Burgers como se a solução clássica existisse para todo tempo; ela só existe até as características se cruzarem.",
+        "Parametrizar mal a curva inicial $\\Gamma$, esquecendo de impor $z(s,0)=u_0(s)$ além de $x(s,0)$ e $y(s,0)$."
+      ],
+      "worked": "**Problema.** Resolver $u_x + u_y = u$ com $u(x,0)=\\cos x$. **Solução.** Sistema característico: $\\dot x = 1,\\ \\dot y = 1,\\ \\dot z = z$. Parametrizamos o dado sobre $\\Gamma=\\{y=0\\}$ por $s$: $x(s,0)=s,\\ y(s,0)=0,\\ z(s,0)=\\cos s$. Integrando em $t$: $x=s+t,\\ y=t,\\ z=\\cos s\\,e^{t}$. Transversalidade: o jacobiano $\\partial(x,y)/\\partial(s,t)=\\det\\begin{pmatrix}1 & 1\\\\ 0 & 1\\end{pmatrix}=1\\neq 0$, ok. Invertendo: $t=y,\\ s=x-y$. Logo $u(x,y)=e^{y}\\cos(x-y)$. **Verificação.** $u_x=-e^y\\sin(x-y)$, $u_y=e^y\\cos(x-y)+e^y\\sin(x-y)$, então $u_x+u_y=e^y\\cos(x-y)=u$, e $u(x,0)=\\cos x$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Resolva a equação do transporte $u_t + 3u_x = 0$ em $\\mathbb{R}\\times(0,\\infty)$ com $u(x,0)=e^{-x^2}$. Esboce mentalmente o gráfico em $t=0$ e $t=1$.",
+          "hint": "A solução é constante ao longo de $x-3t=\\text{const}$; logo $u(x,t)=g(x-3t)$ com $g(x)=e^{-x^2}$. O perfil apenas se desloca para a direita com velocidade $3$.",
+          "difficulty": 1,
+          "solution": "A equacao do transporte $u_t+c\\,u_x=0$ tem solucoes constantes ao longo das retas caracteristicas $x-ct=\\text{const}$. Aqui $c=3$. Ao longo de uma caracteristica $\\frac{d}{dt}u(x(t),t)=u_t+3u_x=0$, logo $u$ e constante e vale o dado no instante inicial. A caracteristica que passa por $(x,t)$ partiu de $x_0=x-3t$ em $t=0$, onde $u=g(x_0)=e^{-x_0^2}$. Portanto $$u(x,t)=g(x-3t)=e^{-(x-3t)^2}.$$ **Verificacao:** $u_t=-2(x-3t)(-3)e^{-(x-3t)^2}=6(x-3t)e^{-(x-3t)^2}$ e $u_x=-2(x-3t)e^{-(x-3t)^2}$, donde $u_t+3u_x=0$ e $u(x,0)=e^{-x^2}$. **Grafico:** em $t=0$ e a gaussiana centrada em $0$; em $t=1$ e a mesma gaussiana, de forma identica (nao ha suavizacao nem deformacao), apenas transladada para a direita ate ficar centrada em $x=3$. A velocidade do perfil e $3$. $\\blacksquare$",
+          "steps": [
+            "Reconheca a estrutura: e a equacao do transporte com velocidade $c=3$, cuja solucao geral e $u(x,t)=g(x-ct)$.",
+            "Identifique o dado inicial $g(x)=e^{-x^2}$ e substitua o argumento $x\\to x-3t$.",
+            "Escreva $u(x,t)=e^{-(x-3t)^2}$ e confira derivando que $u_t+3u_x=0$ e $u(x,0)=g(x)$.",
+            "Interprete: o perfil gaussiano apenas se desloca para a direita com velocidade $3$, sem mudar de forma — em $t=1$ esta centrado em $x=3$."
+          ]
+        },
+        {
+          "prompt": "Use o método das características para resolver $x\\,u_x + y\\,u_y = 2u$ com $u(x,1)=x^2$ (dado sobre a reta $y=1$), no semiplano $y>0$.",
+          "hint": "Característico: $\\dot x = x,\\ \\dot y=y,\\ \\dot z=2z$. Com $x(s,0)=s, y(s,0)=1, z(s,0)=s^2$: $x=se^t,\\ y=e^t,\\ z=s^2 e^{2t}$. Note que $z=(se^t)^2=x^2$ não depende explicitamente de $y$... cheque eliminando $s,t$: $e^t=y$, $s=x/y$, logo $u=s^2e^{2t}=(x/y)^2 y^2=x^2$. Resposta: $u(x,y)=x^2$.",
+          "difficulty": 3,
+          "solution": "Equacao quase-linear $x\\,u_x+y\\,u_y=2u$, dado $u(x,1)=x^2$. Sistema caracteristico: $\\dot x=x,\\ \\dot y=y,\\ \\dot z=2z$. Parametrizamos a curva inicial $\\Gamma=\\{y=1\\}$ por $s$: $x(s,0)=s,\\ y(s,0)=1,\\ z(s,0)=s^2$. **Transversalidade:** ao longo de $\\Gamma$, $x_s=1,\\ y_s=0$, e $(a,b)=(x,y)=(s,1)$; o jacobiano $a\\,y_s-b\\,x_s=s\\cdot0-1\\cdot1=-1\\neq0$, logo o problema e bem-posto. **Integracao:** $x(s,t)=s\\,e^{t},\\ y(s,t)=e^{t},\\ z(s,t)=s^2 e^{2t}$. **Inversao:** de $y=e^{t}$ obtemos $e^{t}=y$ e de $x=s e^{t}$ obtemos $s=x/y$. Logo $$u(x,y)=z=s^2 e^{2t}=\\Big(\\frac{x}{y}\\Big)^2 y^2=x^2.$$ **Verificacao:** com $u=x^2$: $u_x=2x,\\ u_y=0$, entao $x\\cdot2x+y\\cdot0=2x^2=2u$, e $u(x,1)=x^2$. A solucao e $u(x,y)=x^2$ em todo o semiplano $y>0$. $\\blacksquare$",
+          "steps": [
+            "Monte o sistema caracteristico $\\dot x=x,\\ \\dot y=y,\\ \\dot z=2z$ e parametrize $\\Gamma=\\{y=1\\}$ por $s$ com $z(s,0)=s^2$.",
+            "Cheque a transversalidade: jacobiano $a y_s-b x_s=-1\\neq0$, garantindo solucao local unica.",
+            "Integre cada EDO: $x=se^t,\\ y=e^t,\\ z=s^2e^{2t}$.",
+            "Elimine $s,t$ usando $e^t=y$ e $s=x/y$, obtendo $u=(x/y)^2 y^2=x^2$.",
+            "Verifique substituindo na EDP e no dado inicial."
+          ]
+        },
+        {
+          "prompt": "Para a equação de Burgers $u_t + u\\,u_x = 0$ com $u(x,0)=g(x)$ decrescente e suave, mostre que ao longo de cada característica $u$ é constante e que a característica que parte de $x_0$ é a reta $x=x_0+g(x_0)t$. Deduza o tempo do primeiro choque $t^*=-1/\\min_{x_0} g'(x_0)$.",
+          "hint": "Característico: $\\dot x=z,\\ \\dot z=0$, então $z\\equiv g(x_0)$ e $x=x_0+g(x_0)t$. Duas características se cruzam quando $\\partial x/\\partial x_0 = 1+g'(x_0)t=0$; o primeiro cruzamento ocorre para $t$ mínimo positivo, dado por $g'(x_0)$ o mais negativo possível.",
+          "difficulty": 4,
+          "solution": "Para a equacao de Burgers $u_t+u\\,u_x=0$ escrevemos a variavel dependente como $z=u$ e parametrizamos o dado inicial por $x_0$: $x(x_0,0)=x_0,\\ t(x_0,0)=0,\\ z(x_0,0)=g(x_0)$. O sistema caracteristico (tomando $t$ como parametro) e $\\frac{dx}{dt}=z,\\ \\frac{dz}{dt}=0$. **1) $u$ e constante:** $\\frac{dz}{dt}=0\\Rightarrow z(x_0,t)=g(x_0)$ para todo $t$; ou seja, $u$ mantem o valor inicial ao longo da caracteristica. **2) A caracteristica e reta:** como $\\frac{dx}{dt}=z=g(x_0)$ e constante em $t$, integrando obtemos $$x=x_0+g(x_0)\\,t,$$ uma reta de inclinacao (no plano $x$-$t$) determinada por $g(x_0)$. **3) Tempo de choque:** a aplicacao $(x_0,t)\\mapsto x$ deixa de ser inversivel quando $\\frac{\\partial x}{\\partial x_0}=1+g'(x_0)\\,t=0$, isto e, em $t=-1/g'(x_0)$. Isso so da $t>0$ quando $g'(x_0)<0$ (dado decrescente). O primeiro cruzamento de caracteristicas (nascimento do choque) ocorre no menor tal $t$, obtido tornando $g'(x_0)$ o mais negativo possivel: $$t^*=\\frac{-1}{\\min_{x_0} g'(x_0)}.$$ Alem de $t^*$ nao existe solucao classica $C^1$, pois duas caracteristicas com valores distintos de $u$ colidem no mesmo ponto. $\\blacksquare$",
+          "steps": [
+            "Escreva o sistema caracteristico da Burgers: $\\dot x=z,\\ \\dot z=0$, com dado $z(x_0,0)=g(x_0)$.",
+            "De $\\dot z=0$ conclua que $u=z$ e constante ao longo de cada caracteristica.",
+            "Integre $\\dot x=g(x_0)$ (constante) para obter a reta $x=x_0+g(x_0)t$.",
+            "Imponha o cruzamento: $\\partial x/\\partial x_0=1+g'(x_0)t=0$ da $t=-1/g'(x_0)$.",
+            "Minimize sobre $x_0$: o primeiro choque ocorre em $t^*=-1/\\min_{x_0}g'(x_0)$, positivo apenas se $g$ decresce em algum ponto."
+          ]
+        },
+        {
+          "prompt": "Mostre por que o problema de Cauchy $u_x + u_y = 1$ com dado sobre a reta característica $\\Gamma=\\{y=x\\}$ não admite solução se o dado for $u(x,x)=0$, mas admite infinitas se o dado for compatível. Identifique a falha de transversalidade.",
+          "hint": "As características base satisfazem $\\dot x=\\dot y=1$, isto é, retas $y=x+\\text{const}$, paralelas a $\\Gamma$. Sobre $\\Gamma$, a EDP impõe $\\frac{d}{ds}u(s,s)=u_x+u_y=1$, contradizendo $u\\equiv 0$. O jacobiano $a y_s - b x_s = 1\\cdot 1 - 1\\cdot 1 = 0$: transversalidade falha.",
+          "difficulty": 3,
+          "solution": "As caracteristicas base de $u_x+u_y=1$ satisfazem $\\dot x=1,\\ \\dot y=1$, logo sao as retas $y=x+\\text{const}$, TODAS paralelas a curva inicial $\\Gamma=\\{y=x\\}$. Isso ja e o sinal de que a transversalidade falha. **Falha de transversalidade:** parametrizando $\\Gamma$ por $s$ como $(x,y)=(s,s)$, temos $x_s=1,\\ y_s=1$; com $(a,b)=(1,1)$ o jacobiano e $a\\,y_s-b\\,x_s=1\\cdot1-1\\cdot1=0$. A curva inicial e ela propria uma caracteristica. **Compatibilidade do dado:** ao longo de $\\Gamma$ a EDP impoe $\\frac{d}{ds}u(s,s)=u_x\\,x_s+u_y\\,y_s=u_x+u_y=1$. **Caso $u(x,x)=0$:** entao $\\frac{d}{ds}u(s,s)=0$, contradizendo $=1$ (teriamos $0=1$). Logo NAO existe solucao: o dado transportado pela equacao contradiz o dado prescrito. **Caso compativel:** se o dado for $u(x,x)=x+\\text{c}$ (para o qual $\\frac{d}{ds}u(s,s)=1$, consistente com a EDP), entao ha INFINITAS solucoes. De fato, a solucao geral e $u(x,y)=x+\\varphi(y-x)$ para qualquer $\\varphi\\in C^1$ (pois $u_x+u_y=1+\\varphi'(y-x)(-1)+\\varphi'(y-x)(1)=1$); sobre $\\Gamma$, $y-x=0$, e $u(x,x)=x+\\varphi(0)$ so fixa o valor $\\varphi(0)$, deixando $\\varphi$ livre fora de $0$. Conclusao: quando $\\Gamma$ e caracteristica, o problema de Cauchy e mal-posto — sem solucao (dado incompativel) ou com infinitas (dado compativel). $\\blacksquare$",
+          "steps": [
+            "Ache as caracteristicas base: $\\dot x=\\dot y=1$ da retas $y=x+\\text{const}$, paralelas a $\\Gamma=\\{y=x\\}$.",
+            "Calcule o jacobiano de transversalidade sobre $\\Gamma$: $a y_s-b x_s=1-1=0$, logo falha.",
+            "Derive o dado ao longo de $\\Gamma$: a EDP forca $\\frac{d}{ds}u(s,s)=u_x+u_y=1$.",
+            "Confronte com $u(x,x)=0$: obtem $0=1$, contradicao — nenhuma solucao.",
+            "Para dado compativel ($\\frac{d}{ds}u(s,s)=1$), exiba a familia $u=x+\\varphi(y-x)$ com $\\varphi$ arbitraria — infinitas solucoes."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Solução da equação do transporte $u_t+b\\cdot Du=0$, $u(\\cdot,0)=g$",
+          "back": "$u(x,t)=g(x-tb)$; a solução é constante ao longo das retas características $x-tb=\\text{const}$."
+        },
+        {
+          "front": "Sistema característico de $a\\,u_x+b\\,u_y=c$",
+          "back": "$\\dot x=a,\\quad \\dot y=b,\\quad \\dot z=c$, com $z=u$ ao longo da curva. A EDP vira uma EDO em $z$."
+        },
+        {
+          "front": "Equação quase-linear de primeira ordem",
+          "back": "$a(x,y,u)u_x+b(x,y,u)u_y=c(x,y,u)$: linear nas derivadas, coeficientes podendo depender de $u$."
+        },
+        {
+          "front": "Condição de transversalidade (2 variáveis)",
+          "back": "A curva inicial $\\Gamma(s)$ não é tangente às características: $a\\,y_s-b\\,x_s\\neq 0$ (jacobiano de $(s,t)\\mapsto(x,y)$ não nulo)."
+        },
+        {
+          "front": "Por que se formam choques na equação de Burgers?",
+          "back": "Características são retas $x=x_0+g(x_0)t$; se $g$ decresce, elas se cruzam em tempo finito $t^*=-1/\\min g'$, e a solução clássica deixa de existir."
+        },
+        {
+          "front": "Interpretação geométrica do vetor $(a,b,c)$",
+          "back": "É tangente ao gráfico $z=u(x,y)$ da solução, vista como superfície em $\\mathbb{R}^3$; a solução é varrida por curvas características."
+        },
+        {
+          "front": "Diferença entre semilinear e quase-linear",
+          "back": "Semilinear: coeficientes de $u_x,u_y$ NÃO dependem de $u$. Quase-linear: podem depender de $u$ (mas a equação ainda é linear nas derivadas)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Evans, Partial Differential Equations, §2.1 e cap. 3",
+          "ref": "livro"
+        },
+        {
+          "title": "Fritz John, Partial Differential Equations, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "Strauss, PDE: An Introduction, cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise o Teorema de Picard-Lindelof (existencia/unicidade de EDO) — o metodo das caracteristicas depende inteiramente dele. Garanta que voce sabe resolver sistemas lineares de EDOs de 1a ordem.",
+          "Leia Strauss cap. 1 (equacao do transporte e do trafego) e Evans cap. 3.1-3.2 devagar, refazendo com lapis a deducao do sistema caracteristico $\\dot x=a,\\ \\dot y=b,\\ \\dot z=c$.",
+          "Faca o desenho: para cada exemplo, esboce as caracteristicas base no plano $(x,y)$ e marque a curva inicial $\\Gamma$. Verifique visualmente a condicao de transversalidade (nao tangencia).",
+          "Estude o caso nao linear (Burgers): trace as retas caracteristicas $x=x_0+g(x_0)t$ para varios $x_0$ e veja-as se cruzarem — ache o tempo de choque $t^*=-1/\\min g'$ em pelo menos dois dados iniciais.",
+          "Assista a uma aula sobre first-order PDE / characteristics para consolidar a intuicao geometrica de $(a,b,c)$ como campo tangente ao grafico da solucao.",
+          "Volte ao app, resolva os testes deste subtopico sem olhar as dicas e anote aqui o principal (o passo a passo do metodo e o criterio de transversalidade)."
+        ],
+        "searchQueries": [
+          "metodo das caracteristicas EDP primeira ordem exemplos resolvidos",
+          "equacao do transporte solucao u(x,t)=g(x-tb)",
+          "equacao de Burgers formacao de choque tempo t*",
+          "condicao de transversalidade problema de Cauchy caracteristicas",
+          "method of characteristics quasilinear first order PDE",
+          "characteristic curves Cauchy problem transversality condition"
+        ],
+        "videos": [
+          {
+            "title": "Serie de EDP / First Order PDE",
+            "channel": "MIT OpenCourseWare (18.152 / 18.303)",
+            "note": "Procure as aulas iniciais sobre first-order equations e the method of characteristics; excelente para a transicao EDO -> EDP."
+          },
+          {
+            "title": "Method of Characteristics",
+            "channel": "Dr. Peyam",
+            "note": "Videos curtos resolvendo EDPs de 1a ordem passo a passo; bom para ver a mecanica do sistema caracteristico."
+          },
+          {
+            "title": "Equacoes Diferenciais Parciais",
+            "channel": "Matematica Universitaria",
+            "note": "Busque 'metodo das caracteristicas' e 'equacao do transporte' em portugues para acompanhar a notacao dos livros brasileiros."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Partial Differential Equations, cap. 3 (nonlinear first-order PDE)",
+            "where": "L. C. Evans, AMS GSM 19"
+          },
+          {
+            "title": "PDE: An Introduction, cap. 1 (Where PDEs come from; the transport equation)",
+            "where": "Walter A. Strauss"
+          },
+          {
+            "title": "Partial Differential Equations, cap. 1",
+            "where": "Fritz John"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edp-02-classificacao-segunda-ordem",
+      "title": "Classificação das EDPs de Segunda Ordem e Formas Canônicas",
+      "tagline": "Hiperbólica, parabólica ou elíptica: o sinal de um discriminante decide tudo.",
+      "objectives": [
+        "Escrever a forma geral de uma EDP linear de segunda ordem em duas variáveis e identificar seus coeficientes principais.",
+        "Calcular o discriminante $\\delta=B^2-AC$ e classificar a equação como hiperbólica, parabólica ou elíptica.",
+        "Encontrar as curvas características e usar a mudança de variáveis que leva à forma canônica.",
+        "Reconhecer as três equações-modelo (onda, calor, Laplace) como protótipos de cada tipo.",
+        "Estender a classificação a $n$ variáveis via os autovalores da matriz dos coeficientes principais."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Forma geral (2 variáveis)",
+          "statement": "$A\\,u_{xx}+2B\\,u_{xy}+C\\,u_{yy}+D\\,u_x+E\\,u_y+Fu=G$, onde $A,B,C,\\dots$ podem depender de $(x,y)$. A parte principal é a de segunda ordem $A\\,u_{xx}+2B\\,u_{xy}+C\\,u_{yy}$, e só ela importa para a classificação."
+        },
+        {
+          "term": "Discriminante",
+          "statement": "$\\delta = B^2 - AC$. A equação é hiperbólica onde $\\delta>0$, parabólica onde $\\delta=0$ e elíptica onde $\\delta<0$. Como $A,B,C$ podem variar, o tipo pode mudar de região para região (equações de tipo misto, como a de Tricomi)."
+        },
+        {
+          "term": "Curvas características",
+          "statement": "Curvas $\\phi(x,y)=\\text{const}$ que satisfazem a equação característica $A\\,dy^2 - 2B\\,dx\\,dy + C\\,dx^2=0$, equivalentemente $A\\left(\\frac{dy}{dx}\\right)^2 - 2B\\frac{dy}{dx}+C=0$. Hiperbólicas têm duas famílias reais; parabólicas, uma; elípticas, nenhuma (raízes complexas)."
+        },
+        {
+          "term": "Forma canônica",
+          "statement": "Após a mudança de variáveis adequada, a parte principal se reduz a: hiperbólica $\\to u_{\\xi\\eta}=\\dots$ (ou $u_{\\xi\\xi}-u_{\\eta\\eta}=\\dots$); parabólica $\\to u_{\\eta\\eta}=\\dots$; elíptica $\\to u_{\\xi\\xi}+u_{\\eta\\eta}=\\dots$ Os '$\\dots$' são termos de ordem inferior."
+        },
+        {
+          "term": "Classificação em $n$ variáveis",
+          "statement": "Para $\\sum_{i,j} a_{ij}u_{x_ix_j}+\\dots$, escreve-se a matriz simétrica $A=(a_{ij})$ e olha-se o sinal dos autovalores: elíptica se todos têm o mesmo sinal (não nulos), hiperbólica se um tem sinal oposto aos demais (todos não nulos), parabólica se algum autovalor é nulo."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Invariância do tipo por mudança de coordenadas",
+          "statement": "Sob uma mudança de variáveis $C^2$ inversível $(\\xi,\\eta)=\\Psi(x,y)$, o sinal do discriminante $\\delta=B^2-AC$ da parte principal é preservado (multiplicado pelo quadrado do jacobiano, que é positivo). Em $n$ variáveis, a assinatura (número de autovalores positivos, negativos e nulos) da matriz dos coeficientes principais é invariante por mudanças de coordenadas, pela lei de inércia de Sylvester.",
+          "whyItMatters": "Garante que 'hiperbólica/parabólica/elíptica' é uma propriedade intrínseca da equação, não do sistema de coordenadas. É o que torna a classificação significativa: ela reflete o comportamento real das soluções (propagação, difusão, equilíbrio)."
+        },
+        {
+          "name": "Redução à forma canônica (caso hiperbólico)",
+          "statement": "Se $\\delta=B^2-AC>0$, a equação característica tem duas raízes reais distintas $\\lambda_1,\\lambda_2$. As soluções $\\phi(x,y)=c_1$, $\\psi(x,y)=c_2$ de $dy/dx=\\lambda_1$ e $dy/dx=\\lambda_2$ fornecem coordenadas $\\xi=\\phi,\\ \\eta=\\psi$ nas quais a parte principal vira $u_{\\xi\\eta}$ (a menos de termos de ordem inferior).",
+          "whyItMatters": "Mostra explicitamente por que a equação da onda tem soluções da forma $F(x-ct)+G(x+ct)$: nas coordenadas características $\\xi=x-ct,\\eta=x+ct$ ela vira simplesmente $u_{\\xi\\eta}=0$, integrável de imediato."
+        }
+      ],
+      "summary": "Toda EDP linear de segunda ordem em duas variáveis tem o comportamento qualitativo de uma das três equações-modelo, e quem decide é o discriminante $\\delta=B^2-AC$ da parte principal $A u_{xx}+2B u_{xy}+C u_{yy}$. Se $\\delta>0$ (hiperbólica, protótipo $u_{tt}-c^2u_{xx}=0$), há duas famílias reais de características e as soluções propagam sinais ao longo delas. Se $\\delta=0$ (parabólica, protótipo $u_t-ku_{xx}=0$), há uma única família e o comportamento é difusivo e suavizante. Se $\\delta<0$ (elíptica, protótipo $u_{xx}+u_{yy}=0$), não há características reais, e as soluções são tipicamente analíticas e governadas por princípios de máximo — descrevem equilíbrio, não evolução.\n\nA técnica operacional é resolver a equação característica $A(dy/dx)^2-2B(dy/dx)+C=0$ para achar as curvas $\\phi,\\psi=\\text{const}$ e usá-las como novas coordenadas $\\xi,\\eta$, em que a parte principal assume a forma canônica. Essa redução não é só estética: ela revela a estrutura. Em $n$ variáveis, abandona-se o discriminante e usa-se a assinatura dos autovalores da matriz simétrica dos coeficientes principais, invariante pela lei de inércia de Sylvester. A classificação é a primeira coisa a fazer diante de qualquer EDP de segunda ordem, pois dita quais métodos (separação de variáveis, energia, princípio do máximo) e que tipo de dados (Cauchy vs. fronteira) são apropriados.",
+      "commonPitfalls": [
+        "Esquecer o fator $2$ no termo misto: o coeficiente de $u_{xy}$ é $2B$, então $B$ é metade dele. Usar $\\delta=(\\text{coef. de }u_{xy})^2-AC$ leva a erro.",
+        "Classificar com base na equação inteira em vez de apenas na parte principal de segunda ordem — termos $u_x,u_y,u$ não afetam o tipo.",
+        "Assumir que o tipo é o mesmo em todo o domínio: quando $A,B,C$ dependem de $(x,y)$, a equação pode mudar de tipo (ex.: equação de Tricomi $y\\,u_{xx}+u_{yy}=0$, hiperbólica para $y<0$ e elíptica para $y>0$).",
+        "Tentar impor dados de Cauchy a uma equação elíptica esperando bom condicionamento — o problema de Cauchy para Laplace é mal-posto (exemplo de Hadamard)."
+      ],
+      "worked": "**Problema.** Classificar e reduzir à forma canônica $u_{xx}+5u_{xy}+6u_{yy}=0$. **Solução.** Aqui $A=1$, $2B=5\\Rightarrow B=\\tfrac52$, $C=6$. Discriminante: $\\delta=B^2-AC=\\tfrac{25}{4}-6=\\tfrac14>0$, logo **hiperbólica**. Equação característica: $\\left(\\frac{dy}{dx}\\right)^2-5\\frac{dy}{dx}+6=0$, isto é (usando $A(dy/dx)^2-2B(dy/dx)+C=0$ com $2B=5$): raízes $\\frac{dy}{dx}=2$ e $\\frac{dy}{dx}=3$. Integrando: $y-2x=c_1$ e $y-3x=c_2$. Tomamos coordenadas $\\xi=y-2x,\\ \\eta=y-3x$. Nessas variáveis a equação se reduz à forma canônica $u_{\\xi\\eta}=0$, cuja solução geral é $u(\\xi,\\eta)=F(\\xi)+G(\\eta)$. Voltando: $u(x,y)=F(y-2x)+G(y-3x)$, com $F,G$ funções $C^2$ arbitrárias. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Classifique $3u_{xx}+10u_{xy}+3u_{yy}=0$ e encontre as curvas características.",
+          "hint": "$A=3,B=5,C=3$, $\\delta=25-9=16>0$ (hiperbólica). Resolva $3\\lambda^2-10\\lambda+3=0$ para $\\lambda=dy/dx$: $\\lambda=3$ ou $\\lambda=1/3$. Características: $y-3x=c_1$ e $3y-x=c_2$.",
+          "difficulty": 2,
+          "solution": "Parte principal de $3u_{xx}+10u_{xy}+3u_{yy}=0$: identificamos $A=3$, coeficiente de $u_{xy}$ igual a $10=2B\\Rightarrow B=5$, e $C=3$. **Discriminante:** $\\delta=B^2-AC=25-9=16>0$, logo a equacao e **hiperbolica** em todo o plano. **Curvas caracteristicas:** resolvemos $A\\big(\\tfrac{dy}{dx}\\big)^2-2B\\tfrac{dy}{dx}+C=0$, isto e $3\\lambda^2-10\\lambda+3=0$ com $\\lambda=dy/dx$. Pela formula, $\\lambda=\\frac{10\\pm\\sqrt{100-36}}{6}=\\frac{10\\pm8}{6}$, dando $\\lambda_1=3$ e $\\lambda_2=\\tfrac13$. Integrando: $\\frac{dy}{dx}=3\\Rightarrow y-3x=c_1$ e $\\frac{dy}{dx}=\\tfrac13\\Rightarrow 3y-x=c_2$. As duas familias de caracteristicas sao $$y-3x=\\text{const},\\qquad 3y-x=\\text{const}.$$ Tomando $\\xi=y-3x,\\ \\eta=3y-x$ a equacao se reduz a forma canonica $u_{\\xi\\eta}=0$. $\\blacksquare$",
+          "steps": [
+            "Leia os coeficientes da parte principal: $A=3$, $B=5$ (metade de $10$), $C=3$.",
+            "Calcule $\\delta=B^2-AC=25-9=16>0$: hiperbolica.",
+            "Resolva a equacao caracteristica $3\\lambda^2-10\\lambda+3=0$, obtendo $\\lambda=3$ e $\\lambda=1/3$.",
+            "Integre cada inclinacao: $y-3x=c_1$ e $3y-x=c_2$ sao as duas familias de caracteristicas."
+          ]
+        },
+        {
+          "prompt": "Mostre que a equação de Tricomi $y\\,u_{xx}+u_{yy}=0$ é elíptica para $y>0$, parabólica em $y=0$ e hiperbólica para $y<0$.",
+          "hint": "$A=y,B=0,C=1$, $\\delta=B^2-AC=-y$. Logo $\\delta<0\\iff y>0$ (elíptica), $\\delta=0\\iff y=0$ (parabólica), $\\delta>0\\iff y<0$ (hiperbólica).",
+          "difficulty": 3,
+          "solution": "Para a equacao de Tricomi $y\\,u_{xx}+u_{yy}=0$ a parte principal tem $A=y$, coeficiente de $u_{xy}$ nulo ($B=0$) e $C=1$. **Discriminante:** $\\delta=B^2-AC=0-y\\cdot1=-y$. Como o sinal de $\\delta$ decide o tipo: (i) se $y>0$ entao $\\delta=-y<0$, **eliptica** (comporta-se como Laplace); (ii) se $y=0$ entao $\\delta=0$, **parabolica** (fronteira entre os tipos); (iii) se $y<0$ entao $\\delta=-y>0$, **hiperbolica** (comporta-se como onda). Portanto a mesma equacao muda de tipo conforme a regiao — e o exemplo classico de EDP de tipo misto, importante em aerodinamica transonica. $\\blacksquare$",
+          "steps": [
+            "Identifique a parte principal: $A=y,\\ B=0,\\ C=1$.",
+            "Escreva o discriminante $\\delta=B^2-AC=-y$.",
+            "Analise o sinal: $y>0\\Rightarrow\\delta<0$ (eliptica); $y=0\\Rightarrow\\delta=0$ (parabolica); $y<0\\Rightarrow\\delta>0$ (hiperbolica).",
+            "Conclua que a equacao e de tipo misto, mudando de carater ao cruzar a reta $y=0$."
+          ]
+        },
+        {
+          "prompt": "Para a equação parabólica $u_{xx}-2u_{xy}+u_{yy}=u_x$, encontre a (única) família característica e a mudança de variáveis que a coloca em forma canônica $u_{\\eta\\eta}=\\dots$",
+          "hint": "$A=1,B=-1,C=1$, $\\delta=1-1=0$. Raiz dupla $dy/dx=B/A=-1$, característica $x+y=c$. Tome $\\xi=x+y$ e $\\eta$ qualquer independente (ex. $\\eta=x$); na forma canônica resta apenas a derivada $u_{\\eta\\eta}$ na parte principal.",
+          "difficulty": 4,
+          "solution": "Parte principal de $u_{xx}-2u_{xy}+u_{yy}=u_x$: $A=1$, coeficiente de $u_{xy}$ igual a $-2=2B\\Rightarrow B=-1$, $C=1$. **Discriminante:** $\\delta=B^2-AC=1-1=0$, **parabolica**. **Familia caracteristica (unica):** a equacao $A(\\tfrac{dy}{dx})^2-2B\\tfrac{dy}{dx}+C=0$ vira $\\lambda^2+2\\lambda+1=(\\lambda+1)^2=0$, raiz dupla $\\lambda=dy/dx=-1$, cuja integral e $x+y=\\text{const}$. **Mudanca de variaveis:** tomamos $\\xi=x+y$ (caracteristica) e $\\eta=x$ (independente). Pela regra da cadeia, $u_x=u_\\xi+u_\\eta,\\ u_y=u_\\xi$, e $u_{xx}=u_{\\xi\\xi}+2u_{\\xi\\eta}+u_{\\eta\\eta},\\ u_{xy}=u_{\\xi\\xi}+u_{\\xi\\eta},\\ u_{yy}=u_{\\xi\\xi}$. Substituindo a parte principal: $u_{xx}-2u_{xy}+u_{yy}=(u_{\\xi\\xi}+2u_{\\xi\\eta}+u_{\\eta\\eta})-2(u_{\\xi\\xi}+u_{\\xi\\eta})+u_{\\xi\\xi}=u_{\\eta\\eta}$. O lado direito $u_x=u_\\xi+u_\\eta$. Forma canonica: $$u_{\\eta\\eta}=u_\\xi+u_\\eta.$$ Note que so a derivada $u_{\\eta\\eta}$ sobra na parte principal, como esperado no caso parabolico. $\\blacksquare$",
+          "steps": [
+            "Leia $A=1,\\ B=-1,\\ C=1$ e calcule $\\delta=1-1=0$: parabolica.",
+            "Resolva $(\\lambda+1)^2=0$: raiz dupla $dy/dx=-1$, caracteristica $x+y=$ const.",
+            "Escolha $\\xi=x+y$ e $\\eta=x$ (independente da caracteristica).",
+            "Aplique a regra da cadeia e substitua: a parte principal colapsa em $u_{\\eta\\eta}$.",
+            "Reescreva o lado direito $u_x=u_\\xi+u_\\eta$, obtendo a forma canonica $u_{\\eta\\eta}=u_\\xi+u_\\eta$."
+          ]
+        },
+        {
+          "prompt": "Em $\\mathbb{R}^3$, classifique a EDP $u_{x_1x_1}+u_{x_2x_2}-u_{x_3x_3}=0$ pelos autovalores da matriz dos coeficientes principais.",
+          "hint": "A matriz é $\\operatorname{diag}(1,1,-1)$; autovalores $1,1,-1$. Um sinal oposto aos demais, todos não nulos: hiperbólica (é a equação da onda com $x_3$ no papel do tempo).",
+          "difficulty": 2,
+          "solution": "A EDP $u_{x_1x_1}+u_{x_2x_2}-u_{x_3x_3}=0$ tem parte principal $\\sum_{i,j}a_{ij}u_{x_ix_j}$ com matriz simetrica dos coeficientes $$A=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&-1\\end{pmatrix}=\\operatorname{diag}(1,1,-1).$$ Como $A$ ja e diagonal, seus autovalores sao $1,1,-1$. Pelo criterio em $n$ variaveis: todos os autovalores sao nao nulos e exatamente um ($-1$) tem sinal oposto aos demais ($+1,+1$). Logo a equacao e **hiperbolica**. De fato, escrevendo $x_3$ no papel do tempo ($t=x_3$), ela e a equacao da onda $u_{tt}=u_{x_1x_1}+u_{x_2x_2}$ em duas dimensoes espaciais. $\\blacksquare$",
+          "steps": [
+            "Monte a matriz simetrica dos coeficientes principais: $A=\\operatorname{diag}(1,1,-1)$.",
+            "Como e diagonal, leia os autovalores diretamente: $1,1,-1$.",
+            "Aplique o criterio: todos nao nulos e um com sinal oposto aos demais.",
+            "Conclua: hiperbolica — e a equacao da onda com $x_3$ fazendo o papel do tempo."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Discriminante e classificação de EDP de 2ª ordem (2 var.)",
+          "back": "$\\delta=B^2-AC$ na parte principal $A u_{xx}+2B u_{xy}+C u_{yy}$. $\\delta>0$ hiperbólica, $\\delta=0$ parabólica, $\\delta<0$ elíptica."
+        },
+        {
+          "front": "Protótipos das três classes",
+          "back": "Hiperbólica: onda $u_{tt}=c^2u_{xx}$. Parabólica: calor $u_t=ku_{xx}$. Elíptica: Laplace $u_{xx}+u_{yy}=0$."
+        },
+        {
+          "front": "Equação característica de $Au_{xx}+2Bu_{xy}+Cu_{yy}$",
+          "back": "$A\\,dy^2-2B\\,dx\\,dy+C\\,dx^2=0$, ou $A(dy/dx)^2-2B(dy/dx)+C=0$."
+        },
+        {
+          "front": "Forma canônica hiperbólica",
+          "back": "$u_{\\xi\\eta}=\\dots$ (ou $u_{\\xi\\xi}-u_{\\eta\\eta}=\\dots$) nas coordenadas características $\\xi,\\eta$."
+        },
+        {
+          "front": "Cuidado com o coeficiente do termo misto",
+          "back": "O coeficiente de $u_{xy}$ é $2B$, então $B$ é a metade dele. $\\delta=B^2-AC$, não $(2B)^2-AC$."
+        },
+        {
+          "front": "Classificação em $n$ variáveis",
+          "back": "Pelos autovalores da matriz simétrica $A=(a_{ij})$: mesmo sinal $\\to$ elíptica; um sinal oposto $\\to$ hiperbólica; algum autovalor nulo $\\to$ parabólica."
+        },
+        {
+          "front": "O tipo é invariante por mudança de coordenadas?",
+          "back": "Sim. O sinal de $\\delta$ (e a assinatura dos autovalores, por Sylvester) é preservado por mudanças $C^2$ inversíveis."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Strauss, PDE: An Introduction, cap. 1.6",
+          "ref": "livro"
+        },
+        {
+          "title": "Fritz John, Partial Differential Equations, cap. 2",
+          "ref": "livro"
+        },
+        {
+          "title": "Figueiredo, Análise de Fourier e EDP, cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Relembre formas quadraticas e a diagonalizacao de matrizes simetricas (autovalores reais, lei de inercia de Sylvester) — e o que sustenta a classificacao invariante.",
+          "Leia Strauss 1.6 e Fritz John cap. 2: escreva a forma geral $A u_{xx}+2B u_{xy}+C u_{yy}+\\dots$ e memorize que so a parte principal importa e que o coeficiente de $u_{xy}$ e $2B$.",
+          "Pratique o calculo do discriminante $\\delta=B^2-AC$ e a resolucao da equacao caracteristica $A(dy/dx)^2-2B(dy/dx)+C=0$ em varios exemplos com $A,B,C$ constantes.",
+          "Faca a reducao a forma canonica de pelo menos um caso de cada tipo (hiperbolico, parabolico, eliptico), efetuando a mudanca de variaveis $\\xi,\\eta$ e recalculando as derivadas pela regra da cadeia.",
+          "Estude um exemplo de tipo misto (equacao de Tricomi $y u_{xx}+u_{yy}=0$) para ver o tipo mudar com a regiao.",
+          "Volte ao app, resolva os testes sem as dicas e anote aqui o principal (tabela do sinal de $\\delta$ e o roteiro de reducao a forma canonica)."
+        ],
+        "searchQueries": [
+          "classificacao EDP segunda ordem discriminante hiperbolica parabolica eliptica",
+          "reducao forma canonica EDP exemplos resolvidos",
+          "equacao caracteristica A(dy/dx)^2-2B(dy/dx)+C",
+          "equacao de Tricomi tipo misto classificacao",
+          "classification second order PDE canonical form",
+          "second order PDE classification eigenvalues principal part n variables"
+        ],
+        "videos": [
+          {
+            "title": "Classification of Second-Order PDEs",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas de PDE cobrindo a classificacao pelo discriminante e a conexao com onda/calor/Laplace."
+          },
+          {
+            "title": "Canonical forms of PDEs",
+            "channel": "Dr. Peyam",
+            "note": "Procure videos sobre reduzir EDPs de 2a ordem a forma canonica via mudanca de variaveis."
+          },
+          {
+            "title": "EDP - classificacao e formas canonicas",
+            "channel": "Matematica Universitaria",
+            "note": "Explica em portugues o calculo do discriminante e das curvas caracteristicas."
+          }
+        ],
+        "articles": [
+          {
+            "title": "PDE: An Introduction, sec. 1.6 (Types of second-order equations)",
+            "where": "Walter A. Strauss"
+          },
+          {
+            "title": "Partial Differential Equations, cap. 2 (classificacao)",
+            "where": "Fritz John"
+          },
+          {
+            "title": "Analise de Fourier e EDP, cap. 1",
+            "where": "Djairo G. de Figueiredo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edp-03-calor-fourier",
+      "title": "A Equação do Calor: Separação de Variáveis e Séries de Fourier",
+      "tagline": "Decomponha a temperatura em modos próprios e veja a difusão suavizar tudo.",
+      "objectives": [
+        "Deduzir a equação do calor $u_t=k\\Delta u$ a partir da conservação de energia e da lei de Fourier.",
+        "Aplicar separação de variáveis $u(x,t)=X(x)T(t)$ e reconhecer o problema de Sturm-Liouville resultante.",
+        "Calcular coeficientes de Fourier e enunciar critérios de convergência (pontual de Dirichlet e em $L^2$).",
+        "Escrever a solução fundamental (núcleo do calor) e ler nela suavização instantânea e velocidade de propagação infinita.",
+        "Usar o princípio do máximo parabólico para concluir unicidade e estabilidade do problema."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Equação do calor",
+          "statement": "$u_t = k\\,\\Delta u$ em $\\Omega\\times(0,\\infty)$, $k>0$ a difusividade. Modela difusão de calor, concentração ou probabilidade. É parabólica. Em 1D: $u_t=k\\,u_{xx}$."
+        },
+        {
+          "term": "Separação de variáveis",
+          "statement": "Procura-se $u(x,t)=X(x)T(t)$. Substituindo em $u_t=ku_{xx}$ e dividindo por $kXT$ obtém-se $\\frac{T'}{kT}=\\frac{X''}{X}=-\\lambda$ (constante), pois um lado só depende de $t$ e o outro só de $x$. Resultam $X''+\\lambda X=0$ e $T'+k\\lambda T=0$."
+        },
+        {
+          "term": "Problema de Sturm-Liouville",
+          "statement": "Em $[0,L]$ com condições de Dirichlet $X(0)=X(L)=0$, a equação $X''+\\lambda X=0$ só tem solução não trivial para os autovalores $\\lambda_n=(n\\pi/L)^2$, com autofunções $X_n(x)=\\sin(n\\pi x/L)$, $n=1,2,\\dots$ Essas autofunções são ortogonais em $L^2(0,L)$ e formam base."
+        },
+        {
+          "term": "Série de Fourier",
+          "statement": "Para $g\\in L^2(0,L)$, a série de senos $g(x)\\sim\\sum_{n\\ge1} b_n\\sin\\!\\frac{n\\pi x}{L}$ com $b_n=\\frac{2}{L}\\int_0^L g(x)\\sin\\!\\frac{n\\pi x}{L}\\,dx$. Converge a $g$ na norma de $L^2$; converge pontualmente sob hipóteses adicionais (Dirichlet)."
+        },
+        {
+          "term": "Solução fundamental (núcleo do calor)",
+          "statement": "$\\Phi(x,t)=\\dfrac{1}{(4\\pi k t)^{n/2}}\\,e^{-|x|^2/(4kt)}$ para $x\\in\\mathbb{R}^n,\\ t>0$. Satisfaz $\\Phi_t=k\\Delta\\Phi$ e $\\int_{\\mathbb{R}^n}\\Phi(x,t)\\,dx=1$; a solução em $\\mathbb{R}^n$ é $u(\\cdot,t)=\\Phi(\\cdot,t)*g$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Solução por série para a barra com extremos a zero",
+          "statement": "Para $u_t=ku_{xx}$ em $(0,L)\\times(0,\\infty)$ com $u(0,t)=u(L,t)=0$ e $u(x,0)=g(x)$, a solução é $u(x,t)=\\sum_{n=1}^{\\infty} b_n\\,e^{-k(n\\pi/L)^2 t}\\sin\\!\\frac{n\\pi x}{L}$, com $b_n=\\frac{2}{L}\\int_0^L g\\sin\\!\\frac{n\\pi x}{L}\\,dx$. Para $t>0$ a série converge e define uma função $C^\\infty$.",
+          "whyItMatters": "É o método-mestre dos editais: reduz uma EDP a uma sequência de EDOs (uma por modo) e usa Fourier para casar o dado inicial. O fator $e^{-k(n\\pi/L)^2 t}$ mostra que modos de alta frequência decaem rapidíssimo — a origem matemática da suavização."
+        },
+        {
+          "name": "Convergência pontual (Dirichlet)",
+          "statement": "Se $g:[-L,L]\\to\\mathbb{R}$ é periódica, seccionalmente $C^1$, então sua série de Fourier converge em todo ponto $x$ para $\\frac{1}{2}\\big(g(x^+)+g(x^-)\\big)$, isto é, para $g(x)$ nos pontos de continuidade e para a média dos limites laterais nas descontinuidades de salto.",
+          "whyItMatters": "Justifica rigorosamente a representação de funções por séries trigonométricas, base de toda a separação de variáveis. Explica também o fenômeno de Gibbs perto de saltos. É um resultado clássico cobrado em provas de análise/Fourier."
+        },
+        {
+          "name": "Princípio do máximo parabólico (fraco)",
+          "statement": "Seja $u$ contínua em $\\overline{\\Omega}_T=\\overline{\\Omega}\\times[0,T]$ e que satisfaz $u_t\\le k\\Delta u$ (subsolução) no interior. Então $\\max_{\\overline{\\Omega}_T}u$ é atingido na fronteira parabólica $\\Gamma_T=(\\overline{\\Omega}\\times\\{0\\})\\cup(\\partial\\Omega\\times[0,T])$.",
+          "whyItMatters": "Dá unicidade e dependência contínua (estabilidade) para o problema do calor: a diferença de duas soluções com mesmos dados satisfaz a equação com dados nulos, logo é identicamente zero. É a versão parabólica do princípio que rege as equações elípticas."
+        }
+      ],
+      "summary": "A equação do calor $u_t=k\\Delta u$ é o protótipo parabólico e o terreno onde a separação de variáveis brilha. Em uma barra $[0,L]$ com extremos mantidos a zero, escrevemos $u=X(x)T(t)$, o que força $X''+\\lambda X=0$ com $X(0)=X(L)=0$ — um problema de autovalores cujas soluções são os modos $\\sin(n\\pi x/L)$ com $\\lambda_n=(n\\pi/L)^2$. Cada modo evolui no tempo como $e^{-k\\lambda_n t}$, e somamos todos eles com pesos dados pelos coeficientes de Fourier do dado inicial. O resultado é uma série que, para $t>0$, é $C^\\infty$ por mais irregular que seja o dado: a difusão suaviza instantaneamente. O fator exponencial também revela velocidade de propagação infinita — uma perturbação localizada afeta toda a barra imediatamente, em contraste radical com a onda.\n\nNo espaço livre $\\mathbb{R}^n$, a peça central é o núcleo do calor $\\Phi(x,t)=(4\\pi kt)^{-n/2}e^{-|x|^2/(4kt)}$, uma gaussiana que se espalha com $\\sqrt{t}$; a solução é a convolução $\\Phi(\\cdot,t)*g$. Por trás de tudo está a teoria de Fourier: as autofunções de Sturm-Liouville são ortogonais e completas em $L^2$, garantindo que qualquer dado razoável seja representável e que a série convirja — em $L^2$ sempre, e pontualmente sob hipóteses de regularidade seccional (teorema de Dirichlet). Finalmente, o princípio do máximo parabólico fecha a teoria com unicidade e estabilidade, sem precisar das fórmulas explícitas.",
+      "commonPitfalls": [
+        "Escolher o sinal errado na constante de separação: para Dirichlet em $[0,L]$ é preciso $\\lambda>0$; $\\lambda\\le 0$ só dá a solução trivial. Verifique os três casos $\\lambda<0,=0,>0$.",
+        "Usar a série de cossenos quando as condições são de Dirichlet (extremos a zero): aí o correto é a série de senos. Cossenos correspondem a condições de Neumann (fluxo nulo).",
+        "Confundir convergência em $L^2$ com convergência pontual: a série pode convergir em norma sem convergir em todo ponto, e vice-versa exige hipóteses extras.",
+        "Acreditar que a equação do calor propaga sinais com velocidade finita — ela tem velocidade de propagação infinita (suporte instantâneo em todo o espaço), ao contrário da onda."
+      ],
+      "worked": "**Problema.** Resolver $u_t=u_{xx}$ em $(0,\\pi)\\times(0,\\infty)$ com $u(0,t)=u(\\pi,t)=0$ e $u(x,0)=2\\sin x-\\sin(4x)$. **Solução.** Aqui $L=\\pi$, $k=1$, então os modos são $\\sin(nx)$ com fator temporal $e^{-n^2 t}$. O dado inicial já é uma combinação finita de modos: $b_1=2$ (modo $n=1$), $b_4=-1$ (modo $n=4$), todos os outros $b_n=0$. Não é preciso integrar — basta casar os modos. Logo $u(x,t)=2\\,e^{-1\\cdot t}\\sin x - 1\\cdot e^{-16 t}\\sin(4x)=2e^{-t}\\sin x - e^{-16t}\\sin(4x)$. **Observação.** O modo $n=4$ decai $16$ vezes mais rápido (no expoente) que o modo $n=1$: já em $t$ moderado a solução é essencialmente $2e^{-t}\\sin x$. Isso ilustra a suavização e a dominância dos modos baixos. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Resolva $u_t=3u_{xx}$ em $(0,1)$ com $u(0,t)=u(1,t)=0$ e $u(x,0)=\\sin(2\\pi x)$. Em quanto tempo a amplitude cai a $1/e$ do valor inicial?",
+          "hint": "Modo único $n=2$: $u(x,t)=e^{-3(2\\pi)^2 t}\\sin(2\\pi x)=e^{-12\\pi^2 t}\\sin(2\\pi x)$. Amplitude $=1/e$ quando $12\\pi^2 t=1$, ou seja $t=1/(12\\pi^2)$.",
+          "difficulty": 2,
+          "solution": "Problema: $u_t=3u_{xx}$ em $(0,1)$, $u(0,t)=u(1,t)=0$, $u(x,0)=\\sin(2\\pi x)$. Aqui $L=1$ e $k=3$. Os modos de Dirichlet sao $\\sin(n\\pi x/L)=\\sin(n\\pi x)$ com autovalor $\\lambda_n=(n\\pi/L)^2=(n\\pi)^2$ e fator temporal $e^{-k\\lambda_n t}=e^{-3(n\\pi)^2 t}$. O dado inicial $\\sin(2\\pi x)$ e exatamente o modo $n=2$ (nenhuma integral e necessaria: $b_2=1$, demais $b_n=0$). Portanto $$u(x,t)=e^{-3(2\\pi)^2 t}\\sin(2\\pi x)=e^{-12\\pi^2 t}\\sin(2\\pi x).$$ **Tempo para amplitude cair a $1/e$:** a amplitude e $e^{-12\\pi^2 t}$; ela vale $1/e$ quando o expoente vale $-1$, isto e $12\\pi^2 t=1$, logo $$t=\\frac{1}{12\\pi^2}\\approx 8{,}4\\times10^{-3}.$$ $\\blacksquare$",
+          "steps": [
+            "Identifique $L=1,\\ k=3$ e os modos $\\sin(n\\pi x)$ com fator $e^{-3(n\\pi)^2 t}$.",
+            "Note que $\\sin(2\\pi x)$ e o modo $n=2$ — basta casar, sem integrar ($b_2=1$).",
+            "Escreva $u(x,t)=e^{-12\\pi^2 t}\\sin(2\\pi x)$.",
+            "Imponha amplitude $=1/e$: $12\\pi^2 t=1\\Rightarrow t=1/(12\\pi^2)$."
+          ]
+        },
+        {
+          "prompt": "Calcule os coeficientes de Fourier em senos da função $g(x)=1$ em $(0,\\pi)$ e escreva a solução de $u_t=u_{xx}$ com extremos a zero e esse dado inicial.",
+          "hint": "$b_n=\\frac{2}{\\pi}\\int_0^\\pi \\sin(nx)\\,dx=\\frac{2}{\\pi}\\cdot\\frac{1-\\cos n\\pi}{n}=\\frac{2}{n\\pi}(1-(-1)^n)$, que é $\\frac{4}{n\\pi}$ para $n$ ímpar e $0$ para $n$ par. Logo $u(x,t)=\\sum_{n\\text{ ímpar}}\\frac{4}{n\\pi}e^{-n^2 t}\\sin(nx)$.",
+          "difficulty": 3,
+          "solution": "Coeficientes de Fourier em senos de $g(x)=1$ em $(0,\\pi)$ (aqui $L=\\pi$): $$b_n=\\frac{2}{\\pi}\\int_0^\\pi 1\\cdot\\sin(nx)\\,dx=\\frac{2}{\\pi}\\Big[-\\frac{\\cos(nx)}{n}\\Big]_0^\\pi=\\frac{2}{\\pi}\\cdot\\frac{1-\\cos(n\\pi)}{n}=\\frac{2}{n\\pi}\\big(1-(-1)^n\\big).$$ Logo $b_n=\\frac{4}{n\\pi}$ para $n$ impar e $b_n=0$ para $n$ par. Com $k=1$ e fator temporal $e^{-n^2 t}$ (pois $\\lambda_n=(n\\pi/\\pi)^2=n^2$), a solucao de $u_t=u_{xx}$ com extremos a zero e $$u(x,t)=\\sum_{n\\ \\text{impar}}\\frac{4}{n\\pi}\\,e^{-n^2 t}\\sin(nx)=\\frac{4}{\\pi}\\sum_{m=0}^{\\infty}\\frac{e^{-(2m+1)^2 t}}{2m+1}\\sin\\big((2m+1)x\\big).$$ Para $t>0$ a serie converge muito rapido (decaimento exponencial nos modos altos) e define funcao $C^\\infty$, embora o dado $g\\equiv1$ nao satisfaca a condicao de fronteira nos extremos. $\\blacksquare$",
+          "steps": [
+            "Escreva $b_n=\\frac{2}{\\pi}\\int_0^\\pi \\sin(nx)\\,dx$ com $L=\\pi$.",
+            "Integre: $\\int_0^\\pi\\sin(nx)dx=\\frac{1-\\cos(n\\pi)}{n}=\\frac{1-(-1)^n}{n}$.",
+            "Conclua $b_n=\\frac{4}{n\\pi}$ para $n$ impar e $0$ para $n$ par.",
+            "Multiplique cada modo por $e^{-n^2 t}$ (aqui $k=1,\\ \\lambda_n=n^2$).",
+            "Some sobre $n$ impar: $u(x,t)=\\sum_{n\\text{ impar}}\\frac{4}{n\\pi}e^{-n^2 t}\\sin(nx)$."
+          ]
+        },
+        {
+          "prompt": "Verifique diretamente que o núcleo do calor $\\Phi(x,t)=(4\\pi t)^{-1/2}e^{-x^2/(4t)}$ ($n=1$, $k=1$) satisfaz $\\Phi_t=\\Phi_{xx}$ para $t>0$.",
+          "hint": "Calcule $\\Phi_t$ e $\\Phi_{xx}$. Usando $\\ln\\Phi=-\\tfrac12\\ln(4\\pi t)-x^2/(4t)$: $\\Phi_t/\\Phi=-\\frac{1}{2t}+\\frac{x^2}{4t^2}$. Por outro lado $\\Phi_x/\\Phi=-x/(2t)$, e $\\Phi_{xx}=\\Phi\\big[(x/2t)^2-1/(2t)\\big]$. Confira que as expressões coincidem.",
+          "difficulty": 3,
+          "solution": "Seja $\\Phi(x,t)=(4\\pi t)^{-1/2}e^{-x^2/(4t)}$, $t>0$ (caso $n=1,\\ k=1$). Usamos a derivada logaritmica: $\\ln\\Phi=-\\tfrac12\\ln(4\\pi t)-\\frac{x^2}{4t}$. **Derivada temporal:** $\\frac{\\Phi_t}{\\Phi}=\\partial_t\\ln\\Phi=-\\frac{1}{2t}+\\frac{x^2}{4t^2}$, logo $$\\Phi_t=\\Phi\\Big(-\\frac{1}{2t}+\\frac{x^2}{4t^2}\\Big).$$ **Derivadas espaciais:** $\\frac{\\Phi_x}{\\Phi}=\\partial_x\\ln\\Phi=-\\frac{x}{2t}$, entao $\\Phi_x=-\\frac{x}{2t}\\Phi$. Derivando de novo pela regra do produto: $$\\Phi_{xx}=-\\frac{1}{2t}\\Phi-\\frac{x}{2t}\\Phi_x=-\\frac{1}{2t}\\Phi-\\frac{x}{2t}\\Big(-\\frac{x}{2t}\\Phi\\Big)=\\Phi\\Big(-\\frac{1}{2t}+\\frac{x^2}{4t^2}\\Big).$$ Comparando as duas expressoes, $\\Phi_t=\\Phi_{xx}$ para todo $t>0$, como queriamos. (Note ainda que $\\int_{\\mathbb{R}}\\Phi(x,t)\\,dx=1$, a normalizacao gaussiana.) $\\blacksquare$",
+          "steps": [
+            "Tome o logaritmo $\\ln\\Phi=-\\tfrac12\\ln(4\\pi t)-x^2/(4t)$ para facilitar as derivadas.",
+            "Derive em $t$: $\\Phi_t/\\Phi=-\\frac{1}{2t}+\\frac{x^2}{4t^2}$.",
+            "Derive em $x$ uma vez: $\\Phi_x=-\\frac{x}{2t}\\Phi$.",
+            "Derive de novo (regra do produto): $\\Phi_{xx}=\\Phi(-\\frac{1}{2t}+\\frac{x^2}{4t^2})$.",
+            "Compare: $\\Phi_t$ e $\\Phi_{xx}$ coincidem, logo $\\Phi_t=\\Phi_{xx}$."
+          ]
+        },
+        {
+          "prompt": "Usando o princípio do máximo parabólico, prove que o problema do calor com dados de fronteira e inicial dados tem no máximo uma solução clássica.",
+          "hint": "Se $u_1,u_2$ resolvem o mesmo problema, $w=u_1-u_2$ satisfaz a equação do calor com dados nulos na fronteira parabólica. Pelo princípio do máximo (aplicado a $w$ e a $-w$), $\\max w\\le 0$ e $\\min w\\ge 0$, logo $w\\equiv 0$.",
+          "difficulty": 3,
+          "solution": "Sejam $u_1,u_2$ duas solucoes classicas do MESMO problema do calor: $u_t=k\\Delta u$ em $\\Omega\\times(0,T]$, com o mesmo dado inicial $u(\\cdot,0)=g$ e o mesmo dado de fronteira $u=\\phi$ em $\\partial\\Omega\\times[0,T]$. Defina $w=u_1-u_2$. Por linearidade, $w_t=k\\Delta w$ em $\\Omega\\times(0,T]$, e $w=0$ em toda a **fronteira parabolica** $\\Gamma_T=(\\overline{\\Omega}\\times\\{0\\})\\cup(\\partial\\Omega\\times[0,T])$ (pois $u_1,u_2$ compartilham dado inicial e de fronteira). **Aplicacao do principio do maximo (fraco):** como $w$ e solucao (em particular subsolucao, $w_t\\le k\\Delta w$ e supersolucao $w_t\\ge k\\Delta w$), $$\\max_{\\overline{\\Omega}_T} w=\\max_{\\Gamma_T} w=0\\quad\\text{e}\\quad \\min_{\\overline{\\Omega}_T} w=\\min_{\\Gamma_T} w=0$$ (a segunda aplicando o principio a $-w$, que tambem resolve a equacao do calor). Logo $0\\le w\\le 0$ em todo $\\overline{\\Omega}_T$, isto e $w\\equiv0$, ou seja $u_1\\equiv u_2$. Portanto o problema tem no maximo uma solucao classica. $\\blacksquare$",
+          "steps": [
+            "Suponha duas solucoes $u_1,u_2$ com os mesmos dados e defina a diferenca $w=u_1-u_2$.",
+            "Por linearidade, $w$ resolve a equacao do calor com dado nulo na fronteira parabolica $\\Gamma_T$.",
+            "Aplique o principio do maximo a $w$: $\\max w=\\max_{\\Gamma_T}w=0$.",
+            "Aplique o principio do maximo a $-w$ (ou o principio do minimo): $\\min w=0$.",
+            "Conclua $0\\le w\\le0\\Rightarrow w\\equiv0$, logo $u_1=u_2$: unicidade."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Equação do calor (forma geral)",
+          "back": "$u_t=k\\Delta u$, $k>0$; parabólica, modela difusão. Em 1D: $u_t=ku_{xx}$."
+        },
+        {
+          "front": "Autovalores/autofunções de $X''+\\lambda X=0$, $X(0)=X(L)=0$",
+          "back": "$\\lambda_n=(n\\pi/L)^2$, $X_n(x)=\\sin(n\\pi x/L)$, $n=1,2,\\dots$"
+        },
+        {
+          "front": "Coeficiente de Fourier em senos em $(0,L)$",
+          "back": "$b_n=\\frac{2}{L}\\int_0^L g(x)\\sin\\!\\frac{n\\pi x}{L}\\,dx$."
+        },
+        {
+          "front": "Solução em série da barra com extremos a zero",
+          "back": "$u(x,t)=\\sum_{n\\ge1} b_n e^{-k(n\\pi/L)^2 t}\\sin\\!\\frac{n\\pi x}{L}$."
+        },
+        {
+          "front": "Núcleo do calor em $\\mathbb{R}^n$",
+          "back": "$\\Phi(x,t)=(4\\pi kt)^{-n/2}e^{-|x|^2/(4kt)}$, $t>0$; $\\int\\Phi\\,dx=1$ e $u=\\Phi*g$."
+        },
+        {
+          "front": "Teorema de Dirichlet (convergência pontual)",
+          "back": "$g$ periódica e seccionalmente $C^1$: a série de Fourier converge a $\\frac12(g(x^+)+g(x^-))$ em cada ponto."
+        },
+        {
+          "front": "Velocidade de propagação da equação do calor",
+          "back": "Infinita: o suporte da solução é todo o espaço para qualquer $t>0$ (suavização instantânea)."
+        },
+        {
+          "front": "Fronteira parabólica de $\\Omega\\times[0,T]$",
+          "back": "$\\Gamma_T=(\\overline{\\Omega}\\times\\{0\\})\\cup(\\partial\\Omega\\times[0,T])$: base $t=0$ mais a lateral; é onde o máximo é atingido."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Evans, Partial Differential Equations, §2.3",
+          "ref": "livro"
+        },
+        {
+          "title": "Figueiredo, Análise de Fourier e EDP, caps. 2-3",
+          "ref": "livro"
+        },
+        {
+          "title": "Strauss, PDE: An Introduction, caps. 2, 4, 5",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.303 (séries de Fourier e equação do calor)",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja series de Fourier (senos/cossenos), ortogonalidade das autofuncoes e convergencia em $L^2$ — o pre-requisito de Analise Real 2 que sustenta tudo aqui.",
+          "Leia Figueiredo caps. 2-3 e Strauss caps. 4-5: acompanhe a deducao da equacao do calor e o passo a passo da separacao de variaveis ate o problema de Sturm-Liouville.",
+          "Resolva a mao o problema modelo da barra $[0,L]$ com extremos a zero: encontre os autovalores $\\lambda_n=(n\\pi/L)^2$, as autofuncoes $\\sin(n\\pi x/L)$ e monte a serie com os coeficientes de Fourier do dado inicial.",
+          "Estude o nucleo do calor $\\Phi(x,t)=(4\\pi kt)^{-n/2}e^{-|x|^2/4kt}$ e verifique numericamente/graficamente a suavizacao instantanea e o decaimento dos modos altos.",
+          "Assista a uma aula sobre heat equation / Fourier series para fixar a intuicao fisica (difusao) e o papel do fator $e^{-k\\lambda_n t}$.",
+          "Volte ao app, resolva os testes sem as dicas e anote aqui o principal (roteiro da separacao de variaveis, formula dos $b_n$ e o principio do maximo parabolico)."
+        ],
+        "searchQueries": [
+          "separacao de variaveis equacao do calor barra exemplos resolvidos",
+          "series de Fourier em senos coeficientes b_n formula",
+          "problema de Sturm-Liouville autovalores autofuncoes seno",
+          "nucleo do calor solucao fundamental gaussiana",
+          "heat equation separation of variables Fourier series",
+          "parabolic maximum principle uniqueness heat equation proof"
+        ],
+        "videos": [
+          {
+            "title": "Solving the Heat Equation / Fourier series",
+            "channel": "MIT OpenCourseWare (18.303)",
+            "note": "Aulas dedicadas a separacao de variaveis e series de Fourier na equacao do calor."
+          },
+          {
+            "title": "But what is a Fourier series?",
+            "channel": "3Blue1Brown",
+            "note": "Visualizacao geometrica das series de Fourier e da equacao do calor que inspirou Fourier; excelente intuicao."
+          },
+          {
+            "title": "Series de Fourier e EDP",
+            "channel": "O Professor Ferretto / Equaciona",
+            "note": "Busque videos em portugues sobre series de Fourier e calculo de coeficientes de senos/cossenos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Partial Differential Equations, sec. 2.3 (the heat equation)",
+            "where": "L. C. Evans, AMS GSM 19"
+          },
+          {
+            "title": "Analise de Fourier e EDP, caps. 2-3",
+            "where": "Djairo G. de Figueiredo (Projeto Euclides, IMPA)"
+          },
+          {
+            "title": "PDE: An Introduction, caps. 2, 4, 5",
+            "where": "Walter A. Strauss"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edp-04-onda",
+      "title": "A Equação da Onda: Fórmula de d'Alembert e Métodos de Energia",
+      "tagline": "Ondas viajam, energia se conserva e a informação respeita o cone de luz.",
+      "objectives": [
+        "Obter a solução geral $u=F(x-ct)+G(x+ct)$ e deduzir a fórmula de d'Alembert para o problema de Cauchy em 1D.",
+        "Identificar domínio de dependência, região de influência e velocidade finita de propagação.",
+        "Definir a energia $E(t)$, provar sua conservação e usá-la para concluir unicidade.",
+        "Conhecer as fórmulas de solução em dimensões $2$ (Poisson) e $3$ (Kirchhoff) e o princípio de Huygens.",
+        "Contrastar onda (hiperbólica, reversível, propagação finita) com calor (parabólica, suavizante, propagação infinita)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Equação da onda",
+          "statement": "$u_{tt}=c^2\\Delta u$, $c>0$ a velocidade de propagação. Hiperbólica. Em 1D: $u_{tt}=c^2u_{xx}$, cuja solução geral é $u(x,t)=F(x-ct)+G(x+ct)$ (ondas indo para a direita e para a esquerda)."
+        },
+        {
+          "term": "Fórmula de d'Alembert",
+          "statement": "Para $u_{tt}=c^2u_{xx}$ em $\\mathbb{R}\\times(0,\\infty)$ com $u(x,0)=g(x)$, $u_t(x,0)=h(x)$: $u(x,t)=\\tfrac12\\big[g(x-ct)+g(x+ct)\\big]+\\tfrac{1}{2c}\\int_{x-ct}^{x+ct}h(s)\\,ds$."
+        },
+        {
+          "term": "Domínio de dependência",
+          "statement": "O valor de $u(x_0,t_0)$ depende dos dados iniciais apenas no intervalo $[x_0-ct_0,\\,x_0+ct_0]$ (em 1D). Reciprocamente, o dado em $x_0$ influencia, no tempo $t$, apenas o intervalo $[x_0-ct,x_0+ct]$ — velocidade de propagação finita $c$."
+        },
+        {
+          "term": "Energia",
+          "statement": "$E(t)=\\tfrac12\\int_{\\mathbb{R}^n}\\big(u_t^2+c^2|\\nabla u|^2\\big)\\,dx$, soma das energias cinética e potencial. Para soluções suaves com decaimento, $E$ é constante no tempo (conservação)."
+        },
+        {
+          "term": "Princípio de Huygens",
+          "statement": "Em dimensão espacial $n=3$ (e ímpares $\\ge3$), o valor $u(x,t)$ depende dos dados apenas sobre a esfera $\\partial B(x,ct)$ — sinais propagam-se com frente nítida. Em $n=2$ (e pares), depende de todo o disco $B(x,ct)$ — há 'cauda', não há princípio de Huygens forte."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Fórmula de d'Alembert (existência e unicidade em 1D)",
+          "statement": "Se $g\\in C^2(\\mathbb{R})$ e $h\\in C^1(\\mathbb{R})$, então a fórmula $u(x,t)=\\tfrac12[g(x-ct)+g(x+ct)]+\\tfrac{1}{2c}\\int_{x-ct}^{x+ct}h\\,ds$ define a única solução $C^2$ do problema de Cauchy $u_{tt}=c^2u_{xx}$, $u(\\cdot,0)=g$, $u_t(\\cdot,0)=h$.",
+          "whyItMatters": "É a fórmula fechada modelo de toda a teoria hiperbólica. Mostra que a regularidade da solução é exatamente a do dado (não há suavização) e exibe explicitamente o domínio de dependência. Aparece com altíssima frequência em provas de mestrado."
+        },
+        {
+          "name": "Conservação de energia e unicidade",
+          "statement": "Para uma solução $C^2$ de $u_{tt}=c^2\\Delta u$ em $\\mathbb{R}^n$ com dados de suporte compacto (ou em domínio limitado com $u=0$ na fronteira), $E(t)=\\tfrac12\\int(u_t^2+c^2|\\nabla u|^2)\\,dx$ é constante. Em particular, o problema de Cauchy/fronteira tem no máximo uma solução.",
+          "whyItMatters": "O método de energia dá unicidade SEM fórmula explícita, funcionando em qualquer dimensão e geometria. É a técnica robusta por trás da teoria moderna de EDPs hiperbólicas — duas soluções com mesmos dados têm diferença de energia nula, logo coincidem."
+        },
+        {
+          "name": "Domínio de dependência (propagação finita)",
+          "statement": "Se os dados $g,h$ se anulam na bola $B(x_0,t_0 c)$, então $u\\equiv 0$ no cone $\\{(x,t): |x-x_0|\\le c(t_0-t),\\ 0\\le t\\le t_0\\}$. Equivalentemente, $u(x_0,t_0)$ depende apenas dos dados em $\\overline{B}(x_0,ct_0)$.",
+          "whyItMatters": "Formaliza a velocidade finita de propagação — a contrapartida matemática do limite de velocidade da informação (cone de luz). Distingue radicalmente a onda do calor e é provado de modo elegante por um argumento de energia em cones truncados."
+        }
+      ],
+      "summary": "A equação da onda $u_{tt}=c^2\\Delta u$ é o protótipo hiperbólico, e em uma dimensão ela se resolve de cabeça: a fatoração $\\partial_{tt}-c^2\\partial_{xx}=(\\partial_t-c\\partial_x)(\\partial_t+c\\partial_x)$ dá a solução geral $F(x-ct)+G(x+ct)$, superposição de uma onda viajando à direita e outra à esquerda, ambas com velocidade $c$. Impondo posição inicial $g$ e velocidade inicial $h$ chega-se à fórmula de d'Alembert. Dela lemos imediatamente os três fatos hiperbólicos fundamentais: a solução tem a mesma regularidade dos dados (sem suavização), seu valor em $(x,t)$ depende apenas do intervalo $[x-ct,x+ct]$ (domínio de dependência), e a influência de um ponto se espalha com velocidade finita $c$.\n\nEm dimensões superiores não há fórmula tão simples, mas o método das médias esféricas leva às fórmulas de Kirchhoff ($n=3$) e de Poisson ($n=2$). Aí aparece uma surpresa geométrica: em $n=3$ vale o princípio de Huygens (a solução em $(x,t)$ só depende dos dados sobre a esfera $\\partial B(x,ct)$, e por isso um clarão produz uma frente nítida), enquanto em $n=2$ a dependência é sobre todo o disco e os sinais têm cauda. Quando falta fórmula explícita, a ferramenta universal é a energia $E(t)=\\tfrac12\\int(u_t^2+c^2|\\nabla u|^2)$: ela se conserva para soluções suaves, o que dá unicidade e o controle de cones de propagação. Conservação de energia também expressa a reversibilidade temporal da onda — outro contraste com a difusão irreversível do calor.",
+      "commonPitfalls": [
+        "Trocar os papéis de $g$ e $h$ na fórmula de d'Alembert: $g$ (posição) entra como média dos valores transladados; $h$ (velocidade) entra como integral. Confundi-los inverte tudo.",
+        "Esquecer o fator $1/(2c)$ na integral de $h$, ou usar $1/2$.",
+        "Supor que a onda suaviza dados irregulares como o calor — ela não suaviza; um bico no dado inicial viaja como bico.",
+        "Aplicar a fórmula de d'Alembert (reta toda) a um problema com fronteira sem usar reflexão/extensão ímpar ou par adequada — em $[0,L]$ é preciso estender os dados."
+      ],
+      "worked": "**Problema.** Resolver $u_{tt}=c^2u_{xx}$ em $\\mathbb{R}\\times(0,\\infty)$ com $u(x,0)=\\sin x$ e $u_t(x,0)=0$. **Solução.** Com $g(x)=\\sin x$ e $h\\equiv 0$, d'Alembert dá $u(x,t)=\\tfrac12[\\sin(x-ct)+\\sin(x+ct)]$. Usando $\\sin(a-b)+\\sin(a+b)=2\\sin a\\cos b$ com $a=x,\\ b=ct$: $u(x,t)=\\sin x\\,\\cos(ct)$. **Verificação.** $u_{tt}=-c^2\\sin x\\cos(ct)$ e $u_{xx}=-\\sin x\\cos(ct)$, logo $u_{tt}=c^2u_{xx}$; e $u(x,0)=\\sin x$, $u_t(x,0)=-c\\sin x\\sin(0)=0$. Note que esta é uma onda estacionária: cada ponto oscila em $t$ com frequência $c$, sem viajar — resultado da superposição simétrica das ondas à esquerda e à direita. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Aplique a fórmula de d'Alembert a $u_{tt}=u_{xx}$ ($c=1$) com $g(x)=0$ e $h(x)=\\cos x$. Simplifique.",
+          "hint": "$u(x,t)=\\tfrac12\\int_{x-t}^{x+t}\\cos s\\,ds=\\tfrac12[\\sin(x+t)-\\sin(x-t)]=\\cos x\\sin t$.",
+          "difficulty": 2,
+          "solution": "Com $c=1$, $g\\equiv0$ e $h(x)=\\cos x$, a formula de d'Alembert $u=\\tfrac12[g(x-ct)+g(x+ct)]+\\tfrac{1}{2c}\\int_{x-ct}^{x+ct}h(s)\\,ds$ reduz-se ao termo da integral: $$u(x,t)=\\frac12\\int_{x-t}^{x+t}\\cos s\\,ds=\\frac12\\big[\\sin s\\big]_{x-t}^{x+t}=\\frac12\\big[\\sin(x+t)-\\sin(x-t)\\big].$$ Usando a identidade $\\sin(a+b)-\\sin(a-b)=2\\cos a\\sin b$ com $a=x,\\ b=t$: $$u(x,t)=\\frac12\\cdot 2\\cos x\\sin t=\\cos x\\,\\sin t.$$ **Verificacao:** $u_{tt}=-\\cos x\\sin t$ e $u_{xx}=-\\cos x\\sin t$, logo $u_{tt}=u_{xx}$; e $u(x,0)=0$, $u_t(x,0)=\\cos x\\cos 0=\\cos x=h$. $\\blacksquare$",
+          "steps": [
+            "Como $g\\equiv0$, so o termo da integral de d'Alembert sobrevive: $u=\\tfrac12\\int_{x-t}^{x+t}\\cos s\\,ds$.",
+            "Integre: $\\tfrac12[\\sin(x+t)-\\sin(x-t)]$.",
+            "Aplique $\\sin(a+b)-\\sin(a-b)=2\\cos a\\sin b$ com $a=x,\\ b=t$.",
+            "Obtenha $u(x,t)=\\cos x\\sin t$ e verifique dado inicial e EDP."
+          ]
+        },
+        {
+          "prompt": "Determine o domínio de dependência de $u(2,3)$ para $u_{tt}=4u_{xx}$ (i.e. $c=2$) e diga de qual intervalo dos dados iniciais ele depende.",
+          "hint": "Domínio de dependência: $[x_0-ct_0,\\,x_0+ct_0]=[2-2\\cdot3,\\,2+2\\cdot3]=[-4,8]$.",
+          "difficulty": 1,
+          "solution": "Para a equacao $u_{tt}=4u_{xx}$ temos $c^2=4$, logo $c=2$. O dominio de dependencia de um ponto $(x_0,t_0)$ em 1D e o intervalo $[x_0-ct_0,\\,x_0+ct_0]$ dos dados iniciais (fatiado pelas duas caracteristicas $x\\mp ct=$ const que chegam a $(x_0,t_0)$). Com $x_0=2,\\ t_0=3,\\ c=2$: $$[\\,x_0-ct_0,\\ x_0+ct_0\\,]=[\\,2-2\\cdot3,\\ 2+2\\cdot3\\,]=[-4,\\,8].$$ Portanto $u(2,3)$ depende dos dados iniciais $g,h$ apenas no intervalo $[-4,8]$; alterar os dados fora dele nao muda $u(2,3)$ (velocidade finita de propagacao $c=2$). $\\blacksquare$",
+          "steps": [
+            "Leia a velocidade: $c^2=4\\Rightarrow c=2$.",
+            "Lembre que o dominio de dependencia 1D e $[x_0-ct_0,\\,x_0+ct_0]$.",
+            "Substitua $x_0=2,\\ t_0=3,\\ c=2$: $[2-6,\\,2+6]=[-4,8]$.",
+            "Interprete: $u(2,3)$ so depende dos dados em $[-4,8]$."
+          ]
+        },
+        {
+          "prompt": "Prove a conservação de energia em 1D: para solução suave de $u_{tt}=c^2u_{xx}$ com dados de suporte compacto, mostre que $\\frac{d}{dt}E(t)=0$, onde $E(t)=\\tfrac12\\int_{\\mathbb{R}}(u_t^2+c^2u_x^2)\\,dx$.",
+          "hint": "$E'(t)=\\int(u_t u_{tt}+c^2 u_x u_{xt})\\,dx$. Use $u_{tt}=c^2u_{xx}$ no primeiro termo e integre por partes o segundo: $\\int c^2 u_x u_{xt}\\,dx=-\\int c^2 u_{xx}u_t\\,dx$ (termo de fronteira nulo). Os dois termos se cancelam.",
+          "difficulty": 4,
+          "solution": "Seja $u$ solucao suave de $u_{tt}=c^2u_{xx}$ com dados de suporte compacto, e $E(t)=\\tfrac12\\int_{\\mathbb{R}}\\big(u_t^2+c^2u_x^2\\big)\\,dx$. Como o suporte permanece compacto (propagacao finita), podemos derivar sob o sinal de integral: $$E'(t)=\\int_{\\mathbb{R}}\\big(u_t\\,u_{tt}+c^2 u_x\\,u_{xt}\\big)\\,dx.$$ No primeiro termo usamos a EDP $u_{tt}=c^2u_{xx}$: $u_t u_{tt}=c^2 u_t u_{xx}$. No segundo integramos por partes em $x$ (o termo de fronteira $c^2 u_x u_t\\big|_{-\\infty}^{\\infty}$ se anula pelo suporte compacto): $$\\int_{\\mathbb{R}}c^2 u_x u_{xt}\\,dx=-\\int_{\\mathbb{R}}c^2 u_{xx}u_t\\,dx.$$ Somando: $$E'(t)=\\int_{\\mathbb{R}}c^2 u_t u_{xx}\\,dx-\\int_{\\mathbb{R}}c^2 u_{xx}u_t\\,dx=0.$$ Logo $E$ e constante no tempo (conservacao de energia). **Unicidade:** se $u_1,u_2$ tem os mesmos dados, $w=u_1-u_2$ tem energia inicial $E(0)=0$; como $E\\equiv0$ e o integrando e nao negativo, $w_t\\equiv0$ e $w_x\\equiv0$, donde $w$ e constante; sendo nula em $t=0$, $w\\equiv0$. $\\blacksquare$",
+          "steps": [
+            "Derive $E(t)=\\tfrac12\\int(u_t^2+c^2u_x^2)dx$ sob o integral: $E'=\\int(u_t u_{tt}+c^2u_x u_{xt})dx$.",
+            "Substitua a EDP no primeiro termo: $u_t u_{tt}=c^2 u_t u_{xx}$.",
+            "Integre por partes o segundo termo: $\\int c^2 u_x u_{xt}dx=-\\int c^2 u_{xx}u_t dx$ (bordo nulo por suporte compacto).",
+            "Some: os dois termos se cancelam, logo $E'(t)=0$ e $E$ e conservada.",
+            "Deduza unicidade: energia nula da diferenca forca $w_t=w_x=0$, logo $w\\equiv0$."
+          ]
+        },
+        {
+          "prompt": "A corda em $[0,L]$ com extremos fixos $u(0,t)=u(L,t)=0$ tem solução por separação de variáveis $u=\\sum_n \\sin(n\\pi x/L)[a_n\\cos(n\\pi ct/L)+b_n\\sin(n\\pi ct/L)]$. Determine $a_n,b_n$ em termos dos dados $g,h$.",
+          "hint": "Em $t=0$: $u(x,0)=\\sum a_n\\sin(n\\pi x/L)=g$, então $a_n$ é o coeficiente de Fourier em senos de $g$. Derivando em $t$ e avaliando em $0$: $u_t(x,0)=\\sum (n\\pi c/L)b_n\\sin(n\\pi x/L)=h$, então $(n\\pi c/L)b_n$ é o coeficiente de senos de $h$, logo $b_n=\\frac{2}{n\\pi c}\\int_0^L h\\sin(n\\pi x/L)\\,dx$.",
+          "difficulty": 4,
+          "solution": "A solucao por separacao de variaveis da corda $[0,L]$ com extremos fixos e $$u(x,t)=\\sum_{n=1}^\\infty \\sin\\!\\frac{n\\pi x}{L}\\Big[a_n\\cos\\!\\frac{n\\pi c t}{L}+b_n\\sin\\!\\frac{n\\pi c t}{L}\\Big].$$ **Determinacao de $a_n$ (do dado de posicao $g$):** em $t=0$, $\\cos(0)=1$ e $\\sin(0)=0$, logo $u(x,0)=\\sum_n a_n\\sin\\!\\frac{n\\pi x}{L}=g(x)$. Assim $a_n$ e o coeficiente de Fourier em senos de $g$: $$a_n=\\frac{2}{L}\\int_0^L g(x)\\sin\\!\\frac{n\\pi x}{L}\\,dx.$$ **Determinacao de $b_n$ (do dado de velocidade $h$):** derivando em $t$, $$u_t(x,t)=\\sum_n \\sin\\!\\frac{n\\pi x}{L}\\cdot\\frac{n\\pi c}{L}\\Big[-a_n\\sin\\!\\frac{n\\pi ct}{L}+b_n\\cos\\!\\frac{n\\pi ct}{L}\\Big],$$ e em $t=0$: $u_t(x,0)=\\sum_n \\frac{n\\pi c}{L}\\,b_n\\sin\\!\\frac{n\\pi x}{L}=h(x)$. Portanto $\\frac{n\\pi c}{L}b_n$ e o coeficiente de senos de $h$, ou seja $$b_n=\\frac{L}{n\\pi c}\\cdot\\frac{2}{L}\\int_0^L h(x)\\sin\\!\\frac{n\\pi x}{L}\\,dx=\\frac{2}{n\\pi c}\\int_0^L h(x)\\sin\\!\\frac{n\\pi x}{L}\\,dx.$$ $\\blacksquare$",
+          "steps": [
+            "Avalie a solucao em $t=0$: os cossenos valem $1$ e os senos $0$, logo $u(x,0)=\\sum a_n\\sin(n\\pi x/L)=g$.",
+            "Reconheca $a_n$ como coeficiente de Fourier em senos de $g$: $a_n=\\frac{2}{L}\\int_0^L g\\sin(n\\pi x/L)dx$.",
+            "Derive $u$ em $t$ e avalie em $t=0$: $u_t(x,0)=\\sum \\frac{n\\pi c}{L}b_n\\sin(n\\pi x/L)=h$.",
+            "Isole: $\\frac{n\\pi c}{L}b_n$ e coeficiente de senos de $h$, logo $b_n=\\frac{2}{n\\pi c}\\int_0^L h\\sin(n\\pi x/L)dx$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Solução geral de $u_{tt}=c^2u_{xx}$ em 1D",
+          "back": "$u(x,t)=F(x-ct)+G(x+ct)$: onda à direita mais onda à esquerda, velocidade $c$."
+        },
+        {
+          "front": "Fórmula de d'Alembert",
+          "back": "$u(x,t)=\\tfrac12[g(x-ct)+g(x+ct)]+\\tfrac{1}{2c}\\int_{x-ct}^{x+ct}h(s)\\,ds$, com $u(\\cdot,0)=g$, $u_t(\\cdot,0)=h$."
+        },
+        {
+          "front": "Domínio de dependência de $u(x_0,t_0)$ (1D)",
+          "back": "O intervalo $[x_0-ct_0,\\,x_0+ct_0]$ dos dados iniciais."
+        },
+        {
+          "front": "Energia da equação da onda",
+          "back": "$E(t)=\\tfrac12\\int(u_t^2+c^2|\\nabla u|^2)\\,dx$; conserva-se no tempo para soluções suaves com decaimento."
+        },
+        {
+          "front": "Princípio de Huygens",
+          "back": "Em $n=3$ (ímpares $\\ge3$), $u(x,t)$ depende só dos dados sobre $\\partial B(x,ct)$: frente nítida. Em $n=2$ depende de todo $B(x,ct)$: há cauda."
+        },
+        {
+          "front": "Onda x calor: regularidade",
+          "back": "Onda NÃO suaviza (a solução tem a regularidade dos dados); calor suaviza instantaneamente ($C^\\infty$ para $t>0$)."
+        },
+        {
+          "front": "Velocidade de propagação da onda",
+          "back": "Finita, igual a $c$: sinais respeitam o cone $|x-x_0|\\le ct$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Evans, Partial Differential Equations, §2.4",
+          "ref": "livro"
+        },
+        {
+          "title": "Strauss, PDE: An Introduction, caps. 2-3, 9",
+          "ref": "livro"
+        },
+        {
+          "title": "Figueiredo, Análise de Fourier e EDP, cap. 4",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise a fatoracao de operadores $\\partial_{tt}-c^2\\partial_{xx}=(\\partial_t-c\\partial_x)(\\partial_t+c\\partial_x)$ e mudanca para coordenadas caracteristicas $\\xi=x-ct,\\ \\eta=x+ct$.",
+          "Leia Strauss caps. 2-3 e Evans 2.4: deduza a solucao geral $F(x-ct)+G(x+ct)$ e, a partir dela, a formula de d'Alembert impondo $u(\\cdot,0)=g,\\ u_t(\\cdot,0)=h$.",
+          "Desenhe diagramas espaco-tempo: marque o dominio de dependencia $[x_0-ct_0,x_0+ct_0]$ e a regiao de influencia; resolva 2-3 problemas de Cauchy explicitos.",
+          "Estude o metodo de energia: prove $\\frac{d}{dt}E(t)=0$ integrando por partes, e entenda como isso da unicidade sem formula.",
+          "Assista a uma aula sobre wave equation / d'Alembert e sobre o principio de Huygens (frente nitida em 3D vs. cauda em 2D).",
+          "Volte ao app, resolva os testes sem as dicas e anote aqui o principal (formula de d'Alembert, dominio de dependencia e a conta da energia)."
+        ],
+        "searchQueries": [
+          "formula de d'Alembert equacao da onda exemplos resolvidos",
+          "dominio de dependencia regiao de influencia equacao da onda",
+          "metodo de energia conservacao unicidade equacao da onda prova",
+          "corda vibrante separacao de variaveis coeficientes a_n b_n",
+          "d'Alembert formula wave equation domain of dependence",
+          "Huygens principle Kirchhoff formula wave equation 3D"
+        ],
+        "videos": [
+          {
+            "title": "The Wave Equation",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre a equacao da onda, formula de d'Alembert e propagacao finita."
+          },
+          {
+            "title": "Solving the wave equation",
+            "channel": "Dr. Peyam",
+            "note": "Deducao passo a passo de d'Alembert e exemplos com dados $g,h$."
+          },
+          {
+            "title": "Equacao da onda / corda vibrante",
+            "channel": "Matematica Universitaria",
+            "note": "Separacao de variaveis para a corda com extremos fixos, em portugues."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Partial Differential Equations, sec. 2.4 (the wave equation)",
+            "where": "L. C. Evans, AMS GSM 19"
+          },
+          {
+            "title": "PDE: An Introduction, caps. 2-3 e 9",
+            "where": "Walter A. Strauss"
+          },
+          {
+            "title": "Analise de Fourier e EDP, cap. 4",
+            "where": "Djairo G. de Figueiredo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edp-05-laplace-maximo",
+      "title": "Equação de Laplace, Funções Harmônicas e Princípios do Máximo",
+      "tagline": "No equilíbrio, o valor num ponto é a média à sua volta — e o extremo mora na fronteira.",
+      "objectives": [
+        "Definir funções harmônicas e as equações de Laplace ($\\Delta u=0$) e Poisson ($-\\Delta u=f$).",
+        "Enunciar e usar a propriedade do valor médio e sua recíproca.",
+        "Demonstrar os princípios do máximo fraco e forte e deles deduzir unicidade do problema de Dirichlet.",
+        "Aplicar o teorema de Liouville e a regularidade interior ($C^\\infty$/analiticidade) de funções harmônicas.",
+        "Resolver o problema de Dirichlet na bola via núcleo de Poisson."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Função harmônica",
+          "statement": "$u\\in C^2(\\Omega)$ é harmônica se $\\Delta u=\\sum_{i=1}^n u_{x_ix_i}=0$ em $\\Omega$. Equilíbrio estacionário do calor e potenciais (gravitacional, elétrico) são harmônicos onde não há fontes."
+        },
+        {
+          "term": "Equação de Poisson",
+          "statement": "$-\\Delta u=f$ em $\\Omega$: a versão com fonte. Com $f=0$ recupera-se Laplace. O problema de Dirichlet pede ainda $u=g$ em $\\partial\\Omega$."
+        },
+        {
+          "term": "Propriedade do valor médio",
+          "statement": "$u$ é harmônica em $\\Omega$ se, e só se, para toda bola $\\overline{B}(x,r)\\subset\\Omega$, $u(x)=\\frac{1}{|\\partial B(x,r)|}\\int_{\\partial B(x,r)}u\\,dS=\\frac{1}{|B(x,r)|}\\int_{B(x,r)}u\\,dy$ (médias sobre a esfera e sobre a bola coincidem com o valor central)."
+        },
+        {
+          "term": "Princípio do máximo (forte)",
+          "statement": "Se $u$ é harmônica num domínio (aberto conexo) $\\Omega$ e atinge seu máximo (ou mínimo) num ponto interior, então $u$ é constante. Em particular (fraco), $\\max_{\\overline{\\Omega}}u=\\max_{\\partial\\Omega}u$ para $\\Omega$ limitado e $u\\in C(\\overline{\\Omega})$."
+        },
+        {
+          "term": "Núcleo de Poisson na bola",
+          "statement": "Para $\\Omega=B(0,R)\\subset\\mathbb{R}^n$, a solução de $\\Delta u=0$ com $u=g$ na esfera é $u(x)=\\frac{R^2-|x|^2}{n\\alpha(n)R}\\int_{\\partial B(0,R)}\\frac{g(y)}{|x-y|^n}\\,dS(y)$, onde $\\alpha(n)$ é o volume da bola unitária e $n\\alpha(n)=|\\partial B(0,1)|$ é a área da esfera unitária: é a fórmula de Poisson, integral de $g$ contra um núcleo positivo."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Propriedade do valor médio (e recíproca)",
+          "statement": "Se $u\\in C^2(\\Omega)$ é harmônica, então vale a igualdade do valor médio em toda bola contida em $\\Omega$. Reciprocamente, se $u\\in C(\\Omega)$ satisfaz a propriedade do valor médio (sobre esferas) em torno de cada ponto, então $u\\in C^\\infty(\\Omega)$ e é harmônica.",
+          "whyItMatters": "É a caracterização intrínseca da harmonicidade e a fonte de quase todas as outras propriedades: princípio do máximo, regularidade, estimativas de gradiente, Harnack. A recíproca dá um ganho automático de regularidade impressionante."
+        },
+        {
+          "name": "Princípio do máximo forte",
+          "statement": "Seja $\\Omega\\subset\\mathbb{R}^n$ aberto conexo e $u\\in C^2(\\Omega)\\cap C(\\overline{\\Omega})$ harmônica. Se existe $x_0\\in\\Omega$ (interior) com $u(x_0)=\\max_{\\overline{\\Omega}}u$, então $u$ é constante em $\\Omega$. Consequentemente, se $u$ não é constante, o máximo (e o mínimo) só pode ser atingido na fronteira.",
+          "whyItMatters": "É a propriedade-assinatura das equações elípticas e a ferramenta-padrão para unicidade e comparação de soluções. Em concursos e qualificações, 'use o princípio do máximo para mostrar unicidade do problema de Dirichlet' é um clássico."
+        },
+        {
+          "name": "Unicidade do problema de Dirichlet",
+          "statement": "Para $\\Omega$ limitado, o problema $\\Delta u=f$ em $\\Omega$, $u=g$ em $\\partial\\Omega$, tem no máximo uma solução em $C^2(\\Omega)\\cap C(\\overline{\\Omega})$.",
+          "whyItMatters": "Aplicação direta e fundamental do princípio do máximo: a diferença de duas soluções é harmônica com fronteira nula, logo seu máximo e mínimo na fronteira são zero, forçando-a a ser identicamente nula. Garante que o modelo elíptico é bem-posto."
+        },
+        {
+          "name": "Teorema de Liouville",
+          "statement": "Se $u:\\mathbb{R}^n\\to\\mathbb{R}$ é harmônica em todo o espaço e limitada (superior ou inferiormente), então $u$ é constante.",
+          "whyItMatters": "Análogo real do teorema de Liouville complexo (funções harmônicas são as partes reais de holomorfas em 2D). Rigidez global típica de equações elípticas: ausência de fontes e limitação já forçam trivialidade."
+        }
+      ],
+      "summary": "A equação de Laplace $\\Delta u=0$ governa o equilíbrio: estados estacionários do calor, potenciais eletrostáticos e gravitacionais em regiões sem fonte, e (em 2D) as partes real e imaginária de funções holomorfas. Sua propriedade definidora mais elegante é o valor médio: o valor de uma função harmônica num ponto é exatamente a média de seus valores sobre qualquer esfera centrada nele. Dessa única propriedade cascateiam quase todos os teoremas da teoria — em particular o princípio do máximo, que diz que uma função harmônica não constante não pode ter máximo nem mínimo interior; os extremos vivem na fronteira. Disso segue de imediato a unicidade do problema de Dirichlet: se duas soluções têm os mesmos dados de fronteira, sua diferença é harmônica e nula na fronteira, logo nula em todo lugar.\n\nA propriedade do valor médio também produz regularidade automática: qualquer função contínua que a satisfaça é, na verdade, $C^\\infty$ e até analítica real. E impõe rigidez global, via teorema de Liouville: uma função harmônica em todo o $\\mathbb{R}^n$ que seja limitada precisa ser constante. Para construir soluções de fato — não apenas saber que são únicas — usa-se, na bola, o núcleo de Poisson, que recupera $u$ no interior como uma média ponderada (com peso positivo) dos dados de fronteira; ele é a porta de entrada para a teoria de funções de Green do próximo subtópico. O princípio do máximo, o método de energia (Dirichlet) e as estimativas de Harnack formam o tripé analítico que sustenta toda a teoria elíptica moderna.",
+      "commonPitfalls": [
+        "Aplicar o princípio do máximo forte em um domínio desconexo: a conclusão 'u constante' vale na componente conexa onde está o ponto de máximo, não necessariamente no domínio todo.",
+        "Confundir a média sobre a esfera (superfície) com a média sobre a bola (volume): ambas valem para harmônicas, mas têm normalizações diferentes; não troque uma pela outra ao montar estimativas.",
+        "Achar que o problema de Cauchy para Laplace é bem-posto: NÃO é (exemplo de Hadamard); o problema natural para equações elípticas é o de fronteira (Dirichlet/Neumann), não o de valor inicial.",
+        "Esquecer a hipótese de domínio limitado no princípio do máximo fraco: em domínios ilimitados pode falhar sem condições adicionais no infinito."
+      ],
+      "worked": "**Problema.** Mostrar que $u(x,y)=x^2-y^2$ é harmônica em $\\mathbb{R}^2$ e que, no quadrado $\\overline{\\Omega}=[-1,1]^2$, seu máximo é atingido na fronteira. **Solução.** Harmonicidade: $u_{xx}=2$, $u_{yy}=-2$, logo $\\Delta u=u_{xx}+u_{yy}=0$. Pelo princípio do máximo, como $u$ é harmônica e não constante, $\\max_{\\overline{\\Omega}}u=\\max_{\\partial\\Omega}u$. De fato, $u=x^2-y^2\\le x^2\\le 1$, com igualdade quando $y=0$ e $x=\\pm1$ — pontos da fronteira. O máximo $u=1$ ocorre em $(\\pm1,0)\\in\\partial\\Omega$, e o mínimo $u=-1$ em $(0,\\pm1)\\in\\partial\\Omega$, ambos na fronteira, como previsto. Note que $u$ é exatamente $\\operatorname{Re}(z^2)$ com $z=x+iy$, ilustrando a ligação harmônico/holomorfo em 2D. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Verifique se cada função é harmônica em $\\mathbb{R}^2$: (a) $u=e^x\\cos y$; (b) $u=\\ln(x^2+y^2)$ (em $\\mathbb{R}^2\\setminus\\{0\\}$); (c) $u=x^3-3xy^2$.",
+          "hint": "(a) $u_{xx}=e^x\\cos y$, $u_{yy}=-e^x\\cos y$, soma $0$: harmônica. (b) calcule e veja que $\\Delta u=0$ fora da origem (é a solução fundamental em 2D, a menos de constante). (c) $u_{xx}=6x$, $u_{yy}=-6x$: harmônica ($\\operatorname{Re}(z^3)$).",
+          "difficulty": 2,
+          "solution": "Uma funcao e harmonica em $\\mathbb{R}^2$ se $\\Delta u=u_{xx}+u_{yy}=0$. **(a) $u=e^x\\cos y$:** $u_{xx}=e^x\\cos y$ e $u_{yy}=-e^x\\cos y$, soma $=0$. Harmonica (e a parte real de $e^{z}$, $z=x+iy$). **(b) $u=\\ln(x^2+y^2)$ em $\\mathbb{R}^2\\setminus\\{0\\}$:** $u_x=\\frac{2x}{x^2+y^2}$, e $u_{xx}=\\frac{2(x^2+y^2)-2x\\cdot2x}{(x^2+y^2)^2}=\\frac{2(y^2-x^2)}{(x^2+y^2)^2}$. Por simetria $u_{yy}=\\frac{2(x^2-y^2)}{(x^2+y^2)^2}$. Soma $=0$: harmonica fora da origem (e, a menos de constante, a solucao fundamental do laplaciano em 2D; nao esta definida em $0$). **(c) $u=x^3-3xy^2$:** $u_{xx}=6x$ e $u_{yy}=-6x$, soma $=0$. Harmonica (parte real de $z^3$). $\\blacksquare$",
+          "steps": [
+            "Lembre o criterio: $u$ harmonica $\\iff u_{xx}+u_{yy}=0$.",
+            "(a) Calcule $u_{xx}=e^x\\cos y,\\ u_{yy}=-e^x\\cos y$: soma nula, harmonica.",
+            "(b) Derive $u=\\ln(x^2+y^2)$ duas vezes; $u_{xx}+u_{yy}=0$ fora da origem.",
+            "(c) Calcule $u_{xx}=6x,\\ u_{yy}=-6x$: soma nula, harmonica.",
+            "Observe a ligacao com holomorfas: (a),(c) sao $\\operatorname{Re}(e^z)$ e $\\operatorname{Re}(z^3)$."
+          ]
+        },
+        {
+          "prompt": "Use a propriedade do valor médio para mostrar que se $u$ é harmônica em $B(0,R)$ e $u\\ge 0$, então $u(0)$ é igual à média de $u$ sobre qualquer esfera $\\partial B(0,r)$, $r<R$. (Esboço da desigualdade de Harnack.)",
+          "hint": "Diretamente, $u(0)=\\frac{1}{|\\partial B(0,r)|}\\int_{\\partial B(0,r)}u\\,dS$ pela propriedade do valor médio. A positividade de $u$ é o que permite, depois, controlar $u(x)$ por $u(0)$ via núcleo de Poisson.",
+          "difficulty": 3,
+          "solution": "Seja $u$ harmonica em $B(0,R)$ e $u\\ge0$. **Igualdade do valor medio:** pela propriedade do valor medio (esfera), para todo $r<R$, $$u(0)=\\frac{1}{|\\partial B(0,r)|}\\int_{\\partial B(0,r)}u\\,dS,$$ isto e, $u(0)$ e exatamente a media de $u$ sobre a esfera $\\partial B(0,r)$ — vale para QUALQUER funcao harmonica, positiva ou nao. **Por que a positividade importa (esboco de Harnack):** com $u\\ge0$, o nucleo de Poisson na bola, que e positivo, permite estimar $u(x)$ para $x$ no interior a partir de $u(0)$. Concretamente, na formula de Poisson $u(x)=\\frac{R^2-|x|^2}{R\\,n\\alpha(n)}\\int_{\\partial B(0,R)}\\frac{u(y)}{|x-y|^n}dS(y)$, os fatores $\\frac{1}{|x-y|^n}$ ficam entre $\\frac{1}{(R+|x|)^n}$ e $\\frac{1}{(R-|x|)^n}$; combinando com a media $u(0)$ obtem-se $$\\Big(\\frac{R}{R+|x|}\\Big)^{n-2}\\frac{R-|x|}{(R+|x|)^{n-1}}\\,u(0)\\ \\le\\ u(x)\\ \\le\\ \\Big(\\frac{R}{R-|x|}\\Big)^{n-2}\\frac{R+|x|}{(R-|x|)^{n-1}}\\,u(0),$$ a desigualdade de Harnack, que controla $u(x)$ por $u(0)$ — e so faz sentido porque $u\\ge0$ (senao os dois lados poderiam ter sinais opostos). $\\blacksquare$",
+          "steps": [
+            "Aplique diretamente a propriedade do valor medio: $u(0)$ e a media de $u$ sobre $\\partial B(0,r)$, para toda harmonica.",
+            "Escreva $u(0)=\\frac{1}{|\\partial B(0,r)|}\\int_{\\partial B(0,r)}u\\,dS$.",
+            "Use a formula de Poisson positiva para relacionar $u(x)$ interior com a media $u(0)$.",
+            "Limite o nucleo $1/|x-y|^n$ por baixo e por cima, usando $u\\ge0$, obtendo Harnack.",
+            "Conclua que a positividade e essencial para controlar $u(x)$ por $u(0)$."
+          ]
+        },
+        {
+          "prompt": "Prove a unicidade do problema de Dirichlet $\\Delta u=f$ em $\\Omega$ limitado, $u=g$ em $\\partial\\Omega$, usando o princípio do máximo.",
+          "hint": "Sejam $u_1,u_2$ soluções; $w=u_1-u_2$ satisfaz $\\Delta w=0$ em $\\Omega$ e $w=0$ em $\\partial\\Omega$. Pelo princípio do máximo (e do mínimo), $\\max w=\\max_{\\partial\\Omega}w=0$ e $\\min w=0$, logo $w\\equiv 0$.",
+          "difficulty": 3,
+          "solution": "Sejam $u_1,u_2\\in C^2(\\Omega)\\cap C(\\overline{\\Omega})$ solucoes do problema de Dirichlet $\\Delta u=f$ em $\\Omega$ (limitado), $u=g$ em $\\partial\\Omega$. Defina $w=u_1-u_2$. Por linearidade do laplaciano, $$\\Delta w=\\Delta u_1-\\Delta u_2=f-f=0\\ \\text{ em }\\Omega,\\qquad w=g-g=0\\ \\text{ em }\\partial\\Omega.$$ Logo $w$ e harmonica em $\\Omega$ e continua em $\\overline{\\Omega}$. **Principio do maximo (fraco):** para $\\Omega$ limitado, $\\max_{\\overline{\\Omega}}w=\\max_{\\partial\\Omega}w=0$. **Principio do minimo** (aplicando o do maximo a $-w$, tambem harmonica): $\\min_{\\overline{\\Omega}}w=\\min_{\\partial\\Omega}w=0$. Portanto $0\\le w\\le0$ em $\\overline{\\Omega}$, isto e $w\\equiv0$, ou seja $u_1\\equiv u_2$. Assim o problema de Dirichlet tem no maximo uma solucao. $\\blacksquare$",
+          "steps": [
+            "Tome duas solucoes $u_1,u_2$ com os mesmos $f$ e $g$ e defina $w=u_1-u_2$.",
+            "Use linearidade: $\\Delta w=0$ em $\\Omega$ e $w=0$ em $\\partial\\Omega$ (w e harmonica com bordo nulo).",
+            "Aplique o principio do maximo: $\\max w=\\max_{\\partial\\Omega}w=0$.",
+            "Aplique a $-w$ (principio do minimo): $\\min w=0$.",
+            "Conclua $w\\equiv0$, logo $u_1=u_2$: unicidade."
+          ]
+        },
+        {
+          "prompt": "Mostre, via teorema de Liouville, que não existe função harmônica em todo $\\mathbb{R}^n$, não constante, que seja limitada. Em seguida dê um exemplo de função harmônica não constante e ilimitada.",
+          "hint": "Liouville: harmônica + limitada $\\Rightarrow$ constante (contradição). Exemplo não constante e necessariamente ilimitada: $u(x)=x_1$ (linear, $\\Delta u=0$) em $\\mathbb{R}^n$.",
+          "difficulty": 2,
+          "solution": "**Nao existe harmonica limitada nao constante em todo $\\mathbb{R}^n$:** suponha, por absurdo, que $u:\\mathbb{R}^n\\to\\mathbb{R}$ seja harmonica em todo o espaco e limitada (digamos $|u|\\le M$). O teorema de Liouville afirma exatamente que, nessas condicoes, $u$ e constante. Logo qualquer harmonica global limitada e constante — nao pode ser nao constante. Isso prova a afirmacao por contradicao com a hipotese 'nao constante'. **Exemplo nao constante (necessariamente ilimitado):** tome $u(x)=x_1$ (a primeira coordenada). Entao $\\Delta u=\\sum_i u_{x_ix_i}=0$ (todas as segundas derivadas se anulam), logo $u$ e harmonica em $\\mathbb{R}^n$; e claramente nao constante. Coerentemente com Liouville, $u(x)=x_1$ e ILIMITADA (cresce sem cota quando $x_1\\to\\pm\\infty$) — como tem de ser, ja que uma harmonica global nao constante nunca pode ser limitada. $\\blacksquare$",
+          "steps": [
+            "Enuncie Liouville: harmonica em todo $\\mathbb{R}^n$ e limitada $\\Rightarrow$ constante.",
+            "Argumente por contradicao: uma harmonica global limitada e nao constante violaria Liouville.",
+            "Conclua que nao existe tal funcao.",
+            "Exiba $u(x)=x_1$: $\\Delta u=0$ (harmonica) e nao constante.",
+            "Observe que $u=x_1$ e ilimitada, consistente com Liouville."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Função harmônica",
+          "back": "$u\\in C^2$ com $\\Delta u=\\sum u_{x_ix_i}=0$. Modela equilíbrio/potenciais sem fonte."
+        },
+        {
+          "front": "Propriedade do valor médio",
+          "back": "$u$ harmônica $\\iff$ $u(x)$ = média de $u$ sobre toda esfera (e bola) centrada em $x$ contida no domínio."
+        },
+        {
+          "front": "Princípio do máximo forte",
+          "back": "Harmônica que atinge máximo (ou mínimo) interior em domínio conexo é constante; senão, extremos só na fronteira."
+        },
+        {
+          "front": "Unicidade do problema de Dirichlet",
+          "back": "Em $\\Omega$ limitado, $\\Delta u=f$, $u=g$ em $\\partial\\Omega$ tem no máximo uma solução (diferença é harmônica nula na fronteira $\\Rightarrow$ nula)."
+        },
+        {
+          "front": "Teorema de Liouville (harmônico)",
+          "back": "Harmônica em todo $\\mathbb{R}^n$ e limitada $\\Rightarrow$ constante."
+        },
+        {
+          "front": "Regularidade de funções harmônicas",
+          "back": "São automaticamente $C^\\infty$ e analíticas reais no interior do domínio (consequência do valor médio)."
+        },
+        {
+          "front": "O problema de Cauchy para Laplace é bem-posto?",
+          "back": "Não — é mal-posto (exemplo de Hadamard). O problema natural para elípticas é de fronteira (Dirichlet/Neumann)."
+        },
+        {
+          "front": "Em 2D, funções harmônicas e holomorfas",
+          "back": "Parte real e parte imaginária de uma função holomorfa são harmônicas; toda harmônica é localmente $\\operatorname{Re}$ de uma holomorfa."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Evans, Partial Differential Equations, §2.2",
+          "ref": "livro"
+        },
+        {
+          "title": "Gilbarg & Trudinger, Elliptic PDE of Second Order, caps. 2-3 (aprofundamento)",
+          "ref": "livro"
+        },
+        {
+          "title": "Strauss, PDE: An Introduction, cap. 6",
+          "ref": "livro"
+        },
+        {
+          "title": "Figueiredo, Análise de Fourier e EDP, cap. 5",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise o operador laplaciano em coordenadas cartesianas e radiais ($\\Delta u=u''+\\frac{n-1}{r}u'$ para $u$ radial) e a formula de Green/divergencia.",
+          "Leia Evans 2.2 e Strauss cap. 6: acompanhe a demonstracao da propriedade do valor medio e sua reciproca, e como dela sai o principio do maximo.",
+          "Prove voce mesmo a unicidade do problema de Dirichlet a partir do principio do maximo — e o exercicio-assinatura da teoria eliptica.",
+          "Estude o nucleo de Poisson na bola e resolva o problema de Dirichlet no disco; conecte harmonicas 2D com partes reais de funcoes holomorfas.",
+          "Assista a uma aula sobre harmonic functions / maximum principle / Laplace's equation para fixar a intuicao de equilibrio e media.",
+          "Volte ao app, resolva os testes sem as dicas e anote aqui o principal (valor medio, principio do maximo forte, Liouville e o roteiro de unicidade de Dirichlet)."
+        ],
+        "searchQueries": [
+          "funcao harmonica propriedade do valor medio demonstracao",
+          "principio do maximo forte funcoes harmonicas prova",
+          "unicidade problema de Dirichlet principio do maximo",
+          "teorema de Liouville funcoes harmonicas",
+          "harmonic functions mean value property maximum principle",
+          "Poisson kernel ball Dirichlet problem Laplace equation"
+        ],
+        "videos": [
+          {
+            "title": "Laplace's Equation and Harmonic Functions",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre funcoes harmonicas, valor medio e principio do maximo."
+          },
+          {
+            "title": "Harmonic functions / Laplace equation",
+            "channel": "Dr. Peyam",
+            "note": "Videos sobre propriedades das harmonicas e o principio do maximo com exemplos."
+          },
+          {
+            "title": "Equacao de Laplace / funcoes harmonicas",
+            "channel": "Matematica Universitaria",
+            "note": "Tratamento em portugues da equacao de Laplace e do problema de Dirichlet."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Partial Differential Equations, sec. 2.2 (Laplace's equation)",
+            "where": "L. C. Evans, AMS GSM 19"
+          },
+          {
+            "title": "Elliptic Partial Differential Equations of Second Order, caps. 2-3",
+            "where": "Gilbarg & Trudinger (aprofundamento)"
+          },
+          {
+            "title": "PDE: An Introduction, cap. 6; Analise de Fourier e EDP, cap. 5",
+            "where": "Strauss / Figueiredo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edp-06-funcoes-green",
+      "title": "Funções de Green e a Fórmula de Representação",
+      "tagline": "Uma única função 'resposta a impulso' resolve o problema de Dirichlet inteiro.",
+      "objectives": [
+        "Escrever a solução fundamental do laplaciano em $\\mathbb{R}^n$ e entender $-\\Delta\\Phi=\\delta_0$.",
+        "Deduzir as identidades de Green e a fórmula de representação de uma função por seus dados.",
+        "Definir a função de Green de um domínio e suas propriedades (simetria, positividade, anulamento na fronteira).",
+        "Construir a função de Green do semiespaço e da bola pelo método das imagens.",
+        "Obter o núcleo de Poisson como derivada normal da função de Green e resolver o problema de Dirichlet."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Solução fundamental do laplaciano",
+          "statement": "$\\Phi(x)=-\\frac{1}{2\\pi}\\ln|x|$ para $n=2$, e $\\Phi(x)=\\frac{1}{n(n-2)\\alpha(n)}\\,\\frac{1}{|x|^{n-2}}$ para $n\\ge3$, onde $\\alpha(n)$ é o volume da bola unitária. Satisfaz $-\\Delta\\Phi=\\delta_0$ (no sentido das distribuições)."
+        },
+        {
+          "term": "Identidades de Green",
+          "statement": "Para $u,v\\in C^2(\\overline{\\Omega})$: (1ª) $\\int_\\Omega(v\\Delta u+\\nabla u\\cdot\\nabla v)\\,dx=\\int_{\\partial\\Omega}v\\,\\partial_\\nu u\\,dS$; (2ª) $\\int_\\Omega(u\\Delta v-v\\Delta u)\\,dx=\\int_{\\partial\\Omega}(u\\,\\partial_\\nu v-v\\,\\partial_\\nu u)\\,dS$, com $\\partial_\\nu$ a derivada na direção da normal exterior."
+        },
+        {
+          "term": "Função de Green",
+          "statement": "Para um domínio $\\Omega$, $G(x,y)=\\Phi(y-x)-\\phi^x(y)$, onde, para cada $x$ fixo, $\\phi^x$ é a função harmônica em $\\Omega$ (o corretor) com $\\phi^x(y)=\\Phi(y-x)$ na fronteira. Assim $G(x,\\cdot)$ resolve $-\\Delta_y G=\\delta_x$ em $\\Omega$ e $G(x,y)=0$ para $y\\in\\partial\\Omega$."
+        },
+        {
+          "term": "Método das imagens",
+          "statement": "Técnica para achar $\\phi^x$ (e portanto $G$) em domínios simétricos colocando uma 'carga imagem' fora de $\\Omega$ de modo a cancelar $\\Phi$ na fronteira. Funciona para o semiespaço (reflexão) e a bola (inversão/reflexão de Kelvin)."
+        },
+        {
+          "term": "Núcleo de Poisson",
+          "statement": "$K(x,y)=-\\partial_{\\nu_y}G(x,y)$ para $y\\in\\partial\\Omega$. A solução do problema de Dirichlet $\\Delta u=0$ em $\\Omega$, $u=g$ em $\\partial\\Omega$, é $u(x)=\\int_{\\partial\\Omega}K(x,y)\\,g(y)\\,dS(y)$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Fórmula de representação de Green",
+          "statement": "Se $u\\in C^2(\\overline{\\Omega})$ e $G$ é a função de Green de $\\Omega$, então para todo $x\\in\\Omega$: $u(x)=-\\int_{\\partial\\Omega}u(y)\\,\\partial_{\\nu_y}G(x,y)\\,dS(y)-\\int_\\Omega G(x,y)\\,\\Delta u(y)\\,dy$. Em particular, se $\\Delta u=0$ e $u=g$ na fronteira, $u(x)=\\int_{\\partial\\Omega}K(x,y)g(y)\\,dS(y)$.",
+          "whyItMatters": "É a forma fechada da solução do problema de Dirichlet: uma vez conhecida $G$ do domínio, a solução para QUALQUER dado de fronteira é uma única integral. Reduz infinitos problemas a um só objeto, a função de Green — a 'resposta ao impulso' do domínio."
+        },
+        {
+          "name": "Simetria da função de Green",
+          "statement": "Para um domínio limitado suave, $G(x,y)=G(y,x)$ para todos $x\\neq y$ em $\\Omega$.",
+          "whyItMatters": "Reflete a auto-adjunção do laplaciano (reciprocidade física: a resposta em $x$ a um impulso em $y$ é igual à resposta em $y$ a um impulso em $x$). É também uma checagem de consistência prática e aparece em provas como exercício clássico via 2ª identidade de Green."
+        },
+        {
+          "name": "Fórmula de Poisson na bola",
+          "statement": "Para $\\Omega=B(0,R)\\subset\\mathbb{R}^n$, a função de Green via imagens leva a $u(x)=\\frac{R^2-|x|^2}{R\\,n\\alpha(n)}\\int_{\\partial B(0,R)}\\frac{g(y)}{|x-y|^n}\\,dS(y)$, que resolve $\\Delta u=0$ em $B(0,R)$, $u=g$ em $\\partial B(0,R)$, para $g$ contínua.",
+          "whyItMatters": "É o caso explícito-modelo: dá a solução do Dirichlet na bola em forma integral, com núcleo positivo. Dela se demonstram valor médio, princípio do máximo, desigualdade de Harnack e a existência de solução (não só unicidade) para dados contínuos."
+        }
+      ],
+      "summary": "A função de Green é a maneira sistemática de inverter o laplaciano respeitando a fronteira. Tudo começa com a solução fundamental $\\Phi$, que satisfaz $-\\Delta\\Phi=\\delta_0$: ela é o potencial de uma carga pontual no espaço livre. As identidades de Green, que nada mais são que integração por partes em duas formas, permitem escrever $u(x)$ em termos de $\\Delta u$ no interior e dos valores de $u$ e $\\partial_\\nu u$ na fronteira. O problema é que $\\partial_\\nu u$ na fronteira não é um dado do problema de Dirichlet. A função de Green resolve isso: subtraímos de $\\Phi$ um corretor harmônico $\\phi^x$ escolhido para que $G(x,\\cdot)$ se anule na fronteira, eliminando o termo indesejado. O resultado é a fórmula de representação, que dá $u$ no interior puramente em função de $\\Delta u$ e dos dados de fronteira.\n\nNa prática, encontrar $G$ é encontrar o corretor harmônico, e o método das imagens faz isso em domínios simétricos colocando cargas-fantasma fora do domínio para cancelar o potencial na fronteira: no semiespaço, uma reflexão simples; na bola, a reflexão de Kelvin (inversão). Derivando $G$ na direção normal obtém-se o núcleo de Poisson, e a solução do Dirichlet vira uma única integral do dado de fronteira contra esse núcleo positivo. A simetria $G(x,y)=G(y,x)$ codifica a auto-adjunção do laplaciano. Conceitualmente, a função de Green é a 'resposta ao impulso' do domínio: conhecida ela, resolve-se o problema para todo dado de fronteira e todo termo-fonte de uma só vez — a ideia que, generalizada, vira a teoria de operadores integrais e de distribuições.",
+      "commonPitfalls": [
+        "Trocar o sinal na solução fundamental ou esquecer a constante de normalização: a convenção $-\\Delta\\Phi=\\delta_0$ fixa o sinal; em 2D é $-\\frac{1}{2\\pi}\\ln|x|$ (com sinal negativo).",
+        "Tentar usar a fórmula de representação 'crua' (com $\\Phi$ em vez de $G$) para resolver Dirichlet — ela exige $\\partial_\\nu u$ na fronteira, que não é dado. É exatamente por isso que se introduz a função de Green.",
+        "Posicionar mal a carga-imagem na bola: ela vai no ponto inverso de Kelvin $x^*=R^2 x/|x|^2$, com intensidade ajustada, não simplesmente refletido.",
+        "Confundir as condições: função de Green de Dirichlet anula-se na fronteira ($G=0$); a de Neumann tem condição na derivada normal — são objetos distintos."
+      ],
+      "worked": "**Problema.** Construir a função de Green do semiplano superior $\\Omega=\\{(x_1,x_2):x_2>0\\}\\subset\\mathbb{R}^2$ pelo método das imagens. **Solução.** Para $x=(x_1,x_2)\\in\\Omega$, seja $x^*=(x_1,-x_2)$ sua reflexão pelo eixo $x_2=0$. Defina $G(x,y)=\\Phi(y-x)-\\Phi(y-x^*)$, com $\\Phi(z)=-\\frac{1}{2\\pi}\\ln|z|$. Então: (i) $-\\Delta_y G=\\delta_x$ em $\\Omega$, pois $\\Phi(y-x^*)$ é harmônica em $\\Omega$ (o polo $x^*$ está fora, no semiplano inferior); (ii) se $y$ está na fronteira ($y_2=0$), então $|y-x|=|y-x^*|$ (pois $x$ e $x^*$ são equidistantes da reta $y_2=0$), logo $\\Phi(y-x)=\\Phi(y-x^*)$ e $G(x,y)=0$. Assim $G$ satisfaz as duas defining properties. Explicitamente $G(x,y)=\\frac{1}{2\\pi}\\big(\\ln|y-x^*|-\\ln|y-x|\\big)$. Derivando $-\\partial_{\\nu_y}G$ na fronteira (com $\\nu=-e_2$, normal exterior apontando para baixo) recupera-se o núcleo de Poisson do semiplano $K(x,y)=\\frac{1}{\\pi}\\frac{x_2}{(x_1-y_1)^2+x_2^2}$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Verifique que, em $\\mathbb{R}^3$, $\\Phi(x)=\\frac{1}{4\\pi|x|}$ satisfaz $\\Delta\\Phi=0$ para $x\\neq 0$.",
+          "hint": "Para $u=u(r)$ radial em $\\mathbb{R}^3$, $\\Delta u=u''+\\frac{2}{r}u'$. Com $u=\\frac{1}{4\\pi r}$: $u'=-\\frac{1}{4\\pi r^2}$, $u''=\\frac{2}{4\\pi r^3}$; então $u''+\\frac2r u'=\\frac{2}{4\\pi r^3}-\\frac{2}{4\\pi r^3}=0$.",
+          "difficulty": 2,
+          "solution": "Para funcoes radiais $u=u(r)$ em $\\mathbb{R}^3$ (com $r=|x|$) o laplaciano e $\\Delta u=u''(r)+\\frac{2}{r}u'(r)$. Aqui $\\Phi(x)=\\frac{1}{4\\pi|x|}=\\frac{1}{4\\pi}r^{-1}$. Calculamos: $$u'(r)=\\frac{1}{4\\pi}(-1)r^{-2}=-\\frac{1}{4\\pi r^2},\\qquad u''(r)=\\frac{1}{4\\pi}(2)r^{-3}=\\frac{2}{4\\pi r^3}.$$ Entao $$\\Delta\\Phi=u''+\\frac{2}{r}u'=\\frac{2}{4\\pi r^3}+\\frac{2}{r}\\Big(-\\frac{1}{4\\pi r^2}\\Big)=\\frac{2}{4\\pi r^3}-\\frac{2}{4\\pi r^3}=0,$$ para todo $x\\neq0$ (isto e, $r>0$). Logo $\\Phi$ e harmonica fora da origem. (Na origem, no sentido das distribuicoes, $-\\Delta\\Phi=\\delta_0$: $\\Phi$ e a solucao fundamental do laplaciano em $\\mathbb{R}^3$.) $\\blacksquare$",
+          "steps": [
+            "Use o laplaciano radial em 3D: $\\Delta u=u''+\\frac{2}{r}u'$.",
+            "Escreva $\\Phi=\\frac{1}{4\\pi}r^{-1}$ e calcule $u'=-\\frac{1}{4\\pi r^2}$.",
+            "Calcule $u''=\\frac{2}{4\\pi r^3}$.",
+            "Substitua: $u''+\\frac{2}{r}u'=\\frac{2}{4\\pi r^3}-\\frac{2}{4\\pi r^3}=0$ para $x\\neq0$."
+          ]
+        },
+        {
+          "prompt": "Use a 2ª identidade de Green para provar a simetria $G(x,y)=G(y,x)$ da função de Green (esboço).",
+          "hint": "Aplique a 2ª identidade a $v(\\cdot)=G(x,\\cdot)$ e $w(\\cdot)=G(y,\\cdot)$ no domínio com pequenas bolas removidas em torno de $x$ e $y$; os termos de fronteira em $\\partial\\Omega$ somem ($G=0$ lá), e os limites nas bolinhas pequenas dão $G(x,y)$ e $G(y,x)$.",
+          "difficulty": 4,
+          "solution": "Queremos $G(x,y)=G(y,x)$ para $x\\neq y$ em $\\Omega$ (dominio limitado suave), onde $G(x,\\cdot)$ satisfaz $-\\Delta_z G(x,z)=\\delta_x$ e $G(x,z)=0$ para $z\\in\\partial\\Omega$. Fixe $x,y$ distintos e defina $v(z)=G(x,z)$, $w(z)=G(y,z)$. Ambas sao harmonicas em $\\Omega\\setminus\\{x,y\\}$ e nulas em $\\partial\\Omega$. **2a identidade de Green** aplicada em $\\Omega_\\varepsilon=\\Omega\\setminus\\big(B(x,\\varepsilon)\\cup B(y,\\varepsilon)\\big)$: $$\\int_{\\Omega_\\varepsilon}(v\\,\\Delta w-w\\,\\Delta v)\\,dz=\\int_{\\partial\\Omega_\\varepsilon}(v\\,\\partial_\\nu w-w\\,\\partial_\\nu v)\\,dS.$$ No interior de $\\Omega_\\varepsilon$ ambas sao harmonicas, logo o lado esquerdo e nulo. A fronteira $\\partial\\Omega_\\varepsilon$ tem tres partes: (i) em $\\partial\\Omega$, $v=w=0$, contribuicao nula; (ii) na esferinha $\\partial B(x,\\varepsilon)$, $w$ e suave (o polo dela e em $y$) e $v=G(x,\\cdot)\\sim\\Phi(\\cdot-x)$ tem a singularidade; o limite $\\varepsilon\\to0$ desse termo isola, pela normalizacao de $\\Phi$, o valor $w(x)=G(y,x)$; (iii) na esferinha $\\partial B(y,\\varepsilon)$, simetricamente, o limite isola $v(y)=G(x,y)$. Igualando as contribuicoes: $$G(y,x)-G(x,y)=0\\quad\\Longrightarrow\\quad G(x,y)=G(y,x).$$ Isso reflete a auto-adjuncao do laplaciano (reciprocidade). $\\blacksquare$",
+          "steps": [
+            "Fixe $x\\neq y$ e ponha $v=G(x,\\cdot),\\ w=G(y,\\cdot)$, harmonicas fora dos polos e nulas em $\\partial\\Omega$.",
+            "Aplique a 2a identidade de Green no dominio com bolinhas $B(x,\\varepsilon),B(y,\\varepsilon)$ removidas.",
+            "Anule o lado esquerdo (ambas harmonicas) e o termo em $\\partial\\Omega$ (pois $v=w=0$ la).",
+            "Tome $\\varepsilon\\to0$: a esferinha em $x$ isola $w(x)=G(y,x)$ e a em $y$ isola $v(y)=G(x,y)$.",
+            "Iguale as contribuicoes para obter $G(x,y)=G(y,x)$."
+          ]
+        },
+        {
+          "prompt": "A partir do núcleo de Poisson do semiplano $K(x,y_1)=\\frac{1}{\\pi}\\frac{x_2}{(x_1-y_1)^2+x_2^2}$, mostre que a solução harmônica com dado $g\\equiv 1$ na reta é $u\\equiv 1$.",
+          "hint": "$u(x)=\\int_{\\mathbb{R}}K(x,y_1)\\cdot 1\\,dy_1=\\frac{1}{\\pi}\\int_{\\mathbb{R}}\\frac{x_2}{(x_1-y_1)^2+x_2^2}\\,dy_1$. Substituindo $s=(y_1-x_1)/x_2$ vira $\\frac{1}{\\pi}\\int_{\\mathbb{R}}\\frac{1}{1+s^2}\\,ds=\\frac{1}{\\pi}\\cdot\\pi=1$. (Confirma que constantes são harmônicas e o núcleo tem massa total $1$.)",
+          "difficulty": 3,
+          "solution": "O nucleo de Poisson do semiplano superior $\\Omega=\\{x_2>0\\}\\subset\\mathbb{R}^2$ e $K(x,y_1)=\\frac{1}{\\pi}\\frac{x_2}{(x_1-y_1)^2+x_2^2}$, com $y_1$ percorrendo a fronteira $\\{x_2=0\\}$. Para o dado $g\\equiv1$, a solucao e $$u(x)=\\int_{\\mathbb{R}}K(x,y_1)\\cdot1\\,dy_1=\\frac{1}{\\pi}\\int_{\\mathbb{R}}\\frac{x_2}{(x_1-y_1)^2+x_2^2}\\,dy_1.$$ Substituindo $s=\\frac{y_1-x_1}{x_2}$, temos $dy_1=x_2\\,ds$ e $(x_1-y_1)^2+x_2^2=x_2^2(s^2+1)$: $$u(x)=\\frac{1}{\\pi}\\int_{\\mathbb{R}}\\frac{x_2}{x_2^2(s^2+1)}\\,x_2\\,ds=\\frac{1}{\\pi}\\int_{\\mathbb{R}}\\frac{ds}{1+s^2}=\\frac{1}{\\pi}\\big[\\arctan s\\big]_{-\\infty}^{\\infty}=\\frac{1}{\\pi}\\cdot\\pi=1.$$ Logo $u\\equiv1$ em todo o semiplano, como deveria: a funcao constante $1$ e harmonica e assume o dado $g\\equiv1$ na fronteira. Isso tambem confirma que o nucleo de Poisson tem massa total $\\int_{\\mathbb{R}}K\\,dy_1=1$. $\\blacksquare$",
+          "steps": [
+            "Escreva $u(x)=\\int_{\\mathbb{R}}K(x,y_1)\\cdot1\\,dy_1$ com o nucleo do semiplano.",
+            "Faca a substituicao $s=(y_1-x_1)/x_2$, com $dy_1=x_2\\,ds$.",
+            "Simplifique o integrando para $\\frac{1}{\\pi}\\frac{1}{1+s^2}$.",
+            "Integre: $\\frac{1}{\\pi}[\\arctan s]_{-\\infty}^{\\infty}=\\frac{1}{\\pi}\\cdot\\pi=1$.",
+            "Conclua $u\\equiv1$ e que o nucleo tem massa total $1$."
+          ]
+        },
+        {
+          "prompt": "Para a bola $B(0,R)\\subset\\mathbb{R}^n$, identifique o ponto-imagem de Kelvin de $x\\neq 0$ e explique por que ele fica fora da bola.",
+          "hint": "O ponto-imagem é $x^*=\\frac{R^2}{|x|^2}x$. Como $|x^*|=\\frac{R^2}{|x|}$ e $|x|<R$, tem-se $|x^*|>R$: fica fora da bola, então $\\Phi(\\cdot-x^*)$ é harmônica dentro de $B(0,R)$, servindo de corretor.",
+          "difficulty": 3,
+          "solution": "Para a bola $B(0,R)\\subset\\mathbb{R}^n$ e um ponto $x\\neq0$ interior ($|x|<R$), o ponto-imagem de Kelvin (inversao pela esfera de raio $R$) e $$x^*=\\frac{R^2}{|x|^2}\\,x.$$ Ele fica na mesma semirreta a partir da origem que $x$, mas a distancia $$|x^*|=\\frac{R^2}{|x|^2}\\,|x|=\\frac{R^2}{|x|}.$$ Como $|x|<R$, temos $\\frac{R^2}{|x|}>\\frac{R^2}{R}=R$, isto e $|x^*|>R$: o ponto-imagem esta FORA da bola. **Por que isso importa:** a funcao $y\\mapsto\\Phi(y-x^*)$ (potencial da carga-imagem em $x^*$, com intensidade ajustada) tem seu unico polo em $x^*\\notin B(0,R)$, logo e harmonica DENTRO da bola. Ela serve, portanto, como o corretor harmonico $\\phi^x$: escolhendo a intensidade certa, $G(x,y)=\\Phi(y-x)-\\big(\\tfrac{|x|}{R}\\big)^{n-2}\\Phi(y-x^*)$ se anula em $|y|=R$, produzindo a funcao de Green da bola. $\\blacksquare$",
+          "steps": [
+            "Escreva o ponto-imagem de Kelvin: $x^*=\\frac{R^2}{|x|^2}x$, na mesma direcao de $x$.",
+            "Calcule seu modulo: $|x^*|=R^2/|x|$.",
+            "Use $|x|<R$ para concluir $|x^*|=R^2/|x|>R$: fora da bola.",
+            "Justifique: com o polo em $x^*\\notin B(0,R)$, $\\Phi(\\cdot-x^*)$ e harmonica dentro, servindo de corretor $\\phi^x$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Solução fundamental do laplaciano em $\\mathbb{R}^n$",
+          "back": "$n=2$: $\\Phi(x)=-\\frac{1}{2\\pi}\\ln|x|$. $n\\ge3$: $\\Phi(x)=\\frac{1}{n(n-2)\\alpha(n)}|x|^{2-n}$. Satisfaz $-\\Delta\\Phi=\\delta_0$."
+        },
+        {
+          "front": "Função de Green de um domínio $\\Omega$ (defining properties)",
+          "back": "$-\\Delta_y G(x,y)=\\delta_x$ em $\\Omega$ e $G(x,y)=0$ para $y\\in\\partial\\Omega$. Forma: $G=\\Phi(y-x)-\\phi^x(y)$, $\\phi^x$ corretor harmônico."
+        },
+        {
+          "front": "Fórmula de representação (Dirichlet harmônico)",
+          "back": "$u(x)=-\\int_{\\partial\\Omega}u(y)\\,\\partial_{\\nu_y}G(x,y)\\,dS(y)=\\int_{\\partial\\Omega}K(x,y)g(y)\\,dS$."
+        },
+        {
+          "front": "Núcleo de Poisson a partir de $G$",
+          "back": "$K(x,y)=-\\partial_{\\nu_y}G(x,y)$, $y\\in\\partial\\Omega$; é positivo e tem integral $1$."
+        },
+        {
+          "front": "Simetria da função de Green",
+          "back": "$G(x,y)=G(y,x)$ (auto-adjunção do laplaciano / reciprocidade)."
+        },
+        {
+          "front": "Método das imagens: ponto-imagem na bola $B(0,R)$",
+          "back": "Inversão de Kelvin: $x^*=\\frac{R^2}{|x|^2}x$, que fica fora da bola ($|x^*|=R^2/|x|>R$)."
+        },
+        {
+          "front": "Núcleo de Poisson do semiplano superior ($\\mathbb{R}^2$)",
+          "back": "$K(x,y_1)=\\frac{1}{\\pi}\\frac{x_2}{(x_1-y_1)^2+x_2^2}$."
+        },
+        {
+          "front": "Por que não basta $\\Phi$ para resolver Dirichlet?",
+          "back": "A representação com $\\Phi$ exige $\\partial_\\nu u$ na fronteira, que não é dado. A função de Green ($G=0$ na fronteira) elimina esse termo."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Evans, Partial Differential Equations, §2.2.4 (função de Green, núcleo de Poisson)",
+          "ref": "livro"
+        },
+        {
+          "title": "Strauss, PDE: An Introduction, cap. 7",
+          "ref": "livro"
+        },
+        {
+          "title": "Jackson, Classical Electrodynamics, cap. 1-2 (imagens, motivação física)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja a solucao fundamental do laplaciano ($\\Phi$) e o significado de $-\\Delta\\Phi=\\delta_0$; relembre o teorema da divergencia, base das identidades de Green.",
+          "Leia Evans 2.2.4 e Strauss cap. 7: deduza as duas identidades de Green e a formula de representacao, entendendo por que $\\partial_\\nu u$ na fronteira e o termo indesejado.",
+          "Estude a construcao da funcao de Green $G=\\Phi-\\phi^x$ e o metodo das imagens no semiespaco (reflexao) e na bola (inversao de Kelvin).",
+          "Deduza o nucleo de Poisson como $-\\partial_{\\nu_y}G$ e resolva o Dirichlet na bola/semiplano em um exemplo explicito.",
+          "Assista a uma aula sobre Green's functions / method of images (inclusive material de eletromagnetismo, que da otima intuicao fisica).",
+          "Volte ao app, resolva os testes sem as dicas e anote aqui o principal (defining properties de $G$, metodo das imagens e a formula de representacao)."
+        ],
+        "searchQueries": [
+          "funcao de Green laplaciano metodo das imagens semiespaco",
+          "identidades de Green formula de representacao dedução",
+          "nucleo de Poisson bola inversao de Kelvin",
+          "solucao fundamental laplaciano -Delta Phi = delta",
+          "Green function Laplacian method of images half-space ball",
+          "Poisson kernel Dirichlet problem representation formula proof"
+        ],
+        "videos": [
+          {
+            "title": "Green's Functions for PDEs",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre funcao de Green, formula de representacao e nucleo de Poisson."
+          },
+          {
+            "title": "Method of images / Green's function",
+            "channel": "Dr. Peyam",
+            "note": "Construcao da funcao de Green por imagens com exemplos no semiespaco e na bola."
+          },
+          {
+            "title": "Green's function and image charges",
+            "channel": "MIT OpenCourseWare (8.02 / eletromagnetismo)",
+            "note": "Otima motivacao fisica do metodo das imagens via cargas-imagem."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Partial Differential Equations, sec. 2.2.4 (Green's function, Poisson's kernel)",
+            "where": "L. C. Evans, AMS GSM 19"
+          },
+          {
+            "title": "PDE: An Introduction, cap. 7",
+            "where": "Walter A. Strauss"
+          },
+          {
+            "title": "Classical Electrodynamics, caps. 1-2 (imagens, funcao de Green)",
+            "where": "J. D. Jackson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edp-07-solucoes-fracas",
+      "title": "Introdução às Soluções Fracas: Distribuições e Espaços de Sobolev",
+      "tagline": "Quando não há solução clássica, mude o conceito de derivada — e ganhe existência.",
+      "objectives": [
+        "Motivar a necessidade de soluções fracas a partir de choques e dados irregulares.",
+        "Definir funções-teste, distribuições e a derivada fraca (distribucional).",
+        "Introduzir os espaços de Sobolev $W^{k,p}$ e $H^k=W^{k,2}$ e o subespaço $H_0^1$.",
+        "Escrever a formulação fraca (variacional) do problema $-\\Delta u=f$ e interpretá-la.",
+        "Enunciar o teorema de Lax-Milgram e a desigualdade de Poincaré como ferramentas de existência e unicidade."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Função-teste e derivada fraca",
+          "statement": "Funções-teste são $\\varphi\\in C_c^\\infty(\\Omega)$ (suaves, suporte compacto). Dizemos que $v\\in L^1_{\\mathrm{loc}}$ é a derivada fraca $\\partial^\\alpha u$ de $u$ se $\\int_\\Omega u\\,\\partial^\\alpha\\varphi\\,dx=(-1)^{|\\alpha|}\\int_\\Omega v\\,\\varphi\\,dx$ para toda $\\varphi$ — a fórmula de integração por partes promovida a definição."
+        },
+        {
+          "term": "Distribuição",
+          "statement": "Um funcional linear contínuo $T:C_c^\\infty(\\Omega)\\to\\mathbb{R}$. Toda $u\\in L^1_{\\mathrm{loc}}$ define uma distribuição $\\varphi\\mapsto\\int u\\varphi$; e $\\delta_0(\\varphi)=\\varphi(0)$. Distribuições sempre têm derivadas de todas as ordens, definidas por $\\partial^\\alpha T(\\varphi)=(-1)^{|\\alpha|}T(\\partial^\\alpha\\varphi)$."
+        },
+        {
+          "term": "Espaço de Sobolev",
+          "statement": "$W^{k,p}(\\Omega)=\\{u\\in L^p:\\partial^\\alpha u\\in L^p\\ \\text{(fraca)}\\ \\forall |\\alpha|\\le k\\}$, com norma $\\|u\\|_{W^{k,p}}=\\big(\\sum_{|\\alpha|\\le k}\\|\\partial^\\alpha u\\|_{L^p}^p\\big)^{1/p}$. Caso $p=2$: $H^k=W^{k,2}$, espaço de Hilbert. $H_0^1$ é o fecho de $C_c^\\infty$ em $H^1$ (funções que 'se anulam na fronteira')."
+        },
+        {
+          "term": "Formulação fraca",
+          "statement": "Multiplicar a EDP por uma função-teste e integrar por partes. Para $-\\Delta u=f$ em $\\Omega$, $u=0$ em $\\partial\\Omega$: procurar $u\\in H_0^1(\\Omega)$ tal que $\\int_\\Omega \\nabla u\\cdot\\nabla v\\,dx=\\int_\\Omega f\\,v\\,dx$ para toda $v\\in H_0^1(\\Omega)$. Exige só uma derivada (fraca), não duas clássicas."
+        },
+        {
+          "term": "Solução fraca de lei de conservação",
+          "statement": "Para $u_t+(F(u))_x=0$, $u$ é solução fraca se $\\int\\!\\!\\int\\big(u\\,\\varphi_t+F(u)\\,\\varphi_x\\big)\\,dx\\,dt=0$ para toda $\\varphi\\in C_c^\\infty$. Permite descontinuidades (choques), governadas pela condição de Rankine-Hugoniot $s[u]=[F(u)]$ na linha de choque."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Unicidade da derivada fraca",
+          "statement": "Se $v_1,v_2\\in L^1_{\\mathrm{loc}}(\\Omega)$ são ambas derivadas fracas $\\partial^\\alpha u$ da mesma $u$, então $v_1=v_2$ quase sempre. Assim a derivada fraca, quando existe, é única (a menos de conjunto de medida nula).",
+          "whyItMatters": "Garante que 'a' derivada fraca é um objeto bem definido, legitimando toda a construção dos espaços de Sobolev. Decorre do lema fundamental do cálculo das variações: se $\\int w\\varphi=0$ para toda $\\varphi\\in C_c^\\infty$, então $w=0$ q.s."
+        },
+        {
+          "name": "Teorema de Lax-Milgram",
+          "statement": "Seja $H$ um espaço de Hilbert e $B:H\\times H\\to\\mathbb{R}$ bilinear, limitada ($|B(u,v)|\\le M\\|u\\|\\,\\|v\\|$) e coerciva ($B(u,u)\\ge\\beta\\|u\\|^2$, $\\beta>0$). Então, para todo funcional linear limitado $f\\in H^*$, existe um único $u\\in H$ com $B(u,v)=\\langle f,v\\rangle$ para todo $v\\in H$.",
+          "whyItMatters": "É o motor da existência e unicidade de soluções fracas para EDPs elípticas: aplicado a $B(u,v)=\\int\\nabla u\\cdot\\nabla v$ em $H=H_0^1$, dá imediatamente solução fraca de $-\\Delta u=f$. Substitui a busca por fórmulas explícitas por um argumento abstrato de espaços de Hilbert."
+        },
+        {
+          "name": "Desigualdade de Poincaré",
+          "statement": "Se $\\Omega\\subset\\mathbb{R}^n$ é limitado (ao menos numa direção), existe $C=C(\\Omega)>0$ tal que $\\|u\\|_{L^2(\\Omega)}\\le C\\,\\|\\nabla u\\|_{L^2(\\Omega)}$ para toda $u\\in H_0^1(\\Omega)$.",
+          "whyItMatters": "É exatamente o que torna a forma $B(u,v)=\\int\\nabla u\\cdot\\nabla v$ coerciva em $H_0^1$, fechando a hipótese do Lax-Milgram. Sem Poincaré, controlar a função por seu gradiente seria impossível e a existência fraca cairia por terra."
+        }
+      ],
+      "summary": "A teoria clássica de EDPs pede soluções tão derivaveis quanto a ordem da equação, mas vimos que isso é exigente demais: leis de conservação geram choques e dados fisicamente razoáveis podem ser irregulares. A saída é redefinir o que significa derivar. A ideia, simples e profunda, é a integração por partes: se $u$ fosse suave, $\\int u\\,\\varphi'=-\\int u'\\,\\varphi$ para toda função-teste $\\varphi\\in C_c^\\infty$; tomamos essa identidade como definição da derivada fraca $u'$, que então existe para funções muito mais gerais e é única quando existe. Levando ao limite, toda distribuição (funcional linear contínuo sobre as funções-teste) tem derivadas de todas as ordens — inclusive a delta de Dirac, derivada fraca da função de Heaviside. Os espaços de Sobolev $W^{k,p}$ reúnem as funções cujas derivadas fracas até ordem $k$ vivem em $L^p$; o caso hilbertiano $H^k$ é o palco natural da teoria variacional.\n\nCom isso, a formulação fraca de $-\\Delta u=f$ pede apenas $u\\in H_0^1$ satisfazendo $\\int\\nabla u\\cdot\\nabla v=\\int fv$ para toda $v\\in H_0^1$ — uma só derivada, simétrica entre $u$ e $v$. A existência e unicidade de tal $u$ saem do teorema de Lax-Milgram, cuja hipótese de coercividade é garantida pela desigualdade de Poincaré. Depois, teoremas de regularidade (elíptica) recuperam, sob hipóteses, que a solução fraca é de fato clássica — fecha-se o círculo. Esse é o paradigma moderno: primeiro garante-se a existência de uma solução fraca num espaço de Hilbert, depois investiga-se sua regularidade. É a base do método de elementos finitos e a porta de entrada para a Análise Funcional aplicada a EDPs, tema central de qualquer mestrado com ênfase em análise.",
+      "commonPitfalls": [
+        "Pensar que 'derivada fraca' é uma derivada diferente da clássica quando esta existe: se $u\\in C^1$, suas derivadas fraca e clássica coincidem. A fraca apenas estende o conceito.",
+        "Esquecer o sinal $(-1)^{|\\alpha|}$ na definição via integração por partes — para a primeira derivada é só um sinal de menos, mas para ordens superiores o sinal alterna.",
+        "Confundir $H^1$ com $H_0^1$: $H_0^1$ incorpora a condição de fronteira nula (fecho de $C_c^\\infty$); $H^1$ não impõe valor de fronteira. A desigualdade de Poincaré usada aqui vale em $H_0^1$.",
+        "Achar que existência de solução fraca implica imediatamente regularidade clássica — isso é um teorema separado (regularidade elíptica), com hipóteses sobre $f$ e $\\partial\\Omega$."
+      ],
+      "worked": "**Problema.** Mostrar que $u(x)=|x|$ tem derivada fraca em $(-1,1)$ igual a $\\operatorname{sgn}(x)$, mas que sua segunda derivada fraca não é uma função de $L^1_{\\mathrm{loc}}$. **Solução.** Para $\\varphi\\in C_c^\\infty(-1,1)$, queremos $v$ com $\\int_{-1}^1 |x|\\,\\varphi'(x)\\,dx=-\\int_{-1}^1 v\\,\\varphi\\,dx$. Separe a integral: $\\int_{-1}^1|x|\\varphi'=\\int_{-1}^0(-x)\\varphi'+\\int_0^1 x\\varphi'$. Integrando por partes cada pedaço (termos de fronteira em $\\pm1$ somem pois $\\varphi$ tem suporte compacto; em $0$ os termos $\\pm x\\varphi$ se anulam pois $x=0$): $\\int_{-1}^0(-x)\\varphi'=\\int_{-1}^0\\varphi$ e $\\int_0^1 x\\varphi'=-\\int_0^1\\varphi$. Logo $\\int|x|\\varphi'=\\int_{-1}^0\\varphi-\\int_0^1\\varphi=-\\int_{-1}^1\\operatorname{sgn}(x)\\varphi(x)\\,dx$. Portanto a derivada fraca é $\\operatorname{sgn}(x)$ (em $L^\\infty\\subset L^1_{\\mathrm{loc}}$), e $|x|\\in H^1(-1,1)$. **Segunda derivada.** A derivada (distribucional) de $\\operatorname{sgn}$ é $2\\delta_0$: $\\int\\operatorname{sgn}(x)\\varphi'\\,dx=-2\\varphi(0)$, que não é da forma $\\int v\\varphi$ com $v\\in L^1_{\\mathrm{loc}}$. Logo $|x|\\notin H^2(-1,1)$: tem derivada fraca de 1ª ordem, mas não de 2ª (como função). $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre que a função de Heaviside $H(x)=\\mathbb{1}_{\\{x>0\\}}$ tem derivada distribucional $\\delta_0$, isto é, $\\int H\\varphi'\\,dx=-\\varphi(0)$ para toda $\\varphi\\in C_c^\\infty(\\mathbb{R})$.",
+          "hint": "$\\int_{\\mathbb{R}}H(x)\\varphi'(x)\\,dx=\\int_0^\\infty\\varphi'(x)\\,dx=[\\varphi]_0^\\infty=0-\\varphi(0)=-\\varphi(0)$. Por definição, $H'=\\delta_0$ no sentido das distribuições.",
+          "difficulty": 2,
+          "solution": "A funcao de Heaviside e $H(x)=\\mathbb{1}_{\\{x>0\\}}$. Sua derivada no sentido das distribuicoes e definida por $\\langle H',\\varphi\\rangle=-\\langle H,\\varphi'\\rangle=-\\int_{\\mathbb{R}}H(x)\\varphi'(x)\\,dx$ para toda $\\varphi\\in C_c^\\infty(\\mathbb{R})$. Calculamos: $$\\int_{\\mathbb{R}}H(x)\\varphi'(x)\\,dx=\\int_0^{\\infty}\\varphi'(x)\\,dx=\\big[\\varphi(x)\\big]_0^{\\infty}=\\varphi(\\infty)-\\varphi(0)=0-\\varphi(0)=-\\varphi(0),$$ onde $\\varphi(\\infty)=0$ pois $\\varphi$ tem suporte compacto. Assim $$\\langle H',\\varphi\\rangle=-\\int_{\\mathbb{R}}H\\varphi'\\,dx=-(-\\varphi(0))=\\varphi(0)=\\langle\\delta_0,\\varphi\\rangle.$$ Como isso vale para toda funcao-teste $\\varphi$, concluimos $H'=\\delta_0$ no sentido das distribuicoes — a derivada da Heaviside e a delta de Dirac. Note que $\\delta_0$ NAO e uma funcao de $L^1_{\\mathrm{loc}}$, de modo que $H$ tem derivada distribucional mas nao derivada fraca dada por funcao. $\\blacksquare$",
+          "steps": [
+            "Use a definicao: $\\langle H',\\varphi\\rangle=-\\int H\\varphi'\\,dx$ para $\\varphi\\in C_c^\\infty$.",
+            "Restrinja o dominio: $H=1$ so em $x>0$, logo $\\int H\\varphi'=\\int_0^\\infty\\varphi'dx$.",
+            "Avalie: $\\int_0^\\infty\\varphi'=[\\varphi]_0^\\infty=-\\varphi(0)$ (suporte compacto anula em $\\infty$).",
+            "Conclua $\\langle H',\\varphi\\rangle=\\varphi(0)=\\langle\\delta_0,\\varphi\\rangle$, logo $H'=\\delta_0$."
+          ]
+        },
+        {
+          "prompt": "Escreva a formulação fraca do problema $-\\Delta u=f$ em $\\Omega$ com $u=0$ em $\\partial\\Omega$, partindo de multiplicar por $v\\in C_c^\\infty(\\Omega)$ e integrar por partes.",
+          "hint": "$-\\int_\\Omega \\Delta u\\,v=\\int_\\Omega \\nabla u\\cdot\\nabla v-\\int_{\\partial\\Omega}v\\,\\partial_\\nu u$; como $v=0$ na fronteira, o termo de bordo some. Resulta: achar $u\\in H_0^1$ com $\\int_\\Omega\\nabla u\\cdot\\nabla v=\\int_\\Omega fv$ para toda $v\\in H_0^1$.",
+          "difficulty": 2,
+          "solution": "Partimos da EDP $-\\Delta u=f$ em $\\Omega$, com $u=0$ em $\\partial\\Omega$. **Multiplicamos por uma funcao-teste** $v\\in C_c^\\infty(\\Omega)$ e integramos: $$-\\int_\\Omega \\Delta u\\,v\\,dx=\\int_\\Omega f\\,v\\,dx.$$ **Integramos por partes** (1a identidade de Green) o lado esquerdo: $$-\\int_\\Omega \\Delta u\\,v\\,dx=\\int_\\Omega \\nabla u\\cdot\\nabla v\\,dx-\\int_{\\partial\\Omega} v\\,\\partial_\\nu u\\,dS.$$ Como $v$ tem suporte compacto em $\\Omega$ (ou pertence a $H_0^1$, anulando-se em $\\partial\\Omega$), o termo de fronteira $\\int_{\\partial\\Omega}v\\,\\partial_\\nu u\\,dS=0$. Resta $$\\int_\\Omega \\nabla u\\cdot\\nabla v\\,dx=\\int_\\Omega f\\,v\\,dx.$$ **Formulacao fraca:** por densidade de $C_c^\\infty(\\Omega)$ em $H_0^1(\\Omega)$, procuramos $u\\in H_0^1(\\Omega)$ tal que $$\\int_\\Omega \\nabla u\\cdot\\nabla v\\,dx=\\int_\\Omega f\\,v\\,dx\\qquad\\text{para toda }v\\in H_0^1(\\Omega).$$ Observe que esta formulacao so exige UMA derivada (fraca) de $u$, e trata $u$ e $v$ simetricamente — bem mais fraco que exigir $u\\in C^2$. $\\blacksquare$",
+          "steps": [
+            "Multiplique $-\\Delta u=f$ por $v\\in C_c^\\infty(\\Omega)$ e integre em $\\Omega$.",
+            "Integre por partes o lado esquerdo (1a identidade de Green): aparece $\\int\\nabla u\\cdot\\nabla v$ menos o termo de bordo.",
+            "Anule o termo de fronteira usando $v=0$ em $\\partial\\Omega$.",
+            "Escreva a igualdade $\\int_\\Omega\\nabla u\\cdot\\nabla v=\\int_\\Omega fv$.",
+            "Por densidade, formule: achar $u\\in H_0^1$ com essa igualdade para toda $v\\in H_0^1$."
+          ]
+        },
+        {
+          "prompt": "Verifique as hipóteses de Lax-Milgram para $B(u,v)=\\int_\\Omega \\nabla u\\cdot\\nabla v$ em $H=H_0^1(\\Omega)$, $\\Omega$ limitado, com a norma $\\|u\\|_{H_0^1}=\\|\\nabla u\\|_{L^2}$.",
+          "hint": "Limitação: $|B(u,v)|\\le\\|\\nabla u\\|_{L^2}\\|\\nabla v\\|_{L^2}$ por Cauchy-Schwarz, $M=1$. Coercividade: $B(u,u)=\\|\\nabla u\\|_{L^2}^2=\\|u\\|_{H_0^1}^2$, $\\beta=1$. (Aqui a desigualdade de Poincaré garante que $\\|\\nabla u\\|_{L^2}$ é de fato uma norma equivalente em $H_0^1$.)",
+          "difficulty": 3,
+          "solution": "Tomamos $H=H_0^1(\\Omega)$ (Hilbert) com norma $\\|u\\|_{H_0^1}=\\|\\nabla u\\|_{L^2}$, e a forma bilinear $B(u,v)=\\int_\\Omega \\nabla u\\cdot\\nabla v\\,dx$. Precisamos verificar as tres hipoteses de Lax-Milgram. **(1) Bilinearidade:** imediata, pois $\\nabla$ e a integral sao lineares em cada argumento. **(2) Limitacao:** por Cauchy-Schwarz (em $L^2$), $$|B(u,v)|=\\Big|\\int_\\Omega \\nabla u\\cdot\\nabla v\\,dx\\Big|\\le \\|\\nabla u\\|_{L^2}\\,\\|\\nabla v\\|_{L^2}=\\|u\\|_{H_0^1}\\|v\\|_{H_0^1},$$ logo $B$ e limitada com $M=1$. **(3) Coercividade:** $$B(u,u)=\\int_\\Omega |\\nabla u|^2\\,dx=\\|\\nabla u\\|_{L^2}^2=\\|u\\|_{H_0^1}^2,$$ isto e $B(u,u)\\ge\\beta\\|u\\|_{H_0^1}^2$ com $\\beta=1$. Aqui a **desigualdade de Poincare** ($\\|u\\|_{L^2}\\le C\\|\\nabla u\\|_{L^2}$ em $H_0^1$, $\\Omega$ limitado) e o que garante que $\\|\\nabla u\\|_{L^2}$ e de fato uma norma equivalente a de $H^1$ em $H_0^1$ — sem ela a coercividade em relacao a norma completa de $H^1$ falharia. Satisfeitas as tres hipoteses, Lax-Milgram fornece existencia e unicidade de $u\\in H_0^1$ com $B(u,v)=\\int_\\Omega fv$ para toda $v$, isto e, a solucao fraca de $-\\Delta u=f$. $\\blacksquare$",
+          "steps": [
+            "Fixe $H=H_0^1(\\Omega)$, norma $\\|u\\|=\\|\\nabla u\\|_{L^2}$, e $B(u,v)=\\int\\nabla u\\cdot\\nabla v$.",
+            "Bilinearidade: segue da linearidade do gradiente e da integral.",
+            "Limitacao: por Cauchy-Schwarz $|B(u,v)|\\le\\|\\nabla u\\|_{L^2}\\|\\nabla v\\|_{L^2}$, $M=1$.",
+            "Coercividade: $B(u,u)=\\|\\nabla u\\|_{L^2}^2=\\|u\\|^2$, $\\beta=1$.",
+            "Cite Poincare: garante que $\\|\\nabla u\\|_{L^2}$ e norma equivalente em $H_0^1$, fechando a coercividade; aplique Lax-Milgram."
+          ]
+        },
+        {
+          "prompt": "Para a equação de Burgers $u_t+(u^2/2)_x=0$, deduza a condição de Rankine-Hugoniot $s=\\frac{F(u_+)+F(u_-)}{...}$ relacionando a velocidade $s$ do choque com os estados $u_-,u_+$ à esquerda e à direita.",
+          "hint": "Da formulação fraca/balanço através da descontinuidade: $s\\,(u_+-u_-)=F(u_+)-F(u_-)$. Para $F(u)=u^2/2$: $s=\\frac{u_+^2/2-u_-^2/2}{u_+-u_-}=\\frac{u_++u_-}{2}$ (média dos estados).",
+          "difficulty": 4,
+          "solution": "Considere uma solucao fraca de $u_t+(F(u))_x=0$ com uma descontinuidade (choque) ao longo de uma curva $x=\\sigma(t)$ de velocidade $s=\\sigma'(t)$, separando o estado $u_-$ (a esquerda) do estado $u_+$ (a direita). A condicao de solucao fraca $\\iint(u\\varphi_t+F(u)\\varphi_x)\\,dx\\,dt=0$, aplicada a funcoes-teste concentradas sobre a linha de choque e usando o teorema da divergencia dos dois lados dela, impoe o balanco atraves da descontinuidade: $$s\\,[u]=[F(u)],\\qquad\\text{isto e}\\qquad s\\,(u_+-u_-)=F(u_+)-F(u_-),$$ onde $[q]=q_+-q_-$ denota o salto. Essa e a **condicao de Rankine-Hugoniot**. Isolando a velocidade do choque: $$s=\\frac{F(u_+)-F(u_-)}{u_+-u_-}.$$ Para a equacao de Burgers, $F(u)=u^2/2$, logo $$s=\\frac{u_+^2/2-u_-^2/2}{u_+-u_-}=\\frac{(u_+-u_-)(u_++u_-)/2}{u_+-u_-}=\\frac{u_-+u_+}{2}.$$ Ou seja, o choque de Burgers viaja com velocidade igual a MEDIA dos estados a esquerda e a direita. $\\blacksquare$",
+          "steps": [
+            "Modele o choque como curva $x=\\sigma(t)$ de velocidade $s$ separando estados $u_-$ e $u_+$.",
+            "Aplique a definicao de solucao fraca com teste sobre a linha de choque (balanco de fluxo).",
+            "Obtenha a condicao de salto $s[u]=[F(u)]$, isto e $s(u_+-u_-)=F(u_+)-F(u_-)$.",
+            "Isole $s=\\frac{F(u_+)-F(u_-)}{u_+-u_-}$.",
+            "Especialize $F(u)=u^2/2$ e fatore para $s=\\frac{u_-+u_+}{2}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de derivada fraca $\\partial^\\alpha u=v$",
+          "back": "$\\int_\\Omega u\\,\\partial^\\alpha\\varphi\\,dx=(-1)^{|\\alpha|}\\int_\\Omega v\\,\\varphi\\,dx$ para toda $\\varphi\\in C_c^\\infty(\\Omega)$ (integração por partes como definição)."
+        },
+        {
+          "front": "Espaço de Sobolev $W^{k,p}$",
+          "back": "$\\{u\\in L^p:\\ \\partial^\\alpha u\\in L^p\\text{ (fraca)}\\ \\forall|\\alpha|\\le k\\}$. Caso $p=2$: $H^k=W^{k,2}$ (Hilbert)."
+        },
+        {
+          "front": "O que é $H_0^1(\\Omega)$?",
+          "back": "Fecho de $C_c^\\infty(\\Omega)$ na norma de $H^1$: funções de $H^1$ que 'se anulam na fronteira'."
+        },
+        {
+          "front": "Formulação fraca de $-\\Delta u=f$, $u|_{\\partial\\Omega}=0$",
+          "back": "Achar $u\\in H_0^1$ com $\\int_\\Omega\\nabla u\\cdot\\nabla v\\,dx=\\int_\\Omega fv\\,dx$ para toda $v\\in H_0^1$."
+        },
+        {
+          "front": "Teorema de Lax-Milgram (hipóteses)",
+          "back": "$B$ bilinear, limitada e coerciva ($B(u,u)\\ge\\beta\\|u\\|^2$) em Hilbert $H$; então $\\exists!\\,u$ com $B(u,v)=\\langle f,v\\rangle\\ \\forall v$."
+        },
+        {
+          "front": "Desigualdade de Poincaré",
+          "back": "$\\Omega$ limitado: $\\|u\\|_{L^2}\\le C\\|\\nabla u\\|_{L^2}$ para $u\\in H_0^1(\\Omega)$. Garante coercividade da forma de Dirichlet."
+        },
+        {
+          "front": "Derivada distribucional de Heaviside",
+          "back": "$H'=\\delta_0$ (delta de Dirac): $\\int H\\varphi'=-\\varphi(0)$."
+        },
+        {
+          "front": "Condição de Rankine-Hugoniot (choque)",
+          "back": "$s\\,[u]=[F(u)]$, onde $[\\cdot]$ é o salto e $s$ a velocidade do choque. Para Burgers: $s=\\frac{u_-+u_+}{2}$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Evans, Partial Differential Equations, caps. 5-6 (Sobolev, soluções fracas elípticas)",
+          "ref": "livro"
+        },
+        {
+          "title": "Brezis, Functional Analysis, Sobolev Spaces and PDEs, caps. 8-9",
+          "ref": "livro"
+        },
+        {
+          "title": "Valéria Iório, EDP: Um Curso de Graduação, caps. sobre distribuições",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.152 (notas sobre soluções fracas)",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise integracao por partes/formula de Green e os espacos $L^p$ (completude, densidade de $C_c^\\infty$) — a base analitica das derivadas fracas.",
+          "Leia Evans caps. 5-6 e Iorio (distribuicoes): entenda funcoes-teste $C_c^\\infty$, a definicao de derivada fraca via integracao por partes e o conceito de distribuicao.",
+          "Trabalhe exemplos concretos: derive fracamente $|x|$, a Heaviside (obtendo $\\delta_0$), e verifique quais estao em $H^1$/$H^2$.",
+          "Estude a formulacao fraca (variacional) de $-\\Delta u=f$ e o par de ferramentas Lax-Milgram + desigualdade de Poincare que garantem existencia e unicidade.",
+          "Assista a uma aula sobre weak solutions / Sobolev spaces / distributions para consolidar o paradigma 'existencia fraca primeiro, regularidade depois'.",
+          "Volte ao app, resolva os testes sem as dicas e anote aqui o principal (definicao de derivada fraca, formulacao fraca de $-\\Delta u=f$ e as hipoteses de Lax-Milgram)."
+        ],
+        "searchQueries": [
+          "derivada fraca distribuicao definicao integracao por partes",
+          "espacos de Sobolev H^1 H_0^1 formulacao fraca -Delta u = f",
+          "teorema de Lax-Milgram desigualdade de Poincare existencia",
+          "condicao de Rankine-Hugoniot choque lei de conservacao",
+          "weak derivative distribution Sobolev space definition",
+          "Lax-Milgram theorem weak formulation elliptic PDE proof"
+        ],
+        "videos": [
+          {
+            "title": "Sobolev Spaces and Weak Solutions",
+            "channel": "MIT OpenCourseWare",
+            "note": "Material de PDE avancada cobrindo derivada fraca, espacos de Sobolev e formulacao variacional."
+          },
+          {
+            "title": "Distributions and weak derivatives",
+            "channel": "Dr. Peyam",
+            "note": "Introducao acessivel a distribuicoes, delta de Dirac e derivadas fracas com exemplos."
+          },
+          {
+            "title": "Functional analysis / Sobolev spaces",
+            "channel": "Michael Penn",
+            "note": "Videos sobre espacos de funcoes e ferramentas de analise funcional uteis para EDP."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Partial Differential Equations, caps. 5-6 (Sobolev spaces; second-order elliptic weak solutions)",
+            "where": "L. C. Evans, AMS GSM 19"
+          },
+          {
+            "title": "Functional Analysis, Sobolev Spaces and PDEs, caps. 8-9",
+            "where": "Haim Brezis"
+          },
+          {
+            "title": "EDP: Um Curso de Graduacao (capitulos sobre distribuicoes)",
+            "where": "Valeria Iorio (Colecao Matematica Universitaria, IMPA)"
+          }
+        ]
+      }
+    }
+  ]
+}

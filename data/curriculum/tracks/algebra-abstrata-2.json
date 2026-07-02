@@ -1,0 +1,1801 @@
+{
+  "id": "algebra-abstrata-2",
+  "title": "Álgebra Abstrata II (Anéis e Corpos)",
+  "phase": 1,
+  "phaseLabel": "Núcleo",
+  "tagline": "Da estrutura de anel até a teoria de corpos: fatoração única, irredutibilidade, extensões algébricas e corpos finitos — a álgebra que sustenta a teoria dos números, a geometria algébrica e a criptografia.",
+  "summary": "Esta trilha constrói a teoria de anéis e corpos do zero, com o mesmo rigor de um curso de mestrado. Partimos da definição axiomática de anel, ideais e anéis quociente, passamos pelos teoremas do isomorfismo, pela caracterização de ideais primos e maximais e pelo corpo de frações de um domínio. Em seguida mergulhamos nos anéis de polinômios e na teoria da fatoração — a hierarquia $\\text{DE}\\subset\\text{DIP}\\subset\\text{DFU}$, o Lema de Gauss e os critérios de irredutibilidade (Eisenstein, redução módulo $p$). O ponto culminante é a teoria de corpos: extensões algébricas, grau e o Teorema da Torre, polinômio minimal, corpos de decomposição, a classificação dos corpos finitos $\\mathbb{F}_{p^n}$ e uma introdução à teoria de módulos. É a ponte entre a Álgebra Abstrata I (grupos) e a álgebra de pós-graduação.",
+  "bigPicture": "Anéis e corpos são a linguagem comum da matemática moderna. A teoria dos números algébricos vive em anéis de inteiros $\\mathcal{O}_K$; a geometria algébrica traduz variedades em ideais de $k[x_1,\\dots,x_n]$ (Nullstellensatz); a criptografia de chave pública e os códigos corretores de erro são aritmética em corpos finitos $\\mathbb{F}_q$; a teoria de Galois — herdeira direta desta trilha — resolve a insolubilidade da quíntica e os problemas clássicos de régua e compasso. Para concursos de Instituto Federal (IF), anéis e corpos formam um bloco recorrente das provas de álgebra: domínios, ideais, $\\mathbb{Z}_n$, polinômios, irredutibilidade por Eisenstein e corpos finitos aparecem com frequência. Em provas de mestrado (ENA, exames do IMPA, USP, UFRJ, UFMG, UnB) este é tema obrigatório: caracterizar ideais primos/maximais, provar que $K[x]$ é DIP, aplicar o Lema de Gauss e Eisenstein, calcular graus de extensões via a torre e descrever $\\mathbb{F}_{p^n}$ são questões clássicas. Dominar esta trilha é pré-requisito para Teoria de Galois, Teoria Algébrica dos Números e Álgebra Comutativa.",
+  "prereqs": [
+    "algebra-abstrata-1"
+  ],
+  "difficulty": 4,
+  "estimatedHours": 62,
+  "primaryBooks": [
+    {
+      "title": "Abstract Algebra",
+      "author": "David S. Dummit & Richard M. Foote",
+      "note": "A referência enciclopédica em inglês; tratamento completo e moderno de anéis, ideais, fatoração e teoria de corpos. Use como texto principal e fonte de exercícios.",
+      "chapters": "caps. 7-9 (anéis), 13 (teoria de corpos), 10 (módulos)"
+    },
+    {
+      "title": "Curso de Álgebra, vol. 2",
+      "author": "Abramo Hefez (IMPA/SBM)",
+      "note": "Referência brasileira definitiva em PT-BR para anéis, polinômios, fatoração e irredutibilidade; demonstrações detalhadas e linguagem acessível.",
+      "chapters": "anéis, ideais, polinômios, DFU/DIP/DE, irredutibilidade"
+    },
+    {
+      "title": "Introdução à Álgebra",
+      "author": "Adilson Gonçalves (IMPA, Projeto Euclides)",
+      "note": "Clássico brasileiro; cobre anéis, domínios, corpos e extensões com rigor e em português. Excelente para concursos de IF e mestrado.",
+      "chapters": "caps. sobre anéis, ideais, corpos e extensões"
+    },
+    {
+      "title": "Algebra",
+      "author": "Michael Artin",
+      "note": "Visão geométrica e conceitual de anéis, fatoração e corpos; ótimo complemento intuitivo, especialmente para corpos finitos e construções com régua e compasso.",
+      "chapters": "caps. 11-13, 15"
+    },
+    {
+      "title": "Topics in Algebra",
+      "author": "I. N. Herstein",
+      "note": "Texto clássico, conciso e elegante; ótimo para domínios euclidianos, $\\mathbb{Z}[i]$, polinômios e extensões de corpos.",
+      "chapters": "caps. 3 (anéis), 5 (corpos)"
+    },
+    {
+      "title": "Polinômios e Equações Algébricas",
+      "author": "Abramo Hefez & Maria Lúcia T. Villela (SBM)",
+      "note": "Foco em anéis de polinômios, fatoração e irredibilidade sobre $\\mathbb{Q}$, $\\mathbb{R}$ e $\\mathbb{C}$; muitos exemplos brasileiros e exercícios de concurso.",
+      "chapters": "todo o livro"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.703 Modern Algebra",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Harvard Math 122/123 (notas de teoria de anéis e corpos)",
+      "kind": "notas",
+      "ref": "notas de curso de álgebra"
+    },
+    {
+      "title": "Abstract Algebra — Benedict Gross (Harvard, videoaulas)",
+      "kind": "video",
+      "ref": "YouTube / Harvard Extension"
+    },
+    {
+      "title": "Milne — Fields and Galois Theory (notas)",
+      "kind": "notas",
+      "ref": "jmilne.org"
+    },
+    {
+      "title": "Videoaulas de Álgebra do PAPMEM / canal IMPA",
+      "kind": "video",
+      "ref": "YouTube IMPA"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 4,
+    "mestrado": 5,
+    "note": "Em concursos de IF caem com frequência: identificar se um conjunto é anel/domínio/corpo, aritmética de $\\mathbb{Z}_n$ e divisores de zero, ideais de $\\mathbb{Z}$, fatoração e irredutibilidade de polinômios (raízes racionais e Eisenstein), e propriedades básicas de corpos finitos. Em provas de mestrado é tema central e recorrente: demonstrar que $K/I$ é corpo sse e só se $I$ é maximal, que $K[x]$ é DIP, que todo DIP é DFU, aplicar o Lema de Gauss e o critério de Eisenstein, calcular $[\\mathbb{Q}(\\alpha):\\mathbb{Q}]$ via polinômio minimal e o Teorema da Torre, e descrever a estrutura e a unicidade dos corpos finitos $\\mathbb{F}_{p^n}$. Módulos costumam aparecer como pré-requisito para o teorema de estrutura sobre DIP."
+  },
+  "subtopics": [
+    {
+      "id": "algebra-abstrata-2-01-aneis-dominios-corpos",
+      "title": "Anéis, Domínios de Integridade e Corpos",
+      "tagline": "Os objetos fundamentais: anéis, suas unidades e divisores de zero, e a escada que vai do anel ao corpo.",
+      "objectives": [
+        "Enunciar com precisão os axiomas de anel, anel comutativo e anel com unidade, distinguindo cada estrutura por exemplos.",
+        "Definir divisor de zero, elemento invertível (unidade) e o grupo de unidades $R^{\\times}$, e calculá-los em anéis concretos como $\\mathbb{Z}_n$.",
+        "Caracterizar domínios de integridade e corpos e provar que todo corpo é um domínio de integridade.",
+        "Demonstrar que todo domínio de integridade finito é um corpo.",
+        "Definir homomorfismo de anéis, subanel e a característica de um anel, provando que a característica de um domínio é $0$ ou um número primo."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Anel",
+          "statement": "Um conjunto $R$ com operações $+$ e $\\cdot$ tal que $(R,+)$ é grupo abeliano, $\\cdot$ é associativa e valem as distributivas $a(b+c)=ab+ac$ e $(a+b)c=ac+bc$. É comutativo se $ab=ba$ e com unidade se existe $1\\neq 0$ com $1\\cdot a=a\\cdot 1=a$."
+        },
+        {
+          "term": "Divisor de zero",
+          "statement": "Um elemento $a\\neq 0$ é divisor de zero se existe $b\\neq 0$ com $ab=0$ (ou $ba=0$). Domínios são exatamente os anéis comutativos com $1\\neq 0$ sem divisores de zero."
+        },
+        {
+          "term": "Unidade",
+          "statement": "$a\\in R$ é unidade (invertível) se existe $b$ com $ab=ba=1$. O conjunto das unidades $R^{\\times}$ é um grupo sob a multiplicação."
+        },
+        {
+          "term": "Corpo",
+          "statement": "Anel comutativo com unidade $1\\neq 0$ no qual todo elemento não nulo é invertível, isto é, $R^{\\times}=R\\setminus\\{0\\}$."
+        },
+        {
+          "term": "Característica",
+          "statement": "$\\operatorname{char}(R)$ é o menor inteiro $n>0$ tal que $n\\cdot 1=\\underbrace{1+\\cdots+1}_{n}=0$; se nenhum tal $n$ existe, $\\operatorname{char}(R)=0$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Lei do cancelamento em domínios",
+          "statement": "Em um domínio de integridade, se $ab=ac$ e $a\\neq 0$, então $b=c$.",
+          "whyItMatters": "É exatamente a ausência de divisores de zero reescrita; permite 'cancelar' fatores não nulos como em $\\mathbb{Z}$, algo que falha em $\\mathbb{Z}_n$ com $n$ composto."
+        },
+        {
+          "name": "Corpo é domínio",
+          "statement": "Todo corpo é um domínio de integridade.",
+          "whyItMatters": "Estabelece a hierarquia corpo $\\Rightarrow$ domínio; em particular, corpos não têm divisores de zero, o que é a base do algoritmo da divisão de polinômios sobre corpos."
+        },
+        {
+          "name": "Domínio finito é corpo",
+          "statement": "Todo domínio de integridade finito é um corpo.",
+          "whyItMatters": "Explica por que $\\mathbb{Z}_p$ é corpo para $p$ primo e é o primeiro passo rumo à teoria dos corpos finitos. A prova usa que $x\\mapsto ax$ é injetiva, logo bijetiva num conjunto finito."
+        },
+        {
+          "name": "Característica de um domínio",
+          "statement": "A característica de um domínio de integridade (em particular de um corpo) é $0$ ou um número primo $p$.",
+          "whyItMatters": "Divide a teoria de corpos em dois mundos — característica $0$ (contém $\\mathbb{Q}$) e característica $p$ (contém $\\mathbb{F}_p$) — com fenômenos profundamente diferentes (ex.: o homomorfismo de Frobenius)."
+        }
+      ],
+      "summary": "Um anel é a estrutura que captura simultaneamente a adição e a multiplicação: $(R,+)$ é um grupo abeliano, a multiplicação é associativa e as duas operações se conectam pela distributividade. Os exemplos-mãe são $\\mathbb{Z}$, $\\mathbb{Q}$, $\\mathbb{R}$, $\\mathbb{C}$, os anéis $\\mathbb{Z}_n$, os anéis de matrizes $M_n(R)$ (não comutativos) e os anéis de polinômios. Dentro de um anel comutativo com unidade, dois fenômenos organizam tudo: a existência de divisores de zero (elementos não nulos cujo produto é zero) e a existência de unidades (elementos invertíveis). Um domínio de integridade é um anel comutativo com $1\\neq 0$ e sem divisores de zero — onde vale a lei do cancelamento; um corpo é um domínio onde todo elemento não nulo é invertível.\n\nA cadeia anel comutativo $\\supset$ domínio $\\supset$ corpo organiza toda a trilha. Um resultado já surpreendente é que essa cadeia colapsa no caso finito: todo domínio finito é automaticamente um corpo, pois a multiplicação por um elemento não nulo é injetiva e, num conjunto finito, injetividade força sobrejetividade — logo $1$ está na imagem e o elemento é invertível. Os morfismos naturais entre anéis são os homomorfismos $f$ com $f(a+b)=f(a)+f(b)$, $f(ab)=f(a)f(b)$ e $f(1)=1$; eles preservam toda a aritmética. Por fim, a característica mede a 'aritmética dos inteiros dentro de $R$': é o menor $n$ com $n\\cdot 1=0$, e num domínio esse número, quando positivo, tem de ser primo — caso contrário uma fatoração $n=ab$ produziria divisores de zero.",
+      "commonPitfalls": [
+        "Esquecer que nem todo anel tem unidade ou é comutativo: $M_n(\\mathbb{R})$ é não comutativo e $2\\mathbb{Z}$ é um anel comutativo sem unidade.",
+        "Confundir 'não é divisor de zero' com 'é invertível': em $\\mathbb{Z}$, o elemento $2$ não é divisor de zero, mas também não é unidade.",
+        "Achar que $\\mathbb{Z}_n$ é sempre corpo: $\\mathbb{Z}_n$ é corpo se e só se $n$ é primo; para $n$ composto há divisores de zero (ex.: $2\\cdot 3=0$ em $\\mathbb{Z}_6$).",
+        "Calcular a característica como 'o $n$ tal que $n=0$': é o menor $n>0$ com $n\\cdot 1=0$; em $\\mathbb{Z}$ e $\\mathbb{Q}$ ela é $0$, não $1$."
+      ],
+      "worked": "**Afirmação:** $\\mathbb{Z}_n$ é um corpo se, e somente se, $n$ é primo.\n\n**Prova.** Suponha $n=p$ primo. Dado $\\bar a\\neq\\bar 0$ em $\\mathbb{Z}_p$, temos $\\gcd(a,p)=1$, logo pela identidade de Bézout existem $r,s\\in\\mathbb{Z}$ com $ra+sp=1$. Reduzindo módulo $p$: $\\overline{r}\\,\\bar a=\\bar 1$, portanto $\\bar a$ é invertível. Como $\\bar a$ era arbitrário não nulo, $\\mathbb{Z}_p$ é corpo.\n\nReciprocamente, suponha $n$ composto, digamos $n=ab$ com $1<a,b<n$. Então $\\bar a,\\bar b\\neq\\bar 0$ mas $\\bar a\\,\\bar b=\\overline{ab}=\\bar n=\\bar 0$. Logo $\\bar a$ é divisor de zero; em particular não é invertível (se $\\bar a\\bar c=\\bar 1$, então $\\bar b=\\bar 1\\cdot\\bar b=\\bar c\\bar a\\bar b=\\bar c\\cdot\\bar 0=\\bar 0$, contradição). Assim $\\mathbb{Z}_n$ não é corpo — sequer é domínio. $\\blacksquare$\n\nObserve como a primalidade de $n$ se traduz exatamente na ausência de divisores de zero, ligando aritmética elementar e estrutura de anel.",
+      "exercises": [
+        {
+          "prompt": "Determine o grupo de unidades $\\mathbb{Z}_{12}^{\\times}$ e identifique todos os divisores de zero de $\\mathbb{Z}_{12}$. Verifique que cada elemento não nulo é unidade ou divisor de zero.",
+          "hint": "Em $\\mathbb{Z}_n$, $\\bar a$ é unidade $\\iff \\gcd(a,n)=1$ e é divisor de zero $\\iff 1<\\gcd(a,n)<n$.",
+          "difficulty": 2,
+          "solution": "Em $\\mathbb{Z}_n$ vale o critério: $\\bar a$ é unidade $\\iff \\gcd(a,n)=1$, e $\\bar a\\ (\\neq\\bar 0)$ é divisor de zero $\\iff 1<\\gcd(a,n)<n$.\n\n**Unidades.** Para $n=12$, precisamos de $1\\le a\\le 11$ com $\\gcd(a,12)=1$. Os divisores de $12$ são $2,3,4,6$; sobram os coprimos:\n$$\\mathbb{Z}_{12}^{\\times}=\\{\\bar 1,\\bar 5,\\bar 7,\\bar{11}\\},$$\nque tem $\\varphi(12)=4$ elementos. De fato $5\\cdot5=25\\equiv1$, $7\\cdot7=49\\equiv1$, $11\\cdot11=121\\equiv1$, todos autoinversos.\n\n**Divisores de zero.** São os $\\bar a\\neq\\bar 0$ com $1<\\gcd(a,12)<12$:\n$$\\bar 2,\\ \\bar 3,\\ \\bar 4,\\ \\bar 6,\\ \\bar 8,\\ \\bar 9,\\ \\overline{10}.$$\nPor exemplo $\\bar 2\\cdot\\bar 6=\\overline{12}=\\bar 0$, $\\bar 3\\cdot\\bar 4=\\overline{12}=\\bar 0$, $\\bar 8\\cdot\\bar 3=\\overline{24}=\\bar 0$, $\\bar 9\\cdot\\bar 4=\\overline{36}=\\bar 0$, $\\overline{10}\\cdot\\bar 6=\\overline{60}=\\bar 0$.\n\n**Partição.** Os elementos não nulos são $\\bar1,\\dots,\\overline{11}$ (11 no total). Quatro são unidades e sete são divisores de zero; $4+7=11$. Logo todo elemento não nulo de $\\mathbb{Z}_{12}$ é unidade ou divisor de zero — o que não é acidente: se $\\gcd(a,12)=1$, $\\bar a$ é unidade; se $\\gcd(a,12)=d$ com $1<d<12$, então $\\bar a\\cdot\\overline{12/d}=\\bar 0$ com $\\overline{12/d}\\neq\\bar0$, logo é divisor de zero. Não há terceira possibilidade em $\\mathbb{Z}_n$. $\\blacksquare$",
+          "steps": [
+            "Lembre o critério em $\\mathbb{Z}_n$: unidade $\\iff \\gcd(a,n)=1$; divisor de zero $\\iff 1<\\gcd(a,n)<n$.",
+            "Liste $a$ de $1$ a $11$ e calcule $\\gcd(a,12)$ para cada um.",
+            "Colete os $\\gcd=1$ para formar $\\mathbb{Z}_{12}^{\\times}$ e confira invertendo cada um.",
+            "Colete os $1<\\gcd<12$ como divisores de zero e exiba um parceiro $\\bar b\\neq\\bar0$ com produto $\\bar0$.",
+            "Conte: $4$ unidades $+\\ 7$ divisores de zero $=11$ elementos não nulos, cobrindo todos."
+          ]
+        },
+        {
+          "prompt": "Prove que em um anel comutativo com unidade um elemento invertível nunca é divisor de zero. A recíproca vale? Justifique com $\\mathbb{Z}$.",
+          "hint": "Se $au=1$ e $ab=0$, multiplique por $u$. Para a recíproca, analise $2\\in\\mathbb{Z}$.",
+          "difficulty": 2,
+          "solution": "**Afirmação.** Num anel comutativo com unidade, se $a$ é invertível então $a$ não é divisor de zero.\n\n**Prova.** Seja $u$ com $au=1$. Suponha $ab=0$ para algum $b$. Multiplicando por $u$:\n$$b=1\\cdot b=(ua)b=u(ab)=u\\cdot 0=0.$$\nLogo o único $b$ com $ab=0$ é $b=0$, ou seja, $a$ não é divisor de zero. (Simetricamente, $ba=0\\Rightarrow b=0$.) $\\blacksquare$\n\n**A recíproca é falsa.** 'Não ser divisor de zero' não implica 'ser invertível'. Em $\\mathbb{Z}$, tome $a=2$. Se $2b=0$ com $b\\in\\mathbb{Z}$, então $b=0$, logo $2$ não é divisor de zero. Mas $2$ não é invertível em $\\mathbb{Z}$: não existe $b\\in\\mathbb{Z}$ com $2b=1$ (as únicas unidades de $\\mathbb{Z}$ são $\\pm1$). Portanto $2\\in\\mathbb{Z}$ é um elemento não nulo que não é divisor de zero nem unidade — a recíproca falha.\n\n**Observação.** A recíproca só vale em anéis finitos: num domínio finito, não ser divisor de zero equivale a ser invertível (esse é o conteúdo de 'domínio finito é corpo'). Em $\\mathbb{Z}$, que é infinito, ela quebra.",
+          "steps": [
+            "Escreva as hipóteses: $a$ invertível ($au=1$) e um suposto $ab=0$.",
+            "Multiplique a igualdade $ab=0$ pela unidade $u$ à esquerda.",
+            "Use associatividade e $ua=1$ para concluir $b=0$; logo $a$ não é divisor de zero.",
+            "Para a recíproca, busque em $\\mathbb{Z}$ um não-divisor-de-zero que não seja unidade.",
+            "Verifique que $2$ não anula nenhum inteiro não nulo mas não tem inverso inteiro, refutando a recíproca."
+          ]
+        },
+        {
+          "prompt": "Demonstre que todo domínio de integridade finito é um corpo.",
+          "hint": "Fixado $a\\neq 0$, mostre que $\\varphi(x)=ax$ é injetiva (use cancelamento); conclua que é sobrejetiva e que $1\\in\\operatorname{Im}\\varphi$.",
+          "difficulty": 3,
+          "solution": "**Teorema.** Todo domínio de integridade finito $R$ é um corpo.\n\n**Prova.** Seja $R$ domínio finito, com $1\\neq 0$. Precisamos mostrar que todo $a\\in R$, $a\\neq 0$, é invertível.\n\nFixe $a\\neq 0$ e considere a aplicação\n$$\\varphi:R\\to R,\\qquad \\varphi(x)=ax.$$\n\n*Injetividade.* Se $\\varphi(x)=\\varphi(y)$, então $ax=ay$, logo $a(x-y)=0$. Como $R$ é domínio e $a\\neq 0$, não há divisores de zero, portanto $x-y=0$, isto é, $x=y$. Assim $\\varphi$ é injetiva. (Equivalentemente, usamos a lei do cancelamento.)\n\n*Sobrejetividade.* $\\varphi$ é uma função injetiva de um conjunto finito $R$ em si mesmo; toda injeção de um conjunto finito nele mesmo é bijeção. Logo $\\varphi$ é sobrejetiva.\n\n*Conclusão.* Como $\\varphi$ é sobrejetiva e $1\\in R$, existe $b\\in R$ com $\\varphi(b)=1$, ou seja, $ab=1$. Pela comutatividade, $ba=1$ também. Portanto $a$ é invertível. Como $a\\neq 0$ era arbitrário, todo elemento não nulo é invertível e $R$ é corpo. $\\blacksquare$\n\n**Comentário.** A finitude é essencial: em $\\mathbb{Z}$ (domínio infinito) a aplicação $x\\mapsto 2x$ é injetiva mas não sobrejetiva, e $2$ não é invertível.",
+          "steps": [
+            "Fixe $a\\neq0$ e defina a multiplicação-por-$a$: $\\varphi(x)=ax$.",
+            "Prove que $\\varphi$ é injetiva usando ausência de divisores de zero (ou cancelamento).",
+            "Invoque que uma injeção de um conjunto finito nele mesmo é automaticamente sobrejetiva.",
+            "Da sobrejetividade, obtenha $b$ com $ab=1$; conclua que $a$ é invertível.",
+            "Note onde a finitude entrou (o passo injetiva$\\Rightarrow$sobrejetiva), que falha em $\\mathbb{Z}$."
+          ]
+        },
+        {
+          "prompt": "Seja $R$ um domínio de característica $p>0$. Prove que a aplicação de Frobenius $F(x)=x^p$ satisfaz $F(x+y)=F(x)+F(y)$ e $F(xy)=F(x)F(y)$, isto é, é um homomorfismo de anéis.",
+          "hint": "Expanda $(x+y)^p$ pelo binômio de Newton e mostre que $p\\mid\\binom{p}{k}$ para $0<k<p$.",
+          "difficulty": 3,
+          "solution": "Seja $R$ domínio comutativo com $\\operatorname{char}(R)=p>0$ primo, e $F(x)=x^p$.\n\n**Multiplicatividade.** Como $R$ é comutativo,\n$$F(xy)=(xy)^p=x^p y^p=F(x)F(y).$$\n\n**Aditividade.** Pelo binômio de Newton (válido em anéis comutativos),\n$$(x+y)^p=\\sum_{k=0}^{p}\\binom{p}{k}x^{k}y^{p-k}=x^p+y^p+\\sum_{k=1}^{p-1}\\binom{p}{k}x^{k}y^{p-k}.$$\nAfirmamos que $p\\mid\\binom{p}{k}$ para $0<k<p$. De fato, $\\binom{p}{k}=\\dfrac{p!}{k!\\,(p-k)!}$ é um inteiro, e da identidade $k\\binom{p}{k}=p\\binom{p-1}{k-1}$ segue $p\\mid k\\binom{p}{k}$. Como $p$ é primo e $0<k<p$, temos $\\gcd(p,k)=1$, logo $p\\mid\\binom{p}{k}$.\n\nEm $R$ vale $\\operatorname{char}(R)=p$, isto é, $p\\cdot 1=0$; portanto, para cada $k$ com $0<k<p$, o coeficiente $\\binom{p}{k}\\cdot 1_R$ é um múltiplo de $p\\cdot 1_R=0$, e o termo correspondente se anula:\n$$\\binom{p}{k}\\,x^{k}y^{p-k}=\\big(\\binom{p}{k}1_R\\big)x^k y^{p-k}=0.$$\nLogo $(x+y)^p=x^p+y^p$, ou seja, $F(x+y)=F(x)+F(y)$.\n\n**Conclusão.** $F$ preserva soma e produto; além disso $F(1)=1^p=1$. Portanto $F$ é um homomorfismo de anéis (o homomorfismo de Frobenius). $\\blacksquare$\n\n*Observação.* Num domínio, $F$ é injetivo (se $x^p=0$ então $x=0$, pois não há nilpotentes não nulos); em corpos finitos $F$ é ainda bijetivo — o automorfismo de Frobenius.",
+          "steps": [
+            "Trate primeiro o produto: use comutatividade para $(xy)^p=x^p y^p$.",
+            "Expanda $(x+y)^p$ pelo binômio, separando os termos $k=0$ e $k=p$ dos intermediários.",
+            "Prove $p\\mid\\binom{p}{k}$ para $0<k<p$ via $k\\binom{p}{k}=p\\binom{p-1}{k-1}$ e $p$ primo.",
+            "Use $\\operatorname{char}(R)=p$ (isto é $p\\cdot1=0$) para anular todos os termos intermediários.",
+            "Conclua $F(x+y)=F(x)+F(y)$, some $F(1)=1$, e declare $F$ homomorfismo."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Axiomas de anel (resumo)",
+          "back": "$(R,+)$ grupo abeliano; $\\cdot$ associativa; distributividade de $\\cdot$ sobre $+$ dos dois lados."
+        },
+        {
+          "front": "Domínio de integridade",
+          "back": "Anel comutativo com $1\\neq 0$ e sem divisores de zero (vale a lei do cancelamento)."
+        },
+        {
+          "front": "Corpo",
+          "back": "Anel comutativo com $1\\neq 0$ em que todo elemento não nulo é invertível: $R^{\\times}=R\\setminus\\{0\\}$."
+        },
+        {
+          "front": "$\\mathbb{Z}_n$ é corpo quando?",
+          "back": "Se e só se $n$ é primo. Para $n$ composto há divisores de zero."
+        },
+        {
+          "front": "Divisor de zero vs unidade",
+          "back": "Unidade nunca é divisor de zero; mas há elementos que não são nenhum dos dois (ex.: $2\\in\\mathbb{Z}$)."
+        },
+        {
+          "front": "Domínio finito é...",
+          "back": "...sempre um corpo."
+        },
+        {
+          "front": "Característica de um domínio",
+          "back": "É $0$ ou um número primo $p$."
+        },
+        {
+          "front": "$R^{\\times}$",
+          "back": "Grupo das unidades (elementos invertíveis) de $R$ sob a multiplicação."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 7 (Introduction to Rings)",
+          "ref": "livro"
+        },
+        {
+          "title": "Hefez, Curso de Álgebra vol. 2 (anéis e domínios)",
+          "ref": "livro"
+        },
+        {
+          "title": "Herstein, Topics in Algebra, cap. 3",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Releia no Hefez (Curso de Álgebra vol. 2) ou no Dummit & Foote cap. 7 a definição axiomática de anel, listando por escrito exemplos e contraexemplos: $\\mathbb{Z}$, $\\mathbb{Q}$, $\\mathbb{Z}_n$, $M_2(\\mathbb{R})$ (não comutativo), $2\\mathbb{Z}$ (sem unidade).",
+          "Faça uma tabela dos elementos de $\\mathbb{Z}_n$ para $n=6,8,12$ marcando quem é unidade, quem é divisor de zero e quem não é nenhum dos dois — isso fixa a diferença entre as três noções.",
+          "Estude e reescreva com suas palavras as três demonstrações-chave: corpo é domínio, domínio finito é corpo, e característica de um domínio é $0$ ou primo.",
+          "Assista a um vídeo introdutório de rings/domínios para ganhar intuição visual e conferir se sua leitura bateu com a exposição.",
+          "Resolva os testes deste subtópico aqui no app e anote no app o principal: a hierarquia anel $\\supset$ domínio $\\supset$ corpo e o critério $\\gcd(a,n)=1$ para unidades de $\\mathbb{Z}_n$."
+        ],
+        "searchQueries": [
+          "definição de anel domínio de integridade e corpo exemplos",
+          "grupo de unidades Z_n divisores de zero",
+          "todo domínio de integridade finito é corpo demonstração",
+          "característica de um anel é zero ou primo prova",
+          "homomorfismo de Frobenius característica p binômio",
+          "ring integral domain field examples abstract algebra"
+        ],
+        "videos": [
+          {
+            "title": "Introdução a anéis, domínios e corpos",
+            "channel": "Matemática Universitária",
+            "note": "Procure a playlist de Álgebra/Estruturas Algébricas; assista às aulas sobre definição de anel, divisores de zero e corpos."
+          },
+          {
+            "title": "Abstract Algebra - Rings",
+            "channel": "Michael Penn",
+            "note": "Busque 'Michael Penn ring theory / integral domain'; ótimas provas curtas de domínio finito é corpo e característica."
+          },
+          {
+            "title": "Modern Algebra 18.703 (Rings)",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas iniciais sobre anéis e domínios; use para o enquadramento rigoroso e listas de exercícios."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 7 (Introduction to Rings)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Curso de Álgebra vol. 2 (anéis e domínios)",
+            "where": "Livro de Abramo Hefez (IMPA/SBM)"
+          },
+          {
+            "title": "Topics in Algebra, cap. 3",
+            "where": "Livro de I. N. Herstein"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-2-02-ideais-quociente-isomorfismo",
+      "title": "Ideais, Anéis Quociente e os Teoremas do Isomorfismo",
+      "tagline": "Ideais são aos anéis o que subgrupos normais são aos grupos: o que permite quocientar e fabricar novos anéis.",
+      "objectives": [
+        "Definir ideal (à esquerda, à direita e bilateral) e ideal gerado por um conjunto, distinguindo-o de subanel.",
+        "Construir o anel quociente $R/I$ e descrever suas operações e elementos.",
+        "Demonstrar o Teorema do Homomorfismo (1º Teorema do Isomorfismo) e enunciar o 2º e o 3º.",
+        "Estabelecer a correspondência entre ideais de $R/I$ e ideais de $R$ que contêm $I$.",
+        "Identificar ideais principais e calcular ideais concretos em $\\mathbb{Z}$ e em $K[x]$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Ideal",
+          "statement": "Num anel comutativo $R$, um subconjunto $I$ é ideal se é subgrupo aditivo e $rI\\subseteq I$ para todo $r\\in R$ (absorção pela multiplicação). Em anéis não comutativos distingue-se ideal à esquerda, à direita e bilateral."
+        },
+        {
+          "term": "Ideal gerado",
+          "statement": "$\\langle S\\rangle$ é o menor ideal contendo $S$; num anel comutativo com unidade, $\\langle a_1,\\dots,a_n\\rangle=\\{r_1a_1+\\cdots+r_na_n:r_i\\in R\\}$."
+        },
+        {
+          "term": "Anel quociente",
+          "statement": "$R/I$ tem como elementos as classes $a+I$, com $(a+I)+(b+I)=(a+b)+I$ e $(a+I)(b+I)=ab+I$; bem definido exatamente porque $I$ é ideal."
+        },
+        {
+          "term": "Ideal principal",
+          "statement": "$I=\\langle a\\rangle=aR$ é gerado por um único elemento. Em $\\mathbb{Z}$, todo ideal é da forma $n\\mathbb{Z}$; em $K[x]$, da forma $\\langle p(x)\\rangle$."
+        },
+        {
+          "term": "Núcleo de homomorfismo",
+          "statement": "$\\ker f=\\{a\\in R: f(a)=0\\}$ é sempre um ideal de $R$, e todo ideal é núcleo de algum homomorfismo (a projeção $R\\to R/I$)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "1º Teorema do Isomorfismo (Teorema do Homomorfismo)",
+          "statement": "Se $f:R\\to S$ é homomorfismo de anéis, então $\\ker f$ é ideal de $R$, $\\operatorname{Im} f$ é subanel de $S$ e $R/\\ker f\\cong\\operatorname{Im} f$.",
+          "whyItMatters": "É a ferramenta universal para identificar quocientes: para mostrar $R/I\\cong S$, basta exibir um homomorfismo sobrejetor $R\\to S$ com núcleo $I$. Ex.: $\\mathbb{Z}/n\\mathbb{Z}\\cong\\mathbb{Z}_n$ e $\\mathbb{R}[x]/\\langle x^2+1\\rangle\\cong\\mathbb{C}$."
+        },
+        {
+          "name": "Teorema da Correspondência",
+          "statement": "Existe uma bijeção, que preserva inclusão, entre os ideais de $R/I$ e os ideais de $R$ que contêm $I$, dada por $J\\mapsto J/I$.",
+          "whyItMatters": "Reduz o estudo dos ideais de um quociente ao estudo de ideais 'grandes' do anel original; é o que liga ideais maximais a quocientes que são corpos."
+        },
+        {
+          "name": "3º Teorema do Isomorfismo",
+          "statement": "Se $I\\subseteq J$ são ideais de $R$, então $J/I$ é ideal de $R/I$ e $(R/I)\\big/(J/I)\\cong R/J$.",
+          "whyItMatters": "Permite quocientar 'em etapas' e simplificar torres de quocientes; formaliza a ideia de que quocientar por mais é quocientar por etapas."
+        }
+      ],
+      "summary": "Para quocientar um anel não basta um subanel qualquer: precisamos de um ideal, exatamente o subconjunto que é absorvido pela multiplicação ($rI\\subseteq I$). Essa condição é o que torna a multiplicação $(a+I)(b+I)=ab+I$ bem definida nas classes laterais — assim como a normalidade de um subgrupo é o que torna o quociente de grupos bem definido. O anel quociente $R/I$ herda toda a aritmética de $R$, mas 'colapsa $I$ a zero'. O exemplo canônico é $\\mathbb{Z}/n\\mathbb{Z}=\\mathbb{Z}_n$, e a construção $R[x]/\\langle p(x)\\rangle$ — que veremos adiante fabricar corpos a partir de polinômios irredutíveis — é o motor de toda a teoria de extensões.\n\nO coração computacional é o conjunto dos teoremas do isomorfismo. O primeiro deles, o Teorema do Homomorfismo, diz que todo homomorfismo $f:R\\to S$ se fatora como $R\\twoheadrightarrow R/\\ker f\\xrightarrow{\\sim}\\operatorname{Im} f$; na prática, para reconhecer um quociente $R/I$ a estratégia padrão é construir um homomorfismo sobrejetor cujo núcleo seja exatamente $I$. Assim provamos sem contas que $\\mathbb{R}[x]/\\langle x^2+1\\rangle\\cong\\mathbb{C}$ (avaliação em $i$) e que $\\mathbb{Z}[x]/\\langle x\\rangle\\cong\\mathbb{Z}$. O Teorema da Correspondência completa o quadro: os ideais de $R/I$ são exatamente as imagens dos ideais de $R$ que contêm $I$, o que prepara o terreno para caracterizar quando $R/I$ é domínio (ideal primo) ou corpo (ideal maximal).",
+      "commonPitfalls": [
+        "Confundir ideal com subanel: $\\mathbb{Z}$ é subanel de $\\mathbb{Q}$ mas não é ideal de $\\mathbb{Q}$ (pois $\\tfrac12\\cdot 1=\\tfrac12\\notin\\mathbb{Z}$).",
+        "Tentar quocientar por um subanel que não é ideal — a multiplicação nas classes fica mal definida.",
+        "Achar que todo ideal é principal: em $\\mathbb{Z}[x]$, o ideal $\\langle 2,x\\rangle$ não é principal.",
+        "Esquecer de checar a boa definição das operações em $R/I$ antes de usar o quociente, ou confundir o ideal $\\langle a\\rangle$ com o subanel gerado por $a$."
+      ],
+      "worked": "**Afirmação:** $\\mathbb{R}[x]/\\langle x^2+1\\rangle\\cong\\mathbb{C}$.\n\n**Prova.** Considere o homomorfismo de avaliação $\\varphi:\\mathbb{R}[x]\\to\\mathbb{C}$, $\\varphi(p)=p(i)$. Ele é homomorfismo de anéis (avaliação preserva soma e produto) e é sobrejetor: dado $a+bi\\in\\mathbb{C}$, $\\varphi(a+bx)=a+bi$.\n\nVamos identificar $\\ker\\varphi$. Como $\\varphi(x^2+1)=i^2+1=0$, temos $\\langle x^2+1\\rangle\\subseteq\\ker\\varphi$. Reciprocamente, se $\\varphi(p)=p(i)=0$, dividimos $p$ por $x^2+1$ (algoritmo da divisão em $\\mathbb{R}[x]$): $p=(x^2+1)q+r$ com $\\deg r\\le 1$, digamos $r=\\alpha+\\beta x$. Avaliando em $i$: $0=p(i)=r(i)=\\alpha+\\beta i$, logo $\\alpha=\\beta=0$ e $r=0$. Portanto $p\\in\\langle x^2+1\\rangle$ e $\\ker\\varphi=\\langle x^2+1\\rangle$.\n\nPelo 1º Teorema do Isomorfismo, $\\mathbb{R}[x]/\\langle x^2+1\\rangle\\cong\\operatorname{Im}\\varphi=\\mathbb{C}$. $\\blacksquare$\n\nEste é o paradigma de toda a teoria de extensões: adjunta-se uma raiz de um polinômio quocientando por seu ideal.",
+      "exercises": [
+        {
+          "prompt": "Prove que o núcleo de um homomorfismo de anéis $f:R\\to S$ é sempre um ideal de $R$, mas que a imagem em geral não é ideal de $S$ (dê um exemplo).",
+          "hint": "Verifique subgrupo aditivo e absorção. Para a imagem, considere a inclusão $\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$.",
+          "difficulty": 2,
+          "solution": "Seja $f:R\\to S$ homomorfismo de anéis.\n\n**$\\ker f$ é ideal de $R$.** Seja $\\ker f=\\{a\\in R:f(a)=0\\}$.\n\n*Subgrupo aditivo:* $f(0)=0$, logo $0\\in\\ker f$. Se $a,b\\in\\ker f$, então $f(a-b)=f(a)-f(b)=0-0=0$, logo $a-b\\in\\ker f$.\n\n*Absorção:* seja $a\\in\\ker f$ e $r\\in R$. Então\n$$f(ra)=f(r)f(a)=f(r)\\cdot 0=0,$$\nlogo $ra\\in\\ker f$; analogamente $ar\\in\\ker f$. Portanto $\\ker f$ é ideal (bilateral) de $R$.\n\n**A imagem em geral NÃO é ideal.** Considere a inclusão $\\iota:\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$, $\\iota(n)=n$, que é homomorfismo de anéis. Sua imagem é $\\operatorname{Im}\\iota=\\mathbb{Z}\\subseteq\\mathbb{Q}$. Mas $\\mathbb{Z}$ não é ideal de $\\mathbb{Q}$: tomando $r=\\tfrac12\\in\\mathbb{Q}$ e $a=1\\in\\mathbb{Z}$,\n$$r\\cdot a=\\tfrac12\\cdot 1=\\tfrac12\\notin\\mathbb{Z}.$$\nFalha a absorção, logo $\\operatorname{Im}\\iota$ não é ideal de $\\mathbb{Q}$. (A imagem é sempre um subanel de $S$, mas não necessariamente um ideal.) $\\blacksquare$",
+          "steps": [
+            "Para o núcleo, verifique primeiro que é subgrupo aditivo: $0\\in\\ker f$ e fechado por diferença.",
+            "Prove a absorção $ra\\in\\ker f$ usando $f(ra)=f(r)f(a)=0$.",
+            "Conclua que $\\ker f$ satisfaz a definição de ideal.",
+            "Para a imagem, escolha o homomorfismo inclusão $\\mathbb{Z}\\hookrightarrow\\mathbb{Q}$.",
+            "Exiba $\\tfrac12\\cdot1=\\tfrac12\\notin\\mathbb{Z}$ para mostrar que a absorção falha, logo a imagem não é ideal."
+          ]
+        },
+        {
+          "prompt": "Mostre que $\\langle 2,x\\rangle$ não é um ideal principal de $\\mathbb{Z}[x]$.",
+          "hint": "Se fosse $\\langle d\\rangle$, então $d\\mid 2$ e $d\\mid x$; analise os graus e os possíveis $d$.",
+          "difficulty": 3,
+          "solution": "**Afirmação.** $I=\\langle 2,x\\rangle=\\{2a(x)+x\\,b(x):a,b\\in\\mathbb{Z}[x]\\}$ não é principal em $\\mathbb{Z}[x]$.\n\nPrimeiro, descrevamos $I$ concretamente: um polinômio pertence a $I$ se, e somente se, seu termo constante é par. De fato, todo elemento de $I$ tem termo constante par (pois $2a(x)$ tem termo constante par e $x\\,b(x)$ tem termo constante $0$); reciprocamente, $c_0+c_1x+\\cdots$ com $c_0$ par é $c_0+x(c_1+c_2x+\\cdots)\\in\\langle 2,x\\rangle$.\n\n**Suponha, por absurdo, que $I=\\langle d\\rangle$** para algum $d\\in\\mathbb{Z}[x]$.\n\nComo $2\\in I=\\langle d\\rangle$, existe $p$ com $2=d\\,p$. Em $\\mathbb{Z}[x]$ o grau é aditivo (pois $\\mathbb{Z}$ é domínio): $0=\\deg 2=\\deg d+\\deg p$, logo $\\deg d=0$, ou seja, $d$ é uma constante inteira. De $2=d\\,p$ com $d,p$ constantes, $d\\in\\{\\pm1,\\pm2\\}$.\n\nComo $x\\in I=\\langle d\\rangle$, existe $q$ com $x=d\\,q$. Comparando o coeficiente de $x$: $d$ divide $1$ em $\\mathbb{Z}$ (o coeficiente líder de $x$), logo $d\\in\\{\\pm1\\}$.\n\nMas se $d=\\pm1$, então $\\langle d\\rangle=\\mathbb{Z}[x]$ (o ideal todo), pois $1\\in\\langle d\\rangle$. Isso contradiz $I\\neq\\mathbb{Z}[x]$: por exemplo $1\\notin I$, já que o termo constante $1$ é ímpar. Contradição.\n\nSe $d=\\pm2$, então $x=\\pm2q$ é impossível em $\\mathbb{Z}[x]$ (o coeficiente $1$ de $x$ não é múltiplo de $2$).\n\nEm todos os casos chegamos a contradição. Portanto $I=\\langle 2,x\\rangle$ não é principal. $\\blacksquare$\n\n*Observação.* Isso mostra que $\\mathbb{Z}[x]$ não é DIP, embora seja DFU.",
+          "steps": [
+            "Descreva $\\langle 2,x\\rangle$ como o conjunto dos polinômios de termo constante par.",
+            "Suponha por absurdo $\\langle 2,x\\rangle=\\langle d\\rangle$ e use $2\\in\\langle d\\rangle$ com aditividade do grau para forçar $\\deg d=0$.",
+            "De $2=d\\,p$ conclua $d\\in\\{\\pm1,\\pm2\\}$; de $x\\in\\langle d\\rangle$ conclua $d\\mid1$, logo $d=\\pm1$.",
+            "Descarte $d=\\pm1$ (daria o ideal todo, mas $1\\notin\\langle2,x\\rangle$) e $d=\\pm2$ (não gera $x$).",
+            "Reúna as contradições para concluir que o ideal não é principal."
+          ]
+        },
+        {
+          "prompt": "Determine todos os ideais de $\\mathbb{Z}_{12}$ usando o Teorema da Correspondência aplicado a $\\mathbb{Z}\\to\\mathbb{Z}_{12}$.",
+          "hint": "Os ideais de $\\mathbb{Z}_{12}$ correspondem aos ideais de $\\mathbb{Z}$ que contêm $12\\mathbb{Z}$, ou seja, $d\\mathbb{Z}$ com $d\\mid 12$.",
+          "difficulty": 2,
+          "solution": "Aplicamos o Teorema da Correspondência à projeção $\\pi:\\mathbb{Z}\\to\\mathbb{Z}_{12}=\\mathbb{Z}/12\\mathbb{Z}$.\n\n**Correspondência.** Os ideais de $\\mathbb{Z}_{12}$ estão em bijeção (que preserva inclusão) com os ideais de $\\mathbb{Z}$ que contêm $12\\mathbb{Z}$. Como todo ideal de $\\mathbb{Z}$ é da forma $d\\mathbb{Z}$, e $12\\mathbb{Z}\\subseteq d\\mathbb{Z}\\iff d\\mid 12$, os ideais relevantes correspondem aos divisores positivos de $12$:\n$$d\\in\\{1,2,3,4,6,12\\}.$$\n\n**Lista dos ideais de $\\mathbb{Z}_{12}$.** Para cada divisor $d\\mid 12$, o ideal correspondente é $d\\mathbb{Z}/12\\mathbb{Z}=\\langle\\bar d\\rangle$, gerado pela classe de $d$:\n\n- $d=1$: $\\langle\\bar 1\\rangle=\\mathbb{Z}_{12}$ (o anel todo), $12/1=12$ elementos.\n- $d=2$: $\\langle\\bar 2\\rangle=\\{\\bar0,\\bar2,\\bar4,\\bar6,\\bar8,\\overline{10}\\}$, $6$ elementos.\n- $d=3$: $\\langle\\bar 3\\rangle=\\{\\bar0,\\bar3,\\bar6,\\bar9\\}$, $4$ elementos.\n- $d=4$: $\\langle\\bar 4\\rangle=\\{\\bar0,\\bar4,\\bar8\\}$, $3$ elementos.\n- $d=6$: $\\langle\\bar 6\\rangle=\\{\\bar0,\\bar6\\}$, $2$ elementos.\n- $d=12$: $\\langle\\overline{12}\\rangle=\\langle\\bar0\\rangle=\\{\\bar0\\}$, $1$ elemento.\n\nSão exatamente $6$ ideais, um para cada divisor de $12$. As inclusões refletem a divisibilidade invertida: $\\langle\\bar6\\rangle\\subseteq\\langle\\bar2\\rangle$ e $\\langle\\bar6\\rangle\\subseteq\\langle\\bar3\\rangle$ porque $2\\mid6$ e $3\\mid6$; o menor é $\\{\\bar0\\}$ e o maior é $\\mathbb{Z}_{12}$. $\\blacksquare$",
+          "steps": [
+            "Reconheça a projeção $\\pi:\\mathbb{Z}\\to\\mathbb{Z}_{12}$ e enuncie a correspondência de ideais.",
+            "Use que os ideais de $\\mathbb{Z}$ são $d\\mathbb{Z}$ e que conter $12\\mathbb{Z}$ equivale a $d\\mid12$.",
+            "Liste os divisores positivos de $12$: $1,2,3,4,6,12$.",
+            "Para cada $d$, escreva o ideal $\\langle\\bar d\\rangle$ listando seus elementos.",
+            "Confira as inclusões e o total de $6$ ideais."
+          ]
+        },
+        {
+          "prompt": "Use o Teorema do Homomorfismo para provar que $\\mathbb{Z}[x]/\\langle x-n\\rangle\\cong\\mathbb{Z}$ para todo $n\\in\\mathbb{Z}$.",
+          "hint": "Considere a avaliação $p\\mapsto p(n)$ e identifique seu núcleo via algoritmo da divisão por $x-n$.",
+          "difficulty": 3,
+          "solution": "**Afirmação.** Para todo $n\\in\\mathbb{Z}$, $\\mathbb{Z}[x]/\\langle x-n\\rangle\\cong\\mathbb{Z}$.\n\n**Prova via 1º Teorema do Isomorfismo.** Considere o homomorfismo de avaliação\n$$\\varphi:\\mathbb{Z}[x]\\to\\mathbb{Z},\\qquad \\varphi(p)=p(n).$$\nÉ homomorfismo de anéis (a avaliação preserva soma, produto e leva $1$ em $1$).\n\n*Sobrejetividade.* Para todo $c\\in\\mathbb{Z}$, o polinômio constante $c$ satisfaz $\\varphi(c)=c$. Logo $\\varphi$ é sobrejetor.\n\n*Núcleo.* Afirmamos $\\ker\\varphi=\\langle x-n\\rangle$.\n\n$(\\supseteq)$ $\\varphi(x-n)=n-n=0$, logo $x-n\\in\\ker\\varphi$ e $\\langle x-n\\rangle\\subseteq\\ker\\varphi$.\n\n$(\\subseteq)$ Seja $p\\in\\ker\\varphi$, isto é, $p(n)=0$. O polinômio $x-n$ é mônico, então o algoritmo da divisão vale em $\\mathbb{Z}[x]$ ao dividir por ele: existem $q\\in\\mathbb{Z}[x]$ e resto constante $r\\in\\mathbb{Z}$ com\n$$p(x)=(x-n)\\,q(x)+r.$$\nAvaliando em $x=n$: $0=p(n)=(n-n)q(n)+r=r$, logo $r=0$ e $p(x)=(x-n)q(x)\\in\\langle x-n\\rangle$. Assim $\\ker\\varphi\\subseteq\\langle x-n\\rangle$.\n\nPortanto $\\ker\\varphi=\\langle x-n\\rangle$, e pelo 1º Teorema do Isomorfismo\n$$\\mathbb{Z}[x]/\\langle x-n\\rangle\\cong\\operatorname{Im}\\varphi=\\mathbb{Z}.\\qquad\\blacksquare$$\n\n*Observação.* A divisão por $x-n$ funciona sobre $\\mathbb{Z}$ (não só sobre corpos) porque o divisor é mônico, logo seu coeficiente líder $1$ é invertível.",
+          "steps": [
+            "Defina a avaliação $\\varphi(p)=p(n)$ e verifique que é homomorfismo de anéis.",
+            "Mostre a sobrejetividade usando polinômios constantes.",
+            "Prove a inclusão fácil $\\langle x-n\\rangle\\subseteq\\ker\\varphi$ avaliando $x-n$ em $n$.",
+            "Divida um $p\\in\\ker\\varphi$ por $x-n$ (mônico) obtendo resto constante $r$; avalie em $n$ para achar $r=0$.",
+            "Aplique o 1º Teorema do Isomorfismo para concluir $\\mathbb{Z}[x]/\\langle x-n\\rangle\\cong\\mathbb{Z}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de ideal (anel comutativo)",
+          "back": "Subgrupo aditivo $I$ com $rI\\subseteq I$ para todo $r\\in R$ (absorção)."
+        },
+        {
+          "front": "Por que precisamos de ideal para quocientar?",
+          "back": "A absorção $rI\\subseteq I$ é o que torna $(a+I)(b+I)=ab+I$ bem definida."
+        },
+        {
+          "front": "1º Teorema do Isomorfismo",
+          "back": "$f:R\\to S$ homomorfismo $\\Rightarrow R/\\ker f\\cong\\operatorname{Im} f$."
+        },
+        {
+          "front": "Estratégia para identificar $R/I$",
+          "back": "Construir homomorfismo sobrejetor $R\\to S$ com núcleo exatamente $I$."
+        },
+        {
+          "front": "Ideais de $\\mathbb{Z}$",
+          "back": "Exatamente os $n\\mathbb{Z}$ (todos principais)."
+        },
+        {
+          "front": "Teorema da Correspondência",
+          "back": "Ideais de $R/I$ $\\leftrightarrow$ ideais de $R$ que contêm $I$, via $J\\mapsto J/I$."
+        },
+        {
+          "front": "$\\mathbb{R}[x]/\\langle x^2+1\\rangle\\cong\\,?$",
+          "back": "$\\cong\\mathbb{C}$, via avaliação em $i$."
+        },
+        {
+          "front": "Ideal vs subanel",
+          "back": "Subanel é fechado por $\\cdot$; ideal absorve toda multiplicação por $R$. $\\mathbb{Z}\\subset\\mathbb{Q}$ é subanel, não ideal."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 7.3-7.4 (Ideals and Quotient Rings)",
+          "ref": "livro"
+        },
+        {
+          "title": "Hefez, Curso de Álgebra vol. 2 (ideais e quocientes)",
+          "ref": "livro"
+        },
+        {
+          "title": "Adilson Gonçalves, Introdução à Álgebra (ideais)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude no Dummit & Foote 7.3-7.4 (ou Hefez vol. 2) a definição de ideal e a construção de $R/I$, prestando atenção em POR QUE a absorção $rI\\subseteq I$ é exatamente o que torna o produto de classes bem definido.",
+          "Faça o paralelo explícito com grupos: ideal está para anel assim como subgrupo normal está para grupo; escreva essa analogia numa ficha.",
+          "Domine o 1º Teorema do Isomorfismo como ferramenta: pratique a receita 'para identificar $R/I$, construa um homomorfismo sobrejetor com núcleo $I$' nos exemplos $\\mathbb{R}[x]/\\langle x^2+1\\rangle\\cong\\mathbb{C}$ e $\\mathbb{Z}[x]/\\langle x\\rangle\\cong\\mathbb{Z}$.",
+          "Assista a uma aula sobre quotient rings / isomorphism theorems para consolidar a intuição e o Teorema da Correspondência.",
+          "Resolva os testes deste subtópico aqui no app e anote o principal: a receita do homomorfismo de avaliação e a correspondência ideais de $R/I$ $\\leftrightarrow$ ideais de $R$ contendo $I$."
+        ],
+        "searchQueries": [
+          "ideal anel quociente boa definição absorção",
+          "primeiro teorema do isomorfismo anéis demonstração",
+          "R[x]/(x^2+1) isomorfo a C avaliação em i",
+          "teorema da correspondência ideais quociente",
+          "ideal 2 x nao principal Z[x] prova",
+          "quotient ring isomorphism theorems examples"
+        ],
+        "videos": [
+          {
+            "title": "Quotient rings e teoremas do isomorfismo",
+            "channel": "Michael Penn",
+            "note": "Busque 'Michael Penn quotient ring / first isomorphism theorem'; ele resolve exemplos do tipo $R[x]/\\langle f\\rangle$."
+          },
+          {
+            "title": "Ideals and Quotient Rings",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas de 18.703 sobre ideais, quocientes e correspondência; boa fonte de exercícios."
+          },
+          {
+            "title": "Estruturas Algébricas - Ideais e Quocientes",
+            "channel": "Matemática Universitária",
+            "note": "Procure as aulas de anéis quociente em português para ver as contas passo a passo."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 7.3-7.4 (Ideals and Quotient Rings)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Curso de Álgebra vol. 2 (ideais e quocientes)",
+            "where": "Livro de Abramo Hefez"
+          },
+          {
+            "title": "Introdução à Álgebra (ideais)",
+            "where": "Livro de Adilson Gonçalves (Projeto Euclides, IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-2-03-primos-maximais-fracoes",
+      "title": "Ideais Primos, Ideais Maximais e o Corpo de Frações",
+      "tagline": "Quando o quociente é domínio, quando é corpo, e como mergulhar todo domínio em seu corpo de frações.",
+      "objectives": [
+        "Definir ideal primo e ideal maximal e provar as caracterizações $R/P$ domínio $\\iff P$ primo e $R/M$ corpo $\\iff M$ maximal.",
+        "Demonstrar que todo ideal maximal é primo, e mostrar com exemplo que a recíproca é falsa.",
+        "Provar a existência de ideais maximais via Lema de Zorn (em anéis com unidade).",
+        "Construir o corpo de frações $\\operatorname{Frac}(R)$ de um domínio e enunciar sua propriedade universal.",
+        "Identificar ideais primos e maximais em $\\mathbb{Z}$, $K[x]$ e $\\mathbb{Z}[x]$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Ideal primo",
+          "statement": "Um ideal próprio $P\\subsetneq R$ é primo se $ab\\in P\\Rightarrow a\\in P$ ou $b\\in P$. Em $\\mathbb{Z}$, são $\\langle 0\\rangle$ e os $\\langle p\\rangle$ com $p$ primo."
+        },
+        {
+          "term": "Ideal maximal",
+          "statement": "Um ideal próprio $M\\subsetneq R$ é maximal se não existe ideal $J$ com $M\\subsetneq J\\subsetneq R$; é maximal na ordem da inclusão entre ideais próprios."
+        },
+        {
+          "term": "Corpo de frações",
+          "statement": "Para um domínio $R$, $\\operatorname{Frac}(R)$ é o corpo das classes $\\tfrac{a}{b}$ ($b\\neq 0$) com a relação $\\tfrac{a}{b}=\\tfrac{c}{d}\\iff ad=bc$; é o menor corpo contendo $R$."
+        },
+        {
+          "term": "Propriedade universal de $\\operatorname{Frac}(R)$",
+          "statement": "Todo homomorfismo injetor de $R$ num corpo $K$ estende-se de modo único a $\\operatorname{Frac}(R)\\to K$, $\\tfrac{a}{b}\\mapsto f(a)f(b)^{-1}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Caracterização de ideal primo",
+          "statement": "Em um anel comutativo com unidade, $P$ é ideal primo se, e somente se, $R/P$ é um domínio de integridade.",
+          "whyItMatters": "Traduz uma condição multiplicativa sobre o ideal em uma propriedade estrutural do quociente. É a porta de entrada da geometria algébrica (o espectro $\\operatorname{Spec}(R)$ é o conjunto dos ideais primos)."
+        },
+        {
+          "name": "Caracterização de ideal maximal",
+          "statement": "Em um anel comutativo com unidade, $M$ é ideal maximal se, e somente se, $R/M$ é um corpo.",
+          "whyItMatters": "É o resultado que fabrica corpos: quocientar por um ideal maximal sempre produz um corpo. Combinado com 'irredutível $\\Rightarrow$ maximal em $K[x]$', dá a construção de extensões de corpos."
+        },
+        {
+          "name": "Maximal implica primo",
+          "statement": "Todo ideal maximal é primo. A recíproca é falsa: $\\langle 0\\rangle$ é primo em $\\mathbb{Z}$ mas não é maximal.",
+          "whyItMatters": "Decorre de corpo $\\Rightarrow$ domínio aplicado aos quocientes; organiza a hierarquia de ideais e mostra que primalidade é estritamente mais fraca que maximalidade."
+        },
+        {
+          "name": "Existência de ideais maximais",
+          "statement": "Todo anel comutativo com unidade $R\\neq\\{0\\}$ possui pelo menos um ideal maximal; mais ainda, todo ideal próprio está contido em algum ideal maximal.",
+          "whyItMatters": "Garante (via Lema de Zorn) que quocientes-corpo sempre existem; é base da teoria de localização e de anéis locais."
+        }
+      ],
+      "summary": "Os dois tipos especiais de ideal — primo e maximal — são definidos por sua relação com o quociente. Um ideal próprio $P$ é primo exatamente quando $R/P$ é domínio: a condição '$ab\\in P\\Rightarrow a\\in P$ ou $b\\in P$' é a tradução literal de 'sem divisores de zero no quociente'. Um ideal próprio $M$ é maximal exatamente quando $R/M$ é corpo: pela correspondência de ideais, $R/M$ não ter ideais próprios não nulos equivale a $M$ ser maximal, e um anel comutativo com unidade sem ideais próprios não triviais é precisamente um corpo. Como corpo é domínio, segue de imediato que todo maximal é primo — mas a recíproca falha, e o exemplo arquetípico é $\\langle 0\\rangle\\subset\\mathbb{Z}$, que é primo (pois $\\mathbb{Z}$ é domínio) mas longe de maximal.\n\nA existência de ideais maximais em qualquer anel com unidade é garantida pelo Lema de Zorn aplicado à família dos ideais próprios ordenada por inclusão. Esse mesmo espírito 'construtivo a partir de um domínio' aparece no corpo de frações: assim como $\\mathbb{Q}$ é construído a partir de $\\mathbb{Z}$ por pares $\\tfrac{a}{b}$ módulo a relação $ad=bc$, todo domínio $R$ mergulha em um corpo $\\operatorname{Frac}(R)$ — o menor corpo que o contém. Por exemplo, $\\operatorname{Frac}(K[x])=K(x)$, o corpo das funções racionais. A propriedade universal torna essa construção canônica: qualquer mergulho de $R$ num corpo se estende de forma única ao corpo de frações.",
+      "commonPitfalls": [
+        "Trocar a direção da caracterização: $R/P$ domínio dá primo; $R/M$ corpo dá maximal — não misture.",
+        "Achar que primo implica maximal: $\\langle 0\\rangle$ em $\\mathbb{Z}$ e $\\langle x\\rangle$ em $\\mathbb{Z}[x]$ são primos não maximais.",
+        "Esquecer a hipótese 'anel comutativo com unidade' nas caracterizações; sem unidade os enunciados podem falhar.",
+        "Tentar formar o corpo de frações de um anel com divisores de zero — a construção só funciona para domínios (ou exige localização mais cuidadosa)."
+      ],
+      "worked": "**Afirmação:** Em $\\mathbb{Z}[x]$, o ideal $\\langle x\\rangle$ é primo mas não maximal, enquanto $\\langle 2,x\\rangle$ é maximal.\n\n**Análise de $\\langle x\\rangle$.** A avaliação $p\\mapsto p(0)$ dá $\\mathbb{Z}[x]/\\langle x\\rangle\\cong\\mathbb{Z}$, que é domínio mas não corpo. Logo $\\langle x\\rangle$ é primo (quociente domínio) e não maximal (quociente não é corpo).\n\n**Análise de $\\langle 2,x\\rangle$.** Considere $\\psi:\\mathbb{Z}[x]\\to\\mathbb{Z}_2$ dada por $\\psi(p)=\\overline{p(0)}$ (reduzir o termo constante módulo $2$). É sobrejetor e homomorfismo. Seu núcleo são os polinômios com termo constante par, isto é, $\\langle 2,x\\rangle$. Pelo 1º Teorema do Isomorfismo, $\\mathbb{Z}[x]/\\langle 2,x\\rangle\\cong\\mathbb{Z}_2$, que é corpo. Portanto $\\langle 2,x\\rangle$ é maximal. $\\blacksquare$\n\nNote a cadeia $\\langle x\\rangle\\subsetneq\\langle 2,x\\rangle\\subsetneq\\mathbb{Z}[x]$: ela testemunha diretamente que $\\langle x\\rangle$ não é maximal.",
+      "exercises": [
+        {
+          "prompt": "Prove que em um anel comutativo com unidade $M$ é maximal se, e somente se, $R/M$ é corpo.",
+          "hint": "Use o Teorema da Correspondência: $R/M$ não tem ideais próprios não nulos $\\iff M$ é maximal; e um anel comutativo com unidade sem ideais próprios não triviais é corpo.",
+          "difficulty": 3,
+          "solution": "**Teorema.** Num anel comutativo com unidade $R$, um ideal $M$ é maximal se, e somente se, $R/M$ é corpo.\n\nUsamos o **Teorema da Correspondência**: os ideais de $R/M$ correspondem bijetivamente aos ideais de $R$ que contêm $M$.\n\n**($\\Rightarrow$) $M$ maximal $\\Rightarrow R/M$ corpo.**\nSe $M$ é maximal, os únicos ideais de $R$ que contêm $M$ são $M$ e $R$. Pela correspondência, os únicos ideais de $R/M$ são $\\{\\bar0\\}$ e $R/M$. Além disso $R/M\\neq\\{\\bar0\\}$ pois $M\\neq R$ (maximal é próprio). Um anel comutativo com unidade não nulo cujos únicos ideais são $\\{0\\}$ e ele mesmo é um corpo: dado $\\bar a\\neq\\bar0$, o ideal $\\langle\\bar a\\rangle$ não é $\\{\\bar0\\}$, logo $\\langle\\bar a\\rangle=R/M$; assim $\\bar1\\in\\langle\\bar a\\rangle$, ou seja, existe $\\bar b$ com $\\bar a\\bar b=\\bar1$. Portanto todo não nulo é invertível e $R/M$ é corpo.\n\n**($\\Leftarrow$) $R/M$ corpo $\\Rightarrow M$ maximal.**\nUm corpo tem exatamente dois ideais: $\\{\\bar0\\}$ e ele todo (qualquer ideal não nulo contém uma unidade, logo é o anel todo). Pela correspondência, os únicos ideais de $R$ contendo $M$ são $M$ e $R$. Como $R/M$ é corpo, $R/M\\neq\\{\\bar0\\}$, logo $M\\neq R$: $M$ é próprio. Não havendo ideal estritamente entre $M$ e $R$, $M$ é maximal. $\\blacksquare$\n\n*Comentário.* A hipótese 'comutativo com unidade' é usada em ambas as direções (para caracterizar corpo pela ausência de ideais próprios não triviais).",
+          "steps": [
+            "Enuncie o Teorema da Correspondência: ideais de $R/M$ $\\leftrightarrow$ ideais de $R$ contendo $M$.",
+            "Traduza 'M maximal' em 'os únicos ideais de $R/M$ são $\\{\\bar0\\}$ e $R/M$'.",
+            "Prove que um anel comutativo com unidade não nulo sem ideais próprios não triviais é corpo (todo $\\bar a\\neq0$ gera o anel todo, logo é invertível).",
+            "Para a volta, use que um corpo só tem os ideais trivial e total.",
+            "Traduza de volta pela correspondência para concluir que $M$ é próprio e maximal."
+          ]
+        },
+        {
+          "prompt": "Classifique todos os ideais primos e maximais de $\\mathbb{Z}$ e justifique cada caso via o quociente.",
+          "hint": "Os ideais são $n\\mathbb{Z}$; analise quando $\\mathbb{Z}/n\\mathbb{Z}$ é domínio e quando é corpo.",
+          "difficulty": 2,
+          "solution": "Os ideais de $\\mathbb{Z}$ são exatamente os $n\\mathbb{Z}$ com $n\\ge 0$ ($\\mathbb{Z}$ é DIP). Classificamos pelo quociente $\\mathbb{Z}/n\\mathbb{Z}$.\n\n**Ideais primos.** $n\\mathbb{Z}$ é primo $\\iff \\mathbb{Z}/n\\mathbb{Z}$ é domínio.\n- $n=0$: $\\mathbb{Z}/0\\mathbb{Z}\\cong\\mathbb{Z}$ é domínio. Logo $\\langle0\\rangle$ é primo.\n- $n=1$: $\\mathbb{Z}/\\mathbb{Z}=\\{0\\}$; mas $\\langle1\\rangle=\\mathbb{Z}$ não é ideal próprio, então não conta como primo.\n- $n=p$ primo: $\\mathbb{Z}_p$ é domínio (de fato corpo). Logo $\\langle p\\rangle$ é primo.\n- $n$ composto: $\\mathbb{Z}_n$ tem divisores de zero (se $n=ab$, $\\bar a\\bar b=\\bar0$), não é domínio. Logo $\\langle n\\rangle$ não é primo.\n\n$$\\boxed{\\text{Ideais primos de }\\mathbb{Z}:\\ \\langle0\\rangle\\ \\text{e}\\ \\langle p\\rangle\\ (p\\ \\text{primo}).}$$\n\n**Ideais maximais.** $n\\mathbb{Z}$ é maximal $\\iff \\mathbb{Z}/n\\mathbb{Z}$ é corpo.\n- $n=0$: $\\mathbb{Z}$ não é corpo. Logo $\\langle0\\rangle$ NÃO é maximal.\n- $n=p$ primo: $\\mathbb{Z}_p$ é corpo. Logo $\\langle p\\rangle$ é maximal.\n- $n$ composto: $\\mathbb{Z}_n$ não é sequer domínio, não é corpo. Não maximal.\n\n$$\\boxed{\\text{Ideais maximais de }\\mathbb{Z}:\\ \\langle p\\rangle\\ (p\\ \\text{primo}).}$$\n\n**Síntese.** Todo maximal ($\\langle p\\rangle$) é primo, coerente com o teorema geral. O ideal $\\langle0\\rangle$ é primo mas não maximal — o exemplo arquetípico de que a recíproca 'primo $\\Rightarrow$ maximal' falha. $\\blacksquare$",
+          "steps": [
+            "Lembre que todo ideal de $\\mathbb{Z}$ é $n\\mathbb{Z}$ e que a classificação passa pelo quociente.",
+            "Para primos, teste quando $\\mathbb{Z}/n\\mathbb{Z}$ é domínio: $n=0$ e $n=p$ primo.",
+            "Para maximais, teste quando $\\mathbb{Z}/n\\mathbb{Z}$ é corpo: apenas $n=p$ primo.",
+            "Descarte $n$ composto (divisores de zero) em ambos os casos.",
+            "Observe que $\\langle0\\rangle$ é primo mas não maximal, ilustrando maximal$\\Rightarrow$primo estrito."
+          ]
+        },
+        {
+          "prompt": "Mostre que em um domínio de ideais principais (DIP) todo ideal primo não nulo é maximal.",
+          "hint": "Se $\\langle p\\rangle\\subseteq\\langle d\\rangle$, então $d\\mid p$; use que $p$ é primo/irredutível para concluir que $\\langle d\\rangle$ é $\\langle p\\rangle$ ou todo o anel.",
+          "difficulty": 4,
+          "solution": "**Teorema.** Num DIP $R$, todo ideal primo não nulo é maximal.\n\n**Prova.** Seja $P\\neq\\langle0\\rangle$ um ideal primo. Como $R$ é DIP, $P=\\langle p\\rangle$ para algum $p\\neq0$; como $P$ é primo e próprio, $p$ é um elemento primo (não unidade).\n\nQueremos mostrar que $\\langle p\\rangle$ é maximal, isto é, se $\\langle p\\rangle\\subseteq J\\subsetneq R$ para um ideal $J$, então $J=\\langle p\\rangle$.\n\nComo $R$ é DIP, $J=\\langle d\\rangle$ para algum $d$. De $\\langle p\\rangle\\subseteq\\langle d\\rangle$ segue $p\\in\\langle d\\rangle$, ou seja, $d\\mid p$: existe $c$ com $p=dc$.\n\nComo $p$ é primo, ele é irredutível (num domínio primo $\\Rightarrow$ irredutível). Da fatoração $p=dc$, irredutibilidade força que $d$ seja unidade ou $c$ seja unidade.\n\n- Se $d$ é unidade, então $\\langle d\\rangle=R$, contradizendo $J\\subsetneq R$.\n- Se $c$ é unidade, então $d=pc^{-1}$ é associado de $p$, logo $\\langle d\\rangle=\\langle p\\rangle$, ou seja $J=\\langle p\\rangle$.\n\nPortanto o único ideal entre $\\langle p\\rangle$ e $R$ (exclusive) é o próprio $\\langle p\\rangle$; logo $\\langle p\\rangle$ é maximal. $\\blacksquare$\n\n*Observação alternativa.* Como num DIP irredutível $\\Rightarrow$ primo e vice-versa, e todo elemento primo gera um ideal maximal, o resultado também segue de $R/\\langle p\\rangle$ ser um domínio finito-dimensional... mais diretamente: a prova acima é autossuficiente. Isso explica por que em $\\mathbb{Z}$ e em $K[x]$ os primos não nulos ($\\langle p\\rangle$, $\\langle$irredutível$\\rangle$) são maximais.",
+          "steps": [
+            "Escreva o ideal primo não nulo como $\\langle p\\rangle$ usando que $R$ é DIP; note que $p$ é primo.",
+            "Tome um ideal $J=\\langle d\\rangle$ com $\\langle p\\rangle\\subseteq J\\subsetneq R$.",
+            "Da inclusão deduza $d\\mid p$, ou seja $p=dc$.",
+            "Use primo $\\Rightarrow$ irredutível para concluir que $d$ ou $c$ é unidade.",
+            "Descarte $d$ unidade (daria $J=R$) e conclua $J=\\langle p\\rangle$, logo $\\langle p\\rangle$ maximal."
+          ]
+        },
+        {
+          "prompt": "Construa o corpo de frações de $\\mathbb{Z}[i]$ (inteiros de Gauss) e identifique-o como um subcorpo de $\\mathbb{C}$.",
+          "hint": "As frações $\\tfrac{a+bi}{c+di}$ racionalizam-se multiplicando pelo conjugado; o resultado é $\\mathbb{Q}(i)=\\{p+qi:p,q\\in\\mathbb{Q}\\}$.",
+          "difficulty": 3,
+          "solution": "**Objetivo.** Construir $\\operatorname{Frac}(\\mathbb{Z}[i])$ e identificá-lo com $\\mathbb{Q}(i)=\\{p+qi:p,q\\in\\mathbb{Q}\\}\\subseteq\\mathbb{C}$.\n\n$\\mathbb{Z}[i]=\\{a+bi:a,b\\in\\mathbb{Z}\\}$ é um domínio (subanel de $\\mathbb{C}$, sem divisores de zero). Seu corpo de frações é, por definição, o conjunto das classes $\\tfrac{\\alpha}{\\beta}$ com $\\alpha,\\beta\\in\\mathbb{Z}[i]$, $\\beta\\neq0$.\n\n**Mergulho em $\\mathbb{C}$.** A inclusão $\\mathbb{Z}[i]\\hookrightarrow\\mathbb{C}$ é um homomorfismo injetor num corpo; pela propriedade universal do corpo de frações, ela se estende de modo único a um homomorfismo injetor\n$$\\Phi:\\operatorname{Frac}(\\mathbb{Z}[i])\\hookrightarrow\\mathbb{C},\\qquad \\Phi\\!\\left(\\tfrac{\\alpha}{\\beta}\\right)=\\alpha\\beta^{-1}.$$\nAssim $\\operatorname{Frac}(\\mathbb{Z}[i])$ é isomorfo à imagem $\\Phi(\\operatorname{Frac}(\\mathbb{Z}[i]))\\subseteq\\mathbb{C}$; resta identificar essa imagem.\n\n**Racionalização.** Um elemento genérico é $\\dfrac{a+bi}{c+di}$ com $c+di\\neq0$. Multiplicando pelo conjugado:\n$$\\frac{a+bi}{c+di}=\\frac{(a+bi)(c-di)}{(c+di)(c-di)}=\\frac{(ac+bd)+(bc-ad)i}{c^2+d^2}=\\underbrace{\\frac{ac+bd}{c^2+d^2}}_{\\in\\mathbb{Q}}+\\underbrace{\\frac{bc-ad}{c^2+d^2}}_{\\in\\mathbb{Q}}\\,i.$$\nComo $a,b,c,d\\in\\mathbb{Z}$ e $c^2+d^2>0$, ambas as partes são racionais. Logo a imagem está contida em $\\mathbb{Q}(i)$.\n\n**Sobrejetividade sobre $\\mathbb{Q}(i)$.** Reciprocamente, todo $p+qi$ com $p=\\tfrac{m}{n}$, $q=\\tfrac{r}{s}$ racionais é uma fração de inteiros de Gauss: pondo denominador comum $t=ns$,\n$$p+qi=\\frac{(ms)+(rn)i}{t}=\\frac{ms+rn\\,i}{t},$$\ncom numerador $ms+rn\\,i\\in\\mathbb{Z}[i]$ e $t\\in\\mathbb{Z}\\subseteq\\mathbb{Z}[i]$. Logo $\\mathbb{Q}(i)\\subseteq$ imagem.\n\n**Conclusão.**\n$$\\operatorname{Frac}(\\mathbb{Z}[i])\\cong\\mathbb{Q}(i)=\\{p+qi:p,q\\in\\mathbb{Q}\\},$$\no menor subcorpo de $\\mathbb{C}$ contendo $\\mathbb{Z}[i]$. $\\blacksquare$",
+          "steps": [
+            "Verifique que $\\mathbb{Z}[i]$ é domínio, logo tem corpo de frações bem definido.",
+            "Use a propriedade universal para mergulhar $\\operatorname{Frac}(\\mathbb{Z}[i])$ em $\\mathbb{C}$ via $\\tfrac{\\alpha}{\\beta}\\mapsto\\alpha\\beta^{-1}$.",
+            "Racionalize $\\tfrac{a+bi}{c+di}$ multiplicando pelo conjugado e mostre que parte real e imaginária são racionais.",
+            "Conclua que a imagem está contida em $\\mathbb{Q}(i)$.",
+            "Escreva todo $p+qi\\in\\mathbb{Q}(i)$ como fração de inteiros de Gauss (denominador comum) para a inclusão inversa, identificando $\\operatorname{Frac}(\\mathbb{Z}[i])=\\mathbb{Q}(i)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "$R/P$ é domínio $\\iff$",
+          "back": "$P$ é ideal primo."
+        },
+        {
+          "front": "$R/M$ é corpo $\\iff$",
+          "back": "$M$ é ideal maximal."
+        },
+        {
+          "front": "Relação maximal/primo",
+          "back": "Maximal $\\Rightarrow$ primo; a recíproca é falsa (ex.: $\\langle 0\\rangle$ em $\\mathbb{Z}$)."
+        },
+        {
+          "front": "Definição de ideal primo",
+          "back": "Ideal próprio $P$ com $ab\\in P\\Rightarrow a\\in P$ ou $b\\in P$."
+        },
+        {
+          "front": "Existência de ideal maximal",
+          "back": "Todo anel com unidade $\\neq\\{0\\}$ tem ideal maximal (Lema de Zorn)."
+        },
+        {
+          "front": "Corpo de frações de um domínio $R$",
+          "back": "$\\operatorname{Frac}(R)$: classes $\\tfrac{a}{b}$ com $\\tfrac{a}{b}=\\tfrac{c}{d}\\iff ad=bc$; menor corpo contendo $R$."
+        },
+        {
+          "front": "$\\operatorname{Frac}(K[x])$",
+          "back": "$K(x)$, o corpo das funções racionais."
+        },
+        {
+          "front": "Em DIP, primo não nulo é...",
+          "back": "...maximal."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 7.4 (Prime and Maximal Ideals)",
+          "ref": "livro"
+        },
+        {
+          "title": "Atiyah & Macdonald, Introduction to Commutative Algebra, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "Hefez, Curso de Álgebra vol. 2 (ideais primos e maximais)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude no Dummit & Foote 7.4 (e Atiyah-Macdonald cap. 1) as duas caracterizações centrais: $R/P$ domínio $\\iff P$ primo e $R/M$ corpo $\\iff M$ maximal; anote qual quociente corresponde a qual tipo de ideal.",
+          "Reproduza a prova de que maximal $\\Rightarrow$ primo via 'corpo $\\Rightarrow$ domínio' aplicado ao quociente, e o contraexemplo $\\langle0\\rangle\\subset\\mathbb{Z}$ para a recíproca.",
+          "Revise o Lema de Zorn (ordem parcial, cadeia, cota superior, elemento maximal) e como ele garante a existência de ideais maximais; e estude a construção do corpo de frações como generalização de $\\mathbb{Z}\\rightsquigarrow\\mathbb{Q}$.",
+          "Assista a uma aula sobre prime/maximal ideals e localization/field of fractions para amarrar geometria (Spec) e a propriedade universal.",
+          "Resolva os testes deste subtópico aqui no app e anote o principal: as duas equivalências, a hierarquia maximal$\\Rightarrow$primo e a propriedade universal de $\\operatorname{Frac}(R)$."
+        ],
+        "searchQueries": [
+          "ideal primo maximal caracterização quociente domínio corpo",
+          "todo ideal maximal é primo demonstração recíproca falsa",
+          "existência de ideais maximais lema de Zorn",
+          "corpo de frações de um domínio construção propriedade universal",
+          "em DIP ideal primo não nulo é maximal prova",
+          "prime maximal ideals quotient field commutative algebra"
+        ],
+        "videos": [
+          {
+            "title": "Prime and Maximal Ideals",
+            "channel": "Michael Penn",
+            "note": "Busque os vídeos sobre prime/maximal ideals e as caracterizações via quociente; provas limpas e curtas."
+          },
+          {
+            "title": "Commutative Algebra - Localization / Fraction Field",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas de álgebra comutativa cobrindo corpo de frações e localização; use para a propriedade universal."
+          },
+          {
+            "title": "Ideais primos e maximais",
+            "channel": "Matemática Universitária",
+            "note": "Procure aulas em português sobre ideais primos/maximais e exemplos em $\\mathbb{Z}$ e $K[x]$."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 7.4 (Prime and Maximal Ideals)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Introduction to Commutative Algebra, cap. 1",
+            "where": "Livro de Atiyah & Macdonald"
+          },
+          {
+            "title": "Curso de Álgebra vol. 2 (ideais primos e maximais)",
+            "where": "Livro de Abramo Hefez"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-2-04-aneis-polinomios-divisao",
+      "title": "Anéis de Polinômios e o Algoritmo da Divisão",
+      "tagline": "O anel $R[x]$, o grau como medida de complexidade e a divisão euclidiana que faz de $K[x]$ um análogo perfeito de $\\mathbb{Z}$.",
+      "objectives": [
+        "Construir formalmente o anel de polinômios $R[x]$ e definir grau, coeficiente líder e polinômio mônico.",
+        "Provar que $R$ domínio $\\Rightarrow R[x]$ domínio e descrever as unidades de $R[x]$.",
+        "Demonstrar o algoritmo da divisão em $K[x]$ (e mais geralmente quando o divisor tem coeficiente líder invertível).",
+        "Concluir que $K[x]$ é um domínio euclidiano e, portanto, um DIP.",
+        "Relacionar raízes e fatores lineares e limitar o número de raízes de um polinômio sobre um domínio."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Anel de polinômios",
+          "statement": "$R[x]=\\{a_0+a_1x+\\cdots+a_nx^n:a_i\\in R\\}$ com soma coeficiente a coeficiente e produto pela convolução $(\\sum a_ix^i)(\\sum b_jx^j)=\\sum_k\\big(\\sum_{i+j=k}a_ib_j\\big)x^k$."
+        },
+        {
+          "term": "Grau",
+          "statement": "$\\deg(f)$ é o maior $n$ com $a_n\\neq 0$; convenciona-se $\\deg(0)=-\\infty$. Se $R$ é domínio, $\\deg(fg)=\\deg f+\\deg g$."
+        },
+        {
+          "term": "Polinômio mônico",
+          "statement": "Polinômio cujo coeficiente líder é $1$. Todo polinômio não nulo sobre um corpo é associado a um único mônico."
+        },
+        {
+          "term": "Homomorfismo de avaliação",
+          "statement": "Para $\\alpha$ num anel $S\\supseteq R$ (comutativo), $\\operatorname{ev}_\\alpha:R[x]\\to S$, $f\\mapsto f(\\alpha)$, é homomorfismo de anéis; $\\alpha$ é raiz de $f$ quando $f(\\alpha)=0$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Grau do produto e domínio",
+          "statement": "Se $R$ é domínio, então $R[x]$ é domínio e $\\deg(fg)=\\deg f+\\deg g$; em particular $R[x]^{\\times}=R^{\\times}$.",
+          "whyItMatters": "Garante que polinômios sobre domínios se comportam como esperado (sem 'colapso' de grau) e que as únicas unidades são as constantes invertíveis — essencial para definir irredutibilidade."
+        },
+        {
+          "name": "Algoritmo da divisão em $K[x]$",
+          "statement": "Se $K$ é corpo e $f,g\\in K[x]$ com $g\\neq 0$, existem únicos $q,r\\in K[x]$ tais que $f=gq+r$ com $r=0$ ou $\\deg r<\\deg g$.",
+          "whyItMatters": "É a propriedade que torna $K[x]$ um domínio euclidiano; dela seguem $K[x]$ ser DIP, a existência de mdc via Euclides e a teoria de fatoração de polinômios."
+        },
+        {
+          "name": "$K[x]$ é DIP",
+          "statement": "Se $K$ é corpo, todo ideal de $K[x]$ é principal, gerado pelo polinômio mônico de menor grau não nulo do ideal.",
+          "whyItMatters": "Coloca $K[x]$ no mesmo patamar de $\\mathbb{Z}$ e é a base para que polinômios irredutíveis gerem ideais maximais — logo extensões de corpos."
+        },
+        {
+          "name": "Raízes e número máximo",
+          "statement": "Para $f\\in R[x]$ com $R$ domínio, $\\alpha$ é raiz $\\iff (x-\\alpha)\\mid f$; consequentemente $f\\neq 0$ tem no máximo $\\deg f$ raízes em $R$.",
+          "whyItMatters": "Limita drasticamente as raízes (falha em anéis com divisores de zero, ex.: $x^2-1$ tem $4$ raízes em $\\mathbb{Z}_8$) e fundamenta interpolação e a ciclicidade de $\\mathbb{F}_q^{\\times}$."
+        }
+      ],
+      "summary": "O anel de polinômios $R[x]$ formaliza expressões $a_0+a_1x+\\cdots+a_nx^n$ como sequências quase-nulas de coeficientes, com a multiplicação dada pela convolução. A função grau é a medida natural de complexidade, e quando $R$ é domínio ela é aditiva no produto, $\\deg(fg)=\\deg f+\\deg g$ — o que implica imediatamente que $R[x]$ também é domínio e que suas únicas unidades são as constantes invertíveis de $R$. Esse controle do grau é o que dá sentido às noções de fator próprio e irredutibilidade.\n\nQuando o anel de coeficientes é um corpo $K$, $K[x]$ ganha o algoritmo da divisão: dados $f$ e $g\\neq 0$, há quociente e resto únicos com $\\deg r<\\deg g$. A demonstração é a divisão longa usual, e a chave é que o coeficiente líder de $g$ é invertível (sempre verdade num corpo). Com a divisão em mãos, $K[x]$ é um domínio euclidiano — e portanto, como veremos, um DIP e um DFU. Esse paralelo entre $K[x]$ e $\\mathbb{Z}$ é uma das analogias mais frutíferas da álgebra: o grau faz o papel do valor absoluto, polinômios mônicos irredutíveis fazem o papel dos primos positivos, e o algoritmo de Euclides calcula mdc em ambos. Por fim, a relação raiz $\\iff$ fator linear (consequência direta da divisão por $x-\\alpha$) limita o número de raízes ao grau — desde que o anel seja domínio, pois em anéis com divisores de zero um polinômio pode ter mais raízes que seu grau.",
+      "commonPitfalls": [
+        "Usar $\\deg(fg)=\\deg f+\\deg g$ em anéis com divisores de zero: em $\\mathbb{Z}_4[x]$, $(2x)(2x)=0$ e a fórmula falha.",
+        "Aplicar o algoritmo da divisão sobre um anel qualquer: ele exige que o coeficiente líder do divisor seja invertível (garantido sobre corpos).",
+        "Achar que um polinômio de grau $n$ tem sempre $n$ raízes: isso só vale com multiplicidade e em corpos algebricamente fechados; em geral é 'no máximo $n$'.",
+        "Confundir o polinômio $x^2+1$ (objeto formal de $R[x]$) com a função polinomial associada — em $\\mathbb{Z}_p$ polinômios distintos podem induzir a mesma função."
+      ],
+      "worked": "**Divisão em $\\mathbb{Q}[x]$.** Vamos dividir $f=x^4-3x^2+2x+1$ por $g=x^2-x+1$.\n\nPasso 1: o termo líder $x^4\\div x^2=x^2$. Multiplicamos: $x^2\\cdot g=x^4-x^3+x^2$ e subtraímos:\n$$f-x^2g=x^3-4x^2+2x+1.$$\nPasso 2: $x^3\\div x^2=x$. Temos $x\\cdot g=x^3-x^2+x$ e subtraímos:\n$$x^3-4x^2+2x+1-(x^3-x^2+x)=-3x^2+x+1.$$\nPasso 3: $-3x^2\\div x^2=-3$. Temos $-3\\cdot g=-3x^2+3x-3$ e subtraímos:\n$$-3x^2+x+1-(-3x^2+3x-3)=-2x+4.$$\nO grau de $-2x+4$ é $1<2=\\deg g$, então paramos. Logo\n$$q=x^2+x-3,\\qquad r=-2x+4,$$\ne $f=g\\,q+r$. Como $r\\neq 0$, $g$ não divide $f$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que se $R$ é domínio então $R[x]^{\\times}=R^{\\times}$ (as unidades de $R[x]$ são exatamente as constantes invertíveis). Mostre que isso falha em $\\mathbb{Z}_4[x]$ exibindo uma unidade não constante.",
+          "hint": "Para a primeira parte use a aditividade do grau. Para o contra-exemplo, verifique $(1+2x)^2$ em $\\mathbb{Z}_4[x]$.",
+          "difficulty": 3,
+          "solution": "**Parte 1: $R$ domínio $\\Rightarrow R[x]^{\\times}=R^{\\times}$.**\n\n$(\\supseteq)$ Se $u\\in R^{\\times}$ com inverso $v$, então visto como polinômio constante $uv=1$ em $R[x]$, logo $u\\in R[x]^{\\times}$.\n\n$(\\subseteq)$ Seja $f\\in R[x]^{\\times}$, com $g\\in R[x]$ tal que $fg=1$. Como $R$ é domínio, o grau é aditivo:\n$$\\deg f+\\deg g=\\deg(fg)=\\deg 1=0.$$\nComo graus são $\\ge0$ (para polinômios não nulos), segue $\\deg f=\\deg g=0$, isto é, $f=a$ e $g=b$ são constantes com $ab=1$. Logo $a\\in R^{\\times}$. Portanto $R[x]^{\\times}\\subseteq R^{\\times}$.\n\nCombinando, $R[x]^{\\times}=R^{\\times}$.\n\n**Parte 2: falha em $\\mathbb{Z}_4[x]$.**\n\nO anel $\\mathbb{Z}_4$ não é domínio ($\\bar2\\cdot\\bar2=\\bar0$). Considere $f=1+2x\\in\\mathbb{Z}_4[x]$. Calculemos:\n$$(1+2x)^2=1+4x+4x^2=1+\\bar0\\,x+\\bar0\\,x^2=1,$$\npois $4\\equiv0\\pmod4$. Logo $f=1+2x$ é sua própria inversa: $(1+2x)(1+2x)=1$. Portanto $1+2x$ é uma unidade de $\\mathbb{Z}_4[x]$ que NÃO é constante.\n\nIsso mostra que a igualdade $R[x]^{\\times}=R^{\\times}$ falha quando $R$ tem divisores de zero: o passo crucial — aditividade do grau — quebra, já que $2x\\cdot2x=4x^2=0$ faz o grau 'colapsar'. $\\blacksquare$",
+          "steps": [
+            "Mostre a inclusão fácil: unidades constantes de $R$ são unidades de $R[x]$.",
+            "Para a inclusão inversa, parta de $fg=1$ e aplique a aditividade do grau (válida pois $R$ é domínio).",
+            "Conclua $\\deg f=\\deg g=0$, logo $f$ é constante invertível.",
+            "Em $\\mathbb{Z}_4[x]$, teste o candidato $1+2x$ e calcule $(1+2x)^2$ usando $4\\equiv0$.",
+            "Verifique $(1+2x)^2=1$, exibindo uma unidade não constante e identificando onde a aditividade do grau falhou."
+          ]
+        },
+        {
+          "prompt": "Demonstre o algoritmo da divisão em $K[x]$ por indução no grau de $f$, provando existência e unicidade de $q$ e $r$.",
+          "hint": "Subtraia $\\frac{a_n}{b_m}x^{n-m}g$ para baixar o grau; para unicidade, suponha duas representações e compare graus de $r_1-r_2$.",
+          "difficulty": 4,
+          "solution": "**Teorema (algoritmo da divisão em $K[x]$, $K$ corpo).** Dados $f,g\\in K[x]$ com $g\\neq0$, existem únicos $q,r\\in K[x]$ com $f=gq+r$ e ($r=0$ ou $\\deg r<\\deg g$).\n\n**Existência (indução em $\\deg f$).** Escreva $g=b_mx^m+\\cdots$, $b_m\\neq0$ (invertível, pois $K$ é corpo).\n\n*Base / caso trivial.* Se $f=0$ ou $\\deg f<\\deg g$, tome $q=0$, $r=f$; a condição vale.\n\n*Passo.* Suponha $\\deg f=n\\ge m$ e que o resultado vale para todo polinômio de grau $<n$. Seja $a_n$ o coeficiente líder de $f$. Considere\n$$f_1=f-\\frac{a_n}{b_m}x^{\\,n-m}g.$$\nO termo $\\frac{a_n}{b_m}x^{n-m}g$ tem grau $n$ e coeficiente líder $\\frac{a_n}{b_m}b_m=a_n$, exatamente cancelando o líder de $f$. Logo $f_1=0$ ou $\\deg f_1<n$. Por hipótese de indução, existem $q_1,r$ com $f_1=gq_1+r$ e ($r=0$ ou $\\deg r<\\deg g$). Então\n$$f=f_1+\\frac{a_n}{b_m}x^{n-m}g=g\\Big(q_1+\\frac{a_n}{b_m}x^{n-m}\\Big)+r,$$\nou seja, $q=q_1+\\frac{a_n}{b_m}x^{n-m}$ e $r$ satisfazem o pedido. Isso completa a indução.\n\n**Unicidade.** Suponha $f=gq_1+r_1=gq_2+r_2$ com cada $r_i$ nulo ou de grau $<\\deg g$. Então\n$$g(q_1-q_2)=r_2-r_1.$$\nSe $q_1\\neq q_2$, o lado esquerdo é não nulo e, pela aditividade do grau ($K$ é domínio),\n$$\\deg\\big(g(q_1-q_2)\\big)=\\deg g+\\deg(q_1-q_2)\\ge\\deg g.$$\nMas o lado direito $r_2-r_1$ é $0$ ou tem grau $<\\deg g$ — contradição. Logo $q_1=q_2$, e então $r_1=r_2$. $\\blacksquare$\n\n*Onde entra o corpo:* precisamos que $b_m$ seja invertível para formar $\\frac{a_n}{b_m}$; sobre um anel qualquer isso pode falhar.",
+          "steps": [
+            "Trate o caso $f=0$ ou $\\deg f<\\deg g$ diretamente com $q=0$, $r=f$.",
+            "No passo indutivo, cancele o termo líder de $f$ subtraindo $\\frac{a_n}{b_m}x^{n-m}g$ (aqui usa-se $b_m$ invertível).",
+            "Aplique a hipótese de indução ao polinômio de grau menor $f_1$ e recomponha $q$ e $r$.",
+            "Para unicidade, subtraia duas representações obtendo $g(q_1-q_2)=r_2-r_1$.",
+            "Compare graus: se $q_1\\neq q_2$ o grau à esquerda é $\\ge\\deg g$, contradizendo o da direita; conclua $q_1=q_2$ e $r_1=r_2$."
+          ]
+        },
+        {
+          "prompt": "Mostre que o polinômio $x^2-1$ tem quatro raízes em $\\mathbb{Z}_8$. Por que isso não contradiz o teorema 'no máximo $\\deg f$ raízes'?",
+          "hint": "Teste $x=1,3,5,7$. $\\mathbb{Z}_8$ não é domínio (tem divisores de zero), então a hipótese do teorema falha.",
+          "difficulty": 2,
+          "solution": "**Afirmação.** $x^2-1$ tem quatro raízes em $\\mathbb{Z}_8$, a saber $\\bar1,\\bar3,\\bar5,\\bar7$.\n\n**Verificação.** Calculamos os quadrados módulo $8$:\n$$\\bar1^2=1,\\quad\\bar3^2=9\\equiv1,\\quad\\bar5^2=25\\equiv1,\\quad\\bar7^2=49\\equiv1\\pmod8.$$\nLogo cada um satisfaz $x^2-1\\equiv0$: $\\bar1,\\bar3,\\bar5,\\bar7$ são raízes. (Os elementos pares $\\bar0,\\bar2,\\bar4,\\bar6$ têm quadrados $0,4,0,4$, nenhum igual a $1$, então não são raízes.) São exatamente **quatro** raízes.\n\n**Por que não contradiz 'no máximo $\\deg f$ raízes'.** O teorema que limita o número de raízes a $\\deg f$ exige que o anel de coeficientes seja um **domínio de integridade**. Sua prova usa que raiz $\\iff$ fator linear e que, num domínio, um produto $(x-\\alpha_1)\\cdots(x-\\alpha_k)$ só se anula se um dos fatores se anula.\n\nMas $\\mathbb{Z}_8$ **não é domínio**: tem divisores de zero, por exemplo $\\bar2\\cdot\\bar4=\\bar8=\\bar0$. Concretamente,\n$$x^2-1=(x-1)(x+1).$$\nEm $\\bar3$: $(3-1)(3+1)=\\bar2\\cdot\\bar4=\\bar8=\\bar0$, embora nenhum fator seja zero. É a existência de divisores de zero que permite ao produto se anular sem que um fator se anule — gerando raízes 'extras'. Portanto a hipótese do teorema falha e não há contradição. $\\blacksquare$",
+          "steps": [
+            "Teste os elementos ímpares $\\bar1,\\bar3,\\bar5,\\bar7$ elevando ao quadrado módulo $8$.",
+            "Verifique que cada quadrado dá $\\bar1$, logo os quatro são raízes de $x^2-1$.",
+            "Cheque que os pares não são raízes, confirmando exatamente quatro raízes.",
+            "Recorde que o limite '$\\le\\deg f$ raízes' pressupõe domínio de integridade.",
+            "Exiba que $\\mathbb{Z}_8$ tem divisores de zero ($\\bar2\\bar4=\\bar0$), fazendo $(x-1)(x+1)$ anular em $\\bar3$ sem fator nulo — sem contradição."
+          ]
+        },
+        {
+          "prompt": "Seja $K$ corpo e $I\\subseteq K[x]$ um ideal não nulo. Prove que $I=\\langle p\\rangle$ onde $p$ é qualquer polinômio de menor grau em $I$.",
+          "hint": "Dado $f\\in I$, divida $f$ por $p$; o resto $r=f-pq\\in I$ tem grau menor que $p$, logo $r=0$.",
+          "difficulty": 3,
+          "solution": "**Teorema.** Seja $K$ corpo e $I\\subseteq K[x]$ um ideal não nulo. Então $I=\\langle p\\rangle$, onde $p$ é qualquer polinômio de menor grau em $I\\setminus\\{0\\}$.\n\n**Prova.** Como $I\\neq\\{0\\}$, o conjunto $\\{\\deg f:f\\in I,\\ f\\neq0\\}\\subseteq\\mathbb{Z}_{\\ge0}$ é não vazio; pelo princípio da boa ordenação existe $p\\in I$ não nulo de grau mínimo. Mostramos $I=\\langle p\\rangle$.\n\n$(\\supseteq)$ Como $p\\in I$ e $I$ é ideal, $\\langle p\\rangle=\\{ph:h\\in K[x]\\}\\subseteq I$.\n\n$(\\subseteq)$ Seja $f\\in I$ arbitrário. Pelo algoritmo da divisão em $K[x]$ (aqui usamos que $K$ é corpo, garantindo divisão com resto), existem $q,r\\in K[x]$ com\n$$f=pq+r,\\qquad r=0\\ \\text{ou}\\ \\deg r<\\deg p.$$\nEntão $r=f-pq$. Como $f\\in I$ e $pq\\in I$ (pois $p\\in I$, ideal), temos $r\\in I$. Se $r\\neq0$, então $r\\in I$ teria grau $<\\deg p$, contradizendo a minimalidade de $\\deg p$. Logo $r=0$ e $f=pq\\in\\langle p\\rangle$.\n\nPortanto $I\\subseteq\\langle p\\rangle$, e concluímos $I=\\langle p\\rangle$. $\\blacksquare$\n\n**Observações.** (i) O gerador é único a menos de constante multiplicativa não nula (associados); tomando $p$ mônico obtém-se o gerador canônico. (ii) Como $I$ arbitrário era principal, isto prova que $K[x]$ é um DIP. A demonstração é idêntica, em espírito, à de que $\\mathbb{Z}$ é DIP (com o valor absoluto no lugar do grau).",
+          "steps": [
+            "Use a boa ordenação para escolher $p\\in I$ não nulo de menor grau.",
+            "Prove a inclusão $\\langle p\\rangle\\subseteq I$ usando que $I$ é ideal e $p\\in I$.",
+            "Para a inclusão inversa, divida um $f\\in I$ genérico por $p$ obtendo resto $r$.",
+            "Observe que $r=f-pq\\in I$ e que $r\\neq0$ contradiria a minimalidade do grau de $p$.",
+            "Conclua $r=0$, logo $f\\in\\langle p\\rangle$, e portanto $I=\\langle p\\rangle$ (e $K[x]$ é DIP)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Grau do produto (domínio)",
+          "back": "$\\deg(fg)=\\deg f+\\deg g$ quando $R$ é domínio."
+        },
+        {
+          "front": "Unidades de $R[x]$ ($R$ domínio)",
+          "back": "Exatamente as constantes invertíveis: $R[x]^{\\times}=R^{\\times}$."
+        },
+        {
+          "front": "Algoritmo da divisão em $K[x]$",
+          "back": "$f=gq+r$, únicos, com $r=0$ ou $\\deg r<\\deg g$ ($K$ corpo)."
+        },
+        {
+          "front": "Estrutura de $K[x]$ ($K$ corpo)",
+          "back": "É domínio euclidiano (grau como norma) $\\Rightarrow$ DIP $\\Rightarrow$ DFU."
+        },
+        {
+          "front": "Raiz $\\iff$ fator",
+          "back": "$\\alpha$ raiz de $f\\iff (x-\\alpha)\\mid f$ (em domínio)."
+        },
+        {
+          "front": "Número máximo de raízes",
+          "back": "Sobre um domínio, $f\\neq 0$ tem $\\le\\deg f$ raízes."
+        },
+        {
+          "front": "Gerador de um ideal de $K[x]$",
+          "back": "O polinômio mônico de menor grau do ideal."
+        },
+        {
+          "front": "Por que $\\deg$ falha em $\\mathbb{Z}_4[x]$?",
+          "back": "Há divisores de zero: $(2x)(2x)=0$, então a aditividade do grau quebra."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 9 (Polynomial Rings)",
+          "ref": "livro"
+        },
+        {
+          "title": "Hefez & Villela, Polinômios e Equações Algébricas (SBM)",
+          "ref": "livro"
+        },
+        {
+          "title": "Herstein, Topics in Algebra, cap. 3.9",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude no Dummit & Foote cap. 9 (ou Hefez & Villela) a construção de $R[x]$, a função grau e a demonstração de que $R$ domínio $\\Rightarrow R[x]$ domínio com $\\deg(fg)=\\deg f+\\deg g$.",
+          "Escreva e execute o algoritmo da divisão em $K[x]$ em 3 exemplos numéricos (sobre $\\mathbb{Q}$ e sobre $\\mathbb{F}_p$), prestando atenção em onde se usa que o coeficiente líder do divisor é invertível.",
+          "Estude a prova de que $K[x]$ é DIP (ideal gerado pelo mônico de menor grau) e a relação raiz $\\iff$ fator linear, incluindo o contraexemplo de $x^2-1$ em $\\mathbb{Z}_8$.",
+          "Assista a uma aula sobre polynomial rings / division algorithm para consolidar a analogia $K[x]\\leftrightarrow\\mathbb{Z}$.",
+          "Resolva os testes deste subtópico aqui no app e anote o principal: aditividade do grau, algoritmo da divisão, $K[x]$ é DIP e o cuidado com divisores de zero."
+        ],
+        "searchQueries": [
+          "anel de polinômios R[x] grau produto domínio",
+          "algoritmo da divisão em K[x] existência unicidade prova",
+          "K[x] é domínio de ideais principais demonstração",
+          "unidades de R[x] são constantes invertíveis",
+          "polinômio com mais raízes que o grau Z_8 divisores de zero",
+          "polynomial ring division algorithm principal ideal domain"
+        ],
+        "videos": [
+          {
+            "title": "Polynomial Rings and the Division Algorithm",
+            "channel": "Michael Penn",
+            "note": "Busque os vídeos sobre $K[x]$, algoritmo da divisão e $K[x]$ como PID; provas diretas e exemplos."
+          },
+          {
+            "title": "Polinômios: divisão e grau",
+            "channel": "O Professor Ferretto",
+            "note": "Para revisar a divisão de polinômios com fluência antes do tratamento abstrato."
+          },
+          {
+            "title": "Modern Algebra 18.703 (Polynomial Rings)",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre anéis de polinômios e a analogia com os inteiros."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 9 (Polynomial Rings)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Polinômios e Equações Algébricas (SBM)",
+            "where": "Livro de Abramo Hefez & Maria Lúcia T. Villela"
+          },
+          {
+            "title": "Topics in Algebra, cap. 3.9",
+            "where": "Livro de I. N. Herstein"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-2-05-fatoracao-de-dip-dfu",
+      "title": "Fatoração Única: Domínios Euclidianos, de Ideais Principais e de Fatoração Única",
+      "tagline": "A hierarquia $\\text{DE}\\subset\\text{DIP}\\subset\\text{DFU}$ e o que significa, em geral, ter um Teorema Fundamental da Aritmética.",
+      "objectives": [
+        "Definir elementos associados, irredutíveis e primos em um domínio e provar que primo $\\Rightarrow$ irredutível.",
+        "Definir domínio euclidiano (DE), domínio de ideais principais (DIP) e domínio de fatoração única (DFU).",
+        "Demonstrar as implicações DE $\\Rightarrow$ DIP $\\Rightarrow$ DFU.",
+        "Provar que em um DFU (e em um DIP) os conceitos de irredutível e primo coincidem.",
+        "Reconhecer exemplos e contraexemplos: $\\mathbb{Z}$, $K[x]$ e $\\mathbb{Z}[i]$ são DE; $\\mathbb{Z}[x]$ é DFU mas não DIP; $\\mathbb{Z}[\\sqrt{-5}]$ não é DFU."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Associados",
+          "statement": "$a$ e $b$ são associados se $a=ub$ com $u$ unidade; equivale a $\\langle a\\rangle=\\langle b\\rangle$. A fatoração é única a menos de associados e ordem."
+        },
+        {
+          "term": "Irredutível",
+          "statement": "$p$ não nulo e não unidade é irredutível se $p=ab\\Rightarrow a$ ou $b$ é unidade (não admite fatoração própria)."
+        },
+        {
+          "term": "Primo",
+          "statement": "$p$ não nulo e não unidade é primo se $p\\mid ab\\Rightarrow p\\mid a$ ou $p\\mid b$. Equivale a $\\langle p\\rangle$ ser ideal primo não nulo."
+        },
+        {
+          "term": "Domínio euclidiano",
+          "statement": "Domínio com função $N:R\\setminus\\{0\\}\\to\\mathbb{Z}_{\\ge 0}$ tal que para $a,b\\neq 0$ existem $q,r$ com $a=bq+r$ e $r=0$ ou $N(r)<N(b)$."
+        },
+        {
+          "term": "Domínio de fatoração única",
+          "statement": "Domínio em que todo elemento não nulo e não unidade se escreve como produto de irredutíveis, de modo único a menos de ordem e associados."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Primo implica irredutível",
+          "statement": "Em todo domínio de integridade, todo elemento primo é irredutível.",
+          "whyItMatters": "Mostra que primalidade é a noção mais forte; a recíproca (irredutível $\\Rightarrow$ primo) é o que distingue os DFU dos domínios mal-comportados e é a chave da unicidade da fatoração."
+        },
+        {
+          "name": "DE implica DIP",
+          "statement": "Todo domínio euclidiano é um domínio de ideais principais (cada ideal é gerado por um elemento de norma mínima).",
+          "whyItMatters": "Dá uma maneira concreta e algorítmica de verificar que $\\mathbb{Z}$, $K[x]$ e $\\mathbb{Z}[i]$ têm todos os ideais principais, conectando a divisão com a estrutura dos ideais."
+        },
+        {
+          "name": "DIP implica DFU",
+          "statement": "Todo domínio de ideais principais é um domínio de fatoração única; nele, irredutível $\\iff$ primo.",
+          "whyItMatters": "É a generalização do Teorema Fundamental da Aritmética. A existência da fatoração vem da condição de cadeia ascendente; a unicidade, de irredutível $=$ primo."
+        },
+        {
+          "name": "Irredutível = primo em DFU",
+          "statement": "Em um DFU, um elemento é irredutível se, e somente se, é primo.",
+          "whyItMatters": "É exatamente o que garante a unicidade da fatoração. Quando falha — como em $\\mathbb{Z}[\\sqrt{-5}]$, onde $2$ é irredutível mas não primo — a fatoração deixa de ser única."
+        }
+      ],
+      "summary": "A teoria da fatoração generaliza o Teorema Fundamental da Aritmética para domínios abstratos. Dois conceitos competem pelo papel de 'número primo': um elemento é irredutível se não admite fatoração própria (não é produto de dois não-unidades), e é primo se sempre que divide um produto divide um dos fatores. Em qualquer domínio, primo $\\Rightarrow$ irredutível; a recíproca é delicada e é precisamente o que caracteriza os bons domínios. Quando irredutível e primo coincidem e todo elemento se fatora, temos um domínio de fatoração única (DFU) — o ambiente onde 'existe e é única a fatoração em primos'.\n\nA hierarquia central da trilha é DE $\\subset$ DIP $\\subset$ DFU. Um domínio euclidiano (DE) possui uma 'norma' que permite uma divisão com resto menor — exatamente como $\\mathbb{Z}$ (valor absoluto), $K[x]$ (grau) e os inteiros de Gauss $\\mathbb{Z}[i]$ (norma $a^2+b^2$). Todo DE é DIP: o ideal é gerado por um elemento de norma mínima, exatamente como na demonstração de que $K[x]$ é DIP. E todo DIP é DFU: a existência da fatoração vem da condição de cadeia ascendente sobre ideais principais (não há cadeias infinitas estritas $\\langle a_1\\rangle\\subsetneq\\langle a_2\\rangle\\subsetneq\\cdots$), e a unicidade vem de que, em um DIP, todo irredutível é primo. As inclusões são estritas: $\\mathbb{Z}[x]$ é DFU mas não DIP (o ideal $\\langle 2,x\\rangle$ não é principal), e há DIPs que não são euclidianos (ex.: $\\mathbb{Z}[\\tfrac{1+\\sqrt{-19}}{2}]$). O exemplo dramático de falha é $\\mathbb{Z}[\\sqrt{-5}]$, onde $6=2\\cdot 3=(1+\\sqrt{-5})(1-\\sqrt{-5})$ exibe duas fatorações genuinamente distintas em irredutíveis — a fatoração única se quebra, e foi para restaurá-la que Kummer e Dedekind inventaram os ideais.",
+      "commonPitfalls": [
+        "Achar que irredutível sempre implica primo: falha em $\\mathbb{Z}[\\sqrt{-5}]$, onde $2$ é irredutível mas não primo.",
+        "Confundir as inclusões: nem todo DFU é DIP ($\\mathbb{Z}[x]$ é o contraexemplo padrão), e nem todo DIP é euclidiano.",
+        "Esquecer 'a menos de associados e ordem' na unicidade: $6=2\\cdot 3=(-2)\\cdot(-3)$ não viola a unicidade, pois $-2,-3$ são associados de $2,3$.",
+        "Tentar provar que algo é DFU exibindo só a existência da fatoração: é preciso também a unicidade, que exige irredutível $\\Rightarrow$ primo."
+      ],
+      "worked": "**Falha da fatoração única em $\\mathbb{Z}[\\sqrt{-5}]$.** Trabalhe com a norma $N(a+b\\sqrt{-5})=a^2+5b^2$, que é multiplicativa: $N(\\alpha\\beta)=N(\\alpha)N(\\beta)$.\n\nConsidere a igualdade $6=2\\cdot 3=(1+\\sqrt{-5})(1-\\sqrt{-5})$. Vamos ver que os quatro fatores são irredutíveis e que $2$ não é associado de $1\\pm\\sqrt{-5}$.\n\nAs unidades de $\\mathbb{Z}[\\sqrt{-5}]$ são $\\pm 1$ (são os elementos de norma $1$). Suponha $2=\\alpha\\beta$ com $\\alpha,\\beta$ não unidades; então $4=N(2)=N(\\alpha)N(\\beta)$ com $N(\\alpha),N(\\beta)>1$, logo $N(\\alpha)=N(\\beta)=2$. Mas $a^2+5b^2=2$ não tem solução inteira. Logo $2$ é irredutível. Argumento análogo mostra que $3$ ($N=9$, impossível ter norma $3$) e $1\\pm\\sqrt{-5}$ ($N=6$) são irredutíveis.\n\nAgora, $2$ não é primo: ele divide $6=(1+\\sqrt{-5})(1-\\sqrt{-5})$, mas não divide nenhum dos fatores (pois $\\tfrac{1\\pm\\sqrt{-5}}{2}\\notin\\mathbb{Z}[\\sqrt{-5}]$). Assim $2$ é irredutível mas não primo, e $6$ tem duas fatorações essencialmente distintas em irredutíveis. Portanto $\\mathbb{Z}[\\sqrt{-5}]$ não é DFU. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que em todo domínio de integridade todo elemento primo é irredutível.",
+          "hint": "Se $p=ab$, então $p\\mid ab$, logo $p\\mid a$ ou $p\\mid b$; suponha $p\\mid a$, escreva $a=pc$ e cancele para concluir que $b$ é unidade.",
+          "difficulty": 3,
+          "solution": "**Teorema.** Em todo domínio de integridade $R$, todo elemento primo é irredutível.\n\n**Prova.** Seja $p\\in R$ primo, isto é, $p\\neq0$, $p$ não é unidade e $p\\mid ab\\Rightarrow p\\mid a$ ou $p\\mid b$. Queremos mostrar que $p$ é irredutível.\n\nSuponha $p=ab$ com $a,b\\in R$. Em particular $p\\mid ab$ (pois $ab=p$). Como $p$ é primo, $p\\mid a$ ou $p\\mid b$. Sem perda de generalidade, suponha $p\\mid a$: existe $c$ com $a=pc$.\n\nSubstituindo em $p=ab$:\n$$p=ab=(pc)b=p(cb).$$\nComo $R$ é domínio e $p\\neq0$, cancelamos $p$ (lei do cancelamento):\n$$1=cb.$$\nLogo $b$ é invertível (unidade), com inverso $c$.\n\nMostramos que numa fatoração $p=ab$ um dos fatores ($b$) é necessariamente unidade. Além disso $p\\neq0$ e $p$ não é unidade por hipótese. Portanto $p$ é irredutível. $\\blacksquare$\n\n*Comentário.* A recíproca (irredutível $\\Rightarrow$ primo) NÃO vale em geral — falha em $\\mathbb{Z}[\\sqrt{-5}]$ — e é precisamente ela que caracteriza os DFU. O cancelamento, usado aqui, é o que exige que $R$ seja domínio.",
+          "steps": [
+            "Escreva a definição de primo e a meta (mostrar irredutibilidade).",
+            "Parta de uma fatoração arbitrária $p=ab$.",
+            "Observe $p\\mid ab$ e aplique a propriedade de primo: $p\\mid a$ (WLOG).",
+            "Escreva $a=pc$, substitua e cancele $p$ (domínio) para obter $1=cb$.",
+            "Conclua que $b$ é unidade, logo toda fatoração é imprópria e $p$ é irredutível."
+          ]
+        },
+        {
+          "prompt": "Mostre que os inteiros de Gauss $\\mathbb{Z}[i]$ formam um domínio euclidiano com $N(a+bi)=a^2+b^2$.",
+          "hint": "Dados $\\alpha,\\beta\\neq 0$, considere $\\tfrac{\\alpha}{\\beta}\\in\\mathbb{Q}(i)$ e arredonde parte real e imaginária ao inteiro mais próximo para obter o quociente; estime $N(r)<N(\\beta)$.",
+          "difficulty": 4,
+          "solution": "**Teorema.** $\\mathbb{Z}[i]=\\{a+bi:a,b\\in\\mathbb{Z}\\}$ é domínio euclidiano com $N(a+bi)=a^2+b^2$.\n\nA função $N$ é multiplicativa: $N(\\alpha\\beta)=N(\\alpha)N(\\beta)$ (pois $N(z)=|z|^2$ e $|\\cdot|$ é multiplicativo), e $N(z)\\in\\mathbb{Z}_{\\ge0}$ com $N(z)=0\\iff z=0$.\n\n**Divisão com resto.** Sejam $\\alpha,\\beta\\in\\mathbb{Z}[i]$ com $\\beta\\neq0$. Precisamos de $q,r\\in\\mathbb{Z}[i]$ com $\\alpha=\\beta q+r$ e ($r=0$ ou $N(r)<N(\\beta)$).\n\nCalcule o quociente exato em $\\mathbb{Q}(i)$:\n$$\\frac{\\alpha}{\\beta}=\\frac{\\alpha\\bar\\beta}{\\beta\\bar\\beta}=\\frac{\\alpha\\bar\\beta}{N(\\beta)}=u+vi,\\qquad u,v\\in\\mathbb{Q}.$$\nEscolha inteiros $m,n$ mais próximos de $u,v$: $|u-m|\\le\\tfrac12$ e $|v-n|\\le\\tfrac12$. Ponha $q=m+ni\\in\\mathbb{Z}[i]$ e $r=\\alpha-\\beta q$.\n\nEntão $r\\in\\mathbb{Z}[i]$ e\n$$r=\\alpha-\\beta q=\\beta\\Big(\\frac{\\alpha}{\\beta}-q\\Big)=\\beta\\big((u-m)+(v-n)i\\big).$$\nTomando normas e usando a multiplicatividade:\n$$N(r)=N(\\beta)\\cdot\\big((u-m)^2+(v-n)^2\\big)\\le N(\\beta)\\Big(\\tfrac14+\\tfrac14\\Big)=\\tfrac12\\,N(\\beta)<N(\\beta).$$\nLogo $N(r)<N(\\beta)$ (e se $r=0$ também está ok). Portanto $N$ é uma função euclidiana e $\\mathbb{Z}[i]$ é domínio euclidiano. $\\blacksquare$\n\n*Consequência.* Sendo DE, $\\mathbb{Z}[i]$ é DIP e DFU — daí a fatoração única em primos gaussianos.",
+          "steps": [
+            "Verifique que $N(z)=a^2+b^2=|z|^2$ é multiplicativa e não negativa, anulando só em $0$.",
+            "Dado $\\beta\\neq0$, calcule o quociente exato $\\alpha/\\beta=u+vi$ em $\\mathbb{Q}(i)$ racionalizando.",
+            "Arredonde $u,v$ aos inteiros mais próximos $m,n$, garantindo $|u-m|,|v-n|\\le\\tfrac12$.",
+            "Defina $q=m+ni$ e $r=\\alpha-\\beta q$; expresse $r=\\beta((u-m)+(v-n)i)$.",
+            "Estime $N(r)\\le\\tfrac12 N(\\beta)<N(\\beta)$ pela multiplicatividade, concluindo que $\\mathbb{Z}[i]$ é euclidiano."
+          ]
+        },
+        {
+          "prompt": "Demonstre que em um DIP toda cadeia ascendente de ideais $\\langle a_1\\rangle\\subseteq\\langle a_2\\rangle\\subseteq\\cdots$ estabiliza, e use isso para garantir a existência de fatoração em irredutíveis.",
+          "hint": "A união $\\bigcup_n\\langle a_n\\rangle$ é um ideal, logo principal $\\langle a\\rangle$; $a$ pertence a algum $\\langle a_N\\rangle$.",
+          "difficulty": 4,
+          "solution": "**Parte A: cadeias ascendentes de ideais principais estabilizam num DIP.**\n\nSeja $\\langle a_1\\rangle\\subseteq\\langle a_2\\rangle\\subseteq\\cdots$ uma cadeia ascendente de ideais em um DIP $R$. Considere\n$$I=\\bigcup_{n\\ge1}\\langle a_n\\rangle.$$\n$I$ é um ideal: dados $x,y\\in I$, existem índices com $x\\in\\langle a_i\\rangle$, $y\\in\\langle a_j\\rangle$; tomando $k=\\max(i,j)$, ambos estão em $\\langle a_k\\rangle$ (cadeia), logo $x-y\\in\\langle a_k\\rangle\\subseteq I$; e $rx\\in\\langle a_i\\rangle\\subseteq I$. (A união de uma cadeia de ideais é ideal.)\n\nComo $R$ é DIP, $I=\\langle a\\rangle$ para algum $a$. Mas $a\\in I=\\bigcup_n\\langle a_n\\rangle$, então $a\\in\\langle a_N\\rangle$ para algum $N$. Logo\n$$I=\\langle a\\rangle\\subseteq\\langle a_N\\rangle\\subseteq\\langle a_{N+1}\\rangle\\subseteq\\cdots\\subseteq I,$$\ne todas essas inclusões são igualdades. Portanto $\\langle a_n\\rangle=\\langle a_N\\rangle$ para todo $n\\ge N$: a cadeia estabiliza. (Isto é: $R$ é noetheriano.)\n\n**Parte B: existência da fatoração em irredutíveis.**\n\nSeja $a\\in R$ não nulo e não unidade. Afirmamos que $a$ se escreve como produto de irredutíveis.\n\nSuponha, por absurdo, que exista algum $a$ sem fatoração em irredutíveis; chame de 'ruim' tal elemento. Um ruim $a$ não é irredutível (senão ele próprio seria a fatoração), então $a=bc$ com $b,c$ não unidades. Se ambos $b,c$ tivessem fatoração em irredutíveis, seu produto $a$ também teria; logo pelo menos um deles, digamos $a_2:=b$, é ruim. Note que $\\langle a\\rangle\\subsetneq\\langle a_2\\rangle$ (pois $a_2\\mid a$ e $c$ não é unidade, então não são associados).\n\nRepetindo o argumento com $a_2$ ruim, obtemos $a_3$ ruim com $\\langle a_2\\rangle\\subsetneq\\langle a_3\\rangle$, e assim por diante — uma cadeia estritamente crescente infinita\n$$\\langle a\\rangle\\subsetneq\\langle a_2\\rangle\\subsetneq\\langle a_3\\rangle\\subsetneq\\cdots,$$\ncontradizendo a Parte A (toda cadeia ascendente estabiliza). Logo não existem elementos ruins: todo $a$ não nulo e não unidade se fatora em irredutíveis. $\\blacksquare$\n\n*(A unicidade da fatoração, que completa 'DIP $\\Rightarrow$ DFU', vem de que em DIP irredutível $\\Rightarrow$ primo.)*",
+          "steps": [
+            "Forme a união $I=\\bigcup_n\\langle a_n\\rangle$ e prove que é um ideal.",
+            "Use que $R$ é DIP para escrever $I=\\langle a\\rangle$ e localize $a$ em algum $\\langle a_N\\rangle$.",
+            "Conclua que a cadeia é constante a partir de $N$ (condição de cadeia ascendente).",
+            "Para a existência da fatoração, suponha por absurdo um elemento 'ruim' sem fatoração e fatore-o propriamente.",
+            "Extraia uma cadeia estritamente crescente infinita de ideais principais, contradizendo a Parte A."
+          ]
+        },
+        {
+          "prompt": "Explique por que $\\mathbb{Z}[x]$ é DFU mas não é DIP.",
+          "hint": "Para 'não DIP', mostre que $\\langle 2,x\\rangle$ não é principal. Para 'DFU', invoque o resultado de que $R$ DFU $\\Rightarrow R[x]$ DFU (próximo subtópico).",
+          "difficulty": 3,
+          "solution": "**Afirmação.** $\\mathbb{Z}[x]$ é DFU mas não é DIP.\n\n**Não é DIP.** Basta exibir um ideal não principal. Considere $I=\\langle 2,x\\rangle$, o conjunto dos polinômios com termo constante par. Suponha $I=\\langle d\\rangle$. Como $2\\in\\langle d\\rangle$, temos $d\\mid2$ em $\\mathbb{Z}[x]$; pela aditividade do grau, $\\deg d=0$, logo $d$ é constante inteira dividindo $2$: $d\\in\\{\\pm1,\\pm2\\}$. Como $x\\in\\langle d\\rangle$, $d\\mid x$, o que força $d\\mid1$ (comparando o coeficiente líder de $x$), logo $d=\\pm1$. Mas então $\\langle d\\rangle=\\mathbb{Z}[x]\\neq I$ (pois $1\\notin I$, já que $1$ tem termo constante ímpar). Contradição. Logo $I$ não é principal e $\\mathbb{Z}[x]$ não é DIP.\n\n**É DFU.** Invocamos o **Teorema de Gauss**: se $R$ é DFU, então $R[x]$ é DFU. Como $\\mathbb{Z}$ é um DFU (Teorema Fundamental da Aritmética), aplicando o teorema com $R=\\mathbb{Z}$ concluímos que $\\mathbb{Z}[x]$ é DFU.\n\n(Esboço da razão pela qual o Teorema de Gauss vale: usando o corpo de frações $K=\\mathbb{Q}$, todo $f\\in\\mathbb{Z}[x]$ se escreve $f=c(f)f_0$ com $f_0$ primitivo; $c(f)\\in\\mathbb{Z}$ se fatora unicamente em $\\mathbb{Z}$, e $f_0$ se fatora unicamente em irredutíveis de $\\mathbb{Q}[x]$ que, pelo Lema de Gauss, podem ser tomados primitivos em $\\mathbb{Z}[x]$ — juntando, obtém-se existência e unicidade em $\\mathbb{Z}[x]$.)\n\n**Conclusão.** $\\mathbb{Z}[x]$ é um DFU que não é DIP — o contraexemplo padrão mostrando que a inclusão DIP $\\subset$ DFU é estrita. $\\blacksquare$",
+          "steps": [
+            "Para 'não DIP', proponha o ideal $\\langle2,x\\rangle$ e descreva-o como os polinômios de termo constante par.",
+            "Suponha-o principal $\\langle d\\rangle$ e use $2\\in\\langle d\\rangle$ + aditividade do grau para forçar $d$ constante em $\\{\\pm1,\\pm2\\}$.",
+            "Use $x\\in\\langle d\\rangle$ para forçar $d=\\pm1$, o que daria o anel todo, contradizendo $1\\notin\\langle2,x\\rangle$.",
+            "Para 'DFU', cite o Teorema de Gauss ($R$ DFU $\\Rightarrow R[x]$ DFU) com $R=\\mathbb{Z}$.",
+            "Conclua que $\\mathbb{Z}[x]$ é DFU não-DIP, testemunhando a inclusão estrita."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Irredutível",
+          "back": "Não nulo, não unidade, e $p=ab\\Rightarrow a$ ou $b$ unidade."
+        },
+        {
+          "front": "Primo",
+          "back": "Não nulo, não unidade, e $p\\mid ab\\Rightarrow p\\mid a$ ou $p\\mid b$."
+        },
+        {
+          "front": "Primo vs irredutível (geral)",
+          "back": "Primo $\\Rightarrow$ irredutível sempre; a recíproca só vale em DFU/DIP."
+        },
+        {
+          "front": "Hierarquia de domínios",
+          "back": "Corpo $\\subset$ DE $\\subset$ DIP $\\subset$ DFU $\\subset$ domínio; inclusões estritas."
+        },
+        {
+          "front": "DE $\\Rightarrow$ DIP $\\Rightarrow$ DFU",
+          "back": "Domínio euclidiano $\\Rightarrow$ ideais principais $\\Rightarrow$ fatoração única."
+        },
+        {
+          "front": "DFU mas não DIP",
+          "back": "$\\mathbb{Z}[x]$ (o ideal $\\langle 2,x\\rangle$ não é principal)."
+        },
+        {
+          "front": "Não DFU (exemplo clássico)",
+          "back": "$\\mathbb{Z}[\\sqrt{-5}]$: $6=2\\cdot 3=(1+\\sqrt{-5})(1-\\sqrt{-5})$."
+        },
+        {
+          "front": "Norma de $\\mathbb{Z}[i]$ e de $\\mathbb{Z}[\\sqrt{-5}]$",
+          "back": "$N(a+bi)=a^2+b^2$; $N(a+b\\sqrt{-5})=a^2+5b^2$. Multiplicativas."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 8 (Euclidean, Principal Ideal, and Unique Factorization Domains)",
+          "ref": "livro"
+        },
+        {
+          "title": "Hefez, Curso de Álgebra vol. 2 (DE, DIP, DFU)",
+          "ref": "livro"
+        },
+        {
+          "title": "Herstein, Topics in Algebra, cap. 3.7-3.8 (inteiros de Gauss)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude no Dummit & Foote cap. 8 as definições de associado, irredutível e primo, e a hierarquia DE $\\subset$ DIP $\\subset$ DFU; monte um diagrama com as implicações e os contraexemplos das inclusões estritas.",
+          "Reproduza as provas de: primo $\\Rightarrow$ irredutível (geral) e irredutível $\\iff$ primo (em DIP/DFU), entendendo por que a segunda é a chave da unicidade da fatoração.",
+          "Trabalhe com normas: verifique a multiplicatividade de $N(a+b\\sqrt{d})$ e refaça o exemplo $\\mathbb{Z}[\\sqrt{-5}]$ com $6=2\\cdot3=(1+\\sqrt{-5})(1-\\sqrt{-5})$, e a divisão euclidiana em $\\mathbb{Z}[i]$.",
+          "Assista a uma aula sobre UFD/PID/Euclidean domains e sobre Gaussian integers para intuição geométrica.",
+          "Resolva os testes deste subtópico aqui no app e anote o principal: a hierarquia, o papel da condição de cadeia ascendente na existência da fatoração e o exemplo de falha em $\\mathbb{Z}[\\sqrt{-5}]$."
+        ],
+        "searchQueries": [
+          "elemento primo irredutível domínio implicação prova",
+          "domínio euclidiano DIP DFU implicações demonstração",
+          "inteiros de Gauss domínio euclidiano norma a^2+b^2",
+          "Z[sqrt(-5)] não é DFU 6=2*3 exemplo",
+          "condição de cadeia ascendente existência fatoração DIP",
+          "euclidean domain PID UFD implications proof"
+        ],
+        "videos": [
+          {
+            "title": "Euclidean Domains, PIDs and UFDs",
+            "channel": "Michael Penn",
+            "note": "Busque a série sobre ED/PID/UFD e Gaussian integers; provas das implicações e exemplos."
+          },
+          {
+            "title": "Gaussian Integers and Unique Factorization",
+            "channel": "Michael Penn",
+            "note": "Para a divisão euclidiana em $\\mathbb{Z}[i]$ e a falha de fatoração única em $\\mathbb{Z}[\\sqrt{-5}]$."
+          },
+          {
+            "title": "Modern Algebra 18.703 (Factorization)",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre domínios de fatoração e a hierarquia; boas listas de exercícios."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 8 (Euclidean, Principal Ideal, and Unique Factorization Domains)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Curso de Álgebra vol. 2 (DE, DIP, DFU)",
+            "where": "Livro de Abramo Hefez"
+          },
+          {
+            "title": "Topics in Algebra, cap. 3.7-3.8 (inteiros de Gauss)",
+            "where": "Livro de I. N. Herstein"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-2-06-irredutibilidade-gauss-eisenstein",
+      "title": "Critérios de Irredutibilidade e o Lema de Gauss",
+      "tagline": "Como decidir se um polinômio é irredutível: conteúdo, Lema de Gauss, raízes racionais, redução módulo $p$ e Eisenstein.",
+      "objectives": [
+        "Definir conteúdo e polinômio primitivo e demonstrar o Lema de Gauss (produto de primitivos é primitivo).",
+        "Provar que $R$ DFU $\\Rightarrow R[x]$ DFU e que irredutibilidade em $\\mathbb{Z}[x]$ equivale à irredutibilidade em $\\mathbb{Q}[x]$ para primitivos.",
+        "Aplicar o teste das raízes racionais para fatores lineares.",
+        "Usar a redução módulo $p$ para provar irredutibilidade sobre $\\mathbb{Q}$.",
+        "Enunciar e aplicar o critério de Eisenstein, inclusive via translação $x\\mapsto x+a$ (caso ciclotômico)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Conteúdo e primitivo",
+          "statement": "Para $f\\in\\mathbb{Z}[x]$, $c(f)$ é o mdc dos coeficientes; $f$ é primitivo se $c(f)=1$. Todo $f$ se escreve $f=c(f)\\,f_0$ com $f_0$ primitivo."
+        },
+        {
+          "term": "Lema de Gauss",
+          "statement": "O produto de dois polinômios primitivos é primitivo; equivalentemente, $c(fg)=c(f)c(g)$ a menos de unidades."
+        },
+        {
+          "term": "Critério de Eisenstein",
+          "statement": "Se um primo $p$ satisfaz $p\\mid a_i$ para $0\\le i<n$, $p\\nmid a_n$ e $p^2\\nmid a_0$, então $f=\\sum a_ix^i$ é irredutível em $\\mathbb{Q}[x]$."
+        },
+        {
+          "term": "Redução módulo $p$",
+          "statement": "Se $f\\in\\mathbb{Z}[x]$ é mônico e sua redução $\\bar f\\in\\mathbb{F}_p[x]$ é irredutível para algum primo $p$, então $f$ é irredutível em $\\mathbb{Q}[x]$."
+        },
+        {
+          "term": "Teste das raízes racionais",
+          "statement": "Se $\\tfrac{p}{q}$ (em forma reduzida) é raiz de $a_nx^n+\\cdots+a_0\\in\\mathbb{Z}[x]$, então $p\\mid a_0$ e $q\\mid a_n$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Lema de Gauss",
+          "statement": "O produto de polinômios primitivos sobre um DFU é primitivo.",
+          "whyItMatters": "É o lema técnico que conecta a fatoração em $\\mathbb{Z}[x]$ com a fatoração em $\\mathbb{Q}[x]$; sem ele, não se transferiria irredutibilidade entre os dois anéis."
+        },
+        {
+          "name": "Gauss: $R$ DFU $\\Rightarrow R[x]$ DFU",
+          "statement": "Se $R$ é um DFU com corpo de frações $K$, então $R[x]$ é DFU, e um $f\\in R[x]$ primitivo é irredutível em $R[x]$ se, e somente se, é irredutível em $K[x]$.",
+          "whyItMatters": "Permite estudar irredutibilidade em $\\mathbb{Q}[x]$ trabalhando com coeficientes inteiros, e prova por indução que $\\mathbb{Z}[x_1,\\dots,x_n]$ e $K[x_1,\\dots,x_n]$ são DFU."
+        },
+        {
+          "name": "Critério de Eisenstein",
+          "statement": "Seja $f=a_nx^n+\\cdots+a_0\\in\\mathbb{Z}[x]$. Se existe primo $p$ com $p\\mid a_0,\\dots,a_{n-1}$, $p\\nmid a_n$ e $p^2\\nmid a_0$, então $f$ é irredutível sobre $\\mathbb{Q}$.",
+          "whyItMatters": "É o critério mais usado na prática: prova num golpe a irredutibilidade de $x^n-p$, e (via $x\\mapsto x+1$) do polinômio ciclotômico $\\Phi_p(x)=1+x+\\cdots+x^{p-1}$."
+        },
+        {
+          "name": "Irredutibilidade via redução módulo $p$",
+          "statement": "Se $f\\in\\mathbb{Z}[x]$ é mônico e $\\bar f$ é irredutível em $\\mathbb{F}_p[x]$ para algum primo $p$ que não divide o coeficiente líder, então $f$ é irredutível em $\\mathbb{Q}[x]$.",
+          "whyItMatters": "Transforma um problema sobre $\\mathbb{Q}$ (infinito) num cálculo finito sobre $\\mathbb{F}_p$, onde basta testar fatores de grau baixo."
+        }
+      ],
+      "summary": "Decidir a irredutibilidade de um polinômio sobre $\\mathbb{Q}$ é uma tarefa central e sutil, e a estratégia-mestra é transferir o problema para $\\mathbb{Z}[x]$, onde dispomos de aritmética de primos. O conceito-chave é o conteúdo $c(f)$ (mdc dos coeficientes) e a noção de polinômio primitivo. O Lema de Gauss afirma que o produto de primitivos é primitivo; dele se deduz que, para um polinômio primitivo, ser irredutível em $\\mathbb{Z}[x]$ é equivalente a ser irredutível em $\\mathbb{Q}[x]$ — de modo que podemos sempre trabalhar com coeficientes inteiros. Como corolário, $R$ DFU implica $R[x]$ DFU, fechando a teoria de fatoração de polinômios em várias variáveis.\n\nNa prática, contamos com um arsenal de critérios. O teste das raízes racionais detecta fatores lineares: qualquer raiz racional $\\tfrac{p}{q}$ tem $p\\mid a_0$ e $q\\mid a_n$. A redução módulo $p$ transforma um problema infinito num cálculo finito: se a redução $\\bar f$ é irredutível em $\\mathbb{F}_p[x]$ (anel onde só há finitos polinômios de cada grau para testar), então $f$ é irredutível sobre $\\mathbb{Q}$. E o mais poderoso é o critério de Eisenstein: a presença de um primo $p$ dividindo todos os coeficientes menos o líder, com $p^2$ não dividindo o termo constante, força irredutibilidade. Eisenstein prova de imediato que $x^n-p$ é irredutível para todo $n$, e — após a translação $x\\mapsto x+1$ — que o polinômio ciclotômico $\\Phi_p(x)=\\tfrac{x^p-1}{x-1}$ é irredutível. Atenção: estes critérios são suficientes, não necessários — um polinômio pode ser irredutível sem satisfazer Eisenstein para primo algum.",
+      "commonPitfalls": [
+        "Achar que Eisenstein é necessário: ele é apenas suficiente. Um polinômio pode ser irredutível e não admitir primo de Eisenstein (mas talvez admita após $x\\mapsto x+a$).",
+        "Aplicar a redução módulo $p$ com $p$ dividindo o coeficiente líder — a redução baixaria o grau e o argumento desmorona.",
+        "Concluir irredutibilidade só porque não há raízes racionais: para grau $\\ge 4$ pode haver fatoração em dois quadráticos sem raízes (ex.: $x^4+x^2+1=(x^2+x+1)(x^2-x+1)$).",
+        "Esquecer a condição $p^2\\nmid a_0$ em Eisenstein, ou confundir conteúdo com coeficiente líder."
+      ],
+      "worked": "**O polinômio ciclotômico $\\Phi_p$ é irredutível.** Seja $p$ primo e $\\Phi_p(x)=\\dfrac{x^p-1}{x-1}=1+x+x^2+\\cdots+x^{p-1}$. Eisenstein não se aplica diretamente (os coeficientes são todos $1$). A ideia é transladar: considere $\\Phi_p(x+1)$.\n\nTemos $\\Phi_p(x+1)=\\dfrac{(x+1)^p-1}{(x+1)-1}=\\dfrac{(x+1)^p-1}{x}$. Pelo binômio,\n$$(x+1)^p-1=\\sum_{k=1}^{p}\\binom{p}{k}x^k,$$\nlogo\n$$\\Phi_p(x+1)=\\sum_{k=1}^{p}\\binom{p}{k}x^{k-1}=x^{p-1}+\\binom{p}{1}x^{p-2}+\\cdots+\\binom{p}{p-1}.$$\nAgora aplicamos Eisenstein com o primo $p$: o coeficiente líder é $1$ (não divisível por $p$); para $0<k<p$, $p\\mid\\binom{p}{k}$ (pois $\\binom{p}{k}=\\tfrac{p}{k}\\binom{p-1}{k-1}$ e $p$ é primo), então todos os demais coeficientes são divisíveis por $p$; e o termo constante é $\\binom{p}{p-1}=p$, que não é divisível por $p^2$. Logo $\\Phi_p(x+1)$ é irredutível sobre $\\mathbb{Q}$.\n\nComo a translação $x\\mapsto x+1$ é um automorfismo de $\\mathbb{Q}[x]$ que preserva fatorações, $\\Phi_p(x)$ também é irredutível. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove o Lema de Gauss: se $f,g\\in\\mathbb{Z}[x]$ são primitivos, então $fg$ é primitivo.",
+          "hint": "Suponha que um primo $p$ divide todos os coeficientes de $fg$; reduza módulo $p$ e use que $\\mathbb{F}_p[x]$ é domínio para obter contradição com a primitividade de $f$ ou $g$.",
+          "difficulty": 4,
+          "solution": "**Lema de Gauss.** Se $f,g\\in\\mathbb{Z}[x]$ são primitivos (conteúdo $1$), então $fg$ é primitivo.\n\n**Prova por contradição / redução módulo $p$.** Suponha que $fg$ NÃO é primitivo. Então algum primo $p$ divide todos os coeficientes de $fg$, isto é, $p\\mid c(fg)$.\n\nConsidere o homomorfismo de redução módulo $p$:\n$$\\overline{\\ \\cdot\\ }:\\mathbb{Z}[x]\\to\\mathbb{F}_p[x],\\qquad \\sum a_ix^i\\mapsto\\sum\\bar a_ix^i.$$\nÉ homomorfismo de anéis. Como $p$ divide todos os coeficientes de $fg$,\n$$\\overline{fg}=\\bar0\\ \\text{em}\\ \\mathbb{F}_p[x].$$\nMas o homomorfismo preserva produto: $\\overline{fg}=\\bar f\\,\\bar g$. Logo $\\bar f\\,\\bar g=\\bar0$ em $\\mathbb{F}_p[x]$.\n\nAgora, $\\mathbb{F}_p$ é corpo, logo $\\mathbb{F}_p[x]$ é um **domínio de integridade**. Portanto $\\bar f\\,\\bar g=\\bar0$ implica $\\bar f=\\bar0$ ou $\\bar g=\\bar0$.\n\n- Se $\\bar f=\\bar0$, então $p$ divide todos os coeficientes de $f$, contradizendo $c(f)=1$ (primitivo).\n- Se $\\bar g=\\bar0$, então $p$ divide todos os coeficientes de $g$, contradizendo $c(g)=1$.\n\nEm ambos os casos há contradição. Logo nenhum primo $p$ divide $c(fg)$, ou seja, $c(fg)=1$ e $fg$ é primitivo. $\\blacksquare$\n\n*Comentário.* O passo essencial é $\\mathbb{F}_p[x]$ ser domínio (não ter divisores de zero) — é isso que 'força' a fatoração do zero.",
+          "steps": [
+            "Suponha por absurdo que $fg$ não é primitivo: algum primo $p$ divide todos os seus coeficientes.",
+            "Aplique o homomorfismo de redução módulo $p$ para $\\mathbb{F}_p[x]$.",
+            "Traduza a hipótese em $\\overline{fg}=\\bar0$ e use que a redução preserva produto: $\\bar f\\bar g=\\bar0$.",
+            "Invoque que $\\mathbb{F}_p[x]$ é domínio para concluir $\\bar f=\\bar0$ ou $\\bar g=\\bar0$.",
+            "Contradiga a primitividade de $f$ ou de $g$, fechando que $fg$ é primitivo."
+          ]
+        },
+        {
+          "prompt": "Mostre que $x^4+1$ é irredutível sobre $\\mathbb{Q}$, mas é redutível módulo todo primo $p$.",
+          "hint": "Para $\\mathbb{Q}$, use $x\\mapsto x+1$ e Eisenstein com $p=2$. Para a redutibilidade mod $p$, analise os casos $p=2$ e $p$ ímpar usando que $\\mathbb{F}_{p^2}^{\\times}$ contém raízes oitavas da unidade.",
+          "difficulty": 5,
+          "solution": "**Parte A: $x^4+1$ é irredutível sobre $\\mathbb{Q}$.**\n\nUse a translação $x\\mapsto x+1$. Então\n$$(x+1)^4+1=x^4+4x^3+6x^2+4x+1+1=x^4+4x^3+6x^2+4x+2.$$\nAplique Eisenstein com $p=2$: os coeficientes $4,6,4,2$ são todos divisíveis por $2$; o líder $1$ não; e o termo constante $2$ não é divisível por $p^2=4$. Logo $(x+1)^4+1$ é irredutível sobre $\\mathbb{Q}$. Como a translação $x\\mapsto x+1$ é um automorfismo de $\\mathbb{Q}[x]$ (preserva fatorações), $x^4+1$ também é irredutível sobre $\\mathbb{Q}$. \n\n*(Alternativamente: $x^4+1=\\Phi_8(x)$, o 8º ciclotômico, que é irredutível sobre $\\mathbb{Q}$.)*\n\n**Parte B: $x^4+1$ é redutível módulo todo primo $p$.**\n\n*Caso $p=2$:* $x^4+1\\equiv x^4+1=(x+1)^4\\pmod2$ (pois $(x+1)^4=x^4+4x^3+6x^2+4x+1\\equiv x^4+1$). Redutível.\n\n*Caso $p$ ímpar:* trabalhamos em $\\mathbb{F}_{p^2}$, que tem $p^2-1$ elementos no grupo multiplicativo. As raízes de $x^4+1$ são as raízes primitivas oitavas da unidade $\\zeta_8$. Afirmamos que $\\zeta_8\\in\\mathbb{F}_{p^2}$, i.e. $8\\mid p^2-1$. De fato, para todo primo ímpar $p$, $p^2\\equiv1\\pmod8$ (pois $p$ é ímpar: $p\\equiv1,3,5,7$, e em todos os casos $p^2\\equiv1\\pmod8$). Logo $8\\mid p^2-1$, então $\\mathbb{F}_{p^2}^{\\times}$ (cíclico de ordem $p^2-1$) contém um elemento de ordem $8$, isto é, todas as raízes de $x^4+1$ estão em $\\mathbb{F}_{p^2}$. Portanto todo fator irredutível de $x^4+1$ sobre $\\mathbb{F}_p$ tem grau $\\le2$ (o grau de qualquer raiz sobre $\\mathbb{F}_p$ divide $[\\mathbb{F}_{p^2}:\\mathbb{F}_p]=2$). Como $\\deg(x^4+1)=4>2$, ele não pode ser irredutível sobre $\\mathbb{F}_p$: fatora-se em fatores de grau $\\le2$. Redutível.\n\n**Conclusão.** $x^4+1$ é irredutível sobre $\\mathbb{Q}$ mas redutível módulo todo primo — um exemplo célebre de que 'irredutível sobre $\\mathbb{Q}$' não se detecta por nenhuma redução módulo $p$ isolada. $\\blacksquare$",
+          "steps": [
+            "Para $\\mathbb{Q}$, transladar $x\\mapsto x+1$ e expandir $(x+1)^4+1$.",
+            "Aplicar Eisenstein com $p=2$ ao polinômio transladado e transferir a irredutibilidade de volta.",
+            "Para $p=2$, notar $x^4+1=(x+1)^4$ em $\\mathbb{F}_2$, logo redutível.",
+            "Para $p$ ímpar, mostrar $8\\mid p^2-1$ (pois $p^2\\equiv1\\pmod8$), colocando as raízes $8$-ésimas em $\\mathbb{F}_{p^2}$.",
+            "Concluir que todo fator sobre $\\mathbb{F}_p$ tem grau $\\le2$, logo $x^4+1$ (grau $4$) é redutível mod todo $p$."
+          ]
+        },
+        {
+          "prompt": "Use o teste das raízes racionais e/ou redução módulo $2$ para decidir se $f(x)=x^3-x-1$ é irredutível sobre $\\mathbb{Q}$.",
+          "hint": "Raízes racionais possíveis: $\\pm 1$. Verifique que nenhuma é raiz; como o grau é $3$, ausência de raiz já garante irredutibilidade.",
+          "difficulty": 2,
+          "solution": "**Objetivo.** Decidir se $f(x)=x^3-x-1$ é irredutível sobre $\\mathbb{Q}$.\n\n**Estratégia (grau 3).** Um polinômio de grau $2$ ou $3$ sobre um corpo é redutível se, e somente se, tem uma raiz nesse corpo (pois qualquer fatoração própria inclui um fator linear). Basta então checar raízes.\n\n**Teste das raízes racionais.** $f$ é mônico com termo constante $-1$. Se $\\tfrac{p}{q}$ (reduzida) é raiz, então $p\\mid(-1)$ e $q\\mid1$, logo as únicas candidatas racionais são $\\pm1$. Testando:\n$$f(1)=1-1-1=-1\\neq0,\\qquad f(-1)=-1+1-1=-1\\neq0.$$\nNenhuma é raiz, então $f$ não tem raiz racional, logo não tem fator linear sobre $\\mathbb{Q}$. Como $\\deg f=3$, a ausência de fator linear já implica irredutibilidade sobre $\\mathbb{Q}$.\n\n**Confirmação via redução módulo $2$.** $\\bar f=x^3+x+1\\in\\mathbb{F}_2[x]$ (pois $-1\\equiv1$). Raízes em $\\mathbb{F}_2$: $\\bar f(0)=1\\neq0$, $\\bar f(1)=1+1+1=1\\neq0$. Sem raízes em $\\mathbb{F}_2$ e grau $3$, $\\bar f$ é irredutível em $\\mathbb{F}_2[x]$. Como $f$ é mônico e $\\bar f$ é irredutível, $f$ é irredutível sobre $\\mathbb{Q}$.\n\n**Conclusão.** $x^3-x-1$ é irredutível sobre $\\mathbb{Q}$. $\\blacksquare$",
+          "steps": [
+            "Lembre que em grau $\\le3$ redutível $\\iff$ ter raiz no corpo.",
+            "Liste as raízes racionais candidatas via $p\\mid a_0$, $q\\mid a_n$: apenas $\\pm1$.",
+            "Avalie $f(1)$ e $f(-1)$ e verifique que nenhuma anula.",
+            "Conclua a irredutibilidade sobre $\\mathbb{Q}$ pela ausência de raiz em grau $3$.",
+            "Confirme reduzindo módulo $2$: $x^3+x+1$ sem raízes em $\\mathbb{F}_2$ é irredutível."
+          ]
+        },
+        {
+          "prompt": "Prove que $x^n-p$ é irredutível sobre $\\mathbb{Q}$ para todo primo $p$ e todo $n\\ge 1$, e conclua que $[\\mathbb{Q}(\\sqrt[n]{p}):\\mathbb{Q}]=n$.",
+          "hint": "Aplique Eisenstein diretamente com o primo $p$; a segunda parte usa que o polinômio minimal de $\\sqrt[n]{p}$ tem grau $n$.",
+          "difficulty": 3,
+          "solution": "**Parte A: $x^n-p$ é irredutível sobre $\\mathbb{Q}$ para todo primo $p$ e $n\\ge1$.**\n\nSeja $f(x)=x^n-p\\in\\mathbb{Z}[x]$, com coeficientes $a_n=1$, $a_{n-1}=\\cdots=a_1=0$ e $a_0=-p$. Aplique o critério de Eisenstein com o primo $p$:\n- $p\\mid a_i$ para $0\\le i\\le n-1$: de fato $a_1=\\cdots=a_{n-1}=0$ (divisíveis) e $a_0=-p$ (divisível por $p$). ✓\n- $p\\nmid a_n$: $a_n=1$, não divisível por $p$. ✓\n- $p^2\\nmid a_0$: $a_0=-p$ e $p^2\\nmid p$. ✓\n\nTodas as hipóteses de Eisenstein valem, logo $x^n-p$ é irredutível sobre $\\mathbb{Q}$.\n\n**Parte B: $[\\mathbb{Q}(\\sqrt[n]{p}):\\mathbb{Q}]=n$.**\n\nSeja $\\alpha=\\sqrt[n]{p}$ (a raiz real positiva). Então $\\alpha$ é raiz de $x^n-p$, logo é algébrico sobre $\\mathbb{Q}$. O polinômio minimal $m_\\alpha$ de $\\alpha$ é o mônico irredutível que anula $\\alpha$. Como $x^n-p$ é mônico, irredutível (Parte A) e $\\alpha$ é sua raiz, temos\n$$m_\\alpha(x)=x^n-p.$$\n(O minimal divide qualquer polinômio que anule $\\alpha$; sendo $x^n-p$ irredutível e mônico com $\\alpha$ como raiz, ele é o próprio minimal.)\n\nPela estrutura das extensões simples algébricas,\n$$[\\mathbb{Q}(\\alpha):\\mathbb{Q}]=\\deg m_\\alpha=n,$$\ncom base $\\{1,\\alpha,\\alpha^2,\\dots,\\alpha^{n-1}\\}$. $\\blacksquare$\n\n*Exemplo:* $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$ e $[\\mathbb{Q}(\\sqrt{2}):\\mathbb{Q}]=2$.",
+          "steps": [
+            "Escreva $x^n-p$ e identifique seus coeficientes.",
+            "Verifique as três condições de Eisenstein com o primo $p$: divide todos menos o líder, não divide o líder, e $p^2\\nmid a_0$.",
+            "Conclua a irredutibilidade sobre $\\mathbb{Q}$.",
+            "Note que $\\alpha=\\sqrt[n]{p}$ é raiz de $x^n-p$ e que este, sendo mônico irredutível, é o polinômio minimal de $\\alpha$.",
+            "Use $[\\mathbb{Q}(\\alpha):\\mathbb{Q}]=\\deg m_\\alpha=n$ para concluir o grau da extensão."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Polinômio primitivo",
+          "back": "$f\\in\\mathbb{Z}[x]$ com $c(f)=1$ (mdc dos coeficientes igual a $1$)."
+        },
+        {
+          "front": "Lema de Gauss",
+          "back": "Produto de primitivos é primitivo; $c(fg)=c(f)c(g)$ a menos de unidades."
+        },
+        {
+          "front": "Irredutível em $\\mathbb{Z}[x]$ vs $\\mathbb{Q}[x]$",
+          "back": "Para primitivos: irredutível em $\\mathbb{Z}[x]\\iff$ irredutível em $\\mathbb{Q}[x]$."
+        },
+        {
+          "front": "Critério de Eisenstein",
+          "back": "$p\\mid a_0,\\dots,a_{n-1}$, $p\\nmid a_n$, $p^2\\nmid a_0$ $\\Rightarrow$ irredutível sobre $\\mathbb{Q}$."
+        },
+        {
+          "front": "Eisenstein é necessário?",
+          "back": "Não, apenas suficiente (às vezes funciona só após $x\\mapsto x+a$)."
+        },
+        {
+          "front": "Redução módulo $p$",
+          "back": "$f$ mônico e $\\bar f$ irredutível em $\\mathbb{F}_p[x]$ $\\Rightarrow f$ irredutível sobre $\\mathbb{Q}$ ($p\\nmid$ líder)."
+        },
+        {
+          "front": "Raízes racionais de $a_nx^n+\\cdots+a_0$",
+          "back": "Se $\\tfrac{p}{q}$ (reduzida) é raiz: $p\\mid a_0$ e $q\\mid a_n$."
+        },
+        {
+          "front": "Irredutibilidade de $\\Phi_p(x)$",
+          "back": "Sim; prova-se aplicando Eisenstein a $\\Phi_p(x+1)$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 9.3-9.4 (Gauss's Lemma, Irreducibility Criteria)",
+          "ref": "livro"
+        },
+        {
+          "title": "Hefez & Villela, Polinômios e Equações Algébricas (SBM), capítulo de irredutibilidade",
+          "ref": "livro"
+        },
+        {
+          "title": "Artin, Algebra, cap. 11 (factoring polynomials)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude no Dummit & Foote 9.3-9.4 (e Hefez & Villela) conteúdo, polinômio primitivo, o Lema de Gauss e como ele transfere irredutibilidade entre $\\mathbb{Z}[x]$ e $\\mathbb{Q}[x]$.",
+          "Faça uma tabela dos critérios (raízes racionais, redução módulo $p$, Eisenstein) anotando hipóteses exatas, o que cada um conclui e um exemplo/contraexemplo de cada.",
+          "Treine Eisenstein com translação $x\\mapsto x+1$ no polinômio ciclotômico $\\Phi_p$ e em $x^4+1$; e pratique redução módulo $2$ e $3$ para irredutibilidade sobre $\\mathbb{Q}$.",
+          "Assista a uma aula sobre irreducibility criteria / Eisenstein para ver os critérios aplicados a vários exemplos.",
+          "Resolva os testes deste subtópico aqui no app e anote o principal: o fluxo 'primitivo $\\Rightarrow$ trabalhar em $\\mathbb{Z}[x]$', as hipóteses de Eisenstein e o truque da translação."
+        ],
+        "searchQueries": [
+          "lema de Gauss polinômios primitivos demonstração",
+          "critério de Eisenstein irredutibilidade Q exemplos",
+          "irredutibilidade por redução módulo p F_p[x]",
+          "polinômio ciclotômico Phi_p irredutível Eisenstein translação",
+          "teste das raízes racionais polinômio grau 3",
+          "Eisenstein criterion irreducibility x^4+1 reducible mod p"
+        ],
+        "videos": [
+          {
+            "title": "Eisenstein's Criterion and Irreducibility",
+            "channel": "Michael Penn",
+            "note": "Busque os vídeos sobre Eisenstein, Gauss's lemma e reduction mod p; muitos exemplos resolvidos."
+          },
+          {
+            "title": "Irreducibility of polynomials",
+            "channel": "Dr. Peyam",
+            "note": "Para exemplos criativos de irredutibilidade e o truque da translação $x\\mapsto x+1$."
+          },
+          {
+            "title": "Polinômios irredutíveis e Eisenstein",
+            "channel": "Matemática Universitária",
+            "note": "Procure aulas em português com o critério de Eisenstein aplicado a $x^n-p$ e ciclotômicos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 9.3-9.4 (Gauss's Lemma, Irreducibility Criteria)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Polinômios e Equações Algébricas (SBM), capítulo de irredutibilidade",
+            "where": "Livro de Hefez & Villela"
+          },
+          {
+            "title": "Algebra, cap. 11 (factoring polynomials)",
+            "where": "Livro de Michael Artin"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-2-07-extensoes-de-corpos",
+      "title": "Extensões de Corpos: Grau, Elementos Algébricos e o Teorema da Torre",
+      "tagline": "Adjuntar raízes, medir extensões pelo grau e usar a multiplicatividade $[L:K]=[L:F][F:K]$ como régua-mestra.",
+      "objectives": [
+        "Definir extensão de corpos $L/K$, vê-la como $K$-espaço vetorial e definir o grau $[L:K]$.",
+        "Distinguir elementos algébricos de transcendentes e definir o polinômio minimal de um elemento algébrico.",
+        "Provar que $K(\\alpha)\\cong K[x]/\\langle m_\\alpha\\rangle$ e que $[K(\\alpha):K]=\\deg m_\\alpha$ para $\\alpha$ algébrico.",
+        "Demonstrar o Teorema da Torre (multiplicatividade do grau) e que toda extensão finita é algébrica.",
+        "Definir corpo de decomposição e aplicar a teoria a construções com régua e compasso."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Grau de uma extensão",
+          "statement": "$[L:K]=\\dim_K L$, a dimensão de $L$ como espaço vetorial sobre $K$. A extensão é finita se $[L:K]<\\infty$."
+        },
+        {
+          "term": "Elemento algébrico",
+          "statement": "$\\alpha\\in L$ é algébrico sobre $K$ se é raiz de algum polinômio não nulo de $K[x]$; caso contrário é transcendente (ex.: $\\pi,e$ sobre $\\mathbb{Q}$)."
+        },
+        {
+          "term": "Polinômio minimal",
+          "statement": "$m_\\alpha\\in K[x]$ é o polinômio mônico de menor grau com $m_\\alpha(\\alpha)=0$; é irredutível e gera o ideal $\\{f\\in K[x]:f(\\alpha)=0\\}$."
+        },
+        {
+          "term": "Corpo de decomposição",
+          "statement": "Para $f\\in K[x]$, é a menor extensão de $K$ na qual $f$ se fatora em fatores lineares; existe e é único a menos de $K$-isomorfismo."
+        },
+        {
+          "term": "Número construtível",
+          "statement": "Número real obtenível a partir de $\\mathbb{Q}$ por interseções de retas e círculos; cada um gera uma extensão de grau potência de $2$ sobre $\\mathbb{Q}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Estrutura de $K(\\alpha)$ para $\\alpha$ algébrico",
+          "statement": "Se $\\alpha$ é algébrico sobre $K$ com polinômio minimal $m_\\alpha$ de grau $n$, então $K(\\alpha)=K[\\alpha]\\cong K[x]/\\langle m_\\alpha\\rangle$ e $\\{1,\\alpha,\\dots,\\alpha^{n-1}\\}$ é uma base, logo $[K(\\alpha):K]=n$.",
+          "whyItMatters": "Reduz a aritmética de uma extensão simples a contas com polinômios módulo $m_\\alpha$; é a construção concreta de toda extensão algébrica e a forma de 'criar raízes' de polinômios irredutíveis."
+        },
+        {
+          "name": "Teorema da Torre",
+          "statement": "Se $K\\subseteq F\\subseteq L$ são corpos com $[L:F]$ e $[F:K]$ finitos, então $[L:K]=[L:F]\\,[F:K]$.",
+          "whyItMatters": "É a ferramenta de cálculo mais usada em teoria de corpos: permite achar graus por etapas e provar que certos números não são construtíveis (o grau teria de ser potência de $2$)."
+        },
+        {
+          "name": "Finita implica algébrica",
+          "statement": "Toda extensão finita $L/K$ é algébrica; mais ainda, $L=K(\\alpha_1,\\dots,\\alpha_r)$ com cada $\\alpha_i$ algébrico.",
+          "whyItMatters": "Garante que extensões de dimensão finita são exatamente as geradas por finitos elementos algébricos; é a base estrutural de toda a teoria de Galois."
+        },
+        {
+          "name": "Existência do corpo de decomposição",
+          "statement": "Para todo $f\\in K[x]$ não constante existe uma extensão finita $L/K$ na qual $f$ se decompõe em fatores lineares; o menor tal $L$ é único a menos de isomorfismo sobre $K$.",
+          "whyItMatters": "Adjunta TODAS as raízes de $f$ de uma vez; é o ambiente onde se estuda o grupo de Galois e a solubilidade por radicais."
+        }
+      ],
+      "summary": "Uma extensão $L/K$ é simplesmente um corpo $L$ contendo $K$, e a ideia decisiva é olhá-la como espaço vetorial sobre $K$: o grau $[L:K]=\\dim_K L$ mede 'o tamanho' da extensão. Um elemento $\\alpha\\in L$ é algébrico sobre $K$ quando satisfaz alguma equação polinomial com coeficientes em $K$; nesse caso há um polinômio minimal $m_\\alpha$ — mônico, irredutível, de menor grau — que governa toda a aritmética de $\\alpha$. O teorema fundamental das extensões simples diz que $K(\\alpha)\\cong K[x]/\\langle m_\\alpha\\rangle$, com base $\\{1,\\alpha,\\dots,\\alpha^{n-1}\\}$ onde $n=\\deg m_\\alpha$. Em particular, adjuntar uma raiz de um polinômio irredutível é literalmente quocientar $K[x]$ pelo ideal maximal que ele gera — exatamente como construímos $\\mathbb{C}=\\mathbb{R}[x]/\\langle x^2+1\\rangle$.\n\nA ferramenta de cálculo central é o Teorema da Torre: numa cadeia $K\\subseteq F\\subseteq L$, os graus se multiplicam, $[L:K]=[L:F][F:K]$. A prova é álgebra linear pura — o produto de uma base de $L/F$ por uma base de $F/K$ é base de $L/K$. Desse teorema saem consequências poderosas: toda extensão finita é algébrica (pois $1,\\alpha,\\alpha^2,\\dots$ não podem ser linearmente independentes em dimensão finita), e os clássicos problemas gregos de régua e compasso se resolvem por contagem de graus. Como cada operação construtível adjunta no máximo uma raiz quadrada, todo número construtível gera uma extensão de grau potência de $2$ sobre $\\mathbb{Q}$; daí a impossibilidade de duplicar o cubo (exigiria $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$) e de trissectar um ângulo geral. Por fim, o corpo de decomposição de $f$ adjunta de uma só vez todas as raízes de $f$, fornecendo o palco da teoria de Galois.",
+      "commonPitfalls": [
+        "Esquecer que o polinômio minimal precisa ser irredutível: o grau da extensão é o grau do minimal, não de qualquer polinômio que anule $\\alpha$.",
+        "Aplicar o Teorema da Torre sem que os graus intermediários sejam finitos, ou somar graus em vez de multiplicá-los.",
+        "Achar que todo número de grau potência de $2$ é construtível: o grau ser potência de $2$ é necessário, mas não suficiente.",
+        "Confundir $K[\\alpha]$ (anel gerado) com $K(\\alpha)$ (corpo gerado): coincidem quando $\\alpha$ é algébrico, mas diferem quando $\\alpha$ é transcendente."
+      ],
+      "worked": "**Cálculo de $[\\mathbb{Q}(\\sqrt{2},\\sqrt{3}):\\mathbb{Q}]$ via Teorema da Torre.**\n\nConsidere a torre $\\mathbb{Q}\\subseteq\\mathbb{Q}(\\sqrt{2})\\subseteq\\mathbb{Q}(\\sqrt{2},\\sqrt{3})$.\n\n*Primeiro andar.* $\\sqrt{2}$ tem polinômio minimal $x^2-2$ sobre $\\mathbb{Q}$ (irredutível por Eisenstein com $p=2$), logo $[\\mathbb{Q}(\\sqrt{2}):\\mathbb{Q}]=2$.\n\n*Segundo andar.* Precisamos do grau de $\\sqrt{3}$ sobre $\\mathbb{Q}(\\sqrt{2})$. O candidato a minimal é $x^2-3$. Basta mostrar que $\\sqrt{3}\\notin\\mathbb{Q}(\\sqrt{2})$. Se fosse $\\sqrt{3}=a+b\\sqrt{2}$ com $a,b\\in\\mathbb{Q}$, elevando ao quadrado: $3=a^2+2b^2+2ab\\sqrt{2}$. Como $\\sqrt{2}$ é irracional, $2ab=0$. Se $b=0$, $\\sqrt{3}=a\\in\\mathbb{Q}$, falso; se $a=0$, $3=2b^2$, isto é, $b^2=\\tfrac32$, sem solução racional. Logo $x^2-3$ é irredutível sobre $\\mathbb{Q}(\\sqrt{2})$ e $[\\mathbb{Q}(\\sqrt{2},\\sqrt{3}):\\mathbb{Q}(\\sqrt{2})]=2$.\n\n*Multiplicando:* $[\\mathbb{Q}(\\sqrt{2},\\sqrt{3}):\\mathbb{Q}]=2\\cdot 2=4$, com base $\\{1,\\sqrt{2},\\sqrt{3},\\sqrt{6}\\}$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Seja $\\alpha$ algébrico sobre $K$ com $[K(\\alpha):K]=n$ ímpar. Prove que $K(\\alpha^2)=K(\\alpha)$.",
+          "hint": "$[K(\\alpha):K(\\alpha^2)]\\le 2$ (pois $\\alpha$ satisfaz $x^2-\\alpha^2$ sobre $K(\\alpha^2)$); use a torre e a paridade de $n$.",
+          "difficulty": 4,
+          "solution": "**Afirmação.** Se $\\alpha$ é algébrico sobre $K$ com $[K(\\alpha):K]=n$ ímpar, então $K(\\alpha^2)=K(\\alpha)$.\n\n**Prova.** Como $\\alpha^2\\in K(\\alpha)$, temos a torre\n$$K\\subseteq K(\\alpha^2)\\subseteq K(\\alpha).$$\nPelo Teorema da Torre,\n$$[K(\\alpha):K]=[K(\\alpha):K(\\alpha^2)]\\cdot[K(\\alpha^2):K].$$\nÉ o suficiente mostrar que $[K(\\alpha):K(\\alpha^2)]=1$, pois isso dá $K(\\alpha)=K(\\alpha^2)$.\n\n**Cota superior do grau relativo.** O elemento $\\alpha$ é raiz do polinômio\n$$g(x)=x^2-\\alpha^2\\in K(\\alpha^2)[x],$$\nque tem grau $2$ e coeficientes em $K(\\alpha^2)$ (pois $\\alpha^2\\in K(\\alpha^2)$). Logo o polinômio minimal de $\\alpha$ sobre $K(\\alpha^2)$ divide $g$, e portanto\n$$[K(\\alpha):K(\\alpha^2)]=\\deg(\\text{minimal de }\\alpha\\text{ sobre }K(\\alpha^2))\\le2.$$\nAssim $[K(\\alpha):K(\\alpha^2)]\\in\\{1,2\\}$.\n\n**Uso da paridade.** Se fosse $[K(\\alpha):K(\\alpha^2)]=2$, então\n$$n=[K(\\alpha):K]=2\\cdot[K(\\alpha^2):K]$$\nseria par — contradizendo $n$ ímpar. Logo $[K(\\alpha):K(\\alpha^2)]=1$, ou seja,\n$$K(\\alpha)=K(\\alpha^2).\\qquad\\blacksquare$$\n\n*Comentário.* A hipótese 'n ímpar' é essencial: para $\\alpha=\\sqrt2$ sobre $\\mathbb{Q}$, $n=2$ é par e $\\mathbb{Q}(\\alpha^2)=\\mathbb{Q}(2)=\\mathbb{Q}\\neq\\mathbb{Q}(\\sqrt2)$.",
+          "steps": [
+            "Monte a torre $K\\subseteq K(\\alpha^2)\\subseteq K(\\alpha)$ e escreva a fórmula do grau.",
+            "Observe que $\\alpha$ satisfaz $x^2-\\alpha^2$ sobre $K(\\alpha^2)$, logo $[K(\\alpha):K(\\alpha^2)]\\le2$.",
+            "Reduza a duas possibilidades: grau relativo $1$ ou $2$.",
+            "Descarte o grau $2$ usando que ele tornaria $n$ par, contra a hipótese.",
+            "Conclua grau relativo $1$, isto é, $K(\\alpha^2)=K(\\alpha)$."
+          ]
+        },
+        {
+          "prompt": "Calcule $[\\mathbb{Q}(\\sqrt[3]{2},\\omega):\\mathbb{Q}]$, onde $\\omega=e^{2\\pi i/3}$ é raiz cúbica primitiva da unidade, e identifique este corpo como o corpo de decomposição de $x^3-2$.",
+          "hint": "$[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$ e $[\\mathbb{Q}(\\omega):\\mathbb{Q}]=2$; como $3$ e $2$ são coprimos, a torre dá grau $6$.",
+          "difficulty": 3,
+          "solution": "**Objetivo.** Calcular $[\\mathbb{Q}(\\sqrt[3]{2},\\omega):\\mathbb{Q}]$ com $\\omega=e^{2\\pi i/3}$, e identificar este corpo como o corpo de decomposição de $x^3-2$.\n\n**Graus dos geradores.**\n- $\\sqrt[3]{2}$ tem minimal $x^3-2$ (irredutível por Eisenstein, $p=2$), logo $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$.\n- $\\omega$ é raiz de $x^2+x+1$ (fator de $x^3-1$), irredutível sobre $\\mathbb{Q}$ (raízes complexas não reais), logo $[\\mathbb{Q}(\\omega):\\mathbb{Q}]=2$.\n\n**Uso da torre e coprimalidade.** Seja $L=\\mathbb{Q}(\\sqrt[3]{2},\\omega)$. Considere a torre $\\mathbb{Q}\\subseteq\\mathbb{Q}(\\sqrt[3]{2})\\subseteq L$. Como $\\omega\\notin\\mathbb{Q}(\\sqrt[3]{2})$ (este é um subcorpo de $\\mathbb{R}$, e $\\omega$ não é real), o minimal de $\\omega$ sobre $\\mathbb{Q}(\\sqrt[3]{2})$ ainda é $x^2+x+1$ (grau $2$), logo $[L:\\mathbb{Q}(\\sqrt[3]{2})]=2$. Então\n$$[L:\\mathbb{Q}]=[L:\\mathbb{Q}(\\sqrt[3]{2})]\\cdot[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=2\\cdot3=6.$$\n\n*(Verificação via divisibilidade:* $[L:\\mathbb{Q}]$ é múltiplo de $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$ e de $[\\mathbb{Q}(\\omega):\\mathbb{Q}]=2$; como $\\gcd(2,3)=1$, é múltiplo de $6$. E $[L:\\mathbb{Q}]\\le3\\cdot2=6$. Logo é exatamente $6$.)*\n\n**Corpo de decomposição de $x^3-2$.** As três raízes de $x^3-2$ em $\\mathbb{C}$ são\n$$\\sqrt[3]{2},\\quad \\sqrt[3]{2}\\,\\omega,\\quad \\sqrt[3]{2}\\,\\omega^2.$$\nO corpo de decomposição é $\\mathbb{Q}$ adjuntado dessas três raízes, isto é, $\\mathbb{Q}(\\sqrt[3]{2},\\ \\sqrt[3]{2}\\omega,\\ \\sqrt[3]{2}\\omega^2)$. Mas basta $\\sqrt[3]{2}$ e $\\omega=\\dfrac{\\sqrt[3]{2}\\,\\omega}{\\sqrt[3]{2}}$ para gerar todas: $\\mathbb{Q}(\\sqrt[3]{2},\\omega)=L$. Logo $L$ é o corpo de decomposição de $x^3-2$ sobre $\\mathbb{Q}$, e $[L:\\mathbb{Q}]=6$ é a ordem do seu grupo de Galois ($\\cong S_3$). $\\blacksquare$",
+          "steps": [
+            "Calcule $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$ (Eisenstein) e $[\\mathbb{Q}(\\omega):\\mathbb{Q}]=2$ ($x^2+x+1$).",
+            "Monte a torre $\\mathbb{Q}\\subseteq\\mathbb{Q}(\\sqrt[3]{2})\\subseteq L$ e argumente que $\\omega\\notin\\mathbb{Q}(\\sqrt[3]{2})$ (não real).",
+            "Deduza $[L:\\mathbb{Q}(\\sqrt[3]{2})]=2$ e multiplique: $[L:\\mathbb{Q}]=6$.",
+            "Liste as três raízes de $x^3-2$: $\\sqrt[3]{2},\\sqrt[3]{2}\\omega,\\sqrt[3]{2}\\omega^2$.",
+            "Mostre que adjuntá-las gera exatamente $\\mathbb{Q}(\\sqrt[3]{2},\\omega)=L$, o corpo de decomposição."
+          ]
+        },
+        {
+          "prompt": "Prove que não é possível duplicar o cubo com régua e compasso, isto é, que $\\sqrt[3]{2}$ não é construtível.",
+          "hint": "Todo construtível tem grau potência de $2$ sobre $\\mathbb{Q}$; mas $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$, que não é potência de $2$.",
+          "difficulty": 3,
+          "solution": "**Afirmação.** $\\sqrt[3]{2}$ não é construtível com régua e compasso; em particular, não se pode 'duplicar o cubo'.\n\n**O critério de construtibilidade.** Um número real $\\gamma$ é construtível a partir de $\\mathbb{Q}$ se, e somente se, existe uma torre de corpos\n$$\\mathbb{Q}=F_0\\subseteq F_1\\subseteq\\cdots\\subseteq F_k,\\qquad \\gamma\\in F_k,$$\ncom $[F_{i+1}:F_i]=2$ para cada $i$ (cada passo adjunta uma raiz quadrada, correspondendo a interseções de retas e círculos). Pelo Teorema da Torre,\n$$[F_k:\\mathbb{Q}]=\\prod_{i}[F_{i+1}:F_i]=2^k.$$\nComo $\\gamma\\in F_k$, temos $\\mathbb{Q}(\\gamma)\\subseteq F_k$ e, novamente pela torre, $[\\mathbb{Q}(\\gamma):\\mathbb{Q}]$ divide $[F_k:\\mathbb{Q}]=2^k$. Portanto:\n$$\\gamma\\ \\text{construtível}\\ \\Longrightarrow\\ [\\mathbb{Q}(\\gamma):\\mathbb{Q}]\\ \\text{é uma potência de }2.$$\n\n**Aplicação a $\\sqrt[3]{2}$.** Duplicar o cubo de aresta $1$ exige construir uma aresta de comprimento $\\gamma$ com $\\gamma^3=2$, isto é, $\\gamma=\\sqrt[3]{2}$. Mas $x^3-2$ é irredutível sobre $\\mathbb{Q}$ (Eisenstein, $p=2$) e é o polinômio minimal de $\\sqrt[3]{2}$, logo\n$$[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3.$$\nComo $3$ **não** é potência de $2$, o critério acima é violado. Portanto $\\sqrt[3]{2}$ não é construtível, e a duplicação do cubo é impossível com régua e compasso. $\\blacksquare$\n\n*Observação.* O critério (grau potência de $2$) é necessário, não suficiente — existem números de grau $4$ não construtíveis. Aqui basta a direção necessária.",
+          "steps": [
+            "Enuncie o critério: construtível $\\Rightarrow$ pertence a uma torre de extensões quadráticas.",
+            "Use o Teorema da Torre para concluir que $[F_k:\\mathbb{Q}]=2^k$ e que $[\\mathbb{Q}(\\gamma):\\mathbb{Q}]$ divide $2^k$.",
+            "Deduza a condição necessária: grau de um construtível é potência de $2$.",
+            "Calcule $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$ via irredutibilidade de $x^3-2$.",
+            "Note que $3$ não é potência de $2$, logo $\\sqrt[3]{2}$ não é construtível e o cubo não se duplica."
+          ]
+        },
+        {
+          "prompt": "Mostre que se $\\alpha$ é transcendente sobre $K$ então $K[\\alpha]\\cong K[x]$ (anel de polinômios) e $K(\\alpha)\\cong K(x)$, e que $K[\\alpha]\\neq K(\\alpha)$.",
+          "hint": "A avaliação $x\\mapsto\\alpha$ é injetiva exatamente porque $\\alpha$ não satisfaz polinômio não nulo; $K[x]$ não é corpo.",
+          "difficulty": 3,
+          "solution": "Seja $\\alpha$ transcendente sobre $K$, i.e. $\\alpha$ não é raiz de nenhum polinômio não nulo de $K[x]$.\n\n**$K[\\alpha]\\cong K[x]$.** Considere o homomorfismo de avaliação\n$$\\operatorname{ev}_\\alpha:K[x]\\to K[\\alpha]\\subseteq L,\\qquad f\\mapsto f(\\alpha),$$\nque é sobrejetor sobre $K[\\alpha]$ por definição de $K[\\alpha]=\\{f(\\alpha):f\\in K[x]\\}$.\n\n*Injetividade.* $\\ker(\\operatorname{ev}_\\alpha)=\\{f\\in K[x]:f(\\alpha)=0\\}$. Como $\\alpha$ é transcendente, o único polinômio que o anula é o polinômio nulo, logo $\\ker(\\operatorname{ev}_\\alpha)=\\{0\\}$. Assim $\\operatorname{ev}_\\alpha$ é injetor.\n\nSendo bijetor (injetor + sobrejetor sobre a imagem), $\\operatorname{ev}_\\alpha$ é um isomorfismo:\n$$K[\\alpha]\\cong K[x].$$\n\n**$K(\\alpha)\\cong K(x)$.** $K(\\alpha)$ é o corpo de frações de $K[\\alpha]$ dentro de $L$ (menor corpo contendo $K$ e $\\alpha$). O isomorfismo $K[\\alpha]\\cong K[x]$ de domínios se estende, pela propriedade universal do corpo de frações, a um isomorfismo entre seus corpos de frações:\n$$K(\\alpha)=\\operatorname{Frac}(K[\\alpha])\\cong\\operatorname{Frac}(K[x])=K(x),$$\no corpo das funções racionais. Explicitamente, $\\dfrac{f(\\alpha)}{g(\\alpha)}\\leftrightarrow\\dfrac{f(x)}{g(x)}$ (com $g(\\alpha)\\neq0$, garantido pela transcendência para $g\\neq0$).\n\n**$K[\\alpha]\\neq K(\\alpha)$.** Como $K[\\alpha]\\cong K[x]$ e $K[x]$ **não é corpo** (o elemento $x$ não tem inverso em $K[x]$: não existe polinômio $h$ com $xh=1$, por graus), $K[\\alpha]$ não é corpo. Concretamente, $\\alpha\\in K[\\alpha]$ mas $\\alpha^{-1}\\notin K[\\alpha]$: se fosse $\\alpha^{-1}=f(\\alpha)$ para algum polinômio $f$, então $\\alpha f(\\alpha)-1=0$ seria uma relação polinomial não trivial anulando $\\alpha$, contradizendo a transcendência. Já $K(\\alpha)$ é corpo e contém $\\alpha^{-1}$. Logo\n$$K[\\alpha]\\subsetneq K(\\alpha).\\qquad\\blacksquare$$\n\n*Contraste:* para $\\alpha$ algébrico teríamos $K[\\alpha]=K(\\alpha)$; a transcendência é exatamente o que os separa.",
+          "steps": [
+            "Defina a avaliação $\\operatorname{ev}_\\alpha:K[x]\\to K[\\alpha]$, sobrejetora por construção.",
+            "Use a transcendência para mostrar $\\ker=\\{0\\}$, logo $\\operatorname{ev}_\\alpha$ é isomorfismo: $K[\\alpha]\\cong K[x]$.",
+            "Estenda o isomorfismo aos corpos de frações via propriedade universal: $K(\\alpha)\\cong K(x)$.",
+            "Observe que $K[x]$ não é corpo (o $x$ não é invertível), logo $K[\\alpha]$ não é corpo.",
+            "Mostre que $\\alpha^{-1}\\notin K[\\alpha]$ (senão haveria relação polinomial), concluindo $K[\\alpha]\\subsetneq K(\\alpha)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Grau $[L:K]$",
+          "back": "$\\dim_K L$, a dimensão de $L$ como $K$-espaço vetorial."
+        },
+        {
+          "front": "Polinômio minimal de $\\alpha$",
+          "back": "Mônico de menor grau em $K[x]$ que anula $\\alpha$; é irredutível e gera o ideal dos que anulam $\\alpha$."
+        },
+        {
+          "front": "$K(\\alpha)$ para $\\alpha$ algébrico",
+          "back": "$\\cong K[x]/\\langle m_\\alpha\\rangle$, com $[K(\\alpha):K]=\\deg m_\\alpha$ e base $1,\\alpha,\\dots,\\alpha^{n-1}$."
+        },
+        {
+          "front": "Teorema da Torre",
+          "back": "$[L:K]=[L:F]\\,[F:K]$ para $K\\subseteq F\\subseteq L$."
+        },
+        {
+          "front": "Finita $\\Rightarrow$ ?",
+          "back": "Toda extensão finita é algébrica (a recíproca falha: $\\overline{\\mathbb{Q}}/\\mathbb{Q}$ é algébrica infinita)."
+        },
+        {
+          "front": "Construtível $\\Rightarrow$ grau",
+          "back": "Número construtível gera extensão de grau potência de $2$ sobre $\\mathbb{Q}$ (necessário, não suficiente)."
+        },
+        {
+          "front": "Por que $\\sqrt[3]{2}$ não é construtível?",
+          "back": "$[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$ não é potência de $2$."
+        },
+        {
+          "front": "Corpo de decomposição de $f$",
+          "back": "Menor extensão onde $f$ se fatora em lineares; existe e é único a menos de $K$-isomorfismo."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 13 (Field Theory)",
+          "ref": "livro"
+        },
+        {
+          "title": "Adilson Gonçalves, Introdução à Álgebra (extensões de corpos)",
+          "ref": "livro"
+        },
+        {
+          "title": "Milne, Fields and Galois Theory (notas, caps. iniciais)",
+          "ref": "notas"
+        },
+        {
+          "title": "Artin, Algebra, cap. 15 (régua e compasso)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude no Dummit & Foote cap. 13 (e Gonçalves, Introdução à Álgebra) a visão de $L/K$ como espaço vetorial, o grau $[L:K]$, elementos algébricos/transcendentes e o polinômio minimal.",
+          "Reproduza a prova de $K(\\alpha)\\cong K[x]/\\langle m_\\alpha\\rangle$ com base $\\{1,\\alpha,\\dots,\\alpha^{n-1}\\}$ e a do Teorema da Torre via produto de bases.",
+          "Pratique cálculos de grau com torres: $\\mathbb{Q}(\\sqrt2,\\sqrt3)$, $\\mathbb{Q}(\\sqrt[3]2,\\omega)$, e conecte com régua-e-compasso (grau potência de $2$).",
+          "Assista a uma aula sobre field extensions / degree / minimal polynomial, e uma sobre constructibility para a aplicação geométrica.",
+          "Resolva os testes deste subtópico aqui no app e anote o principal: $[K(\\alpha):K]=\\deg m_\\alpha$, o Teorema da Torre e o critério de construtibilidade (grau potência de $2$, necessário não suficiente)."
+        ],
+        "searchQueries": [
+          "extensão de corpos grau espaço vetorial polinômio minimal",
+          "teorema da torre grau extensões multiplicativo demonstração",
+          "K(alpha) isomorfo K[x]/(m_alpha) base algébrico",
+          "impossibilidade duplicar o cubo régua e compasso grau",
+          "corpo de decomposição x^3-2 raiz cúbica omega grau 6",
+          "field extension degree tower theorem minimal polynomial"
+        ],
+        "videos": [
+          {
+            "title": "Field Extensions and the Tower Law",
+            "channel": "Michael Penn",
+            "note": "Busque a série de field theory: grau, minimal polynomial e Tower Law com exemplos numéricos."
+          },
+          {
+            "title": "Ruler and Compass / Constructibility",
+            "channel": "Mathologer",
+            "note": "Para a intuição geométrica de por que grau potência de $2$ e a impossibilidade dos problemas gregos."
+          },
+          {
+            "title": "Field Theory",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas de teoria de corpos (18.702/18.703) cobrindo extensões algébricas e corpos de decomposição."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 13 (Field Theory)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Fields and Galois Theory (notas, capítulos iniciais)",
+            "where": "Notas de J. S. Milne (jmilne.org)"
+          },
+          {
+            "title": "Introdução à Álgebra (extensões de corpos)",
+            "where": "Livro de Adilson Gonçalves (Projeto Euclides, IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-2-08-corpos-finitos-modulos",
+      "title": "Corpos Finitos e Introdução a Módulos",
+      "tagline": "A classificação completa dos corpos finitos $\\mathbb{F}_{p^n}$ e os primeiros passos na teoria de módulos, a generalização comum de espaços vetoriais e grupos abelianos.",
+      "objectives": [
+        "Provar que todo corpo finito tem $p^n$ elementos e é o corpo de decomposição de $x^{p^n}-x$ sobre $\\mathbb{F}_p$.",
+        "Demonstrar a existência e a unicidade de $\\mathbb{F}_{p^n}$ a menos de isomorfismo.",
+        "Provar que o grupo multiplicativo $\\mathbb{F}_q^{\\times}$ é cíclico e descrever o automorfismo de Frobenius.",
+        "Definir módulo sobre um anel, submódulo, módulo quociente e homomorfismo de módulos.",
+        "Reconhecer espaços vetoriais e grupos abelianos como módulos e enunciar o teorema de estrutura sobre DIP."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Corpo finito",
+          "statement": "Corpo $\\mathbb{F}_q$ com $q=p^n$ elementos, onde $p=\\operatorname{char}(\\mathbb{F}_q)$ é primo; é único a menos de isomorfismo para cada $q$."
+        },
+        {
+          "term": "Automorfismo de Frobenius",
+          "statement": "$\\phi:\\mathbb{F}_q\\to\\mathbb{F}_q$, $\\phi(x)=x^p$, é um automorfismo de corpo que fixa $\\mathbb{F}_p$ e gera o grupo de Galois cíclico de ordem $n$."
+        },
+        {
+          "term": "Módulo",
+          "statement": "Um $R$-módulo (à esquerda) é um grupo abeliano $M$ com ação $R\\times M\\to M$ satisfazendo $r(m+m')=rm+rm'$, $(r+s)m=rm+sm$, $(rs)m=r(sm)$ e $1m=m$."
+        },
+        {
+          "term": "Submódulo e quociente",
+          "statement": "$N\\subseteq M$ é submódulo se é subgrupo fechado pela ação de $R$; o quociente $M/N$ é novamente um $R$-módulo."
+        },
+        {
+          "term": "Módulo livre",
+          "statement": "$R$-módulo com base, isto é, isomorfo a $R^{(I)}$; sobre um corpo todo módulo é livre (é espaço vetorial), mas sobre $\\mathbb{Z}$ nem todo módulo é livre (ex.: $\\mathbb{Z}_n$)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Cardinalidade dos corpos finitos",
+          "statement": "Todo corpo finito $F$ tem $|F|=p^n$, onde $p=\\operatorname{char}(F)$ e $n=[F:\\mathbb{F}_p]$.",
+          "whyItMatters": "Restringe drasticamente os tamanhos possíveis: não existe corpo com $6$, $10$ ou $12$ elementos. A ordem de um corpo finito é sempre potência de primo."
+        },
+        {
+          "name": "Existência e unicidade de $\\mathbb{F}_{p^n}$",
+          "statement": "Para cada primo $p$ e cada $n\\ge 1$ existe um único (a menos de isomorfismo) corpo com $p^n$ elementos: o corpo de decomposição de $x^{p^n}-x$ sobre $\\mathbb{F}_p$, formado exatamente por suas raízes.",
+          "whyItMatters": "Classifica completamente os corpos finitos. É a base da criptografia (AES, curvas elípticas), dos códigos corretores de erro (Reed-Solomon) e de toda a combinatória finita algébrica."
+        },
+        {
+          "name": "$\\mathbb{F}_q^{\\times}$ é cíclico",
+          "statement": "O grupo multiplicativo de um corpo finito é cíclico de ordem $q-1$; um gerador chama-se raiz primitiva.",
+          "whyItMatters": "Garante a existência de elementos primitivos e a estrutura de logaritmo discreto — pilar da criptografia Diffie-Hellman e ElGamal — e mostra que $\\mathbb{F}_q=\\mathbb{F}_p(\\gamma)$ é extensão simples."
+        },
+        {
+          "name": "Estrutura de módulos f.g. sobre DIP",
+          "statement": "Todo módulo finitamente gerado sobre um DIP $R$ é soma direta $R^r\\oplus R/\\langle d_1\\rangle\\oplus\\cdots\\oplus R/\\langle d_k\\rangle$ com $d_1\\mid d_2\\mid\\cdots\\mid d_k$.",
+          "whyItMatters": "Unifica o Teorema Fundamental dos Grupos Abelianos Finitamente Gerados ($R=\\mathbb{Z}$) e a forma canônica de Jordan/racional ($R=K[x]$); é o ápice da teoria elementar de módulos."
+        }
+      ],
+      "summary": "Corpos finitos são objetos de extraordinária rigidez. Todo corpo finito $F$ contém um corpo primo $\\mathbb{F}_p$ (sua característica), sobre o qual é um espaço vetorial de dimensão finita $n$; portanto $|F|=p^n$ — em particular, não existem corpos de ordem $6$ ou $10$. Reciprocamente, para cada potência de primo $q=p^n$ existe um e só um corpo com $q$ elementos: ele é o corpo de decomposição de $x^q-x$ sobre $\\mathbb{F}_p$, e seus elementos são precisamente as $q$ raízes desse polinômio (que são distintas porque $x^q-x$ é separável). A unicidade a menos de isomorfismo segue da unicidade do corpo de decomposição. Duas estruturas adicionais completam o quadro: o grupo multiplicativo $\\mathbb{F}_q^{\\times}$ é cíclico de ordem $q-1$ (logo todo corpo finito é uma extensão simples $\\mathbb{F}_p(\\gamma)$), e o automorfismo de Frobenius $\\phi(x)=x^p$ gera o grupo de Galois cíclico de $\\mathbb{F}_q/\\mathbb{F}_p$. Os subcorpos de $\\mathbb{F}_{p^n}$ são exatamente os $\\mathbb{F}_{p^d}$ com $d\\mid n$.\n\nA trilha culmina com uma introdução a módulos, a generalização que tem espaços vetoriais e grupos abelianos como casos particulares: um $R$-módulo é um grupo abeliano sobre o qual o anel $R$ age de modo compatível com soma e produto. Quando $R$ é um corpo, módulo é exatamente espaço vetorial; quando $R=\\mathbb{Z}$, um $\\mathbb{Z}$-módulo é exatamente um grupo abeliano. Toda a maquinaria de submódulos, quocientes e homomorfismos se transporta dos espaços vetoriais, mas com uma diferença crucial: nem todo módulo tem base (não é livre) — $\\mathbb{Z}_n$ como $\\mathbb{Z}$-módulo é o exemplo, pois tem torção. O resultado-chave, que abre a porta da álgebra de pós-graduação, é o teorema de estrutura dos módulos finitamente gerados sobre um DIP: ele decompõe qualquer tal módulo em uma parte livre e fatores cíclicos $R/\\langle d_i\\rangle$, unificando num só enunciado o Teorema Fundamental dos Grupos Abelianos Finitamente Gerados (sobre $\\mathbb{Z}$) e as formas canônicas de Jordan e racional de operadores lineares (sobre $K[x]$).",
+      "commonPitfalls": [
+        "Pensar que existe corpo $\\mathbb{F}_q$ para todo $q$: só existe quando $q$ é potência de primo. Não há corpo com $6$ elementos.",
+        "Confundir $\\mathbb{F}_{p^n}$ com $\\mathbb{Z}_{p^n}$: para $n\\ge 2$, $\\mathbb{Z}_{p^n}$ nem sequer é corpo (tem divisores de zero), enquanto $\\mathbb{F}_{p^n}$ é um corpo construído como quociente $\\mathbb{F}_p[x]/\\langle f\\rangle$ por irredutível de grau $n$.",
+        "Supor que todo módulo tem base como espaço vetorial: módulos com torção (ex.: $\\mathbb{Z}_n$ sobre $\\mathbb{Z}$) não são livres.",
+        "Achar que os subcorpos de $\\mathbb{F}_{p^n}$ são todos os $\\mathbb{F}_{p^d}$ com $d\\le n$: são apenas os $d$ que dividem $n$."
+      ],
+      "worked": "**Construção e unicidade de $\\mathbb{F}_4$.** Vamos construir o corpo com $4=2^2$ elementos e verificar a teoria.\n\n*Construção.* Tome $\\mathbb{F}_2=\\{0,1\\}$ e o polinômio $f(x)=x^2+x+1\\in\\mathbb{F}_2[x]$. Ele não tem raízes em $\\mathbb{F}_2$ ($f(0)=f(1)=1$), e por ser de grau $2$ isso já garante que é irredutível. Logo $\\langle f\\rangle$ é maximal e\n$$\\mathbb{F}_4:=\\mathbb{F}_2[x]/\\langle x^2+x+1\\rangle$$\né um corpo. Escrevendo $\\alpha=\\bar x$, temos $\\alpha^2=\\alpha+1$ (pois $\\alpha^2+\\alpha+1=0$ e $-1=1$ em característica $2$), e os elementos são $\\{0,1,\\alpha,\\alpha+1\\}$ — exatamente $4$.\n\n*Grupo multiplicativo.* $\\mathbb{F}_4^{\\times}=\\{1,\\alpha,\\alpha+1\\}$ tem ordem $3$, logo é cíclico gerado por $\\alpha$: $\\alpha^1=\\alpha$, $\\alpha^2=\\alpha+1$, $\\alpha^3=\\alpha\\cdot\\alpha^2=\\alpha(\\alpha+1)=\\alpha^2+\\alpha=(\\alpha+1)+\\alpha=1$. Confirma-se $\\alpha^3=1$.\n\n*Decomposição de $x^4-x$.* Sobre $\\mathbb{F}_4$, $x^4-x=x(x-1)(x^2+x+1)=x(x+1)(x-\\alpha)(x-\\alpha-1)$ — as quatro raízes são exatamente os elementos de $\\mathbb{F}_4$, ilustrando que $\\mathbb{F}_4$ é o corpo de decomposição de $x^4-x$ sobre $\\mathbb{F}_2$. Qualquer outra construção (por outro irredutível de grau $2$, mas aqui ele é único) produziria um corpo isomorfo. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Construa explicitamente $\\mathbb{F}_8$ como $\\mathbb{F}_2[x]/\\langle x^3+x+1\\rangle$, verifique que $x^3+x+1$ é irredutível sobre $\\mathbb{F}_2$ e exiba um gerador de $\\mathbb{F}_8^{\\times}$.",
+          "hint": "Irredutibilidade de grau $3$ equivale a não ter raízes em $\\mathbb{F}_2$. Para o gerador, $\\mathbb{F}_8^{\\times}$ tem ordem $7$ (primo), logo todo elemento $\\neq 1$ gera.",
+          "difficulty": 3,
+          "solution": "**Construção de $\\mathbb{F}_8=\\mathbb{F}_2[x]/\\langle x^3+x+1\\rangle$.**\n\n**Irredutibilidade de $f(x)=x^3+x+1$ sobre $\\mathbb{F}_2$.** Um polinômio de grau $3$ é redutível sobre um corpo sse, e somente se, tem raiz nesse corpo (algum fator seria linear). Testamos em $\\mathbb{F}_2=\\{0,1\\}$:\n$$f(0)=0+0+1=1\\neq0,\\qquad f(1)=1+1+1=1\\neq0\\ (\\text{em }\\mathbb{F}_2).$$\nSem raízes em $\\mathbb{F}_2$, $f$ é irredutível. Logo $\\langle f\\rangle$ é maximal e\n$$\\mathbb{F}_8:=\\mathbb{F}_2[x]/\\langle x^3+x+1\\rangle$$\né um corpo. Sua dimensão sobre $\\mathbb{F}_2$ é $\\deg f=3$, então $|\\mathbb{F}_8|=2^3=8$, com base $\\{1,\\alpha,\\alpha^2\\}$, onde $\\alpha=\\bar x$ satisfaz $\\alpha^3=\\alpha+1$ (pois $\\alpha^3+\\alpha+1=0$ e $-1=1$).\n\n**Elementos.** $\\{0,1,\\alpha,\\alpha+1,\\alpha^2,\\alpha^2+1,\\alpha^2+\\alpha,\\alpha^2+\\alpha+1\\}$ — exatamente $8$.\n\n**Gerador de $\\mathbb{F}_8^{\\times}$.** O grupo $\\mathbb{F}_8^{\\times}$ tem ordem $7$, que é primo. Logo todo elemento $\\neq1$ tem ordem $7$ (pela Lagrange, a ordem divide $7$ e não é $1$), portanto é gerador. Em particular, $\\alpha$ é gerador. Verifiquemos calculando potências (usando $\\alpha^3=\\alpha+1$):\n$$\\alpha^1=\\alpha,\\quad \\alpha^2=\\alpha^2,\\quad \\alpha^3=\\alpha+1,$$\n$$\\alpha^4=\\alpha\\cdot\\alpha^3=\\alpha(\\alpha+1)=\\alpha^2+\\alpha,$$\n$$\\alpha^5=\\alpha\\cdot\\alpha^4=\\alpha^3+\\alpha^2=(\\alpha+1)+\\alpha^2=\\alpha^2+\\alpha+1,$$\n$$\\alpha^6=\\alpha\\cdot\\alpha^5=\\alpha^3+\\alpha^2+\\alpha=(\\alpha+1)+\\alpha^2+\\alpha=\\alpha^2+1,$$\n$$\\alpha^7=\\alpha\\cdot\\alpha^6=\\alpha^3+\\alpha=(\\alpha+1)+\\alpha=1.$$\nAs potências $\\alpha^1,\\dots,\\alpha^7$ percorrem os $7$ elementos não nulos e $\\alpha^7=1$. Logo $\\alpha$ é um gerador (elemento primitivo) de $\\mathbb{F}_8^{\\times}$. $\\blacksquare$",
+          "steps": [
+            "Teste $f(x)=x^3+x+1$ em $\\mathbb{F}_2$: sem raízes em grau $3$ implica irredutível.",
+            "Conclua que o quociente é corpo com $2^3=8$ elementos e base $\\{1,\\alpha,\\alpha^2\\}$, $\\alpha^3=\\alpha+1$.",
+            "Liste os $8$ elementos como combinações $\\mathbb{F}_2$ de $1,\\alpha,\\alpha^2$.",
+            "Note que $|\\mathbb{F}_8^{\\times}|=7$ é primo, logo todo elemento $\\neq1$ gera.",
+            "Calcule as potências $\\alpha^1,\\dots,\\alpha^7$ usando $\\alpha^3=\\alpha+1$ e confirme $\\alpha^7=1$ com todas distintas."
+          ]
+        },
+        {
+          "prompt": "Prove que $\\mathbb{F}_{p^m}$ é subcorpo de $\\mathbb{F}_{p^n}$ se, e somente se, $m\\mid n$.",
+          "hint": "Use que $\\mathbb{F}_{p^m}\\subseteq\\mathbb{F}_{p^n}$ força $[\\mathbb{F}_{p^n}:\\mathbb{F}_{p^m}]\\cdot m=n$ pela torre; reciprocamente, se $m\\mid n$, as raízes de $x^{p^m}-x$ formam o subcorpo.",
+          "difficulty": 4,
+          "solution": "**Teorema.** $\\mathbb{F}_{p^m}$ é (isomorfo a) um subcorpo de $\\mathbb{F}_{p^n}$ se, e somente se, $m\\mid n$.\n\n**($\\Rightarrow$) Se $\\mathbb{F}_{p^m}\\subseteq\\mathbb{F}_{p^n}$, então $m\\mid n$.**\nSuponha $\\mathbb{F}_{p^m}\\subseteq\\mathbb{F}_{p^n}$. Vendo $\\mathbb{F}_{p^n}$ como espaço vetorial sobre $\\mathbb{F}_{p^m}$, temos a torre $\\mathbb{F}_p\\subseteq\\mathbb{F}_{p^m}\\subseteq\\mathbb{F}_{p^n}$ e, pelo Teorema da Torre,\n$$n=[\\mathbb{F}_{p^n}:\\mathbb{F}_p]=[\\mathbb{F}_{p^n}:\\mathbb{F}_{p^m}]\\cdot[\\mathbb{F}_{p^m}:\\mathbb{F}_p]=[\\mathbb{F}_{p^n}:\\mathbb{F}_{p^m}]\\cdot m.$$\nLogo $m\\mid n$.\n\n**($\\Leftarrow$) Se $m\\mid n$, então $\\mathbb{F}_{p^m}$ é subcorpo de $\\mathbb{F}_{p^n}$.**\nSuponha $m\\mid n$. Chave: $m\\mid n\\Rightarrow (p^m-1)\\mid(p^n-1)$. De fato, se $n=md$, então\n$$p^n-1=(p^m)^d-1=(p^m-1)\\big((p^m)^{d-1}+\\cdots+p^m+1\\big),$$\nlogo $(p^m-1)\\mid(p^n-1)$. Consequentemente $(x^{p^m-1}-1)\\mid(x^{p^n-1}-1)$ (se $a\\mid b$ então $x^a-1\\mid x^b-1$), e multiplicando por $x$, $(x^{p^m}-x)\\mid(x^{p^n}-x)$.\n\nOs elementos de $\\mathbb{F}_{p^n}$ são exatamente as raízes de $x^{p^n}-x$. Como $x^{p^m}-x$ divide $x^{p^n}-x$, todas as raízes de $x^{p^m}-x$ estão em $\\mathbb{F}_{p^n}$. Mas o conjunto dessas raízes\n$$S=\\{a\\in\\mathbb{F}_{p^n}:a^{p^m}=a\\}$$\né precisamente o corpo fixo do $m$-ésimo iterado do Frobenius $\\phi^m(a)=a^{p^m}$; $S$ é um subcorpo (fechado por soma — via Frobenius aditivo —, produto e inversos) com exatamente $p^m$ elementos (as $p^m$ raízes distintas de $x^{p^m}-x$, que é separável). Por unicidade, $S\\cong\\mathbb{F}_{p^m}$. Logo $\\mathbb{F}_{p^m}$ é subcorpo de $\\mathbb{F}_{p^n}$. $\\blacksquare$",
+          "steps": [
+            "Para a ida, use a torre $\\mathbb{F}_p\\subseteq\\mathbb{F}_{p^m}\\subseteq\\mathbb{F}_{p^n}$ e o Teorema da Torre para obter $n=[\\,\\cdot\\,]\\cdot m$, logo $m\\mid n$.",
+            "Para a volta, prove que $m\\mid n\\Rightarrow(p^m-1)\\mid(p^n-1)$ via fatoração de $(p^m)^d-1$.",
+            "Deduza $x^{p^m}-x\\mid x^{p^n}-x$.",
+            "Identifique as raízes de $x^{p^m}-x$ dentro de $\\mathbb{F}_{p^n}$ como o conjunto fixo do Frobenius $\\phi^m$.",
+            "Argumente que esse conjunto é um subcorpo de $p^m$ elementos, isomorfo a $\\mathbb{F}_{p^m}$."
+          ]
+        },
+        {
+          "prompt": "Mostre que o grupo multiplicativo de qualquer corpo finito é cíclico.",
+          "hint": "Num corpo, $x^d=1$ tem $\\le d$ soluções; use o critério: um grupo abeliano finito de ordem $q-1$ em que cada equação $x^d=1$ tem no máximo $d$ soluções é cíclico.",
+          "difficulty": 4,
+          "solution": "**Teorema.** O grupo multiplicativo $F^{\\times}$ de qualquer corpo finito $F$ é cíclico.\n\nSeja $|F|=q$, logo $|F^{\\times}|=q-1=:N$. $F^{\\times}$ é um grupo abeliano finito de ordem $N$.\n\n**Ferramenta 1 (poucas raízes).** Num corpo, todo polinômio de grau $d$ tem no máximo $d$ raízes. Em particular, para cada $d\\mid N$, a equação $x^d=1$ tem no máximo $d$ soluções em $F^{\\times}$.\n\n**Ferramenta 2 (critério de ciclicidade).** *Um grupo abeliano finito $G$ de ordem $N$ tal que, para cada $d\\mid N$, a equação $x^d=1$ tem no máximo $d$ soluções, é cíclico.*\n\n*Prova do critério.* Para cada $d\\mid N$, seja $\\psi(d)$ o número de elementos de $G$ de ordem exatamente $d$. Todo elemento tem ordem dividindo $N$, então $\\sum_{d\\mid N}\\psi(d)=N$. Se existe um elemento de ordem $d$, ele gera um subgrupo cíclico $C_d$ com $d$ soluções de $x^d=1$; pela hipótese, essas são TODAS as soluções, e os elementos de ordem exatamente $d$ são os geradores de $C_d$, em número $\\varphi(d)$ (Euler). Assim $\\psi(d)\\in\\{0,\\varphi(d)\\}$ para todo $d$. Como $\\sum_{d\\mid N}\\varphi(d)=N=\\sum_{d\\mid N}\\psi(d)$ e $\\psi(d)\\le\\varphi(d)$ termo a termo, deve valer $\\psi(d)=\\varphi(d)$ para todo $d\\mid N$. Em particular $\\psi(N)=\\varphi(N)\\ge1$: existe elemento de ordem $N$, logo $G$ é cíclico. $\\square$\n\n**Aplicação.** $F^{\\times}$ é abeliano finito de ordem $N=q-1$ e satisfaz a hipótese (Ferramenta 1). Pelo critério, $F^{\\times}$ é cíclico. $\\blacksquare$\n\n*Consequência.* Existe $\\gamma\\in F^{\\times}$ (raiz primitiva) com $F^{\\times}=\\langle\\gamma\\rangle$, e $F=\\mathbb{F}_p(\\gamma)$ é extensão simples.",
+          "steps": [
+            "Escreva $|F^{\\times}|=q-1=N$ e observe que é abeliano finito.",
+            "Estabeleça que num corpo $x^d=1$ tem no máximo $d$ soluções.",
+            "Enuncie o critério: abeliano de ordem $N$ com $\\le d$ soluções de $x^d=1$ para $d\\mid N$ é cíclico.",
+            "Prove o critério contando elementos por ordem: $\\psi(d)\\in\\{0,\\varphi(d)\\}$ e $\\sum\\varphi(d)=N$ força $\\psi(N)=\\varphi(N)>0$.",
+            "Aplique ao $F^{\\times}$ para concluir a existência de gerador (raiz primitiva)."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo de $\\mathbb{Z}$-módulo que não é livre e prove que ele tem torção. Em seguida, exiba a decomposição de $\\mathbb{Z}_{12}$ pelo teorema de estrutura.",
+          "hint": "$\\mathbb{Z}_n$ é torção pois $n\\cdot\\bar 1=0$. Use o Teorema Chinês dos Restos: $\\mathbb{Z}_{12}\\cong\\mathbb{Z}_4\\oplus\\mathbb{Z}_3$.",
+          "difficulty": 3,
+          "solution": "**Parte A: um $\\mathbb{Z}$-módulo não livre e com torção.**\n\nTome $M=\\mathbb{Z}_6=\\mathbb{Z}/6\\mathbb{Z}$, visto como $\\mathbb{Z}$-módulo (a ação é $n\\cdot\\bar a=\\overline{na}$). \n\n*Tem torção.* Um elemento $m$ de um $\\mathbb{Z}$-módulo é de torção se existe $n\\neq0$ com $nm=0$. Aqui, para todo $\\bar a\\in\\mathbb{Z}_6$,\n$$6\\cdot\\bar a=\\overline{6a}=\\bar0,$$\nlogo todo elemento é de torção (e $\\bar1\\neq\\bar0$ tem $6\\cdot\\bar1=\\bar0$). Assim $M$ é um módulo de torção não nulo.\n\n*Não é livre.* Um $\\mathbb{Z}$-módulo livre é isomorfo a $\\mathbb{Z}^{(I)}$, que é livre de torção (se $n\\cdot v=0$ com $n\\neq0$ num $\\mathbb{Z}^{(I)}$, então $v=0$, pois $\\mathbb{Z}$ é domínio). Como $\\mathbb{Z}_6$ tem elementos de torção não nulos, não pode ser isomorfo a nenhum $\\mathbb{Z}^{(I)}$; logo $\\mathbb{Z}_6$ **não é livre**. (Alternativamente: $\\mathbb{Z}_6$ é finito não trivial, e todo $\\mathbb{Z}^{(I)}$ não nulo é infinito.)\n\n**Parte B: decomposição de $\\mathbb{Z}_{12}$ pelo teorema de estrutura.**\n\nO teorema de estrutura dos módulos finitamente gerados sobre o DIP $\\mathbb{Z}$ decompõe $\\mathbb{Z}_{12}$ em fatores cíclicos de ordens que são potências de primos (decomposição primária). Como $12=4\\cdot3=2^2\\cdot3$ com $\\gcd(4,3)=1$, o Teorema Chinês dos Restos dá\n$$\\mathbb{Z}_{12}\\cong\\mathbb{Z}_4\\oplus\\mathbb{Z}_3.$$\nVerificação: $\\mathbb{Z}_4\\oplus\\mathbb{Z}_3$ tem $4\\cdot3=12$ elementos e é cíclico (pois $\\gcd(4,3)=1$, o elemento $(\\bar1,\\bar1)$ tem ordem $\\operatorname{lcm}(4,3)=12$), logo $\\cong\\mathbb{Z}_{12}$.\n\n*Forma de fatores invariantes:* aqui só há um fator invariante, $d_1=12$, isto é, $\\mathbb{Z}_{12}\\cong\\mathbb{Z}/\\langle12\\rangle$ — já é cíclico. A decomposição $\\mathbb{Z}_4\\oplus\\mathbb{Z}_3$ é a forma de divisores elementares (potências de primos). $\\blacksquare$",
+          "steps": [
+            "Escolha $M=\\mathbb{Z}_6$ (ou $\\mathbb{Z}_n$) como $\\mathbb{Z}$-módulo.",
+            "Mostre que todo elemento é de torção: $6\\cdot\\bar a=\\bar0$.",
+            "Argumente que $\\mathbb{Z}^{(I)}$ é livre de torção, logo $\\mathbb{Z}_6$ não pode ser livre.",
+            "Para $\\mathbb{Z}_{12}$, fatore $12=2^2\\cdot3$ e aplique o Teorema Chinês dos Restos.",
+            "Conclua $\\mathbb{Z}_{12}\\cong\\mathbb{Z}_4\\oplus\\mathbb{Z}_3$ (divisores elementares), conferindo a ordem e a ciclicidade."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Ordem de um corpo finito",
+          "back": "Sempre $p^n$ com $p$ primo; não existe corpo de ordem $6$, $10$, $12$..."
+        },
+        {
+          "front": "Existência/unicidade de $\\mathbb{F}_{p^n}$",
+          "back": "Existe e é único a menos de isomorfismo: corpo de decomposição de $x^{p^n}-x$ sobre $\\mathbb{F}_p$."
+        },
+        {
+          "front": "$\\mathbb{F}_q^{\\times}$",
+          "back": "Grupo cíclico de ordem $q-1$ (existe raiz primitiva)."
+        },
+        {
+          "front": "Frobenius",
+          "back": "$\\phi(x)=x^p$, automorfismo que fixa $\\mathbb{F}_p$ e gera $\\operatorname{Gal}(\\mathbb{F}_{p^n}/\\mathbb{F}_p)\\cong\\mathbb{Z}_n$."
+        },
+        {
+          "front": "Subcorpos de $\\mathbb{F}_{p^n}$",
+          "back": "Exatamente os $\\mathbb{F}_{p^d}$ com $d\\mid n$."
+        },
+        {
+          "front": "$\\mathbb{F}_{p^n}$ vs $\\mathbb{Z}_{p^n}$",
+          "back": "Para $n\\ge 2$ são diferentes: $\\mathbb{Z}_{p^n}$ tem divisores de zero (não é corpo)."
+        },
+        {
+          "front": "$R$-módulo (definição)",
+          "back": "Grupo abeliano $M$ com ação de $R$: distributiva, associativa em escalares e $1m=m$."
+        },
+        {
+          "front": "Módulos como generalização",
+          "back": "Corpo: espaço vetorial; $\\mathbb{Z}$: grupo abeliano. Estrutura f.g. sobre DIP unifica ambos."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 13.5-13.6 e cap. 10-12 (Finite Fields, Modules)",
+          "ref": "livro"
+        },
+        {
+          "title": "Lidl & Niederreiter, Finite Fields (referência avançada)",
+          "ref": "livro"
+        },
+        {
+          "title": "Hefez, Curso de Álgebra (corpos finitos)",
+          "ref": "livro"
+        },
+        {
+          "title": "Artin, Algebra, cap. 15.7 (finite fields)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude no Dummit & Foote 13.5-13.6 (corpos finitos) e caps. 10-12 (módulos) a construção $\\mathbb{F}_p[x]/\\langle f\\rangle$ para $f$ irredutível, a cardinalidade $p^n$ e a existência/unicidade de $\\mathbb{F}_{p^n}$.",
+          "Reproduza as provas de: $|F|=p^n$, $\\mathbb{F}_q$ é o corpo de decomposição de $x^q-x$, e $\\mathbb{F}_q^{\\times}$ é cíclico; e a caracterização dos subcorpos ($d\\mid n$).",
+          "Construa à mão $\\mathbb{F}_4$, $\\mathbb{F}_8$ e $\\mathbb{F}_9$, montando tabelas de potências de um gerador; depois estude a definição de módulo e o teorema de estrutura sobre DIP.",
+          "Assista a uma aula sobre finite fields e outra sobre modules over a PID / structure theorem.",
+          "Resolva os testes deste subtópico aqui no app e anote o principal: ordem $p^n$, $\\mathbb{F}_q^{\\times}$ cíclico, subcorpos $\\iff d\\mid n$, e o teorema de estrutura unificando grupos abelianos e formas canônicas."
+        ],
+        "searchQueries": [
+          "corpo finito ordem p^n existência unicidade x^(p^n)-x",
+          "grupo multiplicativo corpo finito é cíclico demonstração",
+          "subcorpos de F_p^n correspondem a d divide n prova",
+          "construção F_8 polinômio irredutível grau 3 F_2",
+          "teorema de estrutura módulos finitamente gerados DIP",
+          "finite fields structure Frobenius automorphism cyclic"
+        ],
+        "videos": [
+          {
+            "title": "Finite Fields",
+            "channel": "Michael Penn",
+            "note": "Busque a série sobre finite fields: construção via quociente, $\\mathbb{F}_q^{\\times}$ cíclico e Frobenius."
+          },
+          {
+            "title": "Modules and the Structure Theorem over a PID",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas de álgebra (18.705/18.702) sobre módulos e o teorema de estrutura sobre DIP."
+          },
+          {
+            "title": "Corpos finitos e aplicações",
+            "channel": "Matemática Universitária",
+            "note": "Procure aulas em português sobre construção de $\\mathbb{F}_{p^n}$ e o grupo multiplicativo cíclico."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 13.5-13.6 e 10-12 (Finite Fields, Modules)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Finite Fields",
+            "where": "Livro de Lidl & Niederreiter (referência avançada)"
+          },
+          {
+            "title": "Curso de Álgebra (corpos finitos)",
+            "where": "Livro de Abramo Hefez"
+          }
+        ]
+      }
+    }
+  ]
+}

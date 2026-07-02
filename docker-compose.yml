@@ -1,0 +1,56 @@
+services:
+  # App Next.js (standalone), local-first + backend SQLite.
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      # Sobrepoe o DB_PATH da imagem apenas se voce quiser customizar; o
+      # default (/data/matemonstro.db) ja bate com o volume abaixo.
+      DB_PATH: ${DB_PATH:-/data/matemonstro.db}
+    volumes:
+      - matemonstro-data:/data
+    # Host 8016 -> container 3000. E para ca que o Cloudflare Tunnel aponta:
+    # no painel, o Public Hostname usa Service = HTTP, URL = localhost:8016.
+    ports:
+      - "${APP_PORT:-8016}:3000"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # Cloudflare Tunnel: expoe a porta 8016 do host na internet sem abrir porta
+  # no firewall. Roda em network_mode host para que "localhost:8016" (a URL
+  # configurada no painel da Cloudflare) resolva para a porta publicada acima.
+  # Obs.: network_mode host so funciona em Linux (o VPS de producao) — no
+  # macOS/Windows, rode o cloudflared direto no host ou troque para a
+  # alternativa em rede interna comentada abaixo.
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN}
+    network_mode: host
+    depends_on:
+      app:
+        condition: service_healthy
+
+  # Alternativa sem network_mode host (funciona em qualquer SO): remova o
+  # network_mode acima e configure o Public Hostname no painel da Cloudflare
+  # com URL = app:3000 (DNS interno da rede do compose).
+
+volumes:
+  matemonstro-data:

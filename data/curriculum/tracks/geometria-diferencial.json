@@ -1,0 +1,1528 @@
+{
+  "id": "geometria-diferencial",
+  "title": "Geometria Diferencial e Variedades",
+  "phase": 2,
+  "phaseLabel": "Avançado / Pré-Pós",
+  "tagline": "Do triedro de Frenet ao Teorema de Stokes em variedades: aprenda a fazer cálculo em espaços curvos e descubra o que é, de fato, a curvatura.",
+  "summary": "Esta trilha leva você da geometria concreta de curvas e superfícies em $\\mathbb{R}^3$ até a linguagem moderna das variedades diferenciáveis. Estudamos curvatura e torção via Frenet, a primeira e a segunda formas fundamentais, o $Theorema$ $Egregium$ de Gauss, e então abstraímos tudo: variedades suaves, espaço tangente, campos vetoriais e fluxos, formas diferenciais com derivada exterior e o Teorema de Stokes generalizado. Fechamos com uma introdução à geometria Riemanniana — métricas, conexão de Levi-Civita, geodésicas e curvatura. É a ponte definitiva entre o cálculo vetorial e a pós-graduação.",
+  "bigPicture": "Geometria diferencial é a gramática da física e da matemática modernas: a relatividade geral é geometria Riemanniana, a mecânica clássica é geometria simplética, e teoria de gauge é geometria de fibrados. Dentro da matemática pura, esta trilha unifica análise (cálculo em $\\mathbb{R}^n$, função inversa), topologia (variedades, cohomologia de de Rham) e álgebra (álgebras de Lie, tensores). O Teorema de Stokes $\\int_M d\\omega=\\int_{\\partial M}\\omega$ engloba e generaliza Green, Stokes clássico e a divergência num único enunciado, e é a semente da cohomologia. Para o mestrado em matemática pura, geometria diferencial é uma das grandes áreas de qualificação no IMPA, USP, UNICAMP e UFRJ, e o domínio de variedades, formas e curvatura é decisivo para quem mira geometria, topologia, sistemas dinâmicos ou EDP. Em concursos de Instituto Federal o tema aparece com menos frequência, mas curvatura de curvas, áreas de superfícies e o cálculo vetorial (Green/Stokes/divergência) — que aqui ganham sua forma definitiva — são clássicos de prova.",
+  "prereqs": [
+    "analise-real-2",
+    "topologia"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 66,
+  "primaryBooks": [
+    {
+      "title": "Geometria Diferencial de Curvas e Superfícies",
+      "author": "Manfredo P. do Carmo (SBM/IMPA)",
+      "note": "A referência brasileira definitiva (e mundial, na versão em inglês) para curvas, superfícies, formas fundamentais, curvaturas e Theorema Egregium. Escrito por um dos maiores geômetras brasileiros.",
+      "chapters": "caps. 1-4"
+    },
+    {
+      "title": "Differential Geometry of Curves and Surfaces",
+      "author": "Manfredo P. do Carmo",
+      "note": "Versão internacional do clássico; use para a teoria local e global de superfícies e para Gauss-Bonnet.",
+      "chapters": "caps. 1-4"
+    },
+    {
+      "title": "Introduction to Smooth Manifolds",
+      "author": "John M. Lee",
+      "note": "Texto-padrão moderno para variedades, espaço tangente, campos, fluxos, formas diferenciais e Stokes, com rigor completo.",
+      "chapters": "caps. 1-3, 8, 9, 11-16"
+    },
+    {
+      "title": "An Introduction to Manifolds",
+      "author": "Loring W. Tu",
+      "note": "Porta de entrada mais suave para variedades e formas diferenciais; excelente primeira leitura antes do Lee.",
+      "chapters": "caps. 1-6"
+    },
+    {
+      "title": "Calculus on Manifolds",
+      "author": "Michael Spivak",
+      "note": "Tratamento enxuto e elegante de formas diferenciais, integração em cadeias e o Teorema de Stokes em $\\mathbb{R}^n$.",
+      "chapters": "caps. 4-5"
+    },
+    {
+      "title": "Riemannian Geometry",
+      "author": "Manfredo P. do Carmo (IMPA)",
+      "note": "Para a introdução à geometria Riemanniana: métricas, conexão de Levi-Civita, geodésicas e curvatura.",
+      "chapters": "caps. 0-4"
+    },
+    {
+      "title": "Curso de Análise, vol. 2",
+      "author": "Elon Lages Lima (IMPA)",
+      "note": "Tratamento brasileiro rigoroso de formas diferenciais e do Teorema de Stokes em superfícies/variedades de $\\mathbb{R}^n$.",
+      "chapters": "caps. finais sobre formas e Stokes"
+    },
+    {
+      "title": "Variedades Diferenciáveis",
+      "author": "Elon Lages Lima (Publicações Matemáticas, IMPA)",
+      "note": "Introdução brasileira concisa à teoria de variedades, partições da unidade e Stokes.",
+      "chapters": "caps. iniciais"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.950 Differential Geometry",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "MIT OCW 18.952 Theory of Differential Forms",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "MIT OCW 18.965 Geometry of Manifolds",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Videoaulas de Geometria Diferencial do IMPA (canal IMPA / PAPMEM)",
+      "kind": "video",
+      "ref": "YouTube IMPA"
+    },
+    {
+      "title": "Keenan Crane - Discrete Differential Geometry (notas e vídeos)",
+      "kind": "curso",
+      "ref": "CMU"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 2,
+    "mestrado": 3,
+    "note": "Em concursos de Instituto Federal o tema aparece pouco de forma direta, mas conteúdos correlatos são clássicos: curvatura de curvas planas, comprimento de arco, área de superfícies de revolução e o cálculo vetorial (Teoremas de Green, Stokes e da divergência), que aqui recebem a formulação definitiva. Em provas de mestrado, geometria diferencial é uma área de qualificação em programas fortes (IMPA, USP, UNICAMP, UFRJ); quando cobrada, exige Frenet, primeira/segunda formas fundamentais, curvatura Gaussiana e Theorema Egregium, a definição de variedade e espaço tangente, o Teorema do Valor Regular, formas diferenciais com derivada exterior e o Teorema de Stokes. A maior parte dos exames de admissão (tipo ENA) foca análise e álgebra linear, mas dominar esta trilha é pré-requisito para o estudo de pós em geometria/topologia."
+  },
+  "subtopics": [
+    {
+      "id": "geometria-diferencial-01-curvas-frenet",
+      "title": "Curvas em $\\mathbb{R}^3$: Curvatura, Torção e o Triedro de Frenet",
+      "tagline": "Como medir o quanto uma curva entorta e o quanto sai do plano, usando apenas seu vetor velocidade e aceleração.",
+      "objectives": [
+        "Definir curva parametrizada regular e reparametrizar por comprimento de arco.",
+        "Construir o triedro de Frenet $\\{T,N,B\\}$ e provar que é uma base ortonormal positiva.",
+        "Deduzir as equações de Frenet e interpretar curvatura $\\kappa$ e torção $\\tau$ geometricamente.",
+        "Calcular $\\kappa$ e $\\tau$ para parametrizações arbitrárias via produto vetorial e misto.",
+        "Aplicar o Teorema Fundamental das Curvas: $\\kappa$ e $\\tau$ determinam a curva a menos de movimento rígido."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Curva regular",
+          "statement": "Aplicação suave $\\alpha:I\\to\\mathbb{R}^3$ com $\\alpha'(t)\\neq 0$ para todo $t\\in I$. A condição $\\alpha'\\neq 0$ garante uma reta tangente bem definida em cada ponto."
+        },
+        {
+          "term": "Comprimento de arco",
+          "statement": "$s(t)=\\int_{t_0}^{t}|\\alpha'(u)|\\,du$. Reparametrizar por $s$ torna a curva unitária: $|\\alpha'(s)|\\equiv 1$ (curva PCA)."
+        },
+        {
+          "term": "Curvatura",
+          "statement": "Para uma curva PCA, $\\kappa(s)=|\\alpha''(s)|\\ge 0$ mede a taxa de variação da direção tangente. Para parametrização qualquer, $\\kappa=\\dfrac{|\\alpha'\\times\\alpha''|}{|\\alpha'|^3}$."
+        },
+        {
+          "term": "Triedro de Frenet",
+          "statement": "Onde $\\kappa>0$: $T=\\alpha'$ (tangente), $N=\\alpha''/|\\alpha''|$ (normal principal), $B=T\\times N$ (binormal). Base ortonormal positiva móvel ao longo da curva."
+        },
+        {
+          "term": "Torção",
+          "statement": "$\\tau(s)$ definida por $B'(s)=-\\tau(s)\\,N(s)$; mede o quanto a curva foge do plano osculador $\\{T,N\\}$. Fórmula geral: $\\tau=\\dfrac{(\\alpha'\\times\\alpha'')\\cdot\\alpha'''}{|\\alpha'\\times\\alpha''|^2}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Equações de Frenet",
+          "statement": "Para uma curva PCA com $\\kappa>0$: $T'=\\kappa N$, $N'=-\\kappa T+\\tau B$, $B'=-\\tau N$. Em forma matricial, a derivada do triedro é dada por uma matriz antissimétrica.",
+          "whyItMatters": "Codificam toda a geometria local da curva num sistema de EDO lineares cujos coeficientes são exatamente $\\kappa$ e $\\tau$. São o motor de todas as demonstrações sobre curvas."
+        },
+        {
+          "name": "Caracterizações por $\\kappa$ e $\\tau$",
+          "statement": "Uma curva regular satisfaz $\\kappa\\equiv 0$ se e só se é (parte de) uma reta; e, com $\\kappa>0$, satisfaz $\\tau\\equiv 0$ se e só se é uma curva plana (contida num plano).",
+          "whyItMatters": "Traduz propriedades geométricas globais (ser reta, ser plana) em condições analíticas simples sobre dois escalares."
+        },
+        {
+          "name": "Teorema Fundamental da Teoria Local das Curvas",
+          "statement": "Dadas funções suaves $\\kappa(s)>0$ e $\\tau(s)$ em um intervalo $I$, existe uma curva PCA $\\alpha:I\\to\\mathbb{R}^3$ com curvatura $\\kappa$ e torção $\\tau$; ela é única a menos de um movimento rígido (rotação + translação) de $\\mathbb{R}^3$.",
+          "whyItMatters": "Mostra que $(\\kappa,\\tau)$ são um sistema completo de invariantes: contêm toda a informação geométrica da curva. A prova é uma aplicação direta de existência/unicidade de EDO."
+        }
+      ],
+      "summary": "Uma curva regular é uma trajetória suave com velocidade nunca nula; ao reparametrizá-la por comprimento de arco, o vetor tangente $T=\\alpha'$ passa a ser unitário, e sua taxa de variação $|\\alpha''|=\\kappa$ define a curvatura — o quanto a trajetória se desvia de uma reta. Onde $\\kappa>0$ podemos completar $T$ a um referencial ortonormal móvel, o triedro de Frenet $\\{T,N,B\\}$, com $N$ apontando para onde a curva entorta e $B=T\\times N$ perpendicular ao plano osculador. Derivando esse referencial obtemos as equações de Frenet, em que aparece um segundo invariante, a torção $\\tau$: ela mede a velocidade com que a curva escapa do plano osculador, ou seja, o quanto ela é tridimensional.\n\nO ponto alto é o Teorema Fundamental: $\\kappa$ e $\\tau$ formam um sistema completo de invariantes. Conhecidas essas duas funções, a curva fica determinada a menos de posição no espaço — duas curvas com a mesma curvatura e torção são congruentes. A prova reduz tudo a um sistema linear de EDO (as próprias equações de Frenet) e invoca existência/unicidade. Em parametrizações arbitrárias, $\\kappa$ e $\\tau$ se calculam por produtos vetorial e misto de $\\alpha',\\alpha'',\\alpha'''$, o que torna a teoria imediatamente operacional.",
+      "commonPitfalls": [
+        "Tentar definir $N$ e $B$ em pontos onde $\\kappa=0$: aí $N=\\alpha''/|\\alpha''|$ não faz sentido e o triedro de Frenet não existe (a curva pode ter inflexão).",
+        "Confundir a curvatura com a segunda derivada $\\alpha''$ em parametrizações não unitárias: $\\kappa=|\\alpha''|$ só vale para curvas PCA; no caso geral use $\\kappa=|\\alpha'\\times\\alpha''|/|\\alpha'|^3$.",
+        "Achar que torção nula significa curva sem curvatura: $\\tau\\equiv 0$ significa curva PLANA, não retilínea. Reta exige $\\kappa\\equiv 0$.",
+        "Esquecer o sinal e a convenção na equação $B'=-\\tau N$; a torção é um escalar com sinal, ao contrário da curvatura $\\kappa\\ge 0$."
+      ],
+      "worked": "**Hélice circular.** Seja $\\alpha(t)=(a\\cos t,\\,a\\sin t,\\,b\\,t)$ com $a>0$, $b\\neq 0$. Vamos achar $\\kappa$ e $\\tau$.\n\n$\\alpha'(t)=(-a\\sin t,\\,a\\cos t,\\,b)$, logo $|\\alpha'|=\\sqrt{a^2+b^2}=:c$ (velocidade constante). $\\alpha''(t)=(-a\\cos t,\\,-a\\sin t,\\,0)$ e $\\alpha'''(t)=(a\\sin t,\\,-a\\cos t,\\,0)$.\n\nProduto vetorial: $\\alpha'\\times\\alpha''=(ab\\sin t,\\,-ab\\cos t,\\,a^2)$, de norma $|\\alpha'\\times\\alpha''|=a\\sqrt{b^2+a^2}=ac$. Então\n$$\\kappa=\\frac{|\\alpha'\\times\\alpha''|}{|\\alpha'|^3}=\\frac{ac}{c^3}=\\frac{a}{a^2+b^2}.$$\nMisto: $(\\alpha'\\times\\alpha'')\\cdot\\alpha'''=a^2 b$, e $|\\alpha'\\times\\alpha''|^2=a^2c^2$, logo\n$$\\tau=\\frac{a^2 b}{a^2 c^2}=\\frac{b}{a^2+b^2}.$$\nAmbas constantes: a hélice é o exemplo canônico de curvatura e torção constantes. Pelo Teorema Fundamental, toda curva com $\\kappa,\\tau$ constantes (com $\\kappa>0$) é uma hélice circular. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que uma curva regular $\\alpha$ com $\\kappa>0$ é plana se e somente se $\\tau\\equiv 0$.",
+          "hint": "Se $\\tau\\equiv 0$, mostre que $B$ é constante usando $B'=-\\tau N$; depois prove que $\\langle\\alpha(s)-\\alpha(s_0),B\\rangle$ é constante igual a zero, logo a curva vive num plano.",
+          "difficulty": 3,
+          "solution": "**Afirmação.** Uma curva regular $\\alpha$ com $\\kappa>0$ é plana $\\iff \\tau\\equiv 0$.\n\n**($\\Leftarrow$) Se $\\tau\\equiv 0$, então $\\alpha$ é plana.** Pela equação de Frenet $B'=-\\tau N$. Como $\\tau\\equiv 0$, temos $B'\\equiv 0$, logo $B$ é um vetor constante $B_0$. Fixe $s_0$ e defina\n$$f(s)=\\langle \\alpha(s)-\\alpha(s_0),\\,B_0\\rangle.$$\nEntão $f'(s)=\\langle \\alpha'(s),B_0\\rangle=\\langle T(s),B(s)\\rangle=0$, pois $T\\perp B$. Assim $f$ é constante, e $f(s_0)=0$, donde $f\\equiv 0$. Isso diz que $\\alpha(s)$ pertence, para todo $s$, ao plano que passa por $\\alpha(s_0)$ e tem $B_0$ como normal. Logo $\\alpha$ é plana.\n\n**($\\Rightarrow$) Se $\\alpha$ é plana, então $\\tau\\equiv 0$.** Suponha que a imagem esteja no plano $\\{x:\\langle x-p_0,n\\rangle=0\\}$, com $n$ unitário fixo. Derivando $\\langle \\alpha-p_0,n\\rangle=0$ obtemos $\\langle T,n\\rangle=0$; derivando de novo, $\\langle T',n\\rangle=\\langle \\kappa N,n\\rangle=0$, e como $\\kappa>0$, $\\langle N,n\\rangle=0$. Portanto $n\\perp T$ e $n\\perp N$; sendo unitário e ortogonal ao plano $\\{T,N\\}$, temos $n=\\pm B$. Logo $B=\\pm n$ é constante, $B'\\equiv 0$, e de $B'=-\\tau N$ com $N\\neq 0$ segue $\\tau\\equiv 0$. $\\blacksquare$",
+          "steps": [
+            "Traduza cada lado geometricamente: 'plana' significa que a imagem cabe num plano fixo; $\\tau$ aparece só na equação $B'=-\\tau N$.",
+            "Para a volta ($\\tau\\equiv0$): conclua $B'\\equiv0$, logo $B=B_0$ constante.",
+            "Monte $f(s)=\\langle\\alpha(s)-\\alpha(s_0),B_0\\rangle$ e mostre $f'\\equiv0$ usando $T\\perp B$; com $f(s_0)=0$ conclua $f\\equiv0$ (curva no plano).",
+            "Para a ida (plana $\\Rightarrow\\tau\\equiv0$): derive a relação do plano duas vezes para obter $\\langle T,n\\rangle=\\langle N,n\\rangle=0$.",
+            "Conclua $n=\\pm B$, logo $B$ é constante e $\\tau\\equiv0$."
+          ]
+        },
+        {
+          "prompt": "Seja $\\alpha$ uma curva PCA com $\\kappa>0$ cuja imagem está contida numa esfera de centro $O$ e raio $R$. Mostre que $\\kappa\\ge 1/R$ em todo ponto.",
+          "hint": "Derive $|\\alpha(s)-O|^2=R^2$ duas vezes; da segunda derivada extraia $\\langle\\alpha-O,N\\rangle=-1/\\kappa$ e use Cauchy-Schwarz com $|\\alpha-O|=R$.",
+          "difficulty": 4,
+          "solution": "Seja $\\rho(s)=\\alpha(s)-O$, de modo que $|\\rho(s)|^2=\\langle\\rho,\\rho\\rangle=R^2$ para todo $s$ (curva na esfera).\n\n**Primeira derivada.** $\\frac{d}{ds}\\langle\\rho,\\rho\\rangle=2\\langle\\rho,\\rho'\\rangle=2\\langle\\rho,T\\rangle=0$, logo\n$$\\langle\\rho,T\\rangle=0.$$\n\n**Segunda derivada.** Derivando $\\langle\\rho,T\\rangle=0$ e usando $\\rho'=T$ e a equação de Frenet $T'=\\kappa N$:\n$$\\langle T,T\\rangle+\\langle\\rho,T'\\rangle=0\\;\\Longrightarrow\\;1+\\kappa\\langle\\rho,N\\rangle=0\\;\\Longrightarrow\\;\\langle\\rho,N\\rangle=-\\frac{1}{\\kappa}.$$\n(Aqui $\\kappa>0$ garante a divisão.)\n\n**Cauchy–Schwarz.** Como $N$ é unitário,\n$$\\frac{1}{\\kappa}=|\\langle\\rho,N\\rangle|\\le |\\rho|\\,|N|=R\\cdot 1=R.$$\nLogo $\\frac{1}{\\kappa}\\le R$, isto é,\n$$\\boxed{\\;\\kappa\\ge \\frac{1}{R}\\;}$$\nem todo ponto. Geometricamente: numa esfera de raio $R$ nenhuma curva pode ser 'menos curva' que um grande círculo. $\\blacksquare$",
+          "steps": [
+            "Escreva a condição de estar na esfera como $|\\alpha(s)-O|^2=R^2$ e derive uma vez.",
+            "Da primeira derivada obtenha $\\langle\\alpha-O,T\\rangle=0$.",
+            "Derive de novo e use $T'=\\kappa N$ para isolar $\\langle\\alpha-O,N\\rangle=-1/\\kappa$.",
+            "Aplique Cauchy–Schwarz com $|\\alpha-O|=R$ e $|N|=1$ para obter $1/\\kappa\\le R$, ou seja $\\kappa\\ge1/R$."
+          ]
+        },
+        {
+          "prompt": "Calcule curvatura e torção da curva $\\alpha(t)=(t,\\,t^2,\\,t^3)$ (cúbica retorcida) no ponto $t=0$.",
+          "hint": "Compute $\\alpha',\\alpha'',\\alpha'''$ em $t=0$ e aplique diretamente $\\kappa=|\\alpha'\\times\\alpha''|/|\\alpha'|^3$ e $\\tau=(\\alpha'\\times\\alpha'')\\cdot\\alpha'''/|\\alpha'\\times\\alpha''|^2$.",
+          "difficulty": 2,
+          "solution": "Para $\\alpha(t)=(t,t^2,t^3)$ calculamos as derivadas e avaliamos em $t=0$.\n$$\\alpha'(t)=(1,2t,3t^2),\\quad \\alpha''(t)=(0,2,6t),\\quad \\alpha'''(t)=(0,0,6).$$\nEm $t=0$: $\\alpha'(0)=(1,0,0)$, $\\alpha''(0)=(0,2,0)$, $\\alpha'''(0)=(0,0,6)$.\n\n**Produto vetorial.**\n$$\\alpha'(0)\\times\\alpha''(0)=\\begin{vmatrix}\\mathbf{i}&\\mathbf{j}&\\mathbf{k}\\\\1&0&0\\\\0&2&0\\end{vmatrix}=(0,0,2),\\qquad |\\alpha'\\times\\alpha''|=2.$$\nComo $|\\alpha'(0)|=1$,\n$$\\kappa(0)=\\frac{|\\alpha'\\times\\alpha''|}{|\\alpha'|^3}=\\frac{2}{1^3}=2.$$\n\n**Produto misto.**\n$$(\\alpha'\\times\\alpha'')\\cdot\\alpha'''=(0,0,2)\\cdot(0,0,6)=12,\\qquad |\\alpha'\\times\\alpha''|^2=4,$$\n$$\\tau(0)=\\frac{(\\alpha'\\times\\alpha'')\\cdot\\alpha'''}{|\\alpha'\\times\\alpha''|^2}=\\frac{12}{4}=3.$$\n\nPortanto $\\kappa(0)=2$ e $\\tau(0)=3$. $\\blacksquare$",
+          "steps": [
+            "Derive $\\alpha$ três vezes e avalie em $t=0$: $\\alpha'=(1,0,0)$, $\\alpha''=(0,2,0)$, $\\alpha'''=(0,0,6)$.",
+            "Calcule $\\alpha'\\times\\alpha''=(0,0,2)$ e sua norma $2$.",
+            "Aplique $\\kappa=|\\alpha'\\times\\alpha''|/|\\alpha'|^3=2$.",
+            "Calcule o misto $(\\alpha'\\times\\alpha'')\\cdot\\alpha'''=12$ e aplique $\\tau=12/|\\alpha'\\times\\alpha''|^2=3$."
+          ]
+        },
+        {
+          "prompt": "Demonstre a unicidade no Teorema Fundamental: se duas curvas PCA têm a mesma $\\kappa$ e a mesma $\\tau$ num intervalo, elas diferem por um movimento rígido.",
+          "hint": "Após alinhar os triedros de Frenet num ponto por uma isometria, mostre que a função $f(s)=|T_1-T_2|^2+|N_1-N_2|^2+|B_1-B_2|^2$ tem derivada nula usando as equações de Frenet; logo $f\\equiv 0$.",
+          "difficulty": 5,
+          "solution": "Sejam $\\alpha_1,\\alpha_2$ curvas PCA em $I$ com $\\kappa_1=\\kappa_2=\\kappa$ e $\\tau_1=\\tau_2=\\tau$, e triedros $\\{T_i,N_i,B_i\\}$.\n\n**Passo 1: alinhar num ponto.** Fixe $s_0\\in I$. Existe um movimento rígido $M(x)=Ax+b$ (com $A\\in SO(3)$) que leva $\\alpha_2(s_0)$ em $\\alpha_1(s_0)$ e o triedro de $\\alpha_2$ em $s_0$ no de $\\alpha_1$ em $s_0$. Substituindo $\\alpha_2$ por $M\\circ\\alpha_2$ (que tem os mesmos $\\kappa,\\tau$, pois isometrias preservam ambos), podemos supor\n$$T_1(s_0)=T_2(s_0),\\quad N_1(s_0)=N_2(s_0),\\quad B_1(s_0)=B_2(s_0),\\quad \\alpha_1(s_0)=\\alpha_2(s_0).$$\n\n**Passo 2: a função-energia.** Defina\n$$f(s)=|T_1-T_2|^2+|N_1-N_2|^2+|B_1-B_2|^2\\ge 0,\\qquad f(s_0)=0.$$\nDerivando e usando Frenet ($T'=\\kappa N$, $N'=-\\kappa T+\\tau B$, $B'=-\\tau N$, iguais para as duas curvas):\n$$\\tfrac12 f'=\\langle T_1'-T_2',T_1-T_2\\rangle+\\langle N_1'-N_2',N_1-N_2\\rangle+\\langle B_1'-B_2',B_1-B_2\\rangle.$$\nO primeiro termo é $\\kappa\\langle N_1-N_2,T_1-T_2\\rangle$; o segundo é $\\langle-\\kappa(T_1-T_2)+\\tau(B_1-B_2),N_1-N_2\\rangle$; o terceiro é $-\\tau\\langle N_1-N_2,B_1-B_2\\rangle$. Somando, os termos com $\\kappa$ se cancelam entre si e os com $\\tau$ também, dando $f'\\equiv 0$.\n\n**Passo 3: conclusão.** Como $f'\\equiv 0$ e $f(s_0)=0$, temos $f\\equiv 0$, logo $T_1\\equiv T_2$ (e $N_1\\equiv N_2$, $B_1\\equiv B_2$). Então $(\\alpha_1-\\alpha_2)'=T_1-T_2\\equiv 0$, de modo que $\\alpha_1-\\alpha_2$ é constante, e como coincidem em $s_0$, $\\alpha_1\\equiv\\alpha_2$. Assim a curva original $\\alpha_2$ difere de $\\alpha_1$ apenas pelo movimento rígido $M^{-1}$. $\\blacksquare$",
+          "steps": [
+            "Aplique uma isometria a $\\alpha_2$ para casar posição e triedro com $\\alpha_1$ em um ponto $s_0$; lembre que isometrias preservam $\\kappa$ e $\\tau$.",
+            "Defina $f=|T_1-T_2|^2+|N_1-N_2|^2+|B_1-B_2|^2\\ge0$ com $f(s_0)=0$.",
+            "Derive $f$ e substitua as equações de Frenet (idênticas para as duas curvas).",
+            "Verifique que todos os termos com $\\kappa$ se cancelam, e os com $\\tau$ também, logo $f'\\equiv0$.",
+            "De $f\\equiv0$ conclua triedros iguais; integre $(\\alpha_1-\\alpha_2)'=0$ para obter $\\alpha_1\\equiv\\alpha_2$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "O que é uma curva regular?",
+          "back": "$\\alpha:I\\to\\mathbb{R}^3$ suave com $\\alpha'(t)\\neq 0$ para todo $t$ (existe tangente bem definida)."
+        },
+        {
+          "front": "Curvatura de curva PCA",
+          "back": "$\\kappa(s)=|\\alpha''(s)|$, a taxa de variação da direção tangente."
+        },
+        {
+          "front": "Curvatura em parametrização qualquer",
+          "back": "$\\kappa=\\dfrac{|\\alpha'\\times\\alpha''|}{|\\alpha'|^3}$."
+        },
+        {
+          "front": "Triedro de Frenet",
+          "back": "$T=\\alpha'$, $N=\\alpha''/|\\alpha''|$, $B=T\\times N$ (base ortonormal positiva), definido onde $\\kappa>0$."
+        },
+        {
+          "front": "Equações de Frenet",
+          "back": "$T'=\\kappa N$, $N'=-\\kappa T+\\tau B$, $B'=-\\tau N$."
+        },
+        {
+          "front": "$\\kappa\\equiv 0$ significa",
+          "back": "A curva é (parte de) uma reta."
+        },
+        {
+          "front": "$\\tau\\equiv 0$ (com $\\kappa>0$) significa",
+          "back": "A curva é plana (contida num plano)."
+        },
+        {
+          "front": "Teorema Fundamental das Curvas",
+          "back": "$\\kappa(s)>0$ e $\\tau(s)$ determinam a curva a menos de movimento rígido de $\\mathbb{R}^3$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "do Carmo, Geometria Diferencial de Curvas e Superfícies, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.950, aulas sobre curvas",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reaqueça o cálculo vetorial de que tudo depende: produto vetorial, produto misto, derivada de funções vetoriais e norma. Sem fluência aqui as fórmulas de $\\kappa$ e $\\tau$ viram decoreba.",
+          "Leia do Carmo, cap. 1: curva parametrizada regular, comprimento de arco e reparametrização por comprimento de arco (PCA). Refaça à mão a reparametrização de pelo menos dois exemplos.",
+          "Deduza sozinho as equações de Frenet a partir de dois fatos: $\\{T,N,B\\}$ é ortonormal e a matriz que expressa $(T',N',B')$ na base $\\{T,N,B\\}$ é antissimétrica. Só então olhe a dedução do livro.",
+          "Calcule $\\kappa$ e $\\tau$ nos exemplos canônicos (hélice, círculo, cúbica retorcida) usando $\\kappa=\\frac{|\\alpha'\\times\\alpha''|}{|\\alpha'|^3}$ e $\\tau=\\frac{(\\alpha'\\times\\alpha'')\\cdot\\alpha'''}{|\\alpha'\\times\\alpha''|^2}$.",
+          "Estude o Teorema Fundamental das Curvas como uma aplicação direta de existência e unicidade de EDO lineares (Frenet é um sistema linear em $T,N,B$).",
+          "Volte ao app, resolva os testes deste subtópico e anote aqui o essencial: as fórmulas de $\\kappa,\\tau$ e as caracterizações $\\kappa\\equiv0$ (reta) e $\\tau\\equiv0$ (plana)."
+        ],
+        "searchQueries": [
+          "equações de Frenet dedução curva PCA",
+          "curvatura e torção fórmula produto vetorial produto misto",
+          "teorema fundamental das curvas demonstração unicidade EDO",
+          "Frenet-Serret frame derivation curvature torsion",
+          "torsion of a space curve geometric meaning",
+          "reparametrização por comprimento de arco exemplo resolvido"
+        ],
+        "videos": [
+          {
+            "title": "18.950 Differential Geometry — curvas",
+            "channel": "MIT OpenCourseWare",
+            "note": "Assista às aulas iniciais sobre curvas para acompanhar a dedução de Frenet e a interpretação de $\\kappa$ e $\\tau$."
+          },
+          {
+            "title": "Curvature and torsion of space curves",
+            "channel": "Michael Penn",
+            "note": "Busque 'Frenet', 'curvature' e 'torsion' no canal para exemplos calculados com rigor."
+          },
+          {
+            "title": "Geometria diferencial de curvas",
+            "channel": "Dr. Peyam",
+            "note": "Procure vídeos sobre curvatura e torção para intuição e contas curtas."
+          },
+          {
+            "title": "Minicursos de Geometria Diferencial",
+            "channel": "IMPA (canal oficial / PAPMEM)",
+            "note": "Procure minicursos de geometria diferencial de curvas e superfícies em português."
+          }
+        ],
+        "articles": [
+          {
+            "title": "do Carmo — Geometria Diferencial de Curvas e Superfícies, cap. 1",
+            "where": "livro (SBM/IMPA)"
+          },
+          {
+            "title": "MIT OCW 18.950 lecture notes (curvas, Frenet)",
+            "where": "ocw.mit.edu"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-diferencial-02-superficies-primeira-forma",
+      "title": "Superfícies Regulares e a Primeira Forma Fundamental",
+      "tagline": "O que é uma superfície de verdade, e como medir comprimentos, ângulos e áreas sem sair dela.",
+      "objectives": [
+        "Definir superfície regular via parametrizações e provar que o plano tangente independe da parametrização.",
+        "Mostrar que mudanças de parâmetros são difeomorfismos.",
+        "Definir a primeira forma fundamental e seus coeficientes $E,F,G$.",
+        "Calcular comprimento de curvas, ângulos e áreas na superfície a partir de $E,F,G$.",
+        "Reconhecer isometrias e distinguir geometria intrínseca de extrínseca."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Superfície regular",
+          "statement": "$S\\subset\\mathbb{R}^3$ tal que cada $p\\in S$ tem vizinhança $V$ com uma parametrização $\\mathbf{x}:U\\to V\\cap S$ ($U\\subset\\mathbb{R}^2$ aberto) suave, homeomorfismo, com $d\\mathbf{x}_q$ injetiva, isto é, $\\mathbf{x}_u\\times\\mathbf{x}_v\\neq 0$."
+        },
+        {
+          "term": "Plano tangente",
+          "statement": "$T_pS=\\{$velocidades $\\gamma'(0)$ de curvas em $S$ por $p\\}$, subespaço de dimensão $2$ de $\\mathbb{R}^3$ gerado por $\\mathbf{x}_u,\\mathbf{x}_v$. Independe da parametrização."
+        },
+        {
+          "term": "Primeira forma fundamental",
+          "statement": "A forma quadrática $\\mathrm{I}_p(w)=\\langle w,w\\rangle$ em $T_pS$, restrição do produto interno de $\\mathbb{R}^3$. Em coordenadas: $E=\\langle\\mathbf{x}_u,\\mathbf{x}_u\\rangle$, $F=\\langle\\mathbf{x}_u,\\mathbf{x}_v\\rangle$, $G=\\langle\\mathbf{x}_v,\\mathbf{x}_v\\rangle$."
+        },
+        {
+          "term": "Elemento de área",
+          "statement": "$dA=|\\mathbf{x}_u\\times\\mathbf{x}_v|\\,du\\,dv=\\sqrt{EG-F^2}\\,du\\,dv$. A área de uma região $R=\\mathbf{x}(Q)$ é $\\iint_Q\\sqrt{EG-F^2}\\,du\\,dv$."
+        },
+        {
+          "term": "Isometria",
+          "statement": "Difeomorfismo $\\varphi:S\\to\\bar S$ que preserva a primeira forma fundamental: $\\mathrm{I}_p(w)=\\mathrm{I}_{\\varphi(p)}(d\\varphi_p w)$. Preserva comprimentos, ângulos e áreas."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Mudança de parâmetros é difeomorfismo",
+          "statement": "Se $\\mathbf{x}:U\\to S$ e $\\mathbf{y}:V\\to S$ são parametrizações com $W=\\mathbf{x}(U)\\cap\\mathbf{y}(V)\\neq\\varnothing$, então $\\mathbf{y}^{-1}\\circ\\mathbf{x}:\\mathbf{x}^{-1}(W)\\to\\mathbf{y}^{-1}(W)$ é um difeomorfismo suave.",
+          "whyItMatters": "É o que garante que noções definidas em coordenadas (suavidade de funções, plano tangente, integrais) não dependem da carta escolhida — fundamento de toda a teoria e protótipo da definição de variedade."
+        },
+        {
+          "name": "Invariância intrínseca da primeira forma",
+          "statement": "Comprimento de curvas $L(\\gamma)=\\int\\sqrt{\\mathrm{I}(\\gamma')}\\,dt$, ângulos entre curvas e áreas de regiões dependem apenas da primeira forma fundamental $E,F,G$.",
+          "whyItMatters": "Define a geometria INTRÍNSECA da superfície — tudo que um habitante bidimensional da superfície poderia medir sem perceber o espaço ambiente. Separar intrínseco de extrínseco é a grande ideia da geometria de superfícies."
+        }
+      ],
+      "summary": "Uma superfície regular formaliza a ideia de objeto bidimensional suave em $\\mathbb{R}^3$: localmente é a imagem de um pedaço do plano por uma parametrização $\\mathbf{x}(u,v)$ que é suave, injetiva, com inversa contínua e com $\\mathbf{x}_u\\times\\mathbf{x}_v\\neq 0$ (regularidade). Essa última condição garante um plano tangente $T_pS$ de dimensão $2$, gerado por $\\mathbf{x}_u$ e $\\mathbf{x}_v$. O fato técnico que faz a teoria funcionar é que a mudança de coordenadas entre duas parametrizações é um difeomorfismo — assim qualquer construção feita em coordenadas que seja invariante por difeomorfismos está bem definida na superfície. Esse é exatamente o gérmen da definição abstrata de variedade que veremos adiante.\n\nA primeira forma fundamental é simplesmente o produto interno de $\\mathbb{R}^3$ restrito a cada plano tangente, codificado pelos três coeficientes $E,F,G$. Apesar da simplicidade, ela contém TODA a geometria mensurável de dentro da superfície: comprimentos de curvas, ângulos entre direções e áreas de regiões se calculam só com $E,F,G$. Quem só conhece a primeira forma já pode fazer a geometria intrínseca — e o exemplo dramático é o plano e o cilindro, que têm a mesma primeira forma ($E=G=1,F=0$) e são localmente isométricos, embora pareçam muito diferentes vistos de fora. Distinguir o que é intrínseco (depende só de $E,F,G$) do que é extrínseco (depende de como a superfície senta no espaço) organiza todo o capítulo seguinte.",
+      "commonPitfalls": [
+        "Esquecer a condição de regularidade $\\mathbf{x}_u\\times\\mathbf{x}_v\\neq 0$: sem ela a 'superfície' pode ter bicos ou autointerseções e o plano tangente não existe.",
+        "Calcular área com $\\iint du\\,dv$ em vez de $\\iint\\sqrt{EG-F^2}\\,du\\,dv$: o jacobiano $\\sqrt{EG-F^2}$ é indispensável.",
+        "Confundir a parametrização $\\mathbf{x}$ (de $\\mathbb{R}^2$ para $S$) com sua inversa (a carta, de $S$ para $\\mathbb{R}^2$); a definição exige que $\\mathbf{x}$ seja homeomorfismo sobre a imagem.",
+        "Achar que duas superfícies com a mesma primeira forma são iguais no espaço: elas são apenas localmente isométricas (mesma geometria intrínseca), como plano e cilindro."
+      ],
+      "worked": "**Esfera de raio $R$ — coeficientes $E,F,G$.** Use a parametrização por colatitude e longitude\n$$\\mathbf{x}(\\theta,\\varphi)=(R\\sin\\theta\\cos\\varphi,\\;R\\sin\\theta\\sin\\varphi,\\;R\\cos\\theta),\\quad \\theta\\in(0,\\pi),\\;\\varphi\\in(0,2\\pi).$$\nDerivadas parciais:\n$$\\mathbf{x}_\\theta=(R\\cos\\theta\\cos\\varphi,\\,R\\cos\\theta\\sin\\varphi,\\,-R\\sin\\theta),\\qquad \\mathbf{x}_\\varphi=(-R\\sin\\theta\\sin\\varphi,\\,R\\sin\\theta\\cos\\varphi,\\,0).$$\nEntão\n$$E=\\langle\\mathbf{x}_\\theta,\\mathbf{x}_\\theta\\rangle=R^2,\\qquad F=\\langle\\mathbf{x}_\\theta,\\mathbf{x}_\\varphi\\rangle=0,\\qquad G=\\langle\\mathbf{x}_\\varphi,\\mathbf{x}_\\varphi\\rangle=R^2\\sin^2\\theta.$$\nLogo $\\sqrt{EG-F^2}=R^2\\sin\\theta$, e a área da esfera é\n$$\\int_0^{2\\pi}\\!\\!\\int_0^{\\pi}R^2\\sin\\theta\\,d\\theta\\,d\\varphi=R^2\\cdot 2\\pi\\cdot 2=4\\pi R^2,$$\nrecuperando a fórmula clássica diretamente da primeira forma fundamental. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre que o cilindro $\\mathbf{x}(u,v)=(\\cos u,\\sin u,v)$ e o plano têm a mesma primeira forma fundamental ($E=G=1,F=0$) e conclua que são localmente isométricos.",
+          "hint": "Calcule $E,F,G$ para o cilindro; compare com a parametrização identidade do plano $\\mathbf{y}(u,v)=(u,v)$. Como as primeiras formas coincidem, a aplicação que iguala parâmetros é isometria local.",
+          "difficulty": 2,
+          "solution": "**Cilindro.** $\\mathbf{x}(u,v)=(\\cos u,\\sin u,v)$. Então\n$$\\mathbf{x}_u=(-\\sin u,\\cos u,0),\\qquad \\mathbf{x}_v=(0,0,1).$$\nLogo\n$$E=\\langle\\mathbf{x}_u,\\mathbf{x}_u\\rangle=\\sin^2u+\\cos^2u=1,\\quad F=\\langle\\mathbf{x}_u,\\mathbf{x}_v\\rangle=0,\\quad G=\\langle\\mathbf{x}_v,\\mathbf{x}_v\\rangle=1.$$\n\n**Plano.** Parametrização identidade $\\mathbf{y}(u,v)=(u,v,0)$: $\\mathbf{y}_u=(1,0,0)$, $\\mathbf{y}_v=(0,1,0)$, logo $\\bar E=1,\\bar F=0,\\bar G=1$.\n\n**Conclusão.** As primeiras formas coincidem: $E=\\bar E$, $F=\\bar F$, $G=\\bar G$. Considere a aplicação $\\varphi=\\mathbf{x}\\circ\\mathbf{y}^{-1}$ (numa faixa $0<u<2\\pi$ onde $\\mathbf{x}$ é injetiva), que iguala os parâmetros. Para qualquer curva $\\gamma$ no plano, seu comprimento é\n$$L(\\gamma)=\\int\\sqrt{E\\,\\dot u^2+2F\\,\\dot u\\dot v+G\\,\\dot v^2}\\,dt,$$\ne, como $E,F,G$ são idênticos nas duas superfícies, $L(\\gamma)=L(\\varphi\\circ\\gamma)$. Assim $\\varphi$ preserva comprimentos, ângulos e áreas: é uma **isometria local**. (Ela não é global: o cilindro é topologicamente distinto do plano.) $\\blacksquare$",
+          "steps": [
+            "Calcule $\\mathbf{x}_u,\\mathbf{x}_v$ do cilindro e obtenha $E=1,F=0,G=1$.",
+            "Faça o mesmo para o plano com a parametrização identidade: $E=1,F=0,G=1$.",
+            "Observe que as primeiras formas são idênticas.",
+            "Como comprimentos, ângulos e áreas se calculam só com $E,F,G$, a aplicação que iguala parâmetros preserva tudo: é isometria local."
+          ]
+        },
+        {
+          "prompt": "Seja $f:U\\to\\mathbb{R}$ suave. Mostre que o gráfico $\\mathbf{x}(u,v)=(u,v,f(u,v))$ é superfície regular e calcule $E,F,G$.",
+          "hint": "Verifique $\\mathbf{x}_u\\times\\mathbf{x}_v\\neq 0$; obtenha $E=1+f_u^2$, $F=f_uf_v$, $G=1+f_v^2$, donde $EG-F^2=1+f_u^2+f_v^2$.",
+          "difficulty": 2,
+          "solution": "Seja $\\mathbf{x}(u,v)=(u,v,f(u,v))$ com $f$ suave em $U$.\n\n**Regularidade.** $\\mathbf{x}_u=(1,0,f_u)$, $\\mathbf{x}_v=(0,1,f_v)$, e\n$$\\mathbf{x}_u\\times\\mathbf{x}_v=(-f_u,-f_v,1),$$\ncuja terceira componente é $1\\neq 0$; logo $\\mathbf{x}_u\\times\\mathbf{x}_v\\neq 0$ em todo ponto. Além disso $\\mathbf{x}$ é suave, injetiva (a projeção nas duas primeiras coordenadas é a identidade) e homeomorfismo sobre a imagem (sua inversa é a projeção $(x,y,z)\\mapsto(x,y)$, contínua). Portanto o gráfico é **superfície regular**.\n\n**Coeficientes.**\n$$E=\\langle\\mathbf{x}_u,\\mathbf{x}_u\\rangle=1+f_u^2,\\quad F=\\langle\\mathbf{x}_u,\\mathbf{x}_v\\rangle=f_uf_v,\\quad G=\\langle\\mathbf{x}_v,\\mathbf{x}_v\\rangle=1+f_v^2.$$\nDaí\n$$EG-F^2=(1+f_u^2)(1+f_v^2)-f_u^2f_v^2=1+f_u^2+f_v^2=|\\mathbf{x}_u\\times\\mathbf{x}_v|^2,$$\ncomo esperado. $\\blacksquare$",
+          "steps": [
+            "Escreva $\\mathbf{x}_u=(1,0,f_u)$ e $\\mathbf{x}_v=(0,1,f_v)$.",
+            "Calcule $\\mathbf{x}_u\\times\\mathbf{x}_v=(-f_u,-f_v,1)$; como a última entrada é $1$, é sempre não nulo — regularidade.",
+            "Justifique que $\\mathbf{x}$ é homeomorfismo sobre a imagem (inversa = projeção), completando a definição de superfície regular.",
+            "Compute $E=1+f_u^2$, $F=f_uf_v$, $G=1+f_v^2$ e verifique $EG-F^2=1+f_u^2+f_v^2$."
+          ]
+        },
+        {
+          "prompt": "Para a superfície de revolução $\\mathbf{x}(u,v)=(\\phi(v)\\cos u,\\phi(v)\\sin u,\\psi(v))$ com $\\phi>0$, calcule $E,F,G$ e a fórmula da área.",
+          "hint": "$E=\\phi(v)^2$, $F=0$, $G=\\phi'(v)^2+\\psi'(v)^2$. A área é $\\iint \\phi\\sqrt{\\phi'^2+\\psi'^2}\\,du\\,dv$.",
+          "difficulty": 3,
+          "solution": "Superfície de revolução $\\mathbf{x}(u,v)=(\\phi(v)\\cos u,\\ \\phi(v)\\sin u,\\ \\psi(v))$, com $\\phi>0$ (o eixo é o dos $z$; $u$ é o ângulo, $v$ o parâmetro do perfil).\n\n**Derivadas parciais.**\n$$\\mathbf{x}_u=(-\\phi\\sin u,\\ \\phi\\cos u,\\ 0),\\qquad \\mathbf{x}_v=(\\phi'\\cos u,\\ \\phi'\\sin u,\\ \\psi').$$\n\n**Coeficientes.**\n$$E=\\langle\\mathbf{x}_u,\\mathbf{x}_u\\rangle=\\phi^2(\\sin^2u+\\cos^2u)=\\phi(v)^2,$$\n$$F=\\langle\\mathbf{x}_u,\\mathbf{x}_v\\rangle=-\\phi\\phi'\\sin u\\cos u+\\phi\\phi'\\cos u\\sin u+0=0,$$\n$$G=\\langle\\mathbf{x}_v,\\mathbf{x}_v\\rangle=\\phi'^2\\cos^2u+\\phi'^2\\sin^2u+\\psi'^2=\\phi'(v)^2+\\psi'(v)^2.$$\n\n**Área.** Como $F=0$,\n$$\\sqrt{EG-F^2}=\\sqrt{\\phi^2(\\phi'^2+\\psi'^2)}=\\phi\\sqrt{\\phi'^2+\\psi'^2}\\quad(\\phi>0),$$\ne a área de uma região $\\mathbf{x}(Q)$ é\n$$A=\\iint_Q \\phi(v)\\sqrt{\\phi'(v)^2+\\psi'(v)^2}\\;du\\,dv.$$\nSe $v$ percorre $[a,b]$ e $u$ percorre $[0,2\\pi]$, a integral em $u$ dá $2\\pi$ e recuperamos o Teorema de Pappus: $A=2\\pi\\int_a^b \\phi\\sqrt{\\phi'^2+\\psi'^2}\\,dv$. $\\blacksquare$",
+          "steps": [
+            "Derive $\\mathbf{x}$ em $u$ e em $v$, cuidando dos fatores $\\phi$ e das derivadas $\\phi',\\psi'$.",
+            "Calcule $E=\\phi^2$ diretamente do meridiano circular.",
+            "Verifique que $F=0$: os termos em $\\sin u\\cos u$ se cancelam (as curvas coordenadas são ortogonais).",
+            "Calcule $G=\\phi'^2+\\psi'^2$ (elemento de arco do perfil).",
+            "Monte $\\sqrt{EG-F^2}=\\phi\\sqrt{\\phi'^2+\\psi'^2}$ e escreva a área; note a recuperação do Teorema de Pappus."
+          ]
+        },
+        {
+          "prompt": "Prove que a área de uma superfície regular independe da parametrização escolhida.",
+          "hint": "Use que a mudança de parâmetros $h=\\mathbf{y}^{-1}\\circ\\mathbf{x}$ é difeomorfismo e a fórmula de mudança de variáveis: o fator $\\sqrt{EG-F^2}$ se transforma exatamente pelo módulo do jacobiano $|\\det Dh|$.",
+          "difficulty": 4,
+          "solution": "Sejam $\\mathbf{x}:U\\to S$ e $\\mathbf{y}:V\\to S$ duas parametrizações de uma mesma região $R\\subset S$, e $h=\\mathbf{y}^{-1}\\circ\\mathbf{x}:U\\to V$ a mudança de parâmetros, que é um **difeomorfismo** suave. Escreva $h(u,v)=(\\tilde u,\\tilde v)$, de modo que $\\mathbf{x}=\\mathbf{y}\\circ h$.\n\n**Como o vetor normal se transforma.** Pela regra da cadeia,\n$$\\mathbf{x}_u=\\mathbf{y}_{\\tilde u}\\,\\tilde u_u+\\mathbf{y}_{\\tilde v}\\,\\tilde v_u,\\qquad \\mathbf{x}_v=\\mathbf{y}_{\\tilde u}\\,\\tilde u_v+\\mathbf{y}_{\\tilde v}\\,\\tilde v_v.$$\nO produto vetorial é bilinear e alternado, então\n$$\\mathbf{x}_u\\times\\mathbf{x}_v=(\\tilde u_u\\tilde v_v-\\tilde u_v\\tilde v_u)\\,(\\mathbf{y}_{\\tilde u}\\times\\mathbf{y}_{\\tilde v})=\\det(Dh)\\,(\\mathbf{y}_{\\tilde u}\\times\\mathbf{y}_{\\tilde v}).$$\nTomando normas,\n$$|\\mathbf{x}_u\\times\\mathbf{x}_v|=|\\det Dh|\\;|\\mathbf{y}_{\\tilde u}\\times\\mathbf{y}_{\\tilde v}|\\circ h.$$\n\n**Mudança de variáveis.** A área calculada em $\\mathbf{x}$ é\n$$A_{\\mathbf{x}}=\\iint_{U}|\\mathbf{x}_u\\times\\mathbf{x}_v|\\,du\\,dv=\\iint_{U}\\big(|\\mathbf{y}_{\\tilde u}\\times\\mathbf{y}_{\\tilde v}|\\circ h\\big)\\,|\\det Dh|\\,du\\,dv.$$\nPela fórmula de mudança de variáveis em $\\mathbb{R}^2$ (com $h:U\\to V$ difeomorfismo), esta integral é exatamente\n$$\\iint_{V}|\\mathbf{y}_{\\tilde u}\\times\\mathbf{y}_{\\tilde v}|\\,d\\tilde u\\,d\\tilde v=A_{\\mathbf{y}}.$$\nLogo $A_{\\mathbf{x}}=A_{\\mathbf{y}}$: a área independe da parametrização. $\\blacksquare$",
+          "steps": [
+            "Escreva $\\mathbf{x}=\\mathbf{y}\\circ h$ com $h=\\mathbf{y}^{-1}\\circ\\mathbf{x}$ difeomorfismo, e aplique a regra da cadeia a $\\mathbf{x}_u,\\mathbf{x}_v$.",
+            "Use bilinearidade e antissimetria do produto vetorial para obter $\\mathbf{x}_u\\times\\mathbf{x}_v=\\det(Dh)\\,(\\mathbf{y}_{\\tilde u}\\times\\mathbf{y}_{\\tilde v})$.",
+            "Tome normas: $|\\mathbf{x}_u\\times\\mathbf{x}_v|=|\\det Dh|\\,|\\mathbf{y}_{\\tilde u}\\times\\mathbf{y}_{\\tilde v}|\\circ h$.",
+            "Substitua na integral de área e aplique a fórmula de mudança de variáveis para concluir $A_{\\mathbf{x}}=A_{\\mathbf{y}}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de superfície regular (condição-chave)",
+          "back": "Localmente imagem de $\\mathbf{x}:U\\to\\mathbb{R}^3$ suave, homeomorfismo, com $\\mathbf{x}_u\\times\\mathbf{x}_v\\neq 0$ (regularidade)."
+        },
+        {
+          "front": "O que gera o plano tangente $T_pS$?",
+          "back": "Os vetores $\\mathbf{x}_u$ e $\\mathbf{x}_v$; é subespaço de dimensão 2 de $\\mathbb{R}^3$."
+        },
+        {
+          "front": "Coeficientes da primeira forma fundamental",
+          "back": "$E=\\langle\\mathbf{x}_u,\\mathbf{x}_u\\rangle$, $F=\\langle\\mathbf{x}_u,\\mathbf{x}_v\\rangle$, $G=\\langle\\mathbf{x}_v,\\mathbf{x}_v\\rangle$."
+        },
+        {
+          "front": "Elemento de área",
+          "back": "$dA=\\sqrt{EG-F^2}\\,du\\,dv=|\\mathbf{x}_u\\times\\mathbf{x}_v|\\,du\\,dv$."
+        },
+        {
+          "front": "O que a primeira forma fundamental determina?",
+          "back": "Toda a geometria intrínseca: comprimentos, ângulos e áreas na superfície."
+        },
+        {
+          "front": "O que é uma isometria de superfícies?",
+          "back": "Difeomorfismo que preserva a primeira forma fundamental (logo comprimentos, ângulos e áreas)."
+        },
+        {
+          "front": "Plano e cilindro: relação geométrica",
+          "back": "Têm a mesma primeira forma ($E=G=1,F=0$); são localmente isométricos."
+        },
+        {
+          "front": "Mudança de parâmetros entre cartas",
+          "back": "É sempre um difeomorfismo suave — fundamento da boa definição de variedade."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "do Carmo, Geometria Diferencial de Curvas e Superfícies, cap. 2",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.950, aulas sobre superfícies",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise o Teorema da Função Inversa e da Função Implícita em $\\mathbb{R}^n$; eles sustentam a boa definição de superfície regular e de mudança de coordenadas.",
+          "Leia do Carmo, cap. 2, focando na definição de superfície regular (parametrização suave, homeomorfismo, $\\mathbf{x}_u\\times\\mathbf{x}_v\\neq0$) e na prova de que mudanças de parâmetros são difeomorfismos.",
+          "Calcule $E,F,G$ para os exemplos-modelo: plano, cilindro, esfera, gráfico $z=f(x,y)$ e superfícies de revolução. Guarde essas tabelas.",
+          "Trabalhe comprimento de curva, ângulo entre curvas e área usando apenas $E,F,G$; internalize que isso é a geometria intrínseca.",
+          "Compare plano e cilindro (mesma primeira forma) para separar intrínseco de extrínseco — a semente do Theorema Egregium do próximo subtópico.",
+          "Volte ao app, resolva os testes e anote aqui as fórmulas de $E,F,G$, o elemento de área $\\sqrt{EG-F^2}\\,du\\,dv$ e a ideia de isometria local."
+        ],
+        "searchQueries": [
+          "superfície regular parametrização definição do Carmo",
+          "primeira forma fundamental E F G exemplos",
+          "elemento de área superfície sqrt(EG-F^2)",
+          "first fundamental form isometry plane cylinder",
+          "mudança de parâmetros superfície é difeomorfismo prova",
+          "área superfície de revolução primeira forma fundamental"
+        ],
+        "videos": [
+          {
+            "title": "18.950 Differential Geometry — superfícies",
+            "channel": "MIT OpenCourseWare",
+            "note": "Acompanhe as aulas sobre superfícies regulares, plano tangente e primeira forma fundamental."
+          },
+          {
+            "title": "First fundamental form",
+            "channel": "Michael Penn",
+            "note": "Busque 'first fundamental form' para o cálculo de $E,F,G$ e comprimentos/áreas."
+          },
+          {
+            "title": "Superfícies e cálculo em várias variáveis",
+            "channel": "IMPA (canal oficial / PAPMEM)",
+            "note": "Procure aulas de geometria diferencial de superfícies em português."
+          }
+        ],
+        "articles": [
+          {
+            "title": "do Carmo — Geometria Diferencial de Curvas e Superfícies, cap. 2",
+            "where": "livro (SBM/IMPA)"
+          },
+          {
+            "title": "MIT OCW 18.950 lecture notes (superfícies, primeira forma)",
+            "where": "ocw.mit.edu"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-diferencial-03-segunda-forma-curvaturas",
+      "title": "Segunda Forma Fundamental, Curvaturas e o Theorema Egregium",
+      "tagline": "A aplicação de Gauss, a curvatura Gaussiana e a descoberta revolucionária de que a curvatura é intrínseca.",
+      "objectives": [
+        "Definir a aplicação de Gauss e provar que sua diferencial $dN_p$ é autoadjunta.",
+        "Construir a segunda forma fundamental e os coeficientes $e,f,g$.",
+        "Definir curvaturas normais, principais, Gaussiana $K$ e média $H$, e classificar pontos.",
+        "Calcular $K$ e $H$ via $\\dfrac{eg-f^2}{EG-F^2}$ e $\\dfrac{eG-2fF+gE}{2(EG-F^2)}$.",
+        "Enunciar e apreciar o Theorema Egregium: $K$ é intrínseca, invariante por isometrias."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Aplicação de Gauss",
+          "statement": "$N:S\\to S^2$, $N=\\dfrac{\\mathbf{x}_u\\times\\mathbf{x}_v}{|\\mathbf{x}_u\\times\\mathbf{x}_v|}$, associa a cada ponto o vetor normal unitário. Numa superfície orientável é globalmente definida e suave."
+        },
+        {
+          "term": "Operador forma (Weingarten)",
+          "statement": "$S_p=-dN_p:T_pS\\to T_pS$, endomorfismo autoadjunto. A segunda forma fundamental é $\\mathrm{II}_p(w)=\\langle S_p w,w\\rangle=-\\langle dN_p(w),w\\rangle$."
+        },
+        {
+          "term": "Coeficientes $e,f,g$",
+          "statement": "$e=\\langle N,\\mathbf{x}_{uu}\\rangle$, $f=\\langle N,\\mathbf{x}_{uv}\\rangle$, $g=\\langle N,\\mathbf{x}_{vv}\\rangle$; equivalem a $-\\langle N_u,\\mathbf{x}_u\\rangle$ etc. Descrevem como a superfície se curva no espaço."
+        },
+        {
+          "term": "Curvaturas principais",
+          "statement": "Autovalores $k_1,k_2$ de $S_p=-dN_p$; são os valores extremos da curvatura normal $k_n(w)=\\mathrm{II}_p(w)/\\mathrm{I}_p(w)$. As direções correspondentes são as direções principais."
+        },
+        {
+          "term": "Curvatura Gaussiana e média",
+          "statement": "$K=k_1k_2=\\det(S_p)=\\dfrac{eg-f^2}{EG-F^2}$ e $H=\\tfrac12(k_1+k_2)=\\dfrac{eG-2fF+gE}{2(EG-F^2)}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Autoadjunção de $dN_p$",
+          "statement": "A diferencial da aplicação de Gauss $dN_p:T_pS\\to T_pS$ é um operador linear autoadjunto: $\\langle dN_p(w_1),w_2\\rangle=\\langle w_1,dN_p(w_2)\\rangle$.",
+          "whyItMatters": "Garante que $S_p=-dN_p$ é diagonalizável com autovalores reais (curvaturas principais) e autovetores ortogonais (direções principais) — o teorema espectral é a base de toda a teoria de curvatura."
+        },
+        {
+          "name": "Classificação de pontos pela curvatura Gaussiana",
+          "statement": "Em $p$: se $K(p)>0$ o ponto é elíptico (a superfície fica de um lado do plano tangente, como na esfera); se $K(p)<0$ é hiperbólico (formato de sela); se $K(p)=0$ com $dN_p\\neq 0$ é parabólico; se $dN_p=0$ é planar.",
+          "whyItMatters": "Traduz o sinal de um único escalar em uma descrição geométrica qualitativa do formato local da superfície."
+        },
+        {
+          "name": "Theorema Egregium (Gauss)",
+          "statement": "A curvatura Gaussiana $K$ pode ser expressa apenas em termos dos coeficientes $E,F,G$ da primeira forma fundamental e de suas derivadas (fórmula de Gauss). Em particular, $K$ é invariante por isometrias locais.",
+          "whyItMatters": "Resultado 'notável' (egregium): embora $K=k_1k_2$ seja definida via a segunda forma (extrínseca), seu valor é INTRÍNSECO. Um habitante da superfície detecta a curvatura sem sair dela — por isso não há mapa plano fiel da Terra, e por isso curvatura é o conceito central da geometria Riemanniana."
+        }
+      ],
+      "summary": "A primeira forma fundamental mede a geometria de dentro; a segunda forma fundamental mede como a superfície se curva no espaço ambiente. A ferramenta é a aplicação de Gauss $N:S\\to S^2$, que a cada ponto associa o normal unitário; sua diferencial $dN_p$ informa como o normal gira quando andamos pela superfície. O fato espectral central é que $dN_p$ é autoadjunto, logo o operador forma $S_p=-dN_p$ é diagonalizável: seus autovalores são as curvaturas principais $k_1,k_2$ (curvaturas normais máxima e mínima) e seus autovetores são as direções principais, ortogonais entre si. A partir daí, a curvatura Gaussiana $K=k_1k_2$ e a curvatura média $H=\\tfrac12(k_1+k_2)$ resumem a geometria extrínseca local, e o sinal de $K$ classifica o ponto como elíptico, hiperbólico, parabólico ou planar.\n\nO clímax é o Theorema Egregium de Gauss. Pela definição, $K$ envolve a segunda forma (e portanto o modo como $S$ está mergulhada em $\\mathbb{R}^3$); seria de esperar que dependesse do mergulho. Gauss provou o contrário: $K$ se escreve só com $E,F,G$ e suas derivadas, sendo portanto invariante por isometrias. A consequência prática é célebre: como a esfera tem $K=1/R^2>0$ e o plano tem $K=0$, não existe isometria entre pedaços de esfera e de plano — nenhum mapa-múndi preserva simultaneamente todas as distâncias. Conceitualmente, o Egregium liberta a curvatura do espaço ambiente e abre caminho para definir curvatura em variedades abstratas, sem qualquer mergulho — a essência da geometria Riemanniana.",
+      "commonPitfalls": [
+        "Trocar o sinal do operador forma: $S_p=-dN_p$. Esquecer o sinal inverte a classificação elíptico/hiperbólico e o sinal de $H$.",
+        "Confundir curvatura Gaussiana $K=k_1k_2$ com curvatura média $H=(k_1+k_2)/2$: $K$ é intrínseca (Egregium), $H$ NÃO é (depende do mergulho).",
+        "Achar que $K=0$ implica superfície plana: o cilindro tem $K\\equiv 0$ (uma curvatura principal é nula) mas não é um plano; é apenas localmente isométrico a ele.",
+        "Calcular $e,f,g$ esquecendo de normalizar $N$, ou usando o normal com orientação oposta, alterando os sinais."
+      ],
+      "worked": "**Curvaturas da esfera de raio $R$.** Já temos (subtópico anterior) $E=R^2$, $F=0$, $G=R^2\\sin^2\\theta$ para $\\mathbf{x}(\\theta,\\varphi)$. O normal unitário (apontando para dentro) é $N=-\\tfrac1R\\,\\mathbf{x}$. As segundas derivadas dão\n$$e=\\langle N,\\mathbf{x}_{\\theta\\theta}\\rangle=R,\\qquad f=\\langle N,\\mathbf{x}_{\\theta\\varphi}\\rangle=0,\\qquad g=\\langle N,\\mathbf{x}_{\\varphi\\varphi}\\rangle=R\\sin^2\\theta.$$\nLogo\n$$K=\\frac{eg-f^2}{EG-F^2}=\\frac{R\\cdot R\\sin^2\\theta-0}{R^2\\cdot R^2\\sin^2\\theta}=\\frac{1}{R^2},$$\nconstante e positiva — a esfera é elíptica em todo ponto. A curvatura média é\n$$H=\\frac{eG-2fF+gE}{2(EG-F^2)}=\\frac{R\\cdot R^2\\sin^2\\theta+R\\sin^2\\theta\\cdot R^2}{2R^4\\sin^2\\theta}=\\frac{1}{R}.$$\nAs curvaturas principais são ambas $1/R$ (todo ponto é umbílico). Como $K=1/R^2\\neq 0$ enquanto o plano tem $K=0$, o Theorema Egregium proíbe qualquer isometria local entre esfera e plano. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que a diferencial da aplicação de Gauss $dN_p$ é autoadjunta. Conclua que existem direções principais ortogonais.",
+          "hint": "Basta verificar $\\langle dN(\\mathbf{x}_u),\\mathbf{x}_v\\rangle=\\langle\\mathbf{x}_u,dN(\\mathbf{x}_v)\\rangle$ na base $\\{\\mathbf{x}_u,\\mathbf{x}_v\\}$; ambos os lados igualam $-f$. Depois aplique o teorema espectral.",
+          "difficulty": 3,
+          "solution": "Queremos $\\langle dN_p(w_1),w_2\\rangle=\\langle w_1,dN_p(w_2)\\rangle$. Por bilinearidade, basta verificar na base $\\{\\mathbf{x}_u,\\mathbf{x}_v\\}$ de $T_pS$, isto é, mostrar\n$$\\langle dN(\\mathbf{x}_u),\\mathbf{x}_v\\rangle=\\langle \\mathbf{x}_u,dN(\\mathbf{x}_v)\\rangle.$$\nComo $N$ é o normal, $\\langle N,\\mathbf{x}_u\\rangle=0$ e $\\langle N,\\mathbf{x}_v\\rangle=0$ identicamente. Derivando $\\langle N,\\mathbf{x}_u\\rangle=0$ em relação a $v$ e $\\langle N,\\mathbf{x}_v\\rangle=0$ em relação a $u$:\n$$\\langle N_v,\\mathbf{x}_u\\rangle+\\langle N,\\mathbf{x}_{uv}\\rangle=0\\ \\Rightarrow\\ \\langle N_v,\\mathbf{x}_u\\rangle=-\\langle N,\\mathbf{x}_{uv}\\rangle=-f,$$\n$$\\langle N_u,\\mathbf{x}_v\\rangle+\\langle N,\\mathbf{x}_{vu}\\rangle=0\\ \\Rightarrow\\ \\langle N_u,\\mathbf{x}_v\\rangle=-\\langle N,\\mathbf{x}_{vu}\\rangle=-f.$$\nComo $\\mathbf{x}_{uv}=\\mathbf{x}_{vu}$ (Schwarz), ambos valem $-f$. Sendo $dN(\\mathbf{x}_u)=N_u$ e $dN(\\mathbf{x}_v)=N_v$, obtemos\n$$\\langle dN(\\mathbf{x}_u),\\mathbf{x}_v\\rangle=\\langle N_u,\\mathbf{x}_v\\rangle=-f=\\langle N_v,\\mathbf{x}_u\\rangle=\\langle \\mathbf{x}_u,dN(\\mathbf{x}_v)\\rangle.$$\nLogo $dN_p$ é autoadjunto.\n\n**Consequência.** Pelo teorema espectral, o operador simétrico $S_p=-dN_p:T_pS\\to T_pS$ tem autovalores reais $k_1,k_2$ (curvaturas principais) e uma base ortonormal de autovetores (direções principais), que são portanto ortogonais entre si. $\\blacksquare$",
+          "steps": [
+            "Reduza a verificação da autoadjunção à base $\\{\\mathbf{x}_u,\\mathbf{x}_v\\}$ por bilinearidade.",
+            "Use $\\langle N,\\mathbf{x}_u\\rangle=\\langle N,\\mathbf{x}_v\\rangle=0$ e derive-as cruzadamente.",
+            "Obtenha $\\langle N_u,\\mathbf{x}_v\\rangle=\\langle N_v,\\mathbf{x}_u\\rangle=-f$ usando $\\mathbf{x}_{uv}=\\mathbf{x}_{vu}$.",
+            "Conclua $\\langle dN(\\mathbf{x}_u),\\mathbf{x}_v\\rangle=\\langle\\mathbf{x}_u,dN(\\mathbf{x}_v)\\rangle$.",
+            "Aplique o teorema espectral: $S_p=-dN_p$ tem autovalores reais e direções principais ortogonais."
+          ]
+        },
+        {
+          "prompt": "Calcule $K$ e $H$ para o gráfico $z=f(x,y)$ num ponto crítico com $\\nabla f=0$, em termos da Hessiana de $f$.",
+          "hint": "No ponto crítico, $E=G=1,F=0$ e $e=f_{xx},f=f_{xy},g=f_{yy}$; logo $K=f_{xx}f_{yy}-f_{xy}^2=\\det\\mathrm{Hess}(f)$ e $H=\\tfrac12\\,\\mathrm{tr}\\,\\mathrm{Hess}(f)$.",
+          "difficulty": 3,
+          "solution": "Para o gráfico $z=f(x,y)$ use $\\mathbf{x}(u,v)=(u,v,f(u,v))$. Já sabemos $E=1+f_u^2$, $F=f_uf_v$, $G=1+f_v^2$, e $\\mathbf{x}_u\\times\\mathbf{x}_v=(-f_u,-f_v,1)$, logo $N=\\frac{(-f_u,-f_v,1)}{\\sqrt{1+f_u^2+f_v^2}}$.\n\n**No ponto crítico** $\\nabla f=(f_u,f_v)=0$: então $E=G=1$, $F=0$ e $N=(0,0,1)$. As segundas derivadas são $\\mathbf{x}_{uu}=(0,0,f_{uu})$, $\\mathbf{x}_{uv}=(0,0,f_{uv})$, $\\mathbf{x}_{vv}=(0,0,f_{vv})$, então\n$$e=\\langle N,\\mathbf{x}_{uu}\\rangle=f_{uu},\\quad f=\\langle N,\\mathbf{x}_{uv}\\rangle=f_{uv},\\quad g=\\langle N,\\mathbf{x}_{vv}\\rangle=f_{vv}.$$\n(Aqui $u=x,v=y$.) Portanto\n$$K=\\frac{eg-f^2}{EG-F^2}=\\frac{f_{xx}f_{yy}-f_{xy}^2}{1}=\\det\\mathrm{Hess}(f),$$\n$$H=\\frac{eG-2fF+gE}{2(EG-F^2)}=\\frac{f_{xx}+f_{yy}}{2}=\\tfrac12\\,\\mathrm{tr}\\,\\mathrm{Hess}(f).$$\nAssim, num ponto crítico, a curvatura Gaussiana é o determinante da Hessiana e a média é metade do seu traço — coerente com o teste da segunda derivada: $K>0$ (Hessiana definida) é máximo/mínimo local, $K<0$ (indefinida) é ponto de sela. $\\blacksquare$",
+          "steps": [
+            "Parametrize como gráfico e recorde $E=1+f_u^2$, $F=f_uf_v$, $G=1+f_v^2$, $N\\propto(-f_u,-f_v,1)$.",
+            "No ponto crítico $\\nabla f=0$ simplifique: $E=G=1$, $F=0$, $N=(0,0,1)$.",
+            "Calcule $e=f_{xx}$, $f=f_{xy}$, $g=f_{yy}$ das segundas derivadas.",
+            "Substitua em $K$ e $H$ para obter $K=\\det\\mathrm{Hess}(f)$ e $H=\\tfrac12\\mathrm{tr}\\,\\mathrm{Hess}(f)$."
+          ]
+        },
+        {
+          "prompt": "Mostre que uma superfície conexa com todos os pontos umbílicos ($k_1=k_2$ em todo ponto) está contida num plano ou numa esfera.",
+          "hint": "Umbilicidade significa $dN_p=-\\lambda(p)\\,\\mathrm{Id}$; derive para mostrar que $\\lambda$ é constante. Se $\\lambda=0$, plano; se $\\lambda\\neq 0$, mostre que $\\mathbf{x}+\\tfrac1\\lambda N$ é constante (centro da esfera).",
+          "difficulty": 5,
+          "solution": "Umbílico em $p$ significa $k_1(p)=k_2(p)$, ou seja $S_p=\\lambda(p)\\,\\mathrm{Id}$, logo $dN=-\\lambda\\,\\mathrm{Id}$. Em coordenadas,\n$$N_u=-\\lambda\\,\\mathbf{x}_u,\\qquad N_v=-\\lambda\\,\\mathbf{x}_v.$$\n\n**Passo 1: $\\lambda$ é constante.** Derive a primeira em $v$ e a segunda em $u$:\n$$N_{uv}=-\\lambda_v\\,\\mathbf{x}_u-\\lambda\\,\\mathbf{x}_{uv},\\qquad N_{vu}=-\\lambda_u\\,\\mathbf{x}_v-\\lambda\\,\\mathbf{x}_{vu}.$$\nComo $N_{uv}=N_{vu}$ e $\\mathbf{x}_{uv}=\\mathbf{x}_{vu}$, subtraindo obtemos\n$$\\lambda_v\\,\\mathbf{x}_u=\\lambda_u\\,\\mathbf{x}_v.$$\nComo $\\mathbf{x}_u,\\mathbf{x}_v$ são linearmente independentes, segue $\\lambda_u=\\lambda_v=0$. Numa superfície **conexa**, $\\lambda$ é então constante.\n\n**Passo 2: os dois casos.**\n- Se $\\lambda\\equiv 0$: $N_u=N_v=0$, logo $N$ é um vetor constante $N_0$. Então $\\frac{\\partial}{\\partial u}\\langle\\mathbf{x},N_0\\rangle=\\langle\\mathbf{x}_u,N_0\\rangle=0$ e idem em $v$, de modo que $\\langle\\mathbf{x},N_0\\rangle$ é constante: a superfície está contida num **plano**.\n- Se $\\lambda\\neq 0$ (constante): considere $\\mathbf{c}=\\mathbf{x}+\\tfrac1\\lambda N$. Então\n$$\\mathbf{c}_u=\\mathbf{x}_u+\\tfrac1\\lambda N_u=\\mathbf{x}_u+\\tfrac1\\lambda(-\\lambda\\mathbf{x}_u)=0,$$\ne igualmente $\\mathbf{c}_v=0$. Logo $\\mathbf{c}$ é um ponto fixo $\\mathbf{c}_0$, e $|\\mathbf{x}-\\mathbf{c}_0|=\\tfrac1{|\\lambda|}|N|=\\tfrac1{|\\lambda|}$ constante: a superfície está contida na **esfera** de centro $\\mathbf{c}_0$ e raio $1/|\\lambda|$. $\\blacksquare$",
+          "steps": [
+            "Traduza umbilicidade em $dN=-\\lambda\\,\\mathrm{Id}$, isto é $N_u=-\\lambda\\mathbf{x}_u$ e $N_v=-\\lambda\\mathbf{x}_v$.",
+            "Derive cruzadamente e use $N_{uv}=N_{vu}$, $\\mathbf{x}_{uv}=\\mathbf{x}_{vu}$ para obter $\\lambda_v\\mathbf{x}_u=\\lambda_u\\mathbf{x}_v$.",
+            "Por independência de $\\mathbf{x}_u,\\mathbf{x}_v$ e conexidade, conclua $\\lambda$ constante.",
+            "Caso $\\lambda=0$: $N$ constante $\\Rightarrow$ plano.",
+            "Caso $\\lambda\\neq0$: mostre que $\\mathbf{x}+\\tfrac1\\lambda N$ é constante $\\Rightarrow$ esfera de raio $1/|\\lambda|$."
+          ]
+        },
+        {
+          "prompt": "A pseudoesfera (tractrix de revolução) tem $K\\equiv -1$. Explique, via Theorema Egregium, por que ela serve de modelo local do plano hiperbólico e por que não pode ser isométrica a nenhuma região de uma esfera.",
+          "hint": "Curvatura é invariante por isometria; o plano hiperbólico tem $K\\equiv -1$ e a esfera tem $K=1/R^2>0$. Compare os sinais.",
+          "difficulty": 3,
+          "solution": "A curvatura Gaussiana é, pelo **Theorema Egregium**, invariante por isometrias locais: se $\\varphi:S\\to\\bar S$ é isometria local, então $K_S(p)=K_{\\bar S}(\\varphi(p))$.\n\n**Por que a pseudoesfera modela o plano hiperbólico localmente.** A pseudoesfera (superfície de revolução da tractrix) tem $K\\equiv -1$; o plano hiperbólico $\\mathbb{H}^2$ também tem curvatura constante $K\\equiv -1$. Superfícies com a mesma curvatura constante são localmente isométricas (teorema de Minding). Assim, em torno de cada ponto, a pseudoesfera é isométrica a um pedaço de $\\mathbb{H}^2$: ela é um **modelo local** concreto (mergulhado em $\\mathbb{R}^3$) da geometria hiperbólica. (Globalmente ela é incompleta e singular no bordo — por isso não é um modelo global, o que o teorema de Hilbert confirma.)\n\n**Por que não pode ser isométrica a região de esfera.** A esfera de raio $R$ tem $K=1/R^2>0$ em todo ponto, enquanto a pseudoesfera tem $K=-1<0$. Se existisse uma isometria local entre uma região de uma e da outra, o Egregium forçaria $K$ a coincidir ponto a ponto; mas $-1\\neq 1/R^2$ para todo $R>0$. Como os sinais de $K$ são opostos, nenhuma isometria local é possível. $\\blacksquare$",
+          "steps": [
+            "Enuncie o fato-chave: $K$ é invariante por isometrias locais (Theorema Egregium).",
+            "Compare curvaturas: pseudoesfera $K\\equiv-1$; plano hiperbólico $K\\equiv-1$ — iguais, logo localmente isométricos (Minding).",
+            "Compare com a esfera: $K=1/R^2>0$, de sinal oposto.",
+            "Conclua que a igualdade de $K$ exigida por Egregium falha, logo não há isometria pseudoesfera–esfera."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Aplicação de Gauss",
+          "back": "$N:S\\to S^2$ que associa a cada ponto seu normal unitário $N=\\frac{\\mathbf{x}_u\\times\\mathbf{x}_v}{|\\mathbf{x}_u\\times\\mathbf{x}_v|}$."
+        },
+        {
+          "front": "Segunda forma fundamental",
+          "back": "$\\mathrm{II}_p(w)=-\\langle dN_p(w),w\\rangle=\\langle S_p w,w\\rangle$, com $S_p=-dN_p$ autoadjunto."
+        },
+        {
+          "front": "Curvaturas principais",
+          "back": "Autovalores $k_1,k_2$ do operador forma $S_p=-dN_p$ (curvaturas normais extremas)."
+        },
+        {
+          "front": "Curvatura Gaussiana",
+          "back": "$K=k_1k_2=\\det(S_p)=\\dfrac{eg-f^2}{EG-F^2}$."
+        },
+        {
+          "front": "Curvatura média",
+          "back": "$H=\\tfrac12(k_1+k_2)=\\dfrac{eG-2fF+gE}{2(EG-F^2)}$."
+        },
+        {
+          "front": "Classificação por $K$",
+          "back": "$K>0$ elíptico, $K<0$ hiperbólico (sela), $K=0$ parabólico/planar."
+        },
+        {
+          "front": "Theorema Egregium",
+          "back": "$K$ depende só de $E,F,G$ e derivadas; é intrínseca e invariante por isometrias."
+        },
+        {
+          "front": "Por que não há mapa-múndi perfeito?",
+          "back": "Esfera tem $K=1/R^2\\neq 0$, plano tem $K=0$; por Egregium não há isometria local entre eles."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "do Carmo, Geometria Diferencial de Curvas e Superfícies, cap. 3",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.950, Gauss map e Theorema Egregium",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Garanta o teorema espectral para operadores autoadjuntos em espaços de dimensão finita (autovalores reais, autovetores ortogonais): é o que dá curvaturas e direções principais.",
+          "Leia do Carmo, cap. 3: aplicação de Gauss, diferencial $dN_p$, segunda forma fundamental e coeficientes $e,f,g$.",
+          "Deduza $K=\\frac{eg-f^2}{EG-F^2}$ e $H=\\frac{eG-2fF+gE}{2(EG-F^2)}$ e calcule-as para esfera, cilindro, parabolóide e sela.",
+          "Estude a classificação de pontos (elíptico/hiperbólico/parabólico/planar) e o significado do sinal de $K$.",
+          "Leia com atenção a prova do Theorema Egregium (fórmula de Gauss para $K$ em termos de $E,F,G$) e a consequência da inexistência de mapa-múndi fiel.",
+          "Volte ao app, resolva os testes e anote aqui: definição de $S_p=-dN_p$, fórmulas de $K,H$ e o enunciado do Egregium."
+        ],
+        "searchQueries": [
+          "segunda forma fundamental coeficientes e f g",
+          "aplicação de Gauss diferencial autoadjunta prova",
+          "curvatura gaussiana média K H fórmula EG-F^2",
+          "Theorema Egregium Gauss demonstração intrínseca",
+          "shape operator Weingarten principal curvatures",
+          "classificação pontos elíptico hiperbólico parabólico superfície"
+        ],
+        "videos": [
+          {
+            "title": "18.950 — Gauss map e Theorema Egregium",
+            "channel": "MIT OpenCourseWare",
+            "note": "Assista às aulas sobre aplicação de Gauss, segunda forma e curvatura Gaussiana."
+          },
+          {
+            "title": "Curvature of surfaces / Theorema Egregium",
+            "channel": "Michael Penn",
+            "note": "Busque 'Gaussian curvature' e 'second fundamental form' para contas explícitas."
+          },
+          {
+            "title": "Gaussian curvature, intuitively",
+            "channel": "3Blue1Brown / outros de visualização",
+            "note": "Procure visualizações de curvatura Gaussiana e por que a esfera não achata no plano."
+          }
+        ],
+        "articles": [
+          {
+            "title": "do Carmo — Geometria Diferencial de Curvas e Superfícies, cap. 3",
+            "where": "livro (SBM/IMPA)"
+          },
+          {
+            "title": "MIT OCW 18.950 lecture notes (Gauss map, Egregium)",
+            "where": "ocw.mit.edu"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-diferencial-04-variedades-espaco-tangente",
+      "title": "Variedades Diferenciáveis e o Espaço Tangente",
+      "tagline": "A abstração que liberta a geometria do espaço ambiente: cálculo em espaços que só localmente parecem $\\mathbb{R}^n$.",
+      "objectives": [
+        "Definir variedade diferenciável via atlas suave e aplicações suaves entre variedades.",
+        "Construir o espaço tangente por curvas e por derivações e mostrar que tem dimensão $n$.",
+        "Definir a diferencial $df_p$ e provar a regra da cadeia.",
+        "Distinguir imersões, submersões e mergulhos; enunciar o Teorema do Posto.",
+        "Aplicar o Teorema do Valor Regular para reconhecer subvariedades."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Variedade diferenciável",
+          "statement": "Espaço topológico $M$ de Hausdorff, com base enumerável, e um atlas $\\{(U_\\alpha,\\varphi_\\alpha)\\}$ de cartas $\\varphi_\\alpha:U_\\alpha\\to\\mathbb{R}^n$ homeomorfismos sobre abertos, cujas transições $\\varphi_\\beta\\circ\\varphi_\\alpha^{-1}$ são $C^\\infty$. O número $n$ é a dimensão."
+        },
+        {
+          "term": "Aplicação suave",
+          "statement": "$f:M\\to N$ é suave se em coordenadas $\\psi\\circ f\\circ\\varphi^{-1}$ é $C^\\infty$ para todas as cartas; bem definida pela compatibilidade dos atlas. Difeomorfismo: bijeção suave com inversa suave."
+        },
+        {
+          "term": "Vetor tangente (via curvas)",
+          "statement": "Classe de equivalência de curvas suaves $\\gamma:(-\\varepsilon,\\varepsilon)\\to M$ com $\\gamma(0)=p$, onde $\\gamma_1\\sim\\gamma_2$ se $(\\varphi\\circ\\gamma_1)'(0)=(\\varphi\\circ\\gamma_2)'(0)$ numa carta. O conjunto é $T_pM$."
+        },
+        {
+          "term": "Vetor tangente (via derivações)",
+          "statement": "Operador linear $v:C^\\infty(M)\\to\\mathbb{R}$ satisfazendo Leibniz $v(fg)=v(f)g(p)+f(p)v(g)$. Os dois conceitos coincidem e formam um espaço vetorial $T_pM$ de dimensão $n$, com base $\\partial/\\partial x^i|_p$."
+        },
+        {
+          "term": "Diferencial",
+          "statement": "$df_p:T_pM\\to T_{f(p)}N$, $df_p([\\gamma])=[f\\circ\\gamma]$; em coordenadas é a matriz jacobiana. Generaliza a derivada para aplicações entre variedades."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Regra da cadeia (variedades)",
+          "statement": "Se $f:M\\to N$ e $g:N\\to P$ são suaves, então $g\\circ f$ é suave e $d(g\\circ f)_p=dg_{f(p)}\\circ df_p$.",
+          "whyItMatters": "Garante que a diferencial é funtorial e que o espaço tangente se comporta corretamente sob composição — base de todo o cálculo em variedades."
+        },
+        {
+          "name": "Teorema do Posto",
+          "statement": "Se $f:M^m\\to N^n$ tem posto constante $k$ numa vizinhança de $p$, então existem cartas em que $f$ assume a forma normal $(x^1,\\dots,x^m)\\mapsto(x^1,\\dots,x^k,0,\\dots,0)$.",
+          "whyItMatters": "Estrutura local de toda aplicação suave; dele saem os teoremas de imersão (posto $=m$) e submersão (posto $=n$) e a teoria de subvariedades."
+        },
+        {
+          "name": "Teorema do Valor Regular",
+          "statement": "Se $f:M^m\\to N^n$ é suave e $c\\in N$ é valor regular (i.e. $df_p$ é sobrejetiva para todo $p\\in f^{-1}(c)$), então $f^{-1}(c)$ é subvariedade de $M$ de dimensão $m-n$, com $T_p f^{-1}(c)=\\ker df_p$.",
+          "whyItMatters": "A fábrica de exemplos de variedades: esferas, grupos de matrizes como $O(n)$ e $SL(n)$, quádricas, todos surgem como pré-imagem de valor regular. É a forma mais usada de provar que algo é variedade."
+        }
+      ],
+      "summary": "Uma variedade diferenciável de dimensão $n$ é um espaço que localmente se parece com $\\mathbb{R}^n$, costurado por cartas cujas transições são suaves. Essa definição abstrai exatamente o que tornava as superfícies regulares operacionais — as mudanças de coordenadas eram difeomorfismos — mas agora sem precisar de um espaço ambiente. Funções suaves, difeomorfismos e toda a maquinaria do cálculo passam a fazer sentido olhando em cartas, e a compatibilidade do atlas garante que nada depende da carta escolhida. As hipóteses topológicas (Hausdorff, base enumerável) eliminam patologias e garantem partições da unidade, essenciais para integração e para colar objetos locais.\n\nO conceito central é o espaço tangente $T_pM$. Sem espaço ambiente, não há mais 'vetor velocidade em $\\mathbb{R}^3$', então definimos $T_pM$ intrinsecamente: como classes de curvas com a mesma velocidade em coordenadas, ou — de modo equivalente e mais algébrico — como derivações de $C^\\infty(M)$. Ambas as definições produzem um espaço vetorial de dimensão $n$, com base coordenada $\\partial/\\partial x^i$. A diferencial $df_p$ leva vetores tangentes em vetores tangentes e, em coordenadas, é a matriz jacobiana; com ela vale a regra da cadeia. A teoria de imersões/submersões, organizada pelo Teorema do Posto, culmina no Teorema do Valor Regular — a ferramenta com que se prova, em uma linha, que a esfera $S^n=f^{-1}(1)$ de $f(x)=|x|^2$ e grupos como $O(n)$ são variedades.",
+      "commonPitfalls": [
+        "Esquecer as hipóteses topológicas (Hausdorff e base enumerável): sem elas surgem 'variedades' patológicas, como a reta com origem dupla.",
+        "Pensar no espaço tangente como subconjunto de algum $\\mathbb{R}^N$ ambiente: em uma variedade abstrata $T_pM$ é definido intrinsecamente (curvas ou derivações), sem mergulho.",
+        "Confundir valor regular com ponto regular: valor regular $c$ exige $df_p$ sobrejetiva em TODOS os $p$ da pré-imagem $f^{-1}(c)$. Um valor fora da imagem é vacuamente regular.",
+        "Achar que toda imersão injetiva é mergulho: é preciso também ser homeomorfismo sobre a imagem (com a topologia de subespaço); a figura-oito imersa é o contraexemplo clássico."
+      ],
+      "worked": "**A esfera $S^n$ é variedade via valor regular.** Considere $f:\\mathbb{R}^{n+1}\\to\\mathbb{R}$, $f(x)=|x|^2=\\sum_i (x^i)^2$. Então $df_x(v)=2\\langle x,v\\rangle$, cuja matriz é $2x^\\top$. Para $x\\neq 0$, $df_x$ é sobrejetiva (não nula), logo todo $c>0$ é valor regular — em particular $c=1$, pois $f^{-1}(1)=S^n$ não contém a origem.\n\nPelo Teorema do Valor Regular, $S^n=f^{-1}(1)$ é uma subvariedade de $\\mathbb{R}^{n+1}$ de dimensão $(n+1)-1=n$. Além disso, o espaço tangente é\n$$T_pS^n=\\ker df_p=\\{v\\in\\mathbb{R}^{n+1}:\\langle p,v\\rangle=0\\}=p^{\\perp},$$\nrecuperando a descrição familiar do plano tangente à esfera como o ortogonal ao raio. O mesmo método mostra que $O(n)=F^{-1}(I)$, com $F(A)=A^\\top A$, é variedade de dimensão $n(n-1)/2$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que as duas definições de vetor tangente (classes de curvas e derivações) são equivalentes em dimensão finita, exibindo um isomorfismo natural entre os espaços.",
+          "hint": "A uma curva $\\gamma$ associe a derivação $f\\mapsto (f\\circ\\gamma)'(0)$. Mostre que é linear, satisfaz Leibniz, e que numa carta o mapa é bijetivo sobre as derivações $\\sum a^i\\partial_i|_p$.",
+          "difficulty": 4,
+          "solution": "Fixe $p\\in M$ e uma carta $\\varphi=(x^1,\\dots,x^n)$ em $p$. Seja $C_p$ o conjunto de classes de curvas $[\\gamma]$ ($\\gamma(0)=p$) e $D_p$ o conjunto das derivações $v:C^\\infty(M)\\to\\mathbb{R}$ (lineares, Leibniz).\n\n**A aplicação natural.** Defina $\\Phi:C_p\\to D_p$ por\n$$\\Phi([\\gamma])(f)=\\frac{d}{dt}\\Big|_{0}(f\\circ\\gamma).$$\nEla é bem definida: se $(\\varphi\\circ\\gamma_1)'(0)=(\\varphi\\circ\\gamma_2)'(0)$, então, pela regra da cadeia, $\\frac{d}{dt}\\big|_0(f\\circ\\gamma_1)=\\sum_i \\partial_i(f\\circ\\varphi^{-1})\\,(\\varphi\\circ\\gamma_1)^{i\\prime}(0)$ só depende dessa velocidade. E $\\Phi([\\gamma])$ é derivação (linearidade e Leibniz vêm da regra do produto para $\\frac{d}{dt}$).\n\n**Coordenadas.** Escrevendo $a=(a^i)=(\\varphi\\circ\\gamma)'(0)$,\n$$\\Phi([\\gamma])=\\sum_i a^i\\,\\frac{\\partial}{\\partial x^i}\\Big|_p.$$\nLogo $\\Phi$ é **linear** na velocidade e sua imagem contém todas as $\\sum a^i\\partial_i|_p$.\n\n**Sobrejetiva.** Dado $a\\in\\mathbb{R}^n$, a curva $\\gamma(t)=\\varphi^{-1}(\\varphi(p)+ta)$ tem velocidade $a$, logo $\\Phi([\\gamma])=\\sum a^i\\partial_i|_p$. Falta ver que **toda** derivação é dessa forma: usando o Lema de Hadamard, escreva $f(x)=f(p)+\\sum_i (x^i-p^i)g_i(x)$ com $g_i(p)=\\partial_i f(p)$; aplicando uma derivação $v$ (que anula constantes) obtém-se $v(f)=\\sum_i v(x^i)\\,\\partial_i f(p)$, ou seja $v=\\sum_i v(x^i)\\,\\partial_i|_p$. Assim $D_p=\\{\\sum a^i\\partial_i|_p\\}$, com $a^i=v(x^i)$.\n\n**Injetiva.** Se $\\Phi([\\gamma_1])=\\Phi([\\gamma_2])$, então aplicando às funções coordenadas $x^i$ obtemos $(\\varphi\\circ\\gamma_1)^{i\\prime}(0)=(\\varphi\\circ\\gamma_2)^{i\\prime}(0)$, isto é, $[\\gamma_1]=[\\gamma_2]$.\n\nPortanto $\\Phi$ é um isomorfismo linear natural (independe da carta, pois as duas definições são intrínsecas), e ambos os espaços têm dimensão $n$. $\\blacksquare$",
+          "steps": [
+            "Defina $\\Phi([\\gamma])(f)=(f\\circ\\gamma)'(0)$ e verifique que é derivação e está bem definida (depende só da velocidade).",
+            "Em coordenadas, mostre $\\Phi([\\gamma])=\\sum a^i\\partial_i|_p$ com $a=(\\varphi\\circ\\gamma)'(0)$; conclua linearidade.",
+            "Sobrejetividade: dado $a$, a curva $\\gamma(t)=\\varphi^{-1}(\\varphi(p)+ta)$ realiza $\\sum a^i\\partial_i|_p$; e via Lema de Hadamard, toda derivação é $\\sum v(x^i)\\partial_i|_p$.",
+            "Injetividade: avalie nas coordenadas $x^i$ para recuperar a velocidade, logo a classe da curva.",
+            "Conclua que $\\Phi$ é isomorfismo natural; ambos os modelos dão $T_pM$ de dimensão $n$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $SL(n,\\mathbb{R})=\\{A:\\det A=1\\}$ é variedade e calcule sua dimensão.",
+          "hint": "Tome $f=\\det:GL(n)\\to\\mathbb{R}$. Use $d(\\det)_A(H)=\\det(A)\\,\\mathrm{tr}(A^{-1}H)$ para ver que $1$ é valor regular; a dimensão é $n^2-1$.",
+          "difficulty": 4,
+          "solution": "Considere $f=\\det:GL(n,\\mathbb{R})\\to\\mathbb{R}$, suave no aberto $GL(n)\\subset\\mathbb{R}^{n^2}$ (que é variedade de dimensão $n^2$). Temos $SL(n,\\mathbb{R})=f^{-1}(1)$.\n\n**Diferencial do determinante.** Vale a fórmula de Jacobi\n$$d(\\det)_A(H)=\\det(A)\\,\\mathrm{tr}(A^{-1}H),\\qquad A\\in GL(n).$$\n\n**$1$ é valor regular.** Seja $A\\in f^{-1}(1)$, isto é $\\det A=1$. Então $d(\\det)_A(H)=\\mathrm{tr}(A^{-1}H)$. Este funcional é sobrejetivo em $\\mathbb{R}$: tomando $H=tA$ (com $t\\in\\mathbb{R}$), $\\mathrm{tr}(A^{-1}\\cdot tA)=t\\,\\mathrm{tr}(I)=tn$, que assume qualquer valor real. Logo $d(\\det)_A\\neq 0$ é sobrejetiva para todo $A\\in f^{-1}(1)$, e $1$ é valor regular.\n\n**Conclusão.** Pelo Teorema do Valor Regular, $SL(n,\\mathbb{R})=f^{-1}(1)$ é subvariedade de $GL(n)$ de dimensão\n$$\\dim SL(n)=\\dim GL(n)-\\dim\\mathbb{R}=n^2-1.$$\nSeu espaço tangente na identidade é $T_I SL(n)=\\ker d(\\det)_I=\\{H:\\mathrm{tr}(H)=0\\}=\\mathfrak{sl}(n)$, as matrizes de traço nulo. $\\blacksquare$",
+          "steps": [
+            "Escreva $SL(n)=\\det^{-1}(1)$ com $\\det:GL(n)\\to\\mathbb{R}$ suave, $GL(n)$ aberto de dimensão $n^2$.",
+            "Use a fórmula de Jacobi $d(\\det)_A(H)=\\det(A)\\mathrm{tr}(A^{-1}H)$.",
+            "Em $A$ com $\\det A=1$, teste $H=tA$ para ver que $d(\\det)_A$ é sobrejetiva: $1$ é valor regular.",
+            "Aplique o Teorema do Valor Regular: $\\dim SL(n)=n^2-1$, com $T_ISL(n)=\\{\\mathrm{tr}=0\\}$."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo de imersão injetiva que não é mergulho e explique qual condição falha.",
+          "hint": "Considere a 'figura-oito' ou a reta de inclinação irracional enrolada no toro $T^2$: imersão injetiva cuja imagem é densa, logo não é homeomorfa à reta com a topologia de subespaço.",
+          "difficulty": 3,
+          "solution": "**Exemplo (reta de inclinação irracional no toro).** Seja $T^2=\\mathbb{R}^2/\\mathbb{Z}^2$ e $\\pi:\\mathbb{R}^2\\to T^2$ a projeção. Fixe $\\alpha\\in\\mathbb{R}\\setminus\\mathbb{Q}$ e defina\n$$\\iota:\\mathbb{R}\\to T^2,\\qquad \\iota(t)=\\pi(t,\\alpha t).$$\n\n- **É imersão:** $\\iota'(t)=d\\pi(1,\\alpha)\\neq 0$ para todo $t$ (o vetor $(1,\\alpha)$ não é nulo e $d\\pi$ é isomorfismo local). Logo $d\\iota_t$ é injetiva.\n- **É injetiva:** se $\\iota(t_1)=\\iota(t_2)$, então $(t_1-t_2,\\alpha(t_1-t_2))\\in\\mathbb{Z}^2$; isto é, $t_1-t_2\\in\\mathbb{Z}$ e $\\alpha(t_1-t_2)\\in\\mathbb{Z}$. Se $t_1\\neq t_2$, $t_1-t_2$ seria um inteiro não nulo $m$ com $\\alpha m\\in\\mathbb{Z}$, forçando $\\alpha\\in\\mathbb{Q}$, contradição. Logo $t_1=t_2$.\n- **Não é mergulho:** a imagem $\\iota(\\mathbb{R})$ é **densa** em $T^2$ (Kronecker/Weyl). Portanto ela não é homeomorfa a $\\mathbb{R}$ com a topologia de subespaço: perto de qualquer ponto da imagem passam infinitos 'ramos' de $\\iota$ vindos de valores de $t$ arbitrariamente distantes, então $\\iota^{-1}$ não é contínua. A imagem não é subvariedade mergulhada.\n\n**Condição que falha:** ser **homeomorfismo sobre a imagem** (com a topologia de subespaço). Imersão injetiva + essa condição = mergulho; aqui a segunda falta. $\\blacksquare$",
+          "steps": [
+            "Escolha $\\alpha$ irracional e defina $\\iota(t)=\\pi(t,\\alpha t)$ no toro $T^2=\\mathbb{R}^2/\\mathbb{Z}^2$.",
+            "Verifique que é imersão: $\\iota'(t)$ nunca se anula.",
+            "Verifique injetividade usando a irracionalidade de $\\alpha$ (nenhum retorno periódico).",
+            "Mostre que a imagem é densa (Kronecker), logo $\\iota^{-1}$ não é contínua na topologia de subespaço.",
+            "Conclua qual condição falha: homeomorfismo sobre a imagem (a que distingue mergulho de imersão injetiva)."
+          ]
+        },
+        {
+          "prompt": "Seja $f:M\\to N$ suave entre variedades conexas com $df_p=0$ para todo $p$. Prove que $f$ é constante.",
+          "hint": "Em cada carta, derivada nula implica localmente constante; use conexidade de $M$ para concluir que o conjunto onde $f$ é igual a um valor fixo é aberto e fechado.",
+          "difficulty": 3,
+          "solution": "Seja $f:M\\to N$ suave com $df_p=0$ para todo $p\\in M$, e $M$ conexa.\n\n**Passo 1: $f$ é localmente constante.** Fixe $p_0$ e cartas $\\varphi$ em $p_0$ e $\\psi$ em $f(p_0)$. A representação local $\\hat f=\\psi\\circ f\\circ\\varphi^{-1}$ tem diferencial $D\\hat f=0$ (pois é a matriz de $df$ nas cartas). Num domínio de carta conexo (uma bola), derivada nula implica $\\hat f$ constante; logo $f$ é constante numa vizinhança de $p_0$.\n\n**Passo 2: argumento de conexidade.** Fixe $q_0\\in M$ e seja $c=f(q_0)$. Defina\n$$A=\\{p\\in M: f(p)=c\\}=f^{-1}(\\{c\\}).$$\n- $A\\neq\\varnothing$ (contém $q_0$).\n- $A$ é **fechado**: $N$ é Hausdorff, então $\\{c\\}$ é fechado e $f$ é contínua, logo $f^{-1}(\\{c\\})$ é fechado.\n- $A$ é **aberto**: se $p\\in A$, pelo Passo 1 $f$ é constante igual a $f(p)=c$ numa vizinhança de $p$, que está contida em $A$.\n\nComo $M$ é conexa e $A$ é não vazio, aberto e fechado, $A=M$. Portanto $f\\equiv c$ é constante. $\\blacksquare$",
+          "steps": [
+            "Em cartas, $df_p=0$ vira $D\\hat f=0$; numa bola conexa isso força $\\hat f$ constante, logo $f$ é localmente constante.",
+            "Fixe $q_0$, ponha $c=f(q_0)$ e considere $A=f^{-1}(\\{c\\})$.",
+            "Mostre $A$ fechado (preimagem de ponto por função contínua, $N$ Hausdorff) e não vazio.",
+            "Mostre $A$ aberto usando a constância local.",
+            "Por conexidade de $M$, $A=M$, ou seja $f\\equiv c$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de variedade diferenciável",
+          "back": "Espaço Hausdorff, base enumerável, com atlas de cartas para $\\mathbb{R}^n$ cujas transições são $C^\\infty$."
+        },
+        {
+          "front": "Espaço tangente via derivações",
+          "back": "$T_pM=\\{v:C^\\infty(M)\\to\\mathbb{R}$ linear com $v(fg)=v(f)g(p)+f(p)v(g)\\}$; dimensão $n$."
+        },
+        {
+          "front": "Base coordenada de $T_pM$",
+          "back": "$\\{\\partial/\\partial x^1|_p,\\dots,\\partial/\\partial x^n|_p\\}$ associada a uma carta."
+        },
+        {
+          "front": "Diferencial $df_p$",
+          "back": "$df_p:T_pM\\to T_{f(p)}N$; em coordenadas é a matriz jacobiana. Vale $d(g\\circ f)_p=dg_{f(p)}\\circ df_p$."
+        },
+        {
+          "front": "Valor regular",
+          "back": "$c\\in N$ tal que $df_p$ é sobrejetiva para todo $p\\in f^{-1}(c)$."
+        },
+        {
+          "front": "Teorema do Valor Regular (conclusão)",
+          "back": "$f^{-1}(c)$ é subvariedade de dimensão $\\dim M-\\dim N$, com $T_p f^{-1}(c)=\\ker df_p$."
+        },
+        {
+          "front": "Imersão vs mergulho",
+          "back": "Imersão: $df_p$ injetiva. Mergulho: imersão que é homeomorfismo sobre a imagem."
+        },
+        {
+          "front": "Submersão",
+          "back": "Aplicação suave com $df_p$ sobrejetiva em todo ponto."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Lee, Introduction to Smooth Manifolds, caps. 1-3",
+          "ref": "livro"
+        },
+        {
+          "title": "Tu, An Introduction to Manifolds, caps. 1-3",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.965 Geometry of Manifolds",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise topologia geral (Hausdorff, base enumerável, homeomorfismo) e o Teorema da Função Inversa/Implícita — as hipóteses técnicas de variedade e a prova do Valor Regular dependem disso.",
+          "Leia Tu, caps. 1–3 (mais suave) ou Lee, caps. 1–3: definição de variedade via atlas, aplicações suaves e as duas construções de $T_pM$ (curvas e derivações).",
+          "Prove para si que $\\dim T_pM=n$ com base $\\{\\partial/\\partial x^i|_p\\}$ e que a diferencial $df_p$ é a jacobiana em coordenadas; verifique a regra da cadeia.",
+          "Estude imersões, submersões, mergulhos e o Teorema do Posto; monte os contraexemplos (figura-oito, reta irracional no toro).",
+          "Aplique o Teorema do Valor Regular para provar que $S^n$, $O(n)$, $SL(n)$ são variedades — a 'fábrica de exemplos'.",
+          "Volte ao app, resolva os testes e anote aqui: definição de variedade, as duas definições de $T_pM$ e o enunciado do Teorema do Valor Regular."
+        ],
+        "searchQueries": [
+          "variedade diferenciável atlas definição Lee Tu",
+          "espaço tangente derivações versus curvas equivalência",
+          "teorema do valor regular subvariedade demonstração",
+          "regular value theorem sphere O(n) SL(n) manifold",
+          "immersion submersion embedding rank theorem",
+          "figura oito imersão injetiva não mergulho contraexemplo"
+        ],
+        "videos": [
+          {
+            "title": "18.965 Geometry of Manifolds",
+            "channel": "MIT OpenCourseWare",
+            "note": "Acompanhe as aulas iniciais sobre variedades, cartas e espaço tangente."
+          },
+          {
+            "title": "Smooth manifolds / tangent space",
+            "channel": "Michael Penn",
+            "note": "Busque 'manifold', 'tangent space', 'regular value' para exemplos e provas curtas."
+          },
+          {
+            "title": "What is a manifold?",
+            "channel": "XylyXylyX (WHYB series) / vídeos de topologia diferencial",
+            "note": "Procure séries introdutórias sobre variedades e fibrado tangente para intuição."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Lee — Introduction to Smooth Manifolds, caps. 1–3",
+            "where": "livro (Springer, GTM 218)"
+          },
+          {
+            "title": "Tu — An Introduction to Manifolds, caps. 1–3",
+            "where": "livro (Springer)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-diferencial-05-campos-fluxos",
+      "title": "Campos Vetoriais, Colchete de Lie e Fluxos",
+      "tagline": "Campos vetoriais são EDO em variedades; seus fluxos e o colchete de Lie revelam a dinâmica e a álgebra escondidas na geometria.",
+      "objectives": [
+        "Definir campo vetorial suave como seção do fibrado tangente e como derivação de $C^\\infty(M)$.",
+        "Provar existência e unicidade de curvas integrais e construir o fluxo local.",
+        "Estabelecer a propriedade de grupo a 1-parâmetro do fluxo e o conceito de campo completo.",
+        "Definir o colchete de Lie $[X,Y]$, calcular em coordenadas e interpretar a derivada de Lie.",
+        "Relacionar comutatividade dos fluxos com o anulamento do colchete e enunciar Frobenius."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Campo vetorial suave",
+          "statement": "Aplicação $X$ que a cada $p$ associa $X_p\\in T_pM$ de modo suave; equivalentemente, derivação $X:C^\\infty(M)\\to C^\\infty(M)$. Em coordenadas $X=\\sum_i a^i(x)\\,\\partial/\\partial x^i$ com $a^i$ suaves."
+        },
+        {
+          "term": "Curva integral",
+          "statement": "Curva $\\gamma$ com $\\gamma'(t)=X_{\\gamma(t)}$. Em coordenadas é o sistema de EDO $\\dot x^i=a^i(x)$; trajetória do 'fluido' cujo campo de velocidades é $X$."
+        },
+        {
+          "term": "Fluxo",
+          "statement": "Família $\\varphi_t$ com $\\varphi_0=\\mathrm{id}$ e $\\tfrac{d}{dt}\\varphi_t(p)=X_{\\varphi_t(p)}$, satisfazendo $\\varphi_{t+s}=\\varphi_t\\circ\\varphi_s$ onde definido (grupo local a 1-parâmetro de difeomorfismos). $X$ é completo se $\\varphi_t$ existe para todo $t\\in\\mathbb{R}$."
+        },
+        {
+          "term": "Colchete de Lie",
+          "statement": "$[X,Y]=XY-YX$ como derivação; é um campo vetorial. Em coordenadas $[X,Y]^k=\\sum_i\\bigl(X^i\\,\\partial_i Y^k-Y^i\\,\\partial_i X^k\\bigr)$."
+        },
+        {
+          "term": "Derivada de Lie",
+          "statement": "$\\mathcal{L}_X Y=[X,Y]=\\left.\\tfrac{d}{dt}\\right|_{0}(\\varphi_{-t})_*Y$, taxa de variação de $Y$ ao ser transportado pelo fluxo de $X$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Existência e unicidade de curvas integrais",
+          "statement": "Dado $X$ suave e $p\\in M$, existe $\\varepsilon>0$ e uma única curva integral $\\gamma:(-\\varepsilon,\\varepsilon)\\to M$ com $\\gamma(0)=p$. As curvas integrais dependem suavemente da condição inicial.",
+          "whyItMatters": "É o teorema de Picard-Lindelöf transportado para variedades; garante que todo campo vetorial gera um fluxo e conecta geometria a sistemas dinâmicos e EDO."
+        },
+        {
+          "name": "Propriedade de grupo do fluxo",
+          "statement": "O fluxo satisfaz $\\varphi_0=\\mathrm{id}$ e $\\varphi_{t+s}=\\varphi_t\\circ\\varphi_s$ sempre que ambos os lados estão definidos; cada $\\varphi_t$ é difeomorfismo local com inversa $\\varphi_{-t}$.",
+          "whyItMatters": "Formaliza a ideia de 'evolução temporal' como ação de grupo; é a ponte com grupos de Lie a 1-parâmetro e com a teoria de sistemas dinâmicos."
+        },
+        {
+          "name": "Comutatividade de fluxos",
+          "statement": "Os fluxos $\\varphi_t^X$ e $\\psi_s^Y$ comutam (i.e. $\\varphi_t^X\\circ\\psi_s^Y=\\psi_s^Y\\circ\\varphi_t^X$ para todos $t,s$ pequenos) se e somente se $[X,Y]=0$.",
+          "whyItMatters": "Dá significado geométrico concreto ao colchete: ele mede a falha de comutatividade dos fluxos. Base do Teorema de Frobenius e da integrabilidade de distribuições."
+        },
+        {
+          "name": "$(\\mathfrak{X}(M),[\\cdot,\\cdot])$ é álgebra de Lie",
+          "statement": "O colchete é bilinear, antissimétrico e satisfaz a identidade de Jacobi $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$.",
+          "whyItMatters": "Liga a geometria diferencial à teoria de Lie: o espaço dos campos vetoriais é uma álgebra de Lie de dimensão infinita, e em grupos de Lie ela se restringe à álgebra de Lie finito-dimensional do grupo."
+        }
+      ],
+      "summary": "Um campo vetorial suave atribui a cada ponto da variedade um vetor tangente, de modo diferenciável; pode ser visto geometricamente (seção do fibrado tangente) ou algebricamente (derivação das funções suaves). A leitura dinâmica é a mais fértil: procurar a curva integral de $X$ por um ponto é resolver o sistema de EDO $\\dot x=a(x)$. O teorema de existência e unicidade — Picard-Lindelöf em roupa geométrica — garante uma única solução local que depende suavemente da condição inicial, e ao variar o ponto inicial obtemos o fluxo $\\varphi_t$, um grupo a 1-parâmetro de difeomorfismos locais com $\\varphi_{t+s}=\\varphi_t\\circ\\varphi_s$. Quando o fluxo existe para todo tempo, o campo é completo (o que ocorre, por exemplo, se $M$ é compacta).\n\nA estrutura algébrica emerge do colchete de Lie $[X,Y]=XY-YX$, que mede a não comutatividade de dois campos. Apesar de $XY$ e $YX$ serem operadores de segunda ordem, a diferença é de primeira ordem — logo $[X,Y]$ é de novo um campo vetorial, com fórmula explícita em coordenadas. Seu significado geométrico é cristalino: $[X,Y]=0$ exatamente quando os fluxos de $X$ e $Y$ comutam. Munido do colchete, o espaço dos campos vetoriais é uma álgebra de Lie (bilinear, antissimétrica, Jacobi), o elo entre geometria e teoria de Lie. O ponto culminante é o Teorema de Frobenius: distribuições involutivas (fechadas pelo colchete) são integráveis por subvariedades, o que generaliza a integração de campos a 'integração de planos tangentes' e organiza a teoria de folheações e de EDP de primeira ordem.",
+      "commonPitfalls": [
+        "Achar que $XY$ (composição de duas derivações) é um campo vetorial: ele é operador de segunda ordem; só a diferença $[X,Y]=XY-YX$ volta a ser campo (primeira ordem).",
+        "Supor que todo campo é completo: campos podem 'escapar ao infinito em tempo finito' (ex.: $\\dot x=x^2$ em $\\mathbb{R}$). Compacidade de $M$ é condição suficiente para completude.",
+        "Confundir a propriedade $\\varphi_{t+s}=\\varphi_t\\circ\\varphi_s$ (válida para o fluxo de UM campo) com comutatividade entre fluxos de campos DIFERENTES (que exige $[X,Y]=0$).",
+        "Errar o sinal/índices no colchete em coordenadas: $[X,Y]^k=\\sum_i(X^i\\partial_i Y^k-Y^i\\partial_i X^k)$; é antissimétrico, $[X,Y]=-[Y,X]$."
+      ],
+      "worked": "**Colchete de dois campos em $\\mathbb{R}^2$.** Sejam $X=\\partial_x$ (campo constante horizontal) e $Y=x\\,\\partial_y$ (gira mais rápido quanto maior $x$). Aplicando a definição como derivações a uma função teste $f$:\n$$[X,Y]f=X(Yf)-Y(Xf)=\\partial_x(x\\,\\partial_y f)-x\\,\\partial_y(\\partial_x f)=\\partial_y f+x\\,\\partial_x\\partial_y f-x\\,\\partial_y\\partial_x f=\\partial_y f.$$\nLogo $[X,Y]=\\partial_y\\neq 0$. Pela fórmula em coordenadas: $X=(1,0)$, $Y=(0,x)$, então $[X,Y]^1=X^i\\partial_i Y^1-Y^i\\partial_i X^1=0$ e $[X,Y]^2=X^i\\partial_i Y^2-Y^i\\partial_i X^2=\\partial_x(x)-0=1$, ou seja $[X,Y]=\\partial_y$, confirmando.\n\nComo $[X,Y]\\neq 0$, os fluxos não comutam: transladar em $x$ e depois aplicar a rotação-cisalhamento $Y$ NÃO dá o mesmo resultado que a ordem oposta — e a diferença infinitesimal é exatamente o campo $\\partial_y$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Calcule o fluxo do campo $X=x\\,\\partial_x$ em $\\mathbb{R}$ e verifique a propriedade de grupo $\\varphi_{t+s}=\\varphi_t\\circ\\varphi_s$.",
+          "hint": "Resolva $\\dot x=x$ com $x(0)=x_0$: obtém $\\varphi_t(x_0)=e^t x_0$. Confirme $\\varphi_t\\circ\\varphi_s=e^{t}e^{s}=e^{t+s}$.",
+          "difficulty": 2,
+          "solution": "O campo é $X=x\\,\\partial_x$ em $\\mathbb{R}$, cuja curva integral resolve a EDO $\\dot x=x$.\n\n**Fluxo.** Com condição inicial $x(0)=x_0$, a solução é $x(t)=x_0e^{t}$. Portanto\n$$\\varphi_t(x_0)=e^{t}x_0.$$\nEle está definido para todo $t\\in\\mathbb{R}$ (o campo é completo, pois cresce linearmente).\n\n**Propriedade de grupo.** Para quaisquer $t,s\\in\\mathbb{R}$,\n$$(\\varphi_t\\circ\\varphi_s)(x_0)=\\varphi_t(e^{s}x_0)=e^{t}\\,(e^{s}x_0)=e^{t+s}x_0=\\varphi_{t+s}(x_0).$$\nAlém disso $\\varphi_0(x_0)=e^0x_0=x_0$, logo $\\varphi_0=\\mathrm{id}$, e $\\varphi_{-t}$ é o inverso de $\\varphi_t$ (pois $e^{-t}e^{t}=1$). Assim $\\{\\varphi_t\\}$ é um grupo a $1$-parâmetro de difeomorfismos. $\\blacksquare$",
+          "steps": [
+            "Traduza $X=x\\partial_x$ na EDO $\\dot x=x$ e resolva com $x(0)=x_0$.",
+            "Obtenha $\\varphi_t(x_0)=e^t x_0$.",
+            "Componha $\\varphi_t\\circ\\varphi_s$ e simplifique $e^t e^s=e^{t+s}$.",
+            "Verifique $\\varphi_0=\\mathrm{id}$ e $\\varphi_{-t}=\\varphi_t^{-1}$, confirmando o grupo a 1-parâmetro."
+          ]
+        },
+        {
+          "prompt": "Mostre que o campo $X=x^2\\,\\partial_x$ em $\\mathbb{R}$ não é completo.",
+          "hint": "Resolva $\\dot x=x^2$, $x(0)=x_0>0$: a solução $x(t)=x_0/(1-x_0 t)$ explode em tempo finito $t=1/x_0$.",
+          "difficulty": 2,
+          "solution": "O campo é $X=x^2\\,\\partial_x$, com EDO $\\dot x=x^2$.\n\n**Solução.** Para $x_0>0$, separando variáveis:\n$$\\int\\frac{dx}{x^2}=\\int dt\\ \\Rightarrow\\ -\\frac1x=t+C.$$\nCom $x(0)=x_0$, $C=-1/x_0$, logo\n$$x(t)=\\frac{x_0}{1-x_0\\,t}.$$\n\n**Explosão em tempo finito.** Quando $t\\to (1/x_0)^-$, o denominador $1-x_0t\\to 0^+$ e $x(t)\\to +\\infty$. Assim o intervalo maximal de definição da curva integral por $x_0>0$ é $\\big(-\\infty,\\,1/x_0\\big)$, que **não** é todo $\\mathbb{R}$: a solução escapa ao infinito em tempo finito $t^*=1/x_0<\\infty$.\n\n**Conclusão.** Como existe condição inicial cuja curva integral não se estende a todo $t\\in\\mathbb{R}$, o fluxo $\\varphi_t$ não está definido globalmente e $X=x^2\\partial_x$ **não é completo**. (Note que $\\mathbb{R}$ não é compacta, então o critério de compacidade não se aplica.) $\\blacksquare$",
+          "steps": [
+            "Escreva a EDO $\\dot x=x^2$ e separe variáveis.",
+            "Integre para obter $x(t)=x_0/(1-x_0 t)$ com $x_0>0$.",
+            "Observe que $x(t)\\to\\infty$ quando $t\\to (1/x_0)^-$: explosão em tempo finito.",
+            "Conclua que o intervalo maximal é limitado à direita, logo o campo não é completo."
+          ]
+        },
+        {
+          "prompt": "Prove a identidade de Jacobi $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$ usando a definição $[X,Y]=XY-YX$ como operadores.",
+          "hint": "Expanda cada colchete duplo em termos de composições; os doze termos de operadores de terceira ordem se cancelam aos pares. É álgebra pura de operadores.",
+          "difficulty": 3,
+          "solution": "Trabalhando com $X,Y,Z$ como operadores diferenciais (derivações), $[A,B]=AB-BA$. Expandimos cada colchete duplo:\n$$[X,[Y,Z]]=X(YZ-ZY)-(YZ-ZY)X=XYZ-XZY-YZX+ZYX,$$\n$$[Y,[Z,X]]=Y(ZX-XZ)-(ZX-XZ)Y=YZX-YXZ-ZXY+XZY,$$\n$$[Z,[X,Y]]=Z(XY-YX)-(XY-YX)Z=ZXY-ZYX-XYZ+YXZ.$$\nSomando as três linhas, agrupamos os doze termos (cada um é uma das ordens das três letras) em pares que se cancelam:\n$$\\begin{aligned}\n&XYZ\\ (\\text{1ª})\\ -\\ XYZ\\ (\\text{3ª})=0,\\\\\n&-XZY\\ (\\text{1ª})\\ +\\ XZY\\ (\\text{2ª})=0,\\\\\n&-YZX\\ (\\text{1ª})\\ +\\ YZX\\ (\\text{2ª})=0,\\\\\n&+ZYX\\ (\\text{1ª})\\ -\\ ZYX\\ (\\text{3ª})=0,\\\\\n&-YXZ\\ (\\text{2ª})\\ +\\ YXZ\\ (\\text{3ª})=0,\\\\\n&-ZXY\\ (\\text{2ª})\\ +\\ ZXY\\ (\\text{3ª})=0.\n\\end{aligned}$$\nTodos os termos se cancelam aos pares, logo\n$$[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0.$$\n(Os operadores de segunda/terceira ordem se cancelam identicamente; por isso a identidade vale mesmo com $XY$ sendo de segunda ordem.) $\\blacksquare$",
+          "steps": [
+            "Escreva cada colchete duplo expandindo $[A,B]=AB-BA$ em composições de operadores.",
+            "Liste explicitamente os quatro termos de cada uma das três parcelas (doze termos ao todo).",
+            "Some tudo e identifique os pares de termos idênticos com sinais opostos.",
+            "Constate o cancelamento total, obtendo a identidade de Jacobi."
+          ]
+        },
+        {
+          "prompt": "Sejam $X,Y$ campos com fluxos $\\varphi_t,\\psi_s$. Esboce a prova de que $[X,Y]=0$ implica $\\varphi_t\\circ\\psi_s=\\psi_s\\circ\\varphi_t$.",
+          "hint": "Mostre que $(\\varphi_{-t})_*Y=Y$ para todo $t$ derivando em $t$ e usando $\\tfrac{d}{dt}(\\varphi_{-t})_*Y=(\\varphi_{-t})_*[X,Y]=0$; campos $\\varphi_t$-invariantes têm fluxos que comutam com $\\varphi_t$.",
+          "difficulty": 5,
+          "solution": "Sejam $X,Y$ campos com fluxos $\\varphi_t$ (de $X$) e $\\psi_s$ (de $Y$), e suponha $[X,Y]=0$.\n\n**Passo 1: $Y$ é invariante pelo fluxo de $X$.** Considere a família de campos $Y(t)=(\\varphi_{-t})_*Y$ (o empurramento de $Y$ pelo difeomorfismo $\\varphi_{-t}$). Um fato fundamental da derivada de Lie é\n$$\\frac{d}{dt}\\,(\\varphi_{-t})_*Y=(\\varphi_{-t})_*\\,\\mathcal{L}_XY=(\\varphi_{-t})_*[X,Y].$$\nComo $[X,Y]=0$, temos $\\frac{d}{dt}Y(t)=0$, logo $Y(t)=Y(0)=Y$ para todo $t$. Isto é, $(\\varphi_{-t})_*Y=Y$, equivalentemente $(\\varphi_t)_*Y=Y$: o campo $Y$ é $\\varphi_t$-invariante.\n\n**Passo 2: fluxos comutam.** Vale o princípio geral: se $F$ é um difeomorfismo e $Y$ um campo, então o fluxo de $F_*Y$ é $F\\circ\\psi_s\\circ F^{-1}$. Aplicando com $F=\\varphi_t$ e usando $(\\varphi_t)_*Y=Y$, cujo fluxo é o próprio $\\psi_s$:\n$$\\varphi_t\\circ\\psi_s\\circ\\varphi_{t}^{-1}=\\text{fluxo de }(\\varphi_t)_*Y=\\text{fluxo de }Y=\\psi_s.$$\nLogo $\\varphi_t\\circ\\psi_s=\\psi_s\\circ\\varphi_t$ para todos $t,s$ (pequenos, onde tudo está definido). Os fluxos comutam. $\\blacksquare$",
+          "steps": [
+            "Introduza $Y(t)=(\\varphi_{-t})_*Y$ e a fórmula $\\frac{d}{dt}(\\varphi_{-t})_*Y=(\\varphi_{-t})_*[X,Y]$.",
+            "Use $[X,Y]=0$ para concluir $Y(t)\\equiv Y$, ou seja $(\\varphi_t)_*Y=Y$ (invariância).",
+            "Invoque o princípio: o fluxo de $F_*Y$ é $F\\circ\\psi_s\\circ F^{-1}$.",
+            "Com $F=\\varphi_t$ e $(\\varphi_t)_*Y=Y$, deduza $\\varphi_t\\circ\\psi_s\\circ\\varphi_t^{-1}=\\psi_s$, isto é, os fluxos comutam."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Campo vetorial (duas visões)",
+          "back": "Seção suave do fibrado tangente $p\\mapsto X_p\\in T_pM$; equivalentemente, derivação $C^\\infty(M)\\to C^\\infty(M)$."
+        },
+        {
+          "front": "Curva integral de $X$",
+          "back": "$\\gamma$ com $\\gamma'(t)=X_{\\gamma(t)}$; em coordenadas, solução de $\\dot x^i=a^i(x)$."
+        },
+        {
+          "front": "O que garante existência/unicidade de curvas integrais?",
+          "back": "Teorema de Picard-Lindelöf (EDO) aplicado em cartas; solução única e suave na condição inicial."
+        },
+        {
+          "front": "Propriedade de grupo do fluxo",
+          "back": "$\\varphi_0=\\mathrm{id}$ e $\\varphi_{t+s}=\\varphi_t\\circ\\varphi_s$; $\\varphi_t$ é difeomorfismo com inversa $\\varphi_{-t}$."
+        },
+        {
+          "front": "Campo completo",
+          "back": "Aquele cujo fluxo está definido para todo $t\\in\\mathbb{R}$ (garantido se $M$ é compacta)."
+        },
+        {
+          "front": "Colchete de Lie em coordenadas",
+          "back": "$[X,Y]^k=\\sum_i(X^i\\partial_i Y^k-Y^i\\partial_i X^k)$."
+        },
+        {
+          "front": "$[X,Y]=0$ significa geometricamente",
+          "back": "Os fluxos de $X$ e $Y$ comutam."
+        },
+        {
+          "front": "Identidade de Jacobi",
+          "back": "$[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$; faz dos campos uma álgebra de Lie."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Lee, Introduction to Smooth Manifolds, caps. 8-9",
+          "ref": "livro"
+        },
+        {
+          "title": "Tu, An Introduction to Manifolds, cap. 4",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja o Teorema de Picard–Lindelöf (existência e unicidade para EDO) e dependência suave das condições iniciais: é o motor de curvas integrais e fluxos.",
+          "Leia Lee, caps. 8–9 (ou Tu, cap. 4): campo vetorial como seção do fibrado tangente e como derivação, curvas integrais e construção do fluxo.",
+          "Prove a propriedade de grupo $\\varphi_{t+s}=\\varphi_t\\circ\\varphi_s$ e discuta completude (exemplo $\\dot x=x^2$ que explode).",
+          "Domine o colchete de Lie: definição $[X,Y]=XY-YX$, fórmula em coordenadas, antissimetria e identidade de Jacobi; calcule vários exemplos à mão.",
+          "Estude a interpretação geométrica $[X,Y]=0\\iff$ fluxos comutam, e a derivada de Lie; leia o enunciado do Teorema de Frobenius.",
+          "Volte ao app, resolva os testes e anote aqui: fórmula do colchete em coordenadas, propriedade de grupo do fluxo e o critério de completude."
+        ],
+        "searchQueries": [
+          "campo vetorial curva integral fluxo variedade",
+          "colchete de Lie fórmula em coordenadas exemplo",
+          "Lie bracket flows commute iff bracket zero",
+          "campo vetorial completo exemplo não completo",
+          "identidade de Jacobi colchete de Lie prova operadores",
+          "Frobenius theorem involutive distribution integrable"
+        ],
+        "videos": [
+          {
+            "title": "18.950/18.965 — campos e fluxos",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre campos vetoriais, curvas integrais e colchete de Lie em variedades."
+          },
+          {
+            "title": "Lie bracket of vector fields",
+            "channel": "Michael Penn",
+            "note": "Busque 'Lie bracket' e 'vector fields' para o cálculo em coordenadas e a interpretação."
+          },
+          {
+            "title": "Vector fields and flows",
+            "channel": "XylyXylyX / séries de geometria diferencial",
+            "note": "Procure vídeos sobre fluxos e derivada de Lie para intuição dinâmica."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Lee — Introduction to Smooth Manifolds, caps. 8–9",
+            "where": "livro (Springer, GTM 218)"
+          },
+          {
+            "title": "Tu — An Introduction to Manifolds, cap. 4",
+            "where": "livro (Springer)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-diferencial-06-formas-stokes",
+      "title": "Formas Diferenciais, Derivada Exterior e o Teorema de Stokes",
+      "tagline": "A linguagem que unifica gradiente, rotacional e divergente — e que faz Green, Stokes e Gauss virarem um único teorema.",
+      "objectives": [
+        "Definir $k$-formas diferenciais, produto exterior $\\wedge$ e pullback $f^*$.",
+        "Caracterizar a derivada exterior $d$ por suas propriedades e provar $d^2=0$.",
+        "Distinguir formas fechadas e exatas e enunciar o Lema de Poincaré e a cohomologia de de Rham.",
+        "Definir orientação e integração de $n$-formas em variedades, com partições da unidade.",
+        "Enunciar e aplicar o Teorema de Stokes generalizado, recuperando Green, Stokes clássico e a divergência."
+      ],
+      "keyConcepts": [
+        {
+          "term": "$k$-forma diferencial",
+          "statement": "Seção suave de $\\Lambda^k T^*M$: a cada $p$, uma forma $k$-linear alternada $\\omega_p$ em $T_pM$. Em coordenadas $\\omega=\\sum_{i_1<\\dots<i_k} a_{i_1\\dots i_k}\\,dx^{i_1}\\wedge\\dots\\wedge dx^{i_k}$."
+        },
+        {
+          "term": "Produto exterior",
+          "statement": "$\\wedge$ associativo, bilinear, com $\\alpha\\wedge\\beta=(-1)^{(\\deg\\alpha)(\\deg\\beta)}\\beta\\wedge\\alpha$; em particular $dx^i\\wedge dx^i=0$. Codifica volume orientado."
+        },
+        {
+          "term": "Pullback",
+          "statement": "Para $f:M\\to N$ suave e $\\omega$ forma em $N$, $f^*\\omega$ é forma em $M$ definida por $(f^*\\omega)_p(v_1,\\dots,v_k)=\\omega_{f(p)}(df_p v_1,\\dots,df_p v_k)$. Comuta com $\\wedge$ e com $d$."
+        },
+        {
+          "term": "Derivada exterior",
+          "statement": "Operador $\\mathbb{R}$-linear $d:\\Omega^k\\to\\Omega^{k+1}$ com $df=\\sum\\partial_i f\\,dx^i$ em grau $0$, $d^2=0$, e Leibniz graduada $d(\\alpha\\wedge\\beta)=d\\alpha\\wedge\\beta+(-1)^{\\deg\\alpha}\\alpha\\wedge d\\beta$."
+        },
+        {
+          "term": "Fechada e exata",
+          "statement": "$\\omega$ é fechada se $d\\omega=0$; exata se $\\omega=d\\eta$. Como $d^2=0$, toda exata é fechada. A cohomologia de de Rham $H^k_{dR}=\\ker d/\\,\\mathrm{im}\\,d$ mede a obstrução à recíproca."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "$d^2=0$ e naturalidade",
+          "statement": "A derivada exterior satisfaz $d\\circ d=0$ e comuta com pullback: $f^*(d\\omega)=d(f^*\\omega)$. Essas propriedades a caracterizam unicamente.",
+          "whyItMatters": "$d^2=0$ é o fato algébrico que torna possível a cohomologia de de Rham; ele unifica $\\mathrm{rot}\\,\\nabla=0$ e $\\mathrm{div}\\,\\mathrm{rot}=0$ do cálculo vetorial num único enunciado."
+        },
+        {
+          "name": "Lema de Poincaré",
+          "statement": "Em um aberto contrátil (por exemplo, uma bola de $\\mathbb{R}^n$), toda forma fechada é exata: $d\\omega=0\\Rightarrow\\omega=d\\eta$. Logo $H^k_{dR}=0$ em grau $k\\ge 1$.",
+          "whyItMatters": "Diz que fechada-mas-não-exata é um fenômeno GLOBAL/topológico: localmente todas as formas fechadas são exatas. A cohomologia de de Rham mede buracos da variedade."
+        },
+        {
+          "name": "Teorema de Stokes (generalizado)",
+          "statement": "Seja $M$ variedade orientada, $n$-dimensional, com bordo $\\partial M$ (orientado pela orientação induzida), e $\\omega$ uma $(n-1)$-forma de suporte compacto. Então $\\displaystyle\\int_M d\\omega=\\int_{\\partial M}\\omega$.",
+          "whyItMatters": "O teorema-mãe do cálculo: engloba o Teorema Fundamental do Cálculo, Green, Stokes clássico e a divergência como casos particulares, e é a dualidade entre $d$ (derivada exterior) e $\\partial$ (bordo) na base da cohomologia."
+        },
+        {
+          "name": "Casos clássicos do cálculo vetorial",
+          "statement": "Em $\\mathbb{R}^3$, traduzindo campos em formas via o produto interno: Stokes generalizado com $1$-formas recupera o Teorema de Green e o Teorema de Stokes do rotacional; com $2$-formas recupera o Teorema da Divergência (Gauss).",
+          "whyItMatters": "Mostra que gradiente, rotacional e divergente são todos manifestações de $d$ em graus $0,1,2$; unifica o cálculo vetorial de Cálculo III sob uma única operação."
+        }
+      ],
+      "summary": "Formas diferenciais são os objetos certos para integrar em variedades: uma $k$-forma come $k$ vetores tangentes e devolve um número de maneira alternada, medindo 'volume $k$-dimensional orientado infinitesimal'. O produto exterior $\\wedge$ as combina com a anticomutatividade que codifica orientação, e o pullback $f^*$ as transporta para trás por aplicações suaves — propriedade que torna a integração independente de coordenadas. Sobre esse arcabouço, a derivada exterior $d$ é a generalização simultânea de gradiente, rotacional e divergente: é o único operador que estende a diferencial de funções, satisfaz a regra de Leibniz graduada e cumpre $d^2=0$. Esse $d^2=0$ é exatamente o conteúdo unificado de $\\mathrm{rot}\\,\\nabla f=0$ e $\\mathrm{div}\\,\\mathrm{rot}\\,F=0$.\n\nDuas classes de formas organizam a teoria: as fechadas ($d\\omega=0$) e as exatas ($\\omega=d\\eta$). Toda exata é fechada; a recíproca falha por razões topológicas, e a falha é medida pela cohomologia de de Rham $H^k_{dR}=\\ker d/\\,\\mathrm{im}\\,d$. O Lema de Poincaré garante que localmente (em abertos contráteis) fechada implica exata — logo a cohomologia detecta buracos globais da variedade. O ápice é o Teorema de Stokes generalizado $\\int_M d\\omega=\\int_{\\partial M}\\omega$, uma dualidade entre derivar formas e tomar bordo. Dele saem, como casos particulares, o Teorema Fundamental do Cálculo, Green, o Stokes clássico do rotacional e a divergência de Gauss — todos colapsados numa única e elegante igualdade. Para integrar precisamos de orientação e de partições da unidade, que colam as integrais locais (definidas em cartas) numa integral global bem definida.",
+      "commonPitfalls": [
+        "Tratar $dx^i\\wedge dx^j$ como simétrico: o produto exterior é ALTERNADO, $dx^i\\wedge dx^j=-dx^j\\wedge dx^i$ e $dx^i\\wedge dx^i=0$.",
+        "Concluir que toda forma fechada é exata: só vale localmente (Lema de Poincaré) ou em domínios contráteis; globalmente a cohomologia de de Rham pode ser não trivial (ex.: $d\\theta$ em $\\mathbb{R}^2\\setminus\\{0\\}$).",
+        "Esquecer a orientação ou a orientação INDUZIDA no bordo: o sinal em Stokes depende dela; trocar a orientação troca o sinal da integral.",
+        "Aplicar Stokes a formas sem suporte compacto em variedades não compactas, ou ignorar a regularidade do bordo: as hipóteses são essenciais."
+      ],
+      "worked": "**Uma forma fechada não exata.** No plano furado $M=\\mathbb{R}^2\\setminus\\{0\\}$, considere\n$$\\omega=\\frac{-y\\,dx+x\\,dy}{x^2+y^2}.$$\nÉ fechada: um cálculo direto dá $d\\omega=0$ (os termos cruzados se cancelam). Em coordenadas polares, $\\omega=d\\theta$, a 'forma ângulo'. Se $\\omega$ fosse exata, $\\omega=df$ para alguma $f\\in C^\\infty(M)$, então por Stokes (ou pelo TFC ao longo da curva) sua integral sobre qualquer curva fechada seria zero. Mas, integrando sobre o círculo unitário $\\gamma(t)=(\\cos t,\\sin t)$, $t\\in[0,2\\pi]$:\n$$\\oint_\\gamma\\omega=\\int_0^{2\\pi}\\bigl(-\\sin t\\cdot(-\\sin t)+\\cos t\\cdot\\cos t\\bigr)\\,dt=\\int_0^{2\\pi}1\\,dt=2\\pi\\neq 0.$$\nLogo $\\omega$ é fechada mas NÃO exata: o 'buraco' na origem é detectado, e $[\\omega]$ gera $H^1_{dR}(M)\\cong\\mathbb{R}$. Localmente (em qualquer disco que evite a origem) $\\omega=d\\theta$ é exata, conforme o Lema de Poincaré; a obstrução é puramente global. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Em $\\mathbb{R}^3$, seja $\\omega=P\\,dx+Q\\,dy+R\\,dz$. Calcule $d\\omega$ e mostre que seus coeficientes são exatamente as componentes do rotacional de $(P,Q,R)$.",
+          "hint": "Aplique $d$ a cada termo: $d(P\\,dx)=dP\\wedge dx=(\\partial_yP\\,dy+\\partial_zP\\,dz)\\wedge dx$. Agrupe os coeficientes de $dy\\wedge dz$, $dz\\wedge dx$, $dx\\wedge dy$.",
+          "difficulty": 3,
+          "solution": "Seja $\\omega=P\\,dx+Q\\,dy+R\\,dz$ em $\\mathbb{R}^3$. A derivada exterior é\n$$d\\omega=dP\\wedge dx+dQ\\wedge dy+dR\\wedge dz,$$\ncom $dP=P_x\\,dx+P_y\\,dy+P_z\\,dz$, etc. Calculando cada termo (lembrando $dx\\wedge dx=0$ e a antissimetria):\n$$dP\\wedge dx=P_y\\,dy\\wedge dx+P_z\\,dz\\wedge dx=-P_y\\,dx\\wedge dy+P_z\\,dz\\wedge dx,$$\n$$dQ\\wedge dy=Q_x\\,dx\\wedge dy+Q_z\\,dz\\wedge dy=Q_x\\,dx\\wedge dy-Q_z\\,dy\\wedge dz,$$\n$$dR\\wedge dz=R_x\\,dx\\wedge dz+R_y\\,dy\\wedge dz=-R_x\\,dz\\wedge dx+R_y\\,dy\\wedge dz.$$\nAgrupando pelos bivetores da base $\\{dy\\wedge dz,\\ dz\\wedge dx,\\ dx\\wedge dy\\}$:\n$$d\\omega=(R_y-Q_z)\\,dy\\wedge dz+(P_z-R_x)\\,dz\\wedge dx+(Q_x-P_y)\\,dx\\wedge dy.$$\nOs coeficientes são exatamente as componentes do rotacional\n$$\\nabla\\times(P,Q,R)=(R_y-Q_z,\\ P_z-R_x,\\ Q_x-P_y).$$\nAssim a derivada exterior de uma $1$-forma em $\\mathbb{R}^3$ codifica o rotacional do campo associado. $\\blacksquare$",
+          "steps": [
+            "Escreva $d\\omega=dP\\wedge dx+dQ\\wedge dy+dR\\wedge dz$.",
+            "Expanda cada $dP,dQ,dR$ e use $dx^i\\wedge dx^i=0$ e a antissimetria.",
+            "Reescreva tudo na base ordenada $\\{dy\\wedge dz, dz\\wedge dx, dx\\wedge dy\\}$.",
+            "Leia os coeficientes $(R_y-Q_z,\\,P_z-R_x,\\,Q_x-P_y)$ e reconheça o rotacional."
+          ]
+        },
+        {
+          "prompt": "Prove $d^2\\omega=0$ para uma $0$-forma (função) $f$ em $\\mathbb{R}^n$, e explique como isso generaliza $\\mathrm{rot}\\,\\nabla f=0$.",
+          "hint": "$d(df)=d(\\sum_i\\partial_i f\\,dx^i)=\\sum_{i,j}\\partial_j\\partial_i f\\,dx^j\\wedge dx^i$; pela simetria das derivadas mistas (Schwarz) e antissimetria do $\\wedge$, os termos se cancelam aos pares.",
+          "difficulty": 3,
+          "solution": "Seja $f$ uma $0$-forma (função suave) em $\\mathbb{R}^n$. Então $df=\\sum_i \\partial_i f\\,dx^i$, e\n$$d(df)=\\sum_i d(\\partial_i f)\\wedge dx^i=\\sum_{i,j}\\partial_j\\partial_i f\\;dx^j\\wedge dx^i.$$\nSepare a soma nos pares $(i,j)$ e $(j,i)$. Pelo Teorema de Schwarz, $\\partial_j\\partial_i f=\\partial_i\\partial_j f$ (derivadas mistas simétricas); pela antissimetria do produto exterior, $dx^j\\wedge dx^i=-dx^i\\wedge dx^j$. Logo os termos $(i,j)$ e $(j,i)$ têm coeficientes iguais e bivetores opostos:\n$$\\partial_j\\partial_i f\\,dx^j\\wedge dx^i+\\partial_i\\partial_j f\\,dx^i\\wedge dx^j=\\partial_i\\partial_j f\\,(dx^j\\wedge dx^i+dx^i\\wedge dx^j)=0.$$\nAlém disso os termos com $i=j$ têm $dx^i\\wedge dx^i=0$. Portanto\n$$d^2f=d(df)=0.$$\n\n**Generalização de $\\mathrm{rot}\\,\\nabla f=0$.** Em $\\mathbb{R}^3$, a $0$-forma $f$ corresponde a uma função, e $df$ corresponde ao campo gradiente $\\nabla f$ (via a $1$-forma $\\partial_xf\\,dx+\\partial_yf\\,dy+\\partial_zf\\,dz$). Pelo exercício anterior, $d$ de uma $1$-forma corresponde ao rotacional; assim $d(df)=0$ é precisamente $\\nabla\\times\\nabla f=0$. A identidade $d^2=0$ é a versão geral, em qualquer dimensão e grau, dessa lei do cálculo vetorial. $\\blacksquare$",
+          "steps": [
+            "Escreva $df=\\sum_i\\partial_i f\\,dx^i$ e aplique $d$ de novo: $d^2f=\\sum_{i,j}\\partial_j\\partial_i f\\,dx^j\\wedge dx^i$.",
+            "Use Schwarz ($\\partial_j\\partial_i f=\\partial_i\\partial_j f$) e a antissimetria ($dx^j\\wedge dx^i=-dx^i\\wedge dx^j$).",
+            "Constate o cancelamento par a par (e $dx^i\\wedge dx^i=0$), logo $d^2f=0$.",
+            "Interprete em $\\mathbb{R}^3$: $df\\leftrightarrow\\nabla f$ e $d$ de 1-forma $\\leftrightarrow$ rotacional, então $d^2f=0$ é $\\mathrm{rot}\\,\\nabla f=0$."
+          ]
+        },
+        {
+          "prompt": "Use o Teorema de Stokes generalizado para deduzir o Teorema da Divergência em $\\mathbb{R}^3$ a partir de uma $2$-forma associada a um campo $F$.",
+          "hint": "Associe a $F=(F_1,F_2,F_3)$ a $2$-forma $\\omega_F=F_1\\,dy\\wedge dz+F_2\\,dz\\wedge dx+F_3\\,dx\\wedge dy$; mostre $d\\omega_F=(\\mathrm{div}\\,F)\\,dx\\wedge dy\\wedge dz$ e aplique Stokes ao sólido.",
+          "difficulty": 4,
+          "solution": "Seja $F=(F_1,F_2,F_3)$ um campo suave num sólido $M\\subset\\mathbb{R}^3$ com bordo $\\partial M$ orientado pela normal exterior. Associe a $F$ a $2$-forma de fluxo\n$$\\omega_F=F_1\\,dy\\wedge dz+F_2\\,dz\\wedge dx+F_3\\,dx\\wedge dy.$$\n\n**Cálculo de $d\\omega_F$.** Aplicando $d$ (só sobrevive a derivada na direção que 'falta' em cada bivetor):\n$$d(F_1\\,dy\\wedge dz)=\\partial_x F_1\\,dx\\wedge dy\\wedge dz,$$\n$$d(F_2\\,dz\\wedge dx)=\\partial_y F_2\\,dy\\wedge dz\\wedge dx=\\partial_y F_2\\,dx\\wedge dy\\wedge dz,$$\n$$d(F_3\\,dx\\wedge dy)=\\partial_z F_3\\,dz\\wedge dx\\wedge dy=\\partial_z F_3\\,dx\\wedge dy\\wedge dz,$$\nusando que $dy\\wedge dz\\wedge dx=dz\\wedge dx\\wedge dy=dx\\wedge dy\\wedge dz$ (permutações cíclicas pares). Somando,\n$$d\\omega_F=(\\partial_xF_1+\\partial_yF_2+\\partial_zF_3)\\,dx\\wedge dy\\wedge dz=(\\mathrm{div}\\,F)\\,dV.$$\n\n**Aplicando Stokes.** O Teorema de Stokes generalizado dá $\\int_M d\\omega_F=\\int_{\\partial M}\\omega_F$. O lado esquerdo é $\\int_M \\mathrm{div}\\,F\\,dV$. No lado direito, restrita ao bordo, $\\omega_F$ avalia o fluxo: $\\int_{\\partial M}\\omega_F=\\int_{\\partial M}F\\cdot n\\,dS$ (a $2$-forma $\\omega_F$ aplicada a uma base orientada do plano tangente ao bordo dá $F\\cdot n$ vezes o elemento de área). Portanto\n$$\\int_M \\mathrm{div}\\,F\\,dV=\\int_{\\partial M}F\\cdot n\\,dS,$$\nque é o **Teorema da Divergência (Gauss)**. $\\blacksquare$",
+          "steps": [
+            "Associe a $F$ a 2-forma de fluxo $\\omega_F=F_1\\,dy\\wedge dz+F_2\\,dz\\wedge dx+F_3\\,dx\\wedge dy$.",
+            "Calcule $d\\omega_F$; use as permutações cíclicas para juntar tudo em $dx\\wedge dy\\wedge dz$.",
+            "Obtenha $d\\omega_F=(\\mathrm{div}\\,F)\\,dV$.",
+            "Aplique $\\int_M d\\omega_F=\\int_{\\partial M}\\omega_F$; identifique o lado esquerdo com $\\int\\mathrm{div}\\,F\\,dV$ e o direito com o fluxo $\\int F\\cdot n\\,dS$."
+          ]
+        },
+        {
+          "prompt": "Mostre que a forma $\\omega=\\frac{-y\\,dx+x\\,dy}{x^2+y^2}$ é fechada por cálculo direto, e explique por que isso não contradiz o fato de ela não ser exata em $\\mathbb{R}^2\\setminus\\{0\\}$.",
+          "hint": "Calcule $\\partial_x\\!\\left(\\frac{x}{x^2+y^2}\\right)$ e $\\partial_y\\!\\left(\\frac{-y}{x^2+y^2}\\right)$ e verifique que sua diferença (o coeficiente de $dx\\wedge dy$ em $d\\omega$) é zero. O domínio não é contrátil, logo o Lema de Poincaré não se aplica globalmente.",
+          "difficulty": 3,
+          "solution": "Seja $\\omega=\\dfrac{-y\\,dx+x\\,dy}{x^2+y^2}$ em $M=\\mathbb{R}^2\\setminus\\{0\\}$, com $P=\\dfrac{-y}{x^2+y^2}$ e $Q=\\dfrac{x}{x^2+y^2}$.\n\n**Fechada (cálculo direto).** Temos $d\\omega=(Q_x-P_y)\\,dx\\wedge dy$. Calculando as derivadas parciais (regra do quociente):\n$$Q_x=\\frac{\\partial}{\\partial x}\\frac{x}{x^2+y^2}=\\frac{(x^2+y^2)-x\\cdot 2x}{(x^2+y^2)^2}=\\frac{y^2-x^2}{(x^2+y^2)^2},$$\n$$P_y=\\frac{\\partial}{\\partial y}\\frac{-y}{x^2+y^2}=\\frac{-(x^2+y^2)+y\\cdot 2y}{(x^2+y^2)^2}=\\frac{y^2-x^2}{(x^2+y^2)^2}.$$\nLogo $Q_x-P_y=0$ e $d\\omega=0$: a forma é **fechada** em todo $M$.\n\n**Por que não contradiz a não exatidão.** Ser fechada é uma condição **local** (é $d\\omega=0$). Ser exata em $M$ significa existir uma função global $f\\in C^\\infty(M)$ com $\\omega=df$; isso é uma condição **global**. O Lema de Poincaré garante fechada $\\Rightarrow$ exata apenas em domínios **contráteis**, e $M=\\mathbb{R}^2\\setminus\\{0\\}$ **não** é contrátil (tem um 'buraco' na origem). De fato, se $\\omega$ fosse exata, sua integral sobre qualquer curva fechada seria nula; mas sobre o círculo unitário $\\gamma(t)=(\\cos t,\\sin t)$,\n$$\\oint_\\gamma\\omega=\\int_0^{2\\pi}\\big((-\\sin t)(-\\sin t)+(\\cos t)(\\cos t)\\big)\\,dt=\\int_0^{2\\pi}1\\,dt=2\\pi\\neq 0.$$\nPortanto $\\omega$ é fechada mas não exata. Não há contradição: a classe $[\\omega]$ gera $H^1_{dR}(M)\\cong\\mathbb{R}$, e a obstrução é puramente topológica (global). $\\blacksquare$",
+          "steps": [
+            "Identifique $P,Q$ e reduza a verificação a $d\\omega=(Q_x-P_y)\\,dx\\wedge dy$.",
+            "Calcule $Q_x$ e $P_y$ pela regra do quociente e veja que ambos valem $(y^2-x^2)/(x^2+y^2)^2$.",
+            "Conclua $Q_x-P_y=0$, logo $\\omega$ é fechada.",
+            "Explique que fechada é local e exata é global; o Lema de Poincaré exige domínio contrátil, que $\\mathbb{R}^2\\setminus\\{0\\}$ não é.",
+            "Confirme a não exatidão via $\\oint_\\gamma\\omega=2\\pi\\neq0$ no círculo unitário."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "O que é uma $k$-forma diferencial?",
+          "back": "Seção suave de $\\Lambda^k T^*M$: forma $k$-linear alternada em $T_pM$ variando suavemente com $p$."
+        },
+        {
+          "front": "Anticomutatividade do produto exterior",
+          "back": "$\\alpha\\wedge\\beta=(-1)^{(\\deg\\alpha)(\\deg\\beta)}\\beta\\wedge\\alpha$; em particular $dx^i\\wedge dx^i=0$."
+        },
+        {
+          "front": "Propriedades que definem a derivada exterior $d$",
+          "back": "Linear, $df=\\sum\\partial_i f\\,dx^i$ em grau 0, $d^2=0$, Leibniz graduada."
+        },
+        {
+          "front": "Forma fechada vs exata",
+          "back": "Fechada: $d\\omega=0$. Exata: $\\omega=d\\eta$. Toda exata é fechada (pois $d^2=0$)."
+        },
+        {
+          "front": "Lema de Poincaré",
+          "back": "Em aberto contrátil, toda forma fechada é exata; $H^k_{dR}=0$ para $k\\ge 1$."
+        },
+        {
+          "front": "Cohomologia de de Rham",
+          "back": "$H^k_{dR}(M)=\\ker d/\\,\\mathrm{im}\\,d$; mede a falha de fechada $\\Rightarrow$ exata (buracos da variedade)."
+        },
+        {
+          "front": "Teorema de Stokes generalizado",
+          "back": "$\\int_M d\\omega=\\int_{\\partial M}\\omega$, $M$ orientada com bordo, $\\omega$ uma $(n-1)$-forma de suporte compacto."
+        },
+        {
+          "front": "Casos particulares de Stokes",
+          "back": "TFC, Teorema de Green, Stokes do rotacional e Teorema da Divergência (Gauss)."
+        }
+      ],
+      "estimatedHours": 11,
+      "resources": [
+        {
+          "title": "Spivak, Calculus on Manifolds, caps. 4-5",
+          "ref": "livro"
+        },
+        {
+          "title": "Lee, Introduction to Smooth Manifolds, caps. 11-16",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.952 Theory of Differential Forms",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja álgebra multilinear alternada: $\\Lambda^k V^*$, produto exterior, orientação e determinante como forma de volume — é o alicerce das formas diferenciais.",
+          "Leia Spivak, Calculus on Manifolds, caps. 4–5 (enxuto) e/ou Lee, caps. 11–14: $k$-formas, produto exterior, pullback e derivada exterior $d$.",
+          "Prove $d^2=0$ e a naturalidade $f^*d=df^*$; traduza $d$ em graus $0,1,2$ de $\\mathbb{R}^3$ para gradiente, rotacional e divergente.",
+          "Estude formas fechadas/exatas, o Lema de Poincaré e o primeiro exemplo de cohomologia não trivial ($d\\theta$ em $\\mathbb{R}^2\\setminus\\{0\\}$).",
+          "Estude orientação, integração de $n$-formas com partições da unidade e o Teorema de Stokes generalizado; deduza dele Green, Stokes clássico e a divergência.",
+          "Volte ao app, resolva os testes e anote aqui: propriedades que definem $d$, o enunciado $\\int_M d\\omega=\\int_{\\partial M}\\omega$ e como recuperar o cálculo vetorial."
+        ],
+        "searchQueries": [
+          "formas diferenciais derivada exterior d^2=0",
+          "produto exterior wedge pullback formas",
+          "teorema de Stokes generalizado formas diferenciais demonstração",
+          "de Rham cohomology closed exact forms Poincaré lemma",
+          "differential forms curl divergence gradient exterior derivative",
+          "forma dtheta fechada não exata plano furado cohomologia"
+        ],
+        "videos": [
+          {
+            "title": "18.952 Theory of Differential Forms",
+            "channel": "MIT OpenCourseWare",
+            "note": "Curso dedicado a formas diferenciais, derivada exterior e Stokes."
+          },
+          {
+            "title": "Differential forms / exterior derivative",
+            "channel": "Michael Penn",
+            "note": "Busque 'differential forms', 'exterior derivative' e 'Stokes' para provas curtas."
+          },
+          {
+            "title": "Divergence, curl and the unification via forms",
+            "channel": "3Blue1Brown",
+            "note": "Procure os vídeos de cálculo vetorial (divergência, rotacional) para a intuição por trás de $d$."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Spivak — Calculus on Manifolds, caps. 4–5",
+            "where": "livro (Addison-Wesley)"
+          },
+          {
+            "title": "Lee — Introduction to Smooth Manifolds, caps. 11–16 (formas, integração, Stokes)",
+            "where": "livro (Springer, GTM 218)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geometria-diferencial-07-riemanniana",
+      "title": "Introdução à Geometria Riemanniana",
+      "tagline": "Métricas, a conexão de Levi-Civita, geodésicas e curvatura: a curvatura de Gauss generalizada a qualquer dimensão.",
+      "objectives": [
+        "Definir métrica Riemanniana e medir comprimentos e distâncias em variedades abstratas.",
+        "Enunciar e usar o Teorema Fundamental: existência e unicidade da conexão de Levi-Civita.",
+        "Definir geodésicas via $\\nabla_{\\gamma'}\\gamma'=0$ e a aplicação exponencial.",
+        "Definir o tensor de curvatura de Riemann e as curvaturas seccional, de Ricci e escalar.",
+        "Conectar curvatura seccional com a curvatura Gaussiana e enunciar Gauss-Bonnet e Hopf-Rinow."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Métrica Riemanniana",
+          "statement": "Campo suave $g$ de produtos internos: cada $g_p$ é forma bilinear simétrica positiva-definida em $T_pM$. Comprimento de curva: $L(\\gamma)=\\int|\\gamma'|_g\\,dt$; distância: ínfimo dos comprimentos."
+        },
+        {
+          "term": "Conexão afim",
+          "statement": "Operador $\\nabla$ que deriva campos ao longo de campos, $\\nabla_X Y$, $C^\\infty$-linear em $X$, $\\mathbb{R}$-linear em $Y$ e com Leibniz $\\nabla_X(fY)=(Xf)Y+f\\nabla_X Y$. Permite derivar e transportar paralelamente em variedades."
+        },
+        {
+          "term": "Conexão de Levi-Civita",
+          "statement": "A única conexão compatível com a métrica ($X\\langle Y,Z\\rangle=\\langle\\nabla_X Y,Z\\rangle+\\langle Y,\\nabla_X Z\\rangle$) e simétrica/sem torção ($\\nabla_X Y-\\nabla_Y X=[X,Y]$). Coeficientes: símbolos de Christoffel $\\Gamma^k_{ij}$."
+        },
+        {
+          "term": "Geodésica",
+          "statement": "Curva com aceleração covariante nula: $\\nabla_{\\gamma'}\\gamma'=0$. Em coordenadas, $\\ddot x^k+\\sum_{i,j}\\Gamma^k_{ij}\\dot x^i\\dot x^j=0$. Generaliza 'reta' e localmente minimiza distância."
+        },
+        {
+          "term": "Tensor de curvatura",
+          "statement": "$R(X,Y)Z=\\nabla_X\\nabla_Y Z-\\nabla_Y\\nabla_X Z-\\nabla_{[X,Y]}Z$, mede a não comutatividade das derivadas covariantes. Dele saem curvatura seccional $K(\\sigma)$, Ricci e escalar."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema Fundamental da Geometria Riemanniana",
+          "statement": "Em toda variedade Riemanniana $(M,g)$ existe uma única conexão afim $\\nabla$ que é compatível com a métrica e simétrica (sem torção): a conexão de Levi-Civita. Seus símbolos de Christoffel se exprimem por $\\Gamma^k_{ij}=\\tfrac12\\sum_l g^{kl}(\\partial_i g_{jl}+\\partial_j g_{il}-\\partial_l g_{ij})$.",
+          "whyItMatters": "É o que permite 'derivar' canonicamente em variedades curvas: define geodésicas, transporte paralelo e curvatura de modo intrínseco, sem escolher nada além da métrica. Fundamento da relatividade geral e de toda a geometria Riemanniana."
+        },
+        {
+          "name": "Geodésicas minimizam localmente",
+          "statement": "Toda geodésica é localmente minimizante: existe vizinhança em que ela realiza a menor distância entre seus pontos. Reciprocamente, toda curva minimizante (parametrizada por comprimento de arco) é geodésica.",
+          "whyItMatters": "Liga o conceito dinâmico (aceleração covariante nula) ao métrico (caminho mais curto). Globalmente, porém, geodésicas podem deixar de minimizar (pontos conjugados, como antípodas na esfera)."
+        },
+        {
+          "name": "Curvatura seccional generaliza Gauss",
+          "statement": "Para um plano $\\sigma\\subset T_pM$ gerado por $u,v$, a curvatura seccional é $K(\\sigma)=\\dfrac{\\langle R(u,v)v,u\\rangle}{|u|^2|v|^2-\\langle u,v\\rangle^2}$. Para superfícies em $\\mathbb{R}^3$ com a métrica induzida, $K(\\sigma)$ coincide com a curvatura Gaussiana.",
+          "whyItMatters": "Mostra que a curvatura Riemanniana abstrata é a generalização exata da curvatura de Gauss — e, por Theorema Egregium, é intrínseca. Unifica a teoria de superfícies com a geometria em dimensão arbitrária."
+        },
+        {
+          "name": "Teorema de Gauss-Bonnet",
+          "statement": "Para uma superfície compacta orientável $M$ sem bordo, $\\displaystyle\\int_M K\\,dA=2\\pi\\,\\chi(M)$, onde $\\chi$ é a característica de Euler. Com bordo, soma-se $\\int_{\\partial M}\\kappa_g\\,ds$ à esquerda.",
+          "whyItMatters": "Conecta de forma espetacular geometria (curvatura, um dado local/analítico) e topologia (característica de Euler, um invariante global/combinatório). É o protótipo dos teoremas índice."
+        }
+      ],
+      "summary": "A geometria Riemanniana realiza o programa aberto pelo Theorema Egregium: definir curvatura e medir comprimentos em variedades abstratas, sem qualquer espaço ambiente. O ingrediente é a métrica Riemanniana $g$, um produto interno suave em cada espaço tangente; com ela definimos comprimento de curvas e distância. Para fazer cálculo diferencial de campos precisamos de uma noção de derivada direcional intrínseca — uma conexão afim $\\nabla$. O Teorema Fundamental da Geometria Riemanniana garante que, exigindo apenas compatibilidade com a métrica e ausência de torção, existe uma única conexão: a de Levi-Civita, cujos símbolos de Christoffel se calculam diretamente das derivadas de $g$. A partir dela, geodésicas são curvas de aceleração covariante nula ($\\nabla_{\\gamma'}\\gamma'=0$) — as 'retas' do espaço curvo — e localmente minimizam distância; a aplicação exponencial $\\exp_p$ as organiza numa parametrização canônica em torno de cada ponto.\n\nA curvatura nasce da não comutatividade das derivadas covariantes, codificada no tensor de Riemann $R(X,Y)Z$. Dele se extraem a curvatura seccional (que, em superfícies, recupera exatamente a curvatura Gaussiana — fechando o ciclo com o início da trilha), a curvatura de Ricci e a curvatura escalar, que dominam a geometria global e a relatividade geral. Dois teoremas coroam a introdução: Hopf-Rinow, que iguala completude métrica, completude geodésica e a propriedade de que geodésicas minimizantes ligam quaisquer dois pontos; e Gauss-Bonnet, que relaciona a integral da curvatura de uma superfície compacta à sua característica de Euler, ligando de forma surpreendente geometria local e topologia global. É o ponto de partida natural para a pós-graduação em geometria.",
+      "commonPitfalls": [
+        "Confundir conexão com tensor: $\\nabla_X Y$ NÃO é $C^\\infty$-linear em $Y$ (tem o termo de Leibniz $(Xf)Y$); por isso os símbolos de Christoffel não são as componentes de um tensor.",
+        "Achar que geodésicas sempre minimizam globalmente: elas minimizam só localmente; o arco maior de um grande círculo na esfera é geodésica mas não é o caminho mais curto.",
+        "Esquecer a antissimetria e simetrias do tensor de curvatura, ou confundir curvatura seccional (de um plano) com Ricci (uma média de seccionais) e escalar (traço).",
+        "Tratar a métrica como dada por uma matriz constante: $g_{ij}$ varia com o ponto, e é justamente a variação de $g$ que produz Christoffel e curvatura não nulos."
+      ],
+      "worked": "**Geodésicas do plano hiperbólico (semiplano superior).** Em $\\mathbb{H}^2=\\{(x,y):y>0\\}$ com a métrica $g=\\dfrac{dx^2+dy^2}{y^2}$, temos $g_{11}=g_{22}=1/y^2$, $g_{12}=0$. Pela fórmula dos símbolos de Christoffel obtemos\n$$\\Gamma^1_{12}=\\Gamma^1_{21}=-\\tfrac1y,\\quad \\Gamma^2_{11}=\\tfrac1y,\\quad \\Gamma^2_{22}=-\\tfrac1y,$$\ne os demais nulos. As equações geodésicas $\\ddot x^k+\\sum\\Gamma^k_{ij}\\dot x^i\\dot x^j=0$ ficam\n$$\\ddot x-\\tfrac2y\\,\\dot x\\,\\dot y=0,\\qquad \\ddot y+\\tfrac1y(\\dot x^2-\\dot y^2)=0.$$\nUma solução é a reta vertical $x=\\text{const}$ (então $\\dot x=0$ e a primeira equação some). Em geral, resolvendo o sistema, as geodésicas são as semirretas verticais e as semicircunferências centradas no eixo $x$ — exatamente as 'retas' do modelo de Poincaré. A curvatura seccional resulta $K\\equiv -1$: $\\mathbb{H}^2$ é o modelo de curvatura constante negativa, em contraste com a esfera ($K=+1$) e o plano ($K=0$). $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Deduza a fórmula de Koszul $2\\langle\\nabla_X Y,Z\\rangle=X\\langle Y,Z\\rangle+Y\\langle X,Z\\rangle-Z\\langle X,Y\\rangle+\\langle[X,Y],Z\\rangle-\\langle[X,Z],Y\\rangle-\\langle[Y,Z],X\\rangle$ e conclua a unicidade da conexão de Levi-Civita.",
+          "hint": "Escreva $X\\langle Y,Z\\rangle,Y\\langle Z,X\\rangle,Z\\langle X,Y\\rangle$ usando compatibilidade; some os dois primeiros, subtraia o terceiro e use simetria $\\nabla_XY-\\nabla_YX=[X,Y]$ para isolar $\\langle\\nabla_XY,Z\\rangle$.",
+          "difficulty": 5,
+          "solution": "Suponha $\\nabla$ compatível com a métrica ($X\\langle Y,Z\\rangle=\\langle\\nabla_XY,Z\\rangle+\\langle Y,\\nabla_XZ\\rangle$) e simétrica ($\\nabla_XY-\\nabla_YX=[X,Y]$).\n\n**As três permutações cíclicas da compatibilidade.**\n$$(1)\\quad X\\langle Y,Z\\rangle=\\langle\\nabla_XY,Z\\rangle+\\langle Y,\\nabla_XZ\\rangle,$$\n$$(2)\\quad Y\\langle Z,X\\rangle=\\langle\\nabla_YZ,X\\rangle+\\langle Z,\\nabla_YX\\rangle,$$\n$$(3)\\quad Z\\langle X,Y\\rangle=\\langle\\nabla_ZX,Y\\rangle+\\langle X,\\nabla_ZY\\rangle.$$\n\n**Combine $(1)+(2)-(3)$.** Reorganizando com a simetria (por exemplo $\\nabla_XZ=\\nabla_ZX+[X,Z]$, $\\nabla_YZ=\\nabla_ZY+[Y,Z]$, $\\nabla_YX=\\nabla_XY-[X,Y]$), os termos se agrupam para isolar $\\langle\\nabla_XY,Z\\rangle$. O resultado é a **fórmula de Koszul**:\n$$2\\langle\\nabla_XY,Z\\rangle=X\\langle Y,Z\\rangle+Y\\langle Z,X\\rangle-Z\\langle X,Y\\rangle+\\langle[X,Y],Z\\rangle-\\langle[X,Z],Y\\rangle-\\langle[Y,Z],X\\rangle.$$\n(Verificação: substitua as três relações de compatibilidade e as três de simetria no lado direito; os termos $\\langle\\nabla_\\bullet\\bullet,\\bullet\\rangle$ que não são $\\langle\\nabla_XY,Z\\rangle$ cancelam-se aos pares, sobrando $2\\langle\\nabla_XY,Z\\rangle$.)\n\n**Unicidade.** O lado direito depende **apenas** da métrica $g$ e do colchete de Lie (que independem de $\\nabla$). Assim, $\\langle\\nabla_XY,Z\\rangle$ fica determinado para todo campo $Z$. Como $g$ é não degenerada (positiva-definida), isso determina $\\nabla_XY$ de modo único. Portanto **existe no máximo uma** conexão compatível e simétrica. (A existência segue definindo $\\nabla_XY$ por essa fórmula e verificando os axiomas de conexão — é a conexão de Levi-Civita.) $\\blacksquare$",
+          "steps": [
+            "Escreva as três permutações cíclicas da condição de compatibilidade com a métrica.",
+            "Some as duas primeiras, subtraia a terceira e substitua a simetria $\\nabla_XY-\\nabla_YX=[X,Y]$ para eliminar os termos indesejados.",
+            "Isole $2\\langle\\nabla_XY,Z\\rangle$ obtendo a fórmula de Koszul, cujo lado direito só usa $g$ e colchetes.",
+            "Como $g$ é não degenerada, $\\nabla_XY$ fica unicamente determinado — logo a conexão é única."
+          ]
+        },
+        {
+          "prompt": "Calcule os símbolos de Christoffel da esfera $S^2$ na métrica $d\\theta^2+\\sin^2\\theta\\,d\\varphi^2$ e escreva as equações das geodésicas.",
+          "hint": "Os não nulos são $\\Gamma^\\theta_{\\varphi\\varphi}=-\\sin\\theta\\cos\\theta$ e $\\Gamma^\\varphi_{\\theta\\varphi}=\\Gamma^\\varphi_{\\varphi\\theta}=\\cot\\theta$. As geodésicas resultam ser os grandes círculos.",
+          "difficulty": 4,
+          "solution": "Na esfera $S^2$ com métrica $g=d\\theta^2+\\sin^2\\theta\\,d\\varphi^2$, temos $g_{\\theta\\theta}=1$, $g_{\\varphi\\varphi}=\\sin^2\\theta$, $g_{\\theta\\varphi}=0$, e a inversa $g^{\\theta\\theta}=1$, $g^{\\varphi\\varphi}=1/\\sin^2\\theta$.\n\n**Christoffel** ($\\Gamma^k_{ij}=\\tfrac12\\sum_l g^{kl}(\\partial_i g_{jl}+\\partial_j g_{il}-\\partial_l g_{ij})$). As únicas derivadas não nulas de $g$ são $\\partial_\\theta g_{\\varphi\\varphi}=2\\sin\\theta\\cos\\theta$. Logo:\n$$\\Gamma^\\theta_{\\varphi\\varphi}=\\tfrac12 g^{\\theta\\theta}(-\\partial_\\theta g_{\\varphi\\varphi})=\\tfrac12(1)(-2\\sin\\theta\\cos\\theta)=-\\sin\\theta\\cos\\theta,$$\n$$\\Gamma^\\varphi_{\\theta\\varphi}=\\Gamma^\\varphi_{\\varphi\\theta}=\\tfrac12 g^{\\varphi\\varphi}(\\partial_\\theta g_{\\varphi\\varphi})=\\tfrac12\\cdot\\frac{1}{\\sin^2\\theta}\\cdot 2\\sin\\theta\\cos\\theta=\\cot\\theta.$$\nTodos os demais são nulos.\n\n**Equações das geodésicas** ($\\ddot x^k+\\sum_{i,j}\\Gamma^k_{ij}\\dot x^i\\dot x^j=0$):\n$$\\ddot\\theta-\\sin\\theta\\cos\\theta\\,\\dot\\varphi^2=0,$$\n$$\\ddot\\varphi+2\\cot\\theta\\,\\dot\\theta\\,\\dot\\varphi=0.$$\n\n**Interpretação.** A segunda equação diz $\\frac{d}{dt}(\\sin^2\\theta\\,\\dot\\varphi)=0$ (quantidade conservada, o momento angular). Analisando o sistema, as soluções são exatamente os **grandes círculos** de $S^2$ — por exemplo, os meridianos $\\varphi=\\text{const}$ satisfazem $\\dot\\varphi=0$ e $\\ddot\\theta=0$, isto é, $\\theta$ linear em $t$. $\\blacksquare$",
+          "steps": [
+            "Anote $g_{\\theta\\theta}=1$, $g_{\\varphi\\varphi}=\\sin^2\\theta$ e as inversas; a única derivada relevante é $\\partial_\\theta g_{\\varphi\\varphi}=2\\sin\\theta\\cos\\theta$.",
+            "Aplique a fórmula de Christoffel para obter $\\Gamma^\\theta_{\\varphi\\varphi}=-\\sin\\theta\\cos\\theta$ e $\\Gamma^\\varphi_{\\theta\\varphi}=\\cot\\theta$.",
+            "Monte as equações geodésicas substituindo esses símbolos.",
+            "Observe a conservação $\\frac{d}{dt}(\\sin^2\\theta\\,\\dot\\varphi)=0$ e conclua que as geodésicas são os grandes círculos (meridianos como caso simples)."
+          ]
+        },
+        {
+          "prompt": "Mostre que, numa superfície em $\\mathbb{R}^3$ com a métrica induzida, a curvatura seccional do (único) plano tangente coincide com a curvatura Gaussiana $K$.",
+          "hint": "Use a equação de Gauss, que relaciona o tensor de curvatura intrínseco com a segunda forma fundamental: $\\langle R(u,v)v,u\\rangle=\\mathrm{II}(u,u)\\mathrm{II}(v,v)-\\mathrm{II}(u,v)^2$, e divida pela área ao quadrado.",
+          "difficulty": 5,
+          "solution": "Seja $S\\subset\\mathbb{R}^3$ superfície com a métrica induzida, $p\\in S$, e $\\{u,v\\}$ base de $T_pS$ (que é o único plano $\\sigma$). A curvatura seccional é\n$$K(\\sigma)=\\frac{\\langle R(u,v)v,u\\rangle}{|u|^2|v|^2-\\langle u,v\\rangle^2}.$$\n\n**Equação de Gauss.** Para a métrica induzida, o tensor de curvatura intrínseco se relaciona com a segunda forma fundamental $\\mathrm{II}$ por\n$$\\langle R(u,v)v,u\\rangle=\\mathrm{II}(u,u)\\,\\mathrm{II}(v,v)-\\mathrm{II}(u,v)^2.$$\nEsse é o conteúdo da equação de Gauss (a componente tangencial da equação que decompõe a derivada de $\\mathrm{II}$).\n\n**Cálculo com base ortonormal principal.** Escolha $\\{e_1,e_2\\}$ base ortonormal de $T_pS$ formada por direções principais, de modo que $\\mathrm{II}(e_1,e_1)=k_1$, $\\mathrm{II}(e_2,e_2)=k_2$ e $\\mathrm{II}(e_1,e_2)=0$. Como são ortonormais, o denominador é $|e_1|^2|e_2|^2-\\langle e_1,e_2\\rangle^2=1$. Então\n$$K(\\sigma)=\\frac{\\langle R(e_1,e_2)e_2,e_1\\rangle}{1}=\\mathrm{II}(e_1,e_1)\\mathrm{II}(e_2,e_2)-\\mathrm{II}(e_1,e_2)^2=k_1k_2.$$\nMas $k_1k_2=K$ é precisamente a curvatura Gaussiana. Como tanto o numerador $\\langle R(u,v)v,u\\rangle$ quanto o denominador são independentes da base escolhida (a curvatura seccional só depende do plano $\\sigma$), concluímos\n$$K(\\sigma)=K\\quad(\\text{curvatura Gaussiana}).$$\nIsto fecha o ciclo com o Theorema Egregium: a curvatura seccional Riemanniana, definida intrinsecamente, coincide com a curvatura de Gauss da superfície. $\\blacksquare$",
+          "steps": [
+            "Escreva a curvatura seccional $K(\\sigma)$ do único plano tangente com base $\\{u,v\\}$.",
+            "Invoque a equação de Gauss: $\\langle R(u,v)v,u\\rangle=\\mathrm{II}(u,u)\\mathrm{II}(v,v)-\\mathrm{II}(u,v)^2$.",
+            "Escolha base ortonormal de direções principais $\\{e_1,e_2\\}$: denominador $=1$ e $\\mathrm{II}$ diagonal com entradas $k_1,k_2$.",
+            "Conclua $K(\\sigma)=k_1k_2=K$, a curvatura Gaussiana."
+          ]
+        },
+        {
+          "prompt": "Use Gauss-Bonnet para mostrar que não existe métrica de curvatura Gaussiana estritamente positiva em todo ponto sobre o toro $T^2$.",
+          "hint": "$\\chi(T^2)=0$, logo $\\int_{T^2}K\\,dA=0$; se $K>0$ em todo ponto a integral seria positiva, contradição.",
+          "difficulty": 3,
+          "solution": "Suponha, por absurdo, que exista uma métrica Riemanniana no toro $T^2$ cuja curvatura Gaussiana satisfaça $K(p)>0$ para **todo** $p\\in T^2$.\n\n**Gauss–Bonnet.** O toro é uma superfície compacta, orientável, sem bordo, com característica de Euler $\\chi(T^2)=0$. O Teorema de Gauss–Bonnet afirma\n$$\\int_{T^2}K\\,dA=2\\pi\\,\\chi(T^2)=2\\pi\\cdot 0=0.$$\n\n**Contradição.** Se $K>0$ em todo ponto e $dA>0$ é o elemento de área (positivo), então o integrando $K\\,dA$ é estritamente positivo em toda parte, e sobre a região compacta de área positiva\n$$\\int_{T^2}K\\,dA>0.$$\nIsso contradiz $\\int_{T^2}K\\,dA=0$. Logo **não existe** métrica com $K>0$ em todo ponto sobre $T^2$.\n\n**Observação.** O mesmo argumento mostra que também não existe métrica com $K<0$ em todo ponto (daria integral negativa). Toda métrica no toro tem $K$ mudando de sinal ou identicamente nula — e, de fato, o toro plano ($\\mathbb{R}^2/\\mathbb{Z}^2$) realiza $K\\equiv 0$. $\\blacksquare$",
+          "steps": [
+            "Suponha por absurdo $K>0$ em todo ponto de $T^2$.",
+            "Use $\\chi(T^2)=0$ e Gauss–Bonnet para obter $\\int_{T^2}K\\,dA=0$.",
+            "Observe que $K>0$ e $dA>0$ forçariam $\\int_{T^2}K\\,dA>0$.",
+            "Confronte com o valor $0$: contradição, logo não há tal métrica (e, analogamente, nenhuma com $K<0$ em todo ponto)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Métrica Riemanniana",
+          "back": "Campo suave de produtos internos $g_p$ (bilinear simétrica positiva-definida) em cada $T_pM$."
+        },
+        {
+          "front": "Conexão de Levi-Civita (caracterização)",
+          "back": "Única conexão compatível com a métrica e sem torção (simétrica)."
+        },
+        {
+          "front": "Símbolos de Christoffel",
+          "back": "$\\Gamma^k_{ij}=\\tfrac12\\sum_l g^{kl}(\\partial_i g_{jl}+\\partial_j g_{il}-\\partial_l g_{ij})$."
+        },
+        {
+          "front": "Equação da geodésica",
+          "back": "$\\nabla_{\\gamma'}\\gamma'=0$, isto é $\\ddot x^k+\\sum_{i,j}\\Gamma^k_{ij}\\dot x^i\\dot x^j=0$."
+        },
+        {
+          "front": "Tensor de curvatura de Riemann",
+          "back": "$R(X,Y)Z=\\nabla_X\\nabla_Y Z-\\nabla_Y\\nabla_X Z-\\nabla_{[X,Y]}Z$."
+        },
+        {
+          "front": "Curvatura seccional vs Gauss",
+          "back": "Em superfícies, a curvatura seccional do plano tangente é a curvatura Gaussiana $K$."
+        },
+        {
+          "front": "Teorema de Gauss-Bonnet (sem bordo)",
+          "back": "$\\int_M K\\,dA=2\\pi\\chi(M)$ para superfície compacta orientável."
+        },
+        {
+          "front": "Teorema de Hopf-Rinow (ideia)",
+          "back": "Completude métrica $\\Leftrightarrow$ completude geodésica; e então quaisquer dois pontos são ligados por geodésica minimizante."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "do Carmo, Riemannian Geometry, caps. 0-4",
+          "ref": "livro"
+        },
+        {
+          "title": "Lee, Introduction to Smooth Manifolds (apêndice Riemanniano) e Lee, Riemannian Manifolds",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.950 / 18.965, geometria Riemanniana e variedades",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja produto interno, formas bilineares simétricas positivas-definidas e a maquinaria de campos/colchete dos subtópicos anteriores — a métrica e a conexão se apoiam nisso.",
+          "Leia do Carmo, Riemannian Geometry, caps. 0–2: métrica Riemanniana, conexão afim e o Teorema Fundamental (existência e unicidade de Levi-Civita) via fórmula de Koszul.",
+          "Calcule símbolos de Christoffel e equações geodésicas nos modelos: esfera $S^2$, plano hiperbólico $\\mathbb{H}^2$ e superfícies de revolução.",
+          "Estude o tensor de curvatura $R(X,Y)Z$ e as curvaturas seccional, de Ricci e escalar; ligue a seccional à curvatura Gaussiana (fecha o ciclo com curvas/superfícies).",
+          "Leia os enunciados de Hopf–Rinow e Gauss–Bonnet e trabalhe aplicações topológicas (por exemplo, sobre o toro).",
+          "Volte ao app, resolva os testes e anote aqui: fórmula dos $\\Gamma^k_{ij}$, a equação da geodésica e os enunciados de Gauss–Bonnet e Hopf–Rinow."
+        ],
+        "searchQueries": [
+          "métrica Riemanniana conexão de Levi-Civita fórmula de Koszul",
+          "símbolos de Christoffel geodésica exemplo esfera hiperbólico",
+          "tensor de curvatura de Riemann curvatura seccional Ricci escalar",
+          "Levi-Civita connection existence uniqueness proof",
+          "Gauss-Bonnet theorem Euler characteristic geodesic curvature",
+          "Hopf-Rinow theorem geodesic completeness statement"
+        ],
+        "videos": [
+          {
+            "title": "18.965 Geometry of Manifolds — Riemanniana",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre métricas, conexão, geodésicas e curvatura."
+          },
+          {
+            "title": "Geometria Riemanniana / relatividade geral",
+            "channel": "IMPA (canal oficial / PAPMEM)",
+            "note": "Procure minicursos de geometria Riemanniana e aplicações em português."
+          },
+          {
+            "title": "Christoffel symbols and geodesics",
+            "channel": "Michael Penn / eigenchris",
+            "note": "Busque 'Christoffel symbols', 'geodesic equation' e 'Riemann curvature' para contas explícitas passo a passo."
+          }
+        ],
+        "articles": [
+          {
+            "title": "do Carmo — Riemannian Geometry, caps. 0–4",
+            "where": "livro (IMPA / Birkhäuser)"
+          },
+          {
+            "title": "Lee — Introduction to Riemannian Manifolds",
+            "where": "livro (Springer, GTM 176)"
+          }
+        ]
+      }
+    }
+  ]
+}

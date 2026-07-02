@@ -1,0 +1,29 @@
+# Reinstalado/rebuildado dentro da imagem — nao precisa (nem deve) ir no contexto.
+node_modules
+.next
+*.tsbuildinfo
+
+# Banco SQLite local (self-hosted/dev) e diretorio de dados em runtime.
+# NUNCA deve ir para dentro da imagem: e criado/persistido via volume /data.
+.data
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Artefatos de planejamento/geracao das specs (nao usados em runtime).
+plan
+plan-backend
+
+# Controle de versao e segredos.
+.git
+.gitignore
+.env
+.env.local
+.env.*.local
+
+# Diversos.
+.DS_Store
+npm-debug.log*

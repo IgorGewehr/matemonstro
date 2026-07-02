@@ -1,0 +1,1824 @@
+{
+  "id": "analise-complexa",
+  "title": "Análise Complexa",
+  "phase": 1,
+  "phaseLabel": "Núcleo",
+  "tagline": "A teoria mais bela e rígida da matemática: uma única derivada complexa força analiticidade, e tudo se decide por integrais de contorno e resíduos.",
+  "summary": "Esta trilha desenvolve a teoria das funções de uma variável complexa do zero ao nível de mestrado. Partimos da álgebra e topologia do plano $\\mathbb{C}$, definimos diferenciabilidade complexa e provamos que ela equivale às equações de Cauchy-Riemann, com a consequência espantosa de que toda função holomorfa é automaticamente analítica. Construímos as funções elementares via séries de potências, desenvolvemos a integração de contorno até o Teorema de Cauchy-Goursat e a Fórmula Integral de Cauchy, classificamos singularidades com séries de Laurent e culminamos no Teorema dos Resíduos — a máquina que calcula integrais reais impossíveis por métodos elementares — e na geometria dos mapeamentos conformes.",
+  "bigPicture": "A Análise Complexa é o ponto onde análise, álgebra e geometria se encontram com elegância máxima. A rigidez das funções holomorfas (analiticidade automática, princípio do módulo máximo, teorema da identidade) está por trás da teoria analítica dos números, da hipótese de Riemann, das funções especiais, da física-matemática (eletrostática, hidrodinâmica, mecânica quântica) e do processamento de sinais (transformadas de Fourier e Laplace). O Teorema dos Resíduos resolve em uma linha integrais que o cálculo real só ataca com truques pontuais. Em concursos de Instituto Federal (IF), o tema aparece com frequência moderada — equações de Cauchy-Riemann, cálculo de resíduos e integrais por resíduos são os campeões. Em provas de mestrado e exames de qualificação (IMPA, USP, UFRJ, UFMG, ENA), Análise Complexa é disciplina-núcleo: Teorema de Cauchy, fórmula integral, séries de Laurent, classificação de singularidades, teorema dos resíduos, princípio do argumento, Rouché, Liouville, teorema da identidade e mapeamentos conformes (Möbius, lema de Schwarz, teorema de Riemann) são presença quase garantida.",
+  "prereqs": [
+    "analise-real-1",
+    "calculo3"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 72,
+  "primaryBooks": [
+    {
+      "title": "Complex Analysis",
+      "author": "Lars V. Ahlfors",
+      "note": "O texto-padrão clássico, rigoroso e conciso; referência canônica para Cauchy, resíduos e mapeamentos conformes. Exigente, porém definitivo.",
+      "chapters": "caps. 1-6"
+    },
+    {
+      "title": "Functions of One Complex Variable I",
+      "author": "John B. Conway (GTM 11)",
+      "note": "Tratamento moderno e completo, ótimo para mestrado; demonstrações detalhadas de Cauchy homotópico, Runge e teorema de Riemann.",
+      "chapters": "caps. I-VII"
+    },
+    {
+      "title": "Complex Analysis",
+      "author": "Elias M. Stein & Rami Shakarchi (Princeton)",
+      "note": "Exposição limpa e motivada, com aplicações belíssimas (função zeta, teorema dos números primos). Excelente primeira leitura séria.",
+      "chapters": "caps. 1-8"
+    },
+    {
+      "title": "Funções de uma Variável Complexa",
+      "author": "Alcides Lins Neto (IMPA, Projeto Euclides)",
+      "note": "Referência brasileira definitiva em PT-BR, no nível de mestrado do IMPA; cobre holomorfia, Cauchy, resíduos, recobrimentos e superfícies de Riemann.",
+      "chapters": "caps. I-V"
+    },
+    {
+      "title": "Variável Complexa e Aplicações",
+      "author": "Geraldo Ávila (LTC)",
+      "note": "Texto brasileiro de graduação, didático e acessível; ótimo para a primeira passagem por Cauchy-Riemann, integrais de contorno e resíduos.",
+      "chapters": "caps. 1-7"
+    },
+    {
+      "title": "Complex Variables and Applications",
+      "author": "Brown & Churchill",
+      "note": "Orientado a cálculo de resíduos e integrais; muitos exemplos resolvidos, bom para treinar técnica de provas de concurso.",
+      "chapters": "caps. 1-7"
+    },
+    {
+      "title": "Visual Complex Analysis",
+      "author": "Tristan Needham",
+      "note": "Intuição geométrica incomparável para holomorfia, conformidade e transformações de Möbius; complemento, não substituto, dos textos rigorosos.",
+      "chapters": "caps. 1-5"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.04 Complex Variables with Applications",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "MIT OCW 18.112 Functions of a Complex Variable",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Wolfgang Bertram / Terence Tao - notas de Análise Complexa",
+      "kind": "notas",
+      "ref": "páginas dos autores"
+    },
+    {
+      "title": "Videoaulas de Variável Complexa (PAPMEM / canal IMPA)",
+      "kind": "video",
+      "ref": "YouTube IMPA"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 3,
+    "mestrado": 5,
+    "note": "Em concursos de IF a Análise Complexa cai com frequência moderada e de forma técnica: verificar holomorfia via Cauchy-Riemann, encontrar conjugada harmônica, calcular resíduos e usá-los para integrais reais ($\\int_{-\\infty}^{\\infty}$ de funções racionais, integrais trigonométricas), e propriedades das funções elementares ($e^z$, $\\log z$, ramos). Em provas de mestrado e qualificação é tema central: demonstrar o Teorema de Cauchy-Goursat, a Fórmula Integral de Cauchy e suas consequências (Liouville, Teorema Fundamental da Álgebra, Morera, módulo máximo), classificar singularidades via Laurent, aplicar o Teorema dos Resíduos, o Princípio do Argumento e Rouché para contar zeros, e trabalhar com mapeamentos conformes (Möbius, lema de Schwarz, transformada de Cayley, enunciado do Teorema de Riemann)."
+  },
+  "subtopics": [
+    {
+      "id": "analise-complexa-01-numeros-complexos-topologia",
+      "title": "Números Complexos e Topologia do Plano",
+      "tagline": "O corpo $\\mathbb{C}$ como o plano $\\mathbb{R}^2$ com uma multiplicação que gira e escala, e a topologia que sustenta toda a teoria.",
+      "objectives": [
+        "Construir $\\mathbb{C}$ como o corpo $(\\mathbb{R}^2,+,\\cdot)$ e dominar conjugado, módulo e suas propriedades algébricas.",
+        "Usar a forma polar $z=r e^{i\\theta}$, a fórmula de Euler e de De Moivre para multiplicar, potenciar e extrair raízes.",
+        "Calcular as $n$ raízes $n$-ésimas de um número complexo e interpretá-las geometricamente como vértices de um polígono regular.",
+        "Manejar a topologia de $\\mathbb{C}$: bolas, conjuntos abertos/fechados, compacidade (Heine-Borel), conexidade e o conceito de região (domínio).",
+        "Compreender a esfera de Riemann $\\widehat{\\mathbb{C}}=\\mathbb{C}\\cup\\{\\infty\\}$ via projeção estereográfica e o ponto no infinito."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Número complexo",
+          "statement": "$z=a+bi$ com $a,b\\in\\mathbb{R}$ e $i^2=-1$; identificamos $z$ com o par $(a,b)\\in\\mathbb{R}^2$. A soma é coordenada a coordenada e o produto é $(a+bi)(c+di)=(ac-bd)+(ad+bc)i$."
+        },
+        {
+          "term": "Conjugado e módulo",
+          "statement": "$\\bar z=a-bi$ e $|z|=\\sqrt{a^2+b^2}=\\sqrt{z\\bar z}$. Valem $\\overline{z+w}=\\bar z+\\bar w$, $\\overline{zw}=\\bar z\\,\\bar w$, $\\operatorname{Re}z=\\tfrac{z+\\bar z}{2}$, $\\operatorname{Im}z=\\tfrac{z-\\bar z}{2i}$ e $z^{-1}=\\bar z/|z|^2$."
+        },
+        {
+          "term": "Forma polar",
+          "statement": "$z=r(\\cos\\theta+i\\sin\\theta)=r e^{i\\theta}$, com $r=|z|$ e $\\theta=\\arg z$ definido módulo $2\\pi$. O valor principal $\\operatorname{Arg}z$ vive em $(-\\pi,\\pi]$."
+        },
+        {
+          "term": "Região (domínio)",
+          "statement": "Um subconjunto $\\Omega\\subseteq\\mathbb{C}$ aberto e conexo. É o palco natural de toda a teoria das funções holomorfas; conexidade garante que $f'\\equiv 0$ implica $f$ constante."
+        },
+        {
+          "term": "Esfera de Riemann",
+          "statement": "$\\widehat{\\mathbb{C}}=\\mathbb{C}\\cup\\{\\infty\\}$, identificada com a esfera $S^2$ pela projeção estereográfica. Vizinhanças de $\\infty$ são complementos de discos $\\{|z|>R\\}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Desigualdade triangular",
+          "statement": "Para todos $z,w\\in\\mathbb{C}$: $|z+w|\\le|z|+|w|$, com igualdade se e só se um é múltiplo real não negativo do outro. Vale também $\\bigl||z|-|w|\\bigr|\\le|z-w|$.",
+          "whyItMatters": "É a base métrica de $\\mathbb{C}$: define a distância $d(z,w)=|z-w|$ que torna $\\mathbb{C}$ um espaço métrico completo, sobre o qual se constroem limites, continuidade e convergência de séries."
+        },
+        {
+          "name": "Fórmula de De Moivre",
+          "statement": "$\\bigl(\\cos\\theta+i\\sin\\theta\\bigr)^n=\\cos(n\\theta)+i\\sin(n\\theta)$ para todo $n\\in\\mathbb{Z}$.",
+          "whyItMatters": "Transforma potenciação em multiplicação de ângulos; gera identidades trigonométricas e fornece imediatamente as raízes $n$-ésimas da unidade."
+        },
+        {
+          "name": "Raízes $n$-ésimas",
+          "statement": "As soluções de $z^n=w$ com $w=r e^{i\\theta}\\neq 0$ são $z_k=r^{1/n}\\exp\\!\\Big(i\\,\\dfrac{\\theta+2k\\pi}{n}\\Big)$, $k=0,1,\\dots,n-1$ — exatamente $n$ valores, vértices de um polígono regular de raio $r^{1/n}$.",
+          "whyItMatters": "Mostra que $\\mathbb{C}$ é algebricamente muito mais rico que $\\mathbb{R}$: toda raiz existe e é múltipla. Está na raiz do Teorema Fundamental da Álgebra."
+        },
+        {
+          "name": "Teorema de Heine-Borel em $\\mathbb{C}$",
+          "statement": "Um subconjunto $K\\subseteq\\mathbb{C}\\cong\\mathbb{R}^2$ é compacto se e só se é fechado e limitado. Equivalentemente, toda sequência em $K$ tem subsequência convergente em $K$ (Bolzano-Weierstrass).",
+          "whyItMatters": "Compacidade é a ferramenta que garante existência de máximos do módulo, convergência de subsequências e a validade do princípio do módulo máximo em domínios limitados."
+        }
+      ],
+      "summary": "O corpo $\\mathbb{C}$ nasce ao munir o plano $\\mathbb{R}^2$ de uma multiplicação compatível com a soma e com $i^2=-1$. A genialidade está na interpretação polar: multiplicar por $z=r e^{i\\theta}$ é girar por $\\theta$ e escalar por $r$. Daí a fórmula de Euler $e^{i\\theta}=\\cos\\theta+i\\sin\\theta$ não é mágica, e sim a expressão de que rotações se compõem somando ângulos; De Moivre e as raízes $n$-ésimas seguem de imediato. Diferentemente de $\\mathbb{R}$, em $\\mathbb{C}$ todo número não nulo tem exatamente $n$ raízes $n$-ésimas, igualmente espaçadas num círculo — o primeiro sinal da riqueza algébrica que culminará no Teorema Fundamental da Álgebra.\n\nA análise em $\\mathbb{C}$ é análise em $\\mathbb{R}^2$ com a métrica $|z-w|$: valem a desigualdade triangular, Heine-Borel (compacto $\\iff$ fechado e limitado) e Bolzano-Weierstrass. Os objetos topológicos centrais são os abertos conexos, chamados regiões ou domínios — é sobre eles que as funções holomorfas exibem sua rigidez. Por fim, compactificamos o plano adicionando um único ponto $\\infty$, obtendo a esfera de Riemann $\\widehat{\\mathbb{C}}$: ali retas e círculos se unificam, polos viram pontos comuns e as transformações de Möbius se tornam bijeções naturais. Atenção: $\\mathbb{C}$ não é um corpo ordenado — escrever $z>0$ para $z$ não real não faz sentido.",
+      "commonPitfalls": [
+        "Escrever desigualdades como $z<w$ entre complexos: $\\mathbb{C}$ não admite ordem compatível com as operações. Só $|z|$, $\\operatorname{Re}z$, $\\operatorname{Im}z$ são reais e comparáveis.",
+        "Tratar $\\arg z$ como função bem definida: ele só está definido módulo $2\\pi$. Fixar o valor principal $\\operatorname{Arg}z\\in(-\\pi,\\pi]$ introduz uma descontinuidade ao longo do semieixo real negativo.",
+        "Aplicar ingenuamente $\\sqrt{zw}=\\sqrt z\\,\\sqrt w$ ou $(zw)^{\\alpha}=z^{\\alpha}w^{\\alpha}$: essas identidades falham para complexos por causa da multivalência do argumento (ex.: $\\sqrt{(-1)(-1)}\\neq\\sqrt{-1}\\,\\sqrt{-1}$).",
+        "Confundir conjunto conexo com conexo por caminhos em geral; em abertos de $\\mathbb{C}$ eles coincidem, mas a hipótese de ser ABERTO é essencial para essa equivalência e para concluir constância a partir de $f'\\equiv 0$."
+      ],
+      "worked": "**Raízes cúbicas de $-8$.**\n\nEscrevemos $-8$ na forma polar: $|-8|=8$ e $\\arg(-8)=\\pi$, logo $-8=8\\,e^{i\\pi}$.\n\nAs raízes cúbicas são $z_k=8^{1/3}\\exp\\!\\Big(i\\,\\dfrac{\\pi+2k\\pi}{3}\\Big)=2\\,e^{\\,i(\\pi+2k\\pi)/3}$, para $k=0,1,2$:\n$$z_0=2e^{i\\pi/3}=2\\Big(\\tfrac12+\\tfrac{\\sqrt3}{2}i\\Big)=1+\\sqrt3\\,i,\\quad z_1=2e^{i\\pi}=-2,\\quad z_2=2e^{i5\\pi/3}=1-\\sqrt3\\,i.$$\nElas formam um triângulo equilátero de raio $2$ centrado na origem. Verificação: $(-2)^3=-8$, e $z_0 z_1 z_2=(1+\\sqrt3 i)(-2)(1-\\sqrt3 i)=-2(1+3)=-8$, coerente com o produto das raízes de $z^3+8=0$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove a identidade do paralelogramo $|z+w|^2+|z-w|^2=2(|z|^2+|w|^2)$ e interprete-a geometricamente.",
+          "hint": "Use $|a|^2=a\\bar a$ e expanda os dois lados, ou as coordenadas $(a,b)$.",
+          "difficulty": 2,
+          "solution": "Usamos $|a|^2=a\\bar a$ e a distributividade da conjugação.\n\n$$|z+w|^2=(z+w)\\overline{(z+w)}=(z+w)(\\bar z+\\bar w)=z\\bar z+z\\bar w+w\\bar z+w\\bar w=|z|^2+|w|^2+(z\\bar w+\\overline{z\\bar w})=|z|^2+|w|^2+2\\operatorname{Re}(z\\bar w).$$\n\nAnalogamente,\n$$|z-w|^2=|z|^2+|w|^2-2\\operatorname{Re}(z\\bar w).$$\n\nSomando, os termos $\\pm 2\\operatorname{Re}(z\\bar w)$ se cancelam:\n$$|z+w|^2+|z-w|^2=2\\bigl(|z|^2+|w|^2\\bigr).\\qquad\\blacksquare$$\n\n**Interpretação geométrica.** Considere o paralelogramo de vértices $0,z,w,z+w$. Seus lados têm comprimentos $|z|$ e $|w|$ (cada um repetido duas vezes) e suas diagonais são $z+w$ e $z-w$. A identidade diz que a soma dos quadrados das duas diagonais é igual à soma dos quadrados dos quatro lados.",
+          "steps": [
+            "Escreva cada módulo ao quadrado como produto pelo conjugado: $|z\\pm w|^2=(z\\pm w)(\\bar z\\pm\\bar w)$.",
+            "Expanda os dois produtos e agrupe $z\\bar w+w\\bar z=2\\operatorname{Re}(z\\bar w)$.",
+            "Some as duas expressões e observe que os termos cruzados $\\pm 2\\operatorname{Re}(z\\bar w)$ se cancelam.",
+            "Interprete $z\\pm w$ como as diagonais e $z,w$ como os lados do paralelogramo."
+          ]
+        },
+        {
+          "prompt": "Determine todas as soluções de $z^4=-16$ e represente-as no plano. Em seguida fatore $z^4+16$ em fatores quadráticos reais.",
+          "hint": "$-16=16e^{i\\pi}$; agrupe pares de raízes conjugadas $z_k\\bar z_k$ para obter os fatores reais.",
+          "difficulty": 3,
+          "solution": "Escrevemos $-16=16\\,e^{i\\pi}$. As raízes quartas são\n$$z_k=16^{1/4}\\exp\\!\\Big(i\\,\\frac{\\pi+2k\\pi}{4}\\Big)=2\\,e^{\\,i(\\pi+2k\\pi)/4},\\quad k=0,1,2,3.$$\n\nExplicitamente, usando $2\\big(\\cos\\theta+i\\sin\\theta\\big)$:\n$$z_0=2e^{i\\pi/4}=\\sqrt2+\\sqrt2\\,i,\\quad z_1=2e^{i3\\pi/4}=-\\sqrt2+\\sqrt2\\,i,$$\n$$z_2=2e^{i5\\pi/4}=-\\sqrt2-\\sqrt2\\,i,\\quad z_3=2e^{i7\\pi/4}=\\sqrt2-\\sqrt2\\,i.$$\nSão os vértices de um quadrado de raio $2$ centrado na origem.\n\n**Fatoração real.** Agrupamos pares conjugados. Como $z_0,z_3$ são conjugados, $|z_0|^2=4$ e $z_0+z_3=2\\sqrt2$:\n$$(z-z_0)(z-z_3)=z^2-2\\sqrt2\\,z+4.$$\nDo mesmo modo $z_1,z_2$ dão $(z-z_1)(z-z_2)=z^2+2\\sqrt2\\,z+4$. Logo\n$$z^4+16=\\bigl(z^2-2\\sqrt2\\,z+4\\bigr)\\bigl(z^2+2\\sqrt2\\,z+4\\bigr).$$\n\n**Verificação:** o produto vale $(z^2+4)^2-(2\\sqrt2\\,z)^2=z^4+8z^2+16-8z^2=z^4+16$. $\\blacksquare$",
+          "steps": [
+            "Ponha $-16$ na forma polar: $-16=16e^{i\\pi}$, com $|-16|=16$ e $\\arg=\\pi$.",
+            "Aplique a fórmula das raízes: $z_k=2\\,e^{i(\\pi+2k\\pi)/4}$ para $k=0,1,2,3$.",
+            "Converta cada raiz para a forma $a+bi$ e localize o quadrado de raio $2$.",
+            "Para a fatoração real, multiplique os pares de raízes conjugadas: $(z-z_k)(z-\\bar z_k)=z^2-2\\operatorname{Re}(z_k)z+|z_k|^2$.",
+            "Verifique expandindo o produto dos dois fatores quadráticos."
+          ]
+        },
+        {
+          "prompt": "Seja $\\zeta=e^{2\\pi i/n}$ uma raiz $n$-ésima primitiva da unidade. Prove que $1+\\zeta+\\zeta^2+\\cdots+\\zeta^{n-1}=0$ para $n\\ge 2$.",
+          "hint": "Soma de progressão geométrica: $\\sum_{k=0}^{n-1}\\zeta^k=\\frac{\\zeta^n-1}{\\zeta-1}$, e $\\zeta^n=1$ com $\\zeta\\neq 1$.",
+          "difficulty": 2,
+          "solution": "Como $\\zeta=e^{2\\pi i/n}$ com $n\\ge 2$, temos $\\zeta\\neq 1$. A soma é uma progressão geométrica de razão $\\zeta$:\n$$S=\\sum_{k=0}^{n-1}\\zeta^k=\\frac{\\zeta^n-1}{\\zeta-1}.$$\nMas $\\zeta^n=\\bigl(e^{2\\pi i/n}\\bigr)^n=e^{2\\pi i}=1$, então o numerador $\\zeta^n-1=0$, enquanto o denominador $\\zeta-1\\neq 0$. Logo\n$$S=\\frac{0}{\\zeta-1}=0.\\qquad\\blacksquare$$\n\n**Observação geométrica.** As $n$ raízes da unidade são vértices de um polígono regular centrado na origem; a soma delas é o baricentro vezes $n$, que é a origem — daí o resultado nulo.",
+          "steps": [
+            "Note que para $n\\ge 2$ a raiz primitiva satisfaz $\\zeta\\neq 1$, então a razão da PG não é $1$.",
+            "Aplique a fórmula da soma geométrica $\\sum_{k=0}^{n-1}\\zeta^k=\\dfrac{\\zeta^n-1}{\\zeta-1}$.",
+            "Use $\\zeta^n=e^{2\\pi i}=1$ para anular o numerador.",
+            "Conclua $S=0$ e interprete como o baricentro (origem) do polígono regular das raízes."
+          ]
+        },
+        {
+          "prompt": "Descreva geometricamente o conjunto $\\{z\\in\\mathbb{C}:\\ |z-1|=2|z+1|\\}$ e prove que é um círculo, dando centro e raio.",
+          "hint": "Eleve ao quadrado usando $|z-a|^2=(z-a)\\overline{(z-a)}$ e complete o quadrado; é um círculo de Apolônio.",
+          "difficulty": 3,
+          "solution": "Elevamos ao quadrado a condição $|z-1|=2|z+1|$ (ambos os lados são $\\ge 0$):\n$$|z-1|^2=4|z+1|^2.$$\nCom $z=x+iy$, $|z-1|^2=(x-1)^2+y^2$ e $|z+1|^2=(x+1)^2+y^2$:\n$$(x-1)^2+y^2=4\\bigl[(x+1)^2+y^2\\bigr].$$\nExpandindo:\n$$x^2-2x+1+y^2=4x^2+8x+4+4y^2.$$\nPassando tudo para um lado:\n$$3x^2+3y^2+10x+3=0\\ \\Longrightarrow\\ x^2+y^2+\\tfrac{10}{3}x+1=0.$$\nCompletando o quadrado em $x$:\n$$\\Bigl(x+\\tfrac53\\Bigr)^2+y^2=\\tfrac{25}{9}-1=\\tfrac{16}{9}.$$\n\nÉ um **círculo** (círculo de Apolônio) de centro $\\bigl(-\\tfrac53,0\\bigr)$ e raio $\\tfrac43$. $\\blacksquare$\n\n**Verificação de sanidade:** os pontos reais da forma dão $x=-3$ (então $|{-3}-1|=4$, $2|{-3}+1|=4$ $\\checkmark$) e $x=-\\tfrac13$ ($|{-\\tfrac13}-1|=\\tfrac43$, $2|{-\\tfrac13}+1|=\\tfrac43$ $\\checkmark$); ambos distam $\\tfrac43$ do centro $-\\tfrac53$.",
+          "steps": [
+            "Eleve ao quadrado: $|z-1|^2=4|z+1|^2$, legítimo pois ambos os lados são não negativos.",
+            "Substitua $|z-a|^2=(x-\\operatorname{Re}a)^2+(y-\\operatorname{Im}a)^2$ com $z=x+iy$.",
+            "Expanda e agrupe: obtenha $3x^2+3y^2+10x+3=0$ e divida por $3$.",
+            "Complete o quadrado em $x$ para chegar a $(x+5/3)^2+y^2=16/9$.",
+            "Leia centro $(-5/3,0)$ e raio $4/3$; confirme com dois pontos do eixo real."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Produto de dois complexos em forma polar",
+          "back": "$r_1 e^{i\\theta_1}\\cdot r_2 e^{i\\theta_2}=r_1 r_2\\, e^{i(\\theta_1+\\theta_2)}$: módulos multiplicam, argumentos somam."
+        },
+        {
+          "front": "Fórmula de Euler",
+          "back": "$e^{i\\theta}=\\cos\\theta+i\\sin\\theta$. Em particular $e^{i\\pi}+1=0$."
+        },
+        {
+          "front": "Quantas raízes $n$-ésimas tem $w\\neq 0$?",
+          "back": "Exatamente $n$, dadas por $r^{1/n}e^{i(\\theta+2k\\pi)/n}$, $k=0,\\dots,n-1$; vértices de um polígono regular."
+        },
+        {
+          "front": "$|z|$ em termos de $z$ e $\\bar z$",
+          "back": "$|z|^2=z\\bar z$. Daí $z^{-1}=\\bar z/|z|^2$."
+        },
+        {
+          "front": "O que é uma região (domínio) em $\\mathbb{C}$?",
+          "back": "Um conjunto aberto e conexo. Palco das funções holomorfas."
+        },
+        {
+          "front": "Compacto em $\\mathbb{C}$ (Heine-Borel)",
+          "back": "$K\\subseteq\\mathbb{C}$ é compacto $\\iff$ é fechado e limitado $\\iff$ toda sequência tem subsequência convergente em $K$."
+        },
+        {
+          "front": "$\\mathbb{C}$ é um corpo ordenado?",
+          "back": "Não. Não existe ordem total compatível com $+$ e $\\cdot$; só comparamos números reais ($|z|$, $\\operatorname{Re}z$, $\\operatorname{Im}z$)."
+        },
+        {
+          "front": "Valor principal do argumento",
+          "back": "$\\operatorname{Arg}z\\in(-\\pi,\\pi]$; descontínuo ao longo do semieixo real negativo."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Ahlfors, cap. 1 (Complex Numbers)",
+          "ref": "livro"
+        },
+        {
+          "title": "Lins Neto, Funções de uma Variável Complexa, cap. I",
+          "ref": "livro"
+        },
+        {
+          "title": "Stein & Shakarchi, cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise no Ávila (cap. 1) ou Lins Neto (cap. I) a construção de $\\mathbb{C}$ como $(\\mathbb{R}^2,+,\\cdot)$, conjugado, módulo e a forma polar; refaça as demonstrações à mão.",
+          "Assista a um vídeo de intuição geométrica sobre a multiplicação complexa como rotação-escala e a fórmula de Euler.",
+          "Treine a fórmula de De Moivre e as raízes $n$-ésimas resolvendo ~10 exemplos, desenhando os polígonos regulares no plano.",
+          "Estude a topologia de $\\mathbb{R}^2$ (bolas, abertos/fechados, Heine-Borel, conexidade, região) e a projeção estereográfica na esfera de Riemann.",
+          "Volte ao app, resolva os testes e anote aqui o principal: fórmula das raízes $n$-ésimas, círculo de Apolônio e as armadilhas de ordem/argumento."
+        ],
+        "searchQueries": [
+          "números complexos forma polar de Moivre raízes n-ésimas exercícios",
+          "raízes da unidade polígono regular demonstração",
+          "projeção estereográfica esfera de Riemann",
+          "círculo de Apolônio números complexos",
+          "topologia do plano complexo compacidade Heine-Borel",
+          "complex numbers roots of unity geometric interpretation"
+        ],
+        "videos": [
+          {
+            "title": "Imaginary numbers are real (série)",
+            "channel": "Welch Labs",
+            "note": "construção de $\\mathbb{C}$ e a multiplicação como rotação; ótima intuição inicial"
+          },
+          {
+            "title": "e^{iπ} e rotações complexas",
+            "channel": "3Blue1Brown",
+            "note": "buscar 'Euler's formula' e 'complex number rotation' para a fórmula de Euler geometricamente"
+          },
+          {
+            "title": "Números Complexos: forma trigonométrica e De Moivre",
+            "channel": "O Professor Ferretto",
+            "note": "revisão em PT-BR de forma polar, De Moivre e radiciação"
+          },
+          {
+            "title": "18.04 Complex Variables - aulas iniciais",
+            "channel": "MIT OpenCourseWare",
+            "note": "primeiras aulas sobre $\\mathbb{C}$, módulo, argumento e geometria do plano"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Ahlfors, Complex Analysis, cap. 1",
+            "where": "livro (biblioteca/PDF)"
+          },
+          {
+            "title": "Lins Neto, Funções de uma Variável Complexa, cap. I",
+            "where": "IMPA - Projeto Euclides"
+          },
+          {
+            "title": "MIT OCW 18.04 - notas 'Complex algebra and the complex plane'",
+            "where": "ocw.mit.edu"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-complexa-02-holomorfia-cauchy-riemann",
+      "title": "Funções Holomorfas e as Equações de Cauchy-Riemann",
+      "tagline": "Uma única derivada complexa é uma condição brutalmente forte: ela amarra as partes real e imaginária pelas equações de Cauchy-Riemann e as torna harmônicas.",
+      "objectives": [
+        "Definir a derivada complexa como limite do quociente de Newton e entender por que o limite ser independente da direção é tão restritivo.",
+        "Deduzir as equações de Cauchy-Riemann $u_x=v_y,\\ u_y=-v_x$ como condição necessária para holomorfia.",
+        "Provar a recíproca: se $u,v$ têm derivadas parciais contínuas satisfazendo Cauchy-Riemann, então $f=u+iv$ é holomorfa.",
+        "Relacionar holomorfia com funções harmônicas e construir a conjugada harmônica de $u$ em domínios simplesmente conexos.",
+        "Usar a derivada de Wirtinger $\\partial f/\\partial\\bar z=0$ como forma compacta de Cauchy-Riemann e ligar holomorfia à conformidade local."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Derivada complexa",
+          "statement": "$f'(z_0)=\\displaystyle\\lim_{h\\to 0}\\frac{f(z_0+h)-f(z_0)}{h}$, com $h\\in\\mathbb{C}$, quando o limite existe e independe do modo como $h\\to 0$."
+        },
+        {
+          "term": "Função holomorfa",
+          "statement": "$f$ é holomorfa em um aberto $\\Omega$ se $f'(z)$ existe para todo $z\\in\\Omega$. Uma função holomorfa em todo $\\mathbb{C}$ chama-se inteira."
+        },
+        {
+          "term": "Equações de Cauchy-Riemann",
+          "statement": "Para $f=u+iv$: $\\ \\dfrac{\\partial u}{\\partial x}=\\dfrac{\\partial v}{\\partial y}\\ $ e $\\ \\dfrac{\\partial u}{\\partial y}=-\\dfrac{\\partial v}{\\partial x}$. Então $f'(z)=u_x+iv_x=v_y-iu_y$."
+        },
+        {
+          "term": "Função harmônica e conjugada",
+          "statement": "$u$ é harmônica se $\\Delta u=u_{xx}+u_{yy}=0$. Dada $u$ harmônica num domínio simplesmente conexo, existe $v$ (conjugada harmônica, única a menos de constante) tal que $u+iv$ é holomorfa."
+        },
+        {
+          "term": "Operadores de Wirtinger",
+          "statement": "$\\dfrac{\\partial}{\\partial z}=\\tfrac12\\!\\Big(\\dfrac{\\partial}{\\partial x}-i\\dfrac{\\partial}{\\partial y}\\Big),\\quad \\dfrac{\\partial}{\\partial \\bar z}=\\tfrac12\\!\\Big(\\dfrac{\\partial}{\\partial x}+i\\dfrac{\\partial}{\\partial y}\\Big)$. Holomorfia equivale a $\\partial f/\\partial\\bar z=0$ e então $f'=\\partial f/\\partial z$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Cauchy-Riemann (condição necessária)",
+          "statement": "Se $f=u+iv$ é diferenciável (no sentido complexo) em $z_0=x_0+iy_0$, então as parciais de $u,v$ existem em $z_0$ e satisfazem $u_x=v_y$, $u_y=-v_x$ ali.",
+          "whyItMatters": "É o teste de primeira instância para holomorfia: se Cauchy-Riemann falha num ponto, $f$ não é derivável ali. Captura a essência de que a derivada deve ser a mesma vinda de qualquer direção."
+        },
+        {
+          "name": "Cauchy-Riemann (condição suficiente)",
+          "statement": "Se $u,v$ têm derivadas parciais contínuas numa vizinhança de $z_0$ e satisfazem as equações de Cauchy-Riemann em $z_0$, então $f=u+iv$ é diferenciável no sentido complexo em $z_0$.",
+          "whyItMatters": "Fornece um critério prático e verificável de holomorfia a partir do cálculo real de várias variáveis. A continuidade das parciais é a hipótese que não pode ser omitida ingenuamente."
+        },
+        {
+          "name": "Partes real e imaginária são harmônicas",
+          "statement": "Se $f=u+iv$ é holomorfa (logo $C^\\infty$, como veremos adiante), então $u$ e $v$ são harmônicas: $\\Delta u=\\Delta v=0$.",
+          "whyItMatters": "Conecta a análise complexa à teoria do potencial e às EDPs: problemas de eletrostática, escoamento e condução de calor no plano são governados por funções harmônicas, que são partes reais de funções holomorfas."
+        },
+        {
+          "name": "Constância via derivada nula",
+          "statement": "Se $f$ é holomorfa numa região (aberto conexo) $\\Omega$ e $f'\\equiv 0$, então $f$ é constante. O mesmo vale se $|f|$, $\\operatorname{Re}f$, $\\operatorname{Im}f$ ou $\\arg f$ for constante em $\\Omega$.",
+          "whyItMatters": "Mostra a rigidez das holomorfas: amarrar qualquer um desses dados reais já congela a função inteira. A conexidade de $\\Omega$ é essencial."
+        }
+      ],
+      "summary": "A definição da derivada complexa parece idêntica à real, mas há uma diferença abissal: $h$ tende a zero por todo o plano, e o quociente $\\frac{f(z_0+h)-f(z_0)}{h}$ deve convergir ao MESMO valor por qualquer direção. Comparando o limite ao longo do eixo real ($h\\to 0$ real) com o limite ao longo do eixo imaginário ($h=ik\\to 0$) obtemos as equações de Cauchy-Riemann $u_x=v_y$ e $u_y=-v_x$. Elas dizem que a matriz jacobiana de $f$ vista como aplicação de $\\mathbb{R}^2$ em $\\mathbb{R}^2$ é da forma de uma rotação-escala (uma matriz $\\left[\\begin{smallmatrix}a&-b\\\\ b&a\\end{smallmatrix}\\right]$), isto é, multiplicação por um número complexo. Reciprocamente, se as parciais são contínuas e Cauchy-Riemann vale, $f$ é holomorfa — e a derivada é $f'=u_x+iv_x$.\n\nA consequência mais imediata é que $u$ e $v$ não são funções arbitrárias: elas são harmônicas e acopladas. Conhecida $u$ harmônica num domínio simplesmente conexo, recupera-se $v$ (sua conjugada harmônica) integrando as equações de Cauchy-Riemann, a menos de constante. A linguagem de Wirtinger torna tudo elegante: holomorfia é exatamente $\\partial f/\\partial\\bar z=0$, ou seja, '$f$ não depende de $\\bar z$'. Funções como $\\bar z$, $|z|^2$ ou $\\operatorname{Re}z$ falham nesse teste e não são holomorfas em lugar algum (exceto pontos isolados). Por fim, a rigidez aparece de forma dramática: numa região conexa, fixar $f'=0$, ou $|f|$ constante, ou $\\operatorname{Re}f$ constante já força $f$ a ser globalmente constante.",
+      "commonPitfalls": [
+        "Verificar Cauchy-Riemann num ponto e concluir holomorfia ali sem checar a continuidade das parciais numa vizinhança: existem funções que satisfazem Cauchy-Riemann na origem mas não são deriváveis ali.",
+        "Esquecer o sinal: as equações são $u_x=v_y$ e $u_y=-v_x$. Trocar o sinal de $v_x$ é o erro mais comum em provas.",
+        "Achar que qualquer função suave de $x,y$ é holomorfa: $\\bar z$, $|z|^2=z\\bar z$ e $\\operatorname{Re}z$ são $C^\\infty$ mas NÃO holomorfas, pois $\\partial/\\partial\\bar z\\neq 0$.",
+        "Construir conjugada harmônica em domínio não simplesmente conexo: pode não existir globalmente. O exemplo clássico é $u=\\log|z|=\\tfrac12\\log(x^2+y^2)$ em $\\mathbb{C}\\setminus\\{0\\}$, cuja 'conjugada' seria $\\arg z$, multivalente."
+      ],
+      "worked": "**Conjugada harmônica.** Seja $u(x,y)=x^2-y^2$. Verifiquemos que $u$ é harmônica e encontremos $v$ com $f=u+iv$ holomorfa.\n\nHarmônica: $u_{xx}=2$, $u_{yy}=-2$, logo $\\Delta u=0$. $\\checkmark$\n\nCauchy-Riemann exige $v_y=u_x=2x$ e $v_x=-u_y=-(-2y)=2y$.\nDe $v_y=2x$ integramos em $y$: $v=2xy+g(x)$. Derivando em $x$: $v_x=2y+g'(x)$, que deve igualar $2y$; logo $g'(x)=0$ e $g$ é constante. Tomando a constante $0$:\n$$v(x,y)=2xy,\\qquad f(z)=(x^2-y^2)+i\\,2xy=z^2.$$\nDe fato $z^2=(x+iy)^2=x^2-y^2+2ixy$, confirmando $f(z)=z^2$, holomorfa em todo $\\mathbb{C}$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre, diretamente pela definição de derivada complexa, que $f(z)=\\bar z$ não é derivável em ponto algum.",
+          "hint": "Calcule o quociente $\\frac{\\overline{z_0+h}-\\overline{z_0}}{h}=\\frac{\\bar h}{h}$ e tome $h\\to 0$ real ($=1$) e $h\\to 0$ imaginário ($=-1$).",
+          "difficulty": 2,
+          "solution": "Fixe $z_0\\in\\mathbb{C}$ e forme o quociente de Newton com $h\\in\\mathbb{C}$, $h\\neq 0$:\n$$\\frac{f(z_0+h)-f(z_0)}{h}=\\frac{\\overline{z_0+h}-\\overline{z_0}}{h}=\\frac{\\bar z_0+\\bar h-\\bar z_0}{h}=\\frac{\\bar h}{h}.$$\n\nO limite deve independer da direção de $h\\to 0$. Testamos duas:\n\n- $h\\to 0$ **real** ($h=t\\in\\mathbb{R}$): $\\dfrac{\\bar h}{h}=\\dfrac{t}{t}=1$.\n- $h\\to 0$ **imaginário** ($h=it$, $t\\in\\mathbb{R}$): $\\dfrac{\\bar h}{h}=\\dfrac{\\overline{it}}{it}=\\dfrac{-it}{it}=-1$.\n\nComo $1\\neq -1$, o limite não existe. Isso vale para **todo** $z_0$, logo $f(z)=\\bar z$ não é derivável em ponto algum. $\\blacksquare$\n\n**Coerência com Cauchy-Riemann:** aqui $u=x$, $v=-y$, então $u_x=1\\neq v_y=-1$, violando $u_x=v_y$ em todo ponto.",
+          "steps": [
+            "Monte o quociente de Newton $\\dfrac{f(z_0+h)-f(z_0)}{h}$ com $f=\\bar z$ e simplifique para $\\bar h/h$.",
+            "Tome $h\\to 0$ ao longo do eixo real: o quociente vale $1$.",
+            "Tome $h\\to 0$ ao longo do eixo imaginário ($h=it$): o quociente vale $-1$.",
+            "Como os limites direcionais diferem, conclua a não existência da derivada em qualquer $z_0$."
+          ]
+        },
+        {
+          "prompt": "Verifique que $u(x,y)=e^{x}\\cos y$ é harmônica e encontre sua conjugada harmônica $v$; identifique a função holomorfa $f=u+iv$.",
+          "hint": "Use Cauchy-Riemann: $v_y=u_x$, $v_x=-u_y$. O resultado deve ser $f(z)=e^z$.",
+          "difficulty": 3,
+          "solution": "**Harmônica.** Com $u=e^x\\cos y$:\n$$u_x=e^x\\cos y,\\quad u_{xx}=e^x\\cos y,\\qquad u_y=-e^x\\sin y,\\quad u_{yy}=-e^x\\cos y.$$\nLogo $\\Delta u=u_{xx}+u_{yy}=e^x\\cos y-e^x\\cos y=0$: $u$ é harmônica. $\\checkmark$\n\n**Conjugada harmônica.** Cauchy-Riemann exige $v_y=u_x=e^x\\cos y$ e $v_x=-u_y=e^x\\sin y$.\nIntegrando a primeira em $y$:\n$$v=e^x\\sin y+g(x).$$\nDerivando em $x$: $v_x=e^x\\sin y+g'(x)$, que deve igualar $e^x\\sin y$; portanto $g'(x)=0$ e $g$ é constante. Tomando a constante $0$:\n$$v(x,y)=e^x\\sin y.$$\n\n**Função holomorfa.**\n$$f(z)=u+iv=e^x\\cos y+i\\,e^x\\sin y=e^x(\\cos y+i\\sin y)=e^{x}e^{iy}=e^{x+iy}=e^{z}.\\qquad\\blacksquare$$",
+          "steps": [
+            "Calcule $u_{xx}$ e $u_{yy}$ e verifique $\\Delta u=0$.",
+            "Escreva Cauchy-Riemann na forma $v_y=u_x$ e $v_x=-u_y$.",
+            "Integre $v_y=e^x\\cos y$ em $y$, obtendo $v=e^x\\sin y+g(x)$.",
+            "Derive em $x$ e imponha $v_x=-u_y$ para concluir $g'(x)=0$.",
+            "Recombine $u+iv$ e reconheça $f(z)=e^z$."
+          ]
+        },
+        {
+          "prompt": "Seja $f$ holomorfa numa região $\\Omega$ com $|f|$ constante. Prove que $f$ é constante.",
+          "hint": "Se $|f|^2=f\\bar f=c$. Se $c=0$ acabou; se $c\\neq 0$, derive ou use que $\\bar f=c/f$ também seria holomorfa, e $f,\\bar f$ holomorfas força $f$ constante.",
+          "difficulty": 4,
+          "solution": "Suponha $|f|\\equiv c$ constante em $\\Omega$, ou seja $f\\bar f=|f|^2=c^2=:C$ constante.\n\n**Caso $C=0$:** então $|f|\\equiv 0$, logo $f\\equiv 0$, constante. $\\checkmark$\n\n**Caso $C\\neq 0$:** então $f$ nunca se anula em $\\Omega$, e\n$$\\bar f=\\frac{C}{f}.$$\nComo $f$ é holomorfa e não nula, $C/f$ é holomorfa; portanto $\\bar f$ é holomorfa em $\\Omega$. Agora $f$ e $\\bar f$ são ambas holomorfas, então a soma\n$$f+\\bar f=2\\operatorname{Re}f=2u$$\né holomorfa e assume apenas valores reais. Uma função holomorfa com imagem contida em $\\mathbb{R}$ é constante numa região: de fato, $\\operatorname{Im}(2u)\\equiv 0$ e por Cauchy-Riemann aplicadas a $2u+0\\cdot i$ obtemos $u_x=0$ e $u_y=0$, logo $u$ é constante. Do mesmo modo $f-\\bar f=2i\\,v$ é holomorfa e imaginária pura, dando $v$ constante. Assim $f=u+iv$ é constante em $\\Omega$. $\\blacksquare$\n\n**Alternativa (Wirtinger).** De $f\\bar f=C$ derive em $\\bar z$: como $\\partial f/\\partial\\bar z=0$, $f\\,\\partial\\bar f/\\partial\\bar z=0$; mas $\\partial\\bar f/\\partial\\bar z=\\overline{f'}$, então $f\\,\\overline{f'}=0$. Onde $f\\neq 0$ isso força $f'=0$; com $\\Omega$ conexo, $f$ é constante.",
+          "steps": [
+            "Escreva a hipótese como $f\\bar f=C$ constante e separe os casos $C=0$ e $C\\neq 0$.",
+            "Se $C=0$, conclua imediatamente $f\\equiv 0$.",
+            "Se $C\\neq 0$, note que $f$ não se anula e $\\bar f=C/f$ é holomorfa.",
+            "Com $f$ e $\\bar f$ holomorfas, mostre que $\\operatorname{Re}f$ e $\\operatorname{Im}f$ são constantes (holomorfa de valor real/imaginário puro é constante).",
+            "Conclua que $f$ é constante em toda a região conexa $\\Omega$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $f(z)=|z|^2$ é diferenciável (no sentido complexo) apenas em $z=0$, e calcule $f'(0)$.",
+          "hint": "Escreva $u=x^2+y^2$, $v=0$; aplique Cauchy-Riemann e veja onde valem; depois confirme pela definição em $0$.",
+          "difficulty": 3,
+          "solution": "Escreva $f(z)=|z|^2=x^2+y^2$, ou seja $u=x^2+y^2$ e $v=0$.\n\n**Cauchy-Riemann.** $u_x=2x$, $u_y=2y$, $v_x=v_y=0$. As equações $u_x=v_y$ e $u_y=-v_x$ dão\n$$2x=0\\quad\\text{e}\\quad 2y=0\\ \\Longrightarrow\\ x=y=0.$$\nAs parciais são contínuas (polinômios) e Cauchy-Riemann só valem em $z=0$; portanto o único candidato a ponto de diferenciabilidade é a origem.\n\n**Verificação direta em $0$.** Com $z_0=0$:\n$$\\frac{f(h)-f(0)}{h}=\\frac{|h|^2}{h}=\\frac{h\\bar h}{h}=\\bar h\\xrightarrow[h\\to 0]{}0.$$\nO limite existe e vale $0$, logo $f$ é diferenciável em $0$ com\n$$f'(0)=0.$$\nEm qualquer outro ponto o quociente $\\dfrac{|z_0+h|^2-|z_0|^2}{h}$ não tem limite (Cauchy-Riemann falha), então $f$ é derivável **apenas** em $z=0$. $\\blacksquare$",
+          "steps": [
+            "Identifique $u=x^2+y^2$ e $v=0$.",
+            "Escreva as equações de Cauchy-Riemann e resolva $2x=0$, $2y=0$: só valem na origem.",
+            "Confirme pela definição em $z_0=0$ que $\\dfrac{|h|^2}{h}=\\bar h\\to 0$.",
+            "Conclua diferenciabilidade só em $0$ com $f'(0)=0$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Equações de Cauchy-Riemann",
+          "back": "$u_x=v_y$ e $u_y=-v_x$ (cuidado com o sinal!). Então $f'=u_x+iv_x$."
+        },
+        {
+          "front": "O que diferencia a derivada complexa da real?",
+          "back": "O limite $\\frac{f(z_0+h)-f(z_0)}{h}$ deve dar o mesmo valor para $h\\to 0$ por QUALQUER direção do plano."
+        },
+        {
+          "front": "Condição suficiente para holomorfia",
+          "back": "Parciais de $u,v$ contínuas numa vizinhança + Cauchy-Riemann $\\Rightarrow$ $f$ holomorfa."
+        },
+        {
+          "front": "Holomorfia em termos de Wirtinger",
+          "back": "$\\dfrac{\\partial f}{\\partial\\bar z}=0$. Ou seja, $f$ 'não depende de $\\bar z$'."
+        },
+        {
+          "front": "$\\operatorname{Re}f$ e $\\operatorname{Im}f$ de $f$ holomorfa são...",
+          "back": "Harmônicas: $\\Delta u=\\Delta v=0$. E acopladas por Cauchy-Riemann ($v$ é conjugada harmônica de $u$)."
+        },
+        {
+          "front": "$f$ holomorfa numa região com $f'\\equiv 0$",
+          "back": "$f$ é constante (precisa de conexidade do domínio)."
+        },
+        {
+          "front": "$\\bar z$ é holomorfa?",
+          "back": "Não, em ponto algum: $\\partial\\bar z/\\partial\\bar z=1\\neq 0$."
+        },
+        {
+          "front": "Quando existe conjugada harmônica de $u$?",
+          "back": "Sempre que $u$ é harmônica num domínio SIMPLESMENTE CONEXO (única a menos de constante)."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Ahlfors, cap. 2 (Complex Functions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Lins Neto, Funções de uma Variável Complexa, cap. II",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.04, notas sobre Cauchy-Riemann",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a definição de derivada complexa (Ávila/Lins Neto cap. II) e por que a independência da direção do limite é tão restritiva.",
+          "Deduza você mesmo as equações de Cauchy-Riemann comparando os limites ao longo do eixo real e do imaginário; memorize os sinais.",
+          "Assista a uma aula sobre Cauchy-Riemann e conjugada harmônica e refaça o exemplo $f(z)=z^2$.",
+          "Pratique: teste holomorfia de várias funções (inclusive $\\bar z$, $|z|^2$, $\\operatorname{Re}z$) e construa conjugadas harmônicas em domínios simplesmente conexos.",
+          "Estude os operadores de Wirtinger e a leitura de holomorfia como $\\partial f/\\partial\\bar z=0$.",
+          "Volte ao app, resolva os testes e anote o principal: as equações com sinal correto, a condição suficiente e as funções que falham no teste."
+        ],
+        "searchQueries": [
+          "equações de Cauchy-Riemann demonstração condição suficiente",
+          "conjugada harmônica como encontrar exemplos",
+          "operadores de Wirtinger holomorfia dbar",
+          "função harmônica análise complexa laplaciano",
+          "Cauchy-Riemann equations sufficient condition continuity partials"
+        ],
+        "videos": [
+          {
+            "title": "Cauchy-Riemann equations",
+            "channel": "Dr. Peyam",
+            "note": "dedução e exemplos claros das equações"
+          },
+          {
+            "title": "18.04 - Cauchy-Riemann e a jacobiana rotação-escala",
+            "channel": "MIT OpenCourseWare",
+            "note": "conexão geométrica com a matriz de rotação-homotetia"
+          },
+          {
+            "title": "Equações de Cauchy-Riemann e funções harmônicas",
+            "channel": "Matemática Universitária",
+            "note": "tratamento em PT-BR com exercícios resolvidos"
+          },
+          {
+            "title": "Wirtinger derivatives",
+            "channel": "Michael Penn",
+            "note": "buscar 'Wirtinger' para a forma compacta $\\partial/\\partial\\bar z$"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Ahlfors, cap. 2 (Complex Functions)",
+            "where": "livro"
+          },
+          {
+            "title": "Stein & Shakarchi, cap. 1 (seções sobre holomorfia)",
+            "where": "livro"
+          },
+          {
+            "title": "MIT OCW 18.04 - notas sobre Cauchy-Riemann",
+            "where": "ocw.mit.edu"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-complexa-03-series-potencias-funcoes-elementares",
+      "title": "Séries de Potências e Funções Elementares",
+      "tagline": "Toda holomorfa é localmente uma série de potências; daí nascem $e^z$, $\\sin z$, $\\log z$ e os perigos dos ramos multivalentes.",
+      "objectives": [
+        "Determinar o raio de convergência de uma série de potências via Cauchy-Hadamard e descrever o disco de convergência.",
+        "Provar que séries de potências são holomorfas no interior do disco e podem ser derivadas termo a termo.",
+        "Definir $e^z$, $\\sin z$, $\\cos z$ e as hiperbólicas por séries e deduzir suas propriedades (periodicidade, identidades, fórmula de Euler).",
+        "Construir o logaritmo complexo, entender a multivalência de $\\log z$, escolher ramos e definir potências $z^{\\alpha}$.",
+        "Reconhecer o conceito de função analítica e antecipar o Teorema da Identidade."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Série de potências",
+          "statement": "$\\sum_{n=0}^{\\infty}a_n(z-z_0)^n$, com $a_n,z_0\\in\\mathbb{C}$. Converge num disco aberto $|z-z_0|<R$ e diverge em $|z-z_0|>R$; sobre $|z-z_0|=R$ o comportamento varia."
+        },
+        {
+          "term": "Raio de convergência",
+          "statement": "$\\dfrac1R=\\limsup_{n\\to\\infty}|a_n|^{1/n}$ (Cauchy-Hadamard). Quando existe, $\\dfrac1R=\\lim_{n}\\dfrac{|a_{n+1}|}{|a_n|}$ (teste da razão)."
+        },
+        {
+          "term": "Função analítica",
+          "statement": "$f$ é analítica em $z_0$ se coincide com uma série de potências convergente numa vizinhança de $z_0$. Em $\\mathbb{C}$, holomorfa $\\iff$ analítica."
+        },
+        {
+          "term": "Exponencial complexa",
+          "statement": "$e^z=\\sum_{n=0}^{\\infty}\\dfrac{z^n}{n!}$, inteira, com $e^{z+w}=e^z e^w$, $e^z\\neq 0$ sempre, e período $2\\pi i$: $e^{z+2\\pi i}=e^z$."
+        },
+        {
+          "term": "Logaritmo complexo",
+          "statement": "$\\log z=\\ln|z|+i\\arg z$, multivalente pois $\\arg z$ o é. O ramo principal $\\operatorname{Log}z=\\ln|z|+i\\operatorname{Arg}z$, $\\operatorname{Arg}z\\in(-\\pi,\\pi]$, é holomorfo em $\\mathbb{C}\\setminus(-\\infty,0]$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Cauchy-Hadamard",
+          "statement": "A série $\\sum a_n(z-z_0)^n$ tem raio de convergência $R$ dado por $1/R=\\limsup_n|a_n|^{1/n}$ (com $R=\\infty$ se o $\\limsup$ é $0$, e $R=0$ se é $+\\infty$). A convergência é absoluta em $|z-z_0|<R$ e uniforme em cada disco fechado $|z-z_0|\\le r<R$.",
+          "whyItMatters": "Determina exatamente o domínio de validade de uma série e garante a convergência uniforme local, que legitima a derivação e integração termo a termo."
+        },
+        {
+          "name": "Holomorfia e derivação termo a termo",
+          "statement": "Se $f(z)=\\sum_{n\\ge0}a_n(z-z_0)^n$ tem raio $R>0$, então $f$ é holomorfa em $|z-z_0|<R$, com $f'(z)=\\sum_{n\\ge1}n\\,a_n(z-z_0)^{n-1}$ (mesmo raio $R$). Por indução, $f\\in C^\\infty$ e $a_n=f^{(n)}(z_0)/n!$.",
+          "whyItMatters": "É metade da equivalência holomorfa $\\iff$ analítica: toda série de potências define uma função infinitamente derivável, cujos coeficientes são os de Taylor. A outra metade (holomorfa $\\Rightarrow$ analítica) virá da fórmula de Cauchy."
+        },
+        {
+          "name": "Propriedades de $e^z$ e fórmula de Euler",
+          "statement": "$e^z$ é inteira com $(e^z)'=e^z$, $e^{z+w}=e^ze^w$, e $e^{iy}=\\cos y+i\\sin y$. Consequentemente $\\sin z=\\dfrac{e^{iz}-e^{-iz}}{2i}$, $\\cos z=\\dfrac{e^{iz}+e^{-iz}}{2}$, e $\\cos^2 z+\\sin^2 z=1$ para todo $z\\in\\mathbb{C}$.",
+          "whyItMatters": "Unifica exponencial e funções trigonométricas. As funções trigonométricas complexas são ilimitadas (ao contrário das reais!), e isso terá consequências profundas via Liouville."
+        },
+        {
+          "name": "Multivalência do logaritmo",
+          "statement": "Para $z\\neq 0$, $e^w=z$ tem soluções $w=\\ln|z|+i(\\operatorname{Arg}z+2k\\pi)$, $k\\in\\mathbb{Z}$. Não existe ramo contínuo de $\\log z$ em todo $\\mathbb{C}\\setminus\\{0\\}$; é preciso remover um corte (p.ex. $(-\\infty,0]$).",
+          "whyItMatters": "É o primeiro encontro com funções multivalentes e cortes de ramo, ideia central para potências, raízes e, mais tarde, para superfícies de Riemann e o princípio do argumento."
+        }
+      ],
+      "summary": "Uma série de potências $\\sum a_n(z-z_0)^n$ converge exatamente num disco $|z-z_0|<R$, com $R$ dado por Cauchy-Hadamard, $1/R=\\limsup|a_n|^{1/n}$. Dentro desse disco a convergência é uniforme em compactos, o que permite derivar e integrar termo a termo: a soma é holomorfa, de classe $C^\\infty$, e seus coeficientes são exatamente os de Taylor, $a_n=f^{(n)}(z_0)/n!$. Isso já mostra metade do milagre central da análise complexa: toda série de potências é holomorfa. A recíproca — toda holomorfa é localmente soma de série de potências — sairá da Fórmula Integral de Cauchy, fechando a equivalência holomorfa $\\iff$ analítica, algo SEM análogo no mundo real (lá existem funções $C^\\infty$ não analíticas, como $e^{-1/x^2}$).\n\nAs funções elementares ganham definição rigorosa por séries. A exponencial $e^z=\\sum z^n/n!$ é inteira, nunca se anula, satisfaz $e^{z+w}=e^ze^w$ e tem período $2\\pi i$. Dela, via fórmula de Euler, nascem $\\sin z$ e $\\cos z$ em forma exponencial — que, surpreendentemente, são ILIMITADAS em $\\mathbb{C}$ (pois $\\sin(iy)=i\\sinh y\\to\\infty$). Inverter a exponencial leva ao logaritmo $\\log z=\\ln|z|+i\\arg z$, intrinsecamente multivalente porque o argumento o é: cada volta em torno da origem soma $2\\pi i$. Para obter uma função genuína fixamos um ramo, cortando o plano (tipicamente ao longo de $(-\\infty,0]$) e definindo o ramo principal $\\operatorname{Log}$. Com ele definimos potências $z^{\\alpha}=e^{\\alpha\\operatorname{Log}z}$, também dependentes do ramo. Dominar cortes e ramos é o que separa contas corretas de erros sutis em integrais e em raízes.",
+      "commonPitfalls": [
+        "Aplicar $\\log(zw)=\\log z+\\log w$ ou $\\operatorname{Log}(zw)=\\operatorname{Log}z+\\operatorname{Log}w$ sem cuidado: a igualdade vale módulo $2\\pi i$, e o ramo principal pode 'pular' por causa do corte.",
+        "Supor que $\\sin z$ e $\\cos z$ são limitadas em $\\mathbb{C}$ como no caso real: $|\\sin z|$ e $|\\cos z|$ crescem exponencialmente em $\\operatorname{Im}z$.",
+        "Confundir convergência no bordo $|z-z_0|=R$: Cauchy-Hadamard nada diz sobre o círculo; cada ponto do bordo precisa de análise própria.",
+        "Tratar $z^{\\alpha}$ como univalente para $\\alpha$ não inteiro: $z^{1/2}$, $z^i$ etc. dependem do ramo de $\\log$ escolhido e têm cortes."
+      ],
+      "worked": "**Logaritmo principal de $-1+i$.**\n\nTemos $|-1+i|=\\sqrt{(-1)^2+1^2}=\\sqrt2$ e $\\operatorname{Arg}(-1+i)=\\dfrac{3\\pi}{4}$ (segundo quadrante).\n\nLogo o valor principal é\n$$\\operatorname{Log}(-1+i)=\\ln\\sqrt2+i\\,\\frac{3\\pi}{4}=\\tfrac12\\ln 2+\\frac{3\\pi}{4}\\,i.$$\nTodos os valores de $\\log(-1+i)$ são $\\tfrac12\\ln2+i\\big(\\tfrac{3\\pi}{4}+2k\\pi\\big)$, $k\\in\\mathbb{Z}$.\n\nVerificação: $e^{\\operatorname{Log}(-1+i)}=e^{\\frac12\\ln2}\\,e^{i\\,3\\pi/4}=\\sqrt2\\big(\\cos\\tfrac{3\\pi}{4}+i\\sin\\tfrac{3\\pi}{4}\\big)=\\sqrt2\\big(-\\tfrac{\\sqrt2}{2}+\\tfrac{\\sqrt2}{2}i\\big)=-1+i.$ $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Calcule o raio de convergência de (a) $\\sum \\frac{z^n}{n!}$, (b) $\\sum n!\\,z^n$, (c) $\\sum \\frac{z^n}{n^2}$, (d) $\\sum 2^n z^{n}$.",
+          "hint": "Use Cauchy-Hadamard ou teste da razão; lembre $\\sqrt[n]{n!}\\to\\infty$.",
+          "difficulty": 2,
+          "solution": "Usamos Cauchy-Hadamard $1/R=\\limsup_n|a_n|^{1/n}$ (ou o teste da razão quando aplicável).\n\n**(a) $\\sum \\dfrac{z^n}{n!}$:** $a_n=1/n!$. Pelo teste da razão, $\\dfrac{|a_{n+1}|}{|a_n|}=\\dfrac{n!}{(n+1)!}=\\dfrac{1}{n+1}\\to 0$, logo $1/R=0$ e $R=\\infty$.\n\n**(b) $\\sum n!\\,z^n$:** $a_n=n!$. $\\dfrac{|a_{n+1}|}{|a_n|}=n+1\\to\\infty$, logo $1/R=\\infty$ e $R=0$ (só converge em $z=0$).\n\n**(c) $\\sum \\dfrac{z^n}{n^2}$:** $a_n=1/n^2$. $|a_n|^{1/n}=n^{-2/n}=e^{-2\\ln n/n}\\to e^0=1$, logo $R=1$.\n\n**(d) $\\sum 2^n z^n$:** $a_n=2^n$. $|a_n|^{1/n}=2$, logo $1/R=2$ e $R=\\tfrac12$. $\\blacksquare$",
+          "steps": [
+            "Escolha entre teste da razão $|a_{n+1}/a_n|$ e raiz $|a_n|^{1/n}$ conforme a forma de $a_n$.",
+            "(a) Fatoriais no denominador $\\Rightarrow$ razão $\\to 0$, então $R=\\infty$.",
+            "(b) Fatoriais no numerador $\\Rightarrow$ razão $\\to\\infty$, então $R=0$.",
+            "(c) Use $n^{-2/n}\\to 1$ para obter $R=1$.",
+            "(d) $|2^n|^{1/n}=2$ dá $R=1/2$."
+          ]
+        },
+        {
+          "prompt": "Prove que $\\cos^2 z+\\sin^2 z=1$ para todo $z\\in\\mathbb{C}$ usando as definições exponenciais.",
+          "hint": "Substitua $\\sin z=\\frac{e^{iz}-e^{-iz}}{2i}$ e $\\cos z=\\frac{e^{iz}+e^{-iz}}{2}$ e expanda.",
+          "difficulty": 2,
+          "solution": "Partindo das definições exponenciais\n$$\\cos z=\\frac{e^{iz}+e^{-iz}}{2},\\qquad \\sin z=\\frac{e^{iz}-e^{-iz}}{2i},$$\ncalculamos os quadrados. Escrevendo $A=e^{iz}$ e $B=e^{-iz}$ (com $AB=1$):\n$$\\cos^2 z=\\frac{(A+B)^2}{4}=\\frac{A^2+2AB+B^2}{4}=\\frac{A^2+2+B^2}{4},$$\n$$\\sin^2 z=\\frac{(A-B)^2}{(2i)^2}=\\frac{A^2-2AB+B^2}{-4}=\\frac{-A^2+2-B^2}{4}.$$\nSomando:\n$$\\cos^2 z+\\sin^2 z=\\frac{(A^2+2+B^2)+(-A^2+2-B^2)}{4}=\\frac{4}{4}=1.$$\nComo a manipulação é puramente algébrica e vale para todo $z\\in\\mathbb{C}$, a identidade está provada. $\\blacksquare$\n\n**Comentário.** Este é exatamente o tipo de identidade real que o Teorema da Identidade estende automaticamente a $\\mathbb{C}$: vale em $\\mathbb{R}$, ambos os lados são inteiros, logo coincidem em todo o plano.",
+          "steps": [
+            "Substitua $\\cos z$ e $\\sin z$ por suas formas exponenciais.",
+            "Abrevie $A=e^{iz}$, $B=e^{-iz}$ e note $AB=1$.",
+            "Expanda $(A+B)^2$ e $(A-B)^2$, cuidando do fator $(2i)^2=-4$ em $\\sin^2$.",
+            "Some as duas frações: os termos $A^2$ e $B^2$ se cancelam, sobrando $4/4=1$."
+          ]
+        },
+        {
+          "prompt": "Resolva $e^z=-2$ em $\\mathbb{C}$, dando todas as soluções.",
+          "hint": "$|{-2}|=2$, $\\operatorname{Arg}(-2)=\\pi$; então $z=\\ln 2+i(\\pi+2k\\pi)$, $k\\in\\mathbb{Z}$.",
+          "difficulty": 2,
+          "solution": "Buscamos todos os $z$ com $e^z=-2$. Escreva $z=x+iy$; então $e^z=e^x e^{iy}$, com $|e^z|=e^x$ e $\\arg(e^z)=y$.\n\nComo $-2$ tem módulo $2$ e argumento $\\pi$ (mais múltiplos de $2\\pi$):\n$$e^x=2\\ \\Longrightarrow\\ x=\\ln 2,\\qquad y=\\pi+2k\\pi,\\ k\\in\\mathbb{Z}.$$\nPortanto\n$$z=\\ln 2+i(\\pi+2k\\pi),\\qquad k\\in\\mathbb{Z}.$$\n\n**Verificação:** $e^{\\ln 2+i\\pi}=2\\,e^{i\\pi}=2(-1)=-2$. $\\blacksquare$\n\nObserve que há infinitas soluções, todas com a mesma parte real $\\ln 2$ e partes imaginárias espaçadas por $2\\pi$ — reflexo da periodicidade $2\\pi i$ da exponencial.",
+          "steps": [
+            "Separe módulo e argumento: $e^z=-2$ significa $|e^z|=2$ e $\\arg(e^z)=\\pi\\pmod{2\\pi}$.",
+            "De $|e^z|=e^{\\operatorname{Re}z}=2$ obtenha $\\operatorname{Re}z=\\ln 2$.",
+            "De $\\operatorname{Im}z=\\arg(-2)$ obtenha $\\operatorname{Im}z=\\pi+2k\\pi$.",
+            "Escreva $z=\\ln 2+i(\\pi+2k\\pi)$ e verifique substituindo $k=0$."
+          ]
+        },
+        {
+          "prompt": "Calcule todos os valores de $i^{\\,i}$ e mostre que são todos reais. Qual é o valor principal?",
+          "hint": "$i^i=e^{i\\log i}$ e $\\log i=i(\\pi/2+2k\\pi)$; logo $i^i=e^{-(\\pi/2+2k\\pi)}$. Principal: $e^{-\\pi/2}$.",
+          "difficulty": 3,
+          "solution": "Por definição, $i^{\\,i}=e^{\\,i\\log i}$, onde $\\log i$ é multivalente. Como $|i|=1$ e $\\arg i=\\tfrac{\\pi}{2}+2k\\pi$:\n$$\\log i=\\ln|i|+i\\Big(\\tfrac{\\pi}{2}+2k\\pi\\Big)=i\\Big(\\tfrac{\\pi}{2}+2k\\pi\\Big),\\quad k\\in\\mathbb{Z}.$$\nEntão\n$$i^{\\,i}=e^{\\,i\\cdot i(\\pi/2+2k\\pi)}=e^{-(\\pi/2+2k\\pi)},\\quad k\\in\\mathbb{Z}.$$\nCada valor é um número **real positivo** (a exponencial de um número real), o que responde à pergunta: todos os valores de $i^i$ são reais.\n\nO **valor principal** corresponde a $k=0$ (ramo principal do logaritmo, $\\operatorname{Arg}i=\\pi/2$):\n$$i^{\\,i}\\big|_{\\text{principal}}=e^{-\\pi/2}\\approx 0{,}2079.\\qquad\\blacksquare$$",
+          "steps": [
+            "Use a definição $z^{\\alpha}=e^{\\alpha\\log z}$ com $z=\\alpha=i$.",
+            "Calcule $\\log i=i(\\pi/2+2k\\pi)$ (módulo $1$, argumento $\\pi/2$).",
+            "Multiplique por $i$: o expoente vira $-(\\pi/2+2k\\pi)$, real.",
+            "Conclua $i^i=e^{-(\\pi/2+2k\\pi)}$, todos reais; o principal ($k=0$) é $e^{-\\pi/2}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Fórmula de Cauchy-Hadamard",
+          "back": "$1/R=\\limsup_n |a_n|^{1/n}$, raio do disco de convergência $|z-z_0|<R$."
+        },
+        {
+          "front": "Série de potências pode ser derivada...",
+          "back": "Termo a termo, com o MESMO raio $R$; a soma é $C^\\infty$ e $a_n=f^{(n)}(z_0)/n!$."
+        },
+        {
+          "front": "Em $\\mathbb{C}$, holomorfa $\\iff$ ?",
+          "back": "Analítica (localmente soma de série de potências). Equivalência que NÃO vale em $\\mathbb{R}$."
+        },
+        {
+          "front": "Período da exponencial complexa",
+          "back": "$2\\pi i$: $e^{z+2\\pi i}=e^z$. E $e^z\\neq 0$ para todo $z$."
+        },
+        {
+          "front": "$\\sin z$ e $\\cos z$ em forma exponencial",
+          "back": "$\\sin z=\\frac{e^{iz}-e^{-iz}}{2i}$, $\\cos z=\\frac{e^{iz}+e^{-iz}}{2}$. São ilimitadas em $\\mathbb{C}$."
+        },
+        {
+          "front": "Definição de $\\log z$",
+          "back": "$\\log z=\\ln|z|+i\\arg z$, multivalente. Principal: $\\operatorname{Log}z=\\ln|z|+i\\operatorname{Arg}z$, holomorfo em $\\mathbb{C}\\setminus(-\\infty,0]$."
+        },
+        {
+          "front": "Como se define $z^{\\alpha}$?",
+          "back": "$z^{\\alpha}=e^{\\alpha\\log z}$; depende do ramo de $\\log$ (multivalente se $\\alpha\\notin\\mathbb{Z}$)."
+        },
+        {
+          "front": "Existe ramo contínuo de $\\log$ em $\\mathbb{C}\\setminus\\{0\\}$?",
+          "back": "Não. É preciso remover um corte (ex.: $(-\\infty,0]$) para ter um ramo holomorfo."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Ahlfors, cap. 2-3 (Power Series, Elementary Functions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Stein & Shakarchi, cap. 1-2",
+          "ref": "livro"
+        },
+        {
+          "title": "Ávila, Variável Complexa e Aplicações, cap. 2-3",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise convergência de séries e o teste da raiz; estude Cauchy-Hadamard e o disco de convergência.",
+          "Estude a derivação termo a termo e a relação $a_n=f^{(n)}(z_0)/n!$; entenda 'holomorfa localmente é série de potências'.",
+          "Defina $e^z$, $\\sin z$, $\\cos z$ por séries; deduza Euler e as identidades, e note que $\\sin,\\cos$ são ilimitadas em $\\mathbb{C}$.",
+          "Estude o logaritmo complexo, a multivalência, o ramo principal e os cortes; defina potências $z^{\\alpha}$.",
+          "Pratique raios de convergência, logaritmos de vários números e potências como $i^i$.",
+          "Volte ao app, resolva os testes e anote o principal: Cauchy-Hadamard, ramos/cortes e o período $2\\pi i$."
+        ],
+        "searchQueries": [
+          "raio de convergência Cauchy-Hadamard exercícios resolvidos",
+          "logaritmo complexo ramo principal corte de ramo",
+          "função exponencial complexa série propriedades período",
+          "i elevado a i valor principal cálculo",
+          "complex logarithm branch cut multivalued function"
+        ],
+        "videos": [
+          {
+            "title": "What is i^i?",
+            "channel": "blackpenredpen",
+            "note": "cálculo de $i^i$ e seus múltiplos valores reais"
+          },
+          {
+            "title": "18.04 - Complex exponential and logarithm",
+            "channel": "MIT OpenCourseWare",
+            "note": "exponencial, logaritmo e escolha de ramos"
+          },
+          {
+            "title": "Power series radius of convergence",
+            "channel": "Professor Leonard",
+            "note": "revisão sólida de raio de convergência (base real para o caso complexo)"
+          },
+          {
+            "title": "Séries de potências e funções elementares complexas",
+            "channel": "Matemática Universitária",
+            "note": "PT-BR: exp, seno, cosseno e logaritmo complexos"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Ahlfors, cap. 2-3 (Power Series, Elementary Functions)",
+            "where": "livro"
+          },
+          {
+            "title": "Stein & Shakarchi, cap. 1-2",
+            "where": "livro"
+          },
+          {
+            "title": "Ávila, Variável Complexa e Aplicações, cap. 2-3",
+            "where": "livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-complexa-04-integral-contorno-cauchy-goursat",
+      "title": "Integral de Contorno e o Teorema de Cauchy-Goursat",
+      "tagline": "Integrar ao longo de caminhos no plano e descobrir que, para holomorfas, a integral por um laço fechado é simplesmente zero.",
+      "objectives": [
+        "Definir a integral de contorno $\\int_\\gamma f\\,dz$ via parametrização e estabelecer suas propriedades de linearidade e orientação.",
+        "Aplicar a desigualdade $ML$ para estimar integrais de contorno e provar anulamentos de integrais sobre arcos.",
+        "Usar o Teorema Fundamental para integrais de contorno: existência de primitiva implica independência do caminho.",
+        "Enunciar e compreender o Teorema de Cauchy-Goursat (lema do triângulo de Goursat) e estendê-lo a domínios simplesmente conexos.",
+        "Calcular integrais-modelo como $\\oint_{|z|=r}(z-a)^n\\,dz$ e reconhecer o papel especial de $n=-1$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Integral de contorno",
+          "statement": "Para $\\gamma:[a,b]\\to\\mathbb{C}$ de classe $C^1$ por partes, $\\displaystyle\\int_\\gamma f\\,dz=\\int_a^b f(\\gamma(t))\\,\\gamma'(t)\\,dt$. Independe da parametrização (preservando orientação); inverter a orientação troca o sinal."
+        },
+        {
+          "term": "Comprimento e desigualdade $ML$",
+          "statement": "Se $|f|\\le M$ sobre $\\gamma$ e $L=\\text{comprimento}(\\gamma)=\\int_a^b|\\gamma'(t)|\\,dt$, então $\\Big|\\int_\\gamma f\\,dz\\Big|\\le M\\,L$."
+        },
+        {
+          "term": "Primitiva (antiderivada)",
+          "statement": "$F$ é primitiva de $f$ em $\\Omega$ se $F'=f$ ali. Se existir, $\\int_\\gamma f\\,dz=F(\\gamma(b))-F(\\gamma(a))$; em particular a integral só depende dos extremos."
+        },
+        {
+          "term": "Domínio simplesmente conexo",
+          "statement": "Aberto conexo $\\Omega$ no qual todo laço fechado é homotópico a um ponto (sem 'buracos'). É a hipótese topológica que garante o Teorema de Cauchy na forma global."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema Fundamental para integrais de contorno",
+          "statement": "Se $f$ é contínua em $\\Omega$ e possui primitiva $F$ (i.e. $F'=f$), então para todo caminho $\\gamma$ de $z_0$ a $z_1$ em $\\Omega$ vale $\\int_\\gamma f\\,dz=F(z_1)-F(z_0)$. Em particular $\\oint_\\gamma f\\,dz=0$ para todo laço fechado, e a integral é independente do caminho.",
+          "whyItMatters": "Reduz o cálculo de muitas integrais a avaliar uma primitiva; e a recíproca (independência do caminho $\\Rightarrow$ existência de primitiva) caracteriza quando $f$ admite antiderivada."
+        },
+        {
+          "name": "Lema de Goursat (triângulo)",
+          "statement": "Se $f$ é holomorfa num aberto contendo um triângulo fechado $T$ (com interior), então $\\oint_{\\partial T}f\\,dz=0$ — SEM hipótese de continuidade de $f'$.",
+          "whyItMatters": "É o coração técnico de toda a teoria: dele se deduz a existência de primitivas locais e o Teorema de Cauchy. O ponto fino é dispensar a continuidade de $f'$, obtida só depois como consequência."
+        },
+        {
+          "name": "Teorema de Cauchy-Goursat",
+          "statement": "Se $f$ é holomorfa num domínio simplesmente conexo $\\Omega$, então $\\oint_\\gamma f\\,dz=0$ para todo laço fechado $\\gamma$ (retificável) em $\\Omega$. Equivalentemente, $f$ possui primitiva holomorfa em $\\Omega$ e a integral é independente do caminho.",
+          "whyItMatters": "É o teorema central da análise complexa. Dele descendem a Fórmula Integral de Cauchy, a analiticidade das holomorfas, o Teorema dos Resíduos e praticamente tudo o que vem depois."
+        },
+        {
+          "name": "Integral de potências em torno de um ponto",
+          "statement": "Para o círculo $\\gamma=\\{|z-a|=r\\}$ orientado positivamente, $\\displaystyle\\oint_\\gamma (z-a)^n\\,dz=\\begin{cases}2\\pi i,& n=-1\\\\ 0,& n\\in\\mathbb{Z},\\ n\\neq -1.\\end{cases}$",
+          "whyItMatters": "O caso $n=-1$ produzir $2\\pi i\\neq 0$ é a semente do conceito de resíduo e a razão pela qual $1/(z-a)$ não tem primitiva no anel furado em torno de $a$."
+        }
+      ],
+      "summary": "A integral de contorno $\\int_\\gamma f\\,dz$ generaliza a integral de linha do cálculo vetorial para funções complexas, definida por parametrização. Suas duas ferramentas básicas são a desigualdade $ML$ (que estima o tamanho da integral pelo máximo de $|f|$ vezes o comprimento do caminho, essencial para mostrar que integrais sobre arcos grandes ou pequenos tendem a zero) e o Teorema Fundamental: se $f$ tem primitiva $F$, a integral só depende dos extremos, anulando-se sobre laços fechados. A questão central torna-se então: quando $f$ tem primitiva? A resposta envolve topologia.\n\nO Teorema de Cauchy-Goursat responde de forma espetacular: se $f$ é holomorfa num domínio simplesmente conexo, então $\\oint_\\gamma f\\,dz=0$ para todo laço. A demonstração passa pelo lema de Goursat — a integral sobre a borda de qualquer triângulo se anula, e o brilhante é que isso vale sem supor $f'$ contínua, por um argumento de subdivisão sucessiva do triângulo. Daí constrói-se uma primitiva local integrando ao longo de caminhos, e a simples conexidade garante consistência global. A exceção reveladora é $\\oint_{|z-a|=r}(z-a)^{-1}\\,dz=2\\pi i$: aqui o domínio relevante (o anel furado) NÃO é simplesmente conexo, $1/(z-a)$ não tem primitiva global ali, e o valor $2\\pi i$ — independente de $r$ — é o primeiro resíduo da nossa vida. Essa única integral não nula é, literalmente, o motor de toda a teoria de resíduos.",
+      "commonPitfalls": [
+        "Aplicar Cauchy-Goursat num domínio com buraco ou quando $f$ tem singularidade dentro do laço: a hipótese de holomorfia em TODO o interior do laço (ou simples conexidade) é indispensável.",
+        "Esquecer a orientação: o sinal de $\\oint$ depende do sentido (positivo = anti-horário). Inverter a orientação troca o sinal da integral.",
+        "Concluir que $\\oint_\\gamma f\\,dz=0$ implica $f$ holomorfa dentro — isso é a recíproca (Morera) e exige a anulação para TODOS os triângulos, não para um laço só.",
+        "Tratar $\\int_\\gamma f\\,dz$ como independente do caminho sempre: só é quando $f$ tem primitiva (ou é holomorfa em domínio simplesmente conexo). Para $1/z$ ao redor de $0$ não vale."
+      ],
+      "worked": "**A integral fundamental $\\oint_{|z|=r}\\frac{dz}{z}=2\\pi i$.**\n\nParametrizamos o círculo por $z(\\theta)=r e^{i\\theta}$, $\\theta\\in[0,2\\pi]$, de onde $dz=ir e^{i\\theta}\\,d\\theta$. Então\n$$\\oint_{|z|=r}\\frac{dz}{z}=\\int_0^{2\\pi}\\frac{ir e^{i\\theta}}{r e^{i\\theta}}\\,d\\theta=\\int_0^{2\\pi} i\\,d\\theta=2\\pi i.$$\nO resultado independe de $r$. Para comparação, com $n\\neq -1$ inteiro:\n$$\\oint_{|z|=r}z^n\\,dz=\\int_0^{2\\pi}(r e^{i\\theta})^n\\,ir e^{i\\theta}\\,d\\theta=i r^{n+1}\\!\\int_0^{2\\pi} e^{i(n+1)\\theta}\\,d\\theta=i r^{n+1}\\cdot\\frac{e^{i(n+1)\\theta}}{i(n+1)}\\Big|_0^{2\\pi}=0,$$\npois $e^{i(n+1)2\\pi}=1$. A diferença é exatamente o termo $1/z$, que não tem primitiva univalente no plano furado. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Calcule $\\int_\\gamma \\bar z\\,dz$ onde $\\gamma$ é o segmento de $0$ a $1+i$, e depois onde $\\gamma$ é o caminho $0\\to 1\\to 1+i$. Os valores coincidem? O que isso revela sobre $\\bar z$?",
+          "hint": "Parametrize cada trecho; como $\\bar z$ não é holomorfa, espere dependência do caminho.",
+          "difficulty": 3,
+          "solution": "**Caminho 1: segmento de $0$ a $1+i$.** Parametrize $z(t)=t(1+i)$, $t\\in[0,1]$, com $\\bar z=t(1-i)$ e $dz=(1+i)\\,dt$. Então\n$$\\int_{\\gamma_1}\\bar z\\,dz=\\int_0^1 t(1-i)(1+i)\\,dt=\\int_0^1 t\\cdot 2\\,dt=\\Big[t^2\\Big]_0^1=1,$$\npois $(1-i)(1+i)=1-i^2=2$.\n\n**Caminho 2: $0\\to 1\\to 1+i$.**\n- Trecho $0\\to 1$: $z=t$, $t\\in[0,1]$, $\\bar z=t$, $dz=dt$: $\\displaystyle\\int_0^1 t\\,dt=\\tfrac12$.\n- Trecho $1\\to 1+i$: $z=1+it$, $t\\in[0,1]$, $\\bar z=1-it$, $dz=i\\,dt$: $\\displaystyle\\int_0^1 (1-it)\\,i\\,dt=\\int_0^1 (i+t)\\,dt=i+\\tfrac12$.\n\nSomando: $\\displaystyle\\int_{\\gamma_2}\\bar z\\,dz=\\tfrac12+\\big(i+\\tfrac12\\big)=1+i$.\n\n**Conclusão.** Os valores $1$ e $1+i$ **diferem**. Isso mostra que $\\int\\bar z\\,dz$ depende do caminho, coerente com o fato de $\\bar z$ **não** ser holomorfa: por não ter primitiva, sua integral não é independente do caminho. $\\blacksquare$",
+          "steps": [
+            "Parametrize o segmento direto $z(t)=t(1+i)$ e calcule $\\int_{\\gamma_1}\\bar z\\,dz=1$.",
+            "Parametrize o caminho em L em dois trechos: $0\\to1$ e $1\\to1+i$.",
+            "Integre cada trecho: $1/2$ e $i+1/2$; some para obter $1+i$.",
+            "Compare $1\\neq 1+i$ e conclua dependência do caminho, refletindo que $\\bar z$ não é holomorfa."
+          ]
+        },
+        {
+          "prompt": "Use a desigualdade $ML$ para mostrar que $\\Big|\\int_{\\gamma_R}\\frac{e^{iz}}{z^2+1}\\,dz\\Big|\\to 0$ quando $R\\to\\infty$, onde $\\gamma_R$ é o semicírculo superior $|z|=R$.",
+          "hint": "No semicírculo superior $|e^{iz}|=e^{-\\operatorname{Im}z}\\le 1$ e $|z^2+1|\\ge R^2-1$; comprimento $L=\\pi R$.",
+          "difficulty": 3,
+          "solution": "No semicírculo superior $\\gamma_R=\\{z=Re^{i\\theta}:\\theta\\in[0,\\pi]\\}$, estimamos numerador e denominador.\n\n**Numerador.** Para $z=x+iy$ com $y=\\operatorname{Im}z\\ge 0$,\n$$|e^{iz}|=|e^{i(x+iy)}|=|e^{ix}|\\,e^{-y}=e^{-y}\\le e^{0}=1,$$\npois $y\\ge 0$ no semiplano superior.\n\n**Denominador.** Pela desigualdade triangular reversa, $|z^2+1|\\ge |z|^2-1=R^2-1$ (para $R>1$).\n\nLogo, sobre $\\gamma_R$, $\\ |f(z)|=\\dfrac{|e^{iz}|}{|z^2+1|}\\le\\dfrac{1}{R^2-1}=:M$, e o comprimento é $L=\\pi R$. Pela desigualdade $ML$:\n$$\\left|\\int_{\\gamma_R}\\frac{e^{iz}}{z^2+1}\\,dz\\right|\\le M\\,L=\\frac{\\pi R}{R^2-1}\\xrightarrow[R\\to\\infty]{}0.\\qquad\\blacksquare$$",
+          "steps": [
+            "Escreva $\\gamma_R$ como $z=Re^{i\\theta}$, $\\theta\\in[0,\\pi]$, e identifique $\\operatorname{Im}z\\ge0$.",
+            "Estime o numerador: $|e^{iz}|=e^{-\\operatorname{Im}z}\\le 1$ no semiplano superior.",
+            "Estime o denominador por baixo: $|z^2+1|\\ge R^2-1$.",
+            "Aplique $ML$ com $M=1/(R^2-1)$ e $L=\\pi R$ e tome $R\\to\\infty$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $\\int_\\gamma z^n\\,dz=\\frac{z_1^{n+1}-z_0^{n+1}}{n+1}$ para $n\\ge 0$ e qualquer caminho de $z_0$ a $z_1$, usando uma primitiva.",
+          "hint": "$F(z)=z^{n+1}/(n+1)$ é primitiva inteira; aplique o Teorema Fundamental.",
+          "difficulty": 2,
+          "solution": "Para $n\\ge 0$, a função $F(z)=\\dfrac{z^{n+1}}{n+1}$ é inteira e satisfaz $F'(z)=z^n$, ou seja, é uma primitiva de $f(z)=z^n$ em todo $\\mathbb{C}$.\n\nPelo Teorema Fundamental para integrais de contorno, para qualquer caminho $\\gamma$ (de classe $C^1$ por partes) ligando $z_0$ a $z_1$:\n$$\\int_\\gamma z^n\\,dz=F(z_1)-F(z_0)=\\frac{z_1^{\\,n+1}-z_0^{\\,n+1}}{n+1}.$$\nComo o valor só depende dos extremos $z_0,z_1$, a integral é **independente do caminho**. $\\blacksquare$\n\n**Observação.** O argumento exige $n\\ge 0$ (ou, mais geralmente, $n\\neq -1$) para que $F$ seja primitiva num domínio contendo $\\gamma$; para $n=-1$ não há primitiva global em $\\mathbb{C}\\setminus\\{0\\}$ e a conclusão falha.",
+          "steps": [
+            "Reconheça $F(z)=z^{n+1}/(n+1)$ como primitiva de $z^n$ (válido pois $n\\ge0$, logo $n+1\\neq0$).",
+            "Aplique o Teorema Fundamental: $\\int_\\gamma f\\,dz=F(z_1)-F(z_0)$.",
+            "Substitua $F$ para obter $\\dfrac{z_1^{n+1}-z_0^{n+1}}{n+1}$.",
+            "Note que o resultado depende só dos extremos, provando independência do caminho."
+          ]
+        },
+        {
+          "prompt": "Seja $\\gamma$ o quadrado de vértices $\\pm 1\\pm i$ orientado positivamente. Calcule $\\oint_\\gamma \\frac{dz}{z}$ sem parametrizar os lados.",
+          "hint": "O integrando é holomorfo exceto em $0$, que está dentro; deforme para um círculo pequeno (Cauchy) e use a integral fundamental: resposta $2\\pi i$.",
+          "difficulty": 3,
+          "solution": "O integrando $g(z)=1/z$ é holomorfo em $\\mathbb{C}\\setminus\\{0\\}$. A origem $0$ está no interior do quadrado $\\gamma$ (vértices $\\pm 1\\pm i$).\n\nEscolha um círculo pequeno $C_\\varepsilon=\\{|z|=\\varepsilon\\}$ ($0<\\varepsilon<1$) orientado positivamente, contido no interior do quadrado. Na região entre $\\gamma$ e $C_\\varepsilon$ (um anel deformado, sem a origem) a função $1/z$ é holomorfa; por Cauchy-Goursat (versão para domínios com deformação de contornos, ou o princípio da deformação de caminhos),\n$$\\oint_{\\gamma}\\frac{dz}{z}=\\oint_{C_\\varepsilon}\\frac{dz}{z}.$$\n\nA integral sobre o círculo é a integral fundamental já conhecida:\n$$\\oint_{C_\\varepsilon}\\frac{dz}{z}=\\int_0^{2\\pi}\\frac{i\\varepsilon e^{i\\theta}}{\\varepsilon e^{i\\theta}}\\,d\\theta=\\int_0^{2\\pi} i\\,d\\theta=2\\pi i.$$\n\nPortanto\n$$\\oint_{\\gamma}\\frac{dz}{z}=2\\pi i,$$\nsem precisar parametrizar os quatro lados do quadrado. $\\blacksquare$",
+          "steps": [
+            "Observe que $1/z$ é holomorfa exceto em $0$, que está dentro do quadrado.",
+            "Introduza um círculo pequeno $C_\\varepsilon$ em torno de $0$, dentro do quadrado.",
+            "Pelo princípio da deformação (Cauchy-Goursat no anel), iguale $\\oint_\\gamma dz/z=\\oint_{C_\\varepsilon}dz/z$.",
+            "Calcule a integral no círculo pela parametrização $z=\\varepsilon e^{i\\theta}$, obtendo $2\\pi i$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de $\\int_\\gamma f\\,dz$",
+          "back": "$\\int_a^b f(\\gamma(t))\\gamma'(t)\\,dt$, para $\\gamma$ de classe $C^1$ por partes."
+        },
+        {
+          "front": "Desigualdade $ML$",
+          "back": "$\\big|\\int_\\gamma f\\,dz\\big|\\le M\\cdot L$, com $M=\\max_\\gamma|f|$ e $L=$ comprimento de $\\gamma$."
+        },
+        {
+          "front": "Teorema de Cauchy-Goursat",
+          "back": "$f$ holomorfa em domínio simplesmente conexo $\\Rightarrow \\oint_\\gamma f\\,dz=0$ para todo laço."
+        },
+        {
+          "front": "O que o lema de Goursat tem de especial?",
+          "back": "$\\oint_{\\partial T}f\\,dz=0$ para todo triângulo, SEM supor $f'$ contínua."
+        },
+        {
+          "front": "$\\oint_{|z-a|=r}(z-a)^n\\,dz=?$",
+          "back": "$2\\pi i$ se $n=-1$; $0$ para os demais inteiros. Independe de $r$."
+        },
+        {
+          "front": "Quando $\\int_\\gamma f$ independe do caminho?",
+          "back": "Quando $f$ tem primitiva (ou é holomorfa em domínio simplesmente conexo)."
+        },
+        {
+          "front": "Por que $1/z$ não tem primitiva em $\\mathbb{C}\\setminus\\{0\\}$?",
+          "back": "Porque $\\oint_{|z|=r}dz/z=2\\pi i\\neq 0$; uma primitiva forçaria integral nula em laços."
+        },
+        {
+          "front": "Efeito de inverter a orientação de $\\gamma$",
+          "back": "Troca o sinal de $\\int_\\gamma f\\,dz$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Ahlfors, cap. 4 (Complex Integration)",
+          "ref": "livro"
+        },
+        {
+          "title": "Stein & Shakarchi, cap. 2 (Cauchy's Theorem)",
+          "ref": "livro"
+        },
+        {
+          "title": "Lins Neto, Funções de uma Variável Complexa, cap. III",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a definição de integral de contorno via parametrização e as propriedades de linearidade e orientação.",
+          "Domine a desigualdade $ML$ e pratique estimativas de integrais sobre arcos que tendem a zero.",
+          "Estude o Teorema Fundamental (primitiva $\\Rightarrow$ independência do caminho) e a integral fundamental $\\oint dz/z=2\\pi i$.",
+          "Estude o lema de Goursat (subdivisão do triângulo) e o Teorema de Cauchy-Goursat em domínios simplesmente conexos.",
+          "Calcule $\\oint(z-a)^n\\,dz$ e entenda por que $n=-1$ é o caso especial.",
+          "Volte ao app, resolva os testes e anote o principal: $ML$, Cauchy-Goursat e o $2\\pi i$ de $1/z$."
+        ],
+        "searchQueries": [
+          "integral de contorno definição parametrização exercícios",
+          "teorema de Cauchy-Goursat demonstração lema do triângulo",
+          "desigualdade ML estimativa integral complexa",
+          "integral de 1/z sobre círculo igual a 2 pi i",
+          "Goursat theorem triangle proof complex analysis"
+        ],
+        "videos": [
+          {
+            "title": "18.04 - Contour integration & Cauchy's theorem",
+            "channel": "MIT OpenCourseWare",
+            "note": "integrais de contorno e o teorema de Cauchy"
+          },
+          {
+            "title": "Cauchy-Goursat theorem",
+            "channel": "Michael Penn",
+            "note": "buscar 'Cauchy Goursat' para a demonstração via triângulos"
+          },
+          {
+            "title": "Cauchy's integral theorem",
+            "channel": "Dr. Peyam",
+            "note": "intuição e exemplos de anulamento em laços"
+          },
+          {
+            "title": "Integração no plano complexo",
+            "channel": "Matemática Universitária",
+            "note": "PT-BR: integral de contorno e exemplos"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Ahlfors, cap. 4 (Complex Integration)",
+            "where": "livro"
+          },
+          {
+            "title": "Stein & Shakarchi, cap. 2 (Cauchy's Theorem)",
+            "where": "livro"
+          },
+          {
+            "title": "Lins Neto, Funções de uma Variável Complexa, cap. III",
+            "where": "IMPA - Projeto Euclides"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-complexa-05-formula-integral-cauchy",
+      "title": "Fórmula Integral de Cauchy e Consequências",
+      "tagline": "O valor de uma holomorfa no interior é determinado pelos valores no bordo — e disso jorram analiticidade, Liouville, o Teorema Fundamental da Álgebra e o módulo máximo.",
+      "objectives": [
+        "Demonstrar a Fórmula Integral de Cauchy e a fórmula para as derivadas $f^{(n)}$.",
+        "Concluir que toda função holomorfa é analítica (infinitamente derivável e localmente igual à sua série de Taylor).",
+        "Estabelecer as estimativas de Cauchy e usá-las para provar o Teorema de Liouville e o Teorema Fundamental da Álgebra.",
+        "Provar o Teorema de Morera (recíproca de Cauchy) e a propriedade do valor médio de Gauss.",
+        "Enunciar e aplicar o Princípio do Módulo Máximo e o Teorema da Identidade."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Fórmula Integral de Cauchy",
+          "statement": "Se $f$ é holomorfa num disco fechado $\\overline{D}$ e $a$ está no interior, com $\\gamma=\\partial D$ positivamente orientado: $f(a)=\\dfrac{1}{2\\pi i}\\displaystyle\\oint_\\gamma \\frac{f(z)}{z-a}\\,dz$."
+        },
+        {
+          "term": "Estimativas de Cauchy",
+          "statement": "Se $|f|\\le M$ sobre $|z-a|=R$ e $f$ é holomorfa no disco, então $\\big|f^{(n)}(a)\\big|\\le \\dfrac{n!\\,M}{R^{n}}$."
+        },
+        {
+          "term": "Função inteira",
+          "statement": "Holomorfa em todo $\\mathbb{C}$. Por Liouville, se for limitada, é constante; se for polinômio de grau $\\ge 1$, atinge todo valor (via Teorema Fundamental da Álgebra)."
+        },
+        {
+          "term": "Princípio do Módulo Máximo",
+          "statement": "Se $f$ é holomorfa e não constante numa região $\\Omega$, então $|f|$ não atinge máximo local em $\\Omega$; num compacto, o máximo de $|f|$ ocorre na fronteira."
+        },
+        {
+          "term": "Teorema da Identidade",
+          "statement": "Se $f,g$ são holomorfas numa região $\\Omega$ e coincidem num conjunto com ponto de acumulação em $\\Omega$ (p.ex. um arco, ou uma sequência convergente em $\\Omega$), então $f\\equiv g$ em $\\Omega$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Fórmula Integral de Cauchy e derivadas",
+          "statement": "Sob as hipóteses acima, $f$ é infinitamente derivável e $f^{(n)}(a)=\\dfrac{n!}{2\\pi i}\\displaystyle\\oint_\\gamma \\frac{f(z)}{(z-a)^{n+1}}\\,dz$ para todo $n\\ge 0$.",
+          "whyItMatters": "Expressa todas as derivadas por integrais de bordo. A consequência imediata e profunda é que holomorfa em um ponto $\\Rightarrow$ infinitamente derivável e analítica: a existência de UMA derivada complexa força a existência de TODAS."
+        },
+        {
+          "name": "Teorema de Liouville",
+          "statement": "Toda função inteira e limitada é constante. Mais geralmente, se $|f(z)|\\le A+B|z|^k$ para todo $z$, então $f$ é polinômio de grau $\\le k$.",
+          "whyItMatters": "Captura a rigidez extrema das inteiras e prova o Teorema Fundamental da Álgebra em três linhas: se um polinômio não constante $p$ não tivesse raiz, $1/p$ seria inteira e limitada, logo constante — absurdo. Aparece o tempo todo em provas de mestrado para concluir que certas funções são constantes ou polinomiais."
+        },
+        {
+          "name": "Teorema de Morera",
+          "statement": "Se $f$ é contínua num aberto $\\Omega$ e $\\oint_{\\partial T}f\\,dz=0$ para todo triângulo $T\\subset\\Omega$, então $f$ é holomorfa em $\\Omega$.",
+          "whyItMatters": "É a recíproca de Cauchy-Goursat e a ferramenta-padrão para provar holomorfia de limites de funções holomorfas e de integrais paramétricas (p.ex. a função zeta)."
+        },
+        {
+          "name": "Princípio do Módulo Máximo",
+          "statement": "Se $f$ é holomorfa e não constante numa região $\\Omega$, $|f|$ não tem máximo local em $\\Omega$. Se $\\Omega$ é limitada e $f$ é contínua em $\\overline\\Omega$, então $\\max_{\\overline\\Omega}|f|$ é atingido em $\\partial\\Omega$.",
+          "whyItMatters": "Pilar das estimativas a priori, da unicidade em problemas de contorno (Dirichlet) e do lema de Schwarz. Mostra que holomorfas 'empurram' seu tamanho para a fronteira."
+        }
+      ],
+      "summary": "A Fórmula Integral de Cauchy é o resultado que transforma a análise complexa numa teoria à parte: o valor $f(a)$ no interior de um disco é uma média ponderada dos valores de $f$ no bordo, $f(a)=\\frac{1}{2\\pi i}\\oint \\frac{f(z)}{z-a}\\,dz$. Derivando sob o sinal de integral obtemos a fórmula para $f^{(n)}(a)$, e a conclusão é avassaladora: uma função que tem UMA derivada complexa num aberto tem AUTOMATICAMENTE todas as derivadas e coincide localmente com sua série de Taylor. Holomorfa $=$ analítica, sem o abismo entre $C^1$, $C^\\infty$ e analítica que existe na reta. Das fórmulas saem as estimativas de Cauchy $|f^{(n)}(a)|\\le n!M/R^n$, que limitam derivadas por valores de bordo.\n\nAs estimativas de Cauchy detonam uma cascata de teoremas. Liouville: uma inteira limitada é constante (faça $R\\to\\infty$ na estimativa de $f'$). Disso, o Teorema Fundamental da Álgebra cai em três linhas. Morera dá a recíproca de Cauchy e é o instrumento para provar holomorfia de limites e de funções definidas por integrais. A propriedade do valor médio de Gauss ($f(a)$ é a média de $f$ sobre qualquer círculo centrado em $a$) leva ao Princípio do Módulo Máximo: holomorfas não constantes nunca têm máximo de módulo no interior, empurrando-o para a fronteira — base da unicidade do problema de Dirichlet e do lema de Schwarz. Finalmente, o Teorema da Identidade revela rigidez quase mágica: duas holomorfas que coincidem ao longo de um arquinho, ou de uma sequência com limite interior, coincidem em todo o domínio conexo. É por isso que identidades reais (como $\\sin^2+\\cos^2=1$) se estendem automaticamente a $\\mathbb{C}$.",
+      "commonPitfalls": [
+        "Aplicar a Fórmula Integral de Cauchy com o ponto $a$ FORA do laço: aí a integral é $0$ (Cauchy-Goursat), não $2\\pi i f(a)$. O ponto precisa estar dentro e $f$ holomorfa em todo o interior.",
+        "Confundir as potências na fórmula das derivadas: é $\\frac{n!}{2\\pi i}\\oint \\frac{f(z)}{(z-a)^{n+1}}\\,dz$ — expoente $n+1$ no denominador, fator $n!$ na frente.",
+        "Esquecer que o Teorema da Identidade exige ponto de acumulação DENTRO do domínio: coincidir numa sequência que acumula só na fronteira não basta.",
+        "Aplicar Liouville a funções holomorfas apenas num disco (não inteiras) ou esquecer a hipótese de limitação: $f(z)=z$ é inteira mas ilimitada, e $e^z$ idem."
+      ],
+      "worked": "**Cálculo via Fórmula de Cauchy.** Avaliar $\\displaystyle\\oint_{|z|=2}\\frac{e^{z}}{z-1}\\,dz$ e $\\displaystyle\\oint_{|z|=2}\\frac{e^{z}}{z^2}\\,dz$.\n\nNo primeiro, $f(z)=e^z$ é inteira e $a=1$ está dentro de $|z|=2$. Pela Fórmula Integral de Cauchy,\n$$\\oint_{|z|=2}\\frac{e^{z}}{z-1}\\,dz=2\\pi i\\,f(1)=2\\pi i\\,e.$$\nNo segundo, reconhecemos a fórmula das derivadas com $a=0$, $n=1$ (denominador $(z-0)^{1+1}$):\n$$\\oint_{|z|=2}\\frac{e^{z}}{z^2}\\,dz=\\frac{2\\pi i}{1!}\\,f'(0)=2\\pi i\\,e^{0}=2\\pi i.$$\nEm ambos, a integral fica determinada por um único valor de $f$ ou de sua derivada no centro da singularidade. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Calcule $\\oint_{|z|=3}\\frac{\\cos z}{z(z-\\pi)}\\,dz$ decompondo em frações parciais e aplicando a Fórmula de Cauchy a cada termo.",
+          "hint": "$\\frac{1}{z(z-\\pi)}=\\frac{1}{\\pi}\\big(\\frac{1}{z-\\pi}-\\frac1z\\big)$; ambos os polos estão dentro de $|z|=3$.",
+          "difficulty": 3,
+          "solution": "Decompomos em frações parciais:\n$$\\frac{1}{z(z-\\pi)}=\\frac{1}{\\pi}\\Big(\\frac{1}{z-\\pi}-\\frac{1}{z}\\Big),$$\nlogo\n$$\\oint_{|z|=3}\\frac{\\cos z}{z(z-\\pi)}\\,dz=\\frac{1}{\\pi}\\left[\\oint_{|z|=3}\\frac{\\cos z}{z-\\pi}\\,dz-\\oint_{|z|=3}\\frac{\\cos z}{z}\\,dz\\right].$$\n\n**Localização dos polos.** Os polos do integrando são $z=0$ e $z=\\pi$. Como $\\pi\\approx 3{,}14159>3$, o ponto $z=\\pi$ está **fora** do círculo $|z|=3$, enquanto $z=0$ está dentro. (Atenção: é um erro comum supor $\\pi<3$.)\n\n- $\\displaystyle\\oint_{|z|=3}\\frac{\\cos z}{z-\\pi}\\,dz=0$, pois $\\dfrac{\\cos z}{z-\\pi}$ é holomorfa no disco $|z|\\le 3$ (Cauchy-Goursat).\n- $\\displaystyle\\oint_{|z|=3}\\frac{\\cos z}{z}\\,dz=2\\pi i\\,\\cos 0=2\\pi i$ (Fórmula Integral de Cauchy com $a=0$).\n\nPortanto\n$$\\oint_{|z|=3}\\frac{\\cos z}{z(z-\\pi)}\\,dz=\\frac{1}{\\pi}\\big(0-2\\pi i\\big)=-2i.\\qquad\\blacksquare$$\n\n**Nota.** Se o contorno fosse maior (por exemplo $|z|=4$), envolvendo também $z=\\pi$, teríamos $\\oint\\frac{\\cos z}{z-\\pi}\\,dz=2\\pi i\\cos\\pi=-2\\pi i$ e o resultado seria $\\frac{1}{\\pi}(-2\\pi i-2\\pi i)=-4i$.",
+          "steps": [
+            "Faça a decomposição $\\dfrac{1}{z(z-\\pi)}=\\dfrac{1}{\\pi}\\big(\\dfrac{1}{z-\\pi}-\\dfrac1z\\big)$.",
+            "Localize os polos $0$ e $\\pi$ frente ao círculo: $0$ está dentro, mas $\\pi\\approx3{,}14>3$ está fora.",
+            "Anule a integral com polo em $\\pi$ (Cauchy-Goursat) e aplique a Fórmula de Cauchy ao termo com polo em $0$: $2\\pi i\\cos 0$.",
+            "Combine: $\\dfrac{1}{\\pi}(0-2\\pi i)=-2i$."
+          ]
+        },
+        {
+          "prompt": "Prove o Teorema de Liouville a partir das estimativas de Cauchy.",
+          "hint": "Se $|f|\\le M$ em $\\mathbb{C}$, então $|f'(a)|\\le M/R$ para todo $R$; faça $R\\to\\infty$ para concluir $f'\\equiv 0$.",
+          "difficulty": 3,
+          "solution": "Seja $f$ inteira e limitada: $|f(z)|\\le M$ para todo $z\\in\\mathbb{C}$.\n\nFixe $a\\in\\mathbb{C}$ e $R>0$. Pela estimativa de Cauchy aplicada a $f'$ no círculo $|z-a|=R$ (onde $|f|\\le M$):\n$$|f'(a)|\\le\\frac{1!\\,M}{R^{1}}=\\frac{M}{R}.$$\nComo $f$ é inteira, essa desigualdade vale para **todo** $R>0$. Fazendo $R\\to\\infty$:\n$$|f'(a)|\\le\\lim_{R\\to\\infty}\\frac{M}{R}=0\\ \\Longrightarrow\\ f'(a)=0.$$\nComo $a$ era arbitrário, $f'\\equiv 0$ em $\\mathbb{C}$. Sendo $\\mathbb{C}$ conexo, $f$ é constante. $\\blacksquare$",
+          "steps": [
+            "Escreva a hipótese $|f|\\le M$ em todo $\\mathbb{C}$.",
+            "Aplique a estimativa de Cauchy à primeira derivada: $|f'(a)|\\le M/R$.",
+            "Como $f$ é inteira, a estimativa vale para todo $R$; faça $R\\to\\infty$ para obter $f'(a)=0$.",
+            "Conclua $f'\\equiv 0$ e, pela conexidade de $\\mathbb{C}$, $f$ constante."
+          ]
+        },
+        {
+          "prompt": "Use Liouville para provar o Teorema Fundamental da Álgebra.",
+          "hint": "Se $p$ não tem raiz, $1/p$ é inteira; mostre que $|1/p|\\to 0$ no infinito, logo é limitada, logo constante — contradição.",
+          "difficulty": 3,
+          "solution": "Seja $p(z)=a_n z^n+\\cdots+a_0$ um polinômio com $n\\ge 1$ e $a_n\\neq 0$. Suponha, por absurdo, que $p$ **não** tenha raiz em $\\mathbb{C}$.\n\nEntão $g(z)=\\dfrac{1}{p(z)}$ é inteira (denominador nunca nulo).\n\n**$g$ é limitada.** Para $|z|=R$ grande,\n$$|p(z)|=|z|^n\\Big|a_n+\\frac{a_{n-1}}{z}+\\cdots+\\frac{a_0}{z^n}\\Big|\\ge R^n\\cdot\\frac{|a_n|}{2}$$\nquando $R$ é suficientemente grande (os termos restantes ficam $\\le |a_n|/2$). Logo $|g(z)|\\le \\dfrac{2}{|a_n|R^n}\\to 0$ quando $|z|\\to\\infty$. Em particular existe $R_0$ com $|g|\\le 1$ para $|z|\\ge R_0$; e no compacto $|z|\\le R_0$, $g$ é contínua, logo limitada. Assim $g$ é limitada em todo $\\mathbb{C}$.\n\n**Liouville.** $g$ inteira e limitada $\\Rightarrow$ $g$ constante $\\Rightarrow$ $p$ constante. Isso contradiz $n\\ge 1$. Logo $p$ tem ao menos uma raiz. $\\blacksquare$",
+          "steps": [
+            "Suponha por absurdo que $p$ (grau $n\\ge1$) não tem raiz e defina $g=1/p$, inteira.",
+            "Estime $|p(z)|\\ge \\tfrac{|a_n|}{2}R^n$ para $|z|=R$ grande, logo $|g|\\to0$ no infinito.",
+            "Deduza que $g$ é limitada (pequena longe da origem, contínua no compacto central).",
+            "Aplique Liouville: $g$ constante $\\Rightarrow p$ constante, contradição. Logo $p$ tem raiz."
+          ]
+        },
+        {
+          "prompt": "Seja $f$ inteira com $|f(z)|\\le 5|z|^{3/2}$ para todo $z$. Prove que $f$ é um polinômio e determine seu grau máximo.",
+          "hint": "Estimativas de Cauchy mostram $f^{(n)}\\equiv 0$ para $n\\ge 2$ (faça $R\\to\\infty$); logo grau $\\le 1$.",
+          "difficulty": 4,
+          "solution": "Seja $f$ inteira com $|f(z)|\\le 5|z|^{3/2}$ para todo $z$. Usamos as estimativas de Cauchy para as derivadas em $0$, sobre o círculo $|z|=R$, onde $M_R:=\\max_{|z|=R}|f|\\le 5R^{3/2}$:\n$$|f^{(n)}(0)|\\le\\frac{n!\\,M_R}{R^{n}}\\le\\frac{n!\\,5R^{3/2}}{R^{n}}=5\\,n!\\,R^{\\,3/2-n}.$$\n\nPara $n\\ge 2$ temos $\\tfrac32-n<0$, então $R^{3/2-n}\\to 0$ quando $R\\to\\infty$. Como o lado esquerdo não depende de $R$, concluímos\n$$f^{(n)}(0)=0\\quad\\text{para todo }n\\ge 2.$$\n\nO mesmo argumento centrado em qualquer $a\\in\\mathbb{C}$ (com $|f|\\le 5(|a|+R)^{3/2}$ em $|z-a|=R$, ainda de ordem $R^{3/2}$) dá $f^{(n)}(a)=0$ para $n\\ge 2$ e todo $a$. Em particular $f''\\equiv 0$, logo $f(z)=a z+b$ é um **polinômio de grau $\\le 1$**. O grau máximo é $\\boxed{1}$. $\\blacksquare$\n\n(De fato, o expoente $3/2$ já força grau $\\le\\lfloor 3/2\\rfloor=1$.)",
+          "steps": [
+            "Escreva a estimativa de Cauchy $|f^{(n)}(0)|\\le n!\\,M_R/R^n$ com $M_R\\le 5R^{3/2}$.",
+            "Obtenha $|f^{(n)}(0)|\\le 5\\,n!\\,R^{3/2-n}$.",
+            "Para $n\\ge2$ o expoente $3/2-n$ é negativo, então $R\\to\\infty$ força $f^{(n)}(0)=0$.",
+            "Repita centrado em cada $a$ para concluir $f''\\equiv0$, logo $f$ é polinômio de grau $\\le1$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Fórmula Integral de Cauchy",
+          "back": "$f(a)=\\frac{1}{2\\pi i}\\oint_\\gamma \\frac{f(z)}{z-a}\\,dz$, com $a$ dentro de $\\gamma$ e $f$ holomorfa no interior."
+        },
+        {
+          "front": "Fórmula de Cauchy para derivadas",
+          "back": "$f^{(n)}(a)=\\frac{n!}{2\\pi i}\\oint_\\gamma \\frac{f(z)}{(z-a)^{n+1}}\\,dz$."
+        },
+        {
+          "front": "Consequência mais profunda da Fórmula de Cauchy",
+          "back": "Holomorfa $\\Rightarrow$ $C^\\infty$ e analítica. Uma derivada complexa força todas as outras."
+        },
+        {
+          "front": "Estimativas de Cauchy",
+          "back": "$|f^{(n)}(a)|\\le \\frac{n!\\,M}{R^n}$, com $M=\\max_{|z-a|=R}|f|$."
+        },
+        {
+          "front": "Teorema de Liouville",
+          "back": "Inteira e limitada $\\Rightarrow$ constante."
+        },
+        {
+          "front": "Teorema de Morera",
+          "back": "$f$ contínua com $\\oint_{\\partial T}f\\,dz=0$ para todo triângulo $\\Rightarrow$ $f$ holomorfa. (Recíproca de Cauchy.)"
+        },
+        {
+          "front": "Princípio do Módulo Máximo",
+          "back": "Holomorfa não constante: $|f|$ não tem máximo no interior; o máximo num compacto está na fronteira."
+        },
+        {
+          "front": "Teorema da Identidade",
+          "back": "Holomorfas que coincidem num conjunto com ponto de acumulação interior coincidem em toda a região conexa."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Ahlfors, cap. 4 (Cauchy's Integral Formula)",
+          "ref": "livro"
+        },
+        {
+          "title": "Conway, cap. IV-V",
+          "ref": "livro"
+        },
+        {
+          "title": "Stein & Shakarchi, cap. 2-3",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a demonstração da Fórmula Integral de Cauchy e a fórmula para as derivadas $f^{(n)}$.",
+          "Entenda a consequência holomorfa $\\Rightarrow$ analítica ($C^\\infty$) e deduza as estimativas de Cauchy.",
+          "Estude e refaça as provas de Liouville, do Teorema Fundamental da Álgebra e de Morera.",
+          "Estude o princípio do módulo máximo, a propriedade do valor médio de Gauss e o Teorema da Identidade.",
+          "Pratique cálculo de integrais via Cauchy e problemas do tipo Liouville / crescimento polinomial.",
+          "Volte ao app, resolva os testes e anote o principal: a fórmula, as estimativas e a cadeia Liouville $\\to$ TFA."
+        ],
+        "searchQueries": [
+          "fórmula integral de Cauchy demonstração derivadas",
+          "teorema de Liouville teorema fundamental da álgebra prova",
+          "estimativas de Cauchy função inteira é polinômio",
+          "princípio do módulo máximo teorema da identidade",
+          "Morera theorem proof complex analysis"
+        ],
+        "videos": [
+          {
+            "title": "18.04 - Cauchy integral formula",
+            "channel": "MIT OpenCourseWare",
+            "note": "fórmula e suas consequências imediatas"
+          },
+          {
+            "title": "Liouville's theorem & Fundamental Theorem of Algebra",
+            "channel": "Dr. Peyam",
+            "note": "prova elegante do TFA a partir de Liouville"
+          },
+          {
+            "title": "Cauchy integral formula - exemplos",
+            "channel": "Michael Penn",
+            "note": "cálculo de integrais por Cauchy e derivadas"
+          },
+          {
+            "title": "Fórmula integral de Cauchy",
+            "channel": "Matemática Universitária",
+            "note": "PT-BR com exercícios resolvidos"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Ahlfors, cap. 4 (Cauchy's Integral Formula)",
+            "where": "livro"
+          },
+          {
+            "title": "Conway, Functions of One Complex Variable I, cap. IV-V",
+            "where": "livro (GTM 11)"
+          },
+          {
+            "title": "Stein & Shakarchi, cap. 2-3",
+            "where": "livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-complexa-06-laurent-singularidades",
+      "title": "Séries de Laurent e Classificação de Singularidades",
+      "tagline": "Onde a função explode, a série de Taylor falha — entra a série de Laurent, com potências negativas, que classifica cada singularidade.",
+      "objectives": [
+        "Estabelecer a existência e unicidade da expansão de Laurent de uma função holomorfa num anel.",
+        "Calcular séries de Laurent por manipulação de séries geométricas e frações parciais em diferentes anéis.",
+        "Classificar singularidades isoladas em removível, polo (de ordem $m$) e essencial, pela parte principal da série.",
+        "Aplicar o Teorema da Singularidade Removível de Riemann e o Teorema de Casorati-Weierstrass.",
+        "Definir resíduo como o coeficiente $a_{-1}$ e relacionar polos à ordem de zeros do denominador."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Série de Laurent",
+          "statement": "$f(z)=\\displaystyle\\sum_{n=-\\infty}^{\\infty}a_n(z-z_0)^n$, válida num anel $r<|z-z_0|<R$, com $a_n=\\dfrac{1}{2\\pi i}\\oint_{|z-z_0|=\\rho}\\dfrac{f(z)}{(z-z_0)^{n+1}}\\,dz$ ($r<\\rho<R$). A soma dos termos de expoente negativo, $\\sum_{n<0}a_n(z-z_0)^n$, é a parte principal e determina o tipo de singularidade em $z_0$."
+        },
+        {
+          "term": "Singularidade removível",
+          "statement": "Parte principal nula ($a_n=0$ para $n<0$). $f$ se estende holomorficamente a $z_0$; equivale a $f$ ser limitada perto de $z_0$ (Riemann)."
+        },
+        {
+          "term": "Polo de ordem $m$",
+          "statement": "Parte principal finita com termo mais baixo $a_{-m}\\neq 0$, $a_{-m-1}=\\cdots=0$. Então $|f(z)|\\to\\infty$ quando $z\\to z_0$ e $(z-z_0)^m f(z)$ é holomorfa e não nula em $z_0$."
+        },
+        {
+          "term": "Singularidade essencial",
+          "statement": "Parte principal com infinitos termos não nulos. O comportamento é selvagem: por Casorati-Weierstrass, $f$ chega arbitrariamente perto de qualquer valor em toda vizinhança furada."
+        },
+        {
+          "term": "Resíduo",
+          "statement": "$\\operatorname{Res}(f,z_0)=a_{-1}$, o coeficiente de $(z-z_0)^{-1}$ na série de Laurent. É o único coeficiente que sobrevive à integração: $\\oint f\\,dz=2\\pi i\\,a_{-1}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Laurent",
+          "statement": "Se $f$ é holomorfa no anel $A=\\{r<|z-z_0|<R\\}$, então $f$ admite uma única representação $f(z)=\\sum_{n=-\\infty}^{\\infty}a_n(z-z_0)^n$ convergente em $A$, com os coeficientes dados pela fórmula integral acima. A convergência é uniforme em subanéis compactos.",
+          "whyItMatters": "Fornece a ferramenta universal para estudar funções perto de singularidades isoladas (Taylor é o caso particular sem potências negativas) e define o resíduo, base do cálculo de integrais."
+        },
+        {
+          "name": "Singularidade Removível de Riemann",
+          "statement": "Se $f$ é holomorfa numa vizinhança furada $0<|z-z_0|<\\delta$ e é LIMITADA ali, então $z_0$ é singularidade removível: $f$ se estende holomorficamente a $z_0$. (Basta até $\\lim_{z\\to z_0}(z-z_0)f(z)=0$.)",
+          "whyItMatters": "Critério prático e surpreendente: limitação local já garante regularidade. Usado para colar funções e para mostrar que certas singularidades aparentes não são reais."
+        },
+        {
+          "name": "Caracterização de polos",
+          "statement": "$z_0$ é polo de ordem $m$ de $f$ $\\iff$ $\\lim_{z\\to z_0}|f(z)|=\\infty$ e $(z-z_0)^m f(z)$ tem limite finito não nulo $\\iff$ $f=g/(z-z_0)^m$ com $g$ holomorfa, $g(z_0)\\neq 0$. Em particular, se $f=p/q$ com $q$ tendo zero de ordem $m$ em $z_0$ e $p(z_0)\\neq 0$, há polo de ordem $m$.",
+          "whyItMatters": "Conecta polos a zeros do denominador e fornece o teste operacional usado em todo cálculo de resíduos e integrais."
+        },
+        {
+          "name": "Casorati-Weierstrass",
+          "statement": "Se $z_0$ é singularidade essencial de $f$, então para toda vizinhança furada $V$ de $z_0$, a imagem $f(V)$ é densa em $\\mathbb{C}$. (O Grande Teorema de Picard reforça: $f$ assume todo valor complexo, com no máximo uma exceção, infinitas vezes.)",
+          "whyItMatters": "Quantifica o caos das singularidades essenciais e as distingue radicalmente de polos. Exemplo-modelo: $e^{1/z}$ perto de $0$."
+        }
+      ],
+      "summary": "Quando uma função deixa de ser holomorfa num ponto isolado $z_0$, a série de Taylor não serve, mas a série de Laurent sim: ela admite potências negativas e converge num anel $r<|z-z_0|<R$. A parte com expoentes negativos — a parte principal — carrega toda a informação sobre a singularidade. Se ela é nula, a singularidade é removível (e, pelo teorema de Riemann, isso acontece exatamente quando $f$ é limitada perto de $z_0$). Se tem um número finito de termos, terminando em $a_{-m}\\neq 0$, temos um polo de ordem $m$, caracterizado por $|f|\\to\\infty$ e por $(z-z_0)^m f$ ser holomorfa não nula — o caso de funções racionais $p/q$ nos zeros de $q$. Se tem infinitos termos, a singularidade é essencial, e o comportamento é selvagem.\n\nO exemplo paradigmático de singularidade essencial é $e^{1/z}=\\sum_{n\\ge 0}\\frac{1}{n!}z^{-n}$ em torno de $0$: infinitos termos negativos, e por Casorati-Weierstrass a imagem de qualquer disco furado em torno de $0$ é densa em $\\mathbb{C}$ (o Grande Teorema de Picard vai além: assume todo valor, salvo no máximo um, infinitas vezes — aqui o valor omitido é $0$). De toda essa estrutura emerge o protagonista do próximo capítulo: o resíduo $\\operatorname{Res}(f,z_0)=a_{-1}$, o coeficiente de $(z-z_0)^{-1}$. Como vimos que $\\oint (z-z_0)^n dz$ só é não nula para $n=-1$, integrar $f$ em torno de $z_0$ devolve exatamente $2\\pi i\\,a_{-1}$. Calcular uma integral de contorno reduz-se, assim, a achar um único coeficiente de Laurent.",
+      "commonPitfalls": [
+        "Usar a 'fórmula de Taylor' $a_n=f^{(n)}(z_0)/n!$ para coeficientes de Laurent: isso só vale para $n\\ge 0$ e quando não há singularidade; em geral use a fórmula integral ou manipulação de séries.",
+        "Esquecer que a série de Laurent DEPENDE do anel: a mesma função tem expansões diferentes em $0<|z|<1$ e em $|z|>1$. Sempre especifique a região.",
+        "Classificar singularidade pelo aspecto da fórmula sem simplificar: $\\frac{\\sin z}{z}$ parece ter polo em $0$, mas é removível (limite $1$); $\\frac{e^z-1}{z}$ idem.",
+        "Confundir polo com singularidade essencial: polo tem $|f|\\to\\infty$ (limite bem definido $=\\infty$); essencial não tem limite algum (nem finito nem infinito)."
+      ],
+      "worked": "**Laurent em anéis distintos.** Expandir $f(z)=\\dfrac{1}{(z-1)(z-2)}$ em torno de $0$.\n\nFrações parciais: $\\dfrac{1}{(z-1)(z-2)}=\\dfrac{1}{z-2}-\\dfrac{1}{z-1}$.\n\n**(i) No disco $|z|<1$** (ambas as séries geométricas em potências positivas):\n$$\\frac{-1}{z-1}=\\frac{1}{1-z}=\\sum_{n\\ge0}z^n,\\qquad \\frac{1}{z-2}=\\frac{-1}{2}\\cdot\\frac{1}{1-z/2}=-\\sum_{n\\ge0}\\frac{z^n}{2^{n+1}}.$$\nLogo $f(z)=\\sum_{n\\ge0}\\Big(1-\\frac{1}{2^{n+1}}\\Big)z^n$ — é Taylor, sem parte principal.\n\n**(ii) No anel $1<|z|<2$:** agora $|1/z|<1$, então\n$$\\frac{-1}{z-1}=\\frac{-1}{z}\\cdot\\frac{1}{1-1/z}=-\\sum_{n\\ge1}z^{-n},\\qquad \\frac{1}{z-2}=-\\sum_{n\\ge0}\\frac{z^n}{2^{n+1}}\\ (\\text{ainda }|z|<2).$$\nPortanto $f(z)=-\\displaystyle\\sum_{n\\ge1}z^{-n}-\\sum_{n\\ge0}\\frac{z^n}{2^{n+1}}$, com parte principal infinita-à-esquerda mas convergente — é a Laurent genuína no anel. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Classifique a singularidade em $z=0$ de (a) $\\frac{\\sin z}{z}$, (b) $\\frac{1-\\cos z}{z^2}$, (c) $\\frac{e^z}{z^3}$, (d) $e^{1/z}$, e dê a ordem dos polos quando houver.",
+          "hint": "Use as séries de Taylor de $\\sin,\\cos,e^z$ e divida; conte os termos negativos.",
+          "difficulty": 3,
+          "solution": "Usamos as séries $\\sin z=z-\\tfrac{z^3}{6}+\\cdots$, $\\cos z=1-\\tfrac{z^2}{2}+\\tfrac{z^4}{24}-\\cdots$, $e^z=1+z+\\tfrac{z^2}{2}+\\tfrac{z^3}{6}+\\cdots$.\n\n**(a) $\\dfrac{\\sin z}{z}$:**\n$$\\frac{\\sin z}{z}=\\frac{z-\\frac{z^3}{6}+\\cdots}{z}=1-\\frac{z^2}{6}+\\cdots$$\nSem potências negativas $\\Rightarrow$ **singularidade removível** (limite $1$).\n\n**(b) $\\dfrac{1-\\cos z}{z^2}$:**\n$$\\frac{1-\\cos z}{z^2}=\\frac{\\frac{z^2}{2}-\\frac{z^4}{24}+\\cdots}{z^2}=\\frac12-\\frac{z^2}{24}+\\cdots$$\nSem parte principal $\\Rightarrow$ **removível** (limite $\\tfrac12$).\n\n**(c) $\\dfrac{e^z}{z^3}$:**\n$$\\frac{e^z}{z^3}=\\frac{1}{z^3}+\\frac{1}{z^2}+\\frac{1}{2z}+\\frac16+\\cdots$$\nParte principal termina em $z^{-3}$ com coeficiente $1\\neq 0$ $\\Rightarrow$ **polo de ordem $3$**.\n\n**(d) $e^{1/z}$:**\n$$e^{1/z}=\\sum_{n\\ge 0}\\frac{1}{n!}z^{-n}=1+\\frac1z+\\frac{1}{2z^2}+\\cdots$$\nInfinitos termos negativos $\\Rightarrow$ **singularidade essencial**. $\\blacksquare$",
+          "steps": [
+            "Escreva as séries de Taylor de $\\sin z$, $\\cos z$ e $e^z$ em torno de $0$.",
+            "Divida cada uma pela potência de $z$ do denominador e leia a parte principal.",
+            "(a),(b): nenhuma potência negativa $\\Rightarrow$ removível.",
+            "(c): menor potência é $z^{-3}$ $\\Rightarrow$ polo de ordem $3$.",
+            "(d): infinitas potências negativas $\\Rightarrow$ essencial."
+          ]
+        },
+        {
+          "prompt": "Encontre a série de Laurent de $\\frac{1}{z(z-1)}$ válida em (i) $0<|z|<1$ e (ii) $|z|>1$.",
+          "hint": "Frações parciais $\\frac{1}{z(z-1)}=\\frac{1}{z-1}-\\frac1z$; escolha a expansão geométrica adequada a cada região.",
+          "difficulty": 3,
+          "solution": "Frações parciais:\n$$\\frac{1}{z(z-1)}=\\frac{1}{z-1}-\\frac{1}{z}.$$\n\n**(i) Anel $0<|z|<1$.** Aqui $|z|<1$, então $\\dfrac{1}{z-1}=\\dfrac{-1}{1-z}=-\\sum_{n\\ge 0}z^n$. Logo\n$$\\frac{1}{z(z-1)}=-\\frac{1}{z}-\\sum_{n\\ge 0}z^n=-\\frac1z-1-z-z^2-\\cdots,$$\ncom parte principal $-\\dfrac1z$ (polo simples em $0$).\n\n**(ii) Região $|z|>1$.** Agora $|1/z|<1$, então\n$$\\frac{1}{z-1}=\\frac{1}{z}\\cdot\\frac{1}{1-1/z}=\\frac{1}{z}\\sum_{n\\ge 0}z^{-n}=\\sum_{n\\ge 0}z^{-n-1}=\\sum_{m\\ge 1}z^{-m}.$$\nSubtraindo $\\dfrac1z$:\n$$\\frac{1}{z(z-1)}=\\sum_{m\\ge 1}z^{-m}-\\frac1z=\\sum_{m\\ge 2}z^{-m}=\\frac{1}{z^2}+\\frac{1}{z^3}+\\cdots.\\qquad\\blacksquare$$\n\nA mesma função tem expansões distintas em cada anel — sempre especifique a região.",
+          "steps": [
+            "Decomponha $\\dfrac{1}{z(z-1)}=\\dfrac{1}{z-1}-\\dfrac1z$.",
+            "Em $0<|z|<1$, expanda $\\dfrac{1}{z-1}=-\\sum z^n$ (geométrica em $z$) e junte o termo $-1/z$.",
+            "Em $|z|>1$, fatore $1/z$ para usar a geométrica em $1/z$: $\\dfrac{1}{z-1}=\\sum_{m\\ge1}z^{-m}$.",
+            "Subtraia $1/z$ e conclua a Laurent $\\sum_{m\\ge2}z^{-m}$ na região exterior."
+          ]
+        },
+        {
+          "prompt": "Prove o Teorema da Singularidade Removível de Riemann: se $f$ é holomorfa e limitada em $0<|z-z_0|<\\delta$, então $z_0$ é removível.",
+          "hint": "Aplique a fórmula dos coeficientes de Laurent $a_n$ com a estimativa $ML$ sobre $|z-z_0|=\\rho$ e faça $\\rho\\to 0$ para $n\\le -1$.",
+          "difficulty": 4,
+          "solution": "Seja $f$ holomorfa e limitada, $|f|\\le M$, no anel furado $0<|z-z_0|<\\delta$. No anel, $f$ tem série de Laurent $\\sum_{n\\in\\mathbb{Z}}a_n(z-z_0)^n$ com coeficientes\n$$a_n=\\frac{1}{2\\pi i}\\oint_{|z-z_0|=\\rho}\\frac{f(z)}{(z-z_0)^{n+1}}\\,dz,\\qquad 0<\\rho<\\delta.$$\n\nEstimamos por $ML$ sobre o círculo $|z-z_0|=\\rho$ (comprimento $2\\pi\\rho$, e $|(z-z_0)^{n+1}|=\\rho^{n+1}$):\n$$|a_n|\\le\\frac{1}{2\\pi}\\cdot\\frac{M}{\\rho^{n+1}}\\cdot 2\\pi\\rho=\\frac{M}{\\rho^{n}}=M\\,\\rho^{-n}.$$\n\nPara $n\\le -1$ temos $-n\\ge 1$, então $\\rho^{-n}=\\rho^{|n|}\\to 0$ quando $\\rho\\to 0^+$. Como $a_n$ não depende de $\\rho$, segue $a_n=0$ para todo $n\\le -1$.\n\nLogo a parte principal é nula e $f(z)=\\sum_{n\\ge 0}a_n(z-z_0)^n$ estende $f$ holomorficamente a $z_0$ (com $f(z_0)=a_0$): a singularidade é **removível**. $\\blacksquare$",
+          "steps": [
+            "Escreva a fórmula integral do coeficiente de Laurent $a_n$ sobre $|z-z_0|=\\rho$.",
+            "Aplique $ML$ com $M$ o limitante de $|f|$ e comprimento $2\\pi\\rho$: obtenha $|a_n|\\le M\\rho^{-n}$.",
+            "Para $n\\le-1$, note $\\rho^{-n}=\\rho^{|n|}\\to0$ quando $\\rho\\to0$.",
+            "Conclua $a_n=0$ para $n<0$, parte principal nula, singularidade removível."
+          ]
+        },
+        {
+          "prompt": "Mostre que $e^{1/z}$ tem singularidade essencial em $0$ exibindo dois caminhos $z\\to 0$ ao longo dos quais $e^{1/z}$ tende a limites diferentes.",
+          "hint": "Tome $z=1/x$ real positivo ($\\to+\\infty$) e $z=-1/x$ ($\\to 0$); compare.",
+          "difficulty": 3,
+          "solution": "Analisamos $e^{1/z}$ quando $z\\to 0$ por dois caminhos reais.\n\n**Caminho 1: $z=\\tfrac1x$, $x\\to +\\infty$** (assim $z\\to 0^+$ pelo eixo real positivo):\n$$e^{1/z}=e^{x}\\xrightarrow[x\\to+\\infty]{}+\\infty.$$\n\n**Caminho 2: $z=-\\tfrac1x$, $x\\to +\\infty$** (assim $z\\to 0^-$ pelo eixo real negativo):\n$$e^{1/z}=e^{-x}\\xrightarrow[x\\to+\\infty]{}0.$$\n\nOs dois limites são diferentes ($+\\infty$ e $0$). Isso mostra que $\\lim_{z\\to 0}e^{1/z}$ **não existe** — em particular:\n- não é **removível** (nesse caso o limite existiria e seria finito);\n- não é **polo** (nesse caso teríamos $|e^{1/z}|\\to\\infty$ por todos os caminhos, mas pelo Caminho 2 tende a $0$).\n\nLogo, por eliminação, $z=0$ é uma **singularidade essencial** de $e^{1/z}$. $\\blacksquare$\n\n(Consistente com a Laurent $e^{1/z}=\\sum_{n\\ge0}\\frac{1}{n!}z^{-n}$, que tem infinitos termos negativos.)",
+          "steps": [
+            "Aproxime-se de $0$ por $z=1/x$ com $x\\to+\\infty$: $e^{1/z}=e^x\\to+\\infty$.",
+            "Aproxime-se por $z=-1/x$: $e^{1/z}=e^{-x}\\to0$.",
+            "Compare os limites: diferem, logo $\\lim_{z\\to0}e^{1/z}$ não existe.",
+            "Descarte removível (limite finito) e polo ($|f|\\to\\infty$), concluindo singularidade essencial."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "O que é a série de Laurent?",
+          "back": "$\\sum_{n=-\\infty}^{\\infty}a_n(z-z_0)^n$ num anel $r<|z-z_0|<R$; única nesse anel."
+        },
+        {
+          "front": "Singularidade removível (critério)",
+          "back": "Parte principal nula $\\iff$ $f$ limitada perto de $z_0$ (Riemann). $f$ se estende holomorficamente."
+        },
+        {
+          "front": "Polo de ordem $m$",
+          "back": "Parte principal termina em $a_{-m}\\neq 0$; $|f|\\to\\infty$ e $(z-z_0)^m f$ é holomorfa não nula em $z_0$."
+        },
+        {
+          "front": "Singularidade essencial",
+          "back": "Parte principal com infinitos termos. Ex.: $e^{1/z}$ em $0$. Sem limite (nem $\\infty$)."
+        },
+        {
+          "front": "Casorati-Weierstrass",
+          "back": "Perto de singularidade essencial, a imagem de toda vizinhança furada é densa em $\\mathbb{C}$."
+        },
+        {
+          "front": "Definição de resíduo",
+          "back": "$\\operatorname{Res}(f,z_0)=a_{-1}$, coeficiente de $(z-z_0)^{-1}$ na Laurent. $\\oint f=2\\pi i\\,a_{-1}$."
+        },
+        {
+          "front": "A série de Laurent depende de quê, além de $f$ e $z_0$?",
+          "back": "Do anel escolhido. Mesma função, anéis diferentes, expansões diferentes."
+        },
+        {
+          "front": "Polo vs. essencial: como distinguir pelo limite?",
+          "back": "Polo: $\\lim_{z\\to z_0}|f|=\\infty$. Essencial: o limite não existe (nem finito nem $\\infty$)."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Ahlfors, cap. 5 (Series and Product Developments)",
+          "ref": "livro"
+        },
+        {
+          "title": "Conway, cap. V (Singularities)",
+          "ref": "livro"
+        },
+        {
+          "title": "Lins Neto, Funções de uma Variável Complexa, cap. IV",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude o Teorema de Laurent (existência e unicidade no anel) e a fórmula integral dos coeficientes.",
+          "Pratique expandir em série de Laurent em diferentes anéis via séries geométricas e frações parciais.",
+          "Estude a classificação: removível, polo de ordem $m$ e essencial, e os critérios por limite.",
+          "Estude o Teorema de Riemann (removível) e Casorati-Weierstrass (essencial), com o exemplo $e^{1/z}$.",
+          "Defina resíduo como $a_{-1}$ e conecte com $\\oint f\\,dz=2\\pi i\\,a_{-1}$.",
+          "Volte ao app, resolva os testes e anote o principal: dependência do anel, critérios de classificação e resíduo."
+        ],
+        "searchQueries": [
+          "série de Laurent em anéis distintos exercícios frações parciais",
+          "classificação de singularidades removível polo essencial",
+          "teorema singularidade removível de Riemann demonstração",
+          "Casorati-Weierstrass e^{1/z} singularidade essencial",
+          "Laurent series expansion different annuli example"
+        ],
+        "videos": [
+          {
+            "title": "Laurent series",
+            "channel": "Michael Penn",
+            "note": "expansões em anéis distintos e coeficientes"
+          },
+          {
+            "title": "18.04 - Singularities and Laurent series",
+            "channel": "MIT OpenCourseWare",
+            "note": "classificação de singularidades isoladas"
+          },
+          {
+            "title": "Essential singularities / Casorati-Weierstrass",
+            "channel": "Dr. Peyam",
+            "note": "o comportamento selvagem de $e^{1/z}$"
+          },
+          {
+            "title": "Séries de Laurent e singularidades",
+            "channel": "Matemática Universitária",
+            "note": "PT-BR com exemplos"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Ahlfors, cap. 5 (Series and Product Developments)",
+            "where": "livro"
+          },
+          {
+            "title": "Conway, cap. V (Singularities)",
+            "where": "livro (GTM 11)"
+          },
+          {
+            "title": "Lins Neto, Funções de uma Variável Complexa, cap. IV",
+            "where": "IMPA - Projeto Euclides"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-complexa-07-residuos-aplicacoes",
+      "title": "Teorema dos Resíduos e Aplicações",
+      "tagline": "Uma soma de resíduos resolve integrais reais que o cálculo elementar não alcança, conta zeros e polos e prova Rouché.",
+      "objectives": [
+        "Enunciar e aplicar o Teorema dos Resíduos para integrais de contorno.",
+        "Calcular resíduos em polos simples e de ordem $m$, inclusive pela fórmula $p/q'$.",
+        "Avaliar integrais reais impróprias e integrais trigonométricas via resíduos, justificando o anulamento dos arcos (lema de Jordan).",
+        "Usar o Princípio do Argumento para contar zeros e polos no interior de um contorno.",
+        "Aplicar o Teorema de Rouché para localizar zeros de funções e polinômios."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Teorema dos Resíduos",
+          "statement": "Se $f$ é holomorfa num domínio simplesmente conexo exceto em singularidades isoladas $z_1,\\dots,z_k$, e $\\gamma$ é um laço positivamente orientado que as envolve uma vez: $\\oint_\\gamma f\\,dz=2\\pi i\\sum_{j=1}^{k}\\operatorname{Res}(f,z_j)$."
+        },
+        {
+          "term": "Resíduo em polo simples",
+          "statement": "Se $z_0$ é polo simples, $\\operatorname{Res}(f,z_0)=\\lim_{z\\to z_0}(z-z_0)f(z)$. Para $f=p/q$ com $q(z_0)=0$, $q'(z_0)\\neq 0$, $p(z_0)\\neq 0$: $\\operatorname{Res}=\\dfrac{p(z_0)}{q'(z_0)}$."
+        },
+        {
+          "term": "Resíduo em polo de ordem $m$",
+          "statement": "$\\operatorname{Res}(f,z_0)=\\dfrac{1}{(m-1)!}\\lim_{z\\to z_0}\\dfrac{d^{\\,m-1}}{dz^{\\,m-1}}\\Big[(z-z_0)^m f(z)\\Big]$."
+        },
+        {
+          "term": "Lema de Jordan",
+          "statement": "Se $a>0$ e $\\max_{|z|=R,\\ \\operatorname{Im}z\\ge0}|f(z)|\\to 0$ quando $R\\to\\infty$, então $\\int_{C_R}f(z)e^{iaz}\\,dz\\to 0$ no semicírculo superior. É o que mata o arco em integrais de Fourier."
+        },
+        {
+          "term": "Princípio do Argumento",
+          "statement": "Se $f$ é meromorfa dentro de $\\gamma$ sem zeros/polos sobre $\\gamma$: $\\dfrac{1}{2\\pi i}\\oint_\\gamma \\dfrac{f'(z)}{f(z)}\\,dz=Z-P$, onde $Z,P$ contam zeros e polos no interior com multiplicidade."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema dos Resíduos",
+          "statement": "Seja $f$ holomorfa num aberto contendo $\\overline{\\Omega}$, exceto em singularidades isoladas no interior de $\\Omega$, e $\\partial\\Omega$ um ciclo positivamente orientado sem singularidades. Então $\\oint_{\\partial\\Omega} f\\,dz=2\\pi i\\sum_j \\operatorname{Res}(f,z_j)$.",
+          "whyItMatters": "Unifica e generaliza Cauchy e a fórmula integral. É a ferramenta mais poderosa de cálculo da análise complexa: reduz integrais de contorno a uma soma finita de coeficientes locais."
+        },
+        {
+          "name": "Princípio do Argumento",
+          "statement": "Se $f$ é meromorfa num domínio contendo o laço $\\gamma$ e seu interior, sem zeros nem polos sobre $\\gamma$, então $\\frac{1}{2\\pi i}\\oint_\\gamma \\frac{f'}{f}\\,dz=Z-P$, igual ao número de voltas que $f\\circ\\gamma$ dá em torno de $0$.",
+          "whyItMatters": "Conta zeros e polos por integração, conecta-se ao número de winding e é a base de Rouché, do teorema da aplicação aberta e de algoritmos de localização de raízes."
+        },
+        {
+          "name": "Teorema de Rouché",
+          "statement": "Se $f,g$ são holomorfas num domínio contendo $\\overline{\\Omega}$ e $|g(z)|<|f(z)|$ para todo $z\\in\\partial\\Omega$, então $f$ e $f+g$ têm o mesmo número de zeros (com multiplicidade) em $\\Omega$.",
+          "whyItMatters": "Localiza zeros comparando com uma função mais simples. Dá demonstrações limpas do Teorema Fundamental da Álgebra e de estimativas sobre raízes de polinômios — clássico de prova de mestrado."
+        },
+        {
+          "name": "Teorema da Aplicação Aberta",
+          "statement": "Uma função holomorfa não constante numa região $\\Omega$ é uma aplicação aberta: leva abertos em abertos. Em particular $|f|$ não atinge máximo interior (recuperando o módulo máximo).",
+          "whyItMatters": "Resultado estrutural que distingue holomorfas de aplicações reais suaves (que podem colapsar dimensão); fundamenta a teoria de mapeamentos conformes."
+        }
+      ],
+      "summary": "O Teorema dos Resíduos é o ápice computacional da análise complexa: para uma função com singularidades isoladas $z_1,\\dots,z_k$ dentro de um laço $\\gamma$, $\\oint_\\gamma f\\,dz=2\\pi i\\sum_j\\operatorname{Res}(f,z_j)$. Toda a integral de contorno colapsa numa soma finita de coeficientes locais $a_{-1}$. A técnica de cálculo desses resíduos é direta: em polo simples, $\\operatorname{Res}=\\lim (z-z_0)f$ ou, para quocientes, $p(z_0)/q'(z_0)$; em polo de ordem $m$, derivamos $m-1$ vezes o produto $(z-z_0)^m f$. A força do método aparece nas aplicações a integrais REAIS: fechando o eixo real com um grande semicírculo e mostrando (via $ML$ ou lema de Jordan) que o arco contribui zero, integrais como $\\int_{-\\infty}^{\\infty}\\frac{dx}{1+x^2}$, transformadas de Fourier $\\int \\frac{e^{iax}}{x^2+1}dx$ e integrais trigonométricas $\\int_0^{2\\pi}R(\\cos\\theta,\\sin\\theta)d\\theta$ (via $z=e^{i\\theta}$) caem todas com elegância.\n\nO caso especial $f'/f$ produz o Princípio do Argumento: $\\frac{1}{2\\pi i}\\oint \\frac{f'}{f}=Z-P$ conta zeros menos polos, pois cada zero de ordem $k$ contribui resíduo $k$ e cada polo de ordem $k$ contribui $-k$. Geometricamente, é o número de voltas que a curva imagem $f(\\gamma)$ dá em torno da origem. Disso segue o Teorema de Rouché, um dos resultados mais úteis em provas: se $|g|<|f|$ na fronteira, então $f$ e $f+g$ têm o mesmo número de zeros dentro — comparar com uma função simples localiza as raízes da complicada. Rouché reprova o Teorema Fundamental da Álgebra num parágrafo e resolve incontáveis questões de 'quantas raízes de tal polinômio estão no disco unitário'. Por fim, o Teorema da Aplicação Aberta encerra o ciclo estrutural, mostrando que holomorfas não constantes são abertas — de onde o módulo máximo reaparece naturalmente.",
+      "commonPitfalls": [
+        "Somar resíduos de polos que estão FORA do contorno: só contam as singularidades no interior do laço. Sempre verifique a posição relativa à curva.",
+        "Esquecer de justificar o anulamento do arco ao calcular integrais reais: a passagem ao limite exige $ML$ ou lema de Jordan; sem isso a conta está incompleta.",
+        "Aplicar a fórmula $p(z_0)/q'(z_0)$ a um polo que não é simples (zero múltiplo de $q$): aí é preciso a fórmula de ordem $m$ com derivadas.",
+        "No lema de Jordan, fechar o contorno pelo semicírculo ERRADO: para $e^{iaz}$ com $a>0$ fecha-se por CIMA (onde $|e^{iaz}|=e^{-a\\,\\operatorname{Im}z}$ decai); com $a<0$, por baixo."
+      ],
+      "worked": "**Integral real por resíduos.** Mostrar que $\\displaystyle\\int_{-\\infty}^{\\infty}\\frac{dx}{1+x^2}=\\pi$.\n\nConsidere $f(z)=\\dfrac{1}{1+z^2}=\\dfrac{1}{(z-i)(z+i)}$, com polos simples em $\\pm i$. Tome o contorno $\\Gamma_R$ formado pelo segmento $[-R,R]$ e pelo semicírculo superior $C_R$ de raio $R$. Para $R>1$, só o polo $z=i$ fica dentro.\n\nResíduo em $i$ (polo simples): $\\operatorname{Res}(f,i)=\\lim_{z\\to i}(z-i)\\dfrac{1}{(z-i)(z+i)}=\\dfrac{1}{2i}.$\n\nPelo Teorema dos Resíduos, $\\displaystyle\\oint_{\\Gamma_R}f\\,dz=2\\pi i\\cdot\\frac{1}{2i}=\\pi.$\n\nNo arco, $|f|\\le \\dfrac{1}{R^2-1}$ e $L=\\pi R$, logo $\\Big|\\int_{C_R}f\\,dz\\Big|\\le \\dfrac{\\pi R}{R^2-1}\\to 0$ quando $R\\to\\infty$. Portanto\n$$\\int_{-\\infty}^{\\infty}\\frac{dx}{1+x^2}=\\lim_{R\\to\\infty}\\int_{-R}^{R}f\\,dx=\\pi.\\qquad\\blacksquare$$",
+      "exercises": [
+        {
+          "prompt": "Calcule $\\int_{-\\infty}^{\\infty}\\frac{x^2}{x^4+1}\\,dx$ por resíduos.",
+          "hint": "Polos no semiplano superior: $e^{i\\pi/4}$ e $e^{i3\\pi/4}$; use $\\operatorname{Res}=p(z_0)/q'(z_0)$ e feche por cima.",
+          "difficulty": 4,
+          "solution": "Seja $f(z)=\\dfrac{z^2}{z^4+1}$. Os polos são as raízes de $z^4=-1$: $z=e^{i\\pi/4},e^{i3\\pi/4},e^{i5\\pi/4},e^{i7\\pi/4}$. No semiplano superior ficam $z_1=e^{i\\pi/4}$ e $z_2=e^{i3\\pi/4}$.\n\n**Resíduos** (polos simples, fórmula $p/q'$ com $p=z^2$, $q=z^4+1$, $q'=4z^3$):\n$$\\operatorname{Res}(f,z_k)=\\frac{z_k^2}{4z_k^3}=\\frac{1}{4z_k}.$$\nEntão\n$$\\operatorname{Res}(f,z_1)=\\frac{1}{4}e^{-i\\pi/4},\\qquad \\operatorname{Res}(f,z_2)=\\frac{1}{4}e^{-i3\\pi/4}.$$\nSoma:\n$$\\frac14\\big(e^{-i\\pi/4}+e^{-i3\\pi/4}\\big)=\\frac14\\Big[\\big(\\tfrac{\\sqrt2}{2}-\\tfrac{\\sqrt2}{2}i\\big)+\\big(-\\tfrac{\\sqrt2}{2}-\\tfrac{\\sqrt2}{2}i\\big)\\Big]=\\frac14\\big(-\\sqrt2\\,i\\big)=-\\frac{\\sqrt2}{4}i.$$\n\n**Fechamento do contorno.** Com o semicírculo superior de raio $R$, $|f|\\sim R^2/R^4=1/R^2$ e $L=\\pi R$, então o arco contribui $O(1/R)\\to 0$. Pelo Teorema dos Resíduos:\n$$\\int_{-\\infty}^{\\infty}\\frac{x^2}{x^4+1}\\,dx=2\\pi i\\Big(-\\frac{\\sqrt2}{4}i\\Big)=2\\pi\\cdot\\frac{\\sqrt2}{4}=\\frac{\\pi\\sqrt2}{2}=\\frac{\\pi}{\\sqrt2}.\\qquad\\blacksquare$$",
+          "steps": [
+            "Ache os polos ($z^4=-1$) e selecione os do semiplano superior: $e^{i\\pi/4}$ e $e^{i3\\pi/4}$.",
+            "Calcule os resíduos por $p/q'$: $\\operatorname{Res}=\\dfrac{z_k^2}{4z_k^3}=\\dfrac{1}{4z_k}$.",
+            "Some os resíduos: $\\tfrac14(e^{-i\\pi/4}+e^{-i3\\pi/4})=-\\tfrac{\\sqrt2}{4}i$.",
+            "Justifique o anulamento do arco ($|f|\\sim1/R^2$, $L=\\pi R$).",
+            "Multiplique por $2\\pi i$: a integral vale $\\pi/\\sqrt2$."
+          ]
+        },
+        {
+          "prompt": "Use $z=e^{i\\theta}$ para mostrar que $\\int_0^{2\\pi}\\frac{d\\theta}{2+\\cos\\theta}=\\frac{2\\pi}{\\sqrt3}$.",
+          "hint": "$\\cos\\theta=\\frac{z+1/z}{2}$, $d\\theta=\\frac{dz}{iz}$; o integrando vira função racional sobre $|z|=1$; ache o polo interno.",
+          "difficulty": 4,
+          "solution": "Substituímos $z=e^{i\\theta}$, $\\theta\\in[0,2\\pi]$, sobre $|z|=1$, com $\\cos\\theta=\\dfrac{z+z^{-1}}{2}$ e $d\\theta=\\dfrac{dz}{iz}$. Então\n$$\\int_0^{2\\pi}\\frac{d\\theta}{2+\\cos\\theta}=\\oint_{|z|=1}\\frac{1}{2+\\frac{z+1/z}{2}}\\cdot\\frac{dz}{iz}=\\oint_{|z|=1}\\frac{2}{4z+z^2+1}\\cdot\\frac{dz}{i}=\\frac{2}{i}\\oint_{|z|=1}\\frac{dz}{z^2+4z+1}.$$\n\n**Polos.** $z^2+4z+1=0\\Rightarrow z=-2\\pm\\sqrt3$. Só $z_+=-2+\\sqrt3\\approx -0{,}27$ está dentro de $|z|=1$ (pois $z_-=-2-\\sqrt3\\approx-3{,}73$ está fora).\n\n**Resíduo em $z_+$** (polo simples, $q'=2z+4$):\n$$\\operatorname{Res}\\!\\left(\\frac{1}{z^2+4z+1},z_+\\right)=\\frac{1}{2z_++4}=\\frac{1}{2(-2+\\sqrt3)+4}=\\frac{1}{2\\sqrt3}.$$\n\nPelo Teorema dos Resíduos:\n$$\\int_0^{2\\pi}\\frac{d\\theta}{2+\\cos\\theta}=\\frac{2}{i}\\cdot 2\\pi i\\cdot\\frac{1}{2\\sqrt3}=\\frac{2\\pi}{\\sqrt3}.\\qquad\\blacksquare$$",
+          "steps": [
+            "Faça $z=e^{i\\theta}$: $\\cos\\theta=\\tfrac{z+1/z}{2}$, $d\\theta=\\tfrac{dz}{iz}$.",
+            "Simplifique o integrando para $\\dfrac{2}{i}\\dfrac{1}{z^2+4z+1}$ sobre $|z|=1$.",
+            "Resolva $z^2+4z+1=0$ e identifique o único polo interior $z_+=-2+\\sqrt3$.",
+            "Calcule o resíduo $\\dfrac{1}{2z_++4}=\\dfrac{1}{2\\sqrt3}$.",
+            "Multiplique por $\\tfrac2i\\cdot2\\pi i$ para obter $\\dfrac{2\\pi}{\\sqrt3}$."
+          ]
+        },
+        {
+          "prompt": "Calcule $\\int_{-\\infty}^{\\infty}\\frac{\\cos x}{x^2+1}\\,dx$ usando $\\cos x=\\operatorname{Re}e^{ix}$ e o lema de Jordan.",
+          "hint": "Integre $\\frac{e^{iz}}{z^2+1}$ fechando por cima; resíduo em $i$ é $\\frac{e^{-1}}{2i}$; resultado $\\pi/e$.",
+          "difficulty": 4,
+          "solution": "Como $\\cos x=\\operatorname{Re}\\,e^{ix}$, consideramos $\\displaystyle I=\\int_{-\\infty}^{\\infty}\\frac{e^{ix}}{x^2+1}\\,dx$ e tomaremos a parte real.\n\nSeja $f(z)=\\dfrac{e^{iz}}{z^2+1}$, com polos simples em $\\pm i$; só $z=i$ está no semiplano superior. Fechamos com o semicírculo superior $C_R$.\n\n**Lema de Jordan.** Como o expoente é $e^{iaz}$ com $a=1>0$ e $\\dfrac{1}{z^2+1}\\to 0$ uniformemente no semicírculo superior, $\\displaystyle\\int_{C_R}f\\,dz\\to 0$.\n\n**Resíduo em $i$:**\n$$\\operatorname{Res}(f,i)=\\frac{e^{iz}}{2z}\\Big|_{z=i}=\\frac{e^{i\\cdot i}}{2i}=\\frac{e^{-1}}{2i}.$$\n\nPelo Teorema dos Resíduos:\n$$I=2\\pi i\\cdot\\frac{e^{-1}}{2i}=\\pi e^{-1}=\\frac{\\pi}{e}.$$\nComo $I$ já é real, $\\displaystyle\\int_{-\\infty}^{\\infty}\\frac{\\cos x}{x^2+1}\\,dx=\\operatorname{Re}\\,I=\\frac{\\pi}{e}.$ $\\blacksquare$\n\n(A parte $\\int \\frac{\\sin x}{x^2+1}\\,dx=0$ por simetria ímpar, consistente com $\\operatorname{Im}I=0$.)",
+          "steps": [
+            "Troque $\\cos x$ por $\\operatorname{Re}e^{ix}$ e trabalhe com $f(z)=\\dfrac{e^{iz}}{z^2+1}$.",
+            "Feche pelo semicírculo superior; o polo interior é $z=i$.",
+            "Aplique o lema de Jordan ($a=1>0$) para anular o arco.",
+            "Calcule $\\operatorname{Res}(f,i)=\\dfrac{e^{-1}}{2i}$.",
+            "Multiplique por $2\\pi i$ e tome a parte real: $\\dfrac{\\pi}{e}$."
+          ]
+        },
+        {
+          "prompt": "Use o Teorema de Rouché para mostrar que $z^5+3z^2+1$ tem exatamente dois zeros no disco $|z|<1$.",
+          "hint": "Compare com $g(z)=3z^2$ na circunferência $|z|=1$: mostre $|z^5+1|<|3z^2|$ ali.",
+          "difficulty": 4,
+          "solution": "Escrevemos $z^5+3z^2+1=f(z)+g(z)$ com\n$$f(z)=3z^2,\\qquad g(z)=z^5+1.$$\n\nSobre a circunferência $|z|=1$:\n$$|g(z)|=|z^5+1|\\le |z|^5+1=1+1=2,\\qquad |f(z)|=3|z|^2=3.$$\nLogo $|g(z)|\\le 2<3=|f(z)|$ em todo ponto de $|z|=1$ (a estimativa $|g|\\le 2$ é estrita frente a $3$).\n\nPelo **Teorema de Rouché**, $f$ e $f+g=z^5+3z^2+1$ têm o mesmo número de zeros (com multiplicidade) em $|z|<1$. Mas $f(z)=3z^2$ tem um zero duplo em $z=0$, ou seja, **dois** zeros contados com multiplicidade.\n\nPortanto $z^5+3z^2+1$ tem exatamente **dois** zeros no disco $|z|<1$. $\\blacksquare$",
+          "steps": [
+            "Escolha a decomposição $f=3z^2$ (dominante) e $g=z^5+1$.",
+            "Sobre $|z|=1$, estime $|g|=|z^5+1|\\le2$ e $|f|=3$.",
+            "Verifique a desigualdade estrita $|g|<|f|$ na fronteira.",
+            "Aplique Rouché: $f$ e $f+g$ têm o mesmo número de zeros em $|z|<1$.",
+            "Conte os zeros de $3z^2$ (duplo em $0$): exatamente dois."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Teorema dos Resíduos",
+          "back": "$\\oint_\\gamma f\\,dz=2\\pi i\\sum_j \\operatorname{Res}(f,z_j)$, soma sobre as singularidades DENTRO de $\\gamma$."
+        },
+        {
+          "front": "Resíduo em polo simples",
+          "back": "$\\operatorname{Res}(f,z_0)=\\lim_{z\\to z_0}(z-z_0)f(z)$. Para $p/q$: $p(z_0)/q'(z_0)$."
+        },
+        {
+          "front": "Resíduo em polo de ordem $m$",
+          "back": "$\\frac{1}{(m-1)!}\\lim_{z\\to z_0}\\frac{d^{m-1}}{dz^{m-1}}\\big[(z-z_0)^m f(z)\\big]$."
+        },
+        {
+          "front": "Integral trigonométrica $\\int_0^{2\\pi}R(\\cos\\theta,\\sin\\theta)d\\theta$",
+          "back": "Substitua $z=e^{i\\theta}$: $\\cos\\theta=\\frac{z+z^{-1}}{2}$, $\\sin\\theta=\\frac{z-z^{-1}}{2i}$, $d\\theta=\\frac{dz}{iz}$, e some resíduos em $|z|<1$."
+        },
+        {
+          "front": "Lema de Jordan (para que serve)",
+          "back": "Garante que o arco $C_R$ contribui $0$ em integrais com $e^{iaz}$, $a>0$, fechando pelo semicírculo SUPERIOR."
+        },
+        {
+          "front": "Princípio do Argumento",
+          "back": "$\\frac{1}{2\\pi i}\\oint \\frac{f'}{f}\\,dz=Z-P$ (zeros menos polos no interior, com multiplicidade)."
+        },
+        {
+          "front": "Teorema de Rouché",
+          "back": "$|g|<|f|$ em $\\partial\\Omega$ $\\Rightarrow$ $f$ e $f+g$ têm o mesmo número de zeros em $\\Omega$."
+        },
+        {
+          "front": "Teorema da Aplicação Aberta",
+          "back": "Holomorfa não constante leva abertos em abertos; daí o módulo máximo."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Ahlfors, cap. 5 (The Calculus of Residues)",
+          "ref": "livro"
+        },
+        {
+          "title": "Brown & Churchill, cap. 6-7 (Residues and Poles)",
+          "ref": "livro"
+        },
+        {
+          "title": "Stein & Shakarchi, cap. 3 (Meromorphic Functions)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude o Teorema dos Resíduos e as fórmulas de resíduo (polo simples, ordem $m$ e a forma $p/q'$).",
+          "Aprenda a fechar contornos (semicírculo, retângulo) e a anular arcos via $ML$ e o lema de Jordan.",
+          "Pratique integrais reais impróprias e integrais trigonométricas (substituição $z=e^{i\\theta}$).",
+          "Estude o Princípio do Argumento e o Teorema de Rouché para contar e localizar zeros.",
+          "Resolva problemas clássicos de 'quantas raízes no disco' usando Rouché.",
+          "Volte ao app, resolva os testes e anote o principal: fórmulas de resíduo, lema de Jordan e Rouché."
+        ],
+        "searchQueries": [
+          "teorema dos resíduos cálculo de integrais reais exercícios",
+          "integral trigonométrica por resíduos z igual e^{i theta}",
+          "lema de Jordan integrais de Fourier semicírculo",
+          "teorema de Rouché contar zeros no disco unitário",
+          "residue theorem improper integral examples"
+        ],
+        "videos": [
+          {
+            "title": "18.04 - Residue theorem & real integrals",
+            "channel": "MIT OpenCourseWare",
+            "note": "aplicação sistemática a integrais reais"
+          },
+          {
+            "title": "Contour integration (playlist)",
+            "channel": "blackpenredpen",
+            "note": "muitos exemplos de integrais reais por resíduos"
+          },
+          {
+            "title": "Rouché's theorem & argument principle",
+            "channel": "Michael Penn",
+            "note": "contagem e localização de zeros"
+          },
+          {
+            "title": "Teorema dos resíduos e aplicações",
+            "channel": "Matemática Universitária",
+            "note": "PT-BR com integrais resolvidas passo a passo"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Ahlfors, cap. 5 (The Calculus of Residues)",
+            "where": "livro"
+          },
+          {
+            "title": "Brown & Churchill, cap. 6-7 (Residues and Poles)",
+            "where": "livro"
+          },
+          {
+            "title": "Stein & Shakarchi, cap. 3 (Meromorphic Functions)",
+            "where": "livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-complexa-08-mapeamentos-conformes",
+      "title": "Mapeamentos Conformes",
+      "tagline": "Holomorfas com derivada não nula preservam ângulos; Möbius, Schwarz e Riemann organizam a geometria de transformar regiões em regiões.",
+      "objectives": [
+        "Caracterizar conformidade: holomorfa com $f'(z_0)\\neq 0$ preserva ângulos e orientação localmente.",
+        "Dominar as transformações de Möbius, sua ação sobre retas e círculos e a razão cruzada.",
+        "Construir mapeamentos explícitos entre regiões-modelo (disco, semiplano, faixas, setores) via Cayley, $z^2$, $e^z$, Joukowski.",
+        "Enunciar e aplicar o Lema de Schwarz e descrever os automorfismos conformes do disco unitário.",
+        "Enunciar o Teorema da Aplicação de Riemann e entender seu alcance e suas restrições."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Mapeamento conforme",
+          "statement": "Uma aplicação holomorfa $f$ com $f'(z_0)\\neq 0$ é conforme em $z_0$: preserva o ângulo (em magnitude e sentido) entre curvas que se cruzam em $z_0$. Globalmente, conforme $=$ holomorfa e injetiva (univalente)."
+        },
+        {
+          "term": "Transformação de Möbius",
+          "statement": "$T(z)=\\dfrac{az+b}{cz+d}$ com $ad-bc\\neq 0$. São as bijeções conformes da esfera de Riemann $\\widehat{\\mathbb{C}}$; formam grupo sob composição, isomorfo a $\\mathrm{PSL}_2(\\mathbb{C})$."
+        },
+        {
+          "term": "Razão cruzada",
+          "statement": "$(z_1,z_2;z_3,z_4)=\\dfrac{(z_1-z_3)(z_2-z_4)}{(z_1-z_4)(z_2-z_3)}$. É invariante por Möbius e determina a única $T$ que leva três pontos dados a $0,1,\\infty$."
+        },
+        {
+          "term": "Automorfismos do disco",
+          "statement": "As bijeções conformes de $\\mathbb{D}=\\{|z|<1\\}$ são exatamente $\\varphi(z)=e^{i\\theta}\\dfrac{z-a}{1-\\bar a z}$, com $|a|<1$ e $\\theta\\in\\mathbb{R}$."
+        },
+        {
+          "term": "Transformada de Cayley",
+          "statement": "$w=\\dfrac{z-i}{z+i}$ leva o semiplano superior $\\{\\operatorname{Im}z>0\\}$ bijetivamente sobre o disco $\\mathbb{D}$; sua inversa é $z=i\\dfrac{1+w}{1-w}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Conformidade da holomorfa",
+          "statement": "Se $f$ é holomorfa em $z_0$ e $f'(z_0)\\neq 0$, então $f$ preserva ângulos orientados em $z_0$: duas curvas que se cruzam ali com ângulo $\\alpha$ têm imagens que se cruzam com o mesmo ângulo $\\alpha$. Onde $f'(z_0)=0$ (ponto crítico de ordem $k$), ângulos são multiplicados por $k+1$.",
+          "whyItMatters": "Explica geometricamente o significado de holomorfia: localmente é uma rotação-homotetia. Fundamenta o uso de transformações conformes em física (linhas de campo e equipotenciais permanecem ortogonais)."
+        },
+        {
+          "name": "Möbius preserva círculos-e-retas",
+          "statement": "Toda transformação de Möbius leva a família dos círculos e retas de $\\mathbb{C}$ em si mesma (na esfera, círculos em círculos), preserva a razão cruzada e é determinada por sua ação em três pontos distintos.",
+          "whyItMatters": "Dá um cálculo explícito e completo para mapear discos, semiplanos e regiões limitadas por arcos — a caixa de ferramentas básica dos mapeamentos conformes."
+        },
+        {
+          "name": "Lema de Schwarz",
+          "statement": "Se $f:\\mathbb{D}\\to\\mathbb{D}$ é holomorfa com $f(0)=0$, então $|f(z)|\\le|z|$ para todo $z$ e $|f'(0)|\\le 1$. Se vale igualdade em algum $z\\neq 0$ ou em $f'(0)$, então $f(z)=e^{i\\theta}z$ (rotação).",
+          "whyItMatters": "Resultado de rigidez central: classifica os automorfismos do disco, fornece a métrica hiperbólica (Schwarz-Pick) e é a peça-chave em incontáveis estimativas de provas de mestrado."
+        },
+        {
+          "name": "Teorema da Aplicação de Riemann",
+          "statement": "Todo domínio $\\Omega\\subsetneq\\mathbb{C}$ simplesmente conexo e não vazio é conformemente equivalente ao disco unitário $\\mathbb{D}$: existe bijeção holomorfa $f:\\Omega\\to\\mathbb{D}$. Fixando $z_0\\in\\Omega$ e exigindo $f(z_0)=0$, $f'(z_0)>0$, ela é única.",
+          "whyItMatters": "Um dos teoremas mais profundos da área: diz que, a menos de conformidade, só existe UM domínio simplesmente conexo próprio. Reduz problemas de contorno e potencial em geometrias arbitrárias ao disco. (Exclui $\\mathbb{C}$ inteiro, por Liouville.)"
+        }
+      ],
+      "summary": "Geometricamente, holomorfia significa conformidade: onde $f'(z_0)\\neq 0$, a aplicação age localmente como multiplicação por $f'(z_0)$, isto é, uma rotação por $\\arg f'(z_0)$ seguida de escala por $|f'(z_0)|$ — logo preserva ângulos e orientação. Nos pontos críticos ($f'=0$) os ângulos são multiplicados, e a conformidade se perde. Essa propriedade torna as holomorfas as ferramentas ideais para transformar uma região complicada em uma região simples mantendo a estrutura angular, o que preserva harmonicidade e, com ela, soluções de problemas de Dirichlet, escoamentos e campos eletrostáticos. As transformações de Möbius $\\frac{az+b}{cz+d}$ são o catálogo básico: bijeções conformes da esfera de Riemann, levam círculos-e-retas em círculos-e-retas, preservam a razão cruzada e ficam determinadas por três pontos. Com elas, e com mapas como $z^2$, $e^z$, $\\sqrt z$ e Joukowski, construímos dicionários explícitos entre disco, semiplano, faixas e setores — sendo a transformada de Cayley $w=\\frac{z-i}{z+i}$ o exemplo canônico (semiplano superior $\\to$ disco).\n\nO Lema de Schwarz é a fonte de rigidez que organiza tudo: uma holomorfa do disco nele mesmo fixando a origem não pode 'esticar' ($|f(z)|\\le|z|$), e a igualdade só ocorre para rotações puras. Dele se extrai a classificação completa dos automorfismos do disco, $\\varphi(z)=e^{i\\theta}\\frac{z-a}{1-\\bar a z}$, e a métrica hiperbólica de Poincaré (Schwarz-Pick), que as holomorfas nunca aumentam. O coroamento é o Teorema da Aplicação de Riemann: qualquer domínio simplesmente conexo próprio de $\\mathbb{C}$ — por mais retorcido que seja — é conformemente equivalente ao disco. A única exceção é o plano inteiro $\\mathbb{C}$, barrado por Liouville (uma bijeção conforme $\\mathbb{C}\\to\\mathbb{D}$ seria inteira e limitada, logo constante). Esse teorema reduz, em princípio, toda a teoria do potencial plana ao estudo de um único domínio-modelo, e suas versões construtivas (Schwarz-Christoffel para polígonos) são usadas em engenharia e física até hoje.",
+      "commonPitfalls": [
+        "Chamar de conforme uma holomorfa em pontos críticos: onde $f'(z_0)=0$ os ângulos NÃO são preservados (são multiplicados). Conformidade exige $f'\\neq 0$.",
+        "Supor que toda holomorfa injetiva no domínio tem inversa holomorfa 'automática' sem checar $f'\\neq 0$: na verdade, injetiva holomorfa $\\Rightarrow f'\\neq 0$, mas é um teorema, não trivialidade.",
+        "Confundir 'leva círculos em círculos' com 'leva centros em centros': Möbius preserva a família círculos-e-retas, mas o centro de um círculo NÃO vai, em geral, para o centro da imagem.",
+        "Tentar aplicar o Teorema de Riemann a $\\mathbb{C}$ inteiro ou a domínios não simplesmente conexos (anel): $\\mathbb{C}$ está excluído (Liouville) e anéis têm um invariante conforme (a razão dos raios)."
+      ],
+      "worked": "**A transformada de Cayley leva o semiplano superior no disco.** Seja $w=T(z)=\\dfrac{z-i}{z+i}$.\n\nQueremos ver que $\\operatorname{Im}z>0\\iff|w|<1$. Note que $|w|<1\\iff |z-i|<|z+i|$, isto é, $z$ está mais perto de $i$ do que de $-i$. Geometricamente, isso é exatamente o semiplano acima do eixo real (mediatriz do segmento $[-i,i]$).\n\nAlgebricamente, com $z=x+iy$:\n$$|z-i|^2-|z+i|^2=\\big(x^2+(y-1)^2\\big)-\\big(x^2+(y+1)^2\\big)=-4y.$$\nLogo $|z-i|<|z+i|\\iff -4y<0\\iff y>0$, confirmando $\\operatorname{Im}z>0\\iff |w|<1$.\n\nComo $T$ é de Möbius (com $ad-bc=(1)(i)-(-i)(1)=2i\\neq 0$), é bijeção conforme; portanto leva $\\{\\operatorname{Im}z>0\\}$ conformemente sobre $\\mathbb{D}$, e o eixo real ($y=0$) vai para a circunferência $|w|=1$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Encontre a transformação de Möbius que leva $0\\mapsto -1$, $1\\mapsto 0$ e $\\infty\\mapsto 1$.",
+          "hint": "Imponha a razão cruzada $(w;-1,0,1)=(z;0,1,\\infty)$, ou monte $T(z)=\\frac{az+b}{cz+d}$ e resolva o sistema.",
+          "difficulty": 3,
+          "solution": "Procuramos $T(z)=\\dfrac{az+b}{cz+d}$ com $T(0)=-1$, $T(1)=0$, $T(\\infty)=1$.\n\n**$T(\\infty)=1$:** o limite quando $z\\to\\infty$ é $\\dfrac{a}{c}=1$, logo $a=c$.\n\n**$T(1)=0$:** o numerador deve anular-se em $z=1$: $a+b=0$, logo $b=-a$.\n\n**$T(0)=-1$:** $T(0)=\\dfrac{b}{d}=-1$, logo $d=-b=a$.\n\nAssim $a=c=d$ e $b=-a$. Com $a\\neq 0$ (tomando $a=1$):\n$$T(z)=\\frac{z-1}{z+1}.$$\n\n**Verificação:** $T(0)=\\dfrac{-1}{1}=-1$ $\\checkmark$;\\ $T(1)=\\dfrac{0}{2}=0$ $\\checkmark$;\\ $T(\\infty)=1$ $\\checkmark$. O determinante $ad-bc=(1)(1)-(-1)(1)=2\\neq 0$, confirmando que é uma Möbius legítima. $\\blacksquare$",
+          "steps": [
+            "Escreva $T(z)=\\dfrac{az+b}{cz+d}$ e imponha $T(\\infty)=a/c=1$, logo $a=c$.",
+            "Imponha $T(1)=0$ (numerador nulo em $1$): $b=-a$.",
+            "Imponha $T(0)=b/d=-1$: $d=a$.",
+            "Substitua e simplifique para $T(z)=\\dfrac{z-1}{z+1}$; verifique os três valores e $ad-bc\\neq0$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $w=z^2$ leva o primeiro quadrante $\\{x>0,y>0\\}$ conformemente sobre o semiplano superior, e identifique onde a conformidade falha.",
+          "hint": "Em forma polar $z=re^{i\\theta}$, $\\theta\\in(0,\\pi/2)$, então $w=r^2 e^{2i\\theta}$, $2\\theta\\in(0,\\pi)$; conformidade falha em $z=0$ ($f'=0$).",
+          "difficulty": 3,
+          "solution": "Escreva $z=re^{i\\theta}$. O primeiro quadrante $\\{x>0,y>0\\}$ corresponde a $r>0$ e $\\theta\\in(0,\\tfrac{\\pi}{2})$.\n\nAplicando $w=z^2=r^2 e^{2i\\theta}$: o módulo vira $r^2>0$ e o argumento vira $2\\theta$, que percorre $(0,\\pi)$ quando $\\theta$ percorre $(0,\\tfrac{\\pi}{2})$. Assim $\\arg w\\in(0,\\pi)$, isto é, $w$ está no **semiplano superior** $\\{\\operatorname{Im}w>0\\}$.\n\n**Bijetividade.** Dado $w$ no semiplano superior, ele tem uma única raiz quadrada com argumento em $(0,\\tfrac{\\pi}{2})$ (a saber $z=\\sqrt{|w|}\\,e^{i\\arg w/2}$), que está no primeiro quadrante. Logo $z^2$ é bijeção do primeiro quadrante sobre o semiplano superior.\n\n**Conformidade.** $f(z)=z^2$ é holomorfa com $f'(z)=2z$. Como $f'(z)\\neq 0$ para $z\\neq 0$, o mapa é conforme em todo o interior do quadrante. A conformidade **falha em $z=0$** (ponto crítico, $f'(0)=0$): ali o ângulo reto do vértice do quadrante ($\\pi/2$) é **duplicado** para $\\pi$, exatamente o ângulo raso do bordo do semiplano. $\\blacksquare$",
+          "steps": [
+            "Escreva $z=re^{i\\theta}$ com $\\theta\\in(0,\\pi/2)$ para o primeiro quadrante.",
+            "Calcule $w=z^2=r^2e^{2i\\theta}$: o argumento $2\\theta$ varre $(0,\\pi)$, o semiplano superior.",
+            "Verifique a bijeção usando a raiz quadrada com argumento em $(0,\\pi/2)$.",
+            "Analise $f'(z)=2z$: conforme em $z\\neq0$; em $z=0$ o ângulo dobra, quebrando a conformidade."
+          ]
+        },
+        {
+          "prompt": "Prove o Lema de Schwarz aplicando o Princípio do Módulo Máximo à função $g(z)=f(z)/z$.",
+          "hint": "$g$ tem singularidade removível em $0$ (pois $f(0)=0$); em $|z|=r<1$, $|g|\\le 1/r$; faça $r\\to 1$.",
+          "difficulty": 4,
+          "solution": "Seja $f:\\mathbb{D}\\to\\mathbb{D}$ holomorfa com $f(0)=0$. Defina\n$$g(z)=\\frac{f(z)}{z}\\quad (z\\neq 0),\\qquad g(0)=f'(0).$$\n\n**$g$ é holomorfa em $\\mathbb{D}$.** Como $f(0)=0$, a série de Taylor de $f$ é $f(z)=c_1 z+c_2 z^2+\\cdots$; então $g(z)=c_1+c_2 z+\\cdots$ é holomorfa (a singularidade em $0$ é removível, com $g(0)=c_1=f'(0)$).\n\n**Estimativa na fronteira.** Para $|z|=r<1$: como $|f(z)|<1$,\n$$|g(z)|=\\frac{|f(z)|}{|z|}<\\frac{1}{r}.$$\nPelo Princípio do Módulo Máximo aplicado a $g$ no disco fechado $|z|\\le r$, o máximo de $|g|$ está na fronteira, logo\n$$|g(z)|\\le\\frac{1}{r}\\quad\\text{para todo }|z|\\le r.$$\n\n**Passagem ao limite.** Fixe $z\\in\\mathbb{D}$ e faça $r\\to 1^-$: obtemos $|g(z)|\\le 1$, ou seja\n$$|f(z)|\\le|z|\\quad\\text{e, em }z=0,\\quad |f'(0)|=|g(0)|\\le 1.$$\n\n**Igualdade.** Se $|f(z_0)|=|z_0|$ para algum $z_0\\neq 0$ (ou $|f'(0)|=1$), então $|g|$ atinge o valor máximo $1$ num ponto interior; pelo Módulo Máximo $g$ é constante de módulo $1$, digamos $g\\equiv e^{i\\theta}$. Logo $f(z)=e^{i\\theta}z$ (uma rotação). $\\blacksquare$",
+          "steps": [
+            "Defina $g=f/z$ com $g(0)=f'(0)$ e mostre que $0$ é singularidade removível (pois $f(0)=0$).",
+            "Sobre $|z|=r<1$, use $|f|<1$ para estimar $|g|<1/r$.",
+            "Aplique o Módulo Máximo em $|z|\\le r$: $|g|\\le1/r$ em todo o disco.",
+            "Faça $r\\to1$ para obter $|f(z)|\\le|z|$ e $|f'(0)|\\le1$.",
+            "No caso de igualdade interior, conclua $g$ constante de módulo $1$, isto é, $f(z)=e^{i\\theta}z$."
+          ]
+        },
+        {
+          "prompt": "Verifique que $\\varphi_a(z)=\\frac{z-a}{1-\\bar a z}$, com $|a|<1$, leva $\\mathbb{D}$ em $\\mathbb{D}$ e leva $a\\mapsto 0$. Calcule $\\varphi_a^{-1}$.",
+          "hint": "Mostre $|\\varphi_a(z)|=1$ quando $|z|=1$ e $\\varphi_a(a)=0$; a inversa é $\\varphi_{-a}$.",
+          "difficulty": 3,
+          "solution": "Seja $\\varphi_a(z)=\\dfrac{z-a}{1-\\bar a z}$ com $|a|<1$.\n\n**Leva $a\\mapsto 0$:** $\\varphi_a(a)=\\dfrac{a-a}{1-\\bar a a}=0$ (bem definido pois $1-|a|^2\\neq 0$).\n\n**Leva $\\mathbb{D}$ em $\\mathbb{D}$.** Primeiro, na fronteira $|z|=1$ temos $\\bar z=1/z$, então\n$$|1-\\bar a z|=|z|\\,\\Big|\\tfrac1z-\\bar a\\Big|=|\\bar z-\\bar a|=|\\overline{z-a}|=|z-a|,$$\nlogo $|\\varphi_a(z)|=\\dfrac{|z-a|}{|1-\\bar a z|}=1$ em $|z|=1$. Como $\\varphi_a$ é holomorfa em $\\overline{\\mathbb{D}}$ (o único polo $z=1/\\bar a$ tem módulo $1/|a|>1$, fora do disco) e $|\\varphi_a|=1$ na fronteira, pelo Princípio do Módulo Máximo $|\\varphi_a(z)|<1$ no interior; portanto $\\varphi_a(\\mathbb{D})\\subseteq\\mathbb{D}$.\n\n**Inversa.** Resolvemos $w=\\dfrac{z-a}{1-\\bar a z}$ para $z$:\n$$w(1-\\bar a z)=z-a\\ \\Longrightarrow\\ w+a=z+w\\bar a z=z(1+\\bar a w)\\ \\Longrightarrow\\ z=\\frac{w+a}{1+\\bar a w}=\\varphi_{-a}(w).$$\nLogo $\\varphi_a^{-1}=\\varphi_{-a}$, que também é um automorfismo do disco. Em particular $\\varphi_a$ é bijeção conforme de $\\mathbb{D}$. $\\blacksquare$",
+          "steps": [
+            "Verifique diretamente $\\varphi_a(a)=0$.",
+            "Na fronteira $|z|=1$, use $\\bar z=1/z$ para mostrar $|1-\\bar a z|=|z-a|$, logo $|\\varphi_a|=1$.",
+            "Pelo Módulo Máximo (polo $1/\\bar a$ está fora de $\\overline{\\mathbb{D}}$), conclua $|\\varphi_a|<1$ no interior.",
+            "Resolva $w=\\varphi_a(z)$ para $z$ e obtenha $z=\\dfrac{w+a}{1+\\bar a w}=\\varphi_{-a}(w)$.",
+            "Conclua $\\varphi_a^{-1}=\\varphi_{-a}$, logo $\\varphi_a$ é automorfismo do disco."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Quando uma holomorfa é conforme em $z_0$?",
+          "back": "Quando $f'(z_0)\\neq 0$: preserva ângulos orientados. Em $f'(z_0)=0$ (crítico) a conformidade falha."
+        },
+        {
+          "front": "Forma geral de uma transformação de Möbius",
+          "back": "$T(z)=\\frac{az+b}{cz+d}$, $ad-bc\\neq 0$; bijeções conformes de $\\widehat{\\mathbb{C}}$."
+        },
+        {
+          "front": "O que Möbius preserva?",
+          "back": "A família círculos-e-retas e a razão cruzada; é determinada por 3 pontos."
+        },
+        {
+          "front": "Transformada de Cayley",
+          "back": "$w=\\frac{z-i}{z+i}$: semiplano superior $\\to$ disco unitário."
+        },
+        {
+          "front": "Lema de Schwarz",
+          "back": "$f:\\mathbb{D}\\to\\mathbb{D}$, $f(0)=0$ $\\Rightarrow$ $|f(z)|\\le|z|$ e $|f'(0)|\\le1$; igualdade $\\Rightarrow$ rotação $e^{i\\theta}z$."
+        },
+        {
+          "front": "Automorfismos conformes do disco",
+          "back": "$\\varphi(z)=e^{i\\theta}\\frac{z-a}{1-\\bar a z}$, $|a|<1$, $\\theta\\in\\mathbb{R}$."
+        },
+        {
+          "front": "Teorema da Aplicação de Riemann",
+          "back": "Todo domínio simplesmente conexo $\\Omega\\subsetneq\\mathbb{C}$ é conformemente equivalente a $\\mathbb{D}$. ($\\mathbb{C}$ é exceção, por Liouville.)"
+        },
+        {
+          "front": "Por que $\\mathbb{C}$ não é conformemente equivalente a $\\mathbb{D}$?",
+          "back": "Uma bijeção $\\mathbb{C}\\to\\mathbb{D}$ seria inteira e limitada, logo constante (Liouville)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Ahlfors, cap. 3 e 6 (Conformal Mapping, Riemann Mapping)",
+          "ref": "livro"
+        },
+        {
+          "title": "Needham, Visual Complex Analysis, caps. 3-5",
+          "ref": "livro"
+        },
+        {
+          "title": "Conway, cap. III e VII (Möbius, Riemann Mapping)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a conformidade: $f'(z_0)\\neq 0$ preserva ângulos orientados; em pontos críticos os ângulos são multiplicados.",
+          "Domine as transformações de Möbius, sua ação sobre círculos-e-retas e a razão cruzada.",
+          "Construa mapas explícitos entre disco, semiplano, faixas e setores (Cayley, $z^2$, $e^z$, Joukowski).",
+          "Estude o Lema de Schwarz e a classificação dos automorfismos do disco unitário.",
+          "Estude o enunciado do Teorema da Aplicação de Riemann e por que $\\mathbb{C}$ é excluído (Liouville).",
+          "Volte ao app, resolva os testes e anote o principal: Möbius, Cayley, Schwarz e Riemann."
+        ],
+        "searchQueries": [
+          "transformação de Möbius razão cruzada exercícios",
+          "mapeamento conforme disco semiplano transformada de Cayley",
+          "lema de Schwarz automorfismos do disco unitário",
+          "teorema da aplicação de Riemann enunciado demonstração",
+          "Mobius transformation maps circles to circles proof"
+        ],
+        "videos": [
+          {
+            "title": "Möbius Transformations Revealed",
+            "channel": "Douglas Arnold & Jonathan Rogness",
+            "note": "vídeo clássico no YouTube com a visualização das Möbius na esfera de Riemann"
+          },
+          {
+            "title": "18.04 - Conformal mappings",
+            "channel": "MIT OpenCourseWare",
+            "note": "conformidade e mapeamento de regiões-modelo"
+          },
+          {
+            "title": "Schwarz lemma",
+            "channel": "Michael Penn",
+            "note": "demonstração e consequências (automorfismos do disco)"
+          },
+          {
+            "title": "Visualizing complex functions / conformal maps",
+            "channel": "3Blue1Brown",
+            "note": "buscar a intuição geométrica de mapas que preservam ângulos"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Ahlfors, cap. 3 e 6 (Conformal Mapping, Riemann Mapping)",
+            "where": "livro"
+          },
+          {
+            "title": "Needham, Visual Complex Analysis, caps. 3-5",
+            "where": "livro"
+          },
+          {
+            "title": "Conway, cap. III e VII (Möbius, Riemann Mapping)",
+            "where": "livro (GTM 11)"
+          }
+        ]
+      }
+    }
+  ]
+}

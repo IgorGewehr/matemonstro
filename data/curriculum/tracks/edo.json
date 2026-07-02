@@ -1,0 +1,1770 @@
+{
+  "id": "edo",
+  "title": "Equações Diferenciais Ordinárias",
+  "phase": 1,
+  "phaseLabel": "Núcleo",
+  "tagline": "Da integral elementar ao retrato de fase: aprenda a resolver, e quando não dá para resolver, a provar que a solução existe, é única e se comporta bem.",
+  "summary": "Esta trilha trata das equações que relacionam uma função desconhecida com suas derivadas. Começamos pelos métodos elementares de primeira ordem (separáveis, lineares, exatas e substituições), subimos ao teorema central da teoria — existência e unicidade de Picard-Lindelöf via ponto fixo de contração — e então desenvolvemos a teoria linear: EDOs de ordem $n$, sistemas $x'=Ax$ resolvidos pela exponencial de matriz $e^{At}$, estabilidade e plano de fase de sistemas autônomos. Fechamos com duas ferramentas analíticas poderosas: soluções em séries de potências (incluindo o método de Frobenius) e a transformada de Laplace. O fio condutor é a tensão produtiva entre o cálculo explícito de soluções e a análise qualitativa quando a fórmula fechada não existe.",
+  "bigPicture": "As EDOs são a linguagem matemática da mudança: descrevem desde o decaimento radioativo e a dinâmica populacional até os circuitos elétricos, a mecânica celeste e os modelos epidemiológicos. Para o matemático puro, esta trilha é a primeira aplicação séria da análise (o método de Picard é a estreia do Teorema do Ponto Fixo de Banach) e da álgebra linear (a teoria de sistemas lineares É a teoria espectral em ação, com a forma de Jordan governando a exponencial de matriz). É também a porta de entrada para os sistemas dinâmicos, a geometria diferencial e as EDPs. Em concursos de Instituto Federal (IF), EDOs de primeira ordem, equações lineares de ordem $n$ com coeficientes constantes e a transformada de Laplace são presença frequente nos editais de Matemática e Matemática Aplicada. Em provas de mestrado, o que se cobra é o rigor: enunciar e aplicar Picard-Lindelöf, manipular a exponencial de matriz, classificar estabilidade pelo sinal das partes reais dos autovalores e justificar convergência de séries. Dominar esta trilha é saber transitar entre a conta e a prova.",
+  "prereqs": [
+    "calculo3",
+    "algebra-linear"
+  ],
+  "difficulty": 4,
+  "estimatedHours": 65,
+  "primaryBooks": [
+    {
+      "title": "Equações Diferenciais Elementares e Problemas de Valores de Contorno",
+      "author": "William E. Boyce, Richard C. DiPrima",
+      "note": "Referência principal pela cobertura completa e enorme acervo de exercícios no estilo de concurso de IF; ótimo para métodos, sistemas, séries e Laplace.",
+      "chapters": "caps. 1-7, 9"
+    },
+    {
+      "title": "Equações Diferenciais Ordinárias",
+      "author": "Claus I. Doering, Artur O. Lopes (Coleção Matemática Universitária, IMPA)",
+      "note": "Texto brasileiro com o rigor de mestrado: existência e unicidade, dependência contínua, sistemas lineares e estabilidade demonstrados com cuidado.",
+      "chapters": "caps. 1-5"
+    },
+    {
+      "title": "Lições de Equações Diferenciais Ordinárias",
+      "author": "Jorge Sotomayor (Projeto Euclides, IMPA)",
+      "note": "Clássico nacional para a teoria qualitativa: fluxo, dependência das condições iniciais, estabilidade e teoria de Poincaré-Bendixson.",
+      "chapters": "caps. 1-4"
+    },
+    {
+      "title": "Equações Diferenciais Aplicadas",
+      "author": "Djairo G. de Figueiredo, Aloisio F. Neves (Coleção Matemática Universitária, IMPA)",
+      "note": "Equilíbrio entre rigor e aplicação; excelente tratamento de séries de potências, Frobenius e funções especiais.",
+      "chapters": "caps. 1-6"
+    },
+    {
+      "title": "Theory of Ordinary Differential Equations",
+      "author": "Earl A. Coddington, Norman Levinson",
+      "note": "Referência avançada e definitiva para existência, unicidade, continuação de soluções e teoria linear; nível de pós-graduação.",
+      "chapters": "caps. 1-3"
+    },
+    {
+      "title": "Ordinary Differential Equations",
+      "author": "Vladimir I. Arnold",
+      "note": "Visão geométrica profunda de campos vetoriais, fluxos e a exponencial de matriz; forma a intuição correta sobre o tema.",
+      "chapters": "caps. 1-3"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.03 Differential Equations",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Paul's Online Math Notes - Differential Equations",
+      "kind": "notas",
+      "ref": "tutorial.math.lamar.edu"
+    },
+    {
+      "title": "3Blue1Brown - Differential Equations (série)",
+      "kind": "video",
+      "ref": "youtube.com/3blue1brown"
+    },
+    {
+      "title": "MIT OCW 18.06 Linear Algebra - Differential Equations and exp(At)",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 4,
+    "mestrado": 3,
+    "note": "Em concurso de IF cai com frequência: classificar e resolver EDOs de primeira ordem (separáveis, lineares por fator integrante, exatas), equações lineares de ordem $n$ com coeficientes constantes (equação característica, coeficientes a determinar) e, em muitos editais de Matemática Aplicada, a transformada de Laplace aplicada a PVIs. Em mestrado em matemática pura, o foco é teórico: enunciar e usar o Teorema de Picard-Lindelöf, reconhecer a equivalência com a equação integral, manipular a exponencial de matriz e a estrutura do espaço de soluções (Wronskiano, dimensão $n$), e classificar a estabilidade de equilíbrios pelo espectro da matriz/Jacobiana. Séries de potências e Frobenius aparecem em provas com viés aplicado; o Lema de Grönwall e dependência contínua são clássicos de prova de análise/EDO."
+  },
+  "subtopics": [
+    {
+      "id": "edo-01-primeira-ordem-separaveis-lineares",
+      "title": "Conceitos fundamentais e EDOs de primeira ordem: separáveis e lineares",
+      "tagline": "O vocabulário da teoria e os dois métodos que resolvem a maioria das equações de primeira ordem que você vai encontrar.",
+      "objectives": [
+        "Ao final você consegue classificar uma EDO por ordem, linearidade e autonomia, e distinguir solução geral, particular e singular.",
+        "Ao final você consegue formular um Problema de Valor Inicial (PVI) e interpretar geometricamente uma solução como curva integral do campo de direções.",
+        "Ao final você consegue resolver equações de variáveis separáveis e discutir o intervalo maximal de existência da solução.",
+        "Ao final você consegue resolver a EDO linear de primeira ordem $y'+p(x)y=q(x)$ pelo método do fator integrante.",
+        "Ao final você consegue montar e resolver modelos elementares (crescimento/decaimento, lei do resfriamento de Newton, misturas)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "EDO de ordem $n$",
+          "statement": "Uma relação $F(x,y,y',\\dots,y^{(n)})=0$ envolvendo uma função incógnita $y(x)$ e suas derivadas até a ordem $n$; a ordem é a da derivada mais alta presente."
+        },
+        {
+          "term": "Solução e curva integral",
+          "statement": "$\\varphi$ é solução em um intervalo $I$ se $\\varphi$ é $n$ vezes derivável e satisfaz a equação para todo $x\\in I$. Seu gráfico é uma curva integral, tangente em cada ponto ao campo de direções $y'=f(x,y)$."
+        },
+        {
+          "term": "Problema de Valor Inicial (PVI)",
+          "statement": "A equação $y'=f(x,y)$ acompanhada da condição $y(x_0)=y_0$; geometricamente, seleciona a curva integral que passa por $(x_0,y_0)$."
+        },
+        {
+          "term": "Equação separável",
+          "statement": "Tem a forma $y'=g(x)h(y)$; formalmente $\\dfrac{dy}{h(y)}=g(x)\\,dx$ e integra-se cada lado. Valores com $h(y)=0$ geram soluções constantes (de equilíbrio) que podem ser singulares."
+        },
+        {
+          "term": "EDO linear de primeira ordem",
+          "statement": "$y'+p(x)y=q(x)$; multiplicando pelo fator integrante $\\mu(x)=e^{\\int p(x)\\,dx}$ o lado esquerdo vira $(\\mu y)'$, e a solução é $y=\\dfrac{1}{\\mu(x)}\\left(\\int \\mu(x)q(x)\\,dx+C\\right)$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Existência e unicidade para a linear de primeira ordem",
+          "statement": "Se $p$ e $q$ são contínuas em um intervalo aberto $I$ contendo $x_0$, então o PVI $y'+p(x)y=q(x),\\ y(x_0)=y_0$ tem solução única, e essa solução está definida em TODO o intervalo $I$.",
+          "whyItMatters": "É um caso raro e privilegiado: para equações lineares de primeira ordem a solução é global no intervalo de continuidade dos coeficientes, sem o encolhimento típico do caso não linear. A fórmula do fator integrante exibe explicitamente essa solução."
+        },
+        {
+          "name": "Estrutura da solução geral (caso linear)",
+          "statement": "A solução geral de $y'+p(x)y=q(x)$ é $y=y_h+y_p$, onde $y_h=Ce^{-\\int p}$ percorre todas as soluções da homogênea e $y_p$ é uma solução particular qualquer da equação completa.",
+          "whyItMatters": "Antecipa a estrutura afim de TODA equação linear (ordem $n$ e sistemas): o conjunto-solução é uma solução particular somada ao espaço vetorial das soluções homogêneas."
+        }
+      ],
+      "summary": "Antes de resolver, é preciso falar a língua: a ORDEM de uma EDO é a da maior derivada; ela é LINEAR se a incógnita e suas derivadas aparecem apenas em primeira potência e sem produtos entre si; é AUTÔNOMA se a variável independente não aparece explicitamente em $f$. Resolver um PVI é, geometricamente, escolher entre as infinitas curvas integrais do campo de direções $y'=f(x,y)$ aquela que passa pelo ponto inicial $(x_0,y_0)$. Esse retrato geométrico — riscar pequenos segmentos com inclinação $f(x,y)$ no plano — é a melhor intuição para o que uma EDO significa.\n\nDois métodos resolvem a maior parte das equações de primeira ordem elementares. Nas SEPARÁVEIS, escrevemos $\\frac{dy}{h(y)}=g(x)\\,dx$ e integramos; atenção às soluções de equilíbrio $h(y)=0$, frequentemente perdidas ao dividir por $h(y)$, e ao intervalo onde a solução implícita pode ser explicitada. Nas LINEARES $y'+p(x)y=q(x)$, o truque do FATOR INTEGRANTE $\\mu=e^{\\int p}$ transforma o lado esquerdo na derivada de um produto $(\\mu y)'=\\mu q$, reduzindo tudo a uma integração. Guarde a estrutura $y=y_h+y_p$: ela reaparecerá em toda a teoria linear.",
+      "commonPitfalls": [
+        "Perder soluções de equilíbrio ao separar variáveis: dividir por $h(y)$ exige $h(y)\\neq0$, e os zeros de $h$ costumam ser soluções constantes legítimas.",
+        "Esquecer a constante de integração ou somá-la cedo demais — na linear, $C$ entra DEPOIS de dividir por $\\mu$, não antes.",
+        "Confundir o fator integrante da linear ($\\mu=e^{\\int p}$) com o fator integrante geral de equações exatas (assunto da próxima aula).",
+        "Tratar a solução como global sem checar o domínio: no caso não linear (separável) a solução pode explodir em tempo finito, mesmo que os dados sejam suaves."
+      ],
+      "worked": "**Resolver o PVI $y'-\\dfrac{2}{x}\\,y=x^2$, com $y(1)=3$, para $x>0$.**\n\nÉ linear com $p(x)=-2/x$ e $q(x)=x^2$. Fator integrante:\n$$\\mu(x)=e^{\\int -2/x\\,dx}=e^{-2\\ln x}=x^{-2}.$$\nMultiplicando a equação por $\\mu$: $(x^{-2}y)'=x^{-2}\\cdot x^2=1$. Integrando: $x^{-2}y=x+C$, ou seja $y=x^3+Cx^2$.\n\nCondição inicial: $y(1)=1+C=3\\Rightarrow C=2$. Logo $y(x)=x^3+2x^2$, definida em todo $x>0$ (intervalo de continuidade de $p,q$). $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Resolva a equação separável $y'=\\dfrac{x}{y}$ com $y(0)=-2$ e determine o maior intervalo de existência da solução.",
+          "hint": "Separe $y\\,dy=x\\,dx$, integre e use a condição inicial para escolher o ramo correto da raiz.",
+          "difficulty": 2,
+          "solution": "É separável. Escrevendo $\\frac{dy}{dx}=\\frac{x}{y}$ com $y\\neq0$, separamos:\n$$y\\,dy=x\\,dx.$$\nIntegrando ambos os lados:\n$$\\frac{y^2}{2}=\\frac{x^2}{2}+C_1\\ \\Longrightarrow\\ y^2=x^2+C,\\quad C=2C_1.$$\nCondição inicial $y(0)=-2$: $(-2)^2=0+C\\Rightarrow C=4$. Logo\n$$y^2=x^2+4.$$\nComo $y(0)=-2<0$, escolhemos o ramo negativo da raiz:\n$$\\boxed{y(x)=-\\sqrt{x^2+4}}.$$\n**Intervalo maximal:** $x^2+4>0$ para todo $x\\in\\mathbb{R}$, e $y(x)=-\\sqrt{x^2+4}\\le-2<0$ nunca se anula, de modo que $y'=x/y$ está bem definida em toda a reta. Portanto o maior intervalo de existência é $(-\\infty,+\\infty)$. $\\blacksquare$",
+          "steps": [
+            "Reconheça a estrutura separável $y'=g(x)h(y)$ com $g(x)=x$, $h(y)=1/y$, e separe as variáveis para $y\\neq0$.",
+            "Integre $y\\,dy=x\\,dx$ obtendo a relação implícita $y^2=x^2+C$.",
+            "Use $y(0)=-2$ para achar $C=4$.",
+            "Escolha o ramo da raiz coerente com o sinal do dado inicial ($y<0$), obtendo $y=-\\sqrt{x^2+4}$.",
+            "Determine o intervalo maximal verificando onde a solução está definida e não anula o denominador: como $y$ nunca é zero, o intervalo é $(-\\infty,\\infty)$."
+          ]
+        },
+        {
+          "prompt": "Resolva $y'+y\\tan x=\\sec x$ no intervalo $(-\\pi/2,\\pi/2)$.",
+          "hint": "Fator integrante $\\mu=e^{\\int \\tan x\\,dx}=\\sec x$; o lado direito vira $\\sec^2 x$.",
+          "difficulty": 3,
+          "solution": "Equação linear $y'+p(x)y=q(x)$ com $p(x)=\\tan x$ e $q(x)=\\sec x$ em $(-\\pi/2,\\pi/2)$.\n\n**Fator integrante:**\n$$\\mu(x)=e^{\\int\\tan x\\,dx}=e^{-\\ln|\\cos x|}=\\frac{1}{|\\cos x|}=\\sec x,$$\npois $\\cos x>0$ no intervalo.\n\nMultiplicando a equação por $\\mu=\\sec x$, o lado esquerdo vira a derivada de um produto:\n$$(\\sec x\\cdot y)'=\\sec x\\cdot\\sec x=\\sec^2 x.$$\nIntegrando:\n$$\\sec x\\cdot y=\\int\\sec^2 x\\,dx=\\tan x+C.$$\nIsolando $y$ (multiplicando por $\\cos x$):\n$$y=\\cos x\\,(\\tan x+C)=\\sin x+C\\cos x.$$\nPortanto\n$$\\boxed{y(x)=\\sin x+C\\cos x}.$$ $\\blacksquare$",
+          "steps": [
+            "Identifique $p(x)=\\tan x$ e $q(x)=\\sec x$ e monte o fator integrante $\\mu=e^{\\int p}$.",
+            "Calcule $\\int\\tan x\\,dx=-\\ln|\\cos x|$, logo $\\mu=\\sec x$ (positivo no intervalo dado).",
+            "Multiplique a equação por $\\mu$ e reconheça o lado esquerdo como $(\\mu y)'=\\sec^2 x$.",
+            "Integre $\\int\\sec^2 x\\,dx=\\tan x+C$.",
+            "Isole $y$ multiplicando por $\\cos x=1/\\mu$, obtendo $y=\\sin x+C\\cos x$."
+          ]
+        },
+        {
+          "prompt": "Um corpo a $100^\\circ\\mathrm{C}$ é colocado num ambiente a $20^\\circ\\mathrm{C}$ e, após $10$ min, está a $60^\\circ\\mathrm{C}$. Pela lei de Newton do resfriamento $T'=-k(T-20)$, ache $T(t)$ e o instante em que $T=30^\\circ\\mathrm{C}$.",
+          "hint": "É linear/separável; ache $k$ usando $T(10)=60$.",
+          "difficulty": 3,
+          "solution": "A EDO $T'=-k(T-20)$ é linear e separável. Pondo $u=T-20$, temos $u'=-ku$, logo\n$$u(t)=u(0)e^{-kt}\\ \\Longrightarrow\\ T(t)=20+(T(0)-20)e^{-kt}.$$\nCom $T(0)=100$: $T(t)=20+80e^{-kt}$.\n\n**Determinar $k$** pela medida $T(10)=60$:\n$$60=20+80e^{-10k}\\ \\Rightarrow\\ 80e^{-10k}=40\\ \\Rightarrow\\ e^{-10k}=\\tfrac12\\ \\Rightarrow\\ k=\\frac{\\ln 2}{10}\\approx0{,}0693\\ \\text{min}^{-1}.$$\nAssim\n$$T(t)=20+80\\,e^{-(\\ln 2/10)\\,t}=20+80\\cdot 2^{-t/10}.$$\n\n**Instante em que $T=30$:**\n$$30=20+80e^{-kt}\\ \\Rightarrow\\ e^{-kt}=\\tfrac{10}{80}=\\tfrac18\\ \\Rightarrow\\ -kt=\\ln\\tfrac18=-3\\ln 2.$$\nLogo\n$$t=\\frac{3\\ln 2}{k}=\\frac{3\\ln 2}{(\\ln 2)/10}=30\\ \\text{min}.$$\nO corpo atinge $30^\\circ\\mathrm{C}$ aos $\\boxed{30}$ minutos. $\\blacksquare$",
+          "steps": [
+            "Substitua $u=T-20$ para reduzir a $u'=-ku$ e resolva a exponencial $u=u(0)e^{-kt}$.",
+            "Escreva $T(t)=20+80e^{-kt}$ usando $T(0)=100$.",
+            "Imponha $T(10)=60$ para obter $e^{-10k}=1/2$, isto é, $k=(\\ln 2)/10$.",
+            "Imponha $T=30$ e isole a exponencial: $e^{-kt}=1/8$.",
+            "Resolva para $t$ usando $\\ln(1/8)=-3\\ln 2$, obtendo $t=30$ min."
+          ]
+        },
+        {
+          "prompt": "Mostre que $y=0$ é uma solução da equação separável $y'=x\\sqrt{|y|}$ que pode ser perdida no método padrão, e explique por quê.",
+          "hint": "Verifique que $h(y)=\\sqrt{|y|}$ se anula em $y=0$; dividir por $h(y)$ exige $y\\neq0$.",
+          "difficulty": 2,
+          "solution": "A equação é $y'=x\\sqrt{|y|}=g(x)h(y)$ com $g(x)=x$ e $h(y)=\\sqrt{|y|}$.\n\n**$y\\equiv0$ é solução:** se $y(x)\\equiv0$, então $y'(x)=0$ e o lado direito é $x\\sqrt{|0|}=x\\cdot 0=0$. Como ambos os lados são iguais a $0$ para todo $x$, a função nula satisfaz a equação. É uma solução de equilíbrio.\n\n**Por que o método padrão a perde:** o método das separáveis exige dividir por $h(y)$ para escrever $\\frac{dy}{\\sqrt{|y|}}=x\\,dx$. Essa divisão só é lícita onde $h(y)\\neq0$, ou seja, onde $y\\neq0$. Ao dividir, excluímos exatamente o zero $h(0)=\\sqrt{0}=0$, e por isso a solução constante $y\\equiv0$ — associada a esse zero de $h$ — não aparece na família obtida por integração.\n\n**Observação (não unicidade):** $h(y)=\\sqrt{|y|}$ não é Lipschitz em $y=0$ (a inclinação explode), então o PVI $y'=x\\sqrt{|y|},\\,y(0)=0$ admite tanto $y\\equiv0$ quanto uma solução não trivial obtida por separação — é o mesmo fenômeno do exemplo clássico de Peano. Sempre que dividir por $h(y)$, volte e teste separadamente os zeros de $h$. $\\blacksquare$",
+          "steps": [
+            "Substitua $y\\equiv0$ na equação e verifique que os dois lados dão $0$, confirmando que é solução.",
+            "Escreva o passo do método separável em que se divide por $h(y)=\\sqrt{|y|}$.",
+            "Observe que essa divisão pressupõe $y\\neq0$, excluindo o zero $h(0)=0$.",
+            "Conclua que a solução de equilíbrio $y\\equiv0$ some da família integrada por ter sido eliminada nessa divisão.",
+            "Comente que, como $h$ não é Lipschitz em $0$, há inclusive não unicidade — reforçando por que checar os zeros de $h$ é obrigatório."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Fator integrante de $y'+p(x)y=q(x)$",
+          "back": "$\\mu(x)=e^{\\int p(x)\\,dx}$; então $(\\mu y)'=\\mu q$ e $y=\\frac{1}{\\mu}\\left(\\int \\mu q\\,dx+C\\right)$."
+        },
+        {
+          "front": "Forma de uma EDO separável",
+          "back": "$y'=g(x)h(y)$; integra-se $\\int \\frac{dy}{h(y)}=\\int g(x)\\,dx$ (com atenção aos zeros de $h$)."
+        },
+        {
+          "front": "O que é uma solução de equilíbrio?",
+          "back": "Uma solução constante $y\\equiv c$; em $y'=g(x)h(y)$ ocorre nos zeros $h(c)=0$."
+        },
+        {
+          "front": "Onde a solução de uma linear de 1ª ordem está definida?",
+          "back": "Em TODO o intervalo aberto onde $p$ e $q$ são contínuas (existência global no caso linear)."
+        },
+        {
+          "front": "Estrutura da solução geral de uma EDO linear",
+          "back": "$y=y_h+y_p$: solução geral da homogênea mais uma solução particular qualquer."
+        },
+        {
+          "front": "Interpretação geométrica de $y'=f(x,y)$",
+          "back": "Campo de direções: em cada $(x,y)$ a inclinação é $f(x,y)$; soluções são curvas tangentes a esse campo."
+        },
+        {
+          "front": "Definição de EDO autônoma",
+          "back": "Equação $y'=f(y)$ em que a variável independente não aparece explicitamente em $f$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Boyce & DiPrima, caps. 1-2",
+          "ref": "livro"
+        },
+        {
+          "title": "Doering & Lopes (IMPA), cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.03 - First-order ODEs",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe o vocabulário: leia Boyce & DiPrima cap. 1 e faça uma folha só com as definições de ordem, linearidade, autonomia, solução geral/particular/singular e PVI — escreva cada uma com um exemplo próprio.",
+          "Desenhe à mão o campo de direções de dois exemplos (ex.: $y'=y$ e $y'=x-y$) e confira com o applet de slope fields do MIT Mathlets; isso ancora a intuição geométrica antes de qualquer conta.",
+          "Domine o método separável resolvendo 8-10 exercícios, sempre checando as soluções de equilíbrio $h(y)=0$ e o intervalo maximal — não pule essa checagem, é o erro mais cobrado.",
+          "Treine o fator integrante $\\mu=e^{\\int p}$ até virar automático: resolva 8-10 lineares e reconstrua a fórmula $y=\\frac{1}{\\mu}(\\int\\mu q+C)$ do zero em cada uma, sem colar a fórmula pronta.",
+          "Modele 3 problemas de aplicação (decaimento, resfriamento de Newton, mistura) montando você mesmo a EDO a partir do enunciado verbal.",
+          "Volte ao app: resolva os testes deste subtópico e anote aqui o principal (a fórmula do fator integrante, a armadilha das soluções de equilíbrio e a diferença entre existência global no linear vs. blow-up no não linear)."
+        ],
+        "searchQueries": [
+          "equação diferencial separável método passo a passo exercícios resolvidos",
+          "fator integrante EDO linear primeira ordem demonstração",
+          "campo de direções curva integral interpretação geométrica",
+          "lei do resfriamento de Newton problema de valor inicial exemplo",
+          "intervalo maximal de existência EDO separável",
+          "first order linear ODE integrating factor global existence proof"
+        ],
+        "videos": [
+          {
+            "title": "Differential Equations - First order ODEs",
+            "channel": "MIT OpenCourseWare (18.03)",
+            "note": "Assista às aulas 1-4: campo de direções, separáveis e lineares por fator integrante, com a visão geométrica de Arthur Mattuck."
+          },
+          {
+            "title": "Equações diferenciais de 1ª ordem",
+            "channel": "Equaciona com Paulo Pereira",
+            "note": "Procure a playlist de EDO: aula de separáveis e de fator integrante, em PT-BR, com muitos exemplos no estilo de prova."
+          },
+          {
+            "title": "Differential equations, a tourist's guide",
+            "channel": "3Blue1Brown",
+            "note": "Primeiro vídeo da série de EDO: constrói a intuição de que uma EDO descreve mudança e de por que o campo de direções 'é' a equação."
+          },
+          {
+            "title": "Diferenciais - EDO separável e linear",
+            "channel": "Responde Aí",
+            "note": "Bom para revisão rápida e resolução comentada de exercícios típicos de cálculo/EDO em português."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Boyce & DiPrima, Equações Diferenciais Elementares, caps. 1-2",
+            "where": "Livro (capítulos 1 e 2): teoria e centenas de exercícios no estilo de concurso"
+          },
+          {
+            "title": "Paul's Online Math Notes - Differential Equations: Linear & Separable Equations",
+            "where": "Notas de aula online (tutorial.math.lamar.edu), seção First Order DE"
+          },
+          {
+            "title": "Doering & Lopes, Equações Diferenciais Ordinárias (IMPA), cap. 1",
+            "where": "Livro (Coleção Matemática Universitária): tratamento rigoroso de primeira ordem"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edo-02-exatas-fatores-integrantes-substituicoes",
+      "title": "Equações exatas, fatores integrantes e substituições",
+      "tagline": "Quando a EDO é o diferencial total de uma função escondida, e os truques que transformam o aparentemente intratável em separável ou linear.",
+      "objectives": [
+        "Ao final você consegue reconhecer a forma diferencial $M(x,y)\\,dx+N(x,y)\\,dy=0$ e testar a exatidão pelo critério $\\partial M/\\partial y=\\partial N/\\partial x$.",
+        "Ao final você consegue reconstruir a função potencial $F$ com $F_x=M$, $F_y=N$ e escrever a solução implícita $F(x,y)=C$.",
+        "Ao final você consegue procurar fatores integrantes $\\mu(x)$ ou $\\mu(y)$ que tornem exata uma equação não exata.",
+        "Ao final você consegue resolver equações homogêneas via $v=y/x$ e equações de Bernoulli via $v=y^{1-n}$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Forma diferencial e exatidão",
+          "statement": "A equação $M\\,dx+N\\,dy=0$ é exata se existe $F$ com $dF=F_x\\,dx+F_y\\,dy=M\\,dx+N\\,dy$, isto é, $F_x=M$ e $F_y=N$; nesse caso as soluções são as curvas de nível $F(x,y)=C$."
+        },
+        {
+          "term": "Critério de exatidão",
+          "statement": "Numa região simplesmente conexa onde $M,N$ são $C^1$, a equação é exata se e só se $\\dfrac{\\partial M}{\\partial y}=\\dfrac{\\partial N}{\\partial x}$."
+        },
+        {
+          "term": "Fator integrante",
+          "statement": "Um $\\mu(x,y)$ tal que $\\mu M\\,dx+\\mu N\\,dy=0$ se torna exata. Se $\\dfrac{M_y-N_x}{N}$ só depende de $x$, então $\\mu(x)=e^{\\int \\frac{M_y-N_x}{N}\\,dx}$ funciona (caso análogo em $y$)."
+        },
+        {
+          "term": "Equação homogênea (grau zero)",
+          "statement": "$y'=f(x,y)$ com $f(tx,ty)=f(x,y)$; a substituição $v=y/x$ (logo $y=vx$, $y'=v+xv'$) a transforma em separável em $v$."
+        },
+        {
+          "term": "Equação de Bernoulli",
+          "statement": "$y'+p(x)y=q(x)y^n$ com $n\\neq0,1$; a substituição $v=y^{1-n}$ a lineariza, pois $v'=(1-n)y^{-n}y'$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Critério de exatidão (Poincaré para 1-formas)",
+          "statement": "Sejam $M,N$ de classe $C^1$ em uma região aberta simplesmente conexa $\\Omega\\subseteq\\mathbb{R}^2$. A forma $M\\,dx+N\\,dy$ é exata em $\\Omega$ (existe $F$ com $F_x=M,\\,F_y=N$) se e somente se $M_y=N_x$ em $\\Omega$.",
+          "whyItMatters": "Reduz um problema de existência de primitiva a uma verificação algébrica de duas derivadas parciais. A hipótese de simples conexidade é essencial — sem ela, $M_y=N_x$ garante apenas exatidão local (conexão direta com campos conservativos do Cálculo III)."
+        }
+      ],
+      "summary": "A ideia central é que muitas EDOs de primeira ordem são, disfarçadamente, o diferencial total de uma função $F(x,y)$ que estava escondida. Se $M\\,dx+N\\,dy=dF$, então as soluções são simplesmente as curvas de nível $F(x,y)=C$. O teste de exatidão $M_y=N_x$ é o mesmo critério dos campos conservativos do Cálculo III, e a reconstrução de $F$ é o mesmo procedimento de achar potencial: integra-se $M$ em $x$ (obtendo uma 'constante' $g(y)$) e ajusta-se $g$ impondo $F_y=N$.\n\nQuando a equação não é exata, o resgate é o FATOR INTEGRANTE $\\mu$: multiplica-se a equação por uma função adequada para forçar a exatidão. Procurar $\\mu$ totalmente geral é difícil, mas há receitas: se $(M_y-N_x)/N$ depende só de $x$, existe $\\mu(x)$; se $(N_x-M_y)/M$ depende só de $y$, existe $\\mu(y)$. Por fim, duas SUBSTITUIÇÕES clássicas ampliam muito o arsenal: equações homogêneas viram separáveis com $v=y/x$, e as de Bernoulli $y'+py=qy^n$ viram lineares com $v=y^{1-n}$. O princípio pedagógico é geral: o método novo quase sempre é uma mudança de variável que devolve a equação a uma forma já conhecida.",
+      "commonPitfalls": [
+        "Aplicar o critério $M_y=N_x$ em uma região que não é simplesmente conexa e concluir exatidão global indevidamente.",
+        "Ao reconstruir $F$, esquecer que a 'constante' de integração em relação a $x$ é uma função $g(y)$ — e não um número.",
+        "Na substituição de Bernoulli, errar o expoente: é $v=y^{1-n}$, e é preciso reescrever $y'$ em termos de $v'$ corretamente.",
+        "Tentar adivinhar um fator integrante geral $\\mu(x,y)$ quando as receitas de $\\mu(x)$ ou $\\mu(y)$ não se aplicam — nem toda equação tem fator integrante elementar."
+      ],
+      "worked": "**Resolver $(2xy+3)\\,dx+(x^2-1)\\,dy=0$.**\n\nAqui $M=2xy+3$ e $N=x^2-1$. Teste: $M_y=2x$ e $N_x=2x$. Como $M_y=N_x$, a equação é exata.\n\nProcuramos $F$ com $F_x=2xy+3$. Integrando em $x$:\n$$F(x,y)=x^2y+3x+g(y).$$\nAgora impomos $F_y=N$: $F_y=x^2+g'(y)=x^2-1\\Rightarrow g'(y)=-1\\Rightarrow g(y)=-y$.\n\nLogo $F(x,y)=x^2y+3x-y$ e a solução geral implícita é\n$$x^2y+3x-y=C.$$\n(Pode-se isolar $y=\\dfrac{C-3x}{x^2-1}$.) $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Verifique que $(3x^2+2xy^2)\\,dx+(2x^2y)\\,dy=0$ é exata e resolva-a.",
+          "hint": "Confira $M_y=N_x$; integre $M$ em $x$ e ajuste $g(y)$ via $F_y=N$.",
+          "difficulty": 2,
+          "solution": "Aqui $M=3x^2+2xy^2$ e $N=2x^2y$.\n\n**Teste de exatidão:**\n$$M_y=\\frac{\\partial}{\\partial y}(3x^2+2xy^2)=4xy,\\qquad N_x=\\frac{\\partial}{\\partial x}(2x^2y)=4xy.$$\nComo $M_y=N_x$, a equação é exata.\n\n**Reconstrução de $F$:** integramos $F_x=M$ em $x$:\n$$F(x,y)=\\int(3x^2+2xy^2)\\,dx=x^3+x^2y^2+g(y),$$\nonde $g(y)$ é a 'constante' de integração (função de $y$). Impondo $F_y=N$:\n$$F_y=2x^2y+g'(y)=2x^2y\\ \\Longrightarrow\\ g'(y)=0\\ \\Longrightarrow\\ g(y)=\\text{const.}$$\nLogo $F(x,y)=x^3+x^2y^2$ e a solução geral implícita é\n$$\\boxed{x^3+x^2y^2=C}.$$ $\\blacksquare$",
+          "steps": [
+            "Identifique $M=3x^2+2xy^2$, $N=2x^2y$ e calcule $M_y$ e $N_x$.",
+            "Verifique $M_y=N_x=4xy$, confirmando a exatidão.",
+            "Integre $F_x=M$ em $x$, lembrando de somar $g(y)$.",
+            "Imponha $F_y=N$ para determinar $g'(y)=0$, ou seja, $g$ constante.",
+            "Escreva a solução implícita $F(x,y)=x^3+x^2y^2=C$."
+          ]
+        },
+        {
+          "prompt": "A equação $(3xy+y^2)\\,dx+(x^2+xy)\\,dy=0$ não é exata. Encontre um fator integrante que dependa só de $x$ e resolva-a.",
+          "hint": "Calcule $(M_y-N_x)/N$ e verifique que depende só de $x$; então $\\mu(x)=e^{\\int(\\cdot)\\,dx}$.",
+          "difficulty": 4,
+          "solution": "Com $M=3xy+y^2$ e $N=x^2+xy$:\n$$M_y=3x+2y,\\qquad N_x=2x+y,$$\nlogo $M_y\\neq N_x$ e a equação não é exata.\n\n**Fator integrante $\\mu(x)$:** testamos\n$$\\frac{M_y-N_x}{N}=\\frac{(3x+2y)-(2x+y)}{x^2+xy}=\\frac{x+y}{x(x+y)}=\\frac{1}{x},$$\nque depende só de $x$. Então\n$$\\mu(x)=e^{\\int(1/x)\\,dx}=e^{\\ln|x|}=x.$$\n\n**Equação já exata:** multiplicando por $\\mu=x$:\n$$\\underbrace{(3x^2y+xy^2)}_{\\tilde M}\\,dx+\\underbrace{(x^3+x^2y)}_{\\tilde N}\\,dy=0.$$\nConfira: $\\tilde M_y=3x^2+2xy=\\tilde N_x$. \n\n**Reconstrução de $F$:**\n$$F=\\int(3x^2y+xy^2)\\,dx=x^3y+\\tfrac12x^2y^2+g(y),$$\n$$F_y=x^3+x^2y+g'(y)=x^3+x^2y\\ \\Rightarrow\\ g'(y)=0.$$\nSolução geral implícita:\n$$\\boxed{x^3y+\\tfrac12x^2y^2=C}.$$ $\\blacksquare$",
+          "steps": [
+            "Calcule $M_y$ e $N_x$ e constate que a equação não é exata.",
+            "Forme o quociente $(M_y-N_x)/N$ e simplifique para verificar que depende só de $x$.",
+            "Obtenha $\\mu(x)=e^{\\int(1/x)dx}=x$.",
+            "Multiplique a equação por $\\mu$ e confirme a exatidão do novo par $(\\tilde M,\\tilde N)$.",
+            "Reconstrua $F$ integrando $\\tilde M$ em $x$ e ajustando $g(y)$ via $F_y=\\tilde N$, chegando a $x^3y+\\tfrac12x^2y^2=C$."
+          ]
+        },
+        {
+          "prompt": "Resolva a equação homogênea $y'=\\dfrac{x+y}{x}$ usando $v=y/x$.",
+          "hint": "Reescreva como $y'=1+v$ com $y=vx$, $y'=v+xv'$; obtenha uma separável em $v$.",
+          "difficulty": 3,
+          "solution": "A equação $y'=\\dfrac{x+y}{x}=1+\\dfrac{y}{x}$ é homogênea de grau zero. Substituímos $v=y/x$, ou seja, $y=vx$ e $y'=v+xv'$.\n\nSubstituindo:\n$$v+xv'=1+v\\ \\Longrightarrow\\ xv'=1\\ \\Longrightarrow\\ v'=\\frac{1}{x}.$$\nAgora é separável (trivial):\n$$v=\\int\\frac{1}{x}\\,dx=\\ln|x|+C.$$\nVoltando a $y=vx$:\n$$\\boxed{y=x\\ln|x|+Cx}.$$\n\n**Verificação:** $y'=\\ln|x|+1+C$ e $\\dfrac{x+y}{x}=1+\\dfrac{y}{x}=1+\\ln|x|+C$, que coincidem. $\\blacksquare$",
+          "steps": [
+            "Reescreva a equação como $y'=1+y/x$, evidenciando a estrutura homogênea de grau zero.",
+            "Substitua $v=y/x$, com $y=vx$ e $y'=v+xv'$.",
+            "Simplifique para $xv'=1$, uma equação separável em $v$.",
+            "Integre $v=\\ln|x|+C$.",
+            "Volte à variável original com $y=vx=x\\ln|x|+Cx$."
+          ]
+        },
+        {
+          "prompt": "Resolva a equação de Bernoulli $y'+\\dfrac{1}{x}y=x y^2$ para $x>0$.",
+          "hint": "Use $v=y^{1-2}=y^{-1}$; obtenha uma linear $v'-\\frac{1}{x}v=-x$.",
+          "difficulty": 4,
+          "solution": "Equação de Bernoulli $y'+\\dfrac{1}{x}y=x\\,y^2$, com $n=2$. Substituímos $v=y^{1-n}=y^{-1}$, logo $v'=-y^{-2}y'$.\n\nDividindo a equação por $y^2$:\n$$\\frac{y'}{y^2}+\\frac{1}{x}\\frac{1}{y}=x.$$\nComo $\\frac{y'}{y^2}=-v'$ e $\\frac{1}{y}=v$:\n$$-v'+\\frac{1}{x}v=x\\ \\Longrightarrow\\ v'-\\frac{1}{x}v=-x,$$\nque é linear em $v$.\n\n**Fator integrante:** $\\mu=e^{\\int(-1/x)\\,dx}=e^{-\\ln x}=\\dfrac{1}{x}$ (para $x>0$). Então\n$$\\Big(\\frac{v}{x}\\Big)'=\\frac{1}{x}\\cdot(-x)=-1\\ \\Longrightarrow\\ \\frac{v}{x}=-x+C\\ \\Longrightarrow\\ v=-x^2+Cx.$$\nVoltando a $v=1/y$:\n$$\\boxed{y=\\frac{1}{Cx-x^2}}.$$ $\\blacksquare$",
+          "steps": [
+            "Reconheça a forma de Bernoulli com $n=2$ e escolha a substituição $v=y^{-1}$.",
+            "Calcule $v'=-y^{-2}y'$ e divida a equação original por $y^2$.",
+            "Reescreva em $v$: $v'-\\frac{1}{x}v=-x$, uma linear de primeira ordem.",
+            "Use o fator integrante $\\mu=1/x$ e integre para obter $v=-x^2+Cx$.",
+            "Retorne a $y=1/v=\\dfrac{1}{Cx-x^2}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Critério de exatidão de $M\\,dx+N\\,dy=0$",
+          "back": "Em região simplesmente conexa com $M,N\\in C^1$: exata $\\iff M_y=N_x$."
+        },
+        {
+          "front": "Como reconstruir $F$ numa equação exata?",
+          "back": "Integre $F_x=M$ em $x$ (gera $g(y)$), depois imponha $F_y=N$ para achar $g'(y)$."
+        },
+        {
+          "front": "Quando existe fator integrante $\\mu(x)$?",
+          "back": "Quando $\\frac{M_y-N_x}{N}$ depende só de $x$; então $\\mu(x)=e^{\\int \\frac{M_y-N_x}{N}\\,dx}$."
+        },
+        {
+          "front": "Substituição para equação homogênea de grau zero",
+          "back": "$v=y/x$, logo $y=vx$ e $y'=v+xv'$; o resultado é separável em $v$."
+        },
+        {
+          "front": "Substituição que lineariza a equação de Bernoulli $y'+py=qy^n$",
+          "back": "$v=y^{1-n}$, transformando em $v'+(1-n)p\\,v=(1-n)q$."
+        },
+        {
+          "front": "Soluções de uma equação exata $dF=0$",
+          "back": "As curvas de nível $F(x,y)=C$."
+        },
+        {
+          "front": "Por que a simples conexidade importa na exatidão?",
+          "back": "Sem ela, $M_y=N_x$ garante só exatidão local; pode não existir $F$ global (campo fechado mas não exato)."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Boyce & DiPrima, seções 2.4-2.6",
+          "ref": "livro"
+        },
+        {
+          "title": "Zill, Equações Diferenciais com Aplicações, cap. 2",
+          "ref": "livro"
+        },
+        {
+          "title": "Paul's Online Notes - Exact Equations / Bernoulli",
+          "ref": "notas"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise potencial de campo conservativo do Cálculo III: o teste de exatidão $M_y=N_x$ é literalmente o mesmo critério, e reconstruir $F$ é achar potencial — leve essa ponte para a aula.",
+          "Estude a seção de exatas de Boyce & DiPrima e resolva 6 equações exatas puras, sempre lembrando que a 'constante' de integração em $x$ é uma função $g(y)$.",
+          "Aprenda as duas receitas de fator integrante ($\\mu(x)$ quando $(M_y-N_x)/N$ só depende de $x$; $\\mu(y)$ no caso análogo) e aplique em 4-5 equações não exatas.",
+          "Domine as duas substituições clássicas: homogênea via $v=y/x$ e Bernoulli via $v=y^{1-n}$; refaça a álgebra de $y'=v+xv'$ e de $v'=(1-n)y^{-n}y'$ do zero.",
+          "Monte uma tabela de decisão: dada uma EDO de 1ª ordem, qual método tentar primeiro (separável? linear? exata? substituição?) — treinar a CLASSIFICAÇÃO é metade da prova.",
+          "Volte ao app: resolva os testes e anote o principal (o critério $M_y=N_x$, as receitas de $\\mu$ e as duas substituições que reduzem ao já conhecido)."
+        ],
+        "searchQueries": [
+          "equação diferencial exata critério exatidão função potencial exemplos",
+          "fator integrante mu(x) mu(y) equação não exata como encontrar",
+          "equação diferencial homogênea substituição v=y/x resolvida",
+          "equação de Bernoulli substituição linearização exercícios",
+          "exact differential equation integrating factor test simply connected",
+          "Bernoulli differential equation substitution v = y^(1-n)"
+        ],
+        "videos": [
+          {
+            "title": "Exact Equations & Integrating Factors",
+            "channel": "MIT OpenCourseWare (18.03)",
+            "note": "Aula sobre exatas e o vínculo com campos conservativos; ótima para amarrar com Cálculo III."
+          },
+          {
+            "title": "Equações exatas e de Bernoulli",
+            "channel": "Equaciona com Paulo Pereira",
+            "note": "Playlist de EDO em PT-BR: procure as aulas de exatas, fator integrante e Bernoulli com exercícios resolvidos."
+          },
+          {
+            "title": "Exact Differential Equations",
+            "channel": "Professor Leonard",
+            "note": "Explicação longa e detalhada, passo a passo, da reconstrução da função potencial $F$ — excelente para quem quer ver cada conta."
+          },
+          {
+            "title": "Bernoulli e equações homogêneas",
+            "channel": "Responde Aí",
+            "note": "Resoluções rápidas e comentadas das substituições clássicas, no estilo de prova de cálculo."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Boyce & DiPrima, seções 2.4-2.6 (exatas, fatores integrantes, substituições)",
+            "where": "Livro: teoria e listas de exercícios"
+          },
+          {
+            "title": "Zill, Equações Diferenciais com Aplicações, cap. 2",
+            "where": "Livro: ótimo tratamento de homogêneas e Bernoulli com muitos exemplos"
+          },
+          {
+            "title": "Paul's Online Math Notes - Exact Equations / Bernoulli Differential Equations",
+            "where": "Notas de aula online (tutorial.math.lamar.edu)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edo-03-existencia-unicidade-picard",
+      "title": "Existência e unicidade: o Teorema de Picard-Lindelöf",
+      "tagline": "O teorema que dá licença para resolver: quando o PVI tem uma e só uma solução, e por que isso é um ponto fixo de contração disfarçado.",
+      "objectives": [
+        "Ao final você consegue enunciar com precisão as hipóteses (continuidade e Lipschitz em $y$) e a tese do Teorema de Picard-Lindelöf.",
+        "Ao final você consegue justificar a equivalência entre o PVI e a equação integral de Volterra associada.",
+        "Ao final você consegue construir as iteradas de Picard e reconhecer o método como o Teorema do Ponto Fixo de Banach aplicado a um operador integral.",
+        "Ao final você consegue exibir exemplos de não unicidade (Peano sem Lipschitz) e usar o Lema de Grönwall para unicidade e dependência contínua.",
+        "Ao final você consegue discutir o intervalo maximal de existência e o teorema de fuga de todo compacto."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Equação integral equivalente",
+          "statement": "Para $f$ contínua, $\\varphi$ resolve o PVI $y'=f(x,y),\\,y(x_0)=y_0$ em $I$ se e só se $\\varphi(x)=y_0+\\int_{x_0}^x f(t,\\varphi(t))\\,dt$ para todo $x\\in I$. Essa forma integral incorpora a condição inicial e exige só continuidade."
+        },
+        {
+          "term": "Condição de Lipschitz em $y$",
+          "statement": "$f$ é Lipschitz em $y$ (com constante $L$) num retângulo se $|f(x,y_1)-f(x,y_2)|\\le L|y_1-y_2|$. Se $f_y$ existe e é limitada, então $f$ é Lipschitz em $y$ (com $L=\\sup|f_y|$)."
+        },
+        {
+          "term": "Iteração de Picard",
+          "statement": "Define-se $\\varphi_0(x)=y_0$ e $\\varphi_{k+1}(x)=y_0+\\int_{x_0}^x f(t,\\varphi_k(t))\\,dt$; sob as hipóteses do teorema, $\\varphi_k\\to\\varphi$ uniformemente para a única solução."
+        },
+        {
+          "term": "Intervalo maximal",
+          "statement": "O maior intervalo aberto $(\\omega_-,\\omega_+)$ em que a solução pode ser definida; pode ser estritamente menor que o domínio de $f$ (a solução pode explodir em tempo finito, como em $y'=y^2$)."
+        },
+        {
+          "term": "Lema de Grönwall",
+          "statement": "Se $u(x)\\ge0$ é contínua e $u(x)\\le \\alpha+\\int_{x_0}^x \\beta(t)u(t)\\,dt$ com $\\beta\\ge0$, então $u(x)\\le \\alpha\\,e^{\\int_{x_0}^x \\beta(t)\\,dt}$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Picard-Lindelöf (existência e unicidade local)",
+          "statement": "Seja $f$ contínua no retângulo $R=\\{(x,y):|x-x_0|\\le a,\\ |y-y_0|\\le b\\}$ e Lipschitz em $y$ em $R$. Sejam $M=\\max_R|f|$ e $h=\\min\\{a,\\ b/M\\}$. Então o PVI $y'=f(x,y),\\,y(x_0)=y_0$ possui uma única solução $\\varphi$ definida em $[x_0-h,\\,x_0+h]$.",
+          "whyItMatters": "É o teorema fundador da teoria: garante que o PVI é bem posto (solução existe e é única) e a demonstração via iteração de Picard fornece um método construtivo e a estreia do Teorema do Ponto Fixo de Banach em um espaço de funções."
+        },
+        {
+          "name": "Teorema de Peano",
+          "statement": "Se $f$ é apenas contínua em uma vizinhança de $(x_0,y_0)$, então o PVI tem ao menos uma solução local (mas possivelmente não única).",
+          "whyItMatters": "Mostra que continuidade basta para EXISTÊNCIA, mas não para UNICIDADE; o contraste com Picard isola exatamente o papel da condição de Lipschitz."
+        },
+        {
+          "name": "Continuação e fuga de compactos",
+          "statement": "Toda solução pode ser estendida a um intervalo maximal $(\\omega_-,\\omega_+)$; se $\\omega_+<\\infty$, então a solução deixa todo subconjunto compacto do domínio de $f$ quando $x\\to\\omega_+^-$ (em particular, $|\\varphi(x)|\\to\\infty$ se $f$ está definida em toda faixa).",
+          "whyItMatters": "Explica o fenômeno de blow-up em tempo finito e fornece o critério prático para garantir existência global: se a solução permanece em um compacto, ela não pode terminar."
+        }
+      ],
+      "summary": "Antes de resolver uma EDO, é legítimo perguntar: ela TEM solução? É ÚNICA? O Teorema de Picard-Lindelöf responde sob duas hipóteses sobre $f(x,y)$: continuidade (que dá existência) e a condição de Lipschitz em $y$ (que dá unicidade). A chave técnica é reformular o PVI como a equação integral $\\varphi(x)=y_0+\\int_{x_0}^x f(t,\\varphi(t))\\,dt$ — que já embute a condição inicial e troca derivabilidade por continuidade. Define-se então o operador $T[\\varphi](x)=y_0+\\int_{x_0}^x f(t,\\varphi(t))\\,dt$ e observa-se que resolver o PVI é achar um ponto fixo $T[\\varphi]=\\varphi$. Num intervalo pequeno o suficiente, $T$ é uma contração no espaço métrico completo das funções contínuas, e o Teorema do Ponto Fixo de Banach garante ponto fixo único — eis a solução. As iteradas de Picard $\\varphi_{k+1}=T[\\varphi_k]$ convergem uniformemente para ela.\n\nDois resultados completam o quadro. O Teorema de Peano mostra que, sem Lipschitz, ainda há existência, mas a unicidade pode falhar: o exemplo canônico é $y'=\\sqrt{|y|}$, $y(0)=0$, que admite tanto $y\\equiv0$ quanto $y=\\frac{1}{4}x^2$ (para $x\\ge0$). O Lema de Grönwall é a ferramenta universal para unicidade e dependência contínua dos dados iniciais: ele transforma uma desigualdade integral em uma estimativa exponencial explícita. Por fim, soluções têm um intervalo maximal de existência; o teorema de fuga de compactos diz que, se o tempo de existência é finito, a solução escapa de todo compacto — o blow-up de $y'=y^2$, cuja solução $y=1/(1-x)$ explode em $x=1$, é o protótipo.",
+      "commonPitfalls": [
+        "Esquecer que o intervalo de garantia é $[x_0-h,x_0+h]$ com $h=\\min\\{a,b/M\\}$, e não o retângulo inteiro: a solução pode existir só num subintervalo pequeno.",
+        "Confundir os papéis: continuidade dá existência (Peano); é a condição de Lipschitz que dá unicidade (Picard).",
+        "Achar que solução local implica solução global; equações como $y'=y^2$ têm dados suaves mas explodem em tempo finito.",
+        "Verificar Lipschitz no ponto errado: a constante $L$ deve valer em todo o retângulo (uniformemente), não apenas no ponto inicial."
+      ],
+      "worked": "**Iteração de Picard para $y'=y$, $y(0)=1$.**\n\nA equação integral é $\\varphi(x)=1+\\int_0^x \\varphi(t)\\,dt$. Iterando a partir de $\\varphi_0\\equiv1$:\n$$\\varphi_1(x)=1+\\int_0^x 1\\,dt=1+x,$$\n$$\\varphi_2(x)=1+\\int_0^x(1+t)\\,dt=1+x+\\tfrac{x^2}{2},$$\n$$\\varphi_3(x)=1+\\int_0^x\\Big(1+t+\\tfrac{t^2}{2}\\Big)dt=1+x+\\tfrac{x^2}{2}+\\tfrac{x^3}{6}.$$\nPor indução, $\\varphi_k(x)=\\sum_{j=0}^{k}\\dfrac{x^j}{j!}\\to e^x$ uniformemente em compactos. A solução única é $y=e^x$, exatamente o ponto fixo do operador. $\\blacksquare$\n\n**Contraponto (não unicidade):** $y'=\\sqrt{|y|}$, $y(0)=0$ não é Lipschitz em $y=0$ (a derivada explode), e de fato admite as soluções distintas $y\\equiv0$ e $y=\\tfrac14 x^2\\ (x\\ge0)$.",
+      "exercises": [
+        {
+          "prompt": "Para o PVI $y'=x^2+y^2$, $y(0)=0$, com $a=1$ e $b=1$, calcule $M=\\max_R|f|$ e o $h$ garantido por Picard-Lindelöf.",
+          "hint": "Em $R=[-1,1]\\times[-1,1]$, $|x^2+y^2|\\le2$, logo $M=2$ e $h=\\min\\{1,1/2\\}$.",
+          "difficulty": 3,
+          "solution": "Aqui $f(x,y)=x^2+y^2$ e o retângulo é $R=\\{|x|\\le1,\\ |y|\\le1\\}$ (com $a=b=1$, centrado em $(0,0)$).\n\n**Cálculo de $M$:** em $R$, $|x|\\le1$ e $|y|\\le1$, logo\n$$|f(x,y)|=x^2+y^2\\le 1+1=2,$$\ncom o máximo atingido nos cantos, por exemplo $(\\pm1,\\pm1)$. Assim $M=\\max_R|f|=2$.\n\n**Cálculo de $h$:** o teorema garante a solução em $[x_0-h,x_0+h]$ com\n$$h=\\min\\Big\\{a,\\ \\frac{b}{M}\\Big\\}=\\min\\Big\\{1,\\ \\frac{1}{2}\\Big\\}=\\frac12.$$\nPortanto a solução única existe (ao menos) em $\\big[-\\tfrac12,\\tfrac12\\big]$. $\\blacksquare$\n\n*(Observação: como no exemplo real esta equação sofre blow-up em tempo finito, o $h$ conservador de Picard é justamente uma garantia local — não uma cota do intervalo maximal.)*",
+          "steps": [
+            "Escreva $f(x,y)=x^2+y^2$ e o retângulo $R=[-1,1]\\times[-1,1]$ com $a=b=1$.",
+            "Limite $|f|$ em $R$: como $x^2\\le1$ e $y^2\\le1$, tem-se $|f|\\le2$, logo $M=2$.",
+            "Aplique a fórmula $h=\\min\\{a,b/M\\}$.",
+            "Substitua $a=1$, $b=1$, $M=2$ para obter $h=\\min\\{1,1/2\\}=1/2$.",
+            "Conclua que Picard-Lindelöf garante solução única em $[-1/2,1/2]$."
+          ]
+        },
+        {
+          "prompt": "Calcule as três primeiras iteradas de Picard $\\varphi_0,\\varphi_1,\\varphi_2$ para $y'=2x(1+y)$, $y(0)=0$.",
+          "hint": "Use $\\varphi_{k+1}=\\int_0^x 2t(1+\\varphi_k(t))\\,dt$; a solução exata é $e^{x^2}-1$.",
+          "difficulty": 3,
+          "solution": "A equação integral associada é $\\varphi(x)=\\int_0^x 2t\\,(1+\\varphi(t))\\,dt$, e iteramos a partir de $\\varphi_0\\equiv0$.\n\n**$\\varphi_1$:**\n$$\\varphi_1(x)=\\int_0^x 2t\\,(1+0)\\,dt=\\int_0^x 2t\\,dt=x^2.$$\n\n**$\\varphi_2$:**\n$$\\varphi_2(x)=\\int_0^x 2t\\,(1+\\varphi_1(t))\\,dt=\\int_0^x 2t\\,(1+t^2)\\,dt=\\int_0^x(2t+2t^3)\\,dt=x^2+\\frac{x^4}{2}.$$\n\nAssim\n$$\\varphi_0=0,\\qquad \\varphi_1=x^2,\\qquad \\varphi_2=x^2+\\frac{x^4}{2}.$$\nOs termos reproduzem a série de $e^{x^2}-1=x^2+\\dfrac{x^4}{2}+\\dfrac{x^6}{6}+\\cdots$, que é a solução exata. $\\blacksquare$",
+          "steps": [
+            "Monte o operador de Picard $\\varphi_{k+1}(x)=\\int_0^x 2t(1+\\varphi_k(t))\\,dt$ a partir de $\\varphi_0=0$.",
+            "Calcule $\\varphi_1$ substituindo $\\varphi_0=0$: $\\int_0^x 2t\\,dt=x^2$.",
+            "Calcule $\\varphi_2$ substituindo $\\varphi_1=t^2$ no integrando.",
+            "Integre $\\int_0^x(2t+2t^3)\\,dt=x^2+x^4/2$.",
+            "Compare com a expansão de $e^{x^2}-1$ para ver a convergência para a solução exata."
+          ]
+        },
+        {
+          "prompt": "Use o Lema de Grönwall para provar que o PVI $y'=f(x,y)$ com $f$ Lipschitz em $y$ tem no máximo uma solução.",
+          "hint": "Se $\\varphi,\\psi$ são soluções, ponha $u=|\\varphi-\\psi|$ e mostre $u(x)\\le L\\int_{x_0}^x u\\,dt$; conclua $u\\equiv0$.",
+          "difficulty": 4,
+          "solution": "Sejam $\\varphi,\\psi$ duas soluções do mesmo PVI $y'=f(x,y),\\,y(x_0)=y_0$ num intervalo $I$ contendo $x_0$, com $f$ Lipschitz em $y$ (constante $L$). Pela equação integral,\n$$\\varphi(x)-\\psi(x)=\\int_{x_0}^x\\big[f(t,\\varphi(t))-f(t,\\psi(t))\\big]\\,dt.$$\nTomando módulos (para $x\\ge x_0$) e usando a condição de Lipschitz:\n$$u(x):=|\\varphi(x)-\\psi(x)|\\le\\int_{x_0}^x|f(t,\\varphi)-f(t,\\psi)|\\,dt\\le L\\int_{x_0}^x u(t)\\,dt.$$\nEssa é a hipótese do Lema de Grönwall com $\\alpha=0$ e $\\beta\\equiv L$:\n$$u(x)\\le\\alpha\\,e^{\\int_{x_0}^x\\beta\\,dt}=0\\cdot e^{L(x-x_0)}=0.$$\nComo $u\\ge0$ e $u\\le0$, segue $u(x)\\equiv0$, ou seja, $\\varphi\\equiv\\psi$ em $x\\ge x_0$ (o caso $x\\le x_0$ é análogo, invertendo os limites). Logo a solução é única. $\\blacksquare$",
+          "steps": [
+            "Suponha duas soluções $\\varphi,\\psi$ do mesmo PVI e subtraia suas equações integrais.",
+            "Defina $u=|\\varphi-\\psi|$ e tome módulos, aplicando a condição de Lipschitz $|f(t,\\varphi)-f(t,\\psi)|\\le L\\,u(t)$.",
+            "Obtenha a desigualdade integral $u(x)\\le L\\int_{x_0}^x u\\,dt$.",
+            "Aplique o Lema de Grönwall com $\\alpha=0$, concluindo $u(x)\\le 0$.",
+            "Como $u\\ge0$, deduza $u\\equiv0$, isto é, $\\varphi=\\psi$: a solução é única."
+          ]
+        },
+        {
+          "prompt": "Mostre que a solução de $y'=1+y^2$, $y(0)=0$, é $y=\\tan x$ e identifique seu intervalo maximal de existência.",
+          "hint": "É separável; o intervalo maximal é $(-\\pi/2,\\pi/2)$ pois $\\tan x\\to\\pm\\infty$ nas bordas (blow-up).",
+          "difficulty": 2,
+          "solution": "A equação $y'=1+y^2$ é separável e autônoma. Separando (válido pois $1+y^2>0$):\n$$\\frac{dy}{1+y^2}=dx\\ \\Longrightarrow\\ \\arctan y=x+C.$$\nCondição inicial $y(0)=0$: $\\arctan 0=0+C\\Rightarrow C=0$. Logo\n$$\\arctan y=x\\ \\Longrightarrow\\ \\boxed{y=\\tan x}.$$\n\n**Intervalo maximal:** $\\tan x$ é a solução enquanto $\\arctan y=x$ faz sentido, isto é, para $x\\in(-\\pi/2,\\pi/2)$, onde $\\tan$ é contínua. Quando $x\\to(\\pi/2)^-$, $y=\\tan x\\to+\\infty$ (e $\\to-\\infty$ quando $x\\to(-\\pi/2)^+$): a solução escapa de todo compacto — é o blow-up em tempo finito. Portanto o intervalo maximal de existência é\n$$\\Big(-\\frac{\\pi}{2},\\ \\frac{\\pi}{2}\\Big).$$\nNote que $f(x,y)=1+y^2$ é suave em todo o plano, mas a solução ainda assim explode em tempo finito. $\\blacksquare$",
+          "steps": [
+            "Reconheça a equação como separável e escreva $\\frac{dy}{1+y^2}=dx$.",
+            "Integre para obter $\\arctan y=x+C$.",
+            "Use $y(0)=0$ para achar $C=0$, logo $y=\\tan x$.",
+            "Identifique onde $\\tan x$ é contínua: $(-\\pi/2,\\pi/2)$.",
+            "Observe o blow-up $\\tan x\\to\\pm\\infty$ nas bordas e conclua que o intervalo maximal é $(-\\pi/2,\\pi/2)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Hipóteses do Teorema de Picard-Lindelöf",
+          "back": "$f$ contínua em um retângulo $R$ e Lipschitz em $y$: $|f(x,y_1)-f(x,y_2)|\\le L|y_1-y_2|$ em $R$."
+        },
+        {
+          "front": "Equação integral equivalente ao PVI",
+          "back": "$\\varphi(x)=y_0+\\int_{x_0}^x f(t,\\varphi(t))\\,dt$."
+        },
+        {
+          "front": "Qual hipótese garante unicidade (e não só existência)?",
+          "back": "A condição de Lipschitz em $y$. Só continuidade (Peano) dá existência, mas não unicidade."
+        },
+        {
+          "front": "Tamanho do intervalo garantido por Picard-Lindelöf",
+          "back": "$[x_0-h,x_0+h]$ com $h=\\min\\{a,\\,b/M\\}$, $M=\\max_R|f|$."
+        },
+        {
+          "front": "Exemplo clássico de não unicidade",
+          "back": "$y'=\\sqrt{|y|}$, $y(0)=0$: soluções $y\\equiv0$ e $y=\\frac14 x^2$ (não é Lipschitz em $0$)."
+        },
+        {
+          "front": "Lema de Grönwall (forma integral)",
+          "back": "$u\\le \\alpha+\\int_{x_0}^x\\beta u\\,dt$, $\\beta\\ge0$ $\\Rightarrow$ $u(x)\\le\\alpha\\,e^{\\int_{x_0}^x\\beta\\,dt}$."
+        },
+        {
+          "front": "Qual teorema da Análise está por trás de Picard?",
+          "back": "O Teorema do Ponto Fixo de Banach (contração) aplicado ao operador integral $T$."
+        },
+        {
+          "front": "O que diz o blow-up em tempo finito?",
+          "back": "Se o intervalo maximal é finito, a solução foge de todo compacto (ex.: $y'=y^2$ dá $y=1/(1-x)$)."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Doering & Lopes (IMPA), cap. 2",
+          "ref": "livro"
+        },
+        {
+          "title": "Coddington & Levinson, cap. 1-2",
+          "ref": "livro"
+        },
+        {
+          "title": "Sotomayor, Lições de EDO (IMPA), cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Antes de tudo, revise o Teorema do Ponto Fixo de Banach (contração em espaço métrico completo) — Picard É esse teorema aplicado a um operador integral, e sem ele nada faz sentido.",
+          "Leia Doering & Lopes (IMPA) cap. 2 e escreva a demonstração de Picard-Lindelöf em etapas: equação integral equivalente, o operador $T$, a estimativa de contração e a conclusão do ponto fixo.",
+          "Faça e refaça o exemplo canônico de não unicidade $y'=\\sqrt{|y|},\\,y(0)=0$ e o de blow-up $y'=y^2$; eles isolam, respectivamente, o papel de Lipschitz e o do intervalo maximal.",
+          "Aprenda o Lema de Grönwall e use-o para provar unicidade e dependência contínua — é o cavalo de batalha de toda prova de análise/EDO sobre o tema.",
+          "Pratique calcular $h=\\min\\{a,b/M\\}$ e as iteradas de Picard em 3-4 exemplos, verificando a convergência para a solução conhecida.",
+          "Volte ao app: resolva os testes e anote o principal (hipóteses de Picard vs. Peano, a equação integral, Grönwall e o significado do intervalo maximal/blow-up)."
+        ],
+        "searchQueries": [
+          "teorema de Picard-Lindelöf demonstração ponto fixo de Banach",
+          "condição de Lipschitz existência e unicidade EDO",
+          "iteração de Picard exemplo convergência solução",
+          "lema de Grönwall demonstração unicidade dependência contínua",
+          "Peano existence theorem non uniqueness example sqrt",
+          "maximal interval of existence blow up finite time ODE"
+        ],
+        "videos": [
+          {
+            "title": "Existence and Uniqueness (Picard iteration)",
+            "channel": "MIT OpenCourseWare (18.03)",
+            "note": "Aula sobre existência e unicidade e o método iterativo de Picard, com o exemplo geométrico do funil/anti-funil."
+          },
+          {
+            "title": "Picard-Lindelöf / Banach fixed point",
+            "channel": "Dr. Peyam",
+            "note": "Procure os vídeos de existência e unicidade e de ponto fixo de contração; boa ponte entre análise e EDO."
+          },
+          {
+            "title": "Grönwall's inequality",
+            "channel": "Michael Penn",
+            "note": "Demonstração limpa do Lema de Grönwall e aplicações — útil para a parte de unicidade/dependência contínua."
+          },
+          {
+            "title": "Teorema de existência e unicidade",
+            "channel": "Matemática Universitária",
+            "note": "Explicação em PT-BR das hipóteses e do enunciado de Picard-Lindelöf, com contraexemplos de não unicidade."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Doering & Lopes, Equações Diferenciais Ordinárias (IMPA), cap. 2",
+            "where": "Livro: demonstração completa e rigorosa de existência e unicidade"
+          },
+          {
+            "title": "Coddington & Levinson, Theory of Ordinary Differential Equations, caps. 1-2",
+            "where": "Livro (pós-graduação): referência definitiva de existência, unicidade e continuação"
+          },
+          {
+            "title": "Sotomayor, Lições de Equações Diferenciais Ordinárias (IMPA), cap. 1",
+            "where": "Livro: dependência contínua das condições iniciais e teoria qualitativa"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edo-04-edos-lineares-ordem-n",
+      "title": "EDOs lineares de ordem $n$: estrutura, Wronskiano e métodos de solução",
+      "tagline": "Por que o espaço de soluções tem dimensão exatamente $n$, e como a equação característica resolve tudo no caso de coeficientes constantes.",
+      "objectives": [
+        "Ao final você consegue usar o princípio da superposição e descrever o conjunto-solução como espaço afim de dimensão $n$.",
+        "Ao final você consegue calcular o Wronskiano, decidir independência linear e aplicar a fórmula de Abel.",
+        "Ao final você consegue resolver equações lineares homogêneas de coeficientes constantes via equação característica, tratando raízes reais, repetidas e complexas.",
+        "Ao final você consegue achar soluções particulares pelos métodos dos coeficientes a determinar e da variação de parâmetros."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Operador diferencial linear",
+          "statement": "$L[y]=y^{(n)}+a_{n-1}(x)y^{(n-1)}+\\cdots+a_1(x)y'+a_0(x)y$; $L$ é linear: $L[c_1y_1+c_2y_2]=c_1L[y_1]+c_2L[y_2]$. A equação é homogênea se $L[y]=0$, completa se $L[y]=g(x)$."
+        },
+        {
+          "term": "Wronskiano",
+          "statement": "Para $y_1,\\dots,y_n$, $W(x)=\\det\\begin{pmatrix} y_1 & \\cdots & y_n\\\\ y_1' & \\cdots & y_n'\\\\ \\vdots & & \\vdots\\\\ y_1^{(n-1)} & \\cdots & y_n^{(n-1)}\\end{pmatrix}$. Se as $y_i$ são soluções de $L[y]=0$, então $W\\equiv0$ ou $W$ nunca se anula em $I$."
+        },
+        {
+          "term": "Sistema fundamental",
+          "statement": "Um conjunto de $n$ soluções linearmente independentes $\\{y_1,\\dots,y_n\\}$ da homogênea; a solução geral homogênea é $y_h=c_1y_1+\\cdots+c_ny_n$."
+        },
+        {
+          "term": "Equação característica",
+          "statement": "Para coeficientes constantes $y^{(n)}+a_{n-1}y^{(n-1)}+\\cdots+a_0y=0$, substitui-se $y=e^{rx}$ e obtém-se $r^n+a_{n-1}r^{n-1}+\\cdots+a_0=0$; cada raiz fornece soluções."
+        },
+        {
+          "term": "Variação de parâmetros (2ª ordem)",
+          "statement": "Para $y''+p y'+q y=g$ com fundamental $\\{y_1,y_2\\}$, uma particular é $y_p=-y_1\\int\\dfrac{y_2 g}{W}\\,dx+y_2\\int\\dfrac{y_1 g}{W}\\,dx$, onde $W=W(y_1,y_2)$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Existência, unicidade e dimensão do espaço de soluções",
+          "statement": "Se $a_0,\\dots,a_{n-1},g$ são contínuas em $I$, então o PVI $L[y]=g$ com $y(x_0),\\dots,y^{(n-1)}(x_0)$ dados tem solução única em todo $I$. O conjunto das soluções de $L[y]=0$ é um espaço vetorial de dimensão exatamente $n$.",
+          "whyItMatters": "É a versão de dimensão finita da teoria linear: garante que basta achar $n$ soluções independentes para obter TODAS. A dimensão $n$ vem da bijeção solução $\\leftrightarrow$ vetor de condições iniciais em $\\mathbb{R}^n$."
+        },
+        {
+          "name": "Wronskiano e independência linear (Fórmula de Abel)",
+          "statement": "Para soluções de $y^{(n)}+a_{n-1}y^{(n-1)}+\\cdots=0$ vale $W(x)=W(x_0)\\,\\exp\\!\\Big(-\\int_{x_0}^x a_{n-1}(t)\\,dt\\Big)$. Logo $\\{y_i\\}$ é linearmente independente em $I$ se e só se $W(x_0)\\neq0$ para algum (equivalentemente todo) $x_0\\in I$.",
+          "whyItMatters": "Transforma a verificação de independência linear de funções num único cálculo de determinante, e a fórmula de Abel mostra por que o Wronskiano de soluções nunca 'pisca' — é zero sempre ou nunca."
+        },
+        {
+          "name": "Estrutura da solução geral (completa)",
+          "statement": "A solução geral de $L[y]=g$ é $y=y_h+y_p$, onde $y_h$ percorre o espaço $n$-dimensional de soluções da homogênea e $y_p$ é uma particular fixa de $L[y]=g$.",
+          "whyItMatters": "Decompõe o problema em duas tarefas independentes — resolver a homogênea (estrutura) e achar uma particular (método) — e unifica todas as equações lineares sob a mesma forma afim."
+        }
+      ],
+      "summary": "A teoria das equações lineares de ordem $n$ é álgebra linear em ação. O operador $L[y]=y^{(n)}+a_{n-1}y^{(n-1)}+\\cdots+a_0y$ é linear, então o princípio da superposição vale: combinações de soluções da homogênea são soluções. O teorema-chave diz que o espaço de soluções de $L[y]=0$ tem dimensão EXATAMENTE $n$, porque a aplicação que leva uma solução em seu vetor de condições iniciais $(y(x_0),\\dots,y^{(n-1)}(x_0))$ é um isomorfismo com $\\mathbb{R}^n$ (consequência da existência e unicidade). Achar a solução geral homogênea é, portanto, achar uma BASE: $n$ soluções linearmente independentes, e o Wronskiano é o detector de independência. A fórmula de Abel garante que esse determinante é zero em todo lugar ou em lugar nenhum.\n\nNo caso de COEFICIENTES CONSTANTES, tudo se resolve pela equação característica $p(r)=r^n+a_{n-1}r^{n-1}+\\cdots+a_0=0$: a cada raiz real simples $r$ corresponde $e^{rx}$; a uma raiz repetida de multiplicidade $m$ correspondem $e^{rx},xe^{rx},\\dots,x^{m-1}e^{rx}$; e a um par complexo $\\alpha\\pm i\\beta$ correspondem $e^{\\alpha x}\\cos\\beta x$ e $e^{\\alpha x}\\sin\\beta x$. Para a equação COMPLETA $L[y]=g$, somamos uma particular $y_p$: os COEFICIENTES A DETERMINAR funcionam quando $g$ é polinômio, exponencial, seno/cosseno ou produtos desses (chutamos a forma e ajustamos constantes), enquanto a VARIAÇÃO DE PARÂMETROS é o método universal que funciona para qualquer $g$ contínua, ao custo de integrais. A estrutura $y=y_h+y_p$ amarra tudo.",
+      "commonPitfalls": [
+        "Concluir independência linear de funções gerais só porque o Wronskiano se anula em um ponto — para funções arbitrárias $W=0$ não implica dependência; a equivalência vale para SOLUÇÕES de uma mesma EDO linear.",
+        "No método dos coeficientes a determinar, esquecer de multiplicar o chute por $x$ (ou $x^m$) quando ele já é solução da homogênea (ressonância).",
+        "Para raízes complexas, deixar a solução em forma complexa $e^{(\\alpha+i\\beta)x}$ em vez de extrair as soluções reais $e^{\\alpha x}\\cos\\beta x$ e $e^{\\alpha x}\\sin\\beta x$.",
+        "Aplicar a fórmula da variação de parâmetros com a equação fora da forma normalizada (coeficiente de $y''$ diferente de $1$), o que altera $g$ e o Wronskiano."
+      ],
+      "worked": "**Resolver $y''-3y'+2y=4e^{3x}$.**\n\n*Homogênea:* equação característica $r^2-3r+2=(r-1)(r-2)=0$, raízes $r=1,2$. Logo $y_h=c_1e^x+c_2e^{2x}$.\n\n*Particular (coeficientes a determinar):* como $g=4e^{3x}$ e $3$ não é raiz característica, tentamos $y_p=Ae^{3x}$. Então $y_p''-3y_p'+2y_p=(9-9+2)Ae^{3x}=2Ae^{3x}$. Igualando a $4e^{3x}$: $2A=4\\Rightarrow A=2$, logo $y_p=2e^{3x}$.\n\n*Solução geral:* $y=c_1e^x+c_2e^{2x}+2e^{3x}$. $\\blacksquare$\n\n*(Se em vez disso fosse $g=4e^{x}$, haveria ressonância com $r=1$ e o chute correto seria $y_p=Axe^{x}$.)*",
+      "exercises": [
+        {
+          "prompt": "Resolva $y''+4y'+4y=0$ e explique o aparecimento de $xe^{-2x}$.",
+          "hint": "A característica $r^2+4r+4=(r+2)^2$ tem raiz dupla $r=-2$; multiplicidade $2$ gera $e^{-2x}$ e $xe^{-2x}$.",
+          "difficulty": 2,
+          "solution": "Equação característica de $y''+4y'+4y=0$:\n$$r^2+4r+4=(r+2)^2=0\\ \\Longrightarrow\\ r=-2\\ \\text{(raiz dupla)}.$$\nUma raiz de multiplicidade $2$ fornece apenas UMA solução exponencial $e^{-2x}$, mas o espaço de soluções tem dimensão $2$; a segunda solução independente é $x\\,e^{-2x}$. Logo\n$$\\boxed{y=c_1e^{-2x}+c_2\\,x\\,e^{-2x}}.$$\n\n**Por que aparece $xe^{-2x}$?** Pela redução de ordem: buscando $y=u(x)e^{-2x}$, a substituição na EDO com raiz dupla anula os termos em $u$ e em $u'$, sobrando $u''=0$, cujas soluções são $u=c_1+c_2x$. Daí $y=(c_1+c_2x)e^{-2x}$. Equivalentemente, é o limite $\\lim_{r_2\\to r_1}\\frac{e^{r_2x}-e^{r_1x}}{r_2-r_1}=xe^{r_1x}$: quando as duas raízes colidem, a segunda solução 'nasce' como derivada em $r$, introduzindo o fator $x$. Verificação direta: se $y=xe^{-2x}$, então $y'=(1-2x)e^{-2x}$, $y''=(-4+4x)e^{-2x}$, e $y''+4y'+4y=(-4+4x+4-8x+4x)e^{-2x}=0$. $\\blacksquare$",
+          "steps": [
+            "Escreva a equação característica $r^2+4r+4=0$ e fatore como $(r+2)^2$.",
+            "Identifique a raiz dupla $r=-2$ (multiplicidade 2).",
+            "Note que uma raiz dupla dá só $e^{-2x}$, mas o espaço tem dimensão 2, exigindo uma segunda solução.",
+            "Justifique $xe^{-2x}$ via redução de ordem ($y=u\\,e^{-2x}$ leva a $u''=0$) ou como limite de raízes que colidem.",
+            "Escreva a solução geral $y=(c_1+c_2x)e^{-2x}$ e verifique por substituição."
+          ]
+        },
+        {
+          "prompt": "Resolva $y''+y=\\sec x$ no intervalo $(-\\pi/2,\\pi/2)$ por variação de parâmetros.",
+          "hint": "Fundamental $\\{\\cos x,\\sin x\\}$, $W=1$; calcule $y_p=-\\cos x\\int \\sin x\\sec x\\,dx+\\sin x\\int\\cos x\\sec x\\,dx$.",
+          "difficulty": 4,
+          "solution": "A homogênea $y''+y=0$ tem sistema fundamental $\\{y_1=\\cos x,\\,y_2=\\sin x\\}$, com Wronskiano\n$$W=\\begin{vmatrix}\\cos x & \\sin x\\\\ -\\sin x & \\cos x\\end{vmatrix}=\\cos^2x+\\sin^2x=1.$$\n\n**Variação de parâmetros** (equação já na forma $y''+y=g$ com $g=\\sec x$):\n$$y_p=-y_1\\int\\frac{y_2\\,g}{W}\\,dx+y_2\\int\\frac{y_1\\,g}{W}\\,dx=-\\cos x\\int\\sin x\\sec x\\,dx+\\sin x\\int\\cos x\\sec x\\,dx.$$\nComo $\\sin x\\sec x=\\tan x$ e $\\cos x\\sec x=1$:\n$$\\int\\tan x\\,dx=-\\ln|\\cos x|,\\qquad \\int 1\\,dx=x.$$\nLogo\n$$y_p=-\\cos x\\,(-\\ln|\\cos x|)+\\sin x\\cdot x=\\cos x\\,\\ln(\\cos x)+x\\sin x,$$\nusando $\\cos x>0$ em $(-\\pi/2,\\pi/2)$. Solução geral:\n$$\\boxed{y=c_1\\cos x+c_2\\sin x+\\cos x\\,\\ln(\\cos x)+x\\sin x}.$$ $\\blacksquare$",
+          "steps": [
+            "Resolva a homogênea $y''+y=0$ obtendo o fundamental $\\{\\cos x,\\sin x\\}$.",
+            "Calcule o Wronskiano $W=1$.",
+            "Monte $y_p=-y_1\\int\\frac{y_2 g}{W}+y_2\\int\\frac{y_1 g}{W}$ com $g=\\sec x$.",
+            "Simplifique os integrandos: $\\sin x\\sec x=\\tan x$ e $\\cos x\\sec x=1$, e integre.",
+            "Combine: $y_p=\\cos x\\ln(\\cos x)+x\\sin x$ e some à solução homogênea."
+          ]
+        },
+        {
+          "prompt": "Encontre a forma do chute (sem calcular os coeficientes) para uma particular de $y''-2y'+y=x e^{x}$.",
+          "hint": "A raiz $r=1$ é dupla; $e^x$ e $xe^x$ já estão na homogênea, então multiplique por $x^2$: $y_p=(Ax^3+Bx^2)e^x$.",
+          "difficulty": 3,
+          "solution": "Homogênea de $y''-2y'+y=x e^x$: característica $r^2-2r+1=(r-1)^2=0$, raiz $r=1$ dupla, então\n$$y_h=(c_1+c_2x)e^x,$$\ne $\\{e^x,\\,xe^x\\}$ já estão no espaço da homogênea.\n\n**Chute para a particular:** o termo forçante $g=x\\,e^x$ é (polinômio de grau $1$)$\\times e^{1\\cdot x}$. Sem ressonância, o chute seria $(Ax+B)e^x$. Mas $r=1$ é raiz de multiplicidade $m=2$, então multiplicamos por $x^m=x^2$:\n$$\\boxed{y_p=x^2(Ax+B)e^x=(Ax^3+Bx^2)e^x}.$$\nEsse é o formato correto (com $A,B$ a determinar por substituição). O fator $x^2$ garante que nenhum termo do chute coincida com $e^x$ ou $xe^x$ da homogênea. $\\blacksquare$",
+          "steps": [
+            "Resolva a característica $r^2-2r+1=(r-1)^2$ e identifique a raiz dupla $r=1$.",
+            "Escreva a homogênea $y_h=(c_1+c_2x)e^x$, observando que $e^x$ e $xe^x$ já são soluções.",
+            "Reconheça $g=xe^x$ como (polinômio grau 1)$\\times e^x$: chute base $(Ax+B)e^x$.",
+            "Detecte a ressonância: $r=1$ tem multiplicidade $2$, então multiplique por $x^2$.",
+            "Escreva a forma final $y_p=(Ax^3+Bx^2)e^x$."
+          ]
+        },
+        {
+          "prompt": "Verifique pela fórmula de Abel que $W(x)$ das soluções de $y''+\\frac{1}{x}y'-\\frac{1}{x^2}y=0$ é proporcional a $1/x$.",
+          "hint": "Aqui $a_1(x)=1/x$, logo $W=W_0\\exp(-\\int \\frac1x\\,dx)=W_0/x$.",
+          "difficulty": 3,
+          "solution": "A equação $y''+\\dfrac{1}{x}y'-\\dfrac{1}{x^2}y=0$ está na forma normalizada $y''+a_1(x)y'+a_0(x)y=0$ com $a_1(x)=\\dfrac{1}{x}$.\n\n**Fórmula de Abel:** para soluções de uma EDO linear de 2ª ordem,\n$$W(x)=W(x_0)\\,\\exp\\!\\Big(-\\int_{x_0}^x a_1(t)\\,dt\\Big).$$\nAqui\n$$-\\int a_1\\,dx=-\\int\\frac{1}{x}\\,dx=-\\ln|x|,$$\nlogo\n$$W(x)=W_0\\,e^{-\\ln|x|}=\\frac{W_0}{|x|}\\ \\propto\\ \\frac{1}{x}.$$\nPortanto $W(x)$ é proporcional a $1/x$, como afirmado. $\\blacksquare$\n\n*(De fato, esta é uma equação de Euler cujas soluções são $y_1=x$ e $y_2=x^{-1}$; diretamente, $W=\\begin{vmatrix}x & x^{-1}\\\\ 1 & -x^{-2}\\end{vmatrix}=-x^{-1}-x^{-1}=-2/x$, confirmando a proporcionalidade a $1/x$.)*",
+          "steps": [
+            "Coloque a equação na forma normalizada e leia o coeficiente $a_1(x)=1/x$.",
+            "Escreva a fórmula de Abel $W=W_0\\exp(-\\int a_1\\,dx)$.",
+            "Calcule $-\\int(1/x)\\,dx=-\\ln|x|$.",
+            "Exponencie: $W=W_0 e^{-\\ln|x|}=W_0/|x|$, logo $W\\propto 1/x$.",
+            "Confirme (opcional) calculando o Wronskiano direto de $y_1=x$, $y_2=1/x$, obtendo $-2/x$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Dimensão do espaço de soluções de $L[y]=0$ (ordem $n$)",
+          "back": "Exatamente $n$ (isomorfismo com $\\mathbb{R}^n$ via condições iniciais)."
+        },
+        {
+          "front": "Definição do Wronskiano de $y_1,\\dots,y_n$",
+          "back": "Determinante da matriz cujas linhas são as derivadas de ordem $0$ até $n-1$ das $y_i$."
+        },
+        {
+          "front": "Fórmula de Abel",
+          "back": "$W(x)=W(x_0)\\,e^{-\\int_{x_0}^x a_{n-1}(t)\\,dt}$ para soluções de $y^{(n)}+a_{n-1}y^{(n-1)}+\\cdots=0$."
+        },
+        {
+          "front": "Solução para raiz característica complexa $\\alpha\\pm i\\beta$",
+          "back": "$e^{\\alpha x}\\cos\\beta x$ e $e^{\\alpha x}\\sin\\beta x$."
+        },
+        {
+          "front": "Solução para raiz característica $r$ de multiplicidade $m$",
+          "back": "$e^{rx},\\,xe^{rx},\\,\\dots,\\,x^{m-1}e^{rx}$."
+        },
+        {
+          "front": "Quando usar coeficientes a determinar?",
+          "back": "Quando $g$ é polinômio, exponencial, seno/cosseno ou produtos/combinações desses."
+        },
+        {
+          "front": "O que é ressonância no chute da particular?",
+          "back": "Quando o chute já é solução da homogênea; corrige-se multiplicando por $x^m$ (multiplicidade da raiz)."
+        },
+        {
+          "front": "Fórmula da variação de parâmetros (2ª ordem)",
+          "back": "$y_p=-y_1\\int\\frac{y_2 g}{W}dx+y_2\\int\\frac{y_1 g}{W}dx$, com a equação na forma $y''+py'+qy=g$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Boyce & DiPrima, caps. 3-4",
+          "ref": "livro"
+        },
+        {
+          "title": "Figueiredo & Neves (IMPA), cap. 2",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.03 - Linear ODEs, constant coefficients",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Trate esta aula como álgebra linear: releia espaço vetorial, base, dimensão e independência linear, pois a tese central é que o espaço de soluções tem dimensão exatamente $n$.",
+          "Estude Boyce & DiPrima caps. 3-4 e memorize o dicionário raiz característica → solução: raiz real simples $e^{rx}$; múltipla $x^k e^{rx}$; complexa $e^{\\alpha x}\\cos\\beta x,\\ e^{\\alpha x}\\sin\\beta x$.",
+          "Pratique o Wronskiano e a fórmula de Abel em 4-5 exemplos, entendendo por que $W$ de soluções é zero em todo lugar ou em lugar nenhum.",
+          "Domine coeficientes a determinar, com atenção OBSESSIVA à ressonância (multiplicar o chute por $x^m$ quando ele já resolve a homogênea).",
+          "Aprenda variação de parâmetros como método universal e aplique quando o lado direito não for do tipo 'coeficientes a determinar' (ex.: $\\sec x$, $\\tan x$).",
+          "Volte ao app: resolva os testes e anote o principal (dimensão $n$, dicionário das raízes, ressonância e a fórmula de variação de parâmetros na forma normalizada)."
+        ],
+        "searchQueries": [
+          "EDO linear coeficientes constantes equação característica raízes repetidas",
+          "Wronskiano independência linear fórmula de Abel demonstração",
+          "método dos coeficientes a determinar ressonância multiplicar por x",
+          "variação de parâmetros segunda ordem fórmula exercícios",
+          "linear ODE order n solution space dimension existence uniqueness",
+          "undetermined coefficients resonance repeated root example"
+        ],
+        "videos": [
+          {
+            "title": "Second order linear ODEs, constant coefficients",
+            "channel": "MIT OpenCourseWare (18.03)",
+            "note": "Aulas sobre equação característica, raízes complexas/repetidas e coeficientes a determinar; base sólida."
+          },
+          {
+            "title": "EDO de ordem superior - coeficientes constantes",
+            "channel": "O Professor Ferretto",
+            "note": "Explicação em PT-BR do método da equação característica com muitos exemplos no estilo de concurso."
+          },
+          {
+            "title": "Variation of Parameters",
+            "channel": "Professor Leonard",
+            "note": "Dedução e aplicação detalhada da fórmula de variação de parâmetros, passo a passo."
+          },
+          {
+            "title": "Wronskian and linear independence",
+            "channel": "Dr. Peyam",
+            "note": "Discute o Wronskiano, a sutileza $W=0$ para funções gerais vs. soluções, e a fórmula de Abel."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Boyce & DiPrima, caps. 3-4 (equações lineares de 2ª ordem e ordem superior)",
+            "where": "Livro: teoria completa e listas extensas"
+          },
+          {
+            "title": "Figueiredo & Neves, Equações Diferenciais Aplicadas (IMPA), cap. 2",
+            "where": "Livro: equilíbrio entre rigor e método"
+          },
+          {
+            "title": "Paul's Online Math Notes - Higher Order Differential Equations",
+            "where": "Notas de aula online (tutorial.math.lamar.edu)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edo-05-sistemas-lineares-exponencial-matriz",
+      "title": "Sistemas lineares e a exponencial de matriz $e^{At}$",
+      "tagline": "Toda EDO linear de ordem $n$ é um sistema $x'=Ax$, e a solução é literalmente $e^{At}x_0$ — autovalores e forma de Jordan governam tudo.",
+      "objectives": [
+        "Ao final você consegue converter uma EDO de ordem $n$ em um sistema de primeira ordem $x'=Ax$ e vice-versa.",
+        "Ao final você consegue definir a exponencial de matriz por sua série e provar suas propriedades fundamentais.",
+        "Ao final você consegue calcular $e^{At}$ no caso diagonalizável via autovalores/autovetores e no caso geral via forma de Jordan ou autovetores generalizados.",
+        "Ao final você consegue resolver sistemas não homogêneos $x'=Ax+g(t)$ pela fórmula da variação de parâmetros com matriz fundamental."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Redução de ordem $n$ a sistema",
+          "statement": "Pondo $x_1=y,\\,x_2=y',\\,\\dots,\\,x_n=y^{(n-1)}$, a EDO $y^{(n)}=-a_{n-1}y^{(n-1)}-\\cdots-a_0y$ vira $x'=Ax$ com $A$ a matriz companheira; resolver a EDO equivale a resolver o sistema."
+        },
+        {
+          "term": "Exponencial de matriz",
+          "statement": "$e^{At}=\\sum_{k=0}^{\\infty}\\dfrac{(At)^k}{k!}=I+At+\\dfrac{A^2t^2}{2!}+\\cdots$; a série converge para toda matriz $A$ e todo $t$ (convergência absoluta na norma de operador)."
+        },
+        {
+          "term": "Matriz fundamental",
+          "statement": "Uma matriz $\\Phi(t)$ cujas colunas formam uma base de soluções de $x'=Ax$, com $\\Phi'=A\\Phi$ e $\\det\\Phi(t)\\neq0$. Se $\\Phi(0)=I$, então $\\Phi(t)=e^{At}$."
+        },
+        {
+          "term": "Solução por autovalores",
+          "statement": "Se $A v=\\lambda v$ com $v\\neq0$, então $x(t)=e^{\\lambda t}v$ é solução de $x'=Ax$. Para $A$ diagonalizável com base de autovetores, combinam-se essas soluções."
+        },
+        {
+          "term": "Autovetor generalizado / Jordan",
+          "statement": "Quando $A$ não é diagonalizável, usam-se cadeias $(A-\\lambda I)^k v=0$; soluções ganham fatores polinomiais em $t$, refletindo os blocos de Jordan: $e^{Jt}$ tem entradas $t^j e^{\\lambda t}/j!$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Solução do PVI linear via exponencial de matriz",
+          "statement": "A única solução de $x'=Ax,\\ x(t_0)=x_0$ ($A$ constante) é $x(t)=e^{A(t-t_0)}x_0$. Em particular $\\Phi(t)=e^{At}$ é a matriz fundamental que vale $I$ em $t=0$.",
+          "whyItMatters": "Fecha a teoria linear de coeficientes constantes numa única fórmula: a dinâmica inteira está codificada em $e^{At}$, e calcular essa matriz é o problema central — reduzido à álgebra linear espectral de $A$."
+        },
+        {
+          "name": "Propriedades de $e^{At}$",
+          "statement": "$\\dfrac{d}{dt}e^{At}=Ae^{At}=e^{At}A$; $e^{A\\cdot0}=I$; $e^{A(t+s)}=e^{At}e^{As}$; $\\left(e^{At}\\right)^{-1}=e^{-At}$; e se $AB=BA$ então $e^{(A+B)t}=e^{At}e^{Bt}$ (em geral FALSO se $AB\\neq BA$).",
+          "whyItMatters": "São as regras de cálculo que tornam $e^{At}$ utilizável; a ressalva sobre comutatividade é uma das pegadinhas mais frequentes em provas. Se $A=PDP^{-1}$, então $e^{At}=Pe^{Dt}P^{-1}$, o que dá um algoritmo no caso diagonalizável."
+        },
+        {
+          "name": "Variação de parâmetros para sistemas",
+          "statement": "A solução de $x'=Ax+g(t),\\ x(t_0)=x_0$ é $x(t)=e^{A(t-t_0)}x_0+\\int_{t_0}^{t}e^{A(t-s)}g(s)\\,ds$.",
+          "whyItMatters": "Generaliza a fórmula escalar do fator integrante para sistemas e é a base da fórmula de Duhamel, central em EDPs e teoria de controle."
+        }
+      ],
+      "summary": "Toda EDO linear de ordem $n$ pode ser reescrita como um sistema de primeira ordem $x'=Ax$ introduzindo as derivadas como novas variáveis — então basta entender sistemas. E sistemas lineares de coeficientes constantes têm uma resposta surpreendentemente limpa: a solução de $x'=Ax$, $x(0)=x_0$ é $x(t)=e^{At}x_0$, onde a EXPONENCIAL DE MATRIZ é definida pela mesma série de Taylor da exponencial escalar, $e^{At}=\\sum (At)^k/k!$, que converge para qualquer $A$. As propriedades $\\frac{d}{dt}e^{At}=Ae^{At}$ e $e^{A(t+s)}=e^{At}e^{As}$ fazem dela uma genuína exponencial — com a ressalva crucial de que $e^{A+B}=e^Ae^B$ só vale quando $A$ e $B$ comutam.\n\nCalcular $e^{At}$ é um problema de ÁLGEBRA LINEAR ESPECTRAL. Se $A$ é diagonalizável, $A=PDP^{-1}$ e $e^{At}=Pe^{Dt}P^{-1}$, onde $e^{Dt}$ é diagonal com entradas $e^{\\lambda_i t}$ — equivalentemente, cada autovetor $v$ com autovalor $\\lambda$ gera a solução $e^{\\lambda t}v$. Quando $A$ NÃO é diagonalizável, a forma de Jordan entra em cena: blocos de Jordan produzem soluções com fatores polinomiais $t,t^2,\\dots$ multiplicando $e^{\\lambda t}$ (exatamente o análogo das raízes repetidas da equação característica da aula anterior — não por acaso, pois a matriz companheira tem polinômio característico igual ao característico da EDO). Autovalores complexos $\\alpha\\pm i\\beta$ produzem oscilações $e^{\\alpha t}(\\cos\\beta t,\\sin\\beta t)$. Para o caso não homogêneo $x'=Ax+g(t)$, a variação de parâmetros dá a fórmula integral $x(t)=e^{At}x_0+\\int_0^t e^{A(t-s)}g(s)\\,ds$, que reaparecerá como fórmula de Duhamel.",
+      "commonPitfalls": [
+        "Usar $e^{A+B}=e^Ae^B$ sem verificar que $A$ e $B$ comutam — em geral é FALSO.",
+        "Calcular $e^{At}$ exponenciando entrada por entrada da matriz $At$ — isso está errado; é a série de potências de matrizes.",
+        "Esquecer os autovetores generalizados quando $A$ é deficiente (não diagonalizável): faltam soluções e elas têm fatores em $t$.",
+        "Ao tratar autovalores complexos, não separar as partes real e imaginária para obter soluções reais."
+      ],
+      "worked": "**Calcular $e^{At}$ e resolver $x'=Ax$ para $A=\\begin{pmatrix}1 & 1\\\\ 0 & 2\\end{pmatrix}$.**\n\nAutovalores: $\\det(A-\\lambda I)=(1-\\lambda)(2-\\lambda)=0\\Rightarrow\\lambda_1=1,\\ \\lambda_2=2$ (distintos, logo diagonalizável).\n\nAutovetores: para $\\lambda=1$, $(A-I)v=0\\Rightarrow v_1=(1,0)^\\top$. Para $\\lambda=2$, $(A-2I)v=0\\Rightarrow v_2=(1,1)^\\top$.\n\nLogo a solução geral é\n$$x(t)=c_1e^{t}\\begin{pmatrix}1\\\\0\\end{pmatrix}+c_2e^{2t}\\begin{pmatrix}1\\\\1\\end{pmatrix}.$$\nCom $P=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$, $P^{-1}=\\begin{pmatrix}1&-1\\\\0&1\\end{pmatrix}$ e $e^{Dt}=\\mathrm{diag}(e^{t},e^{2t})$:\n$$e^{At}=Pe^{Dt}P^{-1}=\\begin{pmatrix}e^{t} & e^{2t}-e^{t}\\\\ 0 & e^{2t}\\end{pmatrix}.$$\nConfira: $e^{A\\cdot0}=I$ e a primeira coluna $(e^t,0)^\\top$ é a solução com $x_0=(1,0)^\\top$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Converta $y''+5y'+6y=0$ em um sistema $x'=Ax$ e ache os autovalores de $A$; compare com a equação característica da EDO.",
+          "hint": "$x_1=y,x_2=y'$ dá $A=\\begin{pmatrix}0&1\\\\-6&-5\\end{pmatrix}$; o polinômio característico é $\\lambda^2+5\\lambda+6$, idêntico ao da EDO.",
+          "difficulty": 2,
+          "solution": "**Conversão em sistema:** ponha $x_1=y,\\ x_2=y'$. Então $x_1'=x_2$ e, de $y''=-5y'-6y$, $x_2'=-6x_1-5x_2$. Assim $x'=Ax$ com\n$$A=\\begin{pmatrix}0 & 1\\\\ -6 & -5\\end{pmatrix}\\quad(\\text{matriz companheira}).$$\n\n**Autovalores de $A$:**\n$$\\det(A-\\lambda I)=\\det\\begin{pmatrix}-\\lambda & 1\\\\ -6 & -5-\\lambda\\end{pmatrix}=(-\\lambda)(-5-\\lambda)-(1)(-6)=\\lambda^2+5\\lambda+6.$$\nRaízes: $\\lambda^2+5\\lambda+6=(\\lambda+2)(\\lambda+3)=0\\Rightarrow\\lambda=-2,-3$.\n\n**Comparação:** a equação característica da EDO $y''+5y'+6y=0$ é $r^2+5r+6=0$, IDÊNTICA ao polinômio característico de $A$. Não é coincidência: a matriz companheira é construída justamente para ter polinômio característico igual ao da EDO, e por isso os expoentes $e^{-2x},e^{-3x}$ da EDO correspondem exatamente aos autovalores $-2,-3$ do sistema. $\\blacksquare$",
+          "steps": [
+            "Defina $x_1=y$, $x_2=y'$ e escreva $x_1'=x_2$.",
+            "Use $y''=-6y-5y'$ para obter $x_2'=-6x_1-5x_2$, montando $A=\\begin{pmatrix}0&1\\\\-6&-5\\end{pmatrix}$.",
+            "Calcule $\\det(A-\\lambda I)=\\lambda^2+5\\lambda+6$.",
+            "Fatore e ache os autovalores $\\lambda=-2,-3$.",
+            "Compare com a equação característica $r^2+5r+6$ da EDO e note que são idênticas (matriz companheira)."
+          ]
+        },
+        {
+          "prompt": "Calcule $e^{At}$ para $A=\\begin{pmatrix}0&-\\omega\\\\ \\omega&0\\end{pmatrix}$ e interprete geometricamente.",
+          "hint": "Some a série; obtém-se a matriz de rotação $\\begin{pmatrix}\\cos\\omega t & -\\sin\\omega t\\\\ \\sin\\omega t & \\cos\\omega t\\end{pmatrix}$ (autovalores $\\pm i\\omega$).",
+          "difficulty": 4,
+          "solution": "Seja $A=\\begin{pmatrix}0 & -\\omega\\\\ \\omega & 0\\end{pmatrix}$. Note que\n$$A^2=\\begin{pmatrix}-\\omega^2 & 0\\\\ 0 & -\\omega^2\\end{pmatrix}=-\\omega^2 I.$$\nLogo as potências ciclam: $A^2=-\\omega^2I$, $A^3=-\\omega^2A$, $A^4=\\omega^4I$, etc. Na série,\n$$e^{At}=\\sum_{k\\ge0}\\frac{(At)^k}{k!}=\\Big(\\sum_{j\\ge0}\\frac{(-1)^j(\\omega t)^{2j}}{(2j)!}\\Big)I+\\Big(\\sum_{j\\ge0}\\frac{(-1)^j(\\omega t)^{2j+1}}{(2j+1)!}\\Big)\\frac{A}{\\omega}.$$\nAs séries são $\\cos(\\omega t)$ e $\\sin(\\omega t)$, e $\\frac{A}{\\omega}=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$. Portanto\n$$\\boxed{e^{At}=\\cos(\\omega t)\\,I+\\sin(\\omega t)\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}=\\begin{pmatrix}\\cos\\omega t & -\\sin\\omega t\\\\ \\sin\\omega t & \\cos\\omega t\\end{pmatrix}}.$$\n\n**Interpretação geométrica:** $e^{At}$ é a matriz de ROTAÇÃO de ângulo $\\omega t$ no plano. As trajetórias de $x'=Ax$ são círculos percorridos com velocidade angular $\\omega$ — coerente com os autovalores $\\pm i\\omega$ (imaginários puros $\\Rightarrow$ centro, órbitas periódicas). $\\blacksquare$",
+          "steps": [
+            "Calcule $A^2=-\\omega^2 I$ e observe que as potências de $A$ ciclam entre múltiplos de $I$ e de $A$.",
+            "Separe a série $e^{At}$ em partes pares (múltiplos de $I$) e ímpares (múltiplos de $A$).",
+            "Reconheça as séries de $\\cos\\omega t$ e $\\sin\\omega t$.",
+            "Monte $e^{At}=\\cos\\omega t\\,I+\\frac{\\sin\\omega t}{\\omega}A$ e escreva a matriz de rotação.",
+            "Interprete: $e^{At}$ gira o plano de $\\omega t$; órbitas são círculos (autovalores $\\pm i\\omega$, centro)."
+          ]
+        },
+        {
+          "prompt": "Para o bloco de Jordan $A=\\begin{pmatrix}\\lambda&1\\\\0&\\lambda\\end{pmatrix}$, mostre que $e^{At}=e^{\\lambda t}\\begin{pmatrix}1&t\\\\0&1\\end{pmatrix}$.",
+          "hint": "Escreva $A=\\lambda I+N$ com $N$ nilpotente ($N^2=0$); como $\\lambda I$ e $N$ comutam, $e^{At}=e^{\\lambda t}e^{Nt}=e^{\\lambda t}(I+Nt)$.",
+          "difficulty": 3,
+          "solution": "Escrevemos o bloco de Jordan como $A=\\lambda I+N$, onde\n$$N=\\begin{pmatrix}0 & 1\\\\ 0 & 0\\end{pmatrix},\\qquad N^2=\\begin{pmatrix}0&0\\\\0&0\\end{pmatrix}=0\\ (\\text{nilpotente}).$$\nComo $\\lambda I$ e $N$ COMUTAM ($\\lambda I$ comuta com tudo), vale a propriedade multiplicativa:\n$$e^{At}=e^{(\\lambda I+N)t}=e^{\\lambda t I}\\,e^{Nt}=e^{\\lambda t}\\,e^{Nt}.$$\nA série de $e^{Nt}$ trunca porque $N^2=0$:\n$$e^{Nt}=I+Nt+\\frac{(Nt)^2}{2!}+\\cdots=I+Nt=\\begin{pmatrix}1 & t\\\\ 0 & 1\\end{pmatrix}.$$\nPortanto\n$$\\boxed{e^{At}=e^{\\lambda t}\\begin{pmatrix}1 & t\\\\ 0 & 1\\end{pmatrix}}.$$\nO fator $t$ fora da diagonal é a assinatura da não diagonalizabilidade — o análogo matricial do $x\\,e^{rx}$ das raízes repetidas. $\\blacksquare$",
+          "steps": [
+            "Decomponha $A=\\lambda I+N$ com $N$ tendo apenas a entrada $(1,2)$ igual a $1$.",
+            "Verifique que $N^2=0$ (nilpotente) e que $\\lambda I$ comuta com $N$.",
+            "Use $e^{(\\lambda I+N)t}=e^{\\lambda t}e^{Nt}$ (válido por comutarem).",
+            "Trunque a série $e^{Nt}=I+Nt$ pois $N^2=0$.",
+            "Multiplique para obter $e^{At}=e^{\\lambda t}\\begin{pmatrix}1&t\\\\0&1\\end{pmatrix}$."
+          ]
+        },
+        {
+          "prompt": "Use a variação de parâmetros para resolver $x'=Ax+g(t)$ com $A=\\begin{pmatrix}1&0\\\\0&2\\end{pmatrix}$, $g(t)=(e^{t},0)^\\top$, $x(0)=0$.",
+          "hint": "$e^{At}=\\mathrm{diag}(e^t,e^{2t})$; calcule $x(t)=\\int_0^t e^{A(t-s)}g(s)\\,ds$ componente a componente.",
+          "difficulty": 3,
+          "solution": "Como $A=\\begin{pmatrix}1&0\\\\0&2\\end{pmatrix}$ é diagonal, $e^{At}=\\begin{pmatrix}e^{t}&0\\\\0&e^{2t}\\end{pmatrix}$, e para $x(0)=0$ a variação de parâmetros dá\n$$x(t)=\\int_0^t e^{A(t-s)}g(s)\\,ds,\\qquad g(s)=\\begin{pmatrix}e^{s}\\\\ 0\\end{pmatrix}.$$\nCalculamos $e^{A(t-s)}g(s)$:\n$$e^{A(t-s)}=\\begin{pmatrix}e^{t-s}&0\\\\0&e^{2(t-s)}\\end{pmatrix},\\qquad e^{A(t-s)}g(s)=\\begin{pmatrix}e^{t-s}\\cdot e^{s}\\\\ e^{2(t-s)}\\cdot 0\\end{pmatrix}=\\begin{pmatrix}e^{t}\\\\ 0\\end{pmatrix}.$$\nIntegrando de $0$ a $t$:\n$$x(t)=\\int_0^t\\begin{pmatrix}e^{t}\\\\0\\end{pmatrix}\\,ds=\\begin{pmatrix}e^{t}\\int_0^t ds\\\\ 0\\end{pmatrix}=\\begin{pmatrix}t\\,e^{t}\\\\ 0\\end{pmatrix}.$$\nPortanto\n$$\\boxed{x(t)=\\begin{pmatrix}t\\,e^{t}\\\\ 0\\end{pmatrix}}.$$\nA primeira componente é $x_1(t)=t e^t$ (ressonância: forçante $e^t$ coincide com o modo $e^{t}$), e a segunda é identicamente nula pois $g_2\\equiv0$. $\\blacksquare$",
+          "steps": [
+            "Escreva $e^{At}=\\mathrm{diag}(e^t,e^{2t})$ por $A$ ser diagonal.",
+            "Monte a fórmula $x(t)=\\int_0^t e^{A(t-s)}g(s)\\,ds$ com $x(0)=0$.",
+            "Calcule $e^{A(t-s)}g(s)$: a 1ª componente vira $e^{t-s}e^{s}=e^{t}$; a 2ª é $0$.",
+            "Integre em $s$ de $0$ a $t$: a 1ª componente dá $t e^t$.",
+            "Escreva a solução $x(t)=(t e^t,\\,0)^\\top$ e note a ressonância na primeira componente."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição da exponencial de matriz",
+          "back": "$e^{At}=\\sum_{k=0}^\\infty \\frac{(At)^k}{k!}$ (série convergente para toda $A$)."
+        },
+        {
+          "front": "Solução de $x'=Ax,\\ x(0)=x_0$",
+          "back": "$x(t)=e^{At}x_0$."
+        },
+        {
+          "front": "$e^{A+B}=e^Ae^B$ vale sempre?",
+          "back": "Não — só quando $AB=BA$ (matrizes comutam)."
+        },
+        {
+          "front": "Como calcular $e^{At}$ se $A=PDP^{-1}$ (diagonalizável)?",
+          "back": "$e^{At}=Pe^{Dt}P^{-1}$ com $e^{Dt}=\\mathrm{diag}(e^{\\lambda_1 t},\\dots,e^{\\lambda_n t})$."
+        },
+        {
+          "front": "Solução associada a um autopar $(\\lambda,v)$ de $A$",
+          "back": "$x(t)=e^{\\lambda t}v$."
+        },
+        {
+          "front": "Derivada de $e^{At}$",
+          "back": "$\\frac{d}{dt}e^{At}=Ae^{At}=e^{At}A$."
+        },
+        {
+          "front": "Variação de parâmetros para $x'=Ax+g$",
+          "back": "$x(t)=e^{A(t-t_0)}x_0+\\int_{t_0}^t e^{A(t-s)}g(s)\\,ds$."
+        },
+        {
+          "front": "O que produz fatores polinomiais em $t$ na solução?",
+          "back": "Autovalores com multiplicidade algébrica maior que a geométrica (blocos de Jordan/autovetores generalizados)."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Boyce & DiPrima, cap. 7",
+          "ref": "livro"
+        },
+        {
+          "title": "Hirsch, Smale & Devaney, caps. 3-6",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.06 - exp(At) e sistemas",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise autovalores, autovetores, diagonalização e forma de Jordan de álgebra linear — calcular $e^{At}$ É esse conteúdo em ação, então sem ele a aula trava.",
+          "Estude a definição de $e^{At}$ pela série e prove as propriedades básicas ($\\frac{d}{dt}e^{At}=Ae^{At}$, $e^{A(t+s)}=e^{At}e^{As}$) e a ressalva sobre comutatividade.",
+          "Pratique calcular $e^{At}$ no caso diagonalizável ($A=PDP^{-1}$) em 3-4 matrizes $2\\times2$ e $3\\times3$, incluindo autovalores complexos (rotação).",
+          "Trate o caso NÃO diagonalizável: escreva $A=\\lambda I+N$ com $N$ nilpotente para blocos de Jordan e obtenha os fatores polinomiais em $t$.",
+          "Conecte com a aula anterior: converta uma EDO de ordem $n$ em sistema, veja a matriz companheira e confirme que seu polinômio característico é o mesmo da equação característica.",
+          "Volte ao app: resolva os testes e anote o principal (série de $e^{At}$, algoritmo $Pe^{Dt}P^{-1}$, pegadinha da não comutatividade e a fórmula de variação de parâmetros para sistemas)."
+        ],
+        "searchQueries": [
+          "exponencial de matriz e^{At} cálculo diagonalização exemplos",
+          "sistema linear x'=Ax solução autovalores autovetores",
+          "matriz de Jordan exponencial parte nilpotente t e^{lambda t}",
+          "variação de parâmetros sistemas matriz fundamental fórmula",
+          "matrix exponential e^{At} computation Jordan form",
+          "e^{A+B} = e^A e^B commuting matrices counterexample"
+        ],
+        "videos": [
+          {
+            "title": "Differential Equations and exp(At)",
+            "channel": "MIT OpenCourseWare (18.06, Gilbert Strang)",
+            "note": "Aula em que Strang resolve $x'=Ax$ via autovalores e apresenta a exponencial de matriz — a melhor ponte com álgebra linear."
+          },
+          {
+            "title": "Systems of ODEs / matrix exponential",
+            "channel": "MIT OpenCourseWare (18.03)",
+            "note": "Aulas sobre sistemas lineares, matriz fundamental e cálculo de $e^{At}$ nos casos real e complexo."
+          },
+          {
+            "title": "The matrix exponential",
+            "channel": "Dr. Peyam",
+            "note": "Vários vídeos calculando $e^{At}$ por série, por diagonalização e via Jordan; bom para consolidar técnica."
+          },
+          {
+            "title": "Sistemas de EDO lineares",
+            "channel": "Matemática Universitária",
+            "note": "Explicação em PT-BR de sistemas $x'=Ax$ e solução por autovalores/autovetores."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Boyce & DiPrima, cap. 7 (sistemas de equações lineares de primeira ordem)",
+            "where": "Livro: teoria de sistemas, matriz fundamental e $e^{At}$"
+          },
+          {
+            "title": "Hirsch, Smale & Devaney, Differential Equations, Dynamical Systems, and an Introduction to Chaos, caps. 3-6",
+            "where": "Livro: tratamento moderno de sistemas lineares e a exponencial de matriz"
+          },
+          {
+            "title": "Arnold, Ordinary Differential Equations, caps. 1-3",
+            "where": "Livro: visão geométrica de fluxos lineares e da exponencial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edo-06-estabilidade-plano-fase",
+      "title": "Sistemas autônomos: plano de fase, estabilidade e linearização",
+      "tagline": "Quando não dá para resolver, ainda dá para entender: classificar equilíbrios, desenhar trajetórias e decidir estabilidade pelo espectro.",
+      "objectives": [
+        "Ao final você consegue encontrar pontos de equilíbrio de um sistema autônomo $x'=F(x)$ e esboçar o plano de fase em $\\mathbb{R}^2$.",
+        "Ao final você consegue classificar o equilíbrio de um sistema linear plano (nó, sela, foco, centro) pelos autovalores e pelo diagrama traço-determinante.",
+        "Ao final você consegue enunciar e aplicar o critério de estabilidade pelo sinal das partes reais dos autovalores.",
+        "Ao final você consegue linearizar um sistema não linear no equilíbrio (Jacobiana) e usar Hartman-Grobman e funções de Lyapunov para concluir estabilidade."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Sistema autônomo e equilíbrio",
+          "statement": "$x'=F(x)$ com $F$ independente de $t$; um equilíbrio (ponto crítico) é $x^*$ com $F(x^*)=0$, correspondendo a uma solução constante $x(t)\\equiv x^*$."
+        },
+        {
+          "term": "Estabilidade de Lyapunov",
+          "statement": "$x^*$ é estável se trajetórias que começam perto permanecem perto: $\\forall\\varepsilon>0\\,\\exists\\delta>0$ com $\\|x(0)-x^*\\|<\\delta\\Rightarrow\\|x(t)-x^*\\|<\\varepsilon\\ \\forall t\\ge0$. É assintoticamente estável se, além disso, $x(t)\\to x^*$."
+        },
+        {
+          "term": "Classificação linear plana",
+          "statement": "Para $x'=Ax$ em $\\mathbb{R}^2$ com autovalores $\\lambda_{1,2}$: reais de mesmo sinal $\\to$ nó; reais de sinais opostos $\\to$ sela; complexos com $\\mathrm{Re}\\neq0\\to$ foco (espiral); imaginários puros $\\to$ centro."
+        },
+        {
+          "term": "Diagrama traço-determinante",
+          "statement": "Com $T=\\mathrm{tr}\\,A$ e $D=\\det A$: $D<0$ sela; $D>0$ e $T<0$ estável, $T>0$ instável; $T^2-4D>0$ nó, $<0$ foco, $T=0$ (e $D>0$) centro."
+        },
+        {
+          "term": "Linearização e Jacobiana",
+          "statement": "Perto de $x^*$, $x'=F(x)\\approx DF(x^*)(x-x^*)$; a matriz Jacobiana $J=DF(x^*)$ governa o comportamento local quando $x^*$ é hiperbólico (nenhum autovalor com parte real nula)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Estabilidade de sistemas lineares",
+          "statement": "O equilíbrio $0$ de $x'=Ax$ é assintoticamente estável se e só se todos os autovalores de $A$ têm parte real negativa; é estável (não assint.) se todas as partes reais são $\\le0$ e os autovalores com parte real nula são semissimples (blocos de Jordan triviais); é instável se algum autovalor tem parte real positiva.",
+          "whyItMatters": "Reduz toda a questão de estabilidade linear a um cálculo espectral. É o critério de fundo por trás dos testes de Routh-Hurwitz e da estabilidade de pontos de operação em engenharia e em modelos dinâmicos."
+        },
+        {
+          "name": "Teorema de Hartman-Grobman",
+          "statement": "Se $x^*$ é um equilíbrio hiperbólico de $x'=F(x)$ (a Jacobiana $DF(x^*)$ não tem autovalor com parte real nula), então existe um homeomorfismo local que conjuga o fluxo não linear ao fluxo do sistema linearizado $y'=DF(x^*)y$.",
+          "whyItMatters": "Justifica rigorosamente a linearização: perto de equilíbrios hiperbólicos, o retrato de fase não linear é uma 'deformação contínua' do linear, então o tipo (sela, nó, foco) e a estabilidade se transferem."
+        },
+        {
+          "name": "Método direto de Lyapunov",
+          "statement": "Seja $V$ de classe $C^1$ numa vizinhança de $x^*$, com $V(x^*)=0$ e $V(x)>0$ para $x\\neq x^*$. Se $\\dot V(x)=\\nabla V\\cdot F(x)\\le0$, então $x^*$ é estável; se $\\dot V(x)<0$ para $x\\neq x^*$, então $x^*$ é assintoticamente estável.",
+          "whyItMatters": "Permite decidir estabilidade SEM resolver a EDO e SEM linearizar — essencial em casos não hiperbólicos (centros, problemas degenerados) onde Hartman-Grobman não se aplica; é a ferramenta-padrão em controle não linear."
+        }
+      ],
+      "summary": "Quando uma equação não pode ser resolvida explicitamente — o caso típico em sistemas não lineares — passamos à ANÁLISE QUALITATIVA: em vez da fórmula da solução, estudamos a geometria das trajetórias no PLANO DE FASE. Os pontos de equilíbrio $F(x^*)=0$ são o esqueleto do retrato de fase, e a primeira pergunta é a ESTABILIDADE: pequenas perturbações decaem (assintoticamente estável), permanecem limitadas (estável) ou crescem (instável)? Para sistemas LINEARES planos $x'=Ax$, a resposta é completa e bela: os autovalores de $A$ determinam o tipo do equilíbrio (nó, sela, foco, centro) e a estabilidade, tudo legível no diagrama traço-determinante. O critério-mestre é o sinal das partes reais: assintoticamente estável se e só se todos os autovalores têm $\\mathrm{Re}<0$.\n\nPara sistemas NÃO LINEARES, a estratégia é LINEARIZAR no equilíbrio usando a matriz Jacobiana $J=DF(x^*)$. O Teorema de Hartman-Grobman garante que, se o equilíbrio é HIPERBÓLICO (nenhum autovalor com parte real nula), o retrato de fase não linear local é topologicamente equivalente ao do sistema linearizado — então o tipo e a estabilidade são herdados do espectro de $J$. O caso delicado é o NÃO HIPERBÓLICO (por exemplo, autovalores imaginários puros, que no linear dariam um centro): aí a linearização é inconclusiva e precisamos de outra ferramenta. A mais poderosa é a FUNÇÃO DE LYAPUNOV — uma 'energia generalizada' $V$ que decresce ao longo das trajetórias —, que decide estabilidade sem resolver nem linearizar. Em dimensão $2$, o Teorema de Poincaré-Bendixson fecha o quadro: complementa essa análise descrevendo quando trajetórias limitadas convergem para ciclos-limite.",
+      "commonPitfalls": [
+        "Concluir que um equilíbrio é um centro no sistema não linear só porque a linearização tem autovalores imaginários puros — caso não hiperbólico, a linearização NÃO decide (pode virar foco estável ou instável).",
+        "Trocar o papel de traço e determinante: é $\\det A<0$ que dá sela; estabilidade exige $T<0$ E $D>0$.",
+        "Esquecer de transladar o equilíbrio para a origem antes de linearizar, ou avaliar a Jacobiana no ponto errado.",
+        "Achar que uma função de Lyapunov sempre existe ou é fácil de achar — sua construção é uma arte, e a ausência de uma não prova instabilidade."
+      ],
+      "worked": "**Classificar a estabilidade da origem para $x'=\\begin{pmatrix}-2 & 1\\\\ 1 & -2\\end{pmatrix}x$.**\n\nTraço $T=-4$, determinante $D=(-2)(-2)-(1)(1)=3$. Discriminante $T^2-4D=16-12=4>0$, então autovalores reais e distintos.\n\nAutovalores: $\\lambda=\\dfrac{T\\pm\\sqrt{T^2-4D}}{2}=\\dfrac{-4\\pm2}{2}=\\{-1,-3\\}$. Ambos negativos.\n\nComo $D>0$, $T<0$ e $T^2-4D>0$: é um **nó assintoticamente estável**. Todas as trajetórias convergem para a origem, com a direção lenta dada pelo autovetor de $\\lambda=-1$. $\\blacksquare$\n\n**Não linear (ideia):** para $x'=y,\\ y'=-x-y$, a Jacobiana na origem é $\\begin{pmatrix}0&1\\\\-1&-1\\end{pmatrix}$, com autovalores $-\\frac12\\pm\\frac{\\sqrt3}{2}i$ (parte real $<0$): equilíbrio hiperbólico, **foco assintoticamente estável** — e por Hartman-Grobman essa classificação vale para o sistema não linear.",
+      "exercises": [
+        {
+          "prompt": "Classifique a origem de $x'=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}x$ (tipo e estabilidade).",
+          "hint": "$T=2$, $D=1-4=-3<0$ $\\Rightarrow$ sela (instável); autovalores $3$ e $-1$.",
+          "difficulty": 2,
+          "solution": "Para $A=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$:\n$$T=\\operatorname{tr}A=1+1=2,\\qquad D=\\det A=(1)(1)-(2)(2)=1-4=-3.$$\nComo $D<0$, os autovalores são reais de sinais opostos e o equilíbrio é uma **sela** (sempre instável).\n\n**Autovalores explícitos:** $\\lambda=\\dfrac{T\\pm\\sqrt{T^2-4D}}{2}=\\dfrac{2\\pm\\sqrt{4+12}}{2}=\\dfrac{2\\pm4}{2}=\\{3,\\,-1\\}$.\n\nComo há um autovalor positivo ($3$) e um negativo ($-1$), a origem é uma **sela instável**: há uma direção de crescimento exponencial (autovetor de $\\lambda=3$) e uma de decaimento (autovetor de $\\lambda=-1$). $\\blacksquare$",
+          "steps": [
+            "Calcule traço $T=2$ e determinante $D=-3$.",
+            "Use o sinal de $D$: $D<0$ implica autovalores reais de sinais opostos, logo sela.",
+            "Confirme achando os autovalores $\\lambda=(T\\pm\\sqrt{T^2-4D})/2=3$ e $-1$.",
+            "Como um autovalor é positivo, conclua que a sela é instável.",
+            "Descreva a dinâmica: direção instável (autovetor de $3$) e estável (autovetor de $-1$)."
+          ]
+        },
+        {
+          "prompt": "Encontre os equilíbrios do sistema $x'=x-x^2-xy$, $y'=y-y^2-xy$ no primeiro quadrante e linearize em cada um.",
+          "hint": "Resolva $F=0$; haverá $(0,0),(1,0),(0,1)$ e um interior; calcule a Jacobiana em cada ponto.",
+          "difficulty": 4,
+          "solution": "O sistema é $x'=x-x^2-xy=x(1-x-y)$, $y'=y-y^2-xy=y(1-x-y)$.\n\n**Equilíbrios** ($F=0$): ambos os fatores contêm $(1-x-y)$.\n- $x=0,\\,y=0$: $(0,0)$.\n- $x=0$ e $1-x-y=0$: $(0,1)$.\n- $y=0$ e $1-x-y=0$: $(1,0)$.\n- $1-x-y=0$ (anula os dois campos simultaneamente): TODA a reta $x+y=1$ é de equilíbrios.\n\nOu seja, o conjunto de equilíbrios é $\\{(0,0)\\}\\cup\\{x+y=1\\}$; em particular $(1,0)$ e $(0,1)$ pertencem a essa reta.\n\n**Jacobiana:** $J(x,y)=\\begin{pmatrix}1-2x-y & -x\\\\ -y & 1-2y-x\\end{pmatrix}$.\n\n- Em $(0,0)$: $J=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$, autovalores $1,1>0$ → **nó instável (repulsor)**.\n- Em um ponto genérico $(a,1-a)$ da reta: $J=\\begin{pmatrix}-a & -a\\\\ -(1-a) & -(1-a)\\end{pmatrix}$, com $\\operatorname{tr}J=-1$ e $\\det J=0$. Autovalores $0$ e $-1$: direção $0$ ao longo da própria reta de equilíbrios (não isolados) e direção $-1$ transversal atratora. Em particular, em $(1,0)$: $J=\\begin{pmatrix}-1&-1\\\\0&0\\end{pmatrix}$; em $(0,1)$: $J=\\begin{pmatrix}0&0\\\\-1&-1\\end{pmatrix}$ — ambos com autovalores $\\{0,-1\\}$.\n\nOs equilíbrios da reta são NÃO hiperbólicos (têm autovalor $0$), o que é esperado por formarem um contínuo de equilíbrios; a reta $x+y=1$ atrai as trajetórias transversalmente, enquanto $(0,0)$ as repele. $\\blacksquare$",
+          "steps": [
+            "Fatore os campos: $x'=x(1-x-y)$ e $y'=y(1-x-y)$.",
+            "Resolva $F=0$ por casos, encontrando $(0,0)$, $(0,1)$, $(1,0)$ e a reta inteira $x+y=1$ de equilíbrios.",
+            "Escreva a Jacobiana geral $J(x,y)$.",
+            "Avalie em $(0,0)$: $J=I$, autovalores $1,1$ → nó instável.",
+            "Avalie num ponto genérico da reta: $\\operatorname{tr}J=-1$, $\\det J=0$, autovalores $0$ e $-1$ (não hiperbólico: reta atratora transversalmente)."
+          ]
+        },
+        {
+          "prompt": "Use $V(x,y)=x^2+y^2$ como função de Lyapunov para mostrar que a origem de $x'=-x^3$, $y'=-y^3$ é assintoticamente estável.",
+          "hint": "Calcule $\\dot V=2x\\dot x+2y\\dot y=-2x^4-2y^4<0$ fora da origem.",
+          "difficulty": 3,
+          "solution": "Sistema $x'=-x^3$, $y'=-y^3$, com candidata $V(x,y)=x^2+y^2$.\n\n**$V$ é definida positiva:** $V(0,0)=0$ e $V(x,y)=x^2+y^2>0$ para $(x,y)\\neq(0,0)$.\n\n**Derivada ao longo das trajetórias:**\n$$\\dot V=\\nabla V\\cdot F=2x\\,\\dot x+2y\\,\\dot y=2x(-x^3)+2y(-y^3)=-2x^4-2y^4.$$\nPara $(x,y)\\neq(0,0)$, ao menos um entre $x^4,y^4$ é positivo, logo\n$$\\dot V=-2x^4-2y^4<0\\quad\\text{para}\\ (x,y)\\neq(0,0),$$\ne $\\dot V(0,0)=0$.\n\nPelo método direto de Lyapunov: $V$ definida positiva com $\\dot V$ definida NEGATIVA implica que a origem é **assintoticamente estável**. (De fato é globalmente assintoticamente estável, pois $V$ é radialmente ilimitada e $\\dot V<0$ em todo o plano exceto na origem.) $\\blacksquare$",
+          "steps": [
+            "Verifique que $V=x^2+y^2$ é definida positiva: nula só na origem, positiva fora dela.",
+            "Calcule $\\dot V=\\nabla V\\cdot F=2x\\dot x+2y\\dot y$.",
+            "Substitua $\\dot x=-x^3$, $\\dot y=-y^3$ para obter $\\dot V=-2x^4-2y^4$.",
+            "Constate que $\\dot V<0$ para todo $(x,y)\\neq(0,0)$.",
+            "Aplique o teorema de Lyapunov ($V>0$, $\\dot V<0$) e conclua estabilidade assintótica da origem."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo mostrando que autovalores imaginários puros da linearização não determinam o tipo: compare $x'=-y-x(x^2+y^2)$, $y'=x-y(x^2+y^2)$ com seu sistema linearizado.",
+          "hint": "A linearização é um centro; mas em coordenadas polares $\\dot r=-r^3<0$, logo o não linear é um foco assintoticamente estável.",
+          "difficulty": 5,
+          "solution": "Sistema $x'=-y-x(x^2+y^2)$, $y'=x-y(x^2+y^2)$.\n\n**Linearização na origem:** as partes cúbicas têm derivada nula em $(0,0)$, então\n$$J(0,0)=\\begin{pmatrix}0 & -1\\\\ 1 & 0\\end{pmatrix},$$\ncom autovalores $\\pm i$ (imaginários puros). O sistema LINEARIZADO $\\dot x=-y,\\dot y=x$ é um **centro**: órbitas circulares, estável mas não assintoticamente.\n\n**Comportamento não linear (coordenadas polares):** com $r^2=x^2+y^2$, temos $r\\dot r=x\\dot x+y\\dot y$:\n$$r\\dot r=x[-y-xr^2]+y[x-yr^2]=-xy-x^2r^2+xy-y^2r^2=-(x^2+y^2)r^2=-r^4.$$\nLogo $\\dot r=-r^3<0$ para $r>0$: o raio DECRESCE monotonicamente e $r\\to0$. Além disso $\\dot\\theta=\\dfrac{x\\dot y-y\\dot x}{r^2}=\\dfrac{x^2+y^2}{r^2}=1$, então há rotação uniforme. A origem é, portanto, um **foco (espiral) assintoticamente estável**.\n\n**Conclusão:** a linearização prevê um centro, mas o sistema real é um foco atrator — os autovalores imaginários puros NÃO determinam o tipo. É um equilíbrio não hiperbólico, fora do alcance de Hartman-Grobman; foram os termos não lineares ($-r^3$) que decidiram a estabilidade. $\\blacksquare$",
+          "steps": [
+            "Calcule a Jacobiana na origem, obtendo $\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ com autovalores $\\pm i$ (centro linear).",
+            "Passe a coordenadas polares e use $r\\dot r=x\\dot x+y\\dot y$.",
+            "Substitua os campos e simplifique para $r\\dot r=-r^4$, ou seja, $\\dot r=-r^3<0$.",
+            "Calcule $\\dot\\theta=1$ (rotação uniforme), confirmando o giro em espiral.",
+            "Conclua que o sistema real é um foco assintoticamente estável, contradizendo o centro da linearização (caso não hiperbólico)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Critério de estabilidade assintótica para $x'=Ax$",
+          "back": "Todos os autovalores de $A$ têm parte real estritamente negativa."
+        },
+        {
+          "front": "Quando $x'=Ax$ (plano) tem uma sela?",
+          "back": "Quando $\\det A<0$ (autovalores reais de sinais opostos)."
+        },
+        {
+          "front": "Autovalores complexos $\\alpha\\pm i\\beta$ com $\\alpha\\neq0$: que equilíbrio?",
+          "back": "Foco (espiral); estável se $\\alpha<0$, instável se $\\alpha>0$."
+        },
+        {
+          "front": "O que é um equilíbrio hiperbólico?",
+          "back": "Aquele cuja Jacobiana não tem nenhum autovalor com parte real nula."
+        },
+        {
+          "front": "O que garante o Teorema de Hartman-Grobman?",
+          "back": "Perto de um equilíbrio hiperbólico, o fluxo não linear é topologicamente conjugado ao linearizado."
+        },
+        {
+          "front": "Função de Lyapunov: condição para estabilidade assintótica",
+          "back": "$V>0$ (def. positiva), $V(x^*)=0$ e $\\dot V=\\nabla V\\cdot F<0$ fora de $x^*$."
+        },
+        {
+          "front": "Diagrama traço-determinante: condição de nó vs foco",
+          "back": "$T^2-4D>0$ nó (autovalores reais); $T^2-4D<0$ foco (autovalores complexos)."
+        },
+        {
+          "front": "Por que a linearização falha no caso não hiperbólico?",
+          "back": "Autovalores com parte real nula (ex.: centro linear) podem virar foco estável/instável no não linear; Hartman-Grobman não se aplica."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Hirsch, Smale & Devaney, caps. 4-9",
+          "ref": "livro"
+        },
+        {
+          "title": "Sotomayor, Lições de EDO (IMPA), caps. 3-4",
+          "ref": "livro"
+        },
+        {
+          "title": "Boyce & DiPrima, cap. 9 (sistemas não lineares e estabilidade)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Comece pelo caso linear plano: memorize o diagrama traço-determinante (sela, nó, foco, centro) e o critério de estabilidade pelo sinal das partes reais dos autovalores.",
+          "Estude Hirsch-Smale-Devaney caps. 4-9 e esboce à mão o plano de fase de 4-5 sistemas lineares $2\\times2$, classificando cada equilíbrio.",
+          "Aprenda a linearizar: calcule a Jacobiana num equilíbrio de sistemas não lineares e aplique Hartman-Grobman quando o equilíbrio for hiperbólico.",
+          "Estude o caso NÃO hiperbólico (autovalores imaginários puros) e por que a linearização falha; treine construir funções de Lyapunov simples ($V=x^2+y^2$ e variantes).",
+          "Use um plotter de plano de fase (ex.: pplane/MIT Mathlets) para conferir seus esboços e ganhar intuição sobre focos, ciclos-limite e separatrizes.",
+          "Volte ao app: resolva os testes e anote o principal (diagrama traço-determinante, critério espectral de estabilidade, Hartman-Grobman e o método de Lyapunov para casos degenerados)."
+        ],
+        "searchQueries": [
+          "plano de fase sistema linear classificação nó sela foco centro",
+          "diagrama traço determinante estabilidade autovalores",
+          "linearização Jacobiana ponto de equilíbrio Hartman-Grobman",
+          "função de Lyapunov método direto estabilidade assintótica exemplos",
+          "phase portrait nonlinear system equilibrium classification examples",
+          "Lyapunov function construction stability nonlinear ODE"
+        ],
+        "videos": [
+          {
+            "title": "Phase plane, linear systems and stability",
+            "channel": "MIT OpenCourseWare (18.03)",
+            "note": "Aulas sobre plano de fase, classificação de equilíbrios lineares e estabilidade — base geométrica essencial."
+          },
+          {
+            "title": "Nonlinear systems, linearization, Lyapunov",
+            "channel": "Steve Brunton",
+            "note": "Série clara sobre sistemas dinâmicos: linearização, Hartman-Grobman e funções de Lyapunov, com visão de controle."
+          },
+          {
+            "title": "Sistemas autônomos e estabilidade",
+            "channel": "Matemática Universitária",
+            "note": "Explicação em PT-BR de pontos de equilíbrio, classificação e estabilidade para sistemas planos."
+          },
+          {
+            "title": "Differential equations - stability",
+            "channel": "3Blue1Brown",
+            "note": "Vídeos da série de EDO com a intuição de campos vetoriais, atratores e comportamento qualitativo."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Hirsch, Smale & Devaney, Differential Equations, Dynamical Systems..., caps. 4-9",
+            "where": "Livro: classificação de equilíbrios, linearização e estabilidade"
+          },
+          {
+            "title": "Sotomayor, Lições de Equações Diferenciais Ordinárias (IMPA), caps. 3-4",
+            "where": "Livro: teoria qualitativa, estabilidade e Poincaré-Bendixson"
+          },
+          {
+            "title": "Boyce & DiPrima, cap. 9 (sistemas não lineares e estabilidade)",
+            "where": "Livro: capítulo dedicado a plano de fase e estabilidade"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edo-07-series-de-potencias-frobenius",
+      "title": "Soluções em séries de potências e o método de Frobenius",
+      "tagline": "Quando os coeficientes não são constantes, busca-se a solução como série — e nos pontos singulares regulares, Frobenius salva o dia.",
+      "objectives": [
+        "Ao final você consegue distinguir pontos ordinários de pontos singulares (regulares e irregulares) de uma EDO linear de segunda ordem.",
+        "Ao final você consegue obter a solução em série de potências em torno de um ponto ordinário via relação de recorrência.",
+        "Ao final você consegue determinar e usar o raio de convergência garantido pelo teorema de Fuchs.",
+        "Ao final você consegue aplicar o método de Frobenius em um ponto singular regular, resolvendo a equação indicial."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Ponto ordinário e singular",
+          "statement": "Para $y''+P(x)y'+Q(x)y=0$, $x_0$ é ponto ordinário se $P$ e $Q$ são analíticas em $x_0$; caso contrário é singular. O singular $x_0$ é regular se $(x-x_0)P(x)$ e $(x-x_0)^2Q(x)$ são analíticas em $x_0$."
+        },
+        {
+          "term": "Solução em série e recorrência",
+          "statement": "Em torno de ponto ordinário, busca-se $y=\\sum_{n\\ge0}a_n(x-x_0)^n$; substituindo na EDO e igualando coeficientes obtém-se uma relação de recorrência que determina os $a_n$ a partir de $a_0,a_1$ (livres)."
+        },
+        {
+          "term": "Equação indicial",
+          "statement": "Num ponto singular regular, busca-se $y=(x-x_0)^r\\sum a_n(x-x_0)^n$; o menor expoente fornece a equação indicial $r(r-1)+p_0 r+q_0=0$, onde $p_0=\\lim (x-x_0)P$, $q_0=\\lim(x-x_0)^2Q$."
+        },
+        {
+          "term": "Raio de convergência (Fuchs)",
+          "statement": "A série em torno de um ponto ordinário converge ao menos no maior disco centrado em $x_0$ que não contém singularidades de $P$ e $Q$ (analisadas no plano complexo)."
+        },
+        {
+          "term": "Funções especiais",
+          "statement": "Esse método gera as soluções das equações de Legendre, Hermite, Bessel e Laguerre — os polinômios e funções especiais centrais na física-matemática surgem como soluções em série dessas EDOs."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Existência de solução analítica em ponto ordinário",
+          "statement": "Se $x_0$ é ponto ordinário de $y''+P(x)y'+Q(x)y=0$ (i.e., $P,Q$ analíticas em $x_0$), então toda solução é analítica em $x_0$; existe um sistema fundamental de duas soluções em série de potências $\\sum a_n(x-x_0)^n$, cujo raio de convergência é pelo menos a distância de $x_0$ à singularidade mais próxima de $P,Q$ no plano complexo.",
+          "whyItMatters": "Garante a priori que o método das séries funciona em pontos ordinários e que as séries não são formais — convergem num disco explícito. As duas constantes livres $a_0,a_1$ correspondem às duas condições iniciais $y(x_0),y'(x_0)$."
+        },
+        {
+          "name": "Teorema de Frobenius (ponto singular regular)",
+          "statement": "Se $x_0$ é ponto singular regular, existe ao menos uma solução da forma $y_1=(x-x_0)^{r_1}\\sum_{n\\ge0}a_n(x-x_0)^n$ ($a_0\\neq0$), onde $r_1\\ge r_2$ são as raízes da equação indicial. A segunda solução depende de $r_1-r_2$: se $r_1-r_2\\notin\\mathbb{Z}$, é da mesma forma com $r_2$; se $r_1=r_2$ ou $r_1-r_2\\in\\mathbb{Z}_{>0}$, pode conter um termo logarítmico $\\ln(x-x_0)$.",
+          "whyItMatters": "Estende o método das séries a equações com singularidades suaves (Bessel, Euler, hipergeométrica), que aparecem constantemente em problemas com simetria. A equação indicial é o coração do método e o termo logarítmico é a sutileza clássica que cai em provas."
+        }
+      ],
+      "summary": "Equações lineares com COEFICIENTES VARIÁVEIS raramente têm solução em funções elementares, mas frequentemente têm solução ANALÍTICA — representável por uma série de potências. Em um PONTO ORDINÁRIO $x_0$ (onde $P,Q$ são analíticas), o procedimento é mecânico e garantido: escreve-se $y=\\sum a_n(x-x_0)^n$, substitui-se na EDO, agrupam-se as potências de $(x-x_0)$ e iguala-se cada coeficiente a zero, obtendo uma RELAÇÃO DE RECORRÊNCIA que produz todos os $a_n$ a partir de $a_0$ e $a_1$ — as duas constantes livres correspondendo às condições iniciais. O Teorema de Fuchs garante que essas séries convergem num disco cujo raio é a distância à singularidade mais próxima (vista no plano complexo). É assim que nascem os polinômios de Legendre, Hermite e Laguerre.\n\nQuando $x_0$ é um PONTO SINGULAR, a série pura pode falhar, mas se a singularidade é REGULAR (os coeficientes não explodem rápido demais: $(x-x_0)P$ e $(x-x_0)^2Q$ analíticas), o MÉTODO DE FROBENIUS resgata: busca-se $y=(x-x_0)^r\\sum a_n(x-x_0)^n$ com um expoente $r$ a determinar. O menor expoente leva à EQUAÇÃO INDICIAL $r(r-1)+p_0r+q_0=0$, cujas raízes $r_1\\ge r_2$ governam a estrutura das soluções. Há sempre uma solução do tipo Frobenius com $r_1$; a segunda depende da diferença $r_1-r_2$: se não for inteira, é outra série de Frobenius com $r_2$; se for inteira (ou as raízes coincidirem), pode surgir um termo logarítmico. O exemplo canônico é a equação de Bessel, cuja singularidade em $x=0$ é regular e cujas soluções são as funções de Bessel.",
+      "commonPitfalls": [
+        "Tentar expandir em série de potências pura em torno de um ponto singular — em ponto singular é preciso Frobenius (com o fator $x^r$), não série de Taylor.",
+        "Errar no deslocamento de índices ao reagrupar as séries (mudar $n\\to n+2$) e, com isso, montar a recorrência errada.",
+        "Esquecer que quando $r_1-r_2$ é inteiro pode aparecer um termo $\\ln x$ na segunda solução — não assumir que as duas soluções têm sempre a mesma forma.",
+        "Confundir singular regular com irregular: o método de Frobenius só é garantido em pontos singulares REGULARES."
+      ],
+      "worked": "**Resolver $y''+y=0$ por série de potências em torno de $x_0=0$ (ponto ordinário) e recuperar $\\cos x,\\sin x$.**\n\nSeja $y=\\sum_{n\\ge0}a_nx^n$. Então $y''=\\sum_{n\\ge0}(n+2)(n+1)a_{n+2}x^n$. A equação $y''+y=0$ dá, coeficiente a coeficiente:\n$$(n+2)(n+1)a_{n+2}+a_n=0\\ \\Rightarrow\\ a_{n+2}=-\\frac{a_n}{(n+2)(n+1)}.$$\nCom $a_0,a_1$ livres, separam-se índices pares e ímpares:\n$$a_2=-\\frac{a_0}{2!},\\ a_4=\\frac{a_0}{4!},\\dots,\\quad a_3=-\\frac{a_1}{3!},\\ a_5=\\frac{a_1}{5!},\\dots$$\nLogo\n$$y=a_0\\sum_{k\\ge0}\\frac{(-1)^k x^{2k}}{(2k)!}+a_1\\sum_{k\\ge0}\\frac{(-1)^k x^{2k+1}}{(2k+1)!}=a_0\\cos x+a_1\\sin x.$$\nAs séries convergem para todo $x$ (nenhuma singularidade), confirmando o sistema fundamental $\\{\\cos x,\\sin x\\}$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Classifique os pontos $x=0$ e $x=1$ da equação $x(1-x)y''+y'-y=0$ (ordinário, singular regular ou irregular).",
+          "hint": "Escreva na forma $y''+P y'+Q y=0$ e teste se $xP,\\,x^2Q$ (e os análogos em $x=1$) são analíticos.",
+          "difficulty": 3,
+          "solution": "Escreva $x(1-x)y''+y'-y=0$ na forma normal dividindo por $x(1-x)$:\n$$y''+\\underbrace{\\frac{1}{x(1-x)}}_{P(x)}y'+\\underbrace{\\frac{-1}{x(1-x)}}_{Q(x)}y=0.$$\nAs singularidades de $P,Q$ estão em $x=0$ e $x=1$.\n\n**Ponto $x=0$:** teste de singular regular exige $(x-0)P$ e $(x-0)^2Q$ analíticas em $0$:\n$$xP=\\frac{x}{x(1-x)}=\\frac{1}{1-x},\\qquad x^2Q=\\frac{-x^2}{x(1-x)}=\\frac{-x}{1-x}.$$\nAmbas são analíticas em $x=0$ (denominador $1-x$ não se anula ali; valores $1$ e $0$). Logo **$x=0$ é ponto singular regular**.\n\n**Ponto $x=1$:** analogamente, com $(x-1)$:\n$$(x-1)P=\\frac{x-1}{x(1-x)}=\\frac{-(1-x)}{x(1-x)}=\\frac{-1}{x},\\qquad (x-1)^2Q=\\frac{(x-1)^2(-1)}{x(1-x)}=\\frac{-(1-x)}{x}.$$\nAmbas analíticas em $x=1$ (denominador $x$ não se anula ali; valores $-1$ e $0$). Logo **$x=1$ é ponto singular regular**.\n\n**Conclusão:** nenhum dos dois é ponto ordinário; ambos são **singulares regulares** (e, portanto, o método de Frobenius se aplica em cada um). $\\blacksquare$",
+          "steps": [
+            "Normalize a equação dividindo por $x(1-x)$ para ler $P$ e $Q$.",
+            "Identifique as singularidades de $P,Q$ em $x=0$ e $x=1$.",
+            "Em $x=0$, teste $xP$ e $x^2Q$: ambas analíticas → singular regular.",
+            "Em $x=1$, teste $(x-1)P$ e $(x-1)^2Q$: ambas analíticas → singular regular.",
+            "Conclua que $x=0$ e $x=1$ são singulares regulares (não ordinários)."
+          ]
+        },
+        {
+          "prompt": "Encontre a relação de recorrência para a solução em série de $y''-2xy'+2\\lambda y=0$ (equação de Hermite) em torno de $x=0$.",
+          "hint": "Substitua $y=\\sum a_n x^n$; obtenha $a_{n+2}=\\frac{2(n-\\lambda)}{(n+2)(n+1)}a_n$ — a série termina quando $\\lambda$ é inteiro não negativo.",
+          "difficulty": 4,
+          "solution": "Equação de Hermite $y''-2xy'+2\\lambda y=0$. Busque $y=\\sum_{n\\ge0}a_nx^n$.\n\n**Derivadas (com índices ajustados):**\n$$y''=\\sum_{n\\ge0}(n+2)(n+1)a_{n+2}x^n,\\quad -2xy'=-2\\sum_{n\\ge0}n\\,a_nx^n,\\quad 2\\lambda y=2\\lambda\\sum_{n\\ge0}a_nx^n.$$\n\n**Coeficiente de $x^n$ igual a zero:**\n$$(n+2)(n+1)a_{n+2}-2n\\,a_n+2\\lambda a_n=0.$$\nIsolando $a_{n+2}$:\n$$\\boxed{a_{n+2}=\\frac{2(n-\\lambda)}{(n+2)(n+1)}\\,a_n},\\qquad n\\ge0.$$\n\n**Terminação:** se $\\lambda=m$ é inteiro não negativo, então $a_{m+2}=0$ (numerador $2(m-\\lambda)=0$), e todos os coeficientes subsequentes da mesma paridade se anulam. A série se reduz a um POLINÔMIO de grau $m$ — os polinômios de Hermite (a menos de normalização). As duas constantes livres $a_0,a_1$ geram as soluções par e ímpar. $\\blacksquare$",
+          "steps": [
+            "Escreva $y=\\sum a_n x^n$ e as séries de $y'$ e $y''$ com índices reindexados para $x^n$.",
+            "Substitua na equação de Hermite e agrupe o coeficiente de $x^n$.",
+            "Iguale a zero: $(n+2)(n+1)a_{n+2}-2n a_n+2\\lambda a_n=0$.",
+            "Isole a recorrência $a_{n+2}=\\frac{2(n-\\lambda)}{(n+2)(n+1)}a_n$.",
+            "Observe que $\\lambda=m\\in\\mathbb{Z}_{\\ge0}$ trunca a série num polinômio de grau $m$ (polinômios de Hermite)."
+          ]
+        },
+        {
+          "prompt": "Para a equação de Euler $x^2y''+\\frac32 xy'-\\frac12 y=0$, mostre que $x=0$ é singular regular e escreva e resolva a equação indicial.",
+          "hint": "$p_0=\\frac32$, $q_0=-\\frac12$; a indicial é $r(r-1)+\\frac32 r-\\frac12=0$, isto é $r^2+\\frac12 r-\\frac12=0$.",
+          "difficulty": 3,
+          "solution": "Equação de Euler $x^2y''+\\tfrac32 xy'-\\tfrac12 y=0$. Na forma normal, $P(x)=\\dfrac{3/2}{x}$ e $Q(x)=\\dfrac{-1/2}{x^2}$.\n\n**$x=0$ é singular regular:**\n$$xP=\\frac{3}{2}\\ (\\text{constante, analítica}),\\qquad x^2Q=-\\frac12\\ (\\text{constante, analítica}).$$\nLogo $x=0$ é singular regular, com $p_0=\\lim_{x\\to0}xP=\\tfrac32$ e $q_0=\\lim_{x\\to0}x^2Q=-\\tfrac12$.\n\n**Equação indicial** $r(r-1)+p_0r+q_0=0$:\n$$r(r-1)+\\tfrac32 r-\\tfrac12=r^2-r+\\tfrac32 r-\\tfrac12=r^2+\\tfrac12 r-\\tfrac12=0.$$\nMultiplicando por $2$: $2r^2+r-1=0$, cujas raízes são\n$$r=\\frac{-1\\pm\\sqrt{1+8}}{4}=\\frac{-1\\pm3}{4}\\ \\Rightarrow\\ r_1=\\frac12,\\quad r_2=-1.$$\n\n**Solução geral** (para equação de Euler, $y=x^r$):\n$$\\boxed{y=c_1\\,x^{1/2}+c_2\\,x^{-1}}\\quad(x>0).$$\nComo $r_1-r_2=\\tfrac32\\notin\\mathbb{Z}$, não há termo logarítmico. $\\blacksquare$",
+          "steps": [
+            "Normalize e leia $P=\\frac{3/2}{x}$, $Q=\\frac{-1/2}{x^2}$.",
+            "Verifique que $xP=3/2$ e $x^2Q=-1/2$ são analíticas: $x=0$ é singular regular.",
+            "Extraia $p_0=3/2$ e $q_0=-1/2$ e monte a indicial $r(r-1)+p_0 r+q_0=0$.",
+            "Simplifique para $2r^2+r-1=0$ e ache $r_1=1/2$, $r_2=-1$.",
+            "Escreva a solução $y=c_1 x^{1/2}+c_2 x^{-1}$ (sem log, pois $r_1-r_2\\notin\\mathbb{Z}$)."
+          ]
+        },
+        {
+          "prompt": "Obtenha os primeiros termos da solução em série de $y''+xy=0$ (equação de Airy) em torno de $x=0$ com $y(0)=1$, $y'(0)=0$.",
+          "hint": "A recorrência é $a_{n+3}=-\\frac{a_n}{(n+3)(n+2)}$; com $a_0=1,a_1=0$ vem $y=1-\\frac{x^3}{6}+\\frac{x^6}{180}-\\cdots$.",
+          "difficulty": 4,
+          "solution": "Equação de Airy $y''+xy=0$ em torno do ponto ordinário $x=0$. Busque $y=\\sum_{n\\ge0}a_nx^n$.\n\n**Séries:** $y''=\\sum_{n\\ge0}(n+2)(n+1)a_{n+2}x^n$ e $xy=\\sum_{n\\ge0}a_nx^{n+1}=\\sum_{n\\ge1}a_{n-1}x^n$. Igualando o coeficiente de $x^n$ a zero:\n- $n=0$: $2\\cdot1\\cdot a_2=0\\Rightarrow a_2=0$.\n- $n\\ge1$: $(n+2)(n+1)a_{n+2}+a_{n-1}=0\\Rightarrow a_{n+2}=-\\dfrac{a_{n-1}}{(n+2)(n+1)}$, equivalentemente $a_{n+3}=-\\dfrac{a_n}{(n+3)(n+2)}$.\n\n**Condições iniciais** $y(0)=1,\\,y'(0)=0$ dão $a_0=1,\\ a_1=0$; e $a_2=0$.\n\n**Coeficientes (índices múltiplos de 3):**\n$$a_3=-\\frac{a_0}{3\\cdot2}=-\\frac{1}{6},\\qquad a_6=-\\frac{a_3}{6\\cdot5}=-\\frac{-1/6}{30}=\\frac{1}{180}.$$\nOs termos com índice $\\equiv1$ e $\\equiv2\\pmod 3$ se anulam (pois $a_1=a_2=0$). Assim\n$$\\boxed{y(x)=1-\\frac{x^3}{6}+\\frac{x^6}{180}-\\cdots}$$\nque são os primeiros termos da função de Airy $\\mathrm{Ai}$-relacionada com essas condições. $\\blacksquare$",
+          "steps": [
+            "Escreva $y=\\sum a_n x^n$ e reindexe $y''$ e $xy$ para potências $x^n$.",
+            "Do coeficiente $n=0$ obtenha $a_2=0$; para $n\\ge1$ obtenha $a_{n+3}=-\\frac{a_n}{(n+3)(n+2)}$.",
+            "Use $y(0)=1$, $y'(0)=0$: $a_0=1$, $a_1=0$ (e $a_2=0$).",
+            "Calcule $a_3=-1/6$ e $a_6=1/180$; anule os demais.",
+            "Monte $y=1-\\frac{x^3}{6}+\\frac{x^6}{180}-\\cdots$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de ponto ordinário de $y''+Py'+Qy=0$",
+          "back": "$x_0$ onde $P$ e $Q$ são analíticas (representáveis por série de potências)."
+        },
+        {
+          "front": "Critério de ponto singular regular em $x_0$",
+          "back": "$(x-x_0)P(x)$ e $(x-x_0)^2Q(x)$ são analíticas em $x_0$."
+        },
+        {
+          "front": "Forma da solução no método de Frobenius",
+          "back": "$y=(x-x_0)^r\\sum_{n\\ge0}a_n(x-x_0)^n$ com $a_0\\neq0$ e $r$ raiz da equação indicial."
+        },
+        {
+          "front": "Equação indicial",
+          "back": "$r(r-1)+p_0 r+q_0=0$, com $p_0=\\lim_{x\\to x_0}(x-x_0)P$, $q_0=\\lim_{x\\to x_0}(x-x_0)^2Q$."
+        },
+        {
+          "front": "Raio de convergência garantido em ponto ordinário (Fuchs)",
+          "back": "Pelo menos a distância de $x_0$ à singularidade mais próxima de $P,Q$ no plano complexo."
+        },
+        {
+          "front": "Quando aparece termo logarítmico na 2ª solução de Frobenius?",
+          "back": "Quando $r_1=r_2$, ou quando $r_1-r_2$ é inteiro positivo (casos ressonantes)."
+        },
+        {
+          "front": "Quais funções especiais saem desse método?",
+          "back": "Legendre, Hermite, Laguerre (ponto ordinário) e Bessel (singular regular em $0$)."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Boyce & DiPrima, cap. 5",
+          "ref": "livro"
+        },
+        {
+          "title": "Figueiredo & Neves (IMPA), cap. 4 (séries e funções especiais)",
+          "ref": "livro"
+        },
+        {
+          "title": "Paul's Online Notes - Series Solutions",
+          "ref": "notas"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise séries de potências de Cálculo: raio de convergência, derivação termo a termo e produto de séries — o método inteiro depende disso.",
+          "Estude Boyce & DiPrima cap. 5 e resolva 3-4 problemas em ponto ordinário, montando a relação de recorrência com muito cuidado no deslocamento de índices.",
+          "Aprenda a classificar pontos: ordinário, singular regular ($(x-x_0)P$ e $(x-x_0)^2Q$ analíticas) e irregular; faça uma lista treinando só a classificação.",
+          "Domine o método de Frobenius: escreva $y=(x-x_0)^r\\sum a_n(x-x_0)^n$, deduza a equação indicial e discuta os três casos de $r_1-r_2$ (não inteiro, igual, inteiro positivo com log).",
+          "Conecte com funções especiais resolvendo Legendre, Hermite e (ao menos montando) Bessel — ver de onde vêm os polinômios ortogonais dá sentido a tudo.",
+          "Volte ao app: resolva os testes e anote o principal (classificação de pontos, recorrência, teorema de Fuchs para o raio, equação indicial e quando surge o termo logarítmico)."
+        ],
+        "searchQueries": [
+          "solução em série de potências ponto ordinário relação de recorrência",
+          "método de Frobenius equação indicial ponto singular regular exemplos",
+          "classificação ponto ordinário singular regular irregular EDO",
+          "equação de Bessel Legendre Hermite solução em série",
+          "Frobenius method indicial equation logarithmic term second solution",
+          "radius of convergence Fuchs theorem power series ODE"
+        ],
+        "videos": [
+          {
+            "title": "Power Series Solutions & Frobenius",
+            "channel": "MIT OpenCourseWare (18.03 / 18.03SC)",
+            "note": "Aulas sobre soluções em série em ponto ordinário e o método de Frobenius em ponto singular regular."
+          },
+          {
+            "title": "Series Solutions of ODEs",
+            "channel": "Professor Leonard",
+            "note": "Explicação longa e mecânica do deslocamento de índices e montagem da recorrência — ótima para não errar as contas."
+          },
+          {
+            "title": "Frobenius method / Bessel equation",
+            "channel": "Dr. Peyam",
+            "note": "Vídeos aplicando Frobenius e discutindo a equação indicial e os casos de raízes; bom nível de detalhe."
+          },
+          {
+            "title": "Soluções em série de EDO",
+            "channel": "Matemática Universitária",
+            "note": "Tratamento em PT-BR de ponto ordinário e singular regular, com exemplos resolvidos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Boyce & DiPrima, cap. 5 (soluções em série e Frobenius)",
+            "where": "Livro: teoria, recorrências e funções especiais"
+          },
+          {
+            "title": "Figueiredo & Neves, Equações Diferenciais Aplicadas (IMPA), cap. 4",
+            "where": "Livro: excelente tratamento de séries, Frobenius e funções especiais"
+          },
+          {
+            "title": "Paul's Online Math Notes - Series Solutions to Differential Equations",
+            "where": "Notas de aula online (tutorial.math.lamar.edu)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edo-08-transformada-de-laplace",
+      "title": "Transformada de Laplace",
+      "tagline": "Transforme derivadas em multiplicação, resolva PVIs por álgebra, e lide com forças descontínuas e impulsos com elegância.",
+      "objectives": [
+        "Ao final você consegue calcular a transformada de Laplace pela definição e por tabela, e determinar quando ela existe.",
+        "Ao final você consegue usar a propriedade da transformada da derivada para converter um PVI linear em uma equação algébrica em $F(s)$.",
+        "Ao final você consegue inverter a transformada por frações parciais e pelos teoremas de translação.",
+        "Ao final você consegue tratar funções descontínuas (degrau de Heaviside), impulsos (delta de Dirac) e convoluções."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Transformada de Laplace",
+          "statement": "$\\mathcal{L}\\{f\\}(s)=F(s)=\\int_0^{\\infty}e^{-st}f(t)\\,dt$, definida para $s$ no semiplano onde a integral converge; é um operador LINEAR."
+        },
+        {
+          "term": "Ordem exponencial",
+          "statement": "$f$ é de ordem exponencial $a$ se $|f(t)|\\le Me^{at}$ para $t$ grande; junto com continuidade por partes, garante a existência de $F(s)$ para $s>a$."
+        },
+        {
+          "term": "Transformada da derivada",
+          "statement": "$\\mathcal{L}\\{f'\\}=sF(s)-f(0)$ e $\\mathcal{L}\\{f''\\}=s^2F(s)-s f(0)-f'(0)$; é a propriedade que algebriza as EDOs, incorporando as condições iniciais automaticamente."
+        },
+        {
+          "term": "Teoremas de translação",
+          "statement": "Translação em $s$: $\\mathcal{L}\\{e^{at}f(t)\\}=F(s-a)$. Translação em $t$ (com degrau): $\\mathcal{L}\\{u_c(t)f(t-c)\\}=e^{-cs}F(s)$, onde $u_c$ é o degrau de Heaviside em $c$."
+        },
+        {
+          "term": "Convolução",
+          "statement": "$(f*g)(t)=\\int_0^t f(\\tau)g(t-\\tau)\\,d\\tau$; o Teorema da Convolução diz que $\\mathcal{L}\\{f*g\\}=F(s)\\,G(s)$ — produto no domínio $s$ corresponde a convolução no domínio $t$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Existência da transformada",
+          "statement": "Se $f$ é contínua por partes em $[0,\\infty)$ e de ordem exponencial $a$ (i.e., $|f(t)|\\le Me^{at}$), então $F(s)=\\mathcal{L}\\{f\\}(s)$ existe para todo $s>a$, e $F(s)\\to0$ quando $s\\to\\infty$.",
+          "whyItMatters": "Delimita a classe de funções tratáveis (a maioria das que aparecem em EDOs lineares) e justifica que a transformada está bem definida. O comportamento $F(s)\\to0$ é um teste de sanidade para inversões."
+        },
+        {
+          "name": "Transformada da derivada (algebrização do PVI)",
+          "statement": "Se $f$ é contínua e $f'$ contínua por partes, ambas de ordem exponencial, então $\\mathcal{L}\\{f'\\}=sF(s)-f(0)$; iterando, $\\mathcal{L}\\{f^{(n)}\\}=s^nF(s)-s^{n-1}f(0)-\\cdots-f^{(n-1)}(0)$.",
+          "whyItMatters": "É o motor do método: transforma $y'',y',y$ em polinômios em $s$ vezes $Y(s)$, convertendo a EDO em uma EQUAÇÃO ALGÉBRICA cuja incógnita é $Y(s)$, já com as condições iniciais embutidas — não há constantes a determinar depois."
+        },
+        {
+          "name": "Teorema da Convolução",
+          "statement": "$\\mathcal{L}\\{(f*g)\\}(s)=F(s)G(s)$, com $(f*g)(t)=\\int_0^t f(\\tau)g(t-\\tau)\\,d\\tau$. Equivalentemente, $\\mathcal{L}^{-1}\\{F\\,G\\}=f*g$.",
+          "whyItMatters": "Permite inverter produtos $F(s)G(s)$ sem frações parciais e exprimir a resposta de um sistema linear a uma entrada qualquer como convolução com a resposta ao impulso (função de Green / resposta impulsiva), conceito central em sinais e sistemas."
+        }
+      ],
+      "summary": "A transformada de Laplace $\\mathcal{L}\\{f\\}(s)=\\int_0^\\infty e^{-st}f(t)\\,dt$ é uma máquina que troca o domínio do tempo $t$ pelo domínio da frequência $s$, e seu superpoder é a propriedade $\\mathcal{L}\\{f'\\}=sF(s)-f(0)$: DERIVAR no tempo vira MULTIPLICAR por $s$ no domínio transformado, com as condições iniciais entrando de graça. O método para resolver um PVI linear com coeficientes constantes é então um algoritmo em três passos: (1) aplicar $\\mathcal{L}$ na EDO, transformando-a numa equação ALGÉBRICA para $Y(s)$; (2) isolar $Y(s)$, tipicamente uma função racional em $s$; (3) inverter via frações parciais e tabela para recuperar $y(t)$. Toda a dificuldade analítica vira manipulação algébrica.\n\nO real diferencial da transformada de Laplace aparece com termos NÃO SUAVES, onde os métodos clássicos sofrem. O degrau de Heaviside $u_c(t)$ e o segundo teorema de translação $\\mathcal{L}\\{u_c(t)f(t-c)\\}=e^{-cs}F(s)$ tratam forças que ligam/desligam; o delta de Dirac $\\delta(t-c)$, com $\\mathcal{L}\\{\\delta(t-c)\\}=e^{-cs}$, modela impulsos instantâneos (uma martelada, um pulso de tensão). E o Teorema da Convolução $\\mathcal{L}\\{f*g\\}=F\\,G$ expressa a solução de um sistema forçado como a convolução da entrada com a resposta ao impulso — a versão 'engenharia' da fórmula de variação de parâmetros e função de Green. Para concursos de IF de Matemática Aplicada, dominar a tabela básica, os dois teoremas de translação e frações parciais resolve a esmagadora maioria das questões.",
+      "commonPitfalls": [
+        "Esquecer os termos de condição inicial em $\\mathcal{L}\\{f''\\}=s^2F-sf(0)-f'(0)$ — é justamente onde a informação do PVI entra.",
+        "Errar a frações parciais quando o denominador tem raízes complexas ou repetidas, levando a uma inversão incorreta.",
+        "Aplicar o segundo teorema de translação sem reescrever a função na forma $u_c(t)\\,f(t-c)$ (o argumento deve ser deslocado para $t-c$).",
+        "Tratar $\\mathcal{L}\\{fg\\}$ como $F(s)G(s)$ — isso é FALSO; o produto de transformadas corresponde à CONVOLUÇÃO, não ao produto pontual."
+      ],
+      "worked": "**Resolver $y''+y=1$, com $y(0)=0$, $y'(0)=0$, via Laplace.**\n\nAplicando $\\mathcal{L}$ e usando $\\mathcal{L}\\{y''\\}=s^2Y-sy(0)-y'(0)=s^2Y$ e $\\mathcal{L}\\{1\\}=1/s$:\n$$s^2Y+Y=\\frac1s\\ \\Rightarrow\\ (s^2+1)Y=\\frac1s\\ \\Rightarrow\\ Y(s)=\\frac{1}{s(s^2+1)}.$$\nFrações parciais:\n$$\\frac{1}{s(s^2+1)}=\\frac{1}{s}-\\frac{s}{s^2+1}.$$\nInvertendo termo a termo ($\\mathcal{L}^{-1}\\{1/s\\}=1$, $\\mathcal{L}^{-1}\\{s/(s^2+1)\\}=\\cos t$):\n$$y(t)=1-\\cos t.$$\nConferindo: $y(0)=0$, $y'(t)=\\sin t$, $y'(0)=0$, e $y''+y=\\cos t+(1-\\cos t)=1$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Calcule pela definição $\\mathcal{L}\\{e^{at}\\}$ e indique para quais $s$ converge.",
+          "hint": "$\\int_0^\\infty e^{-(s-a)t}\\,dt=\\frac{1}{s-a}$, válido para $s>a$.",
+          "difficulty": 1,
+          "solution": "Pela definição, $\\mathcal{L}\\{e^{at}\\}(s)=\\displaystyle\\int_0^\\infty e^{-st}e^{at}\\,dt=\\int_0^\\infty e^{-(s-a)t}\\,dt.$\n\n**Avaliação da integral impropria:** para $s-a>0$,\n$$\\int_0^\\infty e^{-(s-a)t}\\,dt=\\left[\\frac{-1}{s-a}e^{-(s-a)t}\\right]_0^\\infty=\\frac{-1}{s-a}\\big(0-1\\big)=\\frac{1}{s-a}.$$\nO limite superior anula-se porque $e^{-(s-a)t}\\to0$ quando $t\\to\\infty$, o que exige exatamente $s-a>0$. Se $s-a\\le0$ a integral diverge. Portanto\n$$\\boxed{\\mathcal{L}\\{e^{at}\\}(s)=\\frac{1}{s-a},\\qquad s>a.}$$ $\\blacksquare$",
+          "steps": [
+            "Escreva a definição $\\mathcal{L}\\{e^{at}\\}=\\int_0^\\infty e^{-st}e^{at}\\,dt$ e junte os expoentes: $e^{-(s-a)t}$.",
+            "Integre a exponencial: primitiva $\\frac{-1}{s-a}e^{-(s-a)t}$.",
+            "Avalie de $0$ a $\\infty$, exigindo $s-a>0$ para o limite superior anular.",
+            "Obtenha $\\frac{1}{s-a}$ e registre a condição de convergência $s>a$."
+          ]
+        },
+        {
+          "prompt": "Resolva $y''-3y'+2y=0$ com $y(0)=1$, $y'(0)=0$ usando a transformada de Laplace.",
+          "hint": "Obtenha $Y(s)=\\frac{s-3}{(s-1)(s-2)}$; por frações parciais, $y=2e^{t}-e^{2t}$.",
+          "difficulty": 3,
+          "solution": "PVI $y''-3y'+2y=0$, $y(0)=1$, $y'(0)=0$. Seja $Y=\\mathcal{L}\\{y\\}$.\n\n**Transformando:** usando $\\mathcal{L}\\{y''\\}=s^2Y-sy(0)-y'(0)=s^2Y-s$ e $\\mathcal{L}\\{y'\\}=sY-y(0)=sY-1$:\n$$(s^2Y-s)-3(sY-1)+2Y=0\\ \\Longrightarrow\\ (s^2-3s+2)Y-s+3=0.$$\nIsolando:\n$$Y(s)=\\frac{s-3}{s^2-3s+2}=\\frac{s-3}{(s-1)(s-2)}.$$\n\n**Frações parciais:** $\\dfrac{s-3}{(s-1)(s-2)}=\\dfrac{A}{s-1}+\\dfrac{B}{s-2}$.\n$$A=\\left.\\frac{s-3}{s-2}\\right|_{s=1}=\\frac{-2}{-1}=2,\\qquad B=\\left.\\frac{s-3}{s-1}\\right|_{s=2}=\\frac{-1}{1}=-1.$$\nLogo $Y=\\dfrac{2}{s-1}-\\dfrac{1}{s-2}$.\n\n**Inversão** ($\\mathcal{L}^{-1}\\{1/(s-a)\\}=e^{at}$):\n$$\\boxed{y(t)=2e^{t}-e^{2t}}.$$\nVerificação: $y(0)=2-1=1$ e $y'(t)=2e^t-2e^{2t}$, $y'(0)=0$. $\\blacksquare$",
+          "steps": [
+            "Aplique $\\mathcal{L}$ à EDO usando $\\mathcal{L}\\{y''\\}=s^2Y-sy(0)-y'(0)$ e $\\mathcal{L}\\{y'\\}=sY-y(0)$.",
+            "Insira as condições iniciais e agrupe: $(s^2-3s+2)Y=s-3$.",
+            "Isole $Y=\\frac{s-3}{(s-1)(s-2)}$ fatorando o denominador.",
+            "Decomponha em frações parciais achando $A=2$, $B=-1$.",
+            "Inverta cada termo com $\\mathcal{L}^{-1}\\{1/(s-a)\\}=e^{at}$, obtendo $y=2e^t-e^{2t}$."
+          ]
+        },
+        {
+          "prompt": "Use o segundo teorema de translação para achar a transformada de $f(t)=u_2(t)\\,(t-2)^2$.",
+          "hint": "$\\mathcal{L}\\{t^2\\}=2/s^3$; logo $\\mathcal{L}\\{f\\}=e^{-2s}\\cdot 2/s^3$.",
+          "difficulty": 3,
+          "solution": "Queremos $\\mathcal{L}\\{f\\}$ com $f(t)=u_2(t)\\,(t-2)^2$, onde $u_2$ é o degrau de Heaviside em $c=2$.\n\n**Segundo teorema de translação (shift em $t$):**\n$$\\mathcal{L}\\{u_c(t)\\,g(t-c)\\}=e^{-cs}\\,G(s),\\qquad G(s)=\\mathcal{L}\\{g(t)\\}.$$\nAqui $f$ já está na forma $u_c(t)\\,g(t-c)$ com $c=2$ e $g(t)=t^2$ (pois $g(t-2)=(t-2)^2$). A transformada de $g$:\n$$\\mathcal{L}\\{t^2\\}=\\frac{2!}{s^3}=\\frac{2}{s^3}.$$\nAplicando o teorema com $c=2$:\n$$\\boxed{\\mathcal{L}\\{f\\}(s)=e^{-2s}\\cdot\\frac{2}{s^3}=\\frac{2\\,e^{-2s}}{s^3}}.$$ $\\blacksquare$",
+          "steps": [
+            "Reconheça $f=u_c(t)g(t-c)$ com $c=2$ e $g(t)=t^2$ (o argumento já está deslocado para $t-2$).",
+            "Enuncie o segundo teorema de translação: $\\mathcal{L}\\{u_c(t)g(t-c)\\}=e^{-cs}G(s)$.",
+            "Calcule $G(s)=\\mathcal{L}\\{t^2\\}=2/s^3$.",
+            "Multiplique por $e^{-cs}=e^{-2s}$ para obter $\\mathcal{L}\\{f\\}=2e^{-2s}/s^3$."
+          ]
+        },
+        {
+          "prompt": "Resolva $y''+y=\\delta(t-\\pi)$ com $y(0)=0$, $y'(0)=0$ e interprete fisicamente a solução.",
+          "hint": "$\\mathcal{L}\\{\\delta(t-\\pi)\\}=e^{-\\pi s}$, então $Y=\\frac{e^{-\\pi s}}{s^2+1}$ e $y=u_\\pi(t)\\sin(t-\\pi)$: o sistema só responde após o impulso em $t=\\pi$.",
+          "difficulty": 4,
+          "solution": "PVI $y''+y=\\delta(t-\\pi)$, $y(0)=0$, $y'(0)=0$.\n\n**Transformando:** $\\mathcal{L}\\{y''\\}=s^2Y$ (condições nulas) e $\\mathcal{L}\\{\\delta(t-\\pi)\\}=e^{-\\pi s}$:\n$$s^2Y+Y=e^{-\\pi s}\\ \\Longrightarrow\\ Y(s)=\\frac{e^{-\\pi s}}{s^2+1}.$$\n\n**Inversão:** como $\\mathcal{L}^{-1}\\{1/(s^2+1)\\}=\\sin t$, o fator $e^{-\\pi s}$ aciona o segundo teorema de translação ($c=\\pi$):\n$$y(t)=u_\\pi(t)\\,\\sin(t-\\pi).$$\nUsando $\\sin(t-\\pi)=-\\sin t$:\n$$\\boxed{y(t)=u_\\pi(t)\\sin(t-\\pi)=-u_\\pi(t)\\,\\sin t}.$$\n\n**Interpretação física:** para $0\\le t<\\pi$ o sistema (um oscilador harmônico não forçado partindo do repouso) permanece em $y\\equiv0$. No instante $t=\\pi$ um impulso unitário (uma 'martelada') injeta momento, e a partir daí o oscilador vibra com $y(t)=\\sin(t-\\pi)$ — amplitude $1$, resposta que só existe DEPOIS do impulso. O degrau $u_\\pi$ codifica precisamente esse 'ligar' da resposta em $t=\\pi$. $\\blacksquare$",
+          "steps": [
+            "Aplique $\\mathcal{L}$ com condições nulas: $s^2Y+Y=\\mathcal{L}\\{\\delta(t-\\pi)\\}=e^{-\\pi s}$.",
+            "Isole $Y=\\dfrac{e^{-\\pi s}}{s^2+1}$.",
+            "Identifique $\\mathcal{L}^{-1}\\{1/(s^2+1)\\}=\\sin t$ e o fator $e^{-\\pi s}$ como translação em $t$.",
+            "Aplique o segundo teorema de translação: $y=u_\\pi(t)\\sin(t-\\pi)=-u_\\pi(t)\\sin t$.",
+            "Interprete: repouso até $t=\\pi$, e oscilação senoidal disparada pelo impulso a partir de $t=\\pi$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição da transformada de Laplace",
+          "back": "$\\mathcal{L}\\{f\\}(s)=\\int_0^\\infty e^{-st}f(t)\\,dt$."
+        },
+        {
+          "front": "$\\mathcal{L}\\{f'\\}$ e $\\mathcal{L}\\{f''\\}$",
+          "back": "$\\mathcal{L}\\{f'\\}=sF(s)-f(0)$; $\\mathcal{L}\\{f''\\}=s^2F(s)-sf(0)-f'(0)$."
+        },
+        {
+          "front": "Condições de existência de $F(s)$",
+          "back": "$f$ contínua por partes e de ordem exponencial ($|f|\\le Me^{at}$); então existe para $s>a$."
+        },
+        {
+          "front": "$\\mathcal{L}\\{t^n\\}$",
+          "back": "$\\dfrac{n!}{s^{n+1}}$ (para $s>0$)."
+        },
+        {
+          "front": "$\\mathcal{L}\\{\\cos\\omega t\\}$ e $\\mathcal{L}\\{\\sin\\omega t\\}$",
+          "back": "$\\dfrac{s}{s^2+\\omega^2}$ e $\\dfrac{\\omega}{s^2+\\omega^2}$."
+        },
+        {
+          "front": "Primeiro teorema de translação (shift em $s$)",
+          "back": "$\\mathcal{L}\\{e^{at}f(t)\\}=F(s-a)$."
+        },
+        {
+          "front": "Teorema da Convolução",
+          "back": "$\\mathcal{L}\\{f*g\\}=F(s)G(s)$, com $(f*g)(t)=\\int_0^t f(\\tau)g(t-\\tau)\\,d\\tau$."
+        },
+        {
+          "front": "$\\mathcal{L}\\{\\delta(t-c)\\}$",
+          "back": "$e^{-cs}$ (transformada do impulso de Dirac em $t=c$)."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Boyce & DiPrima, cap. 6",
+          "ref": "livro"
+        },
+        {
+          "title": "Zill, Equações Diferenciais com Aplicações, cap. 7",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.03 - Laplace transform",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Monte (ou imprima) uma TABELA de transformadas básicas: $1$, $t^n$, $e^{at}$, $\\sin/\\cos$, e as regras da derivada e dos dois teoremas de translação — você vai usá-la o tempo todo.",
+          "Estude Boyce & DiPrima cap. 6 e calcule 4-5 transformadas pela DEFINIÇÃO (integral), entendendo a condição de existência (ordem exponencial).",
+          "Domine o algoritmo de resolver PVI: aplicar $\\mathcal{L}$, isolar $Y(s)$, e inverter por frações parciais; faça 6-8 PVIs completos.",
+          "Treine frações parciais com denominadores de raízes repetidas e complexas — é onde a maioria erra a inversão.",
+          "Aprenda o degrau de Heaviside, o delta de Dirac e a convolução; resolva problemas com forças descontínuas/impulsivas, que são o diferencial da Laplace.",
+          "Volte ao app: resolva os testes e anote o principal (a regra $\\mathcal{L}\\{f'\\}=sF-f(0)$, o algoritmo de 3 passos, os teoremas de translação e que produto de transformadas é CONVOLUÇÃO, não produto)."
+        ],
+        "searchQueries": [
+          "transformada de Laplace resolver PVI passo a passo exemplos",
+          "transformada da derivada s F(s) - f(0) demonstração",
+          "frações parciais transformada inversa de Laplace raízes complexas",
+          "função degrau de Heaviside segundo teorema de translação Laplace",
+          "delta de Dirac transformada de Laplace impulso resposta",
+          "convolution theorem Laplace transform inverse example"
+        ],
+        "videos": [
+          {
+            "title": "Laplace transform to solve ODEs",
+            "channel": "MIT OpenCourseWare (18.03)",
+            "note": "Aulas sobre definição, transformada da derivada, translação e resolução de PVIs — cobertura completa."
+          },
+          {
+            "title": "Transformada de Laplace",
+            "channel": "O Professor Ferretto",
+            "note": "Playlist em PT-BR resolvendo PVIs com Laplace no estilo de concurso; ótima para IF/Matemática Aplicada."
+          },
+          {
+            "title": "Laplace transform (série completa)",
+            "channel": "Khan Academy",
+            "note": "Sequência didática do zero: definição, tabela, frações parciais, Heaviside e Dirac — bom para primeira exposição."
+          },
+          {
+            "title": "The Laplace Transform",
+            "channel": "Steve Brunton",
+            "note": "Visão de sinais e sistemas: convolução, resposta ao impulso e a intuição de domínio da frequência."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Boyce & DiPrima, cap. 6 (transformada de Laplace)",
+            "where": "Livro: teoria, tabela e aplicações a PVIs, Heaviside e Dirac"
+          },
+          {
+            "title": "Zill, Equações Diferenciais com Aplicações, cap. 7",
+            "where": "Livro: excelente para técnica, translações e convolução"
+          },
+          {
+            "title": "Paul's Online Math Notes - Laplace Transforms",
+            "where": "Notas de aula online (tutorial.math.lamar.edu), com tabela e exemplos"
+          }
+        ]
+      }
+    }
+  ]
+}

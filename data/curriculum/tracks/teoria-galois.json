@@ -1,0 +1,1617 @@
+{
+  "id": "teoria-galois",
+  "title": "Teoria de Galois",
+  "phase": 2,
+  "phaseLabel": "Avancado / Pre-Pos",
+  "tagline": "A correspondencia que traduz a aritmetica de corpos na teoria de grupos finitos — e com ela resolve a insolubilidade da quintica, os tres problemas gregos de regua e compasso e os poligonos de Gauss.",
+  "summary": "Esta trilha eleva a teoria de corpos ao seu apice: a correspondencia de Galois, que traduz a aritmetica das extensoes de corpos na linguagem dos grupos finitos. Partindo de fechos algebricos e corpos de decomposicao, desenvolvemos separabilidade e normalidade, definimos extensoes de Galois e seu grupo $\\mathrm{Gal}(L/K)$, e demonstramos o Teorema Fundamental da Teoria de Galois, que estabelece uma bijecao inclusao-revertente entre corpos intermediarios e subgrupos. Como recompensa, resolvemos problemas que resistiram por seculos: a insolubilidade da quintica por radicais (Abel-Ruffini), os tres problemas gregos de regua e compasso e o teorema de Gauss-Wantzel sobre poligonos construtiveis. E o coroamento da algebra de graduacao e a porta de entrada para a teoria algebrica dos numeros.",
+  "bigPicture": "A teoria de Galois e a peca que unifica grupos e corpos: a um problema sobre raizes de polinomios ela associa um grupo finito de simetrias, e propriedades aritmeticas (solubilidade por radicais, construtibilidade) viram propriedades de grupos (solubilidade, ordem potencia de $2$). E a base da teoria algebrica dos numeros (grupos de Galois de corpos de numeros, ramificacao, teoria de corpos de classe), da geometria aritmetica e de areas modernas como a correspondencia de Langlands e o problema de Galois inverso; em criptografia e codigos, a estrutura de Galois dos corpos finitos $\\mathbb{F}_{p^n}$ e onipresente. Em concursos de Instituto Federal (EBTT) a teoria de Galois em si raramente e cobrada em profundidade — quando aparece, e como cultura matematica (existencia do corpo de decomposicao, impossibilidade da trisseccao e da duplicacao do cubo, o enunciado da insolubilidade da quintica) e nos pre-requisitos de extensoes de corpos. Ja em provas de mestrado em matematica pura (ENA, exames do IMPA, USP, UNICAMP, UFRJ, UFMG, UFC, UnB) a teoria de Galois e tema classico e frequente: calcular grupos de Galois de extensoes e de polinomios concretos, aplicar a correspondencia fundamental para listar corpos intermediarios, decidir solubilidade por radicais e construtibilidade, e descrever extensoes ciclotomicas e corpos finitos. Dominar esta trilha distingue o candidato em qualquer exame de algebra de pos-graduacao.",
+  "prereqs": [
+    "algebra-abstrata-2"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 67,
+  "primaryBooks": [
+    {
+      "title": "Abstract Algebra",
+      "author": "David S. Dummit & Richard M. Foote",
+      "note": "Tratamento moderno e completo de teoria de corpos e de Galois, com muitos exemplos calculados (grupos de Galois, solubilidade, construtibilidade). Texto principal e fonte inesgotavel de exercicios.",
+      "chapters": "caps. 13 (Field Theory) e 14 (Galois Theory)"
+    },
+    {
+      "title": "Elementos de Algebra",
+      "author": "Arnaldo Garcia & Yves Lequain (IMPA, Projeto Euclides)",
+      "note": "Referencia brasileira definitiva em PT-BR para teoria de Galois com rigor de pos-graduacao: extensoes, separabilidade, normalidade, correspondencia fundamental, solubilidade por radicais e construtibilidade. Ideal para mestrado no Brasil.",
+      "chapters": "caps. sobre extensoes de corpos e teoria de Galois"
+    },
+    {
+      "title": "Galois Theory",
+      "author": "Ian Stewart",
+      "note": "Classico acessivel e historicamente motivado; cobre a teoria completa, a insolubilidade da quintica, regua e compasso e os poligonos de Gauss. Excelente primeira leitura.",
+      "chapters": "livro todo"
+    },
+    {
+      "title": "Galois Theory (Notre Dame Lectures)",
+      "author": "Emil Artin",
+      "note": "O tratamento original via algebra linear (independencia de caracteres, Teorema de Artin sobre corpos fixos). Conciso e elegante; molda a abordagem moderna.",
+      "chapters": "livro todo"
+    },
+    {
+      "title": "Field and Galois Theory (GTM 167)",
+      "author": "Patrick Morandi",
+      "note": "Texto de pos-graduacao detalhado e rigoroso, incluindo separabilidade, normalidade, extensoes infinitas (Galois topologico) e teoria de Kummer. Bom para aprofundar.",
+      "chapters": "caps. I-IV"
+    },
+    {
+      "title": "Algebra",
+      "author": "Serge Lang",
+      "note": "Referencia enciclopedica de pos-graduacao; capitulo de Galois com extensoes ciclotomicas, Kummer e Artin-Schreier. Para consulta avancada.",
+      "chapters": "cap. VI (Galois Theory)"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.702 Algebra II",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Milne — Fields and Galois Theory (notas/livro gratuito)",
+      "kind": "notas",
+      "ref": "jmilne.org"
+    },
+    {
+      "title": "Abstract Algebra — Benedict Gross (Harvard, videoaulas)",
+      "kind": "video",
+      "ref": "YouTube / Harvard Extension"
+    },
+    {
+      "title": "Pete L. Clark — Field Theory (notas de curso)",
+      "kind": "notas",
+      "ref": "notas de curso"
+    },
+    {
+      "title": "Videoaulas de Algebra do canal IMPA / PAPMEM",
+      "kind": "video",
+      "ref": "YouTube IMPA"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 2,
+    "mestrado": 5,
+    "note": "Em concursos de IF (EBTT) Galois aparece pouco e de forma conceitual: enunciado e uso do corpo de decomposicao, impossibilidade dos problemas gregos (duplicacao do cubo, trisseccao do angulo) e o fato de a quintica geral nao ser soluvel por radicais; o grosso cai mesmo em extensoes de corpos (trilha anterior). Em mestrado e tema central e recorrente: calcular $\\mathrm{Gal}(L/K)$ e $\\mathrm{Gal}(f)$, usar o Teorema Fundamental para descrever o reticulado de corpos intermediarios, identificar subextensoes normais via subgrupos normais, aplicar o criterio de solubilidade (grupo soluvel) e o de construtibilidade (grau potencia de $2$), e tratar extensoes ciclotomicas $\\mathbb{Q}(\\zeta_n)$ e corpos finitos. Demonstracoes pedidas com frequencia: $|\\mathrm{Gal}(L/K)|=[L:K]$ para extensao de Galois, o Teorema de Artin sobre corpos fixos e a insolubilidade de $S_5$."
+  },
+  "subtopics": [
+    {
+      "id": "teoria-galois-01-fechos-decomposicao-imersoes",
+      "title": "Fechos Algebricos, Corpos de Decomposicao e Extensao de Imersoes",
+      "tagline": "A infraestrutura da teoria: todo corpo vive num fecho algebrico unico, todo polinomio tem corpo de decomposicao unico, e imersoes sempre se estendem — o lema que faz a maquina de Galois girar.",
+      "objectives": [
+        "Definir corpo algebricamente fechado e fecho algebrico, e enunciar a existencia e unicidade do fecho algebrico de um corpo (via Lema de Zorn).",
+        "Reconstruir a existencia e a unicidade (a menos de $K$-isomorfismo) do corpo de decomposicao de um polinomio ou familia de polinomios.",
+        "Enunciar e demonstrar o Lema da Extensao de Imersoes e usa-lo para contar as $K$-imersoes de uma extensao algebrica num fecho algebrico.",
+        "Definir o grau separavel $[L:K]_s$ como o numero de $K$-imersoes em $\\overline{K}$ e provar sua multiplicatividade em torres.",
+        "Distinguir $K$-imersao (em $\\overline{K}$) de $K$-automorfismo, identificando quando elas coincidem."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Corpo algebricamente fechado",
+          "statement": "$\\Omega$ e algebricamente fechado se todo polinomio nao constante de $\\Omega[x]$ tem raiz em $\\Omega$; equivalentemente, todo polinomio se fatora em fatores lineares e os unicos irredutiveis sao os de grau $1$."
+        },
+        {
+          "term": "Fecho algebrico",
+          "statement": "Uma extensao $\\overline{K}/K$ que e algebrica e com $\\overline{K}$ algebricamente fechado. Equivale a um corpo de decomposicao de todos os polinomios de $K[x]$ simultaneamente."
+        },
+        {
+          "term": "$K$-imersao",
+          "statement": "Homomorfismo de corpos $\\sigma:L\\to\\Omega$ que fixa $K$ ponto a ponto ($\\sigma|_K=\\mathrm{id}_K$). Todo morfismo de corpos e injetivo, dai o nome imersao (mergulho)."
+        },
+        {
+          "term": "Conjugados de $\\alpha$",
+          "statement": "As raizes em $\\overline{K}$ do polinomio minimal $m_{\\alpha,K}$. Uma $K$-imersao de $K(\\alpha)$ leva $\\alpha$ em um de seus conjugados, e ha exatamente tantas imersoes quantas raizes distintas de $m_{\\alpha,K}$."
+        },
+        {
+          "term": "Grau separavel $[L:K]_s$",
+          "statement": "O numero de $K$-imersoes distintas de $L$ em $\\overline{K}$. Satisfaz $1\\le[L:K]_s\\le[L:K]$ e e multiplicativo: $[L:K]_s=[L:F]_s\\,[F:K]_s$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Existencia e unicidade do fecho algebrico (Steinitz)",
+          "statement": "Todo corpo $K$ possui um fecho algebrico $\\overline{K}$, e quaisquer dois fechos algebricos de $K$ sao $K$-isomorfos.",
+          "whyItMatters": "Fornece um ambiente universal $\\overline{K}$ onde TODAS as extensoes algebricas de $K$ se realizam simultaneamente; e ali que vivem as raizes e os conjugados. A prova usa o Lema de Zorn (logo o Axioma da Escolha)."
+        },
+        {
+          "name": "Extensao de isomorfismos a uma raiz",
+          "statement": "Seja $\\sigma:K\\to K'$ isomorfismo de corpos, $p\\in K[x]$ irredutivel e $p'=\\sigma(p)\\in K'[x]$. Se $\\alpha$ e raiz de $p$ e $\\alpha'$ raiz de $p'$, entao $\\sigma$ se estende a um isomorfismo $K(\\alpha)\\xrightarrow{\\sim}K'(\\alpha')$ com $\\alpha\\mapsto\\alpha'$. O numero de tais extensoes e o numero de raizes distintas de $p'$.",
+          "whyItMatters": "E o passo indutivo de toda a teoria: controla de quantas maneiras uma extensao simples mergulha, e por iteracao, qualquer extensao finita. E a origem da contagem $[L:K]_s$."
+        },
+        {
+          "name": "Lema da Extensao de Imersoes",
+          "statement": "Seja $L/K$ algebrica e $\\sigma:K\\to\\Omega$ uma imersao num corpo algebricamente fechado $\\Omega$. Entao $\\sigma$ se estende a uma imersao $\\tilde\\sigma:L\\to\\Omega$. Em particular, sempre existem $K$-imersoes $L\\to\\overline{K}$.",
+          "whyItMatters": "Garante que imersoes nunca 'ficam presas'. Combinado com a contagem de conjugados, define $[L:K]_s$ e fundamenta a definicao de extensao de Galois (quando as imersoes sao automorfismos)."
+        },
+        {
+          "name": "Unicidade do corpo de decomposicao",
+          "statement": "Dois corpos de decomposicao de um mesmo $f\\in K[x]$ (ou de uma mesma familia) sobre $K$ sao $K$-isomorfos.",
+          "whyItMatters": "Torna o grupo de Galois um invariante bem definido do polinomio, e nao da escolha particular do corpo de decomposicao — pre-requisito para toda a teoria que segue."
+        }
+      ],
+      "summary": "O ponto de partida da teoria de Galois e fixar um palco onde todas as raizes existam. Um corpo $\\Omega$ e algebricamente fechado quando todo polinomio nao constante tem raiz nele — os unicos irredutiveis sao os lineares. Um fecho algebrico $\\overline{K}$ de $K$ e uma extensao algebrica que tambem e algebricamente fechada; pelo Teorema de Steinitz ele sempre existe (construido via Lema de Zorn) e e unico a menos de $K$-isomorfismo. Dentro de $\\overline{K}$ moram todos os conjugados de cada elemento algebrico: as raizes de seu polinomio minimal. O corpo de decomposicao de $f$ — a menor subextensao onde $f$ se fatora em lineares — vive em $\\overline{K}$ e tambem e unico a menos de isomorfismo, o que torna o grupo de Galois de $f$ um objeto bem definido.\n\nO instrumento tecnico central e o Lema da Extensao de Imersoes: qualquer imersao $K\\to\\Omega$ num corpo algebricamente fechado se estende a toda extensao algebrica $L/K$. A versao basica controla extensoes simples — uma imersao de $K(\\alpha)$ e livre para mandar $\\alpha$ em qualquer um de seus conjugados, e so neles, de modo que ha exatamente tantas imersoes quantas raizes distintas do minimal. Iterando ao longo de uma torre, definimos o grau separavel $[L:K]_s$ como o numero de $K$-imersoes de $L$ em $\\overline{K}$; ele e multiplicativo e satisfaz $[L:K]_s\\le[L:K]$. Esse contador e a semente de tudo o que vem a seguir: a separabilidade sera a igualdade $[L:K]_s=[L:K]$, e a normalidade sera a condicao de que toda imersao tenha imagem $L$, isto e, seja um automorfismo. E crucial nao confundir uma $K$-imersao (em $\\overline{K}$) com um $K$-automorfismo de $L$: elas so coincidem quando $L/K$ e normal.",
+      "commonPitfalls": [
+        "Confundir 'algebricamente fechado' com 'fechado pelas operacoes': trata-se de TER raizes para todo polinomio, nao de estar fechado por soma e produto.",
+        "Achar que o fecho algebrico e unico como conjunto: e unico apenas a menos de $K$-isomorfismo, e o isomorfismo nao e canonico.",
+        "Esquecer que, ao contar $K$-imersoes, exige-se fixar $K$ ponto a ponto; sem essa condicao a contagem muda completamente.",
+        "Tratar toda imersao de $K(\\alpha)$ como automorfismo: ela manda $\\alpha$ num conjugado que pode estar fora de $K(\\alpha)$ (ex.: $\\sqrt[3]{2}\\mapsto\\omega\\sqrt[3]{2}\\notin\\mathbb{Q}(\\sqrt[3]{2})$)."
+      ],
+      "worked": "**Contando $K$-imersoes de $\\mathbb{Q}(\\sqrt[3]{2})$ e contrastando com automorfismos.**\n\nO polinomio minimal de $\\alpha=\\sqrt[3]{2}$ sobre $\\mathbb{Q}$ e $m(x)=x^3-2$ (irredutivel por Eisenstein, $p=2$), com tres raizes distintas em $\\mathbb{C}$:\n$$\\sqrt[3]{2},\\quad \\omega\\sqrt[3]{2},\\quad \\omega^2\\sqrt[3]{2},\\qquad \\omega=e^{2\\pi i/3}.$$\n\n*Imersoes em $\\overline{\\mathbb{Q}}\\subseteq\\mathbb{C}$.* Pela extensao de isomorfismos, uma $\\mathbb{Q}$-imersao $\\sigma:\\mathbb{Q}(\\sqrt[3]{2})\\to\\mathbb{C}$ fica determinada pela imagem de $\\alpha$, que pode ser qualquer uma das tres raizes. Logo ha exatamente $3$ imersoes e $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]_s=3=[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]$ (separavel, como toda extensao em caracteristica $0$).\n\n*Automorfismos.* Um $\\mathbb{Q}$-automorfismo precisa ter imagem dentro do proprio $\\mathbb{Q}(\\sqrt[3]{2})$, que e um subcorpo de $\\mathbb{R}$. Das tres raizes, apenas $\\sqrt[3]{2}$ e real; as outras duas sao complexas e nao pertencem a $\\mathbb{Q}(\\sqrt[3]{2})$. Logo $\\sigma(\\alpha)$ so pode ser $\\alpha$, e\n$$\\mathrm{Aut}(\\mathbb{Q}(\\sqrt[3]{2})/\\mathbb{Q})=\\{\\mathrm{id}\\}.$$\n\nConclusao: ha $3$ imersoes mas apenas $1$ automorfismo. A diferenca mede exatamente a falta de normalidade — $\\mathbb{Q}(\\sqrt[3]{2})/\\mathbb{Q}$ nao e de Galois. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que todo corpo algebricamente fechado e infinito.",
+          "hint": "Se $\\Omega=\\{a_1,\\dots,a_n\\}$ fosse finito, considere $1+\\prod_{i}(x-a_i)$ e mostre que ele nao tem raiz em $\\Omega$.",
+          "difficulty": 2,
+          "solution": "Seja $\\Omega$ um corpo algebricamente fechado. Suponha, por absurdo, que $\\Omega$ seja finito, digamos $\\Omega=\\{a_1,a_2,\\dots,a_n\\}$ (note que $n\\ge 2$, pois todo corpo contem $0\\neq 1$). Considere o polinomio\n$$p(x)=1+\\prod_{i=1}^{n}(x-a_i)\\in\\Omega[x].$$\nO produto $\\prod_{i=1}^n (x-a_i)$ tem grau $n\\ge 1$ e coeficiente lider $1$, logo $p$ e nao constante (tem grau exatamente $n$).\n\nAvaliando $p$ em cada elemento de $\\Omega$: para todo $j\\in\\{1,\\dots,n\\}$, o fator $(x-a_j)$ se anula em $x=a_j$, portanto\n$$p(a_j)=1+\\prod_{i=1}^{n}(a_j-a_i)=1+0=1\\neq 0.$$\nAssim $p$ nao possui nenhuma raiz em $\\Omega$. Mas isso contradiz a definicao de corpo algebricamente fechado, segundo a qual todo polinomio nao constante de $\\Omega[x]$ deve ter raiz em $\\Omega$.\n\nA contradicao veio de supor $\\Omega$ finito. Logo todo corpo algebricamente fechado e infinito. $\\blacksquare$",
+          "steps": [
+            "Suponha por absurdo que $\\Omega=\\{a_1,\\dots,a_n\\}$ seja finito e lembre que ser algebricamente fechado significa: todo polinomio nao constante tem raiz.",
+            "Construa um polinomio explicito que 'evita' todos os elementos: $p(x)=1+\\prod_{i}(x-a_i)$.",
+            "Verifique que $p$ e nao constante (grau $n\\ge 1$) — condicao para a definicao se aplicar.",
+            "Avalie $p(a_j)$ para cada $j$: o produto zera, sobra $1\\neq 0$, entao $p$ nao tem raiz em $\\Omega$.",
+            "Conclua a contradicao com a definicao de corpo algebricamente fechado; portanto $\\Omega$ e infinito."
+          ]
+        },
+        {
+          "prompt": "Liste explicitamente as $4$ $\\mathbb{Q}$-imersoes de $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})$ em $\\mathbb{C}$, descrevendo a imagem de $\\sqrt{2}$ e de $\\sqrt{3}$ em cada uma, e conclua que $[\\mathbb{Q}(\\sqrt{2},\\sqrt{3}):\\mathbb{Q}]_s=4$.",
+          "hint": "Cada imersao manda $\\sqrt{2}\\mapsto\\pm\\sqrt{2}$ e $\\sqrt{3}\\mapsto\\pm\\sqrt{3}$ de forma independente (use a torre e a extensao de isomorfismos andar por andar).",
+          "difficulty": 3,
+          "solution": "A extensao $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})/\\mathbb{Q}$ tem grau $4$, com torre\n$$\\mathbb{Q}\\subset\\mathbb{Q}(\\sqrt{2})\\subset\\mathbb{Q}(\\sqrt{2},\\sqrt{3}),\\qquad [\\mathbb{Q}(\\sqrt{2}):\\mathbb{Q}]=2,\\quad [\\mathbb{Q}(\\sqrt{2},\\sqrt{3}):\\mathbb{Q}(\\sqrt{2})]=2.$$\nO segundo grau e $2$ porque $\\sqrt{3}\\notin\\mathbb{Q}(\\sqrt{2})$ (senao $\\sqrt{3}=a+b\\sqrt{2}$ levaria, ao elevar ao quadrado, a $\\sqrt{2}\\in\\mathbb{Q}$, absurdo).\n\n**Contagem por andares.** No primeiro andar, uma $\\mathbb{Q}$-imersao de $\\mathbb{Q}(\\sqrt{2})$ leva $\\sqrt{2}$ numa raiz de $x^2-2$, ou seja $\\sqrt{2}\\mapsto\\pm\\sqrt{2}$: sao $2$ escolhas. Pela extensao de isomorfismos, cada uma dessas imersoes se estende ao segundo andar mandando $\\sqrt{3}$ numa raiz de $x^2-3$ (que permanece irredutivel sobre $\\mathbb{Q}(\\sqrt{2})$), ou seja $\\sqrt{3}\\mapsto\\pm\\sqrt{3}$: mais $2$ escolhas, independentes da primeira. Total: $2\\times 2=4$ imersoes.\n\n**As quatro imersoes** $\\sigma:\\mathbb{Q}(\\sqrt{2},\\sqrt{3})\\to\\mathbb{C}$, determinadas por $(\\sigma(\\sqrt{2}),\\sigma(\\sqrt{3}))$:\n$$\\sigma_1:(\\sqrt{2},\\sqrt{3}),\\quad \\sigma_2:(-\\sqrt{2},\\sqrt{3}),\\quad \\sigma_3:(\\sqrt{2},-\\sqrt{3}),\\quad \\sigma_4:(-\\sqrt{2},-\\sqrt{3}).$$\nCada uma esta bem definida pois preserva as relacoes $(\\sqrt{2})^2=2$ e $(\\sqrt{3})^2=3$, e sao distintas entre si (diferem na imagem de $\\sqrt{2}$ ou de $\\sqrt{3}$).\n\n**Conclusao.** Ha exatamente $4$ imersoes, logo $[\\mathbb{Q}(\\sqrt{2},\\sqrt{3}):\\mathbb{Q}]_s=4=[\\mathbb{Q}(\\sqrt{2},\\sqrt{3}):\\mathbb{Q}]$, confirmando que a extensao e separavel (como esperado em caracteristica $0$). $\\blacksquare$",
+          "steps": [
+            "Estabeleca a torre $\\mathbb{Q}\\subset\\mathbb{Q}(\\sqrt{2})\\subset\\mathbb{Q}(\\sqrt{2},\\sqrt{3})$ e justifique que cada andar tem grau $2$.",
+            "No primeiro andar, conte as imagens possiveis de $\\sqrt{2}$: raizes de $x^2-2$, isto e $\\pm\\sqrt{2}$ (2 opcoes).",
+            "Estenda cada imersao ao segundo andar mandando $\\sqrt{3}\\mapsto\\pm\\sqrt{3}$ (raizes de $x^2-3$), independentemente (mais 2 opcoes).",
+            "Liste as $2\\times 2=4$ imersoes pelos pares de sinais e verifique que sao distintas e bem definidas.",
+            "Conclua $[\\,\\cdot\\,]_s=4=[\\,\\cdot\\,]$, logo a extensao e separavel."
+          ]
+        },
+        {
+          "prompt": "Seja $L/K$ finita e $\\sigma:L\\to\\overline{K}$ uma $K$-imersao. Prove que $\\sigma(L)$ e um corpo $K$-isomorfo a $L$ e que $\\sigma$ permuta as raizes em $\\overline{K}$ de qualquer $f\\in K[x]$.",
+          "hint": "$\\sigma$ e homomorfismo injetivo que fixa $K$; aplique $\\sigma$ a $f(\\beta)=0$ usando $\\sigma(f(\\beta))=f(\\sigma\\beta)$ pois $f$ tem coeficientes em $K$.",
+          "difficulty": 3,
+          "solution": "Seja $\\sigma:L\\to\\overline{K}$ uma $K$-imersao ($\\sigma|_K=\\mathrm{id}_K$).\n\n**$\\sigma(L)$ e um corpo $K$-isomorfo a $L$.** Todo homomorfismo de corpos $\\sigma$ e injetivo: seu nucleo e um ideal de $L$; como $L$ e corpo, os unicos ideais sao $\\{0\\}$ e $L$, e $\\sigma(1)=1\\neq 0$ exclui o nucleo total, logo $\\ker\\sigma=\\{0\\}$. Assim $\\sigma:L\\to\\sigma(L)$ e bijetivo sobre sua imagem. A imagem $\\sigma(L)$ e um subcorpo de $\\overline{K}$: e fechada por soma, produto e inversos, pois $\\sigma(a)\\pm\\sigma(b)=\\sigma(a\\pm b)$, $\\sigma(a)\\sigma(b)=\\sigma(ab)$ e $\\sigma(a)^{-1}=\\sigma(a^{-1})$ para $a\\neq 0$. Portanto $\\sigma:L\\xrightarrow{\\sim}\\sigma(L)$ e um isomorfismo de corpos; e como $\\sigma$ fixa $K$ ponto a ponto, $K\\subseteq\\sigma(L)$ e o isomorfismo e um $K$-isomorfismo.\n\n**$\\sigma$ permuta as raizes de $f\\in K[x]$.** Escreva $f(x)=\\sum_{i=0}^{d} c_i x^i$ com $c_i\\in K$. Seja $\\beta\\in\\overline{K}$ uma raiz de $f$ que esteja em $L$ (ou aplique o argumento no fecho, estendendo $\\sigma$). Como $\\sigma$ e homomorfismo e fixa os $c_i\\in K$,\n$$f(\\sigma(\\beta))=\\sum_{i=0}^{d} c_i\\,\\sigma(\\beta)^i=\\sum_{i=0}^{d}\\sigma(c_i)\\,\\sigma(\\beta^i)=\\sigma\\!\\left(\\sum_{i=0}^{d} c_i\\beta^i\\right)=\\sigma(f(\\beta))=\\sigma(0)=0.$$\nLogo $\\sigma(\\beta)$ tambem e raiz de $f$. Assim $\\sigma$ leva raizes de $f$ em raizes de $f$; sendo injetiva e o conjunto de raizes finito, essa aplicacao do conjunto (finito) de raizes em si mesmo e uma bijecao, isto e, uma permutacao das raizes. $\\blacksquare$",
+          "steps": [
+            "Mostre que $\\sigma$ e injetivo: o nucleo e ideal de um corpo, e $\\sigma(1)=1\\neq0$ forca $\\ker\\sigma=\\{0\\}$.",
+            "Verifique que $\\sigma(L)$ e subcorpo de $\\overline{K}$ (fechado por operacoes e inversos) e contem $K$; logo $\\sigma:L\\to\\sigma(L)$ e $K$-isomorfismo.",
+            "Para $f=\\sum c_i x^i$ com $c_i\\in K$, use que $\\sigma$ fixa os $c_i$ e e homomorfismo para obter $f(\\sigma\\beta)=\\sigma(f(\\beta))$.",
+            "Aplique a uma raiz $\\beta$: $f(\\sigma\\beta)=\\sigma(0)=0$, logo $\\sigma\\beta$ e raiz.",
+            "Como $\\sigma$ e injetiva e o conjunto de raizes e finito, a aplicacao das raizes nelas mesmas e uma permutacao."
+          ]
+        },
+        {
+          "prompt": "Mostre que $[L:K]_s\\le[L:K]$ e que a igualdade vale para $L=K(\\alpha)$ exatamente quando $m_{\\alpha,K}$ tem raizes distintas.",
+          "hint": "O numero de imersoes de $K(\\alpha)$ e o numero de raizes DISTINTAS do minimal; compare com $\\deg m_{\\alpha,K}=[K(\\alpha):K]$ e use multiplicatividade na torre.",
+          "difficulty": 4,
+          "solution": "**Caso simples $L=K(\\alpha)$.** Seja $m=m_{\\alpha,K}$ o polinomio minimal, com $\\deg m=[K(\\alpha):K]$. Uma $K$-imersao $\\sigma:K(\\alpha)\\to\\overline{K}$ fica completamente determinada por $\\sigma(\\alpha)$, e $\\sigma(\\alpha)$ deve ser raiz de $m$ (pois $m(\\sigma\\alpha)=\\sigma(m(\\alpha))=0$). Reciprocamente, para cada raiz $\\beta$ de $m$ em $\\overline{K}$ existe exatamente uma imersao com $\\alpha\\mapsto\\beta$ (extensao de isomorfismos). Logo\n$$[K(\\alpha):K]_s=\\#\\{\\text{raizes DISTINTAS de }m\\text{ em }\\overline{K}\\}.$$\nComo o numero de raizes distintas de $m$ e no maximo $\\deg m$, com igualdade sse $m$ nao tem raizes repetidas, obtemos\n$$[K(\\alpha):K]_s\\le\\deg m=[K(\\alpha):K],$$\ncom igualdade se e somente se $m_{\\alpha,K}$ tem todas as raizes distintas (i.e. $\\alpha$ e separavel sobre $K$).\n\n**Caso geral (torre).** Toda extensao finita $L/K$ e uma torre $K=F_0\\subset F_1\\subset\\cdots\\subset F_r=L$ com $F_{i+1}=F_i(\\alpha_i)$ simples. Usam-se duas multiplicatividades: o grau ordinario $[L:K]=\\prod_i [F_{i+1}:F_i]$ e o grau separavel $[L:K]_s=\\prod_i [F_{i+1}:F_i]_s$ (esta segunda vem de que cada $K$-imersao de $L$ se constroi estendendo andar por andar, e o numero de extensoes em cada andar e $[F_{i+1}:F_i]_s$, independente da imersao ja escolhida — via extensao de isomorfismos aplicada ao conjugado de $\\alpha_i$ sobre a imagem de $F_i$). Comparando fator a fator,\n$$[F_{i+1}:F_i]_s\\le[F_{i+1}:F_i]\\ \\Longrightarrow\\ [L:K]_s=\\prod_i [F_{i+1}:F_i]_s\\le\\prod_i [F_{i+1}:F_i]=[L:K].$$\nIsto prova $[L:K]_s\\le[L:K]$ em geral, e a caracterizacao da igualdade no caso $L=K(\\alpha)$ e exatamente a condicao de $m_{\\alpha,K}$ ter raizes distintas. $\\blacksquare$",
+          "steps": [
+            "Reduza ao caso simples: uma imersao de $K(\\alpha)$ e determinada por $\\sigma(\\alpha)$, que deve ser raiz do minimal $m$.",
+            "Conclua que $[K(\\alpha):K]_s$ e o numero de raizes DISTINTAS de $m$, sempre $\\le\\deg m=[K(\\alpha):K]$.",
+            "Identifique a igualdade: ocorre exatamente quando $m$ nao tem raizes repetidas (i.e. $\\alpha$ separavel).",
+            "Para o caso geral, decomponha $L/K$ numa torre de extensoes simples e use a multiplicatividade de $[\\,\\cdot\\,]$ e de $[\\,\\cdot\\,]_s$.",
+            "Multiplique as desigualdades de cada andar para obter $[L:K]_s\\le[L:K]$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Corpo algebricamente fechado",
+          "back": "Corpo $\\Omega$ em que todo polinomio nao constante de $\\Omega[x]$ tem raiz; equivalente: so ha irredutiveis de grau $1$."
+        },
+        {
+          "front": "Fecho algebrico de $K$",
+          "back": "Extensao $\\overline{K}/K$ que e algebrica E algebricamente fechada. Existe e e unico a menos de $K$-isomorfismo (Steinitz)."
+        },
+        {
+          "front": "$K$-imersao",
+          "back": "Homomorfismo de corpos $L\\to\\Omega$ que fixa $K$ ponto a ponto. E sempre injetivo."
+        },
+        {
+          "front": "Conjugados de $\\alpha$ sobre $K$",
+          "back": "As raizes de $m_{\\alpha,K}$ em $\\overline{K}$. Uma $K$-imersao de $K(\\alpha)$ leva $\\alpha$ num conjugado."
+        },
+        {
+          "front": "Quantas $K$-imersoes tem $K(\\alpha)$?",
+          "back": "Tantas quantas raizes DISTINTAS do polinomio minimal de $\\alpha$."
+        },
+        {
+          "front": "Grau separavel $[L:K]_s$",
+          "back": "Numero de $K$-imersoes de $L$ em $\\overline{K}$. Multiplicativo e $\\le[L:K]$."
+        },
+        {
+          "front": "Imersao vs automorfismo",
+          "back": "Imersao leva $L$ em $\\overline{K}$; automorfismo exige imagem $=L$. Coincidem sse $L/K$ e normal."
+        },
+        {
+          "front": "Corpo de decomposicao e unico?",
+          "back": "Sim, a menos de $K$-isomorfismo. Por isso $\\mathrm{Gal}(f)$ esta bem definido."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Dummit & Foote, secao 13.4 (Splitting Fields) e 13.5",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Algebra (fecho algebrico)",
+          "ref": "livro"
+        },
+        {
+          "title": "Milne, Fields and Galois Theory (cap. sobre splitting fields)",
+          "ref": "notas"
+        },
+        {
+          "title": "Morandi, Field and Galois Theory, cap. I",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise pre-requisitos de extensoes de corpos: polinomio minimal, grau $[L:K]$, torres e a formula do grau. Sem isso, contar imersoes nao fara sentido.",
+          "Leia a construcao do fecho algebrico em Dummit & Foote 13.4 (ou Garcia & Lequain) prestando atencao a UMA coisa: por que ele existe (Lema de Zorn) e por que e unico a menos de $K$-isomorfismo (Steinitz).",
+          "Estude o Lema da Extensao de Imersoes na forma indutiva: primeiro para extensao simples $K(\\alpha)$ (imersao manda $\\alpha$ num conjugado), depois a versao geral por torres. Escreva a prova do passo indutivo com suas palavras.",
+          "Faca a mao a contagem de $K$-imersoes de $\\mathbb{Q}(\\sqrt[3]{2})$ e de $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})$, comparando o numero de imersoes com o numero de automorfismos ate internalizar a diferenca.",
+          "Assista a uma aula sobre splitting fields / embeddings e resolva 2-3 exercicios de contagem de imersoes de um livro antes de voltar.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (a distincao imersao vs automorfismo e a definicao de $[L:K]_s$) nas suas notas."
+        ],
+        "searchQueries": [
+          "fecho algebrico existencia unicidade teorema de Steinitz Lema de Zorn",
+          "corpo de decomposicao splitting field unicidade prova",
+          "extension of embeddings lemma algebraic extension proof",
+          "separable degree number of embeddings field extension",
+          "Q(2^(1/3)) embeddings vs automorphisms not normal example",
+          "splitting field Galois theory Michael Penn"
+        ],
+        "videos": [
+          {
+            "title": "Serie de Field Theory / Galois Theory",
+            "channel": "Michael Penn",
+            "note": "Procure os videos sobre 'splitting fields' e 'algebraic closure'; ele constroi o corpo de decomposicao e discute imersoes com exemplos calculados."
+          },
+          {
+            "title": "Abstract Algebra (Harvard E-222)",
+            "channel": "Benedict Gross / Harvard (YouTube)",
+            "note": "Aulas sobre extensoes de corpos e imersoes; excelente para a intuicao de conjugados e da contagem de mergulhos."
+          },
+          {
+            "title": "Field Theory / Algebraic Closure",
+            "channel": "Dr. Peyam",
+            "note": "Videos curtos sobre corpo algebricamente fechado e fecho algebrico; bom para fixar as definicoes antes dos exercicios."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, secoes 13.4-13.5 (Splitting Fields and Algebraic Closures)",
+            "where": "livro de Dummit & Foote"
+          },
+          {
+            "title": "Fields and Galois Theory, capitulo sobre splitting fields e algebraic closure",
+            "where": "notas gratuitas de J. S. Milne (jmilne.org)"
+          },
+          {
+            "title": "Elementos de Algebra, capitulo de extensoes de corpos e fecho algebrico",
+            "where": "livro de Garcia & Lequain (IMPA, Projeto Euclides)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-galois-02-separabilidade-elemento-primitivo",
+      "title": "Separabilidade, Derivada Formal e o Teorema do Elemento Primitivo",
+      "tagline": "Quando as raizes de um polinomio sao todas distintas — e por que isso e exatamente o que faz toda extensao (em caracteristica $0$ ou de corpos finitos) ter um unico gerador.",
+      "objectives": [
+        "Definir a derivada formal em $K[x]$ e caracterizar raizes multiplas pelo criterio $\\gcd(f,f')\\neq 1$.",
+        "Definir polinomio separavel, elemento separavel e extensao separavel, relacionando-os com a igualdade $[L:K]_s=[L:K]$.",
+        "Identificar corpos perfeitos (caracteristica $0$ e corpos finitos) e dominar o exemplo padrao de inseparabilidade $x^p-t$ sobre $\\mathbb{F}_p(t)$.",
+        "Enunciar e aplicar o Teorema do Elemento Primitivo a extensoes finitas separaveis.",
+        "Calcular o polinomio minimal de um gerador primitivo $\\gamma$ de uma extensao concreta."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Derivada formal",
+          "statement": "Para $f=\\sum_i a_i x^i\\in K[x]$, $f'=\\sum_i i\\,a_i x^{i-1}$. E $K$-linear e satisfaz a regra do produto $(fg)'=f'g+fg'$, mesmo sem nocao de limite."
+        },
+        {
+          "term": "Raiz multipla",
+          "statement": "$\\alpha$ e raiz multipla de $f$ sse $(x-\\alpha)^2\\mid f$, o que equivale a $f(\\alpha)=f'(\\alpha)=0$. Logo $f$ tem todas as raizes simples em $\\overline{K}$ sse $\\gcd(f,f')=1$."
+        },
+        {
+          "term": "Polinomio separavel",
+          "statement": "Um irredutivel $p$ e separavel se tem raizes distintas em $\\overline{K}$, o que equivale a $p'\\neq 0$. Um elemento $\\alpha$ e separavel sobre $K$ se seu polinomio minimal e separavel."
+        },
+        {
+          "term": "Extensao separavel",
+          "statement": "$L/K$ e separavel se todo $\\alpha\\in L$ e separavel sobre $K$. Para extensoes finitas isso equivale a $[L:K]_s=[L:K]$."
+        },
+        {
+          "term": "Corpo perfeito",
+          "statement": "Corpo onde todo polinomio irredutivel e separavel. Equivale a $\\mathrm{char}=0$, ou $\\mathrm{char}=p$ com Frobenius sobrejetivo ($K=K^p$). Todo corpo finito e todo corpo de caracteristica $0$ sao perfeitos."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Criterio da derivada para raizes multiplas",
+          "statement": "$f\\in K[x]$ tem raiz multipla em $\\overline{K}$ sse $\\gcd(f,f')\\neq 1$. Um irredutivel $p$ e separavel sse $p'\\neq 0$; em $\\mathrm{char}\\,0$ isso e automatico, e em $\\mathrm{char}\\,p$ falha exatamente quando $p(x)=g(x^p)$ para algum $g$.",
+          "whyItMatters": "Transforma uma questao sobre raizes num fecho (objeto transcendente) num calculo de mdc dentro de $K[x]$, que e algoritmico. O $\\gcd$ nao muda ao passar a uma extensao, entao pode ser computado no proprio $K$."
+        },
+        {
+          "name": "Separabilidade via grau separavel",
+          "statement": "Para toda extensao finita, $[L:K]_s\\le[L:K]$, com igualdade sse e somente se $L/K$ e separavel; alem disso $[L:K]_s$ e multiplicativo em torres.",
+          "whyItMatters": "Da um criterio numerico para separabilidade e conecta com a contagem de imersoes da aula anterior: $L/K$ e separavel exatamente quando ha o numero maximo possivel de $K$-imersoes."
+        },
+        {
+          "name": "Corpos perfeitos sao separaveis",
+          "statement": "Se $K$ tem caracteristica $0$ ou e finito, entao $K$ e perfeito: toda extensao algebrica de $K$ e separavel.",
+          "whyItMatters": "Em quase todo contexto de concurso e mestrado (corpos numericos e corpos finitos) a separabilidade e automatica. Assim, nesses casos, ser de Galois reduz-se a ser normal."
+        },
+        {
+          "name": "Teorema do Elemento Primitivo",
+          "statement": "Toda extensao finita separavel $L/K$ e simples: existe $\\gamma\\in L$ com $L=K(\\gamma)$.",
+          "whyItMatters": "Reduz o estudo de qualquer extensao finita separavel a um unico gerador e seu polinomio minimal, tornando concretos os grupos de Galois e seus calculos. Por exemplo, $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})=\\mathbb{Q}(\\sqrt{2}+\\sqrt{3})$."
+        }
+      ],
+      "summary": "Separabilidade e a condicao de que um polinomio nao tenha raizes repetidas, e o instrumento para detecta-la e a derivada formal — definida algebricamente por $\\left(\\sum a_i x^i\\right)'=\\sum i a_i x^{i-1}$, sem nenhum limite. Um elemento $\\alpha$ e raiz multipla de $f$ exatamente quando $f(\\alpha)=f'(\\alpha)=0$, de modo que $f$ tem todas as raizes simples no fecho algebrico se e so se $\\gcd(f,f')=1$. Para um polinomio irredutivel $p$, isso equivale a $p'\\neq 0$. Em caracteristica $0$ a derivada de um polinomio nao constante nunca e nula, logo todo irredutivel e separavel; o mesmo vale em corpos finitos. A unica fonte de inseparabilidade esta na caracteristica $p$: a derivada de $p(x)=g(x^p)$ e zero, e o exemplo canonico e $x^p-t$ sobre $\\mathbb{F}_p(t)$, que e irredutivel mas se escreve como $(x-t^{1/p})^p$ no fecho — uma unica raiz de multiplicidade $p$.\n\nA medida quantitativa da separabilidade e a igualdade $[L:K]_s=[L:K]$: como o grau separavel conta $K$-imersoes em $\\overline{K}$ e e sempre $\\le[L:K]$, uma extensao finita e separavel exatamente quando atinge o numero maximo de imersoes. Corpos onde toda extensao algebrica e separavel chamam-se perfeitos; caracteristica $0$ e corpos finitos sao perfeitos, o que cobre praticamente todos os exemplos de interesse em concursos e mestrado. A consequencia estrutural mais poderosa e o Teorema do Elemento Primitivo: toda extensao finita separavel e simples, $L=K(\\gamma)$. Isso significa que, apesar de gerarmos extensoes adjuntando varios elementos, basta um unico gerador — e seu polinomio minimal, cujas raizes o grupo de Galois ira permutar. Esse teorema e o que torna a teoria computavel na pratica.",
+      "commonPitfalls": [
+        "Pensar que separabilidade so falha 'raramente': de fato falha SOMENTE em caracteristica $p$ e apenas para irredutiveis da forma $g(x^p)$; em $\\mathrm{char}\\,0$ e em corpos finitos nunca falha.",
+        "Confundir 'polinomio com raiz multipla' com 'polinomio redutivel': $x^2-2$ e separavel e irredutivel; $(x-1)^2$ tem raiz multipla mas e redutivel. Separabilidade refere-se a raizes distintas do minimal.",
+        "Achar que o Teorema do Elemento Primitivo vale para qualquer extensao finita: ele exige separabilidade (ha contraexemplos inseparaveis com infinitos corpos intermediarios).",
+        "Calcular a derivada esquecendo a caracteristica: em $\\mathbb{F}_p$, $(x^p)'=p x^{p-1}=0$, e nao $p x^{p-1}$ com $p\\neq 0$."
+      ],
+      "worked": "**Teorema do Elemento Primitivo na pratica: $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})=\\mathbb{Q}(\\sqrt{2}+\\sqrt{3})$.**\n\nSeja $\\gamma=\\sqrt{2}+\\sqrt{3}$. Claramente $\\mathbb{Q}(\\gamma)\\subseteq\\mathbb{Q}(\\sqrt{2},\\sqrt{3})$. Para a inclusao inversa, basta recuperar $\\sqrt{2}$ e $\\sqrt{3}$ a partir de $\\gamma$.\n\nCalculemos potencias:\n$$\\gamma^2=(\\sqrt{2}+\\sqrt{3})^2=2+3+2\\sqrt{6}=5+2\\sqrt{6}\\ \\Rightarrow\\ \\sqrt{6}=\\tfrac{\\gamma^2-5}{2}\\in\\mathbb{Q}(\\gamma).$$\nAlem disso $\\gamma^3=\\gamma\\cdot\\gamma^2=(\\sqrt{2}+\\sqrt{3})(5+2\\sqrt{6})=5\\sqrt{2}+5\\sqrt{3}+2\\sqrt{12}+2\\sqrt{18}=5\\sqrt{2}+5\\sqrt{3}+4\\sqrt{3}+6\\sqrt{2}=11\\sqrt{2}+9\\sqrt{3}.$$\nLogo\n$$\\gamma^3-9\\gamma=(11\\sqrt{2}+9\\sqrt{3})-9(\\sqrt{2}+\\sqrt{3})=2\\sqrt{2}\\ \\Rightarrow\\ \\sqrt{2}=\\tfrac{\\gamma^3-9\\gamma}{2}\\in\\mathbb{Q}(\\gamma),$$\ne $\\sqrt{3}=\\gamma-\\sqrt{2}\\in\\mathbb{Q}(\\gamma)$. Portanto $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})\\subseteq\\mathbb{Q}(\\gamma)$, e vale a igualdade.\n\nComo $[\\mathbb{Q}(\\sqrt{2},\\sqrt{3}):\\mathbb{Q}]=4$, o polinomio minimal de $\\gamma$ tem grau $4$. De $\\gamma^2=5+2\\sqrt{6}$ vem $(\\gamma^2-5)^2=24$, isto e,\n$$\\gamma^4-10\\gamma^2+1=0,$$\ne $m_{\\gamma}(x)=x^4-10x^2+1$ e o minimal procurado (irredutivel sobre $\\mathbb{Q}$ pois $\\gamma$ tem grau $4$). $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que $x^p-t$ e irredutivel sobre $\\mathbb{F}_p(t)$ e inseparavel, e que em seu corpo de decomposicao ele se escreve como $(x-\\alpha)^p$, onde $\\alpha^p=t$. Conclua que $[\\mathbb{F}_p(t)(\\alpha):\\mathbb{F}_p(t)]=p$ mas o grau separavel e $1$.",
+          "hint": "Use Eisenstein no anel $\\mathbb{F}_p[t]$ com o primo $t$ para a irredutibilidade; calcule a derivada $(x^p-t)'=0$; em caracteristica $p$, $(x-\\alpha)^p=x^p-\\alpha^p=x^p-t$.",
+          "difficulty": 4,
+          "solution": "Trabalhe sobre $K=\\mathbb{F}_p(t)$, corpo de fracoes de $\\mathbb{F}_p[t]$, e considere $f(x)=x^p-t\\in K[x]$.\n\n**Irredutibilidade.** O anel $\\mathbb{F}_p[t]$ e um dominio de fatoracao unica e $t$ e um elemento primo (irredutivel). Vendo $f$ como polinomio em $x$ com coeficientes em $\\mathbb{F}_p[t]$, seus coeficientes sao $1$ (lider), $0,\\dots,0$ e $-t$ (termo constante). Aplicando o Criterio de Eisenstein com o primo $t$: $t\\mid$ todos os coeficientes exceto o lider ($t\\mid -t$, $t\\mid 0$), $t\\nmid 1$ e $t^2\\nmid -t$. Logo $f$ e irredutivel em $\\mathbb{F}_p[t][x]$ e, por Gauss, em $\\mathbb{F}_p(t)[x]=K[x]$.\n\n**Inseparabilidade e a forma $(x-\\alpha)^p$.** Seja $\\alpha$ uma raiz de $f$ num fecho algebrico, isto e $\\alpha^p=t$. Em caracteristica $p$ vale o 'sonho do calouro' $(a+b)^p=a^p+b^p$ (pois os coeficientes binomiais intermediarios sao divisiveis por $p$), donde\n$$(x-\\alpha)^p=x^p-\\alpha^p=x^p-t=f(x).$$\nPortanto $f$ tem $\\alpha$ como unica raiz, de multiplicidade $p$: e inseparavel. Confirmando pela derivada, $f'(x)=p\\,x^{p-1}=0$ em caracteristica $p$, logo $\\gcd(f,f')=f\\neq 1$, sinal de raiz multipla.\n\n**Graus.** Como $f$ e o minimal de $\\alpha$ (irredutivel, monico, anula $\\alpha$) e $\\deg f=p$,\n$$[K(\\alpha):K]=p.$$\nJa o grau separavel conta $K$-imersoes de $K(\\alpha)$, que correspondem as raizes DISTINTAS de $f$; havendo uma unica raiz distinta $\\alpha$,\n$$[K(\\alpha):K]_s=1.$$\nAssim $[K(\\alpha):K]=p$ mas $[K(\\alpha):K]_s=1$: a extensao e puramente inseparavel de grau $p$. $\\blacksquare$",
+          "steps": [
+            "Aplique Eisenstein com o primo $t$ em $\\mathbb{F}_p[t]$ e o Lema de Gauss para provar que $x^p-t$ e irredutivel sobre $\\mathbb{F}_p(t)$.",
+            "Tome $\\alpha$ com $\\alpha^p=t$ e use $(x-\\alpha)^p=x^p-\\alpha^p$ em caracteristica $p$ para reescrever $f=(x-\\alpha)^p$.",
+            "Confirme a inseparabilidade pela derivada: $f'=p x^{p-1}=0$, logo $\\gcd(f,f')\\neq 1$.",
+            "Como $f$ e o minimal de grau $p$, conclua $[K(\\alpha):K]=p$.",
+            "Conte as raizes distintas (apenas $\\alpha$) para obter grau separavel $1$."
+          ]
+        },
+        {
+          "prompt": "Mostre que se $\\mathrm{char}\\,K=0$ entao todo polinomio irredutivel de $K[x]$ e separavel.",
+          "hint": "Se $p$ e irredutivel de grau $n\\ge1$, entao $p'$ tem grau $n-1\\ge0$ e e nao nulo; como $p$ e irredutivel e $\\deg p'<\\deg p$, $\\gcd(p,p')=1$.",
+          "difficulty": 2,
+          "solution": "Seja $\\mathrm{char}\\,K=0$ e $p\\in K[x]$ irredutivel, de grau $n=\\deg p\\ge 1$. Queremos mostrar que $p$ e separavel, isto e, tem todas as raizes distintas em $\\overline{K}$; pelo criterio da derivada, basta ver que $\\gcd(p,p')=1$.\n\nEscreva $p(x)=\\sum_{i=0}^{n} a_i x^i$ com $a_n\\neq 0$. A derivada formal e $p'(x)=\\sum_{i=1}^{n} i\\,a_i x^{i-1}$; seu coeficiente lider e $n\\,a_n$. Como $\\mathrm{char}\\,K=0$, o inteiro $n\\ge 1$ nao e zero em $K$, logo $n\\,a_n\\neq 0$ e $\\deg p'=n-1\\ge 0$. Em particular $p'\\neq 0$.\n\nAgora, $d:=\\gcd(p,p')$ divide $p$. Como $p$ e irredutivel, seus unicos divisores monicos sao $1$ e $p$ (a menos de unidades). Se fosse $d=p$ (a menos de constante), entao $p\\mid p'$; mas $0\\le\\deg p'=n-1<n=\\deg p$ e $p'\\neq 0$, o que impede $p\\mid p'$. Logo $d=1$, ou seja $\\gcd(p,p')=1$.\n\nPortanto $p$ nao tem raizes multiplas em $\\overline{K}$: e separavel. Como $p$ era um irredutivel arbitrario, todo irredutivel de $K[x]$ e separavel. $\\blacksquare$",
+          "steps": [
+            "Reduza separabilidade ao criterio $\\gcd(p,p')=1$ (raizes distintas).",
+            "Calcule $\\deg p'=n-1$ observando que o coeficiente lider $n\\,a_n\\neq0$ pois $\\mathrm{char}\\,K=0$.",
+            "Note que $p'\\neq 0$ e $\\deg p'<\\deg p$.",
+            "Use a irredutibilidade de $p$: os unicos divisores sao $1$ e $p$, e $p\\nmid p'$ por grau.",
+            "Conclua $\\gcd(p,p')=1$, logo $p$ separavel; como $p$ era arbitrario, todo irredutivel e separavel."
+          ]
+        },
+        {
+          "prompt": "Determine se $f(x)=x^4+2x^2+1\\in\\mathbb{Q}[x]$ tem raizes multiplas, calculando $\\gcd(f,f')$, e fatore $f$.",
+          "hint": "$f=(x^2+1)^2$; entao $f'=4x(x^2+1)$ e $\\gcd(f,f')=x^2+1\\neq1$, indicando a raiz dupla $\\pm i$.",
+          "difficulty": 2,
+          "solution": "Seja $f(x)=x^4+2x^2+1\\in\\mathbb{Q}[x]$.\n\n**Fatoracao.** Observe que $f(x)=(x^2)^2+2(x^2)+1=(x^2+1)^2$. Logo $f=(x^2+1)^2$, e como $x^2+1$ e irredutivel sobre $\\mathbb{Q}$ (sem raizes reais/racionais), essa e a fatoracao em irredutiveis, cada fator com multiplicidade $2$. As raizes em $\\mathbb{C}$ sao $i$ e $-i$, ambas duplas.\n\n**Calculo de $\\gcd(f,f')$.** Derivando,\n$$f'(x)=4x^3+4x=4x(x^2+1).$$\nAgora $f=(x^2+1)^2$ e $f'=4x(x^2+1)$; ambos sao divisiveis por $x^2+1$. Como $x^2+1$ e irredutivel e nao divide o fator restante $4x$ de $f'$ (pois $\\deg(4x)=1<2$), o maximo divisor comum monico e\n$$\\gcd(f,f')=x^2+1\\neq 1.$$\n(De modo algoritmico: dividindo $f$ por $f'$, o resto e proporcional a $x^2+1$, e $f'$ e multiplo de $x^2+1$, encerrando o Euclides.)\n\n**Conclusao.** Como $\\gcd(f,f')=x^2+1\\neq 1$, $f$ TEM raizes multiplas; de fato as raizes comuns de $f$ e $f'$ sao exatamente $\\pm i$, cada uma raiz dupla de $f$, coerente com $f=(x^2+1)^2$. $\\blacksquare$",
+          "steps": [
+            "Reconheca $f$ como quadrado perfeito em $x^2$: $f=(x^2+1)^2$.",
+            "Calcule a derivada $f'=4x^3+4x=4x(x^2+1)$.",
+            "Identifique o fator comum $x^2+1$ em $f$ e $f'$ e verifique que $x^2+1\\nmid 4x$.",
+            "Conclua $\\gcd(f,f')=x^2+1\\neq1$, logo ha raizes multiplas.",
+            "Localize as raizes duplas $\\pm i$, consistentes com a fatoracao $(x^2+1)^2$."
+          ]
+        },
+        {
+          "prompt": "Seja $L=\\mathbb{Q}(\\sqrt[3]{2},\\omega)$ o corpo de decomposicao de $x^3-2$. Use o Teorema do Elemento Primitivo para afirmar que $L=\\mathbb{Q}(\\gamma)$ para algum $\\gamma$, e verifique que $\\gamma=\\sqrt[3]{2}+\\omega$ serve (sem calcular o minimal explicitamente, argumente o grau).",
+          "hint": "$L/\\mathbb{Q}$ e finita e separavel (char $0$), logo simples. Para $\\gamma=\\sqrt[3]{2}+\\omega$, mostre que $\\mathbb{Q}(\\gamma)$ contem ambos os geradores usando que $[L:\\mathbb{Q}]=6$.",
+          "difficulty": 4,
+          "solution": "Seja $L=\\mathbb{Q}(\\sqrt[3]{2},\\omega)$ o corpo de decomposicao de $x^3-2$ sobre $\\mathbb{Q}$, onde $\\omega=e^{2\\pi i/3}$. Calculando o grau pela torre: $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$ (minimal $x^3-2$, Eisenstein) e $[\\mathbb{Q}(\\sqrt[3]{2},\\omega):\\mathbb{Q}(\\sqrt[3]{2})]=2$ (pois $\\omega$ tem minimal $x^2+x+1$ e $\\omega\\notin\\mathbb{R}\\supseteq\\mathbb{Q}(\\sqrt[3]{2})$), logo\n$$[L:\\mathbb{Q}]=6.$$\n\n**Existencia de gerador primitivo.** $L/\\mathbb{Q}$ e finita e, por estar em caracteristica $0$, separavel. Pelo Teorema do Elemento Primitivo, $L=\\mathbb{Q}(\\gamma)$ para algum $\\gamma\\in L$.\n\n**Por que $\\gamma=\\sqrt[3]{2}+\\omega$ serve.** Seja $F=\\mathbb{Q}(\\gamma)\\subseteq L$. Basta mostrar $F=L$, e para isso que $\\sqrt[3]{2},\\omega\\in F$. Considere o grau $[F:\\mathbb{Q}]=d$, que divide $6$ (pois $F\\subseteq L$ e $[L:\\mathbb{Q}]=6$), portanto $d\\in\\{1,2,3,6\\}$.\n\nO teorema garante que, para $K=\\mathbb{Q}$ infinito, o conjunto de $c\\in\\mathbb{Q}$ para os quais $\\gamma=\\alpha+c\\beta$ (aqui $\\alpha=\\sqrt[3]{2}$, $\\beta=\\omega$, $c=1$) NAO gera $\\mathbb{Q}(\\alpha,\\beta)=L$ e finito: sao os $c$ tais que dois conjugados coincidem, $\\alpha_i+c\\beta_k=\\alpha_j+c\\beta_\\ell$ com $(i,k)\\neq(j,\\ell)$. Concretamente, para $c=1$ verifica-se que $\\gamma=\\sqrt[3]{2}+\\omega$ tem $6$ conjugados distintos sobre $\\mathbb{Q}$ — as somas $\\zeta\\sqrt[3]{2}+\\eta$ com $\\zeta\\in\\{1,\\omega,\\omega^2\\}$ (raizes de $x^3-2$) e $\\eta\\in\\{\\omega,\\omega^2\\}$ (raizes de $x^2+x+1$) — nao ha colisao, pois uma igualdade $\\zeta\\sqrt[3]{2}+\\eta=\\zeta'\\sqrt[3]{2}+\\eta'$ forcaria $(\\zeta-\\zeta')\\sqrt[3]{2}=\\eta'-\\eta$; se $\\zeta\\neq\\zeta'$, o lado esquerdo tem grau $3$ sobre $\\mathbb{Q}$ e o direito grau $\\le 2$, absurdo, logo $\\zeta=\\zeta'$ e $\\eta=\\eta'$. Como o polinomio minimal de $\\gamma$ tem por raizes esses conjugados, $\\deg m_\\gamma=6$, donde $d=[F:\\mathbb{Q}]=6=[L:\\mathbb{Q}]$. Sendo $F\\subseteq L$ com o mesmo grau finito, $F=L$.\n\nPortanto $L=\\mathbb{Q}(\\sqrt[3]{2}+\\omega)$. $\\blacksquare$",
+          "steps": [
+            "Calcule $[L:\\mathbb{Q}]=6$ pela torre $\\mathbb{Q}\\subset\\mathbb{Q}(\\sqrt[3]{2})\\subset\\mathbb{Q}(\\sqrt[3]{2},\\omega)$.",
+            "Invoque o Teorema do Elemento Primitivo (finita + separavel em char $0$) para garantir $L=\\mathbb{Q}(\\gamma)$.",
+            "Para $\\gamma=\\sqrt[3]{2}+\\omega$, ponha $F=\\mathbb{Q}(\\gamma)$ e observe $[F:\\mathbb{Q}]\\mid 6$.",
+            "Liste os candidatos a conjugados $\\zeta\\sqrt[3]{2}+\\eta$ e prove que sao $6$ distintos (argumento de grau $3$ vs grau $2$).",
+            "Conclua $\\deg m_\\gamma=6$, logo $[F:\\mathbb{Q}]=6=[L:\\mathbb{Q}]$ e $F=L$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Derivada formal de $\\sum a_i x^i$",
+          "back": "$\\sum i\\,a_i x^{i-1}$. Definida algebricamente; satisfaz a regra do produto."
+        },
+        {
+          "front": "$\\alpha$ e raiz multipla de $f$ quando?",
+          "back": "Sse $f(\\alpha)=f'(\\alpha)=0$, ou seja $(x-\\alpha)^2\\mid f$."
+        },
+        {
+          "front": "Criterio de raizes simples",
+          "back": "$f$ tem todas as raizes simples em $\\overline{K}$ sse $\\gcd(f,f')=1$."
+        },
+        {
+          "front": "Polinomio irredutivel separavel",
+          "back": "Tem raizes distintas em $\\overline{K}$; equivale a $p'\\neq0$. Em char $0$, sempre."
+        },
+        {
+          "front": "Extensao separavel (criterio de grau)",
+          "back": "$L/K$ finita e separavel sse $[L:K]_s=[L:K]$."
+        },
+        {
+          "front": "Corpo perfeito",
+          "back": "Todo irredutivel e separavel. Sao perfeitos: char $0$ e corpos finitos."
+        },
+        {
+          "front": "Exemplo padrao de inseparabilidade",
+          "back": "$x^p-t$ sobre $\\mathbb{F}_p(t)$: irredutivel, mas $=(x-t^{1/p})^p$, grau separavel $1$."
+        },
+        {
+          "front": "Teorema do Elemento Primitivo",
+          "back": "Toda extensao finita separavel e simples: $L=K(\\gamma)$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Dummit & Foote, secao 13.5 (Separable and Inseparable Extensions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Algebra (separabilidade)",
+          "ref": "livro"
+        },
+        {
+          "title": "Stewart, Galois Theory (separabilidade e elemento primitivo)",
+          "ref": "livro"
+        },
+        {
+          "title": "Milne, Fields and Galois Theory (cap. sobre separabilidade)",
+          "ref": "notas"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Comece pela derivada formal: leia a definicao algebrica $\\left(\\sum a_i x^i\\right)'=\\sum i a_i x^{i-1}$ e demonstre voce mesmo a regra do produto $(fg)'=f'g+fg'$ por comparacao de coeficientes.",
+          "Estude o criterio $\\gcd(f,f')=1$ para raizes simples e o exemplo canonico de inseparabilidade $x^p-t$ sobre $\\mathbb{F}_p(t)$ (Dummit & Foote 13.5). Aqui e onde a caracteristica $p$ importa.",
+          "Entenda corpos perfeitos: por que char $0$ e corpos finitos nunca produzem inseparabilidade. Anote o argumento do Frobenius sobrejetivo.",
+          "Leia a prova do Teorema do Elemento Primitivo (versao com $K$ infinito, $\\gamma=\\alpha+c\\beta$) e faca a mao o exemplo $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})=\\mathbb{Q}(\\sqrt{2}+\\sqrt{3})$, achando o minimal $x^4-10x^2+1$.",
+          "Assista a uma aula sobre separable extensions / primitive element theorem e resolva 2 exercicios de calculo de gerador primitivo.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (criterio da derivada, corpos perfeitos e o enunciado do elemento primitivo)."
+        ],
+        "searchQueries": [
+          "derivada formal polinomio criterio raizes multiplas gcd",
+          "separable inseparable extension x^p - t F_p(t) example",
+          "teorema do elemento primitivo demonstracao alpha + c beta",
+          "corpo perfeito caracteristica p Frobenius sobrejetivo",
+          "primitive element theorem proof separable finite extension",
+          "separability separable degree Michael Penn field theory"
+        ],
+        "videos": [
+          {
+            "title": "Separable Extensions / Primitive Element Theorem",
+            "channel": "Michael Penn",
+            "note": "Procure os videos de separabilidade e do teorema do elemento primitivo; ele mostra o argumento $\\gamma=\\alpha+c\\beta$ com exemplo."
+          },
+          {
+            "title": "Field Theory (formal derivative, repeated roots)",
+            "channel": "Dr. Peyam",
+            "note": "Veja o video sobre derivada formal e raizes multiplas para dominar o criterio do $\\gcd(f,f')$."
+          },
+          {
+            "title": "Abstract Algebra (Harvard E-222)",
+            "channel": "Benedict Gross / Harvard (YouTube)",
+            "note": "As aulas sobre separabilidade e geradores primitivos dao a visao estrutural que faltara nos livros mais secos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, secao 13.5 (Separable and Inseparable Extensions)",
+            "where": "livro de Dummit & Foote"
+          },
+          {
+            "title": "Galois Theory, capitulo sobre separabilidade e elemento primitivo",
+            "where": "livro de Ian Stewart"
+          },
+          {
+            "title": "Fields and Galois Theory, secao sobre separable extensions e primitive element",
+            "where": "notas gratuitas de J. S. Milne (jmilne.org)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-galois-03-normalidade-extensoes-galois",
+      "title": "Extensoes Normais, o Teorema de Artin e a Definicao de Extensao de Galois",
+      "tagline": "Normal = 'fechada por conjugados' = corpo de decomposicao; somando separabilidade obtemos as extensoes de Galois, onde grupo e grau coincidem.",
+      "objectives": [
+        "Definir extensao normal e provar as caracterizacoes equivalentes (corpo de decomposicao; toda imersao e automorfismo; todo irredutivel com uma raiz se decompoe).",
+        "Definir extensao de Galois (normal + separavel) e listar suas caracterizacoes equivalentes para extensoes finitas.",
+        "Enunciar e usar o Teorema de Artin: o corpo fixo de um grupo finito $G$ de automorfismos satisfaz $[L:L^G]=|G|$ e $L/L^G$ e de Galois com grupo $G$.",
+        "Definir o grupo de Galois $\\mathrm{Gal}(L/K)=\\mathrm{Aut}(L/K)$ e construir o fecho de Galois (fecho normal) de uma extensao separavel finita.",
+        "Reconhecer a independencia linear de caracteres (Dedekind-Artin) como o lema que fecha a desigualdade $|G|\\le[L:L^G]$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Extensao normal",
+          "statement": "$L/K$ algebrica tal que todo polinomio irredutivel de $K[x]$ que tem uma raiz em $L$ se fatora completamente (em fatores lineares) em $L$. Intuitivamente: $L$ contem todos os conjugados de cada um de seus elementos."
+        },
+        {
+          "term": "Corpo fixo",
+          "statement": "Para $G\\le\\mathrm{Aut}(L)$, o corpo fixo $L^G=\\{x\\in L:\\sigma(x)=x\\ \\forall\\sigma\\in G\\}$ e um subcorpo de $L$."
+        },
+        {
+          "term": "Extensao de Galois",
+          "statement": "Extensao algebrica $L/K$ que e normal E separavel. Equivalentemente (caso finito), $L^{\\mathrm{Aut}(L/K)}=K$, isto e, os unicos elementos fixados por todos os automorfismos sao os de $K$."
+        },
+        {
+          "term": "Grupo de Galois",
+          "statement": "$\\mathrm{Gal}(L/K)=\\mathrm{Aut}(L/K)$, o grupo dos automorfismos de $L$ que fixam $K$ ponto a ponto, com a composicao."
+        },
+        {
+          "term": "Fecho de Galois (normal)",
+          "statement": "A menor extensao normal (e separavel) que contem $L$; e o corpo de decomposicao sobre $K$ dos polinomios minimais de um conjunto de geradores de $L$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Caracterizacao da normalidade",
+          "statement": "Para $L/K$ algebrica, sao equivalentes: (i) $L$ e corpo de decomposicao sobre $K$ de uma familia de polinomios de $K[x]$; (ii) toda $K$-imersao $\\sigma:L\\to\\overline{K}$ satisfaz $\\sigma(L)=L$ (e automorfismo); (iii) todo irredutivel de $K[x]$ com uma raiz em $L$ se decompoe em $L$.",
+          "whyItMatters": "Da tres modos de reconhecer normalidade — por construcao, por imersoes e por conjugados — escolhidos conforme o problema. A equivalencia (ii) e a ponte direta para automorfismos e o grupo de Galois."
+        },
+        {
+          "name": "Teorema de Artin",
+          "statement": "Se $G$ e um grupo FINITO de automorfismos de um corpo $L$ e $K=L^G$ e o corpo fixo, entao $[L:K]=|G|$ e $L/K$ e de Galois com $\\mathrm{Gal}(L/K)=G$.",
+          "whyItMatters": "E o coracao tecnico da correspondencia de Galois: produz extensoes de Galois a partir de grupos e garante a igualdade $|\\mathrm{Gal}|=[L:K]$. A prova usa a independencia linear de caracteres."
+        },
+        {
+          "name": "Caracterizacoes de extensao de Galois (caso finito)",
+          "statement": "Para $L/K$ finita, sao equivalentes: (i) $L/K$ e normal e separavel; (ii) $|\\mathrm{Aut}(L/K)|=[L:K]$; (iii) $L^{\\mathrm{Aut}(L/K)}=K$; (iv) $L$ e corpo de decomposicao de um polinomio separavel de $K[x]$.",
+          "whyItMatters": "Cada item e a hipotese natural de um teorema diferente; trocar livremente entre eles e o que significa dominar a teoria. A equivalencia (ii) e a forma mais usada em calculos."
+        },
+        {
+          "name": "Independencia de caracteres (Dedekind-Artin)",
+          "statement": "Imersoes (ou automorfismos) distintas $\\sigma_1,\\dots,\\sigma_n:L\\to\\Omega$ sao linearmente independentes sobre $\\Omega$: nenhuma combinacao $\\sum_i c_i\\sigma_i$ com $c_i\\in\\Omega$ nao todos nulos e identicamente zero em $L^{\\times}$.",
+          "whyItMatters": "E o lema que produz a desigualdade $|G|\\le[L:L^G]$ e, junto com $[L:L^G]\\le|G|$, fecha o Teorema de Artin. Aparece em provas de mestrado como passo-chave."
+        }
+      ],
+      "summary": "Uma extensao $L/K$ e normal quando e 'fechada por conjugacao': sempre que um irredutivel de $K[x]$ tem uma raiz em $L$, todas as suas raizes ja estao em $L$. As tres caracterizacoes equivalentes organizam as estrategias de prova: normal e o mesmo que ser corpo de decomposicao de alguma familia de polinomios (modo construtivo), e tambem o mesmo que toda $K$-imersao em $\\overline{K}$ ter imagem $L$ (modo das imersoes). Essa ultima e decisiva: significa que cada imersao e, na verdade, um automorfismo de $L$ — e abre caminho para o grupo de Galois. O exemplo a guardar e o contraste $\\mathbb{Q}(\\sqrt[3]{2})/\\mathbb{Q}$, que NAO e normal (contem uma raiz de $x^3-2$ mas nao as complexas), versus seu fecho normal $\\mathbb{Q}(\\sqrt[3]{2},\\omega)/\\mathbb{Q}$, que e o corpo de decomposicao completo.\n\nUma extensao e de Galois quando e simultaneamente normal e separavel; pelas equivalencias, isso e exatamente $|\\mathrm{Aut}(L/K)|=[L:K]$ ou, ainda, $L^{\\mathrm{Aut}(L/K)}=K$ (so $K$ fica fixo por todos os automorfismos). O resultado reciproco e o Teorema de Artin: partindo de um grupo finito $G$ de automorfismos de $L$, o corpo fixo $K=L^G$ satisfaz $[L:K]=|G|$ e $L/K$ e automaticamente de Galois com grupo $G$. A demonstracao repousa sobre a independencia linear de caracteres de Dedekind-Artin, que limita o numero de automorfismos pelo grau. Esse par — definicao por grau e construcao por corpo fixo — e a engrenagem dupla que faz a correspondencia fundamental funcionar: uma direcao parte de corpos para grupos, a outra de grupos para corpos. Em caracteristica $0$ e em corpos finitos a separabilidade e gratuita, de modo que, nesses casos, 'de Galois' significa simplesmente 'normal'.",
+      "commonPitfalls": [
+        "Achar que normalidade e transitiva em torres: $\\mathbb{Q}\\subset\\mathbb{Q}(\\sqrt{2})\\subset\\mathbb{Q}(\\sqrt[4]{2})$ tem cada andar normal (grau $2$), mas $\\mathbb{Q}(\\sqrt[4]{2})/\\mathbb{Q}$ NAO e normal.",
+        "Confundir $\\mathrm{Aut}(L/K)$ com o conjunto de imersoes: numa extensao nao normal ha mais imersoes do que automorfismos (ex.: $\\mathbb{Q}(\\sqrt[3]{2})$ tem $3$ imersoes e $1$ automorfismo).",
+        "Aplicar 'normal + separavel = Galois' esquecendo a separabilidade: em caracteristica $p$ uma extensao normal inseparavel nao e de Galois.",
+        "Usar o Teorema de Artin com um grupo infinito: a igualdade $[L:L^G]=|G|$ exige $G$ FINITO."
+      ],
+      "worked": "**$\\mathbb{Q}(\\sqrt[3]{2})/\\mathbb{Q}$ nao e normal; seu fecho normal e de Galois.**\n\nO polinomio $x^3-2$ e irredutivel sobre $\\mathbb{Q}$ e tem a raiz $\\sqrt[3]{2}\\in\\mathbb{Q}(\\sqrt[3]{2})$. Suas outras raizes sao $\\omega\\sqrt[3]{2}$ e $\\omega^2\\sqrt[3]{2}$, com $\\omega=e^{2\\pi i/3}$, ambas nao reais. Como $\\mathbb{Q}(\\sqrt[3]{2})\\subseteq\\mathbb{R}$, essas raizes nao pertencem a $\\mathbb{Q}(\\sqrt[3]{2})$. Logo um irredutivel com uma raiz em $L$ NAO se decompoe em $L$: a extensao nao e normal. (Equivalentemente, a imersao $\\sqrt[3]{2}\\mapsto\\omega\\sqrt[3]{2}$ tem imagem fora de $L$.)\n\nO fecho normal e obtido adjuntando os conjugados que faltam:\n$$N=\\mathbb{Q}(\\sqrt[3]{2},\\,\\omega\\sqrt[3]{2},\\,\\omega^2\\sqrt[3]{2})=\\mathbb{Q}(\\sqrt[3]{2},\\omega),$$\nque e o corpo de decomposicao de $x^3-2$. Pela caracterizacao, $N/\\mathbb{Q}$ e normal; sendo char $0$, e separavel; portanto $N/\\mathbb{Q}$ e de Galois. Calculando o grau pela torre, $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$ e $[\\mathbb{Q}(\\sqrt[3]{2},\\omega):\\mathbb{Q}(\\sqrt[3]{2})]=2$ (pois $\\omega\\notin\\mathbb{R}$), de modo que $[N:\\mathbb{Q}]=6=|\\mathrm{Gal}(N/\\mathbb{Q})|$. Veremos adiante que $\\mathrm{Gal}(N/\\mathbb{Q})\\cong S_3$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que toda extensao de grau $2$ e normal.",
+          "hint": "Se $[L:K]=2$ e $\\alpha\\in L\\setminus K$, seu minimal tem grau $2$ e ja tem uma raiz em $L$; a outra raiz e $-\\alpha-(\\text{traco})\\in L$ por Girard/Vieta.",
+          "difficulty": 2,
+          "solution": "Seja $L/K$ com $[L:K]=2$. Queremos mostrar que $L/K$ e normal, isto e, que todo irredutivel de $K[x]$ que tem uma raiz em $L$ se fatora completamente em $L$.\n\n**$L$ e simples.** Tome qualquer $\\alpha\\in L\\setminus K$. Entao $K\\subsetneq K(\\alpha)\\subseteq L$, e como $[L:K]=2$ nao ha corpo estritamente entre $K$ e $L$; logo $L=K(\\alpha)$ e $[K(\\alpha):K]=2$. O polinomio minimal $m_{\\alpha,K}$ tem grau $2$:\n$$m(x)=x^2+bx+c,\\qquad b,c\\in K.$$\n\n**A segunda raiz esta em $L$.** Como $\\alpha$ e raiz de $m$, fatoramos em $L[x]$: $m(x)=(x-\\alpha)(x-\\alpha')$ para algum $\\alpha'$ no fecho. Por Girard/Vieta, a soma das raizes e $-b\\in K$, donde\n$$\\alpha'=-b-\\alpha\\in L.$$\nPortanto ambas as raizes de $m$ estao em $L$: $m$ se decompoe em $L$.\n\n**Normalidade.** Basta mostrar a propriedade para o minimal do gerador, pois $L$ e corpo de decomposicao de $m$ sobre $K$ (adjuntamos $\\alpha$ e $\\alpha'=-b-\\alpha\\in K(\\alpha)$, logo $L=K(\\alpha)$ contem todas as raizes de $m$). Sendo $L$ corpo de decomposicao de um polinomio de $K[x]$, pela caracterizacao (i) de normalidade, $L/K$ e normal.\n\nAlternativamente e diretamente: qualquer irredutivel $q\\in K[x]$ com uma raiz $\\beta\\in L$ tem grau dividindo $[L:K]=2$; se $\\deg q=1$ ja se decompoe; se $\\deg q=2$, entao $L=K(\\beta)$ e o argumento acima (soma das raizes em $K$) coloca a outra raiz em $L$. Em ambos os casos $q$ se fatora em $L$. Logo $L/K$ e normal. $\\blacksquare$",
+          "steps": [
+            "Escolha $\\alpha\\in L\\setminus K$ e conclua $L=K(\\alpha)$ com minimal de grau $2$: $m=x^2+bx+c$.",
+            "Escreva $m=(x-\\alpha)(x-\\alpha')$ e use a soma das raizes $\\alpha+\\alpha'=-b\\in K$.",
+            "Deduza $\\alpha'=-b-\\alpha\\in L$, logo $m$ se decompoe em $L$.",
+            "Identifique $L$ como corpo de decomposicao de $m$ sobre $K$.",
+            "Aplique a caracterizacao 'corpo de decomposicao $\\Rightarrow$ normal' (ou argumente por grau que todo irredutivel com raiz em $L$ se fatora)."
+          ]
+        },
+        {
+          "prompt": "Mostre que $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})/\\mathbb{Q}$ e de Galois e exiba os $4$ automorfismos, descrevendo a acao em $\\sqrt{2}$ e $\\sqrt{3}$; identifique o grupo com $\\mathbb{Z}/2\\times\\mathbb{Z}/2$.",
+          "hint": "Cada automorfismo manda $\\sqrt{2}\\mapsto\\pm\\sqrt{2}$ e $\\sqrt{3}\\mapsto\\pm\\sqrt{3}$ independentemente; verifique que ha $4=[L:\\mathbb{Q}]$ deles, logo a extensao e de Galois.",
+          "difficulty": 3,
+          "solution": "Seja $L=\\mathbb{Q}(\\sqrt{2},\\sqrt{3})$, com $[L:\\mathbb{Q}]=4$.\n\n**De Galois.** $L$ e o corpo de decomposicao de $(x^2-2)(x^2-3)$ sobre $\\mathbb{Q}$ (contem $\\pm\\sqrt{2},\\pm\\sqrt{3}$ e e gerado por eles), logo e normal; sendo char $0$, e separavel. Portanto $L/\\mathbb{Q}$ e de Galois e $|\\mathrm{Gal}(L/\\mathbb{Q})|=[L:\\mathbb{Q}]=4$.\n\n**Os quatro automorfismos.** Cada $\\sigma\\in\\mathrm{Gal}(L/\\mathbb{Q})$ e determinado por $\\sigma(\\sqrt{2})\\in\\{\\pm\\sqrt{2}\\}$ (raizes de $x^2-2$) e $\\sigma(\\sqrt{3})\\in\\{\\pm\\sqrt{3}\\}$ (raizes de $x^2-3$), independentemente. Isso da $4$ candidatos, e como ha exatamente $4$ automorfismos, todos ocorrem:\n$$\\begin{array}{c|cc}\n & \\sqrt{2}\\mapsto & \\sqrt{3}\\mapsto\\\\\\hline\n\\mathrm{id} & \\sqrt{2} & \\sqrt{3}\\\\\n\\sigma & -\\sqrt{2} & \\sqrt{3}\\\\\n\\tau & \\sqrt{2} & -\\sqrt{3}\\\\\n\\sigma\\tau & -\\sqrt{2} & -\\sqrt{3}\n\\end{array}$$\n\n**Estrutura do grupo.** Cada elemento nao trivial tem ordem $2$: $\\sigma^2$ manda $\\sqrt{2}\\mapsto\\sqrt{2}$, $\\sqrt{3}\\mapsto\\sqrt{3}$, logo $\\sigma^2=\\mathrm{id}$; analogamente $\\tau^2=(\\sigma\\tau)^2=\\mathrm{id}$. Alem disso $\\sigma\\tau=\\tau\\sigma$ (ambos mandam $\\sqrt{2}\\mapsto-\\sqrt{2}$, $\\sqrt{3}\\mapsto-\\sqrt{3}$). Um grupo de ordem $4$ com todos os elementos nao triviais de ordem $2$ e abeliano e isomorfo a $\\mathbb{Z}/2\\times\\mathbb{Z}/2$:\n$$\\mathrm{Gal}(L/\\mathbb{Q})\\cong\\mathbb{Z}/2\\times\\mathbb{Z}/2=V_4,$$\nvia $\\sigma\\mapsto(1,0)$, $\\tau\\mapsto(0,1)$. $\\blacksquare$",
+          "steps": [
+            "Mostre que $L$ e corpo de decomposicao de $(x^2-2)(x^2-3)$, logo de Galois, e $|\\mathrm{Gal}|=[L:\\mathbb{Q}]=4$.",
+            "Determine as imagens possiveis: $\\sqrt{2}\\mapsto\\pm\\sqrt{2}$ e $\\sqrt{3}\\mapsto\\pm\\sqrt{3}$, independentes.",
+            "Como ha $4$ automorfismos e $4$ combinacoes, liste todos numa tabela.",
+            "Verifique que cada elemento nao trivial tem ordem $2$ e que o grupo e comutativo.",
+            "Conclua $\\mathrm{Gal}(L/\\mathbb{Q})\\cong\\mathbb{Z}/2\\times\\mathbb{Z}/2$."
+          ]
+        },
+        {
+          "prompt": "Determine o fecho normal de $\\mathbb{Q}(\\sqrt[4]{2})/\\mathbb{Q}$ e calcule seu grau sobre $\\mathbb{Q}$.",
+          "hint": "As raizes de $x^4-2$ sao $\\pm\\sqrt[4]{2},\\pm i\\sqrt[4]{2}$; o fecho e $\\mathbb{Q}(\\sqrt[4]{2},i)$, de grau $8$.",
+          "difficulty": 3,
+          "solution": "Seja $\\alpha=\\sqrt[4]{2}$ (raiz real positiva) e consideremos $\\mathbb{Q}(\\alpha)/\\mathbb{Q}$. O minimal de $\\alpha$ e $x^4-2$ (Eisenstein, $p=2$), com raizes em $\\mathbb{C}$\n$$\\sqrt[4]{2},\\quad -\\sqrt[4]{2},\\quad i\\sqrt[4]{2},\\quad -i\\sqrt[4]{2}.$$\n\n**A extensao nao e normal.** $\\mathbb{Q}(\\alpha)\\subseteq\\mathbb{R}$ contem $\\pm\\sqrt[4]{2}$, mas nao as raizes nao reais $\\pm i\\sqrt[4]{2}$. Logo o irredutivel $x^4-2$ tem uma raiz em $\\mathbb{Q}(\\alpha)$ sem se decompor; a extensao nao e normal.\n\n**Fecho normal.** O fecho normal $N$ de $\\mathbb{Q}(\\alpha)/\\mathbb{Q}$ e a menor extensao normal contendo $\\mathbb{Q}(\\alpha)$, que e o corpo de decomposicao de $x^4-2$ sobre $\\mathbb{Q}$ (precisamos adjuntar todos os conjugados de $\\alpha$). Como as quatro raizes sao $\\pm\\alpha,\\pm i\\alpha$, adjuntar $\\alpha$ e $i$ ja as gera todas:\n$$N=\\mathbb{Q}(\\sqrt[4]{2},\\,i\\sqrt[4]{2},\\,-\\sqrt[4]{2},\\,-i\\sqrt[4]{2})=\\mathbb{Q}(\\sqrt[4]{2},\\,i).$$\n\n**Grau.** Pela torre,\n$$[\\mathbb{Q}(\\sqrt[4]{2}):\\mathbb{Q}]=4,\\qquad [\\mathbb{Q}(\\sqrt[4]{2},i):\\mathbb{Q}(\\sqrt[4]{2})]=2,$$\no ultimo porque $i$ tem minimal $x^2+1$ sobre $\\mathbb{Q}(\\sqrt[4]{2})\\subseteq\\mathbb{R}$ (logo $i\\notin\\mathbb{Q}(\\sqrt[4]{2})$). Portanto\n$$[N:\\mathbb{Q}]=4\\cdot 2=8.$$\nAssim o fecho normal e $\\mathbb{Q}(\\sqrt[4]{2},i)$, de grau $8$ sobre $\\mathbb{Q}$ (com grupo de Galois $D_4$, como visto no subtopico 04). $\\blacksquare$",
+          "steps": [
+            "Determine o minimal $x^4-2$ de $\\sqrt[4]{2}$ e liste suas raizes $\\pm\\sqrt[4]{2},\\pm i\\sqrt[4]{2}$.",
+            "Observe que $\\mathbb{Q}(\\sqrt[4]{2})\\subseteq\\mathbb{R}$ nao contem as raizes nao reais, logo nao e normal.",
+            "Identifique o fecho normal como o corpo de decomposicao de $x^4-2$: $N=\\mathbb{Q}(\\sqrt[4]{2},i)$.",
+            "Monte a torre e calcule $[\\mathbb{Q}(\\sqrt[4]{2}):\\mathbb{Q}]=4$ e $[N:\\mathbb{Q}(\\sqrt[4]{2})]=2$.",
+            "Multiplique para obter $[N:\\mathbb{Q}]=8$."
+          ]
+        },
+        {
+          "prompt": "Usando independencia de caracteres, prove que se $G\\le\\mathrm{Aut}(L)$ e finito entao $[L:L^G]\\le|G|$.",
+          "hint": "Se fosse $[L:L^G]>|G|=n$, tome $n+1$ vetores $L^G$-linearmente independentes; um sistema homogeneo $n\\times(n+1)$ nos elementos $\\sigma_i$ tem solucao nao trivial, contradizendo a independencia linear dos $\\sigma_i$ sobre $L$.",
+          "difficulty": 5,
+          "solution": "Seja $G=\\{\\sigma_1,\\dots,\\sigma_n\\}\\le\\mathrm{Aut}(L)$ finito de ordem $|G|=n$, e $F=L^G$ o corpo fixo. Queremos provar $[L:F]\\le n$.\n\n**Estrategia.** Suponha, por absurdo, que $[L:F]>n$. Entao existem elementos $\\omega_1,\\dots,\\omega_{n+1}\\in L$ que sao $F$-linearmente independentes. Considere o sistema linear homogeneo de $n$ equacoes (uma por automorfismo) e $n+1$ incognitas $x_1,\\dots,x_{n+1}\\in L$:\n$$\\sum_{j=1}^{n+1}\\sigma_i(\\omega_j)\\,x_j=0,\\qquad i=1,\\dots,n.$$\nComo ha mais incognitas ($n+1$) do que equacoes ($n$) sobre o corpo $L$, existe uma solucao nao trivial $(x_1,\\dots,x_{n+1})\\in L^{n+1}$, $(x_j)\\neq 0$. Entre todas as solucoes nao triviais, escolha uma com o MENOR numero de entradas nao nulas; reordenando, digamos $x_1,\\dots,x_r\\neq 0$ e $x_{r+1}=\\cdots=0$, e normalize $x_r=1$.\n\n**Obtendo uma relacao em $F$.** A linha correspondente a $\\sigma_{i_0}=\\mathrm{id}$ (a identidade esta em $G$) da $\\sum_{j=1}^{r}\\omega_j x_j=0$. Se todos os $x_j$ estivessem em $F$, isto contradiria a independencia $F$-linear dos $\\omega_j$. Logo algum $x_j\\notin F$, digamos $x_1\\notin F$: existe $\\tau\\in G$ com $\\tau(x_1)\\neq x_1$.\n\nAplique $\\tau$ a cada equacao. Como $\\tau$ e automorfismo de $L$ e permuta os $\\sigma_i$ (pois $\\tau\\sigma_i$ percorre $G$), o conjunto de equacoes $\\sum_j \\sigma_i(\\omega_j)\\,\\tau(x_j)=0$ e o MESMO sistema (apenas com as linhas permutadas). Logo $(\\tau(x_1),\\dots,\\tau(x_r),0,\\dots)$ tambem e solucao. Subtraindo da original:\n$$\\big(x_1-\\tau(x_1),\\ \\dots,\\ x_r-\\tau(x_r),\\ 0,\\dots\\big)$$\ne solucao. Sua ultima entrada nao nula seria $x_r-\\tau(x_r)=1-1=0$ (pois $x_r=1$ e $\\tau(1)=1$), de modo que essa nova solucao tem MENOS entradas nao nulas que a minima — e nao e a solucao trivial, pois $x_1-\\tau(x_1)\\neq 0$. Isso contradiz a minimalidade.\n\n**Conclusao.** A contradicao mostra que nao pode haver $n+1$ elementos $F$-linearmente independentes; portanto $[L:F]\\le n=|G|$. $\\blacksquare$",
+          "steps": [
+            "Suponha por absurdo $[L:L^G]>n=|G|$ e tome $n+1$ elementos $F$-linearmente independentes $\\omega_j$.",
+            "Monte o sistema homogeneo $\\sum_j\\sigma_i(\\omega_j)x_j=0$ ($n$ equacoes, $n+1$ incognitas em $L$) e obtenha solucao nao trivial minima (menor numero de $x_j\\neq0$, com $x_r=1$).",
+            "Use a linha da identidade para concluir que algum $x_j\\notin F$; escolha $\\tau\\in G$ com $\\tau(x_1)\\neq x_1$.",
+            "Aplique $\\tau$: por permutar os $\\sigma_i$, obtem-se outra solucao; subtraia da original.",
+            "A diferenca zera a entrada $x_r$ mas nao a $x_1$, produzindo solucao nao trivial mais curta — contradicao. Logo $[L:L^G]\\le|G|$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Extensao normal",
+          "back": "Todo irredutivel de $K[x]$ com uma raiz em $L$ se fatora completamente em $L$ (fechada por conjugados)."
+        },
+        {
+          "front": "Normal = corpo de decomposicao?",
+          "back": "Sim: $L/K$ finita e normal sse $L$ e corpo de decomposicao de algum polinomio de $K[x]$."
+        },
+        {
+          "front": "Extensao de Galois",
+          "back": "Normal e separavel. Caso finito: $|\\mathrm{Aut}(L/K)|=[L:K]$, equiv. $L^{\\mathrm{Aut}(L/K)}=K$."
+        },
+        {
+          "front": "Teorema de Artin",
+          "back": "$G\\le\\mathrm{Aut}(L)$ finito, $K=L^G$ $\\Rightarrow$ $[L:K]=|G|$ e $L/K$ de Galois com grupo $G$."
+        },
+        {
+          "front": "Corpo fixo $L^G$",
+          "back": "$\\{x\\in L:\\sigma(x)=x\\ \\forall\\sigma\\in G\\}$, um subcorpo de $L$."
+        },
+        {
+          "front": "Normalidade e transitiva?",
+          "back": "Nao. $\\mathbb{Q}\\subset\\mathbb{Q}(\\sqrt{2})\\subset\\mathbb{Q}(\\sqrt[4]{2})$: cada andar normal, mas o todo nao."
+        },
+        {
+          "front": "Independencia de caracteres",
+          "back": "Automorfismos/imersoes distintos sao linearmente independentes sobre o corpo de chegada."
+        },
+        {
+          "front": "Fecho normal de $\\mathbb{Q}(\\sqrt[3]{2})$",
+          "back": "$\\mathbb{Q}(\\sqrt[3]{2},\\omega)$, corpo de decomposicao de $x^3-2$, grau $6$, de Galois."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Dummit & Foote, secoes 13.4 e 14.1-14.2",
+          "ref": "livro"
+        },
+        {
+          "title": "Artin, Galois Theory (corpos fixos e independencia de caracteres)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Algebra (normalidade e Galois)",
+          "ref": "livro"
+        },
+        {
+          "title": "Milne, Fields and Galois Theory (normal e Galois)",
+          "ref": "notas"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe as tres caracterizacoes equivalentes de normalidade (corpo de decomposicao; toda imersao e automorfismo; irredutivel com uma raiz se decompoe) e prove voce mesmo a equivalencia (i)$\\Leftrightarrow$(ii) usando o Lema da Extensao de Imersoes do subtopico 01.",
+          "Estude a definicao de extensao de Galois (normal + separavel) e as caracterizacoes do caso finito, com foco em $|\\mathrm{Aut}(L/K)|=[L:K]$.",
+          "Leia com cuidado o Teorema de Artin e a Independencia de Caracteres de Dedekind-Artin (Artin, Notre Dame Lectures, ou Dummit & Foote 14.2). Reproduza o argumento do sistema linear que da $[L:L^G]\\le|G|$.",
+          "Trabalhe o par de exemplos: $\\mathbb{Q}(\\sqrt[3]{2})/\\mathbb{Q}$ (nao normal) versus o fecho $\\mathbb{Q}(\\sqrt[3]{2},\\omega)/\\mathbb{Q}$ (de Galois), e o contraexemplo de transitividade $\\mathbb{Q}\\subset\\mathbb{Q}(\\sqrt{2})\\subset\\mathbb{Q}(\\sqrt[4]{2})$.",
+          "Assista a uma aula sobre normal extensions e o Artin's theorem, e resolva 2 exercicios de identificacao de grupo de Galois de graus pequenos.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (as equivalencias de normalidade e o enunciado do Teorema de Artin)."
+        ],
+        "searchQueries": [
+          "extensao normal caracterizacoes corpo de decomposicao prova",
+          "Artin theorem fixed field [L:L^G]=|G| proof",
+          "independencia linear de caracteres Dedekind Artin demonstracao",
+          "normal extension not transitive Q(2^(1/4)) example",
+          "Galois extension normal separable equivalent characterizations finite",
+          "linear independence of characters Artin Galois theory"
+        ],
+        "videos": [
+          {
+            "title": "Normal Extensions / Galois Extensions",
+            "channel": "Michael Penn",
+            "note": "Procure os videos sobre normalidade e a definicao de extensao de Galois; ha exemplos com $\\mathbb{Q}(\\sqrt[3]{2},\\omega)$."
+          },
+          {
+            "title": "Algebra II (18.702)",
+            "channel": "MIT OpenCourseWare",
+            "note": "As aulas de Galois cobrem corpos fixos, o Teorema de Artin e a independencia de caracteres com rigor."
+          },
+          {
+            "title": "Abstract Algebra (Harvard E-222)",
+            "channel": "Benedict Gross / Harvard (YouTube)",
+            "note": "Otimo tratamento do grupo de automorfismos e do teorema do corpo fixo."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Galois Theory (Notre Dame Lectures), independencia de caracteres e teorema do corpo fixo",
+            "where": "livro de Emil Artin"
+          },
+          {
+            "title": "Abstract Algebra, secoes 14.1-14.2 (Automorphisms, Fixed Fields, Artin)",
+            "where": "livro de Dummit & Foote"
+          },
+          {
+            "title": "Fields and Galois Theory, capitulo sobre normal e Galois extensions",
+            "where": "notas gratuitas de J. S. Milne (jmilne.org)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-galois-04-grupo-de-galois-acao-raizes",
+      "title": "O Grupo de Galois de um Polinomio e a Acao nas Raizes",
+      "tagline": "Todo automorfismo permuta as raizes; o grupo de Galois e assim um subgrupo de $S_n$, e o discriminante diz quando ele cabe em $A_n$.",
+      "objectives": [
+        "Calcular $\\mathrm{Gal}(L/K)$ em extensoes concretas e descrever a acao fiel nas raizes, identificando o mergulho $\\mathrm{Gal}(f)\\hookrightarrow S_n$.",
+        "Provar que a acao do grupo de Galois nas raizes de $f$ e transitiva se e somente se $f$ e irredutivel.",
+        "Definir o discriminante e usar o criterio $\\Delta\\in K^2$ para decidir se $\\mathrm{Gal}(f)\\subseteq A_n$.",
+        "Determinar os grupos de Galois de quadraticas, cubicas (via discriminante) e da quartica $x^4-2$ (o grupo diedral $D_4$)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Grupo de Galois de um polinomio",
+          "statement": "$\\mathrm{Gal}(f/K)=\\mathrm{Gal}(L/K)$, onde $L$ e o corpo de decomposicao de $f$ sobre $K$. Ele age permutando as raizes de $f$."
+        },
+        {
+          "term": "Mergulho em $S_n$",
+          "statement": "Se $f$ tem $n$ raizes distintas $\\alpha_1,\\dots,\\alpha_n$, cada $\\sigma\\in\\mathrm{Gal}(f)$ as permuta, dando um monomorfismo $\\mathrm{Gal}(f)\\hookrightarrow S_n$. A imagem fica definida a menos de conjugacao (depende da numeracao das raizes)."
+        },
+        {
+          "term": "Discriminante",
+          "statement": "$\\Delta=\\prod_{i<j}(\\alpha_i-\\alpha_j)^2$. E fixado por todo $\\sigma\\in\\mathrm{Gal}(f)$, logo $\\Delta\\in K$; ja $\\delta=\\prod_{i<j}(\\alpha_i-\\alpha_j)$ e fixado exatamente por $\\mathrm{Gal}(f)\\cap A_n$."
+        },
+        {
+          "term": "Acao transitiva",
+          "statement": "$\\mathrm{Gal}(f)$ age transitivamente nas raizes (uma so orbita) sse $f$ e irredutivel sobre $K$. Para $f$ irredutivel de grau $n$, segue $n\\mid|\\mathrm{Gal}(f)|$."
+        },
+        {
+          "term": "Subcorpo $K(\\delta)$",
+          "statement": "O corpo $K(\\sqrt{\\Delta})=K(\\delta)$ corresponde, pela correspondencia de Galois, ao subgrupo $\\mathrm{Gal}(f)\\cap A_n$; e o 'detector de paridade' das permutacoes."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "A acao permuta as raizes",
+          "statement": "Todo $\\sigma\\in\\mathrm{Gal}(L/K)$ permuta as raizes em $L$ de qualquer $f\\in K[x]$. Se $L$ e o corpo de decomposicao de $f$, a acao nas raizes e fiel, logo $\\mathrm{Gal}(f)$ mergulha em $S_n$ ($n=$ numero de raizes distintas).",
+          "whyItMatters": "E a traducao central da teoria: um problema sobre corpos vira um problema sobre subgrupos de um grupo simetrico finito, onde dispomos de toda a teoria de grupos."
+        },
+        {
+          "name": "Irredutivel se e so se transitivo",
+          "statement": "Para $f$ separavel, $f$ e irredutivel sobre $K$ se e somente se $\\mathrm{Gal}(f)$ age transitivamente em suas raizes.",
+          "whyItMatters": "Liga a fatoracao de $f$ a estrutura de orbitas do grupo. Em particular, $\\deg f$ divide $|\\mathrm{Gal}(f)|$ quando $f$ e irredutivel — restricao forte ao identificar o grupo."
+        },
+        {
+          "name": "Criterio do discriminante",
+          "statement": "Para $f$ separavel de grau $n$ sobre $K$ com $\\mathrm{char}\\,K\\neq 2$, tem-se $\\mathrm{Gal}(f)\\subseteq A_n$ se e somente se $\\Delta$ e um quadrado em $K$.",
+          "whyItMatters": "E a ferramenta pratica para distinguir, p.ex., $S_3$ de $A_3$ no caso cubico (e em geral subir/descer em $A_n$), reduzindo a questao a verificar se $\\Delta\\in K^2$."
+        },
+        {
+          "name": "Grupo de Galois da cubica",
+          "statement": "Para $f$ cubica irredutivel e separavel sobre $K$ ($\\mathrm{char}\\neq 2,3$): $\\mathrm{Gal}(f)\\cong A_3\\cong\\mathbb{Z}/3$ se $\\Delta\\in K^2$, e $\\mathrm{Gal}(f)\\cong S_3$ caso contrario.",
+          "whyItMatters": "Primeiro exemplo completo de classificacao do grupo (abeliano vs nao abeliano) so com transitividade e discriminante; modelo do metodo geral."
+        }
+      ],
+      "summary": "A ideia que da nome a teoria e simples e poderosa: como cada $\\sigma\\in\\mathrm{Gal}(L/K)$ fixa os coeficientes de $f\\in K[x]$, ele leva raiz de $f$ em raiz de $f$. Se $L$ e o corpo de decomposicao de $f$, um automorfismo que fixa todas as raizes e a identidade (pois as raizes geram $L$), de modo que a acao e fiel: obtemos um mergulho $\\mathrm{Gal}(f)\\hookrightarrow S_n$, onde $n$ e o numero de raizes distintas. Estudar o grupo de Galois de um polinomio vira, entao, identificar QUAL subgrupo de $S_n$ aparece. Dois invariantes fazem quase todo o trabalho nos graus baixos: a transitividade, que equivale a irredutibilidade de $f$ (e forca $\\deg f\\mid|\\mathrm{Gal}(f)|$), e o discriminante $\\Delta=\\prod_{i<j}(\\alpha_i-\\alpha_j)^2$, que e sempre fixado pelo grupo (logo pertence a $K$) e cuja raiz quadrada $\\delta$ e fixada exatamente pelas permutacoes pares — assim $\\mathrm{Gal}(f)\\subseteq A_n$ sse $\\Delta$ e quadrado em $K$.\n\nNo caso cubico isso ja classifica tudo: um $f$ cubico irredutivel tem grupo $S_3$ ou $A_3=\\mathbb{Z}/3$, e o discriminante decide (para $x^3+px+q$, $\\Delta=-4p^3-27q^2$). No caso quartico aparece o exemplo emblematico $x^4-2$ sobre $\\mathbb{Q}$, cujo corpo de decomposicao $\\mathbb{Q}(\\sqrt[4]{2},i)$ tem grau $8$ e grupo de Galois isomorfo ao diedral $D_4$ — gerado por uma 'rotacao' de ordem $4$ que cicla as quatro raizes e por uma 'reflexao' de ordem $2$ dada pela conjugacao complexa. Esses calculos sao o pao-com-manteiga das provas de mestrado: reconhecer o grau do corpo de decomposicao, listar geradores do grupo por suas acoes nas raizes e usar transitividade + discriminante para fixar o tipo de isomorfismo.",
+      "commonPitfalls": [
+        "Confundir o grau de $f$ com $|\\mathrm{Gal}(f)|$: o grupo vive no corpo de DECOMPOSICAO, cujo grau pode ser bem maior (ex.: $x^4-2$ tem grau $4$ mas $|\\mathrm{Gal}|=8$).",
+        "Achar que $\\mathrm{Gal}(f)$ e todo o $S_n$ sempre que $f$ e irredutivel: a transitividade so garante UM subgrupo transitivo (ex.: $\\mathbb{Z}/4$ ou $D_4$ no grau $4$).",
+        "Calcular o discriminante com sinais trocados: para a cubica reduzida $x^3+px+q$, $\\Delta=-4p^3-27q^2$; erros de sinal levam a conclusoes opostas sobre $A_n$.",
+        "Esquecer que o criterio do discriminante exige $\\mathrm{char}\\neq 2$ e que $f$ seja separavel (raizes distintas) para que $\\Delta\\neq 0$."
+      ],
+      "worked": "**O grupo de Galois de $x^4-2$ sobre $\\mathbb{Q}$ e $D_4$.**\n\nAs raizes de $x^4-2$ sao $\\beta,\\ i\\beta,\\ -\\beta,\\ -i\\beta$, com $\\beta=\\sqrt[4]{2}>0$. O corpo de decomposicao e\n$$L=\\mathbb{Q}(\\beta,i),\\qquad [L:\\mathbb{Q}]=[\\mathbb{Q}(\\beta):\\mathbb{Q}]\\cdot[\\mathbb{Q}(\\beta,i):\\mathbb{Q}(\\beta)]=4\\cdot 2=8,$$\npois $\\beta$ tem minimal $x^4-2$ (Eisenstein, $p=2$) e $i\\notin\\mathbb{Q}(\\beta)\\subseteq\\mathbb{R}$. Como $L/\\mathbb{Q}$ e de Galois (corpo de decomposicao, char $0$), $|\\mathrm{Gal}(L/\\mathbb{Q})|=8$.\n\nUm automorfismo fica determinado por sua acao em $\\beta$ e em $i$. Como $\\sigma(\\beta)$ deve ser raiz de $x^4-2$ e $\\sigma(i)$ raiz de $x^2+1$, definimos:\n$$\\sigma:\\ \\beta\\mapsto i\\beta,\\ \\ i\\mapsto i\\qquad(\\text{ordem }4),\\qquad \\tau:\\ \\beta\\mapsto\\beta,\\ \\ i\\mapsto -i\\ \\ (\\text{conjugacao, ordem }2).$$\nVerifica-se $\\sigma^4=\\mathrm{id}$, $\\tau^2=\\mathrm{id}$ e a relacao diedral\n$$\\tau\\sigma\\tau^{-1}=\\sigma^{-1},$$\npois $\\tau\\sigma\\tau(\\beta)=\\tau\\sigma(\\beta)=\\tau(i\\beta)=-i\\beta=\\sigma^{-1}(\\beta)$ e ambos fixam $i$ de forma compativel. Logo $\\langle\\sigma,\\tau\\rangle\\cong D_4$, o grupo diedral de ordem $8$, e como $|\\mathrm{Gal}|=8$ temos\n$$\\mathrm{Gal}(x^4-2/\\mathbb{Q})\\cong D_4.$$\nNumerando as raizes $\\beta,i\\beta,-\\beta,-i\\beta$ como $1,2,3,4$, $\\sigma=(1\\,2\\,3\\,4)$ e $\\tau=(2\\,4)$, exibindo $D_4$ como subgrupo transitivo de $S_4$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Calcule o discriminante de $x^3-2$ e conclua que $\\mathrm{Gal}(x^3-2/\\mathbb{Q})\\cong S_3$.",
+          "hint": "Para $x^3+px+q$, $\\Delta=-4p^3-27q^2$; aqui $p=0,q=-2$, logo $\\Delta=-108$, que nao e quadrado em $\\mathbb{Q}$ (e ate negativo).",
+          "difficulty": 3,
+          "solution": "Seja $f(x)=x^3-2\\in\\mathbb{Q}[x]$, irredutivel por Eisenstein ($p=2$), separavel (char $0$). Suas raizes sao $\\alpha_1=\\sqrt[3]{2}$, $\\alpha_2=\\omega\\sqrt[3]{2}$, $\\alpha_3=\\omega^2\\sqrt[3]{2}$, com $\\omega=e^{2\\pi i/3}$.\n\n**Discriminante.** Para a cubica reduzida $x^3+px+q$ vale a formula $\\Delta=-4p^3-27q^2$. Aqui $p=0$ e $q=-2$, logo\n$$\\Delta=-4\\cdot 0^3-27\\cdot(-2)^2=-27\\cdot 4=-108.$$\n\n**O grupo.** Como $f$ e irredutivel de grau $3$, $\\mathrm{Gal}(f)$ age transitivamente nas $3$ raizes, logo e um subgrupo transitivo de $S_3$; os unicos sao $A_3\\cong\\mathbb{Z}/3$ e $S_3$. Pelo criterio do discriminante (char $\\neq 2$), $\\mathrm{Gal}(f)\\subseteq A_3$ se e somente se $\\Delta$ e quadrado em $\\mathbb{Q}$. Mas $\\Delta=-108<0$ nao e quadrado de nenhum racional (quadrados sao $\\ge 0$). Logo $\\mathrm{Gal}(f)\\not\\subseteq A_3$, e portanto\n$$\\mathrm{Gal}(x^3-2/\\mathbb{Q})\\cong S_3.$$\n(Coerente: o corpo de decomposicao e $\\mathbb{Q}(\\sqrt[3]{2},\\omega)$ de grau $6=|S_3|$.) $\\blacksquare$",
+          "steps": [
+            "Confirme que $x^3-2$ e irredutivel (Eisenstein) e separavel, logo $\\mathrm{Gal}(f)$ e subgrupo transitivo de $S_3$.",
+            "Use $\\Delta=-4p^3-27q^2$ com $p=0,q=-2$ para obter $\\Delta=-108$.",
+            "Note que $-108<0$ nao e quadrado em $\\mathbb{Q}$.",
+            "Aplique o criterio: $\\Delta\\notin\\mathbb{Q}^2\\Rightarrow\\mathrm{Gal}(f)\\not\\subseteq A_3$.",
+            "Conclua, entre os transitivos de $S_3$, que $\\mathrm{Gal}(f)\\cong S_3$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $f(x)=x^3-3x+1$ e irredutivel sobre $\\mathbb{Q}$, calcule $\\Delta$ e determine $\\mathrm{Gal}(f)$.",
+          "hint": "Sem raizes racionais $\\Rightarrow$ irredutivel (grau $3$). $\\Delta=-4(-3)^3-27(1)^2=108-27=81=9^2$, quadrado $\\Rightarrow\\mathrm{Gal}(f)\\cong A_3\\cong\\mathbb{Z}/3$.",
+          "difficulty": 3,
+          "solution": "Seja $f(x)=x^3-3x+1\\in\\mathbb{Q}[x]$.\n\n**Irredutibilidade.** Um polinomio de grau $3$ e redutivel sobre $\\mathbb{Q}$ se e somente se tem raiz racional. Pelo teste das raizes racionais, as candidatas sao $\\pm 1$: $f(1)=1-3+1=-1\\neq 0$ e $f(-1)=-1+3+1=3\\neq 0$. Sem raiz racional, $f$ e irredutivel sobre $\\mathbb{Q}$. Sendo char $0$, e separavel.\n\n**Discriminante.** Com $p=-3$, $q=1$ na formula $\\Delta=-4p^3-27q^2$:\n$$\\Delta=-4\\cdot(-3)^3-27\\cdot 1^2=-4\\cdot(-27)-27=108-27=81=9^2.$$\n\n**O grupo.** $f$ irredutivel de grau $3$ $\\Rightarrow$ $\\mathrm{Gal}(f)$ e subgrupo transitivo de $S_3$, logo $A_3$ ou $S_3$. Como $\\Delta=81$ e quadrado em $\\mathbb{Q}$, o criterio do discriminante da $\\mathrm{Gal}(f)\\subseteq A_3$; sendo transitivo e $|A_3|=3$, segue\n$$\\mathrm{Gal}(x^3-3x+1/\\mathbb{Q})\\cong A_3\\cong\\mathbb{Z}/3.$$\n(De fato $x^3-3x+1$ e o polinomio minimal de $2\\cos(2\\pi/9)$, e seu corpo de decomposicao e uma extensao ciclica de grau $3$.) $\\blacksquare$",
+          "steps": [
+            "Teste raizes racionais $\\pm1$: nenhuma anula $f$, logo $f$ (grau $3$) e irredutivel.",
+            "Calcule $\\Delta=-4(-3)^3-27(1)^2=108-27=81$.",
+            "Reconheca $81=9^2$ como quadrado perfeito em $\\mathbb{Q}$.",
+            "Aplique o criterio do discriminante: $\\Delta\\in\\mathbb{Q}^2\\Rightarrow\\mathrm{Gal}(f)\\subseteq A_3$.",
+            "Com transitividade, conclua $\\mathrm{Gal}(f)\\cong A_3\\cong\\mathbb{Z}/3$."
+          ]
+        },
+        {
+          "prompt": "Prove que se $f\\in K[x]$ e separavel e $\\mathrm{Gal}(f)$ age transitivamente nas raizes, entao $\\deg f$ divide $|\\mathrm{Gal}(f)|$.",
+          "hint": "A orbita de uma raiz tem cardinalidade $\\deg f$ (transitividade); use a equacao orbita-estabilizador $|\\text{orbita}|=[\\,G:\\mathrm{Stab}\\,]$.",
+          "difficulty": 3,
+          "solution": "Seja $f\\in K[x]$ separavel, com raizes distintas $\\alpha_1,\\dots,\\alpha_n$ ($n=\\deg f$) no corpo de decomposicao $L$, e $G=\\mathrm{Gal}(f)=\\mathrm{Gal}(L/K)$ agindo nelas. Suponha a acao transitiva.\n\n**Orbita-estabilizador.** Fixe a raiz $\\alpha_1$ e considere seu estabilizador\n$$\\mathrm{Stab}_G(\\alpha_1)=\\{\\sigma\\in G:\\sigma(\\alpha_1)=\\alpha_1\\}\\le G.$$\nO Teorema da Orbita-Estabilizador afirma que\n$$|\\text{orbita de }\\alpha_1|=[\\,G:\\mathrm{Stab}_G(\\alpha_1)\\,]=\\frac{|G|}{|\\mathrm{Stab}_G(\\alpha_1)|}.$$\n\n**Transitividade.** Como a acao e transitiva, ha uma unica orbita, que e o conjunto de todas as $n$ raizes; logo $|\\text{orbita de }\\alpha_1|=n=\\deg f$. Substituindo,\n$$\\deg f=n=\\frac{|G|}{|\\mathrm{Stab}_G(\\alpha_1)|}\\ \\Longrightarrow\\ |G|=\\deg f\\cdot|\\mathrm{Stab}_G(\\alpha_1)|.$$\nComo $|\\mathrm{Stab}_G(\\alpha_1)|$ e um inteiro positivo, conclui-se que $\\deg f$ divide $|G|=|\\mathrm{Gal}(f)|$. $\\blacksquare$",
+          "steps": [
+            "Fixe uma raiz $\\alpha_1$ e considere seu estabilizador em $G=\\mathrm{Gal}(f)$.",
+            "Aplique orbita-estabilizador: $|\\text{orbita}|=[G:\\mathrm{Stab}_G(\\alpha_1)]$.",
+            "Use a transitividade: a orbita e o conjunto das $n=\\deg f$ raizes.",
+            "Obtenha $\\deg f=|G|/|\\mathrm{Stab}|$, isto e $|G|=\\deg f\\cdot|\\mathrm{Stab}|$.",
+            "Conclua que $\\deg f$ divide $|G|=|\\mathrm{Gal}(f)|$."
+          ]
+        },
+        {
+          "prompt": "Liste os subgrupos transitivos de $S_4$ e diga a qual deles pertence o grupo de Galois de uma quartica irredutivel generica (com $\\Delta$ nao quadrado e resolvente cubica irredutivel).",
+          "hint": "Os subgrupos transitivos de $S_4$ sao $S_4$, $A_4$, $D_4$, $\\mathbb{Z}/4$ e $V_4$; o caso generico (resolvente cubica irredutivel, $\\Delta$ nao quadrado) da $S_4$.",
+          "difficulty": 4,
+          "solution": "**Subgrupos transitivos de $S_4$.** Um subgrupo $H\\le S_4$ e transitivo (age transitivamente em $\\{1,2,3,4\\}$) se e somente se $4\\mid|H|$ (a orbita de qualquer ponto e todo o conjunto). Os subgrupos transitivos, a menos de conjugacao, sao exatamente:\n$$S_4\\ (\\text{ordem }24),\\quad A_4\\ (12),\\quad D_4\\ (8),\\quad \\mathbb{Z}/4\\ (4),\\quad V_4=\\{e,(12)(34),(13)(24),(14)(23)\\}\\ (4).$$\n(Estes sao os cinco tipos; $D_4$ e o diedral realizado como grupo de simetrias do quadrado com vertices $1,2,3,4$, e $V_4$ e o subgrupo normal de Klein.)\n\n**Caso generico da quartica irredutivel.** Seja $f$ uma quartica irredutivel e separavel sobre $K$, com corpo de decomposicao $L$ e $G=\\mathrm{Gal}(f)$, subgrupo transitivo de $S_4$. Dois invariantes decidem qual:\n- o **discriminante** $\\Delta$: $G\\subseteq A_4$ sse $\\Delta\\in K^2$;\n- a **resolvente cubica** $g$ (cubica cujas raizes sao $\\alpha_1\\alpha_2+\\alpha_3\\alpha_4$ etc.), cuja fatoracao sobre $K$ detecta $V_4$: em particular, $g$ e irredutivel sse $G\\in\\{S_4,A_4\\}$.\n\nNo caso GENERICO enunciado — resolvente cubica $g$ IRREDUTIVEL e $\\Delta$ NAO quadrado em $K$ — temos: $g$ irredutivel exclui $D_4,\\mathbb{Z}/4,V_4$ (que teriam resolvente com raiz em $K$), restando $S_4$ ou $A_4$; e $\\Delta\\notin K^2$ exclui $A_4\\subseteq A_4$, restando\n$$G\\cong S_4.$$\nPortanto o grupo de Galois de uma quartica irredutivel generica (resolvente cubica irredutivel e discriminante nao quadrado) e todo o $S_4$. $\\blacksquare$",
+          "steps": [
+            "Lembre que transitivo em $S_4$ equivale a $4\\mid|H|$ e liste os tipos: $S_4,A_4,D_4,\\mathbb{Z}/4,V_4$.",
+            "Introduza os dois invariantes: discriminante $\\Delta$ (detecta $A_4$) e resolvente cubica $g$ (detecta $V_4$ e separa $\\{S_4,A_4\\}$).",
+            "Resolvente cubica irredutivel $\\Rightarrow$ elimina $D_4,\\mathbb{Z}/4,V_4$, sobrando $S_4$ ou $A_4$.",
+            "Discriminante nao quadrado $\\Rightarrow$ $G\\not\\subseteq A_4$, eliminando $A_4$.",
+            "Conclua que o caso generico da $G\\cong S_4$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "$\\mathrm{Gal}(f)$ age como?",
+          "back": "Permutando as raizes de $f$; a acao e fiel, dando $\\mathrm{Gal}(f)\\hookrightarrow S_n$ ($n=$ no. de raizes distintas)."
+        },
+        {
+          "front": "Irredutibilidade vs acao",
+          "back": "$f$ separavel e irredutivel sse $\\mathrm{Gal}(f)$ age transitivamente nas raizes."
+        },
+        {
+          "front": "Discriminante $\\Delta$",
+          "back": "$\\prod_{i<j}(\\alpha_i-\\alpha_j)^2\\in K$; $\\mathrm{Gal}(f)\\subseteq A_n$ sse $\\Delta$ e quadrado em $K$ (char $\\neq2$)."
+        },
+        {
+          "front": "$\\Delta$ da cubica $x^3+px+q$",
+          "back": "$\\Delta=-4p^3-27q^2$."
+        },
+        {
+          "front": "Grupo de uma cubica irredutivel",
+          "back": "$A_3\\cong\\mathbb{Z}/3$ se $\\Delta$ e quadrado; $S_3$ caso contrario."
+        },
+        {
+          "front": "$\\mathrm{Gal}(x^4-2/\\mathbb{Q})$",
+          "back": "$\\cong D_4$ (ordem $8$); corpo de decomposicao $\\mathbb{Q}(\\sqrt[4]{2},i)$, grau $8$."
+        },
+        {
+          "front": "$|\\mathrm{Gal}(f)|$ vs $\\deg f$",
+          "back": "$|\\mathrm{Gal}(f)|=[\\,\\text{corpo de decomposicao}:K\\,]$, em geral maior que $\\deg f$."
+        },
+        {
+          "front": "Subgrupos transitivos de $S_4$",
+          "back": "$S_4,\\ A_4,\\ D_4,\\ \\mathbb{Z}/4,\\ V_4$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Dummit & Foote, secao 14.2 e 14.6 (calculo de grupos de Galois)",
+          "ref": "livro"
+        },
+        {
+          "title": "Stewart, Galois Theory (discriminante e quarticas)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Algebra (grupo de Galois)",
+          "ref": "livro"
+        },
+        {
+          "title": "Milne, Fields and Galois Theory (computing Galois groups)",
+          "ref": "notas"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise a acao de $\\mathrm{Gal}(L/K)$ nas raizes (subtopico 01, ex. 2) e fixe o mergulho $\\mathrm{Gal}(f)\\hookrightarrow S_n$ com $n$ = numero de raizes distintas.",
+          "Estude o discriminante $\\Delta=\\prod_{i<j}(\\alpha_i-\\alpha_j)^2$ e o criterio $\\Delta\\in K^2\\Leftrightarrow\\mathrm{Gal}(f)\\subseteq A_n$ (Dummit & Foote 14.6). Memorize $\\Delta=-4p^3-27q^2$ para $x^3+px+q$.",
+          "Prove a equivalencia irredutivel $\\Leftrightarrow$ transitivo e a consequencia $\\deg f\\mid|\\mathrm{Gal}(f)|$ via orbita-estabilizador.",
+          "Faca a mao os calculos-modelo: $x^3-2$ (grupo $S_3$), $x^3-3x+1$ (grupo $A_3$) e $x^4-2$ (grupo $D_4$), listando geradores por suas acoes nas raizes.",
+          "Assista a uma aula sobre computing Galois groups (discriminante, resolvente cubica) e resolva 2 exercicios de grau $3$ e $4$.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (mergulho em $S_n$, criterio do discriminante e classificacao da cubica)."
+        ],
+        "searchQueries": [
+          "grupo de Galois de polinomio acao nas raizes mergulho S_n",
+          "discriminante polinomio criterio A_n quadrado corpo",
+          "discriminant cubic -4p^3-27q^2 Galois group S3 A3",
+          "computing Galois group quartic resolvent cubic D4",
+          "transitive subgroups of S4 Galois group examples",
+          "Galois group x^4-2 dihedral group computation"
+        ],
+        "videos": [
+          {
+            "title": "Computing Galois Groups / Discriminant",
+            "channel": "Michael Penn",
+            "note": "Procure os videos onde ele calcula grupos de Galois de cubicas e usa o discriminante para distinguir $S_3$ de $A_3$."
+          },
+          {
+            "title": "Galois Theory examples",
+            "channel": "Dr. Peyam",
+            "note": "Exemplos concretos de acao do grupo nas raizes e identificacao de subgrupos de $S_n$."
+          },
+          {
+            "title": "Algebra II (18.702)",
+            "channel": "MIT OpenCourseWare",
+            "note": "As aulas de Galois cobrem o discriminante e o calculo de grupos de graus baixos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, secoes 14.2 e 14.6 (Galois Groups of Polynomials)",
+            "where": "livro de Dummit & Foote"
+          },
+          {
+            "title": "Galois Theory, capitulos sobre discriminante e quarticas",
+            "where": "livro de Ian Stewart"
+          },
+          {
+            "title": "Fields and Galois Theory, secao 'Computing Galois groups'",
+            "where": "notas gratuitas de J. S. Milne (jmilne.org)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-galois-05-correspondencia-fundamental",
+      "title": "A Correspondencia Fundamental da Teoria de Galois",
+      "tagline": "Corpos intermediarios e subgrupos sao a mesma coisa de cabeca para baixo: uma bijecao que inverte inclusoes, troca grau por indice e detecta normalidade.",
+      "objectives": [
+        "Enunciar a correspondencia de Galois (bijecao inclusao-revertente entre corpos intermediarios e subgrupos) e demonstrar as relacoes $[L:F]=|H|$ e $[F:K]=[G:H]$.",
+        "Provar que $F/K$ e normal (de Galois) se e somente se $H=\\mathrm{Gal}(L/F)$ e subgrupo normal de $G$, com $\\mathrm{Gal}(F/K)\\cong G/H$.",
+        "Construir o reticulado completo de corpos intermediarios de uma extensao de Galois a partir do reticulado de subgrupos.",
+        "Deduzir consequencias estruturais: numero finito de corpos intermediarios e o caso abeliano (toda subextensao normal)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Mapas da correspondencia",
+          "statement": "Numa extensao de Galois finita $L/K$ com $G=\\mathrm{Gal}(L/K)$: a cada corpo intermediario $F$ associa-se $\\mathrm{Gal}(L/F)\\le G$, e a cada subgrupo $H\\le G$ associa-se $L^H$. Esses mapas sao bijecoes inversas uma da outra."
+        },
+        {
+          "term": "Inversao de inclusoes",
+          "statement": "A correspondencia inverte inclusoes: $F_1\\subseteq F_2\\iff\\mathrm{Gal}(L/F_1)\\supseteq\\mathrm{Gal}(L/F_2)$. Subcorpos maiores correspondem a subgrupos menores."
+        },
+        {
+          "term": "Grau = indice / ordem",
+          "statement": "$[L:F]=|\\mathrm{Gal}(L/F)|$ e $[F:K]=[\\,G:\\mathrm{Gal}(L/F)\\,]$. O topo $L\\leftrightarrow\\{e\\}$ e a base $K\\leftrightarrow G$."
+        },
+        {
+          "term": "Subgrupo normal vs subextensao normal",
+          "statement": "$H\\trianglelefteq G$ se e somente se $L^H/K$ e normal (logo de Galois). Nesse caso a restricao $\\sigma\\mapsto\\sigma|_{L^H}$ induz $\\mathrm{Gal}(L^H/K)\\cong G/H$."
+        },
+        {
+          "term": "Reticulado de Galois",
+          "statement": "O diagrama (reticulado) de subgrupos de $G$ e o diagrama de corpos intermediarios de $L/K$ sao isomorfos como reticulados, um sendo o reflexo invertido do outro."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema Fundamental da Teoria de Galois",
+          "statement": "Seja $L/K$ de Galois finita com $G=\\mathrm{Gal}(L/K)$. As aplicacoes $F\\mapsto\\mathrm{Gal}(L/F)$ e $H\\mapsto L^H$ sao bijecoes inversas, inclusao-revertentes, entre os corpos intermediarios $K\\subseteq F\\subseteq L$ e os subgrupos $H\\le G$. Valem $[L:F]=|H|$, $[F:K]=[G:H]$ e $L/F$ e sempre de Galois.",
+          "whyItMatters": "Converte completamente a geometria dos corpos intermediarios na algebra dos subgrupos finitos: contar, comparar e classificar subcorpos vira teoria de grupos, em geral muito mais simples."
+        },
+        {
+          "name": "Parte normal da correspondencia",
+          "statement": "Com a notacao acima, $F=L^H$ e tal que $F/K$ e normal (de Galois) se e somente se $H\\trianglelefteq G$; e entao $\\mathrm{Gal}(F/K)\\cong G/H$ via a restricao dos automorfismos de $L$ a $F$.",
+          "whyItMatters": "E o que conecta normalidade de corpos a normalidade de grupos, e fornece grupos de Galois de subextensoes como quocientes — peca essencial na prova do criterio de solubilidade por radicais."
+        },
+        {
+          "name": "Finitude dos corpos intermediarios",
+          "statement": "Uma extensao finita separavel possui apenas um numero finito de corpos intermediarios (pois $G$ tem finitos subgrupos).",
+          "whyItMatters": "Da uma segunda demonstracao do Teorema do Elemento Primitivo (uma extensao finita separavel com finitos intermediarios e simples) e ilustra o poder de traduzir corpos em grupos."
+        }
+      ],
+      "summary": "O Teorema Fundamental e o teorema que justifica o nome 'teoria de Galois'. Dada uma extensao de Galois finita $L/K$ com grupo $G$, ha uma bijecao perfeita entre os corpos intermediarios $K\\subseteq F\\subseteq L$ e os subgrupos $H\\le G$, realizada pelos mapas $F\\mapsto\\mathrm{Gal}(L/F)$ e $H\\mapsto L^H$, que sao inversos um do outro. A bijecao inverte inclusoes — corpos maiores correspondem a subgrupos menores, com o topo $L$ correspondendo ao subgrupo trivial e a base $K$ ao grupo todo — e traduz graus em indices: $[L:F]=|H|$ e $[F:K]=[G:H]$. Como $L/F$ e sempre de Galois, sabemos imediatamente $\\mathrm{Gal}(L/F)=H$; o que NEM sempre vale e $F/K$ ser de Galois, e a teoria diz exatamente quando: precisamente quando $H$ e subgrupo normal de $G$, caso em que $\\mathrm{Gal}(F/K)\\cong G/H$ pela restricao.\n\nNa pratica, isso transforma a tarefa de descrever todos os subcorpos de uma extensao em desenhar o reticulado de subgrupos de um grupo finito e 'vira-lo de cabeca para baixo'. Para $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})/\\mathbb{Q}$, cujo grupo e $V_4=\\mathbb{Z}/2\\times\\mathbb{Z}/2$, os tres subgrupos de ordem $2$ correspondem aos tres corpos intermediarios $\\mathbb{Q}(\\sqrt{2})$, $\\mathbb{Q}(\\sqrt{3})$, $\\mathbb{Q}(\\sqrt{6})$ — todos normais sobre $\\mathbb{Q}$ porque $V_4$ e abeliano. Ja em $\\mathbb{Q}(\\sqrt[4]{2},i)/\\mathbb{Q}$, com grupo $D_4$, ha subgrupos nao normais, e a eles correspondem corpos intermediarios como $\\mathbb{Q}(\\sqrt[4]{2})$, que NAO sao normais sobre $\\mathbb{Q}$. Duas consequencias finas fecham o tema: como $G$ tem so finitos subgrupos, ha so finitos corpos intermediarios — o que reprova o Teorema do Elemento Primitivo — e, quando $G$ e abeliano, todo subgrupo e normal, logo toda subextensao e de Galois sobre a base.",
+      "commonPitfalls": [
+        "Esquecer que a correspondencia INVERTE inclusoes: o subgrupo trivial corresponde a $L$ (e nao a $K$) e o grupo todo a $K$.",
+        "Achar que todo corpo intermediario e normal sobre $K$: so os que correspondem a subgrupos normais sao; $\\mathbb{Q}(\\sqrt[4]{2})$ corresponde a subgrupo nao normal de $D_4$.",
+        "Confundir $\\mathrm{Gal}(L/F)$ (sempre existe e e $H$) com $\\mathrm{Gal}(F/K)$ (so faz sentido pleno quando $F/K$ e de Galois, isto e $H\\trianglelefteq G$).",
+        "Aplicar a correspondencia a uma extensao que NAO e de Galois: sem normalidade+separabilidade a bijecao falha (ha menos automorfismos que o grau)."
+      ],
+      "worked": "**Reticulado completo de $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})/\\mathbb{Q}$.**\n\nA extensao e de Galois de grau $4$ com grupo $G=\\{\\mathrm{id},\\sigma,\\tau,\\sigma\\tau\\}\\cong V_4$, onde\n$$\\sigma:\\ \\sqrt{2}\\mapsto-\\sqrt{2},\\ \\sqrt{3}\\mapsto\\sqrt{3};\\qquad \\tau:\\ \\sqrt{2}\\mapsto\\sqrt{2},\\ \\sqrt{3}\\mapsto-\\sqrt{3}.$$\nNote que $\\sigma\\tau:\\ \\sqrt{2}\\mapsto-\\sqrt{2},\\ \\sqrt{3}\\mapsto-\\sqrt{3}$, e portanto fixa $\\sqrt{6}=\\sqrt{2}\\sqrt{3}$.\n\nOs subgrupos de $V_4$ sao: $\\{e\\}$, $G$ e os tres subgrupos de ordem $2$: $\\langle\\sigma\\rangle$, $\\langle\\tau\\rangle$, $\\langle\\sigma\\tau\\rangle$. Aplicando $H\\mapsto L^H$:\n$$L^{\\langle\\sigma\\rangle}=\\mathbb{Q}(\\sqrt{3}),\\qquad L^{\\langle\\tau\\rangle}=\\mathbb{Q}(\\sqrt{2}),\\qquad L^{\\langle\\sigma\\tau\\rangle}=\\mathbb{Q}(\\sqrt{6}),$$\npois $\\sigma$ fixa $\\sqrt{3}$, $\\tau$ fixa $\\sqrt{2}$ e $\\sigma\\tau$ fixa $\\sqrt{6}$. Cada um tem grau $[L^H:\\mathbb{Q}]=[G:H]=2$, coerente com $[L:L^H]=|H|=2$.\n\nReticulado (invertendo inclusoes):\n$$\\{e\\}\\leftrightarrow\\mathbb{Q}(\\sqrt{2},\\sqrt{3}),\\quad \\langle\\sigma\\rangle,\\langle\\tau\\rangle,\\langle\\sigma\\tau\\rangle\\leftrightarrow\\mathbb{Q}(\\sqrt{3}),\\mathbb{Q}(\\sqrt{2}),\\mathbb{Q}(\\sqrt{6}),\\quad G\\leftrightarrow\\mathbb{Q}.$$\nComo $V_4$ e abeliano, todos os subgrupos sao normais, logo TODOS os tres corpos intermediarios sao de Galois sobre $\\mathbb{Q}$ — de fato, cada um e $\\mathbb{Q}(\\sqrt{d})$, corpo de decomposicao de $x^2-d$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Para $\\mathbb{Q}(\\sqrt[4]{2},i)/\\mathbb{Q}$ com grupo $D_4$, liste os subgrupos de $D_4$ e os corpos intermediarios correspondentes, e identifique quais subextensoes sao normais sobre $\\mathbb{Q}$.",
+          "hint": "$D_4$ tem $10$ subgrupos; os de ordem $4$ (indice $2$) sao sempre normais, dando $3$ subcorpos quadraticos normais; subgrupos de ordem $2$ nao centrais dao subcorpos nao normais como $\\mathbb{Q}(\\sqrt[4]{2})$.",
+          "difficulty": 4,
+          "solution": "Seja $L=\\mathbb{Q}(\\sqrt[4]{2},i)$, de Galois sobre $\\mathbb{Q}$ com $[L:\\mathbb{Q}]=8$ e $G=\\mathrm{Gal}(L/\\mathbb{Q})\\cong D_4$, gerado por\n$$\\sigma:\\ \\sqrt[4]{2}\\mapsto i\\sqrt[4]{2},\\ i\\mapsto i\\ (\\text{ordem }4),\\qquad \\tau:\\ \\sqrt[4]{2}\\mapsto\\sqrt[4]{2},\\ i\\mapsto -i\\ (\\text{ordem }2),$$\ncom relacao $\\tau\\sigma\\tau^{-1}=\\sigma^{-1}$. Escreva $\\beta=\\sqrt[4]{2}$.\n\n**Subgrupos de $D_4$ (10 no total).**\n- Ordem $1$: $\\{e\\}$.\n- Ordem $2$: $\\langle\\sigma^2\\rangle$, $\\langle\\tau\\rangle$, $\\langle\\sigma^2\\tau\\rangle$, $\\langle\\sigma\\tau\\rangle$, $\\langle\\sigma^3\\tau\\rangle$ (cinco).\n- Ordem $4$: $\\langle\\sigma\\rangle\\cong\\mathbb{Z}/4$, $\\langle\\sigma^2,\\tau\\rangle\\cong V_4$, $\\langle\\sigma^2,\\sigma\\tau\\rangle\\cong V_4$ (tres).\n- Ordem $8$: $G$.\n\n**Corpos intermediarios $L^H$** (grau $[L^H:\\mathbb{Q}]=[G:H]$):\n- $H=\\{e\\}\\ \\leftrightarrow\\ L=\\mathbb{Q}(\\beta,i)$ (grau $8$).\n- $H=G\\ \\leftrightarrow\\ \\mathbb{Q}$ (grau $1$).\n- **Ordem $4$ (indice $2$, subcorpos quadraticos):** $\\langle\\sigma\\rangle$ fixa $i$ $\\Rightarrow\\ L^{\\langle\\sigma\\rangle}=\\mathbb{Q}(i)$; $\\langle\\sigma^2,\\tau\\rangle$ fixa $\\beta^2=\\sqrt{2}$ $\\Rightarrow\\ \\mathbb{Q}(\\sqrt{2})$; $\\langle\\sigma^2,\\sigma\\tau\\rangle$ fixa $i\\sqrt{2}$ $\\Rightarrow\\ \\mathbb{Q}(i\\sqrt{2})=\\mathbb{Q}(\\sqrt{-2})$.\n- **Ordem $2$ (indice $4$, subcorpos de grau $4$):** $\\langle\\sigma^2\\rangle$ fixa $\\sqrt{2}$ e $i$ $\\Rightarrow\\ \\mathbb{Q}(\\sqrt{2},i)$; $\\langle\\tau\\rangle$ (conjugacao complexa) fixa $\\beta$ $\\Rightarrow\\ \\mathbb{Q}(\\sqrt[4]{2})$; $\\langle\\sigma^2\\tau\\rangle$ fixa $i\\beta$... isto e, $\\Rightarrow\\ \\mathbb{Q}(i\\sqrt[4]{2})$; $\\langle\\sigma\\tau\\rangle$ $\\Rightarrow\\ \\mathbb{Q}((1+i)\\beta)$; $\\langle\\sigma^3\\tau\\rangle$ $\\Rightarrow\\ \\mathbb{Q}((1-i)\\beta)$.\n\n**Normalidade.** $F=L^H/\\mathbb{Q}$ e normal sse $H\\trianglelefteq G$. Em $D_4$: os tres subgrupos de ordem $4$ (indice $2$) sao SEMPRE normais, e $\\langle\\sigma^2\\rangle$ (o centro) tambem e normal. Logo sao normais sobre $\\mathbb{Q}$ os corpos\n$$\\mathbb{Q}(i),\\quad \\mathbb{Q}(\\sqrt{2}),\\quad \\mathbb{Q}(\\sqrt{-2}),\\quad \\mathbb{Q}(\\sqrt{2},i),$$\nalem de $\\mathbb{Q}$ e $L$. Os quatro subgrupos de ordem $2$ NAO centrais ($\\langle\\tau\\rangle,\\langle\\sigma^2\\tau\\rangle,\\langle\\sigma\\tau\\rangle,\\langle\\sigma^3\\tau\\rangle$) NAO sao normais; logo os subcorpos correspondentes $\\mathbb{Q}(\\sqrt[4]{2})$, $\\mathbb{Q}(i\\sqrt[4]{2})$, $\\mathbb{Q}((1+i)\\sqrt[4]{2})$, $\\mathbb{Q}((1-i)\\sqrt[4]{2})$ NAO sao normais sobre $\\mathbb{Q}$ — coerente com $\\mathbb{Q}(\\sqrt[4]{2})$ conter $\\sqrt[4]{2}$ mas nao $i\\sqrt[4]{2}$. $\\blacksquare$",
+          "steps": [
+            "Fixe geradores $\\sigma$ (ordem 4) e $\\tau$ (ordem 2) de $D_4$ e a relacao $\\tau\\sigma\\tau^{-1}=\\sigma^{-1}$.",
+            "Liste os 10 subgrupos por ordem: um trivial, cinco de ordem 2, tres de ordem 4, o total.",
+            "Para cada $H$ calcule $L^H$ achando os geradores fixados, com grau $[L^H:\\mathbb{Q}]=[G:H]$.",
+            "Identifique os subgrupos normais: os tres de indice 2 e o centro $\\langle\\sigma^2\\rangle$.",
+            "Traduza normalidade dos subgrupos em normalidade dos corpos; destaque $\\mathbb{Q}(\\sqrt[4]{2})$ como NAO normal (subgrupo nao central)."
+          ]
+        },
+        {
+          "prompt": "Prove que se $L/K$ e de Galois com grupo abeliano, entao toda subextensao $K\\subseteq F\\subseteq L$ tem $F/K$ de Galois.",
+          "hint": "Todo subgrupo de um grupo abeliano e normal; aplique a parte normal da correspondencia.",
+          "difficulty": 2,
+          "solution": "Seja $L/K$ de Galois finita com $G=\\mathrm{Gal}(L/K)$ ABELIANO, e $F$ um corpo intermediario, $K\\subseteq F\\subseteq L$.\n\n**Passo 1: $F$ corresponde a um subgrupo.** Pela correspondencia de Galois, $F=L^H$ onde $H=\\mathrm{Gal}(L/F)\\le G$. (Como $L/K$ e de Galois, $L/F$ tambem e, e $H$ e o subgrupo associado a $F$.)\n\n**Passo 2: todo subgrupo de $G$ e normal.** Num grupo abeliano, para quaisquer $g\\in G$ e $h\\in H$, tem-se $ghg^{-1}=gg^{-1}h=h\\in H$; logo $gHg^{-1}=H$ para todo $g$, isto e $H\\trianglelefteq G$.\n\n**Passo 3: aplicar a parte normal da correspondencia.** Pela parte normal do Teorema Fundamental, $F=L^H$ e tal que $F/K$ e normal (de Galois) se e somente se $H\\trianglelefteq G$. Como acabamos de ver que $H$ e normal (por $G$ ser abeliano), concluimos que $F/K$ e de Galois. Alem disso $\\mathrm{Gal}(F/K)\\cong G/H$, que tambem e abeliano (quociente de abeliano).\n\nComo $F$ era um intermediario arbitrario, toda subextensao $K\\subseteq F\\subseteq L$ e de Galois sobre $K$. $\\blacksquare$",
+          "steps": [
+            "Escreva $F=L^H$ com $H=\\mathrm{Gal}(L/F)\\le G$ pela correspondencia.",
+            "Use que $G$ e abeliano para mostrar $gHg^{-1}=H$, isto e $H\\trianglelefteq G$.",
+            "Aplique a parte normal: $H$ normal $\\Rightarrow F/K$ normal (de Galois).",
+            "Observe que $\\mathrm{Gal}(F/K)\\cong G/H$ e tambem abeliano.",
+            "Conclua para $F$ arbitrario: toda subextensao e de Galois."
+          ]
+        },
+        {
+          "prompt": "Seja $L/K$ de Galois com $G=\\mathrm{Gal}(L/K)$, e sejam $F_1=L^{H_1}$, $F_2=L^{H_2}$. Mostre que $F_1\\cap F_2=L^{\\langle H_1,H_2\\rangle}$ e $F_1F_2=L^{H_1\\cap H_2}$ (compositum).",
+          "hint": "Use que a correspondencia inverte inclusoes e leva intersecoes/joins de um lado em joins/intersecoes do outro.",
+          "difficulty": 4,
+          "solution": "Seja $L/K$ de Galois finita, $G=\\mathrm{Gal}(L/K)$, e $F_1=L^{H_1}$, $F_2=L^{H_2}$ com $H_1,H_2\\le G$. Denote por $\\langle H_1,H_2\\rangle$ o subgrupo gerado por $H_1\\cup H_2$ (o 'join'). Usaremos que a correspondencia $H\\mapsto L^H$ e uma bijecao inclusao-revertente.\n\n**Interseccao dos corpos: $F_1\\cap F_2=L^{\\langle H_1,H_2\\rangle}$.** Um elemento $x\\in L$ pertence a $F_1\\cap F_2$ sse esta fixo por todo $H_1$ (para $x\\in F_1=L^{H_1}$) E por todo $H_2$ (para $x\\in F_2=L^{H_2}$). Estar fixo por todos os elementos de $H_1$ e de $H_2$ equivale a estar fixo por todos os elementos do subgrupo que eles geram, $\\langle H_1,H_2\\rangle$ (pois o conjunto dos automorfismos que fixam $x$ e um subgrupo, e se contem $H_1\\cup H_2$ contem seu gerado). Logo\n$$F_1\\cap F_2=L^{H_1}\\cap L^{H_2}=\\{x:\\ H_1\\text{ e }H_2\\text{ fixam }x\\}=L^{\\langle H_1,H_2\\rangle}.$$\n\n**Compositum dos corpos: $F_1F_2=L^{H_1\\cap H_2}$.** O compositum $F_1F_2$ e o MENOR subcorpo de $L$ contendo $F_1$ e $F_2$. Sob a correspondencia (que inverte inclusoes), o menor corpo contendo $F_1=L^{H_1}$ e $F_2=L^{H_2}$ corresponde ao MAIOR subgrupo contido em $H_1$ e em $H_2$, ou seja $H_1\\cap H_2$. Formalmente: $F_1F_2=L^{H}$ para $H=\\mathrm{Gal}(L/F_1F_2)$; como $\\sigma$ fixa $F_1F_2$ sse fixa tanto $F_1$ quanto $F_2$, tem-se $\\sigma\\in H\\iff\\sigma\\in H_1\\text{ e }\\sigma\\in H_2$, isto e $H=H_1\\cap H_2$. Portanto\n$$F_1F_2=L^{H_1\\cap H_2}.$$\n\nEm resumo, a correspondencia de Galois troca interseccao de corpos por join de subgrupos e compositum de corpos por interseccao de subgrupos, refletindo a inversao de inclusoes. $\\blacksquare$",
+          "steps": [
+            "Traduza $x\\in F_1\\cap F_2$ como '$x$ fixo por $H_1$ e por $H_2$'.",
+            "Note que fixar $H_1\\cup H_2$ equivale a fixar o subgrupo gerado $\\langle H_1,H_2\\rangle$; conclua $F_1\\cap F_2=L^{\\langle H_1,H_2\\rangle}$.",
+            "Para o compositum, use que a correspondencia inverte inclusoes: menor corpo contendo ambos $\\leftrightarrow$ maior subgrupo contido em ambos.",
+            "Identifique $\\mathrm{Gal}(L/F_1F_2)=H_1\\cap H_2$ observando que fixar $F_1F_2$ = fixar $F_1$ e $F_2$.",
+            "Conclua $F_1F_2=L^{H_1\\cap H_2}$."
+          ]
+        },
+        {
+          "prompt": "Use a finitude dos corpos intermediarios para dar uma prova do Teorema do Elemento Primitivo no caso de $K$ infinito.",
+          "hint": "Com finitos intermediarios e $K$ infinito, escolha $\\gamma=\\alpha+c\\beta$ evitando os finitos valores de $c$ que colocam $\\gamma$ num intermediario proprio; conclua $K(\\gamma)=K(\\alpha,\\beta)$.",
+          "difficulty": 5,
+          "solution": "Seja $K$ infinito e $L=K(\\alpha,\\beta)$ uma extensao finita separavel (basta o caso de dois geradores; o caso geral segue por inducao). Queremos $\\gamma\\in L$ com $L=K(\\gamma)$.\n\n**Finitude dos intermediarios.** Sendo $L/K$ finita e separavel, seu fecho de Galois $M/K$ e finito de Galois com grupo $G=\\mathrm{Gal}(M/K)$ finito. Pela correspondencia de Galois aplicada a $M/K$, os corpos intermediarios de $M/K$ estao em bijecao com os subgrupos de $G$, que sao em numero FINITO. Como todo intermediario de $L/K$ e tambem intermediario de $M/K$ (pois $K\\subseteq L\\subseteq M$), ha apenas finitos corpos intermediarios entre $K$ e $L$.\n\n**Construcao de $\\gamma$.** Considere os elementos $\\gamma_c=\\alpha+c\\beta$ para $c\\in K$; ha infinitos deles, pois $K$ e infinito. Cada $K(\\gamma_c)$ e um corpo intermediario $K\\subseteq K(\\gamma_c)\\subseteq L$. Como ha infinitos valores de $c$ mas apenas finitos corpos intermediarios possiveis, pelo principio da casa dos pombos existem $c_1\\neq c_2$ em $K$ com\n$$K(\\gamma_{c_1})=K(\\gamma_{c_2})=:F.$$\nEntao $\\gamma_{c_1}-\\gamma_{c_2}=(c_1-c_2)\\beta\\in F$; como $c_1-c_2\\in K^{\\times}\\subseteq F$, segue $\\beta\\in F$. E dai $\\alpha=\\gamma_{c_1}-c_1\\beta\\in F$. Logo $F$ contem $\\alpha$ e $\\beta$, isto e $L=K(\\alpha,\\beta)\\subseteq F\\subseteq L$, donde $F=L$.\n\nPortanto $L=K(\\gamma_{c_1})=K(\\alpha+c_1\\beta)$: a extensao e simples, com gerador primitivo $\\gamma=\\alpha+c_1\\beta$. Isso prova o Teorema do Elemento Primitivo para $K$ infinito. $\\blacksquare$",
+          "steps": [
+            "Passe ao fecho de Galois $M/K$ e use a correspondencia: $G$ finito $\\Rightarrow$ finitos subgrupos $\\Rightarrow$ finitos intermediarios de $M/K$, logo de $L/K$.",
+            "Considere a familia infinita $\\gamma_c=\\alpha+c\\beta$, $c\\in K$ (infinito), cada $K(\\gamma_c)$ intermediario.",
+            "Pela casa dos pombos, dois valores $c_1\\neq c_2$ dao o mesmo corpo $F=K(\\gamma_{c_1})=K(\\gamma_{c_2})$.",
+            "Da diferenca $(c_1-c_2)\\beta\\in F$ obtenha $\\beta\\in F$ e depois $\\alpha\\in F$.",
+            "Conclua $F=L$, logo $L=K(\\alpha+c_1\\beta)$ e simples."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Mapas da correspondencia de Galois",
+          "back": "$F\\mapsto\\mathrm{Gal}(L/F)$ e $H\\mapsto L^H$, bijecoes inversas entre corpos intermediarios e subgrupos."
+        },
+        {
+          "front": "A correspondencia inverte ou preserva inclusoes?",
+          "back": "Inverte: corpo maior $\\leftrightarrow$ subgrupo menor. $\\{e\\}\\leftrightarrow L$, $G\\leftrightarrow K$."
+        },
+        {
+          "front": "$[L:F]$ em termos do grupo",
+          "back": "$[L:F]=|\\mathrm{Gal}(L/F)|$ e $[F:K]=[G:\\mathrm{Gal}(L/F)]$."
+        },
+        {
+          "front": "Quando $F/K$ e de Galois?",
+          "back": "Sse $H=\\mathrm{Gal}(L/F)$ e normal em $G$; entao $\\mathrm{Gal}(F/K)\\cong G/H$."
+        },
+        {
+          "front": "$L/F$ e sempre de Galois?",
+          "back": "Sim, para todo intermediario $F$ de uma extensao de Galois $L/K$."
+        },
+        {
+          "front": "Corpos intermediarios de $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})$",
+          "back": "$\\mathbb{Q}(\\sqrt{2})$, $\\mathbb{Q}(\\sqrt{3})$, $\\mathbb{Q}(\\sqrt{6})$ — tres, todos normais ($V_4$ abeliano)."
+        },
+        {
+          "front": "Quantos corpos intermediarios?",
+          "back": "Finitos, pois $G$ tem finitos subgrupos (reprova o elemento primitivo)."
+        },
+        {
+          "front": "$G$ abeliano implica...",
+          "back": "...toda subextensao $F/K$ e de Galois (todo subgrupo e normal)."
+        }
+      ],
+      "estimatedHours": 11,
+      "resources": [
+        {
+          "title": "Dummit & Foote, secao 14.2 (The Fundamental Theorem of Galois Theory)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Algebra (correspondencia de Galois)",
+          "ref": "livro"
+        },
+        {
+          "title": "Artin, Galois Theory (teorema fundamental)",
+          "ref": "livro"
+        },
+        {
+          "title": "Milne, Fields and Galois Theory (Fundamental Theorem)",
+          "ref": "notas"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Enuncie com precisao o Teorema Fundamental: os mapas $F\\mapsto\\mathrm{Gal}(L/F)$ e $H\\mapsto L^H$, a inversao de inclusoes e as relacoes $[L:F]=|H|$, $[F:K]=[G:H]$.",
+          "Estude a 'parte normal': $H\\trianglelefteq G\\Leftrightarrow L^H/K$ normal, com $\\mathrm{Gal}(L^H/K)\\cong G/H$ pela restricao (Dummit & Foote 14.2).",
+          "Desenhe o reticulado de subgrupos de $V_4$ e de $D_4$ e traduza cada subgrupo no corpo intermediario correspondente (invertendo inclusoes).",
+          "Trabalhe os dois exemplos-modelo completos: $\\mathbb{Q}(\\sqrt{2},\\sqrt{3})$ (grupo $V_4$, tudo normal) e $\\mathbb{Q}(\\sqrt[4]{2},i)$ (grupo $D_4$, com subcorpos nao normais).",
+          "Assista a uma aula sobre o Fundamental Theorem of Galois Theory e resolva 1-2 exercicios de reticulado completo.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (o dicionario corpos-subgrupos e o criterio de normalidade)."
+        ],
+        "searchQueries": [
+          "teorema fundamental da teoria de Galois correspondencia demonstracao",
+          "Galois correspondence lattice subgroups intermediate fields",
+          "subgrupo normal subextensao normal Gal(L^H/K) = G/H",
+          "reticulado de Galois D4 corpos intermediarios Q(2^(1/4),i)",
+          "fundamental theorem Galois theory example V4 Q(sqrt2,sqrt3)",
+          "Galois correspondence normal subgroup quotient proof"
+        ],
+        "videos": [
+          {
+            "title": "Fundamental Theorem of Galois Theory",
+            "channel": "Michael Penn",
+            "note": "Procure o video sobre o teorema fundamental e os exemplos de reticulado; ele desenha a bijecao corpos-subgrupos."
+          },
+          {
+            "title": "Algebra II (18.702)",
+            "channel": "MIT OpenCourseWare",
+            "note": "As aulas de Galois demonstram a correspondencia e a parte normal com clareza."
+          },
+          {
+            "title": "Abstract Algebra (Harvard E-222)",
+            "channel": "Benedict Gross / Harvard (YouTube)",
+            "note": "Excelente para ver a correspondencia aplicada a exemplos com $V_4$ e $D_4$."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, secao 14.2 (The Fundamental Theorem of Galois Theory)",
+            "where": "livro de Dummit & Foote"
+          },
+          {
+            "title": "Elementos de Algebra, capitulo da correspondencia de Galois",
+            "where": "livro de Garcia & Lequain (IMPA, Projeto Euclides)"
+          },
+          {
+            "title": "Fields and Galois Theory, secao 'The Fundamental Theorem of Galois Theory'",
+            "where": "notas gratuitas de J. S. Milne (jmilne.org)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-galois-06-solubilidade-radicais-quintica",
+      "title": "Solubilidade por Radicais e a Insolubilidade da Quintica",
+      "tagline": "Resolver por radicais e subir uma torre de raizes $n$-esimas; isso e possivel exatamente quando o grupo de Galois e soluvel — e $S_5$ nao e.",
+      "objectives": [
+        "Definir extensao radical e polinomio 'soluvel por radicais', relacionando-os com a nocao de grupo soluvel.",
+        "Desenvolver extensoes ciclotomicas e de Kummer: as extensoes ciclicas $K(\\sqrt[n]{a})$ na presenca de raizes da unidade.",
+        "Enunciar e aplicar o Teorema de Galois: $f$ e soluvel por radicais se e somente se $\\mathrm{Gal}(f)$ e soluvel.",
+        "Exibir um polinomio de grau $5$ com grupo de Galois $S_5$ e concluir a insolubilidade da quintica (Abel-Ruffini)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Extensao radical",
+          "statement": "Uma torre $K=K_0\\subseteq K_1\\subseteq\\cdots\\subseteq K_m$ com cada $K_{i+1}=K_i(\\alpha_i)$ onde $\\alpha_i^{n_i}\\in K_i$ (adjuncao de uma raiz $n_i$-esima). $f$ e soluvel por radicais se suas raizes estao em alguma extensao radical de $K$."
+        },
+        {
+          "term": "Grupo soluvel",
+          "statement": "$G$ e soluvel se admite uma cadeia $\\{e\\}=G_0\\trianglelefteq G_1\\trianglelefteq\\cdots\\trianglelefteq G_r=G$ com cada quociente $G_{i+1}/G_i$ abeliano; equivalentemente, a serie derivada $G\\supseteq G'\\supseteq G''\\supseteq\\cdots$ atinge $\\{e\\}$."
+        },
+        {
+          "term": "Extensao ciclotomica",
+          "statement": "$K(\\zeta_n)/K$ com $\\zeta_n$ raiz $n$-esima primitiva da unidade; e abeliana, e $\\mathrm{Gal}(\\mathbb{Q}(\\zeta_n)/\\mathbb{Q})\\cong(\\mathbb{Z}/n\\mathbb{Z})^{\\times}$ de ordem $\\varphi(n)$."
+        },
+        {
+          "term": "Extensao de Kummer",
+          "statement": "Se $K$ contem as raizes $n$-esimas da unidade e $\\mathrm{char}\\,K\\nmid n$, entao $K(\\sqrt[n]{a})/K$ e ciclica de grau divisor de $n$; reciprocamente, toda extensao ciclica de grau $n$ e dessa forma."
+        },
+        {
+          "term": "Solubilidade de $S_n$",
+          "statement": "$S_n$ e soluvel se e somente se $n\\le 4$. Para $n\\ge 5$, $A_n$ e simples nao abeliano, logo $S_n$ (e $A_n$) nao e soluvel."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Extensoes ciclicas e teoria de Kummer",
+          "statement": "Suponha $K$ contendo uma raiz $n$-esima primitiva da unidade e $\\mathrm{char}\\,K\\nmid n$. Entao $L/K$ e ciclica de grau $n$ se e somente se $L=K(\\alpha)$ com $\\alpha^n=a\\in K$ e $x^n-a$ irredutivel sobre $K$. Em particular $\\mathrm{Gal}(K(\\sqrt[n]{a})/K)$ e ciclico.",
+          "whyItMatters": "E o passo elementar da torre radical: cada 'extracao de raiz $n$-esima' corresponde a um pedaco CICLICO (logo abeliano) do grupo. A volta usa o Teorema 90 de Hilbert."
+        },
+        {
+          "name": "Teorema de Galois (solubilidade por radicais)",
+          "statement": "Seja $K$ de caracteristica $0$ e $f\\in K[x]$. Entao $f$ e soluvel por radicais se e somente se o grupo de Galois $\\mathrm{Gal}(f/K)$ e soluvel.",
+          "whyItMatters": "Traduz a existencia de uma 'formula por radicais' numa propriedade puramente de teoria de grupos. Encerra uma busca de mais de tres seculos por formulas gerais."
+        },
+        {
+          "name": "Abel-Ruffini / insolubilidade da quintica",
+          "statement": "A quintica geral nao e soluvel por radicais. Concretamente, $f(x)=x^5-6x+3\\in\\mathbb{Q}[x]$ tem grupo de Galois $S_5$, que nao e soluvel; logo suas raizes nao se exprimem por radicais.",
+          "whyItMatters": "Prova que NAO existe formula por radicais para o grau $5$ (nem geral para $n\\ge 5$), em contraste com Cardano (grau $3$) e Ferrari (grau $4$)."
+        },
+        {
+          "name": "Solubilidade dos graus baixos (Cardano-Ferrari)",
+          "statement": "Para $n\\le 4$, $S_n$ e soluvel; logo toda equacao polinomial de grau $\\le 4$ sobre um corpo de caracteristica $0$ e soluvel por radicais.",
+          "whyItMatters": "Recupera e explica conceitualmente as formulas classicas de grau $2$, $3$ e $4$: elas existem PORQUE os grupos $S_2,S_3,S_4$ sao soluveis."
+        }
+      ],
+      "summary": "Resolver uma equacao 'por radicais' significa exprimir suas raizes a partir dos coeficientes usando as quatro operacoes e extracoes de raizes $n$-esimas — ou seja, alcancar as raizes no topo de uma torre de extensoes radicais $K_{i+1}=K_i(\\sqrt[n_i]{a_i})$. A descoberta de Galois e que cada degrau dessa torre, na presenca das raizes da unidade apropriadas, e uma extensao ciclica (grupo abeliano), pela teoria de Kummer. Encadeando os degraus, o grupo de Galois de uma extensao radical adquire uma serie cujos quocientes sao abelianos — exatamente a definicao de grupo soluvel. O Teorema de Galois fecha o argumento nas duas direcoes (em caracteristica $0$): $f$ e soluvel por radicais se e somente se $\\mathrm{Gal}(f/K)$ e um grupo soluvel. Como ingrediente, as extensoes ciclotomicas $\\mathbb{Q}(\\zeta_n)/\\mathbb{Q}$ fornecem as raizes da unidade e tem grupo abeliano $(\\mathbb{Z}/n)^{\\times}$, garantindo que adjuntar raizes da unidade nao estraga a solubilidade.\n\nA consequencia historica e espetacular. Para $n\\le 4$ os grupos $S_n$ sao soluveis, o que explica a existencia das formulas de Cardano (cubica) e Ferrari (quartica). Mas para $n\\ge 5$ o grupo alternado $A_n$ e simples e nao abeliano, de modo que $S_n$ nao e soluvel. Basta entao exibir UM polinomio de grau $5$ cujo grupo seja $S_5$: o exemplo classico e $x^5-6x+3$, irredutivel por Eisenstein, com exatamente tres raizes reais e duas complexas conjugadas. A conjugacao complexa atua como uma transposicao, e a irredutibilidade forca um $5$-ciclo (Cauchy); um subgrupo transitivo de $S_5$ contendo uma transposicao e um $5$-ciclo e todo o $S_5$. Logo $\\mathrm{Gal}(f)=S_5$ nao e soluvel, e a quintica geral nao admite formula por radicais — o Teorema de Abel-Ruffini, agora com a explicacao estrutural de Galois.",
+      "commonPitfalls": [
+        "Confundir 'soluvel por radicais' com 'tem raizes': toda quintica TEM cinco raizes complexas; o que falha e exprimi-las por radicais.",
+        "Esquecer a hipotese de raizes da unidade na teoria de Kummer: sem elas, $K(\\sqrt[n]{a})/K$ pode nao ser ciclica nem normal (ex.: $\\mathbb{Q}(\\sqrt[3]{2})/\\mathbb{Q}$).",
+        "Achar que 'existe formula para alguns de grau $5$' contradiz Abel-Ruffini: muitos quinticos especificos SAO soluveis (grupo soluvel); o teorema nega uma formula GERAL e exibe um caso $S_5$.",
+        "Tomar a insolubilidade de $S_5$ como obvia: ela depende do fato nao trivial de que $A_5$ e simples; sem isso o argumento nao fecha."
+      ],
+      "worked": "**$x^5-6x+3$ tem grupo de Galois $S_5$, logo nao e soluvel por radicais.**\n\nSeja $f(x)=x^5-6x+3\\in\\mathbb{Q}[x]$ e $G=\\mathrm{Gal}(f/\\mathbb{Q})\\le S_5$.\n\n*Irredutibilidade.* Por Eisenstein com $p=3$ ($3\\mid 6$, $3\\mid 3$, $3\\nmid 1$ e $9\\nmid 3$), $f$ e irredutivel sobre $\\mathbb{Q}$. Logo $G$ age transitivamente nas $5$ raizes e $5\\mid|G|$. Por Cauchy, $G$ contem um elemento de ordem $5$, isto e, um $5$-ciclo.\n\n*Numero de raizes reais.* Avaliando: $f(-2)=-32+12+3=-17<0$, $f(-1)=-1+6+3=8>0$, $f(1)=1-6+3=-2<0$, $f(2)=32-12+3=23>0$. Ha mudancas de sinal em $(-2,-1)$, $(0,1)$ e $(1,2)$, dando pelo menos $3$ raizes reais. Como $f'(x)=5x^4-6$ tem apenas dois zeros reais, $f$ tem no maximo $3$ raizes reais. Portanto exatamente $3$ raizes reais e $2$ complexas conjugadas.\n\n*Uma transposicao.* A conjugacao complexa restrita ao corpo de decomposicao e um automorfismo de $\\mathbb{Q}$ que fixa as $3$ raizes reais e troca o par conjugado; logo atua como uma transposicao em $S_5$.\n\n*Conclusao.* $G$ e um subgrupo transitivo de $S_5$ que contem um $5$-ciclo e uma transposicao. Um teorema de teoria de grupos garante que tal subgrupo e todo o $S_5$ (um $p$-ciclo e uma transposicao geram $S_p$ quando $p$ e primo e o grupo e transitivo). Assim $G=S_5$. Como $A_5$ e simples nao abeliano, $S_5$ nao e soluvel; pelo Teorema de Galois, $f$ NAO e soluvel por radicais. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que $S_n$ nao e soluvel para $n\\ge 5$, admitindo que $A_n$ e simples nao abeliano.",
+          "hint": "Se $S_n$ fosse soluvel, todo subgrupo seria soluvel; mas $A_n\\le S_n$ e simples nao abeliano nao pode ser soluvel (sua serie derivada estaciona em $A_n\\neq\\{e\\}$).",
+          "difficulty": 3,
+          "solution": "Admitindo que $A_n$ e simples e nao abeliano para $n\\ge 5$, mostremos que $S_n$ nao e soluvel.\n\n**Fato 1: subgrupo de grupo soluvel e soluvel.** Se $G$ e soluvel, ele possui uma serie $\\{e\\}=G_0\\trianglelefteq\\cdots\\trianglelefteq G_r=G$ com quocientes abelianos. Para $H\\le G$, a intersecao $H_i:=H\\cap G_i$ da uma serie $\\{e\\}=H_0\\trianglelefteq\\cdots\\trianglelefteq H_r=H$ cujos quocientes $H_i/H_{i-1}$ mergulham em $G_i/G_{i-1}$ (pelo segundo teorema do isomorfismo), logo sao abelianos. Portanto $H$ e soluvel.\n\n**Fato 2: um grupo simples nao abeliano nao e soluvel.** Seja $A$ simples e nao abeliano. Sua serie derivada comeca com o subgrupo comutador $A'=[A,A]$. Como $A'\\trianglelefteq A$ e $A$ e simples, $A'=\\{e\\}$ ou $A'=A$. Se fosse $A'=\\{e\\}$, entao $A$ seria abeliano, contradicao. Logo $A'=A$, e a serie derivada estaciona em $A\\neq\\{e\\}$, nunca atingindo $\\{e\\}$. Assim $A$ nao e soluvel.\n\n**Conclusao.** Para $n\\ge 5$, $A_n\\le S_n$ e simples e nao abeliano, logo (Fato 2) nao e soluvel. Se $S_n$ fosse soluvel, todo subgrupo seu seria soluvel (Fato 1), em particular $A_n$ — contradicao. Portanto $S_n$ nao e soluvel para $n\\ge 5$. $\\blacksquare$",
+          "steps": [
+            "Prove (ou cite) que todo subgrupo de um grupo soluvel e soluvel, via interseccao com a serie e o segundo teorema do isomorfismo.",
+            "Mostre que um grupo simples nao abeliano $A$ tem $A'=A$ (pois $A'\\trianglelefteq A$ e $A$ nao abeliano), logo serie derivada nao chega a $\\{e\\}$.",
+            "Conclua que $A$ simples nao abeliano nao e soluvel.",
+            "Aplique a $A_n$ ($n\\ge5$), simples nao abeliano, subgrupo de $S_n$.",
+            "Se $S_n$ fosse soluvel, $A_n$ seria soluvel (contradicao); logo $S_n$ nao e soluvel."
+          ]
+        },
+        {
+          "prompt": "Calcule $\\mathrm{Gal}(\\mathbb{Q}(\\zeta_5)/\\mathbb{Q})$ e identifique o unico subcorpo quadratico, mostrando que e $\\mathbb{Q}(\\sqrt{5})$.",
+          "hint": "$\\mathrm{Gal}\\cong(\\mathbb{Z}/5)^{\\times}\\cong\\mathbb{Z}/4$, ciclico; o subgrupo de ordem $2$ corresponde a um subcorpo de grau $2$. Some as raizes em orbitas (periodos de Gauss) para obter $\\sqrt{5}$.",
+          "difficulty": 4,
+          "solution": "Seja $\\zeta=\\zeta_5=e^{2\\pi i/5}$, raiz quinta primitiva da unidade.\n\n**O grupo.** $\\mathbb{Q}(\\zeta_5)/\\mathbb{Q}$ e de Galois (corpo de decomposicao de $x^5-1$, char $0$) com\n$$\\mathrm{Gal}(\\mathbb{Q}(\\zeta_5)/\\mathbb{Q})\\cong(\\mathbb{Z}/5\\mathbb{Z})^{\\times}\\cong\\mathbb{Z}/4,$$\nde ordem $\\varphi(5)=4$, ciclico, gerado por $\\sigma:\\zeta\\mapsto\\zeta^2$ (pois $2$ e gerador de $(\\mathbb{Z}/5)^{\\times}$: $2,4,3,1$).\n\n**Subcorpo quadratico.** Sendo $\\mathrm{Gal}\\cong\\mathbb{Z}/4$ ciclico, ha um unico subgrupo de ordem $2$, a saber $\\langle\\sigma^2\\rangle$ com $\\sigma^2:\\zeta\\mapsto\\zeta^4=\\bar\\zeta$ (conjugacao complexa). Pela correspondencia, existe um unico corpo intermediario de grau $[\\,\\mathbb{Q}(\\zeta_5):\\cdot\\,]=2$ sobre $\\mathbb{Q}$: e $F=\\mathbb{Q}(\\zeta_5)^{\\langle\\sigma^2\\rangle}$, com $[F:\\mathbb{Q}]=[G:\\langle\\sigma^2\\rangle]=2$.\n\n**Identificando $F=\\mathbb{Q}(\\sqrt{5})$ via periodos de Gauss.** O elemento fixo por $\\sigma^2$ (a conjugacao) e obtido somando as orbitas de $\\langle\\sigma^2\\rangle$ nas raizes primitivas $\\{\\zeta,\\zeta^2,\\zeta^3,\\zeta^4\\}$. Como $\\sigma^2$ troca $\\zeta\\leftrightarrow\\zeta^4$ e $\\zeta^2\\leftrightarrow\\zeta^3$, os periodos sao\n$$\\eta_1=\\zeta+\\zeta^4=2\\cos(72^\\circ),\\qquad \\eta_2=\\zeta^2+\\zeta^3=2\\cos(144^\\circ),$$\nambos fixos por $\\sigma^2$, logo em $F$. Eles satisfazem, usando $1+\\zeta+\\zeta^2+\\zeta^3+\\zeta^4=0$:\n$$\\eta_1+\\eta_2=\\zeta+\\zeta^2+\\zeta^3+\\zeta^4=-1,$$\n$$\\eta_1\\eta_2=(\\zeta+\\zeta^4)(\\zeta^2+\\zeta^3)=\\zeta^3+\\zeta^4+\\zeta^6+\\zeta^7=\\zeta^3+\\zeta^4+\\zeta+\\zeta^2=-1$$\n(reduzindo expoentes mod $5$). Logo $\\eta_1,\\eta_2$ sao raizes de\n$$t^2-(\\eta_1+\\eta_2)t+\\eta_1\\eta_2=t^2+t-1=0\\ \\Longrightarrow\\ \\eta=\\frac{-1\\pm\\sqrt{5}}{2}.$$\nPortanto $\\sqrt{5}=\\eta_1-\\eta_2\\in F$, e como $[\\mathbb{Q}(\\sqrt{5}):\\mathbb{Q}]=2=[F:\\mathbb{Q}]$ com $\\mathbb{Q}(\\sqrt{5})\\subseteq F$, segue\n$$F=\\mathbb{Q}(\\sqrt{5}).$$\n$\\blacksquare$",
+          "steps": [
+            "Identifique $\\mathrm{Gal}(\\mathbb{Q}(\\zeta_5)/\\mathbb{Q})\\cong(\\mathbb{Z}/5)^{\\times}\\cong\\mathbb{Z}/4$, gerado por $\\sigma:\\zeta\\mapsto\\zeta^2$.",
+            "Localize o unico subgrupo de ordem $2$, $\\langle\\sigma^2\\rangle$ (conjugacao complexa), correspondente ao unico subcorpo quadratico $F$.",
+            "Forme os periodos de Gauss $\\eta_1=\\zeta+\\zeta^4$, $\\eta_2=\\zeta^2+\\zeta^3$, fixos por $\\sigma^2$.",
+            "Calcule $\\eta_1+\\eta_2=-1$ e $\\eta_1\\eta_2=-1$, obtendo $t^2+t-1=0$.",
+            "Resolva: $\\eta=\\frac{-1\\pm\\sqrt5}{2}$, logo $\\sqrt5\\in F$ e $F=\\mathbb{Q}(\\sqrt5)$."
+          ]
+        },
+        {
+          "prompt": "Mostre que todo $p$-grupo finito e soluvel e conclua que se $\\mathrm{Gal}(f)$ e um $p$-grupo entao $f$ e soluvel por radicais.",
+          "hint": "$p$-grupos tem centro nao trivial; por inducao na ordem, monte uma serie central com quocientes abelianos. Depois aplique o Teorema de Galois.",
+          "difficulty": 3,
+          "solution": "**Parte 1: todo $p$-grupo finito e soluvel.** Seja $P$ um grupo de ordem $p^m$ ($p$ primo). Provamos por inducao em $m$.\n- Se $m\\le 1$, $P$ e trivial ou ciclico de ordem $p$, logo abeliano e soluvel.\n- Passo indutivo: um $p$-grupo nao trivial tem centro nao trivial, $Z(P)\\neq\\{e\\}$ (a equacao das classes $|P|=|Z(P)|+\\sum[P:C(x_i)]$ tem cada indice $[P:C(x_i)]$ divisivel por $p$, forcando $p\\mid|Z(P)|$). Entao $Z(P)\\trianglelefteq P$ e abeliano, e o quociente $P/Z(P)$ e um $p$-grupo de ordem menor, logo soluvel por hipotese de inducao. Como $Z(P)$ e soluvel (abeliano) e $P/Z(P)$ e soluvel, uma extensao de soluvel por soluvel e soluvel; portanto $P$ e soluvel.\n\n**Parte 2: se $\\mathrm{Gal}(f)$ e um $p$-grupo, entao $f$ e soluvel por radicais.** Assuma $\\mathrm{char}\\,K=0$ (para valer o Teorema de Galois). Pela Parte 1, o grupo $G=\\mathrm{Gal}(f/K)$, sendo um $p$-grupo finito, e soluvel. Pelo Teorema de Galois (solubilidade por radicais), $f$ e soluvel por radicais se e somente se $\\mathrm{Gal}(f/K)$ e soluvel. Como $G$ e soluvel, conclui-se que $f$ e soluvel por radicais. $\\blacksquare$",
+          "steps": [
+            "Para $p$-grupos, faca inducao na ordem $p^m$; base $m\\le1$ e abeliano.",
+            "Use a equacao das classes para mostrar $Z(P)\\neq\\{e\\}$ (centro nao trivial).",
+            "Aplique inducao a $P/Z(P)$ e combine com $Z(P)$ abeliano: extensao de soluvel por soluvel e soluvel.",
+            "Conclua que todo $p$-grupo finito e soluvel.",
+            "Aplique o Teorema de Galois (char $0$): $\\mathrm{Gal}(f)$ soluvel $\\Rightarrow$ $f$ soluvel por radicais."
+          ]
+        },
+        {
+          "prompt": "Prove que um subgrupo transitivo $G\\le S_p$ ($p$ primo) que contem uma transposicao e igual a $S_p$.",
+          "hint": "Transitividade $\\Rightarrow$ $p\\mid|G|$ $\\Rightarrow$ existe um $p$-ciclo (Cauchy). Mostre que um $p$-ciclo e uma transposicao geram $S_p$ (gere todas as transposicoes adjacentes conjugando).",
+          "difficulty": 5,
+          "solution": "Seja $p$ primo e $G\\le S_p$ um subgrupo transitivo contendo uma transposicao $\\tau$. Mostremos $G=S_p$.\n\n**Passo 1: $G$ contem um $p$-ciclo.** Por transitividade, a orbita de qualquer ponto tem tamanho $p$, logo $p\\mid|G|$ (orbita-estabilizador). Pelo Teorema de Cauchy, $G$ tem um elemento de ordem $p$. Em $S_p$, um elemento de ordem $p$ e necessariamente um $p$-ciclo (sua decomposicao em ciclos disjuntos tem ordem = mmc dos comprimentos; para dar $p$ com $p$ pontos, so cabe um unico $p$-ciclo). Seja $\\rho$ esse $p$-ciclo.\n\n**Passo 2: reduzir a uma transposicao adjacente.** Renumerando os simbolos, podemos escrever $\\rho=(1\\,2\\,3\\,\\cdots\\,p)$. A transposicao dada e $\\tau=(a\\,b)$. Como $\\rho$ e um $p$-ciclo e $p$ e primo, alguma potencia $\\rho^k$ leva $a$ em $b$ estando a 'distancia' geradora; mais precisamente, substituindo $\\rho$ por uma potencia conveniente $\\rho^k$ (que ainda e um $p$-ciclo, pois $p$ primo garante $\\gcd(k,p)=1$), podemos supor que $\\tau=(1\\,2)$ e $\\rho=(1\\,2\\,\\cdots\\,p)$ com os simbolos ordenados de modo que $\\rho(1)=2$. (Detalhe: numere os simbolos ao longo do ciclo $\\rho^k$ escolhido de forma que $a,b$ fiquem consecutivos.)\n\n**Passo 3: gerar todas as transposicoes adjacentes.** Conjugando $\\tau=(1\\,2)$ por $\\rho$ repetidamente:\n$$\\rho\\,(1\\,2)\\,\\rho^{-1}=(\\rho(1)\\ \\rho(2))=(2\\,3),\\quad \\rho^2(1\\,2)\\rho^{-2}=(3\\,4),\\ \\dots,\\ \\rho^{i}(1\\,2)\\rho^{-i}=(i{+}1\\ \\ i{+}2).$$\nAssim $G$ contem todas as transposicoes adjacentes $(1\\,2),(2\\,3),\\dots,(p{-}1\\ p)$.\n\n**Passo 4: transposicoes adjacentes geram $S_p$.** As transposicoes $(i\\ i{+}1)$ geram todo o $S_p$ (fato classico: $(i\\ j)$ se obtem por conjugacao/composicao de adjacentes, e transposicoes geram o grupo simetrico). Logo $G\\supseteq\\langle(1\\,2),\\dots,(p{-}1\\,p)\\rangle=S_p$, e como $G\\le S_p$, conclui-se $G=S_p$. $\\blacksquare$",
+          "steps": [
+            "Use transitividade + Cauchy para garantir um elemento de ordem $p$, que em $S_p$ e um $p$-ciclo $\\rho$.",
+            "Substitua $\\rho$ por uma potencia $\\rho^k$ ($p$ primo $\\Rightarrow$ ainda $p$-ciclo) e renumere para ter $\\tau=(1\\,2)$ e $\\rho=(1\\,2\\cdots p)$.",
+            "Conjugue $\\tau$ por potencias de $\\rho$ para obter todas as transposicoes adjacentes $(i\\ i{+}1)$.",
+            "Invoque que as transposicoes adjacentes geram $S_p$.",
+            "Conclua $G\\supseteq S_p$, logo $G=S_p$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Extensao radical",
+          "back": "Torre $K_{i+1}=K_i(\\alpha_i)$ com $\\alpha_i^{n_i}\\in K_i$. $f$ soluvel por radicais sse suas raizes vivem numa dessas torres."
+        },
+        {
+          "front": "Grupo soluvel",
+          "back": "Tem serie normal com quocientes abelianos; equivale a serie derivada terminar em $\\{e\\}$."
+        },
+        {
+          "front": "Teorema de Galois (radicais)",
+          "back": "Em char $0$: $f$ soluvel por radicais sse $\\mathrm{Gal}(f)$ e soluvel."
+        },
+        {
+          "front": "$S_n$ e soluvel quando?",
+          "back": "Sse $n\\le 4$. Para $n\\ge5$, $A_n$ simples nao abeliano $\\Rightarrow$ nao soluvel."
+        },
+        {
+          "front": "$\\mathrm{Gal}(\\mathbb{Q}(\\zeta_n)/\\mathbb{Q})$",
+          "back": "$\\cong(\\mathbb{Z}/n\\mathbb{Z})^{\\times}$, abeliano, ordem $\\varphi(n)$."
+        },
+        {
+          "front": "Teoria de Kummer (ideia)",
+          "back": "Com raizes $n$-esimas da unidade em $K$: extensoes ciclicas de grau $n$ $=$ $K(\\sqrt[n]{a})$."
+        },
+        {
+          "front": "Exemplo de quintica nao soluvel",
+          "back": "$x^5-6x+3$: irredutivel (Eisenstein), $3$ raizes reais, grupo $S_5$."
+        },
+        {
+          "front": "Por que graus $\\le4$ tem formula?",
+          "back": "Porque $S_2,S_3,S_4$ sao soluveis (Cardano, Ferrari)."
+        }
+      ],
+      "estimatedHours": 12,
+      "resources": [
+        {
+          "title": "Dummit & Foote, secao 14.7 (Solvable and Radical Extensions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Stewart, Galois Theory (insolubilidade da quintica)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Algebra (solubilidade por radicais)",
+          "ref": "livro"
+        },
+        {
+          "title": "Lang, Algebra, cap. VI (ciclotomicas e Kummer)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise grupos soluveis (serie normal com quocientes abelianos, serie derivada) e o fato de que $A_n$ e simples para $n\\ge 5$ — pre-requisito indispensavel da trilha de grupos.",
+          "Estude extensoes ciclotomicas $\\mathbb{Q}(\\zeta_n)$ (grupo $(\\mathbb{Z}/n)^{\\times}$) e a teoria de Kummer: com raizes da unidade, $K(\\sqrt[n]{a})/K$ e ciclica (Dummit & Foote 14.5-14.7).",
+          "Leia a demonstracao do Teorema de Galois (soluvel por radicais $\\Leftrightarrow$ grupo soluvel), entendendo por que cada degrau radical da um quociente abeliano.",
+          "Faca a mao o exemplo $x^5-6x+3$: Eisenstein, contagem de raizes reais por sinais e derivada, conjugacao complexa como transposicao, e o argumento de que $5$-ciclo + transposicao geram $S_5$.",
+          "Assista a uma aula/video sobre a insolubilidade da quintica e resolva 1-2 exercicios de identificacao de grupo soluvel/nao soluvel.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (criterio de solubilidade e a estrategia do exemplo $S_5$)."
+        ],
+        "searchQueries": [
+          "grupo soluvel serie derivada quocientes abelianos definicao",
+          "teorema de Galois solubilidade por radicais demonstracao",
+          "extensao ciclotomica Q(zeta_n) grupo (Z/n)^* Kummer",
+          "insolubilidade da quintica x^5-6x+3 grupo de Galois S5",
+          "Abel Ruffini theorem unsolvability quintic proof",
+          "A_n simple n>=5 solvable group Galois radicals"
+        ],
+        "videos": [
+          {
+            "title": "Why is there no quintic formula? (Galois theory)",
+            "channel": "Mathologer",
+            "note": "Panorama visual e historico da insolubilidade da quintica e do papel dos grupos; otimo para motivar antes da prova formal."
+          },
+          {
+            "title": "Solvable Groups / Solvability by Radicals",
+            "channel": "Michael Penn",
+            "note": "Procure os videos sobre grupos soluveis e o teorema de Galois; ele conecta a serie derivada com a torre de radicais."
+          },
+          {
+            "title": "Cyclotomic Extensions / Galois groups of Q(zeta_n)",
+            "channel": "Dr. Peyam",
+            "note": "Para dominar $\\mathrm{Gal}(\\mathbb{Q}(\\zeta_n)/\\mathbb{Q})\\cong(\\mathbb{Z}/n)^{\\times}$ e os periodos de Gauss."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, secao 14.7 (Solvable and Radical Extensions)",
+            "where": "livro de Dummit & Foote"
+          },
+          {
+            "title": "Galois Theory, capitulo sobre a insolubilidade da quintica",
+            "where": "livro de Ian Stewart"
+          },
+          {
+            "title": "Algebra, cap. VI (Cyclotomic and Kummer extensions)",
+            "where": "livro de Serge Lang"
+          }
+        ]
+      }
+    },
+    {
+      "id": "teoria-galois-07-construtibilidade-aplicacoes",
+      "title": "Construtibilidade com Regua e Compasso e Aplicacoes Classicas",
+      "tagline": "Galois julga os tres problemas gregos e os poligonos de Gauss: construtivel sse torre de extensoes quadraticas sse fecho de Galois de grau potencia de $2$.",
+      "objectives": [
+        "Caracterizar numeros construtiveis via torres de extensoes quadraticas e via o grau (potencia de $2$) do fecho de Galois.",
+        "Resolver os tres problemas classicos: duplicacao do cubo, trisseccao do angulo e quadratura do circulo.",
+        "Enunciar o Teorema de Gauss-Wantzel sobre poligonos regulares construtiveis (primos de Fermat) e justificar o caso do $17$-agono.",
+        "Reconhecer aplicacoes adicionais: o grupo de Galois (ciclico, gerado pelo Frobenius) dos corpos finitos e o panorama da demonstracao 'algebrica' do Teorema Fundamental da Algebra."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Numero construtivel",
+          "statement": "Coordenada de um ponto obtenivel a partir de $\\{(0,0),(1,0)\\}$ por interseccoes sucessivas de retas e circulos. O conjunto dos numeros construtiveis e um subcorpo de $\\mathbb{R}$ fechado por raizes quadradas de positivos."
+        },
+        {
+          "term": "Caracterizacao por torres",
+          "statement": "$\\alpha\\in\\mathbb{R}$ e construtivel sse existe uma torre $\\mathbb{Q}=F_0\\subseteq F_1\\subseteq\\cdots\\subseteq F_m$ com $\\alpha\\in F_m$ e $[F_{i+1}:F_i]=2$ para todo $i$."
+        },
+        {
+          "term": "Criterio de Galois",
+          "statement": "$\\alpha$ e construtivel sse o grau do fecho de Galois $[\\,M:\\mathbb{Q}\\,]$ de $\\mathbb{Q}(\\alpha)/\\mathbb{Q}$ e uma potencia de $2$. E NECESSARIO (mas nao suficiente) que $[\\mathbb{Q}(\\alpha):\\mathbb{Q}]$ seja potencia de $2$."
+        },
+        {
+          "term": "Primo de Fermat",
+          "statement": "Primo da forma $F_k=2^{2^k}+1$. Os unicos conhecidos sao $3,5,17,257,65537$ (para $k=0,\\dots,4$)."
+        },
+        {
+          "term": "Frobenius dos corpos finitos",
+          "statement": "$\\mathbb{F}_{p^n}/\\mathbb{F}_p$ e de Galois com grupo ciclico de ordem $n$ gerado pelo automorfismo de Frobenius $\\phi(x)=x^p$; os subcorpos correspondem aos divisores de $n$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Caracterizacao dos numeros construtiveis",
+          "statement": "$\\alpha\\in\\mathbb{R}$ e construtivel com regua e compasso se e somente se existe uma cadeia de corpos $\\mathbb{Q}=F_0\\subset F_1\\subset\\cdots\\subset F_m\\ni\\alpha$ com cada $[F_{i+1}:F_i]=2$; equivalentemente, sse o fecho de Galois de $\\mathbb{Q}(\\alpha)$ sobre $\\mathbb{Q}$ tem grau potencia de $2$.",
+          "whyItMatters": "Reduz toda questao geometrica de construtibilidade a um calculo de graus (teoria de corpos/grupos), tornando demonstraveis impossibilidades milenares."
+        },
+        {
+          "name": "Impossibilidade dos problemas classicos",
+          "statement": "Nao se pode, com regua e compasso: (a) duplicar o cubo, pois $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$; (b) trissectar o angulo geral, pois $\\cos 20^\\circ$ tem grau $3$ sobre $\\mathbb{Q}$; (c) quadrar o circulo, pois $\\pi$ e transcendente (Lindemann), logo $\\sqrt{\\pi}$ nao e algebrico.",
+          "whyItMatters": "Encerra tres problemas que resistiram por mais de dois mil anos, ilustrando a forca do invariante 'grau' e da nocao de transcendencia."
+        },
+        {
+          "name": "Teorema de Gauss-Wantzel",
+          "statement": "O poligono regular de $n$ lados e construtivel com regua e compasso se e somente se $n=2^k p_1\\cdots p_r$, onde $k\\ge 0$ e os $p_i$ sao primos de Fermat distintos. Em particular, o $17$-agono e construtivel ($17=2^{2^2}+1$).",
+          "whyItMatters": "Aplicacao espetacular que liga construtibilidade, extensoes ciclotomicas e grupos abelianos; o caso $n=17$ foi a descoberta de Gauss aos $19$ anos, que o decidiu pela matematica."
+        },
+        {
+          "name": "Grupo de Galois dos corpos finitos",
+          "statement": "$\\mathbb{F}_{p^n}/\\mathbb{F}_p$ e de Galois com $\\mathrm{Gal}(\\mathbb{F}_{p^n}/\\mathbb{F}_p)\\cong\\mathbb{Z}/n\\mathbb{Z}$, ciclico, gerado pelo Frobenius $\\phi:x\\mapsto x^p$. Os subcorpos sao exatamente os $\\mathbb{F}_{p^d}$ com $d\\mid n$.",
+          "whyItMatters": "Exemplo em que a correspondencia de Galois e totalmente explicita: o reticulado de subcorpos e o reticulado de divisores de $n$. Onipresente em codigos e criptografia."
+        }
+      ],
+      "summary": "As construcoes com regua e compasso, traduzidas para a algebra, permitem apenas duas operacoes 'novas' a partir de coordenadas ja obtidas: intersectar retas (operacoes racionais) e intersectar com circulos (resolver equacoes do segundo grau). Por isso cada novo numero construtivel adjunta no maximo uma raiz quadrada, e a caracterizacao e limpa: $\\alpha$ e construtivel sse esta no topo de uma torre de extensoes de grau $2$ sobre $\\mathbb{Q}$. Em termos de Galois, isso equivale a dizer que o fecho de Galois de $\\mathbb{Q}(\\alpha)$ tem grau potencia de $2$ — condicao mais forte do que apenas $[\\mathbb{Q}(\\alpha):\\mathbb{Q}]$ ser potencia de $2$, embora esta ultima ja seja necessaria. Com esse criterio, os tres problemas gregos caem de uma vez: duplicar o cubo exigiria construir $\\sqrt[3]{2}$, de grau $3$; trissectar um angulo generico (digamos $60^\\circ$) exigiria $\\cos 20^\\circ$, raiz de um cubico irredutivel; e quadrar o circulo exigiria $\\sqrt{\\pi}$, impossivel porque $\\pi$ e transcendente (Lindemann). Em todos, o grau nao e potencia de $2$.\n\nA joia da coroa e o Teorema de Gauss-Wantzel: o $n$-agono regular e construtivel exatamente quando $n=2^k p_1\\cdots p_r$ com os $p_i$ primos de Fermat distintos. A razao e ciclotomica — construir o $n$-agono e construir $\\zeta_n$, e $\\mathbb{Q}(\\zeta_n)/\\mathbb{Q}$ e abeliana de grau $\\varphi(n)$; ela cabe numa torre de extensoes quadraticas exatamente quando $\\varphi(n)$ e potencia de $2$, o que ocorre sse $n$ tem aquela forma. O caso $n=17$, com $\\varphi(17)=16=2^4$, e o celebre $17$-agono de Gauss. A mesma maquinaria de Galois ilumina outros cantos da algebra: os corpos finitos $\\mathbb{F}_{p^n}/\\mathbb{F}_p$ formam extensoes de Galois ciclicas geradas pelo Frobenius $x\\mapsto x^p$, com subcorpos em bijecao com os divisores de $n$; e o proprio Teorema Fundamental da Algebra admite uma prova quase puramente algebrica, combinando o fato analitico minimo de que todo polinomio real de grau impar tem raiz real com a teoria de Sylow aplicada ao grupo de Galois.",
+      "commonPitfalls": [
+        "Tomar '$[\\mathbb{Q}(\\alpha):\\mathbb{Q}]$ e potencia de $2$' como suficiente para construtibilidade: e apenas necessario; o criterio correto envolve o grau do FECHO DE GALOIS ser potencia de $2$.",
+        "Dizer que 'a trisseccao e impossivel' sem qualificar: ela e impossivel para o angulo GERAL; alguns angulos (como $90^\\circ$) sao trissectaveis.",
+        "Tentar provar a quadratura do circulo impossivel so com teoria de Galois: ela exige o resultado ANALITICO de que $\\pi$ e transcendente (Lindemann), fora do alcance puramente algebrico.",
+        "Confundir 'primo de Fermat' com 'numero de Fermat': nem todo $F_k=2^{2^k}+1$ e primo (ex.: $F_5=2^{32}+1$ e composto)."
+      ],
+      "worked": "**A trisseccao do angulo de $60^\\circ$ e impossivel: $\\cos 20^\\circ$ nao e construtivel.**\n\nTrissectar $60^\\circ$ equivale a construir $\\cos 20^\\circ$. Use a identidade do angulo triplo\n$$\\cos 3\\theta = 4\\cos^3\\theta - 3\\cos\\theta.$$\nCom $\\theta=20^\\circ$, $\\cos 60^\\circ=\\tfrac12$, e pondo $c=\\cos 20^\\circ$:\n$$\\tfrac12 = 4c^3 - 3c\\ \\Longrightarrow\\ 8c^3 - 6c - 1 = 0.$$\nConsidere $g(x)=8x^3-6x-1\\in\\mathbb{Q}[x]$. Pelo teste das raizes racionais, as candidatas sao $\\pm1,\\pm\\tfrac12,\\pm\\tfrac14,\\pm\\tfrac18$; substituindo, nenhuma anula $g$ (por exemplo $g(1)=1$, $g(\\tfrac12)=-3$, $g(-\\tfrac12)=1$, $g(\\tfrac14)=-\\tfrac{19}{8}$). Como $g$ tem grau $3$ e nao tem raiz racional, e irredutivel sobre $\\mathbb{Q}$.\n\nLogo $[\\mathbb{Q}(c):\\mathbb{Q}]=3$, que NAO e potencia de $2$. Pela condicao necessaria de construtibilidade, $c=\\cos 20^\\circ$ nao e construtivel. Portanto e impossivel trissectar $60^\\circ$ com regua e compasso. $\\blacksquare$\n\n(Observe que $60^\\circ$ e ELE PROPRIO construtivel — e o angulo do triangulo equilatero —, o que torna a impossibilidade da trisseccao ainda mais notavel.)",
+      "exercises": [
+        {
+          "prompt": "Prove que e impossivel duplicar o cubo com regua e compasso.",
+          "hint": "Duplicar o cubo unitario exige aresta $\\sqrt[3]{2}$; mas $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$ nao e potencia de $2$.",
+          "difficulty": 2,
+          "solution": "Duplicar o cubo significa, dado um cubo de aresta $1$ (volume $1$), construir com regua e compasso a aresta de um cubo de volume $2$. Essa aresta $a$ satisfaz $a^3=2$, isto e $a=\\sqrt[3]{2}$.\n\n**Grau de $\\sqrt[3]{2}$.** O polinomio $x^3-2$ e irredutivel sobre $\\mathbb{Q}$ (Eisenstein com $p=2$), logo e o polinomio minimal de $\\sqrt[3]{2}$ e\n$$[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3.$$\n\n**Criterio de construtibilidade (condicao necessaria).** Se $\\alpha$ e construtivel, entao existe uma torre $\\mathbb{Q}=F_0\\subset F_1\\subset\\cdots\\subset F_m$ com $\\alpha\\in F_m$ e cada $[F_{i+1}:F_i]=2$. Pela multiplicatividade dos graus,\n$$[F_m:\\mathbb{Q}]=\\prod_{i}[F_{i+1}:F_i]=2^m,$$\numa potencia de $2$. Como $\\mathbb{Q}(\\alpha)\\subseteq F_m$, o grau $[\\mathbb{Q}(\\alpha):\\mathbb{Q}]$ divide $2^m$, logo tambem e uma potencia de $2$. Em resumo: se $\\alpha$ e construtivel, entao $[\\mathbb{Q}(\\alpha):\\mathbb{Q}]$ e potencia de $2$.\n\n**Conclusao.** Para $\\alpha=\\sqrt[3]{2}$ temos $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$, que NAO e potencia de $2$. Logo $\\sqrt[3]{2}$ nao e construtivel, e portanto e impossivel duplicar o cubo com regua e compasso. $\\blacksquare$",
+          "steps": [
+            "Traduza a duplicacao do cubo unitario na construcao de $a$ com $a^3=2$, isto e $a=\\sqrt[3]{2}$.",
+            "Mostre que $x^3-2$ e irredutivel (Eisenstein) e conclua $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$.",
+            "Enuncie a condicao necessaria: $\\alpha$ construtivel $\\Rightarrow$ $[\\mathbb{Q}(\\alpha):\\mathbb{Q}]$ potencia de $2$ (torre de graus $2$).",
+            "Observe que $3$ nao e potencia de $2$.",
+            "Conclua que $\\sqrt[3]{2}$ nao e construtivel: a duplicacao do cubo e impossivel."
+          ]
+        },
+        {
+          "prompt": "Determine, justificando por Gauss-Wantzel, quais dos poligonos regulares de $7$, $9$, $15$ e $17$ lados sao construtiveis.",
+          "hint": "$7$ nao e primo de Fermat (nao construtivel); $9=3^2$ tem fator de Fermat repetido (nao construtivel); $15=3\\cdot5$ produto de Fermat distintos (construtivel); $17$ e primo de Fermat (construtivel).",
+          "difficulty": 3,
+          "solution": "Pelo Teorema de Gauss-Wantzel, o poligono regular de $n$ lados e construtivel com regua e compasso se e somente se\n$$n=2^k p_1 p_2\\cdots p_r,$$\ncom $k\\ge 0$ e $p_1,\\dots,p_r$ primos de Fermat DISTINTOS (primos da forma $2^{2^m}+1$; os conhecidos sao $3,5,17,257,65537$). Equivalentemente, $\\varphi(n)$ deve ser potencia de $2$.\n\n**$n=7$.** $7$ e primo, mas nao e primo de Fermat ($7\\neq 2^{2^m}+1$; entre os de Fermat estao $3,5,17,\\dots$). Alternativamente, $\\varphi(7)=6=2\\cdot 3$, nao potencia de $2$. Logo o heptagono regular NAO e construtivel.\n\n**$n=9$.** $9=3^2$; o primo de Fermat $3$ aparece REPETIDO (expoente $2$), o que viola a exigencia de primos de Fermat distintos elevados a expoente $1$. Confirmando: $\\varphi(9)=6$, nao potencia de $2$. Logo o eneagono (9 lados) NAO e construtivel.\n\n**$n=15$.** $15=3\\cdot 5$, produto de dois primos de Fermat DISTINTOS, cada um com expoente $1$, e sem fator $2$. Isso satisfaz a forma de Gauss-Wantzel. Confirmando: $\\varphi(15)=\\varphi(3)\\varphi(5)=2\\cdot 4=8=2^3$, potencia de $2$. Logo o pentadecagono (15 lados) E construtivel.\n\n**$n=17$.** $17=2^{2^2}+1$ e um primo de Fermat; $\\varphi(17)=16=2^4$, potencia de $2$. Logo o heptadecagono (17 lados) E construtivel — este e o famoso resultado de Gauss.\n\n**Resumo:** construtiveis: $15$ e $17$; nao construtiveis: $7$ e $9$. $\\blacksquare$",
+          "steps": [
+            "Enuncie Gauss-Wantzel: $n$-agono construtivel sse $n=2^k\\prod p_i$ com $p_i$ primos de Fermat distintos (equiv. $\\varphi(n)$ potencia de $2$).",
+            "$n=7$: primo mas nao de Fermat; $\\varphi(7)=6$ nao e potencia de $2$ $\\Rightarrow$ nao construtivel.",
+            "$n=9=3^2$: primo de Fermat repetido; $\\varphi(9)=6$ $\\Rightarrow$ nao construtivel.",
+            "$n=15=3\\cdot5$: Fermat distintos; $\\varphi(15)=8=2^3$ $\\Rightarrow$ construtivel.",
+            "$n=17$: primo de Fermat; $\\varphi(17)=16=2^4$ $\\Rightarrow$ construtivel."
+          ]
+        },
+        {
+          "prompt": "Mostre que $\\mathrm{Gal}(\\mathbb{F}_8/\\mathbb{F}_2)\\cong\\mathbb{Z}/3$ e conclua que os unicos subcorpos de $\\mathbb{F}_8$ sao $\\mathbb{F}_2$ e $\\mathbb{F}_8$.",
+          "hint": "$[\\mathbb{F}_8:\\mathbb{F}_2]=3$ e o grupo e gerado por $\\phi:x\\mapsto x^2$; como $3$ e primo, ha so os subgrupos triviais, logo so dois subcorpos (divisores de $3$).",
+          "difficulty": 3,
+          "solution": "Seja $\\mathbb{F}_8=\\mathbb{F}_{2^3}$, o corpo com $8$ elementos, extensao de $\\mathbb{F}_2$.\n\n**Grau e Galois.** $[\\mathbb{F}_8:\\mathbb{F}_2]=3$ (pois $|\\mathbb{F}_8|=2^3$ e $|\\mathbb{F}_2|=2$, e a dimensao como $\\mathbb{F}_2$-espaco e $3$). Toda extensao de corpos finitos e de Galois (e normal — corpo de decomposicao de $x^{8}-x$ — e separavel, pois corpos finitos sao perfeitos). Logo $|\\mathrm{Gal}(\\mathbb{F}_8/\\mathbb{F}_2)|=[\\mathbb{F}_8:\\mathbb{F}_2]=3$.\n\n**O grupo e ciclico gerado pelo Frobenius.** O automorfismo de Frobenius $\\phi:x\\mapsto x^2$ e um $\\mathbb{F}_2$-automorfismo de $\\mathbb{F}_8$ (aditividade: $(x+y)^2=x^2+y^2$ em char $2$; fixa $\\mathbb{F}_2$ pois $0^2=0,1^2=1$). Suas potencias sao $\\phi:x\\mapsto x^2$, $\\phi^2:x\\mapsto x^4$, $\\phi^3:x\\mapsto x^8=x$ (pois todo elemento de $\\mathbb{F}_8$ satisfaz $x^8=x$). Assim $\\phi^3=\\mathrm{id}$ e $\\phi,\\phi^2\\neq\\mathrm{id}$ (por exemplo, um gerador $g$ do grupo multiplicativo ciclico $\\mathbb{F}_8^{\\times}$ de ordem $7$ nao satisfaz $g^2=g$). Logo $\\phi$ tem ordem $3$ e\n$$\\mathrm{Gal}(\\mathbb{F}_8/\\mathbb{F}_2)=\\langle\\phi\\rangle\\cong\\mathbb{Z}/3.$$\n\n**Subcorpos.** Pela correspondencia de Galois, os subcorpos $\\mathbb{F}_2\\subseteq F\\subseteq\\mathbb{F}_8$ estao em bijecao com os subgrupos de $\\mathbb{Z}/3$. Como $3$ e primo, $\\mathbb{Z}/3$ tem apenas os subgrupos triviais $\\{e\\}$ e todo o grupo. A eles correspondem\n$$\\{e\\}\\leftrightarrow\\mathbb{F}_8,\\qquad \\mathbb{Z}/3\\leftrightarrow\\mathbb{F}_2.$$\nPortanto os UNICOS subcorpos de $\\mathbb{F}_8$ sao $\\mathbb{F}_2$ e $\\mathbb{F}_8$ (equivalentemente, os subcorpos sao os $\\mathbb{F}_{2^d}$ com $d\\mid 3$, isto e $d\\in\\{1,3\\}$). $\\blacksquare$",
+          "steps": [
+            "Estabeleca $[\\mathbb{F}_8:\\mathbb{F}_2]=3$ e que a extensao e de Galois (corpos finitos sao perfeitos e normais).",
+            "Introduza o Frobenius $\\phi:x\\mapsto x^2$ como $\\mathbb{F}_2$-automorfismo.",
+            "Calcule $\\phi^3:x\\mapsto x^8=x=\\mathrm{id}$ e verifique ordem $3$, logo $\\mathrm{Gal}\\cong\\mathbb{Z}/3$.",
+            "Note que $\\mathbb{Z}/3$ (ordem prima) so tem subgrupos triviais.",
+            "Traduza pela correspondencia: unicos subcorpos $\\mathbb{F}_2$ e $\\mathbb{F}_8$ (divisores de $3$)."
+          ]
+        },
+        {
+          "prompt": "Prove que $a+bi\\in\\mathbb{C}$ ($a,b\\in\\mathbb{R}$) e construtivel se e somente se $a$ e $b$ sao numeros reais construtiveis.",
+          "hint": "Construir um ponto do plano equivale a construir suas duas coordenadas; use projecoes ortogonais (perpendiculares) para obter $a,b$ a partir de $a+bi$ e vice-versa.",
+          "difficulty": 3,
+          "solution": "Identificamos $\\mathbb{C}$ com o plano $\\mathbb{R}^2$: um numero complexo $z=a+bi$ corresponde ao ponto $(a,b)$. 'Construtivel' significa obtenivel a partir de $\\{(0,0),(1,0)\\}$ por interseccoes de retas e circulos; um numero complexo e construtivel sse o ponto correspondente e construtivel.\n\n**($\\Leftarrow$) Se $a,b$ sao reais construtiveis, entao $a+bi$ e construtivel.** Suponha $a$ e $b$ construtiveis (como pontos $(a,0)$ e $(b,0)$ no eixo real). A partir de $(a,0)$, levante a perpendicular ao eixo $x$ (construtivel com regua e compasso). Sobre essa perpendicular, marque a distancia $|b|$ transportando o segmento $(0,0)$-$(b,0)$ com o compasso, obtendo o ponto $(a,b)$. Logo $(a,b)$, isto e $a+bi$, e construtivel. (Tambem $i$ e construtivel: e $(0,1)$, obtido pela perpendicular unitaria; e o produto $b\\cdot i$ e a soma $a+bi$ preservam construtibilidade, pois os numeros construtiveis formam um corpo.)\n\n**($\\Rightarrow$) Se $a+bi$ e construtivel, entao $a$ e $b$ sao construtiveis.** Suponha o ponto $P=(a,b)$ construtivel. A projecao ortogonal de $P$ sobre o eixo $x$ e construtivel: trace a perpendicular ao eixo $x$ passando por $P$ (regua e compasso), cujo pe e $(a,0)$; logo $a$ e construtivel. Analogamente, a projecao sobre o eixo $y$ da $(0,b)$; transportando ao eixo real, $b$ e construtivel. (Formalmente, os numeros construtiveis reais formam um subcorpo de $\\mathbb{R}$, e $a=\\mathrm{Re}(z)=\\tfrac{z+\\bar z}{2}$, $b=\\mathrm{Im}(z)=\\tfrac{z-\\bar z}{2i}$; como a conjugacao $z\\mapsto\\bar z$ e construtivel — reflexao no eixo $x$ — e $i$ e construtivel, $a$ e $b$ resultam de operacoes de corpo entre numeros construtiveis.)\n\n**Conclusao.** $a+bi$ e construtivel $\\iff$ $a$ e $b$ sao reais construtiveis. $\\blacksquare$",
+          "steps": [
+            "Identifique $z=a+bi$ com o ponto $(a,b)$ do plano e recorde a definicao geometrica de construtivel.",
+            "($\\Leftarrow$) De $a,b$ construtiveis, levante perpendicular em $(a,0)$ e marque altura $|b|$ para obter $(a,b)$ (ou use que construtiveis formam corpo e $i$ e construtivel).",
+            "($\\Rightarrow$) De $P=(a,b)$ construtivel, projete ortogonalmente nos eixos para obter $(a,0)$ e $(0,b)$.",
+            "Formalize com $a=\\tfrac{z+\\bar z}{2}$, $b=\\tfrac{z-\\bar z}{2i}$, usando que conjugacao e $i$ sao construtiveis e que os construtiveis formam corpo.",
+            "Conclua a equivalencia $a+bi$ construtivel $\\iff$ $a,b$ reais construtiveis."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Numero construtivel (criterio por torre)",
+          "back": "$\\alpha$ construtivel sse ha torre $\\mathbb{Q}=F_0\\subset\\cdots\\subset F_m\\ni\\alpha$ com cada $[F_{i+1}:F_i]=2$."
+        },
+        {
+          "front": "Criterio de Galois para construtibilidade",
+          "back": "$\\alpha$ construtivel sse o fecho de Galois de $\\mathbb{Q}(\\alpha)$ tem grau potencia de $2$."
+        },
+        {
+          "front": "Grau potencia de $2$ e suficiente?",
+          "back": "Nao, so necessario para $[\\mathbb{Q}(\\alpha):\\mathbb{Q}]$. O criterio pleno usa o fecho de Galois."
+        },
+        {
+          "front": "Por que nao se duplica o cubo?",
+          "back": "Exigiria $\\sqrt[3]{2}$, e $[\\mathbb{Q}(\\sqrt[3]{2}):\\mathbb{Q}]=3$ nao e potencia de $2$."
+        },
+        {
+          "front": "Por que nao se trissecta $60^\\circ$?",
+          "back": "$\\cos20^\\circ$ e raiz de $8x^3-6x-1$ irredutivel, grau $3$, nao construtivel."
+        },
+        {
+          "front": "Quadratura do circulo",
+          "back": "Impossivel: $\\pi$ e transcendente (Lindemann), logo $\\sqrt{\\pi}$ nao e algebrico."
+        },
+        {
+          "front": "Gauss-Wantzel",
+          "back": "$n$-agono construtivel sse $n=2^k p_1\\cdots p_r$, $p_i$ primos de Fermat distintos."
+        },
+        {
+          "front": "$\\mathrm{Gal}(\\mathbb{F}_{p^n}/\\mathbb{F}_p)$",
+          "back": "Ciclico de ordem $n$, gerado pelo Frobenius $x\\mapsto x^p$; subcorpos $\\leftrightarrow$ divisores de $n$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Dummit & Foote, secao 13.3 (Constructions) e 14.5 (Cyclotomic Extensions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Stewart, Galois Theory (regua e compasso, poligonos regulares)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Algebra (construtibilidade)",
+          "ref": "livro"
+        },
+        {
+          "title": "Artin, Algebra, cap. 15 (constructions with ruler and compass)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Traduza as construcoes com regua e compasso em algebra: cada ponto novo resolve equacao de grau $\\le 2$, logo adjunta no maximo uma raiz quadrada. Fixe a caracterizacao por torres de grau $2$ (Dummit & Foote 13.3).",
+          "Entenda a diferenca entre a condicao necessaria ($[\\mathbb{Q}(\\alpha):\\mathbb{Q}]$ potencia de $2$) e o criterio pleno (fecho de Galois com grau potencia de $2$).",
+          "Estude os tres problemas gregos com as contas: $\\sqrt[3]{2}$ (grau 3), $\\cos 20^\\circ$ (raiz de $8x^3-6x-1$) e $\\pi$ transcendente (Lindemann, resultado analitico externo).",
+          "Leia o Teorema de Gauss-Wantzel e sua ligacao com $\\varphi(n)$ potencia de $2$ e primos de Fermat; faca o caso do $17$-agono ($\\varphi(17)=16$).",
+          "Revise o grupo de Galois dos corpos finitos $\\mathbb{F}_{p^n}/\\mathbb{F}_p$ (ciclico, Frobenius) e a bijecao subcorpos $\\leftrightarrow$ divisores de $n$.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (criterio de construtibilidade, os tres problemas e Gauss-Wantzel)."
+        ],
+        "searchQueries": [
+          "numeros construtiveis regua e compasso torre extensoes quadraticas",
+          "trisseccao do angulo cos 20 graus 8x^3-6x-1 impossivel",
+          "teorema de Gauss Wantzel poligono construtivel primo de Fermat",
+          "duplicacao do cubo quadratura do circulo impossibilidade Galois",
+          "constructible numbers Galois closure power of 2 criterion",
+          "finite fields Frobenius Galois group F_{p^n} subfields divisors"
+        ],
+        "videos": [
+          {
+            "title": "Constructible numbers / Impossible constructions",
+            "channel": "Michael Penn",
+            "note": "Procure os videos sobre duplicacao do cubo e trisseccao do angulo; ele faz as contas de grau $3$ passo a passo."
+          },
+          {
+            "title": "Heptadecagon / 17-gon construction (Gauss)",
+            "channel": "Mathologer",
+            "note": "Para o Teorema de Gauss-Wantzel e a construtibilidade do $17$-agono, com a ligacao ciclotomica."
+          },
+          {
+            "title": "Finite Fields / Frobenius",
+            "channel": "Dr. Peyam",
+            "note": "Para fixar $\\mathrm{Gal}(\\mathbb{F}_{p^n}/\\mathbb{F}_p)\\cong\\mathbb{Z}/n$ gerado pelo Frobenius e a rede de subcorpos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, secoes 13.3 (Constructions) e 14.5 (Cyclotomic Extensions)",
+            "where": "livro de Dummit & Foote"
+          },
+          {
+            "title": "Galois Theory, capitulos sobre regua-e-compasso e poligonos regulares",
+            "where": "livro de Ian Stewart"
+          },
+          {
+            "title": "Algebra, cap. 15 (Constructions with ruler and compass)",
+            "where": "livro de Michael Artin"
+          }
+        ]
+      }
+    }
+  ]
+}

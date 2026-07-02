@@ -1,0 +1,1969 @@
+{
+  "id": "analise-real-1",
+  "title": "Análise Real I",
+  "phase": 1,
+  "phaseLabel": "Núcleo",
+  "tagline": "Refaça o Cálculo do zero com rigor de prova: do supremo de $\\mathbb{R}$ à compacidade, o alicerce de toda a matemática pura.",
+  "summary": "Esta trilha reconstrói os fundamentos do Cálculo sobre bases axiomáticas. Partimos dos corpos ordenados e do axioma do supremo, estabelecemos a completude de $\\mathbb{R}$, e desenvolvemos a teoria de sequências, séries, topologia da reta, limites, continuidade, compacidade e conexidade. O objetivo é trocar a intuição do Cálculo por demonstrações $\\varepsilon$–$\\delta$ corretas e definitivas.",
+  "bigPicture": "Análise Real é o exame de admissão de fato para a matemática pura: é onde se aprende a transformar intuição em demonstração. Os conceitos aqui — supremo, completude, compacidade, continuidade uniforme — reaparecem em Análise no $\\mathbb{R}^n$, Espaços Métricos, Análise Funcional, Topologia, EDO e Medida. Em concursos de Instituto Federal para o cargo de professor de Matemática, questões de supremo/ínfimo, sequências, Teorema do Valor Intermediário e Teorema de Weierstrass são recorrentes. Em provas de mestrado (ENA/IMPA e processos seletivos), Análise Real é tipicamente a disciplina de maior peso, e dominar este núcleo é a diferença entre passar e não passar.",
+  "prereqs": [
+    "calculo2",
+    "prova"
+  ],
+  "difficulty": 4,
+  "estimatedHours": 56,
+  "primaryBooks": [
+    {
+      "title": "Análise Real, volume 1: Funções de uma Variável",
+      "author": "Elon Lages Lima",
+      "note": "Referência brasileira canônica (Coleção Matemática Universitária, IMPA); enxuto, rigoroso, exatamente o programa desta trilha. Use como espinha dorsal.",
+      "chapters": "caps. 1–7"
+    },
+    {
+      "title": "Principles of Mathematical Analysis",
+      "author": "Walter Rudin",
+      "note": "O clássico internacional (Baby Rudin); construção de $\\mathbb{R}$, topologia métrica e continuidade com máxima economia. Exige maturidade.",
+      "chapters": "caps. 1–4"
+    },
+    {
+      "title": "Understanding Analysis",
+      "author": "Stephen Abbott",
+      "note": "Melhor livro para a primeira passagem: motiva cada definição e explica por que as hipóteses são necessárias. Ótimo para a intuição antes de Rudin.",
+      "chapters": "caps. 1–4"
+    },
+    {
+      "title": "Introduction to Real Analysis",
+      "author": "Robert G. Bartle e Donald R. Sherbert",
+      "note": "Equilíbrio entre rigor e didática, com muitos exercícios graduados; excelente para treinar para concursos.",
+      "chapters": "caps. 1–5"
+    },
+    {
+      "title": "Curso de Análise, volume 1",
+      "author": "Elon Lages Lima",
+      "note": "Versão mais extensa e detalhada (Projeto Euclides, IMPA); use como referência de consulta e para demonstrações completas.",
+      "chapters": "caps. 2–8"
+    },
+    {
+      "title": "Análise Matemática para Licenciatura",
+      "author": "Geraldo Ávila",
+      "note": "Porta de entrada brasileira mais suave, com motivação histórica; bom para destravar pontos difíceis.",
+      "chapters": "caps. 1–6"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.100A / 18.100B Real Analysis",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Francis Su — Real Analysis (Harvey Mudd College), aulas em vídeo no YouTube",
+      "kind": "video",
+      "ref": "YouTube"
+    },
+    {
+      "title": "Terence Tao — Analysis I (texto e notas)",
+      "kind": "livro",
+      "ref": "Springer / Hindustan Book Agency"
+    },
+    {
+      "title": "Canal IMPA — minicursos e palestras de Análise",
+      "kind": "video",
+      "ref": "YouTube / impa.br"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 4,
+    "mestrado": 5,
+    "note": "Em concursos de IF (professor de Matemática), costumam cair: supremo/ínfimo e propriedade arquimediana, convergência de sequências e séries (testes da razão/raiz/comparação), Teorema do Valor Intermediário, Teorema de Bolzano-Weierstrass e Teorema de Weierstrass (máx/mín em compacto). Em mestrado (ENA, IMPA, USP, UFs) é a disciplina de maior peso: demonstrações com $\\varepsilon$–$\\delta$, sequências de Cauchy e completude, continuidade uniforme (Heine-Cantor), compacidade via Heine-Borel e cobertura aberta, e conexidade são quase certos. Saber demonstrar, não apenas enunciar, é o que decide a aprovação."
+  },
+  "subtopics": [
+    {
+      "id": "analise-real-1-01-corpos-ordenados-supremo",
+      "title": "Corpos ordenados, supremo e ínfimo",
+      "tagline": "A álgebra da ordem e a definição que separa $\\mathbb{Q}$ de $\\mathbb{R}$.",
+      "objectives": [
+        "Ao final você consegue enunciar os axiomas de corpo e de corpo ordenado e deduzir propriedades elementares (regra dos sinais, $a^2\\ge 0$, monotonicidade da soma e do produto).",
+        "Ao final você consegue definir com precisão cota superior, conjunto limitado superiormente, supremo e ínfimo.",
+        "Ao final você consegue provar a unicidade do supremo e usar a caracterização $\\varepsilon$ do supremo em demonstrações.",
+        "Ao final você consegue distinguir máximo de supremo (e mínimo de ínfimo) com exemplos.",
+        "Ao final você consegue argumentar por que $\\mathbb{Q}$ é um corpo ordenado que não possui a propriedade do supremo."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Corpo ordenado",
+          "statement": "Um corpo $K$ munido de uma relação de ordem total $\\le$ compatível: se $x\\le y$ então $x+z\\le y+z$, e se $0\\le x$ e $0\\le y$ então $0\\le xy$. Exemplos: $\\mathbb{Q}$ e $\\mathbb{R}$."
+        },
+        {
+          "term": "Cota superior",
+          "statement": "$c$ é cota superior de $A\\subseteq K$ se $a\\le c$ para todo $a\\in A$. O conjunto $A$ é limitado superiormente quando admite alguma cota superior."
+        },
+        {
+          "term": "Supremo",
+          "statement": "$s=\\sup A$ é a menor cota superior de $A$: (i) $s$ é cota superior; (ii) se $c$ é cota superior então $s\\le c$."
+        },
+        {
+          "term": "Ínfimo",
+          "statement": "$\\inf A$ é a maior cota inferior de $A$. Vale a dualidade $\\inf A=-\\sup(-A)$, onde $-A=\\{-a:a\\in A\\}$."
+        },
+        {
+          "term": "Máximo versus supremo",
+          "statement": "$\\max A$ existe quando $\\sup A\\in A$. O supremo pode existir sem o máximo existir, por exemplo em $A=[0,1)$ onde $\\sup A=1\\notin A$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Unicidade do supremo",
+          "statement": "Se $A$ admite supremo, então este é único. De fato, se $s_1$ e $s_2$ são ambos menores cotas superiores, então $s_1\\le s_2$ e $s_2\\le s_1$, logo $s_1=s_2$.",
+          "whyItMatters": "Justifica a notação $\\sup A$ como objeto bem definido, sobre o qual se pode raciocinar sem ambiguidade."
+        },
+        {
+          "name": "Caracterização $\\varepsilon$ do supremo",
+          "statement": "Seja $A$ limitado superiormente e $s$ uma cota superior. Então $s=\\sup A$ se, e somente se, para todo $\\varepsilon>0$ existe $a\\in A$ com $a>s-\\varepsilon$.",
+          "whyItMatters": "É a forma operacional do supremo usada em quase toda demonstração de Análise: garante a existência de elementos de $A$ arbitrariamente próximos de $\\sup A$."
+        },
+        {
+          "name": "$\\mathbb{Q}$ não possui a propriedade do supremo",
+          "statement": "O conjunto $A=\\{x\\in\\mathbb{Q}:x>0,\\ x^2<2\\}$ é limitado superiormente em $\\mathbb{Q}$, mas não possui supremo em $\\mathbb{Q}$.",
+          "whyItMatters": "Mostra que a completude não é consequência dos axiomas de corpo ordenado: ela é um axioma adicional que distingue $\\mathbb{R}$ de $\\mathbb{Q}$ e motiva o próximo subtópico."
+        }
+      ],
+      "summary": "Tudo em Análise Real repousa sobre a estrutura algébrica de corpo ordenado e sobre uma noção fina de fronteira de um conjunto: o supremo. A partir dos axiomas de corpo e de ordem deduzimos as regras de manipulação de desigualdades que usaremos sem cerimônia daqui em diante (por exemplo, $a^2\\ge 0$ e a transitividade da ordem). O conceito central é o de menor cota superior: $\\sup A$ não é o maior elemento de $A$ — pode nem pertencer a $A$ — mas sim a menor barreira que limita $A$ por cima. A distinção entre máximo e supremo é a primeira grande virada de chave do curso.\n\nA caracterização $\\varepsilon$ converte a definição abstrata de supremo em uma ferramenta de trabalho: ela diz que existem elementos de $A$ tão próximos de $\\sup A$ quanto se queira. Por fim, o exemplo de $\\{x\\in\\mathbb{Q}:x^2<2\\}$ revela o ponto crucial: $\\mathbb{Q}$ tem todas as propriedades algébricas de corpo ordenado mas tem buracos. Preencher esses buracos — postular que todo conjunto limitado superiormente tem supremo — é o que define $\\mathbb{R}$.",
+      "commonPitfalls": [
+        "Confundir supremo com máximo: o supremo de $[0,1)$ é $1$, mas $1$ não é máximo porque não pertence ao conjunto.",
+        "Achar que provar $s=\\sup A$ exige apenas mostrar que $s$ é cota superior; é preciso também mostrar que nenhuma cota menor existe (a parte $\\varepsilon$).",
+        "Escrever $\\sup A\\in A$ como se fosse automático; isso só vale quando o máximo existe.",
+        "Esquecer que $\\sup\\varnothing$ e $\\sup$ de conjunto ilimitado superiormente não existem em $\\mathbb{R}$ (sem a convenção dos $\\pm\\infty$)."
+      ],
+      "worked": "**Afirmação.** Seja $A=\\left\\{1-\\tfrac{1}{n}:n\\in\\mathbb{N}\\right\\}$. Então $\\sup A=1$ e $A$ não tem máximo.\n\n**Prova.** Cada elemento satisfaz $1-\\tfrac1n<1$, logo $1$ é cota superior. Para ver que é a menor, usamos a caracterização $\\varepsilon$: dado $\\varepsilon>0$, pela propriedade arquimediana existe $n$ com $\\tfrac1n<\\varepsilon$, e então $1-\\tfrac1n>1-\\varepsilon$, ou seja, existe elemento de $A$ acima de $1-\\varepsilon$. Logo nenhuma cota menor que $1$ funciona, e $\\sup A=1$. Como $1-\\tfrac1n<1$ para todo $n$, temos $1\\notin A$, portanto $A$ não possui máximo. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove, a partir dos axiomas de corpo ordenado, que para todo $a$ vale $a^2\\ge 0$, e conclua que $1>0$.",
+          "hint": "Considere separadamente os casos $a\\ge 0$ e $a<0$; no segundo, $-a>0$ e $a^2=(-a)^2$.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** Em todo corpo ordenado, $a^2\\ge 0$ para todo $a$, e $1>0$.\n\n**Prova.** Analisamos dois casos segundo o sinal de $a$.\n\n*Caso $a\\ge 0$.* Pela compatibilidade da ordem com o produto (se $0\\le x$ e $0\\le y$ entao $0\\le xy$), tomando $x=y=a$ obtemos $0\\le a\\cdot a=a^2$.\n\n*Caso $a<0$.* Somando $-a$ a ambos os lados de $a<0$ vem $0<-a$, ou seja, $-a>0$. Aplicando o caso anterior a $-a$: $0\\le(-a)(-a)$. Pela regra dos sinais, $(-a)(-a)=a^2$ (pois $(-a)(-a)=-(a\\cdot(-a))=-(-(a\\cdot a))=a^2$). Logo $0\\le a^2$.\n\nEm ambos os casos $a^2\\ge 0$.\n\n**Conclusao $1>0$.** Num corpo $1\\ne 0$, e $1=1^2$. Pelo que provamos, $1=1^2\\ge 0$. Como $1\\ne 0$, resta $1>0$. $\\blacksquare$",
+          "steps": [
+            "Perceba que a chave e a compatibilidade da ordem com o produto: 0<=x, 0<=y garante 0<=xy.",
+            "Trate o caso a>=0 aplicando essa compatibilidade a x=y=a.",
+            "No caso a<0, mostre que -a>0 somando -a aos dois lados da desigualdade.",
+            "Use a regra dos sinais (-a)(-a)=a^2 para reduzir ao caso positivo, concluindo a^2>=0.",
+            "Especialize em a=1: como 1=1^2>=0 e 1!=0, segue 1>0."
+          ]
+        },
+        {
+          "prompt": "Mostre que, se $A$ é limitado inferiormente, então $\\inf A$ existe (em $\\mathbb{R}$) e $\\inf A=-\\sup(-A)$.",
+          "hint": "Defina $-A=\\{-a:a\\in A\\}$, observe que cota inferior de $A$ corresponde a cota superior de $-A$ e aplique o axioma do supremo a $-A$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Se $A\\ne\\varnothing$ e limitado inferiormente, entao $\\inf A$ existe em $\\mathbb{R}$ e $\\inf A=-\\sup(-A)$, onde $-A=\\{-a:a\\in A\\}$.\n\n**Prova.** Seja $m$ uma cota inferior de $A$: $m\\le a$ para todo $a\\in A$. Multiplicando por $-1$ (que inverte a desigualdade), $-a\\le -m$ para todo $a\\in A$, isto e, $-m$ e cota superior de $-A$. Logo $-A$ e nao vazio e limitado superiormente, e pelo axioma do supremo existe\n$$s=\\sup(-A).$$\n\nAfirmamos que $\\inf A=-s$.\n\n*(-s e cota inferior de A.)* Como $s$ e cota superior de $-A$, vale $-a\\le s$ para todo $a\\in A$, donde $a\\ge -s$. Assim $-s$ e cota inferior de $A$.\n\n*(-s e a maior cota inferior.)* Seja $c$ qualquer cota inferior de $A$, isto e, $c\\le a$ para todo $a\\in A$. Entao $-a\\le -c$ para todo $a$, ou seja, $-c$ e cota superior de $-A$. Pela definicao de supremo (menor cota superior), $s\\le -c$, logo $c\\le -s$.\n\nPortanto $-s$ e cota inferior de $A$ maior ou igual a qualquer outra: $\\inf A=-s=-\\sup(-A)$. $\\blacksquare$",
+          "steps": [
+            "Defina -A e traduza: cota inferior de A vira cota superior de -A ao multiplicar por -1.",
+            "Aplique o axioma do supremo a -A (nao vazio, limitado superiormente) para obter s=sup(-A).",
+            "Mostre que -s e cota inferior de A usando -a<=s.",
+            "Mostre que -s e a MAIOR cota inferior: toda cota inferior c satisfaz c<=-s.",
+            "Conclua inf A=-s=-sup(-A)."
+          ]
+        },
+        {
+          "prompt": "Demonstre a caracterização $\\varepsilon$ do supremo nas duas direções.",
+          "hint": "Na ida, suponha que falhe a condição $\\varepsilon$ para algum $\\varepsilon_0$ e mostre que $s-\\varepsilon_0$ seria cota superior menor. Na volta, mostre que qualquer cota superior $c<s$ contradiz a condição com $\\varepsilon=s-c$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Seja $A$ limitado superiormente e $s$ uma cota superior. Entao $s=\\sup A$ se, e somente se, para todo $\\varepsilon>0$ existe $a\\in A$ com $a>s-\\varepsilon$.\n\n**($\\Rightarrow$)** Suponha $s=\\sup A$ e, por absurdo, que a condicao falhe para algum $\\varepsilon_0>0$: nenhum $a\\in A$ satisfaz $a>s-\\varepsilon_0$. Entao $a\\le s-\\varepsilon_0$ para todo $a\\in A$, ou seja, $s-\\varepsilon_0$ e cota superior de $A$. Mas $s-\\varepsilon_0<s$, contradizendo que $s$ e a **menor** cota superior. Logo a condicao vale para todo $\\varepsilon>0$.\n\n**($\\Leftarrow$)** Suponha que $s$ e cota superior e que, para todo $\\varepsilon>0$, existe $a\\in A$ com $a>s-\\varepsilon$. Seja $c$ uma cota superior qualquer de $A$; queremos $s\\le c$. Se fosse $c<s$, tome $\\varepsilon=s-c>0$; por hipotese existe $a\\in A$ com\n$$a>s-\\varepsilon=s-(s-c)=c,$$\ncontradizendo que $c$ e cota superior. Logo $c\\ge s$ para toda cota superior $c$, isto e, $s$ e a menor cota superior: $s=\\sup A$. $\\blacksquare$",
+          "steps": [
+            "Fixe que s ja e cota superior; o que esta em jogo e a minimalidade.",
+            "Na ida, negue a condicao epsilon para um epsilon_0 e conclua que s-epsilon_0 seria cota superior menor.",
+            "Isso contradiz s=sup A, provando a ida.",
+            "Na volta, tome uma cota superior c<s e escolha epsilon=s-c.",
+            "A condicao fornece a>c em A, contradizendo c ser cota superior; logo s<=c e s=sup A."
+          ]
+        },
+        {
+          "prompt": "Prove que $A=\\{x\\in\\mathbb{Q}:x>0,\\ x^2<2\\}$ não tem supremo em $\\mathbb{Q}$.",
+          "hint": "Suponha $s=\\sup A\\in\\mathbb{Q}$; então $s^2\\ne 2$ (pois $\\sqrt2\\notin\\mathbb{Q}$). Em cada caso ($s^2<2$ ou $s^2>2$) construa um racional ligeiramente maior ou menor que contradiz a minimalidade, perturbando $s$ por $s+\\tfrac1n$ ou $s-\\tfrac1n$.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** $A=\\{x\\in\\mathbb{Q}:x>0,\\ x^2<2\\}$ nao possui supremo em $\\mathbb{Q}$.\n\n**Prova.** $A$ e nao vazio ($1\\in A$) e limitado superiormente em $\\mathbb{Q}$ (por $2$, pois se $x>0$ e $x^2<2<4$ entao $x<2$). Suponha, por absurdo, que exista $s=\\sup A\\in\\mathbb{Q}$. Como $1\\in A$, temos $s\\ge 1>0$. Sabemos que $\\sqrt2\\notin\\mathbb{Q}$, logo $s^2\\ne 2$. Ha dois casos.\n\n*Caso $s^2<2$.* Vamos achar $n\\in\\mathbb{N}$ com $s+\\tfrac1n\\in A$. Como\n$$\\Big(s+\\tfrac1n\\Big)^2=s^2+\\tfrac{2s}{n}+\\tfrac1{n^2}\\le s^2+\\tfrac{2s+1}{n},$$\nbasta $\\tfrac{2s+1}{n}<2-s^2$, isto e, $n>\\dfrac{2s+1}{2-s^2}$. Com tal $n$, $s+\\tfrac1n$ e racional, positivo e tem quadrado $<2$, logo $s+\\tfrac1n\\in A$ e $s+\\tfrac1n>s$, contradizendo que $s$ e cota superior.\n\n*Caso $s^2>2$.* Vamos achar $n$ tal que $s-\\tfrac1n$ seja cota superior de $A$ menor que $s$. Como\n$$\\Big(s-\\tfrac1n\\Big)^2=s^2-\\tfrac{2s}{n}+\\tfrac1{n^2}>s^2-\\tfrac{2s}{n},$$\nbasta $\\tfrac{2s}{n}<s^2-2$, isto e, $n>\\dfrac{2s}{s^2-2}$. Alem disso $s>\\sqrt2>1$, entao para $n$ grande $s-\\tfrac1n>0$. Assim $s-\\tfrac1n>0$ e $(s-\\tfrac1n)^2>2$. Para todo $x\\in A$ temos $x>0$ e $x^2<2<(s-\\tfrac1n)^2$; como ambos sao positivos, $x<s-\\tfrac1n$. Logo $s-\\tfrac1n$ e cota superior de $A$ menor que $s$, contradizendo a minimalidade de $s$.\n\nComo ambos os casos levam a contradicao e $s^2=2$ e impossivel em $\\mathbb{Q}$, nao existe $\\sup A$ em $\\mathbb{Q}$. $\\blacksquare$",
+          "steps": [
+            "Verifique que A e nao vazio e limitado superiormente em Q, e suponha por absurdo s=sup A racional.",
+            "Note que sqrt(2) irracional forca s^2 != 2, dividindo em s^2<2 e s^2>2.",
+            "Se s^2<2, majore (s+1/n)^2 por s^2+(2s+1)/n e escolha n grande para cair em A, contradizendo s cota superior.",
+            "Se s^2>2, minore (s-1/n)^2 por s^2-2s/n e escolha n para ter (s-1/n)^2>2 com s-1/n>0.",
+            "Mostre que esse s-1/n e cota superior menor que s, contradicao; conclua que nao ha supremo em Q."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de cota superior de $A$",
+          "back": "$c$ tal que $a\\le c$ para todo $a\\in A$."
+        },
+        {
+          "front": "Definição de $\\sup A$",
+          "back": "A menor cota superior de $A$: é cota superior e é $\\le$ a qualquer outra cota superior."
+        },
+        {
+          "front": "Caracterização $\\varepsilon$ do supremo",
+          "back": "$s=\\sup A$ sse $s$ é cota superior e, para todo $\\varepsilon>0$, existe $a\\in A$ com $a>s-\\varepsilon$."
+        },
+        {
+          "front": "Diferença entre $\\sup A$ e $\\max A$",
+          "back": "$\\max A$ é o supremo quando ele pertence a $A$; o supremo pode existir sem pertencer a $A$."
+        },
+        {
+          "front": "Dualidade ínfimo–supremo",
+          "back": "$\\inf A=-\\sup(-A)$, com $-A=\\{-a:a\\in A\\}$."
+        },
+        {
+          "front": "Por que $\\mathbb{Q}$ não é completo?",
+          "back": "$\\{x\\in\\mathbb{Q}:x^2<2\\}$ é limitado superiormente mas não tem supremo em $\\mathbb{Q}$ (apontaria para $\\sqrt2\\notin\\mathbb{Q}$)."
+        },
+        {
+          "front": "O que é um corpo ordenado?",
+          "back": "Corpo com ordem total compatível com $+$ e $\\cdot$: $x\\le y\\Rightarrow x+z\\le y+z$, e $0\\le x,0\\le y\\Rightarrow 0\\le xy$."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Rudin, Principles of Mathematical Analysis, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lages Lima, Análise Real vol. 1, cap. 2",
+          "ref": "livro"
+        },
+        {
+          "title": "Abbott, Understanding Analysis, seções 1.3–1.4",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Copie a mao os axiomas de corpo e de corpo ordenado (Elon, Analise Real vol.1 cap.2, ou Abbott secao 1.3) e deduza sozinho tres consequencias basicas: regra dos sinais, a>0 implica -a<0, e transitividade da ordem.",
+          "Escreva as definicoes de cota superior, conjunto limitado superiormente, supremo e infimo, e monte uma tabela de exemplos contrastando maximo x supremo (ex.: [0,1), {1-1/n}).",
+          "Demonstre por conta propria a unicidade do supremo e a caracterizacao epsilon do supremo, sem consultar; so depois confira com o livro.",
+          "Assista a um video sobre supremo/infimo e refaca o exemplo {x in Q : x^2<2} entendendo por que Q falha.",
+          "Volte ao app, resolva os testes deste subtopico e anote aqui o principal (a caracterizacao epsilon e a distincao maximo/supremo)."
+        ],
+        "searchQueries": [
+          "axiomas de corpo ordenado propriedades da ordem demonstracao",
+          "supremo e infimo definicao exemplos analise real",
+          "caracterizacao epsilon do supremo demonstracao",
+          "diferenca entre maximo e supremo exemplo",
+          "por que Q nao tem a propriedade do supremo raiz de 2",
+          "least upper bound property real analysis proof"
+        ],
+        "videos": [
+          {
+            "title": "Supremo e infimo de conjuntos",
+            "channel": "Matematica Universitaria",
+            "note": "Busque a aula de supremo/infimo; foco na definicao de menor cota superior e nos exemplos de intervalos."
+          },
+          {
+            "title": "Real Analysis: least upper bound",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Serie Real Analysis; procure o video sobre supremum/infimum e a completeness property."
+          },
+          {
+            "title": "Understanding Analysis - Axiom of Completeness",
+            "channel": "Dr. Peyam",
+            "note": "Procure videos sobre supremum e o axioma da completude; bom para a intuicao antes de Rudin."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Understanding Analysis, secoes 1.3-1.4 (Axiom of Completeness)",
+            "where": "Stephen Abbott, Springer"
+          },
+          {
+            "title": "Principles of Mathematical Analysis, cap.1 (Ordered fields, l.u.b. property)",
+            "where": "Walter Rudin"
+          },
+          {
+            "title": "Analise Real vol.1, cap.2",
+            "where": "Elon Lages Lima, Colecao Matematica Universitaria (IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-1-02-completude-r",
+      "title": "Completude de $\\mathbb{R}$ e a propriedade arquimediana",
+      "tagline": "O axioma do supremo em ação: arquimedianidade, densidade de $\\mathbb{Q}$ e a existência de $\\sqrt{2}$.",
+      "objectives": [
+        "Ao final você consegue enunciar o axioma da completude (propriedade do supremo) e explicar o que ele acrescenta aos axiomas de corpo ordenado.",
+        "Ao final você consegue demonstrar a propriedade arquimediana de $\\mathbb{R}$ a partir da completude.",
+        "Ao final você consegue provar que $\\mathbb{Q}$ é denso em $\\mathbb{R}$ (e que os irracionais também são).",
+        "Ao final você consegue provar a existência de raízes, em particular $\\exists!\\,x>0$ com $x^2=2$.",
+        "Ao final você consegue aplicar o Princípio dos Intervalos Encaixados e relacioná-lo à não enumerabilidade de $\\mathbb{R}$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Completude (propriedade do supremo)",
+          "statement": "Todo subconjunto não vazio de $\\mathbb{R}$ limitado superiormente possui supremo em $\\mathbb{R}$. Este é o axioma que caracteriza $\\mathbb{R}$ a menos de isomorfismo entre corpos ordenados completos."
+        },
+        {
+          "term": "Propriedade arquimediana",
+          "statement": "Para todo $x\\in\\mathbb{R}$ existe $n\\in\\mathbb{N}$ com $n>x$. Equivalentemente, $\\inf\\{1/n:n\\in\\mathbb{N}\\}=0$."
+        },
+        {
+          "term": "Densidade",
+          "statement": "$D\\subseteq\\mathbb{R}$ é denso se, entre quaisquer $a<b$, existe $d\\in D$ com $a<d<b$. Vale para $D=\\mathbb{Q}$ e para $D=\\mathbb{R}\\setminus\\mathbb{Q}$."
+        },
+        {
+          "term": "Intervalos encaixados",
+          "statement": "Uma sequência $I_1\\supseteq I_2\\supseteq\\cdots$ de intervalos fechados e limitados $I_n=[a_n,b_n]$ tem interseção não vazia: $\\bigcap_n I_n\\ne\\varnothing$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Propriedade arquimediana",
+          "statement": "$\\mathbb{N}$ não é limitado superiormente em $\\mathbb{R}$: para todo $x\\in\\mathbb{R}$ existe $n\\in\\mathbb{N}$ com $n>x$.",
+          "whyItMatters": "Sem ela, poderia haver infinitesimais; com ela, $1/n\\to 0$ e a maioria das estimativas $\\varepsilon$–$N$ ficam viáveis. É a ponte entre o discreto e o contínuo."
+        },
+        {
+          "name": "Densidade de $\\mathbb{Q}$ em $\\mathbb{R}$",
+          "statement": "Para quaisquer reais $a<b$, existe um racional $q$ com $a<q<b$.",
+          "whyItMatters": "Garante que os racionais aproximam qualquer real arbitrariamente bem, base da representação decimal e de toda aproximação numérica."
+        },
+        {
+          "name": "Existência de raízes",
+          "statement": "Para todo real $y>0$ e todo $n\\in\\mathbb{N}$, existe um único real $x>0$ com $x^n=y$. Em particular, $\\sqrt{2}$ existe em $\\mathbb{R}$.",
+          "whyItMatters": "Demonstra que a completude resolve as equações que $\\mathbb{Q}$ não resolvia; é o exemplo paradigmático de uso do supremo para construir um objeto."
+        },
+        {
+          "name": "Princípio dos Intervalos Encaixados",
+          "statement": "Se $I_n=[a_n,b_n]$ é uma sequência decrescente de intervalos fechados limitados, então $\\bigcap_{n}I_n\\ne\\varnothing$; se ainda $b_n-a_n\\to 0$, a interseção é um único ponto.",
+          "whyItMatters": "Equivale à completude e é a ferramenta padrão para localizar pontos (raízes, limites, e a prova de que $\\mathbb{R}$ é não enumerável)."
+        }
+      ],
+      "summary": "A completude é o único axioma novo que separa $\\mathbb{R}$ de $\\mathbb{Q}$ e, a partir dele, tudo segue. Da propriedade do supremo deduzimos a propriedade arquimediana: se $\\mathbb{N}$ fosse limitado, teria supremo $s$, e $s-1$ não seria cota superior, gerando $n>s-1$, isto é, $n+1>s$, contradição. Da arquimedianidade obtemos imediatamente que $1/n$ fica arbitrariamente pequeno, o motor de quase todas as estimativas do curso.\n\nCom essas ferramentas provamos a densidade de $\\mathbb{Q}$: dado $a<b$, escolhemos $n$ grande para que $1/n<b-a$ e tomamos o primeiro múltiplo de $1/n$ que ultrapassa $a$. Provamos também a existência de $\\sqrt{2}$ exibindo-a como $\\sup\\{x>0:x^2<2\\}$ e mostrando que esse supremo $s$ satisfaz $s^2=2$ por eliminação dos casos $s^2<2$ e $s^2>2$. Finalmente, o Princípio dos Intervalos Encaixados — equivalente à completude — fornece o argumento clássico para a não enumerabilidade de $\\mathbb{R}$ (diagonal de Cantor por encaixe) e será reusado para localizar limites em todo o curso.",
+      "commonPitfalls": [
+        "Tratar a propriedade arquimediana como óbvia: ela é falsa em corpos ordenados não arquimedianos e precisa ser provada a partir da completude.",
+        "No Princípio dos Intervalos Encaixados, esquecer que os intervalos precisam ser fechados E limitados; com $I_n=(0,1/n)$ a interseção é vazia.",
+        "Provar a existência de $\\sqrt2$ apenas mostrando que $s^2\\le 2$, sem descartar $s^2<2$ (em que se constrói $s+1/n$ ainda no conjunto).",
+        "Confundir densidade com sobrejetividade: $\\mathbb{Q}$ ser denso não significa que todo real é racional."
+      ],
+      "worked": "**Existência de $\\sqrt{2}$.** Seja $A=\\{x\\in\\mathbb{R}:x>0,\\ x^2<2\\}$. $A$ é não vazio ($1\\in A$) e limitado superiormente (por $2$, pois $x^2<2<4$ implica $x<2$). Pela completude existe $s=\\sup A>0$. Afirmamos $s^2=2$.\n\nSe $s^2<2$, escolha $n$ com $\\tfrac1n<\\tfrac{2-s^2}{2s+1}$. Então $\\left(s+\\tfrac1n\\right)^2=s^2+\\tfrac{2s}{n}+\\tfrac1{n^2}\\le s^2+\\tfrac{2s+1}{n}<2$, logo $s+\\tfrac1n\\in A$, contradizendo $s$ ser cota superior.\n\nSe $s^2>2$, escolha $n$ com $\\tfrac1n<\\tfrac{s^2-2}{2s}$. Então $\\left(s-\\tfrac1n\\right)^2=s^2-\\tfrac{2s}{n}+\\tfrac1{n^2}>s^2-\\tfrac{2s}{n}>2$, de modo que $s-\\tfrac1n$ seria cota superior menor que $s$, contradição. Logo $s^2=2$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Demonstre a propriedade arquimediana a partir do axioma do supremo.",
+          "hint": "Suponha por absurdo que $\\mathbb{N}$ é limitado superiormente; tome $s=\\sup\\mathbb{N}$ e mostre que $s-1$ não pode ser cota superior, obtendo $n>s-1$ e portanto $n+1>s$.",
+          "difficulty": 2,
+          "solution": "**Afirmacao (propriedade arquimediana).** Para todo $x\\in\\mathbb{R}$ existe $n\\in\\mathbb{N}$ com $n>x$.\n\n**Prova.** Suponha, por absurdo, que $\\mathbb{N}$ seja limitado superiormente em $\\mathbb{R}$. Como $\\mathbb{N}\\ne\\varnothing$, pelo axioma do supremo existe\n$$s=\\sup\\mathbb{N}\\in\\mathbb{R}.$$\nComo $s$ e a **menor** cota superior, $s-1$ **nao** e cota superior de $\\mathbb{N}$ (pois $s-1<s$). Logo existe $m\\in\\mathbb{N}$ com $m>s-1$. Entao $m+1\\in\\mathbb{N}$ e\n$$m+1>s,$$\ncontradizendo que $s$ e cota superior de $\\mathbb{N}$. Portanto $\\mathbb{N}$ nao e limitado superiormente: dado $x\\in\\mathbb{R}$, ele nao e cota superior de $\\mathbb{N}$, existindo $n\\in\\mathbb{N}$ com $n>x$. $\\blacksquare$\n\n**Corolario.** $\\inf\\{1/n:n\\in\\mathbb{N}\\}=0$: dado $\\varepsilon>0$, existe $n$ com $n>1/\\varepsilon$, isto e, $1/n<\\varepsilon$.",
+          "steps": [
+            "Negue a tese: suponha N limitado superiormente em R.",
+            "Aplique o axioma do supremo para obter s=sup N.",
+            "Use a minimalidade: s-1 nao e cota superior, logo existe m em N com m>s-1.",
+            "Conclua m+1>s, contradizendo s ser cota superior de N.",
+            "Traduza: N ilimitado significa que para todo x existe n>x."
+          ]
+        },
+        {
+          "prompt": "Prove que entre quaisquer $a<b$ reais existe um racional.",
+          "hint": "Tome $n$ com $\\tfrac1n<b-a$ e seja $m$ o menor inteiro com $\\tfrac{m}{n}>a$; verifique que $\\tfrac{m}{n}<b$ usando a minimalidade de $m$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Para quaisquer reais $a<b$ existe $q\\in\\mathbb{Q}$ com $a<q<b$.\n\n**Prova.** Como $b-a>0$, pela propriedade arquimediana existe $n\\in\\mathbb{N}$ com\n$$n>\\frac{1}{b-a}\\quad\\Longleftrightarrow\\quad \\frac1n<b-a.$$\nConsidere o conjunto $\\{k\\in\\mathbb{Z}:k>na\\}$. Pela arquimediana ele e nao vazio e limitado inferiormente, logo (bem-ordenacao dos inteiros) tem um menor elemento $m$. Entao\n$$m>na\\qquad\\text{e}\\qquad m-1\\le na.$$\nDa primeira, $\\dfrac{m}{n}>a$. Da segunda, $m\\le na+1$, logo\n$$\\frac{m}{n}\\le a+\\frac1n<a+(b-a)=b.$$\nPortanto $a<\\dfrac{m}{n}<b$ com $\\dfrac{m}{n}\\in\\mathbb{Q}$. $\\blacksquare$",
+          "steps": [
+            "Use a arquimediana para escolher n com 1/n<b-a (denominador fino o suficiente).",
+            "Tome m o menor inteiro com m>na (existe por bem-ordenacao).",
+            "De m>na obtenha m/n>a.",
+            "Da minimalidade, m-1<=na, logo m/n<=a+1/n.",
+            "Combine 1/n<b-a para concluir m/n<b, obtendo a<m/n<b."
+          ]
+        },
+        {
+          "prompt": "Prove que entre quaisquer $a<b$ reais existe um irracional.",
+          "hint": "Aplique a densidade de $\\mathbb{Q}$ ao intervalo $(a-\\sqrt2,\\ b-\\sqrt2)$ e some $\\sqrt2$ ao racional encontrado.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Para quaisquer reais $a<b$ existe um irracional $t$ com $a<t<b$.\n\n**Prova.** Considere o intervalo $(a-\\sqrt2,\\ b-\\sqrt2)$, que e nao degenerado pois $b-\\sqrt2>a-\\sqrt2$. Pela densidade de $\\mathbb{Q}$ em $\\mathbb{R}$, existe $q\\in\\mathbb{Q}$ com\n$$a-\\sqrt2<q<b-\\sqrt2.$$\nSome $\\sqrt2$: $a<q+\\sqrt2<b$. Resta ver que $t=q+\\sqrt2$ e irracional. Se fosse $q+\\sqrt2\\in\\mathbb{Q}$, entao $\\sqrt2=(q+\\sqrt2)-q$ seria diferenca de racionais, logo racional, contradizendo $\\sqrt2\\notin\\mathbb{Q}$. Portanto $t=q+\\sqrt2$ e irracional e $a<t<b$. $\\blacksquare$",
+          "steps": [
+            "Desloque o intervalo por -sqrt(2), obtendo (a-sqrt2, b-sqrt2).",
+            "Aplique a densidade de Q para achar um racional q nesse intervalo.",
+            "Volte somando sqrt(2): a<q+sqrt2<b.",
+            "Argumente que q+sqrt2 e irracional (senao sqrt2 seria racional).",
+            "Conclua a existencia do irracional t=q+sqrt2 entre a e b."
+          ]
+        },
+        {
+          "prompt": "Use o Princípio dos Intervalos Encaixados para mostrar que $[0,1]$ não é enumerável.",
+          "hint": "Dada uma suposta enumeração $x_1,x_2,\\dots$, construa intervalos fechados encaixados $I_n$ com $x_n\\notin I_n$ e comprimento $\\to 0$; o ponto da interseção não está na lista.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** $[0,1]$ nao e enumeravel.\n\n**Prova (intervalos encaixados).** Suponha, por absurdo, uma enumeracao $[0,1]=\\{x_1,x_2,x_3,\\dots\\}$. Vamos construir intervalos fechados encaixados evitando cada $x_n$.\n\nDivida $[0,1]$ em tres subintervalos fechados de comprimento $1/3$; ao menos um deles nao contem $x_1$. Chame-o $I_1=[a_1,b_1]$, fechado, com $x_1\\notin I_1$ e comprimento $1/3$. Suponha construido $I_n=[a_n,b_n]$ fechado, com $x_n\\notin I_n$ e comprimento $3^{-n}$. Divida $I_n$ em tres partes fechadas de comprimento $3^{-(n+1)}$; ao menos uma nao contem $x_{n+1}$: chame-a $I_{n+1}$, com $x_{n+1}\\notin I_{n+1}$ e $I_{n+1}\\subseteq I_n$.\n\nObtemos $I_1\\supseteq I_2\\supseteq\\cdots$ fechados, limitados, com comprimento $b_n-a_n=3^{-n}\\to 0$. Pelo Principio dos Intervalos Encaixados, $\\bigcap_n I_n=\\{\\xi\\}$ para um unico $\\xi\\in[0,1]$.\n\nComo $\\xi\\in I_n$ para todo $n$ e $x_n\\notin I_n$, temos $\\xi\\ne x_n$ para todo $n$. Logo $\\xi$ nao esta na enumeracao, contradizendo que ela listava todo $[0,1]$. Portanto $[0,1]$ nao e enumeravel. $\\blacksquare$",
+          "steps": [
+            "Suponha por absurdo uma enumeracao x_1,x_2,... de [0,1].",
+            "Construa I_1 fechado dividindo [0,1] em tres e escolhendo um terco que evita x_1.",
+            "Recursivamente, dentro de I_n escolha I_{n+1} fechado que evita x_{n+1}, com comprimento 3^{-(n+1)}.",
+            "Aplique o Principio dos Intervalos Encaixados: a intersecao e um unico ponto xi.",
+            "Como xi in I_n e x_n not in I_n, tem-se xi != x_n para todo n: xi nao esta na lista, contradicao."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Axioma da completude de $\\mathbb{R}$",
+          "back": "Todo subconjunto não vazio e limitado superiormente de $\\mathbb{R}$ tem supremo em $\\mathbb{R}$."
+        },
+        {
+          "front": "Propriedade arquimediana",
+          "back": "Para todo $x\\in\\mathbb{R}$ existe $n\\in\\mathbb{N}$ com $n>x$; equivalentemente $\\inf\\{1/n\\}=0$."
+        },
+        {
+          "front": "Densidade de $\\mathbb{Q}$",
+          "back": "Entre quaisquer $a<b$ reais existe um racional $q$ com $a<q<b$."
+        },
+        {
+          "front": "Como se prova que $\\sqrt2$ existe?",
+          "back": "Como $\\sup\\{x>0:x^2<2\\}$; mostra-se que esse $s$ satisfaz $s^2=2$ descartando $s^2<2$ e $s^2>2$."
+        },
+        {
+          "front": "Princípio dos Intervalos Encaixados (hipóteses)",
+          "back": "Intervalos fechados e limitados, decrescentes: $\\bigcap I_n\\ne\\varnothing$; se o comprimento $\\to 0$, a interseção é um ponto."
+        },
+        {
+          "front": "Por que intervalos abertos podem falhar no encaixe?",
+          "back": "$I_n=(0,1/n)$ são encaixados mas $\\bigcap I_n=\\varnothing$; falta o fechamento."
+        },
+        {
+          "front": "Cardinalidade de $\\mathbb{R}$",
+          "back": "$\\mathbb{R}$ é não enumerável (argumento da diagonal de Cantor ou intervalos encaixados)."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Rudin, Principles of Mathematical Analysis, cap. 1 (Teorema 1.20–1.21)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lages Lima, Análise Real vol. 1, cap. 2",
+          "ref": "livro"
+        },
+        {
+          "title": "Abbott, Understanding Analysis, seção 1.4",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Releia o enunciado do axioma da completude e liste, em uma folha, tudo que ele acrescenta aos axiomas de corpo ordenado (Elon cap.2, Rudin cap.1, Abbott 1.4).",
+          "Demonstre voce mesmo a propriedade arquimediana a partir do supremo e a densidade de Q em R, escrevendo cada passo.",
+          "Estude a construcao de sqrt(2) como sup{x>0:x^2<2} e reproduza a eliminacao dos casos s^2<2 e s^2>2.",
+          "Estude o Principio dos Intervalos Encaixados e o argumento diagonal/encaixe para a nao enumerabilidade de R; assista a um video sobre o assunto.",
+          "Volte ao app, resolva os testes e anote o principal (arquimediano, densidade, existencia de raizes, encaixe)."
+        ],
+        "searchQueries": [
+          "propriedade arquimediana demonstracao axioma do supremo",
+          "densidade dos racionais em R demonstracao",
+          "existencia de raiz quadrada de 2 supremo demonstracao",
+          "principio dos intervalos encaixados analise real",
+          "R nao e enumeravel intervalos encaixados Cantor",
+          "Archimedean property nested intervals theorem proof"
+        ],
+        "videos": [
+          {
+            "title": "Archimedean property e densidade de Q",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Serie Real Analysis; procure os videos sobre Archimedean property e density of rationals."
+          },
+          {
+            "title": "Nested Interval Property e nao-enumerabilidade de R",
+            "channel": "Dr. Peyam",
+            "note": "Busque o video sobre o argumento de Cantor e intervalos encaixados."
+          },
+          {
+            "title": "Numeros reais e completude",
+            "channel": "IMPA",
+            "note": "Procure minicursos/palestras do canal do IMPA sobre construcao dos reais e completude."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Understanding Analysis, secao 1.4 e cap.1 (Nested Interval Property)",
+            "where": "Stephen Abbott, Springer"
+          },
+          {
+            "title": "Principles of Mathematical Analysis, cap.1 (Teoremas 1.20-1.21, existencia de raizes)",
+            "where": "Walter Rudin"
+          },
+          {
+            "title": "Analise Real vol.1, cap.2",
+            "where": "Elon Lages Lima, IMPA"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-1-03-sequencias-limites",
+      "title": "Sequências e limites",
+      "tagline": "A definição $\\varepsilon$–$N$ que torna preciso o que significa convergir.",
+      "objectives": [
+        "Ao final você consegue escrever e usar a definição $\\varepsilon$–$N$ de limite de uma sequência.",
+        "Ao final você consegue provar a unicidade do limite e que toda sequência convergente é limitada.",
+        "Ao final você consegue aplicar a álgebra dos limites (soma, produto, quociente) com demonstração.",
+        "Ao final você consegue usar o Teorema do Confronto (Sanduíche) em estimativas.",
+        "Ao final você consegue enunciar e provar o Teorema da Convergência Monótona e calcular $e=\\lim(1+1/n)^n$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Limite de sequência",
+          "statement": "$\\lim_{n\\to\\infty}x_n=L$ significa: para todo $\\varepsilon>0$ existe $N\\in\\mathbb{N}$ tal que $n\\ge N\\Rightarrow |x_n-L|<\\varepsilon$."
+        },
+        {
+          "term": "Sequência limitada",
+          "statement": "Existe $M>0$ com $|x_n|\\le M$ para todo $n$. Toda sequência convergente é limitada, mas a recíproca é falsa (ex.: $x_n=(-1)^n$)."
+        },
+        {
+          "term": "Sequência monótona",
+          "statement": "Não decrescente se $x_{n+1}\\ge x_n$ para todo $n$ (analogamente não crescente). Monotonicidade mais limitação garante convergência."
+        },
+        {
+          "term": "Limite infinito",
+          "statement": "$\\lim x_n=+\\infty$ se, para todo $M>0$, existe $N$ com $n\\ge N\\Rightarrow x_n>M$. Não é convergência: a sequência diverge para $+\\infty$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Unicidade do limite",
+          "statement": "Se $x_n\\to L$ e $x_n\\to L'$, então $L=L'$.",
+          "whyItMatters": "Permite falar do limite e escrever $\\lim x_n$ sem ambiguidade; é a base de toda manipulação de limites."
+        },
+        {
+          "name": "Convergente implica limitada",
+          "statement": "Se $(x_n)$ converge, então $(x_n)$ é limitada.",
+          "whyItMatters": "Fornece um teste de divergência rápido (sequência ilimitada não converge) e é hipótese usada na álgebra de limites."
+        },
+        {
+          "name": "Álgebra dos limites",
+          "statement": "Se $x_n\\to L$ e $y_n\\to M$, então $x_n+y_n\\to L+M$, $x_n y_n\\to LM$ e, se $M\\ne 0$, $x_n/y_n\\to L/M$.",
+          "whyItMatters": "Permite calcular limites compostos a partir de limites básicos sem voltar à definição toda vez."
+        },
+        {
+          "name": "Teorema da Convergência Monótona",
+          "statement": "Toda sequência monótona e limitada converge; se $(x_n)$ é não decrescente e limitada superiormente, então $x_n\\to\\sup\\{x_n\\}$.",
+          "whyItMatters": "Conecta limites à completude (é equivalente ao axioma do supremo) e é a forma mais comum de provar convergência sem conhecer o valor do limite, como na definição de $e$."
+        },
+        {
+          "name": "Teorema do Confronto",
+          "statement": "Se $a_n\\le x_n\\le b_n$ para todo $n$ grande e $a_n\\to L$, $b_n\\to L$, então $x_n\\to L$.",
+          "whyItMatters": "Resolve limites difíceis por comparação, como $\\tfrac{\\operatorname{sen} n}{n}\\to 0$, sem cálculo direto."
+        }
+      ],
+      "summary": "Convergência é a primeira ideia genuinamente analítica do curso, e a definição $\\varepsilon$–$N$ é o seu coração: dizer que $x_n\\to L$ é prometer que, para qualquer tolerância $\\varepsilon$ dada, todos os termos a partir de um índice $N$ ficam dentro da faixa $(L-\\varepsilon,L+\\varepsilon)$. O quantificador alterna na ordem correta — primeiro $\\varepsilon$, depois $N$ dependente de $\\varepsilon$ — e dominar essa ordem é meio caminho para escrever provas corretas. A unicidade do limite e o fato de que convergência implica limitação são as primeiras consequências, e a álgebra dos limites nos liberta de voltar à definição em cada conta.\n\nO Teorema da Convergência Monótona é o ponto alto: ele permite afirmar que uma sequência converge sem saber para onde, bastando monotonicidade e limitação. É assim que se define o número $e$ como limite de $(1+1/n)^n$, mostrando que essa sequência é crescente e limitada por $3$. O Teorema do Confronto fecha o arsenal prático: ele domestica sequências oscilantes prendendo-as entre duas que convergem ao mesmo limite. Juntos, esses resultados transformam o cálculo de limites de manipulação intuitiva em dedução rigorosa.",
+      "commonPitfalls": [
+        "Trocar a ordem dos quantificadores: $N$ depende de $\\varepsilon$, não o contrário; um único $N$ que sirva para todo $\\varepsilon$ é absurdo.",
+        "Aplicar a álgebra de limites antes de garantir que ambos os limites existem; $\\lim(x_n+y_n)$ pode existir sem que $\\lim x_n$ exista (ex.: $x_n=n$, $y_n=-n$).",
+        "Usar o quociente $x_n/y_n\\to L/M$ sem checar $M\\ne 0$.",
+        "Confundir limitada com convergente: $(-1)^n$ é limitada e não converge."
+      ],
+      "worked": "**Afirmação.** $\\displaystyle\\lim_{n\\to\\infty}\\frac{3n^2+1}{n^2+n}=3$.\n\n**Prova ($\\varepsilon$–$N$).** Para $n\\ge 1$,\n$$\\left|\\frac{3n^2+1}{n^2+n}-3\\right|=\\left|\\frac{3n^2+1-3n^2-3n}{n^2+n}\\right|=\\frac{3n-1}{n^2+n}<\\frac{3n}{n^2}=\\frac{3}{n}.$$\nDado $\\varepsilon>0$, pela propriedade arquimediana escolha $N$ com $N>3/\\varepsilon$. Então, para $n\\ge N$, a expressão é $<3/n\\le 3/N<\\varepsilon$. Logo o limite é $3$. $\\blacksquare$\n\nAlternativamente, dividindo numerador e denominador por $n^2$ e usando a álgebra de limites: $\\dfrac{3+1/n^2}{1+1/n}\\to\\dfrac{3+0}{1+0}=3$.",
+      "exercises": [
+        {
+          "prompt": "Prove pela definição que $\\lim_{n\\to\\infty}\\frac{1}{\\sqrt{n}}=0$.",
+          "hint": "Dado $\\varepsilon>0$, basta $1/\\sqrt n<\\varepsilon$, isto é, $n>1/\\varepsilon^2$; use a propriedade arquimediana.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** $\\displaystyle\\lim_{n\\to\\infty}\\frac{1}{\\sqrt n}=0$.\n\n**Prova ($\\varepsilon$-$N$).** Seja $\\varepsilon>0$. Queremos $N$ tal que $n\\ge N\\Rightarrow\\left|\\tfrac1{\\sqrt n}-0\\right|<\\varepsilon$. Como $\\tfrac1{\\sqrt n}>0$, a desigualdade $\\tfrac1{\\sqrt n}<\\varepsilon$ equivale (elevando ao quadrado, ambos positivos) a\n$$\\frac1n<\\varepsilon^2\\quad\\Longleftrightarrow\\quad n>\\frac1{\\varepsilon^2}.$$\nPela propriedade arquimediana existe $N\\in\\mathbb{N}$ com $N>\\dfrac1{\\varepsilon^2}$. Entao, para todo $n\\ge N$,\n$$\\frac1{\\sqrt n}\\le\\frac1{\\sqrt N}<\\varepsilon.$$\nLogo $\\dfrac1{\\sqrt n}\\to 0$. $\\blacksquare$",
+          "steps": [
+            "Escreva o que precisa: |1/sqrt(n)|<epsilon.",
+            "Isole n elevando ao quadrado: 1/sqrt(n)<epsilon equivale a n>1/epsilon^2.",
+            "Use a arquimediana para escolher N>1/epsilon^2.",
+            "Verifique que para n>=N vale 1/sqrt(n)<=1/sqrt(N)<epsilon, fechando a definicao."
+          ]
+        },
+        {
+          "prompt": "Demonstre a parte do produto na álgebra dos limites: se $x_n\\to L$ e $y_n\\to M$ então $x_ny_n\\to LM$.",
+          "hint": "Escreva $x_ny_n-LM=x_n(y_n-M)+M(x_n-L)$ e use que $(x_n)$ é limitada.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Se $x_n\\to L$ e $y_n\\to M$, entao $x_ny_n\\to LM$.\n\n**Prova.** Escreva\n$$x_ny_n-LM=x_n(y_n-M)+M(x_n-L),$$\nlogo\n$$|x_ny_n-LM|\\le |x_n|\\,|y_n-M|+|M|\\,|x_n-L|.$$\nComo $(x_n)$ converge, ela e limitada: existe $B>0$ com $|x_n|\\le B$ para todo $n$ (podemos ainda supor $B\\ge|M|$). Seja $\\varepsilon>0$.\n\n- Como $y_n\\to M$, existe $N_1$ com $|y_n-M|<\\dfrac{\\varepsilon}{2B}$ para $n\\ge N_1$.\n- Como $x_n\\to L$, existe $N_2$ com $|x_n-L|<\\dfrac{\\varepsilon}{2B}$ para $n\\ge N_2$.\n\nPara $n\\ge N=\\max\\{N_1,N_2\\}$,\n$$|x_ny_n-LM|\\le B\\cdot\\frac{\\varepsilon}{2B}+|M|\\cdot\\frac{\\varepsilon}{2B}\\le \\frac\\varepsilon2+\\frac\\varepsilon2=\\varepsilon,$$\nusando $|M|\\le B$. Portanto $x_ny_n\\to LM$. $\\blacksquare$",
+          "steps": [
+            "Introduza o termo cruzado: x_n y_n - LM = x_n(y_n-M)+M(x_n-L).",
+            "Aplique a desigualdade triangular para separar os dois erros.",
+            "Use que (x_n) e limitada (convergente => limitada), digamos |x_n|<=B com B>=|M|.",
+            "Escolha N1 e N2 tornando cada fator de erro menor que epsilon/(2B).",
+            "Some as estimativas para n>=max{N1,N2} e obtenha < epsilon."
+          ]
+        },
+        {
+          "prompt": "Mostre que $(1+1/n)^n$ é crescente e limitada por $3$, concluindo que converge (esse limite é $e$).",
+          "hint": "Use o binômio de Newton para comparar termo a termo as expansões de $(1+1/n)^n$ e $(1+1/(n+1))^{n+1}$, e majore os termos por $1/k!\\le 1/2^{k-1}$.",
+          "difficulty": 5,
+          "solution": "**Afirmacao.** $x_n=\\left(1+\\tfrac1n\\right)^n$ e crescente e limitada por $3$; logo converge (o limite e $e$).\n\n**Prova.** Pelo binomio de Newton,\n$$x_n=\\sum_{k=0}^{n}\\binom{n}{k}\\frac1{n^k}=\\sum_{k=0}^{n}\\frac1{k!}\\cdot\\frac{n(n-1)\\cdots(n-k+1)}{n^k}=\\sum_{k=0}^{n}\\frac1{k!}\\prod_{j=1}^{k-1}\\Big(1-\\frac{j}{n}\\Big).$$\n\n*Crescente.* Ao passar de $n$ para $n+1$: (i) cada fator $\\big(1-\\tfrac{j}{n}\\big)$ aumenta, pois $1-\\tfrac{j}{n+1}>1-\\tfrac{j}{n}$; (ii) surge um termo positivo adicional ($k=n+1$). Assim cada parcela de $x_n$ e menor ou igual a correspondente de $x_{n+1}$, e ha uma parcela extra positiva. Logo $x_{n+1}>x_n$.\n\n*Limitada por $3$.* Como cada produto $\\prod(1-\\tfrac{j}{n})\\le 1$,\n$$x_n\\le\\sum_{k=0}^{n}\\frac1{k!}=1+\\sum_{k=1}^{n}\\frac1{k!}\\le 1+\\sum_{k=1}^{n}\\frac1{2^{k-1}}<1+\\sum_{k=1}^{\\infty}\\frac1{2^{k-1}}=1+2=3,$$\nusando $k!\\ge 2^{k-1}$ para $k\\ge1$.\n\nSendo $(x_n)$ crescente e limitada superiormente por $3$, pelo Teorema da Convergencia Monotona ela converge; define-se $e=\\lim_{n\\to\\infty}x_n$, com $2<e\\le 3$. $\\blacksquare$",
+          "steps": [
+            "Expanda (1+1/n)^n pelo binomio e reescreva cada termo como (1/k!) vezes um produto de fatores (1-j/n).",
+            "Mostre monotonicidade: cada fator (1-j/n) cresce com n e aparece uma parcela nova positiva.",
+            "Majore cada produto por 1 para obter x_n <= soma de 1/k!.",
+            "Use k! >= 2^{k-1} e a geometrica para limitar a soma por 3.",
+            "Aplique o Teorema da Convergencia Monotona: crescente e limitada => converge (limite e e)."
+          ]
+        },
+        {
+          "prompt": "Calcule $\\lim_{n\\to\\infty}\\frac{n!}{n^n}$ e justifique.",
+          "hint": "Mostre $0<\\frac{n!}{n^n}\\le\\frac1n$ observando que cada fator $k/n\\le 1$ e o último é $1/n$; aplique o Confronto.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** $\\displaystyle\\lim_{n\\to\\infty}\\frac{n!}{n^n}=0$.\n\n**Prova (Confronto).** Escreva\n$$0<\\frac{n!}{n^n}=\\frac{1\\cdot 2\\cdot 3\\cdots n}{n\\cdot n\\cdots n}=\\prod_{k=1}^{n}\\frac{k}{n}.$$\nCada fator satisfaz $\\dfrac{k}{n}\\le 1$ (pois $k\\le n$), e o primeiro fator ($k=1$) e exatamente $\\dfrac1n$. Majorando todos os fatores com $k\\ge 2$ por $1$ e mantendo o primeiro,\n$$0<\\frac{n!}{n^n}\\le \\frac1n\\cdot\\underbrace{1\\cdot 1\\cdots 1}_{n-1\\text{ fatores}}=\\frac1n.$$\nComo $0\\to 0$ e $\\dfrac1n\\to 0$, pelo Teorema do Confronto,\n$$\\frac{n!}{n^n}\\to 0.\\qquad\\blacksquare$$",
+          "steps": [
+            "Reescreva n!/n^n como produto dos fatores k/n, k=1..n.",
+            "Observe que cada fator k/n<=1 e que o fator k=1 vale 1/n.",
+            "Majore os demais fatores por 1 para obter 0<n!/n^n<=1/n.",
+            "Como 1/n->0, aplique o Teorema do Confronto e conclua limite 0."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição $\\varepsilon$–$N$ de $\\lim x_n=L$",
+          "back": "$\\forall\\varepsilon>0\\ \\exists N\\ \\forall n\\ge N:\\ |x_n-L|<\\varepsilon$."
+        },
+        {
+          "front": "Toda sequência convergente é...",
+          "back": "...limitada (a recíproca é falsa, ex.: $(-1)^n$)."
+        },
+        {
+          "front": "Teorema da Convergência Monótona",
+          "back": "Sequência monótona e limitada converge; não decrescente limitada $\\to\\sup\\{x_n\\}$."
+        },
+        {
+          "front": "Teorema do Confronto",
+          "back": "Se $a_n\\le x_n\\le b_n$ e $a_n,b_n\\to L$, então $x_n\\to L$."
+        },
+        {
+          "front": "Definição de $e$ como limite",
+          "back": "$e=\\lim_{n\\to\\infty}\\left(1+\\frac1n\\right)^n$."
+        },
+        {
+          "front": "Álgebra dos limites (quociente)",
+          "back": "Se $x_n\\to L$, $y_n\\to M\\ne 0$, então $x_n/y_n\\to L/M$."
+        },
+        {
+          "front": "Significado de $\\lim x_n=+\\infty$",
+          "back": "$\\forall M>0\\ \\exists N\\ \\forall n\\ge N:\\ x_n>M$ (diverge, não converge)."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Rudin, Principles of Mathematical Analysis, cap. 3",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lages Lima, Análise Real vol. 1, cap. 3",
+          "ref": "livro"
+        },
+        {
+          "title": "Bartle e Sherbert, Introduction to Real Analysis, cap. 3",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Memorize a definicao epsilon-N escrevendo-a com os quantificadores na ordem certa (para todo epsilon, existe N, para todo n>=N) e explique por que N depende de epsilon.",
+          "Demonstre a unicidade do limite e que convergente implica limitada; refaca a algebra dos limites (soma, produto, quociente) linha a linha.",
+          "Treine o Teorema do Confronto e o Teorema da Convergencia Monotona em exemplos; estude a definicao de e=lim(1+1/n)^n.",
+          "Assista a uma aula sobre limite de sequencias epsilon-N e refaca o exemplo trabalhado do subtopico.",
+          "Volte ao app, resolva os testes e anote o principal (epsilon-N, MCT, Confronto)."
+        ],
+        "searchQueries": [
+          "definicao epsilon N limite de sequencia exemplos",
+          "algebra dos limites demonstracao produto quociente",
+          "teorema da convergencia monotona demonstracao",
+          "teorema do confronto sanduiche sequencias",
+          "(1+1/n)^n crescente limitada numero e demonstracao",
+          "epsilon N sequence limit proof examples"
+        ],
+        "videos": [
+          {
+            "title": "Limite de sequencia pela definicao",
+            "channel": "Matematica Universitaria",
+            "note": "Busque as aulas de sequencias e limite epsilon-N; muitos exemplos resolvidos."
+          },
+          {
+            "title": "Sequences and limits (Real Analysis)",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Serie Real Analysis; videos sobre convergence, monotone convergence e squeeze."
+          },
+          {
+            "title": "Monotone Convergence Theorem",
+            "channel": "Dr. Peyam",
+            "note": "Procure o video sobre MCT e o numero e como limite de (1+1/n)^n."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap.3 (sequencias)",
+            "where": "Walter Rudin"
+          },
+          {
+            "title": "Introduction to Real Analysis, cap.3",
+            "where": "Bartle & Sherbert"
+          },
+          {
+            "title": "Analise Real vol.1, cap.3",
+            "where": "Elon Lages Lima, IMPA"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-1-04-subsequencias-bw-cauchy",
+      "title": "Subsequências, Bolzano-Weierstrass e Cauchy",
+      "tagline": "De onde sai a compacidade da reta: toda sequência limitada tem subsequência convergente.",
+      "objectives": [
+        "Ao final você consegue definir subsequência e limite subsequencial, e calcular $\\limsup$ e $\\liminf$.",
+        "Ao final você consegue provar que toda sequência de números reais possui uma subsequência monótona.",
+        "Ao final você consegue demonstrar o Teorema de Bolzano-Weierstrass.",
+        "Ao final você consegue definir sequência de Cauchy e provar o Critério de Cauchy (em $\\mathbb{R}$, Cauchy $\\Leftrightarrow$ convergente).",
+        "Ao final você consegue relacionar limites subsequenciais com a convergência da sequência inteira."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Subsequência",
+          "statement": "Dada $(x_n)$ e índices $n_1<n_2<\\cdots$, a subsequência é $(x_{n_k})_k$. Se $x_n\\to L$ então toda subsequência converge a $L$."
+        },
+        {
+          "term": "Limite subsequencial",
+          "statement": "Valor $L$ que é limite de alguma subsequência de $(x_n)$. O conjunto de limites subsequenciais é o conjunto-limite da sequência."
+        },
+        {
+          "term": "Limite superior e inferior",
+          "statement": "$\\limsup x_n=\\inf_n\\sup_{k\\ge n}x_k$ e $\\liminf x_n=\\sup_n\\inf_{k\\ge n}x_k$; são o maior e o menor limite subsequencial. $(x_n)$ converge sse $\\liminf x_n=\\limsup x_n$."
+        },
+        {
+          "term": "Sequência de Cauchy",
+          "statement": "Para todo $\\varepsilon>0$ existe $N$ tal que $m,n\\ge N\\Rightarrow |x_m-x_n|<\\varepsilon$. Captura convergência sem mencionar o limite."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema da subsequência monótona",
+          "statement": "Toda sequência de números reais possui uma subsequência monótona.",
+          "whyItMatters": "É o lema combinatório (argumento dos pontos de pico) que, junto com a convergência monótona, fornece uma prova limpa de Bolzano-Weierstrass."
+        },
+        {
+          "name": "Teorema de Bolzano-Weierstrass",
+          "statement": "Toda sequência limitada de números reais possui uma subsequência convergente.",
+          "whyItMatters": "É a forma sequencial da compacidade de intervalos fechados e limitados; aparece em praticamente toda demonstração de existência em Análise (máximos, raízes, pontos fixos)."
+        },
+        {
+          "name": "Critério de Cauchy",
+          "statement": "Uma sequência de números reais converge se, e somente se, é de Cauchy.",
+          "whyItMatters": "Permite provar convergência sem adivinhar o limite e exprime a completude de $\\mathbb{R}$ de forma intrínseca, generalizável a espaços métricos completos."
+        },
+        {
+          "name": "Subsequências e convergência",
+          "statement": "$x_n\\to L$ se, e somente se, toda subsequência de $(x_n)$ tem uma sub-subsequência que converge a $L$; em particular, se duas subsequências convergem a limites distintos, $(x_n)$ diverge.",
+          "whyItMatters": "Fornece o teste prático de divergência mais usado (ex.: $(-1)^n$ tem subsequências $\\to 1$ e $\\to -1$)."
+        }
+      ],
+      "summary": "Subsequências refinam a análise de convergência: mesmo quando uma sequência não converge, suas subsequências podem revelar a estrutura oculta dos seus valores de acumulação. O $\\limsup$ e o $\\liminf$ empacotam o maior e o menor desses valores, e o critério de convergência $\\liminf=\\limsup$ é frequentemente o caminho mais econômico para decidir se uma sequência converge. O coração técnico do subtópico é o Teorema de Bolzano-Weierstrass: toda sequência limitada admite subsequência convergente. A prova mais elegante passa pelo lema dos pontos de pico, que garante uma subsequência monótona, à qual aplicamos o Teorema da Convergência Monótona.\n\nAs sequências de Cauchy capturam a ideia de que os termos se acumulam entre si, sem referência a um limite externo. O Critério de Cauchy — em $\\mathbb{R}$, ser de Cauchy equivale a convergir — é onde a completude reaparece em sua forma mais útil: a ida (convergente implica Cauchy) vale em qualquer espaço métrico, mas a volta (Cauchy implica convergente) depende de $\\mathbb{R}$ não ter buracos, e sua prova usa que uma sequência de Cauchy é limitada, aplica Bolzano-Weierstrass e mostra que o limite da subsequência atrai a sequência toda. Esse trio — subsequências, Bolzano-Weierstrass e Cauchy — é a porta de entrada para compacidade e espaços métricos completos.",
+      "commonPitfalls": [
+        "Escolher índices de subsequência que não são estritamente crescentes; é obrigatório $n_1<n_2<\\cdots$.",
+        "Achar que toda sequência de Cauchy converge em qualquer espaço; isso é a completude, e falha em $\\mathbb{Q}$ (ex.: aproximações de $\\sqrt2$).",
+        "Confundir $\\limsup$ com $\\sup$: $\\limsup$ ignora qualquer parte inicial finita e olha só o comportamento assintótico.",
+        "Concluir convergência só porque uma subsequência converge; é preciso que todas as subsequências tenham o mesmo limite."
+      ],
+      "worked": "**Critério de Cauchy implica convergência (esboço da volta).** Seja $(x_n)$ de Cauchy.\n\n1. *Limitação:* tome $\\varepsilon=1$; existe $N$ com $|x_n-x_N|<1$ para $n\\ge N$, logo $|x_n|\\le |x_N|+1$ para $n\\ge N$, e a sequência é limitada (juntando os finitos termos iniciais).\n\n2. *Subsequência convergente:* por Bolzano-Weierstrass existe $x_{n_k}\\to L$.\n\n3. *A sequência toda converge a $L$:* dado $\\varepsilon>0$, escolha $N$ com $|x_m-x_n|<\\varepsilon/2$ para $m,n\\ge N$, e escolha $k$ com $n_k\\ge N$ e $|x_{n_k}-L|<\\varepsilon/2$. Então, para $n\\ge N$,\n$$|x_n-L|\\le |x_n-x_{n_k}|+|x_{n_k}-L|<\\tfrac\\varepsilon2+\\tfrac\\varepsilon2=\\varepsilon.$$\nLogo $x_n\\to L$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove o lema dos pontos de pico: toda sequência tem subsequência monótona. (Um índice $m$ é pico se $x_m\\ge x_n$ para todo $n>m$.)",
+          "hint": "Se há infinitos picos, eles formam subsequência não crescente. Se há finitos, após o último pico cada termo tem um termo posterior maior, gerando subsequência crescente.",
+          "difficulty": 4,
+          "solution": "**Lema dos pontos de pico.** Toda sequencia $(x_n)$ possui subsequencia monotona. (Dizemos que $m$ e **pico** se $x_m\\ge x_n$ para todo $n>m$.)\n\n**Prova.** Seja $P=\\{m\\in\\mathbb{N}:m\\text{ e pico}\\}$. Dois casos.\n\n*Caso 1: $P$ e infinito.* Liste seus elementos em ordem crescente $m_1<m_2<m_3<\\cdots$. Como cada $m_k$ e pico e $m_{k+1}>m_k$, vale $x_{m_k}\\ge x_{m_{k+1}}$. Logo $(x_{m_k})$ e uma subsequencia **nao crescente**.\n\n*Caso 2: $P$ e finito.* Seja $N$ maior que todos os picos (se $P=\\varnothing$, $N=1$). Tome $n_1=N$. Como $n_1$ **nao** e pico, existe $n_2>n_1$ com $x_{n_2}>x_{n_1}$. Como $n_2$ tambem nao e pico, existe $n_3>n_2$ com $x_{n_3}>x_{n_2}$, e assim por diante. Recursivamente obtemos $n_1<n_2<n_3<\\cdots$ com $x_{n_1}<x_{n_2}<x_{n_3}<\\cdots$, uma subsequencia **estritamente crescente**.\n\nEm qualquer caso existe subsequencia monotona. $\\blacksquare$",
+          "steps": [
+            "Defina pico: m tal que x_m>=x_n para todo n>m, e considere o conjunto P dos picos.",
+            "Se P e infinito, seus indices em ordem crescente dao uma subsequencia nao crescente.",
+            "Se P e finito, comece apos o ultimo pico: cada indice nao-pico tem um posterior com valor maior.",
+            "Itere para construir indices crescentes com valores estritamente crescentes.",
+            "Conclua que em ambos os casos ha subsequencia monotona."
+          ]
+        },
+        {
+          "prompt": "Mostre que $x_n=(-1)^n\\left(1+\\tfrac1n\\right)$ diverge exibindo duas subsequências com limites distintos, e calcule $\\limsup$ e $\\liminf$.",
+          "hint": "Olhe os índices pares e ímpares separadamente; eles tendem a $1$ e $-1$.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** $x_n=(-1)^n\\left(1+\\tfrac1n\\right)$ diverge; $\\limsup x_n=1$ e $\\liminf x_n=-1$.\n\n**Prova.** Separe por paridade.\n\n*Pares.* $x_{2k}=(+1)\\left(1+\\tfrac1{2k}\\right)=1+\\tfrac1{2k}\\to 1$.\n\n*Impares.* $x_{2k+1}=(-1)\\left(1+\\tfrac1{2k+1}\\right)=-1-\\tfrac1{2k+1}\\to -1$.\n\nAssim ha duas subsequencias com limites distintos, $1$ e $-1$. Se $(x_n)$ convergisse, toda subsequencia teria o mesmo limite; como isso falha, $(x_n)$ **diverge**.\n\nOs limites subsequenciais sao exatamente $\\{1,-1\\}$ (qualquer subsequencia se decompoe em partes par/impar, cujos limites de acumulacao sao $1$ e/ou $-1$). Logo o maior e o menor sao\n$$\\limsup x_n=1,\\qquad \\liminf x_n=-1.\\qquad\\blacksquare$$",
+          "steps": [
+            "Separe a sequencia nos indices pares e impares.",
+            "Calcule x_{2k}=1+1/(2k)->1 e x_{2k+1}=-1-1/(2k+1)->-1.",
+            "Como duas subsequencias tem limites diferentes, a sequencia diverge.",
+            "Identifique o conjunto de limites subsequenciais {1,-1} e leia limsup=1, liminf=-1."
+          ]
+        },
+        {
+          "prompt": "Prove que toda sequência de Cauchy é limitada.",
+          "hint": "Use $\\varepsilon=1$ para controlar a cauda e inclua os finitos termos iniciais no máximo.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** Toda sequencia de Cauchy $(x_n)$ e limitada.\n\n**Prova.** Aplicando a definicao de Cauchy com $\\varepsilon=1$, existe $N\\in\\mathbb{N}$ tal que\n$$m,n\\ge N\\ \\Rightarrow\\ |x_m-x_n|<1.$$\nEm particular, tomando $m=N$, para todo $n\\ge N$:\n$$|x_n|=|x_n-x_N+x_N|\\le |x_n-x_N|+|x_N|<1+|x_N|.$$\nAssim a **cauda** $\\{x_n:n\\ge N\\}$ e limitada por $1+|x_N|$. Os termos iniciais $x_1,\\dots,x_{N-1}$ sao em numero finito. Tomando\n$$M=\\max\\{|x_1|,\\dots,|x_{N-1}|,\\ 1+|x_N|\\},$$\nvale $|x_n|\\le M$ para todo $n\\in\\mathbb{N}$. Logo $(x_n)$ e limitada. $\\blacksquare$",
+          "steps": [
+            "Use a definicao de Cauchy com epsilon=1 para obter um indice N.",
+            "Fixe m=N: para n>=N, |x_n|<1+|x_N|, controlando a cauda.",
+            "Inclua os finitos termos iniciais x_1,...,x_{N-1} num maximo.",
+            "Defina M como o maximo entre esses valores e conclua |x_n|<=M para todo n."
+          ]
+        },
+        {
+          "prompt": "Dê exemplo de sequência de Cauchy em $\\mathbb{Q}$ que não converge em $\\mathbb{Q}$, e explique por que isso não contradiz o Critério de Cauchy em $\\mathbb{R}$.",
+          "hint": "Tome aproximações decimais (ou de Newton) de $\\sqrt2$; elas são de Cauchy mas o limite $\\sqrt2$ é irracional.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Existe sequencia de Cauchy em $\\mathbb{Q}$ que nao converge em $\\mathbb{Q}$; isso nao contradiz o Criterio de Cauchy em $\\mathbb{R}$.\n\n**Construcao.** Tome as aproximacoes decimais de $\\sqrt2$:\n$$a_1=1{,}4,\\quad a_2=1{,}41,\\quad a_3=1{,}414,\\quad a_4=1{,}4142,\\ \\dots$$\nonde $a_k$ e o truncamento de $\\sqrt2$ com $k$ casas decimais. Cada $a_k\\in\\mathbb{Q}$.\n\n*E de Cauchy.* Para $m>n$, $a_m$ e $a_n$ coincidem ate a $n$-esima casa, logo $|a_m-a_n|\\le 10^{-n}$. Dado $\\varepsilon>0$, escolha $N$ com $10^{-N}<\\varepsilon$; entao $m,n\\ge N\\Rightarrow|a_m-a_n|\\le 10^{-\\min(m,n)}\\le 10^{-N}<\\varepsilon$.\n\n*Nao converge em $\\mathbb{Q}$.* Em $\\mathbb{R}$, $a_k\\to\\sqrt2$. Se $(a_k)$ convergisse a algum $q\\in\\mathbb{Q}$, pela unicidade do limite em $\\mathbb{R}$ teriamos $q=\\sqrt2$, absurdo pois $\\sqrt2\\notin\\mathbb{Q}$. Logo nao ha limite **em $\\mathbb{Q}$**.\n\n*Por que nao contradiz o Criterio em $\\mathbb{R}$.* O Criterio de Cauchy (Cauchy $\\Rightarrow$ convergente) usa a **completude**, propriedade de $\\mathbb{R}$ que $\\mathbb{Q}$ nao possui. Em $\\mathbb{R}$ a sequencia de fato converge (a $\\sqrt2$); a falha e apenas que o limite escapa de $\\mathbb{Q}$, refletindo que $\\mathbb{Q}$ tem buracos. $\\blacksquare$",
+          "steps": [
+            "Escolha as aproximacoes decimais truncadas de sqrt(2), todas racionais.",
+            "Mostre que sao de Cauchy: |a_m-a_n|<=10^{-min(m,n)}.",
+            "Note que em R elas convergem a sqrt(2), irracional.",
+            "Conclua que nao ha limite em Q (senao sqrt(2) seria racional).",
+            "Explique que o Criterio de Cauchy exige completude, que Q nao tem; em R nao ha contradicao."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de subsequência",
+          "back": "$(x_{n_k})$ com índices estritamente crescentes $n_1<n_2<\\cdots$."
+        },
+        {
+          "front": "Teorema de Bolzano-Weierstrass",
+          "back": "Toda sequência limitada de reais tem subsequência convergente."
+        },
+        {
+          "front": "Definição de sequência de Cauchy",
+          "back": "$\\forall\\varepsilon>0\\ \\exists N\\ \\forall m,n\\ge N:\\ |x_m-x_n|<\\varepsilon$."
+        },
+        {
+          "front": "Critério de Cauchy em $\\mathbb{R}$",
+          "back": "Uma sequência de reais converge sse é de Cauchy."
+        },
+        {
+          "front": "Quando $(x_n)$ converge via $\\limsup/\\liminf$?",
+          "back": "Sse $\\liminf x_n=\\limsup x_n$ (e este valor comum é o limite)."
+        },
+        {
+          "front": "$\\limsup x_n$ em fórmula",
+          "back": "$\\limsup x_n=\\inf_n\\sup_{k\\ge n}x_k$ (maior limite subsequencial)."
+        },
+        {
+          "front": "Teste de divergência por subsequências",
+          "back": "Se duas subsequências têm limites distintos, a sequência diverge."
+        },
+        {
+          "front": "Por que Cauchy não basta em $\\mathbb{Q}$?",
+          "back": "$\\mathbb{Q}$ não é completo; aproximações de $\\sqrt2$ são de Cauchy mas não convergem em $\\mathbb{Q}$."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Rudin, Principles of Mathematical Analysis, cap. 3 (Teoremas 3.6, 3.11)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lages Lima, Análise Real vol. 1, cap. 3",
+          "ref": "livro"
+        },
+        {
+          "title": "Abbott, Understanding Analysis, seções 2.5–2.6",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Escreva a definicao de subsequencia (indices estritamente crescentes) e de limite subsequencial; pratique calcular limsup e liminf em exemplos oscilantes.",
+          "Demonstre o lema dos pontos de pico (subsequencia monotona) e, a partir dele, o Teorema de Bolzano-Weierstrass.",
+          "Estude a definicao de sequencia de Cauchy e a prova do Criterio de Cauchy em R (Cauchy <=> convergente), identificando onde a completude entra.",
+          "Assista a um video sobre Bolzano-Weierstrass e sequencias de Cauchy; refaca o esboco da volta do Criterio.",
+          "Volte ao app, resolva os testes e anote o principal (pontos de pico, BW, Cauchy)."
+        ],
+        "searchQueries": [
+          "subsequencia limite subsequencial limsup liminf exemplos",
+          "lema dos pontos de pico subsequencia monotona demonstracao",
+          "teorema de Bolzano-Weierstrass demonstracao",
+          "sequencia de Cauchy criterio convergencia R demonstracao",
+          "monotone subsequence theorem peak points proof",
+          "Cauchy sequence complete R Bolzano Weierstrass"
+        ],
+        "videos": [
+          {
+            "title": "Bolzano-Weierstrass Theorem",
+            "channel": "Dr. Peyam",
+            "note": "Procure o video sobre Bolzano-Weierstrass e o argumento de subsequencia monotona."
+          },
+          {
+            "title": "Cauchy sequences and completeness",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Serie Real Analysis; videos sobre Cauchy sequences e o criterio de convergencia."
+          },
+          {
+            "title": "limsup e liminf de sequencias",
+            "channel": "Matematica Universitaria",
+            "note": "Busque as aulas de limite superior/inferior e subsequencias com exemplos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap.3 (Teoremas 3.6, 3.11)",
+            "where": "Walter Rudin"
+          },
+          {
+            "title": "Understanding Analysis, secoes 2.5-2.6",
+            "where": "Stephen Abbott"
+          },
+          {
+            "title": "Analise Real vol.1, cap.3",
+            "where": "Elon Lages Lima, IMPA"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-1-05-series",
+      "title": "Séries numéricas",
+      "tagline": "Somas infinitas sob controle: convergência, testes e o paradoxo dos rearranjos.",
+      "objectives": [
+        "Ao final você consegue definir convergência de uma série via somas parciais e aplicar o teste do termo geral.",
+        "Ao final você consegue usar os testes da comparação, da razão (d'Alembert) e da raiz (Cauchy) para séries de termos positivos.",
+        "Ao final você consegue distinguir convergência absoluta de condicional e aplicar o teste de Leibniz.",
+        "Ao final você consegue determinar a convergência das $p$-séries e da série harmônica.",
+        "Ao final você consegue enunciar o Teorema do Rearranjo de Riemann e explicar suas consequências."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Série e somas parciais",
+          "statement": "A série $\\sum_{n=1}^\\infty a_n$ converge se a sequência das somas parciais $s_N=\\sum_{n=1}^{N}a_n$ converge; o limite é a soma da série."
+        },
+        {
+          "term": "Convergência absoluta",
+          "statement": "$\\sum a_n$ converge absolutamente se $\\sum|a_n|$ converge. Convergência absoluta implica convergência; a recíproca é falsa."
+        },
+        {
+          "term": "Convergência condicional",
+          "statement": "$\\sum a_n$ converge mas $\\sum|a_n|$ diverge, como em $\\sum (-1)^{n+1}/n$. Sensível a rearranjos."
+        },
+        {
+          "term": "Série geométrica",
+          "statement": "$\\sum_{n=0}^\\infty r^n$ converge sse $|r|<1$, com soma $\\frac{1}{1-r}$. Padrão de comparação fundamental."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teste do termo geral",
+          "statement": "Se $\\sum a_n$ converge, então $a_n\\to 0$. (Contrapositiva: se $a_n\\not\\to 0$, a série diverge.)",
+          "whyItMatters": "Filtro de divergência imediato; mas atenção: $a_n\\to 0$ não garante convergência (a harmônica é o contraexemplo)."
+        },
+        {
+          "name": "Teste da comparação",
+          "statement": "Se $0\\le a_n\\le b_n$ e $\\sum b_n$ converge, então $\\sum a_n$ converge; se $\\sum a_n$ diverge, então $\\sum b_n$ diverge.",
+          "whyItMatters": "Reduz uma série desconhecida a uma série padrão (geométrica ou $p$-série); base de quase toda análise de convergência."
+        },
+        {
+          "name": "Testes da razão e da raiz",
+          "statement": "Seja $a_n>0$. Se $\\limsup\\sqrt[n]{a_n}<1$ a série converge; se $>1$ diverge (teste da raiz). Se $\\lim a_{n+1}/a_n=L<1$ converge; se $>1$ diverge (teste da razão).",
+          "whyItMatters": "Decidem rapidamente séries com fatoriais e potências; o teste da raiz é estritamente mais forte que o da razão."
+        },
+        {
+          "name": "Teste de Leibniz (série alternada)",
+          "statement": "Se $(b_n)$ é não crescente, $b_n\\ge 0$ e $b_n\\to 0$, então $\\sum (-1)^{n+1}b_n$ converge, e o erro de truncamento é majorado por $b_{N+1}$.",
+          "whyItMatters": "Fornece a convergência condicional de $\\sum(-1)^{n+1}/n$ e um controle de erro útil em aplicações numéricas."
+        },
+        {
+          "name": "Teorema do Rearranjo de Riemann",
+          "statement": "Se $\\sum a_n$ converge condicionalmente, então para qualquer $S\\in\\mathbb{R}\\cup\\{\\pm\\infty\\}$ existe um rearranjo dos termos cuja soma é $S$.",
+          "whyItMatters": "Mostra que comutatividade infinita não é gratuita: apenas séries absolutamente convergentes podem ser reordenadas livremente sem mudar a soma."
+        }
+      ],
+      "summary": "Uma série é, por definição, o limite da sequência de somas parciais — toda a teoria de séries é, portanto, teoria de sequências aplicada. O primeiro reflexo deve ser o teste do termo geral: se $a_n$ não tende a zero, a série diverge; mas o recíproco falha espetacularmente na série harmônica $\\sum 1/n$, que diverge apesar de $1/n\\to 0$. As $p$-séries $\\sum 1/n^p$ (convergentes exatamente para $p>1$) e a série geométrica formam o catálogo de referência contra o qual comparamos tudo o mais, via o teste da comparação. Para séries com fatoriais e potências, os testes da razão e da raiz dão respostas rápidas, com o teste da raiz sendo o mais poderoso.\n\nA distinção entre convergência absoluta e condicional é sutil e profunda. Convergência absoluta é robusta: a série converge e pode ser reordenada à vontade. Convergência condicional é frágil: o Teorema do Rearranjo de Riemann mostra que, reordenando os termos de uma série condicionalmente convergente, podemos obter qualquer soma desejada — ou fazê-la divergir. Isso desmente a intuição de que somas infinitas são apenas somas grandes, e explica por que insistimos em convergência absoluta sempre que precisamos manipular séries com liberdade.",
+      "commonPitfalls": [
+        "Concluir convergência de $a_n\\to 0$: a harmônica $\\sum 1/n$ diverge mesmo com termo geral indo a zero.",
+        "Aplicar o teste da razão no caso $L=1$, em que ele é inconclusivo (compare $\\sum 1/n$ e $\\sum 1/n^2$, ambas com $L=1$).",
+        "Usar a comparação $0\\le a_n\\le b_n$ sem garantir que os termos são não negativos.",
+        "Reordenar livremente uma série condicionalmente convergente esperando a mesma soma; só convergência absoluta autoriza isso."
+      ],
+      "worked": "**Convergência das $p$-séries.** Afirmamos que $\\sum_{n=1}^\\infty \\tfrac{1}{n^p}$ converge sse $p>1$.\n\n*Caso $p\\le 1$:* então $\\tfrac1{n^p}\\ge\\tfrac1n$ e, pela comparação com a harmônica (que diverge, pois suas somas parciais crescem sem limite ao agrupar blocos de comprimento potência de $2$), a série diverge.\n\n*Caso $p>1$ (condensação de Cauchy):* a série $\\sum a_n$ com $a_n=1/n^p$ decrescente converge sse $\\sum 2^k a_{2^k}=\\sum 2^k\\cdot 2^{-kp}=\\sum (2^{1-p})^k$ converge. Como $2^{1-p}<1$ para $p>1$, esta é uma série geométrica de razão $<1$, logo converge. Portanto a $p$-série converge. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que a série harmônica $\\sum_{n=1}^\\infty \\frac1n$ diverge.",
+          "hint": "Agrupe os termos em blocos $[2^{k}+1,\\ 2^{k+1}]$; cada bloco soma mais que $1/2$, então as somas parciais crescem sem limite.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** A serie harmonica $\\displaystyle\\sum_{n=1}^{\\infty}\\frac1n$ diverge.\n\n**Prova (agrupamento em blocos).** Considere as somas parciais $s_N=\\sum_{n=1}^N\\frac1n$. Agrupe os termos em blocos $[2^{k}+1,\\ 2^{k+1}]$, cada um com $2^{k}$ termos, todos $\\ge\\dfrac1{2^{k+1}}$:\n$$\\sum_{n=2^{k}+1}^{2^{k+1}}\\frac1n\\ \\ge\\ 2^{k}\\cdot\\frac1{2^{k+1}}=\\frac12.$$\nSomando os blocos ate $N=2^{K}$:\n$$s_{2^{K}}=1+\\sum_{k=0}^{K-1}\\ \\sum_{n=2^{k}+1}^{2^{k+1}}\\frac1n\\ \\ge\\ 1+K\\cdot\\frac12.$$\nLogo $s_{2^{K}}\\ge 1+\\tfrac{K}{2}\\to\\infty$ quando $K\\to\\infty$. Como $(s_N)$ e crescente e possui subsequencia ilimitada, $(s_N)$ nao converge. Portanto a serie harmonica diverge. $\\blacksquare$",
+          "steps": [
+            "Considere as somas parciais e agrupe os termos em blocos [2^k+1, 2^{k+1}].",
+            "Mostre que cada bloco tem 2^k termos, todos >= 1/2^{k+1}, somando >= 1/2.",
+            "Some K blocos: s_{2^K} >= 1 + K/2.",
+            "Conclua que as somas parciais crescem sem limite, logo a serie diverge."
+          ]
+        },
+        {
+          "prompt": "Determine para quais $x\\in\\mathbb{R}$ a série $\\sum_{n=1}^\\infty \\frac{x^n}{n}$ converge.",
+          "hint": "Use o teste da razão para o raio ($|x|<1$ converge, $|x|>1$ diverge) e analise as extremidades $x=1$ (harmônica) e $x=-1$ (Leibniz) separadamente.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{x^n}{n}$ converge se, e somente se, $x\\in[-1,1)$.\n\n**Prova.** Seja $a_n=\\dfrac{x^n}{n}$.\n\n*Raio (teste da razao).* Para $x\\ne0$,\n$$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\left|\\frac{x^{n+1}/(n+1)}{x^n/n}\\right|=|x|\\cdot\\frac{n}{n+1}\\to|x|.$$\nLogo, se $|x|<1$ a serie converge (absolutamente) e, se $|x|>1$, $a_n\\not\\to0$ e diverge. Falta analisar $x=1$ e $x=-1$.\n\n*$x=1$:* $\\sum\\frac1n$ e a serie harmonica, que **diverge**.\n\n*$x=-1$:* $\\sum\\dfrac{(-1)^n}{n}$; a sequencia $b_n=\\tfrac1n$ e decrescente com $b_n\\to0$, logo pelo **teste de Leibniz** a serie **converge** (condicionalmente).\n\nCombinando: convergencia para $|x|<1$ e para $x=-1$, divergencia para $|x|>1$ e $x=1$. Portanto o conjunto de convergencia e $[-1,1)$. $\\blacksquare$",
+          "steps": [
+            "Aplique o teste da razao a |a_n|: a razao tende a |x|.",
+            "Conclua convergencia para |x|<1 e divergencia para |x|>1.",
+            "Analise x=1 separadamente: da a harmonica, que diverge.",
+            "Analise x=-1: serie alternada com termos decrescentes -> 0, converge por Leibniz.",
+            "Junte tudo: o conjunto de convergencia e [-1,1)."
+          ]
+        },
+        {
+          "prompt": "Mostre que convergência absoluta implica convergência.",
+          "hint": "Mostre que as somas parciais formam uma sequência de Cauchy usando $\\left|\\sum_{n=m}^{k}a_n\\right|\\le\\sum_{n=m}^{k}|a_n|$ e o Critério de Cauchy.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Se $\\sum|a_n|$ converge, entao $\\sum a_n$ converge (convergencia absoluta implica convergencia).\n\n**Prova (Criterio de Cauchy para series).** Seja $s_N=\\sum_{n=1}^N a_n$ e $t_N=\\sum_{n=1}^N|a_n|$. Por hipotese $(t_N)$ converge, logo e de Cauchy: dado $\\varepsilon>0$, existe $N$ tal que para $k\\ge m\\ge N$,\n$$\\sum_{n=m}^{k}|a_n|=|t_k-t_{m-1}|<\\varepsilon.$$\nEntao, pela desigualdade triangular,\n$$|s_k-s_{m-1}|=\\left|\\sum_{n=m}^{k}a_n\\right|\\le\\sum_{n=m}^{k}|a_n|<\\varepsilon.$$\nAssim $(s_N)$ e de Cauchy em $\\mathbb{R}$ e, pela completude, converge. Logo $\\sum a_n$ converge. $\\blacksquare$",
+          "steps": [
+            "Traduza convergencia de sum|a_n| em: as somas parciais t_N sao de Cauchy.",
+            "Escreva o pedaco de cauda das somas parciais de a_n e aplique a desigualdade triangular.",
+            "Domine |soma de m a k de a_n| por soma de m a k de |a_n| < epsilon.",
+            "Conclua que (s_N) e de Cauchy e, por completude de R, converge."
+          ]
+        },
+        {
+          "prompt": "Dê um rearranjo da série $\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n}$ que tenha soma diferente da original $\\ln 2$.",
+          "hint": "Tome dois termos positivos para cada termo negativo (padrão $+,+,-,+,+,-,\\dots$); a soma resultante é $\\tfrac32\\ln 2$. Justifique reagrupando os termos.",
+          "difficulty": 5,
+          "solution": "**Afirmacao.** A serie $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n}=1-\\tfrac12+\\tfrac13-\\cdots=\\ln2$ admite um rearranjo com soma $\\tfrac32\\ln2\\ne\\ln2$.\n\n**Construcao (padrao dois positivos, um negativo).** Reordene tomando dois termos impares (positivos) para cada termo par (negativo):\n$$1+\\tfrac13-\\tfrac12+\\tfrac15+\\tfrac17-\\tfrac14+\\tfrac19+\\tfrac1{11}-\\tfrac16+\\cdots$$\n\n*Por que a soma muda.* Seja $H_N=\\sum_{k=1}^N\\tfrac1k$; sabe-se que $H_N=\\ln N+\\gamma+o(1)$. As somas parciais da serie **original** ate $2N$ termos valem\n$$A_{2N}=H_{2N}-H_N\\to\\ln2.$$\nNo rearranjo, apos $3N$ termos ja usamos os positivos $\\tfrac1{1},\\tfrac13,\\dots,\\tfrac1{4N-1}$ (os primeiros $2N$ impares) e os negativos $\\tfrac12,\\tfrac14,\\dots,\\tfrac1{2N}$ (os primeiros $N$ pares). A soma parcial e\n$$B_{3N}=\\sum_{j=1}^{2N}\\frac1{2j-1}-\\sum_{j=1}^{N}\\frac1{2j}=\\Big(H_{4N}-\\tfrac12H_{2N}\\Big)-\\tfrac12H_{N},$$\npois $\\sum_{j=1}^{2N}\\frac1{2j-1}=H_{4N}-\\frac12H_{2N}$ e $\\sum_{j=1}^{N}\\frac1{2j}=\\frac12H_N$. Usando $H_M=\\ln M+\\gamma+o(1)$,\n$$B_{3N}=\\ln(4N)-\\tfrac12\\ln(2N)-\\tfrac12\\ln N+o(1)=\\ln4-\\tfrac12\\ln2+o(1)=\\tfrac32\\ln2+o(1).$$\nLogo $B_{3N}\\to\\tfrac32\\ln2$. Como os termos $\\to0$, as somas parciais intermediarias tem o mesmo limite, e o rearranjo soma $\\tfrac32\\ln2$.\n\nIsso ilustra o Teorema do Rearranjo de Riemann: por ser apenas **condicionalmente** convergente, a serie pode ser reordenada mudando a soma. $\\blacksquare$",
+          "steps": [
+            "Escolha o rearranjo com padrao +,+,- (dois positivos para cada negativo).",
+            "Use a assintotica H_N=ln N+gamma+o(1) das somas harmonicas.",
+            "Expresse a soma parcial B_{3N} em termos de H_{4N}, H_{2N} e H_N.",
+            "Simplifique para obter B_{3N}=3/2 ln2 + o(1).",
+            "Conclua a soma 3/2 ln2, exemplificando o Teorema do Rearranjo de Riemann."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de convergência de $\\sum a_n$",
+          "back": "A sequência das somas parciais $s_N=\\sum_{n=1}^N a_n$ converge."
+        },
+        {
+          "front": "Teste do termo geral",
+          "back": "Se $\\sum a_n$ converge então $a_n\\to 0$; logo $a_n\\not\\to 0\\Rightarrow$ diverge."
+        },
+        {
+          "front": "$p$-série: quando converge?",
+          "back": "$\\sum 1/n^p$ converge sse $p>1$."
+        },
+        {
+          "front": "Série geométrica $\\sum_{n\\ge 0} r^n$",
+          "back": "Converge sse $|r|<1$, com soma $\\frac{1}{1-r}$."
+        },
+        {
+          "front": "Teste da razão (d'Alembert)",
+          "back": "Se $\\lim a_{n+1}/a_n=L<1$ converge; $L>1$ diverge; $L=1$ inconclusivo."
+        },
+        {
+          "front": "Teste de Leibniz",
+          "back": "$(b_n)$ decrescente, $b_n\\to 0$ $\\Rightarrow$ $\\sum(-1)^{n+1}b_n$ converge; erro $\\le b_{N+1}$."
+        },
+        {
+          "front": "Convergência absoluta vs condicional",
+          "back": "Absoluta: $\\sum|a_n|$ converge (robusta a rearranjo). Condicional: $\\sum a_n$ converge mas $\\sum|a_n|$ diverge."
+        },
+        {
+          "front": "Teorema do Rearranjo de Riemann",
+          "back": "Série condicionalmente convergente pode ser rearranjada para somar qualquer valor em $\\mathbb{R}\\cup\\{\\pm\\infty\\}$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Rudin, Principles of Mathematical Analysis, cap. 3 (séries)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lages Lima, Análise Real vol. 1, cap. 4",
+          "ref": "livro"
+        },
+        {
+          "title": "Abbott, Understanding Analysis, cap. 2 (seção 2.7)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe a definicao: serie converge <=> a sequencia de somas parciais converge; aplique o teste do termo geral como primeiro filtro.",
+          "Estude os testes da comparacao, razao (d'Alembert) e raiz (Cauchy) para termos positivos, e a condensacao de Cauchy para as p-series.",
+          "Distinga convergencia absoluta de condicional; estude o teste de Leibniz e o Teorema do Rearranjo de Riemann.",
+          "Assista a uma aula sobre testes de convergencia de series e refaca o exemplo das p-series.",
+          "Volte ao app, resolva os testes e anote o principal (catalogo geometrica/p-serie, razao/raiz, Leibniz, rearranjo)."
+        ],
+        "searchQueries": [
+          "convergencia de series somas parciais teste do termo geral",
+          "teste da razao e da raiz series demonstracao",
+          "p-serie serie harmonica condensacao de Cauchy",
+          "convergencia absoluta versus condicional teste de Leibniz",
+          "teorema do rearranjo de Riemann series condicionais",
+          "Riemann rearrangement theorem conditional convergence"
+        ],
+        "videos": [
+          {
+            "title": "Testes de convergencia de series",
+            "channel": "Equaciona com Paulo Pereira",
+            "note": "Busque a playlist de series: teste da razao, raiz e comparacao com exemplos."
+          },
+          {
+            "title": "Series and convergence tests (Real Analysis)",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Serie Real Analysis; videos sobre absolute vs conditional convergence."
+          },
+          {
+            "title": "Riemann Rearrangement Theorem",
+            "channel": "Dr. Peyam",
+            "note": "Procure o video sobre rearranjos de series condicionalmente convergentes."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap.3 (series)",
+            "where": "Walter Rudin"
+          },
+          {
+            "title": "Understanding Analysis, secao 2.7",
+            "where": "Stephen Abbott"
+          },
+          {
+            "title": "Analise Real vol.1, cap.4",
+            "where": "Elon Lages Lima, IMPA"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-1-06-topologia-reta",
+      "title": "Topologia da reta",
+      "tagline": "Abertos, fechados, fecho e pontos de acumulação: a geometria sem distância de $\\mathbb{R}$.",
+      "objectives": [
+        "Ao final você consegue definir conjunto aberto e conjunto fechado e provar as propriedades de união e interseção.",
+        "Ao final você consegue distinguir ponto interior, ponto de acumulação, ponto aderente e ponto isolado.",
+        "Ao final você consegue calcular interior, fecho e fronteira de conjuntos da reta.",
+        "Ao final você consegue caracterizar fechados via limites de sequências.",
+        "Ao final você consegue enunciar a versão para conjuntos do Teorema de Bolzano-Weierstrass (todo conjunto infinito limitado tem ponto de acumulação)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Conjunto aberto",
+          "statement": "$A\\subseteq\\mathbb{R}$ é aberto se para todo $x\\in A$ existe $\\varepsilon>0$ com $(x-\\varepsilon,x+\\varepsilon)\\subseteq A$. Intervalos abertos são o protótipo."
+        },
+        {
+          "term": "Conjunto fechado",
+          "statement": "$F$ é fechado se seu complementar $\\mathbb{R}\\setminus F$ é aberto; equivalentemente, $F$ contém todos os seus pontos de acumulação."
+        },
+        {
+          "term": "Ponto de acumulação",
+          "statement": "$x$ é ponto de acumulação de $A$ se toda vizinhança de $x$ contém algum ponto de $A$ diferente de $x$. O conjunto deles é o derivado $A'$."
+        },
+        {
+          "term": "Fecho, interior, fronteira",
+          "statement": "Fecho $\\overline{A}=A\\cup A'$ (menor fechado contendo $A$); interior $\\operatorname{int}A$ (maior aberto contido em $A$); fronteira $\\partial A=\\overline{A}\\setminus\\operatorname{int}A$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Estrutura dos abertos e fechados",
+          "statement": "União arbitrária de abertos é aberta e interseção finita de abertos é aberta; dualmente, interseção arbitrária de fechados é fechada e união finita de fechados é fechada.",
+          "whyItMatters": "São os axiomas de uma topologia; estabelecem o cálculo de conjuntos abertos/fechados que sustenta continuidade e compacidade."
+        },
+        {
+          "name": "Caracterização sequencial dos fechados",
+          "statement": "$F$ é fechado se, e somente se, toda sequência de pontos de $F$ que converge tem seu limite em $F$.",
+          "whyItMatters": "Traduz topologia em linguagem de sequências, permitindo provar que conjuntos são fechados usando limites, técnica onipresente em Análise."
+        },
+        {
+          "name": "Bolzano-Weierstrass para conjuntos",
+          "statement": "Todo subconjunto infinito e limitado de $\\mathbb{R}$ possui pelo menos um ponto de acumulação.",
+          "whyItMatters": "É a forma topológica da compacidade de intervalos fechados; garante a existência de pontos de acumulação necessária em diversas demonstrações de existência."
+        },
+        {
+          "name": "Caracterização do fecho",
+          "statement": "$x\\in\\overline{A}$ se, e somente se, existe uma sequência de pontos de $A$ convergindo para $x$, e isso ocorre sse toda vizinhança de $x$ intersecta $A$.",
+          "whyItMatters": "Conecta as três visões — fecho, densidade e limites de sequências — em um único critério operacional."
+        }
+      ],
+      "summary": "A topologia da reta abstrai do Cálculo a noção de proximidade sem precisar do valor numérico da distância. Um aberto é um conjunto em que todo ponto tem folga em volta de si; um fechado é o complementar de um aberto, ou — equivalência fundamental — um conjunto que captura todos os seus pontos de acumulação. A partir das definições $\\varepsilon$ obtemos os axiomas de topologia: uniões arbitrárias e interseções finitas de abertos permanecem abertas, com a dualidade correspondente para fechados. As assimetrias (interseção infinita de abertos pode não ser aberta, como $\\bigcap_n(-1/n,1/n)=\\{0\\}$) merecem atenção e aparecem em provas.\n\nO conceito mais delicado é o de ponto de acumulação, que não exige pertencer ao conjunto, apenas ser cercado por pontos dele. A partir dele definimos o fecho $\\overline{A}=A\\cup A'$ e obtemos a caracterização sequencial dos fechados, que é a ferramenta prática número um: para mostrar que $F$ é fechado, tomamos uma sequência convergente em $F$ e verificamos que o limite cai em $F$. A versão para conjuntos do Teorema de Bolzano-Weierstrass — todo conjunto infinito limitado tem ponto de acumulação — prenuncia a compacidade do próximo subtópico e fornece existência de pontos de acumulação onde precisarmos.",
+      "commonPitfalls": [
+        "Pensar que aberto e fechado são opostos: $\\mathbb{R}$ e $\\varnothing$ são ambos abertos e fechados, e $[0,1)$ não é nem um nem outro.",
+        "Confundir ponto de acumulação com ponto do conjunto: em $A=\\{1/n:n\\in\\mathbb{N}\\}$, o ponto de acumulação $0$ não pertence a $A$, e os pontos de $A$ são todos isolados.",
+        "Afirmar que interseção arbitrária de abertos é aberta; $\\bigcap_n(-1/n,1/n)=\\{0\\}$ é fechado.",
+        "Calcular fecho como apenas o conjunto mais a fronteira sem incluir pontos de acumulação corretamente; melhor usar $\\overline{A}=\\{x:\\text{toda vizinhança encontra }A\\}$."
+      ],
+      "worked": "**$A=\\{1/n:n\\in\\mathbb{N}\\}$: fecho e pontos de acumulação.**\n\n*Pontos de acumulação:* $0$ é ponto de acumulação, pois toda vizinhança $(-\\varepsilon,\\varepsilon)$ contém $1/n$ para $n$ grande (arquimediano), e nenhum $1/n$ é de acumulação, pois em torno de cada $1/n$ há uma vizinhança que isola só esse ponto. Logo $A'=\\{0\\}$.\n\n*Fecho:* $\\overline{A}=A\\cup A'=A\\cup\\{0\\}=\\{0\\}\\cup\\{1/n:n\\in\\mathbb{N}\\}$.\n\n*Aberto/fechado:* $A$ não é fechado (não contém seu ponto de acumulação $0$) e não é aberto (nenhum $1/n$ tem vizinhança contida em $A$). Já $\\overline{A}$ é fechado. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que a interseção de dois abertos é aberta, mas que a interseção de infinitos abertos pode não ser.",
+          "hint": "Para dois abertos, dado $x$ na interseção tome o menor dos dois raios. Para o contraexemplo, use $\\bigcap_n(-1/n,1/n)=\\{0\\}$.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** A intersecao de dois abertos e aberta; a intersecao de infinitos abertos pode nao ser.\n\n**Dois abertos.** Sejam $A,B$ abertos e $x\\in A\\cap B$. Como $A$ e aberto, existe $\\varepsilon_1>0$ com $(x-\\varepsilon_1,x+\\varepsilon_1)\\subseteq A$; como $B$ e aberto, existe $\\varepsilon_2>0$ com $(x-\\varepsilon_2,x+\\varepsilon_2)\\subseteq B$. Tome $\\varepsilon=\\min\\{\\varepsilon_1,\\varepsilon_2\\}>0$. Entao\n$$(x-\\varepsilon,x+\\varepsilon)\\subseteq A\\cap B.$$\nComo $x$ era arbitrario, $A\\cap B$ e aberto.\n\n**Contraexemplo com infinitos.** Para $n\\in\\mathbb{N}$ seja $A_n=\\left(-\\tfrac1n,\\tfrac1n\\right)$, aberto. Entao\n$$\\bigcap_{n=1}^{\\infty}A_n=\\{0\\}.$$\nDe fato, $0\\in A_n$ para todo $n$; e se $x\\ne0$, pela arquimediana existe $n$ com $\\tfrac1n<|x|$, logo $x\\notin A_n$. Mas $\\{0\\}$ **nao** e aberto (nenhum intervalo $(-\\varepsilon,\\varepsilon)$ esta contido em $\\{0\\}$). Logo a intersecao infinita de abertos pode nao ser aberta. $\\blacksquare$",
+          "steps": [
+            "Para dois abertos, tome x na intersecao e obtenha um raio para cada aberto.",
+            "Escolha o menor raio: a bola correspondente cabe em ambos, logo em A cap B.",
+            "Para o contraexemplo, use A_n=(-1/n,1/n).",
+            "Mostre que a intersecao e {0} (arquimediano) e que {0} nao e aberto."
+          ]
+        },
+        {
+          "prompt": "Prove a caracterização sequencial: $F$ é fechado sse toda sequência convergente em $F$ tem limite em $F$.",
+          "hint": "Na ida, se o limite não estivesse em $F$, estaria no aberto complementar, contradizendo a convergência. Na volta, mostre que o complementar é aberto por contraposição.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** $F$ e fechado se, e somente se, toda sequencia convergente de pontos de $F$ tem seu limite em $F$.\n\n**($\\Rightarrow$)** Seja $F$ fechado e $(x_n)$ em $F$ com $x_n\\to x$. Suponha, por absurdo, $x\\notin F$. Entao $x\\in\\mathbb{R}\\setminus F$, que e aberto, logo existe $\\varepsilon>0$ com $(x-\\varepsilon,x+\\varepsilon)\\subseteq\\mathbb{R}\\setminus F$. Mas $x_n\\to x$ fornece $n$ com $|x_n-x|<\\varepsilon$, isto e, $x_n\\in(x-\\varepsilon,x+\\varepsilon)\\subseteq\\mathbb{R}\\setminus F$, contradizendo $x_n\\in F$. Logo $x\\in F$.\n\n**($\\Leftarrow$)** Suponha que todo limite de sequencia convergente em $F$ pertence a $F$; mostremos que $\\mathbb{R}\\setminus F$ e aberto (por contraposicao). Seja $x\\in\\mathbb{R}\\setminus F$. Se **nenhuma** vizinhanca $(x-\\tfrac1n,x+\\tfrac1n)$ estivesse contida em $\\mathbb{R}\\setminus F$, entao para cada $n$ existiria $x_n\\in F$ com $|x_n-x|<\\tfrac1n$. Assim $x_n\\to x$ com $x_n\\in F$, e a hipotese daria $x\\in F$, contradicao. Logo existe $n$ com $(x-\\tfrac1n,x+\\tfrac1n)\\subseteq\\mathbb{R}\\setminus F$, isto e, $\\mathbb{R}\\setminus F$ e aberto e $F$ e fechado. $\\blacksquare$",
+          "steps": [
+            "Na ida, use que R\\F e aberto: se o limite escapasse de F, cairia num aberto disjunto de F.",
+            "Mas os termos da sequencia, proximos do limite, entrariam nesse aberto, contradizendo estarem em F.",
+            "Na volta, prove que R\\F e aberto por contraposicao.",
+            "Se x em R\\F nao tivesse vizinhanca em R\\F, construiria x_n em F com x_n->x.",
+            "A hipotese forcaria x em F, absurdo; logo R\\F aberto e F fechado."
+          ]
+        },
+        {
+          "prompt": "Determine interior, fecho e fronteira de $\\mathbb{Q}\\cap[0,1]$.",
+          "hint": "Pela densidade de $\\mathbb{Q}$ e dos irracionais, todo ponto de $[0,1]$ é aderente e nenhum tem vizinhança inteiramente em $\\mathbb{Q}$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Para $E=\\mathbb{Q}\\cap[0,1]$ tem-se $\\operatorname{int}E=\\varnothing$, $\\overline{E}=[0,1]$ e $\\partial E=[0,1]$.\n\n**Interior.** Seja $x\\in E$. Toda vizinhanca $(x-\\varepsilon,x+\\varepsilon)$ contem, pela densidade dos **irracionais**, algum ponto irracional, que nao esta em $E$. Logo nenhum ponto de $E$ e interior: $\\operatorname{int}E=\\varnothing$.\n\n**Fecho.** Claramente $\\overline{E}\\subseteq[0,1]$ (pois $[0,1]$ e fechado e contem $E$). Reciprocamente, seja $x\\in[0,1]$; pela densidade de $\\mathbb{Q}$, toda vizinhanca de $x$ contem racionais de $[0,1]$, ou seja, pontos de $E$. Assim $x\\in\\overline{E}$. Logo $\\overline{E}=[0,1]$.\n\n**Fronteira.** $\\partial E=\\overline{E}\\setminus\\operatorname{int}E=[0,1]\\setminus\\varnothing=[0,1]$. $\\blacksquare$",
+          "steps": [
+            "Para o interior, use a densidade dos irracionais: toda vizinhanca de um racional contem irracionais fora de E.",
+            "Conclua int E = vazio.",
+            "Para o fecho, note E subset [0,1] fechado, logo fecho subset [0,1]; use densidade de Q para o contrario.",
+            "Obtenha fecho E = [0,1].",
+            "Calcule a fronteira como fecho menos interior = [0,1]."
+          ]
+        },
+        {
+          "prompt": "Prove a versão para conjuntos do Teorema de Bolzano-Weierstrass.",
+          "hint": "De um conjunto infinito limitado extraia uma sequência de pontos distintos; aplique Bolzano-Weierstrass sequencial e verifique que o limite é ponto de acumulação do conjunto.",
+          "difficulty": 4,
+          "solution": "**Afirmacao (Bolzano-Weierstrass para conjuntos).** Todo subconjunto $S\\subseteq\\mathbb{R}$ infinito e limitado possui ao menos um ponto de acumulacao.\n\n**Prova.** Como $S$ e infinito, podemos escolher uma sequencia $(x_n)$ de **pontos distintos** de $S$ (escolha $x_1\\in S$; como $S$ e infinito, $S\\setminus\\{x_1\\}\\ne\\varnothing$, escolha $x_2$; e assim por diante). Essa sequencia esta contida em $S$, que e limitado, logo $(x_n)$ e limitada.\n\nPelo Teorema de Bolzano-Weierstrass **sequencial**, existe subsequencia $x_{n_k}\\to a$ para algum $a\\in\\mathbb{R}$.\n\nAfirmamos que $a$ e ponto de acumulacao de $S$. Seja $(a-\\varepsilon,a+\\varepsilon)$ uma vizinhanca qualquer. Como $x_{n_k}\\to a$, existem infinitos indices $k$ com $x_{n_k}\\in(a-\\varepsilon,a+\\varepsilon)$. Como os $x_{n_k}$ sao distintos, no maximo um deles e igual a $a$; logo ha pontos de $S$ nessa vizinhanca **diferentes de $a$**. Portanto $a$ e ponto de acumulacao de $S$. $\\blacksquare$",
+          "steps": [
+            "Extraia de S infinito uma sequencia de pontos distintos.",
+            "Note que ela e limitada (esta em S limitado) e aplique Bolzano-Weierstrass sequencial.",
+            "Obtenha subsequencia convergente x_{n_k}->a.",
+            "Verifique que toda vizinhanca de a contem infinitos x_{n_k}, todos distintos.",
+            "Conclua que ha pontos de S diferentes de a em cada vizinhanca: a e ponto de acumulacao."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de conjunto aberto em $\\mathbb{R}$",
+          "back": "$A$ é aberto se todo $x\\in A$ tem $\\varepsilon>0$ com $(x-\\varepsilon,x+\\varepsilon)\\subseteq A$."
+        },
+        {
+          "front": "Definição de conjunto fechado",
+          "back": "Complementar é aberto; equivalentemente, contém todos os seus pontos de acumulação."
+        },
+        {
+          "front": "Ponto de acumulação de $A$",
+          "back": "$x$ tal que toda vizinhança contém ponto de $A$ distinto de $x$."
+        },
+        {
+          "front": "Fecho $\\overline{A}$",
+          "back": "$\\overline{A}=A\\cup A'$; o menor conjunto fechado que contém $A$."
+        },
+        {
+          "front": "Conjuntos abertos e fechados ao mesmo tempo em $\\mathbb{R}$",
+          "back": "Apenas $\\varnothing$ e $\\mathbb{R}$."
+        },
+        {
+          "front": "Caracterização sequencial de fechado",
+          "back": "$F$ fechado sse todo limite de sequência convergente em $F$ pertence a $F$."
+        },
+        {
+          "front": "Bolzano-Weierstrass (conjuntos)",
+          "back": "Todo conjunto infinito e limitado de $\\mathbb{R}$ tem ponto de acumulação."
+        },
+        {
+          "front": "Pontos de acumulação de $\\{1/n\\}$",
+          "back": "Apenas $\\{0\\}$; os pontos $1/n$ são todos isolados."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Rudin, Principles of Mathematical Analysis, cap. 2",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lages Lima, Análise Real vol. 1, cap. 5",
+          "ref": "livro"
+        },
+        {
+          "title": "Abbott, Understanding Analysis, cap. 3",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Escreva as definicoes epsilon de aberto e fechado e prove as propriedades de uniao/intersecao, atentando as assimetrias (intersecao infinita de abertos).",
+          "Distinga ponto interior, de acumulacao, aderente e isolado; treine calcular interior, fecho e fronteira em exemplos como {1/n} e Q cap [0,1].",
+          "Demonstre a caracterizacao sequencial dos fechados e a versao para conjuntos de Bolzano-Weierstrass.",
+          "Assista a uma aula de topologia da reta (abertos, fechados, fecho) e refaca o exemplo trabalhado.",
+          "Volte ao app, resolva os testes e anote o principal (caracterizacao sequencial, fecho=A uniao A')."
+        ],
+        "searchQueries": [
+          "conjunto aberto e fechado na reta definicao propriedades",
+          "ponto de acumulacao aderente isolado interior fecho fronteira",
+          "caracterizacao sequencial de conjunto fechado demonstracao",
+          "interior fecho fronteira de Q interseccao [0,1]",
+          "Bolzano Weierstrass para conjuntos ponto de acumulacao",
+          "open closed sets real line topology proof"
+        ],
+        "videos": [
+          {
+            "title": "Topologia da reta: abertos e fechados",
+            "channel": "Matematica Universitaria",
+            "note": "Busque as aulas de topologia de R: definicoes de aberto, fechado e fecho."
+          },
+          {
+            "title": "Open and closed sets (Real Analysis)",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Serie Real Analysis / Topology; videos sobre open sets, closure e accumulation points."
+          },
+          {
+            "title": "Limit points and closed sets",
+            "channel": "Dr. Peyam",
+            "note": "Procure videos sobre limit points e caracterizacao de conjuntos fechados."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap.2",
+            "where": "Walter Rudin"
+          },
+          {
+            "title": "Understanding Analysis, cap.3",
+            "where": "Stephen Abbott"
+          },
+          {
+            "title": "Analise Real vol.1, cap.5",
+            "where": "Elon Lages Lima, IMPA"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-1-07-limites-continuidade",
+      "title": "Limites de funções e continuidade",
+      "tagline": "$\\varepsilon$–$\\delta$ e o critério de Heine: continuidade como preservação de limites.",
+      "objectives": [
+        "Ao final você consegue escrever a definição $\\varepsilon$–$\\delta$ de limite de função e de continuidade em um ponto.",
+        "Ao final você consegue usar a caracterização sequencial (Heine) de limite e de continuidade.",
+        "Ao final você consegue provar a álgebra e a composição de funções contínuas.",
+        "Ao final você consegue classificar descontinuidades e analisar continuidade lateral.",
+        "Ao final você consegue enunciar e usar a caracterização topológica: $f$ contínua sse a pré-imagem de todo aberto é aberta."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Limite de função",
+          "statement": "$\\lim_{x\\to a}f(x)=L$ se para todo $\\varepsilon>0$ existe $\\delta>0$ tal que $0<|x-a|<\\delta\\Rightarrow |f(x)-L|<\\varepsilon$. Exige $a$ ponto de acumulação do domínio."
+        },
+        {
+          "term": "Continuidade em um ponto",
+          "statement": "$f$ é contínua em $a$ se $\\lim_{x\\to a}f(x)=f(a)$, isto é, para todo $\\varepsilon>0$ existe $\\delta>0$ com $|x-a|<\\delta\\Rightarrow |f(x)-f(a)|<\\varepsilon$."
+        },
+        {
+          "term": "Critério de Heine",
+          "statement": "$f$ é contínua em $a$ se, e somente se, para toda sequência $x_n\\to a$ no domínio vale $f(x_n)\\to f(a)$."
+        },
+        {
+          "term": "Tipos de descontinuidade",
+          "statement": "Removível (limite existe mas difere de $f(a)$), de salto (limites laterais existem e diferem) e essencial/de segunda espécie (algum limite lateral não existe)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Equivalência de Heine",
+          "statement": "$\\lim_{x\\to a}f(x)=L$ se, e somente se, para toda sequência $x_n\\to a$ com $x_n\\ne a$ tem-se $f(x_n)\\to L$.",
+          "whyItMatters": "Transfere todo o arsenal de sequências para o estudo de limites de funções e fornece o método padrão de provar descontinuidade (basta uma sequência que viole)."
+        },
+        {
+          "name": "Álgebra das funções contínuas",
+          "statement": "Se $f,g$ são contínuas em $a$, então $f+g$, $f-g$, $fg$ são contínuas em $a$, e $f/g$ é contínua em $a$ se $g(a)\\ne 0$.",
+          "whyItMatters": "Garante que polinômios, funções racionais e combinações usuais são contínuas sem prova caso a caso."
+        },
+        {
+          "name": "Continuidade da composta",
+          "statement": "Se $f$ é contínua em $a$ e $g$ é contínua em $f(a)$, então $g\\circ f$ é contínua em $a$.",
+          "whyItMatters": "Permite construir funções contínuas complexas a partir de blocos simples, essencial em todo o cálculo de continuidade."
+        },
+        {
+          "name": "Caracterização topológica da continuidade",
+          "statement": "$f:\\mathbb{R}\\to\\mathbb{R}$ é contínua (em todo o domínio) se, e somente se, $f^{-1}(A)$ é aberto para todo aberto $A\\subseteq\\mathbb{R}$.",
+          "whyItMatters": "É a definição que se generaliza a espaços topológicos e que torna transparentes as provas de que continuidade preserva compacidade e conexidade."
+        }
+      ],
+      "summary": "A definição $\\varepsilon$–$\\delta$ de limite formaliza a frase intuitiva os valores de $f(x)$ ficam próximos de $L$ quando $x$ está próximo de $a$: dado um alvo de precisão $\\varepsilon$ na imagem, encontramos uma tolerância $\\delta$ no domínio que a garante. A continuidade é o caso em que esse limite coincide com o valor da função, $\\lim_{x\\to a}f(x)=f(a)$. O critério de Heine é a ponte que torna tudo isso operacional: continuidade equivale a preservar limites de sequências, de modo que podemos usar a álgebra de sequências para deduzir a álgebra e a composição de funções contínuas, e podemos refutar continuidade exibindo uma única sequência $x_n\\to a$ com $f(x_n)\\not\\to f(a)$.\n\nA classificação de descontinuidades (removível, de salto, essencial) organiza os modos pelos quais a continuidade pode falhar, e a continuidade lateral refina a análise em pontos de fronteira. O ponto culminante é a caracterização topológica: $f$ é contínua se, e somente se, a pré-imagem de todo aberto é aberta. Essa formulação, livre de $\\varepsilon$ e $\\delta$, é a que se generaliza para espaços métricos e topológicos e a que fornece as provas mais limpas de que a continuidade preserva compacidade e conexidade — os dois grandes teoremas do próximo subtópico.",
+      "commonPitfalls": [
+        "Exigir $x=a$ no limite: a definição de $\\lim_{x\\to a}f(x)$ usa $0<|x-a|$, ignorando o valor em $a$; por isso limite e valor podem diferir.",
+        "Afirmar que pré-imagem de aberto é aberta ponto a ponto; a caracterização topológica vale para continuidade global, não para um único ponto.",
+        "Esquecer a condição $g(a)\\ne 0$ no quociente de funções contínuas.",
+        "Usar o critério de Heine só com uma sequência específica para provar continuidade; para provar continuidade é preciso que valha para TODA sequência, embora UMA sequência baste para refutar."
+      ],
+      "worked": "**A função de Dirichlet é descontínua em todo ponto.** Seja $f(x)=1$ se $x\\in\\mathbb{Q}$ e $f(x)=0$ se $x\\notin\\mathbb{Q}$.\n\nFixe qualquer $a\\in\\mathbb{R}$. Pela densidade de $\\mathbb{Q}$ existe uma sequência de racionais $r_n\\to a$, e pela densidade dos irracionais existe uma sequência de irracionais $s_n\\to a$. Então $f(r_n)=1\\to 1$ e $f(s_n)=0\\to 0$. Como duas sequências tendendo a $a$ produzem limites distintos das imagens, pelo critério de Heine $\\lim_{x\\to a}f(x)$ não existe e, em particular, $f$ não é contínua em $a$. Como $a$ era arbitrário, $f$ é descontínua em toda parte. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove pela definição $\\varepsilon$–$\\delta$ que $f(x)=x^2$ é contínua em $a=3$.",
+          "hint": "Fatore $|x^2-9|=|x-3||x+3|$ e limite $|x+3|$ supondo $|x-3|<1$; tome $\\delta=\\min\\{1,\\varepsilon/7\\}$.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** $f(x)=x^2$ e continua em $a=3$.\n\n**Prova ($\\varepsilon$-$\\delta$).** Seja $\\varepsilon>0$. Queremos $\\delta>0$ tal que $|x-3|<\\delta\\Rightarrow|x^2-9|<\\varepsilon$. Fatore:\n$$|x^2-9|=|x-3|\\,|x+3|.$$\nPrecisamos limitar $|x+3|$. Se exigirmos $|x-3|<1$, entao $2<x<4$, donde $5<x+3<7$ e $|x+3|<7$. Assim, sob $|x-3|<1$,\n$$|x^2-9|<7\\,|x-3|.$$\nTome $\\delta=\\min\\{1,\\ \\varepsilon/7\\}$. Entao, para $|x-3|<\\delta$, valem $|x-3|<1$ (logo $|x+3|<7$) e $|x-3|<\\varepsilon/7$, de modo que\n$$|x^2-9|<7\\,|x-3|<7\\cdot\\frac{\\varepsilon}{7}=\\varepsilon.$$\nLogo $f$ e continua em $3$. $\\blacksquare$",
+          "steps": [
+            "Fatore |x^2-9|=|x-3||x+3| para isolar o fator perto de a=3.",
+            "Restrinja |x-3|<1 para controlar |x+3|<7.",
+            "Sob essa restricao, |x^2-9|<7|x-3|.",
+            "Escolha delta=min{1, epsilon/7} e verifique |x^2-9|<epsilon."
+          ]
+        },
+        {
+          "prompt": "Demonstre o critério de Heine para continuidade em ambas as direções.",
+          "hint": "A ida é a álgebra de limites. Na volta, prove a contrapositiva: se a continuidade falha para algum $\\varepsilon_0$, construa $x_n$ com $|x_n-a|<1/n$ e $|f(x_n)-f(a)|\\ge\\varepsilon_0$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao (Criterio de Heine).** $f$ e continua em $a$ se, e somente se, para toda sequencia $x_n\\to a$ (no dominio) vale $f(x_n)\\to f(a)$.\n\n**($\\Rightarrow$)** Suponha $f$ continua em $a$ e $x_n\\to a$. Seja $\\varepsilon>0$. Pela continuidade existe $\\delta>0$ com $|x-a|<\\delta\\Rightarrow|f(x)-f(a)|<\\varepsilon$. Como $x_n\\to a$, existe $N$ com $|x_n-a|<\\delta$ para $n\\ge N$; entao $|f(x_n)-f(a)|<\\varepsilon$ para $n\\ge N$. Logo $f(x_n)\\to f(a)$.\n\n**($\\Leftarrow$)** Provamos a contrapositiva: se $f$ **nao** e continua em $a$, existe sequencia $x_n\\to a$ com $f(x_n)\\not\\to f(a)$. Negar a continuidade significa: existe $\\varepsilon_0>0$ tal que para todo $\\delta>0$ ha $x$ com $|x-a|<\\delta$ mas $|f(x)-f(a)|\\ge\\varepsilon_0$. Tomando $\\delta=\\tfrac1n$, obtenha $x_n$ com\n$$|x_n-a|<\\tfrac1n\\quad\\text{e}\\quad |f(x_n)-f(a)|\\ge\\varepsilon_0.$$\nEntao $x_n\\to a$, mas $f(x_n)\\not\\to f(a)$ (a distancia fica $\\ge\\varepsilon_0$). Isso prova a contrapositiva; logo, se toda sequencia $x_n\\to a$ da $f(x_n)\\to f(a)$, entao $f$ e continua em $a$. $\\blacksquare$",
+          "steps": [
+            "Na ida, use o delta da continuidade e o N da convergencia x_n->a para obter f(x_n)->f(a).",
+            "Na volta, prove a contrapositiva: assuma descontinuidade em a.",
+            "Negue a continuidade: existe epsilon_0 tal que para todo delta ha ponto ruim.",
+            "Tome delta=1/n e construa x_n->a com |f(x_n)-f(a)|>=epsilon_0.",
+            "Conclua que a violacao sequencial equivale a descontinuidade."
+          ]
+        },
+        {
+          "prompt": "Mostre que $g(x)=x$ se $x\\in\\mathbb{Q}$ e $g(x)=0$ se $x\\notin\\mathbb{Q}$ é contínua apenas em $x=0$.",
+          "hint": "Use Heine com sequências de racionais e irracionais; em $0$ ambas dão limite $0=g(0)$, e em $a\\ne 0$ os limites diferem.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** $g(x)=\\begin{cases}x,&x\\in\\mathbb{Q}\\\\ 0,&x\\notin\\mathbb{Q}\\end{cases}$ e continua apenas em $x=0$.\n\n**Continuidade em $0$.** Note $g(0)=0$. Para todo $x$, $|g(x)|\\le|x|$ (se $x$ racional, $|g(x)|=|x|$; se irracional, $|g(x)|=0\\le|x|$). Dado $\\varepsilon>0$, tome $\\delta=\\varepsilon$: se $|x-0|<\\delta$ entao $|g(x)-g(0)|=|g(x)|\\le|x|<\\varepsilon$. Logo $g$ e continua em $0$.\n\n**Descontinuidade em $a\\ne0$.** Use Heine. Pela densidade de $\\mathbb{Q}$, existe uma sequencia de racionais $r_n\\to a$; entao $g(r_n)=r_n\\to a$. Pela densidade dos irracionais, existe $s_n\\to a$ irracional; entao $g(s_n)=0\\to 0$. Como $a\\ne0$, os dois limites $a$ e $0$ sao distintos, portanto $\\lim_{x\\to a}g(x)$ nao existe e $g$ e descontinua em $a$.\n\nLogo $g$ e continua exatamente em $x=0$. $\\blacksquare$",
+          "steps": [
+            "Observe a estimativa uniforme |g(x)|<=|x| valida para todo x.",
+            "Em a=0, use delta=epsilon: |g(x)-g(0)|<=|x|<epsilon, logo continua.",
+            "Em a!=0, tome racionais r_n->a: g(r_n)=r_n->a.",
+            "Tome irracionais s_n->a: g(s_n)=0->0.",
+            "Como a!=0, os limites diferem; por Heine g e descontinua em a."
+          ]
+        },
+        {
+          "prompt": "Prove a caracterização topológica em uma direção: se $f$ é contínua então $f^{-1}(A)$ é aberto para todo aberto $A$.",
+          "hint": "Tome $x\\in f^{-1}(A)$; como $A$ é aberto, há $\\varepsilon$ em torno de $f(x)$, e a continuidade fornece $\\delta$ em torno de $x$ cuja imagem cai em $A$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Se $f:\\mathbb{R}\\to\\mathbb{R}$ e continua, entao $f^{-1}(A)$ e aberto para todo aberto $A\\subseteq\\mathbb{R}$.\n\n**Prova.** Seja $A$ aberto e $x\\in f^{-1}(A)$, isto e, $f(x)\\in A$. Como $A$ e aberto, existe $\\varepsilon>0$ com\n$$(f(x)-\\varepsilon,\\ f(x)+\\varepsilon)\\subseteq A.$$\nPela continuidade de $f$ em $x$, para esse $\\varepsilon$ existe $\\delta>0$ tal que\n$$|y-x|<\\delta\\ \\Rightarrow\\ |f(y)-f(x)|<\\varepsilon,$$\nou seja, $f\\big((x-\\delta,x+\\delta)\\big)\\subseteq(f(x)-\\varepsilon,f(x)+\\varepsilon)\\subseteq A$. Logo $(x-\\delta,x+\\delta)\\subseteq f^{-1}(A)$.\n\nComo todo $x\\in f^{-1}(A)$ possui uma vizinhanca contida em $f^{-1}(A)$, o conjunto $f^{-1}(A)$ e aberto. $\\blacksquare$",
+          "steps": [
+            "Tome x na pre-imagem, de modo que f(x) esta no aberto A.",
+            "Use que A e aberto para obter uma bola epsilon em torno de f(x) dentro de A.",
+            "Aplique a continuidade em x para achar delta com f((x-delta,x+delta)) dentro dessa bola.",
+            "Conclua que (x-delta,x+delta) esta em f^{-1}(A); como x era arbitrario, a pre-imagem e aberta."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição $\\varepsilon$–$\\delta$ de $\\lim_{x\\to a}f(x)=L$",
+          "back": "$\\forall\\varepsilon>0\\ \\exists\\delta>0:\\ 0<|x-a|<\\delta\\Rightarrow |f(x)-L|<\\varepsilon$."
+        },
+        {
+          "front": "Definição de continuidade em $a$",
+          "back": "$\\lim_{x\\to a}f(x)=f(a)$; equivalentemente $\\forall\\varepsilon\\,\\exists\\delta:\\ |x-a|<\\delta\\Rightarrow|f(x)-f(a)|<\\varepsilon$."
+        },
+        {
+          "front": "Critério de Heine (continuidade)",
+          "back": "$f$ contínua em $a$ sse $x_n\\to a\\Rightarrow f(x_n)\\to f(a)$ para toda sequência."
+        },
+        {
+          "front": "Caracterização topológica de continuidade",
+          "back": "$f$ contínua sse $f^{-1}(\\text{aberto})$ é aberto."
+        },
+        {
+          "front": "Por que limite ignora o valor em $a$?",
+          "back": "A definição usa $0<|x-a|<\\delta$, excluindo $x=a$; por isso pode haver descontinuidade removível."
+        },
+        {
+          "front": "Descontinuidade de salto",
+          "back": "Limites laterais existem mas são diferentes."
+        },
+        {
+          "front": "Função de Dirichlet: continuidade?",
+          "back": "Descontínua em todo ponto (racionais $\\to 1$, irracionais $\\to 0$)."
+        },
+        {
+          "front": "Composição de contínuas",
+          "back": "$f$ contínua em $a$ e $g$ contínua em $f(a)$ $\\Rightarrow$ $g\\circ f$ contínua em $a$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Rudin, Principles of Mathematical Analysis, cap. 4",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lages Lima, Análise Real vol. 1, cap. 6–7",
+          "ref": "livro"
+        },
+        {
+          "title": "Bartle e Sherbert, Introduction to Real Analysis, caps. 4–5",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Escreva a definicao epsilon-delta de limite de funcao e de continuidade em um ponto, sublinhando a condicao 0<|x-a| no limite.",
+          "Estude o Criterio de Heine (caracterizacao sequencial) e use-o para provar a algebra e a composicao de funcoes continuas.",
+          "Classifique descontinuidades (removivel, salto, essencial) e estude a caracterizacao topologica (pre-imagem de aberto e aberta).",
+          "Assista a uma aula sobre continuidade epsilon-delta e refaca o exemplo da funcao de Dirichlet.",
+          "Volte ao app, resolva os testes e anote o principal (Heine, classificacao, caracterizacao topologica)."
+        ],
+        "searchQueries": [
+          "definicao epsilon delta limite de funcao continuidade",
+          "criterio de Heine continuidade caracterizacao sequencial",
+          "algebra e composicao de funcoes continuas demonstracao",
+          "tipos de descontinuidade removivel salto essencial",
+          "continuidade pre-imagem de aberto e aberta demonstracao",
+          "epsilon delta continuity Heine sequential criterion proof"
+        ],
+        "videos": [
+          {
+            "title": "Continuidade epsilon-delta",
+            "channel": "Matematica Universitaria",
+            "note": "Busque as aulas de limite de funcoes e continuidade epsilon-delta com exemplos."
+          },
+          {
+            "title": "Continuity and the sequential criterion",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Serie Real Analysis; videos sobre continuity, Heine criterion e topological characterization."
+          },
+          {
+            "title": "Funcao de Dirichlet e descontinuidades",
+            "channel": "Dr. Peyam",
+            "note": "Procure videos sobre a funcao de Dirichlet e exemplos de (des)continuidade."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap.4",
+            "where": "Walter Rudin"
+          },
+          {
+            "title": "Introduction to Real Analysis, caps.4-5",
+            "where": "Bartle & Sherbert"
+          },
+          {
+            "title": "Analise Real vol.1, caps.6-7",
+            "where": "Elon Lages Lima, IMPA"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-1-08-compacidade-conexidade",
+      "title": "Compacidade e conexidade",
+      "tagline": "Heine-Borel, Weierstrass e o Teorema do Valor Intermediário: por que funções contínuas se comportam bem.",
+      "objectives": [
+        "Ao final você consegue definir compacidade por coberturas abertas e enunciar o Teorema de Heine-Borel.",
+        "Ao final você consegue provar a equivalência entre compacidade e compacidade sequencial em $\\mathbb{R}$.",
+        "Ao final você consegue provar que a imagem contínua de um compacto é compacta e deduzir o Teorema de Weierstrass.",
+        "Ao final você consegue caracterizar os conexos de $\\mathbb{R}$ como intervalos.",
+        "Ao final você consegue demonstrar o Teorema do Valor Intermediário via conexidade."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Compacidade (cobertura aberta)",
+          "statement": "$K\\subseteq\\mathbb{R}$ é compacto se toda cobertura de $K$ por abertos admite subcobertura finita."
+        },
+        {
+          "term": "Compacidade sequencial",
+          "statement": "$K$ é sequencialmente compacto se toda sequência em $K$ tem subsequência convergente com limite em $K$. Em $\\mathbb{R}$ (e em espaços métricos) equivale à compacidade."
+        },
+        {
+          "term": "Conjunto conexo",
+          "statement": "$C$ é conexo se não pode ser escrito como união de dois abertos não vazios disjuntos (relativos a $C$). Em $\\mathbb{R}$, conexos são exatamente os intervalos."
+        },
+        {
+          "term": "Teorema de Weierstrass",
+          "statement": "Toda função contínua em um compacto $[a,b]$ é limitada e atinge máximo e mínimo."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Heine-Borel",
+          "statement": "Um subconjunto de $\\mathbb{R}$ é compacto se, e somente se, é fechado e limitado.",
+          "whyItMatters": "Caracteriza compacidade de forma verificável e é a base de quase toda demonstração de existência que usa compacidade (máximos, continuidade uniforme, etc.)."
+        },
+        {
+          "name": "Compacidade equivale a compacidade sequencial",
+          "statement": "Em $\\mathbb{R}$, $K$ é compacto se, e somente se, toda sequência em $K$ possui subsequência convergindo a um ponto de $K$.",
+          "whyItMatters": "Permite escolher a forma de compacidade mais conveniente para cada prova e conecta o capítulo de sequências (Bolzano-Weierstrass) à topologia."
+        },
+        {
+          "name": "Continuidade preserva compacidade",
+          "statement": "Se $f$ é contínua e $K$ é compacto, então $f(K)$ é compacto.",
+          "whyItMatters": "Implicação imediata: $f(K)$ é fechado e limitado, donde tem máximo e mínimo — esta é a prova moderna do Teorema de Weierstrass."
+        },
+        {
+          "name": "Conexos de $\\mathbb{R}$ são intervalos",
+          "statement": "$C\\subseteq\\mathbb{R}$ é conexo se, e somente se, $C$ é um intervalo (possivelmente degenerado).",
+          "whyItMatters": "Reduz conexidade na reta a um critério algébrico simples e é o ingrediente da prova conceitual do TVI."
+        },
+        {
+          "name": "Teorema do Valor Intermediário",
+          "statement": "Se $f:[a,b]\\to\\mathbb{R}$ é contínua e $y$ está entre $f(a)$ e $f(b)$, então existe $c\\in[a,b]$ com $f(c)=y$.",
+          "whyItMatters": "Garantia de existência de raízes e o resultado de continuidade mais usado em concursos e aplicações; decorre de a imagem contínua de um conexo ser conexa."
+        }
+      ],
+      "summary": "Compacidade é a propriedade topológica que mais rende em Análise: ela transforma afirmações infinitas em finitas. A definição por coberturas abertas é abstrata, mas o Teorema de Heine-Borel a torna concreta em $\\mathbb{R}$ — compacto é o mesmo que fechado e limitado. A equivalência com a compacidade sequencial liga esse capítulo diretamente a Bolzano-Weierstrass: de toda sequência em um compacto extraímos subsequência convergente cujo limite permanece no compacto. A consequência operacional decisiva é que a continuidade preserva compacidade: a imagem de um compacto por função contínua é fechada e limitada, logo possui máximo e mínimo. Esse é o conteúdo do Teorema de Weierstrass, que garante que problemas de otimização contínua sobre compactos têm solução.\n\nConexidade é a contrapartida que formaliza não ter buracos. Na reta, os conjuntos conexos são exatamente os intervalos, um fato simples de enunciar mas que organiza toda a intuição geométrica. Como a continuidade também preserva conexidade, a imagem de um intervalo por função contínua é um intervalo — e isso é precisamente o Teorema do Valor Intermediário, agora demonstrado conceitualmente em vez de por bisseção. Compacidade (existência de extremos) e conexidade (passagem por valores intermediários) são, juntas, a razão pela qual funções contínuas em intervalos fechados se comportam tão bem, e ambas reaparecerão em todo curso avançado de Análise.",
+      "commonPitfalls": [
+        "Achar que Heine-Borel (compacto = fechado e limitado) vale em qualquer espaço métrico; vale em $\\mathbb{R}^n$, mas falha em dimensão infinita.",
+        "Usar o Teorema de Weierstrass em intervalos abertos: $f(x)=1/x$ em $(0,1]$ ou $f(x)=x$ em $(0,1)$ mostram que a compacidade (fechado E limitado) é indispensável.",
+        "Confundir conexo com convexo, ou pensar que conjuntos com um único ponto não são conexos (são).",
+        "Aplicar o TVI sem continuidade em todo o intervalo fechado; uma única descontinuidade pode fazer a função pular o valor $y$."
+      ],
+      "worked": "**Imagem contínua de compacto é compacta (e Weierstrass).** Seja $f:[a,b]\\to\\mathbb{R}$ contínua.\n\nUse a caracterização sequencial. Tome qualquer sequência $(y_n)$ em $f([a,b])$; escreva $y_n=f(x_n)$ com $x_n\\in[a,b]$. Por Heine-Borel, $[a,b]$ é (sequencialmente) compacto, logo existe subsequência $x_{n_k}\\to c\\in[a,b]$. Pela continuidade (Heine), $y_{n_k}=f(x_{n_k})\\to f(c)\\in f([a,b])$. Assim toda sequência na imagem tem subsequência convergindo dentro da imagem, ou seja, $f([a,b])$ é compacto — portanto fechado e limitado.\n\nSendo $f([a,b])$ limitado, $M=\\sup f([a,b])$ existe; sendo fechado, $M\\in f([a,b])$, isto é, $M=f(x^*)$ para algum $x^*$. Logo $f$ atinge seu máximo (e, analogamente, seu mínimo). Este é o Teorema de Weierstrass. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que $[0,1]$ é compacto diretamente pela definição de cobertura aberta.",
+          "hint": "Seja $S$ o conjunto dos $x\\in[0,1]$ tais que $[0,x]$ admite subcobertura finita; mostre que $\\sup S\\in S$ e que $\\sup S=1$, usando que algum aberto cobre $\\sup S$.",
+          "difficulty": 5,
+          "solution": "**Afirmacao.** $[0,1]$ e compacto (definicao por coberturas abertas).\n\n**Prova.** Seja $\\mathcal{U}=\\{U_i\\}_{i\\in I}$ uma cobertura de $[0,1]$ por abertos. Defina\n$$S=\\{x\\in[0,1]:[0,x]\\ \\text{admite subcobertura finita de }\\mathcal{U}\\}.$$\n$S\\ne\\varnothing$ pois $0\\in S$ ($[0,0]=\\{0\\}$ e coberto por um unico $U_i$ que contem $0$). $S$ e limitado por $1$; seja $c=\\sup S\\in[0,1]$.\n\n*($c\\in S$.)* Existe $U_{i_0}\\in\\mathcal{U}$ com $c\\in U_{i_0}$; como $U_{i_0}$ e aberto, ha $\\varepsilon>0$ com $(c-\\varepsilon,c+\\varepsilon)\\subseteq U_{i_0}$. Como $c=\\sup S$, existe $x\\in S$ com $x>c-\\varepsilon$; entao $[0,x]$ tem subcobertura finita $\\{U_{i_1},\\dots,U_{i_m}\\}$. Acrescentando $U_{i_0}$, cobrimos $[0,x]\\cup(c-\\varepsilon,c+\\varepsilon)\\supseteq[0,c]$ com finitos abertos. Logo $c\\in S$.\n\n*($c=1$.)* Suponha $c<1$. Pelo mesmo $U_{i_0}$ e $\\varepsilon$, o intervalo $[0,\\ \\min\\{c+\\tfrac\\varepsilon2,1\\}]$ tambem e coberto por $\\{U_{i_0},U_{i_1},\\dots,U_{i_m}\\}$ (finito), logo $\\min\\{c+\\tfrac\\varepsilon2,1\\}\\in S$, contradizendo $c=\\sup S$. Portanto $c=1$, e como $c\\in S$, $[0,1]$ admite subcobertura finita. $\\blacksquare$",
+          "steps": [
+            "Defina S como o conjunto dos x tais que [0,x] tem subcobertura finita; note 0 em S.",
+            "Tome c=sup S (existe pela completude, S limitado por 1).",
+            "Mostre c em S: um aberto cobre c, e junto com a subcobertura finita de [0,x] (x proximo de c) cobre [0,c].",
+            "Mostre c=1: se c<1 poderiamos avancar um pouco alem de c, contradizendo o supremo.",
+            "Conclua que [0,1] tem subcobertura finita, logo e compacto."
+          ]
+        },
+        {
+          "prompt": "Exiba uma função contínua em $(0,1)$ que não atinge máximo, e explique qual hipótese de Weierstrass falha.",
+          "hint": "Tome $f(x)=x$ ou $f(x)=1/x$; o intervalo $(0,1)$ não é fechado, logo não é compacto.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** Existe funcao continua em $(0,1)$ que nao atinge maximo; a hipotese que falha em Weierstrass e a **compacidade** do dominio.\n\n**Exemplo.** $f(x)=x$ em $(0,1)$. $f$ e continua (ate Lipschitz). Seu supremo e\n$$\\sup_{x\\in(0,1)}f(x)=1,$$\nmas nenhum $x\\in(0,1)$ satisfaz $f(x)=1$, pois isso exigiria $x=1\\notin(0,1)$. Assim $f$ nao atinge maximo.\n\n**Qual hipotese falha.** O Teorema de Weierstrass exige dominio **compacto**. Em $\\mathbb{R}$, compacto = fechado e limitado (Heine-Borel). O intervalo $(0,1)$ e limitado mas **nao e fechado** (nao contem seus pontos de acumulacao $0$ e $1$), logo nao e compacto. Por isso Weierstrass nao se aplica.\n\n*Observacao.* Outro exemplo, ilustrando falha da limitacao da imagem, e $g(x)=1/x$ em $(0,1]$: continua, porem ilimitada (tende a $+\\infty$ quando $x\\to0^+$), tambem sem maximo. $\\blacksquare$",
+          "steps": [
+            "Escolha f(x)=x em (0,1), continua.",
+            "Calcule sup f = 1, nao atingido pois exigiria x=1 fora do dominio.",
+            "Identifique que Weierstrass pede dominio compacto (fechado e limitado).",
+            "Note que (0,1) e limitado mas nao fechado, logo nao compacto: a hipotese que falha."
+          ]
+        },
+        {
+          "prompt": "Prove o Teorema do Valor Intermediário usando que conexos de $\\mathbb{R}$ são intervalos.",
+          "hint": "$[a,b]$ é conexo; sua imagem por $f$ contínua é conexa, logo um intervalo, que contém $f(a)$ e $f(b)$ e portanto todo $y$ entre eles.",
+          "difficulty": 3,
+          "solution": "**Afirmacao (TVI).** Se $f:[a,b]\\to\\mathbb{R}$ e continua e $y$ esta entre $f(a)$ e $f(b)$, entao existe $c\\in[a,b]$ com $f(c)=y$.\n\n**Prova (via conexidade).** Usamos dois fatos: (i) $[a,b]$ e **conexo** (todo intervalo e conexo); (ii) a imagem de um conexo por funcao continua e conexa.\n\n*Continuidade preserva conexidade.* Suponha, por absurdo, que $f([a,b])=U\\cup V$ com $U,V$ abertos (relativos) nao vazios e disjuntos. Entao $f^{-1}(U)$ e $f^{-1}(V)$ sao abertos (pre-imagem de aberto por continua), nao vazios, disjuntos, e cobrem $[a,b]$ — uma cisao de $[a,b]$, contradizendo sua conexidade. Logo $f([a,b])$ e conexo.\n\n*Conclusao.* Sendo $f([a,b])$ um subconjunto conexo de $\\mathbb{R}$, ele e um **intervalo**. Ele contem $f(a)$ e $f(b)$; como intervalo, contem todos os pontos entre eles, em particular $y$. Assim existe $c\\in[a,b]$ com $f(c)=y$. $\\blacksquare$",
+          "steps": [
+            "Use que [a,b] e conexo (todo intervalo e conexo).",
+            "Mostre que continuidade preserva conexidade: uma cisao da imagem puxaria uma cisao de [a,b] via pre-imagens abertas.",
+            "Conclua que f([a,b]) e conexo em R, logo um intervalo.",
+            "Como o intervalo contem f(a) e f(b), contem todo y entre eles: existe c com f(c)=y."
+          ]
+        },
+        {
+          "prompt": "Mostre que todo polinômio de grau ímpar tem ao menos uma raiz real.",
+          "hint": "Analise os limites em $\\pm\\infty$ para obter valores de sinais opostos e aplique o TVI em um intervalo $[-R,R]$ grande.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Todo polinomio de grau impar com coeficientes reais tem ao menos uma raiz real.\n\n**Prova.** Seja $p(x)=a_nx^n+\\cdots+a_0$ com $n$ impar e $a_n\\ne0$. Sem perda de generalidade $a_n>0$ (senao troque $p$ por $-p$; as raizes sao as mesmas). Escreva, para $x\\ne0$,\n$$p(x)=a_nx^n\\Big(1+\\frac{a_{n-1}}{a_nx}+\\cdots+\\frac{a_0}{a_nx^n}\\Big).$$\nO fator entre parenteses tende a $1$ quando $|x|\\to\\infty$. Como $n$ e impar:\n$$\\lim_{x\\to+\\infty}p(x)=+\\infty,\\qquad \\lim_{x\\to-\\infty}p(x)=-\\infty.$$\nLogo existem $R>0$ grande com $p(R)>0$ e $p(-R)<0$. A funcao $p$ e continua em $[-R,R]$ e $0$ esta entre $p(-R)<0$ e $p(R)>0$. Pelo Teorema do Valor Intermediario, existe $c\\in(-R,R)$ com $p(c)=0$. $\\blacksquare$",
+          "steps": [
+            "Reduza ao caso a_n>0 e fatore p(x)=a_n x^n (1+o(1)) para grandes |x|.",
+            "Use que n impar da p(x)->+inf quando x->+inf e p(x)->-inf quando x->-inf.",
+            "Escolha R grande com p(R)>0 e p(-R)<0.",
+            "Aplique o TVI em [-R,R] com o valor 0 entre p(-R) e p(R) para obter uma raiz c."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de compacto (cobertura aberta)",
+          "back": "Toda cobertura por abertos admite subcobertura finita."
+        },
+        {
+          "front": "Teorema de Heine-Borel",
+          "back": "Em $\\mathbb{R}$, compacto $\\Leftrightarrow$ fechado e limitado."
+        },
+        {
+          "front": "Compacidade sequencial",
+          "back": "Toda sequência em $K$ tem subsequência convergente com limite em $K$; equivale a compacto em $\\mathbb{R}$."
+        },
+        {
+          "front": "Continuidade e compacidade",
+          "back": "$f$ contínua, $K$ compacto $\\Rightarrow$ $f(K)$ compacto."
+        },
+        {
+          "front": "Teorema de Weierstrass",
+          "back": "Contínua em $[a,b]$ é limitada e atinge máximo e mínimo."
+        },
+        {
+          "front": "Conexos de $\\mathbb{R}$",
+          "back": "São exatamente os intervalos (incluindo pontos e a reta toda)."
+        },
+        {
+          "front": "Teorema do Valor Intermediário",
+          "back": "$f$ contínua em $[a,b]$ assume todo valor entre $f(a)$ e $f(b)$."
+        },
+        {
+          "front": "Por que Weierstrass falha em $(0,1)$?",
+          "back": "$(0,1)$ não é compacto (não é fechado); ex.: $1/x$ ilimitada."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Rudin, Principles of Mathematical Analysis, caps. 2 e 4",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lages Lima, Análise Real vol. 1, caps. 5 e 7",
+          "ref": "livro"
+        },
+        {
+          "title": "Abbott, Understanding Analysis, caps. 3 e 4",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Escreva a definicao de compacidade por coberturas abertas e o enunciado de Heine-Borel; entenda por que fechado E limitado sao ambos necessarios.",
+          "Estude a equivalencia compacidade <=> compacidade sequencial em R e a prova de que imagem continua de compacto e compacta (Weierstrass).",
+          "Estude conexidade: conexos de R sao intervalos, e deduza o TVI via conexidade.",
+          "Assista a uma aula sobre Heine-Borel, Weierstrass e TVI e refaca o exemplo trabalhado.",
+          "Volte ao app, resolva os testes e anote o principal (Heine-Borel, Weierstrass, conexos=intervalos, TVI)."
+        ],
+        "searchQueries": [
+          "compacidade cobertura aberta subcobertura finita definicao",
+          "teorema de Heine-Borel fechado e limitado demonstracao",
+          "imagem continua de compacto e compacta teorema de Weierstrass",
+          "conjuntos conexos de R sao intervalos demonstracao",
+          "teorema do valor intermediario via conexidade",
+          "Heine Borel compactness intermediate value theorem proof"
+        ],
+        "videos": [
+          {
+            "title": "Compacidade e Heine-Borel",
+            "channel": "Matematica Universitaria",
+            "note": "Busque as aulas de compacidade, Heine-Borel e Weierstrass em R."
+          },
+          {
+            "title": "Compactness and Heine-Borel",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Serie Real Analysis; videos sobre compact sets, Heine-Borel e continuous image."
+          },
+          {
+            "title": "Intermediate Value Theorem via connectedness",
+            "channel": "Dr. Peyam",
+            "note": "Procure videos sobre conexidade e o Teorema do Valor Intermediario."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, caps.2 e 4",
+            "where": "Walter Rudin"
+          },
+          {
+            "title": "Understanding Analysis, caps.3 e 4",
+            "where": "Stephen Abbott"
+          },
+          {
+            "title": "Analise Real vol.1, caps.5 e 7",
+            "where": "Elon Lages Lima, IMPA"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-real-1-09-continuidade-uniforme",
+      "title": "Continuidade uniforme",
+      "tagline": "Quando o mesmo $\\delta$ serve para todos os pontos: Heine-Cantor e funções de Lipschitz.",
+      "objectives": [
+        "Ao final você consegue distinguir continuidade pontual de continuidade uniforme pela posição dos quantificadores.",
+        "Ao final você consegue decidir, em exemplos, se uma função é uniformemente contínua (e provar quando não for).",
+        "Ao final você consegue enunciar e provar o Teorema de Heine-Cantor (contínua em compacto $\\Rightarrow$ uniformemente contínua).",
+        "Ao final você consegue mostrar que funções de Lipschitz são uniformemente contínuas.",
+        "Ao final você consegue usar que funções uniformemente contínuas preservam sequências de Cauchy e admitem extensão contínua ao fecho."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Continuidade uniforme",
+          "statement": "$f:D\\to\\mathbb{R}$ é uniformemente contínua se para todo $\\varepsilon>0$ existe $\\delta>0$ (o mesmo para todo o domínio) tal que $|x-y|<\\delta\\Rightarrow |f(x)-f(y)|<\\varepsilon$."
+        },
+        {
+          "term": "Diferença para continuidade pontual",
+          "statement": "Na continuidade pontual, $\\delta$ pode depender do ponto; na uniforme, um único $\\delta$ serve para todos os pontos simultaneamente."
+        },
+        {
+          "term": "Função de Lipschitz",
+          "statement": "$f$ é Lipschitz se existe $L\\ge 0$ com $|f(x)-f(y)|\\le L|x-y|$ para todos $x,y$. Toda função Lipschitz é uniformemente contínua (tome $\\delta=\\varepsilon/L$)."
+        },
+        {
+          "term": "Critério sequencial de não uniformidade",
+          "statement": "$f$ não é uniformemente contínua sse existem sequências $(x_n),(y_n)$ com $|x_n-y_n|\\to 0$ mas $|f(x_n)-f(y_n)|\\not\\to 0$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Heine-Cantor",
+          "statement": "Se $f$ é contínua em um conjunto compacto $K$ (em particular em $[a,b]$), então $f$ é uniformemente contínua em $K$.",
+          "whyItMatters": "Garante uniformidade gratuitamente em intervalos fechados e limitados; é hipótese essencial na teoria da integral de Riemann e na aproximação de funções."
+        },
+        {
+          "name": "Lipschitz implica uniformemente contínua",
+          "statement": "Se $|f(x)-f(y)|\\le L|x-y|$ para todos $x,y$, então $f$ é uniformemente contínua.",
+          "whyItMatters": "Fornece um critério prático e suficiente para uniformidade, válido mesmo em domínios não compactos (ex.: $\\operatorname{sen}$ em $\\mathbb{R}$)."
+        },
+        {
+          "name": "Preservação de sequências de Cauchy",
+          "statement": "Se $f$ é uniformemente contínua e $(x_n)$ é de Cauchy no domínio, então $(f(x_n))$ é de Cauchy.",
+          "whyItMatters": "É o mecanismo que permite estender $f$ continuamente ao fecho do domínio e mostra por que $\\operatorname{sen}(1/x)$ não é uniformemente contínua em $(0,1)$."
+        },
+        {
+          "name": "Extensão ao fecho",
+          "statement": "Toda função uniformemente contínua em um domínio limitado $D$ admite uma única extensão contínua ao fecho $\\overline{D}$.",
+          "whyItMatters": "Justifica definir funções por densidade (ex.: estender de $\\mathbb{Q}$ a $\\mathbb{R}$) e é base de construções em Análise Funcional."
+        }
+      ],
+      "summary": "A continuidade uniforme é uma versão mais forte e mais global da continuidade: a diferença está inteiramente na ordem dos quantificadores. Na continuidade comum, primeiro fixamos o ponto $a$ e só depois encontramos um $\\delta$ que pode depender de $a$; na continuidade uniforme, exigimos um único $\\delta$ que funcione em todo o domínio de uma vez. Geometricamente, isso impede que a função fique arbitrariamente íngreme: $f(x)=x^2$ é contínua mas não uniformemente contínua em $\\mathbb{R}$, porque para pontos grandes pequenas variações de $x$ causam grandes variações de $f$; já $f(x)=1/x$ falha em $(0,1)$ por explodir perto de $0$, e $\\operatorname{sen}(1/x)$ falha por oscilar infinitamente rápido.\n\nO Teorema de Heine-Cantor é o resultado central: em um compacto, continuidade já implica continuidade uniforme — a uniformidade vem de graça. A prova mais limpa usa o critério sequencial e Bolzano-Weierstrass: se a uniformidade falhasse, teríamos sequências $x_n,y_n$ próximas com imagens distantes, e uma subsequência convergente geraria uma contradição com a continuidade no ponto-limite. As funções de Lipschitz fornecem uma classe ampla e prática de funções uniformemente contínuas, válida mesmo fora de compactos. Finalmente, a propriedade de preservar sequências de Cauchy revela o real significado da uniformidade e permite estender funções continuamente ao fecho do domínio, uma técnica que reaparece em Análise Funcional e na construção de $\\mathbb{R}$ via completamento.",
+      "commonPitfalls": [
+        "Trocar a ordem dos quantificadores e achar que toda função contínua é uniformemente contínua; isso só vale automaticamente em compactos.",
+        "Tentar usar Heine-Cantor em intervalos abertos ou ilimitados: $x^2$ em $\\mathbb{R}$ e $1/x$ em $(0,1)$ são contínuas mas não uniformemente contínuas.",
+        "Confundir Lipschitz com diferenciável; Lipschitz é mais fraco (ex.: $|x|$ é Lipschitz mas não diferenciável em $0$) e implica uniformidade sem precisar de derivada.",
+        "Esquecer que a extensão ao fecho requer domínio limitado e continuidade uniforme; continuidade simples não basta (ex.: $\\operatorname{sen}(1/x)$ não estende a $0$)."
+      ],
+      "worked": "**$f(x)=x^2$ não é uniformemente contínua em $\\mathbb{R}$.** Use o critério sequencial. Tome $x_n=n+\\tfrac1n$ e $y_n=n$. Então\n$$|x_n-y_n|=\\tfrac1n\\to 0,$$\nmas\n$$|f(x_n)-f(y_n)|=\\left(n+\\tfrac1n\\right)^2-n^2=2+\\tfrac1{n^2}\\to 2\\ne 0.$$\nLogo existem pontos arbitrariamente próximos cujas imagens permanecem afastadas por cerca de $2$, e nenhum $\\delta$ uniforme funciona; $f$ não é uniformemente contínua em $\\mathbb{R}$.\n\nObserve o contraste: restrita a um compacto $[-A,A]$, a mesma $f$ é uniformemente contínua por Heine-Cantor, e de fato é Lipschitz ali, pois $|x^2-y^2|=|x+y||x-y|\\le 2A|x-y|$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que $f(x)=\\sqrt{x}$ é uniformemente contínua em $[0,\\infty)$.",
+          "hint": "Use $|\\sqrt x-\\sqrt y|\\le\\sqrt{|x-y|}$ (eleve ambos os lados ao quadrado para verificar); então $\\delta=\\varepsilon^2$ serve.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** $f(x)=\\sqrt{x}$ e uniformemente continua em $[0,\\infty)$.\n\n**Lema.** Para $x,y\\ge0$ vale $|\\sqrt x-\\sqrt y|\\le\\sqrt{|x-y|}$.\n\n*Prova do lema.* Por simetria, suponha $x\\ge y\\ge0$. Entao $\\sqrt x\\ge\\sqrt y$ e\n$$(\\sqrt x-\\sqrt y)^2=x-2\\sqrt{xy}+y\\le x-2y+y=x-y=|x-y|,$$\npois $\\sqrt{xy}\\ge\\sqrt{y\\cdot y}=y$ (ja que $x\\ge y$). Extraindo raiz, $|\\sqrt x-\\sqrt y|\\le\\sqrt{|x-y|}$.\n\n**Uniformidade.** Seja $\\varepsilon>0$. Tome $\\delta=\\varepsilon^2$. Se $|x-y|<\\delta=\\varepsilon^2$, entao pelo lema\n$$|\\sqrt x-\\sqrt y|\\le\\sqrt{|x-y|}<\\sqrt{\\varepsilon^2}=\\varepsilon.$$\nComo $\\delta$ depende apenas de $\\varepsilon$ (nao de $x,y$), $f$ e uniformemente continua em $[0,\\infty)$. $\\blacksquare$",
+          "steps": [
+            "Estabeleca o lema |sqrt(x)-sqrt(y)|<=sqrt(|x-y|) comparando os quadrados.",
+            "No caso x>=y, use sqrt(xy)>=y para obter (sqrt x - sqrt y)^2 <= x-y.",
+            "Dado epsilon, escolha delta=epsilon^2 (independente do ponto).",
+            "Verifique |x-y|<delta => |sqrt x - sqrt y|<=sqrt(|x-y|)<epsilon."
+          ]
+        },
+        {
+          "prompt": "Demonstre o Teorema de Heine-Cantor.",
+          "hint": "Suponha que falhe: existem $\\varepsilon_0>0$ e $x_n,y_n$ com $|x_n-y_n|<1/n$ e $|f(x_n)-f(y_n)|\\ge\\varepsilon_0$. Extraia subsequência $x_{n_k}\\to c$ (Bolzano-Weierstrass); então $y_{n_k}\\to c$ também, e a continuidade em $c$ gera contradição.",
+          "difficulty": 4,
+          "solution": "**Teorema de Heine-Cantor.** Se $f$ e continua no compacto $K$ (por exemplo $[a,b]$), entao $f$ e uniformemente continua em $K$.\n\n**Prova (por contradicao, via Bolzano-Weierstrass).** Suponha que $f$ **nao** seja uniformemente continua. Entao existe $\\varepsilon_0>0$ tal que, para todo $\\delta>0$, ha pontos que violam a condicao. Tomando $\\delta=\\tfrac1n$, obtemos sequencias $(x_n),(y_n)$ em $K$ com\n$$|x_n-y_n|<\\tfrac1n\\qquad\\text{e}\\qquad |f(x_n)-f(y_n)|\\ge\\varepsilon_0.$$\nComo $K$ e compacto (sequencialmente), existe subsequencia $x_{n_k}\\to c\\in K$. Como $|x_{n_k}-y_{n_k}|<\\tfrac1{n_k}\\to0$, tambem $y_{n_k}\\to c$. Pela continuidade de $f$ em $c$ (Criterio de Heine),\n$$f(x_{n_k})\\to f(c)\\quad\\text{e}\\quad f(y_{n_k})\\to f(c),$$\nlogo $|f(x_{n_k})-f(y_{n_k})|\\to 0$. Isso contradiz $|f(x_{n_k})-f(y_{n_k})|\\ge\\varepsilon_0>0$ para todo $k$. Portanto $f$ e uniformemente continua em $K$. $\\blacksquare$",
+          "steps": [
+            "Negue a uniformidade: existe epsilon_0 e, para delta=1/n, pontos x_n,y_n com imagens afastadas.",
+            "Use compacidade sequencial de K para extrair x_{n_k}->c em K.",
+            "Como |x_n-y_n|->0, conclua y_{n_k}->c tambem.",
+            "Pela continuidade em c, f(x_{n_k}) e f(y_{n_k}) tendem ambos a f(c).",
+            "Isso forca |f(x_{n_k})-f(y_{n_k})|->0, contradizendo >=epsilon_0; logo f e uniformemente continua."
+          ]
+        },
+        {
+          "prompt": "Mostre que $f(x)=\\operatorname{sen}(1/x)$ não é uniformemente contínua em $(0,1)$.",
+          "hint": "Escolha $x_n,y_n\\to 0$ onde o seno vale $+1$ e $-1$ respectivamente (por exemplo nos pontos $1/(\\tfrac\\pi2+2\\pi n)$ e $1/(-\\tfrac\\pi2+2\\pi n)$); a diferença das imagens não vai a zero.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** $f(x)=\\operatorname{sen}(1/x)$ nao e uniformemente continua em $(0,1)$.\n\n**Prova (criterio sequencial).** Escolha os pontos onde o seno vale $+1$ e $-1$:\n$$x_n=\\frac{1}{\\tfrac\\pi2+2\\pi n},\\qquad y_n=\\frac{1}{-\\tfrac\\pi2+2\\pi n},$$\nambos em $(0,1)$ para $n\\ge1$. Entao\n$$f(x_n)=\\operatorname{sen}\\Big(\\tfrac\\pi2+2\\pi n\\Big)=1,\\qquad f(y_n)=\\operatorname{sen}\\Big(-\\tfrac\\pi2+2\\pi n\\Big)=-1.$$\nComo $x_n\\to0$ e $y_n\\to0$, temos\n$$|x_n-y_n|\\to 0,$$\nmas\n$$|f(x_n)-f(y_n)|=|1-(-1)|=2\\not\\to 0.$$\nExistem, portanto, pontos arbitrariamente proximos com imagens afastadas por $2$; nenhum $\\delta$ uniforme funciona. Logo $f$ nao e uniformemente continua em $(0,1)$. $\\blacksquare$",
+          "steps": [
+            "Escolha x_n e y_n onde sin(1/x) vale +1 e -1, ambos em (0,1).",
+            "Calcule f(x_n)=1 e f(y_n)=-1.",
+            "Note que x_n,y_n->0, logo |x_n-y_n|->0.",
+            "Mas |f(x_n)-f(y_n)|=2 nao vai a zero: viola o criterio sequencial de uniformidade."
+          ]
+        },
+        {
+          "prompt": "Prove que toda função uniformemente contínua leva sequências de Cauchy em sequências de Cauchy, e use isso para concluir que $1/x$ não é uniformemente contínua em $(0,1)$.",
+          "hint": "Para a primeira parte, dado $\\varepsilon$ tome o $\\delta$ uniforme e o $N$ da sequência de Cauchy. Para a segunda, $x_n=1/n$ é de Cauchy mas $1/x_n=n$ não é.",
+          "difficulty": 3,
+          "solution": "**Parte 1.** Se $f$ e uniformemente continua em $D$ e $(x_n)$ e de Cauchy em $D$, entao $(f(x_n))$ e de Cauchy.\n\n*Prova.* Seja $\\varepsilon>0$. Pela continuidade uniforme, existe $\\delta>0$ tal que $|u-v|<\\delta\\Rightarrow|f(u)-f(v)|<\\varepsilon$. Como $(x_n)$ e de Cauchy, existe $N$ com $|x_m-x_n|<\\delta$ para $m,n\\ge N$. Entao, para $m,n\\ge N$,\n$$|f(x_m)-f(x_n)|<\\varepsilon.$$\nLogo $(f(x_n))$ e de Cauchy.\n\n**Parte 2.** $f(x)=1/x$ **nao** e uniformemente continua em $(0,1)$.\n\n*Prova.* Tome $x_n=\\tfrac1n\\in(0,1)$. A sequencia $(x_n)$ e de Cauchy (converge a $0$ em $\\mathbb{R}$, logo e de Cauchy). Mas\n$$f(x_n)=\\frac1{x_n}=n,$$\ne $(n)$ **nao** e de Cauchy (e ilimitada). Se $f$ fosse uniformemente continua, pela Parte 1 $(f(x_n))$ seria de Cauchy — contradicao. Portanto $1/x$ nao e uniformemente continua em $(0,1)$. $\\blacksquare$",
+          "steps": [
+            "Para a Parte 1, use o delta da uniformidade e o N da sequencia de Cauchy no dominio.",
+            "Conclua |f(x_m)-f(x_n)|<epsilon para m,n>=N, ou seja, (f(x_n)) e de Cauchy.",
+            "Na Parte 2, tome x_n=1/n, que e de Cauchy em (0,1).",
+            "Observe que f(x_n)=n nao e de Cauchy (ilimitada).",
+            "Pela contrapositiva da Parte 1, 1/x nao pode ser uniformemente continua em (0,1)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de continuidade uniforme",
+          "back": "$\\forall\\varepsilon>0\\ \\exists\\delta>0\\ \\forall x,y:\\ |x-y|<\\delta\\Rightarrow|f(x)-f(y)|<\\varepsilon$ (um $\\delta$ para todos)."
+        },
+        {
+          "front": "Diferença chave para continuidade pontual",
+          "back": "Na uniforme, $\\delta$ não depende do ponto; na pontual, pode depender."
+        },
+        {
+          "front": "Teorema de Heine-Cantor",
+          "back": "Contínua em compacto $\\Rightarrow$ uniformemente contínua."
+        },
+        {
+          "front": "Lipschitz $\\Rightarrow$ ?",
+          "back": "Uniformemente contínua (tome $\\delta=\\varepsilon/L$)."
+        },
+        {
+          "front": "Critério sequencial de NÃO uniformidade",
+          "back": "Existem $x_n,y_n$ com $|x_n-y_n|\\to 0$ e $|f(x_n)-f(y_n)|\\not\\to 0$."
+        },
+        {
+          "front": "$x^2$ em $\\mathbb{R}$ é uniformemente contínua?",
+          "back": "Não; $x_n=n+1/n$, $y_n=n$ dão $|x_n-y_n|\\to 0$ mas $|f(x_n)-f(y_n)|\\to 2$."
+        },
+        {
+          "front": "Uniformemente contínua e sequências de Cauchy",
+          "back": "Preserva Cauchy: $(x_n)$ Cauchy $\\Rightarrow (f(x_n))$ Cauchy."
+        },
+        {
+          "front": "Quando vale a extensão contínua ao fecho?",
+          "back": "Quando $f$ é uniformemente contínua em domínio limitado: estende unicamente a $\\overline{D}$."
+        }
+      ],
+      "estimatedHours": 5,
+      "resources": [
+        {
+          "title": "Rudin, Principles of Mathematical Analysis, cap. 4 (continuidade uniforme)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon Lages Lima, Análise Real vol. 1, cap. 7",
+          "ref": "livro"
+        },
+        {
+          "title": "Bartle e Sherbert, Introduction to Real Analysis, seção 5.4",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Escreva lado a lado a definicao de continuidade pontual e de continuidade uniforme, destacando que na uniforme delta nao depende do ponto.",
+          "Treine o criterio sequencial de nao-uniformidade e prove Heine-Cantor (continua em compacto => uniformemente continua).",
+          "Estude que funcoes de Lipschitz sao uniformemente continuas e que a continuidade uniforme preserva sequencias de Cauchy (extensao ao fecho).",
+          "Assista a uma aula sobre continuidade uniforme e Heine-Cantor e refaca o exemplo de x^2 em R.",
+          "Volte ao app, resolva os testes e anote o principal (posicao dos quantificadores, Heine-Cantor, Lipschitz, Cauchy)."
+        ],
+        "searchQueries": [
+          "continuidade uniforme definicao diferenca continuidade pontual",
+          "teorema de Heine-Cantor demonstracao compacto",
+          "funcao Lipschitz implica uniformemente continua",
+          "criterio sequencial continuidade uniforme x^2 nao uniforme",
+          "continuidade uniforme preserva sequencias de Cauchy extensao ao fecho",
+          "uniform continuity Heine Cantor theorem proof"
+        ],
+        "videos": [
+          {
+            "title": "Continuidade uniforme",
+            "channel": "Matematica Universitaria",
+            "note": "Busque as aulas de continuidade uniforme e Heine-Cantor com exemplos (x^2, sqrt(x))."
+          },
+          {
+            "title": "Uniform continuity and Heine-Cantor",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Serie Real Analysis; videos sobre uniform continuity e o teorema em compactos."
+          },
+          {
+            "title": "Uniform continuity examples",
+            "channel": "Dr. Peyam",
+            "note": "Procure videos com exemplos de funcoes uniformemente continuas e contraexemplos como sin(1/x)."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap.4 (uniform continuity)",
+            "where": "Walter Rudin"
+          },
+          {
+            "title": "Introduction to Real Analysis, secao 5.4",
+            "where": "Bartle & Sherbert"
+          },
+          {
+            "title": "Analise Real vol.1, cap.7",
+            "where": "Elon Lages Lima, IMPA"
+          }
+        ]
+      }
+    }
+  ]
+}

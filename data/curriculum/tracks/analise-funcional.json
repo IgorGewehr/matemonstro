@@ -1,0 +1,1757 @@
+{
+  "id": "analise-funcional",
+  "title": "Análise Funcional",
+  "phase": 2,
+  "phaseLabel": "Avançado / Pré-Pós",
+  "tagline": "A geometria e a topologia dos espaços de dimensão infinita: onde a álgebra linear, a topologia e a teoria da medida se encontram para resolver EDPs, equações integrais e a mecânica quântica.",
+  "summary": "Análise Funcional é o estudo de espaços vetoriais de dimensão infinita munidos de uma topologia compatível e dos operadores lineares entre eles. Partimos dos espaços normados e de Banach, mergulhamos na geometria hilbertiana (projeção, Riesz-Fréchet, bases ortonormais e séries de Fourier), dominamos os operadores lineares limitados e seus adjuntos, e enfrentamos os grandes teoremas estruturais: Hahn-Banach, os três princípios de Baire (Banach-Steinhaus, aplicação aberta, gráfico fechado), a dualidade com as topologias fracas e Banach-Alaoglu, culminando na teoria espectral e nos operadores compactos com a alternativa de Fredholm e o teorema espectral. É a linguagem unificadora da análise moderna.",
+  "bigPicture": "Análise Funcional é o idioma comum da matemática contemporânea: EDPs vivem em espaços de Sobolev (Banach/Hilbert), a mecânica quântica é teoria espectral de operadores auto-adjuntos em $L^2$, a teoria de aproximação e o processamento de sinais são séries de Fourier abstratas, e a otimização e o cálculo das variações dependem de compacidade fraca e de Hahn-Banach geométrico. A disciplina mostra por que a dimensão infinita é genuinamente diferente: a bola unitária deixa de ser compacta, operadores lineares podem ser descontínuos, e nasce toda uma teoria nova (compactos, espectro contínuo, topologias fracas). Em concursos de Instituto Federal (IF) o tema quase não aparece diretamente — o foco lá é cálculo, álgebra linear e análise real de graduação. Já no mestrado em matemática pura é disciplina obrigatória do primeiro ano e presença constante nos exames de qualificação: Hahn-Banach, Baire e seus corolários, representação de Riesz, teoria espectral e a alternativa de Fredholm são clássicos de prova. Dominar esta trilha separa quem 'sabe contas' de quem pensa como analista.",
+  "prereqs": [
+    "medida",
+    "algebra-linear"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 70,
+  "primaryBooks": [
+    {
+      "title": "Functional Analysis, Sobolev Spaces and Partial Differential Equations",
+      "author": "Haïm Brezis",
+      "note": "O texto moderno de referência: Hahn-Banach, topologias fracas, espaços de Banach e Hilbert, operadores compactos com rigor e visão de EDP. Leitura central da trilha.",
+      "chapters": "caps. 1-6"
+    },
+    {
+      "title": "Introductory Functional Analysis with Applications",
+      "author": "Erwin Kreyszig",
+      "note": "O texto mais didático para a primeira passada: espaços métricos/normados, operadores, os três princípios de Baire e teoria espectral com muitos exemplos.",
+      "chapters": "caps. 2, 3, 4, 8, 9"
+    },
+    {
+      "title": "A Course in Functional Analysis",
+      "author": "John B. Conway",
+      "note": "Tratamento elegante e completo de Hilbert, dualidade, topologias fracas e teoria espectral de operadores; ótimo para o nível de mestrado.",
+      "chapters": "caps. I-III, V, VII-VIII"
+    },
+    {
+      "title": "Methods of Modern Mathematical Physics I: Functional Analysis",
+      "author": "Michael Reed e Barry Simon",
+      "note": "Referência para espaços de Hilbert, operadores compactos e teoria espectral com olhar de física-matemática.",
+      "chapters": "caps. II, III, VI"
+    },
+    {
+      "title": "Fundamentos de Análise Funcional",
+      "author": "Geraldo Botelho, Daniel Pellegrino e Eduardo Teixeira (SBM)",
+      "note": "Referência brasileira moderna e completa, em PT-BR, cobrindo toda a trilha com demonstrações detalhadas; ideal para acompanhar em português.",
+      "chapters": "caps. 1-7"
+    },
+    {
+      "title": "Análise Funcional e Aplicações",
+      "author": "Chaim Samuel Hönig (IME-USP / Edgard Blücher)",
+      "note": "Clássico brasileiro; bom para espaços normados, dualidade e o problema de Sturm-Liouville via teoria espectral.",
+      "chapters": "vol. 1 e 2, seleção"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.102 Introduction to Functional Analysis",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "NPTEL - Functional Analysis",
+      "kind": "curso",
+      "ref": "nptel.ac.in"
+    },
+    {
+      "title": "Brezis - Functional Analysis (texto do autor)",
+      "kind": "livro",
+      "ref": "Springer"
+    },
+    {
+      "title": "Videoaulas e minicursos do IMPA (PAPMEM / canal IMPA)",
+      "kind": "video",
+      "ref": "YouTube IMPA"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 2,
+    "mestrado": 4,
+    "note": "Em concursos de Instituto Federal (IF) a análise funcional praticamente não cai de forma direta: o foco é cálculo, álgebra linear e análise real de graduação; no máximo aparece a noção de espaço normado/completo como cultura geral. No exame unificado de acesso à pós (EUF) o conteúdo também não é cobrado diretamente, mas a maturidade em análise ajuda. Já dentro do mestrado em matemática pura é disciplina obrigatória do primeiro ano e tema recorrente de exames de qualificação: provar Hahn-Banach e seus corolários, aplicar Banach-Steinhaus, o teorema da aplicação aberta e do gráfico fechado, a representação de Riesz-Fréchet, caracterizar bases ortonormais via Parseval, e demonstrar o teorema espectral para operadores compactos auto-adjuntos e a alternativa de Fredholm."
+  },
+  "subtopics": [
+    {
+      "id": "analise-funcional-01-espacos-normados-banach",
+      "title": "Espaços Normados e de Banach",
+      "tagline": "A estrutura básica da dimensão infinita: medir distâncias com uma norma, exigir completude e descobrir que a bola unitária deixa de ser compacta.",
+      "objectives": [
+        "Definir norma, espaço normado e a métrica induzida, e reconhecer quando uma norma provém de um produto interno via a lei do paralelogramo.",
+        "Demonstrar as desigualdades de Hölder e de Minkowski e usá-las para verificar que $\\ell^p$ e $L^p$ são espaços normados.",
+        "Caracterizar completude e provar que $C[a,b]$ com a norma do sup, $\\ell^p$ e $L^p$ ($1\\le p\\le\\infty$) são espaços de Banach.",
+        "Provar que um espaço normado é completo se e só se toda série absolutamente convergente é convergente.",
+        "Demonstrar que em dimensão finita todas as normas são equivalentes e caracterizar compacidade da bola unitária (teorema de Riesz)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Norma",
+          "statement": "Uma função $\\|\\cdot\\|:X\\to[0,\\infty)$ com (i) $\\|x\\|=0\\iff x=0$; (ii) $\\|\\lambda x\\|=|\\lambda|\\,\\|x\\|$; (iii) $\\|x+y\\|\\le\\|x\\|+\\|y\\|$. Ela induz a métrica $d(x,y)=\\|x-y\\|$."
+        },
+        {
+          "term": "Espaço de Banach",
+          "statement": "Um espaço normado $(X,\\|\\cdot\\|)$ que é completo na métrica induzida: toda sequência de Cauchy converge em $X$."
+        },
+        {
+          "term": "Normas $\\ell^p$ e $L^p$",
+          "statement": "$\\|x\\|_p=\\left(\\sum_n |x_n|^p\\right)^{1/p}$ para $1\\le p<\\infty$ e $\\|x\\|_\\infty=\\sup_n|x_n|$; analogamente $\\|f\\|_p=\\left(\\int |f|^p\\,d\\mu\\right)^{1/p}$."
+        },
+        {
+          "term": "Normas equivalentes",
+          "statement": "$\\|\\cdot\\|_a$ e $\\|\\cdot\\|_b$ são equivalentes se existem $c,C>0$ com $c\\,\\|x\\|_a\\le\\|x\\|_b\\le C\\,\\|x\\|_a$ para todo $x$; equivalentes geram a mesma topologia e as mesmas sequências de Cauchy/convergentes."
+        },
+        {
+          "term": "Série absolutamente convergente",
+          "statement": "Uma série $\\sum_n x_n$ em $X$ tal que $\\sum_n \\|x_n\\|<\\infty$; em geral isso não garante convergência da série, exceto se $X$ for completo."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Desigualdade de Minkowski",
+          "statement": "Para $1\\le p\\le\\infty$, $\\|x+y\\|_p\\le\\|x\\|_p+\\|y\\|_p$ em $\\ell^p$ e em $L^p$.",
+          "whyItMatters": "É exatamente a desigualdade triangular que faz de $\\ell^p$ e $L^p$ espaços normados; sua prova passa pela desigualdade de Hölder com expoentes conjugados."
+        },
+        {
+          "name": "Caracterização de Banach por séries",
+          "statement": "Um espaço normado $X$ é completo se e só se toda série $\\sum_n x_n$ com $\\sum_n\\|x_n\\|<\\infty$ converge em $X$.",
+          "whyItMatters": "É o critério prático de completude mais usado: aparece na prova de que $L^p$ é completo (Riesz-Fischer) e de que $B(X,Y)$ é Banach quando $Y$ é Banach."
+        },
+        {
+          "name": "Equivalência de normas em dimensão finita",
+          "statement": "Em um espaço vetorial de dimensão finita sobre $\\mathbb{R}$ ou $\\mathbb{C}$, todas as normas são equivalentes; em particular todo espaço normado de dimensão finita é completo e todo subespaço de dimensão finita é fechado.",
+          "whyItMatters": "Explica por que a análise em dimensão finita é 'única'. A falha disso em dimensão infinita é a fonte de toda a riqueza da teoria."
+        },
+        {
+          "name": "Lema de Riesz e compacidade da bola",
+          "statement": "Se $M\\subsetneq X$ é subespaço fechado próprio e $0<\\theta<1$, existe $x$ com $\\|x\\|=1$ e $d(x,M)\\ge\\theta$. Consequência: a bola unitária fechada de $X$ é compacta se e só se $\\dim X<\\infty$.",
+          "whyItMatters": "É a fronteira conceitual da disciplina: em dimensão infinita perdemos a compacidade da bola, o que motiva operadores compactos e topologias fracas."
+        }
+      ],
+      "summary": "Um espaço normado é um espaço vetorial onde sabemos medir o 'tamanho' de cada vetor por uma norma, o que induz uma métrica e portanto uma topologia. Quando essa métrica é completa, chamamos o espaço de Banach — e completude é a hipótese técnica que faz a maquinaria de limites funcionar. Os exemplos canônicos são $C[a,b]$ com $\\|f\\|_\\infty=\\sup|f|$ (cuja convergência é a convergência uniforme), e as famílias $\\ell^p$ e $L^p$, cujas desigualdades triangulares são a desigualdade de Minkowski, deduzida de Hölder. Um critério extremamente útil diz que um normado é completo exatamente quando toda série absolutamente convergente converge.\\n\\nA grande virada conceitual está na dimensão infinita. Em dimensão finita todas as normas são equivalentes, todo subespaço é fechado e a bola unitária fechada é compacta — tudo se comporta como em $\\mathbb{R}^n$. O lema de Riesz mostra que isso desaba em dimensão infinita: a bola unitária fechada nunca é compacta. É essa perda de compacidade que cria a necessidade de toda a teoria que vem depois (operadores compactos, topologias fracas, Banach-Alaoglu).",
+      "commonPitfalls": [
+        "Achar que toda norma provém de um produto interno: $\\ell^1$, $\\ell^\\infty$ e $C[a,b]$ falham na lei do paralelogramo e não são hilbertianos.",
+        "Confundir convergência na norma do sup (uniforme) com convergência pontual: são noções distintas e a primeira é estritamente mais forte.",
+        "Supor que a bola unitária fechada é sempre compacta — isso só vale em dimensão finita (teorema de Riesz).",
+        "Esquecer que elementos de $L^p$ são classes de equivalência módulo igualdade quase sempre: $\\|f\\|_p=0$ significa $f=0$ q.t.p., não $f\\equiv 0$ ponto a ponto."
+      ],
+      "worked": "**Afirmação.** Em $C[0,1]$ as normas $\\|f\\|_1=\\int_0^1|f|\\,dx$ e $\\|f\\|_\\infty=\\sup_{x\\in[0,1]}|f(x)|$ **não** são equivalentes.\n\n**Prova.** Considere $f_n(x)=x^n$. Então\n$$\\|f_n\\|_\\infty=\\sup_{x\\in[0,1]}x^n=1,\\qquad \\|f_n\\|_1=\\int_0^1 x^n\\,dx=\\frac{1}{n+1}.$$\nSe as normas fossem equivalentes existiria $C>0$ com $\\|f\\|_\\infty\\le C\\,\\|f\\|_1$ para toda $f$. Aplicando a $f_n$ obteríamos $1\\le C/(n+1)$, isto é, $n+1\\le C$ para todo $n$ — absurdo. Logo nenhuma das duas desigualdades $\\|f\\|_\\infty\\le C\\|f\\|_1$ é possível, e as normas não são equivalentes.\n\n**Moral.** Em dimensão infinita topologias geradas por normas diferentes são genuinamente distintas: aqui $f_n\\to 0$ em $\\|\\cdot\\|_1$ mas $f_n\\not\\to 0$ em $\\|\\cdot\\|_\\infty$.",
+      "exercises": [
+        {
+          "prompt": "Deduza a desigualdade de Minkowski em $\\ell^p$ ($1<p<\\infty$) a partir da desigualdade de Hölder.",
+          "hint": "Escreva $|a+b|^p\\le |a+b|^{p-1}(|a|+|b|)$, some, e aplique Hölder a cada parcela com expoentes conjugados $p$ e $q=p/(p-1)$, notando que $(p-1)q=p$.",
+          "difficulty": 3,
+          "solution": "Sejam $x,y\\in\\ell^p$ com $1<p<\\infty$ e $q=p/(p-1)$ o expoente conjugado, de modo que $1/p+1/q=1$ e $(p-1)q=p$. Se $\\|x+y\\|_p=0$ nada há a provar; suponha $S=\\|x+y\\|_p>0$ (e finito, pois $|a+b|^p\\le 2^{p-1}(|a|^p+|b|^p)$ garante $x+y\\in\\ell^p$).\n\n**Passo 1 (desigualdade pontual).** Para cada índice $n$,\n$$|x_n+y_n|^p=|x_n+y_n|\\,|x_n+y_n|^{p-1}\\le\\big(|x_n|+|y_n|\\big)\\,|x_n+y_n|^{p-1}.$$\nSomando em $n$:\n$$\\sum_n|x_n+y_n|^p\\le\\sum_n|x_n|\\,|x_n+y_n|^{p-1}+\\sum_n|y_n|\\,|x_n+y_n|^{p-1}.$$\n\n**Passo 2 (Hölder em cada parcela).** Aplicando Hölder com expoentes $p$ e $q$ à primeira soma, e notando que a sequência $\\big(|x_n+y_n|^{p-1}\\big)_n$ está em $\\ell^q$ pois $\\big(|x_n+y_n|^{p-1}\\big)^q=|x_n+y_n|^{(p-1)q}=|x_n+y_n|^p$:\n$$\\sum_n|x_n|\\,|x_n+y_n|^{p-1}\\le\\|x\\|_p\\Big(\\sum_n|x_n+y_n|^{p}\\Big)^{1/q}=\\|x\\|_p\\,S^{p/q}.$$\nAnalogamente $\\sum_n|y_n|\\,|x_n+y_n|^{p-1}\\le\\|y\\|_p\\,S^{p/q}$.\n\n**Passo 3 (juntar e cancelar).** Combinando,\n$$S^p=\\sum_n|x_n+y_n|^p\\le\\big(\\|x\\|_p+\\|y\\|_p\\big)\\,S^{p/q}.$$\nComo $S>0$ e $p-\\tfrac{p}{q}=p\\big(1-\\tfrac1q\\big)=p\\cdot\\tfrac1p=1$, dividimos por $S^{p/q}$:\n$$S^{\\,p-p/q}=S=\\|x+y\\|_p\\le\\|x\\|_p+\\|y\\|_p.$$\nEsta é exatamente a desigualdade de Minkowski. $\\blacksquare$",
+          "steps": [
+            "Fixe $q=p/(p-1)$ e registre as identidades-chave $1/p+1/q=1$ e $(p-1)q=p$.",
+            "Escreva $|x_n+y_n|^p\\le(|x_n|+|y_n|)|x_n+y_n|^{p-1}$ e some sobre $n$, separando em duas parcelas.",
+            "Em cada parcela aplique Hölder com expoentes $p,q$, observando que $(|x_n+y_n|^{p-1})_n\\in\\ell^q$ com norma $\\|x+y\\|_p^{p/q}$.",
+            "Obtenha $\\|x+y\\|_p^p\\le(\\|x\\|_p+\\|y\\|_p)\\|x+y\\|_p^{p/q}$.",
+            "Divida por $\\|x+y\\|_p^{p/q}$ (caso não nulo) e use $p-p/q=1$ para concluir."
+          ]
+        },
+        {
+          "prompt": "Mostre que o espaço $c_{00}$ das sequências quase nulas, com a norma $\\|\\cdot\\|_\\infty$, é normado mas não é completo. Qual é o seu completamento?",
+          "hint": "Construa uma sequência de Cauchy em $c_{00}$ cujo limite natural é uma sequência em $c_0$ (limite zero) que não tem suporte finito.",
+          "difficulty": 3,
+          "solution": "Seja $c_{00}=\\{x=(x_n):x_n=0$ para todo $n$ suficientemente grande$\\}$, com a norma $\\|x\\|_\\infty=\\sup_n|x_n|$.\n\n**É normado.** $c_{00}$ é subespaço vetorial de $\\ell^\\infty$ (soma e múltiplo de sequências de suporte finito têm suporte finito) e herda a norma $\\|\\cdot\\|_\\infty$, que satisfaz os três axiomas. Logo é um espaço normado.\n\n**Não é completo.** Considere a sequência de elementos de $c_{00}$\n$$x^{(k)}=\\Big(1,\\tfrac12,\\tfrac13,\\dots,\\tfrac1k,0,0,\\dots\\Big).$$\nCada $x^{(k)}$ tem suporte finito, logo $x^{(k)}\\in c_{00}$. Para $m>k$,\n$$\\|x^{(m)}-x^{(k)}\\|_\\infty=\\sup_{k<n\\le m}\\tfrac1n=\\tfrac{1}{k+1}\\xrightarrow[k\\to\\infty]{}0,$$\nportanto $(x^{(k)})$ é de Cauchy em $c_{00}$. Seu limite natural é $x=(1,\\tfrac12,\\tfrac13,\\dots)$, que satisfaz $x_n=1/n\\to 0$ mas **não** tem suporte finito. De fato, se $(x^{(k)})$ convergisse a algum $y\\in c_{00}$, teríamos $\\|x^{(k)}-y\\|_\\infty\\to 0$, o que força $y_n=1/n$ para todo $n$ (convergência na sup implica convergência coordenada a coordenada), contradizendo $y\\in c_{00}$. Logo a sequência de Cauchy não converge em $c_{00}$: o espaço não é completo.\n\n**Completamento.** O completamento de $(c_{00},\\|\\cdot\\|_\\infty)$ é\n$$c_0=\\{x=(x_n):x_n\\to 0\\},$$\ncom a norma $\\|\\cdot\\|_\\infty$. De fato: (i) $c_0$ é completo — é subespaço fechado de $\\ell^\\infty$, pois se $x^{(k)}\\to x$ em $\\ell^\\infty$ com $x^{(k)}\\in c_0$, dado $\\varepsilon$ escolha $k$ com $\\|x^{(k)}-x\\|_\\infty<\\varepsilon/2$ e $N$ com $|x^{(k)}_n|<\\varepsilon/2$ para $n>N$, donde $|x_n|<\\varepsilon$ para $n>N$, logo $x\\in c_0$; (ii) $c_{00}$ é denso em $c_0$ — dado $x\\in c_0$, os truncamentos $x^{(N)}=(x_1,\\dots,x_N,0,\\dots)\\in c_{00}$ satisfazem $\\|x-x^{(N)}\\|_\\infty=\\sup_{n>N}|x_n|\\to 0$. Um espaço completo contendo densamente $c_{00}$ é, a menos de isometria, o seu completamento; portanto o completamento é $c_0$. $\\blacksquare$",
+          "steps": [
+            "Verifique que $c_{00}$ é subespaço de $\\ell^\\infty$ e portanto normado com $\\|\\cdot\\|_\\infty$.",
+            "Construa a sequência de Cauchy $x^{(k)}=(1,1/2,\\dots,1/k,0,\\dots)$ e estime $\\|x^{(m)}-x^{(k)}\\|_\\infty=1/(k+1)$.",
+            "Mostre que o único candidato a limite é $(1/n)_n$, que não pertence a $c_{00}$: logo não há limite em $c_{00}$.",
+            "Prove que $c_0$ é completo, exibindo-o como subespaço fechado de $\\ell^\\infty$.",
+            "Prove que $c_{00}$ é denso em $c_0$ via truncamentos, e conclua que $c_0$ é o completamento."
+          ]
+        },
+        {
+          "prompt": "Prove a caracterização de completude por séries: $X$ é Banach se e só se toda série absolutamente convergente converge.",
+          "hint": "Para a volta, dada uma sequência de Cauchy extraia uma subsequência com $\\|x_{n_{k+1}}-x_{n_k}\\|<2^{-k}$ e some os 'saltos'.",
+          "difficulty": 4,
+          "solution": "**Afirmação.** Um espaço normado $X$ é completo (Banach) se e só se toda série $\\sum_n x_n$ com $\\sum_n\\|x_n\\|<\\infty$ converge em $X$.\n\n**($\\Rightarrow$) Banach implica convergência de séries absolutamente convergentes.** Suponha $X$ completo e $\\sum_n\\|x_n\\|<\\infty$. Seja $s_N=\\sum_{n=1}^N x_n$ a soma parcial. Para $M>N$,\n$$\\|s_M-s_N\\|=\\Big\\|\\sum_{n=N+1}^M x_n\\Big\\|\\le\\sum_{n=N+1}^M\\|x_n\\|\\le\\sum_{n>N}\\|x_n\\|\\xrightarrow[N\\to\\infty]{}0,$$\npois a cauda de uma série numérica convergente tende a $0$. Logo $(s_N)$ é de Cauchy em $X$; por completude converge, isto é, $\\sum_n x_n$ converge em $X$.\n\n**($\\Leftarrow$) Convergência de séries implica completude.** Suponha que toda série absolutamente convergente converge. Seja $(y_n)$ uma sequência de Cauchy em $X$. Basta mostrar que ela tem uma subsequência convergente (uma sequência de Cauchy com subsequência convergente converge ao mesmo limite).\n\nComo $(y_n)$ é de Cauchy, para cada $k$ existe $N_k$ tal que $\\|y_m-y_n\\|<2^{-k}$ sempre que $m,n\\ge N_k$; escolha $n_1<n_2<\\cdots$ com $n_k\\ge N_k$, de modo que\n$$\\|y_{n_{k+1}}-y_{n_k}\\|<2^{-k}.$$\nDefina os 'saltos' $x_k=y_{n_{k+1}}-y_{n_k}$. Então $\\sum_k\\|x_k\\|<\\sum_k 2^{-k}=1<\\infty$, logo por hipótese $\\sum_k x_k$ converge em $X$; digamos $\\sum_{k=1}^{K}x_k\\to s$. Mas telescopando,\n$$\\sum_{k=1}^{K}x_k=y_{n_{K+1}}-y_{n_1},$$\nlogo $y_{n_{K+1}}\\to y_{n_1}+s=:y$. Assim a subsequência $(y_{n_k})$ converge a $y$, e portanto $(y_n)$ converge a $y$. Logo $X$ é completo. $\\blacksquare$",
+          "steps": [
+            "Enuncie a equivalência e trate primeiro o lado fácil ($\\Rightarrow$).",
+            "Na ida, mostre que as somas parciais são de Cauchy pela desigualdade triangular e pela cauda de $\\sum\\|x_n\\|$, e use completude.",
+            "Na volta, reduza completude a: 'toda sequência de Cauchy tem subsequência convergente'.",
+            "Extraia a subsequência $(y_{n_k})$ com $\\|y_{n_{k+1}}-y_{n_k}\\|<2^{-k}$ e defina os saltos $x_k$.",
+            "Note $\\sum\\|x_k\\|<\\infty$, aplique a hipótese e telescope para obter o limite da subsequência.",
+            "Conclua que a sequência de Cauchy inteira converge a esse limite."
+          ]
+        },
+        {
+          "prompt": "Prove que duas normas quaisquer em um espaço de dimensão finita são equivalentes.",
+          "hint": "Fixe uma base e compare a norma dada com a norma euclidiana via os coeficientes; use que a esfera unitária de $\\mathbb{K}^n$ é compacta e que a norma é contínua para extrair máximo e mínimo positivos.",
+          "difficulty": 4,
+          "solution": "Seja $X$ um espaço vetorial de dimensão finita $n$ sobre $\\mathbb{K}\\in\\{\\mathbb{R},\\mathbb{C}\\}$, e $\\|\\cdot\\|$ uma norma qualquer em $X$. Fixe uma base $\\{e_1,\\dots,e_n\\}$; cada $x=\\sum_{i=1}^n a_i e_i$ tem coordenadas $(a_1,\\dots,a_n)\\in\\mathbb{K}^n$. Defina a norma euclidiana de referência\n$$\\|x\\|_2=\\Big(\\sum_{i=1}^n|a_i|^2\\Big)^{1/2}.$$\nBasta mostrar que **toda** norma $\\|\\cdot\\|$ é equivalente a $\\|\\cdot\\|_2$ (a equivalência é relação transitiva, então duas normas quaisquer serão equivalentes entre si).\n\n**Passo 1 (cota superior).** Pela desigualdade triangular e Cauchy-Schwarz em $\\mathbb{K}^n$,\n$$\\|x\\|=\\Big\\|\\sum_i a_i e_i\\Big\\|\\le\\sum_i|a_i|\\,\\|e_i\\|\\le\\Big(\\sum_i|a_i|^2\\Big)^{1/2}\\Big(\\sum_i\\|e_i\\|^2\\Big)^{1/2}=C\\,\\|x\\|_2,$$\ncom $C=\\big(\\sum_i\\|e_i\\|^2\\big)^{1/2}>0$. Em particular isto mostra que $\\|\\cdot\\|:(X,\\|\\cdot\\|_2)\\to\\mathbb{R}$ é **contínua**: $\\big|\\|x\\|-\\|y\\|\\big|\\le\\|x-y\\|\\le C\\|x-y\\|_2$.\n\n**Passo 2 (cota inferior via compacidade).** A esfera unitária euclidiana\n$$S=\\{x\\in X:\\|x\\|_2=1\\}$$\ncorresponde, via coordenadas, à esfera unitária de $\\mathbb{K}^n$, que é fechada e limitada, logo **compacta** (Heine-Borel em $\\mathbb{K}^n\\cong\\mathbb{R}^{n}$ ou $\\mathbb{R}^{2n}$). Como $\\|\\cdot\\|$ é contínua em $(X,\\|\\cdot\\|_2)$ e $S$ é compacto, $\\|\\cdot\\|$ atinge um mínimo $c=\\min_{x\\in S}\\|x\\|$. Esse mínimo é positivo: se fosse $c=0$, existiria $x_0\\in S$ com $\\|x_0\\|=0$, logo $x_0=0$, contradizendo $\\|x_0\\|_2=1$. Assim $c>0$.\n\n**Passo 3 (homogeneidade).** Para $x\\ne 0$, o vetor $x/\\|x\\|_2\\in S$, portanto $\\|x/\\|x\\|_2\\|\\ge c$, ou seja $\\|x\\|\\ge c\\,\\|x\\|_2$ (válido também para $x=0$).\n\nCombinando os passos, $c\\,\\|x\\|_2\\le\\|x\\|\\le C\\,\\|x\\|_2$ para todo $x$, com $0<c\\le C$: $\\|\\cdot\\|$ e $\\|\\cdot\\|_2$ são equivalentes. Como isso vale para qualquer norma, duas normas arbitrárias $\\|\\cdot\\|_a,\\|\\cdot\\|_b$ são ambas equivalentes a $\\|\\cdot\\|_2$ e, por transitividade, equivalentes entre si. $\\blacksquare$",
+          "steps": [
+            "Reduza o problema a comparar uma norma arbitrária $\\|\\cdot\\|$ com a euclidiana $\\|\\cdot\\|_2$ fixada por uma base.",
+            "Prove a cota $\\|x\\|\\le C\\|x\\|_2$ por triangular + Cauchy-Schwarz; isso já dá continuidade de $\\|\\cdot\\|$ em $(X,\\|\\cdot\\|_2)$.",
+            "Use que a esfera $\\|\\cdot\\|_2=1$ é compacta (Heine-Borel) e que $\\|\\cdot\\|$ contínua atinge mínimo $c$ nela.",
+            "Argumente $c>0$ (senão haveria vetor não nulo de norma zero).",
+            "Escale por homogeneidade para obter $\\|x\\|\\ge c\\|x\\|_2$ e conclua a equivalência; feche por transitividade."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Quais são os três axiomas de uma norma?",
+          "back": "(i) $\\|x\\|=0\\iff x=0$; (ii) $\\|\\lambda x\\|=|\\lambda|\\,\\|x\\|$ (homogeneidade); (iii) $\\|x+y\\|\\le\\|x\\|+\\|y\\|$ (desigualdade triangular)."
+        },
+        {
+          "front": "O que é um espaço de Banach?",
+          "back": "Um espaço normado completo na métrica $d(x,y)=\\|x-y\\|$ (toda sequência de Cauchy converge)."
+        },
+        {
+          "front": "Critério de completude por séries",
+          "back": "$X$ é completo $\\iff$ toda série $\\sum x_n$ com $\\sum\\|x_n\\|<\\infty$ converge em $X$."
+        },
+        {
+          "front": "Desigualdade de Hölder ($1/p+1/q=1$)",
+          "back": "$\\sum_n |x_n y_n|\\le \\|x\\|_p\\,\\|y\\|_q$ (e a versão integral $\\int|fg|\\le\\|f\\|_p\\|g\\|_q$)."
+        },
+        {
+          "front": "Quando todas as normas são equivalentes?",
+          "back": "Exatamente em dimensão finita."
+        },
+        {
+          "front": "Teorema de Riesz (compacidade da bola)",
+          "back": "A bola unitária fechada de um espaço normado é compacta $\\iff$ a dimensão é finita."
+        },
+        {
+          "front": "O que mede a norma $\\|f\\|_\\infty$ em $C[a,b]$?",
+          "back": "$\\|f\\|_\\infty=\\sup_{t\\in[a,b]}|f(t)|$; convergência nessa norma é convergência uniforme."
+        },
+        {
+          "front": "$L^p$ é Banach para quais $p$?",
+          "back": "Para todo $1\\le p\\le\\infty$ (completude = teorema de Riesz-Fischer)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Brezis, Functional Analysis, cap. 1 e início do cap. 4",
+          "ref": "livro"
+        },
+        {
+          "title": "Kreyszig, cap. 2 (Normed and Banach Spaces)",
+          "ref": "livro"
+        },
+        {
+          "title": "Botelho-Pellegrino-Teixeira, Fundamentos de Análise Funcional, cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise pré-requisitos: métrica, sequência de Cauchy, completude e a noção de espaço vetorial normado. Garanta que domina $\\mathbb{R}^n$ com as normas $\\|\\cdot\\|_1,\\|\\cdot\\|_2,\\|\\cdot\\|_\\infty$ antes de ir à dimensão infinita.",
+          "Leia Kreyszig cap. 2 para a primeira passada (muitos exemplos) e depois Brezis cap. 1 e início do cap. 4 para o rigor; anote as definições de norma, Banach e normas equivalentes.",
+          "Estude as desigualdades de Young, Hölder e Minkowski em sequência, entendendo os expoentes conjugados $1/p+1/q=1$ — são a base de que $\\ell^p$ e $L^p$ são normados.",
+          "Foque no bloco 'dimensão infinita é diferente': prove a caracterização de Banach por séries, a equivalência de normas em dimensão finita e o lema de Riesz (não-compacidade da bola).",
+          "Faça uma lista de contraexemplos vivos: $c_{00}$ não completo, $\\ell^1$ não hilbertiano, $\\|\\cdot\\|_1$ vs $\\|\\cdot\\|_\\infty$ em $C[0,1]$ não equivalentes.",
+          "Resolva os testes deste subtópico no app e anote aqui o principal (as ideias das provas de Minkowski, do critério de séries e do lema de Riesz)."
+        ],
+        "searchQueries": [
+          "desigualdade de Minkowski demonstração via Hölder expoentes conjugados",
+          "espaço de Banach completude critério série absolutamente convergente prova",
+          "lema de Riesz bola unitária compacta dimensão finita demonstração",
+          "todas as normas equivalentes dimensão finita prova esfera compacta",
+          "Riesz lemma almost orthogonal proof functional analysis",
+          "L^p completeness Riesz-Fischer theorem proof"
+        ],
+        "videos": [
+          {
+            "title": "Functional Analysis - Normed and Banach spaces",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Série 'Functional Analysis' do canal: assista aos vídeos iniciais sobre espaços normados, completude e exemplos $\\ell^p$/$L^p$; explicação visual e passo a passo."
+          },
+          {
+            "title": "MIT OCW 18.102 Introduction to Functional Analysis",
+            "channel": "MIT OpenCourseWare",
+            "note": "Primeiras aulas cobrem normas, completude e o teorema de que a bola não é compacta em dimensão infinita; acompanhe com as notas do curso."
+          },
+          {
+            "title": "Análise Funcional - espaços normados",
+            "channel": "IMPA (canal oficial / PAPMEM)",
+            "note": "Procure minicursos e palestras de análise funcional do IMPA para a visão em português dos fundamentos e do lema de Riesz."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Brezis, Functional Analysis, Sobolev Spaces and PDE — cap. 1 e cap. 4",
+            "where": "Springer (livro-texto)"
+          },
+          {
+            "title": "Kreyszig, Introductory Functional Analysis with Applications — cap. 2",
+            "where": "Wiley (livro-texto)"
+          },
+          {
+            "title": "Botelho, Pellegrino, Teixeira, Fundamentos de Análise Funcional (SBM) — cap. 1",
+            "where": "Coleção Textos Universitários, SBM (em PT-BR)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-funcional-02-espacos-hilbert-projecao-riesz",
+      "title": "Espaços de Hilbert: Geometria, Projeção e Representação de Riesz",
+      "tagline": "O produto interno traz ângulos, ortogonalidade e o teorema da projeção de volta à dimensão infinita — e identifica o espaço com seu dual.",
+      "objectives": [
+        "Definir produto interno e a norma associada, e provar a desigualdade de Cauchy-Schwarz e a lei do paralelogramo.",
+        "Demonstrar o teorema da projeção sobre conjuntos convexos fechados e, em particular, sobre subespaços fechados.",
+        "Estabelecer a decomposição ortogonal $H=M\\oplus M^\\perp$ para subespaço fechado $M$ e a identidade $M^{\\perp\\perp}=\\overline{M}$.",
+        "Provar o teorema da representação de Riesz-Fréchet e usar a identificação isométrica $H\\cong H^*$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Produto interno",
+          "statement": "$\\langle\\cdot,\\cdot\\rangle:H\\times H\\to\\mathbb{K}$ linear na primeira variável, hermitiano ($\\langle x,y\\rangle=\\overline{\\langle y,x\\rangle}$) e positivo-definido ($\\langle x,x\\rangle>0$ se $x\\ne 0$); a norma associada é $\\|x\\|=\\sqrt{\\langle x,x\\rangle}$."
+        },
+        {
+          "term": "Espaço de Hilbert",
+          "statement": "Um espaço com produto interno que é completo na norma associada (um Banach cuja norma vem de um produto interno)."
+        },
+        {
+          "term": "Ortogonalidade e complemento ortogonal",
+          "statement": "$x\\perp y\\iff\\langle x,y\\rangle=0$; para $M\\subseteq H$, $M^\\perp=\\{x\\in H:\\langle x,m\\rangle=0\\ \\forall m\\in M\\}$ é sempre subespaço fechado."
+        },
+        {
+          "term": "Projeção sobre convexo fechado",
+          "statement": "Dado $C\\subseteq H$ convexo, fechado e não vazio, $P_C x$ é o único ponto de $C$ que realiza $\\|x-P_C x\\|=\\inf_{c\\in C}\\|x-c\\|$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Desigualdade de Cauchy-Schwarz",
+          "statement": "$|\\langle x,y\\rangle|\\le\\|x\\|\\,\\|y\\|$, com igualdade se e só se $x$ e $y$ são linearmente dependentes.",
+          "whyItMatters": "Garante que $\\|\\cdot\\|=\\sqrt{\\langle\\cdot,\\cdot\\rangle}$ é de fato uma norma e que o produto interno é contínuo; é a desigualdade mais usada em todo o assunto."
+        },
+        {
+          "name": "Teorema da projeção",
+          "statement": "Seja $C\\subseteq H$ convexo fechado não vazio. Para todo $x\\in H$ existe um único $P_C x\\in C$ de distância mínima. Se $C=M$ é subespaço fechado, $P_M$ é linear e caracteriza-se por $x-P_M x\\perp M$.",
+          "whyItMatters": "É o motor de existência e unicidade em mínimos quadrados, em EDPs (Lax-Milgram) e em todo argumento de aproximação ótima em Hilbert."
+        },
+        {
+          "name": "Decomposição ortogonal",
+          "statement": "Se $M\\subseteq H$ é subespaço fechado, então $H=M\\oplus M^\\perp$ (soma direta ortogonal) e $M^{\\perp\\perp}=M$. Para $M$ qualquer, $M^{\\perp\\perp}=\\overline{M}$.",
+          "whyItMatters": "É a estrutura geométrica que distingue radicalmente Hilbert de Banach: todo subespaço fechado é 'complementado' de forma ortogonal."
+        },
+        {
+          "name": "Representação de Riesz-Fréchet",
+          "statement": "Para todo funcional linear contínuo $\\varphi\\in H^*$ existe um único $y\\in H$ tal que $\\varphi(x)=\\langle x,y\\rangle$ para todo $x$, e $\\|\\varphi\\|_{H^*}=\\|y\\|_H$.",
+          "whyItMatters": "Identifica $H$ com seu dual (isometricamente, de forma antilinear no caso complexo); é a base da definição de operador adjunto, das formulações fracas de EDPs e do formalismo da mecânica quântica."
+        }
+      ],
+      "summary": "Um espaço de Hilbert é um espaço de Banach cuja norma vem de um produto interno — e essa estrutura extra reintroduz toda a geometria euclidiana (ângulos, ortogonalidade, Pitágoras) em dimensão infinita. A desigualdade de Cauchy-Schwarz torna o produto interno contínuo, e a lei do paralelogramo caracteriza exatamente quais normas são hilbertianas. O resultado central é o teorema da projeção: sobre qualquer convexo fechado existe um único ponto de distância mínima, e sobre subespaços fechados a projeção é linear e caracterizada por ortogonalidade do resíduo.\\n\\nDa projeção segue a decomposição $H=M\\oplus M^\\perp$ para $M$ fechado, e dela segue o teorema de Riesz-Fréchet, que identifica todo funcional contínuo $\\varphi$ com um produto interno $\\langle\\cdot,y\\rangle$. Essa identificação $H\\cong H^*$ é o que torna os espaços de Hilbert tão dóceis: dualidade, adjuntos e formulações variacionais ganham forma concreta. É por isso que EDPs lineares e a mecânica quântica vivem naturalmente em $L^2$.",
+      "commonPitfalls": [
+        "Aplicar o teorema da projeção ou a decomposição ortogonal a subespaço que não é fechado — a hipótese de fechamento é essencial.",
+        "Esquecer a antilinearidade em uma das variáveis no caso complexo (a convenção de qual variável é linear precisa ser fixada e mantida).",
+        "Afirmar $M^{\\perp\\perp}=M$ para $M$ qualquer; em geral $M^{\\perp\\perp}=\\overline{M}$, e só vale $=M$ quando $M$ é fechado.",
+        "Aplicar Riesz a um funcional linear sem verificar continuidade: existem funcionais lineares descontínuos que não são da forma $\\langle\\cdot,y\\rangle$."
+      ],
+      "worked": "**Problema.** Qual a constante $c\\in\\mathbb{R}$ que melhor aproxima $f\\in L^2[0,1]$ no sentido de mínimos quadrados, isto é, que minimiza $\\int_0^1 (f(x)-c)^2\\,dx$?\n\n**Solução via projeção.** O conjunto das funções constantes é o subespaço $M=\\{c\\cdot \\mathbf{1}:c\\in\\mathbb{R}\\}$, fechado e de dimensão $1$. Como $\\|\\mathbf{1}\\|_2^2=\\int_0^1 1\\,dx=1$, o vetor $\\mathbf{1}$ é unitário e a projeção ortogonal de $f$ sobre $M$ é\n$$P_M f=\\langle f,\\mathbf{1}\\rangle\\,\\mathbf{1}=\\Big(\\int_0^1 f(x)\\,dx\\Big)\\mathbf{1}=\\bar f.$$\nA constante ótima é portanto a **média** $\\bar f=\\int_0^1 f$. De fato, o resíduo é ortogonal a $M$:\n$$\\langle f-\\bar f,\\ \\mathbf{1}\\rangle=\\int_0^1\\big(f(x)-\\bar f\\big)\\,dx=\\bar f-\\bar f=0,$$\ne o teorema da projeção garante que esse é o único minimizador.\n\n**Observação.** Este é o caso mais simples de mínimos quadrados; a mesma ideia, projetando sobre subespaços de dimensão maior, fornece as melhores aproximações por polinômios, por polinômios trigonométricos (séries de Fourier) etc.",
+      "exercises": [
+        {
+          "prompt": "Mostre que uma norma satisfaz a lei do paralelogramo se e só se provém de um produto interno (identidade de polarização).",
+          "hint": "No caso real, defina $\\langle x,y\\rangle=\\tfrac14(\\|x+y\\|^2-\\|x-y\\|^2)$ e verifique aditividade e homogeneidade usando a lei do paralelogramo; no complexo use a versão com quatro termos.",
+          "difficulty": 5,
+          "solution": "**Afirmação.** Uma norma $\\|\\cdot\\|$ em um espaço vetorial real $X$ provém de um produto interno se e só se satisfaz a lei do paralelogramo\n$$\\|x+y\\|^2+\\|x-y\\|^2=2\\|x\\|^2+2\\|y\\|^2\\qquad\\forall x,y.\\quad(\\star)$$\n(Trato o caso real; o complexo está ao final.)\n\n**($\\Rightarrow$)** Se $\\|x\\|^2=\\langle x,x\\rangle$, expandindo por bilinearidade $\\|x\\pm y\\|^2=\\|x\\|^2\\pm 2\\langle x,y\\rangle+\\|y\\|^2$ e somando obtém-se $(\\star)$ imediatamente.\n\n**($\\Leftarrow$)** Suponha $(\\star)$. Defina, por polarização,\n$$\\langle x,y\\rangle:=\\tfrac14\\big(\\|x+y\\|^2-\\|x-y\\|^2\\big).$$\nÉ preciso ver que isto é um produto interno com $\\langle x,x\\rangle=\\|x\\|^2$.\n\n- **Positividade / normalização.** $\\langle x,x\\rangle=\\tfrac14(\\|2x\\|^2-0)=\\|x\\|^2\\ge 0$, nulo só se $x=0$. Simetria $\\langle x,y\\rangle=\\langle y,x\\rangle$ é imediata pois $\\|x-y\\|=\\|y-x\\|$.\n\n- **Aditividade na 1ª variável.** Queremos $\\langle x+z,y\\rangle=\\langle x,y\\rangle+\\langle z,y\\rangle$. Usando a definição e aplicando $(\\star)$ duas vezes (aos pares $x+y,z$ e $x-y,z$) mostra-se a identidade\n$$\\|x+z+y\\|^2-\\|x+z-y\\|^2=\\big(\\|x+y\\|^2-\\|x-y\\|^2\\big)+\\big(\\|z+y\\|^2-\\|z-y\\|^2\\big)+R,$$\ne a lei do paralelogramo faz o termo cruzado $R$ se anular, dando $\\langle x+z,y\\rangle=\\langle x,y\\rangle+\\langle z,y\\rangle$. (Concretamente: de $(\\star)$, $\\|a+b\\|^2+\\|a-b\\|^2=2\\|a\\|^2+2\\|b\\|^2$; escolhendo $a=x+z,\\ b=y$ e manipulando, obtém-se a aditividade.)\n\n- **Homogeneidade.** Da aditividade segue $\\langle nx,y\\rangle=n\\langle x,y\\rangle$ para $n\\in\\mathbb{N}$, daí para $\\mathbb{Z}$ e $\\mathbb{Q}$; a função $\\lambda\\mapsto\\langle\\lambda x,y\\rangle$ é contínua (a norma é contínua), logo $\\langle\\lambda x,y\\rangle=\\lambda\\langle x,y\\rangle$ para todo $\\lambda\\in\\mathbb{R}$.\n\nPortanto $\\langle\\cdot,\\cdot\\rangle$ é bilinear simétrico positivo-definido com $\\langle x,x\\rangle=\\|x\\|^2$: a norma provém desse produto interno.\n\n**Caso complexo.** Usa-se a polarização de quatro termos\n$$\\langle x,y\\rangle=\\tfrac14\\sum_{k=0}^{3} i^{k}\\,\\|x+i^{k}y\\|^2,$$\ne a lei do paralelogramo garante, do mesmo modo, aditividade e homogeneidade (agora $\\mathbb{C}$-linear na 1ª variável, antilinear na 2ª). $\\blacksquare$",
+          "steps": [
+            "Faça a direção fácil: se a norma vem de produto interno, expanda $\\|x\\pm y\\|^2$ e some para obter a lei do paralelogramo.",
+            "Na recíproca, defina $\\langle x,y\\rangle=\\tfrac14(\\|x+y\\|^2-\\|x-y\\|^2)$ (polarização real).",
+            "Verifique normalização $\\langle x,x\\rangle=\\|x\\|^2$ e simetria diretamente.",
+            "Prove aditividade na primeira variável aplicando a lei do paralelogramo aos pares adequados.",
+            "Estenda a homogeneidade de $\\mathbb{Q}$ para $\\mathbb{R}$ por continuidade; no caso complexo use a polarização de quatro termos."
+          ]
+        },
+        {
+          "prompt": "Em $L^2[-\\pi,\\pi]$ encontre o polinômio trigonométrico de grau $1$ que melhor aproxima $f(x)=x$.",
+          "hint": "Projete $f$ sobre o subespaço gerado por $\\{1,\\cos x,\\sin x\\}$; por paridade só o termo em $\\sin x$ sobrevive.",
+          "difficulty": 3,
+          "solution": "Trabalhamos em $H=L^2[-\\pi,\\pi]$ com $\\langle f,g\\rangle=\\int_{-\\pi}^{\\pi}f g$ (funções reais). Queremos o elemento do subespaço\n$$M=\\operatorname{span}\\{1,\\cos x,\\sin x\\}$$\nmais próximo de $f(x)=x$; pelo teorema da projeção, é $P_M f=\\sum_i\\frac{\\langle f,u_i\\rangle}{\\|u_i\\|^2}u_i$ com $\\{u_i\\}$ ortogonais.\n\n**Passo 1 (ortogonalidade e normas).** O sistema $\\{1,\\cos x,\\sin x\\}$ é ortogonal em $[-\\pi,\\pi]$:\n$$\\int_{-\\pi}^\\pi 1\\cdot\\cos x\\,dx=\\int_{-\\pi}^\\pi 1\\cdot\\sin x\\,dx=\\int_{-\\pi}^\\pi\\cos x\\sin x\\,dx=0.$$\nAs normas: $\\|1\\|^2=2\\pi$, $\\|\\cos x\\|^2=\\int_{-\\pi}^\\pi\\cos^2=\\pi$, $\\|\\sin x\\|^2=\\int_{-\\pi}^\\pi\\sin^2=\\pi$.\n\n**Passo 2 (coeficientes via paridade).** Como $f(x)=x$ é **ímpar**:\n$$\\langle x,1\\rangle=\\int_{-\\pi}^\\pi x\\,dx=0,\\qquad\\langle x,\\cos x\\rangle=\\int_{-\\pi}^\\pi x\\cos x\\,dx=0$$\n(ambos integrandos ímpares). Só sobrevive o termo em $\\sin x$:\n$$\\langle x,\\sin x\\rangle=\\int_{-\\pi}^\\pi x\\sin x\\,dx=2\\int_0^\\pi x\\sin x\\,dx.$$\nPor partes, $\\int_0^\\pi x\\sin x\\,dx=[-x\\cos x]_0^\\pi+\\int_0^\\pi\\cos x\\,dx=\\pi+0=\\pi$. Logo $\\langle x,\\sin x\\rangle=2\\pi$.\n\n**Passo 3 (montar a projeção).**\n$$P_M f=\\frac{\\langle x,\\sin x\\rangle}{\\|\\sin x\\|^2}\\sin x=\\frac{2\\pi}{\\pi}\\sin x=2\\sin x.$$\n\n**Conclusão.** O polinômio trigonométrico de grau $1$ que melhor aproxima $f(x)=x$ em $L^2[-\\pi,\\pi]$ é\n$$\\boxed{\\,g(x)=2\\sin x\\,}.$$\nÉ o primeiro termo da série de Fourier de $x$ (coerente com $b_n=2(-1)^{n+1}/n$, que para $n=1$ dá $2$). O resíduo $x-2\\sin x$ é ortogonal a $M$, como garante o teorema da projeção. $\\blacksquare$",
+          "steps": [
+            "Identifique o subespaço $M=\\operatorname{span}\\{1,\\cos x,\\sin x\\}$ e lembre que a melhor aproximação é a projeção ortogonal.",
+            "Confirme que $\\{1,\\cos x,\\sin x\\}$ é ortogonal e calcule as normas $2\\pi,\\pi,\\pi$.",
+            "Use paridade: como $x$ é ímpar, os coeficientes contra $1$ e $\\cos x$ se anulam.",
+            "Calcule $\\int_{-\\pi}^{\\pi}x\\sin x\\,dx=2\\pi$ por partes.",
+            "Monte $P_M f=(2\\pi/\\pi)\\sin x=2\\sin x$ e interprete como o primeiro harmônico de Fourier."
+          ]
+        },
+        {
+          "prompt": "Prove que para qualquer $M\\subseteq H$, $M^\\perp$ é subespaço fechado e $M\\subseteq M^{\\perp\\perp}$.",
+          "hint": "Use a continuidade do produto interno (consequência de Cauchy-Schwarz) para mostrar que $M^\\perp$ é fechado; a inclusão sai direto da definição.",
+          "difficulty": 2,
+          "solution": "Seja $H$ um espaço de Hilbert e $M\\subseteq H$ **qualquer** subconjunto (não necessariamente subespaço nem fechado). Definimos $M^\\perp=\\{x\\in H:\\langle x,m\\rangle=0\\ \\forall m\\in M\\}$.\n\n**(a) $M^\\perp$ é subespaço.** Se $x,y\\in M^\\perp$ e $\\alpha,\\beta\\in\\mathbb{K}$, então para todo $m\\in M$\n$$\\langle\\alpha x+\\beta y,m\\rangle=\\alpha\\langle x,m\\rangle+\\beta\\langle y,m\\rangle=0,$$\nlogo $\\alpha x+\\beta y\\in M^\\perp$. E $0\\in M^\\perp$. Portanto $M^\\perp$ é subespaço vetorial.\n\n**(b) $M^\\perp$ é fechado.** Para cada $m\\in M$ fixo, o funcional $\\varphi_m(x)=\\langle x,m\\rangle$ é contínuo, pois por Cauchy-Schwarz $|\\varphi_m(x)-\\varphi_m(x')|=|\\langle x-x',m\\rangle|\\le\\|m\\|\\,\\|x-x'\\|$. Assim $\\ker\\varphi_m=\\varphi_m^{-1}(\\{0\\})$ é fechado (imagem inversa de fechado por função contínua). Como\n$$M^\\perp=\\bigcap_{m\\in M}\\ker\\varphi_m$$\né interseção (arbitrária) de conjuntos fechados, $M^\\perp$ é fechado.\n\nAlternativamente, por sequências: se $x_n\\in M^\\perp$ e $x_n\\to x$, então para todo $m\\in M$, pela continuidade do produto interno, $\\langle x,m\\rangle=\\lim_n\\langle x_n,m\\rangle=\\lim_n 0=0$, logo $x\\in M^\\perp$.\n\n**(c) $M\\subseteq M^{\\perp\\perp}$.** Seja $m\\in M$. Para provar $m\\in M^{\\perp\\perp}=(M^\\perp)^\\perp$, tome qualquer $y\\in M^\\perp$; por definição de $M^\\perp$, $\\langle y,m\\rangle=0$, e portanto $\\langle m,y\\rangle=\\overline{\\langle y,m\\rangle}=0$. Como isso vale para todo $y\\in M^\\perp$, segue $m\\perp M^\\perp$, ou seja $m\\in M^{\\perp\\perp}$. Logo $M\\subseteq M^{\\perp\\perp}$. $\\blacksquare$\n\n**Observação.** Em geral a inclusão é estrita; a igualdade $M^{\\perp\\perp}=M$ vale exatamente quando $M$ é subespaço fechado (e $M^{\\perp\\perp}=\\overline{\\operatorname{span}}\\,M$ no caso geral).",
+          "steps": [
+            "Mostre que $M^\\perp$ é fechado sob combinações lineares (é subespaço) diretamente da bilinearidade.",
+            "Escreva $M^\\perp=\\bigcap_{m\\in M}\\ker\\varphi_m$ com $\\varphi_m(x)=\\langle x,m\\rangle$ contínuo (Cauchy-Schwarz).",
+            "Conclua fechamento como interseção de fechados (ou por sequências usando continuidade do produto interno).",
+            "Para $M\\subseteq M^{\\perp\\perp}$, tome $m\\in M$ e $y\\in M^\\perp$ arbitrário.",
+            "Use $\\langle m,y\\rangle=\\overline{\\langle y,m\\rangle}=0$ para todo $y\\in M^\\perp$, concluindo $m\\in M^{\\perp\\perp}$."
+          ]
+        },
+        {
+          "prompt": "Demonstre o teorema de Riesz-Fréchet.",
+          "hint": "Se $\\varphi=0$ tome $y=0$; senão $N=\\ker\\varphi$ é hiperplano fechado, $N^\\perp$ tem dimensão $1$; escolha $z\\in N^\\perp$ unitário e mostre que $y=\\overline{\\varphi(z)}\\,z$ funciona.",
+          "difficulty": 4,
+          "solution": "**Teorema (Riesz-Fréchet).** Seja $H$ um espaço de Hilbert e $\\varphi\\in H^*$ um funcional linear contínuo. Então existe um único $y\\in H$ tal que $\\varphi(x)=\\langle x,y\\rangle$ para todo $x\\in H$, e $\\|\\varphi\\|_{H^*}=\\|y\\|_H$.\n\n**Existência.**\n- *Caso $\\varphi=0$:* tome $y=0$.\n- *Caso $\\varphi\\ne 0$:* seja $N=\\ker\\varphi$. Como $\\varphi$ é contínuo e não nulo, $N$ é subespaço fechado próprio de $H$. Pela decomposição ortogonal, $H=N\\oplus N^\\perp$ com $N^\\perp\\ne\\{0\\}$. Escolha $z\\in N^\\perp$ com $\\|z\\|=1$; em particular $\\varphi(z)\\ne 0$ (senão $z\\in N\\cap N^\\perp=\\{0\\}$).\n\n  Afirmo que $N^\\perp$ tem dimensão $1$: dado $w\\in N^\\perp$, o vetor $u=\\varphi(w)z-\\varphi(z)w$ satisfaz $\\varphi(u)=\\varphi(w)\\varphi(z)-\\varphi(z)\\varphi(w)=0$, logo $u\\in N$; mas $u\\in N^\\perp$ também (combinação de $z,w\\in N^\\perp$), então $u=0$, isto é, $w=\\tfrac{\\varphi(w)}{\\varphi(z)}z$. Assim $N^\\perp=\\mathbb{K}z$.\n\n  Defina $y=\\overline{\\varphi(z)}\\,z$. Verifiquemos $\\varphi(x)=\\langle x,y\\rangle$ para todo $x$. Decomponha $x=n+\\lambda z$ com $n\\in N$, $\\lambda\\in\\mathbb{K}$ (pois $H=N\\oplus N^\\perp=N\\oplus\\mathbb{K}z$). Então:\n  $$\\varphi(x)=\\varphi(n)+\\lambda\\varphi(z)=\\lambda\\varphi(z),$$\n  $$\\langle x,y\\rangle=\\langle n+\\lambda z,\\ \\overline{\\varphi(z)}z\\rangle=\\underbrace{\\langle n,\\overline{\\varphi(z)}z\\rangle}_{=0,\\ n\\perp z}+\\lambda\\,\\overline{\\overline{\\varphi(z)}}\\,\\langle z,z\\rangle=\\lambda\\,\\varphi(z)\\,\\|z\\|^2=\\lambda\\varphi(z).$$\n  Logo $\\varphi(x)=\\langle x,y\\rangle$ para todo $x$.\n\n**Unicidade.** Se $\\langle x,y_1\\rangle=\\langle x,y_2\\rangle$ para todo $x$, então $\\langle x,y_1-y_2\\rangle=0$ para todo $x$; tomando $x=y_1-y_2$ dá $\\|y_1-y_2\\|^2=0$, logo $y_1=y_2$.\n\n**Isometria $\\|\\varphi\\|=\\|y\\|$.** Por Cauchy-Schwarz, $|\\varphi(x)|=|\\langle x,y\\rangle|\\le\\|y\\|\\,\\|x\\|$, logo $\\|\\varphi\\|\\le\\|y\\|$. Por outro lado, se $y\\ne0$, avaliando em $x=y/\\|y\\|$: $\\varphi(y/\\|y\\|)=\\langle y/\\|y\\|,y\\rangle=\\|y\\|$, logo $\\|\\varphi\\|\\ge\\|y\\|$. Portanto $\\|\\varphi\\|=\\|y\\|$ (trivial se $y=0$). $\\blacksquare$",
+          "steps": [
+            "Trate $\\varphi=0$ com $y=0$; suponha $\\varphi\\ne0$ e considere $N=\\ker\\varphi$, subespaço fechado próprio.",
+            "Use $H=N\\oplus N^\\perp$ e escolha $z\\in N^\\perp$ unitário, notando $\\varphi(z)\\ne0$.",
+            "Mostre que $N^\\perp$ é unidimensional, gerado por $z$.",
+            "Defina $y=\\overline{\\varphi(z)}z$ e verifique $\\varphi(x)=\\langle x,y\\rangle$ decompondo $x=n+\\lambda z$.",
+            "Prove unicidade tomando $x=y_1-y_2$, e a isometria $\\|\\varphi\\|=\\|y\\|$ via Cauchy-Schwarz e avaliação em $y/\\|y\\|$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Desigualdade de Cauchy-Schwarz",
+          "back": "$|\\langle x,y\\rangle|\\le\\|x\\|\\,\\|y\\|$; igualdade $\\iff$ $x,y$ linearmente dependentes."
+        },
+        {
+          "front": "Lei do paralelogramo",
+          "back": "$\\|x+y\\|^2+\\|x-y\\|^2=2\\|x\\|^2+2\\|y\\|^2$; caracteriza as normas que vêm de produto interno."
+        },
+        {
+          "front": "Teorema da projeção (convexo fechado)",
+          "back": "Para $C$ convexo fechado não vazio e $x\\in H$, existe único $P_C x\\in C$ de distância mínima."
+        },
+        {
+          "front": "Caracterização da projeção sobre subespaço",
+          "back": "$p=P_M x \\iff p\\in M$ e $\\langle x-p,\\,m\\rangle=0$ para todo $m\\in M$."
+        },
+        {
+          "front": "Decomposição ortogonal",
+          "back": "Se $M$ é fechado, $H=M\\oplus M^\\perp$ e $M^{\\perp\\perp}=M$."
+        },
+        {
+          "front": "Teorema de Riesz-Fréchet",
+          "back": "Todo $\\varphi\\in H^*$ é $\\varphi(x)=\\langle x,y\\rangle$ para um único $y\\in H$, com $\\|\\varphi\\|=\\|y\\|$."
+        },
+        {
+          "front": "$M^{\\perp\\perp}$ para $M$ qualquer",
+          "back": "$M^{\\perp\\perp}=\\overline{M}$ (o fecho do subespaço gerado), igual a $M$ só se $M$ for fechado."
+        },
+        {
+          "front": "Por que $L^\\infty[0,1]$ não é Hilbert?",
+          "back": "Sua norma não satisfaz a lei do paralelogramo, logo não provém de produto interno."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Brezis, cap. 5 (Hilbert Spaces)",
+          "ref": "livro"
+        },
+        {
+          "title": "Kreyszig, cap. 3 (Inner Product and Hilbert Spaces)",
+          "ref": "livro"
+        },
+        {
+          "title": "Conway, cap. I (Hilbert Spaces)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Retome produto interno em $\\mathbb{R}^n$/$\\mathbb{C}^n$ (ângulos, ortogonalidade, Pitágoras) e a definição de $L^2$ como espaço com $\\langle f,g\\rangle=\\int f\\bar g$.",
+          "Leia Brezis cap. 5 e Kreyszig cap. 3; anote Cauchy-Schwarz, lei do paralelogramo e a definição de espaço de Hilbert.",
+          "Estude com cuidado o teorema da projeção sobre convexos fechados: entenda a prova por minimização usando a lei do paralelogramo para mostrar que a sequência minimizante é de Cauchy.",
+          "Deduza a decomposição $H=M\\oplus M^\\perp$ e as identidades $M^{\\perp\\perp}=\\overline{M}$; conecte com mínimos quadrados e Lax-Milgram.",
+          "Demonstre Riesz-Fréchet e pratique identificar $H\\cong H^*$ em exemplos ($L^2$, $\\ell^2$).",
+          "Resolva os testes do subtópico no app e anote aqui o essencial (a prova da projeção e o esquema de Riesz-Fréchet via hiperplano)."
+        ],
+        "searchQueries": [
+          "teorema da projeção espaço de Hilbert convexo fechado demonstração",
+          "identidade de polarização lei do paralelogramo produto interno prova",
+          "teorema de representação de Riesz-Fréchet demonstração",
+          "decomposição ortogonal H = M ⊕ M perp subespaço fechado",
+          "Riesz representation theorem Hilbert space proof",
+          "projection theorem closed convex set minimizing sequence Cauchy"
+        ],
+        "videos": [
+          {
+            "title": "Functional Analysis - Hilbert spaces and projection theorem",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Veja os episódios sobre produto interno, ortogonalidade, teorema da projeção e Riesz na série de análise funcional."
+          },
+          {
+            "title": "MIT OCW 18.102 — Hilbert spaces, orthogonality, Riesz representation",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas dedicadas à geometria de Hilbert e ao teorema de Riesz; use as notas de aula acompanhando o vídeo."
+          },
+          {
+            "title": "Inner product spaces / Riesz representation",
+            "channel": "Dr. Peyam",
+            "note": "Busque os vídeos de Dr. Peyam sobre produto interno e projeções ortogonais para exemplos concretos bem explicados."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Brezis, Functional Analysis — cap. 5 (Hilbert Spaces)",
+            "where": "Springer (livro-texto)"
+          },
+          {
+            "title": "Conway, A Course in Functional Analysis — cap. I (Hilbert Spaces)",
+            "where": "Springer GTM 96 (livro-texto)"
+          },
+          {
+            "title": "Kreyszig — cap. 3 (Inner Product and Hilbert Spaces)",
+            "where": "Wiley (livro-texto)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-funcional-03-bases-ortonormais-fourier",
+      "title": "Sistemas Ortonormais, Bases de Hilbert e Séries de Fourier",
+      "tagline": "O 'Pitágoras infinito': Bessel, Parseval e a descoberta de que todo Hilbert separável é, a menos de isometria, o mesmo espaço $\\ell^2$.",
+      "objectives": [
+        "Definir sistema ortonormal e coeficientes de Fourier abstratos, e provar a desigualdade de Bessel.",
+        "Caracterizar bases ortonormais (sistemas ortonormais completos) por condições equivalentes: densidade do span, identidade de Parseval e ausência de vetores ortogonais a todos.",
+        "Provar que todo espaço de Hilbert separável possui base ortonormal enumerável e é isometricamente isomorfo a $\\ell^2$.",
+        "Aplicar a teoria à série de Fourier clássica em $L^2[-\\pi,\\pi]$ e calcular somas de séries via Parseval."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Sistema ortonormal",
+          "statement": "Família $(e_i)_{i\\in I}$ com $\\langle e_i,e_j\\rangle=\\delta_{ij}$ (vetores unitários dois a dois ortogonais)."
+        },
+        {
+          "term": "Coeficiente de Fourier",
+          "statement": "Para um sistema ortonormal $(e_i)$ e $x\\in H$, o número $\\hat x(i)=\\langle x,e_i\\rangle$; a 'série de Fourier' de $x$ é $\\sum_i \\langle x,e_i\\rangle\\,e_i$."
+        },
+        {
+          "term": "Base de Hilbert (sistema ortonormal completo)",
+          "statement": "Sistema ortonormal $(e_i)$ cujo span é denso em $H$, i.e. $\\overline{\\operatorname{span}}\\{e_i\\}=H$. Não é base de Hamel: usa combinações infinitas (convergentes)."
+        },
+        {
+          "term": "Separabilidade",
+          "statement": "$H$ é separável se possui subconjunto enumerável denso; equivale, em Hilbert, a admitir base ortonormal enumerável."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Desigualdade de Bessel",
+          "statement": "Para qualquer sistema ortonormal $(e_i)_{i\\in I}$ e qualquer $x\\in H$, $\\sum_{i\\in I}|\\langle x,e_i\\rangle|^2\\le\\|x\\|^2$.",
+          "whyItMatters": "Garante que os coeficientes de Fourier são somáveis ao quadrado e que a projeção sobre subespaços finitos é a melhor aproximação; é o primeiro passo rumo a Parseval."
+        },
+        {
+          "name": "Caracterização de base ortonormal (Parseval)",
+          "statement": "Para um sistema ortonormal $(e_i)$ em $H$ são equivalentes: (a) é completo; (b) $x=\\sum_i\\langle x,e_i\\rangle e_i$ para todo $x$; (c) $\\|x\\|^2=\\sum_i|\\langle x,e_i\\rangle|^2$ para todo $x$ (Parseval); (d) $\\langle x,e_i\\rangle=0\\ \\forall i\\Rightarrow x=0$.",
+          "whyItMatters": "É o 'teorema de Pitágoras infinito': reduz vetores e normas a coordenadas de Fourier, exatamente como em $\\mathbb{R}^n$."
+        },
+        {
+          "name": "Riesz-Fischer / classificação",
+          "statement": "Se $H$ é separável de dimensão infinita, a aplicação $x\\mapsto(\\langle x,e_n\\rangle)_n$ é um isomorfismo isométrico de $H$ sobre $\\ell^2$. Assim todos os espaços de Hilbert separáveis de dimensão infinita são isometricamente isomorfos a $\\ell^2$.",
+          "whyItMatters": "Há essencialmente um único espaço de Hilbert separável de dimensão infinita; isso unifica $L^2$, $\\ell^2$ e os espaços de séries de Fourier."
+        }
+      ],
+      "summary": "Um sistema ortonormal generaliza os vetores da base canônica: vetores unitários mutuamente ortogonais. Dado $x$, seus coeficientes de Fourier $\\langle x,e_i\\rangle$ são as 'coordenadas', e a desigualdade de Bessel garante que essas coordenadas são somáveis ao quadrado, com a melhor aproximação finita de $x$ sendo a projeção sobre o span finito. Quando o sistema é completo (span denso), Bessel vira igualdade: vale a identidade de Parseval $\\|x\\|^2=\\sum|\\langle x,e_i\\rangle|^2$ e a expansão $x=\\sum\\langle x,e_i\\rangle e_i$ converge em norma. As quatro condições — completude, expansão, Parseval e 'nenhum vetor ortogonal a todos' — são equivalentes.\\n\\nO desfecho é estrutural: todo espaço de Hilbert separável de dimensão infinita é isometricamente isomorfo a $\\ell^2$. Em particular $L^2[-\\pi,\\pi]$ com o sistema trigonométrico é apenas $\\ell^2$ disfarçado, e a série de Fourier clássica é a expansão abstrata nessa base. Aplicar Parseval a funções concretas produz, quase de graça, identidades célebres como $\\sum 1/n^2=\\pi^2/6$.",
+      "commonPitfalls": [
+        "Confundir base ortonormal de Hilbert (fecho do span, combinações infinitas) com base de Hamel (apenas combinações finitas) — em dimensão infinita são radicalmente diferentes.",
+        "Achar que a série de Fourier converge pontualmente: em $L^2$ a convergência garantida é em norma (quadrática), não ponto a ponto.",
+        "Tratar Bessel como igualdade: ela só vira Parseval quando o sistema ortonormal é completo.",
+        "Esquecer de normalizar os vetores ao usar o sistema trigonométrico (os fatores $1/\\sqrt{2\\pi}$, $1/\\sqrt{\\pi}$ importam para Parseval)."
+      ],
+      "worked": "**Cálculo de $\\sum_{n\\ge 1} 1/n^2$ via Parseval.** Tome $f(x)=x$ em $L^2[-\\pi,\\pi]$. Como $f$ é ímpar, seus coeficientes de cosseno se anulam, e\n$$b_n=\\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}x\\sin(nx)\\,dx=\\frac{2}{\\pi}\\int_0^{\\pi}x\\sin(nx)\\,dx=\\frac{2}{\\pi}\\cdot\\Big(-\\frac{\\pi(-1)^n}{n}\\Big)=\\frac{2(-1)^{n+1}}{n}.$$\nA identidade de Parseval, na forma $\\dfrac{1}{\\pi}\\displaystyle\\int_{-\\pi}^{\\pi}f(x)^2\\,dx=\\dfrac{a_0^2}{2}+\\sum_{n\\ge1}(a_n^2+b_n^2)$, dá\n$$\\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}x^2\\,dx=\\frac{1}{\\pi}\\cdot\\frac{2\\pi^3}{3}=\\frac{2\\pi^2}{3}=\\sum_{n\\ge1}b_n^2=\\sum_{n\\ge1}\\frac{4}{n^2}.$$\nLogo $\\displaystyle\\sum_{n\\ge1}\\frac{1}{n^2}=\\frac{1}{4}\\cdot\\frac{2\\pi^2}{3}=\\frac{\\pi^2}{6}.$\n\n**Moral.** Identidades numéricas 'mágicas' são apenas Parseval aplicado a funções bem escolhidas; com $f(x)=x^2$ obtém-se, do mesmo modo, $\\sum 1/n^4=\\pi^4/90$.",
+      "exercises": [
+        {
+          "prompt": "Aplique Gram-Schmidt a $1,x,x^2$ em $L^2[-1,1]$ e obtenha os três primeiros polinômios de Legendre normalizados.",
+          "hint": "Ortogonalize na ordem dada usando $\\langle f,g\\rangle=\\int_{-1}^1 fg$; depois normalize cada vetor.",
+          "difficulty": 3,
+          "solution": "Em $H=L^2[-1,1]$ com $\\langle f,g\\rangle=\\int_{-1}^{1}fg$, aplicamos Gram-Schmidt aos vetores $v_0=1,\\ v_1=x,\\ v_2=x^2$.\n\n**Passo 1 ($u_0$).** $u_0=v_0=1$. Norma: $\\|1\\|^2=\\int_{-1}^1 1\\,dx=2$, logo $e_0=\\dfrac{1}{\\sqrt2}$.\n\n**Passo 2 ($u_1$).** Subtraia a projeção de $v_1=x$ sobre $u_0$:\n$$\\langle x,1\\rangle=\\int_{-1}^1 x\\,dx=0\\ \\Rightarrow\\ u_1=x-0=x.$$\nNorma: $\\|x\\|^2=\\int_{-1}^1 x^2\\,dx=\\tfrac23$, logo $e_1=\\dfrac{x}{\\sqrt{2/3}}=\\sqrt{\\tfrac32}\\,x$.\n\n**Passo 3 ($u_2$).** Subtraia as projeções de $v_2=x^2$ sobre $u_0$ e $u_1$:\n$$\\langle x^2,1\\rangle=\\int_{-1}^1 x^2\\,dx=\\tfrac23,\\qquad\\langle x^2,x\\rangle=\\int_{-1}^1 x^3\\,dx=0.$$\nLogo\n$$u_2=x^2-\\frac{\\langle x^2,1\\rangle}{\\|1\\|^2}\\,1-\\frac{\\langle x^2,x\\rangle}{\\|x\\|^2}\\,x=x^2-\\frac{2/3}{2}\\cdot 1-0=x^2-\\tfrac13.$$\nNorma: $\\|u_2\\|^2=\\int_{-1}^1\\big(x^2-\\tfrac13\\big)^2dx=\\int_{-1}^1\\big(x^4-\\tfrac23x^2+\\tfrac19\\big)dx=\\tfrac25-\\tfrac23\\cdot\\tfrac23+\\tfrac19\\cdot2=\\tfrac25-\\tfrac49+\\tfrac29=\\tfrac{8}{45}.$\nLogo $e_2=\\dfrac{x^2-1/3}{\\sqrt{8/45}}=\\sqrt{\\tfrac{45}{8}}\\Big(x^2-\\tfrac13\\Big)$.\n\n**Resultado (ortonormais).**\n$$e_0=\\frac{1}{\\sqrt2},\\qquad e_1=\\sqrt{\\tfrac32}\\,x,\\qquad e_2=\\sqrt{\\tfrac{45}{8}}\\Big(x^2-\\tfrac13\\Big)=\\frac{\\sqrt{10}}{4}\\,(3x^2-1).$$\n\n**Ligação com Legendre.** Os polinômios de Legendre são $P_0=1,\\ P_1=x,\\ P_2=\\tfrac12(3x^2-1)$, ortogonais em $[-1,1]$ com $\\|P_n\\|^2=\\tfrac{2}{2n+1}$. As versões normalizadas $\\sqrt{\\tfrac{2n+1}{2}}\\,P_n$ dão exatamente $e_0,e_1,e_2$ acima (para $n=2$: $\\sqrt{5/2}\\cdot\\tfrac12(3x^2-1)=\\tfrac{\\sqrt{10}}{4}(3x^2-1)$). $\\blacksquare$",
+          "steps": [
+            "Comece com $u_0=1$ e normalize: $e_0=1/\\sqrt2$.",
+            "Projete $x$ sobre $u_0$ (integral nula por paridade) e obtenha $u_1=x$, então $e_1=\\sqrt{3/2}\\,x$.",
+            "Projete $x^2$ sobre $u_0$ e $u_1$: $\\langle x^2,1\\rangle=2/3$, $\\langle x^2,x\\rangle=0$, dando $u_2=x^2-1/3$.",
+            "Calcule $\\|x^2-1/3\\|^2=8/45$ e normalize para $e_2$.",
+            "Compare com $P_0,P_1,P_2$ de Legendre e verifique que $e_n=\\sqrt{(2n+1)/2}\\,P_n$."
+          ]
+        },
+        {
+          "prompt": "Mostre que entre todas as combinações $\\sum_{i\\le n} c_i e_i$, a que minimiza $\\|x-\\sum c_i e_i\\|$ tem $c_i=\\langle x,e_i\\rangle$.",
+          "hint": "Expanda $\\|x-\\sum c_i e_i\\|^2$ usando ortonormalidade e complete quadrados em cada $c_i$.",
+          "difficulty": 2,
+          "solution": "Seja $(e_i)_{i=1}^n$ um sistema ortonormal finito em $H$ e $x\\in H$. Para escalares $c_1,\\dots,c_n$ considere $y=\\sum_{i=1}^n c_i e_i$ e minimize $\\|x-y\\|^2$.\n\n**Passo 1 (expandir a norma).** Usando ortonormalidade $\\langle e_i,e_j\\rangle=\\delta_{ij}$:\n$$\\|x-y\\|^2=\\|x\\|^2-\\langle x,y\\rangle-\\langle y,x\\rangle+\\|y\\|^2=\\|x\\|^2-\\sum_i\\big(\\overline{c_i}\\langle x,e_i\\rangle+c_i\\overline{\\langle x,e_i\\rangle}\\big)+\\sum_i|c_i|^2.$$\nEscreva $\\hat x_i=\\langle x,e_i\\rangle$.\n\n**Passo 2 (completar quadrados).** Para cada $i$,\n$$|c_i|^2-\\overline{c_i}\\hat x_i-c_i\\overline{\\hat x_i}=|c_i-\\hat x_i|^2-|\\hat x_i|^2.$$\nSomando,\n$$\\|x-y\\|^2=\\|x\\|^2-\\sum_i|\\hat x_i|^2+\\sum_i|c_i-\\hat x_i|^2.$$\n\n**Passo 3 (minimizar).** Os dois primeiros termos não dependem de $c$; o terceiro é $\\ge 0$ e se anula exatamente quando $c_i=\\hat x_i=\\langle x,e_i\\rangle$ para todo $i$. Logo o mínimo de $\\|x-\\sum c_i e_i\\|$ é atingido **unicamente** pela escolha dos coeficientes de Fourier\n$$c_i=\\langle x,e_i\\rangle,$$\ne o valor mínimo é $\\|x-P x\\|^2=\\|x\\|^2-\\sum_i|\\langle x,e_i\\rangle|^2$ (o que já reprova, de passagem, a desigualdade de Bessel: o lado direito é $\\ge0$). $\\blacksquare$\n\n**Interpretação geométrica.** $P x=\\sum_i\\langle x,e_i\\rangle e_i$ é a projeção ortogonal de $x$ sobre $\\operatorname{span}\\{e_i\\}$, e o resíduo $x-Px$ é ortogonal a esse span — a melhor aproximação é sempre a projeção.",
+          "steps": [
+            "Escreva $y=\\sum c_i e_i$ e expanda $\\|x-y\\|^2$ usando ortonormalidade.",
+            "Introduza os coeficientes de Fourier $\\hat x_i=\\langle x,e_i\\rangle$.",
+            "Complete quadrados: $|c_i|^2-\\overline{c_i}\\hat x_i-c_i\\overline{\\hat x_i}=|c_i-\\hat x_i|^2-|\\hat x_i|^2$.",
+            "Obtenha $\\|x-y\\|^2=\\|x\\|^2-\\sum|\\hat x_i|^2+\\sum|c_i-\\hat x_i|^2$.",
+            "Conclua que o mínimo ocorre unicamente em $c_i=\\hat x_i$, identificando a projeção ortogonal."
+          ]
+        },
+        {
+          "prompt": "Prove a equivalência 'sistema completo $\\iff$ vale Parseval para todo $x$'.",
+          "hint": "Use Bessel mais a densidade do span; a igualdade de Parseval equivale à convergência em norma da série de Fourier para $x$.",
+          "difficulty": 4,
+          "solution": "Seja $(e_i)_{i\\in I}$ um sistema ortonormal em $H$. Provamos: **$(e_i)$ é completo (i.e. $\\overline{\\operatorname{span}}\\{e_i\\}=H$) se e só se vale a identidade de Parseval $\\|x\\|^2=\\sum_i|\\langle x,e_i\\rangle|^2$ para todo $x\\in H$.**\n\nUsaremos o fato (exercício anterior / Bessel) de que, para qualquer sistema ortonormal, a série $s=\\sum_i\\langle x,e_i\\rangle e_i$ converge em $H$ (os coeficientes são $\\ell^2$ por Bessel) e $s=P_{\\overline{V}}x$ é a projeção ortogonal de $x$ sobre $V=\\overline{\\operatorname{span}}\\{e_i\\}$. Além disso, por Pitágoras/continuidade, $\\|s\\|^2=\\sum_i|\\langle x,e_i\\rangle|^2$.\n\n**($\\Rightarrow$) Completo $\\Rightarrow$ Parseval.** Se $V=H$, então $P_V=\\mathrm{Id}$, logo para todo $x$ vale $s=x$, i.e. $x=\\sum_i\\langle x,e_i\\rangle e_i$. Tomando normas ao quadrado,\n$$\\|x\\|^2=\\|s\\|^2=\\sum_i|\\langle x,e_i\\rangle|^2,$$\nque é Parseval.\n\n**($\\Leftarrow$) Parseval $\\Rightarrow$ completo.** Suponha que Parseval vale para todo $x$. Seja $x\\perp e_i$ para todo $i$, isto é $\\langle x,e_i\\rangle=0\\ \\forall i$. Então por Parseval\n$$\\|x\\|^2=\\sum_i|\\langle x,e_i\\rangle|^2=0\\ \\Rightarrow\\ x=0.$$\nAssim o único vetor ortogonal a todos os $e_i$ é $0$, isto é, $\\{e_i\\}^\\perp=\\{0\\}$. Mas $\\{e_i\\}^\\perp=V^\\perp$ (o ortogonal do span e de seu fecho coincidem), e num Hilbert $V^\\perp=\\{0\\}\\Rightarrow \\overline{V}=V^{\\perp\\perp}=\\{0\\}^\\perp=H$. Logo $V=\\overline{\\operatorname{span}}\\{e_i\\}=H$: o sistema é completo. $\\blacksquare$\n\n**Observação.** O argumento também mostra a cadeia de equivalências completa: (completo) $\\iff$ (expansão $x=\\sum\\langle x,e_i\\rangle e_i$) $\\iff$ (Parseval) $\\iff$ ($\\langle x,e_i\\rangle=0\\,\\forall i\\Rightarrow x=0$).",
+          "steps": [
+            "Registre o fato base: $s=\\sum\\langle x,e_i\\rangle e_i$ converge (Bessel) e é a projeção de $x$ sobre $V=\\overline{\\operatorname{span}}\\{e_i\\}$, com $\\|s\\|^2=\\sum|\\langle x,e_i\\rangle|^2$.",
+            "Na ida, use que completude significa $V=H$, logo $P_V=\\mathrm{Id}$ e $x=s$.",
+            "Tome normas para obter Parseval.",
+            "Na volta, suponha Parseval e mostre que $x\\perp$ todos os $e_i$ força $\\|x\\|=0$.",
+            "Conclua $V^\\perp=\\{0\\}$, donde $\\overline{V}=H$ (completude)."
+          ]
+        },
+        {
+          "prompt": "Use Parseval com $f(x)=x^2$ em $[-\\pi,\\pi]$ para mostrar $\\sum_{n\\ge1} 1/n^4=\\pi^4/90$.",
+          "hint": "Calcule os coeficientes de cosseno de $x^2$ (função par) e aplique Parseval; cuidado com o termo $a_0$.",
+          "difficulty": 3,
+          "solution": "Aplicamos Parseval a $f(x)=x^2$ em $L^2[-\\pi,\\pi]$, com a série de Fourier real\n$$f(x)\\sim\\frac{a_0}{2}+\\sum_{n\\ge1}\\big(a_n\\cos nx+b_n\\sin nx\\big),\\quad a_n=\\frac1\\pi\\int_{-\\pi}^\\pi f\\cos nx\\,dx,\\ b_n=\\frac1\\pi\\int_{-\\pi}^\\pi f\\sin nx\\,dx.$$\n\n**Passo 1 (coeficientes).** $f(x)=x^2$ é **par**, então $b_n=0$ para todo $n$.\n$$a_0=\\frac1\\pi\\int_{-\\pi}^\\pi x^2\\,dx=\\frac1\\pi\\cdot\\frac{2\\pi^3}{3}=\\frac{2\\pi^2}{3}.$$\nPara $n\\ge1$, integrando por partes duas vezes,\n$$a_n=\\frac1\\pi\\int_{-\\pi}^\\pi x^2\\cos nx\\,dx=\\frac{2}{\\pi}\\int_0^\\pi x^2\\cos nx\\,dx=\\frac{2}{\\pi}\\cdot\\frac{2\\pi(-1)^n}{n^2}=\\frac{4(-1)^n}{n^2}.$$\n(Aqui $\\int_0^\\pi x^2\\cos nx\\,dx=\\dfrac{2\\pi(-1)^n}{n^2}$.)\n\n**Passo 2 (Parseval).** Na forma real,\n$$\\frac1\\pi\\int_{-\\pi}^\\pi f(x)^2\\,dx=\\frac{a_0^2}{2}+\\sum_{n\\ge1}\\big(a_n^2+b_n^2\\big).$$\nO lado esquerdo:\n$$\\frac1\\pi\\int_{-\\pi}^\\pi x^4\\,dx=\\frac1\\pi\\cdot\\frac{2\\pi^5}{5}=\\frac{2\\pi^4}{5}.$$\nO lado direito:\n$$\\frac{a_0^2}{2}+\\sum_{n\\ge1}a_n^2=\\frac{1}{2}\\Big(\\frac{2\\pi^2}{3}\\Big)^2+\\sum_{n\\ge1}\\frac{16}{n^4}=\\frac{2\\pi^4}{9}+16\\sum_{n\\ge1}\\frac{1}{n^4}.$$\n\n**Passo 3 (resolver).** Igualando,\n$$\\frac{2\\pi^4}{5}=\\frac{2\\pi^4}{9}+16\\sum_{n\\ge1}\\frac{1}{n^4}\\ \\Rightarrow\\ 16\\sum_{n\\ge1}\\frac{1}{n^4}=2\\pi^4\\Big(\\frac15-\\frac19\\Big)=2\\pi^4\\cdot\\frac{4}{45}=\\frac{8\\pi^4}{45}.$$\nLogo\n$$\\sum_{n\\ge1}\\frac{1}{n^4}=\\frac{1}{16}\\cdot\\frac{8\\pi^4}{45}=\\boxed{\\frac{\\pi^4}{90}}.\\qquad\\blacksquare$$",
+          "steps": [
+            "Note que $x^2$ é par, logo $b_n=0$; calcule $a_0=2\\pi^2/3$.",
+            "Integre por partes duas vezes para obter $a_n=4(-1)^n/n^2$ (logo $a_n^2=16/n^4$).",
+            "Escreva Parseval na forma real com $\\frac1\\pi\\int x^4=2\\pi^4/5$ à esquerda.",
+            "Monte o lado direito $\\frac{a_0^2}{2}+\\sum a_n^2=\\frac{2\\pi^4}{9}+16\\sum 1/n^4$.",
+            "Iguale e isole $\\sum 1/n^4=\\pi^4/90$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Desigualdade de Bessel",
+          "back": "$\\sum_i |\\langle x,e_i\\rangle|^2\\le\\|x\\|^2$ para qualquer sistema ortonormal $(e_i)$."
+        },
+        {
+          "front": "Identidade de Parseval",
+          "back": "$\\|x\\|^2=\\sum_i|\\langle x,e_i\\rangle|^2$, válida exatamente quando $(e_i)$ é base ortonormal (completo)."
+        },
+        {
+          "front": "Coeficiente de Fourier abstrato",
+          "back": "$\\hat x(i)=\\langle x,e_i\\rangle$; a série de Fourier de $x$ é $\\sum_i\\langle x,e_i\\rangle e_i$."
+        },
+        {
+          "front": "Base de Hilbert vs base de Hamel",
+          "back": "Hilbert: span denso, combinações infinitas convergentes. Hamel: span igual (não fecho), só combinações finitas."
+        },
+        {
+          "front": "Classificação dos Hilbert separáveis",
+          "back": "Todos os de dimensão infinita são isometricamente isomorfos a $\\ell^2$."
+        },
+        {
+          "front": "Como caracterizar completude por ortogonalidade?",
+          "back": "$(e_i)$ é completo $\\iff$ ($\\langle x,e_i\\rangle=0\\ \\forall i \\Rightarrow x=0$)."
+        },
+        {
+          "front": "Em que sentido a série de Fourier em $L^2$ converge?",
+          "back": "Em norma $L^2$ (média quadrática), não necessariamente ponto a ponto."
+        },
+        {
+          "front": "Valor de $\\sum 1/n^2$ por Parseval",
+          "back": "$\\pi^2/6$ (usando $f(x)=x$ em $[-\\pi,\\pi]$)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Brezis, cap. 5 (sistemas ortonormais)",
+          "ref": "livro"
+        },
+        {
+          "title": "Kreyszig, cap. 3 (Total Orthonormal Sets)",
+          "ref": "livro"
+        },
+        {
+          "title": "Reed-Simon vol. I, cap. II",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Recorde base ortonormal em dimensão finita (Gram-Schmidt, coordenadas via produto interno) e a série de Fourier clássica.",
+          "Leia Brezis cap. 5 (sistemas ortonormais) e Kreyszig cap. 3 (Total Orthonormal Sets); anote Bessel, Parseval e as caracterizações equivalentes de base.",
+          "Prove a desigualdade de Bessel via projeção sobre spans finitos e entenda por que ela vira igualdade (Parseval) quando o sistema é completo.",
+          "Estude a classificação: todo Hilbert separável de dimensão infinita é isometricamente isomorfo a $\\ell^2$ (Riesz-Fischer).",
+          "Aplique Parseval a funções concretas em $L^2[-\\pi,\\pi]$ para obter $\\sum 1/n^2=\\pi^2/6$ e $\\sum 1/n^4=\\pi^4/90$.",
+          "Resolva os testes do subtópico no app e anote aqui o principal (a equivalência das quatro condições de base e o padrão de cálculo de somas por Parseval)."
+        ],
+        "searchQueries": [
+          "desigualdade de Bessel identidade de Parseval demonstração espaço de Hilbert",
+          "base ortonormal Hilbert condições equivalentes sistema completo",
+          "processo de Gram-Schmidt polinômios de Legendre L2 [-1,1]",
+          "série de Fourier Parseval soma 1/n^4 = pi^4/90 cálculo",
+          "Riesz-Fischer separable Hilbert space isometric l2",
+          "Parseval identity Fourier series basel problem pi^2/6"
+        ],
+        "videos": [
+          {
+            "title": "But what is a Fourier series? / Inner products",
+            "channel": "3Blue1Brown",
+            "note": "O vídeo sobre séries de Fourier dá a intuição geométrica de coeficientes como projeções; ótimo antes do formalismo de Bessel/Parseval."
+          },
+          {
+            "title": "Functional Analysis - Orthonormal bases and Parseval",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Episódios sobre sistemas ortonormais, Bessel, Parseval e isomorfismo com $\\ell^2$."
+          },
+          {
+            "title": "Fourier Series / Legendre polynomials",
+            "channel": "Dr. Peyam",
+            "note": "Busque os vídeos sobre séries de Fourier e polinômios ortogonais (Legendre) para exemplos de Gram-Schmidt e Parseval."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Brezis, Functional Analysis — cap. 5 (Hilbert Spaces, sistemas ortonormais)",
+            "where": "Springer (livro-texto)"
+          },
+          {
+            "title": "Reed & Simon, Methods of Modern Mathematical Physics I — cap. II",
+            "where": "Academic Press (livro-texto)"
+          },
+          {
+            "title": "Stein & Shakarchi, Fourier Analysis — cap. sobre convergência em média e Parseval",
+            "where": "Princeton Lectures in Analysis I (livro-texto)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-funcional-04-operadores-limitados-adjuntos",
+      "title": "Operadores Lineares Limitados, Norma de Operador e Adjuntos",
+      "tagline": "Continuidade é limitação: a topologia de um operador linear cabe num único número, e o adjunto codifica sua simetria.",
+      "objectives": [
+        "Provar a equivalência entre continuidade e limitação de operadores lineares e calcular normas de operadores em exemplos.",
+        "Mostrar que $B(X,Y)$ é Banach quando $Y$ é Banach e estudar o dual $X^*$.",
+        "Definir o adjunto hilbertiano, calcular adjuntos e caracterizar operadores auto-adjuntos, normais e unitários.",
+        "Usar a série de Neumann para inverter $I-T$ e provar que o conjunto dos operadores invertíveis é aberto."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Operador limitado e norma de operador",
+          "statement": "$T:X\\to Y$ linear é limitado se $\\exists\\,C$ com $\\|Tx\\|\\le C\\|x\\|$; a norma é $\\|T\\|=\\sup_{\\|x\\|\\le1}\\|Tx\\|=\\sup_{x\\ne0}\\frac{\\|Tx\\|}{\\|x\\|}$."
+        },
+        {
+          "term": "Espaço $B(X,Y)$ e dual",
+          "statement": "$B(X,Y)$ é o espaço dos operadores limitados de $X$ em $Y$ com a norma de operador; o dual topológico é $X^*=B(X,\\mathbb{K})$."
+        },
+        {
+          "term": "Adjunto hilbertiano",
+          "statement": "Para $T\\in B(H)$, o único $T^*\\in B(H)$ com $\\langle Tx,y\\rangle=\\langle x,T^*y\\rangle$ para todos $x,y$; existe por Riesz-Fréchet."
+        },
+        {
+          "term": "Auto-adjunto, normal, unitário",
+          "statement": "$T$ é auto-adjunto se $T=T^*$; normal se $TT^*=T^*T$; unitário se $T^*T=TT^*=I$ (isometria sobrejetora)."
+        },
+        {
+          "term": "Série de Neumann",
+          "statement": "Se $\\|T\\|<1$, então $I-T$ é invertível e $(I-T)^{-1}=\\sum_{n\\ge0}T^n$, série convergente em $B(X)$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Continuidade equivale a limitação",
+          "statement": "Para um operador linear $T:X\\to Y$ são equivalentes: $T$ é contínuo; $T$ é contínuo em $0$; $T$ é limitado; $T$ é uniformemente contínuo (Lipschitz com constante $\\|T\\|$).",
+          "whyItMatters": "Reduz uma questão topológica a uma única estimativa numérica $\\|Tx\\|\\le C\\|x\\|$; é o pão com manteiga da disciplina."
+        },
+        {
+          "name": "Completude de $B(X,Y)$",
+          "statement": "Se $Y$ é Banach, então $B(X,Y)$ é Banach. Em particular $X^*$ é sempre um espaço de Banach.",
+          "whyItMatters": "Permite tomar limites de operadores em norma e garante que o dual e os espaços de operadores são bons espaços de trabalho."
+        },
+        {
+          "name": "Adjunto e identidade C*",
+          "statement": "O adjunto $T\\mapsto T^*$ é antilinear, isométrico ($\\|T^*\\|=\\|T\\|$), satisfaz $(ST)^*=T^*S^*$, $T^{**}=T$, e a identidade $\\|T^*T\\|=\\|T\\|^2$.",
+          "whyItMatters": "A identidade C* é a pedra angular da teoria espectral em Hilbert e das C*-álgebras; controla a norma do operador pela do produto $T^*T$."
+        },
+        {
+          "name": "Série de Neumann e abertura de $GL(X)$",
+          "statement": "Em um Banach $X$, se $\\|T\\|<1$ então $I-T$ é invertível com inversa $\\sum T^n$; consequentemente o conjunto dos operadores invertíveis é aberto em $B(X)$ e a inversão $T\\mapsto T^{-1}$ é contínua.",
+          "whyItMatters": "É a base da teoria de perturbação e da análise do resolvente $\\,(\\lambda I-T)^{-1}$ na teoria espectral."
+        }
+      ],
+      "summary": "Para operadores lineares entre espaços normados, ser contínuo é exatamente ser limitado: toda a topologia do operador está condensada no número $\\|T\\|$, e a continuidade é, na verdade, Lipschitz com essa constante. O espaço $B(X,Y)$ dos operadores limitados, munido da norma de operador, é completo sempre que $Y$ é completo — em particular o dual $X^*=B(X,\\mathbb{K})$ é sempre Banach. Em dimensão infinita, porém, nem todo operador linear é contínuo: a derivação em $C^1\\subset C[0,1]$ é o exemplo clássico de operador linear ilimitado.\\n\\nEm espaços de Hilbert, Riesz-Fréchet garante a existência do adjunto $T^*$, definido por $\\langle Tx,y\\rangle=\\langle x,T^*y\\rangle$. O adjunto é antilinear, isométrico e obedece à identidade C* $\\|T^*T\\|=\\|T\\|^2$, que organiza toda a teoria espectral por vir; as classes auto-adjunta, normal e unitária são definidas por relações entre $T$ e $T^*$. Por fim, a série de Neumann inverte $I-T$ quando $\\|T\\|<1$ e mostra que os operadores invertíveis formam um aberto onde a inversão é contínua — o ponto de partida para o estudo do resolvente e do espectro.",
+      "commonPitfalls": [
+        "Esquecer que a norma de operador é um supremo que pode não ser atingido por nenhum vetor unitário.",
+        "Supor que todo operador linear em dimensão infinita é contínuo: a derivada $D:C^1[0,1]\\to C[0,1]$ é linear e ilimitada na norma do sup.",
+        "Confundir o adjunto de Banach (atuando em $X^*$) com o adjunto hilbertiano (que usa Riesz e é antilinear).",
+        "Achar que $\\|T\\|<1$ é necessário para $I-T$ ser invertível — é apenas suficiente."
+      ],
+      "worked": "**Adjunto do deslocamento (shift) em $\\ell^2$.** Seja $S:\\ell^2\\to\\ell^2$ o deslocamento à direita,\n$$S(x_1,x_2,x_3,\\dots)=(0,x_1,x_2,\\dots).$$\nComo $\\|Sx\\|^2=\\sum_{n}|x_n|^2=\\|x\\|^2$, $S$ é uma isometria e $\\|S\\|=1$. Para achar $S^*$, impomos $\\langle Sx,y\\rangle=\\langle x,S^*y\\rangle$:\n$$\\langle Sx,y\\rangle=\\sum_{n\\ge1}(Sx)_n\\,\\overline{y_n}=\\sum_{n\\ge2}x_{n-1}\\overline{y_n}=\\sum_{k\\ge1}x_k\\,\\overline{y_{k+1}}=\\langle x,(y_2,y_3,\\dots)\\rangle.$$\nLogo o adjunto é o **deslocamento à esquerda**\n$$S^*(y_1,y_2,y_3,\\dots)=(y_2,y_3,y_4,\\dots).$$\nNote que $S^*S=I$ (pois $S$ é isometria), mas $SS^*(y)=(0,y_2,y_3,\\dots)\\ne y$ quando $y_1\\ne0$. Portanto $S$ **não** é unitário nem normal: a injetividade/sobrejetividade que coincidem em dimensão finita aqui se separam.",
+      "exercises": [
+        {
+          "prompt": "Calcule a norma do operador $T:C[0,1]\\to C[0,1]$ dado por $(Tf)(x)=\\int_0^x f(t)\\,dt$ na norma do sup.",
+          "hint": "Estime $\\|Tf\\|_\\infty\\le\\|f\\|_\\infty$ e verifique que a igualdade é atingida por $f\\equiv 1$.",
+          "difficulty": 2,
+          "solution": "Considere $T:C[0,1]\\to C[0,1]$, $(Tf)(x)=\\int_0^x f(t)\\,dt$, com a norma do sup $\\|g\\|_\\infty=\\sup_{x\\in[0,1]}|g(x)|$. (Note que $Tf$ é contínua — de fato $C^1$ — logo $T$ está bem definido.)\n\n**Passo 1 (cota superior).** Para todo $x\\in[0,1]$,\n$$|(Tf)(x)|=\\Big|\\int_0^x f(t)\\,dt\\Big|\\le\\int_0^x|f(t)|\\,dt\\le\\int_0^x\\|f\\|_\\infty\\,dt=x\\,\\|f\\|_\\infty\\le\\|f\\|_\\infty.$$\nTomando o sup em $x$, $\\|Tf\\|_\\infty\\le\\|f\\|_\\infty$. Logo $T$ é limitado e $\\|T\\|\\le 1$.\n\n**Passo 2 (a cota é atingida).** Tome $f\\equiv 1$, com $\\|f\\|_\\infty=1$. Então $(Tf)(x)=\\int_0^x 1\\,dt=x$, logo\n$$\\|Tf\\|_\\infty=\\sup_{x\\in[0,1]}|x|=1=\\|f\\|_\\infty.$$\nPortanto $\\dfrac{\\|Tf\\|_\\infty}{\\|f\\|_\\infty}=1$, o que dá $\\|T\\|\\ge 1$.\n\n**Conclusão.** $\\|T\\|=1$, e neste caso o supremo é de fato **atingido** (pela função constante $1$). $\\blacksquare$\n\n**Observação.** O valor máximo $x\\,\\|f\\|_\\infty$ da cota é atingido em $x=1$, e a igualdade global em toda a estimativa ocorre justamente para $f$ de sinal constante — daí $f\\equiv 1$ ser extremal.",
+          "steps": [
+            "Estime $|(Tf)(x)|\\le\\int_0^x|f|\\le x\\|f\\|_\\infty\\le\\|f\\|_\\infty$ e tome sup para obter $\\|T\\|\\le1$.",
+            "Procure uma função que torne as desigualdades igualdades: sinal constante sugere $f\\equiv1$.",
+            "Calcule $Tf(x)=x$ para $f\\equiv1$ e $\\|Tf\\|_\\infty=1=\\|f\\|_\\infty$.",
+            "Conclua $\\|T\\|\\ge1$ e, com o passo 1, $\\|T\\|=1$ (supremo atingido)."
+          ]
+        },
+        {
+          "prompt": "Mostre que o operador derivada $D:(C^1[0,1],\\|\\cdot\\|_\\infty)\\to(C[0,1],\\|\\cdot\\|_\\infty)$ é ilimitado.",
+          "hint": "Tome $f_n(x)=\\sin(nx)$: $\\|f_n\\|_\\infty\\le1$ mas $\\|Df_n\\|_\\infty=n\\to\\infty$.",
+          "difficulty": 3,
+          "solution": "Seja $D:(C^1[0,1],\\|\\cdot\\|_\\infty)\\to(C[0,1],\\|\\cdot\\|_\\infty)$ o operador derivada $Df=f'$, ambos os espaços munidos da **norma do sup** (não da norma $C^1$). Mostramos que $D$ não é limitado.\n\n**Passo 1 (escolher testemunhas).** Considere a família $f_n(x)=\\sin(nx)$, $n\\in\\mathbb{N}$. Cada $f_n\\in C^1[0,1]$ e\n$$\\|f_n\\|_\\infty=\\sup_{x\\in[0,1]}|\\sin(nx)|\\le 1.$$\n\n**Passo 2 (imagem grande).** $Df_n(x)=n\\cos(nx)$, logo\n$$\\|Df_n\\|_\\infty=\\sup_{x\\in[0,1]}|n\\cos(nx)|=n\\sup_{x\\in[0,1]}|\\cos(nx)|=n,$$\npois para $n\\ge1$ o argumento $nx$ percorre um intervalo de comprimento $n\\ge1$, atingindo algum ponto onde $|\\cos|=1$ (mais precisamente, $\\sup=n$ já para $n\\ge 2$; e mesmo com a cota conservadora, cresce sem limite).\n\n**Passo 3 (quociente ilimitado).** Se $D$ fosse limitado existiria $C$ com $\\|Df\\|_\\infty\\le C\\|f\\|_\\infty$ para todo $f$. Aplicando a $f_n$:\n$$n=\\|Df_n\\|_\\infty\\le C\\,\\|f_n\\|_\\infty\\le C,$$\nou seja $n\\le C$ para todo $n\\in\\mathbb{N}$ — absurdo. Logo não existe tal $C$ e $D$ é **ilimitado** (equivalentemente, descontínuo). $\\blacksquare$\n\n**Moral.** Convergência uniforme de funções ($\\|f_n\\|_\\infty$ pequeno) não controla a derivada: derivar é uma operação linear genuinamente não contínua na norma do sup — por isso operadores diferenciais são o exemplo clássico de operadores não limitados, e a teoria os trata com domínios densos próprios.",
+          "steps": [
+            "Fixe os dois espaços com a norma do sup e escreva a definição de limitado: $\\|Df\\|_\\infty\\le C\\|f\\|_\\infty$.",
+            "Escolha $f_n(x)=\\sin(nx)$ com $\\|f_n\\|_\\infty\\le1$.",
+            "Calcule $Df_n=n\\cos(nx)$ e $\\|Df_n\\|_\\infty=n\\to\\infty$.",
+            "Suponha limitação e derive $n\\le C$ para todo $n$, uma contradição.",
+            "Conclua que $D$ é ilimitado/descontínuo."
+          ]
+        },
+        {
+          "prompt": "Prove a identidade C*: $\\|T^*T\\|=\\|T\\|^2$ para $T\\in B(H)$.",
+          "hint": "De $\\|Tx\\|^2=\\langle T^*Tx,x\\rangle\\le\\|T^*T\\|\\,\\|x\\|^2$ obtém-se $\\|T\\|^2\\le\\|T^*T\\|$; a outra desigualdade sai de $\\|T^*T\\|\\le\\|T^*\\|\\|T\\|=\\|T\\|^2$.",
+          "difficulty": 4,
+          "solution": "**Identidade C*.** Para $T\\in B(H)$, $H$ Hilbert, vale $\\|T^*T\\|=\\|T\\|^2$.\n\n**Passo 1 ($\\le$: submultiplicatividade e $\\|T^*\\|=\\|T\\|$).** A norma de operador é submultiplicativa: $\\|AB\\|\\le\\|A\\|\\|B\\|$. Além disso o adjunto é isométrico: de $\\langle Tx,y\\rangle=\\langle x,T^*y\\rangle$ e Cauchy-Schwarz,\n$$\\|T^*y\\|^2=\\langle T^*y,T^*y\\rangle=\\langle TT^*y,y\\rangle\\le\\|TT^*y\\|\\,\\|y\\|\\le\\|T\\|\\,\\|T^*y\\|\\,\\|y\\|,$$\ndonde $\\|T^*y\\|\\le\\|T\\|\\,\\|y\\|$, logo $\\|T^*\\|\\le\\|T\\|$; por simetria ($T^{**}=T$) também $\\|T\\|\\le\\|T^*\\|$, portanto $\\|T^*\\|=\\|T\\|$. Assim\n$$\\|T^*T\\|\\le\\|T^*\\|\\,\\|T\\|=\\|T\\|^2.$$\n\n**Passo 2 ($\\ge$: estimativa por baixo).** Para $\\|x\\|\\le1$, usando $\\langle Tx,Tx\\rangle=\\langle T^*Tx,x\\rangle$ e Cauchy-Schwarz,\n$$\\|Tx\\|^2=\\langle T^*Tx,\\,x\\rangle\\le\\|T^*Tx\\|\\,\\|x\\|\\le\\|T^*T\\|\\,\\|x\\|^2\\le\\|T^*T\\|.$$\nTomando o supremo sobre $\\|x\\|\\le1$,\n$$\\|T\\|^2=\\sup_{\\|x\\|\\le1}\\|Tx\\|^2\\le\\|T^*T\\|.$$\n\n**Conclusão.** Das duas desigualdades, $\\|T^*T\\|=\\|T\\|^2$. $\\blacksquare$\n\n**Comentário.** A desigualdade $\\|T\\|^2\\le\\|T^*T\\|$ do Passo 2 é o coração da identidade — ela é o que distingue a norma de $C^*$-álgebra de uma norma de Banach-álgebra qualquer, e sustenta toda a teoria espectral em Hilbert.",
+          "steps": [
+            "Prove primeiro $\\|T^*\\|=\\|T\\|$ usando $\\|T^*y\\|^2=\\langle TT^*y,y\\rangle$ e Cauchy-Schwarz.",
+            "Deduza $\\|T^*T\\|\\le\\|T^*\\|\\|T\\|=\\|T\\|^2$ por submultiplicatividade.",
+            "Para a outra direção, escreva $\\|Tx\\|^2=\\langle T^*Tx,x\\rangle\\le\\|T^*T\\|\\,\\|x\\|^2$.",
+            "Tome o supremo em $\\|x\\|\\le1$ para obter $\\|T\\|^2\\le\\|T^*T\\|$.",
+            "Combine as duas desigualdades."
+          ]
+        },
+        {
+          "prompt": "Use a série de Neumann para mostrar que o conjunto dos operadores invertíveis em $B(X)$ é aberto.",
+          "hint": "Se $T$ é invertível e $\\|S-T\\|<1/\\|T^{-1}\\|$, escreva $S=T\\big(I-T^{-1}(T-S)\\big)$ e inverta o fator entre parênteses.",
+          "difficulty": 4,
+          "solution": "Seja $X$ um espaço de Banach e $GL(X)\\subseteq B(X)$ o conjunto dos operadores invertíveis (com inversa em $B(X)$). Mostramos que $GL(X)$ é aberto.\n\n**Lema (série de Neumann).** Se $A\\in B(X)$ e $\\|A\\|<1$, então $I-A$ é invertível e $(I-A)^{-1}=\\sum_{n\\ge0}A^n$. *Prova:* como $\\sum_n\\|A^n\\|\\le\\sum_n\\|A\\|^n=\\tfrac{1}{1-\\|A\\|}<\\infty$ e $B(X)$ é Banach ($X$ é Banach), a série $S=\\sum_{n\\ge0}A^n$ converge em norma (critério de séries). Então $(I-A)S=S(I-A)=\\sum_{n\\ge0}A^n-\\sum_{n\\ge1}A^n=I$ (telescópio), logo $S=(I-A)^{-1}$.\n\n**Passo 1 (perturbar um invertível).** Seja $T\\in GL(X)$ e $S\\in B(X)$ com\n$$\\|S-T\\|<\\frac{1}{\\|T^{-1}\\|}.$$\nEscreva\n$$S=T-(T-S)=T\\big(I-T^{-1}(T-S)\\big).$$\n\n**Passo 2 (controlar a perturbação).** Ponha $A=T^{-1}(T-S)$. Então\n$$\\|A\\|\\le\\|T^{-1}\\|\\,\\|T-S\\|<\\|T^{-1}\\|\\cdot\\frac{1}{\\|T^{-1}\\|}=1.$$\nPelo lema, $I-A$ é invertível.\n\n**Passo 3 (inverter o produto).** Como $S=T(I-A)$ é produto de dois invertíveis ($T\\in GL(X)$ e $I-A$ invertível), $S$ é invertível com\n$$S^{-1}=(I-A)^{-1}T^{-1}=\\Big(\\sum_{n\\ge0}A^n\\Big)T^{-1}\\in B(X).$$\nLogo $S\\in GL(X)$.\n\n**Conclusão.** Toda perturbação $S$ de $T$ com $\\|S-T\\|<1/\\|T^{-1}\\|$ é invertível; isto é, a bola aberta de raio $1/\\|T^{-1}\\|$ em torno de $T$ está contida em $GL(X)$. Portanto $GL(X)$ é aberto. $\\blacksquare$\n\n**Extra (continuidade da inversão).** Da fórmula $S^{-1}=\\sum_n A^nT^{-1}$ obtém-se $\\|S^{-1}-T^{-1}\\|\\to0$ quando $S\\to T$, mostrando que $T\\mapsto T^{-1}$ é contínua em $GL(X)$.",
+          "steps": [
+            "Prove o lema de Neumann: $\\|A\\|<1\\Rightarrow(I-A)^{-1}=\\sum A^n$ (convergência pelo critério de séries em $B(X)$ Banach).",
+            "Dado $T$ invertível, considere $S$ com $\\|S-T\\|<1/\\|T^{-1}\\|$ e fatore $S=T(I-T^{-1}(T-S))$.",
+            "Mostre que $A=T^{-1}(T-S)$ satisfaz $\\|A\\|<1$.",
+            "Aplique o lema: $I-A$ invertível, logo $S$ é produto de invertíveis.",
+            "Escreva $S^{-1}=(I-A)^{-1}T^{-1}$ e conclua que a bola em torno de $T$ está em $GL(X)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de operador limitado",
+          "back": "Linear com $\\|Tx\\|\\le C\\|x\\|$ para algum $C$; equivale a ser contínuo."
+        },
+        {
+          "front": "Fórmula da norma de operador",
+          "back": "$\\|T\\|=\\sup_{\\|x\\|\\le1}\\|Tx\\|=\\sup_{x\\ne0}\\|Tx\\|/\\|x\\|$."
+        },
+        {
+          "front": "Continuidade vs limitação (operador linear)",
+          "back": "São equivalentes; ambas equivalem a continuidade em $0$ e a ser Lipschitz com constante $\\|T\\|$."
+        },
+        {
+          "front": "Quando $B(X,Y)$ é Banach?",
+          "back": "Sempre que $Y$ for Banach; em particular $X^*$ é sempre Banach."
+        },
+        {
+          "front": "Definição de adjunto hilbertiano",
+          "back": "$T^*$ é o único operador com $\\langle Tx,y\\rangle=\\langle x,T^*y\\rangle$ para todos $x,y$."
+        },
+        {
+          "front": "Identidade C*",
+          "back": "$\\|T^*T\\|=\\|T\\|^2$ (e $\\|T^*\\|=\\|T\\|$)."
+        },
+        {
+          "front": "Série de Neumann",
+          "back": "Se $\\|T\\|<1$, $(I-T)^{-1}=\\sum_{n\\ge0}T^n$."
+        },
+        {
+          "front": "Auto-adjunto, unitário, normal",
+          "back": "$T=T^*$; $T^*T=TT^*=I$; $TT^*=T^*T$, respectivamente."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Brezis, cap. 2 (operadores limitados) e cap. 6",
+          "ref": "livro"
+        },
+        {
+          "title": "Kreyszig, cap. 2 e cap. 3 (adjoint operators)",
+          "ref": "livro"
+        },
+        {
+          "title": "Conway, cap. II (Operators on Hilbert Space)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise transformações lineares e norma de matriz (norma induzida) em dimensão finita como aquecimento para a norma de operador.",
+          "Leia Brezis cap. 2 e cap. 6, e Kreyszig caps. 2-3; anote a equivalência continuidade $\\iff$ limitação e a definição de $\\|T\\|$.",
+          "Prove que $B(X,Y)$ é Banach quando $Y$ é Banach (usando o critério de séries) e explore o dual $X^*$.",
+          "Estude o adjunto hilbertiano via Riesz-Fréchet; calcule adjuntos de operadores concretos (shift, multiplicação, integrais) e classifique auto-adjunto/normal/unitário.",
+          "Domine a série de Neumann e a abertura de $GL(X)$, base para o resolvente na teoria espectral.",
+          "Resolva os testes do subtópico no app e anote aqui o principal (cálculo de $\\|T\\|$, exemplo do operador derivada ilimitado, identidade C* e argumento de Neumann)."
+        ],
+        "searchQueries": [
+          "operador linear limitado contínuo equivalência norma de operador prova",
+          "adjunto hilbertiano Riesz-Fréchet cálculo shift à direita à esquerda",
+          "identidade C* norma T*T = norma T ao quadrado demonstração",
+          "série de Neumann operadores invertíveis conjunto aberto B(X)",
+          "unbounded operator derivative not continuous example functional analysis",
+          "C*-identity bounded operator Hilbert space proof"
+        ],
+        "videos": [
+          {
+            "title": "Functional Analysis - Bounded operators and adjoints",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Episódios sobre operadores limitados, norma de operador, adjunto e séries de Neumann na série de análise funcional."
+          },
+          {
+            "title": "MIT OCW 18.102 — Bounded operators, dual spaces",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre $B(X,Y)$, dualidade e adjuntos; acompanhe com as notas para as demonstrações."
+          },
+          {
+            "title": "Operator norm / adjoint operator examples",
+            "channel": "Michael Penn",
+            "note": "Busque vídeos de álgebra de operadores e adjuntos para exemplos computacionais bem trabalhados."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Brezis, Functional Analysis — cap. 2 e cap. 6",
+            "where": "Springer (livro-texto)"
+          },
+          {
+            "title": "Conway, A Course in Functional Analysis — cap. II (Operators on Hilbert Space)",
+            "where": "Springer GTM 96 (livro-texto)"
+          },
+          {
+            "title": "Reed & Simon, Methods of Modern Mathematical Physics I — cap. VI (bounded operators)",
+            "where": "Academic Press (livro-texto)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-funcional-05-hahn-banach",
+      "title": "Teorema de Hahn-Banach: Forma Analítica e Geométrica",
+      "tagline": "O teorema que cria funcionais do nada: sem ele o dual poderia ser pobre demais para enxergar o espaço.",
+      "objectives": [
+        "Enunciar e provar a forma analítica (real e complexa) de Hahn-Banach com funcional sublinear dominante.",
+        "Deduzir os corolários de normação: existência de funcionais que separam pontos, $\\|x\\|=\\max_{\\|\\varphi\\|\\le1}|\\varphi(x)|$ e a injetividade isométrica do mergulho canônico $J:X\\to X^{**}$.",
+        "Provar as formas geométricas (separação de convexos por hiperplanos) usando o funcional de Minkowski.",
+        "Aplicar Hahn-Banach a problemas de extensão de funcionais e de dualidade."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Funcional sublinear",
+          "statement": "$p:X\\to\\mathbb{R}$ com $p(x+y)\\le p(x)+p(y)$ (subaditivo) e $p(\\lambda x)=\\lambda p(x)$ para $\\lambda\\ge0$ (positivamente homogêneo). Toda seminorma e toda norma é sublinear."
+        },
+        {
+          "term": "Funcional de Minkowski (gauge)",
+          "statement": "Para $C$ convexo aberto contendo $0$, $p_C(x)=\\inf\\{t>0:x/t\\in C\\}$ é sublinear e $C=\\{x:p_C(x)<1\\}$."
+        },
+        {
+          "term": "Mergulho canônico",
+          "statement": "$J:X\\to X^{**}$, $(Jx)(\\varphi)=\\varphi(x)$; é sempre linear e isométrico. $X$ é reflexivo quando $J$ é sobrejetor."
+        },
+        {
+          "term": "Funcional normante",
+          "statement": "Dado $x\\ne0$, um $\\varphi\\in X^*$ com $\\|\\varphi\\|=1$ e $\\varphi(x)=\\|x\\|$; existe por Hahn-Banach."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Hahn-Banach analítico (real)",
+          "statement": "Seja $p$ sublinear em $X$ e $f$ linear em um subespaço $M$ com $f(x)\\le p(x)$ em $M$. Então existe extensão linear $F$ a todo $X$ com $F=f$ em $M$ e $F(x)\\le p(x)$ para todo $x$.",
+          "whyItMatters": "Garante a existência de funcionais lineares sem usar topologia, completude ou dimensão; é o alicerce de toda a teoria de dualidade. A versão complexa segue tomando partes reais."
+        },
+        {
+          "name": "Corolários de normação",
+          "statement": "Em todo espaço normado: (i) para cada $x\\ne0$ existe $\\varphi\\in X^*$, $\\|\\varphi\\|=1$, $\\varphi(x)=\\|x\\|$; (ii) $\\|x\\|=\\max_{\\|\\varphi\\|\\le1}|\\varphi(x)|$; (iii) $X^*$ separa pontos de $X$; (iv) $J:X\\to X^{**}$ é isometria.",
+          "whyItMatters": "Dão 'coordenadas' a $X$ via funcionais, mostram que o dual é rico o suficiente para detectar cada vetor e fundamentam a noção de reflexividade."
+        },
+        {
+          "name": "Hahn-Banach geométrico (separação)",
+          "statement": "Sejam $A,B$ convexos não vazios disjuntos. Se $A$ é aberto, existe hiperplano fechado que os separa ($\\varphi(a)\\le\\alpha\\le\\varphi(b)$). Se $A$ é compacto e $B$ é fechado, a separação pode ser estrita ($\\varphi(a)\\le\\alpha-\\varepsilon<\\alpha+\\varepsilon\\le\\varphi(b)$).",
+          "whyItMatters": "É a forma usada em otimização convexa, teoria de dualidade e na demonstração de que todo convexo fechado é fracamente fechado (teorema de Mazur)."
+        }
+      ],
+      "summary": "Hahn-Banach é o teorema que garante que o espaço dual $X^*$ é grande o bastante para ser útil. Em sua forma analítica, ele estende um funcional linear definido num subespaço para o espaço todo, mantendo a dominação por um funcional sublinear $p$ (tipicamente uma norma). A demonstração — via lema de Zorn no caso geral — não usa topologia nem completude; isso a torna extraordinariamente robusta. No caso complexo, basta trabalhar com a parte real e reconstruir o funcional por $f(x)=u(x)-i\\,u(ix)$.\\n\\nDos corolários de normação vem o poder concreto: todo vetor não nulo é 'visto' por algum funcional unitário com $\\varphi(x)=\\|x\\|$, a norma se recupera como supremo (atingido) sobre a bola do dual, e o mergulho canônico $J:X\\to X^{**}$ é uma isometria — o que torna a reflexividade uma questão de sobrejetividade de $J$. A face geométrica do teorema é a separação de convexos por hiperplanos fechados, construída a partir do funcional de Minkowski; ela é a linguagem da otimização convexa e a ponte para as topologias fracas, onde 'convexo fechado' e 'fracamente fechado' coincidem.",
+      "commonPitfalls": [
+        "Achar que a extensão de Hahn-Banach é única — em geral não é; só o valor dominado por $p$ é controlado.",
+        "Supor que o teorema exige norma ou completude: a forma analítica precisa apenas de um espaço vetorial e de um funcional sublinear.",
+        "Errar a passagem real-complexa: o funcional complexo se recupera da parte real por $f(x)=u(x)-i\\,u(ix)$, e $\\|f\\|=\\|u\\|$.",
+        "Confundir a forma analítica (extensão) com a geométrica (separação): são faces do mesmo teorema, mas com hipóteses e usos distintos."
+      ],
+      "worked": "**Corolário (funcional que anula um subespaço e detecta a distância).** Seja $M\\subseteq X$ subespaço fechado e $x_0\\notin M$ com $d=d(x_0,M)>0$. Então existe $\\varphi\\in X^*$ com $\\|\\varphi\\|=1$, $\\varphi|_M=0$ e $\\varphi(x_0)=d$.\n\n**Construção.** No subespaço $N=M\\oplus\\mathbb{K}x_0$ defina $f(m+\\lambda x_0)=\\lambda d$. Esse $f$ é linear, anula $M$ e dá $f(x_0)=d$. Estimamos sua norma em $N$: para $\\lambda\\ne0$,\n$$\\|m+\\lambda x_0\\|=|\\lambda|\\,\\Big\\|x_0-\\big(-\\tfrac{m}{\\lambda}\\big)\\Big\\|\\ge|\\lambda|\\,d(x_0,M)=|\\lambda|\\,d=|f(m+\\lambda x_0)|,$$\nlogo $|f(y)|\\le\\|y\\|$ em $N$, ou seja $\\|f\\|_{N^*}\\le1$. Tomando uma sequência $m_k\\in M$ com $\\|x_0-m_k\\|\\to d$ vê-se que $\\|f\\|_{N^*}=1$. Por Hahn-Banach, estenda $f$ a $\\varphi\\in X^*$ com $\\|\\varphi\\|=1$; por construção $\\varphi|_M=0$ e $\\varphi(x_0)=d$.\n\n**Uso.** Esse corolário prova que $M$ é fechado $\\iff$ $M=\\bigcap\\{\\ker\\varphi:\\varphi\\in X^*,\\ \\varphi|_M=0\\}$ e é a ferramenta-padrão para mostrar densidade: $M$ é denso $\\iff$ o único $\\varphi\\in X^*$ que anula $M$ é $\\varphi=0$.",
+      "exercises": [
+        {
+          "prompt": "Prove que $\\|x\\|=\\sup_{\\|\\varphi\\|\\le1}|\\varphi(x)|$ e que o supremo é atingido.",
+          "hint": "A desigualdade $\\le$... na verdade $|\\varphi(x)|\\le\\|x\\|$ dá uma direção; o funcional normante de Hahn-Banach dá a igualdade e a atinge.",
+          "difficulty": 2,
+          "solution": "Seja $X$ normado e $x\\in X$. Provamos $\\|x\\|=\\sup_{\\varphi\\in X^*,\\ \\|\\varphi\\|\\le1}|\\varphi(x)|$ e que o supremo é atingido.\n\n**Passo 1 ($\\le$ da desigualdade fácil).** Para $x=0$ ambos os lados são $0$. Suponha $x\\ne0$. Para qualquer $\\varphi$ com $\\|\\varphi\\|\\le1$, por definição de norma de funcional,\n$$|\\varphi(x)|\\le\\|\\varphi\\|\\,\\|x\\|\\le\\|x\\|.$$\nTomando o sup sobre tais $\\varphi$: $\\sup_{\\|\\varphi\\|\\le1}|\\varphi(x)|\\le\\|x\\|$.\n\n**Passo 2 (igualdade via Hahn-Banach).** Pelo corolário de normação de Hahn-Banach, existe $\\varphi_0\\in X^*$ com\n$$\\|\\varphi_0\\|=1\\qquad\\text{e}\\qquad\\varphi_0(x)=\\|x\\|.$$\n(Construção: no subespaço $\\mathbb{K}x$ defina $f(\\lambda x)=\\lambda\\|x\\|$, que tem norma $1$; estenda por Hahn-Banach a $\\varphi_0\\in X^*$ com $\\|\\varphi_0\\|=1$.) Esse $\\varphi_0$ satisfaz $\\|\\varphi_0\\|\\le1$ e $|\\varphi_0(x)|=\\|x\\|$, logo\n$$\\sup_{\\|\\varphi\\|\\le1}|\\varphi(x)|\\ge|\\varphi_0(x)|=\\|x\\|.$$\n\n**Conclusão.** Combinando os dois passos, $\\sup_{\\|\\varphi\\|\\le1}|\\varphi(x)|=\\|x\\|$; e como $\\varphi_0$ (com $\\|\\varphi_0\\|\\le1$) realiza o valor $\\|x\\|$, o supremo é de fato um **máximo** — está atingido. $\\blacksquare$\n\n**Observação.** Isto é dual à definição de $\\|\\varphi\\|=\\sup_{\\|x\\|\\le1}|\\varphi(x)|$, mas com uma diferença crucial: aqui o supremo é sempre atingido (por Hahn-Banach), enquanto na definição de $\\|\\varphi\\|$ ele pode não ser.",
+          "steps": [
+            "Trate $x=0$ à parte; para $x\\ne0$ use $|\\varphi(x)|\\le\\|\\varphi\\|\\|x\\|\\le\\|x\\|$ para obter $\\sup\\le\\|x\\|$.",
+            "Invoque o corolário de normação: existe $\\varphi_0$ com $\\|\\varphi_0\\|=1$ e $\\varphi_0(x)=\\|x\\|$.",
+            "Construa $\\varphi_0$ estendendo $f(\\lambda x)=\\lambda\\|x\\|$ por Hahn-Banach.",
+            "Conclua $\\sup\\ge\\|x\\|$ avaliando em $\\varphi_0$, e que o supremo é atingido."
+          ]
+        },
+        {
+          "prompt": "Mostre que o mergulho canônico $J:X\\to X^{**}$ é uma isometria linear.",
+          "hint": "$\\|Jx\\|_{X^{**}}=\\sup_{\\|\\varphi\\|\\le1}|\\varphi(x)|=\\|x\\|$ pelo corolário de normação.",
+          "difficulty": 3,
+          "solution": "O mergulho canônico $J:X\\to X^{**}$ é definido por $(Jx)(\\varphi)=\\varphi(x)$ para $\\varphi\\in X^*$. Mostramos que $J$ é linear e isométrico.\n\n**Passo 1 ($Jx$ é bem definido e $J$ é linear).** Para cada $x$, a aplicação $\\varphi\\mapsto\\varphi(x)$ é linear em $\\varphi$ e satisfaz $|(Jx)(\\varphi)|=|\\varphi(x)|\\le\\|x\\|\\,\\|\\varphi\\|$, logo $Jx\\in X^{**}=(X^*)^*$ é um funcional contínuo com $\\|Jx\\|_{X^{**}}\\le\\|x\\|$. A linearidade de $J$ em $x$ é imediata: para $\\alpha,\\beta$ escalares,\n$$(J(\\alpha x+\\beta y))(\\varphi)=\\varphi(\\alpha x+\\beta y)=\\alpha\\varphi(x)+\\beta\\varphi(y)=\\big(\\alpha Jx+\\beta Jy\\big)(\\varphi),$$\npara todo $\\varphi$, logo $J(\\alpha x+\\beta y)=\\alpha Jx+\\beta Jy$.\n\n**Passo 2 (isometria).** Já temos $\\|Jx\\|_{X^{**}}\\le\\|x\\|$. Para a igualdade, use o exercício anterior / corolário de Hahn-Banach: existe $\\varphi_0\\in X^*$ com $\\|\\varphi_0\\|=1$ e $\\varphi_0(x)=\\|x\\|$. Então\n$$\\|Jx\\|_{X^{**}}=\\sup_{\\|\\varphi\\|\\le1}|(Jx)(\\varphi)|=\\sup_{\\|\\varphi\\|\\le1}|\\varphi(x)|\\ge|\\varphi_0(x)|=\\|x\\|.$$\nCombinando, $\\|Jx\\|_{X^{**}}=\\|x\\|$ para todo $x$.\n\n**Conclusão.** $J$ é linear e preserva norma; em particular é injetivo (isometrias são injetivas: $Jx=0\\Rightarrow\\|x\\|=\\|Jx\\|=0\\Rightarrow x=0$). $\\blacksquare$\n\n**Nota.** $J$ nem sempre é sobrejetor; quando é, $X$ diz-se reflexivo. A isometria vale sempre, e é justamente Hahn-Banach que garante que $J$ 'não encolhe' nenhuma norma.",
+          "steps": [
+            "Verifique que $Jx:\\varphi\\mapsto\\varphi(x)$ é um funcional contínuo em $X^*$ com $\\|Jx\\|\\le\\|x\\|$.",
+            "Prove a linearidade de $x\\mapsto Jx$ avaliando em $\\varphi$ arbitrário.",
+            "Use o corolário de normação para achar $\\varphi_0$ com $\\|\\varphi_0\\|=1$, $\\varphi_0(x)=\\|x\\|$.",
+            "Conclua $\\|Jx\\|\\ge\\|x\\|$, logo $\\|Jx\\|=\\|x\\|$ (isometria) e injetividade."
+          ]
+        },
+        {
+          "prompt": "Mostre como recuperar um funcional linear complexo $f$ a partir de sua parte real $u=\\operatorname{Re}f$ e prove $\\|f\\|=\\|u\\|$.",
+          "hint": "Verifique que $f(x)=u(x)-i\\,u(ix)$ é $\\mathbb{C}$-linear; para a norma, escreva $f(x)=|f(x)|e^{i\\theta}$ e avalie em $e^{-i\\theta}x$.",
+          "difficulty": 4,
+          "solution": "Seja $X$ um espaço vetorial **complexo** e $f:X\\to\\mathbb{C}$ um funcional $\\mathbb{C}$-linear. Escreva $u=\\operatorname{Re}f:X\\to\\mathbb{R}$, que é $\\mathbb{R}$-linear.\n\n**Passo 1 (recuperar $f$ de $u$).** Para $x\\in X$ escreva $f(x)=u(x)+i\\,v(x)$ com $v=\\operatorname{Im}f$. Usando a $\\mathbb{C}$-linearidade, $f(ix)=i\\,f(x)=i(u(x)+iv(x))=-v(x)+i\\,u(x)$; tomando partes reais, $u(ix)=-v(x)$, isto é $v(x)=-u(ix)$. Portanto\n$$\\boxed{f(x)=u(x)-i\\,u(ix)}.$$\n\n**Passo 2 (verificar que a fórmula dá um funcional $\\mathbb{C}$-linear).** Reciprocamente, dado $u$ $\\mathbb{R}$-linear, defina $f(x)=u(x)-i\\,u(ix)$. É $\\mathbb{R}$-linear e aditivo. Basta checar $f(ix)=i f(x)$:\n$$f(ix)=u(ix)-i\\,u(i\\cdot ix)=u(ix)-i\\,u(-x)=u(ix)+i\\,u(x)=i\\big(u(x)-i\\,u(ix)\\big)=i\\,f(x),$$\nusando $u(-x)=-u(x)$. Logo $f$ é $\\mathbb{C}$-linear.\n\n**Passo 3 (igualdade das normas $\\|f\\|=\\|u\\|$).** Suponha $X$ normado. Como $|u(x)|=|\\operatorname{Re}f(x)|\\le|f(x)|$, segue $\\|u\\|\\le\\|f\\|$. Para a outra desigualdade, fixe $x$ e escreva $f(x)=r e^{i\\theta}$ com $r=|f(x)|\\ge0$. Então\n$$|f(x)|=r=e^{-i\\theta}f(x)=f(e^{-i\\theta}x).$$\nComo esse número é real e não negativo, ele é igual à sua parte real:\n$$|f(x)|=\\operatorname{Re}f(e^{-i\\theta}x)=u(e^{-i\\theta}x)\\le\\|u\\|\\,\\|e^{-i\\theta}x\\|=\\|u\\|\\,\\|x\\|,$$\npois $|e^{-i\\theta}|=1$. Tomando sup sobre $\\|x\\|\\le1$, $\\|f\\|\\le\\|u\\|$. Combinando, $\\|f\\|=\\|u\\|$. $\\blacksquare$\n\n**Uso.** Isto reduz Hahn-Banach complexo ao real: estende-se $u$ preservando dominação por uma seminorma, e reconstrói-se $f$ por $f(x)=u(x)-i\\,u(ix)$ com a mesma norma.",
+          "steps": [
+            "Escreva $f=u+iv$ e use $f(ix)=i f(x)$ para deduzir $v(x)=-u(ix)$, logo $f(x)=u(x)-iu(ix)$.",
+            "Verifique reciprocamente que essa fórmula define um funcional $\\mathbb{C}$-linear checando $f(ix)=if(x)$.",
+            "Prove $\\|u\\|\\le\\|f\\|$ via $|u(x)|\\le|f(x)|$.",
+            "Escreva $f(x)=|f(x)|e^{i\\theta}$ e avalie $u$ em $e^{-i\\theta}x$ para obter $|f(x)|\\le\\|u\\|\\|x\\|$.",
+            "Conclua $\\|f\\|=\\|u\\|$."
+          ]
+        },
+        {
+          "prompt": "Use a forma geométrica de Hahn-Banach para separar um ponto $x_0\\notin\\overline{C}$ de um convexo fechado $C$.",
+          "hint": "Translade para colocar uma bola aberta em torno de $x_0$ disjunta de $C$ e aplique a separação de convexos (um aberto, outro fechado).",
+          "difficulty": 4,
+          "solution": "Seja $X$ normado, $C\\subseteq X$ convexo **fechado** não vazio e $x_0\\notin C$ (aqui $C=\\overline{C}$, então $x_0\\notin\\overline C$). Queremos $\\varphi\\in X^*$ e $\\alpha\\in\\mathbb{R}$ separando estritamente $x_0$ de $C$.\n\n**Passo 1 (bola aberta disjunta de $C$).** Como $C$ é fechado e $x_0\\notin C$, a distância $d=d(x_0,C)=\\inf_{c\\in C}\\|x_0-c\\|>0$. A bola aberta $A=B(x_0,d/2)=\\{x:\\|x-x_0\\|<d/2\\}$ é convexa, aberta, não vazia e **disjunta** de $C$: se $x\\in A\\cap C$, teríamos $\\|x_0-x\\|<d/2<d\\le d(x_0,C)$, contradizendo a definição de $d$.\n\n**Passo 2 (separação de convexos — forma geométrica de Hahn-Banach).** $A$ é convexo aberto e $C$ é convexo, ambos não vazios e disjuntos. Pela forma geométrica de Hahn-Banach (primeira forma de separação), existe um hiperplano fechado que os separa: existem $\\varphi\\in X^*$, $\\varphi\\ne0$, e $\\alpha\\in\\mathbb{R}$ tais que\n$$\\operatorname{Re}\\varphi(a)\\le\\alpha\\le\\operatorname{Re}\\varphi(c)\\qquad\\forall a\\in A,\\ \\forall c\\in C.$$\n(Trabalho com $\\operatorname{Re}\\varphi$; no caso real é o próprio $\\varphi$.)\n\n**Passo 3 (tornar estrita em $x_0$).** Como $A$ é **aberto** e $\\varphi\\ne0$, $\\operatorname{Re}\\varphi$ é uma aplicação aberta em $\\mathbb{R}$, logo $\\operatorname{Re}\\varphi(A)$ é um intervalo aberto; portanto o supremo $\\sup_{a\\in A}\\operatorname{Re}\\varphi(a)$ não é atingido em $A$ e em particular\n$$\\operatorname{Re}\\varphi(x_0)<\\sup_{a\\in A}\\operatorname{Re}\\varphi(a)\\le\\alpha\\le\\operatorname{Re}\\varphi(c)\\quad\\forall c\\in C.$$\n(Como $x_0$ é o centro da bola aberta $A$, existe $a\\in A$ com $\\operatorname{Re}\\varphi(a)>\\operatorname{Re}\\varphi(x_0)$, na direção onde $\\operatorname{Re}\\varphi$ cresce.)\n\n**Conclusão.** Há $\\varphi\\in X^*$ e $\\alpha\\in\\mathbb{R}$ com\n$$\\operatorname{Re}\\varphi(x_0)<\\alpha\\le\\operatorname{Re}\\varphi(c)\\qquad\\forall c\\in C,$$\nou seja, o hiperplano fechado $\\{x:\\operatorname{Re}\\varphi(x)=\\alpha\\}$ separa **estritamente** $x_0$ do convexo fechado $C$. $\\blacksquare$\n\n**Nota.** A versão 'compacto vs fechado' de Hahn-Banach dá diretamente separação estrita tomando $A=\\{x_0\\}$ (compacto) e $C$ (fechado) disjuntos; o argumento da bola apenas fabrica um convexo aberto para aplicar a primeira forma.",
+          "steps": [
+            "Use que $C$ fechado e $x_0\\notin C$ dão $d=d(x_0,C)>0$.",
+            "Construa a bola aberta convexa $A=B(x_0,d/2)$, disjunta de $C$.",
+            "Aplique a forma geométrica de Hahn-Banach a $A$ (aberto) e $C$: existe hiperplano separador $\\operatorname{Re}\\varphi(a)\\le\\alpha\\le\\operatorname{Re}\\varphi(c)$.",
+            "Use que $A$ é aberto para tornar a desigualdade estrita em $x_0$.",
+            "Conclua a separação estrita $\\operatorname{Re}\\varphi(x_0)<\\alpha\\le\\operatorname{Re}\\varphi(c)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de funcional sublinear",
+          "back": "$p(x+y)\\le p(x)+p(y)$ e $p(\\lambda x)=\\lambda p(x)$ para $\\lambda\\ge0$."
+        },
+        {
+          "front": "Hahn-Banach analítico (enunciado)",
+          "back": "Funcional linear $f\\le p$ em subespaço $M$ ($p$ sublinear) estende-se a $F$ em todo $X$ com $F\\le p$."
+        },
+        {
+          "front": "Existe sempre funcional normante?",
+          "back": "Sim: para $x\\ne0$ existe $\\varphi\\in X^*$ com $\\|\\varphi\\|=1$ e $\\varphi(x)=\\|x\\|$ (corolário de HB)."
+        },
+        {
+          "front": "Mergulho canônico $J:X\\to X^{**}$",
+          "back": "$(Jx)(\\varphi)=\\varphi(x)$; é linear e isométrico (logo injetivo)."
+        },
+        {
+          "front": "Definição de espaço reflexivo",
+          "back": "$X$ tal que o mergulho canônico $J:X\\to X^{**}$ é sobrejetor (e portanto isomorfismo isométrico)."
+        },
+        {
+          "front": "Hahn-Banach geométrico",
+          "back": "Convexos disjuntos podem ser separados por hiperplano fechado; estritamente se um é compacto e o outro fechado."
+        },
+        {
+          "front": "Funcional de Minkowski de $C$ (convexo aberto, $0\\in C$)",
+          "back": "$p_C(x)=\\inf\\{t>0:x/t\\in C\\}$; sublinear, com $C=\\{p_C<1\\}$."
+        },
+        {
+          "front": "Critério de densidade via dual",
+          "back": "$M$ é denso em $X$ $\\iff$ o único $\\varphi\\in X^*$ que anula $M$ é $\\varphi=0$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Brezis, cap. 1 (Hahn-Banach Theorems)",
+          "ref": "livro"
+        },
+        {
+          "title": "Kreyszig, cap. 4 (Hahn-Banach Theorem)",
+          "ref": "livro"
+        },
+        {
+          "title": "Conway, cap. III (Hahn-Banach)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise o lema de Zorn e a noção de funcional linear e dual $X^*$; entenda por que precisamos garantir que $X^*$ é 'rico'.",
+          "Leia Brezis cap. 1 e Kreyszig cap. 4; anote a forma analítica (real e complexa) e os corolários de normação.",
+          "Estude a prova por Zorn: extensão maximal e o passo de estender uma dimensão de cada vez respeitando $f\\le p$.",
+          "Passe à forma geométrica: funcional de Minkowski e separação de convexos por hiperplanos; conecte com otimização convexa e topologias fracas (Mazur).",
+          "Pratique aplicações: funcional normante, isometria de $J:X\\to X^{**}$, critério de densidade via dual.",
+          "Resolva os testes do subtópico no app e anote aqui o principal (o corolário de normação e o esquema real-complexo)."
+        ],
+        "searchQueries": [
+          "teorema de Hahn-Banach forma analítica demonstração lema de Zorn",
+          "Hahn-Banach corolário funcional normante mergulho canônico isometria",
+          "Hahn-Banach forma geométrica separação convexos funcional de Minkowski",
+          "Hahn-Banach caso complexo parte real f(x)=u(x)-i u(ix)",
+          "Hahn-Banach theorem geometric form separation hyperplane proof",
+          "reflexive space canonical embedding X to X double dual"
+        ],
+        "videos": [
+          {
+            "title": "Functional Analysis - Hahn-Banach theorem",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Episódios dedicados à forma analítica e às consequências de Hahn-Banach na série de análise funcional."
+          },
+          {
+            "title": "MIT OCW 18.102 — Hahn-Banach and dual spaces",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre a extensão de funcionais e os corolários de normação; use as notas de aula."
+          },
+          {
+            "title": "Hahn-Banach theorem explained",
+            "channel": "Michael Penn",
+            "note": "Busque vídeos que discutam extensão de funcionais e separação de convexos para reforçar a intuição geométrica."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Brezis, Functional Analysis — cap. 1 (The Hahn-Banach Theorems)",
+            "where": "Springer (livro-texto)"
+          },
+          {
+            "title": "Conway, A Course in Functional Analysis — cap. III (Hahn-Banach)",
+            "where": "Springer GTM 96 (livro-texto)"
+          },
+          {
+            "title": "Rudin, Functional Analysis — cap. 3 (convexity, Hahn-Banach separation)",
+            "where": "McGraw-Hill (livro-texto)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-funcional-06-principios-baire",
+      "title": "Os Três Princípios de Baire: Banach-Steinhaus, Aplicação Aberta e Gráfico Fechado",
+      "tagline": "Uma única ideia topológica — a categoria de Baire — destrava os três teoremas estruturais que governam operadores entre espaços de Banach.",
+      "objectives": [
+        "Enunciar o teorema de Baire e usá-lo como ferramenta de existência/regularidade.",
+        "Provar o teorema de Banach-Steinhaus (limitação uniforme) e deduzir consequências sobre limites pontuais de operadores.",
+        "Provar o teorema da aplicação aberta e o teorema do gráfico fechado, e deduzir o teorema da inversa limitada.",
+        "Aplicar esses princípios à equivalência de normas completas e à continuidade automática de operadores."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Teorema de Baire",
+          "statement": "Um espaço métrico completo não é união enumerável de fechados com interior vazio; equivalentemente, interseção enumerável de abertos densos é densa."
+        },
+        {
+          "term": "Limitação pontual vs uniforme",
+          "statement": "Uma família $\\{T_\\alpha\\}$ é pontualmente limitada se $\\sup_\\alpha\\|T_\\alpha x\\|<\\infty$ para cada $x$; uniformemente limitada se $\\sup_\\alpha\\|T_\\alpha\\|<\\infty$."
+        },
+        {
+          "term": "Aplicação aberta",
+          "statement": "$T$ leva abertos em abertos; para operador linear sobrejetor entre Banach isso equivale à existência de $c>0$ com $B_Y(0,c)\\subseteq T(B_X(0,1))$."
+        },
+        {
+          "term": "Operador fechado",
+          "statement": "$T:D(T)\\subseteq X\\to Y$ cujo gráfico $G(T)=\\{(x,Tx):x\\in D(T)\\}$ é fechado em $X\\times Y$; equivale a: $x_n\\to x$ e $Tx_n\\to y$ implicam $x\\in D(T)$ e $Tx=y$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Banach-Steinhaus (limitação uniforme)",
+          "statement": "Seja $X$ Banach, $Y$ normado e $\\{T_\\alpha\\}\\subseteq B(X,Y)$. Se $\\sup_\\alpha\\|T_\\alpha x\\|<\\infty$ para cada $x\\in X$, então $\\sup_\\alpha\\|T_\\alpha\\|<\\infty$.",
+          "whyItMatters": "Limitação pontual implica limitação uniforme; daí o limite pontual de operadores limitados ser limitado, a existência de funções contínuas com série de Fourier divergente, e a coerência da convergência fraca."
+        },
+        {
+          "name": "Teorema da aplicação aberta",
+          "statement": "Se $X,Y$ são Banach e $T\\in B(X,Y)$ é sobrejetor, então $T$ é uma aplicação aberta.",
+          "whyItMatters": "É a fonte da inversa limitada e da equivalência de normas completas; controla 'solubilidade com estimativa' de equações lineares."
+        },
+        {
+          "name": "Teorema da inversa limitada",
+          "statement": "Se $X,Y$ são Banach e $T\\in B(X,Y)$ é bijeção, então $T^{-1}\\in B(Y,X)$.",
+          "whyItMatters": "A continuidade da inversa vem de graça entre espaços completos — não é preciso estimá-la na mão."
+        },
+        {
+          "name": "Teorema do gráfico fechado",
+          "statement": "Se $X,Y$ são Banach e $T:X\\to Y$ é linear com gráfico fechado, então $T$ é limitado.",
+          "whyItMatters": "Reduz provar continuidade a provar que o gráfico é fechado — uma verificação tipicamente muito mais fácil (basta controlar limites simultâneos)."
+        }
+      ],
+      "summary": "Os três grandes teoremas estruturais da análise funcional brotam todos do teorema de Baire: em um espaço métrico completo, não se pode preencher o espaço com enumeravelmente muitos fechados 'finos' (sem interior). Banach-Steinhaus traduz isso para operadores: se uma família de operadores limitados é pontualmente limitada sobre um Banach, então é uniformemente limitada. A consequência mais usada é que o limite pontual de uma sequência de operadores limitados ainda é limitado — e que existência de patologias (como séries de Fourier divergentes) pode ser provada por contradição com a limitação uniforme.\\n\\nO teorema da aplicação aberta diz que toda sobrejeção limitada entre Banach é aberta; dele saem dois corolários decisivos: a inversa de uma bijeção limitada é automaticamente limitada (inversa limitada), e duas normas completas comparáveis são equivalentes. O teorema do gráfico fechado fecha o ciclo: para um operador definido em todo o Banach, ter gráfico fechado já implica ser contínuo. Na prática isso inverte o trabalho — em vez de estimar $\\|Tx\\|\\le C\\|x\\|$, basta checar que $x_n\\to x$ e $Tx_n\\to y$ forçam $y=Tx$. O teorema de Hellinger-Toeplitz, que torna automático que operadores simétricos definidos em todo $H$ são limitados, é a ilustração perfeita.",
+      "commonPitfalls": [
+        "Aplicar os três princípios sem completude: Banach-Steinhaus exige $X$ Banach; aplicação aberta, inversa limitada e gráfico fechado exigem $X$ e $Y$ Banach.",
+        "Confundir limitação pontual com uniforme — é precisamente o conteúdo não trivial de Banach-Steinhaus que uma implica a outra (em espaços completos).",
+        "Usar o gráfico fechado para operadores parcialmente definidos: a versão 'gráfico fechado $\\Rightarrow$ limitado' precisa de $T$ definido em todo $X$ (com $D(T)=X$ fechado).",
+        "Achar que 'aberta' é o mesmo que 'contínua': o teorema da aplicação aberta vai na direção oposta à da continuidade."
+      ],
+      "worked": "**Teorema de Hellinger-Toeplitz via gráfico fechado.** Seja $T:H\\to H$ linear, definido em **todo** o Hilbert $H$, e simétrico, isto é\n$$\\langle Tx,y\\rangle=\\langle x,Ty\\rangle\\qquad\\text{para todos }x,y\\in H.$$\nEntão $T$ é limitado.\n\n**Prova.** Por Baire/gráfico fechado, basta mostrar que o gráfico de $T$ é fechado. Suponha $x_n\\to x$ em $H$ e $Tx_n\\to z$ em $H$. Para todo $y\\in H$,\n$$\\langle z,y\\rangle=\\lim_n\\langle Tx_n,y\\rangle=\\lim_n\\langle x_n,Ty\\rangle=\\langle x,Ty\\rangle=\\langle Tx,y\\rangle,$$\nonde usamos a continuidade do produto interno e a simetria de $T$. Como isso vale para todo $y$, segue $z=Tx$. Logo o gráfico é fechado e, pelo teorema do gráfico fechado, $T\\in B(H)$. $\\qquad\\blacksquare$\n\n**Moral.** Operadores simétricos genuinamente ilimitados (como o de Schrödinger) **não** podem estar definidos em todo $H$ — eles vivem apenas em domínios densos próprios. É exatamente por isso que a mecânica quântica precisa de operadores não limitados com domínio.",
+      "exercises": [
+        {
+          "prompt": "Deduza o teorema da inversa limitada a partir do teorema da aplicação aberta.",
+          "hint": "Se $T$ é bijeção limitada e aberta, então $T^{-1}$ é contínua porque a imagem inversa de aberto por $T^{-1}$ é $T$(aberto), que é aberto.",
+          "difficulty": 2,
+          "solution": "**Teorema da inversa limitada a partir da aplicação aberta.** Sejam $X,Y$ Banach e $T\\in B(X,Y)$ uma bijeção. Então $T^{-1}\\in B(Y,X)$.\n\n**Passo 1 (aplicar a aplicação aberta).** $T$ é limitado e sobrejetor (pois é bijeção) entre espaços de Banach; pelo teorema da aplicação aberta, $T$ é uma aplicação **aberta**: leva conjuntos abertos de $X$ em conjuntos abertos de $Y$.\n\n**Passo 2 (traduzir 'aberta' em continuidade da inversa).** Seja $S=T^{-1}:Y\\to X$, que é linear (inversa de aplicação linear bijetora é linear). Para provar que $S$ é contínua, basta mostrar que a imagem inversa por $S$ de todo aberto é aberta. Ora, para $U\\subseteq X$ aberto,\n$$S^{-1}(U)=\\{y\\in Y:S(y)\\in U\\}=\\{y:T^{-1}y\\in U\\}=\\{Tx:x\\in U\\}=T(U).$$\nComo $T$ é aberta e $U$ é aberto, $T(U)$ é aberto. Logo $S^{-1}(U)$ é aberto para todo aberto $U$, isto é, $S=T^{-1}$ é **contínua**.\n\n**Passo 3 (continuidade = limitação).** Um operador linear contínuo entre normados é limitado. Portanto $T^{-1}=S\\in B(Y,X)$. $\\blacksquare$\n\n**Observação.** A completude de $X$ e $Y$ é essencial: é ela que habilita o teorema da aplicação aberta (via Baire). Sem completude, uma bijeção linear limitada pode ter inversa descontínua.",
+          "steps": [
+            "Note que $T$ bijeção limitada entre Banach é sobrejetora, logo aberta (teorema da aplicação aberta).",
+            "Escreva $S=T^{-1}$, linear, e observe que provar continuidade equivale a $S^{-1}(U)$ aberto para todo aberto $U$.",
+            "Calcule $S^{-1}(U)=T(U)$, que é aberto por $T$ ser aberta.",
+            "Conclua que $T^{-1}$ é contínua, logo limitada."
+          ]
+        },
+        {
+          "prompt": "Sejam $\\|\\cdot\\|_1$ e $\\|\\cdot\\|_2$ normas completas em $X$ com $\\|x\\|_1\\le C\\|x\\|_2$ para todo $x$. Prove que são equivalentes.",
+          "hint": "A identidade $(X,\\|\\cdot\\|_2)\\to(X,\\|\\cdot\\|_1)$ é limitada e bijetora entre Banach; aplique a inversa limitada.",
+          "difficulty": 3,
+          "solution": "Sejam $\\|\\cdot\\|_1$ e $\\|\\cdot\\|_2$ duas normas em $X$, ambas **completas** (i.e. $(X,\\|\\cdot\\|_1)$ e $(X,\\|\\cdot\\|_2)$ são Banach), com\n$$\\|x\\|_1\\le C\\,\\|x\\|_2\\qquad\\forall x\\in X.\\quad(\\ast)$$\nProvamos que existe $c>0$ com $\\|x\\|_2\\le c\\,\\|x\\|_1$, tornando as normas equivalentes.\n\n**Passo 1 (definir o operador identidade).** Considere a aplicação identidade\n$$\\mathrm{Id}:(X,\\|\\cdot\\|_2)\\longrightarrow(X,\\|\\cdot\\|_1),\\qquad x\\mapsto x.$$\nÉ claramente linear e bijetora. Por $(\\ast)$, $\\|\\mathrm{Id}(x)\\|_1=\\|x\\|_1\\le C\\|x\\|_2$, logo $\\mathrm{Id}$ é **limitada** (norma $\\le C$).\n\n**Passo 2 (aplicar a inversa limitada).** $\\mathrm{Id}$ é uma bijeção linear limitada entre os espaços de Banach $(X,\\|\\cdot\\|_2)$ e $(X,\\|\\cdot\\|_1)$. Pelo teorema da inversa limitada, sua inversa\n$$\\mathrm{Id}^{-1}:(X,\\|\\cdot\\|_1)\\longrightarrow(X,\\|\\cdot\\|_2)$$\n(que também é a identidade em $X$) é limitada. Ou seja, existe $c>0$ tal que\n$$\\|x\\|_2=\\|\\mathrm{Id}^{-1}(x)\\|_2\\le c\\,\\|x\\|_1\\qquad\\forall x.$$\n\n**Passo 3 (concluir equivalência).** Reunindo com $(\\ast)$,\n$$\\frac1c\\,\\|x\\|_2\\le\\|x\\|_1\\le C\\,\\|x\\|_2\\qquad\\forall x,$$\nou, equivalentemente, $\\|x\\|_1\\le C\\|x\\|_2$ e $\\|x\\|_2\\le c\\|x\\|_1$. As duas normas são equivalentes. $\\blacksquare$\n\n**Comentário.** Notável: basta **uma** desigualdade $(\\ast)$ entre normas completas para forçar a outra — a completude 'preenche' automaticamente a comparação recíproca. Sem completude isso falha (ex.: $\\|\\cdot\\|_1\\le\\|\\cdot\\|_\\infty$ em $C[0,1]$, mas não são equivalentes).",
+          "steps": [
+            "Modele a comparação como o operador identidade $\\mathrm{Id}:(X,\\|\\cdot\\|_2)\\to(X,\\|\\cdot\\|_1)$.",
+            "Use $(\\ast)$ para ver que $\\mathrm{Id}$ é limitado (com norma $\\le C$) e bijetor entre Banach.",
+            "Aplique o teorema da inversa limitada: $\\mathrm{Id}^{-1}$ é limitado, dando $\\|x\\|_2\\le c\\|x\\|_1$.",
+            "Combine as duas desigualdades para concluir a equivalência."
+          ]
+        },
+        {
+          "prompt": "Demonstre o teorema de Hellinger-Toeplitz (operador simétrico definido em todo $H$ é limitado).",
+          "hint": "Mostre que o gráfico é fechado usando $\\langle z,y\\rangle=\\lim\\langle Tx_n,y\\rangle=\\lim\\langle x_n,Ty\\rangle=\\langle x,Ty\\rangle$.",
+          "difficulty": 4,
+          "solution": "**Teorema de Hellinger-Toeplitz.** Seja $H$ um espaço de Hilbert e $T:H\\to H$ um operador linear definido em **todo** $H$ e simétrico, isto é\n$$\\langle Tx,y\\rangle=\\langle x,Ty\\rangle\\qquad\\forall x,y\\in H.$$\nEntão $T$ é limitado.\n\n**Estratégia.** Pelo teorema do gráfico fechado (válido pois $T$ está definido em todo o Banach $H$ e toma valores em $H$), basta mostrar que o gráfico $G(T)=\\{(x,Tx):x\\in H\\}$ é fechado em $H\\times H$; equivalentemente, que\n$$x_n\\to x\\ \\text{e}\\ Tx_n\\to z\\ \\Longrightarrow\\ z=Tx.$$\n\n**Passo 1 (hipótese de convergência).** Suponha $x_n\\to x$ e $Tx_n\\to z$ em $H$.\n\n**Passo 2 (testar contra $y$ arbitrário).** Fixe $y\\in H$. Pela continuidade do produto interno (Cauchy-Schwarz) e pela simetria de $T$,\n$$\\langle z,y\\rangle=\\lim_{n\\to\\infty}\\langle Tx_n,y\\rangle\\overset{\\text{simetria}}{=}\\lim_{n\\to\\infty}\\langle x_n,Ty\\rangle=\\langle x,Ty\\rangle\\overset{\\text{simetria}}{=}\\langle Tx,y\\rangle.$$\nJustificativas: a 1ª igualdade usa $Tx_n\\to z$ e continuidade de $\\langle\\cdot,y\\rangle$; a 3ª usa $x_n\\to x$ e continuidade de $\\langle\\cdot,Ty\\rangle$.\n\n**Passo 3 (concluir $z=Tx$).** Assim $\\langle z-Tx,y\\rangle=0$ para todo $y\\in H$. Tomando $y=z-Tx$, obtém-se $\\|z-Tx\\|^2=0$, logo $z=Tx$.\n\n**Conclusão.** O gráfico de $T$ é fechado; pelo teorema do gráfico fechado, $T\\in B(H)$. $\\blacksquare$\n\n**Moral.** Operadores simétricos genuinamente ilimitados (como o Laplaciano ou o de Schrödinger) não podem estar definidos em todo $H$ — necessariamente têm domínio denso próprio. É por isso que a mecânica quântica lida com operadores não limitados com domínio.",
+          "steps": [
+            "Reconheça que, com $D(T)=H$ e $T$ em Banach, o gráfico fechado implica limitação.",
+            "Reduza a provar: $x_n\\to x$ e $Tx_n\\to z$ forçam $z=Tx$.",
+            "Fixe $y$ e calcule $\\langle z,y\\rangle=\\lim\\langle Tx_n,y\\rangle=\\lim\\langle x_n,Ty\\rangle=\\langle x,Ty\\rangle=\\langle Tx,y\\rangle$ usando simetria e continuidade.",
+            "Conclua $\\langle z-Tx,y\\rangle=0$ para todo $y$, logo $z=Tx$.",
+            "Aplique o teorema do gráfico fechado para obter $T\\in B(H)$."
+          ]
+        },
+        {
+          "prompt": "Mostre que se $(y_n)\\subseteq H$ satisfaz $\\sup_n|\\langle x,y_n\\rangle|<\\infty$ para todo $x$, então $\\sup_n\\|y_n\\|<\\infty$.",
+          "hint": "Aplique Banach-Steinhaus aos funcionais $T_n=\\langle\\cdot,y_n\\rangle$, lembrando que $\\|T_n\\|=\\|y_n\\|$.",
+          "difficulty": 3,
+          "solution": "Seja $(y_n)\\subseteq H$ (Hilbert) tal que, para todo $x\\in H$, $\\sup_n|\\langle x,y_n\\rangle|<\\infty$. Provamos que $\\sup_n\\|y_n\\|<\\infty$.\n\n**Passo 1 (transformar em funcionais).** Para cada $n$, defina $T_n:H\\to\\mathbb{K}$ por\n$$T_n(x)=\\langle x,y_n\\rangle.$$\nCada $T_n$ é linear e contínuo (Cauchy-Schwarz), com norma\n$$\\|T_n\\|=\\sup_{\\|x\\|\\le1}|\\langle x,y_n\\rangle|=\\|y_n\\|,$$\n(o supremo é atingido em $x=y_n/\\|y_n\\|$ quando $y_n\\ne0$). Assim $(T_n)\\subseteq H^*=B(H,\\mathbb{K})$.\n\n**Passo 2 (limitação pontual).** A hipótese diz exatamente que, para cada $x\\in H$,\n$$\\sup_n|T_n(x)|=\\sup_n|\\langle x,y_n\\rangle|<\\infty.$$\nOu seja, a família $(T_n)$ é **pontualmente limitada**.\n\n**Passo 3 (Banach-Steinhaus).** $H$ é um espaço de Banach (Hilbert é completo) e $(T_n)$ é uma família de operadores limitados de $H$ em $\\mathbb{K}$, pontualmente limitada. Pelo teorema de Banach-Steinhaus (limitação uniforme),\n$$\\sup_n\\|T_n\\|<\\infty.$$\n\n**Passo 4 (traduzir de volta).** Como $\\|T_n\\|=\\|y_n\\|$, conclui-se\n$$\\sup_n\\|y_n\\|=\\sup_n\\|T_n\\|<\\infty.\\qquad\\blacksquare$$\n\n**Comentário.** É o padrão típico de Banach-Steinhaus: 'limitação testada contra cada vetor' $\\Rightarrow$ 'limitação uniforme das normas'. O mesmo argumento mostra que toda sequência fracamente convergente é limitada em norma.",
+          "steps": [
+            "Associe a cada $y_n$ o funcional $T_n(x)=\\langle x,y_n\\rangle$, com $\\|T_n\\|=\\|y_n\\|$.",
+            "Reconheça a hipótese como limitação pontual: $\\sup_n|T_n(x)|<\\infty$ para cada $x$.",
+            "Aplique Banach-Steinhaus (em $H$ Banach) para obter $\\sup_n\\|T_n\\|<\\infty$.",
+            "Traduza de volta via $\\|T_n\\|=\\|y_n\\|$ para concluir $\\sup_n\\|y_n\\|<\\infty$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Teorema de Baire (uma forma)",
+          "back": "Em espaço métrico completo, interseção enumerável de abertos densos é densa (e o espaço não é união enumerável de fechados sem interior)."
+        },
+        {
+          "front": "Banach-Steinhaus",
+          "back": "Família de operadores limitados sobre um Banach, pontualmente limitada, é uniformemente limitada ($\\sup\\|T_\\alpha\\|<\\infty$)."
+        },
+        {
+          "front": "Teorema da aplicação aberta",
+          "back": "Operador limitado e sobrejetor entre Banach é aplicação aberta."
+        },
+        {
+          "front": "Teorema da inversa limitada",
+          "back": "Bijeção limitada entre Banach tem inversa limitada."
+        },
+        {
+          "front": "Teorema do gráfico fechado",
+          "back": "Operador linear $X\\to Y$ (Banach) com gráfico fechado é limitado."
+        },
+        {
+          "front": "Definição de operador fechado",
+          "back": "$x_n\\to x$ e $Tx_n\\to y$ $\\Rightarrow$ $x\\in D(T)$ e $Tx=y$ (gráfico fechado em $X\\times Y$)."
+        },
+        {
+          "front": "Hellinger-Toeplitz",
+          "back": "Operador simétrico definido em todo o Hilbert é automaticamente limitado."
+        },
+        {
+          "front": "Hipótese de completude nos três princípios",
+          "back": "Banach-Steinhaus: $X$ Banach. Aplicação aberta / inversa limitada / gráfico fechado: $X$ e $Y$ Banach."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Brezis, cap. 2 (The Uniform Boundedness Principle and the Closed Graph Theorem)",
+          "ref": "livro"
+        },
+        {
+          "title": "Kreyszig, cap. 4 (Baire category, uniform boundedness, open mapping, closed graph)",
+          "ref": "livro"
+        },
+        {
+          "title": "Conway, cap. III (Banach Spaces)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise o teorema de Baire (espaço métrico completo não é união enumerável de fechados sem interior) e sua prova por bolas encaixadas.",
+          "Leia Brezis cap. 2 e Kreyszig cap. 4; anote os enunciados de Banach-Steinhaus, aplicação aberta, inversa limitada e gráfico fechado.",
+          "Estude a prova de Banach-Steinhaus via Baire e deduza o corolário do limite pontual de operadores.",
+          "Prove a aplicação aberta e derive a inversa limitada e a equivalência de normas completas; depois o gráfico fechado como consequência.",
+          "Trabalhe aplicações-chave: Hellinger-Toeplitz e a limitação de família de vetores testada por funcionais.",
+          "Resolva os testes do subtópico no app e anote aqui o principal (a cadeia Baire → três princípios e o uso do gráfico fechado para provar continuidade)."
+        ],
+        "searchQueries": [
+          "teorema de Baire categoria demonstração espaço métrico completo",
+          "teorema de Banach-Steinhaus limitação uniforme prova via Baire",
+          "teorema da aplicação aberta inversa limitada gráfico fechado demonstração",
+          "teorema de Hellinger-Toeplitz operador simétrico limitado gráfico fechado",
+          "uniform boundedness principle Banach-Steinhaus proof",
+          "open mapping theorem closed graph theorem functional analysis proof"
+        ],
+        "videos": [
+          {
+            "title": "Functional Analysis - Baire, uniform boundedness, open mapping",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Episódios sobre o teorema de Baire e os três princípios; boa exposição passo a passo das demonstrações."
+          },
+          {
+            "title": "MIT OCW 18.102 — Baire category and its consequences",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas cobrindo Baire, Banach-Steinhaus, aplicação aberta e gráfico fechado; acompanhe com as notas."
+          },
+          {
+            "title": "Open mapping / closed graph theorem",
+            "channel": "Michael Penn",
+            "note": "Busque vídeos que expliquem a aplicação aberta e o gráfico fechado com exemplos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Brezis, Functional Analysis — cap. 2 (Uniform Boundedness, Open Mapping, Closed Graph)",
+            "where": "Springer (livro-texto)"
+          },
+          {
+            "title": "Rudin, Functional Analysis — cap. 2 (Baire category and consequences)",
+            "where": "McGraw-Hill (livro-texto)"
+          },
+          {
+            "title": "Kreyszig — cap. 4 (Fundamental Theorems for Normed and Banach Spaces)",
+            "where": "Wiley (livro-texto)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-funcional-07-dualidade-topologias-fracas",
+      "title": "Dualidade e Topologias Fracas",
+      "tagline": "Quando a bola não é compacta, enfraqueça a topologia: a fraca-* recupera compacidade (Banach-Alaoglu) e devolve subsequências convergentes.",
+      "objectives": [
+        "Construir a topologia fraca $\\sigma(X,X^*)$ e a fraca-* $\\sigma(X^*,X)$ e caracterizar suas convergências.",
+        "Provar o teorema de Banach-Alaoglu (compacidade fraca-* da bola do dual).",
+        "Definir reflexividade e relacioná-la à compacidade fraca da bola unitária (teorema de Kakutani).",
+        "Distinguir convergência fraca de forte com exemplos e usar a semicontinuidade inferior da norma."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Topologia fraca",
+          "statement": "A menor topologia em $X$ que torna todos os $\\varphi\\in X^*$ contínuos; $x_n\\rightharpoonup x$ (fracamente) $\\iff$ $\\varphi(x_n)\\to\\varphi(x)$ para todo $\\varphi\\in X^*$."
+        },
+        {
+          "term": "Topologia fraca-*",
+          "statement": "Em $X^*$, a menor topologia que torna contínuas todas as avaliações $\\hat x(\\varphi)=\\varphi(x)$; $\\varphi_n\\overset{*}{\\rightharpoonup}\\varphi$ $\\iff$ $\\varphi_n(x)\\to\\varphi(x)$ para todo $x\\in X$."
+        },
+        {
+          "term": "Reflexividade",
+          "statement": "$X$ é reflexivo se o mergulho canônico $J:X\\to X^{**}$ é sobrejetor. São reflexivos: Hilbert e $L^p$, $\\ell^p$ com $1<p<\\infty$. Não são: $L^1$, $L^\\infty$, $c_0$, $\\ell^1$, $\\ell^\\infty$, $C[a,b]$."
+        },
+        {
+          "term": "Convexo fechado = fracamente fechado",
+          "statement": "Teorema de Mazur: um conjunto convexo de $X$ é fechado na norma se e só se é fechado na topologia fraca."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Banach-Alaoglu",
+          "statement": "A bola unitária fechada $B_{X^*}=\\{\\varphi:\\|\\varphi\\|\\le1\\}$ é compacta na topologia fraca-* $\\sigma(X^*,X)$.",
+          "whyItMatters": "Recupera compacidade onde a topologia da norma nunca a tem (em dimensão infinita); é a ferramenta-padrão para extrair limites e provar existência de soluções em EDPs e cálculo das variações."
+        },
+        {
+          "name": "Teorema de Mazur",
+          "statement": "Todo conjunto convexo fechado (na norma) é fracamente fechado; em particular, se $x_n\\rightharpoonup x$, então $x$ é limite forte de combinações convexas dos $x_n$.",
+          "whyItMatters": "Conecta geometria convexa e topologia fraca; é o que permite 'melhorar' convergência fraca para forte via convexidade em problemas variacionais."
+        },
+        {
+          "name": "Kakutani",
+          "statement": "$X$ é reflexivo se e só se a bola unitária fechada $B_X$ é compacta na topologia fraca $\\sigma(X,X^*)$.",
+          "whyItMatters": "Dá o critério de compacidade fraca mais útil: em espaços reflexivos toda sequência limitada tem subsequência fracamente convergente (Eberlein-Smulian), garantindo existência de minimizadores."
+        }
+      ],
+      "summary": "Em dimensão infinita a bola unitária fechada nunca é compacta na norma, o que inviabiliza os argumentos de subsequência convergente herdados de $\\mathbb{R}^n$. A saída é enfraquecer a topologia: a topologia fraca $\\sigma(X,X^*)$ é a mais econômica que mantém todos os funcionais contínuos, e a fraca-* $\\sigma(X^*,X)$ faz o mesmo no dual usando apenas as avaliações em pontos de $X$. Convergência fraca significa convergência testada contra todo funcional; ela é estritamente mais fraca que a convergência em norma fora de dimensão finita.\\n\\nO teorema de Banach-Alaoglu é o prêmio: a bola do dual é sempre fraca-* compacta, devolvendo compacidade ao jogo. Combinado com reflexividade (Kakutani: $X$ reflexivo $\\iff$ bola fracamente compacta), isso garante que sequências limitadas em espaços reflexivos têm subsequências fracamente convergentes — o passo de existência em incontáveis problemas de minimização. O teorema de Mazur amarra geometria e topologia ('convexo fechado = fracamente fechado'), e a norma é fracamente semicontínua inferiormente, o que faz funcionais convexos coercivos atingirem mínimos. É a base abstrata do método direto do cálculo das variações.",
+      "commonPitfalls": [
+        "Achar que convergência fraca implica convergência forte: só coincidem em dimensão finita (e em alguns espaços com a propriedade de Schur, como $\\ell^1$).",
+        "Esperar que a topologia fraca seja metrizável: em geral não é (embora a bola seja metrizável na fraca-* quando $X$ é separável).",
+        "Confundir topologia fraca $\\sigma(X,X^*)$ com fraca-* $\\sigma(X^*,X)$ — só coincidem quando $X$ é reflexivo.",
+        "Passar ao limite usando 'fechado na norma' quando o necessário é 'fracamente fechado'; sem convexidade isso pode falhar (use Mazur)."
+      ],
+      "worked": "**A base canônica de $\\ell^2$ converge fracamente a $0$, mas não fortemente.** Seja $(e_n)$ a base ortonormal canônica de $\\ell^2$.\n\n*Fracamente:* por Riesz-Fréchet, todo funcional em $(\\ell^2)^*$ tem a forma $x\\mapsto\\langle x,y\\rangle$ com $y\\in\\ell^2$. Então\n$$\\langle e_n,y\\rangle=\\overline{y_n}\\longrightarrow 0\\qquad(n\\to\\infty),$$\npois $\\sum_n|y_n|^2<\\infty$ implica $y_n\\to0$. Como vale para todo $y$, $e_n\\rightharpoonup 0$.\n\n*Mas não fortemente:* $\\|e_n-0\\|=\\|e_n\\|=1\\not\\to0$. De fato, para $m\\ne n$, $\\|e_n-e_m\\|=\\sqrt2$, então $(e_n)$ nem é de Cauchy — não pode convergir em norma.\n\n**Comentários.** (1) A norma é apenas fracamente semicontínua inferiormente aqui: $0=\\|0\\|\\le\\liminf\\|e_n\\|=1$, com desigualdade estrita — a 'massa escapa para o infinito'. (2) Por Mazur, embora $e_n\\rightharpoonup0$, médias $\\frac1N\\sum_{n=1}^N e_n$ convergem fortemente a $0$ (norma $=1/\\sqrt N\\to0$), ilustrando como a convexidade resgata convergência forte.",
+      "exercises": [
+        {
+          "prompt": "Mostre que em dimensão finita a topologia fraca coincide com a da norma.",
+          "hint": "Use uma base e os funcionais coordenada: convergência fraca controla cada coordenada, logo controla a norma euclidiana.",
+          "difficulty": 2,
+          "solution": "Seja $X$ de dimensão finita $n$. Mostramos que a topologia fraca $\\sigma(X,X^*)$ coincide com a topologia da norma.\n\n**Passo 1 (fraca $\\subseteq$ norma, sempre).** Todo $\\varphi\\in X^*$ é contínuo na norma; a topologia fraca é a **menor** que torna todos os $\\varphi$ contínuos, logo é mais grossa (contém menos abertos) que a topologia da norma: $\\sigma(X,X^*)\\subseteq\\tau_{\\|\\cdot\\|}$. Isto vale em qualquer dimensão.\n\n**Passo 2 (norma $\\subseteq$ fraca, em dimensão finita).** Fixe uma base $\\{b_1,\\dots,b_n\\}$ de $X$ e os funcionais coordenada $\\varphi_i\\in X^*$ definidos por $\\varphi_i\\big(\\sum_j a_j b_j\\big)=a_i$ (são lineares e, em dimensão finita, contínuos). Considere uma rede (ou sequência) $x^{(\\alpha)}\\to x$ na topologia fraca, isto é $\\varphi(x^{(\\alpha)})\\to\\varphi(x)$ para todo $\\varphi\\in X^*$. Em particular, para cada $i$,\n$$\\varphi_i(x^{(\\alpha)})\\to\\varphi_i(x),$$\nou seja, cada coordenada $a_i^{(\\alpha)}\\to a_i$. Mas em dimensão finita a norma é equivalente à norma do máximo das coordenadas (todas as normas são equivalentes — subtópico 01), então\n$$\\|x^{(\\alpha)}-x\\|\\le C\\max_i|a_i^{(\\alpha)}-a_i|\\to0.$$\nLogo $x^{(\\alpha)}\\to x$ na norma. Portanto a convergência fraca implica a convergência forte, e as duas topologias têm as mesmas redes convergentes.\n\n**Passo 3 (conclusão).** Como ambas as topologias (fraca e da norma) em dimensão finita são metrizáveis (a fraca é gerada por finitos funcionais $\\varphi_1,\\dots,\\varphi_n$, logo pela pseudométrica $\\max_i|\\varphi_i(\\cdot)|$, que é uma norma) e possuem exatamente as mesmas sequências/redes convergentes, elas coincidem:\n$$\\sigma(X,X^*)=\\tau_{\\|\\cdot\\|}.\\qquad\\blacksquare$$\n\n**Moral.** A distinção entre fraca e forte é um fenômeno puramente de dimensão infinita; em $\\mathbb{R}^n$ 'testar contra todos os funcionais' equivale a controlar todas as coordenadas, que é o mesmo que controlar a norma.",
+          "steps": [
+            "Observe que $\\sigma(X,X^*)\\subseteq\\tau_{\\|\\cdot\\|}$ sempre, pois cada $\\varphi$ é contínuo na norma.",
+            "Fixe uma base e os funcionais coordenada $\\varphi_i$, contínuos em dimensão finita.",
+            "Mostre que convergência fraca implica convergência de cada coordenada $a_i^{(\\alpha)}\\to a_i$.",
+            "Use equivalência de normas (dim finita) para converter controle de coordenadas em controle da norma.",
+            "Conclua que as duas topologias têm as mesmas convergências e coincidem."
+          ]
+        },
+        {
+          "prompt": "Prove que limites fracos são únicos.",
+          "hint": "Se $x_n\\rightharpoonup x$ e $x_n\\rightharpoonup x'$, então $\\varphi(x)=\\varphi(x')$ para todo $\\varphi$; use que $X^*$ separa pontos (Hahn-Banach).",
+          "difficulty": 2,
+          "solution": "**Afirmação.** Limites fracos, quando existem, são únicos.\n\n**Passo 1 (montar a hipótese).** Suponha que uma sequência (ou rede) $(x_n)$ em $X$ satisfaça simultaneamente\n$$x_n\\rightharpoonup x\\qquad\\text{e}\\qquad x_n\\rightharpoonup x'.$$\nPor definição de convergência fraca, isso significa que para todo $\\varphi\\in X^*$,\n$$\\varphi(x_n)\\to\\varphi(x)\\qquad\\text{e}\\qquad\\varphi(x_n)\\to\\varphi(x').$$\n\n**Passo 2 (unicidade de limites em $\\mathbb{K}$).** Fixe $\\varphi\\in X^*$. A sequência numérica $\\big(\\varphi(x_n)\\big)$ converge em $\\mathbb{K}$; como limites em $\\mathbb{K}$ são únicos,\n$$\\varphi(x)=\\varphi(x').$$\nComo $\\varphi\\in X^*$ era arbitrário, $\\varphi(x-x')=0$ para **todo** $\\varphi\\in X^*$.\n\n**Passo 3 (separação de pontos por Hahn-Banach).** Suponha, por contradição, que $x\\ne x'$, isto é $x-x'\\ne0$. Pelo corolário de normação de Hahn-Banach, existe $\\varphi_0\\in X^*$ com\n$$\\varphi_0(x-x')=\\|x-x'\\|\\ne0,$$\ncontradizendo $\\varphi(x-x')=0$ para todo $\\varphi$. Logo $x=x'$. $\\blacksquare$\n\n**Comentário.** A unicidade do limite fraco depende crucialmente de que $X^*$ **separa pontos** de $X$ — propriedade garantida por Hahn-Banach. Em espaços topológicos vetoriais sem dual suficientemente rico, limites fracos poderiam não ser únicos.",
+          "steps": [
+            "Suponha $x_n\\rightharpoonup x$ e $x_n\\rightharpoonup x'$ e escreva o significado em termos de $\\varphi(x_n)$.",
+            "Para cada $\\varphi$, use unicidade de limites em $\\mathbb{K}$ para obter $\\varphi(x)=\\varphi(x')$.",
+            "Conclua $\\varphi(x-x')=0$ para todo $\\varphi\\in X^*$.",
+            "Aplique Hahn-Banach (separação de pontos) para forçar $x=x'$."
+          ]
+        },
+        {
+          "prompt": "Prove a semicontinuidade inferior fraca da norma: $x_n\\rightharpoonup x\\Rightarrow\\|x\\|\\le\\liminf\\|x_n\\|$.",
+          "hint": "Tome o funcional normante $\\varphi$ de $x$ ($\\|\\varphi\\|=1$, $\\varphi(x)=\\|x\\|$) e passe ao limite em $|\\varphi(x_n)|\\le\\|x_n\\|$.",
+          "difficulty": 3,
+          "solution": "**Semicontinuidade inferior fraca da norma.** Se $x_n\\rightharpoonup x$ em $X$, então $\\|x\\|\\le\\liminf_{n}\\|x_n\\|$.\n\n**Passo 1 (funcional normante).** Se $x=0$ a desigualdade $0\\le\\liminf\\|x_n\\|$ é trivial. Suponha $x\\ne0$. Pelo corolário de Hahn-Banach, existe $\\varphi\\in X^*$ com\n$$\\|\\varphi\\|=1\\qquad\\text{e}\\qquad\\varphi(x)=\\|x\\|.$$\n\n**Passo 2 (estimativa pontual).** Para cada $n$, por definição de norma de funcional,\n$$|\\varphi(x_n)|\\le\\|\\varphi\\|\\,\\|x_n\\|=\\|x_n\\|.$$\n\n**Passo 3 (passar ao liminf).** Como $x_n\\rightharpoonup x$, temos $\\varphi(x_n)\\to\\varphi(x)=\\|x\\|$. Em particular $|\\varphi(x_n)|\\to|\\varphi(x)|=\\|x\\|$. Tomando $\\liminf$ na desigualdade $|\\varphi(x_n)|\\le\\|x_n\\|$:\n$$\\|x\\|=\\lim_n|\\varphi(x_n)|=\\liminf_n|\\varphi(x_n)|\\le\\liminf_n\\|x_n\\|.$$\n(Usamos que o limite, quando existe, iguala o liminf, e a monotonicidade do liminf.)\n\n**Conclusão.** $\\|x\\|\\le\\liminf_n\\|x_n\\|$. $\\blacksquare$\n\n**Comentário.** A desigualdade pode ser **estrita** (a 'massa escapa'): em $\\ell^2$, $e_n\\rightharpoonup0$ mas $\\liminf\\|e_n\\|=1>0=\\|0\\|$. Esta semicontinuidade é a peça central do método direto do cálculo das variações: funcionais convexos coercivos, sendo fracamente sci, atingem seu mínimo sobre sequências minimizantes limitadas.",
+          "steps": [
+            "Descarte o caso $x=0$; para $x\\ne0$ obtenha o funcional normante $\\varphi$ ($\\|\\varphi\\|=1$, $\\varphi(x)=\\|x\\|$).",
+            "Escreva $|\\varphi(x_n)|\\le\\|x_n\\|$ para todo $n$.",
+            "Use $x_n\\rightharpoonup x$ para $\\varphi(x_n)\\to\\|x\\|$.",
+            "Tome liminf: $\\|x\\|=\\lim|\\varphi(x_n)|\\le\\liminf\\|x_n\\|$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $f_n(x)=\\sin(n\\pi x)\\rightharpoonup 0$ em $L^2[0,1]$, mas $f_n\\not\\to0$ em norma.",
+          "hint": "Para a convergência fraca, teste contra um denso (polinômios ou $L^2$) via Riemann-Lebesgue/Bessel; para a norma, calcule $\\|f_n\\|_2^2=1/2$.",
+          "difficulty": 4,
+          "solution": "Em $H=L^2[0,1]$ com $\\langle f,g\\rangle=\\int_0^1 fg$, considere $f_n(x)=\\sin(n\\pi x)$, $n\\ge1$.\n\n**Passo 1 (não converge em norma).** Calcule\n$$\\|f_n\\|_2^2=\\int_0^1\\sin^2(n\\pi x)\\,dx=\\int_0^1\\frac{1-\\cos(2n\\pi x)}{2}\\,dx=\\frac12-\\frac{1}{2}\\underbrace{\\int_0^1\\cos(2n\\pi x)\\,dx}_{=0}=\\frac12.$$\nLogo $\\|f_n\\|_2=1/\\sqrt2$ para todo $n$; em particular $f_n\\not\\to0$ em norma (a norma não vai a $0$). De fato $(f_n)$ é (a menos de fator) parte de um sistema ortonormal: para $m\\ne n$, $\\int_0^1\\sin(m\\pi x)\\sin(n\\pi x)\\,dx=0$, então $\\|f_n-f_m\\|_2^2=\\|f_n\\|^2+\\|f_m\\|^2=1$, e $(f_n)$ nem é de Cauchy.\n\n**Passo 2 (converge fracamente a $0$).** Precisamos $\\langle f_n,g\\rangle\\to0$ para todo $g\\in L^2[0,1]$. \n\n*Em um denso:* se $g$ é continuamente diferenciável (ou apenas $C^1$) em $[0,1]$, integração por partes dá\n$$\\int_0^1 g(x)\\sin(n\\pi x)\\,dx=\\Big[-g(x)\\frac{\\cos(n\\pi x)}{n\\pi}\\Big]_0^1+\\frac{1}{n\\pi}\\int_0^1 g'(x)\\cos(n\\pi x)\\,dx.$$\nO termo de fronteira é $O(1/n)$ e a integral restante é limitada por $\\|g'\\|_1/(n\\pi)=O(1/n)$. Logo $\\langle f_n,g\\rangle=O(1/n)\\to0$. (Isto é o lema de Riemann-Lebesgue.)\n\n*Densidade + limitação uniforme:* as funções $C^1$ são densas em $L^2[0,1]$, e $\\|f_n\\|_2=1/\\sqrt2$ é uniformemente limitada. Dado $g\\in L^2$ e $\\varepsilon>0$, escolha $h\\in C^1$ com $\\|g-h\\|_2<\\varepsilon$. Então\n$$|\\langle f_n,g\\rangle|\\le|\\langle f_n,h\\rangle|+|\\langle f_n,g-h\\rangle|\\le|\\langle f_n,h\\rangle|+\\|f_n\\|_2\\,\\|g-h\\|_2<|\\langle f_n,h\\rangle|+\\tfrac{1}{\\sqrt2}\\varepsilon.$$\nComo $\\langle f_n,h\\rangle\\to0$, para $n$ grande $|\\langle f_n,g\\rangle|<\\tfrac{1}{\\sqrt2}\\varepsilon+\\varepsilon$. Como $\\varepsilon$ é arbitrário, $\\langle f_n,g\\rangle\\to0$. Logo $f_n\\rightharpoonup0$.\n\n**Conclusão.** $f_n=\\sin(n\\pi x)\\rightharpoonup0$ em $L^2[0,1]$, mas $\\|f_n\\|_2=1/\\sqrt2\\not\\to0$, portanto $f_n\\not\\to0$ em norma. É um exemplo canônico de convergência fraca sem convergência forte (a 'energia' oscila cada vez mais rápido e escapa via oscilação). $\\blacksquare$",
+          "steps": [
+            "Calcule $\\|f_n\\|_2^2=\\int_0^1\\sin^2(n\\pi x)\\,dx=1/2$, mostrando que a norma não tende a zero.",
+            "Observe a ortogonalidade $\\langle f_n,f_m\\rangle=0$ ($m\\ne n$): $(f_n)$ não é de Cauchy, logo não converge em norma.",
+            "Para a convergência fraca, prove $\\langle f_n,g\\rangle\\to0$ primeiro em $g\\in C^1$ via integração por partes (Riemann-Lebesgue).",
+            "Estenda a todo $g\\in L^2$ usando densidade de $C^1$ e a limitação uniforme $\\|f_n\\|_2=1/\\sqrt2$ com um argumento $\\varepsilon/3$.",
+            "Conclua $f_n\\rightharpoonup0$ mas $f_n\\not\\to0$ em norma."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de convergência fraca",
+          "back": "$x_n\\rightharpoonup x$ $\\iff$ $\\varphi(x_n)\\to\\varphi(x)$ para todo $\\varphi\\in X^*$."
+        },
+        {
+          "front": "Definição de convergência fraca-*",
+          "back": "$\\varphi_n\\overset{*}{\\rightharpoonup}\\varphi$ $\\iff$ $\\varphi_n(x)\\to\\varphi(x)$ para todo $x\\in X$."
+        },
+        {
+          "front": "Teorema de Banach-Alaoglu",
+          "back": "A bola unitária fechada do dual $X^*$ é compacta na topologia fraca-*."
+        },
+        {
+          "front": "Teorema de Kakutani",
+          "back": "$X$ é reflexivo $\\iff$ a bola unitária fechada de $X$ é fracamente compacta."
+        },
+        {
+          "front": "Teorema de Mazur",
+          "back": "Conjunto convexo é fechado na norma $\\iff$ é fracamente fechado."
+        },
+        {
+          "front": "Semicontinuidade da norma na topologia fraca",
+          "back": "Se $x_n\\rightharpoonup x$ então $\\|x\\|\\le\\liminf_n\\|x_n\\|$ (sci inferior)."
+        },
+        {
+          "front": "Exemplos de espaços reflexivos e não reflexivos",
+          "back": "Reflexivos: Hilbert, $L^p$/$\\ell^p$ ($1<p<\\infty$). Não reflexivos: $L^1$, $L^\\infty$, $c_0$, $\\ell^1$, $C[a,b]$."
+        },
+        {
+          "front": "Quando fraca e fraca-* coincidem?",
+          "back": "Quando $X$ é reflexivo (pois então $X^{**}=X$)."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Brezis, cap. 3 (Weak Topologies, Reflexivity, Separability)",
+          "ref": "livro"
+        },
+        {
+          "title": "Conway, cap. V (Weak Topologies)",
+          "ref": "livro"
+        },
+        {
+          "title": "Kreyszig, cap. 4 (Weak convergence, reflexivity)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise topologia gerada por uma família de funções (topologia inicial) e a noção de rede/sequência convergente.",
+          "Leia Brezis cap. 3 e Conway cap. V; anote as definições de topologia fraca $\\sigma(X,X^*)$ e fraca-* $\\sigma(X^*,X)$ e suas convergências.",
+          "Estude a prova de Banach-Alaoglu via Tychonoff (mergulho no produto de discos) e o significado de compacidade fraca-*.",
+          "Conecte reflexividade, Kakutani e Eberlein-Smulian: em espaços reflexivos, sequências limitadas têm subsequências fracamente convergentes.",
+          "Trabalhe exemplos que distinguem fraca de forte ($e_n\\rightharpoonup0$ em $\\ell^2$, $\\sin(nx)\\rightharpoonup0$) e a semicontinuidade inferior fraca da norma.",
+          "Resolva os testes do subtópico no app e anote aqui o principal (Banach-Alaoglu, Mazur e o método direto do cálculo das variações)."
+        ],
+        "searchQueries": [
+          "topologia fraca fraca-* convergência definição espaço de Banach",
+          "teorema de Banach-Alaoglu demonstração Tychonoff compacidade",
+          "reflexividade teorema de Kakutani bola fracamente compacta",
+          "convergência fraca não implica forte exemplo base ortonormal l2",
+          "weak star topology Banach-Alaoglu theorem proof",
+          "Mazur theorem convex closed weakly closed lower semicontinuity norm"
+        ],
+        "videos": [
+          {
+            "title": "Functional Analysis - Weak topologies and Banach-Alaoglu",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Episódios sobre convergência fraca, fraca-* e o teorema de Banach-Alaoglu."
+          },
+          {
+            "title": "MIT OCW 18.102 — Weak convergence, reflexivity",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre topologias fracas e compacidade; acompanhe com as notas para as demonstrações de Alaoglu/Kakutani."
+          },
+          {
+            "title": "Weak convergence in Hilbert spaces",
+            "channel": "Dr. Peyam",
+            "note": "Busque vídeos sobre convergência fraca e exemplos ($e_n\\rightharpoonup0$) para intuição concreta."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Brezis, Functional Analysis — cap. 3 (Weak Topologies, Reflexivity, Separability)",
+            "where": "Springer (livro-texto)"
+          },
+          {
+            "title": "Conway, A Course in Functional Analysis — cap. V (Weak Topologies)",
+            "where": "Springer GTM 96 (livro-texto)"
+          },
+          {
+            "title": "Rudin, Functional Analysis — cap. 3-4 (weak topologies, Banach-Alaoglu)",
+            "where": "McGraw-Hill (livro-texto)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "analise-funcional-08-operadores-compactos-espectral",
+      "title": "Operadores Compactos e Teoria Espectral",
+      "tagline": "O coroamento da trilha: o espectro generaliza autovalores, e operadores compactos auto-adjuntos se diagonalizam como matrizes — base da alternativa de Fredholm e de Sturm-Liouville.",
+      "objectives": [
+        "Definir espectro, resolvente e raio espectral e provar que o espectro é compacto e não vazio (caso complexo).",
+        "Definir operadores compactos e estabelecer suas propriedades (ideal fechado de $B(X)$; limite de operadores de posto finito em Hilbert).",
+        "Enunciar e usar a alternativa de Fredholm para $T-\\lambda I$ com $T$ compacto e $\\lambda\\ne0$.",
+        "Provar o teorema espectral para operadores compactos auto-adjuntos (diagonalização por base ortonormal de autovetores)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Espectro e resolvente",
+          "statement": "$\\sigma(T)=\\{\\lambda\\in\\mathbb{C}:T-\\lambda I\\text{ não é invertível em }B(X)\\}$; o resolvente é $\\rho(T)=\\mathbb{C}\\setminus\\sigma(T)$ e $R(\\lambda)=(\\lambda I-T)^{-1}$ é analítico em $\\rho(T)$."
+        },
+        {
+          "term": "Decomposição do espectro",
+          "statement": "$\\sigma(T)$ se reparte em espectro pontual (autovalores: $T-\\lambda I$ não injetivo), contínuo ($T-\\lambda I$ injetivo, imagem densa não fechada) e residual ($T-\\lambda I$ injetivo, imagem não densa)."
+        },
+        {
+          "term": "Raio espectral",
+          "statement": "$r(T)=\\max\\{|\\lambda|:\\lambda\\in\\sigma(T)\\}=\\lim_{n\\to\\infty}\\|T^n\\|^{1/n}$ (fórmula de Gelfand); $r(T)\\le\\|T\\|$, com igualdade para operadores normais em Hilbert."
+        },
+        {
+          "term": "Operador compacto",
+          "statement": "$T\\in B(X,Y)$ tal que $\\overline{T(B_X)}$ é compacto; equivalentemente, toda sequência limitada $(x_n)$ tem $(Tx_n)$ com subsequência convergente."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Propriedades do espectro",
+          "statement": "Para $T\\in B(X)$, $X$ Banach complexo $\\ne\\{0\\}$: $\\sigma(T)$ é compacto, não vazio e contido em $\\{|\\lambda|\\le\\|T\\|\\}$; vale a fórmula de Gelfand $r(T)=\\lim\\|T^n\\|^{1/n}$.",
+          "whyItMatters": "Generaliza autovalores de matrizes; a não vacuidade (via analiticidade do resolvente e Liouville) garante que sempre há 'espectro' a estudar."
+        },
+        {
+          "name": "Estrutura dos compactos",
+          "statement": "O conjunto $K(X)$ dos operadores compactos é um ideal bilateral fechado de $B(X)$; em espaços de Hilbert, $T$ é compacto se e só se é limite em norma de operadores de posto finito.",
+          "whyItMatters": "Identifica a classe exata de operadores que se comportam, espectralmente, como matrizes — onde a teoria de autovalores volta a funcionar."
+        },
+        {
+          "name": "Alternativa de Fredholm (Riesz-Schauder)",
+          "statement": "Seja $T$ compacto e $\\lambda\\ne0$. Então $T-\\lambda I$ é injetivo se e só se é sobrejetivo; $\\ker(T-\\lambda I)$ tem dimensão finita; e $\\sigma(T)\\setminus\\{0\\}$ consiste em autovalores isolados de multiplicidade finita, que só podem se acumular em $0$.",
+          "whyItMatters": "Permite resolver $Tx-\\lambda x=y$ como um sistema linear finito ('ou existe solução única, ou o homogêneo tem solução não trivial'); é a espinha dorsal das equações integrais e de EDPs elípticas."
+        },
+        {
+          "name": "Teorema espectral (compacto auto-adjunto)",
+          "statement": "Se $T\\in B(H)$ é compacto e auto-adjunto, existe uma base ortonormal $(e_n)$ de autovetores com autovalores reais $\\lambda_n\\to0$, e $T x=\\sum_n\\lambda_n\\langle x,e_n\\rangle e_n$ para todo $x$.",
+          "whyItMatters": "É a diagonalização em dimensão infinita; fundamenta a teoria de Sturm-Liouville, o método de separação de variáveis e a representação espectral em mecânica quântica."
+        }
+      ],
+      "summary": "A teoria espectral substitui a pergunta 'quais são os autovalores?' pela pergunta 'para quais $\\lambda$ o operador $T-\\lambda I$ deixa de ser invertível?'. Esse conjunto, o espectro $\\sigma(T)$, é sempre compacto, não vazio (em Banach complexo) e contido no disco de raio $\\|T\\|$; mas em dimensão infinita ele tem partes novas — espectro contínuo e residual — além dos autovalores. A fórmula de Gelfand $r(T)=\\lim\\|T^n\\|^{1/n}$ calcula seu raio. Nem todos os operadores são tratáveis, mas os compactos — limites de operadores de posto finito em Hilbert, formando um ideal fechado — recuperam o comportamento matricial.\\n\\nPara operadores compactos, a alternativa de Fredholm é decisiva: fora de $0$, injetividade equivale a sobrejetividade, os autovalores são isolados, de multiplicidade finita, e só se acumulam em $0$ (que está sempre no espectro em dimensão infinita). Quando, além de compacto, o operador é auto-adjunto, vale o teorema espectral: existe base ortonormal de autovetores e $T=\\sum\\lambda_n\\langle\\cdot,e_n\\rangle e_n$ com $\\lambda_n\\to0$ reais — a diagonalização perfeita em dimensão infinita. Esse é o motor de Sturm-Liouville, das equações integrais e da mecânica quântica, e o ponto culminante da trilha.",
+      "commonPitfalls": [
+        "Confundir espectro com conjunto de autovalores: em dimensão infinita $\\sigma(T)$ pode conter espectro contínuo/residual sem nenhum autovetor (ex.: deslocamentos).",
+        "Achar que $0\\notin\\sigma(T)$ para $T$ compacto em dimensão infinita — o $0$ está sempre no espectro (caso contrário $I=T T^{-1}$ seria compacto).",
+        "Usar $r(T)=\\|T\\|$ em geral: isso vale para operadores normais/auto-adjuntos em Hilbert, não para um operador qualquer (ex.: nilpotentes/Volterra têm $r=0<\\|T\\|$).",
+        "Aplicar a alternativa de Fredholm a $\\lambda=0$ — ela só vale para $\\lambda\\ne0$."
+      ],
+      "worked": "**O operador diagonal: protótipo de tudo.** Em $\\ell^2$, fixe escalares reais $\\lambda_n$ com $\\lambda_n\\to0$ e defina $T e_n=\\lambda_n e_n$, isto é, $T x=(\\lambda_n x_n)_n$.\n\n*Limitado e auto-adjunto:* $\\|Tx\\|^2=\\sum|\\lambda_n|^2|x_n|^2\\le(\\sup_n|\\lambda_n|)^2\\|x\\|^2$, logo $\\|T\\|=\\sup_n|\\lambda_n|$; e $\\langle Tx,y\\rangle=\\sum\\lambda_n x_n\\overline{y_n}=\\langle x,Ty\\rangle$ (pois $\\lambda_n\\in\\mathbb{R}$), então $T=T^*$.\n\n*Compacto:* seja $T_N x=(\\lambda_1 x_1,\\dots,\\lambda_N x_N,0,0,\\dots)$, de posto finito. Então\n$$\\|T-T_N\\|=\\sup_{n>N}|\\lambda_n|\\xrightarrow[N\\to\\infty]{}0,$$\npois $\\lambda_n\\to0$. Como $T$ é limite em norma de operadores de posto finito, $T$ é compacto.\n\n*Espectro:* $T-\\lambda I$ é o operador diagonal de entradas $\\lambda_n-\\lambda$, invertível com inversa limitada $\\iff\\inf_n|\\lambda_n-\\lambda|>0$. Logo\n$$\\sigma(T)=\\overline{\\{\\lambda_n:n\\in\\mathbb{N}\\}}=\\{\\lambda_n\\}\\cup\\{0\\}.$$\nCada $\\lambda_n$ é autovalor (autovetor $e_n$). O ponto $0\\in\\sigma(T)$ porque $\\lambda_n\\to0$; se todos os $\\lambda_n\\ne0$, então $0$ **não** é autovalor (T é injetivo), ficando no espectro contínuo. Os autovetores $e_n$ formam base ortonormal e $Tx=\\sum_n\\lambda_n\\langle x,e_n\\rangle e_n$ — exatamente o teorema espectral. Este exemplo exibe, num só lugar, compacidade, $0\\in\\sigma(T)$ sem ser autovalor, e diagonalização.",
+      "exercises": [
+        {
+          "prompt": "Prove que o operador identidade $I$ em $X$ é compacto se e só se $\\dim X<\\infty$.",
+          "hint": "$I$ compacto significa que a bola unitária fechada é relativamente compacta; aplique o teorema de Riesz.",
+          "difficulty": 3,
+          "solution": "Seja $X$ um espaço normado e $I:X\\to X$ o operador identidade. Provamos que $I$ é compacto se e só se $\\dim X<\\infty$.\n\n**Passo 1 (o que significa $I$ compacto).** $I$ é compacto sse leva conjuntos limitados em conjuntos relativamente compactos. Como $I(B_X)=B_X$ (a bola unitária fechada), $I$ é compacto sse\n$$\\overline{I(B_X)}=B_X\\ \\text{é compacta},$$\nisto é, sse a bola unitária fechada de $X$ é compacta.\n\n**Passo 2 ($\\dim X<\\infty\\Rightarrow I$ compacto).** Se $\\dim X=n<\\infty$, então $X\\cong\\mathbb{K}^n$ (com normas equivalentes — subtópico 01), e por Heine-Borel a bola unitária fechada é fechada e limitada, logo compacta. Portanto $I(B_X)=B_X$ é compacta e $I$ é compacto.\n\n**Passo 3 ($I$ compacto $\\Rightarrow\\dim X<\\infty$).** Suponha $I$ compacto, isto é, $B_X$ compacta. Pelo **teorema de Riesz** (lema de Riesz), a bola unitária fechada de um espaço normado é compacta se e só se a dimensão é finita. Concretamente, se $\\dim X=\\infty$, o lema de Riesz permite construir uma sequência $(x_k)$ com $\\|x_k\\|=1$ e $\\|x_k-x_j\\|\\ge\\tfrac12$ para $k\\ne j$: escolhe-se $x_1$ unitário, e dado $\\operatorname{span}\\{x_1,\\dots,x_k\\}=:M_k$ (subespaço fechado próprio, pois dimensão infinita), o lema fornece $x_{k+1}$ unitário com $d(x_{k+1},M_k)\\ge\\tfrac12$. Essa sequência está em $B_X$ mas não tem subsequência de Cauchy (distâncias $\\ge1/2$), logo $B_X$ não é compacta — contradição. Portanto $\\dim X<\\infty$.\n\n**Conclusão.** $I$ compacto $\\iff$ $B_X$ compacta $\\iff$ $\\dim X<\\infty$. $\\blacksquare$",
+          "steps": [
+            "Reconheça que $I$ compacto equivale a $B_X$ (bola unitária fechada) ser compacta, pois $I(B_X)=B_X$.",
+            "No caso $\\dim X<\\infty$, use $X\\cong\\mathbb{K}^n$ e Heine-Borel para a compacidade da bola.",
+            "No caso geral, invoque o teorema de Riesz: bola compacta $\\Rightarrow$ dimensão finita.",
+            "Se quiser explícito, construa via lema de Riesz uma sequência unitária $2^{-1}$-separada sem subsequência convergente em dimensão infinita.",
+            "Conclua a equivalência."
+          ]
+        },
+        {
+          "prompt": "Determine o espectro do deslocamento à direita $S$ em $\\ell^2$.",
+          "hint": "$S$ não tem autovalores; mostre que $\\sigma(S)=\\{\\lambda:|\\lambda|\\le1\\}$ usando $\\|S\\|=1$ (logo $\\sigma\\subseteq\\overline{D}$) e que $S-\\lambda I$ não é sobrejetor para $|\\lambda|<1$ (espectro residual).",
+          "difficulty": 5,
+          "solution": "Seja $S:\\ell^2\\to\\ell^2$ o deslocamento à direita, $S(x_1,x_2,\\dots)=(0,x_1,x_2,\\dots)$. Determinamos $\\sigma(S)=\\{\\lambda\\in\\mathbb{C}:S-\\lambda I\\text{ não invertível}\\}$.\n\n**Passo 1 (espectro no disco).** $S$ é uma isometria: $\\|Sx\\|=\\|x\\|$, logo $\\|S\\|=1$. Como $\\sigma(S)\\subseteq\\{|\\lambda|\\le\\|S\\|\\}$, temos $\\sigma(S)\\subseteq\\overline{D}=\\{|\\lambda|\\le1\\}$.\n\n**Passo 2 ($S$ não tem autovalores).** Suponha $Sx=\\lambda x$, $x\\ne0$. Componente a componente: $(Sx)_1=0=\\lambda x_1$ e $(Sx)_n=x_{n-1}=\\lambda x_n$ para $n\\ge2$.\n- Se $\\lambda=0$: $x_{n-1}=0$ para todo $n\\ge2$, logo $x=0$. \n- Se $\\lambda\\ne0$: de $\\lambda x_1=0$ vem $x_1=0$; então $x_1=\\lambda x_2\\Rightarrow x_2=0$, e indutivamente $x_n=0$. \nEm ambos os casos $x=0$, contradição. Logo $S$ **não tem autovalores**: o espectro pontual é vazio.\n\n**Passo 3 (fronteira do disco está no espectro).** Se $|\\lambda|=1$, $\\lambda\\in\\sigma(S)$: como $\\sigma(S)$ é fechado e (mostraremos) contém o disco aberto, a fronteira também pertence. Alternativamente, $S-\\lambda I$ com $|\\lambda|=1$ não é sobrejetor / não tem inversa limitada (o vetor $e_1$ não está na imagem — ver abaixo).\n\n**Passo 4 (disco aberto: espectro residual).** Seja $|\\lambda|<1$. Afirmamos que $S-\\lambda I$ é injetivo (Passo 2) mas **não sobrejetor**, logo não invertível, logo $\\lambda\\in\\sigma(S)$. Para ver que não é sobrejetor, considere o adjunto: $S^*$ é o deslocamento à esquerda, $S^*(y_1,y_2,\\dots)=(y_2,y_3,\\dots)$, e $S^*$ **tem** autovalores em $|\\lambda|<1$: o vetor $y^\\lambda=(1,\\lambda,\\lambda^2,\\dots)\\in\\ell^2$ (pois $\\sum|\\lambda|^{2n}<\\infty$) satisfaz $S^*y^\\lambda=(\\lambda,\\lambda^2,\\dots)=\\lambda y^\\lambda$. Então $\\ker(S^*-\\overline{\\bar\\lambda}\\,\\text{...})$; mais precisamente, usando $\\overline{\\operatorname{Im}(S-\\lambda I)}^\\perp=\\ker(S^*-\\bar\\lambda I)$, a existência de autovetor de $S^*$ para $\\bar\\lambda$ (com $|\\bar\\lambda|<1$) mostra que $\\operatorname{Im}(S-\\lambda I)$ não é densa. Logo $S-\\lambda I$ é injetivo com imagem não densa: $\\lambda$ está no **espectro residual**.\n\n**Passo 5 (juntar).** O disco aberto $\\{|\\lambda|<1\\}\\subseteq\\sigma(S)$ (espectro residual) e $\\sigma(S)\\subseteq\\overline{D}$; como $\\sigma(S)$ é fechado, contém o fecho do disco aberto, que é $\\overline{D}$. Portanto\n$$\\boxed{\\sigma(S)=\\{\\lambda\\in\\mathbb{C}:|\\lambda|\\le1\\}}.$$\nDetalhando as partes: espectro pontual vazio; disco aberto $|\\lambda|<1$ é residual; círculo $|\\lambda|=1$ é espectro contínuo (aí $S-\\lambda I$ é injetivo, imagem densa mas não fechada). $\\blacksquare$",
+          "steps": [
+            "Use $\\|S\\|=1$ (isometria) para concluir $\\sigma(S)\\subseteq\\{|\\lambda|\\le1\\}$.",
+            "Mostre que $Sx=\\lambda x$ força $x=0$: $S$ não tem autovalores.",
+            "Passe ao adjunto $S^*$ (shift à esquerda) e note que $y^\\lambda=(1,\\lambda,\\lambda^2,\\dots)\\in\\ell^2$ é autovetor de $S^*$ para $|\\lambda|<1$.",
+            "Use $\\overline{\\operatorname{Im}(S-\\lambda I)}^\\perp=\\ker(S^*-\\bar\\lambda I)\\ne\\{0\\}$ para concluir que $S-\\lambda I$ não é sobrejetor (espectro residual no disco aberto).",
+            "Feche por compacidade/fechamento do espectro: $\\sigma(S)=\\{|\\lambda|\\le1\\}$."
+          ]
+        },
+        {
+          "prompt": "Mostre que o operador diagonal $Te_n=\\lambda_n e_n$ em $\\ell^2$ é compacto se e só se $\\lambda_n\\to0$.",
+          "hint": "Se $\\lambda_n\\to0$, aproxime por truncamentos de posto finito; se $\\lambda_n\\not\\to0$, exiba uma subsequência de $(Te_{n_k})$ sem subsequência convergente.",
+          "difficulty": 3,
+          "solution": "Seja $T:\\ell^2\\to\\ell^2$ o operador diagonal $Te_n=\\lambda_n e_n$, isto é $Tx=(\\lambda_n x_n)_n$, com $(\\lambda_n)$ escalares limitados (para $T$ ser limitado: $\\|T\\|=\\sup_n|\\lambda_n|$). Provamos: $T$ é compacto $\\iff\\lambda_n\\to0$.\n\n**($\\Leftarrow$) $\\lambda_n\\to0\\Rightarrow T$ compacto.** Defina os truncamentos de posto finito\n$$T_N x=(\\lambda_1 x_1,\\dots,\\lambda_N x_N,0,0,\\dots).$$\nCada $T_N$ tem imagem contida em $\\operatorname{span}\\{e_1,\\dots,e_N\\}$, logo é de posto finito (portanto compacto). Estimamos a norma da diferença: para $\\|x\\|\\le1$,\n$$\\|(T-T_N)x\\|^2=\\sum_{n>N}|\\lambda_n|^2|x_n|^2\\le\\Big(\\sup_{n>N}|\\lambda_n|\\Big)^2\\sum_{n>N}|x_n|^2\\le\\Big(\\sup_{n>N}|\\lambda_n|\\Big)^2,$$\nlogo $\\|T-T_N\\|\\le\\sup_{n>N}|\\lambda_n|$. Como $\\lambda_n\\to0$, $\\sup_{n>N}|\\lambda_n|\\to0$ quando $N\\to\\infty$, portanto $T_N\\to T$ em norma de operador. Sendo $T$ limite em norma de operadores compactos (de posto finito) e $K(\\ell^2)$ fechado, $T$ é compacto.\n\n**($\\Rightarrow$) $T$ compacto $\\Rightarrow\\lambda_n\\to0$.** Contrapositiva: suponha $\\lambda_n\\not\\to0$. Então existe $\\varepsilon>0$ e uma subsequência $(n_k)$ com $|\\lambda_{n_k}|\\ge\\varepsilon$ para todo $k$. Considere a sequência limitada $(e_{n_k})_k$ (é ortonormal, $\\|e_{n_k}\\|=1$). Suas imagens são\n$$Te_{n_k}=\\lambda_{n_k}e_{n_k}.$$\nPara $k\\ne j$, por ortogonalidade,\n$$\\|Te_{n_k}-Te_{n_j}\\|^2=|\\lambda_{n_k}|^2+|\\lambda_{n_j}|^2\\ge\\varepsilon^2+\\varepsilon^2=2\\varepsilon^2,$$\nlogo $\\|Te_{n_k}-Te_{n_j}\\|\\ge\\varepsilon\\sqrt2$. A sequência $(Te_{n_k})$ é $\\varepsilon\\sqrt2$-separada, portanto **não** tem subsequência de Cauchy — logo não tem subsequência convergente. Isso contradiz a compacidade de $T$ (que exigiria de $(e_{n_k})$ limitada uma subsequência de $(Te_{n_k})$ convergente). Portanto, se $T$ é compacto, necessariamente $\\lambda_n\\to0$.\n\n**Conclusão.** $T$ diagonal é compacto $\\iff\\lambda_n\\to0$. $\\blacksquare$",
+          "steps": [
+            "Na ida, defina os truncamentos $T_N$ de posto finito (imagem em $\\operatorname{span}\\{e_1,\\dots,e_N\\}$).",
+            "Estime $\\|T-T_N\\|\\le\\sup_{n>N}|\\lambda_n|\\to0$ quando $\\lambda_n\\to0$.",
+            "Conclua $T$ compacto como limite em norma de operadores de posto finito ($K$ fechado).",
+            "Na volta (contrapositiva), suponha $\\lambda_n\\not\\to0$ e extraia subsequência com $|\\lambda_{n_k}|\\ge\\varepsilon$.",
+            "Mostre que $(Te_{n_k})=(\\lambda_{n_k}e_{n_k})$ é $\\varepsilon\\sqrt2$-separada, sem subsequência convergente, contradizendo compacidade."
+          ]
+        },
+        {
+          "prompt": "Prove que os autovalores de um operador auto-adjunto são reais e que autovetores de autovalores distintos são ortogonais.",
+          "hint": "De $Tx=\\lambda x$ obtenha $\\lambda\\|x\\|^2=\\langle Tx,x\\rangle=\\langle x,Tx\\rangle=\\overline{\\lambda}\\|x\\|^2$; para a ortogonalidade compare $\\langle Tx,y\\rangle$ com $\\langle x,Ty\\rangle$.",
+          "difficulty": 2,
+          "solution": "Seja $H$ um espaço de Hilbert e $T\\in B(H)$ auto-adjunto ($T=T^*$), isto é $\\langle Tx,y\\rangle=\\langle x,Ty\\rangle$ para todos $x,y$.\n\n**Parte 1 — autovalores são reais.** Seja $\\lambda$ um autovalor com autovetor $x\\ne0$: $Tx=\\lambda x$. Então\n$$\\lambda\\|x\\|^2=\\langle\\lambda x,x\\rangle=\\langle Tx,x\\rangle.$$\nPor outro lado, usando auto-adjunção e a hermiticidade do produto interno,\n$$\\langle Tx,x\\rangle=\\langle x,Tx\\rangle=\\overline{\\langle Tx,x\\rangle},$$\nlogo $\\langle Tx,x\\rangle\\in\\mathbb{R}$. Como $\\langle Tx,x\\rangle=\\lambda\\|x\\|^2$ e $\\|x\\|^2>0$, segue que $\\lambda=\\dfrac{\\langle Tx,x\\rangle}{\\|x\\|^2}\\in\\mathbb{R}$. (Alternativamente: $\\lambda\\|x\\|^2=\\langle Tx,x\\rangle=\\langle x,Tx\\rangle=\\overline{\\lambda}\\|x\\|^2$, donde $\\lambda=\\overline{\\lambda}$.)\n\n**Parte 2 — autovetores de autovalores distintos são ortogonais.** Sejam $Tx=\\lambda x$ e $Ty=\\mu y$ com $\\lambda\\ne\\mu$ (ambos reais, pela Parte 1). Calculamos $\\langle Tx,y\\rangle$ de dois modos:\n$$\\langle Tx,y\\rangle=\\langle\\lambda x,y\\rangle=\\lambda\\langle x,y\\rangle;$$\n$$\\langle Tx,y\\rangle=\\langle x,Ty\\rangle=\\langle x,\\mu y\\rangle=\\overline{\\mu}\\langle x,y\\rangle=\\mu\\langle x,y\\rangle,$$\nusando auto-adjunção e $\\mu\\in\\mathbb{R}$ (logo $\\overline\\mu=\\mu$). Subtraindo,\n$$(\\lambda-\\mu)\\langle x,y\\rangle=0.$$\nComo $\\lambda\\ne\\mu$, temos $\\lambda-\\mu\\ne0$, portanto $\\langle x,y\\rangle=0$: os autovetores são ortogonais. $\\blacksquare$\n\n**Comentário.** Essas duas propriedades são o alicerce do teorema espectral para operadores compactos auto-adjuntos: os autovalores (reais) podem ser ordenados por módulo decrescente com $\\lambda_n\\to0$, e os autovetores, sendo ortogonais e após normalização, formam uma base ortonormal de $\\overline{\\operatorname{Im}\\,T}$ que diagonaliza $T$.",
+          "steps": [
+            "Para a realidade: de $Tx=\\lambda x$, mostre que $\\langle Tx,x\\rangle$ é real usando $T=T^*$ e hermiticidade.",
+            "Divida por $\\|x\\|^2>0$ para concluir $\\lambda\\in\\mathbb{R}$ (ou compare $\\lambda\\|x\\|^2=\\overline\\lambda\\|x\\|^2$).",
+            "Para a ortogonalidade, tome autovetores $x,y$ de $\\lambda\\ne\\mu$ e calcule $\\langle Tx,y\\rangle$ de dois modos.",
+            "Obtenha $(\\lambda-\\mu)\\langle x,y\\rangle=0$ usando $\\mu$ real.",
+            "Conclua $\\langle x,y\\rangle=0$ pois $\\lambda\\ne\\mu$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de espectro $\\sigma(T)$",
+          "back": "$\\{\\lambda\\in\\mathbb{C}:T-\\lambda I\\text{ não é invertível em }B(X)\\}$."
+        },
+        {
+          "front": "Fórmula de Gelfand (raio espectral)",
+          "back": "$r(T)=\\max_{\\lambda\\in\\sigma(T)}|\\lambda|=\\lim_{n}\\|T^n\\|^{1/n}\\le\\|T\\|$."
+        },
+        {
+          "front": "Definição de operador compacto",
+          "back": "Leva conjuntos limitados em relativamente compactos; equivalentemente, toda sequência limitada $(x_n)$ tem $(Tx_n)$ com subsequência convergente."
+        },
+        {
+          "front": "Compacto em Hilbert e posto finito",
+          "back": "$T$ compacto $\\iff$ é limite em norma de operadores de posto finito."
+        },
+        {
+          "front": "Por que $0\\in\\sigma(T)$ para $T$ compacto em dim. infinita?",
+          "back": "Se $0\\notin\\sigma(T)$, $T$ seria invertível e $I=TT^{-1}$ compacto, forçando dimensão finita — contradição."
+        },
+        {
+          "front": "Alternativa de Fredholm ($T$ compacto, $\\lambda\\ne0$)",
+          "back": "$T-\\lambda I$ injetivo $\\iff$ sobrejetivo; autovalores $\\ne0$ são isolados, de multiplicidade finita, acumulando só em $0$."
+        },
+        {
+          "front": "Teorema espectral (compacto auto-adjunto)",
+          "back": "Existe base ortonormal de autovetores; $Tx=\\sum_n\\lambda_n\\langle x,e_n\\rangle e_n$ com $\\lambda_n\\to0$ reais."
+        },
+        {
+          "front": "Partes do espectro",
+          "back": "Pontual (autovalores), contínuo (injetivo, imagem densa não fechada) e residual (injetivo, imagem não densa)."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Brezis, cap. 6 (Compact Operators, Spectral Decomposition)",
+          "ref": "livro"
+        },
+        {
+          "title": "Kreyszig, caps. 8 e 9 (Spectral Theory, Compact Operators)",
+          "ref": "livro"
+        },
+        {
+          "title": "Conway, caps. VII-VIII; Reed-Simon vol. I, cap. VI",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise autovalores/autovetores e diagonalização de matrizes simétricas (teorema espectral em dimensão finita) como modelo do que se generaliza.",
+          "Leia Brezis cap. 6 e Kreyszig caps. 8-9; anote as definições de espectro, resolvente, raio espectral e operador compacto.",
+          "Estude que $\\sigma(T)$ é compacto e não vazio (via analiticidade do resolvente e Liouville) e a fórmula de Gelfand.",
+          "Domine os operadores compactos (ideal fechado, limite de posto finito em Hilbert) e a alternativa de Fredholm.",
+          "Trabalhe o teorema espectral para compactos auto-adjuntos e aplique a Sturm-Liouville e equações integrais.",
+          "Resolva os testes do subtópico no app e anote aqui o principal (o operador diagonal como protótipo, o espectro do shift e a diagonalização auto-adjunta)."
+        ],
+        "searchQueries": [
+          "espectro resolvente operador limitado compacto não vazio demonstração",
+          "operador compacto ideal fechado limite posto finito Hilbert",
+          "alternativa de Fredholm Riesz-Schauder operador compacto autovalores",
+          "teorema espectral operador compacto auto-adjunto diagonalização base ortonormal",
+          "spectrum of shift operator l2 unilateral shift spectral theory",
+          "spectral theorem compact self-adjoint operator proof"
+        ],
+        "videos": [
+          {
+            "title": "Functional Analysis - Spectrum and compact operators",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Episódios sobre espectro, resolvente, operadores compactos e o teorema espectral na série de análise funcional."
+          },
+          {
+            "title": "MIT OCW 18.102 — Compact operators and spectral theorem",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas finais sobre operadores compactos, Fredholm e o teorema espectral; acompanhe com as notas."
+          },
+          {
+            "title": "Spectral theory of operators / eigenvalues in infinite dimension",
+            "channel": "Dr. Peyam",
+            "note": "Busque vídeos sobre espectro e operadores compactos para exemplos concretos (shift, diagonais)."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Brezis, Functional Analysis — cap. 6 (Compact Operators, Spectral Decomposition)",
+            "where": "Springer (livro-texto)"
+          },
+          {
+            "title": "Reed & Simon, Methods of Modern Mathematical Physics I — cap. VI (Compact operators, spectral theorem)",
+            "where": "Academic Press (livro-texto)"
+          },
+          {
+            "title": "Conway, A Course in Functional Analysis — caps. VII-VIII (Spectral Theory)",
+            "where": "Springer GTM 96 (livro-texto)"
+          }
+        ]
+      }
+    }
+  ]
+}

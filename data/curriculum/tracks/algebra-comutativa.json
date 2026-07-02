@@ -1,0 +1,1550 @@
+{
+  "id": "algebra-comutativa",
+  "title": "Álgebra Comutativa",
+  "phase": 2,
+  "phaseLabel": "Avançado / Pré-Pós",
+  "tagline": "A gramática dos anéis comutativos: ideais primos, localização, módulos, Noetherianidade, Nullstellensatz e dimensão de Krull — a linguagem que une teoria dos números e geometria algébrica.",
+  "summary": "Álgebra Comutativa é o estudo sistemático dos anéis comutativos com unidade, de seus ideais e de seus módulos. Partimos de onde a Álgebra Abstrata II parou — ideais primos e maximais — e construímos a maquinaria que sustenta a geometria algébrica e a teoria algébrica dos números: o espectro $\\operatorname{Spec}(R)$, a localização $S^{-1}R$, a teoria de módulos com o Lema de Nakayama, as condições de cadeia e os anéis Noetherianos, o Teorema da Base de Hilbert, a decomposição primária de Lasker-Noether, o Nullstellensatz de Hilbert (o dicionário álgebra $\\leftrightarrow$ geometria) e a dimensão de Krull com o Teorema do Ideal Principal. É um curso no estilo Atiyah-Macdonald, com o rigor de um exame de mestrado.",
+  "bigPicture": "Álgebra Comutativa é o idioma comum de duas das grandes áreas da matemática pura. Na geometria algébrica, o Nullstellensatz traduz conjuntos de soluções de sistemas polinomiais (variedades) em ideais radicais de $k[x_1,\\dots,x_n]$, e $\\operatorname{Spec}(R)$ é literalmente o espaço sobre o qual Grothendieck construiu os esquemas; a dimensão de Krull é a dimensão geométrica. Na teoria algébrica dos números, os anéis de inteiros $\\mathcal{O}_K$ são domínios de Dedekind — Noetherianos, de dimensão $1$, integralmente fechados — e a localização e a decomposição de ideais primos descrevem a ramificação de primos. Para concursos de Instituto Federal (IF), o tema raramente aparece em profundidade — o que cai são os fundamentos já vistos em Álgebra II (ideais primos/maximais, anéis quociente, polinômios), mas dominar esta trilha dá uma fluência que torna trivial a parte de álgebra dessas provas. Para o mestrado em matemática pura, porém, Álgebra Comutativa é decisiva: é disciplina obrigatória ou pré-requisito em programas como IMPA, USP, UFRJ, UFMG, UnB e UFPE, aparece em exames de qualificação e é a porta de entrada para Geometria Algébrica, Teoria dos Números e Álgebra Homológica. Quem domina Noetherianidade, Nullstellensatz e dimensão de Krull chega à pós com vantagem enorme.",
+  "prereqs": [
+    "algebra-abstrata-2"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 64,
+  "primaryBooks": [
+    {
+      "title": "Introduction to Commutative Algebra",
+      "author": "M. F. Atiyah & I. G. Macdonald",
+      "note": "A bíblia da área: conciso, elegante e com exercícios lendários. É o texto principal desta trilha; cada capítulo corresponde quase um-a-um a um subtópico aqui.",
+      "chapters": "caps. 1-7 e 11 (anéis e ideais, módulos, localização, decomposição primária, Noetherianos, dimensão)"
+    },
+    {
+      "title": "Commutative Algebra with a View Toward Algebraic Geometry",
+      "author": "David Eisenbud",
+      "note": "Tratado moderno e geométrico, riquíssimo em motivação e exemplos; ideal para entender por que cada teorema existe e como conecta com a geometria. Use como referência de aprofundamento.",
+      "chapters": "caps. 1-4 (módulos, localização, primos associados), 8-9, 13 (dimensão)"
+    },
+    {
+      "title": "Elementos de Álgebra",
+      "author": "Arnaldo Garcia & Yves Lequain (IMPA, Projeto Euclides)",
+      "note": "Referência brasileira definitiva em PT-BR que avança até a álgebra comutativa: anéis Noetherianos, extensões inteiras, Nullstellensatz e dimensão, com rigor de pós e linguagem acessível.",
+      "chapters": "caps. sobre anéis Noetherianos, extensões inteiras e Nullstellensatz"
+    },
+    {
+      "title": "Commutative Ring Theory",
+      "author": "Hideyuki Matsumura",
+      "note": "Referência avançada e completa; padrão para teoria de dimensão, sistemas de parâmetros e anéis locais. Use para os tópicos finais (dimensão de Krull, Hauptidealsatz).",
+      "chapters": "caps. sobre anéis Noetherianos, dimensão e teoria de profundidade"
+    },
+    {
+      "title": "Undergraduate Commutative Algebra",
+      "author": "Miles Reid",
+      "note": "Introdução curta, intuitiva e geométrica; excelente primeiro contato e ótimo para o Nullstellensatz e a correspondência álgebra-geometria.",
+      "chapters": "todo o livro"
+    },
+    {
+      "title": "Abstract Algebra",
+      "author": "David S. Dummit & Richard M. Foote",
+      "note": "Para revisar e expandir módulos, anéis Noetherianos e a teoria de Gröbner/Nullstellensatz em inglês, com muitos exercícios.",
+      "chapters": "caps. 10, 12 (módulos), 15 (geometria algébrica comutativa)"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.705 Commutative Algebra",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "J. S. Milne — A Primer of Commutative Algebra (notas)",
+      "kind": "notas",
+      "ref": "jmilne.org"
+    },
+    {
+      "title": "The Stacks Project — Commutative Algebra (capítulo)",
+      "kind": "notas",
+      "ref": "stacks.math.columbia.edu"
+    },
+    {
+      "title": "Pete L. Clark — Commutative Algebra (notas de curso)",
+      "kind": "notas",
+      "ref": "notas de curso (Universidade da Geórgia)"
+    },
+    {
+      "title": "Atiyah-Macdonald solutions e seminários (vídeos)",
+      "kind": "video",
+      "ref": "YouTube"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 2,
+    "mestrado": 4,
+    "note": "Em concursos de Instituto Federal, álgebra comutativa avançada quase não cai — o que aparece são os fundamentos já cobrados em Álgebra II: ideais primos e maximais, anéis quociente, $K[x]$ como DIP, irredutibilidade. Esta trilha funciona como fluência adicional. Em provas e exames de mestrado/qualificação, porém, é tema central em programas fortes: caracterizar $\\mathfrak{p}$ primo via $R/\\mathfrak{p}$ domínio e $\\mathfrak{m}$ maximal via $R/\\mathfrak{m}$ corpo, provar que o nilradical é a interseção dos primos, manipular localização e anéis locais, aplicar o Lema de Nakayama, demonstrar o Teorema da Base de Hilbert, reconhecer e construir decomposições primárias, enunciar e usar o Nullstellensatz (fraco e forte) e calcular a dimensão de Krull de $k[x_1,\\dots,x_n]$ e de quocientes são questões clássicas. É também pré-requisito implícito de qualquer prova de Geometria Algébrica ou Teoria dos Números."
+  },
+  "subtopics": [
+    {
+      "id": "algebra-comutativa-01-ideais-primos-maximais-espectro",
+      "title": "Ideais Primos, Maximais e o Espectro de um Anel",
+      "tagline": "Os primos e maximais são os átomos da álgebra comutativa; o espectro $\\operatorname{Spec}(R)$ os organiza num espaço geométrico.",
+      "objectives": [
+        "Caracterizar ideais primos e maximais via os quocientes $R/\\mathfrak{p}$ (domínio) e $R/\\mathfrak{m}$ (corpo) e provar que todo maximal é primo.",
+        "Demonstrar, via Lema de Zorn, que todo anel não nulo possui ideal maximal e que todo ideal próprio está contido em um maximal.",
+        "Definir o espectro $\\operatorname{Spec}(R)$ e o espectro maximal, e descrever $\\operatorname{Spec}(\\mathbb{Z})$ e $\\operatorname{Spec}(k[x])$.",
+        "Operar com soma, produto, interseção e radical de ideais, e provar que $\\sqrt{I}$ é a interseção dos primos que contêm $I$.",
+        "Caracterizar o nilradical e o radical de Jacobson como interseções de primos e de maximais, respectivamente.",
+        "Aplicar o Teorema Chinês dos Restos para ideais comaximais e o Lema da Evitação de Primos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Ideal primo",
+          "statement": "Um ideal próprio $\\mathfrak{p}\\subsetneq R$ é primo se $ab\\in\\mathfrak{p}\\Rightarrow a\\in\\mathfrak{p}$ ou $b\\in\\mathfrak{p}$. Equivalentemente, $\\mathfrak{p}$ é primo $\\iff R/\\mathfrak{p}$ é domínio de integridade."
+        },
+        {
+          "term": "Ideal maximal",
+          "statement": "Um ideal próprio $\\mathfrak{m}$ é maximal se não há ideal estritamente entre $\\mathfrak{m}$ e $R$. Equivalentemente, $\\mathfrak{m}$ é maximal $\\iff R/\\mathfrak{m}$ é corpo. Todo maximal é primo, mas não vice-versa."
+        },
+        {
+          "term": "Espectro",
+          "statement": "$\\operatorname{Spec}(R)=\\{\\mathfrak{p}\\subseteq R:\\mathfrak{p}\\text{ primo}\\}$, o conjunto dos ideais primos. É a base da geometria algébrica moderna (esquemas)."
+        },
+        {
+          "term": "Radical de um ideal",
+          "statement": "$\\sqrt{I}=\\{x\\in R: x^n\\in I\\text{ para algum }n\\ge 1\\}$. É um ideal e vale $\\sqrt{I}=\\bigcap_{\\mathfrak{p}\\supseteq I}\\mathfrak{p}$, a interseção dos primos que contêm $I$."
+        },
+        {
+          "term": "Nilradical e radical de Jacobson",
+          "statement": "$\\mathfrak{N}(R)=\\sqrt{(0)}=\\{x: x^n=0\\}=\\bigcap_{\\mathfrak{p}}\\mathfrak{p}$ é a interseção de todos os primos; $J(R)=\\bigcap_{\\mathfrak{m}}\\mathfrak{m}$ é a interseção de todos os maximais."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Caracterização de primos e maximais por quociente",
+          "statement": "$\\mathfrak{p}$ é primo $\\iff R/\\mathfrak{p}$ é domínio; $\\mathfrak{m}$ é maximal $\\iff R/\\mathfrak{m}$ é corpo. Como todo corpo é domínio, todo ideal maximal é primo.",
+          "whyItMatters": "Transfere perguntas sobre ideais para perguntas sobre anéis quociente, onde a intuição de domínio e corpo é direta. É a tradução-mestra que governa o subtópico inteiro."
+        },
+        {
+          "name": "Existência de ideais maximais (Krull)",
+          "statement": "Todo anel comutativo $R\\neq 0$ possui ao menos um ideal maximal; mais geralmente, todo ideal próprio $I\\subsetneq R$ está contido em algum ideal maximal.",
+          "whyItMatters": "Garante que $\\operatorname{Spec}(R)$ e o espectro maximal são não vazios. A prova é uma aplicação canônica do Lema de Zorn à família dos ideais próprios contendo $I$, ordenada por inclusão."
+        },
+        {
+          "name": "Nilradical como interseção dos primos",
+          "statement": "Em qualquer anel comutativo, $\\mathfrak{N}(R)=\\bigcap_{\\mathfrak{p}\\in\\operatorname{Spec}(R)}\\mathfrak{p}$: um elemento é nilpotente se, e somente se, pertence a todo ideal primo.",
+          "whyItMatters": "Liga uma propriedade algébrica concreta (ser nilpotente) a uma condição global sobre todos os primos. A direção não trivial usa Zorn para construir um primo evitando as potências de um elemento não nilpotente."
+        },
+        {
+          "name": "Lema da Evitação de Primos",
+          "statement": "Se um ideal $I$ está contido na união $\\mathfrak{p}_1\\cup\\cdots\\cup\\mathfrak{p}_n$ de ideais primos, então $I\\subseteq\\mathfrak{p}_i$ para algum $i$.",
+          "whyItMatters": "É uma ferramenta técnica onipresente: permite escolher um elemento de $I$ fora de todos os primos relevantes de uma vez, essencial em provas sobre sistemas de parâmetros e dimensão."
+        }
+      ],
+      "summary": "A Álgebra Abstrata II já introduziu ideais primos e maximais; aqui eles passam a protagonistas e ganham uma leitura geométrica. A chave é traduzir tudo via quocientes: $\\mathfrak{p}$ é primo exatamente quando $R/\\mathfrak{p}$ é um domínio de integridade, e $\\mathfrak{m}$ é maximal exatamente quando $R/\\mathfrak{m}$ é um corpo. Como corpo $\\Rightarrow$ domínio, segue de graça que todo maximal é primo. A existência de maximais — todo ideal próprio cabe em algum maximal — é garantida pelo Lema de Zorn e é o que dá vida ao espectro $\\operatorname{Spec}(R)$, o conjunto dos primos, que Grothendieck transformou no objeto geométrico fundamental: pontos de $\\operatorname{Spec}(\\mathbb{Z})$ são $(0)$ e os $(p)$; pontos de $\\operatorname{Spec}(k[x])$, com $k$ algebricamente fechado, são $(0)$ e os $(x-a)$.\n\nO segundo eixo é a álgebra de ideais: soma $I+J$, produto $IJ$, interseção $I\\cap J$ e radical $\\sqrt{I}$. O radical revela uma dualidade profunda — $\\sqrt{I}$ é precisamente a interseção dos primos que contêm $I$ —, da qual o caso $I=(0)$ é o teorema de que o nilradical $\\mathfrak{N}(R)$ é a interseção de todos os primos. Já o radical de Jacobson $J(R)=\\bigcap\\mathfrak{m}$ se caracteriza por: $x\\in J(R)\\iff 1-xy$ é unidade para todo $y$. Completam o quadro dois utilitários constantes: o Teorema Chinês dos Restos para ideais comaximais ($I+J=R\\Rightarrow R/(I\\cap J)\\cong R/I\\times R/J$, com $I\\cap J=IJ$) e o Lema da Evitação de Primos, que permite escapar de finitos primos com um único elemento.",
+      "commonPitfalls": [
+        "Achar que primo $\\Rightarrow$ maximal: $(0)$ é primo em $\\mathbb{Z}$ (pois $\\mathbb{Z}$ é domínio) mas não é maximal; em $k[x,y]$, $(x)$ é primo e não maximal.",
+        "Confundir o ideal $\\sqrt{I}$ com a raiz quadrada de elementos: $\\sqrt{I}$ é o conjunto dos $x$ com alguma potência em $I$, não tem nada a ver com extrair raízes.",
+        "Supor que $IJ=I\\cap J$ sempre: isso só vale quando $I$ e $J$ são comaximais; em geral $IJ\\subseteq I\\cap J$ pode ser estrita (ex.: $I=J=(2)$ em $\\mathbb{Z}$ dá $IJ=(4)\\subsetneq(2)=I\\cap J$).",
+        "Usar a existência de maximais sem perceber que ela depende do Lema de Zorn (axioma da escolha) — não é construtiva."
+      ],
+      "worked": "**Teorema.** Em um anel comutativo $R$, o nilradical $\\mathfrak{N}(R)=\\{x: x^n=0\\text{ para algum }n\\}$ coincide com $\\bigcap_{\\mathfrak{p}\\in\\operatorname{Spec}(R)}\\mathfrak{p}$.\n\n**Prova.** ($\\subseteq$) Seja $x$ nilpotente, $x^n=0$. Para qualquer primo $\\mathfrak{p}$, temos $x^n=0\\in\\mathfrak{p}$; como $\\mathfrak{p}$ é primo e $x^n=x\\cdot x^{n-1}$, indução dá $x\\in\\mathfrak{p}$. Logo $x$ está em todo primo.\n\n($\\supseteq$) Suponha $x$ **não** nilpotente; vamos achar um primo que não contém $x$. O conjunto $S=\\{1,x,x^2,\\dots\\}$ não contém $0$. Considere a família $\\Sigma$ dos ideais $I$ com $I\\cap S=\\varnothing$; ela contém $(0)$ e é não vazia. Ordenada por inclusão, toda cadeia tem cota superior (a união), então por Zorn existe $\\mathfrak{p}$ maximal em $\\Sigma$. Afirmo que $\\mathfrak{p}$ é primo: se $a,b\\notin\\mathfrak{p}$, então $\\mathfrak{p}+(a)$ e $\\mathfrak{p}+(b)$ são estritamente maiores, logo encontram $S$; existem $m,n$ com $x^m\\in\\mathfrak{p}+(a)$ e $x^n\\in\\mathfrak{p}+(b)$. Multiplicando, $x^{m+n}\\in\\mathfrak{p}+(ab)$. Se fosse $ab\\in\\mathfrak{p}$, teríamos $x^{m+n}\\in\\mathfrak{p}$, contradizendo $\\mathfrak{p}\\cap S=\\varnothing$. Logo $ab\\notin\\mathfrak{p}$, e $\\mathfrak{p}$ é primo. Como $x\\in S$ e $\\mathfrak{p}\\cap S=\\varnothing$, temos $x\\notin\\mathfrak{p}$. Assim $x\\notin\\bigcap\\mathfrak{p}$. $\\blacksquare$\n\nA mesma técnica, aplicada a $S=\\{1,x,x^2,\\dots\\}$ disjunto de $I$, prova $\\sqrt{I}=\\bigcap_{\\mathfrak{p}\\supseteq I}\\mathfrak{p}$ (passando ao quociente $R/I$).",
+      "exercises": [
+        {
+          "prompt": "Descreva completamente $\\operatorname{Spec}(\\mathbb{Z})$ e $\\operatorname{Spec}(k[x])$ com $k$ corpo, identificando em cada caso quais primos são maximais e qual é o nilradical.",
+          "hint": "Em $\\mathbb{Z}$ e $K[x]$ (DIPs) os ideais são principais; $(p)$ é primo $\\iff p=0$ ou $p$ é irredutível. Maximais correspondem a irredutíveis não nulos.",
+          "difficulty": 2,
+          "solution": "**Spec$(\\mathbb{Z})$.** Como $\\mathbb{Z}$ e um DIP, todo ideal e $(n)$ com $n\\ge 0$.\n\n- $(0)$ e primo, pois $\\mathbb{Z}/(0)=\\mathbb{Z}$ e dominio; **nao** e maximal ($(0)\\subsetneq(2)\\subsetneq\\mathbb{Z}$).\n- $(n)$, $n>0$: primo $\\iff n=p$ e numero primo (entao $\\mathbb{Z}/(p)=\\mathbb{F}_p$ e corpo, logo $(p)$ maximal).\n- $(n)$ com $n$ composto nao e primo.\n\nLogo $\\operatorname{Spec}(\\mathbb{Z})=\\{(0)\\}\\cup\\{(p):p\\text{ primo}\\}$; maximais sao os $(p)$, e $(0)$ e o unico primo nao maximal (ponto generico). Nilradical: $\\mathfrak{N}(\\mathbb{Z})=\\sqrt{(0)}=(0)$ (dominio, sem nilpotentes).\n\n**Spec$(k[x])$**, $k$ corpo (DIP):\n\n- $(0)$ primo ($k[x]$ dominio), nao maximal.\n- $(f)$, $f\\neq0$: primo $\\iff f$ irredutivel; entao $k[x]/(f)$ e corpo, $(f)$ maximal.\n\nLogo $\\operatorname{Spec}(k[x])=\\{(0)\\}\\cup\\{(f):f\\text{ monico irredutivel}\\}$; se $k=\\bar k$, os maximais sao $(x-a)$, $a\\in k$ (os pontos de $\\mathbb{A}^1$). Nilradical $=(0)$.",
+          "steps": [
+            "Use que $\\mathbb{Z}$ e $k[x]$ sao DIPs: todo ideal e principal $(a)$.",
+            "Traduza via quociente: $(a)$ primo $\\iff R/(a)$ dominio; maximal $\\iff R/(a)$ corpo.",
+            "Classifique: $(0)$ primo nao maximal; $(p)$ / $(f)$ irredutivel dao corpo no quociente.",
+            "Calcule o nilradical: ambos sao dominios, logo $\\mathfrak{N}=(0)$."
+          ]
+        },
+        {
+          "prompt": "Prove que $x\\in J(R)$ (radical de Jacobson) se, e somente se, $1-xy$ é unidade para todo $y\\in R$.",
+          "hint": "Se $1-xy$ não é unidade, está num maximal $\\mathfrak{m}$; se também $x\\in\\mathfrak{m}$ chegue a $1\\in\\mathfrak{m}$. Para a volta, se $x\\notin\\mathfrak{m}$, então $\\mathfrak{m}+(x)=R$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** $x\\in J(R)=\\bigcap_{\\mathfrak{m}}\\mathfrak{m}\\iff 1-xy$ e unidade para todo $y\\in R$.\n\n**($\\Rightarrow$)** Seja $x\\in J(R)$, $y\\in R$. Se $1-xy$ nao fosse unidade, $(1-xy)$ seria proprio, contido num maximal $\\mathfrak{m}$. Como $x\\in J(R)\\subseteq\\mathfrak{m}$, $xy\\in\\mathfrak{m}$; entao $1=(1-xy)+xy\\in\\mathfrak{m}$, absurdo. Logo $1-xy$ e unidade.\n\n**($\\Leftarrow$)** Suponha $1-xy$ unidade $\\forall y$, mas $x\\notin J(R)$: existe maximal $\\mathfrak{m}$ com $x\\notin\\mathfrak{m}$. Por maximalidade $\\mathfrak{m}+(x)=R$, logo $1=m+xy$ com $m\\in\\mathfrak{m}$. Entao $m=1-xy$ e unidade, forcando $\\mathfrak{m}=R$, absurdo. Portanto $x\\in J(R)$. $\\blacksquare$",
+          "steps": [
+            "Lembre $J(R)=\\bigcap\\mathfrak{m}$ e use existencia de maximais para ideais proprios.",
+            "($\\Rightarrow$) Ponha $1-xy$ (se nao unidade) num maximal $\\mathfrak{m}$ e use $x\\in\\mathfrak{m}$ para obter $1\\in\\mathfrak{m}$.",
+            "($\\Leftarrow$) Se $x\\notin\\mathfrak{m}$, escreva $1=m+xy$, logo $1-xy=m\\in\\mathfrak{m}$.",
+            "Conclua que $m$ ser unidade contradiz $\\mathfrak{m}$ proprio."
+          ]
+        },
+        {
+          "prompt": "Sejam $I,J$ ideais comaximais ($I+J=R$). Prove que $I\\cap J=IJ$ e que $R/IJ\\cong R/I\\times R/J$ (Teorema Chinês dos Restos).",
+          "hint": "Escreva $1=a+b$ com $a\\in I,b\\in J$. Para $x\\in I\\cap J$, $x=xa+xb\\in IJ$. Use o homomorfismo $r\\mapsto(r+I,r+J)$.",
+          "difficulty": 3,
+          "solution": "Sejam $I,J$ comaximais: $I+J=R$, $1=a+b$, $a\\in I$, $b\\in J$.\n\n**(1) $I\\cap J=IJ$.** Sempre $IJ\\subseteq I\\cap J$. Se $x\\in I\\cap J$,\n$$x=x(a+b)=\\underbrace{xa}_{\\in IJ}+\\underbrace{xb}_{\\in IJ}\\in IJ,$$\npois $x\\in J,a\\in I\\Rightarrow xa\\in IJ$ e $x\\in I,b\\in J\\Rightarrow xb\\in IJ$. Logo $I\\cap J=IJ$.\n\n**(2) $R/IJ\\cong R/I\\times R/J$.** Seja $\\varphi:R\\to R/I\\times R/J$, $\\varphi(r)=(r+I,r+J)$. Nucleo $=I\\cap J=IJ$. Sobrejetor: dado $(u+I,v+J)$, tome $r=ub+va$; como $b=1-a$, $r\\equiv u\\pmod I$ e $r\\equiv v\\pmod J$. Pelo Teorema do Isomorfismo, $R/IJ\\cong R/I\\times R/J$. $\\blacksquare$",
+          "steps": [
+            "Registre $1=a+b$ com $a\\in I$, $b\\in J$.",
+            "Para $I\\cap J=IJ$, multiplique $x\\in I\\cap J$ por $1=a+b$; cada parcela cai em $IJ$.",
+            "Defina $\\varphi(r)=(r+I,r+J)$ com nucleo $I\\cap J=IJ$.",
+            "Prove sobrejetividade com $r=ub+va$ e aplique o Teorema do Isomorfismo."
+          ]
+        },
+        {
+          "prompt": "Mostre que se $\\mathfrak{p}$ é um ideal primo e $\\mathfrak{p}\\supseteq I_1\\cap\\cdots\\cap I_n$, então $\\mathfrak{p}\\supseteq I_k$ para algum $k$; se além disso $\\mathfrak{p}=I_1\\cap\\cdots\\cap I_n$, então $\\mathfrak{p}=I_k$ para algum $k$.",
+          "hint": "Se nenhum $I_k\\subseteq\\mathfrak{p}$, escolha $a_k\\in I_k\\setminus\\mathfrak{p}$ e considere o produto $a_1\\cdots a_n$.",
+          "difficulty": 3,
+          "solution": "**Parte 1.** $\\mathfrak{p}$ primo, $\\mathfrak{p}\\supseteq I_1\\cap\\cdots\\cap I_n$. Como $I_1\\cdots I_n\\subseteq I_1\\cap\\cdots\\cap I_n\\subseteq\\mathfrak{p}$, temos $I_1\\cdots I_n\\subseteq\\mathfrak{p}$. Se nenhum $I_k\\subseteq\\mathfrak{p}$, escolha $a_k\\in I_k\\setminus\\mathfrak{p}$; entao $a_1\\cdots a_n\\in\\mathfrak{p}$, e por primalidade algum $a_k\\in\\mathfrak{p}$, contradicao. Logo $I_k\\subseteq\\mathfrak{p}$ para algum $k$.\n\n**Parte 2.** Se $\\mathfrak{p}=I_1\\cap\\cdots\\cap I_n$: pela Parte 1, $I_k\\subseteq\\mathfrak{p}$ para algum $k$; e $\\mathfrak{p}=\\bigcap I_i\\subseteq I_k$. Logo $\\mathfrak{p}=I_k$. $\\blacksquare$",
+          "steps": [
+            "Troque a intersecao pelo produto: $I_1\\cdots I_n\\subseteq\\bigcap I_i\\subseteq\\mathfrak{p}$.",
+            "Suponha por absurdo nenhum $I_k\\subseteq\\mathfrak{p}$ e escolha $a_k\\in I_k\\setminus\\mathfrak{p}$.",
+            "Aplique primalidade ao produto $a_1\\cdots a_n\\in\\mathfrak{p}$.",
+            "Na igualdade, combine $I_k\\subseteq\\mathfrak{p}$ e $\\mathfrak{p}\\subseteq I_k$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "$\\mathfrak{p}$ primo $\\iff$ ?",
+          "back": "$R/\\mathfrak{p}$ é domínio de integridade."
+        },
+        {
+          "front": "$\\mathfrak{m}$ maximal $\\iff$ ?",
+          "back": "$R/\\mathfrak{m}$ é corpo."
+        },
+        {
+          "front": "Maximal vs primo",
+          "back": "Todo maximal é primo (corpo é domínio); a recíproca é falsa, ex.: $(0)\\subset\\mathbb{Z}$."
+        },
+        {
+          "front": "$\\operatorname{Spec}(R)$",
+          "back": "O conjunto de todos os ideais primos de $R$; base da geometria algébrica."
+        },
+        {
+          "front": "Nilradical $\\mathfrak{N}(R)$",
+          "back": "$\\{x:x^n=0\\}=\\bigcap_{\\mathfrak{p}}\\mathfrak{p}$, interseção de todos os primos."
+        },
+        {
+          "front": "Radical de Jacobson $J(R)$",
+          "back": "$\\bigcap_{\\mathfrak{m}}\\mathfrak{m}$; $x\\in J(R)\\iff 1-xy$ é unidade $\\forall y$."
+        },
+        {
+          "front": "$\\sqrt{I}=$ ?",
+          "back": "$\\{x:x^n\\in I\\}=\\bigcap_{\\mathfrak{p}\\supseteq I}\\mathfrak{p}$."
+        },
+        {
+          "front": "Lema da Evitação de Primos",
+          "back": "$I\\subseteq\\mathfrak{p}_1\\cup\\cdots\\cup\\mathfrak{p}_n$ (primos) $\\Rightarrow I\\subseteq$ algum $\\mathfrak{p}_i$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Atiyah-Macdonald, cap. 1 (Rings and Ideals)",
+          "ref": "livro"
+        },
+        {
+          "title": "Eisenbud, cap. 1-2",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Álgebra (ideais primos e maximais)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Releia o cap. 1 de Atiyah-Macdonald com papel e caneta, refazendo cada definicao (ideal primo, maximal, radical) na forma de quociente $R/\\mathfrak{p}$ e $R/\\mathfrak{m}$.",
+          "Estude a prova de existencia de maximais via Lema de Zorn ate conseguir reproduzi-la sem olhar; identifique onde a cadeia e a cota superior entram.",
+          "Trabalhe os exemplos concretos $\\operatorname{Spec}(\\mathbb{Z})$ e $\\operatorname{Spec}(k[x])$ desenhando a 'reta' de primos e marcando quais sao maximais.",
+          "Escreva do zero a prova de que o nilradical e a intersecao de todos os primos (argumento de Zorn com $S=\\{1,x,x^2,\\dots\\}$).",
+          "Assista a um video sobre $\\operatorname{Spec}$ e topologia de Zariski, depois refaca o Lema da Evitacao de Primos.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (as caracterizacoes por quociente e o esqueleto do argumento de Zorn)."
+        ],
+        "searchQueries": [
+          "ideal primo maximal caracterizacao quociente dominio corpo",
+          "existencia ideal maximal lema de Zorn anel comutativo prova",
+          "nilradical intersecao de todos os primos demonstracao",
+          "radical de Jacobson caracterizacao 1-xy unidade",
+          "Spec of a ring Zariski topology introduction",
+          "prime avoidance lemma proof commutative algebra"
+        ],
+        "videos": [
+          {
+            "title": "Ideais primos e maximais / aneis quociente",
+            "channel": "Equaciona (YouTube)",
+            "note": "Assista as aulas de estruturas algebricas sobre aneis quociente para firmar a traducao primo/maximal via $R/\\mathfrak{p}$ e $R/\\mathfrak{m}$."
+          },
+          {
+            "title": "Commutative Algebra: Spec e ideais primos",
+            "channel": "Michael Penn (YouTube)",
+            "note": "Procure a serie de commutative algebra dele; boa intuicao sobre espectro e primos."
+          },
+          {
+            "title": "18.705 Commutative Algebra (aulas iniciais)",
+            "channel": "MIT OpenCourseWare",
+            "note": "Veja as primeiras aulas sobre aneis, ideais e o espectro para o rigor de pos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introduction to Commutative Algebra, cap. 1 (Rings and Ideals)",
+            "where": "M. F. Atiyah & I. G. Macdonald - livro"
+          },
+          {
+            "title": "Elementos de Algebra (ideais primos e maximais)",
+            "where": "A. Garcia & Y. Lequain, IMPA/Projeto Euclides - livro"
+          },
+          {
+            "title": "A Primer of Commutative Algebra (notas)",
+            "where": "J. S. Milne - notas de aula (jmilne.org)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-comutativa-02-localizacao",
+      "title": "Localização de Anéis e Módulos",
+      "tagline": "Inverter elementos à vontade: a localização cria frações sob medida e concentra a álgebra em torno de um primo.",
+      "objectives": [
+        "Construir $S^{-1}R$ a partir de um subconjunto multiplicativo $S$ e descrever a relação de equivalência correta entre frações.",
+        "Reconhecer os casos especiais: corpo de frações ($S=R\\setminus\\{0\\}$), localização em um primo $R_{\\mathfrak{p}}$ e $R_f$ (inverter potências de $f$).",
+        "Definir anel local e provar que $R_{\\mathfrak{p}}$ é local com ideal maximal $\\mathfrak{p}R_{\\mathfrak{p}}$.",
+        "Estabelecer a correspondência entre primos de $S^{-1}R$ e primos de $R$ disjuntos de $S$.",
+        "Localizar módulos, reconhecer que a localização é exata (plana) e usar o princípio local-global ($M=0\\iff M_{\\mathfrak{p}}=0$ para todo $\\mathfrak{p}$)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Subconjunto multiplicativo",
+          "statement": "$S\\subseteq R$ com $1\\in S$ e fechado por produtos ($s,t\\in S\\Rightarrow st\\in S$). Os exemplos canônicos são $\\{1,f,f^2,\\dots\\}$ e $R\\setminus\\mathfrak{p}$ para $\\mathfrak{p}$ primo."
+        },
+        {
+          "term": "Anel de frações",
+          "statement": "$S^{-1}R$ tem elementos $a/s$ ($a\\in R,s\\in S$) com $a/s=b/t\\iff \\exists u\\in S:\\ u(at-bs)=0$. As operações são as usuais de frações; o $u$ é necessário quando $R$ tem divisores de zero."
+        },
+        {
+          "term": "Localização em um primo",
+          "statement": "$R_{\\mathfrak{p}}=S^{-1}R$ com $S=R\\setminus\\mathfrak{p}$. É um anel local cujo único maximal é $\\mathfrak{p}R_{\\mathfrak{p}}=\\{a/s: a\\in\\mathfrak{p}\\}$."
+        },
+        {
+          "term": "Anel local",
+          "statement": "Anel com um único ideal maximal $\\mathfrak{m}$. Equivalente: o conjunto dos não invertíveis é um ideal. O corpo $R/\\mathfrak{m}$ é o corpo residual."
+        },
+        {
+          "term": "Localização de módulo",
+          "statement": "$S^{-1}M=\\{m/s\\}$ é um $S^{-1}R$-módulo; o funtor $M\\mapsto S^{-1}M$ é exato, isto é, preserva sequências exatas (a localização é plana)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Primos da localização",
+          "statement": "Há uma bijeção que preserva inclusão entre os primos de $S^{-1}R$ e os primos $\\mathfrak{q}$ de $R$ com $\\mathfrak{q}\\cap S=\\varnothing$, dada por $\\mathfrak{q}\\mapsto S^{-1}\\mathfrak{q}$. Em particular, os primos de $R_{\\mathfrak{p}}$ correspondem aos primos de $R$ contidos em $\\mathfrak{p}$.",
+          "whyItMatters": "Localizar é um zoom: $R_{\\mathfrak{p}}$ enxerga apenas a parte do espectro abaixo de $\\mathfrak{p}$, isolando o comportamento local. É o que permite reduzir muitos problemas ao caso local."
+        },
+        {
+          "name": "Exatidão da localização",
+          "statement": "Se $M'\\to M\\to M''$ é exata em $M$, então $S^{-1}M'\\to S^{-1}M\\to S^{-1}M''$ é exata. Em particular, localização comuta com núcleo, conúcleo, soma e interseção finita de submódulos.",
+          "whyItMatters": "É a propriedade técnica que faz a localização ser uma ferramenta tão poderosa: ela preserva toda a álgebra homológica de primeira ordem, permitindo testar igualdades localmente."
+        },
+        {
+          "name": "Princípio local-global",
+          "statement": "Para um $R$-módulo $M$: $M=0\\iff M_{\\mathfrak{p}}=0$ para todo primo $\\mathfrak{p}\\iff M_{\\mathfrak{m}}=0$ para todo maximal $\\mathfrak{m}$. Analogamente, $\\varphi:M\\to N$ é injetiva/sobrejetiva/isomorfismo sse, e só se, $\\varphi_{\\mathfrak{m}}$ o é para todo maximal.",
+          "whyItMatters": "Transforma propriedades globais em coleções de propriedades locais — o paradigma central da geometria algébrica e da álgebra comutativa moderna: pensar localmente, concluir globalmente."
+        }
+      ],
+      "summary": "A localização generaliza a construção do corpo de frações de um domínio: dado um subconjunto multiplicativo $S$ (contendo $1$ e fechado por produtos), formamos $S^{-1}R$ invertendo formalmente os elementos de $S$. A sutileza está na relação de equivalência: $a/s=b/t$ exige um $u\\in S$ com $u(at-bs)=0$, e esse $u$ extra é indispensável quando $R$ tem divisores de zero. Três casos organizam tudo: tomando $S=R\\setminus\\{0\\}$ num domínio recuperamos o corpo de frações; tomando $S=\\{1,f,f^2,\\dots\\}$ obtemos $R_f$, onde $f$ vira unidade (geometricamente, restringimos ao aberto onde $f\\neq 0$); e tomando $S=R\\setminus\\mathfrak{p}$ obtemos $R_{\\mathfrak{p}}$, um anel **local** cujo único maximal é $\\mathfrak{p}R_{\\mathfrak{p}}$. Anéis locais — com um único maximal — são o habitat natural de Nakayama e da teoria de dimensão.\n\nO efeito de $R_{\\mathfrak{p}}$ sobre o espectro é um zoom: seus primos são exatamente os primos de $R$ contidos em $\\mathfrak{p}$, de modo que toda a estrutura abaixo de $\\mathfrak{p}$ é preservada e o resto é apagado. Isso se estende a módulos: $S^{-1}M$ é um $S^{-1}R$-módulo e o funtor de localização é **exato** — preserva sequências exatas, núcleos e conúcleos. A consequência mais útil é o princípio local-global: um módulo é nulo se, e somente se, todas as suas localizações em primos (basta nos maximais) são nulas; um morfismo é injetivo/sobrejetivo/isomorfismo se, e só se, o é localmente. Esse é o método que permite atacar um problema global verificando-o um primo de cada vez, exatamente como em geometria se estuda uma variedade ponto a ponto.",
+      "commonPitfalls": [
+        "Esquecer o fator $u\\in S$ na igualdade de frações: sem ele, a relação $a/s=b/t\\iff at=bs$ não é transitiva quando há divisores de zero.",
+        "Crer que $R\\to S^{-1}R$ é injetivo: o núcleo é $\\{a: sa=0\\text{ para algum }s\\in S\\}$; se $0\\in S$ então $S^{-1}R=0$.",
+        "Confundir $R_{\\mathfrak{p}}$ (localização, anel local) com $R/\\mathfrak{p}$ (quociente, domínio): um inverte fora de $\\mathfrak{p}$, o outro colapsa $\\mathfrak{p}$ a zero.",
+        "Achar que toda propriedade é local: ser finitamente gerado ou Noetheriano não se detecta só por localizações em primos isoladamente — o princípio local-global vale para nulidade de módulos e exatidão, não para tudo."
+      ],
+      "worked": "**Proposição.** $R_{\\mathfrak{p}}$ é um anel local com ideal maximal $\\mathfrak{m}=\\mathfrak{p}R_{\\mathfrak{p}}=\\{a/s: a\\in\\mathfrak{p},\\,s\\notin\\mathfrak{p}\\}$.\n\n**Prova.** Seja $S=R\\setminus\\mathfrak{p}$ e $\\mathfrak{m}=\\{a/s: a\\in\\mathfrak{p}\\}$. Primeiro, $\\mathfrak{m}$ é ideal próprio: é fechado por soma e por multiplicação por $R_{\\mathfrak{p}}$, e é próprio porque $1/1\\notin\\mathfrak{m}$ (se $1/1=a/s$ com $a\\in\\mathfrak{p}$, haveria $u\\in S$ com $u(s-a)=0$, ou seja $us=ua\\in\\mathfrak{p}$; como $u,s\\notin\\mathfrak{p}$ e $\\mathfrak{p}$ é primo, $us\\notin\\mathfrak{p}$, contradição).\n\nAgora mostro que todo elemento **fora** de $\\mathfrak{m}$ é unidade. Seja $a/s\\in R_{\\mathfrak{p}}$ com $a/s\\notin\\mathfrak{m}$; então $a\\notin\\mathfrak{p}$, logo $a\\in S$ e a fração $s/a$ está em $R_{\\mathfrak{p}}$, com $(a/s)(s/a)=1/1$. Portanto $a/s$ é invertível.\n\nConcluímos: os não invertíveis de $R_{\\mathfrak{p}}$ são exatamente os elementos de $\\mathfrak{m}$. Como o conjunto dos não invertíveis é um ideal, $R_{\\mathfrak{p}}$ é local e $\\mathfrak{m}$ é seu único maximal. $\\blacksquare$\n\nExemplo concreto: $\\mathbb{Z}_{(p)}=\\{a/b\\in\\mathbb{Q}: p\\nmid b\\}$ é local com maximal $p\\mathbb{Z}_{(p)}$ e corpo residual $\\mathbb{Z}_{(p)}/p\\mathbb{Z}_{(p)}\\cong\\mathbb{F}_p$.",
+      "exercises": [
+        {
+          "prompt": "Descreva $\\mathbb{Z}_{(p)}$ explicitamente como subanel de $\\mathbb{Q}$, identifique seu ideal maximal e seu corpo residual, e liste todos os seus ideais.",
+          "hint": "$\\mathbb{Z}_{(p)}=\\{a/b: p\\nmid b\\}$. Seus ideais são $(0)$ e $p^k\\mathbb{Z}_{(p)}$; é um DIP local.",
+          "difficulty": 2,
+          "solution": "$\\mathbb{Z}_{(p)}=S^{-1}\\mathbb{Z}$ com $S=\\mathbb{Z}\\setminus(p)=\\{n:p\\nmid n\\}$:\n$$\\mathbb{Z}_{(p)}=\\left\\{\\tfrac{a}{b}\\in\\mathbb{Q}:\\ p\\nmid b\\right\\}.$$\n\n**Unidades:** $\\tfrac{a}{b}$ unidade $\\iff p\\nmid a$.\n\n**Maximal:** os nao invertiveis $\\tfrac{a}{b}$ com $p\\mid a$ formam $\\mathfrak{m}=p\\mathbb{Z}_{(p)}$. Como formam ideal, $\\mathbb{Z}_{(p)}$ e local com unico maximal $p\\mathbb{Z}_{(p)}$.\n\n**Corpo residual:** $\\mathbb{Z}_{(p)}/p\\mathbb{Z}_{(p)}\\cong\\mathbb{F}_p$.\n\n**Ideais:** cada $\\neq0$ e $u\\cdot p^k$ ($u$ unidade), logo os ideais sao $p^k\\mathbb{Z}_{(p)}$:\n$$\\mathbb{Z}_{(p)}\\supsetneq p\\mathbb{Z}_{(p)}\\supsetneq p^2\\mathbb{Z}_{(p)}\\supsetneq\\cdots\\supsetneq(0).$$\nE um DIP local (anel de valorizacao discreta).",
+          "steps": [
+            "Identifique $S=\\{n:p\\nmid n\\}$ e escreva $\\mathbb{Z}_{(p)}$ como fracoes com denominador coprimo a $p$.",
+            "Determine as unidades ($p\\nmid$ numerador); os nao invertiveis formam $p\\mathbb{Z}_{(p)}$.",
+            "Conclua que e local e calcule o corpo residual $\\cong\\mathbb{F}_p$.",
+            "Fatore cada elemento como (unidade)$\\cdot p^k$ para listar os ideais $p^k\\mathbb{Z}_{(p)}$."
+          ]
+        },
+        {
+          "prompt": "Prove a correspondência: $\\mathfrak{q}\\mapsto S^{-1}\\mathfrak{q}$ é uma bijeção entre os primos de $R$ disjuntos de $S$ e os primos de $S^{-1}R$.",
+          "hint": "A inversa é a contração $\\mathfrak{P}\\mapsto\\{a\\in R: a/1\\in\\mathfrak{P}\\}$. Verifique que $S^{-1}\\mathfrak{q}$ é próprio sse e só se $\\mathfrak{q}\\cap S=\\varnothing$.",
+          "difficulty": 4,
+          "solution": "Extensao $\\mathfrak{q}\\mapsto S^{-1}\\mathfrak{q}$; contracao $\\mathfrak{P}\\mapsto\\mathfrak{P}^c=\\{a:a/1\\in\\mathfrak{P}\\}$.\n\n**$S^{-1}\\mathfrak{q}$ primo se $\\mathfrak{q}\\cap S=\\varnothing$.** Proprio: se $1/1=a/s$, $a\\in\\mathfrak{q}$, entao $u(s-a)=0$, $us=ua\\in\\mathfrak{q}$, mas $us\\in S$ — contradicao. Se $(a/s)(b/t)\\in S^{-1}\\mathfrak{q}$, entao $w(uab-stc)=0$ com $c\\in\\mathfrak{q}$, logo $wuab\\in\\mathfrak{q}$; como $wu\\in S\\not\\subseteq\\mathfrak{q}$ e $\\mathfrak{q}$ primo, $ab\\in\\mathfrak{q}$, donde $a\\in\\mathfrak{q}$ ou $b\\in\\mathfrak{q}$.\n\n**Inversas.** (i) $(S^{-1}\\mathfrak{q})^c=\\mathfrak{q}$: se $a/1=b/s$, $b\\in\\mathfrak{q}$, entao $usa\\in\\mathfrak{q}$, $us\\in S$ nao esta em $\\mathfrak{q}$, logo $a\\in\\mathfrak{q}$. (ii) $S^{-1}(\\mathfrak{P}^c)=\\mathfrak{P}$: se $a/s\\in\\mathfrak{P}$, entao $a/1=(s/1)(a/s)\\in\\mathfrak{P}$, logo $a\\in\\mathfrak{P}^c$.\n\nAmbas preservam inclusao, logo sao bijecoes inversas entre $\\{\\mathfrak{q}:\\mathfrak{q}\\cap S=\\varnothing\\}$ e $\\operatorname{Spec}(S^{-1}R)$. $\\blacksquare$",
+          "steps": [
+            "Defina extensao $S^{-1}\\mathfrak{q}$ e contracao $\\mathfrak{P}^c$ (pre-imagem de $R\\to S^{-1}R$).",
+            "Mostre que $S^{-1}\\mathfrak{q}$ e proprio $\\iff\\mathfrak{q}\\cap S=\\varnothing$ e que e primo.",
+            "Verifique $(S^{-1}\\mathfrak{q})^c=\\mathfrak{q}$ usando o fator $u\\in S$ e a primalidade.",
+            "Verifique $S^{-1}(\\mathfrak{P}^c)=\\mathfrak{P}$ e conclua que sao bijecoes inversas."
+          ]
+        },
+        {
+          "prompt": "Demonstre o princípio local-global: um $R$-módulo $M$ é nulo se, e somente se, $M_{\\mathfrak{m}}=0$ para todo ideal maximal $\\mathfrak{m}$.",
+          "hint": "Uma direção é trivial. Para a outra, se $m\\neq 0$, o anulador $\\operatorname{Ann}(m)$ é próprio, logo está num maximal $\\mathfrak{m}$; mostre $m/1\\neq 0$ em $M_{\\mathfrak{m}}$.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** $M=0\\iff M_{\\mathfrak{m}}=0$ para todo maximal $\\mathfrak{m}$.\n\n**($\\Rightarrow$)** Trivial.\n\n**($\\Leftarrow$)** Contrapositiva: se $M\\neq0$, tome $m\\neq0$. $\\operatorname{Ann}(m)=\\{r:rm=0\\}$ e ideal proprio ($1\\notin$), logo $\\subseteq$ algum maximal $\\mathfrak{m}$. Afirmo $m/1\\neq0$ em $M_{\\mathfrak{m}}$: se $m/1=0$, existe $s\\in S=R\\setminus\\mathfrak{m}$ com $sm=0$, i.e. $s\\in\\operatorname{Ann}(m)\\subseteq\\mathfrak{m}$ — contradiz $s\\notin\\mathfrak{m}$. Logo $M_{\\mathfrak{m}}\\neq0$. $\\blacksquare$",
+          "steps": [
+            "A direcao $M=0\\Rightarrow$ tudo localiza a zero e imediata; foque na contrapositiva.",
+            "Tome $m\\neq0$ e considere $\\operatorname{Ann}(m)$, ideal proprio.",
+            "Coloque $\\operatorname{Ann}(m)$ num maximal $\\mathfrak{m}$.",
+            "Mostre $m/1\\neq0$ em $M_{\\mathfrak{m}}$: senao algum $s\\notin\\mathfrak{m}$ estaria em $\\operatorname{Ann}(m)\\subseteq\\mathfrak{m}$."
+          ]
+        },
+        {
+          "prompt": "Seja $S$ multiplicativo. Prove que $S^{-1}R=0$ se, e somente se, $0\\in S$.",
+          "hint": "$S^{-1}R=0\\iff 1/1=0/1\\iff\\exists u\\in S: u\\cdot 1=0$, e se $0\\in S$ tome $u=0$.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** $S^{-1}R=0\\iff 0\\in S$.\n\n$S^{-1}R=0\\iff 1/1=0/1$. Pela definicao,\n$$\\tfrac{1}{1}=\\tfrac{0}{1}\\iff\\exists u\\in S:\\ u(1-0)=0\\iff\\exists u\\in S:\\ u=0\\iff 0\\in S.$$\n\n**($\\Leftarrow$)** Se $0\\in S$, tome $u=0$: $1/1=0/1$, todo $a/s=0$.\n\n**($\\Rightarrow$)** Se $S^{-1}R=0$, entao $1/1=0/1$, logo existe $u=0\\in S$. $\\blacksquare$",
+          "steps": [
+            "Traduza $S^{-1}R=0$ como $1/1=0/1$.",
+            "Aplique a igualdade de fracoes: $\\exists u\\in S:\\ u\\cdot1=0$.",
+            "Note $u\\cdot1=0\\iff u=0$.",
+            "Feche as duas direcoes ligando a $0\\in S$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Subconjunto multiplicativo",
+          "back": "$S\\subseteq R$ com $1\\in S$ e fechado por produto."
+        },
+        {
+          "front": "Igualdade em $S^{-1}R$",
+          "back": "$a/s=b/t\\iff\\exists u\\in S:\\ u(at-bs)=0$."
+        },
+        {
+          "front": "$R_{\\mathfrak{p}}$ é...",
+          "back": "anel local, com único maximal $\\mathfrak{p}R_{\\mathfrak{p}}$ e corpo residual $\\operatorname{Frac}(R/\\mathfrak{p})$."
+        },
+        {
+          "front": "Primos de $R_{\\mathfrak{p}}$",
+          "back": "correspondem aos primos de $R$ contidos em $\\mathfrak{p}$."
+        },
+        {
+          "front": "Anel local",
+          "back": "anel com um único ideal maximal; equiv.: os não invertíveis formam um ideal."
+        },
+        {
+          "front": "Localização é exata?",
+          "back": "Sim — preserva sequências exatas; $S^{-1}R$ é $R$-módulo plano."
+        },
+        {
+          "front": "Princípio local-global",
+          "back": "$M=0\\iff M_{\\mathfrak{m}}=0$ para todo maximal $\\mathfrak{m}$."
+        },
+        {
+          "front": "Núcleo de $R\\to S^{-1}R$",
+          "back": "$\\{a\\in R: sa=0\\text{ para algum }s\\in S\\}$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Atiyah-Macdonald, cap. 3 (Rings and Modules of Fractions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Eisenbud, cap. 2 (Localization)",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.705, notas sobre localização",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o cap. 3 de Atiyah-Macdonald e reconstrua a construcao de $S^{-1}R$, com atencao a relacao de equivalencia com o fator $u\\in S$.",
+          "Liste os tres casos-chave (corpo de fracoes, $R_f$, $R_{\\mathfrak{p}}$) e escreva para cada um qual e $S$ e o efeito geometrico.",
+          "Prove com detalhe que $R_{\\mathfrak{p}}$ e local; teste com $\\mathbb{Z}_{(p)}\\subseteq\\mathbb{Q}$.",
+          "Estude a exatidao da localizacao e o principio local-global; assista a um video (localizar = restringir a um aberto / zoom num ponto).",
+          "Refaca a bijecao entre primos de $S^{-1}R$ e primos de $R$ disjuntos de $S$ como diagrama contracao/extensao.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (definicao de $S^{-1}R$, $R_{\\mathfrak{p}}$ local e o local-global)."
+        ],
+        "searchQueries": [
+          "localizacao de aneis anel de fracoes construcao S^{-1}R",
+          "anel local R_p localizacao ideal maximal demonstracao",
+          "principio local-global modulo nulo localizacao",
+          "localization is exact flat module commutative algebra",
+          "primos da localizacao bijecao contracao extensao",
+          "localization intuition zoom open set algebraic geometry"
+        ],
+        "videos": [
+          {
+            "title": "Localization of rings",
+            "channel": "Michael Penn (YouTube)",
+            "note": "Serie de commutative algebra: construcao de $S^{-1}R$ e $R_{\\mathfrak{p}}$ passo a passo."
+          },
+          {
+            "title": "18.705 Commutative Algebra - Localization",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre localizacao de aneis e modulos, exatidao e local-global."
+          },
+          {
+            "title": "Commutative algebra - localization",
+            "channel": "Richard Borcherds (YouTube)",
+            "note": "Aulas com a visao de esquemas sobre localizacao."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introduction to Commutative Algebra, cap. 3 (Rings and Modules of Fractions)",
+            "where": "Atiyah & Macdonald - livro"
+          },
+          {
+            "title": "Commutative Algebra with a View Toward Algebraic Geometry, cap. 2 (Localization)",
+            "where": "David Eisenbud - livro"
+          },
+          {
+            "title": "The Stacks Project - Commutative Algebra (secao Localization)",
+            "where": "stacks.math.columbia.edu - notas"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-comutativa-03-modulos",
+      "title": "Módulos, Sequências Exatas e Nakayama",
+      "tagline": "Módulos são os espaços vetoriais dos anéis; sobre domínios, torção e posto organizam sua estrutura, e Nakayama é a arma local secreta.",
+      "objectives": [
+        "Definir $R$-módulo, submódulo, módulo quociente e homomorfismo, e reconhecer $\\operatorname{Hom}_R(M,N)$ como $R$-módulo.",
+        "Trabalhar com sequências exatas curtas e o conceito de cisão (splitting).",
+        "Distinguir módulos livres, finitamente gerados e de apresentação finita, e descrever $M$ via geradores e relações.",
+        "Enunciar e aplicar o Lema de Nakayama e seus corolários (geradores módulo $\\mathfrak{m}M$, módulo nulo).",
+        "Sobre um domínio, definir submódulo de torção, módulo livre de torção e posto, e enunciar o teorema de estrutura sobre DIPs."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Módulo",
+          "statement": "Um $R$-módulo é um grupo abeliano $(M,+)$ com ação $R\\times M\\to M$ satisfazendo $r(m+n)=rm+rn$, $(r+s)m=rm+sm$, $(rs)m=r(sm)$ e $1m=m$. Generaliza espaço vetorial (corpo) e grupo abeliano ($\\mathbb{Z}$-módulo)."
+        },
+        {
+          "term": "Sequência exata",
+          "statement": "$\\cdots\\to A\\xrightarrow{f}B\\xrightarrow{g}C\\to\\cdots$ é exata em $B$ se $\\operatorname{Im}f=\\ker g$. Uma sequência exata curta $0\\to A\\to B\\to C\\to 0$ codifica que $A$ é submódulo de $B$ com quociente $C$."
+        },
+        {
+          "term": "Módulo livre",
+          "statement": "$M$ é livre se possui uma base, isto é, $M\\cong R^{(\\Lambda)}$ (soma direta de cópias de $R$). Todo módulo é quociente de um livre; $M$ é finitamente gerado $\\iff M\\cong R^n/K$ para algum $n$."
+        },
+        {
+          "term": "Torção (sobre domínio)",
+          "statement": "Para $R$ domínio, $T(M)=\\{m\\in M:\\ rm=0\\text{ para algum }r\\neq 0\\}$ é um submódulo; $M$ é livre de torção se $T(M)=0$. O posto é $\\dim_{\\operatorname{Frac}(R)}(M\\otimes_R\\operatorname{Frac}(R))$."
+        },
+        {
+          "term": "Radical de Jacobson e Nakayama",
+          "statement": "Se $M$ é finitamente gerado e $I\\subseteq J(R)$ com $IM=M$, então $M=0$. Em particular, num anel local $(R,\\mathfrak{m})$: $\\mathfrak{m}M=M\\Rightarrow M=0$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Lema de Nakayama",
+          "statement": "Seja $M$ um $R$-módulo finitamente gerado e $I\\subseteq J(R)$ um ideal contido no radical de Jacobson. Se $IM=M$, então $M=0$.",
+          "whyItMatters": "É talvez o lema mais usado da álgebra comutativa. Corolário num anel local $(R,\\mathfrak{m})$: elementos de $M$ cujas imagens geram $M/\\mathfrak{m}M$ (espaço vetorial sobre $R/\\mathfrak{m}$) já geram $M$ — reduz problemas de geração a álgebra linear sobre o corpo residual."
+        },
+        {
+          "name": "Truque do determinante (Cayley-Hamilton)",
+          "statement": "Se $M$ é gerado por $n$ elementos, $I$ é um ideal e $\\varphi:M\\to M$ é $R$-linear com $\\varphi(M)\\subseteq IM$, então $\\varphi$ satisfaz uma equação $\\varphi^n+a_1\\varphi^{n-1}+\\cdots+a_n=0$ com $a_i\\in I^i$.",
+          "whyItMatters": "É o motor da prova de Nakayama e da teoria de dependência integral. Tomando $\\varphi=\\operatorname{id}$ obtém-se um elemento $1-a$ ($a\\in I$) que anula $M$, de onde Nakayama segue."
+        },
+        {
+          "name": "Estrutura sobre DIP",
+          "statement": "Se $R$ é um domínio de ideais principais, todo $R$-módulo finitamente gerado é $M\\cong R^r\\oplus R/(d_1)\\oplus\\cdots\\oplus R/(d_k)$ com $d_1\\mid d_2\\mid\\cdots\\mid d_k$ (fatores invariantes). Em particular, f.g. livre de torção $\\Rightarrow$ livre.",
+          "whyItMatters": "Unifica o teorema de classificação de grupos abelianos finitamente gerados ($R=\\mathbb{Z}$) e a forma canônica de Jordan/racional ($R=k[x]$). Mostra também que torção-livre não implica livre sobre anéis gerais — só sobre DIPs."
+        }
+      ],
+      "summary": "Um $R$-módulo é a generalização exata de espaço vetorial quando se troca o corpo de escalares por um anel: a mesma lista de axiomas, agora sem garantia de inversos. Espaços vetoriais ($R$ corpo), grupos abelianos ($R=\\mathbb{Z}$) e ideais (submódulos de $R$) são todos módulos. O que se perde ao sair dos corpos é dramático: nem todo módulo tem base (deixa de ser livre), submódulo de finitamente gerado pode não ser finitamente gerado (sobre anéis não Noetherianos), e a dimensão dá lugar a invariantes mais finos. A linguagem natural para comparar módulos é a das sequências exatas; a sequência exata curta $0\\to A\\to B\\to C\\to 0$ diz que $B$ é uma extensão de $C$ por $A$, e ela cinde ($B\\cong A\\oplus C$) exatamente quando há uma seção — o que sempre ocorre se $C$ é livre (ou projetivo).\n\nO resultado central deste subtópico é o Lema de Nakayama: para um módulo finitamente gerado $M$ sobre um anel com $I\\subseteq J(R)$, a igualdade $IM=M$ força $M=0$. Sua versão local é uma ponte para a álgebra linear: num anel local $(R,\\mathfrak{m})$ com corpo residual $k=R/\\mathfrak{m}$, geradores de $M$ correspondem a uma base de $M/\\mathfrak{m}M$ como $k$-espaço vetorial, de modo que perguntas sobre número mínimo de geradores viram dimensões. A prova passa pelo truque do determinante (Cayley-Hamilton para módulos), que também funda a teoria de dependência integral usada no Nullstellensatz. Por fim, sobre um domínio aparece a dicotomia torção/livre de torção e o invariante posto; e quando o domínio é um DIP, o teorema de estrutura dá a decomposição em parte livre mais fatores cíclicos $R/(d_i)$ — o mesmo teorema que classifica grupos abelianos finitamente gerados e produz a forma canônica de Jordan.",
+      "commonPitfalls": [
+        "Aplicar Nakayama sem a hipótese de finitamente gerado: para $M=\\mathbb{Q}$ sobre $R=\\mathbb{Z}_{(p)}$, tem-se $\\mathfrak{m}M=M$ mas $M\\neq 0$ (e $\\mathbb{Q}$ não é f.g.).",
+        "Supor que módulo livre de torção é sempre livre: o ideal $(2,x)\\subseteq\\mathbb{Z}[x]$ é livre de torção e finitamente gerado, mas não é livre (sobre o domínio não-DIP $\\mathbb{Z}[x]$).",
+        "Achar que toda sequência exata curta cinde: $0\\to\\mathbb{Z}\\xrightarrow{2}\\mathbb{Z}\\to\\mathbb{Z}/2\\to 0$ não cinde, pois $\\mathbb{Z}\\not\\cong\\mathbb{Z}\\oplus\\mathbb{Z}/2$.",
+        "Confundir geradores com base: $\\{2,3\\}$ gera $\\mathbb{Z}$ como $\\mathbb{Z}$-módulo mas não é base; bases exigem independência, que pode faltar mesmo em módulos finitamente gerados."
+      ],
+      "worked": "**Corolário de Nakayama (geração via corpo residual).** Seja $(R,\\mathfrak{m})$ anel local com corpo residual $k=R/\\mathfrak{m}$, e $M$ um $R$-módulo finitamente gerado. Se $\\bar m_1,\\dots,\\bar m_r$ geram o $k$-espaço vetorial $M/\\mathfrak{m}M$, então $m_1,\\dots,m_r$ geram $M$.\n\n**Prova.** Seja $N=Rm_1+\\cdots+Rm_r\\subseteq M$ o submódulo gerado pelos $m_i$. Considere o quociente $M/N$, que é finitamente gerado. Por hipótese, as imagens dos $m_i$ geram $M/\\mathfrak{m}M$; isso significa que $M=N+\\mathfrak{m}M$, ou seja, $\\mathfrak{m}(M/N)=M/N$. Como $M/N$ é finitamente gerado e $\\mathfrak{m}=J(R)$ (anel local), o Lema de Nakayama dá $M/N=0$, isto é, $M=N$. Logo os $m_i$ geram $M$. $\\blacksquare$\n\n**Consequência.** O número mínimo de geradores de $M$ é exatamente $\\dim_k(M/\\mathfrak{m}M)$ — uma quantidade de álgebra linear. Por exemplo, sobre $R=k[[x,y]]$ (local, $\\mathfrak{m}=(x,y)$), o ideal $\\mathfrak{m}$ precisa de $\\dim_k(\\mathfrak{m}/\\mathfrak{m}^2)=2$ geradores: $x$ e $y$.",
+      "exercises": [
+        {
+          "prompt": "Prove que se $0\\to A\\xrightarrow{f}B\\xrightarrow{g}C\\to 0$ é exata e $C$ é livre, então a sequência cinde, isto é, $B\\cong A\\oplus C$.",
+          "hint": "Escolha uma base de $C$ e defina uma seção $s:C\\to B$ levantando cada elemento da base por $g$; verifique que $g\\circ s=\\operatorname{id}_C$.",
+          "difficulty": 3,
+          "solution": "Seja $0\\to A\\xrightarrow{f}B\\xrightarrow{g}C\\to0$ exata, $C$ livre com base $\\{c_i\\}$.\n\n**Secao.** Como $g$ e sobrejetor, escolha $b_i\\in B$ com $g(b_i)=c_i$. Pela propriedade universal do livre, existe $s:C\\to B$ com $s(c_i)=b_i$; entao $g\\circ s=\\operatorname{id}_C$.\n\n**Cisao.** $B=\\operatorname{Im}f\\oplus\\operatorname{Im}s$:\n- Soma: $b=(b-s g(b))+s g(b)$, com $b-sg(b)\\in\\ker g=\\operatorname{Im}f$.\n- Intersecao nula: se $x=s(c)\\in\\operatorname{Im}f$, entao $c=g(s(c))=g(x)=0$, logo $x=0$.\n\nComo $f$ e $s$ sao injetoras, $\\operatorname{Im}f\\cong A$, $\\operatorname{Im}s\\cong C$, e $B\\cong A\\oplus C$. $\\blacksquare$",
+          "steps": [
+            "Levante cada elemento da base $c_i$ de $C$ a $b_i\\in B$ com $g(b_i)=c_i$.",
+            "Defina $s:C\\to B$ pela propriedade universal do livre; verifique $g\\circ s=\\operatorname{id}$.",
+            "Decomponha $b=(b-sg(b))+sg(b)$ para $B=\\operatorname{Im}f+\\operatorname{Im}s$.",
+            "Mostre $\\operatorname{Im}f\\cap\\operatorname{Im}s=0$ e conclua $B\\cong A\\oplus C$."
+          ]
+        },
+        {
+          "prompt": "Demonstre o Lema de Nakayama a partir do truque do determinante aplicado a $\\varphi=\\operatorname{id}_M$ com $I M=M$.",
+          "hint": "Obtém-se $\\operatorname{id}^n+a_1\\operatorname{id}^{n-1}+\\cdots+a_n=0$ com $a_i\\in I$, ou seja $(1+a)M=0$ com $a\\in I\\subseteq J(R)$; logo $1+a$ é unidade e $M=0$.",
+          "difficulty": 4,
+          "solution": "$M$ gerado por $m_1,\\dots,m_n$, $I\\subseteq J(R)$, $IM=M$. Aplique o truque do determinante a $\\varphi=\\operatorname{id}$: cada $m_i=\\sum_j a_{ij}m_j$, $a_{ij}\\in I$, logo\n$$\\sum_j(\\delta_{ij}-a_{ij})m_j=0.$$\nSeja $\\Phi=I_n-(a_{ij})$. Multiplicando pela adjunta (Cramer), $\\det(\\Phi)m_j=0\\ \\forall j$, logo $\\det(\\Phi)M=0$. Expandindo, $\\det(\\Phi)=1+a$ com $a\\in I$ (todo termo fora de $1$ tem um $a_{ij}\\in I$). Como $a\\in I\\subseteq J(R)$, $1+a$ e unidade; de $(1+a)M=0$ segue $M=0$. $\\blacksquare$",
+          "steps": [
+            "Aplique o truque do determinante a $\\varphi=\\operatorname{id}$: $m_i=\\sum_j a_{ij}m_j$, $a_{ij}\\in I$.",
+            "Monte $\\Phi=I_n-(a_{ij})$ e conclua $\\det(\\Phi)m_j=0$ via adjunta.",
+            "Expanda: $\\det(\\Phi)=1+a$, $a\\in I$.",
+            "Use $a\\in J(R)\\Rightarrow1+a$ unidade; de $(1+a)M=0$ conclua $M=0$."
+          ]
+        },
+        {
+          "prompt": "Mostre que o ideal $(2,x)$ de $\\mathbb{Z}[x]$ é finitamente gerado e livre de torção, mas não é livre como $\\mathbb{Z}[x]$-módulo.",
+          "hint": "Se fosse livre, seria $\\cong\\mathbb{Z}[x]^n$. Como $(2,x)$ não é principal, posto $1$ não serve; e dois elementos quaisquer satisfazem uma relação não trivial. Compare postos.",
+          "difficulty": 4,
+          "solution": "$R=\\mathbb{Z}[x]$, $\\mathfrak{a}=(2,x)$.\n\n**F.g.:** gerado por $2,x$.\n\n**Livre de torcao:** $\\mathfrak{a}\\subseteq R$ dominio; $r p=0$ com $r\\neq0$ forca $p=0$.\n\n**Nao livre.** Se fosse livre $\\cong R^n$: o posto de um ideal nao nulo num dominio e $1$, logo $\\mathfrak{a}\\cong R$, i.e. **principal**. Mas $(2,x)$ nao e principal: se $(2,x)=(d)$, $d\\mid2$ e $d\\mid x$ forcam $d=\\pm1$ e $(d)=R$, contradizendo $\\mathbb{Z}[x]/(2,x)\\cong\\mathbb{F}_2\\neq0$. Alternativamente, $2,x$ satisfazem a relacao $x\\cdot2-2\\cdot x=0$, logo $\\{2,x\\}$ nao e base e posto $\\ge2$ e impossivel. Portanto $\\mathfrak{a}$ nao e livre. $\\blacksquare$",
+          "steps": [
+            "Note que $(2,x)$ e gerado por dois elementos e vive no dominio $\\mathbb{Z}[x]$, logo livre de torcao.",
+            "Se fosse livre, o posto seria $1$ (ideal nao nulo num dominio), logo principal.",
+            "Prove que $(2,x)$ nao e principal ($d\\mid2,\\ d\\mid x\\Rightarrow d=\\pm1$, $(d)=R$).",
+            "Exiba a relacao $x\\cdot2-2\\cdot x=0$ mostrando que $\\{2,x\\}$ nao e base; conclua nao-livre."
+          ]
+        },
+        {
+          "prompt": "Seja $R$ um DIP e $M$ um $R$-módulo finitamente gerado livre de torção. Prove que $M$ é livre.",
+          "hint": "Use o teorema de estrutura, ou indução no posto: tome um elemento de posto máximo, forme o quociente livre de torção e use que submódulos de livres sobre DIP são livres.",
+          "difficulty": 3,
+          "solution": "$R$ DIP, $M$ f.g. livre de torcao. Inducao no posto.\n\n**Base $n=1$:** $M=Rm_1$, $R\\to M$ tem nucleo $\\operatorname{Ann}(m_1)=0$ (livre de torcao), logo $M\\cong R$.\n\n**Passo.** $K=\\operatorname{Frac}(R)$, $V=M\\otimes_R K$ de dimensao $r$. Escolha $m$ numa $K$-base e $N=\\{x\\in M:\\ rx\\in Rm,\\ r\\neq0\\}=Km\\cap M$. Entao $M/N$ e livre de torcao de posto $r-1$; por inducao, livre. Como $M/N$ e livre (projetivo), $0\\to N\\to M\\to M/N\\to0$ cinde: $M\\cong N\\oplus M/N$. $N\\subseteq Km$ de posto $1$ e isomorfo a um ideal de $R$ (DIP), logo principal $\\cong R$: livre. Assim $M$ e soma de livres, logo livre.\n\n(Alternativa: teorema de estrutura $M\\cong R^r\\oplus\\bigoplus R/(d_i)$; livre de torcao mata os $R/(d_i)$, sobrando $R^r$.) $\\blacksquare$",
+          "steps": [
+            "Inducao no posto; base $M=Rm_1$ da $\\operatorname{Ann}(m_1)=0$, $M\\cong R$.",
+            "Tensorize com $K=\\operatorname{Frac}(R)$ para definir posto e escolha $m$ numa $K$-base.",
+            "Forme $N=Km\\cap M$; $M/N$ e livre de torcao de posto menor, logo (inducao) livre.",
+            "A SES cinde ($M\\cong N\\oplus M/N$); mostre $N\\cong R$ e conclua $M$ livre (ou cite estrutura)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "$R$-módulo",
+          "back": "grupo abeliano com ação de $R$ satisfazendo os axiomas de escalar; generaliza espaço vetorial."
+        },
+        {
+          "front": "Sequência exata curta",
+          "back": "$0\\to A\\to B\\to C\\to 0$ com $A=\\ker(B\\to C)$ e $B\\to C$ sobrejetor."
+        },
+        {
+          "front": "Módulo livre",
+          "back": "módulo com base; isomorfo a $R^{(\\Lambda)}$. Todo módulo é quociente de um livre."
+        },
+        {
+          "front": "Lema de Nakayama",
+          "back": "$M$ f.g., $I\\subseteq J(R)$, $IM=M\\Rightarrow M=0$."
+        },
+        {
+          "front": "Nakayama local (geração)",
+          "back": "Em $(R,\\mathfrak{m})$: geradores de $M/\\mathfrak{m}M$ sobre $k$ levantam a geradores de $M$."
+        },
+        {
+          "front": "Torção sobre domínio",
+          "back": "$T(M)=\\{m:\\ rm=0\\text{ para algum }r\\neq0\\}$; $M$ livre de torção se $T(M)=0$."
+        },
+        {
+          "front": "Livre de torção $\\Rightarrow$ livre?",
+          "back": "Só sobre DIP (para f.g.). Falso em geral: $(2,x)\\subseteq\\mathbb{Z}[x]$."
+        },
+        {
+          "front": "Estrutura f.g. sobre DIP",
+          "back": "$M\\cong R^r\\oplus R/(d_1)\\oplus\\cdots\\oplus R/(d_k)$, $d_1\\mid\\cdots\\mid d_k$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Atiyah-Macdonald, cap. 2 (Modules)",
+          "ref": "livro"
+        },
+        {
+          "title": "Dummit & Foote, caps. 10-12 (Modules)",
+          "ref": "livro"
+        },
+        {
+          "title": "Eisenbud, cap. 4 e seção sobre Nakayama",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o cap. 2 de Atiyah-Macdonald sobre modulos e complete com Dummit-Foote caps. 10-12 para exemplos e sequencias exatas.",
+          "Domine sequencias exatas curtas e o criterio de cisao; faca o diagrama de $0\\to\\mathbb{Z}\\xrightarrow{2}\\mathbb{Z}\\to\\mathbb{Z}/2\\to0$.",
+          "Estude o Lema de Nakayama e sua prova via truque do determinante; reproduza a versao local de geracao.",
+          "Assista a uma aula sobre o teorema de estrutura de modulos f.g. sobre DIP (grupos abelianos, forma de Jordan).",
+          "Trabalhe os contraexemplos: $(2,x)\\subseteq\\mathbb{Z}[x]$ e $\\mathbb{Q}$ sobre $\\mathbb{Z}_{(p)}$.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (Nakayama, criterio de cisao, teorema de estrutura)."
+        ],
+        "searchQueries": [
+          "modulos sobre aneis definicao submodulo quociente homomorfismo",
+          "sequencia exata curta cisao splitting lemma modulo livre",
+          "lema de Nakayama demonstracao truque do determinante",
+          "teorema de estrutura modulos finitamente gerados DIP fatores invariantes",
+          "Nakayama lemma minimal generators local ring",
+          "torsion-free not free counterexample (2,x) Z[x]"
+        ],
+        "videos": [
+          {
+            "title": "Modules and Nakayama's lemma",
+            "channel": "Michael Penn (YouTube)",
+            "note": "Aulas de commutative algebra sobre modulos, sequencias exatas e Nakayama."
+          },
+          {
+            "title": "Structure theorem for f.g. modules over a PID",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aula de algebra sobre fatores invariantes e conexao com Jordan."
+          },
+          {
+            "title": "Modulos e teorema de estrutura",
+            "channel": "Matematica Universitaria (YouTube)",
+            "note": "Procure aulas em PT-BR sobre modulos sobre DIP e grupos abelianos f.g."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introduction to Commutative Algebra, cap. 2 (Modules)",
+            "where": "Atiyah & Macdonald - livro"
+          },
+          {
+            "title": "Abstract Algebra, caps. 10-12 (Modules; modules over PIDs)",
+            "where": "Dummit & Foote - livro"
+          },
+          {
+            "title": "Commutative Algebra with a View Toward Algebraic Geometry, cap. 4 (Nakayama)",
+            "where": "David Eisenbud - livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-comutativa-04-noetherianos-hilbert",
+      "title": "Condições de Cadeia, Anéis Noetherianos e o Teorema da Base de Hilbert",
+      "tagline": "A finitude que torna a álgebra domesticável: ACC, ideais finitamente gerados e o teorema que faz $k[x_1,\\dots,x_n]$ se comportar.",
+      "objectives": [
+        "Enunciar a condição de cadeia ascendente (ACC) e provar a equivalência ACC $\\iff$ todo ideal f.g. $\\iff$ todo conjunto de ideais tem elemento maximal.",
+        "Definir anéis e módulos Noetherianos e provar que submódulos e quocientes de Noetherianos são Noetherianos.",
+        "Demonstrar que um módulo finitamente gerado sobre anel Noetheriano é Noetheriano.",
+        "Enunciar e demonstrar o Teorema da Base de Hilbert: $R$ Noetheriano $\\Rightarrow R[x]$ Noetheriano.",
+        "Concluir que toda álgebra finitamente gerada sobre um corpo (ou anel Noetheriano) é Noetheriana, e distinguir Noetheriano de Artiniano."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Condição de cadeia ascendente (ACC)",
+          "statement": "Toda cadeia crescente $I_1\\subseteq I_2\\subseteq\\cdots$ de ideais (ou submódulos) estabiliza: existe $n$ com $I_n=I_{n+1}=\\cdots$. É a definição operacional de Noetherianidade."
+        },
+        {
+          "term": "Anel Noetheriano",
+          "statement": "Anel comutativo que satisfaz a ACC sobre ideais; equivalentemente, todo ideal é finitamente gerado. Exemplos: corpos, $\\mathbb{Z}$, DIPs, e $k[x_1,\\dots,x_n]$."
+        },
+        {
+          "term": "Módulo Noetheriano",
+          "statement": "Módulo em que todo submódulo é finitamente gerado (equiv.: ACC sobre submódulos). Sobre um anel Noetheriano, finitamente gerado $\\iff$ Noetheriano."
+        },
+        {
+          "term": "Anel Artiniano",
+          "statement": "Anel que satisfaz a condição de cadeia descendente (DCC) sobre ideais. Todo Artiniano é Noetheriano (Hopkins) e tem dimensão de Krull $0$ — é um produto finito de anéis locais Artinianos."
+        },
+        {
+          "term": "Álgebra finitamente gerada",
+          "statement": "$A=R[a_1,\\dots,a_n]$, quociente de $R[x_1,\\dots,x_n]$. Se $R$ é Noetheriano, então $A$ é Noetheriano — consequência direta da Base de Hilbert."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Caracterizações de Noetherianidade",
+          "statement": "Para um anel $R$ são equivalentes: (i) $R$ satisfaz ACC sobre ideais; (ii) todo ideal de $R$ é finitamente gerado; (iii) todo conjunto não vazio de ideais possui elemento maximal (relativamente à inclusão).",
+          "whyItMatters": "Dá três portas de entrada para a mesma propriedade: cadeias (boa para indução), geração finita (boa para construções) e elemento maximal (boa para argumentos de existência, como na decomposição primária)."
+        },
+        {
+          "name": "Estabilidade por extensão",
+          "statement": "Em uma sequência exata curta $0\\to M'\\to M\\to M''\\to 0$, $M$ é Noetheriano $\\iff M'$ e $M''$ o são. Em particular, submódulos e quocientes de Noetherianos são Noetherianos, e somas diretas finitas preservam Noetherianidade.",
+          "whyItMatters": "É o que faz a classe dos módulos Noetherianos ser robusta; combinado com $R^n$ Noetheriano, prova que todo módulo finitamente gerado sobre anel Noetheriano é Noetheriano."
+        },
+        {
+          "name": "Teorema da Base de Hilbert",
+          "statement": "Se $R$ é um anel Noetheriano, então $R[x]$ é Noetheriano. Por indução, $R[x_1,\\dots,x_n]$ é Noetheriano, e todo quociente seu também.",
+          "whyItMatters": "É o teorema fundacional: garante que todo ideal de $k[x_1,\\dots,x_n]$ é finitamente gerado, ou seja, toda variedade algébrica é definida por finitas equações. Sem ele, geometria algébrica e bases de Gröbner não existiriam."
+        }
+      ],
+      "summary": "A maioria dos anéis 'patológicos' é não Noetheriana; a hipótese de Noetherianidade é o que torna a álgebra comutativa uma teoria com teoremas de estrutura. Três condições equivalem e definem a noção: toda cadeia ascendente de ideais estabiliza (ACC), todo ideal é finitamente gerado, e todo conjunto de ideais tem elemento maximal. Cada formulação é útil em um contexto diferente — a ACC para indução, a geração finita para cálculos, o elemento maximal para provas de existência (é assim que se prova a decomposição primária de Lasker-Noether). A noção se transporta para módulos, e a classe é fechada por subobjetos, quocientes e extensões: numa sequência exata curta o termo do meio é Noetheriano se e só se as pontas o são. Disso decorre que, sobre um anel Noetheriano, ser finitamente gerado já implica ser Noetheriano — todo submódulo de um módulo f.g. é automaticamente f.g.\n\nO coroamento é o Teorema da Base de Hilbert: se $R$ é Noetheriano, então $R[x]$ também é. A demonstração é uma joia de elegância — dado um ideal $I\\subseteq R[x]$, considera-se, para cada grau $d$, o ideal dos coeficientes líderes dos polinômios de $I$ de grau $\\le d$; a Noetherianidade de $R$ controla esses ideais de líderes e produz um conjunto finito de geradores de $I$. Por indução, $k[x_1,\\dots,x_n]$ é Noetheriano, e como toda álgebra finitamente gerada sobre $k$ é um quociente desse anel de polinômios, ela também é Noetheriana. Geometricamente, isto diz que toda variedade afim é o conjunto de zeros de finitas equações polinomiais — o ponto de partida de toda a geometria algébrica. Por fim, convém contrastar com os anéis Artinianos (DCC): eles são exatamente os Noetherianos de dimensão de Krull zero, e se decompõem como produto finito de anéis locais Artinianos.",
+      "commonPitfalls": [
+        "Pensar que todo anel é Noetheriano: $k[x_1,x_2,x_3,\\dots]$ (infinitas variáveis) e o anel das funções contínuas não são; o ideal $(x_1,x_2,\\dots)$ não é finitamente gerado.",
+        "Confundir 'todo ideal f.g.' com 'todo ideal principal' (DIP): Noetheriano é muito mais fraco; $k[x,y]$ é Noetheriano mas não é DIP.",
+        "Achar que Noetheriano $\\Rightarrow$ Artiniano: $\\mathbb{Z}$ e $k[x]$ são Noetherianos mas têm cadeias descendentes infinitas ($(2)\\supsetneq(4)\\supsetneq\\cdots$), logo não Artinianos.",
+        "Esquecer que a Base de Hilbert exige $R$ Noetheriano: $R[x]$ herda a propriedade de $R$, não a cria do nada."
+      ],
+      "worked": "**Teorema da Base de Hilbert.** Se $R$ é Noetheriano, então $R[x]$ é Noetheriano.\n\n**Prova (esboço completo).** Seja $I\\subseteq R[x]$ um ideal; queremos mostrar que $I$ é finitamente gerado. Para cada $d\\ge 0$, seja $L_d\\subseteq R$ o conjunto formado por $0$ e pelos coeficientes líderes dos polinômios de $I$ de grau exatamente $d$. Cada $L_d$ é um ideal de $R$, e $L_0\\subseteq L_1\\subseteq L_2\\subseteq\\cdots$ (multiplicar por $x$ sobe o grau preservando o líder). Como $R$ é Noetheriano, essa cadeia estabiliza em algum $L_N$, e cada $L_d$ ($d\\le N$) é finitamente gerado.\n\nPara cada $d\\le N$, escolha polinômios $f_{d,1},\\dots,f_{d,k_d}\\in I$ de grau $d$ cujos líderes geram $L_d$. Afirmo que o conjunto finito $\\{f_{d,j}: 0\\le d\\le N,\\ 1\\le j\\le k_d\\}$ gera $I$. De fato, dado $g\\in I$ de grau $m$, subtraímos uma combinação $R$-linear apropriada (multiplicada por potências de $x$) dos $f_{d,j}$ para cancelar o coeficiente líder de $g$: se $m\\le N$, usamos os geradores de $L_m$; se $m>N$, usamos os de $L_N=L_m$ multiplicados por $x^{m-N}$. Isso baixa o grau de $g$; por indução no grau, $g$ está no ideal gerado por aqueles $f_{d,j}$. Logo $I$ é finitamente gerado. $\\blacksquare$\n\nIterando, $k[x_1,\\dots,x_n]=k[x_1,\\dots,x_{n-1}][x_n]$ é Noetheriano para todo $n$.",
+      "exercises": [
+        {
+          "prompt": "Prove a equivalência: $R$ satisfaz ACC sobre ideais $\\iff$ todo ideal de $R$ é finitamente gerado.",
+          "hint": "($\\Rightarrow$) Dado $I$, se não fosse f.g., construa indutivamente $a_1,a_2,\\dots$ com $(a_1,\\dots,a_n)\\subsetneq(a_1,\\dots,a_{n+1})$, violando ACC. ($\\Leftarrow$) A união de uma cadeia é um ideal f.g.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** ACC sobre ideais $\\iff$ todo ideal e f.g.\n\n**($\\Rightarrow$)** Se $I$ nao fosse f.g., escolha $a_1\\in I$, e indutivamente $a_{n+1}\\in I\\setminus(a_1,\\dots,a_n)$ (possivel pois $(a_1,\\dots,a_n)\\neq I$). A cadeia\n$$(a_1)\\subsetneq(a_1,a_2)\\subsetneq\\cdots$$\nnao estabiliza, contradizendo ACC.\n\n**($\\Leftarrow$)** Dada cadeia $I_1\\subseteq I_2\\subseteq\\cdots$, a uniao $I=\\bigcup I_n$ e ideal, f.g. por hipotese: $I=(b_1,\\dots,b_k)$. Cada $b_j\\in I_{n_j}$; com $N=\\max n_j$, todos $\\in I_N$, logo $I=I_N$ e a cadeia estabiliza. $\\blacksquare$",
+          "steps": [
+            "($\\Rightarrow$) Suponha $I$ nao f.g. e construa $a_{n+1}\\notin(a_1,\\dots,a_n)$.",
+            "A cadeia $(a_1)\\subsetneq(a_1,a_2)\\subsetneq\\cdots$ nao estabiliza: contradiz ACC.",
+            "($\\Leftarrow$) Forme a uniao $I=\\bigcup I_n$, que e ideal.",
+            "Como $I$ e f.g., os geradores caem num $I_N$; a cadeia estabiliza."
+          ]
+        },
+        {
+          "prompt": "Mostre que se $0\\to M'\\to M\\to M''\\to 0$ é exata, então $M$ é Noetheriano se e só se $M'$ e $M''$ são.",
+          "hint": "Para uma cadeia em $M$, considere suas interseções com $M'$ e suas imagens em $M''$; ambas estabilizam, e isso força a cadeia em $M$ a estabilizar.",
+          "difficulty": 4,
+          "solution": "Exata $0\\to M'\\xrightarrow{f}M\\xrightarrow{g}M''\\to0$ (identifique $M'=\\ker g$).\n\n**($\\Rightarrow$)** Submodulos de $M'$ sao submodulos de $M$ (f.g.); submodulos de $M''$ vem de submodulos de $M$ contendo $M'$: ambos Noetherianos.\n\n**($\\Leftarrow$)** Cadeia $N_1\\subseteq N_2\\subseteq\\cdots$ em $M$. As cadeias $N_n\\cap M'$ (em $M'$) e $g(N_n)$ (em $M''$) estabilizam em $N$. Para $n\\ge N$: se $x\\in N_n$, existe $y\\in N_N$ com $g(x)=g(y)$, logo $x-y\\in M'\\cap N_n=M'\\cap N_N\\subseteq N_N$, donde $x\\in N_N$. Assim $N_n=N_N$, e $M$ e Noetheriano. $\\blacksquare$",
+          "steps": [
+            "Identifique $M'=\\ker g\\subseteq M$, $M''=M/M'$.",
+            "($\\Rightarrow$) Submodulos de $M'$ e $M''$ vem de submodulos de $M$, logo f.g.",
+            "($\\Leftarrow$) Dada cadeia $N_n$, forme $N_n\\cap M'$ e $g(N_n)$; ambas estabilizam.",
+            "Prove $N_n=N_N$ combinando as duas estabilizacoes."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo explícito de anel não Noetheriano exibindo uma cadeia ascendente de ideais que não estabiliza.",
+          "hint": "Em $k[x_1,x_2,\\dots]$, tome $(x_1)\\subsetneq(x_1,x_2)\\subsetneq(x_1,x_2,x_3)\\subsetneq\\cdots$.",
+          "difficulty": 2,
+          "solution": "$R=k[x_1,x_2,x_3,\\dots]$ (infinitas variaveis). Tome $I_n=(x_1,\\dots,x_n)$:\n$$I_1\\subsetneq I_2\\subsetneq I_3\\subsetneq\\cdots.$$\nEstrita porque $x_{n+1}\\notin I_n$: a avaliacao $x_i\\mapsto0$ ($i\\le n$), $x_{n+1}\\mapsto1$ mata $I_n$ mas nao $x_{n+1}$. A cadeia nao estabiliza, logo $R$ nao e Noetheriano. Equivalentemente, $I=(x_1,x_2,\\dots)$ nao e f.g. (qualquer conjunto finito de geradores usa so ate $x_N$ e nao gera $x_{N+1}$). $\\blacksquare$",
+          "steps": [
+            "Escolha $R=k[x_1,x_2,\\dots]$ com infinitas variaveis.",
+            "Defina $I_n=(x_1,\\dots,x_n)$.",
+            "Prove estrita via avaliacao $x_i\\mapsto0$ ($i\\le n$), $x_{n+1}\\mapsto1$.",
+            "Conclua que a cadeia nao estabiliza, logo $R$ nao e Noetheriano."
+          ]
+        },
+        {
+          "prompt": "Use a Base de Hilbert para concluir que $\\mathbb{Z}[x_1,\\dots,x_n]$ e toda $k$-álgebra finitamente gerada são Noetherianos. Em seguida, conclua que todo ideal de $k[x,y]$ é finitamente gerado.",
+          "hint": "$\\mathbb{Z}$ e $k$ são Noetherianos; aplique indução em variáveis e o fato de que quociente de Noetheriano é Noetheriano.",
+          "difficulty": 2,
+          "solution": "**Passo 1.** $\\mathbb{Z}$ e Noetheriano; pela Base de Hilbert, $R$ Noetheriano $\\Rightarrow R[x]$ Noetheriano. Por inducao $\\mathbb{Z}[x_1,\\dots,x_n]=\\mathbb{Z}[x_1,\\dots,x_{n-1}][x_n]$ e Noetheriano; idem $k[x_1,\\dots,x_n]$.\n\n**Passo 2.** Uma $k$-algebra f.g. e $A=k[a_1,\\dots,a_n]\\cong k[x_1,\\dots,x_n]/I$, quociente de Noetheriano. Quociente de Noetheriano e Noetheriano (ideais de $A$ correspondem a ideais contendo $I$, f.g.). Logo $A$ Noetheriano.\n\n**Passo 3.** $k[x,y]$ e Noetheriano (Passo 1, $n=2$), logo todo ideal seu e f.g. $\\blacksquare$",
+          "steps": [
+            "Parta de $\\mathbb{Z}$, $k$ Noetherianos e aplique a Base de Hilbert por inducao.",
+            "Escreva $\\mathbb{Z}[x_1,\\dots,x_n]=\\mathbb{Z}[x_1,\\dots,x_{n-1}][x_n]$.",
+            "Represente uma $k$-algebra f.g. como quociente e use que quociente de Noetheriano e Noetheriano.",
+            "Especialize a $k[x,y]$: todo ideal e f.g."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "ACC",
+          "back": "toda cadeia crescente de ideais/submódulos estabiliza."
+        },
+        {
+          "front": "Anel Noetheriano (3 caracterizações)",
+          "back": "ACC $\\iff$ todo ideal f.g. $\\iff$ todo conjunto de ideais tem elemento maximal."
+        },
+        {
+          "front": "Módulo f.g. sobre Noetheriano",
+          "back": "é automaticamente Noetheriano (todo submódulo é f.g.)."
+        },
+        {
+          "front": "Teorema da Base de Hilbert",
+          "back": "$R$ Noetheriano $\\Rightarrow R[x]$ Noetheriano; logo $k[x_1,\\dots,x_n]$ é Noetheriano."
+        },
+        {
+          "front": "Noetheriano vs DIP",
+          "back": "DIP $\\Rightarrow$ Noetheriano; recíproca falsa ($k[x,y]$ é Noetheriano, não DIP)."
+        },
+        {
+          "front": "Anel Artiniano",
+          "back": "satisfaz DCC; é Noetheriano de dimensão de Krull $0$."
+        },
+        {
+          "front": "Exemplo não Noetheriano",
+          "back": "$k[x_1,x_2,\\dots]$: o ideal $(x_1,x_2,\\dots)$ não é f.g."
+        },
+        {
+          "front": "Significado geométrico da Base de Hilbert",
+          "back": "toda variedade afim é definida por finitas equações polinomiais."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Atiyah-Macdonald, caps. 6-7 (Chain conditions, Noetherian rings)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Álgebra (anéis Noetherianos)",
+          "ref": "livro"
+        },
+        {
+          "title": "Dummit & Foote, cap. 15.1 (Noetherian rings, Hilbert Basis Theorem)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia os caps. 6-7 de Atiyah-Macdonald sobre condicoes de cadeia e aneis Noetherianos, anotando as tres caracterizacoes equivalentes.",
+          "Prove sozinho ACC $\\iff$ ideais f.g. $\\iff$ existencia de elemento maximal, e a estabilidade por sequencias exatas.",
+          "Estude a prova do Teorema da Base de Hilbert linha a linha (ideais de coeficientes lideres $L_d$); refaca sem consultar.",
+          "Assista a uma aula sobre a Base de Hilbert e sua leitura geometrica (variedades por finitas equacoes).",
+          "Contraste Noetheriano x Artiniano com exemplos ($\\mathbb{Z}$, $k[x]$ nao Artinianos; $k[x_1,x_2,\\dots]$ nao Noetheriano).",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (3 caracterizacoes e esqueleto da prova de Hilbert)."
+        ],
+        "searchQueries": [
+          "condicao de cadeia ascendente ACC anel Noetheriano equivalencias",
+          "teorema da base de Hilbert demonstracao coeficientes lideres",
+          "modulo Noetheriano sequencia exata submodulo quociente estabilidade",
+          "anel Artiniano dimensao de Krull zero teorema de Hopkins",
+          "Hilbert basis theorem proof step by step",
+          "exemplo anel nao Noetheriano ideal nao finitamente gerado"
+        ],
+        "videos": [
+          {
+            "title": "Noetherian rings and Hilbert Basis Theorem",
+            "channel": "Michael Penn (YouTube)",
+            "note": "Serie de commutative algebra: ACC, aneis Noetherianos e a prova de Hilbert."
+          },
+          {
+            "title": "Commutative algebra - Noetherian rings",
+            "channel": "Richard Borcherds (YouTube)",
+            "note": "Aulas com a demonstracao da Base de Hilbert e conexao com esquemas."
+          },
+          {
+            "title": "Aneis Noetherianos",
+            "channel": "Matematica Universitaria (YouTube)",
+            "note": "Procure aulas em PT-BR sobre ACC e ideais finitamente gerados."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introduction to Commutative Algebra, caps. 6-7 (Chain conditions; Noetherian rings)",
+            "where": "Atiyah & Macdonald - livro"
+          },
+          {
+            "title": "Elementos de Algebra (aneis Noetherianos e Base de Hilbert)",
+            "where": "A. Garcia & Y. Lequain, IMPA - livro"
+          },
+          {
+            "title": "Abstract Algebra, cap. 15.1 (Noetherian rings, Hilbert Basis Theorem)",
+            "where": "Dummit & Foote - livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-comutativa-05-decomposicao-primaria",
+      "title": "Decomposição Primária (Introdução)",
+      "tagline": "A fatoração única de ideais que sobra em anéis gerais: Lasker-Noether decompõe ideais em componentes primárias e revela os primos associados.",
+      "objectives": [
+        "Definir ideal primário e provar que seu radical é primo, fixando a terminologia $\\mathfrak{p}$-primário.",
+        "Reconhecer que potências de ideais maximais são primárias e que $\\sqrt{Q}$ primo não garante $Q$ primário.",
+        "Definir decomposição primária minimal (irredundante) de um ideal e o conjunto dos primos associados.",
+        "Enunciar o Teorema de Lasker-Noether: em anéis Noetherianos todo ideal admite decomposição primária.",
+        "Aplicar os teoremas de unicidade: os primos associados são unívocos e as componentes isoladas (minimais) são únicas; distinguir primos imersos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Ideal primário",
+          "statement": "Um ideal próprio $Q$ é primário se $ab\\in Q\\Rightarrow a\\in Q$ ou $b^n\\in Q$ para algum $n\\ge 1$. Equivale a: todo divisor de zero em $R/Q$ é nilpotente."
+        },
+        {
+          "term": "Radical de um primário",
+          "statement": "Se $Q$ é primário, $\\mathfrak{p}=\\sqrt{Q}$ é primo, e dizemos que $Q$ é $\\mathfrak{p}$-primário. Reciprocamente, $\\sqrt{Q}=\\mathfrak{m}$ maximal $\\Rightarrow Q$ é primário (em particular, potências $\\mathfrak{m}^n$ são primárias)."
+        },
+        {
+          "term": "Decomposição primária",
+          "statement": "Uma expressão $I=Q_1\\cap\\cdots\\cap Q_n$ com cada $Q_i$ primário. É minimal (irredundante) se os $\\sqrt{Q_i}$ são distintos e nenhum $Q_i$ contém a interseção dos demais."
+        },
+        {
+          "term": "Primos associados",
+          "statement": "Para uma decomposição minimal de $I$, $\\operatorname{Ass}(R/I)=\\{\\sqrt{Q_1},\\dots,\\sqrt{Q_n}\\}$. Os minimais entre eles são os primos isolados (componentes da variedade $V(I)$); os demais são imersos."
+        },
+        {
+          "term": "Primo imerso",
+          "statement": "Um primo associado que contém estritamente outro primo associado. Ele não corresponde a uma componente irredutível de $V(I)$, mas detecta estrutura 'enterrada' (não reduzida) do ideal."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Radical de primário é primo",
+          "statement": "Se $Q$ é um ideal primário, então $\\sqrt{Q}$ é um ideal primo.",
+          "whyItMatters": "É o que liga a noção local 'primário' à noção 'primo': cada componente primária 'aponta' para um primo bem definido, e é assim que a decomposição organiza um ideal em torno de seus primos."
+        },
+        {
+          "name": "Teorema de Lasker-Noether (existência)",
+          "statement": "Em um anel Noetheriano, todo ideal próprio $I$ admite uma decomposição primária minimal $I=Q_1\\cap\\cdots\\cap Q_n$.",
+          "whyItMatters": "É a generalização da fatoração única para anéis onde elementos não fatoram, como $k[x,y]$. A prova usa que todo ideal é interseção finita de ideais irredutíveis e que, em Noetherianos, irredutível $\\Rightarrow$ primário."
+        },
+        {
+          "name": "Primeiro teorema de unicidade",
+          "statement": "O conjunto dos primos associados $\\operatorname{Ass}(R/I)=\\{\\sqrt{Q_i}\\}$ independe da decomposição primária minimal escolhida; ademais, são exatamente os primos da forma $(I:x)=\\{r: rx\\in I\\}$ que são primos, para $x\\in R$.",
+          "whyItMatters": "Garante que, embora as componentes primárias possam variar, os primos que governam o ideal são invariantes — eles são os 'pontos' e 'subvariedades' canonicamente associados a $V(I)$."
+        },
+        {
+          "name": "Segundo teorema de unicidade",
+          "statement": "As componentes primárias $Q_i$ correspondentes aos primos isolados (minimais) de $\\operatorname{Ass}(R/I)$ são unicamente determinadas por $I$. Apenas as componentes imersas podem variar.",
+          "whyItMatters": "Explica em que medida a decomposição é canônica: a parte 'visível' (componentes geométricas) é única; a ambiguidade vive só na estrutura infinitesimal imersa."
+        }
+      ],
+      "summary": "Em $\\mathbb{Z}$, todo ideal fatora como $(n)=\\prod(p_i^{a_i})$, e $(p^a)$ é o protótipo de ideal primário. A decomposição primária estende essa ideia a anéis onde elementos não têm fatoração única, substituindo 'potência de primo' por 'ideal primário'. Um ideal $Q$ é primário quando $ab\\in Q$ obriga $a\\in Q$ ou alguma potência $b^n\\in Q$ — equivalentemente, em $R/Q$ todo divisor de zero é nilpotente. O radical de um primário é sempre primo, dando a terminologia $\\mathfrak{p}$-primário; e embora primos garantam primaridade no caso maximal (potências de maximais são primárias), em geral ter radical primo não basta para ser primário, o que torna a teoria mais sutil do que parece.\n\nO Teorema de Lasker-Noether garante que, em qualquer anel Noetheriano, todo ideal próprio se escreve como interseção finita de ideais primários, $I=Q_1\\cap\\cdots\\cap Q_n$, e que essa decomposição pode ser tomada minimal. A demonstração tem duas etapas tipicamente Noetherianas: todo ideal é interseção finita de ideais irredutíveis (por ACC e argumento de elemento maximal), e todo ideal irredutível em um Noetheriano é primário. A partir daí, os teoremas de unicidade revelam o que é canônico: o conjunto dos primos associados $\\operatorname{Ass}(R/I)=\\{\\sqrt{Q_i}\\}$ é independente da decomposição, e as componentes ligadas aos primos minimais (isolados) são únicas. Os primos minimais correspondem às componentes irredutíveis de $V(I)$; os primos imersos, que contêm estritamente outros associados, detectam estrutura não reduzida 'enterrada' — invisível ao conjunto de zeros, mas presente no ideal. É a versão algébrica de distinguir uma reta dupla de uma reta simples.",
+      "commonPitfalls": [
+        "Achar que $\\sqrt{Q}$ primo implica $Q$ primário: é falso em geral; a recíproca só vale automaticamente quando o radical é maximal.",
+        "Confundir ideal primário com potência de primo: $\\mathfrak{p}^n$ nem sempre é $\\mathfrak{p}$-primário (em anéis não regulares), e nem todo primário é potência de primo.",
+        "Esquecer que a decomposição primária não é única: só os primos associados e as componentes isoladas são invariantes; componentes imersas variam.",
+        "Ignorar primos imersos ao 'ler' $V(I)$: eles não aparecem no conjunto de zeros mas são essenciais para a estrutura do ideal (esquemas não reduzidos)."
+      ],
+      "worked": "**Exemplo clássico em $k[x,y]$.** Seja $I=(x^2,xy)$. Vamos exibir uma decomposição primária minimal e identificar os primos associados.\n\nAfirmo que $I=(x)\\cap(x^2,y)$. \n\n($\\subseteq$) $x^2=x\\cdot x\\in(x)$ e $x^2\\in(x^2,y)$; $xy\\in(x)$ e $xy=y\\cdot x$... cuidado: $xy\\in(x^2,y)$ pois $xy=y\\cdot x$ e $y\\in(x^2,y)$. Logo $x^2,xy\\in(x)\\cap(x^2,y)$, dando $I\\subseteq(x)\\cap(x^2,y)$.\n\n($\\supseteq$) Seja $f\\in(x)\\cap(x^2,y)$. Como $f\\in(x)$, $f=xg$. Como $f\\in(x^2,y)$, escreva $f=ax^2+by$. Então $xg=ax^2+by$, logo $by=x(g-ax)\\in(x)$; como $y\\notin(x)$ e $(x)$ é primo, $b\\in(x)$, digamos $b=xc$. Então $f=ax^2+cxy\\in(x^2,xy)=I$. Assim $(x)\\cap(x^2,y)\\subseteq I$.\n\n**Componentes.** $(x)$ é primo, logo $(x)$-primário, com radical $(x)$. E $(x^2,y)$ tem radical $\\sqrt{(x^2,y)}=(x,y)$, que é maximal; logo $(x^2,y)$ é $(x,y)$-primário. A decomposição é minimal (radicais $(x)\\neq(x,y)$ distintos, e nenhuma componente é supérflua).\n\n**Primos associados:** $\\operatorname{Ass}(R/I)=\\{(x),(x,y)\\}$. Aqui $(x)$ é isolado (minimal) — corresponde à reta $x=0$, componente de $V(I)$ — e $(x,y)$ é **imerso** (contém $(x)$): detecta o 'engrossamento' na origem, invisível em $V(I)=\\{x=0\\}$. A componente isolada $(x)$ é única; a componente imersa pode ser trocada, por exemplo, por $(x^2,xy,y^2)$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que se $Q$ é um ideal primário, então $\\sqrt{Q}$ é primo. Em seguida, mostre que se $\\sqrt{Q}$ é maximal então $Q$ é primário.",
+          "hint": "Para a primeira parte, se $ab\\in\\sqrt{Q}$ então $(ab)^n\\in Q$; use primaridade. Para a segunda, em $R/Q$ o nilradical é maximal, logo todo não invertível é nilpotente.",
+          "difficulty": 3,
+          "solution": "**Parte 1: $Q$ primario $\\Rightarrow\\sqrt{Q}$ primo.** $\\mathfrak{p}=\\sqrt Q$ e ideal. Se $ab\\in\\mathfrak{p}$, entao $(ab)^n=a^nb^n\\in Q$; por primaridade, $a^n\\in Q$ (logo $a\\in\\sqrt Q$) ou $(b^n)^m\\in Q$ (logo $b\\in\\sqrt Q$). E proprio, logo primo.\n\n**Parte 2: $\\sqrt Q=\\mathfrak{m}$ maximal $\\Rightarrow Q$ primario.** Em $\\bar R=R/Q$, o nilradical e $\\mathfrak{m}/Q$, maximal. Como o nilradical (intersecao dos primos) e maximal, ele e o unico primo de $\\bar R$: fora de $\\mathfrak{m}/Q$ tudo e unidade; dentro, tudo e nilpotente. Se $ab\\in Q$ com $a\\notin Q$ ($\\bar a\\neq0$), entao $\\bar b$ nao pode ser unidade (senao $\\bar a=0$), logo $\\bar b\\in\\mathfrak{m}/Q$ e nilpotente: $b^n\\in Q$. Isso e a condicao de primario. $\\blacksquare$",
+          "steps": [
+            "Parte 1: teste a definicao de primo em $\\sqrt Q$ via a de primario ($ab\\in\\sqrt Q\\Rightarrow a^nb^n\\in Q$).",
+            "Aplique a primaridade de $Q$ para obter $a\\in\\sqrt Q$ ou $b\\in\\sqrt Q$.",
+            "Parte 2: passe a $R/Q$; $\\sqrt Q/Q=\\mathfrak{m}/Q$ e nilradical maximal.",
+            "Fora de $\\mathfrak{m}/Q$ tudo e unidade: se $ab\\in Q$, $a\\notin Q$, entao $\\bar b$ e nilpotente, i.e. $b^n\\in Q$."
+          ]
+        },
+        {
+          "prompt": "Verifique em detalhe que $(x^2,y)$ é $(x,y)$-primário em $k[x,y]$ calculando $R/(x^2,y)$ e mostrando que seus divisores de zero são nilpotentes.",
+          "hint": "$k[x,y]/(x^2,y)\\cong k[x]/(x^2)$, que é local com maximal $(x)$ e $x$ nilpotente.",
+          "difficulty": 3,
+          "solution": "$k[x,y]/(x^2,y)$: impondo $y=0$, $x^2=0$,\n$$k[x,y]/(x^2,y)\\cong k[x]/(x^2).$$\nBase $\\{1,\\bar x\\}$ (dim $2$), local com maximal $(\\bar x)$, corpo residual $k$, e $\\bar x^2=0$ (nilpotente).\n\nElemento geral $a+b\\bar x$: unidade $\\iff a\\neq0$ (inversa $a^{-1}-a^{-2}b\\bar x$). Se $a=0$, e $b\\bar x$, nilpotente ($(b\\bar x)^2=0$). Logo **todo** nao invertivel e nilpotente; em particular divisores de zero sao nilpotentes, ou seja $(x^2,y)$ e primario.\n\nRadical: o nilradical de $k[x]/(x^2)$ e $(\\bar x)$, cuja pre-imagem e $(x,y)$, **maximal**. Logo $\\sqrt{(x^2,y)}=(x,y)$ e $(x^2,y)$ e $(x,y)$-primario. $\\blacksquare$",
+          "steps": [
+            "Calcule $k[x,y]/(x^2,y)\\cong k[x]/(x^2)$ impondo $y=0$, $x^2=0$.",
+            "Descreva $k[x]/(x^2)$: base $\\{1,\\bar x\\}$, local, $\\bar x$ nilpotente.",
+            "Mostre $a+b\\bar x$ unidade $\\iff a\\neq0$; os nao invertiveis sao nilpotentes.",
+            "Conclua primario e $\\sqrt{(x^2,y)}=(x,y)$ maximal."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo de ideal $Q$ com $\\sqrt{Q}$ primo mas $Q$ não primário.",
+          "hint": "Em $k[x,y,z]/(xy-z^2)$ ou, mais simples, $Q=(x^2,xy)$ tem radical $(x)$ primo mas não é primário (pois $xy\\in Q$, $x\\notin Q$ e nenhuma potência de $y$ está em $Q$).",
+          "difficulty": 4,
+          "solution": "$Q=(x^2,xy)\\subseteq k[x,y]$.\n\n**$\\sqrt Q=(x)$, primo.** $x\\in\\sqrt Q$ (pois $x^2\\in Q$), logo $(x)\\subseteq\\sqrt Q$; e $Q\\subseteq(x)$ da $\\sqrt Q\\subseteq(x)$. Assim $\\sqrt Q=(x)$, primo ($k[x,y]/(x)\\cong k[y]$ dominio).\n\n**Nao primario.** $Q=x\\cdot(x,y)$, i.e. todos os elementos sao multiplos de $x$. Temos $xy\\in Q$, mas:\n- $x\\notin Q$ ($x=x\\cdot1$, $1\\notin(x,y)$);\n- $y^n\\notin Q$ (nao e multiplo de $x$).\n\nEntao $xy\\in Q$, $x\\notin Q$, $y^n\\notin Q\\ \\forall n$: falha a definicao de primario. Logo radical primo mas nao primario. $\\blacksquare$",
+          "steps": [
+            "Escolha $Q=(x^2,xy)$ e calcule $\\sqrt Q=(x)$, primo.",
+            "Fatore $Q=x\\cdot(x,y)$: todos os elementos sao multiplos de $x$.",
+            "Verifique $x\\notin Q$ e $y^n\\notin Q$.",
+            "Conclua que $xy\\in Q$ viola a definicao de primario."
+          ]
+        },
+        {
+          "prompt": "Para $I=(x^2,xy)\\subseteq k[x,y]$, mostre que tanto $(x)\\cap(x^2,y)$ quanto $(x)\\cap(x^2,xy,y^2)$ são decomposições primárias minimais, confirmando a não unicidade da componente imersa.",
+          "hint": "Ambas têm componente isolada $(x)$ e uma componente $(x,y)$-primária; verifique que a interseção dá $I$ nos dois casos.",
+          "difficulty": 4,
+          "solution": "$I=(x^2,xy)$. Mostramos que $I=(x)\\cap(x^2,y)=(x)\\cap(x^2,xy,y^2)$.\n\n**Componentes primarias.** $(x)$ e $(x)$-primario (primo). $(x^2,y)$ e $(x,y)$-primario. $(x^2,xy,y^2)$ tem radical $(x,y)$ (contem $x^2,y^2$) maximal, logo $(x,y)$-primario.\n\n**$I=(x)\\cap(x^2,y)$.** $\\subseteq$: $x^2,xy\\in(x)$ e $\\in(x^2,y)$ (pois $xy=y\\cdot x$, $y\\in(x^2,y)$). $\\supseteq$: $f=xg=ax^2+by\\Rightarrow by=x(g-ax)\\in(x)$; como $y\\notin(x)$ primo, $b=xc$, $f=ax^2+cxy\\in I$.\n\n**$I=(x)\\cap(x^2,xy,y^2)$.** $\\subseteq$: geradores estao em ambos. $\\supseteq$: $f=xg=ax^2+bxy+cy^2\\Rightarrow cy^2=x(g-ax-by)\\in(x)$; $y^2\\notin(x)$ primo $\\Rightarrow c=xd$, $f=ax^2+bxy+dxy^2\\in I$ (pois $dxy^2=dy\\cdot xy$).\n\n**Minimalidade.** Radicais $(x)\\neq(x,y)$ distintos; nenhuma componente redundante. Componente isolada $(x)$ e **comum**; a imersa $(x,y)$-primaria muda de $(x^2,y)$ para $(x^2,xy,y^2)$ — confirmando a nao unicidade das componentes imersas. $\\blacksquare$",
+          "steps": [
+            "Verifique que $(x)$, $(x^2,y)$, $(x^2,xy,y^2)$ sao primarios com radicais $(x)$, $(x,y)$, $(x,y)$.",
+            "Prove $I=(x)\\cap(x^2,y)$ com $f=xg=ax^2+by$ e a primalidade de $(x)$.",
+            "Prove $I=(x)\\cap(x^2,xy,y^2)$ com $f=xg=ax^2+bxy+cy^2$ e $c\\in(x)$.",
+            "Confirme minimalidade e identifique a isolada $(x)$ comum e a imersa variavel."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Ideal primário",
+          "back": "$ab\\in Q\\Rightarrow a\\in Q$ ou $b^n\\in Q$; equiv.: divisores de zero em $R/Q$ são nilpotentes."
+        },
+        {
+          "front": "Radical de um primário",
+          "back": "$\\sqrt{Q}$ é primo; chamamos $Q$ de $\\mathfrak{p}$-primário com $\\mathfrak{p}=\\sqrt{Q}$."
+        },
+        {
+          "front": "$\\sqrt{Q}$ primo $\\Rightarrow Q$ primário?",
+          "back": "Não em geral. Mas $\\sqrt{Q}$ maximal $\\Rightarrow Q$ primário."
+        },
+        {
+          "front": "Teorema de Lasker-Noether",
+          "back": "Em anel Noetheriano, todo ideal tem decomposição primária minimal."
+        },
+        {
+          "front": "Primos associados",
+          "back": "$\\operatorname{Ass}(R/I)=\\{\\sqrt{Q_i}\\}$; invariantes da decomposição."
+        },
+        {
+          "front": "1º teorema de unicidade",
+          "back": "o conjunto dos primos associados independe da decomposição."
+        },
+        {
+          "front": "Primo imerso",
+          "back": "primo associado que contém outro; não é componente de $V(I)$, detecta estrutura não reduzida."
+        },
+        {
+          "front": "Exemplo padrão",
+          "back": "$(x^2,xy)=(x)\\cap(x^2,y)$; $\\operatorname{Ass}=\\{(x),(x,y)\\}$, $(x,y)$ imerso."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Atiyah-Macdonald, cap. 4 (Primary Decomposition)",
+          "ref": "livro"
+        },
+        {
+          "title": "Eisenbud, cap. 3 (Associated Primes and Primary Decomposition)",
+          "ref": "livro"
+        },
+        {
+          "title": "Reid, Undergraduate Commutative Algebra (decomposição primária)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o cap. 4 de Atiyah-Macdonald e complemente com o cap. 3 de Eisenbud (primos associados).",
+          "Fixe a definicao de ideal primario e prove que seu radical e primo; entenda por que $\\sqrt{Q}$ primo nao garante $Q$ primario.",
+          "Trabalhe o exemplo-canone $(x^2,xy)\\subseteq k[x,y]$ ate reproduzir a decomposicao e identificar o primo imerso.",
+          "Estude os dois teoremas de unicidade e os primos associados via $(I:x)$.",
+          "Leia/assista sobre a interpretacao geometrica (componentes irredutiveis x estrutura imersa/nao reduzida).",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (definicao de primario, Lasker-Noether, exemplo $(x^2,xy)$)."
+        ],
+        "searchQueries": [
+          "ideal primario decomposicao primaria Lasker-Noether definicao",
+          "primo associado Ass(R/I) decomposicao primaria unicidade",
+          "radical de ideal primario e primo demonstracao",
+          "primary decomposition example (x^2,xy) embedded prime",
+          "associated primes embedded prime scheme non-reduced",
+          "irreducible ideal primary Noetherian ring proof"
+        ],
+        "videos": [
+          {
+            "title": "Primary decomposition and associated primes",
+            "channel": "Michael Penn (YouTube)",
+            "note": "Aulas de commutative algebra sobre ideais primarios e Lasker-Noether."
+          },
+          {
+            "title": "Commutative algebra - primary decomposition",
+            "channel": "Richard Borcherds (YouTube)",
+            "note": "Tratamento com exemplos e primos imersos, na linha de esquemas."
+          },
+          {
+            "title": "18.705 - Associated primes",
+            "channel": "MIT OpenCourseWare",
+            "note": "Notas e aulas sobre primos associados e unicidade."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introduction to Commutative Algebra, cap. 4 (Primary Decomposition)",
+            "where": "Atiyah & Macdonald - livro"
+          },
+          {
+            "title": "Commutative Algebra with a View Toward Algebraic Geometry, cap. 3 (Associated Primes and Primary Decomposition)",
+            "where": "David Eisenbud - livro"
+          },
+          {
+            "title": "Undergraduate Commutative Algebra (decomposicao primaria)",
+            "where": "Miles Reid - livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-comutativa-06-nullstellensatz",
+      "title": "O Nullstellensatz de Hilbert",
+      "tagline": "O dicionário que funda a geometria algébrica: ideais radicais de $k[x_1,\\dots,x_n]$ são exatamente os conjuntos algébricos de $\\mathbb{A}^n$.",
+      "objectives": [
+        "Definir conjuntos algébricos $V(I)\\subseteq\\mathbb{A}^n$ e o ideal $I(X)$ de um conjunto, e estabelecer a topologia de Zariski.",
+        "Enunciar e usar o Lema de Zariski: corpo finitamente gerado como álgebra sobre $k$ é extensão finita de $k$.",
+        "Demonstrar a forma fraca do Nullstellensatz: sobre $k$ algebricamente fechado, os maximais de $k[x_1,\\dots,x_n]$ são $(x_1-a_1,\\dots,x_n-a_n)$.",
+        "Deduzir a forma forte $I(V(I))=\\sqrt{I}$ via o truque de Rabinowitsch.",
+        "Traduzir a correspondência: ideais radicais $\\leftrightarrow$ conjuntos algébricos; primos $\\leftrightarrow$ variedades irredutíveis; maximais $\\leftrightarrow$ pontos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Conjunto algébrico",
+          "statement": "Para $I\\subseteq k[x_1,\\dots,x_n]$, $V(I)=\\{p\\in\\mathbb{A}^n: f(p)=0\\ \\forall f\\in I\\}$. Pela Base de Hilbert, basta um número finito de equações. Os $V(I)$ são os fechados da topologia de Zariski."
+        },
+        {
+          "term": "Ideal de um conjunto",
+          "statement": "Para $X\\subseteq\\mathbb{A}^n$, $I(X)=\\{f: f(p)=0\\ \\forall p\\in X\\}$. É sempre um ideal radical, pois $f^m$ se anula em $X$ $\\iff f$ se anula em $X$."
+        },
+        {
+          "term": "Variedade irredutível",
+          "statement": "Conjunto algébrico não vazio que não é união de dois fechados próprios. $X$ é irredutível $\\iff I(X)$ é primo. As componentes irredutíveis de $V(I)$ correspondem aos primos minimais sobre $I$."
+        },
+        {
+          "term": "Lema de Zariski",
+          "statement": "Se um corpo $K$ é finitamente gerado como $k$-álgebra, então $K$ é uma extensão finita (logo algébrica) de $k$. É o coração técnico do Nullstellensatz fraco."
+        },
+        {
+          "term": "Truque de Rabinowitsch",
+          "statement": "Técnica que deduz a forma forte da fraca, introduzindo uma variável extra $x_{n+1}$ e o polinômio $1-x_{n+1}g$ para forçar $g\\in\\sqrt{I}$ a partir de $g\\in I(V(I))$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Nullstellensatz (forma fraca)",
+          "statement": "Seja $k$ algebricamente fechado. Um ideal $I\\subsetneq k[x_1,\\dots,x_n]$ próprio tem $V(I)\\neq\\varnothing$. Equivalentemente, os ideais maximais de $k[x_1,\\dots,x_n]$ são exatamente os $(x_1-a_1,\\dots,x_n-a_n)$ com $(a_1,\\dots,a_n)\\in k^n$.",
+          "whyItMatters": "Identifica pontos de $\\mathbb{A}^n$ com ideais maximais — a primeira ponte concreta entre álgebra e geometria. Sem 'algebricamente fechado' falha: $(x^2+1)$ é maximal em $\\mathbb{R}[x]$ mas $V$ é vazio."
+        },
+        {
+          "name": "Nullstellensatz (forma forte)",
+          "statement": "Seja $k$ algebricamente fechado e $I\\subseteq k[x_1,\\dots,x_n]$. Então $I(V(I))=\\sqrt{I}$.",
+          "whyItMatters": "É o teorema central: estabelece a correspondência bijetiva, que inverte inclusões, entre ideais radicais e conjuntos algébricos. Toda a tradução álgebra-geometria — pontos, curvas, superfícies viram ideais — repousa nele."
+        },
+        {
+          "name": "Dicionário álgebra-geometria",
+          "statement": "Sobre $k$ algebricamente fechado, $V$ e $I$ são bijeções inversas entre {ideais radicais de $k[x_1,\\dots,x_n]$} e {conjuntos algébricos de $\\mathbb{A}^n$}, levando ideais primos em variedades irredutíveis e maximais em pontos.",
+          "whyItMatters": "É a Pedra de Roseta da geometria algébrica: cada conceito algébrico ganha um significado geométrico e vice-versa, permitindo provar fatos geométricos com álgebra comutativa e vice-versa."
+        }
+      ],
+      "summary": "O Nullstellensatz (teorema dos zeros) de Hilbert é o resultado que transforma álgebra comutativa em geometria. Fixe um corpo algebricamente fechado $k$ e o espaço afim $\\mathbb{A}^n=k^n$. A cada ideal $I\\subseteq k[x_1,\\dots,x_n]$ associamos seu conjunto de zeros $V(I)$, e a cada subconjunto $X$ associamos o ideal $I(X)$ das funções que se anulam em $X$. A pergunta natural — quanto da informação de $I$ é recuperável a partir de $V(I)$ — tem resposta exata. A forma fraca diz que todo ideal próprio tem ao menos um zero, ou equivalentemente que os ideais maximais de $k[x_1,\\dots,x_n]$ são precisamente os $(x_1-a_1,\\dots,x_n-a_n)$, isto é, os pontos. A hipótese de $k$ ser algebricamente fechado é essencial: em $\\mathbb{R}[x]$ o ideal $(x^2+1)$ é maximal mas não corresponde a nenhum ponto real. A prova passa pelo Lema de Zariski: um corpo que é finitamente gerado como $k$-álgebra é, na verdade, uma extensão finita de $k$.\n\nA forma forte refina isso: $I(V(I))=\\sqrt{I}$. Ou seja, a única perda ao passar de $I$ para $V(I)$ e voltar é o radical — informação infinitesimal/multiplicidade. Como $I(X)$ é sempre radical, segue a correspondência perfeita: $V$ e $I$ são bijeções inversas entre ideais radicais e conjuntos algébricos, invertendo inclusões, e nessa tradução ideais primos viram variedades irredutíveis e ideais maximais viram pontos. A passagem da forma fraca para a forte usa o elegante truque de Rabinowitsch: dado $g$ que se anula em $V(I)$, introduz-se uma variável $x_{n+1}$ e considera-se o ideal $I+(1-x_{n+1}g)$, que não tem zeros; aplicando a forma fraca e limpando denominadores, conclui-se $g^m\\in I$. Esse dicionário é o ponto de partida de toda a geometria algébrica clássica e o motivo pelo qual $\\operatorname{Spec}$ e os esquemas existem.",
+      "commonPitfalls": [
+        "Aplicar o Nullstellensatz sobre corpo não algebricamente fechado: sobre $\\mathbb{R}$ ou $\\mathbb{Q}$ a correspondência falha ($V(x^2+1)=\\varnothing$ mas $(x^2+1)\\neq(1)$).",
+        "Confundir a forma fraca ('ideal próprio tem zero') com a forma forte ('$I(V(I))=\\sqrt{I}$'): a fraca é o caso de existência, a forte é a igualdade completa.",
+        "Esquecer o radical: $V((x^2))=V((x))=\\{0\\}$, então $I(V((x^2)))=(x)=\\sqrt{(x^2)}\\neq(x^2)$ — a multiplicidade some na geometria clássica.",
+        "Achar que todo ideal radical é primo: $(xy)$ é radical mas não primo; corresponde à união (redutível) dos dois eixos."
+      ],
+      "worked": "**Dedução da forma forte a partir da fraca (truque de Rabinowitsch).** Seja $k$ algebricamente fechado, $I=(f_1,\\dots,f_r)\\subseteq k[x_1,\\dots,x_n]$ e $g\\in I(V(I))$, isto é, $g$ se anula em todos os zeros comuns dos $f_i$. Queremos $g\\in\\sqrt{I}$.\n\nIntroduza uma nova variável $x_{n+1}$ e considere, em $k[x_1,\\dots,x_n,x_{n+1}]$, o ideal\n$$J=(f_1,\\dots,f_r,\\ 1-x_{n+1}g).$$\nAfirmo que $V(J)=\\varnothing$ em $\\mathbb{A}^{n+1}$. De fato, num ponto $(a_1,\\dots,a_n,a_{n+1})\\in V(J)$ teríamos $f_i(a)=0$ para todo $i$, logo $(a_1,\\dots,a_n)\\in V(I)$, e portanto $g(a)=0$; mas então $1-a_{n+1}g(a)=1\\neq 0$, contradizendo a anulação do último gerador. Logo $V(J)=\\varnothing$.\n\nPela forma **fraca** do Nullstellensatz, $V(J)=\\varnothing$ implica $J=(1)$. Escreva então\n$$1=\\sum_{i=1}^r h_i\\,f_i+h_0\\,(1-x_{n+1}g)$$\ncom $h_i\\in k[x_1,\\dots,x_n,x_{n+1}]$. Agora localize/substitua $x_{n+1}=1/g$ (formalmente, trabalhe em $k(x_1,\\dots,x_n)$ e limpe denominadores): o termo $1-x_{n+1}g$ zera, e multiplicando por uma potência $g^m$ suficientemente alta para eliminar os denominadores em $x_{n+1}\\to 1/g$, obtemos\n$$g^m=\\sum_{i=1}^r \\tilde h_i\\,f_i\\in I.$$\nLogo $g\\in\\sqrt{I}$. Como a inclusão $\\sqrt{I}\\subseteq I(V(I))$ é imediata (se $g^m\\in I$, $g^m$ e portanto $g$ se anulam em $V(I)$), concluímos $I(V(I))=\\sqrt{I}$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre que sobre $k=\\mathbb{R}$ a forma fraca do Nullstellensatz falha, exibindo um ideal próprio de $\\mathbb{R}[x]$ com $V(I)=\\varnothing$.",
+          "hint": "$(x^2+1)$ é maximal em $\\mathbb{R}[x]$ (pois $x^2+1$ é irredutível) mas não tem raiz real.",
+          "difficulty": 1,
+          "solution": "$k=\\mathbb{R}$, $I=(x^2+1)\\subseteq\\mathbb{R}[x]$.\n\n**Proprio (maximal).** $x^2+1$ e irredutivel sobre $\\mathbb{R}$, e $\\mathbb{R}[x]/(x^2+1)\\cong\\mathbb{C}$ e corpo; logo $I\\neq(1)$.\n\n**$V(I)=\\varnothing$:** $\\{a\\in\\mathbb{R}:a^2+1=0\\}=\\varnothing$ pois $a^2+1\\ge1>0$.\n\nAssim ha ideal proprio com $V=\\varnothing$: a forma fraca falha sobre $\\mathbb{R}$ (nao algebricamente fechado; as raizes $\\pm i$ vivem em $\\mathbb{C}$). $\\blacksquare$",
+          "steps": [
+            "Escolha $(x^2+1)$ em $\\mathbb{R}[x]$.",
+            "Mostre proprio/maximal: $\\mathbb{R}[x]/(x^2+1)\\cong\\mathbb{C}$ corpo.",
+            "Calcule $V(I)=\\varnothing$ pois $a^2+1>0$.",
+            "Conclua que a forma fraca falha por $\\mathbb{R}$ nao ser algebricamente fechado."
+          ]
+        },
+        {
+          "prompt": "Sobre $k$ algebricamente fechado, prove que $X\\subseteq\\mathbb{A}^n$ é irredutível se, e somente se, $I(X)$ é primo.",
+          "hint": "Se $I(X)$ não é primo, $fg\\in I(X)$ com $f,g\\notin I(X)$; então $X\\subseteq V(f)\\cup V(g)$ decompõe $X$. Reciprocamente, use $V(I(X))=X$ para fechados.",
+          "difficulty": 3,
+          "solution": "$k=\\bar k$, $X\\subseteq\\mathbb{A}^n$ fechado, $X\\neq\\varnothing$.\n\n**($\\Rightarrow$)** Contrapositiva: se $fg\\in I(X)$, $f,g\\notin I(X)$, entao $X\\subseteq V(f)\\cup V(g)$, logo $X=(X\\cap V(f))\\cup(X\\cap V(g))$, fechados proprios (existe $q$ com $f(q)\\neq0$, etc.): $X$ redutivel.\n\n**($\\Leftarrow$)** Se $X=X_1\\cup X_2$ (fechados proprios), entao $I(X)=I(X_1)\\cap I(X_2)$ e $I(X)\\subsetneq I(X_i)$ (pois $V(I(X_i))=X_i\\neq X$). Escolha $f\\in I(X_1)\\setminus I(X)$, $g\\in I(X_2)\\setminus I(X)$: $fg\\in I(X)$ com $f,g\\notin I(X)$, contradizendo $I(X)$ primo. Logo $X$ irredutivel. $\\blacksquare$",
+          "steps": [
+            "Reduza ao caso $X\\neq\\varnothing$.",
+            "($\\Rightarrow$) De $fg\\in I(X)$, $f,g\\notin I(X)$, cubra $X\\subseteq V(f)\\cup V(g)$: dois fechados proprios.",
+            "($\\Leftarrow$) De $X=X_1\\cup X_2$ deduza $I(X)=I(X_1)\\cap I(X_2)$ e $I(X)\\subsetneq I(X_i)$.",
+            "Escolha $f,g$ nas diferencas com $fg\\in I(X)$ para contradizer a primalidade."
+          ]
+        },
+        {
+          "prompt": "Calcule $I(V(I))$ para $I=(x^2,y^3)\\subseteq\\mathbb{C}[x,y]$ e confirme que é $\\sqrt{I}$.",
+          "hint": "$V(I)=\\{(0,0)\\}$, logo $I(V(I))=(x,y)$; verifique que $\\sqrt{(x^2,y^3)}=(x,y)$.",
+          "difficulty": 2,
+          "solution": "$I=(x^2,y^3)\\subseteq\\mathbb{C}[x,y]$.\n\n$V(I)=\\{(a,b):a^2=0,b^3=0\\}=\\{(0,0)\\}$.\n\n$I(V(I))=I(\\{(0,0)\\})=(x,y)$ (polinomios sem termo constante).\n\n$\\sqrt I=(x,y)$: $x\\in\\sqrt I$ ($x^2\\in I$), $y\\in\\sqrt I$ ($y^3\\in I$), logo $(x,y)\\subseteq\\sqrt I$; e $f\\in\\sqrt I\\Rightarrow f^m\\in(x,y)$ primo $\\Rightarrow f\\in(x,y)$.\n\nLogo $I(V(I))=(x,y)=\\sqrt I$, confirmando a forma forte sobre $\\mathbb{C}$. Note $I(V(I))\\supsetneq I$: a multiplicidade ($x^2,y^3$) some, sobrando o radical. $\\blacksquare$",
+          "steps": [
+            "Resolva $x^2=0,y^3=0$: $V(I)=\\{(0,0)\\}$.",
+            "Identifique $I(\\{(0,0)\\})=(x,y)$.",
+            "Calcule $\\sqrt{(x^2,y^3)}=(x,y)$ usando que $(x,y)$ e primo.",
+            "Compare: $I(V(I))=(x,y)=\\sqrt I$."
+          ]
+        },
+        {
+          "prompt": "Enuncie o Lema de Zariski e explique, em uma linha, por que ele implica que todo maximal de $\\mathbb{C}[x_1,\\dots,x_n]$ é da forma $(x_1-a_1,\\dots,x_n-a_n)$.",
+          "hint": "$K=\\mathbb{C}[x_1,\\dots,x_n]/\\mathfrak{m}$ é corpo f.g. sobre $\\mathbb{C}$, logo finito sobre $\\mathbb{C}$; mas $\\mathbb{C}$ é algebricamente fechado, então $K=\\mathbb{C}$, e cada $x_i\\mapsto a_i\\in\\mathbb{C}$.",
+          "difficulty": 3,
+          "solution": "**Lema de Zariski.** Se um corpo $K$ e f.g. como $k$-algebra ($K=k[a_1,\\dots,a_n]$), entao $K/k$ e extensao finita (logo algebrica).\n\n**Aplicacao aos maximais de $\\mathbb{C}[x_1,\\dots,x_n]$.** Seja $\\mathfrak{m}$ maximal, $K=\\mathbb{C}[x_1,\\dots,x_n]/\\mathfrak{m}$ corpo f.g. sobre $\\mathbb{C}$. Por Zariski, $K$ e finito sobre $\\mathbb{C}$; como $\\mathbb{C}=\\bar{\\mathbb{C}}$, $K=\\mathbb{C}$. A projecao leva $x_i\\mapsto a_i\\in\\mathbb{C}$, logo $\\mathfrak{m}\\supseteq(x_1-a_1,\\dots,x_n-a_n)$; como este ja e maximal, $\\mathfrak{m}=(x_1-a_1,\\dots,x_n-a_n)$. $\\blacksquare$",
+          "steps": [
+            "Enuncie o Lema de Zariski: corpo f.g. como $k$-algebra e extensao finita.",
+            "Aplique a $K=\\mathbb{C}[x_1,\\dots,x_n]/\\mathfrak{m}$, finito sobre $\\mathbb{C}$.",
+            "Use $\\mathbb{C}=\\bar{\\mathbb{C}}$ para obter $K=\\mathbb{C}$ e $x_i\\mapsto a_i$.",
+            "Deduza $\\mathfrak{m}=(x_1-a_1,\\dots,x_n-a_n)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "$V(I)$",
+          "back": "conjunto dos zeros comuns de $I$ em $\\mathbb{A}^n$; fechados de Zariski."
+        },
+        {
+          "front": "$I(X)$",
+          "back": "ideal das funções que se anulam em $X$; sempre radical."
+        },
+        {
+          "front": "Nullstellensatz fraco",
+          "back": "sobre $k=\\bar k$, maximais de $k[x_1,\\dots,x_n]$ são $(x_1-a_1,\\dots,x_n-a_n)$; todo ideal próprio tem zero."
+        },
+        {
+          "front": "Nullstellensatz forte",
+          "back": "sobre $k=\\bar k$: $I(V(I))=\\sqrt{I}$."
+        },
+        {
+          "front": "Correspondência",
+          "back": "ideais radicais $\\leftrightarrow$ conjuntos algébricos; primos $\\leftrightarrow$ irredutíveis; maximais $\\leftrightarrow$ pontos."
+        },
+        {
+          "front": "Lema de Zariski",
+          "back": "corpo f.g. como $k$-álgebra $\\Rightarrow$ extensão finita de $k$."
+        },
+        {
+          "front": "Por que $k$ algebricamente fechado?",
+          "back": "senão $(x^2+1)\\subset\\mathbb{R}[x]$ é maximal sem zero; a correspondência quebra."
+        },
+        {
+          "front": "Truque de Rabinowitsch",
+          "back": "adiciona $1-x_{n+1}g$ para deduzir a forma forte da fraca."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Atiyah-Macdonald, cap. 5 e exercícios (Integral dependence, Nullstellensatz)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Álgebra (Nullstellensatz)",
+          "ref": "livro"
+        },
+        {
+          "title": "Reid, Undergraduate Commutative Algebra (Nullstellensatz)",
+          "ref": "livro"
+        },
+        {
+          "title": "Dummit & Foote, cap. 15.2-15.3 (Radicals and affine varieties)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o cap. 5 de Atiyah-Macdonald (dependencia integral) e o Nullstellensatz em Reid ou Garcia-Lequain.",
+          "Estabeleca $V(I)$, $I(X)$ e a topologia de Zariski; prove que $I(X)$ e sempre radical.",
+          "Estude o Lema de Zariski (corpo f.g. como $k$-algebra e extensao finita) e como ele da a forma fraca.",
+          "Reproduza o truque de Rabinowitsch passo a passo para deduzir $I(V(I))=\\sqrt I$.",
+          "Assista a um video sobre a correspondencia algebra-geometria (ideais radicais $\\leftrightarrow$ conjuntos algebricos).",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (formas fraca e forte, Zariski, Rabinowitsch)."
+        ],
+        "searchQueries": [
+          "Nullstellensatz de Hilbert forma fraca forma forte demonstracao",
+          "lema de Zariski corpo finitamente gerado extensao finita",
+          "truque de Rabinowitsch prova Nullstellensatz forte",
+          "topologia de Zariski conjunto algebrico ideal radical correspondencia",
+          "Hilbert Nullstellensatz weak strong proof algebraically closed",
+          "variedade irredutivel ideal primo correspondencia geometria algebrica"
+        ],
+        "videos": [
+          {
+            "title": "Nullstellensatz and algebraic geometry",
+            "channel": "Michael Penn (YouTube)",
+            "note": "Aulas sobre $V(I)$, $I(X)$ e as formas fraca e forte."
+          },
+          {
+            "title": "Algebraic geometry - Nullstellensatz",
+            "channel": "Richard Borcherds (YouTube)",
+            "note": "Prova via Lema de Zariski e Rabinowitsch."
+          },
+          {
+            "title": "Introducao a geometria algebrica / Nullstellensatz",
+            "channel": "IMPA (YouTube)",
+            "note": "Procure minicursos/aulas do IMPA sobre a correspondencia algebra-geometria."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introduction to Commutative Algebra, cap. 5 e exercicios (Integral dependence; Nullstellensatz)",
+            "where": "Atiyah & Macdonald - livro"
+          },
+          {
+            "title": "Undergraduate Commutative Algebra (Nullstellensatz)",
+            "where": "Miles Reid - livro"
+          },
+          {
+            "title": "Elementos de Algebra (Nullstellensatz)",
+            "where": "A. Garcia & Y. Lequain, IMPA - livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-comutativa-07-dimensao-krull",
+      "title": "Dimensão de Krull e o Teorema do Ideal Principal",
+      "tagline": "Quão grande é um anel? Cadeias de primos medem dimensão, e o Hauptidealsatz de Krull controla quanto uma equação corta.",
+      "objectives": [
+        "Definir a dimensão de Krull como o supremo dos comprimentos de cadeias de ideais primos e calcular $\\dim\\mathbb{Z}$, $\\dim k$, $\\dim k[x_1,\\dots,x_n]$.",
+        "Definir altura (codimensão) de um primo e relacioná-la à dimensão e à dimensão do quociente.",
+        "Caracterizar anéis de dimensão $0$ (Artinianos) e de dimensão $1$ (Dedekind/DIP) por suas cadeias de primos.",
+        "Enunciar o Teorema do Ideal Principal de Krull (Hauptidealsatz) e sua versão para $n$ geradores.",
+        "Relacionar dimensão e grau de transcendência: para domínios finitamente gerados sobre um corpo, $\\dim R=\\operatorname{trdeg}_k\\operatorname{Frac}(R)$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Dimensão de Krull",
+          "statement": "$\\dim R$ é o supremo dos $n$ tais que existe uma cadeia $\\mathfrak{p}_0\\subsetneq\\mathfrak{p}_1\\subsetneq\\cdots\\subsetneq\\mathfrak{p}_n$ de ideais primos. Mede o 'tamanho' de $\\operatorname{Spec}(R)$."
+        },
+        {
+          "term": "Altura de um primo",
+          "statement": "$\\operatorname{ht}(\\mathfrak{p})$ é o supremo dos comprimentos de cadeias de primos descendo de $\\mathfrak{p}$; é $\\dim R_{\\mathfrak{p}}$. Vale $\\operatorname{ht}(\\mathfrak{p})+\\dim(R/\\mathfrak{p})\\le\\dim R$ (igualdade em anéis 'bons')."
+        },
+        {
+          "term": "Dimensão geométrica",
+          "statement": "Para $R=k[x_1,\\dots,x_n]/I$ (anel de coordenadas de uma variedade), $\\dim R$ é a dimensão geométrica de $V(I)$: ponto $=0$, curva $=1$, superfície $=2$, etc."
+        },
+        {
+          "term": "Grau de transcendência",
+          "statement": "$\\operatorname{trdeg}_k L$ é a cardinalidade máxima de um subconjunto algebricamente independente de uma extensão de corpos $L/k$. Para domínios f.g. sobre $k$, coincide com a dimensão de Krull."
+        },
+        {
+          "term": "Anel local regular (intro)",
+          "statement": "Anel local Noetheriano $(R,\\mathfrak{m})$ com $\\dim R=\\dim_{k}(\\mathfrak{m}/\\mathfrak{m}^2)$, onde $k=R/\\mathfrak{m}$; corresponde geometricamente a pontos não singulares (lisos)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Dimensão do anel de polinômios",
+          "statement": "Para um corpo $k$, $\\dim k[x_1,\\dots,x_n]=n$. Mais geralmente, $\\dim R[x]=\\dim R+1$ para $R$ Noetheriano.",
+          "whyItMatters": "Confirma que a dimensão de Krull recupera a intuição: $\\mathbb{A}^n$ tem dimensão $n$. A cadeia $0\\subsetneq(x_1)\\subsetneq(x_1,x_2)\\subsetneq\\cdots\\subsetneq(x_1,\\dots,x_n)$ realiza o limite inferior."
+        },
+        {
+          "name": "Teorema do Ideal Principal de Krull (Hauptidealsatz)",
+          "statement": "Seja $R$ Noetheriano e $a\\in R$ não invertível nem divisor de zero. Todo primo $\\mathfrak{p}$ minimal sobre $(a)$ tem altura $\\le 1$ (e $=1$ se $a$ não é unidade). Versão geral: um primo minimal sobre um ideal gerado por $n$ elementos tem altura $\\le n$.",
+          "whyItMatters": "É o teorema fundamental da teoria de dimensão: cada equação corta a dimensão em no máximo um. Geometricamente, uma hipersuperfície tem codimensão $1$. Sustenta toda a dimensão de variedades e a noção de interseção."
+        },
+        {
+          "name": "Dimensão = grau de transcendência",
+          "statement": "Se $R$ é um domínio finitamente gerado como álgebra sobre um corpo $k$, então $\\dim R=\\operatorname{trdeg}_k\\operatorname{Frac}(R)$, e $R$ é catenário (todas as cadeias maximais de primos têm o mesmo comprimento).",
+          "whyItMatters": "Conecta a dimensão de Krull (puramente em termos de primos) com a dimensão de corpos (grau de transcendência), tornando o cálculo de dimensões concreto e ligando à Normalização de Noether."
+        }
+      ],
+      "summary": "A dimensão de Krull mede o tamanho de um anel pelo comprimento das cadeias estritas de ideais primos: $\\dim R$ é o maior $n$ para o qual existe $\\mathfrak{p}_0\\subsetneq\\cdots\\subsetneq\\mathfrak{p}_n$. Essa definição puramente algébrica reproduz a intuição geométrica: um corpo tem dimensão $0$ (só o primo $(0)$); $\\mathbb{Z}$ e os DIPs que não são corpos têm dimensão $1$ (cadeias $(0)\\subsetneq(p)$); e $k[x_1,\\dots,x_n]$ tem dimensão $n$, realizada pela cadeia $(0)\\subsetneq(x_1)\\subsetneq(x_1,x_2)\\subsetneq\\cdots\\subsetneq(x_1,\\dots,x_n)$. A noção local correspondente é a altura $\\operatorname{ht}(\\mathfrak{p})=\\dim R_{\\mathfrak{p}}$, o comprimento das cadeias que descem de $\\mathfrak{p}$; ela mede codimensão, e em anéis bem comportados $\\operatorname{ht}(\\mathfrak{p})+\\dim(R/\\mathfrak{p})=\\dim R$. Os anéis Artinianos são exatamente os Noetherianos de dimensão $0$, e os domínios de Dedekind (incluindo anéis de inteiros $\\mathcal{O}_K$) são os Noetherianos, integralmente fechados, de dimensão $1$.\n\nO resultado central da teoria é o Teorema do Ideal Principal de Krull, o Hauptidealsatz: em um anel Noetheriano, um primo minimal sobre um ideal principal $(a)$ tem altura no máximo $1$, e mais geralmente um primo minimal sobre um ideal de $n$ geradores tem altura $\\le n$. A leitura geométrica é luminosa: impor uma equação polinomial corta a dimensão em no máximo uma unidade, de modo que uma hipersuperfície em $\\mathbb{A}^n$ tem dimensão $n-1$. Esse é o alicerce da teoria de interseção. Para domínios finitamente gerados sobre um corpo, a dimensão de Krull coincide com o grau de transcendência do corpo de frações sobre $k$ — o que, via Normalização de Noether (que exibe $R$ como extensão finita de um $k[y_1,\\dots,y_d]$), torna o cálculo de dimensões um exercício de contar variáveis independentes. Quando, num ponto, a dimensão iguala $\\dim_k(\\mathfrak{m}/\\mathfrak{m}^2)$, o anel local é regular — a tradução algébrica de ponto liso, abrindo a porta para a teoria de singularidades.",
+      "commonPitfalls": [
+        "Confundir dimensão de Krull com número de geradores ou com a cardinalidade do anel: $\\dim$ conta o comprimento de cadeias de primos, não elementos.",
+        "Achar que $\\dim$ é o comprimento de QUALQUER cadeia maximal: é o supremo; em anéis não catenários cadeias maximais podem ter comprimentos diferentes (embora isso não ocorra em álgebras f.g. sobre corpo).",
+        "Supor sempre $\\operatorname{ht}(\\mathfrak{p})+\\dim(R/\\mathfrak{p})=\\dim R$: a igualdade vale em anéis catenários/equidimensionais, mas em geral só há $\\le$.",
+        "Esquecer a hipótese Noetheriana no Hauptidealsatz: a conclusão sobre alturas pode falhar em anéis não Noetherianos."
+      ],
+      "worked": "**Cálculo.** $\\dim k[x_1,\\dots,x_n]=n$.\n\n**Limite inferior ($\\ge n$).** A cadeia de ideais primos\n$$(0)\\subsetneq(x_1)\\subsetneq(x_1,x_2)\\subsetneq\\cdots\\subsetneq(x_1,\\dots,x_n)$$\ntem comprimento $n$. Cada $(x_1,\\dots,x_i)$ é primo porque o quociente $k[x_1,\\dots,x_n]/(x_1,\\dots,x_i)\\cong k[x_{i+1},\\dots,x_n]$ é um domínio. As inclusões são estritas. Logo $\\dim\\ge n$.\n\n**Limite superior ($\\le n$).** Aqui se usa a relação dimensão = grau de transcendência. O corpo de frações é $k(x_1,\\dots,x_n)$, com $\\operatorname{trdeg}_k k(x_1,\\dots,x_n)=n$. Pelo teorema, para o domínio f.g. $R=k[x_1,\\dots,x_n]$ vale $\\dim R=\\operatorname{trdeg}_k\\operatorname{Frac}(R)=n$. (Alternativamente, via Normalização de Noether: qualquer domínio f.g. de dimensão $d$ é finito sobre $k[y_1,\\dots,y_d]$, e extensões finitas preservam dimensão.)\n\nCombinando, $\\dim k[x_1,\\dots,x_n]=n$. $\\blacksquare$\n\n**Aplicação do Hauptidealsatz.** Seja $f\\in k[x_1,\\dots,x_n]$ não constante e irredutível. Então $(f)$ é primo de altura $1$ (Hauptidealsatz), e a hipersuperfície $V(f)$ tem $\\dim k[x_1,\\dots,x_n]/(f)=n-1$: impor uma equação baixou a dimensão exatamente em $1$.",
+      "exercises": [
+        {
+          "prompt": "Calcule a dimensão de Krull de: (a) um corpo $k$; (b) $\\mathbb{Z}$; (c) $k[x]$; (d) $k[x,y]/(xy)$.",
+          "hint": "(a) só $(0)$, dim $0$. (b),(c) DIPs não-corpo, dim $1$. (d) união de dois eixos: cadeias $(x)\\subsetneq(x,y)$, dim $1$.",
+          "difficulty": 2,
+          "solution": "**(a) $k$ corpo:** unico primo $(0)$; cadeia de comprimento $0$. $\\dim k=0$.\n\n**(b) $\\mathbb{Z}$:** primos $(0)$ e $(p)$; cadeia maximal $(0)\\subsetneq(p)$, comprimento $1$. $\\dim\\mathbb{Z}=1$.\n\n**(c) $k[x]$:** DIP nao corpo; $(0)\\subsetneq(f)$, $f$ irredutivel. $\\dim k[x]=1$.\n\n**(d) $R=k[x,y]/(xy)$:** $(xy)=(x)\\cap(y)$; todo primo contem $(x)$ ou $(y)$. Cadeia $(\\bar x)\\subsetneq(\\bar x,\\bar y)$, comprimento $1$ ($(\\bar x)$ minimal = eixo $x=0$; $(\\bar x,\\bar y)$ maximal = origem). Nao ha cadeia de comprimento $2$. $\\dim R=1$.",
+          "steps": [
+            "Para cada anel, liste os primos e procure a cadeia estrita mais longa.",
+            "(a) So $(0)$: dim $0$. (b),(c) DIPs nao-corpo: cadeia $(0)\\subsetneq(p)$ ou $(0)\\subsetneq(f)$, dim $1$.",
+            "(d) Note $(xy)=(x)\\cap(y)$; primos contem $(x)$ ou $(y)$.",
+            "Exiba $(\\bar x)\\subsetneq(\\bar x,\\bar y)$; nao ha comprimento $2$: dim $1$."
+          ]
+        },
+        {
+          "prompt": "Prove que um anel Noetheriano $R$ tem dimensão de Krull $0$ se, e somente se, é Artiniano.",
+          "hint": "$\\dim 0$ significa que todo primo é maximal. Combine com Noetherianidade: há finitos primos minimais, todos maximais, e $R$ é produto de locais Artinianos.",
+          "difficulty": 4,
+          "solution": "$R$ Noetheriano. $\\dim R=0\\iff R$ Artiniano.\n\n**($\\Leftarrow$)** Em Artiniano todo primo e maximal: $R/\\mathfrak{p}$ e dominio Artiniano; para $a\\neq0$, $(a^n)=(a^{n+1})$ da $1=ab$, logo $a$ unidade, $R/\\mathfrak{p}$ corpo, $\\mathfrak{p}$ maximal. Entao $\\dim R=0$.\n\n**($\\Rightarrow$)** Noetheriano tem finitos primos minimais $\\mathfrak{p}_1,\\dots,\\mathfrak{p}_r$; dim $0$ os torna todos os primos, maximais. O nilradical $\\mathfrak{N}=\\bigcap\\mathfrak{p}_i$ e nilpotente ($\\mathfrak{N}^m=0$), logo $(\\mathfrak{p}_1\\cdots\\mathfrak{p}_r)^m=0$. A filtracao por potencias desses maximais tem quocientes que sao espacos vetoriais de dimensao finita sobre os corpos $R/\\mathfrak{p}_i$; assim $R$ tem comprimento finito, satisfaz DCC e e Artiniano. $\\blacksquare$",
+          "steps": [
+            "($\\Leftarrow$) Mostre que $R/\\mathfrak{p}$ (dominio Artiniano) e corpo, logo todo primo e maximal, $\\dim R=0$.",
+            "($\\Rightarrow$) Use Noetherianidade: finitos primos minimais, todos maximais (dim $0$).",
+            "Nilradical $\\mathfrak{N}=\\bigcap\\mathfrak{p}_i$ nilpotente $\\Rightarrow(\\mathfrak{p}_1\\cdots\\mathfrak{p}_r)^m=0$.",
+            "Filtracao por potencias dos maximais da comprimento finito e DCC: Artiniano."
+          ]
+        },
+        {
+          "prompt": "Usando o Hauptidealsatz, mostre que em $k[x_1,\\dots,x_n]$ todo ideal primo de altura $1$ é principal, gerado por um polinômio irredutível.",
+          "hint": "$k[x_1,\\dots,x_n]$ é DFU; um primo de altura $1$ contém um irredutível $f$, e $(f)$ já é primo de altura $1$, logo coincide com o primo.",
+          "difficulty": 4,
+          "solution": "$A=k[x_1,\\dots,x_n]$ e DFU. Seja $\\mathfrak{p}$ primo de altura $1$.\n\n**Contem irredutivel.** $\\mathfrak{p}\\neq(0)$; tome $0\\neq g\\in\\mathfrak{p}$, fatore $g=u f_1\\cdots f_s$; por primalidade algum irredutivel $f\\in\\mathfrak{p}$.\n\n**$(f)$ primo de altura $1$.** Em DFU, irredutivel e primo, logo $(f)$ primo. Pelo Hauptidealsatz, um primo minimal sobre $(f)$ tem altura $\\le1$; como $(f)$ e primo, $\\operatorname{ht}(f)=1$.\n\n**$\\mathfrak{p}=(f)$.** De $(0)\\subsetneq(f)\\subseteq\\mathfrak{p}$ com $\\operatorname{ht}(\\mathfrak{p})=1$: se $(f)\\subsetneq\\mathfrak{p}$ estrito, haveria cadeia de comprimento $2$ sob $\\mathfrak{p}$, contradizendo altura $1$. Logo $\\mathfrak{p}=(f)$, principal. $\\blacksquare$",
+          "steps": [
+            "Use que $k[x_1,\\dots,x_n]$ e DFU e altura $1$ da $\\mathfrak{p}\\neq(0)$.",
+            "Fatore $0\\neq g\\in\\mathfrak{p}$; a primalidade da um irredutivel $f\\in\\mathfrak{p}$.",
+            "Em DFU $f$ e primo; pelo Hauptidealsatz $(f)$ tem altura exatamente $1$.",
+            "Da cadeia $(0)\\subsetneq(f)\\subseteq\\mathfrak{p}$ com altura $1$, conclua $(f)=\\mathfrak{p}$."
+          ]
+        },
+        {
+          "prompt": "Seja $R=k[x,y,z]/(xy)$. Determine $\\dim R$ e exiba uma cadeia maximal de primos que a realize.",
+          "hint": "$V(xy)$ são dois planos $x=0$ e $y=0$ em $\\mathbb{A}^3$; cada um tem dimensão $2$. Tome $(x)\\subsetneq(x,z)\\subsetneq(x,y,z)$ em $R$.",
+          "difficulty": 3,
+          "solution": "$R=k[x,y,z]/(xy)$.\n\n**Geometria:** $V(xy)=\\{x=0\\}\\cup\\{y=0\\}$, dois planos de dimensao $2$.\n\n**$\\dim R=2$.** Primos de $R$ contem $(x)$ ou $(y)$ (pois $(xy)=(x)\\cap(y)$).\n\n*$\\ge2$:* cadeia $(\\bar x)\\subsetneq(\\bar x,\\bar z)\\subsetneq(\\bar x,\\bar y,\\bar z)$:\n- $R/(\\bar x)\\cong k[y,z]$ dominio;\n- $R/(\\bar x,\\bar z)\\cong k[y]$ dominio;\n- $R/(\\bar x,\\bar y,\\bar z)\\cong k$ corpo.\n\n*$\\le2$:* $\\dim R=\\max\\{\\dim R/\\mathfrak{p}:\\mathfrak{p}\\text{ minimal}\\}=\\max\\{\\dim k[y,z],\\dim k[x,z]\\}=\\max\\{2,2\\}=2$.\n\n**Cadeia maximal:** $(\\bar x)\\subsetneq(\\bar x,\\bar z)\\subsetneq(\\bar x,\\bar y,\\bar z)$ (plano $\\supsetneq$ reta $\\supsetneq$ ponto). $\\blacksquare$",
+          "steps": [
+            "Reconheca $V(xy)$ como uniao de dois planos de dimensao $2$.",
+            "Primos de $R$ contem $(x)$ ou $(y)$, pois $(xy)=(x)\\cap(y)$.",
+            "Exiba $(\\bar x)\\subsetneq(\\bar x,\\bar z)\\subsetneq(\\bar x,\\bar y,\\bar z)$ e verifique os quocientes.",
+            "Conclua $\\dim R=\\max\\{\\dim k[y,z],\\dim k[x,z]\\}=2$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Dimensão de Krull",
+          "back": "supremo dos comprimentos $n$ de cadeias $\\mathfrak{p}_0\\subsetneq\\cdots\\subsetneq\\mathfrak{p}_n$ de primos."
+        },
+        {
+          "front": "$\\dim k[x_1,\\dots,x_n]$",
+          "back": "$=n$ (realizada por $(0)\\subsetneq(x_1)\\subsetneq\\cdots\\subsetneq(x_1,\\dots,x_n)$)."
+        },
+        {
+          "front": "$\\dim\\mathbb{Z}$ e $\\dim$ de DIP",
+          "back": "$=1$ (cadeia $(0)\\subsetneq(p)$); corpos têm dim $0$."
+        },
+        {
+          "front": "Altura $\\operatorname{ht}(\\mathfrak{p})$",
+          "back": "comprimento das cadeias de primos descendo de $\\mathfrak{p}$; igual a $\\dim R_{\\mathfrak{p}}$."
+        },
+        {
+          "front": "Hauptidealsatz de Krull",
+          "back": "em Noetheriano, primo minimal sobre $(a)$ tem altura $\\le 1$; sobre $n$ geradores, $\\le n$."
+        },
+        {
+          "front": "Dimensão $0$ Noetheriano",
+          "back": "equivale a Artiniano."
+        },
+        {
+          "front": "Dimensão = trdeg",
+          "back": "domínio f.g. sobre $k$: $\\dim R=\\operatorname{trdeg}_k\\operatorname{Frac}(R)$."
+        },
+        {
+          "front": "Significado geométrico do Hauptidealsatz",
+          "back": "uma equação corta a dimensão em no máximo $1$ (hipersuperfície tem codim $1$)."
+        }
+      ],
+      "estimatedHours": 10,
+      "resources": [
+        {
+          "title": "Atiyah-Macdonald, cap. 11 (Dimension Theory)",
+          "ref": "livro"
+        },
+        {
+          "title": "Matsumura, Commutative Ring Theory (teoria de dimensão e Hauptidealsatz)",
+          "ref": "livro"
+        },
+        {
+          "title": "Eisenbud, caps. 8-9, 13 (Dimension, Krull's Principal Ideal Theorem)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia o cap. 11 de Atiyah-Macdonald (teoria de dimensao) e complemente com Eisenbud caps. 8-9, 13.",
+          "Fixe dimensao de Krull e altura; calcule $\\dim k$, $\\dim\\mathbb{Z}$, $\\dim k[x_1,\\dots,x_n]$ exibindo cadeias.",
+          "Estude dimensao = grau de transcendencia e a Normalizacao de Noether como ferramenta de calculo.",
+          "Aprenda o Hauptidealsatz e sua leitura geometrica (uma equacao corta a dimensao em $\\le1$); veja a versao para $n$ geradores.",
+          "Assista a uma aula sobre teoria de dimensao / aneis locais regulares (pontos lisos e singularidades).",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (dimensao/altura, $\\dim k[x_1,\\dots,x_n]=n$, Hauptidealsatz)."
+        ],
+        "searchQueries": [
+          "dimensao de Krull cadeia de ideais primos altura definicao",
+          "teorema do ideal principal de Krull Hauptidealsatz demonstracao",
+          "dimensao igual grau de transcendencia normalizacao de Noether",
+          "anel Noetheriano dimensao zero Artiniano caracterizacao",
+          "Krull principal ideal theorem height codimension",
+          "dim k[x1,...,xn] = n proof transcendence degree"
+        ],
+        "videos": [
+          {
+            "title": "Krull dimension and dimension theory",
+            "channel": "Michael Penn (YouTube)",
+            "note": "Aulas sobre dimensao de Krull, altura e Hauptidealsatz."
+          },
+          {
+            "title": "Commutative algebra - dimension theory",
+            "channel": "Richard Borcherds (YouTube)",
+            "note": "Dimensao, Normalizacao de Noether e o teorema do ideal principal."
+          },
+          {
+            "title": "18.705 - Dimension theory",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas finais sobre dimensao de Krull e aneis locais regulares."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Introduction to Commutative Algebra, cap. 11 (Dimension Theory)",
+            "where": "Atiyah & Macdonald - livro"
+          },
+          {
+            "title": "Commutative Algebra with a View Toward Algebraic Geometry, caps. 8-9, 13 (Dimension; Principal Ideal Theorem)",
+            "where": "David Eisenbud - livro"
+          },
+          {
+            "title": "Commutative Ring Theory (teoria de dimensao e Hauptidealsatz)",
+            "where": "Hideyuki Matsumura - livro"
+          }
+        ]
+      }
+    }
+  ]
+}

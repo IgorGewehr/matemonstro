@@ -1,0 +1,1739 @@
+{
+  "id": "prob-estatistica",
+  "title": "Probabilidade e Estatística",
+  "phase": 1,
+  "phaseLabel": "Núcleo",
+  "tagline": "Do acaso ao rigor: construa a probabilidade como medida sobre uma $\\sigma$-álgebra e chegue ao Teorema Central do Limite e à inferência estatística.",
+  "summary": "Esta trilha edifica a probabilidade a partir dos axiomas de Kolmogorov: um espaço de probabilidade é uma tripla $(\\Omega,\\mathcal{F},P)$ onde $P$ é uma medida de massa total $1$ sobre uma $\\sigma$-álgebra de eventos. A partir daí desenvolvemos probabilidade condicional, independência, variáveis aleatórias (discretas e contínuas), as distribuições clássicas, esperança, variância e momentos, vetores aleatórios e os dois teoremas-limite que fundam a estatística: a Lei dos Grandes Números e o Teorema Central do Limite.\n\nO fio condutor é a passagem do cálculo de casos favoráveis para a teoria da medida em miniatura: $P(A)=\\frac{|A|}{|\\Omega|}$ é apenas o caso equiprovável de um edifício muito maior. Fechamos com uma introdução à inferência estatística — estimação pontual, máxima verossimilhança, intervalos de confiança e testes de hipóteses — mostrando como o TCL transforma probabilidade em ferramenta de decisão sob incerteza.",
+  "bigPicture": "Probabilidade e Estatística é a ponte entre a matemática pura e o mundo dos dados, e é também uma das áreas mais elegantes da análise: a $\\sigma$-aditividade de $P$ é o mesmo axioma da teoria da medida de Lebesgue, a esperança $E[X]=\\int_\\Omega X\\,dP$ é uma integral, e a convergência de variáveis aleatórias dialoga diretamente com os modos de convergência da Análise Real. Por isso esta trilha tem $\\text{Cálculo III}$ como pré-requisito (precisamos de integrais múltiplas e jacobianos para densidades conjuntas) e conversa de perto com Análise Real e Teoria da Medida.\n\nEm concursos de Instituto Federal, a banca cobra com frequência análise combinatória, probabilidade condicional e Bayes, distribuições clássicas (Binomial, Poisson, Normal), esperança/variância e leitura de aproximação normal — itens de cálculo direto e bem definidos. Em mestrado, embora Análise e Álgebra costumem pesar mais na prova de matemática pura, a Lei dos Grandes Números e o Teorema Central do Limite aparecem em provas de probabilidade/estatística e em programas de pós em Estatística (ENA, exames de admissão do IMPA em probabilidade), onde o rigor — distinguir convergência em probabilidade de convergência quase certa, por exemplo — é decisivo.",
+  "prereqs": [
+    "calculo3"
+  ],
+  "difficulty": 4,
+  "estimatedHours": 62,
+  "primaryBooks": [
+    {
+      "title": "Probabilidade: Um Curso em Nível Intermediário",
+      "author": "Barry R. James (IMPA, Projeto Euclides)",
+      "note": "Referência brasileira rigorosa; trata espaços de probabilidade, esperança via integral, LGN e TCL com demonstrações completas. É o livro de transição para o rigor de mestrado.",
+      "chapters": "caps. 1-6"
+    },
+    {
+      "title": "A First Course in Probability",
+      "author": "Sheldon Ross",
+      "note": "Excelente para construir intuição, com centenas de exemplos graduados sobre combinatória, condicional, variáveis aleatórias e distribuições; cobre a parte de probabilidade da trilha.",
+      "chapters": "caps. 1-8"
+    },
+    {
+      "title": "Probabilidade e Variáveis Aleatórias",
+      "author": "Marcos Nascimento Magalhães (EDUSP)",
+      "note": "Clássico brasileiro de USP, equilibra rigor e exemplos; ótimo para variáveis aleatórias, vetores aleatórios e esperança condicional na linguagem de concursos.",
+      "chapters": "caps. 1-9"
+    },
+    {
+      "title": "Statistical Inference",
+      "author": "George Casella, Roger L. Berger",
+      "note": "Referência para a parte de inferência: estimadores, máxima verossimilhança, intervalos de confiança e testes de hipóteses com fundamento teórico.",
+      "chapters": "caps. 5-10"
+    },
+    {
+      "title": "Estatística Básica",
+      "author": "Wilton O. Bussab, Pedro A. Morettin",
+      "note": "Referência brasileira para a introdução à estatística e inferência, com linguagem alinhada a concursos e exemplos com dados reais.",
+      "chapters": "caps. 6-13"
+    },
+    {
+      "title": "Probability and Random Processes",
+      "author": "Geoffrey Grimmett, David Stirzaker",
+      "note": "Para aprofundar com rigor: convergências, LGN forte, funções características e TCL via funções geradoras; ótimo problemário.",
+      "chapters": "caps. 1-7"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.05 Introduction to Probability and Statistics",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "MIT OCW 6.041 Probabilistic Systems Analysis (Tsitsiklis)",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Harvard Stat 110: Probability (Joseph Blitzstein)",
+      "kind": "curso",
+      "ref": "projects.iq.harvard.edu/stat110"
+    },
+    {
+      "title": "Blitzstein & Hwang, Introduction to Probability (livro com PDF livre)",
+      "kind": "livro",
+      "ref": "probabilitybook.net"
+    },
+    {
+      "title": "Grinstead & Snell, Introduction to Probability (AMS, PDF livre)",
+      "kind": "livro",
+      "ref": "AMS / dartmouth.edu"
+    },
+    {
+      "title": "3Blue1Brown - Binomial distributions / Central Limit Theorem",
+      "kind": "video",
+      "ref": "youtube.com/3blue1brown"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 4,
+    "mestrado": 3,
+    "note": "Em concurso de IF cai com frequência: análise combinatória, probabilidade condicional e Teorema de Bayes, independência, distribuições clássicas (Bernoulli, Binomial, Poisson, Uniforme, Exponencial e principalmente a Normal), cálculo de esperança e variância, e leitura/uso de aproximação normal e tabelas. Costuma vir como questão objetiva ou problema fechado de cálculo direto. Em mestrado em matemática pura, probabilidade aparece menos que Análise/Álgebra, mas a Lei dos Grandes Números e o Teorema Central do Limite são clássicos exigidos em provas de probabilidade; em exames de admissão a pós em Estatística/Probabilidade (IMPA, ENA), cobra-se rigor em convergências, esperança como integral, momentos e estimação por máxima verossimilhança."
+  },
+  "subtopics": [
+    {
+      "id": "prob-estatistica-01-espacos-axiomas",
+      "title": "Espaços de probabilidade e os axiomas de Kolmogorov",
+      "tagline": "Probabilidade não é só contar casos favoráveis: é uma medida de massa $1$ sobre uma $\\sigma$-álgebra de eventos.",
+      "objectives": [
+        "Ao final você consegue modelar um experimento aleatório por um espaço de probabilidade $(\\Omega,\\mathcal{F},P)$, identificando espaço amostral, eventos e medida.",
+        "Ao final você consegue definir $\\sigma$-álgebra e explicar por que ela é o domínio correto de $P$ (e por que nem todo subconjunto precisa ser um evento).",
+        "Ao final você consegue enunciar os três axiomas de Kolmogorov e demonstrar a partir deles as propriedades elementares de $P$.",
+        "Ao final você consegue aplicar o princípio da inclusão-exclusão e a desigualdade de Boole em problemas concretos.",
+        "Ao final você consegue usar a continuidade da probabilidade para sequências monótonas de eventos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Espaço amostral $\\Omega$",
+          "statement": "Conjunto de todos os resultados possíveis de um experimento aleatório; um resultado individual $\\omega\\in\\Omega$ é um ponto amostral e um subconjunto $A\\subseteq\\Omega$ é um evento."
+        },
+        {
+          "term": "$\\sigma$-álgebra",
+          "statement": "Uma coleção $\\mathcal{F}$ de subconjuntos de $\\Omega$ tal que: (i) $\\Omega\\in\\mathcal{F}$; (ii) se $A\\in\\mathcal{F}$ então $A^c\\in\\mathcal{F}$; (iii) se $A_1,A_2,\\dots\\in\\mathcal{F}$ então $\\bigcup_{n}A_n\\in\\mathcal{F}$. É o domínio sobre o qual $P$ está definida."
+        },
+        {
+          "term": "Medida de probabilidade",
+          "statement": "Função $P:\\mathcal{F}\\to[0,1]$ satisfazendo os axiomas de Kolmogorov; $P(A)$ é a probabilidade do evento $A$."
+        },
+        {
+          "term": "Espaço equiprovável (clássico)",
+          "statement": "Quando $\\Omega$ é finito e todos os pontos têm a mesma probabilidade, $P(A)=\\dfrac{|A|}{|\\Omega|}=\\dfrac{\\#\\text{casos favoráveis}}{\\#\\text{casos possíveis}}$. É um caso particular, não a definição geral."
+        },
+        {
+          "term": "Eventos disjuntos (mutuamente exclusivos)",
+          "statement": "$A$ e $B$ com $A\\cap B=\\varnothing$; para esses vale $P(A\\cup B)=P(A)+P(B)$, caso particular da $\\sigma$-aditividade."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Axiomas de Kolmogorov",
+          "statement": "Uma medida de probabilidade satisfaz: (A1) $P(A)\\ge 0$ para todo $A\\in\\mathcal{F}$; (A2) $P(\\Omega)=1$; (A3) se $A_1,A_2,\\dots$ são dois a dois disjuntos, então $P\\!\\left(\\bigcup_{n=1}^{\\infty}A_n\\right)=\\sum_{n=1}^{\\infty}P(A_n)$ ($\\sigma$-aditividade).",
+          "whyItMatters": "São a fundação de toda a teoria: tudo o que se prova sobre probabilidade deriva desses três axiomas, exatamente como a teoria da medida deriva de axiomas análogos."
+        },
+        {
+          "name": "Propriedades elementares de $P$",
+          "statement": "Dos axiomas seguem: $P(\\varnothing)=0$; $P(A^c)=1-P(A)$; se $A\\subseteq B$ então $P(A)\\le P(B)$ (monotonicidade) e $P(B\\setminus A)=P(B)-P(A)$; e $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+          "whyItMatters": "São as regras de manipulação do dia a dia; o passo $P(A^c)=1-P(A)$ é o truque do complementar, que resolve a maioria dos problemas de 'pelo menos um'."
+        },
+        {
+          "name": "Princípio da inclusão-exclusão",
+          "statement": "$P\\!\\left(\\bigcup_{i=1}^{n}A_i\\right)=\\sum_i P(A_i)-\\sum_{i<j}P(A_i\\cap A_j)+\\sum_{i<j<k}P(A_i\\cap A_j\\cap A_k)-\\cdots+(-1)^{n+1}P(A_1\\cap\\cdots\\cap A_n)$.",
+          "whyItMatters": "Generaliza $P(A\\cup B)$ e é a ferramenta padrão para contar 'pelo menos um' quando os eventos não são disjuntos (problema dos coincidências/derangements)."
+        },
+        {
+          "name": "Desigualdade de Boole e continuidade",
+          "statement": "Subaditividade: $P\\!\\left(\\bigcup_n A_n\\right)\\le\\sum_n P(A_n)$. Continuidade: se $A_n\\uparrow A$ (crescente) então $P(A_n)\\to P(A)$; se $A_n\\downarrow A$ (decrescente) então $P(A_n)\\to P(A)$.",
+          "whyItMatters": "A subaditividade dá cotas superiores rápidas; a continuidade é a forma probabilística da continuidade de medida e é essencial para limites de eventos (ex.: Lema de Borel-Cantelli)."
+        }
+      ],
+      "summary": "Antes de Kolmogorov (1933), 'probabilidade' era um amontoado de regras heurísticas. A formalização moderna parte de uma tripla $(\\Omega,\\mathcal{F},P)$: o espaço amostral $\\Omega$ lista os resultados possíveis; a $\\sigma$-álgebra $\\mathcal{F}$ diz quais subconjuntos são eventos mensuráveis; e a medida $P$ atribui a cada evento um número em $[0,1]$ respeitando três axiomas — positividade, normalização ($P(\\Omega)=1$) e $\\sigma$-aditividade para uniões enumeráveis de disjuntos. A $\\sigma$-aditividade (e não apenas a aditividade finita) é o que permite trabalhar com limites e é o coração da conexão com a teoria da medida.\n\nToda a álgebra de probabilidades — complementar, monotonicidade, inclusão-exclusão, Boole — é teorema, não axioma: deduz-se dos três postulados. O caso equiprovável $P(A)=|A|/|\\Omega|$, que domina o ensino médio, é só um exemplo particular válido quando $\\Omega$ é finito e simétrico; em geral $P$ pode ser qualquer medida. Domine o truque do complementar ($P(A^c)=1-P(A)$) e o princípio da inclusão-exclusão: juntos resolvem a esmagadora maioria dos problemas de contagem probabilística que caem em concurso.",
+      "commonPitfalls": [
+        "Usar $P(A)=|A|/|\\Omega|$ em situações NÃO equiprováveis (ex.: soma de dois dados não é uniforme em $\\{2,\\dots,12\\}$).",
+        "Somar probabilidades de eventos que não são disjuntos, esquecendo de subtrair $P(A\\cap B)$.",
+        "Confundir 'mutuamente exclusivos' ($A\\cap B=\\varnothing$) com 'independentes' ($P(A\\cap B)=P(A)P(B)$) — são conceitos diferentes e em geral incompatíveis.",
+        "Achar que $P(A)=0$ implica $A=\\varnothing$ (evento impossível): em espaços contínuos há eventos não vazios de probabilidade zero."
+      ],
+      "worked": "**Qual a probabilidade de sair pelo menos um $6$ em quatro lançamentos de um dado honesto?**\n\nSeja $A$ o evento 'sai pelo menos um $6$'. Calcular diretamente $A$ exigiria inclusão-exclusão; o complementar é trivial. O complementar $A^c$ é 'nenhum $6$ nos quatro lançamentos'. Em cada lançamento, $P(\\text{não }6)=\\tfrac{5}{6}$, e os lançamentos são independentes, logo\n\n$$P(A^c)=\\left(\\tfrac{5}{6}\\right)^4=\\tfrac{625}{1296}.$$\n\nPortanto $P(A)=1-\\tfrac{625}{1296}=\\tfrac{671}{1296}\\approx 0{,}5177$. $\\blacksquare$\n\nObservação: este é o cálculo por trás do famoso problema do Chevalier de Méré, que ajudou a fundar a teoria da probabilidade.",
+      "exercises": [
+        {
+          "prompt": "A partir dos axiomas, demonstre que $P(A\\cup B\\cup C)=P(A)+P(B)+P(C)-P(A\\cap B)-P(A\\cap C)-P(B\\cap C)+P(A\\cap B\\cap C)$.",
+          "hint": "Escreva $A\\cup B\\cup C=(A\\cup B)\\cup C$ e aplique duas vezes a fórmula de dois conjuntos, usando distributividade $\\cap$ sobre $\\cup$.",
+          "difficulty": 3,
+          "solution": "Queremos deduzir a inclusao-exclusao de tres eventos usando apenas a formula de dois, $P(U\\cup V)=P(U)+P(V)-P(U\\cap V)$.\n\nEscreva $A\\cup B\\cup C=(A\\cup B)\\cup C$ e aplique a formula de dois com $U=A\\cup B$ e $V=C$:\n$$P(A\\cup B\\cup C)=P(A\\cup B)+P(C)-P\\big((A\\cup B)\\cap C\\big).$$\n\nExpanda $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$. Para o ultimo termo, use a distributividade $(A\\cup B)\\cap C=(A\\cap C)\\cup(B\\cap C)$ e aplique de novo a formula de dois:\n$$P\\big((A\\cap C)\\cup(B\\cap C)\\big)=P(A\\cap C)+P(B\\cap C)-P(A\\cap C\\cap B\\cap C),$$\ne note que $(A\\cap C)\\cap(B\\cap C)=A\\cap B\\cap C$.\n\nSubstituindo tudo:\n$$P(A\\cup B\\cup C)=\\big[P(A)+P(B)-P(A\\cap B)\\big]+P(C)-\\big[P(A\\cap C)+P(B\\cap C)-P(A\\cap B\\cap C)\\big].$$\n\nReorganizando:\n$$P(A\\cup B\\cup C)=P(A)+P(B)+P(C)-P(A\\cap B)-P(A\\cap C)-P(B\\cap C)+P(A\\cap B\\cap C).\\ \\blacksquare$$",
+          "steps": [
+            "Reagrupe: $A\\cup B\\cup C=(A\\cup B)\\cup C$ e trate $A\\cup B$ como um unico evento.",
+            "Aplique $P(U\\cup V)=P(U)+P(V)-P(U\\cap V)$ com $U=A\\cup B$, $V=C$.",
+            "Expanda $P(A\\cup B)$ pela formula de dois conjuntos.",
+            "Use a distributividade $(A\\cup B)\\cap C=(A\\cap C)\\cup(B\\cap C)$ e aplique de novo a formula de dois, observando que a intersecao dos dois vira $A\\cap B\\cap C$.",
+            "Some tudo e reorganize os sinais para obter a formula de inclusao-exclusao."
+          ]
+        },
+        {
+          "prompt": "Demonstre a desigualdade de Boole $P\\!\\left(\\bigcup_{n}A_n\\right)\\le\\sum_n P(A_n)$ para uma sequência qualquer de eventos.",
+          "hint": "Disjuntifique: defina $B_1=A_1$ e $B_n=A_n\\setminus\\bigcup_{k<n}A_k$; então os $B_n$ são disjuntos, $\\bigcup B_n=\\bigcup A_n$ e $B_n\\subseteq A_n$.",
+          "difficulty": 3,
+          "solution": "Queremos $P\\!\\left(\\bigcup_{n}A_n\\right)\\le\\sum_n P(A_n)$ para eventos quaisquer (nao necessariamente disjuntos).\n\n**Disjuntificacao.** Defina $B_1=A_1$ e, para $n\\ge 2$,\n$$B_n=A_n\\setminus\\bigcup_{k<n}A_k=A_n\\cap\\Big(\\bigcup_{k<n}A_k\\Big)^c.$$\nCada $B_n$ pertence a $\\mathcal{F}$ (uniao enumeravel, complementar e intersecao de eventos). Tres fatos:\n\n1. Os $B_n$ sao dois a dois disjuntos: se $m<n$, entao $B_n\\subseteq\\big(\\bigcup_{k<n}A_k\\big)^c\\subseteq A_m^c$, logo $B_n\\cap B_m\\subseteq A_m^c\\cap A_m=\\varnothing$.\n2. $\\bigcup_n B_n=\\bigcup_n A_n$: cada $B_n\\subseteq A_n$ da $\\subseteq$; reciprocamente, se $\\omega\\in\\bigcup A_n$, tome o menor indice $n$ com $\\omega\\in A_n$; entao $\\omega\\notin A_k$ para $k<n$, logo $\\omega\\in B_n$.\n3. $B_n\\subseteq A_n$, portanto pela monotonicidade $P(B_n)\\le P(A_n)$.\n\nAgora, pela $\\sigma$-aditividade (axioma A3), aplicada aos disjuntos $B_n$:\n$$P\\Big(\\bigcup_n A_n\\Big)=P\\Big(\\bigcup_n B_n\\Big)=\\sum_n P(B_n)\\le\\sum_n P(A_n).\\ \\blacksquare$$",
+          "steps": [
+            "O obstaculo: os $A_n$ podem se sobrepor, entao nao vale a $\\sigma$-aditividade diretamente. Ideia: substituir por disjuntos.",
+            "Defina $B_1=A_1$ e $B_n=A_n\\setminus\\bigcup_{k<n}A_k$ e verifique que $B_n\\in\\mathcal{F}$.",
+            "Mostre que os $B_n$ sao dois a dois disjuntos e que $\\bigcup B_n=\\bigcup A_n$ (use o menor indice).",
+            "Use $B_n\\subseteq A_n$ e a monotonicidade para $P(B_n)\\le P(A_n)$.",
+            "Aplique a $\\sigma$-aditividade aos $B_n$ e conclua a desigualdade."
+          ]
+        },
+        {
+          "prompt": "De um baralho de $52$ cartas distribui-se uma mão de $5$ cartas. Qual a probabilidade de sair exatamente um par (dois iguais e os outros três de valores distintos entre si e diferentes do par)?",
+          "hint": "Espaço equiprovável com $\\binom{52}{5}$ mãos. Conte: escolha o valor do par, as duas naipes, três valores distintos para as cartas restantes e um naipe para cada.",
+          "difficulty": 4,
+          "solution": "Espaco equiprovavel: total de maos de $5$ cartas e $\\binom{52}{5}=2\\,598\\,960$.\n\n**Contagem de 'exatamente um par'** (dois de um mesmo valor e as outras tres de valores distintos entre si e diferentes do par):\n\n- Escolher o valor do par: $\\binom{13}{1}=13$.\n- Escolher os $2$ naipes desse valor: $\\binom{4}{2}=6$.\n- Escolher os $3$ valores distintos das cartas restantes, dentre os $12$ valores que sobraram: $\\binom{12}{3}=220$.\n- Escolher um naipe para cada uma dessas tres cartas: $4^3=64$.\n\nNumero de maos favoraveis:\n$$13\\cdot 6\\cdot 220\\cdot 64=1\\,098\\,240.$$\n\nProbabilidade:\n$$P=\\frac{1\\,098\\,240}{2\\,598\\,960}=\\frac{1098240}{2598960}\\approx 0{,}4226.$$\n\nOu seja, cerca de $42{,}3\\%$ das maos de poquer tem exatamente um par. $\\blacksquare$",
+          "steps": [
+            "Modele como espaco equiprovavel e escreva o denominador $\\binom{52}{5}$.",
+            "Escolha o valor do par ($\\binom{13}{1}$) e os dois naipes dele ($\\binom{4}{2}$).",
+            "Escolha os tres valores distintos das cartas restantes ($\\binom{12}{3}$) para garantir 'exatamente' um par (sem trinca nem segundo par).",
+            "Atribua um naipe a cada uma das tres cartas ($4^3$).",
+            "Multiplique os fatores, divida por $\\binom{52}{5}$ e simplifique para $\\approx 0{,}4226$."
+          ]
+        },
+        {
+          "prompt": "Sejam $A_n=\\left(0,\\,1-\\tfrac{1}{n}\\right]$ eventos em $\\Omega=(0,1)$ com a probabilidade uniforme $P((a,b])=b-a$. Mostre que $A_n\\uparrow(0,1)$ e verifique a continuidade calculando $\\lim_n P(A_n)$.",
+          "hint": "$P(A_n)=1-\\tfrac{1}{n}$; o limite deve ser $P((0,1))=1$.",
+          "difficulty": 2,
+          "solution": "Temos $\\Omega=(0,1)$ com $P((a,b])=b-a$ e $A_n=\\left(0,\\,1-\\tfrac{1}{n}\\right]$.\n\n**Crescimento (monotonia).** Como $1-\\tfrac1n<1-\\tfrac{1}{n+1}$, o intervalo cresce: $A_n\\subseteq A_{n+1}$ para todo $n$. Logo $(A_n)$ e uma sequencia crescente de eventos, e seu limite e a uniao\n$$\\bigcup_{n=1}^{\\infty}A_n=\\bigcup_{n}\\Big(0,\\,1-\\tfrac1n\\Big]=(0,1),$$\npois todo $x\\in(0,1)$ satisfaz $x\\le 1-\\tfrac1n$ para $n$ grande o suficiente (basta $\\tfrac1n\\le 1-x$), e nenhum ponto atinge o $1$. Assim $A_n\\uparrow(0,1)$.\n\n**Continuidade.** Calculando diretamente,\n$$P(A_n)=P\\Big(\\big(0,\\,1-\\tfrac1n\\big]\\Big)=\\Big(1-\\tfrac1n\\Big)-0=1-\\tfrac1n.$$\nEntao\n$$\\lim_{n\\to\\infty}P(A_n)=\\lim_{n\\to\\infty}\\Big(1-\\tfrac1n\\Big)=1=P\\big((0,1)\\big),$$\nconfirmando a propriedade de continuidade $P(A_n)\\to P(A)$ para $A_n\\uparrow A$. $\\blacksquare$",
+          "steps": [
+            "Compare extremos: $1-\\tfrac1n$ cresce com $n$, logo $A_n\\subseteq A_{n+1}$.",
+            "Mostre que a uniao dos $A_n$ e $(0,1)$: todo $x\\in(0,1)$ cai em algum $A_n$ para $n$ grande.",
+            "Calcule $P(A_n)=1-\\tfrac1n$ pela regra $P((a,b])=b-a$.",
+            "Tome o limite $n\\to\\infty$ e obtenha $1=P((0,1))$, verificando a continuidade."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "O que é um espaço de probabilidade?",
+          "back": "Uma tripla $(\\Omega,\\mathcal{F},P)$: espaço amostral, $\\sigma$-álgebra de eventos e medida de probabilidade $P$ satisfazendo os axiomas de Kolmogorov."
+        },
+        {
+          "front": "Os três axiomas de Kolmogorov",
+          "back": "(A1) $P(A)\\ge 0$; (A2) $P(\\Omega)=1$; (A3) $\\sigma$-aditividade: $P(\\bigcup_n A_n)=\\sum_n P(A_n)$ para $A_n$ disjuntos."
+        },
+        {
+          "front": "Definição de $\\sigma$-álgebra",
+          "back": "Coleção $\\mathcal{F}$ com $\\Omega\\in\\mathcal{F}$, fechada por complementar e por uniões enumeráveis."
+        },
+        {
+          "front": "$P(A^c)=?$",
+          "back": "$P(A^c)=1-P(A)$ (truque do complementar)."
+        },
+        {
+          "front": "$P(A\\cup B)=?$ (caso geral)",
+          "back": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$."
+        },
+        {
+          "front": "Desigualdade de Boole",
+          "back": "$P\\!\\left(\\bigcup_n A_n\\right)\\le\\sum_n P(A_n)$ (subaditividade)."
+        },
+        {
+          "front": "$P(A)=0$ implica $A=\\varnothing$?",
+          "back": "Não. Em espaços contínuos há eventos não vazios com probabilidade zero (ex.: $\\{x\\}$ com lei uniforme)."
+        },
+        {
+          "front": "Fórmula clássica (equiprovável)",
+          "back": "$P(A)=\\dfrac{|A|}{|\\Omega|}$, válida só quando $\\Omega$ é finito e todos os pontos são igualmente prováveis."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Barry James, Probabilidade, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "Sheldon Ross, A First Course in Probability, caps. 1-3",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 6.041 - Probability models and axioms",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise do Cálculo/Análise a linguagem de conjuntos (uniao, intersecao, complementar, leis de De Morgan) e o que e uma colecao enumeravel; e disso que a $\\sigma$-algebra e feita.",
+          "Leia Barry James cap. 1 para o rigor de $(\\Omega,\\mathcal{F},P)$ e, em paralelo, Sheldon Ross caps. 1-2 para a intuicao combinatoria do caso equiprovavel $P(A)=|A|/|\\Omega|$.",
+          "Assista a uma aula introdutoria sobre axiomas e modelos de probabilidade, refazendo no papel a deducao de $P(A^c)=1-P(A)$ e de $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$ direto dos axiomas.",
+          "Monte uma lista de 6-8 problemas misturando: uso do complementar ('pelo menos um'), inclusao-exclusao e um exercicio de continuidade com $A_n\\uparrow A$.",
+          "Escreva, para si mesmo, a distincao entre 'disjuntos' e 'independentes' e um exemplo de evento nao vazio com probabilidade zero, para nao cair nas armadilhas classicas.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal: seu roteiro de quando usar complementar versus inclusao-exclusao e o passo onde mais erra."
+        ],
+        "searchQueries": [
+          "axiomas de Kolmogorov probabilidade demonstracao propriedades",
+          "sigma-algebra definicao exemplos probabilidade",
+          "principio da inclusao-exclusao probabilidade exercicios resolvidos",
+          "continuidade da probabilidade eventos monotonos limite",
+          "desigualdade de Boole demonstracao subaditividade",
+          "probability axioms measure theory sigma-algebra lecture notes"
+        ],
+        "videos": [
+          {
+            "title": "Probability models and axioms (6.041)",
+            "channel": "MIT OpenCourseWare",
+            "note": "aula 1 de Tsitsiklis: construcao de $(\\Omega,\\mathcal{F},P)$ e deducao das propriedades a partir dos axiomas"
+          },
+          {
+            "title": "Introducao a probabilidade e analise combinatoria",
+            "channel": "Equaciona com Paulo Pereira",
+            "note": "veja a mecanica do caso equiprovavel e da contagem de casos favoraveis em PT-BR"
+          },
+          {
+            "title": "Stat 110 - Probability and Counting",
+            "channel": "Harvard University (Joe Blitzstein)",
+            "note": "primeira aula: espaco amostral, naive definition of probability e suas limitacoes"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Barry R. James, Probabilidade: Um Curso em Nivel Intermediario, cap. 1 (Espacos de probabilidade)",
+            "where": "livro (IMPA, Projeto Euclides)"
+          },
+          {
+            "title": "Blitzstein & Hwang, Introduction to Probability, cap. 1",
+            "where": "PDF livre em probabilitybook.net"
+          }
+        ]
+      }
+    },
+    {
+      "id": "prob-estatistica-02-condicional-independencia",
+      "title": "Probabilidade condicional, Teorema de Bayes e independência",
+      "tagline": "Como a chegada de informação atualiza a probabilidade — e por que a maioria erra o cálculo do 'teste positivo'.",
+      "objectives": [
+        "Ao final você consegue definir probabilidade condicional $P(A\\mid B)$ e justificar por que ela é uma nova medida de probabilidade sobre $B$.",
+        "Ao final você consegue aplicar a regra do produto (cadeia) para decompor a probabilidade de interseções.",
+        "Ao final você consegue usar a lei da probabilidade total com uma partição do espaço amostral.",
+        "Ao final você consegue aplicar o Teorema de Bayes para inverter condicionais e evitar a falácia da taxa-base.",
+        "Ao final você consegue distinguir independência de dois eventos da independência mútua de vários eventos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Probabilidade condicional",
+          "statement": "Para $P(B)>0$, $P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}$. Fixado $B$, a função $A\\mapsto P(A\\mid B)$ é ela mesma uma medida de probabilidade."
+        },
+        {
+          "term": "Regra do produto (cadeia)",
+          "statement": "$P(A_1\\cap\\cdots\\cap A_n)=P(A_1)\\,P(A_2\\mid A_1)\\,P(A_3\\mid A_1\\cap A_2)\\cdots P(A_n\\mid A_1\\cap\\cdots\\cap A_{n-1})$."
+        },
+        {
+          "term": "Partição",
+          "statement": "Eventos $B_1,\\dots,B_k$ disjuntos com $\\bigcup_i B_i=\\Omega$ e $P(B_i)>0$; servem para 'condicionar em todos os cenários'."
+        },
+        {
+          "term": "Independência de eventos",
+          "statement": "$A$ e $B$ são independentes se $P(A\\cap B)=P(A)\\,P(B)$; equivalentemente $P(A\\mid B)=P(A)$ quando $P(B)>0$ (saber $B$ não altera a chance de $A$)."
+        },
+        {
+          "term": "Independência mútua",
+          "statement": "Eventos $A_1,\\dots,A_n$ são (mutuamente) independentes se para todo subconjunto de índices $I$ vale $P\\!\\left(\\bigcap_{i\\in I}A_i\\right)=\\prod_{i\\in I}P(A_i)$. Independência par a par NÃO basta."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Lei da probabilidade total",
+          "statement": "Se $\\{B_1,\\dots,B_k\\}$ é uma partição de $\\Omega$ com $P(B_i)>0$, então para todo evento $A$: $P(A)=\\sum_{i=1}^{k}P(A\\mid B_i)\\,P(B_i)$.",
+          "whyItMatters": "Permite calcular a probabilidade de $A$ decompondo o problema em cenários mutuamente exclusivos — a técnica de 'condicionar' que organiza problemas complexos."
+        },
+        {
+          "name": "Teorema de Bayes",
+          "statement": "Sob as mesmas hipóteses, $P(B_j\\mid A)=\\dfrac{P(A\\mid B_j)\\,P(B_j)}{\\sum_{i=1}^{k}P(A\\mid B_i)\\,P(B_i)}$.",
+          "whyItMatters": "Inverte o sentido da condicional: passa de $P(\\text{dado}\\mid\\text{causa})$ para $P(\\text{causa}\\mid\\text{dado})$. É a base do raciocínio diagnóstico e da estatística bayesiana; ignorar a probabilidade a priori $P(B_j)$ gera a falácia da taxa-base."
+        },
+        {
+          "name": "Independência e complementares",
+          "statement": "Se $A$ e $B$ são independentes, então também são independentes os pares $(A,B^c)$, $(A^c,B)$ e $(A^c,B^c)$.",
+          "whyItMatters": "Garante que a independência é robusta a tomar complementares, o que justifica multiplicar probabilidades de 'sucessos' e 'fracassos' livremente em ensaios independentes."
+        }
+      ],
+      "summary": "Probabilidade condicional formaliza a atualização de crença ao receber informação: $P(A\\mid B)$ renormaliza a medida concentrando toda a massa em $B$. Duas consequências organizam quase tudo: a regra do produto, que desmonta interseções em cadeia, e a lei da probabilidade total, que monta a probabilidade de um evento somando sobre os cenários de uma partição. O Teorema de Bayes nasce de combinar as duas e tem importância gigantesca porque inverte a condicional — é o que transforma 'probabilidade do sintoma dada a doença' em 'probabilidade da doença dado o sintoma'.\n\nIndependência é o conceito gêmeo: $A$ e $B$ são independentes quando $P(A\\cap B)=P(A)P(B)$, ou seja, saber um não muda a chance do outro. Atenção a dois erros clássicos: independência não é a mesma coisa que exclusão mútua (eventos disjuntos com probabilidade positiva são, ao contrário, fortemente dependentes); e independência par a par não implica independência mútua — é preciso a fatoração para TODOS os subconjuntos de índices. O exemplo de Bernstein (três eventos par a par independentes mas não mutuamente independentes) é o contraexemplo a memorizar.",
+      "commonPitfalls": [
+        "Confundir $P(A\\mid B)$ com $P(B\\mid A)$ — são em geral diferentes; trocá-las é a 'falácia do promotor'.",
+        "Esquecer a probabilidade a priori $P(B_j)$ no Bayes e concluir que teste positivo $\\Rightarrow$ doença quase certa (falácia da taxa-base).",
+        "Tratar eventos disjuntos como independentes: se $A\\cap B=\\varnothing$ e ambos têm prob. positiva, eles são dependentes, pois $P(A\\cap B)=0\\ne P(A)P(B)$.",
+        "Assumir independência mútua a partir de independência par a par."
+      ],
+      "worked": "**Teste diagnóstico e a falácia da taxa-base.** Uma doença atinge $1\\%$ da população: $P(D)=0{,}01$. Um teste tem sensibilidade $P(+\\mid D)=0{,}99$ e especificidade $0{,}95$, ou seja, $P(+\\mid D^c)=0{,}05$. Uma pessoa testa positivo. Qual a probabilidade de estar de fato doente?\n\nPela lei da probabilidade total: $P(+)=P(+\\mid D)P(D)+P(+\\mid D^c)P(D^c)=0{,}99\\cdot 0{,}01+0{,}05\\cdot 0{,}99=0{,}0099+0{,}0495=0{,}0594.$\n\nPor Bayes: $P(D\\mid +)=\\dfrac{P(+\\mid D)P(D)}{P(+)}=\\dfrac{0{,}0099}{0{,}0594}\\approx 0{,}167.$\n\nMesmo com um teste excelente, a probabilidade de doença dado positivo é só $\\approx 16{,}7\\%$, porque a doença é rara: os falsos positivos vindos dos $99\\%$ saudáveis dominam. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Uma urna tem $3$ bolas brancas e $2$ pretas. Retiram-se duas bolas sem reposição. Use a regra do produto para calcular a probabilidade de ambas serem brancas.",
+          "hint": "$P(B_1\\cap B_2)=P(B_1)\\,P(B_2\\mid B_1)=\\tfrac{3}{5}\\cdot\\tfrac{2}{4}$.",
+          "difficulty": 1,
+          "solution": "Sejam $B_1$ = 'primeira bola branca' e $B_2$ = 'segunda bola branca'. A urna tem $3$ brancas e $2$ pretas ($5$ no total), retirada sem reposicao.\n\nPela **regra do produto**:\n$$P(B_1\\cap B_2)=P(B_1)\\,P(B_2\\mid B_1).$$\n\n- $P(B_1)=\\dfrac{3}{5}$ (tres brancas entre cinco).\n- Dado que a primeira foi branca, restam $2$ brancas em $4$ bolas, logo $P(B_2\\mid B_1)=\\dfrac{2}{4}=\\dfrac12$.\n\nPortanto\n$$P(B_1\\cap B_2)=\\frac{3}{5}\\cdot\\frac{1}{2}=\\frac{3}{10}=0{,}3.$$\n\n(Confere com a contagem direta: $\\binom{3}{2}/\\binom{5}{2}=3/10$.) $\\blacksquare$",
+          "steps": [
+            "Defina os eventos $B_1$ e $B_2$ (branca na 1a e na 2a retirada).",
+            "Escreva a regra do produto $P(B_1\\cap B_2)=P(B_1)P(B_2\\mid B_1)$.",
+            "Calcule $P(B_1)=3/5$ e, atualizando a urna, $P(B_2\\mid B_1)=2/4$.",
+            "Multiplique para obter $3/10$ e, se quiser, confira com $\\binom{3}{2}/\\binom{5}{2}$."
+          ]
+        },
+        {
+          "prompt": "Três fábricas $F_1,F_2,F_3$ produzem $50\\%,30\\%,20\\%$ das peças, com taxas de defeito $2\\%,3\\%,4\\%$. Uma peça é sorteada e está defeituosa. Qual a probabilidade de ter vindo de $F_2$?",
+          "hint": "Lei total para $P(\\text{def})$ e depois Bayes com $B_j=F_j$.",
+          "difficulty": 3,
+          "solution": "Sejam $F_1,F_2,F_3$ as origens (com $P(F_1)=0{,}5$, $P(F_2)=0{,}3$, $P(F_3)=0{,}2$) e $D$ = 'peca defeituosa', com $P(D\\mid F_1)=0{,}02$, $P(D\\mid F_2)=0{,}03$, $P(D\\mid F_3)=0{,}04$.\n\n**Lei da probabilidade total** (a peca defeituosa):\n$$P(D)=\\sum_i P(D\\mid F_i)P(F_i)=0{,}02\\cdot0{,}5+0{,}03\\cdot0{,}3+0{,}04\\cdot0{,}2.$$\n$$P(D)=0{,}010+0{,}009+0{,}008=0{,}027.$$\n\n**Teorema de Bayes** para $F_2$:\n$$P(F_2\\mid D)=\\frac{P(D\\mid F_2)P(F_2)}{P(D)}=\\frac{0{,}009}{0{,}027}=\\frac{1}{3}\\approx 0{,}333.$$\n\nOu seja, dado que a peca e defeituosa, ha probabilidade $\\approx 33{,}3\\%$ de ter vindo de $F_2$. $\\blacksquare$",
+          "steps": [
+            "Liste as prioris $P(F_i)$ e as verossimilhancas $P(D\\mid F_i)$.",
+            "Aplique a lei total: $P(D)=\\sum_i P(D\\mid F_i)P(F_i)$.",
+            "Some $0{,}010+0{,}009+0{,}008=0{,}027$.",
+            "Use Bayes: $P(F_2\\mid D)=0{,}009/0{,}027=1/3$."
+          ]
+        },
+        {
+          "prompt": "(Exemplo de Bernstein) No espaço equiprovável $\\Omega=\\{1,2,3,4\\}$, sejam $A=\\{1,2\\}$, $B=\\{1,3\\}$, $C=\\{1,4\\}$. Mostre que $A,B,C$ são independentes par a par mas NÃO mutuamente independentes.",
+          "hint": "Verifique $P(A\\cap B)=P(A)P(B)$ etc. (cada interseção par é $\\{1\\}$, prob. $\\tfrac14$), mas $P(A\\cap B\\cap C)=\\tfrac14\\ne\\tfrac18=P(A)P(B)P(C)$.",
+          "difficulty": 3,
+          "solution": "No espaco equiprovavel $\\Omega=\\{1,2,3,4\\}$ (cada ponto com prob. $\\tfrac14$), temos $A=\\{1,2\\}$, $B=\\{1,3\\}$, $C=\\{1,4\\}$, todos com probabilidade $\\tfrac12$.\n\n**Independencia par a par.** As intersecoes de pares sao todas $\\{1\\}$:\n$$A\\cap B=A\\cap C=B\\cap C=\\{1\\},\\qquad P(\\{1\\})=\\tfrac14.$$\nE $P(A)P(B)=\\tfrac12\\cdot\\tfrac12=\\tfrac14=P(A\\cap B)$; o mesmo para os outros dois pares. Logo $A,B,C$ sao independentes **dois a dois**.\n\n**Falha da independencia mutua.** A tripla intersecao tambem e $\\{1\\}$:\n$$A\\cap B\\cap C=\\{1\\},\\qquad P(A\\cap B\\cap C)=\\tfrac14.$$\nMas\n$$P(A)P(B)P(C)=\\tfrac12\\cdot\\tfrac12\\cdot\\tfrac12=\\tfrac18\\ne\\tfrac14.$$\nComo a fatoracao falha para o subconjunto de indices $\\{A,B,C\\}$, os eventos **nao** sao mutuamente independentes, apesar de serem independentes par a par. $\\blacksquare$",
+          "steps": [
+            "Calcule $P(A)=P(B)=P(C)=\\tfrac12$ contando pontos.",
+            "Identifique que toda intersecao de dois deles e $\\{1\\}$, com probabilidade $\\tfrac14$.",
+            "Verifique $P(A\\cap B)=\\tfrac14=P(A)P(B)$ (e analogos): independencia par a par.",
+            "Compare $P(A\\cap B\\cap C)=\\tfrac14$ com $P(A)P(B)P(C)=\\tfrac18$: a fatoracao tripla falha.",
+            "Conclua: par a par nao implica mutua."
+          ]
+        },
+        {
+          "prompt": "Prove que se $A$ e $B$ são independentes então $A$ e $B^c$ também são.",
+          "hint": "$P(A\\cap B^c)=P(A)-P(A\\cap B)=P(A)-P(A)P(B)=P(A)(1-P(B))=P(A)P(B^c)$.",
+          "difficulty": 2,
+          "solution": "Suponha $A$ e $B$ independentes, isto e, $P(A\\cap B)=P(A)P(B)$. Queremos mostrar que $A$ e $B^c$ tambem sao independentes.\n\nParticione $A$ pelos casos $B$ e $B^c$: $A=(A\\cap B)\\cup(A\\cap B^c)$, uniao **disjunta**. Logo\n$$P(A)=P(A\\cap B)+P(A\\cap B^c)\\ \\Longrightarrow\\ P(A\\cap B^c)=P(A)-P(A\\cap B).$$\n\nUsando a independencia de $A$ e $B$:\n$$P(A\\cap B^c)=P(A)-P(A)P(B)=P(A)\\big(1-P(B)\\big)=P(A)\\,P(B^c).$$\n\nComo $P(A\\cap B^c)=P(A)P(B^c)$, por definicao $A$ e $B^c$ sao independentes. $\\blacksquare$\n\n(De modo analogo, seguem as independencias de $(A^c,B)$ e $(A^c,B^c)$.)",
+          "steps": [
+            "Escreva $A$ como uniao disjunta $A=(A\\cap B)\\cup(A\\cap B^c)$.",
+            "Da aditividade, $P(A\\cap B^c)=P(A)-P(A\\cap B)$.",
+            "Substitua $P(A\\cap B)=P(A)P(B)$ pela hipotese.",
+            "Fatore: $P(A)(1-P(B))=P(A)P(B^c)$, que e a definicao de independencia de $A$ e $B^c$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de $P(A\\mid B)$",
+          "back": "$P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}$, para $P(B)>0$."
+        },
+        {
+          "front": "Lei da probabilidade total",
+          "back": "$P(A)=\\sum_i P(A\\mid B_i)P(B_i)$ para uma partição $\\{B_i\\}$ de $\\Omega$."
+        },
+        {
+          "front": "Teorema de Bayes",
+          "back": "$P(B_j\\mid A)=\\dfrac{P(A\\mid B_j)P(B_j)}{\\sum_i P(A\\mid B_i)P(B_i)}$."
+        },
+        {
+          "front": "Quando $A$ e $B$ são independentes?",
+          "back": "Quando $P(A\\cap B)=P(A)P(B)$ (equivale a $P(A\\mid B)=P(A)$ se $P(B)>0$)."
+        },
+        {
+          "front": "Independência par a par $\\Rightarrow$ mútua?",
+          "back": "Não. Contraexemplo de Bernstein; exige-se a fatoração para todo subconjunto de índices."
+        },
+        {
+          "front": "Disjuntos são independentes?",
+          "back": "Não. Se $A\\cap B=\\varnothing$ com prob. positiva, são dependentes ($P(A\\cap B)=0\\ne P(A)P(B)$)."
+        },
+        {
+          "front": "Falácia da taxa-base",
+          "back": "Ignorar a priori $P(D)$ ao interpretar um teste positivo, superestimando $P(D\\mid +)$."
+        },
+        {
+          "front": "Regra do produto (cadeia)",
+          "back": "$P(A_1\\cap\\cdots\\cap A_n)=P(A_1)P(A_2\\mid A_1)\\cdots P(A_n\\mid A_1\\cap\\cdots\\cap A_{n-1})$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Sheldon Ross, A First Course in Probability, cap. 3",
+          "ref": "livro"
+        },
+        {
+          "title": "Magalhães, Probabilidade e Variáveis Aleatórias, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "Harvard Stat 110 - Conditional probability and Bayes",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja a definicao $P(A\\mid B)=P(A\\cap B)/P(B)$ e convenca-se de que, fixado $B$, ela e uma nova medida de probabilidade (satisfaz os axiomas).",
+          "Leia Sheldon Ross cap. 3 e Magalhaes cap. 1 para a regra do produto, a lei da probabilidade total e o Teorema de Bayes com muitos exemplos.",
+          "Refaca no papel o exemplo do teste diagnostico (falacia da taxa-base) variando a prevalencia $P(D)$ para sentir por que Bayes contradiz a intuicao.",
+          "Monte uma lista com: 2 problemas de arvore/regra do produto, 2 de Bayes com particao e 1 sobre independencia mutua versus par a par (Bernstein).",
+          "Escreva a distincao entre 'disjuntos' e 'independentes' e entre $P(A\\mid B)$ e $P(B\\mid A)$ (falacia do promotor) para fixar os erros mais cobrados.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal: seu passo a passo de montar Bayes (priori, verossimilhanca, normalizacao) e onde costuma tropecar."
+        ],
+        "searchQueries": [
+          "teorema de Bayes exercicios resolvidos particao lei probabilidade total",
+          "falacia da taxa-base teste diagnostico sensibilidade especificidade",
+          "independencia mutua versus par a par exemplo de Bernstein",
+          "regra do produto probabilidade condicional arvore",
+          "probabilidade condicional demonstracao nova medida",
+          "base rate fallacy conditional probability Bayes example"
+        ],
+        "videos": [
+          {
+            "title": "The Bayes theorem, and making probability intuitive",
+            "channel": "3Blue1Brown",
+            "note": "assista para a intuicao geometrica de atualizar probabilidade e por que a priori domina em doencas raras"
+          },
+          {
+            "title": "Conditional probability and Bayes' rule",
+            "channel": "Harvard University (Joe Blitzstein, Stat 110)",
+            "note": "veja o tratamento rigoroso de condicionamento, lei total e o gambler's ruin como aplicacao"
+          },
+          {
+            "title": "Probabilidade condicional e teorema de Bayes",
+            "channel": "O Professor Ferretto",
+            "note": "boa para a mecanica de resolver problemas de Bayes em PT-BR no nivel de concurso"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Sheldon Ross, A First Course in Probability, cap. 3 (Conditional Probability and Independence)",
+            "where": "livro"
+          },
+          {
+            "title": "Grinstead & Snell, Introduction to Probability, cap. 4 (Conditional Probability)",
+            "where": "PDF livre (AMS / dartmouth.edu)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "prob-estatistica-03-variaveis-aleatorias",
+      "title": "Variáveis aleatórias, função de distribuição, massa e densidade",
+      "tagline": "De eventos a números: a variável aleatória transporta a probabilidade para a reta, codificada na função de distribuição.",
+      "objectives": [
+        "Ao final você consegue definir variável aleatória como função $X:\\Omega\\to\\mathbb{R}$ e entender o papel da mensurabilidade.",
+        "Ao final você consegue enunciar e usar as propriedades caracterizadoras da função de distribuição acumulada $F_X$.",
+        "Ao final você consegue distinguir variáveis discretas (função de massa $p_X$) de contínuas (densidade $f_X$) e relacioná-las com $F_X$.",
+        "Ao final você consegue calcular a distribuição de uma transformação $Y=g(X)$ pelo método da FDA e, no caso suave, pela fórmula de mudança de variável.",
+        "Ao final você consegue usar a transformação integral de probabilidade para simular variáveis aleatórias."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Variável aleatória",
+          "statement": "Função $X:\\Omega\\to\\mathbb{R}$ tal que $\\{X\\le x\\}=\\{\\omega:X(\\omega)\\le x\\}\\in\\mathcal{F}$ para todo $x$ (mensurabilidade), garantindo que $P(X\\le x)$ faça sentido."
+        },
+        {
+          "term": "Função de distribuição acumulada (FDA)",
+          "statement": "$F_X(x)=P(X\\le x)$. Caracteriza completamente a lei de $X$ e existe para qualquer tipo de variável (discreta, contínua ou mista)."
+        },
+        {
+          "term": "Função de massa de probabilidade (discreta)",
+          "statement": "Se $X$ assume valores em $\\{x_1,x_2,\\dots\\}$, $p_X(x_i)=P(X=x_i)\\ge 0$ com $\\sum_i p_X(x_i)=1$; e $F_X(x)=\\sum_{x_i\\le x}p_X(x_i)$ é uma função em escada."
+        },
+        {
+          "term": "Função densidade de probabilidade (contínua)",
+          "statement": "$X$ é (absolutamente) contínua se existe $f_X\\ge 0$ com $F_X(x)=\\int_{-\\infty}^{x}f_X(t)\\,dt$; então $P(a<X\\le b)=\\int_a^b f_X$ e $P(X=a)=0$."
+        },
+        {
+          "term": "Suporte",
+          "statement": "Conjunto dos valores 'efetivamente assumidos' por $X$: $\\{x_i:p_X(x_i)>0\\}$ no caso discreto, ou $\\{x:f_X(x)>0\\}$ no caso contínuo."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Caracterização da FDA",
+          "statement": "Uma função $F:\\mathbb{R}\\to[0,1]$ é função de distribuição de alguma variável aleatória se e só se: (i) é não-decrescente; (ii) é contínua à direita; (iii) $\\lim_{x\\to-\\infty}F(x)=0$ e $\\lim_{x\\to+\\infty}F(x)=1$. Além disso $P(X=x)=F(x)-F(x^-)$ (o salto em $x$).",
+          "whyItMatters": "Diz exatamente quais funções podem ser distribuições e dá a regra para extrair probabilidades de pontos e intervalos diretamente de $F$, sem voltar ao espaço $\\Omega$."
+        },
+        {
+          "name": "Relação densidade-FDA",
+          "statement": "Se $X$ é contínua com densidade $f_X$, então onde $F_X$ é derivável vale $f_X(x)=F_X'(x)$. Reciprocamente, $f_X\\ge 0$ com $\\int_{\\mathbb{R}}f_X=1$ define uma densidade.",
+          "whyItMatters": "Conecta o Teorema Fundamental do Cálculo com a probabilidade: integrar a densidade dá a acumulada e derivar a acumulada recupera a densidade."
+        },
+        {
+          "name": "Mudança de variável $Y=g(X)$ (caso monótono)",
+          "statement": "Se $X$ é contínua com densidade $f_X$ e $g$ é estritamente monótona e diferenciável com inversa $g^{-1}$, então $Y=g(X)$ tem densidade $f_Y(y)=f_X\\!\\big(g^{-1}(y)\\big)\\,\\left|\\dfrac{d}{dy}g^{-1}(y)\\right|$ no suporte de $Y$.",
+          "whyItMatters": "É a fórmula prática para obter a densidade de uma função suave de $X$; o fator jacobiano $|(g^{-1})'|$ corrige a 'compressão/dilatação' do eixo."
+        }
+      ],
+      "summary": "Uma variável aleatória é o dispositivo que leva o espaço abstrato $\\Omega$ para a reta real: cada resultado $\\omega$ vira um número $X(\\omega)$. A exigência de mensurabilidade — $\\{X\\le x\\}$ ser sempre um evento — é o que garante que $F_X(x)=P(X\\le x)$ esteja bem definida. Essa função de distribuição acumulada é o objeto universal: serve para variáveis discretas, contínuas ou mistas, e a caracterização (não-decrescente, contínua à direita, com limites $0$ e $1$) diz precisamente quais funções podem ser FDAs. O tamanho do salto de $F$ em um ponto é exatamente $P(X=x)$.\n\nNo caso discreto, a informação concentra-se na função de massa $p_X(x_i)=P(X=x_i)$ e $F_X$ é uma escada. No caso contínuo, existe densidade $f_X$ com $F_X(x)=\\int_{-\\infty}^x f_X$; aqui probabilidades são áreas e pontos individuais têm probabilidade zero — por isso $P(a<X<b)=P(a\\le X\\le b)$. Para transformar variáveis, o método mais seguro e geral é o da FDA (calcular $F_Y(y)=P(g(X)\\le y)$ e derivar); quando $g$ é monótona suave, a fórmula de mudança de variável com o jacobiano $|(g^{-1})'|$ dá a densidade direto. Um caso especial belíssimo é a transformação integral de probabilidade: se $U\\sim\\text{Uniforme}(0,1)$, então $F^{-1}(U)$ tem distribuição $F$ — a base da simulação de Monte Carlo.",
+      "commonPitfalls": [
+        "Tratar a densidade $f_X(x)$ como se fosse uma probabilidade: $f_X(x)$ pode ser maior que $1$, e $P(X=x)=0$ no caso contínuo.",
+        "Esquecer o módulo do jacobiano (ou a fórmula inteira) ao transformar variáveis, ou aplicar a fórmula monótona a uma $g$ não injetora como $g(x)=x^2$.",
+        "Confundir contínua à direita com contínua: a FDA pode ter saltos (variável discreta) e ainda ser legítima.",
+        "Integrar a densidade fora do suporte (incluir regiões onde $f_X=0$ não é erro, mas trocar os limites de integração ao mudar de variável, sim)."
+      ],
+      "worked": "**Transformação integral de probabilidade gerando uma exponencial.** Seja $U\\sim\\text{Uniforme}(0,1)$ e defina $X=-\\dfrac{1}{\\lambda}\\ln U$, com $\\lambda>0$. Vamos achar a FDA e a densidade de $X$.\n\nPara $x\\ge 0$: $F_X(x)=P(X\\le x)=P\\!\\left(-\\tfrac{1}{\\lambda}\\ln U\\le x\\right)=P\\!\\left(\\ln U\\ge -\\lambda x\\right)=P\\!\\left(U\\ge e^{-\\lambda x}\\right).$\n\nComo $U$ é uniforme em $(0,1)$, $P(U\\ge u)=1-u$ para $u\\in(0,1)$, logo $F_X(x)=1-e^{-\\lambda x}$ (e $F_X(x)=0$ para $x<0$).\n\nDerivando: $f_X(x)=\\lambda e^{-\\lambda x}$ para $x\\ge 0$. Ou seja, $X\\sim\\text{Exponencial}(\\lambda)$. Esta é a receita geral $X=F^{-1}(U)$ para simular qualquer distribuição a partir de números uniformes. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Seja $X$ com densidade $f_X(x)=c\\,x^2$ para $x\\in[0,2]$ e $0$ fora. Determine $c$, a FDA $F_X$ e $P(X>1)$.",
+          "hint": "Imponha $\\int_0^2 c x^2\\,dx=1$ para achar $c=\\tfrac{3}{8}$; integre para $F_X$.",
+          "difficulty": 2,
+          "solution": "Densidade $f_X(x)=c\\,x^2$ em $[0,2]$ e $0$ fora.\n\n**Constante $c$.** Imponha $\\int_{-\\infty}^{\\infty}f_X=1$:\n$$\\int_0^2 c\\,x^2\\,dx=c\\cdot\\frac{x^3}{3}\\Big|_0^2=c\\cdot\\frac{8}{3}=1\\ \\Longrightarrow\\ c=\\frac{3}{8}.$$\n\n**FDA.** Para $x\\in[0,2]$:\n$$F_X(x)=\\int_0^x \\frac{3}{8}t^2\\,dt=\\frac{3}{8}\\cdot\\frac{x^3}{3}=\\frac{x^3}{8}.$$\nEntao\n$$F_X(x)=\\begin{cases}0,&x<0\\\\[2pt]\\dfrac{x^3}{8},&0\\le x\\le 2\\\\[4pt]1,&x>2.\\end{cases}$$\n\n**$P(X>1)$.**\n$$P(X>1)=1-F_X(1)=1-\\frac{1^3}{8}=1-\\frac18=\\frac{7}{8}=0{,}875.\\ \\blacksquare$$",
+          "steps": [
+            "Use a condicao de normalizacao $\\int_0^2 cx^2\\,dx=1$.",
+            "Resolva a integral $c\\cdot 8/3=1$ para achar $c=3/8$.",
+            "Integre a densidade de $0$ a $x$ para obter $F_X(x)=x^3/8$ em $[0,2]$.",
+            "Calcule $P(X>1)=1-F_X(1)=7/8$."
+          ]
+        },
+        {
+          "prompt": "Seja $X\\sim\\text{Uniforme}(0,1)$ e $Y=X^2$. Encontre a densidade de $Y$ pelo método da FDA.",
+          "hint": "Para $y\\in(0,1)$, $F_Y(y)=P(X^2\\le y)=P(X\\le\\sqrt{y})=\\sqrt{y}$; derive para obter $f_Y(y)=\\tfrac{1}{2\\sqrt{y}}$.",
+          "difficulty": 3,
+          "solution": "$X\\sim\\text{Uniforme}(0,1)$, logo $f_X(x)=1$ em $(0,1)$; seja $Y=X^2$. Como $X\\in(0,1)$, temos $Y\\in(0,1)$.\n\n**Metodo da FDA.** Para $y\\in(0,1)$:\n$$F_Y(y)=P(Y\\le y)=P(X^2\\le y)=P(0\\le X\\le \\sqrt{y})=\\sqrt{y},$$\nusando que a FDA da uniforme e $F_X(t)=t$ em $(0,1)$ (aqui $g(x)=x^2$ e monotona crescente em $(0,1)$, entao nao ha o problema do modulo).\n\n**Densidade.** Derive em $y$:\n$$f_Y(y)=\\frac{d}{dy}\\sqrt{y}=\\frac{1}{2\\sqrt{y}},\\qquad 0<y<1,$$\ne $f_Y(y)=0$ fora de $(0,1)$.\n\nVerificacao: $\\int_0^1 \\tfrac{1}{2\\sqrt{y}}\\,dy=\\sqrt{y}\\big|_0^1=1$. $\\blacksquare$",
+          "steps": [
+            "Determine o suporte de $Y=X^2$: como $X\\in(0,1)$, entao $Y\\in(0,1)$.",
+            "Escreva $F_Y(y)=P(X^2\\le y)=P(X\\le\\sqrt{y})$ (X positivo).",
+            "Use $F_X(t)=t$ para obter $F_Y(y)=\\sqrt{y}$.",
+            "Derive: $f_Y(y)=\\tfrac{1}{2\\sqrt{y}}$ em $(0,1)$; confira que integra $1$."
+          ]
+        },
+        {
+          "prompt": "Seja $Z\\sim\\mathcal{N}(0,1)$ com densidade $\\varphi(z)=\\tfrac{1}{\\sqrt{2\\pi}}e^{-z^2/2}$. Mostre que $Y=Z^2$ tem densidade $f_Y(y)=\\tfrac{1}{\\sqrt{2\\pi y}}e^{-y/2}$ para $y>0$ (distribuição qui-quadrado com $1$ grau de liberdade).",
+          "hint": "$g(z)=z^2$ não é injetora: $F_Y(y)=P(-\\sqrt{y}\\le Z\\le\\sqrt{y})=2\\Phi(\\sqrt{y})-1$; derive usando a regra da cadeia.",
+          "difficulty": 4,
+          "solution": "$Z\\sim\\mathcal{N}(0,1)$ com densidade $\\varphi(z)=\\tfrac{1}{\\sqrt{2\\pi}}e^{-z^2/2}$ e FDA $\\Phi$. Seja $Y=Z^2$; note que $g(z)=z^2$ **nao** e injetora, entao usamos o metodo da FDA.\n\n**FDA de $Y$.** Para $y>0$:\n$$F_Y(y)=P(Z^2\\le y)=P\\big(-\\sqrt{y}\\le Z\\le \\sqrt{y}\\big)=\\Phi(\\sqrt{y})-\\Phi(-\\sqrt{y}).$$\nPor simetria de $\\varphi$, $\\Phi(-\\sqrt{y})=1-\\Phi(\\sqrt{y})$, logo\n$$F_Y(y)=2\\Phi(\\sqrt{y})-1.$$\n\n**Densidade.** Derivando em $y$ pela regra da cadeia, com $\\Phi'=\\varphi$:\n$$f_Y(y)=2\\,\\varphi(\\sqrt{y})\\cdot\\frac{d}{dy}\\sqrt{y}=2\\cdot\\frac{1}{\\sqrt{2\\pi}}e^{-y/2}\\cdot\\frac{1}{2\\sqrt{y}}.$$\nSimplificando,\n$$f_Y(y)=\\frac{1}{\\sqrt{2\\pi\\,y}}\\,e^{-y/2},\\qquad y>0.$$\n\nEsta e a densidade da qui-quadrado com $1$ grau de liberdade, $\\chi^2_1$. $\\blacksquare$",
+          "steps": [
+            "Reconheca que $g(z)=z^2$ nao e injetora: use o metodo da FDA, nao a formula monotona.",
+            "Escreva $F_Y(y)=P(-\\sqrt{y}\\le Z\\le\\sqrt{y})=\\Phi(\\sqrt{y})-\\Phi(-\\sqrt{y})$.",
+            "Use a simetria $\\Phi(-t)=1-\\Phi(t)$ para chegar a $2\\Phi(\\sqrt{y})-1$.",
+            "Derive com a regra da cadeia, usando $\\Phi'=\\varphi$ e $\\tfrac{d}{dy}\\sqrt{y}=\\tfrac{1}{2\\sqrt{y}}$.",
+            "Simplifique ate $f_Y(y)=\\tfrac{1}{\\sqrt{2\\pi y}}e^{-y/2}$ e identifique a $\\chi^2_1$."
+          ]
+        },
+        {
+          "prompt": "Verifique que $F(x)=\\begin{cases}0,&x<0\\\\ \\tfrac{x}{2},&0\\le x<1\\\\ \\tfrac{3}{4},&1\\le x<2\\\\ 1,&x\\ge 2\\end{cases}$ é uma FDA e identifique a parte discreta e a parte contínua, calculando $P(X=1)$.",
+          "hint": "Cheque monotonicidade, continuidade à direita e limites; o salto em $x=1$ é $P(X=1)=F(1)-F(1^-)=\\tfrac34-\\tfrac12$.",
+          "difficulty": 3,
+          "solution": "Dada\n$$F(x)=\\begin{cases}0,&x<0\\\\ \\tfrac{x}{2},&0\\le x<1\\\\ \\tfrac34,&1\\le x<2\\\\ 1,&x\\ge 2.\\end{cases}$$\n\n**E uma FDA?** Verifiquemos as tres propriedades:\n- **Nao-decrescente:** em $[0,1)$, $F(x)=x/2$ cresce de $0$ a $\\tfrac12$; em $x=1$ salta para $\\tfrac34$; e constante em $[1,2)$; salta para $1$ em $x=2$. Nunca decresce.\n- **Limites:** $\\lim_{x\\to-\\infty}F=0$ e $\\lim_{x\\to+\\infty}F=1$.\n- **Continua a direita:** em cada ponto de salto ($x=1$ e $x=2$) o valor de $F$ e o do ramo a direita ($F(1)=\\tfrac34$, $F(2)=1$), entao $F(x)=F(x^+)$. Confere.\n\nLogo $F$ e uma FDA legitima (de uma variavel **mista**).\n\n**Parte discreta e continua.** Ha saltos em $x=1$ e $x=2$:\n$$P(X=1)=F(1)-F(1^-)=\\tfrac34-\\tfrac12=\\tfrac14,\\qquad P(X=2)=F(2)-F(2^-)=1-\\tfrac34=\\tfrac14.$$\nA parte discreta concentra massa $\\tfrac14+\\tfrac14=\\tfrac12$ nos pontos $\\{1,2\\}$. A parte continua vem do trecho $F(x)=x/2$ em $[0,1)$, com densidade $F'(x)=\\tfrac12$ ali (uniforme em $[0,1)$ com massa total $\\tfrac12$).\n\nEm particular, $P(X=1)=\\tfrac14$. $\\blacksquare$",
+          "steps": [
+            "Cheque monotonicidade em cada ramo e nos saltos.",
+            "Verifique os limites $0$ em $-\\infty$ e $1$ em $+\\infty$.",
+            "Confirme continuidade a direita: nos saltos, $F$ assume o valor do ramo direito.",
+            "Identifique os saltos como massa discreta: $P(X=1)=F(1)-F(1^-)=\\tfrac34-\\tfrac12=\\tfrac14$.",
+            "Reconheca a parte continua no trecho $x/2$ (densidade $\\tfrac12$ em $[0,1)$)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "O que é uma variável aleatória?",
+          "back": "Função $X:\\Omega\\to\\mathbb{R}$ mensurável, isto é, $\\{X\\le x\\}\\in\\mathcal{F}$ para todo $x$."
+        },
+        {
+          "front": "Definição de FDA",
+          "back": "$F_X(x)=P(X\\le x)$; caracteriza a lei de $X$."
+        },
+        {
+          "front": "Três propriedades que caracterizam uma FDA",
+          "back": "Não-decrescente, contínua à direita, com $F(-\\infty)=0$ e $F(+\\infty)=1$."
+        },
+        {
+          "front": "Como obter $P(X=x)$ a partir de $F$?",
+          "back": "$P(X=x)=F(x)-F(x^-)$ (tamanho do salto em $x$)."
+        },
+        {
+          "front": "Relação entre densidade e FDA",
+          "back": "$F_X(x)=\\int_{-\\infty}^x f_X(t)\\,dt$ e $f_X=F_X'$ onde $F_X$ é derivável."
+        },
+        {
+          "front": "$P(X=a)$ para $X$ contínua",
+          "back": "$P(X=a)=0$; por isso $P(a<X<b)=P(a\\le X\\le b)$."
+        },
+        {
+          "front": "Fórmula de mudança de variável (g monótona)",
+          "back": "$f_Y(y)=f_X(g^{-1}(y))\\,|(g^{-1})'(y)|$ para $Y=g(X)$."
+        },
+        {
+          "front": "Transformação integral de probabilidade",
+          "back": "Se $U\\sim\\text{Unif}(0,1)$, então $F^{-1}(U)$ tem FDA $F$; base da simulação."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Barry James, Probabilidade, cap. 2-3",
+          "ref": "livro"
+        },
+        {
+          "title": "Magalhães, Probabilidade e Variáveis Aleatórias, caps. 2-3",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.05 - Random variables and distributions",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja do Calculo o Teorema Fundamental do Calculo e integracao de funcoes por partes/substituicao; a densidade e a FDA se relacionam por derivada e integral.",
+          "Leia Barry James caps. 2-3 e Magalhaes caps. 2-3 para a definicao de variavel aleatoria, mensurabilidade e as propriedades da FDA (nao-decrescente, continua a direita, limites $0$ e $1$).",
+          "Assista a uma aula sobre variaveis aleatorias e funcoes de distribuicao; refaca a transformacao integral de probabilidade $F^{-1}(U)$ para gerar uma exponencial.",
+          "Treine o metodo da FDA para transformacoes $Y=g(X)$: faca casos monotonos (use o jacobiano) e um caso nao injetor como $g(x)=x^2$.",
+          "Faca uma lista com: 1 problema de achar constante normalizadora e FDA, 2 de transformacao de variavel e 1 de FDA mista (com salto).",
+          "Resolva os testes deste subtopico no app e anote aqui o principal: seu roteiro de 'metodo da FDA' e o cuidado com o modulo do jacobiano."
+        ],
+        "searchQueries": [
+          "funcao de distribuicao acumulada propriedades caracterizacao",
+          "transformacao de variavel aleatoria metodo da FDA jacobiano",
+          "transformacao integral de probabilidade simulacao inversa da FDA",
+          "densidade de probabilidade calcular constante normalizadora exercicios",
+          "variavel aleatoria mista salto FDA parte discreta continua",
+          "probability integral transform inverse CDF sampling proof"
+        ],
+        "videos": [
+          {
+            "title": "Random variables and distributions (18.05)",
+            "channel": "MIT OpenCourseWare",
+            "note": "veja a definicao de FDA, densidade e a relacao entre elas via TFC"
+          },
+          {
+            "title": "Variavel aleatoria continua e funcao densidade",
+            "channel": "Responde Ai",
+            "note": "boa para a mecanica de achar constante, FDA e probabilidades por integral em PT-BR"
+          },
+          {
+            "title": "Functions of random variables / change of variables",
+            "channel": "Michael Penn",
+            "note": "assista para a tecnica de transformacao de variaveis com jacobiano e casos nao monotonos"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Barry R. James, Probabilidade, caps. 2-3 (Variaveis aleatorias e distribuicoes)",
+            "where": "livro (IMPA)"
+          },
+          {
+            "title": "Blitzstein & Hwang, Introduction to Probability, caps. 3 e 8 (Random variables; Transformations)",
+            "where": "PDF livre em probabilitybook.net"
+          }
+        ]
+      }
+    },
+    {
+      "id": "prob-estatistica-04-distribuicoes-classicas",
+      "title": "Distribuições clássicas: de Bernoulli à Normal",
+      "tagline": "O catálogo essencial: cada distribuição modela uma situação canônica, e elas se conectam por limites e somas.",
+      "objectives": [
+        "Ao final você consegue reconhecer e usar as distribuições discretas clássicas: Bernoulli, Binomial, Geométrica, Poisson (e Hipergeométrica).",
+        "Ao final você consegue reconhecer e usar as distribuições contínuas clássicas: Uniforme, Exponencial, Gama e Normal.",
+        "Ao final você consegue enunciar e provar a propriedade de falta de memória da Exponencial e da Geométrica.",
+        "Ao final você consegue justificar a aproximação de Poisson para a Binomial e a padronização da Normal.",
+        "Ao final você consegue identificar, num enunciado de problema, qual distribuição modela o fenômeno."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Bernoulli e Binomial",
+          "statement": "$X\\sim\\text{Bernoulli}(p)$: $P(X=1)=p$, $P(X=0)=1-p$. A soma de $n$ Bernoulli$(p)$ independentes é $X\\sim\\text{Binomial}(n,p)$: $P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}$, $E[X]=np$, $\\operatorname{Var}(X)=np(1-p)$."
+        },
+        {
+          "term": "Geométrica",
+          "statement": "Número de ensaios de Bernoulli$(p)$ até o primeiro sucesso: $P(X=k)=(1-p)^{k-1}p$, $k\\ge 1$, com $E[X]=\\tfrac{1}{p}$. Modela tempo de espera discreto."
+        },
+        {
+          "term": "Poisson",
+          "statement": "$P(X=k)=e^{-\\lambda}\\dfrac{\\lambda^k}{k!}$, $k\\ge 0$, com $E[X]=\\operatorname{Var}(X)=\\lambda$. Modela contagens de eventos raros num intervalo de tempo/espaço."
+        },
+        {
+          "term": "Exponencial",
+          "statement": "Densidade $f(x)=\\lambda e^{-\\lambda x}$, $x\\ge 0$; FDA $F(x)=1-e^{-\\lambda x}$; $E[X]=\\tfrac{1}{\\lambda}$, $\\operatorname{Var}(X)=\\tfrac{1}{\\lambda^2}$. Tempo de espera contínuo, contraparte da Poisson."
+        },
+        {
+          "term": "Normal (Gaussiana)",
+          "statement": "$X\\sim\\mathcal{N}(\\mu,\\sigma^2)$ com densidade $f(x)=\\dfrac{1}{\\sigma\\sqrt{2\\pi}}\\exp\\!\\left(-\\dfrac{(x-\\mu)^2}{2\\sigma^2}\\right)$. Padronização: $Z=\\dfrac{X-\\mu}{\\sigma}\\sim\\mathcal{N}(0,1)$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Falta de memória",
+          "statement": "A Exponencial é a única distribuição contínua (e a Geométrica a única discreta) com $P(X>s+t\\mid X>s)=P(X>t)$ para todo $s,t\\ge 0$.",
+          "whyItMatters": "Caracteriza processos 'sem desgaste': a probabilidade de esperar mais $t$ não depende de quanto já se esperou. É a propriedade que define o processo de Poisson."
+        },
+        {
+          "name": "Aproximação de Poisson à Binomial",
+          "statement": "Se $n\\to\\infty$ e $p\\to 0$ com $np\\to\\lambda>0$, então $\\binom{n}{k}p^k(1-p)^{n-k}\\to e^{-\\lambda}\\dfrac{\\lambda^k}{k!}$ para cada $k$ fixo.",
+          "whyItMatters": "Justifica usar Poisson como modelo de eventos raros (acidentes, chamadas, mutações) e simplifica cálculos quando $n$ é grande e $p$ pequeno."
+        },
+        {
+          "name": "Estabilidade da Normal por combinação linear",
+          "statement": "Se $X\\sim\\mathcal{N}(\\mu,\\sigma^2)$ então $aX+b\\sim\\mathcal{N}(a\\mu+b,a^2\\sigma^2)$; e se $X_1,\\dots,X_n$ são normais independentes, $\\sum_i X_i$ também é normal.",
+          "whyItMatters": "Permite padronizar ($Z$-score) e justifica por que somas e médias de normais permanecem normais — propriedade que, via TCL, se estende aproximadamente a quase tudo."
+        }
+      ],
+      "summary": "As distribuições clássicas formam um vocabulário: cada uma é a resposta canônica a uma pergunta. Bernoulli é o sim/não; a Binomial conta sucessos em $n$ ensaios independentes; a Geométrica conta a espera até o primeiro sucesso; a Poisson conta eventos raros e é o limite da Binomial quando $np\\to\\lambda$. No contínuo, a Uniforme é a ignorância máxima num intervalo; a Exponencial é o tempo de espera sem memória (contraparte contínua da Geométrica) e os tempos entre eventos de um processo de Poisson; a Gama generaliza a Exponencial (soma de exponenciais); e a Normal é a distribuição-rainha, atratora universal de médias pelo Teorema Central do Limite.\n\nDuas ideias amarram o catálogo. Primeiro, as relações-limite e de soma: Binomial $\\to$ Poisson, soma de exponenciais $=$ Gama, soma/média de normais $=$ normal. Segundo, propriedades caracterizadoras: a falta de memória isola Exponencial e Geométrica, e a estabilidade por combinação linear isola a Normal. Para concurso, o reflexo a treinar é a 'tradução': lendo o enunciado, identificar imediatamente se a situação é de contagem fixa de ensaios (Binomial), de eventos raros (Poisson), de espera (Geométrica/Exponencial) ou de medida com erro simétrico (Normal).",
+      "commonPitfalls": [
+        "Trocar Binomial por Poisson sem que $n$ seja grande e $p$ pequeno (a aproximação só vale com $np$ moderado).",
+        "Usar a Binomial quando os ensaios não são independentes ou $p$ varia (amostragem sem reposição pede Hipergeométrica).",
+        "Confundir as duas convenções da Geométrica (número de ensaios até o sucesso, $k\\ge 1$, versus número de fracassos antes do sucesso, $k\\ge 0$).",
+        "Esquecer de padronizar com o desvio-padrão $\\sigma$ (e não a variância $\\sigma^2$) ao calcular probabilidades da Normal."
+      ],
+      "worked": "**Falta de memória da Exponencial.** Seja $X\\sim\\text{Exponencial}(\\lambda)$, então $P(X>t)=e^{-\\lambda t}$ para $t\\ge 0$. Mostremos $P(X>s+t\\mid X>s)=P(X>t)$.\n\n$$P(X>s+t\\mid X>s)=\\frac{P(X>s+t,\\;X>s)}{P(X>s)}=\\frac{P(X>s+t)}{P(X>s)}=\\frac{e^{-\\lambda(s+t)}}{e^{-\\lambda s}}=e^{-\\lambda t}=P(X>t).$$\n\nNote que $\\{X>s+t\\}\\subseteq\\{X>s\\}$, por isso a interseção é o próprio $\\{X>s+t\\}$. A conclusão: um componente exponencial 'não envelhece' — dado que já durou $s$, a distribuição do tempo restante é a mesma do início. $\\blacksquare$\n\n**Aproximação de Poisson.** Numa fábrica, cada peça é defeituosa com prob. $p=0{,}002$, independentemente; num lote de $n=1000$, o número de defeitos $X\\sim\\text{Binomial}(1000,\\,0{,}002)$. Com $\\lambda=np=2$: $P(X=0)\\approx e^{-2}\\approx 0{,}135$ e $P(X\\ge 1)\\approx 1-e^{-2}\\approx 0{,}865$.",
+      "exercises": [
+        {
+          "prompt": "Um exame tem $10$ questões de múltipla escolha com $4$ alternativas. Um aluno chuta tudo. Qual a probabilidade de acertar exatamente $3$? E pelo menos $1$?",
+          "hint": "$X\\sim\\text{Binomial}(10,\\tfrac14)$. Use $P(X=3)=\\binom{10}{3}(\\tfrac14)^3(\\tfrac34)^7$ e $P(X\\ge1)=1-(\\tfrac34)^{10}$.",
+          "difficulty": 2,
+          "solution": "Cada questao acertada ao chute tem probabilidade $p=\\tfrac14$ (quatro alternativas), independentemente; sao $n=10$ questoes. Assim $X\\sim\\text{Binomial}(10,\\tfrac14)$.\n\n**Exatamente $3$ acertos:**\n$$P(X=3)=\\binom{10}{3}\\left(\\frac14\\right)^3\\left(\\frac34\\right)^7=120\\cdot\\frac{1}{64}\\cdot\\frac{2187}{16384}=\\frac{262440}{1048576}\\approx 0{,}2503.$$\n\n**Pelo menos $1$ acerto** (use o complementar):\n$$P(X\\ge 1)=1-P(X=0)=1-\\left(\\frac34\\right)^{10}=1-\\frac{59049}{1048576}\\approx 1-0{,}0563=0{,}9437.$$\n\nOu seja, $\\approx 25{,}0\\%$ de acertar exatamente tres e $\\approx 94{,}4\\%$ de acertar pelo menos uma. $\\blacksquare$",
+          "steps": [
+            "Identifique $X\\sim\\text{Binomial}(10,\\tfrac14)$: $n=10$ ensaios independentes, $p=1/4$.",
+            "Aplique a massa binomial em $k=3$: $\\binom{10}{3}(1/4)^3(3/4)^7$.",
+            "Calcule numericamente $\\approx 0{,}2503$.",
+            "Para 'pelo menos 1', use o complementar $1-(3/4)^{10}\\approx 0{,}9437$."
+          ]
+        },
+        {
+          "prompt": "Chamadas chegam a um call center segundo Poisson com média $\\lambda=3$ por minuto. Qual a probabilidade de nenhuma chamada em um minuto? E de mais de $2$ chamadas?",
+          "hint": "$P(X=0)=e^{-3}$; $P(X>2)=1-[P(0)+P(1)+P(2)]$.",
+          "difficulty": 2,
+          "solution": "Chamadas por Poisson com $\\lambda=3$ por minuto: $X\\sim\\text{Poisson}(3)$, $P(X=k)=e^{-3}\\dfrac{3^k}{k!}$.\n\n**Nenhuma chamada:**\n$$P(X=0)=e^{-3}\\approx 0{,}0498.$$\n\n**Mais de $2$ chamadas** (complementar):\n$$P(X>2)=1-\\big[P(0)+P(1)+P(2)\\big].$$\nCom $P(1)=3e^{-3}$ e $P(2)=\\dfrac{9}{2}e^{-3}$:\n$$P(0)+P(1)+P(2)=e^{-3}\\left(1+3+\\tfrac{9}{2}\\right)=8{,}5\\,e^{-3}\\approx 8{,}5\\cdot 0{,}049787\\approx 0{,}4232.$$\nLogo\n$$P(X>2)\\approx 1-0{,}4232=0{,}5768.$$\n\nOu seja, $\\approx 5{,}0\\%$ de nenhuma chamada e $\\approx 57{,}7\\%$ de mais de duas. $\\blacksquare$",
+          "steps": [
+            "Modele $X\\sim\\text{Poisson}(3)$ e escreva $P(X=k)=e^{-3}3^k/k!$.",
+            "Calcule $P(X=0)=e^{-3}\\approx 0{,}0498$.",
+            "Some $P(0)+P(1)+P(2)=e^{-3}(1+3+4{,}5)=8{,}5e^{-3}$.",
+            "Use o complementar $P(X>2)=1-8{,}5e^{-3}\\approx 0{,}5768$."
+          ]
+        },
+        {
+          "prompt": "Prove que a distribuição Geométrica $P(X=k)=(1-p)^{k-1}p$ ($k\\ge 1$) tem a propriedade de falta de memória: $P(X>m+n\\mid X>m)=P(X>n)$.",
+          "hint": "Mostre primeiro que $P(X>k)=(1-p)^k$ e repita o argumento do exemplo da Exponencial.",
+          "difficulty": 3,
+          "solution": "$X\\sim\\text{Geometrica}(p)$ com $P(X=k)=(1-p)^{k-1}p$, $k\\ge 1$ (numero de ensaios ate o 1o sucesso).\n\n**Cauda.** Para inteiro $k\\ge 0$, $\\{X>k\\}$ significa 'os primeiros $k$ ensaios foram fracasso':\n$$P(X>k)=\\sum_{j=k+1}^{\\infty}(1-p)^{j-1}p=(1-p)^k,$$\nusando a soma geometrica $\\sum_{j\\ge k+1}(1-p)^{j-1}p=p(1-p)^k\\sum_{i\\ge 0}(1-p)^i=p(1-p)^k\\cdot\\tfrac{1}{p}=(1-p)^k$.\n\n**Falta de memoria.** Como $\\{X>m+n\\}\\subseteq\\{X>m\\}$:\n$$P(X>m+n\\mid X>m)=\\frac{P(X>m+n)}{P(X>m)}=\\frac{(1-p)^{m+n}}{(1-p)^m}=(1-p)^n=P(X>n).$$\n\nPortanto a Geometrica 'nao envelhece': dado que ja houve $m$ fracassos, a distribuicao da espera adicional e a mesma do inicio. $\\blacksquare$",
+          "steps": [
+            "Calcule a cauda $P(X>k)=(1-p)^k$ somando a serie geometrica (ou notando 'primeiros $k$ fracassos').",
+            "Escreva a condicional $P(X>m+n\\mid X>m)=P(X>m+n)/P(X>m)$, usando $\\{X>m+n\\}\\subseteq\\{X>m\\}$.",
+            "Substitua as caudas: $(1-p)^{m+n}/(1-p)^m=(1-p)^n$.",
+            "Reconheca $(1-p)^n=P(X>n)$: falta de memoria."
+          ]
+        },
+        {
+          "prompt": "Seja $X\\sim\\mathcal{N}(170,\\,7^2)$ (altura em cm). Usando $\\Phi$ (FDA da normal padrão), escreva $P(X>180)$ em função de $\\Phi$ e calcule aproximadamente sabendo $\\Phi(1{,}43)\\approx 0{,}9236$.",
+          "hint": "Padronize: $P(X>180)=P\\!\\left(Z>\\tfrac{180-170}{7}\\right)=1-\\Phi(1{,}43)$.",
+          "difficulty": 3,
+          "solution": "$X\\sim\\mathcal{N}(170,7^2)$, ou seja $\\mu=170$, $\\sigma=7$.\n\n**Padronizacao.** Subtraia a media e divida pelo desvio-padrao (nao pela variancia):\n$$P(X>180)=P\\!\\left(\\frac{X-170}{7}>\\frac{180-170}{7}\\right)=P\\!\\left(Z>\\frac{10}{7}\\right)=P(Z>1{,}4286).$$\n\n**Uso da tabela.** Aproximando $\\tfrac{10}{7}\\approx 1{,}43$:\n$$P(X>180)=1-\\Phi(1{,}43)\\approx 1-0{,}9236=0{,}0764.$$\n\nLogo cerca de $7{,}6\\%$ das pessoas tem altura acima de $180$ cm neste modelo. $\\blacksquare$",
+          "steps": [
+            "Identifique $\\mu=170$ e $\\sigma=7$ (desvio, nao variancia).",
+            "Padronize: $Z=\\dfrac{X-170}{7}$, logo o limite $180$ vira $z=10/7\\approx 1{,}43$.",
+            "Escreva $P(X>180)=1-\\Phi(1{,}43)$.",
+            "Use $\\Phi(1{,}43)\\approx 0{,}9236$ para obter $\\approx 0{,}0764$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Massa da Binomial$(n,p)$",
+          "back": "$P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}$; $E[X]=np$, $\\operatorname{Var}=np(1-p)$."
+        },
+        {
+          "front": "Massa da Poisson$(\\lambda)$",
+          "back": "$P(X=k)=e^{-\\lambda}\\dfrac{\\lambda^k}{k!}$; $E[X]=\\operatorname{Var}=\\lambda$."
+        },
+        {
+          "front": "Densidade e FDA da Exponencial$(\\lambda)$",
+          "back": "$f(x)=\\lambda e^{-\\lambda x}$, $F(x)=1-e^{-\\lambda x}$ ($x\\ge0$); $E[X]=1/\\lambda$."
+        },
+        {
+          "front": "Quem tem falta de memória?",
+          "back": "Exponencial (contínua) e Geométrica (discreta) — as únicas com essa propriedade."
+        },
+        {
+          "front": "Limite Binomial $\\to$ Poisson",
+          "back": "$n\\to\\infty$, $p\\to0$, $np\\to\\lambda$ $\\Rightarrow$ $\\binom{n}{k}p^k(1-p)^{n-k}\\to e^{-\\lambda}\\lambda^k/k!$."
+        },
+        {
+          "front": "Padronização da Normal",
+          "back": "$X\\sim\\mathcal{N}(\\mu,\\sigma^2)\\Rightarrow Z=\\dfrac{X-\\mu}{\\sigma}\\sim\\mathcal{N}(0,1)$."
+        },
+        {
+          "front": "Densidade da $\\mathcal{N}(\\mu,\\sigma^2)$",
+          "back": "$f(x)=\\dfrac{1}{\\sigma\\sqrt{2\\pi}}e^{-(x-\\mu)^2/(2\\sigma^2)}$."
+        },
+        {
+          "front": "Esperança da Geométrica$(p)$ (ensaios até 1º sucesso)",
+          "back": "$E[X]=\\dfrac{1}{p}$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Sheldon Ross, A First Course in Probability, caps. 4-5",
+          "ref": "livro"
+        },
+        {
+          "title": "Magalhães, Probabilidade e Variáveis Aleatórias, caps. 3-4",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.05 - Common distributions",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Faca uma tabela-resumo das distribuicoes (massa/densidade, $E[X]$, $\\operatorname{Var}(X)$, quando usar) a partir de Ross caps. 4-5 e Magalhaes caps. 3-4.",
+          "Reveja a serie de Taylor de $e^\\lambda$ e a soma da serie geometrica: elas fecham as contas de Poisson e Geometrica.",
+          "Assista a um video sobre a distribuicao Normal e a padronizacao; pratique ler uma tabela de $\\Phi$ e converter $P(X>a)$ em termos de $Z$.",
+          "Treine a 'traducao' de enunciados: para cada problema, decida se e Binomial (n fixo), Poisson (eventos raros), Geometrica/Exponencial (espera) ou Normal (medida com erro).",
+          "Demonstre no papel a falta de memoria da Exponencial e da Geometrica, e a aproximacao de Poisson para a Binomial.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal: sua tabela-reflexo de 'qual distribuicao' e os erros de padronizacao (usar $\\sigma$, nao $\\sigma^2$)."
+        ],
+        "searchQueries": [
+          "distribuicao binomial poisson exponencial normal formulas esperanca variancia",
+          "aproximacao de Poisson para a binomial demonstracao limite",
+          "distribuicao normal padronizacao tabela Z exercicios resolvidos",
+          "propriedade falta de memoria exponencial geometrica demonstracao",
+          "distribuicao geometrica ensaios ate primeiro sucesso esperanca",
+          "central limit theorem normal approximation binomial continuity correction"
+        ],
+        "videos": [
+          {
+            "title": "Binomial distributions | Probabilities of probabilities",
+            "channel": "3Blue1Brown",
+            "note": "assista para a intuicao da Binomial e sua conexao com a Normal e a Poisson"
+          },
+          {
+            "title": "Common distributions (18.05)",
+            "channel": "MIT OpenCourseWare",
+            "note": "veja o catalogo Bernoulli/Binomial/Poisson/Exponencial/Normal e quando cada uma modela"
+          },
+          {
+            "title": "Distribuicao normal e padronizacao (Z-score)",
+            "channel": "O Professor Ferretto",
+            "note": "boa para a mecanica de padronizar e usar a tabela da normal em PT-BR"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Sheldon Ross, A First Course in Probability, caps. 4-5 (Discrete/Continuous Random Variables)",
+            "where": "livro"
+          },
+          {
+            "title": "Marcos N. Magalhaes, Probabilidade e Variaveis Aleatorias, caps. 3-4",
+            "where": "livro (EDUSP)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "prob-estatistica-05-esperanca-variancia-momentos",
+      "title": "Esperança, variância, momentos e desigualdades",
+      "tagline": "O valor médio é uma integral linear; a variância mede dispersão; e Markov, Chebyshev e Jensen controlam tudo.",
+      "objectives": [
+        "Ao final você consegue calcular a esperança de variáveis discretas e contínuas e aplicar a lei do estatístico inconsciente $E[g(X)]$.",
+        "Ao final você consegue usar a linearidade da esperança mesmo sem independência.",
+        "Ao final você consegue calcular variância via $\\operatorname{Var}(X)=E[X^2]-(E[X])^2$ e suas propriedades.",
+        "Ao final você consegue definir momentos e a função geradora de momentos e usá-la para obter média e variância.",
+        "Ao final você consegue aplicar as desigualdades de Markov, Chebyshev e Jensen para limitar probabilidades e esperanças."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Esperança",
+          "statement": "Discreta: $E[X]=\\sum_i x_i\\,p_X(x_i)$. Contínua: $E[X]=\\int_{-\\infty}^{\\infty}x\\,f_X(x)\\,dx$. Existe quando $E[|X|]<\\infty$. É o 'centro de massa' da distribuição."
+        },
+        {
+          "term": "Lei do estatístico inconsciente (LOTUS)",
+          "statement": "$E[g(X)]=\\sum_i g(x_i)p_X(x_i)$ (discreta) ou $\\int g(x)f_X(x)\\,dx$ (contínua) — calcula-se sem precisar da distribuição de $g(X)$."
+        },
+        {
+          "term": "Variância e desvio-padrão",
+          "statement": "$\\operatorname{Var}(X)=E[(X-E[X])^2]=E[X^2]-(E[X])^2\\ge 0$; o desvio-padrão é $\\sigma_X=\\sqrt{\\operatorname{Var}(X)}$. Propriedade: $\\operatorname{Var}(aX+b)=a^2\\operatorname{Var}(X)$."
+        },
+        {
+          "term": "Momentos",
+          "statement": "$k$-ésimo momento $E[X^k]$; momento central $E[(X-\\mu)^k]$. O $3^o$ central normalizado é a assimetria; o $4^o$, a curtose."
+        },
+        {
+          "term": "Função geradora de momentos (fgm)",
+          "statement": "$M_X(t)=E[e^{tX}]$, quando finita numa vizinhança de $0$. Então $E[X^k]=M_X^{(k)}(0)$ e $M_X$ determina unicamente a distribuição."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Linearidade da esperança",
+          "statement": "$E[aX+bY+c]=aE[X]+bE[Y]+c$ para quaisquer variáveis (mesmo dependentes), desde que as esperanças existam.",
+          "whyItMatters": "É a propriedade mais poderosa e subutilizada: permite calcular $E[\\sum X_i]$ decompondo em indicadores, sem nada saber sobre dependência (truque dos indicadores)."
+        },
+        {
+          "name": "Desigualdade de Markov",
+          "statement": "Se $X\\ge 0$ e $a>0$, então $P(X\\ge a)\\le\\dfrac{E[X]}{a}$.",
+          "whyItMatters": "Dá uma cota universal de cauda usando só a média; é o tijolo a partir do qual se prova Chebyshev e, depois, a Lei dos Grandes Números."
+        },
+        {
+          "name": "Desigualdade de Chebyshev",
+          "statement": "Para qualquer $X$ com variância finita e $k>0$: $P\\big(|X-E[X]|\\ge k\\big)\\le\\dfrac{\\operatorname{Var}(X)}{k^2}$.",
+          "whyItMatters": "Quantifica 'concentração em torno da média' usando apenas a variância, sem hipótese de distribuição; é o motor da prova da LGN fraca."
+        },
+        {
+          "name": "Desigualdade de Jensen",
+          "statement": "Se $\\varphi$ é convexa, então $\\varphi(E[X])\\le E[\\varphi(X)]$ (desigualdade invertida se $\\varphi$ é côncava).",
+          "whyItMatters": "Relaciona a esperança de uma função convexa com a função da esperança; dá, por exemplo, $E[X^2]\\ge(E[X])^2$ (donde $\\operatorname{Var}\\ge 0$) e $E[1/X]\\ge 1/E[X]$ para $X>0$."
+        }
+      ],
+      "summary": "A esperança $E[X]$ é o valor médio teórico — o centro de massa da distribuição — e, no formalismo de medida, é a integral $\\int_\\Omega X\\,dP$. Sua propriedade decisiva é a linearidade: $E[aX+bY]=aE[X]+bE[Y]$ vale SEMPRE, dependentes ou não. Combinada com a decomposição em indicadores ($X=\\sum_i \\mathbf{1}_{A_i}$), a linearidade resolve elegantemente problemas que pareceriam intratáveis (número esperado de pontos fixos de uma permutação, de coletor de cupons, etc.). A variância $\\operatorname{Var}(X)=E[X^2]-(E[X])^2$ mede dispersão e é quadrática nas escalas: $\\operatorname{Var}(aX+b)=a^2\\operatorname{Var}(X)$.\n\nMomentos $E[X^k]$ refinam a descrição da distribuição, e a função geradora de momentos $M_X(t)=E[e^{tX}]$ os empacota: derivando em $t=0$ saem todos os momentos, e $M_X$ caracteriza a distribuição (ferramenta-chave para provar o TCL). Por fim, três desigualdades formam a espinha dorsal da teoria assintótica: Markov (cota de cauda só com a média), Chebyshev (concentração só com a variância) e Jensen (convexidade e esperança). Chebyshev, em particular, é o que permite provar a Lei Fraca dos Grandes Números em uma linha — por isso esta aula é a ponte para o próximo tema.",
+      "commonPitfalls": [
+        "Achar que $E[XY]=E[X]E[Y]$ em geral — isso só vale sob independência (ou descorrelação); a linearidade da SOMA, porém, é sempre válida.",
+        "Escrever $\\operatorname{Var}(X+Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y)$ sem independência — falta o termo $2\\operatorname{Cov}(X,Y)$.",
+        "Calcular $E[g(X)]$ como $g(E[X])$ — em geral falso (Jensen mostra a direção do erro para $g$ convexa/côncava).",
+        "Esquecer de checar a existência da esperança: há distribuições (ex.: Cauchy) com $E[|X|]=\\infty$, sem média definida."
+      ],
+      "worked": "**Média e variância da Exponencial via fgm.** Seja $X\\sim\\text{Exponencial}(\\lambda)$. Para $t<\\lambda$:\n\n$$M_X(t)=E[e^{tX}]=\\int_0^\\infty e^{tx}\\lambda e^{-\\lambda x}\\,dx=\\lambda\\int_0^\\infty e^{-(\\lambda-t)x}\\,dx=\\frac{\\lambda}{\\lambda-t}.$$\n\nEntão $M_X'(t)=\\dfrac{\\lambda}{(\\lambda-t)^2}$ e $M_X''(t)=\\dfrac{2\\lambda}{(\\lambda-t)^3}$. Avaliando em $t=0$:\n\n$$E[X]=M_X'(0)=\\frac{1}{\\lambda},\\qquad E[X^2]=M_X''(0)=\\frac{2}{\\lambda^2},\\qquad \\operatorname{Var}(X)=\\frac{2}{\\lambda^2}-\\frac{1}{\\lambda^2}=\\frac{1}{\\lambda^2}.\\ \\blacksquare$$\n\n**Chebyshev na prática.** Se $X$ tem média $\\mu$ e desvio $\\sigma$, a probabilidade de $X$ desviar mais de $2\\sigma$ da média é no máximo $\\operatorname{Var}(X)/(2\\sigma)^2=\\sigma^2/(4\\sigma^2)=\\tfrac14$, qualquer que seja a distribuição.",
+      "exercises": [
+        {
+          "prompt": "Mostre que para $X\\sim\\text{Poisson}(\\lambda)$ vale $E[X]=\\lambda$ e $\\operatorname{Var}(X)=\\lambda$.",
+          "hint": "Use a série $\\sum_{k\\ge0}e^{-\\lambda}\\lambda^k/k!=1$; para $E[X^2]$ calcule $E[X(X-1)]=\\lambda^2$ e some $E[X]$.",
+          "difficulty": 3,
+          "solution": "$X\\sim\\text{Poisson}(\\lambda)$, $P(X=k)=e^{-\\lambda}\\dfrac{\\lambda^k}{k!}$, $k\\ge 0$.\n\n**Esperanca.**\n$$E[X]=\\sum_{k=0}^{\\infty}k\\,e^{-\\lambda}\\frac{\\lambda^k}{k!}=e^{-\\lambda}\\sum_{k=1}^{\\infty}\\frac{\\lambda^k}{(k-1)!}=e^{-\\lambda}\\lambda\\sum_{j=0}^{\\infty}\\frac{\\lambda^j}{j!}=e^{-\\lambda}\\lambda\\,e^{\\lambda}=\\lambda,$$\nonde substituimos $j=k-1$ e usamos $\\sum_j \\lambda^j/j!=e^{\\lambda}$.\n\n**Segundo momento fatorial.** Calcule $E[X(X-1)]$:\n$$E[X(X-1)]=\\sum_{k=2}^{\\infty}k(k-1)e^{-\\lambda}\\frac{\\lambda^k}{k!}=e^{-\\lambda}\\lambda^2\\sum_{k=2}^{\\infty}\\frac{\\lambda^{k-2}}{(k-2)!}=e^{-\\lambda}\\lambda^2 e^{\\lambda}=\\lambda^2.$$\nEntao $E[X^2]=E[X(X-1)]+E[X]=\\lambda^2+\\lambda$.\n\n**Variancia.**\n$$\\operatorname{Var}(X)=E[X^2]-(E[X])^2=(\\lambda^2+\\lambda)-\\lambda^2=\\lambda.\\ \\blacksquare$$\n\nAssim, na Poisson media e variancia coincidem e valem $\\lambda$.",
+          "steps": [
+            "Escreva $E[X]=\\sum_k k\\,e^{-\\lambda}\\lambda^k/k!$ e cancele o $k$ com o fatorial.",
+            "Reindexe $j=k-1$ para reconhecer a serie $e^{\\lambda}$ e obter $E[X]=\\lambda$.",
+            "Calcule $E[X(X-1)]=\\lambda^2$ do mesmo modo (reindex $k-2$).",
+            "Recupere $E[X^2]=\\lambda^2+\\lambda$ e use $\\operatorname{Var}=E[X^2]-(E[X])^2=\\lambda$."
+          ]
+        },
+        {
+          "prompt": "Numa permutação aleatória de $n$ cartas, seja $X$ o número de pontos fixos (cartas na posição original). Use indicadores para mostrar que $E[X]=1$, independentemente de $n$.",
+          "hint": "$X=\\sum_{i=1}^n \\mathbf{1}_{\\{i\\text{ é ponto fixo}\\}}$ e $P(i\\text{ fixo})=1/n$; aplique linearidade.",
+          "difficulty": 3,
+          "solution": "Numa permutacao aleatoria de $n$ cartas, seja $X$ o numero de pontos fixos (cartas na posicao original).\n\n**Indicadores.** Para $i=1,\\dots,n$, defina\n$$\\mathbf{1}_i=\\begin{cases}1,&\\text{se a carta }i\\text{ esta na posicao }i\\\\ 0,&\\text{caso contrario.}\\end{cases}$$\nEntao $X=\\sum_{i=1}^n \\mathbf{1}_i$.\n\n**Probabilidade de cada indicador.** Numa permutacao uniforme, a posicao da carta $i$ e uniforme entre as $n$ posicoes, logo\n$$P(\\mathbf{1}_i=1)=P(i\\text{ e ponto fixo})=\\frac{1}{n}\\ \\Longrightarrow\\ E[\\mathbf{1}_i]=\\frac1n.$$\n\n**Linearidade** (vale mesmo com os $\\mathbf{1}_i$ dependentes):\n$$E[X]=\\sum_{i=1}^n E[\\mathbf{1}_i]=n\\cdot\\frac1n=1.$$\n\nPortanto o numero esperado de pontos fixos e $1$, **independentemente de $n$** — o cerne do problema do 'chapeu/derangement'. $\\blacksquare$",
+          "steps": [
+            "Decomponha $X=\\sum_i \\mathbf{1}_i$ com $\\mathbf{1}_i$ indicando ponto fixo em $i$.",
+            "Argumente que $P(\\mathbf{1}_i=1)=1/n$ pela simetria da permutacao uniforme.",
+            "Aplique linearidade da esperanca (sem precisar de independencia).",
+            "Some $n$ termos iguais a $1/n$ para obter $E[X]=1$."
+          ]
+        },
+        {
+          "prompt": "Prove a desigualdade de Chebyshev a partir da de Markov.",
+          "hint": "Aplique Markov à variável não-negativa $Y=(X-E[X])^2$ com nível $a=k^2$.",
+          "difficulty": 2,
+          "solution": "Queremos deduzir Chebyshev da desigualdade de Markov.\n\n**Markov** diz: se $Y\\ge 0$ e $a>0$, entao $P(Y\\ge a)\\le\\dfrac{E[Y]}{a}$.\n\n**Aplicacao.** Seja $X$ com media $\\mu=E[X]$ e variancia finita. Defina a variavel nao-negativa\n$$Y=(X-\\mu)^2\\ge 0,\\qquad E[Y]=E[(X-\\mu)^2]=\\operatorname{Var}(X).$$\nPara $k>0$, observe a equivalencia de eventos:\n$$\\{|X-\\mu|\\ge k\\}=\\{(X-\\mu)^2\\ge k^2\\}=\\{Y\\ge k^2\\}.$$\nAplique Markov a $Y$ com nivel $a=k^2$:\n$$P\\big(|X-\\mu|\\ge k\\big)=P(Y\\ge k^2)\\le\\frac{E[Y]}{k^2}=\\frac{\\operatorname{Var}(X)}{k^2}.\\ \\blacksquare$$\n\nEssa e exatamente a desigualdade de Chebyshev.",
+          "steps": [
+            "Enuncie Markov para variavel nao-negativa: $P(Y\\ge a)\\le E[Y]/a$.",
+            "Tome $Y=(X-\\mu)^2\\ge 0$, de modo que $E[Y]=\\operatorname{Var}(X)$.",
+            "Note a equivalencia $\\{|X-\\mu|\\ge k\\}=\\{Y\\ge k^2\\}$.",
+            "Aplique Markov com $a=k^2$ e conclua $P(|X-\\mu|\\ge k)\\le\\operatorname{Var}(X)/k^2$."
+          ]
+        },
+        {
+          "prompt": "Use a desigualdade de Jensen para mostrar que, para $X>0$, vale $E[1/X]\\ge 1/E[X]$.",
+          "hint": "$\\varphi(x)=1/x$ é convexa em $(0,\\infty)$; aplique $\\varphi(E[X])\\le E[\\varphi(X)]$.",
+          "difficulty": 2,
+          "solution": "Seja $X>0$ (quase certamente). Queremos $E[1/X]\\ge 1/E[X]$.\n\n**Convexidade.** A funcao $\\varphi(x)=\\dfrac1x$ tem $\\varphi''(x)=\\dfrac{2}{x^3}>0$ em $(0,\\infty)$, logo e **convexa** ali.\n\n**Jensen.** Para $\\varphi$ convexa vale $\\varphi(E[X])\\le E[\\varphi(X)]$. Aplicando com $\\varphi(x)=1/x$:\n$$\\frac{1}{E[X]}=\\varphi\\big(E[X]\\big)\\le E\\big[\\varphi(X)\\big]=E\\!\\left[\\frac1X\\right].$$\n\nPortanto\n$$E\\!\\left[\\frac1X\\right]\\ge\\frac{1}{E[X]}.\\ \\blacksquare$$\n\n(Igualdade sse $X$ e constante q.c.) Este e um caso da desigualdade media harmonica $\\le$ media aritmetica em forma probabilistica.",
+          "steps": [
+            "Verifique que $\\varphi(x)=1/x$ e convexa em $(0,\\infty)$ via $\\varphi''>0$.",
+            "Escreva a desigualdade de Jensen $\\varphi(E[X])\\le E[\\varphi(X)]$ para $\\varphi$ convexa.",
+            "Substitua $\\varphi(x)=1/x$: lado esquerdo $1/E[X]$, direito $E[1/X]$.",
+            "Conclua $E[1/X]\\ge 1/E[X]$ (igualdade so se $X$ constante)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Esperança (caso contínuo)",
+          "back": "$E[X]=\\int_{-\\infty}^{\\infty}x\\,f_X(x)\\,dx$, quando $E[|X|]<\\infty$."
+        },
+        {
+          "front": "LOTUS",
+          "back": "$E[g(X)]=\\int g(x)f_X(x)\\,dx$ (ou $\\sum g(x_i)p(x_i)$), sem achar a lei de $g(X)$."
+        },
+        {
+          "front": "Fórmula de cálculo da variância",
+          "back": "$\\operatorname{Var}(X)=E[X^2]-(E[X])^2$."
+        },
+        {
+          "front": "Linearidade da esperança vale sob dependência?",
+          "back": "Sim: $E[aX+bY]=aE[X]+bE[Y]$ sempre. Já $E[XY]=E[X]E[Y]$ exige independência."
+        },
+        {
+          "front": "Desigualdade de Markov",
+          "back": "$X\\ge0,\\,a>0\\Rightarrow P(X\\ge a)\\le E[X]/a$."
+        },
+        {
+          "front": "Desigualdade de Chebyshev",
+          "back": "$P(|X-\\mu|\\ge k)\\le \\operatorname{Var}(X)/k^2$."
+        },
+        {
+          "front": "Desigualdade de Jensen",
+          "back": "$\\varphi$ convexa $\\Rightarrow \\varphi(E[X])\\le E[\\varphi(X)]$."
+        },
+        {
+          "front": "O que a fgm faz?",
+          "back": "$M_X(t)=E[e^{tX}]$; $E[X^k]=M_X^{(k)}(0)$ e determina a distribuição."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Barry James, Probabilidade, cap. 4",
+          "ref": "livro"
+        },
+        {
+          "title": "Sheldon Ross, A First Course in Probability, caps. 7-8",
+          "ref": "livro"
+        },
+        {
+          "title": "Harvard Stat 110 - Expectation, variance, MGFs",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja series (para somar $\\sum k\\lambda^k/k!$) e integracao por partes (para $E[X]$ de densidades); sao as ferramentas de calculo aqui.",
+          "Leia Barry James cap. 4 e Ross caps. 7-8 para linearidade, LOTUS, variancia, momentos e a funcao geradora de momentos.",
+          "Estude o 'truque dos indicadores': escreva $X=\\sum_i \\mathbf{1}_{A_i}$ e aplique linearidade; refaca o numero esperado de pontos fixos de uma permutacao.",
+          "Demonstre no papel Markov, depois Chebyshev (a partir de Markov) e Jensen; entenda que sao a espinha dorsal da teoria assintotica.",
+          "Faca uma lista com: 1 calculo de $E,\\operatorname{Var}$ por serie, 1 por fgm, 1 uso de indicadores e 2 desigualdades.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal: quando usar fgm versus serie e a direcao correta da desigualdade de Jensen."
+        ],
+        "searchQueries": [
+          "linearidade da esperanca indicadores numero esperado pontos fixos",
+          "funcao geradora de momentos esperanca variancia exercicios",
+          "desigualdade de Markov Chebyshev demonstracao",
+          "desigualdade de Jensen convexidade esperanca aplicacoes",
+          "esperanca e variancia da Poisson demonstracao serie",
+          "moment generating function derive mean variance proof"
+        ],
+        "videos": [
+          {
+            "title": "Expectation, variance and MGFs (Stat 110)",
+            "channel": "Harvard University (Joe Blitzstein)",
+            "note": "veja linearidade da esperanca, o truque dos indicadores e a funcao geradora de momentos"
+          },
+          {
+            "title": "Expected value and the law of the unconscious statistician",
+            "channel": "Dr. Peyam",
+            "note": "assista para a intuicao e o rigor de LOTUS e das desigualdades classicas"
+          },
+          {
+            "title": "Esperanca, variancia e propriedades",
+            "channel": "Matematica Universitaria",
+            "note": "boa para a mecanica de calcular $E[X]$ e $\\operatorname{Var}(X)$ em PT-BR"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Barry R. James, Probabilidade, cap. 4 (Esperanca matematica)",
+            "where": "livro (IMPA)"
+          },
+          {
+            "title": "Sheldon Ross, A First Course in Probability, caps. 7-8 (Properties of Expectation; Limit Theorems)",
+            "where": "livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "prob-estatistica-06-vetores-aleatorios",
+      "title": "Vetores aleatórios, covariância e esperança condicional",
+      "tagline": "Quando duas ou mais variáveis interagem: distribuições conjuntas, independência, covariância e o poder da torre.",
+      "objectives": [
+        "Ao final você consegue trabalhar com distribuições conjuntas, marginais e condicionais de vetores aleatórios.",
+        "Ao final você consegue caracterizar independência de variáveis aleatórias pela fatoração da conjunta.",
+        "Ao final você consegue calcular covariância e correlação e interpretar o que medem (e o que não medem).",
+        "Ao final você consegue obter a distribuição de uma soma $X+Y$ por convolução.",
+        "Ao final você consegue usar a esperança condicional $E[X\\mid Y]$ e a propriedade da torre (esperança total)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Distribuição conjunta e marginais",
+          "statement": "Densidade conjunta $f_{X,Y}(x,y)\\ge 0$ com $\\iint f_{X,Y}=1$; marginal $f_X(x)=\\int f_{X,Y}(x,y)\\,dy$. Analogamente $p_{X,Y}$ no caso discreto."
+        },
+        {
+          "term": "Independência de variáveis",
+          "statement": "$X$ e $Y$ são independentes se $F_{X,Y}(x,y)=F_X(x)F_Y(y)$ para todo $(x,y)$; equivalentemente $f_{X,Y}=f_X f_Y$ (a conjunta fatora)."
+        },
+        {
+          "term": "Covariância",
+          "statement": "$\\operatorname{Cov}(X,Y)=E[(X-E X)(Y-E Y)]=E[XY]-E[X]E[Y]$. Mede associação linear; $\\operatorname{Cov}>0$ indica tendência a crescerem juntas."
+        },
+        {
+          "term": "Coeficiente de correlação",
+          "statement": "$\\rho(X,Y)=\\dfrac{\\operatorname{Cov}(X,Y)}{\\sigma_X\\sigma_Y}\\in[-1,1]$ (por Cauchy-Schwarz); $|\\rho|=1$ sse $Y$ é função afim de $X$."
+        },
+        {
+          "term": "Esperança condicional",
+          "statement": "$E[X\\mid Y=y]=\\int x\\,f_{X\\mid Y}(x\\mid y)\\,dx$, com $f_{X\\mid Y}(x\\mid y)=\\dfrac{f_{X,Y}(x,y)}{f_Y(y)}$. Como função de $Y$, $E[X\\mid Y]$ é uma variável aleatória."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Esperança do produto e variância da soma",
+          "statement": "Se $X\\perp Y$ (independentes), então $E[XY]=E[X]E[Y]$ e $\\operatorname{Cov}(X,Y)=0$. Em geral $\\operatorname{Var}(X+Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y)+2\\operatorname{Cov}(X,Y)$; logo, sob independência, a variância da soma é a soma das variâncias.",
+          "whyItMatters": "É a base do controle de erro de médias: $\\operatorname{Var}(\\bar X_n)=\\sigma^2/n$ para amostras independentes, o que faz a média concentrar — ponte direta para a LGN e o TCL."
+        },
+        {
+          "name": "Fórmula de convolução",
+          "statement": "Se $X,Y$ são independentes e contínuas, a densidade de $S=X+Y$ é $f_S(s)=\\int_{-\\infty}^{\\infty}f_X(x)\\,f_Y(s-x)\\,dx$.",
+          "whyItMatters": "Dá a distribuição de somas (somar exponenciais gera Gama, somar uniformes gera a densidade triangular, somar normais gera normal); é o mecanismo por trás das aproximações por soma."
+        },
+        {
+          "name": "Lei da esperança total (propriedade da torre)",
+          "statement": "$E[X]=E\\big[\\,E[X\\mid Y]\\,\\big]$; mais geralmente $E[g(Y)X]=E[g(Y)E[X\\mid Y]]$.",
+          "whyItMatters": "Permite calcular esperanças complicadas condicionando primeiro numa variável auxiliar; é também a propriedade definidora da esperança condicional na teoria moderna."
+        },
+        {
+          "name": "Descorrelação não implica independência",
+          "statement": "$\\operatorname{Cov}(X,Y)=0$ não garante independência; a recíproca (independência $\\Rightarrow$ covariância nula) é que vale.",
+          "whyItMatters": "Corrige o erro mais comum sobre correlação: $\\rho$ só capta dependência LINEAR. Há variáveis fortemente dependentes com $\\rho=0$ (ex.: $Y=X^2$ com $X$ simétrica)."
+        }
+      ],
+      "summary": "Vetores aleatórios descrevem como variáveis interagem. A distribuição conjunta contém tudo; dela se extraem as marginais (integrando/somando as outras coordenadas) e as condicionais. Independência é exatamente a fatoração da conjunta no produto das marginais — e é a hipótese que torna somas tratáveis: sob independência, $E[XY]=E[X]E[Y]$, a covariância zera e a variância da soma vira a soma das variâncias. Esse último fato, aplicado à média amostral, dá $\\operatorname{Var}(\\bar X_n)=\\sigma^2/n\\to 0$, que é a semente quantitativa da Lei dos Grandes Números.\n\nCovariância e correlação medem associação LINEAR: $\\rho\\in[-1,1]$ por Cauchy-Schwarz, com extremos atingidos só em relações afins. O erro a evitar é tomar $\\rho=0$ por independência — descorrelação é necessária, não suficiente (o contraexemplo $Y=X^2$ com $X$ simétrica tem covariância nula e dependência total). Por fim, a esperança condicional $E[X\\mid Y]$ — uma variável aleatória, função de $Y$ — e a propriedade da torre $E[E[X\\mid Y]]=E[X]$ são ferramentas poderosíssimas: condicionar primeiro numa variável auxiliar resolve esperanças que de outro modo seriam intratáveis, e é a linguagem em que se formulam cadeias de Markov, martingales e a estatística bayesiana.",
+      "commonPitfalls": [
+        "Concluir independência a partir de $\\operatorname{Cov}(X,Y)=0$ — a implicação só vale no sentido independência $\\Rightarrow$ covariância nula.",
+        "Aplicar $\\operatorname{Var}(X+Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y)$ sem independência (ou sem covariância nula).",
+        "Calcular a marginal esquecendo de integrar sobre TODO o suporte da outra variável (limites de integração dependem da região conjunta).",
+        "Tratar $E[X\\mid Y]$ como número quando ainda é função de $Y$ (variável aleatória); só $E[X\\mid Y=y]$ é número."
+      ],
+      "worked": "**Descorrelação sem independência.** Seja $X\\sim\\text{Uniforme}(-1,1)$ e $Y=X^2$. Claramente $Y$ é função de $X$, então são dependentes. Mostremos que mesmo assim $\\operatorname{Cov}(X,Y)=0$.\n\nPor simetria, $E[X]=0$ e $E[X^3]=\\int_{-1}^{1}x^3\\cdot\\tfrac12\\,dx=0$ (integrando ímpar em intervalo simétrico). Então\n\n$$\\operatorname{Cov}(X,Y)=E[XY]-E[X]E[Y]=E[X\\cdot X^2]-0=E[X^3]=0.$$\n\nLogo $\\rho(X,Y)=0$, embora $Y$ seja completamente determinada por $X$. Moral: correlação mede só dependência linear. $\\blacksquare$\n\n**Torre.** Se $N\\sim\\text{Poisson}(\\lambda)$ e, dado $N=n$, $X\\mid N=n\\sim\\text{Binomial}(n,p)$, então $E[X]=E[E[X\\mid N]]=E[Np]=p\\,E[N]=p\\lambda$.",
+      "exercises": [
+        {
+          "prompt": "A conjunta de $(X,Y)$ é $f(x,y)=c(x+y)$ em $[0,1]^2$ e $0$ fora. Ache $c$, as marginais $f_X,f_Y$ e decida se $X$ e $Y$ são independentes.",
+          "hint": "$\\iint c(x+y)=c\\cdot 1=1\\Rightarrow c=1$; $f_X(x)=x+\\tfrac12$. Compare $f_X f_Y$ com $f$ para testar independência (não são independentes).",
+          "difficulty": 3,
+          "solution": "Conjunta $f(x,y)=c(x+y)$ em $[0,1]^2$, $0$ fora.\n\n**Constante $c$.** Normalize:\n$$\\iint_{[0,1]^2}c(x+y)\\,dx\\,dy=c\\left(\\int_0^1\\!\\!\\int_0^1 x\\,dx\\,dy+\\int_0^1\\!\\!\\int_0^1 y\\,dx\\,dy\\right)=c\\left(\\tfrac12+\\tfrac12\\right)=c=1,$$\nlogo $c=1$.\n\n**Marginais.** Para $x\\in[0,1]$:\n$$f_X(x)=\\int_0^1 (x+y)\\,dy=x\\cdot 1+\\frac{y^2}{2}\\Big|_0^1=x+\\frac12.$$\nPor simetria, $f_Y(y)=y+\\tfrac12$ em $[0,1]$.\n\n**Independencia?** Compare o produto das marginais com a conjunta:\n$$f_X(x)f_Y(y)=\\left(x+\\tfrac12\\right)\\left(y+\\tfrac12\\right)=xy+\\tfrac{x}{2}+\\tfrac{y}{2}+\\tfrac14,$$\nque **nao** e igual a $f(x,y)=x+y$ (por ex., em $(0,0)$: produto $=\\tfrac14$, conjunta $=0$). Como a conjunta nao fatora, $X$ e $Y$ **nao sao independentes**. $\\blacksquare$",
+          "steps": [
+            "Normalize $\\iint c(x+y)=1$; como $\\iint x=\\iint y=1/2$, vem $c=1$.",
+            "Integre a conjunta em $y$ para obter $f_X(x)=x+\\tfrac12$ (e $f_Y$ por simetria).",
+            "Monte o produto $f_X f_Y=(x+\\tfrac12)(y+\\tfrac12)$.",
+            "Compare com $f(x,y)=x+y$: sao diferentes, logo nao independentes."
+          ]
+        },
+        {
+          "prompt": "Sejam $X,Y$ independentes $\\sim\\text{Exponencial}(\\lambda)$. Use convolução para mostrar que $S=X+Y$ tem densidade $f_S(s)=\\lambda^2 s\\,e^{-\\lambda s}$ para $s\\ge0$ (Gama de parâmetros $2,\\lambda$).",
+          "hint": "$f_S(s)=\\int_0^s \\lambda e^{-\\lambda x}\\lambda e^{-\\lambda(s-x)}\\,dx=\\lambda^2 e^{-\\lambda s}\\int_0^s dx$.",
+          "difficulty": 3,
+          "solution": "$X,Y$ independentes $\\sim\\text{Exponencial}(\\lambda)$: $f_X(x)=\\lambda e^{-\\lambda x}$ para $x\\ge 0$ (e $0$ senao), idem $f_Y$. Seja $S=X+Y$.\n\n**Convolucao.** Para $s\\ge 0$,\n$$f_S(s)=\\int_{-\\infty}^{\\infty}f_X(x)\\,f_Y(s-x)\\,dx.$$\nO integrando e nao nulo apenas quando $x\\ge 0$ **e** $s-x\\ge 0$, ou seja $0\\le x\\le s$. Nessa faixa:\n$$f_S(s)=\\int_0^s \\lambda e^{-\\lambda x}\\cdot\\lambda e^{-\\lambda(s-x)}\\,dx=\\lambda^2 e^{-\\lambda s}\\int_0^s e^{-\\lambda x}e^{\\lambda x}\\,dx=\\lambda^2 e^{-\\lambda s}\\int_0^s dx.$$\nA exponencial se cancela dentro da integral, restando\n$$f_S(s)=\\lambda^2 e^{-\\lambda s}\\cdot s=\\lambda^2 s\\,e^{-\\lambda s},\\qquad s\\ge 0.$$\n\nEsta e a densidade da $\\text{Gama}(2,\\lambda)$ (soma de duas exponenciais). $\\blacksquare$",
+          "steps": [
+            "Escreva a formula de convolucao $f_S(s)=\\int f_X(x)f_Y(s-x)\\,dx$.",
+            "Determine os limites: preciso $x\\ge 0$ e $s-x\\ge 0$, logo $0\\le x\\le s$.",
+            "Substitua as exponenciais; note que $e^{-\\lambda x}e^{-\\lambda(s-x)}=e^{-\\lambda s}$ (independe de $x$).",
+            "Integre a constante em $[0,s]$: da $s$, e obtenha $f_S(s)=\\lambda^2 s\\,e^{-\\lambda s}$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $|\\rho(X,Y)|\\le 1$ usando a desigualdade de Cauchy-Schwarz $\\big(E[UV]\\big)^2\\le E[U^2]E[V^2]$.",
+          "hint": "Tome $U=X-E[X]$, $V=Y-E[Y]$; então $\\operatorname{Cov}(X,Y)^2\\le\\operatorname{Var}(X)\\operatorname{Var}(Y)$.",
+          "difficulty": 3,
+          "solution": "Sejam $U=X-E[X]$ e $V=Y-E[Y]$, de modo que\n$$E[UV]=\\operatorname{Cov}(X,Y),\\quad E[U^2]=\\operatorname{Var}(X),\\quad E[V^2]=\\operatorname{Var}(Y).$$\n\n**Cauchy-Schwarz** (na forma dada) diz $\\big(E[UV]\\big)^2\\le E[U^2]\\,E[V^2]$, ou seja\n$$\\operatorname{Cov}(X,Y)^2\\le\\operatorname{Var}(X)\\,\\operatorname{Var}(Y).$$\n\nSupondo $\\sigma_X,\\sigma_Y>0$, divida por $\\operatorname{Var}(X)\\operatorname{Var}(Y)=\\sigma_X^2\\sigma_Y^2$:\n$$\\frac{\\operatorname{Cov}(X,Y)^2}{\\sigma_X^2\\sigma_Y^2}\\le 1\\ \\Longrightarrow\\ \\rho(X,Y)^2=\\left(\\frac{\\operatorname{Cov}(X,Y)}{\\sigma_X\\sigma_Y}\\right)^2\\le 1.$$\nTomando raiz, $|\\rho(X,Y)|\\le 1$. $\\blacksquare$\n\n(Ideia da prova de Cauchy-Schwarz: o polinomio $t\\mapsto E[(U-tV)^2]\\ge 0$ tem discriminante $\\le 0$. A igualdade $|\\rho|=1$ ocorre sse $U-tV=0$ q.c., isto e, $Y$ e funcao afim de $X$.)",
+          "steps": [
+            "Centre as variaveis: $U=X-E[X]$, $V=Y-E[Y]$.",
+            "Identifique $E[UV]=\\operatorname{Cov}$, $E[U^2]=\\operatorname{Var}(X)$, $E[V^2]=\\operatorname{Var}(Y)$.",
+            "Aplique Cauchy-Schwarz: $\\operatorname{Cov}(X,Y)^2\\le\\operatorname{Var}(X)\\operatorname{Var}(Y)$.",
+            "Divida por $\\sigma_X^2\\sigma_Y^2$ e tome raiz: $|\\rho|\\le 1$."
+          ]
+        },
+        {
+          "prompt": "Sejam $X_1,\\dots,X_n$ i.i.d. com média $\\mu$ e variância $\\sigma^2$. Mostre que $E[\\bar X_n]=\\mu$ e $\\operatorname{Var}(\\bar X_n)=\\sigma^2/n$, onde $\\bar X_n=\\tfrac1n\\sum X_i$.",
+          "hint": "Use linearidade para a média e a variância da soma de independentes (variâncias somam), depois o fator $1/n^2$.",
+          "difficulty": 2,
+          "solution": "Sejam $X_1,\\dots,X_n$ i.i.d. com $E[X_i]=\\mu$, $\\operatorname{Var}(X_i)=\\sigma^2$, e $\\bar X_n=\\tfrac1n\\sum_{i=1}^n X_i$.\n\n**Esperanca.** Por linearidade (vale sempre):\n$$E[\\bar X_n]=\\frac1n\\sum_{i=1}^n E[X_i]=\\frac1n\\cdot n\\mu=\\mu.$$\n\n**Variancia.** Como os $X_i$ sao independentes, a variancia da soma e a soma das variancias:\n$$\\operatorname{Var}\\!\\left(\\sum_{i=1}^n X_i\\right)=\\sum_{i=1}^n\\operatorname{Var}(X_i)=n\\sigma^2.$$\nUsando $\\operatorname{Var}(aY)=a^2\\operatorname{Var}(Y)$ com $a=\\tfrac1n$:\n$$\\operatorname{Var}(\\bar X_n)=\\frac{1}{n^2}\\operatorname{Var}\\!\\left(\\sum_{i=1}^n X_i\\right)=\\frac{1}{n^2}\\cdot n\\sigma^2=\\frac{\\sigma^2}{n}.$$\n\nAssim $E[\\bar X_n]=\\mu$ (nao-viesado) e $\\operatorname{Var}(\\bar X_n)=\\sigma^2/n\\to 0$ — a semente da Lei dos Grandes Numeros. $\\blacksquare$",
+          "steps": [
+            "Aplique linearidade a $\\bar X_n=\\tfrac1n\\sum X_i$ para obter $E[\\bar X_n]=\\mu$.",
+            "Use independencia para $\\operatorname{Var}(\\sum X_i)=n\\sigma^2$ (variancias somam).",
+            "Tire o fator $1/n$ para fora com $\\operatorname{Var}(aY)=a^2\\operatorname{Var}(Y)$.",
+            "Conclua $\\operatorname{Var}(\\bar X_n)=\\sigma^2/n$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Quando $X$ e $Y$ são independentes? (densidades)",
+          "back": "Quando $f_{X,Y}(x,y)=f_X(x)f_Y(y)$ (a conjunta fatora) para todo $(x,y)$."
+        },
+        {
+          "front": "Definição de covariância",
+          "back": "$\\operatorname{Cov}(X,Y)=E[XY]-E[X]E[Y]$."
+        },
+        {
+          "front": "$\\operatorname{Var}(X+Y)=?$",
+          "back": "$\\operatorname{Var}(X)+\\operatorname{Var}(Y)+2\\operatorname{Cov}(X,Y)$; sob independência, $\\operatorname{Var}(X)+\\operatorname{Var}(Y)$."
+        },
+        {
+          "front": "Faixa do coeficiente de correlação",
+          "back": "$\\rho\\in[-1,1]$ (Cauchy-Schwarz); $|\\rho|=1$ sse $Y$ é função afim de $X$."
+        },
+        {
+          "front": "Descorrelação implica independência?",
+          "back": "Não. Só vale independência $\\Rightarrow$ $\\operatorname{Cov}=0$. Contraexemplo: $Y=X^2$, $X$ simétrica."
+        },
+        {
+          "front": "Fórmula de convolução",
+          "back": "$f_{X+Y}(s)=\\int f_X(x)f_Y(s-x)\\,dx$ para $X\\perp Y$ contínuas."
+        },
+        {
+          "front": "Propriedade da torre",
+          "back": "$E[X]=E\\big[E[X\\mid Y]\\big]$ (lei da esperança total)."
+        },
+        {
+          "front": "$\\operatorname{Var}(\\bar X_n)$ para amostra i.i.d.",
+          "back": "$\\operatorname{Var}(\\bar X_n)=\\sigma^2/n$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Magalhães, Probabilidade e Variáveis Aleatórias, caps. 5-6",
+          "ref": "livro"
+        },
+        {
+          "title": "Sheldon Ross, A First Course in Probability, caps. 6-7",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 6.041 - Joint distributions and conditioning",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja do Calculo III integrais duplas e regioes de integracao; densidades conjuntas e marginais sao integrais sobre o suporte.",
+          "Leia Magalhaes caps. 5-6 e Ross caps. 6-7 para distribuicoes conjuntas, independencia por fatoracao, covariancia, correlacao e convolucao.",
+          "Estude a esperanca condicional $E[X\\mid Y]$ como variavel aleatoria e a propriedade da torre; refaca o exemplo Poisson-Binomial ($E[X]=p\\lambda$).",
+          "Trabalhe o contraexemplo $Y=X^2$ (descorrelacao sem independencia) para nao confundir $\\rho=0$ com independencia.",
+          "Faca uma lista com: 1 problema de marginais e independencia, 1 de convolucao, 1 de Cauchy-Schwarz ($|\\rho|\\le 1$) e 1 de variancia da media.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal: seu roteiro de convolucao e a distincao entre $E[X\\mid Y]$ (v.a.) e $E[X\\mid Y=y]$ (numero)."
+        ],
+        "searchQueries": [
+          "distribuicao conjunta marginal independencia fatoracao exercicios",
+          "convolucao soma de variaveis aleatorias densidade exemplos",
+          "covariancia correlacao Cauchy-Schwarz demonstracao rho entre -1 e 1",
+          "descorrelacao nao implica independencia contraexemplo Y=X^2",
+          "esperanca condicional propriedade da torre lei esperanca total",
+          "conditional expectation tower property joint distribution lecture"
+        ],
+        "videos": [
+          {
+            "title": "Joint distributions and conditioning (6.041)",
+            "channel": "MIT OpenCourseWare",
+            "note": "veja densidade conjunta, marginais, independencia e esperanca condicional com a torre"
+          },
+          {
+            "title": "Covariance, correlation and conditional expectation (Stat 110)",
+            "channel": "Harvard University (Joe Blitzstein)",
+            "note": "assista para covariancia, o significado de $\\rho$ e a propriedade da torre"
+          },
+          {
+            "title": "Vetores aleatorios e distribuicoes conjuntas",
+            "channel": "Matematica Universitaria",
+            "note": "boa para a mecanica de marginais e independencia em PT-BR"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Marcos N. Magalhaes, Probabilidade e Variaveis Aleatorias, caps. 5-6 (Vetores aleatorios; Esperanca condicional)",
+            "where": "livro (EDUSP)"
+          },
+          {
+            "title": "Sheldon Ross, A First Course in Probability, caps. 6-7 (Jointly Distributed Random Variables)",
+            "where": "livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "prob-estatistica-07-lgn-tcl",
+      "title": "Lei dos Grandes Números e Teorema Central do Limite",
+      "tagline": "Por que médias convergem e por que o histograma de uma soma vira um sino: os dois pilares da estatística.",
+      "objectives": [
+        "Ao final você consegue distinguir os modos de convergência: em probabilidade, quase certa e em distribuição.",
+        "Ao final você consegue enunciar e provar (via Chebyshev) a Lei Fraca dos Grandes Números.",
+        "Ao final você consegue enunciar a Lei Forte dos Grandes Números e entender em que sentido é mais forte.",
+        "Ao final você consegue enunciar o Teorema Central do Limite (Lindeberg-Lévy) e identificar suas hipóteses.",
+        "Ao final você consegue usar o TCL para aproximar probabilidades de somas e médias, com correção de continuidade."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Convergência em probabilidade",
+          "statement": "$X_n\\xrightarrow{P}X$ se para todo $\\varepsilon>0$, $P(|X_n-X|>\\varepsilon)\\to 0$. É o sentido da Lei Fraca."
+        },
+        {
+          "term": "Convergência quase certa",
+          "statement": "$X_n\\xrightarrow{q.c.}X$ se $P\\big(\\lim_n X_n=X\\big)=1$. É mais forte que em probabilidade; é o sentido da Lei Forte."
+        },
+        {
+          "term": "Convergência em distribuição",
+          "statement": "$X_n\\xrightarrow{d}X$ se $F_{X_n}(x)\\to F_X(x)$ em todo ponto de continuidade de $F_X$. É o sentido do TCL."
+        },
+        {
+          "term": "Média amostral",
+          "statement": "$\\bar X_n=\\tfrac1n\\sum_{i=1}^n X_i$ para $X_i$ i.i.d. com média $\\mu$ e variância $\\sigma^2$; tem $E[\\bar X_n]=\\mu$ e $\\operatorname{Var}(\\bar X_n)=\\sigma^2/n$."
+        },
+        {
+          "term": "Soma padronizada",
+          "statement": "$Z_n=\\dfrac{S_n-n\\mu}{\\sigma\\sqrt{n}}=\\dfrac{\\bar X_n-\\mu}{\\sigma/\\sqrt{n}}$, onde $S_n=\\sum_{i=1}^n X_i$; é a quantidade cujo limite é normal padrão."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Lei Fraca dos Grandes Números (Khintchine)",
+          "statement": "Se $X_1,X_2,\\dots$ são i.i.d. com média $\\mu$ (e, na versão elementar, variância $\\sigma^2<\\infty$), então $\\bar X_n\\xrightarrow{P}\\mu$: para todo $\\varepsilon>0$, $P(|\\bar X_n-\\mu|>\\varepsilon)\\to 0$.",
+          "whyItMatters": "Justifica a interpretação frequentista da probabilidade (frequência relativa $\\to$ probabilidade) e prova-se em uma linha com Chebyshev: $P(|\\bar X_n-\\mu|>\\varepsilon)\\le\\dfrac{\\sigma^2}{n\\varepsilon^2}\\to 0$."
+        },
+        {
+          "name": "Lei Forte dos Grandes Números (Kolmogorov)",
+          "statement": "Se $X_1,X_2,\\dots$ são i.i.d. com $E[|X_1|]<\\infty$ e média $\\mu$, então $\\bar X_n\\xrightarrow{q.c.}\\mu$, isto é, $P(\\lim_n \\bar X_n=\\mu)=1$.",
+          "whyItMatters": "É a versão definitiva: garante que quase toda trajetória individual de médias converge para $\\mu$ (não só a probabilidade de desvio). É o fundamento rigoroso de simulações de Monte Carlo."
+        },
+        {
+          "name": "Teorema Central do Limite (Lindeberg-Lévy)",
+          "statement": "Se $X_1,X_2,\\dots$ são i.i.d. com média $\\mu$ e variância $\\sigma^2\\in(0,\\infty)$, então $\\dfrac{S_n-n\\mu}{\\sigma\\sqrt{n}}\\xrightarrow{d}\\mathcal{N}(0,1)$, ou seja, $P\\!\\left(\\dfrac{S_n-n\\mu}{\\sigma\\sqrt{n}}\\le x\\right)\\to\\Phi(x)$.",
+          "whyItMatters": "Explica a onipresença da Normal: somas/médias de muitas contribuições independentes, qualquer que seja a distribuição original (com variância finita), têm flutuação aproximadamente gaussiana. É a base de intervalos de confiança e testes."
+        }
+      ],
+      "summary": "A Lei dos Grandes Números formaliza a intuição de que 'a média se estabiliza'. Na versão fraca, $\\bar X_n\\to\\mu$ em probabilidade, e a prova é um corolário direto de Chebyshev, pois $\\operatorname{Var}(\\bar X_n)=\\sigma^2/n\\to0$. Na versão forte (Kolmogorov), a convergência é quase certa: com probabilidade $1$, a sequência inteira de médias converge para $\\mu$. A distinção entre os modos de convergência — em probabilidade (cada $n$, a chance de desvio é pequena) versus quase certa (a trajetória converge) — é exatamente o tipo de sutileza que separa a estatística do rigor de mestrado, e dialoga com os modos de convergência da Análise Real.\n\nO Teorema Central do Limite vai além: não diz apenas que $\\bar X_n\\to\\mu$, mas como ela flutua em torno de $\\mu$. A flutuação tem escala $1/\\sqrt{n}$ e, depois de padronizada, converge em distribuição para a normal padrão, qualquer que seja a distribuição de partida (desde que com variância finita). É por isso que a Normal aparece em toda parte e por que podemos construir intervalos de confiança e testes sem conhecer a distribuição populacional. Na prática, aproximamos $S_n\\approx\\mathcal{N}(n\\mu,n\\sigma^2)$; quando $S_n$ é discreta (ex.: Binomial), usa-se a correção de continuidade, somando/subtraindo $\\tfrac12$ ao avaliar a normal.",
+      "commonPitfalls": [
+        "Confundir LGN com TCL: a LGN diz que $\\bar X_n\\to\\mu$; o TCL descreve a flutuação $\\sqrt{n}(\\bar X_n-\\mu)$ em torno de $\\mu$.",
+        "Achar que o TCL diz que 'os dados ficam normais' — quem fica normal é a soma/média padronizada, não a distribuição individual.",
+        "Aplicar o TCL sem variância finita (a Cauchy, por exemplo, não satisfaz as hipóteses e a média amostral não concentra).",
+        "Esquecer a correção de continuidade ao aproximar uma soma discreta (Binomial) pela Normal."
+      ],
+      "worked": "**Aproximação normal de uma Binomial.** Lança-se uma moeda honesta $n=100$ vezes; seja $S_{100}$ o número de caras. Estime $P(S_{100}\\le 45)$.\n\nAqui $\\mu=np=50$ e $\\sigma^2=np(1-p)=25$, logo $\\sigma=5$. Pelo TCL, $S_{100}\\approx\\mathcal{N}(50,25)$. Com correção de continuidade, $P(S_{100}\\le 45)\\approx P\\!\\left(Z\\le\\dfrac{45{,}5-50}{5}\\right)=P(Z\\le -0{,}9)=\\Phi(-0{,}9).$\n\nComo $\\Phi(-0{,}9)=1-\\Phi(0{,}9)\\approx 1-0{,}8159=0{,}1841$, obtemos $P(S_{100}\\le 45)\\approx 0{,}184$. $\\blacksquare$\n\n(O valor exato pela Binomial é $\\approx 0{,}184$ também — a aproximação é excelente já para $n=100$.)",
+      "exercises": [
+        {
+          "prompt": "Prove a Lei Fraca dos Grandes Números para variáveis i.i.d. com variância $\\sigma^2<\\infty$ usando a desigualdade de Chebyshev.",
+          "hint": "Aplique Chebyshev a $\\bar X_n$: $P(|\\bar X_n-\\mu|>\\varepsilon)\\le \\operatorname{Var}(\\bar X_n)/\\varepsilon^2=\\sigma^2/(n\\varepsilon^2)$ e faça $n\\to\\infty$.",
+          "difficulty": 3,
+          "solution": "Sejam $X_1,X_2,\\dots$ i.i.d. com media $\\mu$ e variancia $\\sigma^2<\\infty$, e $\\bar X_n=\\tfrac1n\\sum_{i=1}^n X_i$. Queremos $\\bar X_n\\xrightarrow{P}\\mu$.\n\n**Momentos da media.** Ja vimos que $E[\\bar X_n]=\\mu$ e $\\operatorname{Var}(\\bar X_n)=\\sigma^2/n$.\n\n**Chebyshev.** Para qualquer $\\varepsilon>0$, aplique a desigualdade de Chebyshev a $\\bar X_n$ (que tem media $\\mu$):\n$$P\\big(|\\bar X_n-\\mu|>\\varepsilon\\big)\\le\\frac{\\operatorname{Var}(\\bar X_n)}{\\varepsilon^2}=\\frac{\\sigma^2}{n\\,\\varepsilon^2}.$$\n\n**Limite.** Como $\\sigma^2$ e $\\varepsilon$ estao fixos,\n$$\\lim_{n\\to\\infty}P\\big(|\\bar X_n-\\mu|>\\varepsilon\\big)\\le\\lim_{n\\to\\infty}\\frac{\\sigma^2}{n\\varepsilon^2}=0.$$\nComo probabilidade e $\\ge 0$, o limite e exatamente $0$ para todo $\\varepsilon>0$, isto e, $\\bar X_n\\xrightarrow{P}\\mu$. $\\blacksquare$\n\nEsta e a Lei Fraca dos Grandes Numeros; note que a prova cabe em uma linha gracas a Chebyshev.",
+          "steps": [
+            "Lembre $E[\\bar X_n]=\\mu$ e $\\operatorname{Var}(\\bar X_n)=\\sigma^2/n$.",
+            "Aplique Chebyshev a $\\bar X_n$: $P(|\\bar X_n-\\mu|>\\varepsilon)\\le\\operatorname{Var}(\\bar X_n)/\\varepsilon^2$.",
+            "Substitua a variancia: cota $=\\sigma^2/(n\\varepsilon^2)$.",
+            "Faca $n\\to\\infty$: a cota vai a $0$, logo a probabilidade vai a $0$ (convergencia em probabilidade)."
+          ]
+        },
+        {
+          "prompt": "O tempo médio de atendimento numa fila tem média $\\mu=4$ min e desvio $\\sigma=2$ min. Para $n=64$ clientes, aproxime $P(\\bar X_{64}>4{,}5)$ pelo TCL.",
+          "hint": "$\\bar X_{64}\\approx\\mathcal{N}(4,\\,\\sigma^2/n)=\\mathcal{N}(4,\\,4/64)$; o desvio de $\\bar X$ é $2/8=0{,}25$. Padronize.",
+          "difficulty": 3,
+          "solution": "Tempo de atendimento com $\\mu=4$ min, $\\sigma=2$ min, amostra $n=64$. Pelo TCL, a media amostral e aproximadamente normal:\n$$\\bar X_{64}\\approx\\mathcal{N}\\!\\left(\\mu,\\frac{\\sigma^2}{n}\\right)=\\mathcal{N}\\!\\left(4,\\frac{4}{64}\\right)=\\mathcal{N}(4,\\,0{,}0625).$$\nO desvio-padrao de $\\bar X_{64}$ e $\\dfrac{\\sigma}{\\sqrt n}=\\dfrac{2}{8}=0{,}25$.\n\n**Padronizacao.**\n$$P(\\bar X_{64}>4{,}5)=P\\!\\left(Z>\\frac{4{,}5-4}{0{,}25}\\right)=P(Z>2)=1-\\Phi(2).$$\nCom $\\Phi(2)\\approx 0{,}9772$:\n$$P(\\bar X_{64}>4{,}5)\\approx 1-0{,}9772=0{,}0228.$$\n\nOu seja, ha $\\approx 2{,}3\\%$ de chance de a media dos $64$ tempos exceder $4{,}5$ minutos. $\\blacksquare$",
+          "steps": [
+            "Pelo TCL, $\\bar X_{64}\\approx\\mathcal{N}(4,\\sigma^2/n)$ com $\\sigma^2/n=4/64$.",
+            "Calcule o desvio-padrao da media: $\\sigma/\\sqrt n=2/8=0{,}25$.",
+            "Padronize $4{,}5$: $z=(4{,}5-4)/0{,}25=2$.",
+            "Use $P(Z>2)=1-\\Phi(2)\\approx 0{,}0228$."
+          ]
+        },
+        {
+          "prompt": "Explique, com um exemplo de evento $A_n$, por que convergência em probabilidade não implica convergência quase certa (esboce a ideia do 'caminhante' que zera infinitas vezes).",
+          "hint": "Considere blocos $[k/2^m,(k+1)/2^m]$ no intervalo $(0,1)$ com a lei uniforme; cada bloco tem prob. $\\to0$, mas todo ponto é coberto infinitas vezes.",
+          "difficulty": 4,
+          "solution": "Queremos um exemplo em que $X_n\\xrightarrow{P}0$ mas $X_n\\not\\xrightarrow{q.c.}0$ — a chamada sequencia 'typewriter' (maquina de escrever).\n\n**Construcao.** Tome $\\Omega=(0,1)$ com a probabilidade uniforme. Para cada $m\\ge 0$ divida $(0,1)$ em $2^m$ blocos diadicos $I_{m,k}=\\big(\\tfrac{k}{2^m},\\tfrac{k+1}{2^m}\\big]$, $k=0,\\dots,2^m-1$. Enumere-os em ordem ($I_{0,0}$; depois $I_{1,0},I_{1,1}$; depois $I_{2,0},\\dots$) como uma unica sequencia de eventos $A_1,A_2,A_3,\\dots$, e ponha $X_n=\\mathbf{1}_{A_n}$.\n\n**Convergencia em probabilidade.** O comprimento do bloco no nivel $m$ e $2^{-m}\\to 0$; como $A_n$ percorre blocos de nivel crescente,\n$$P(|X_n|>\\varepsilon)=P(A_n)=\\text{(comprimento do bloco)}\\to 0,$$\npara todo $\\varepsilon\\in(0,1)$. Logo $X_n\\xrightarrow{P}0$.\n\n**Falha da convergencia quase certa.** Fixe qualquer $\\omega\\in(0,1)$. Em cada nivel $m$, $\\omega$ pertence a exatamente um dos $2^m$ blocos, entao $X_n(\\omega)=1$ para infinitos indices $n$ (uma vez por nivel) e $X_n(\\omega)=0$ para infinitos outros. Assim $\\big(X_n(\\omega)\\big)$ oscila entre $0$ e $1$ e **nao converge** — isso vale para todo $\\omega$, logo $P(\\lim_n X_n=0)=0$. Portanto $X_n\\not\\xrightarrow{q.c.}0$. $\\blacksquare$\n\nMoral: em probabilidade, a 'chance de estar longe' encolhe; mas a trajetoria individual pode continuar retornando a $1$ para sempre.",
+          "steps": [
+            "Monte $\\Omega=(0,1)$ uniforme e os blocos diadicos $I_{m,k}$ de comprimento $2^{-m}$.",
+            "Enumere os blocos como $A_1,A_2,\\dots$ e defina $X_n=\\mathbf{1}_{A_n}$.",
+            "Mostre $P(A_n)\\to 0$: convergencia em probabilidade a $0$.",
+            "Fixe $\\omega$: ele cai em um bloco por nivel, entao $X_n(\\omega)=1$ infinitas vezes.",
+            "Conclua que a trajetoria nao converge, logo nao ha convergencia quase certa."
+          ]
+        },
+        {
+          "prompt": "Uma fábrica produz parafusos com comprimento médio $20$ mm e desvio $0{,}5$ mm. Numa caixa com $100$ parafusos, qual a probabilidade aproximada de o comprimento total exceder $2005$ mm?",
+          "hint": "$S_{100}\\approx\\mathcal{N}(100\\cdot20,\\,100\\cdot0{,}25)=\\mathcal{N}(2000,25)$; $\\sigma_S=5$. Calcule $P(S>2005)=1-\\Phi(1)$.",
+          "difficulty": 3,
+          "solution": "Comprimentos i.i.d. com $\\mu=20$ mm, $\\sigma=0{,}5$ mm; caixa com $n=100$ parafusos, comprimento total $S_{100}=\\sum_{i=1}^{100}X_i$.\n\n**TCL para a soma.**\n$$S_{100}\\approx\\mathcal{N}\\big(n\\mu,\\,n\\sigma^2\\big)=\\mathcal{N}\\big(100\\cdot 20,\\;100\\cdot 0{,}25\\big)=\\mathcal{N}(2000,\\,25).$$\nO desvio-padrao da soma e $\\sigma_S=\\sqrt{25}=5$.\n\n**Padronizacao.**\n$$P(S_{100}>2005)=P\\!\\left(Z>\\frac{2005-2000}{5}\\right)=P(Z>1)=1-\\Phi(1).$$\nCom $\\Phi(1)\\approx 0{,}8413$:\n$$P(S_{100}>2005)\\approx 1-0{,}8413=0{,}1587.$$\n\nOu seja, $\\approx 15{,}9\\%$ de chance de o comprimento total exceder $2005$ mm. $\\blacksquare$",
+          "steps": [
+            "Pelo TCL, $S_{100}\\approx\\mathcal{N}(n\\mu,n\\sigma^2)$ com $n\\mu=2000$ e $n\\sigma^2=25$.",
+            "Calcule $\\sigma_S=\\sqrt{25}=5$.",
+            "Padronize $2005$: $z=(2005-2000)/5=1$.",
+            "Use $P(Z>1)=1-\\Phi(1)\\approx 0{,}1587$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Convergência em probabilidade",
+          "back": "$X_n\\xrightarrow{P}X$: $\\forall\\varepsilon>0,\\ P(|X_n-X|>\\varepsilon)\\to0$."
+        },
+        {
+          "front": "Convergência quase certa",
+          "back": "$X_n\\xrightarrow{q.c.}X$: $P(\\lim_n X_n=X)=1$. Mais forte que em probabilidade."
+        },
+        {
+          "front": "Convergência em distribuição",
+          "back": "$X_n\\xrightarrow{d}X$: $F_{X_n}(x)\\to F_X(x)$ nos pontos de continuidade de $F_X$."
+        },
+        {
+          "front": "Lei Fraca dos Grandes Números",
+          "back": "$\\bar X_n\\xrightarrow{P}\\mu$ para i.i.d. com média $\\mu$; prova via Chebyshev."
+        },
+        {
+          "front": "Lei Forte dos Grandes Números",
+          "back": "$\\bar X_n\\xrightarrow{q.c.}\\mu$ se $E[|X_1|]<\\infty$ (Kolmogorov)."
+        },
+        {
+          "front": "Enunciado do TCL (Lindeberg-Lévy)",
+          "back": "$\\dfrac{S_n-n\\mu}{\\sigma\\sqrt{n}}\\xrightarrow{d}\\mathcal{N}(0,1)$ para i.i.d. com $0<\\sigma^2<\\infty$."
+        },
+        {
+          "front": "LGN vs TCL",
+          "back": "LGN: a média converge para $\\mu$. TCL: descreve a flutuação $\\sqrt{n}(\\bar X_n-\\mu)$, que vira normal."
+        },
+        {
+          "front": "Correção de continuidade",
+          "back": "Ao aproximar soma discreta (ex.: Binomial) pela Normal, ajustar o limite em $\\pm\\tfrac12$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Barry James, Probabilidade, caps. 5-6",
+          "ref": "livro"
+        },
+        {
+          "title": "Grimmett & Stirzaker, Probability and Random Processes, cap. 7",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.05 - Central Limit Theorem",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe as tres nocoes de convergencia (em probabilidade, quase certa, em distribuicao) e a hierarquia entre elas; dialoga com Analise Real.",
+          "Leia Barry James caps. 5-6 e Grimmett & Stirzaker cap. 7 para a LGN fraca (via Chebyshev), a LGN forte e o TCL de Lindeberg-Levy.",
+          "Assista ao video do TCL para a intuicao de por que somas viram sino; refaca a aproximacao normal de uma Binomial com correcao de continuidade.",
+          "Demonstre no papel a LGN fraca a partir de Chebyshev e entenda o contraexemplo 'typewriter' que separa convergencia em probabilidade de quase certa.",
+          "Faca uma lista com: 1 prova da LGN fraca, 2 aplicacoes numericas do TCL (media e soma) e 1 discussao dos modos de convergencia.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal: a distincao LGN versus TCL e o padrao de padronizar $S_n$ ou $\\bar X_n$."
+        ],
+        "searchQueries": [
+          "lei fraca dos grandes numeros demonstracao Chebyshev",
+          "teorema central do limite Lindeberg-Levy enunciado hipoteses",
+          "aproximacao normal binomial correcao de continuidade exercicios",
+          "convergencia em probabilidade versus quase certa contraexemplo typewriter",
+          "lei forte dos grandes numeros Kolmogorov Monte Carlo",
+          "central limit theorem intuition proof characteristic functions"
+        ],
+        "videos": [
+          {
+            "title": "But what is the Central Limit Theorem?",
+            "channel": "3Blue1Brown",
+            "note": "assista para a intuicao visual de por que somas/medias tendem a distribuicao normal"
+          },
+          {
+            "title": "Law of large numbers and Central Limit Theorem (18.05)",
+            "channel": "MIT OpenCourseWare",
+            "note": "veja o enunciado das duas leis e o uso pratico do TCL para aproximar probabilidades"
+          },
+          {
+            "title": "Convergencia de variaveis aleatorias e teoremas limite",
+            "channel": "IMPA (canal / videoaulas de probabilidade)",
+            "note": "procure as aulas sobre modos de convergencia e a prova da LGN/TCL no nivel de pos"
+          }
+        ],
+        "articles": [
+          {
+            "title": "Barry R. James, Probabilidade, caps. 5-6 (Convergencia; Teoremas limite)",
+            "where": "livro (IMPA)"
+          },
+          {
+            "title": "Grimmett & Stirzaker, Probability and Random Processes, cap. 7 (Convergence of random variables)",
+            "where": "livro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "prob-estatistica-08-inferencia",
+      "title": "Introdução à inferência estatística",
+      "tagline": "Do modelo aos dados: estimar parâmetros, quantificar incerteza e testar hipóteses com fundamento probabilístico.",
+      "objectives": [
+        "Ao final você consegue distinguir população, amostra, parâmetro e estatística, e entender a distribuição amostral.",
+        "Ao final você consegue avaliar estimadores por viés, variância, erro quadrático médio e consistência.",
+        "Ao final você consegue justificar por que a variância amostral usa $n-1$ (correção de Bessel).",
+        "Ao final você consegue obter estimadores de máxima verossimilhança em casos simples.",
+        "Ao final você consegue construir um intervalo de confiança para a média e entender a lógica de um teste de hipóteses."
+      ],
+      "keyConcepts": [
+        {
+          "term": "População, amostra e parâmetro",
+          "statement": "O parâmetro $\\theta$ (ex.: $\\mu$, $\\sigma^2$, $p$) descreve a população; uma amostra $X_1,\\dots,X_n$ i.i.d. é observada; uma estatística é qualquer função $T(X_1,\\dots,X_n)$ dos dados."
+        },
+        {
+          "term": "Estimador e suas qualidades",
+          "statement": "Estimador $\\hat\\theta=T(X_1,\\dots,X_n)$. Viés: $b(\\hat\\theta)=E[\\hat\\theta]-\\theta$ (não-viesado se $=0$). Erro quadrático médio: $\\operatorname{EQM}(\\hat\\theta)=E[(\\hat\\theta-\\theta)^2]=\\operatorname{Var}(\\hat\\theta)+b(\\hat\\theta)^2$."
+        },
+        {
+          "term": "Média e variância amostrais",
+          "statement": "$\\bar X=\\tfrac1n\\sum X_i$ estima $\\mu$ (não-viesado); $S^2=\\dfrac{1}{n-1}\\sum_{i=1}^n(X_i-\\bar X)^2$ estima $\\sigma^2$ (não-viesado, com o denominador $n-1$)."
+        },
+        {
+          "term": "Função de verossimilhança",
+          "statement": "$L(\\theta)=\\prod_{i=1}^n f(x_i;\\theta)$ vista como função de $\\theta$ com os dados fixos; o estimador de máxima verossimilhança (EMV) é $\\hat\\theta=\\arg\\max_\\theta L(\\theta)=\\arg\\max_\\theta \\ell(\\theta)$, com $\\ell=\\ln L$."
+        },
+        {
+          "term": "Intervalo de confiança",
+          "statement": "Intervalo aleatório $[\\hat\\theta_L,\\hat\\theta_U]$ que contém $\\theta$ com probabilidade $1-\\alpha$ (nível de confiança); a aleatoriedade está no intervalo, não em $\\theta$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Distribuição da média amostral (caso normal)",
+          "statement": "Se $X_1,\\dots,X_n$ são i.i.d. $\\mathcal{N}(\\mu,\\sigma^2)$, então $\\bar X\\sim\\mathcal{N}(\\mu,\\sigma^2/n)$ exatamente; e, com $\\sigma$ desconhecido, $\\dfrac{\\bar X-\\mu}{S/\\sqrt{n}}\\sim t_{n-1}$ (distribuição $t$ de Student).",
+          "whyItMatters": "É a base dos intervalos de confiança e testes para a média: dá a distribuição exata da quantidade pivotal a partir da qual se calculam as margens de erro."
+        },
+        {
+          "name": "Não-viesamento de $S^2$ (correção de Bessel)",
+          "statement": "Para amostra i.i.d. com variância $\\sigma^2$, $E\\!\\left[\\dfrac{1}{n-1}\\sum_{i}(X_i-\\bar X)^2\\right]=\\sigma^2$. Com denominador $n$, o estimador seria viesado (subestima $\\sigma^2$).",
+          "whyItMatters": "Explica o misterioso $n-1$: usar $\\bar X$ no lugar de $\\mu$ 'gasta' um grau de liberdade; dividir por $n-1$ corrige o viés exatamente."
+        },
+        {
+          "name": "Propriedades assintóticas do EMV",
+          "statement": "Sob condições de regularidade, o estimador de máxima verossimilhança é consistente ($\\hat\\theta\\xrightarrow{P}\\theta$) e assintoticamente normal: $\\sqrt{n}(\\hat\\theta-\\theta)\\xrightarrow{d}\\mathcal{N}\\big(0,\\,I(\\theta)^{-1}\\big)$, com $I(\\theta)$ a informação de Fisher.",
+          "whyItMatters": "Justifica por que a máxima verossimilhança é o método de estimação dominante: para amostras grandes ele é (assintoticamente) o mais eficiente possível."
+        }
+      ],
+      "summary": "A inferência inverte a probabilidade: em vez de, dado o modelo, calcular probabilidades de dados, partimos dos dados para aprender sobre o parâmetro $\\theta$ do modelo. Uma estatística é função da amostra e, por isso, é ela mesma uma variável aleatória com uma distribuição amostral — entender essa distribuição é o cerne de tudo. Para a estimação pontual, julgamos um estimador $\\hat\\theta$ por viés (acerta na média?), variância (é estável?) e a síntese dos dois, o erro quadrático médio $\\operatorname{EQM}=\\operatorname{Var}+\\text{viés}^2$; e por consistência ($\\hat\\theta\\to\\theta$ quando $n\\to\\infty$, garantida pela LGN para a média). O denominador $n-1$ da variância amostral não é capricho: é a correção exata que torna $S^2$ não-viesado.\n\nO método de máxima verossimilhança é o mais geral e poderoso: escolhe o $\\theta$ que torna os dados observados mais prováveis, maximizando $\\ell(\\theta)=\\ln L(\\theta)$; sob regularidade, o EMV é consistente e assintoticamente normal e eficiente. A partir da distribuição amostral (exata no caso normal, ou aproximada pelo TCL) construímos intervalos de confiança — atenção à interpretação correta: é o intervalo que é aleatório, e '$95\\%$ de confiança' significa que o procedimento captura $\\theta$ em $95\\%$ das amostras, não que '$\\theta$ tem $95\\%$ de chance de estar ali'. Os testes de hipóteses formalizam decisões: fixa-se $H_0$, escolhe-se a probabilidade de erro tipo I ($\\alpha$), e rejeita-se $H_0$ se o $p$-valor — a probabilidade, sob $H_0$, de observar algo tão ou mais extremo que o dado — for menor que $\\alpha$.",
+      "commonPitfalls": [
+        "Interpretar 'IC de $95\\%$' como '$P(\\theta\\in\\text{intervalo})=0{,}95$': $\\theta$ é fixo; quem varia é o intervalo (interpretação frequentista).",
+        "Confundir $p$-valor com a probabilidade de $H_0$ ser verdadeira — são coisas diferentes; o $p$-valor é $P(\\text{dado tão extremo}\\mid H_0)$.",
+        "Usar denominador $n$ na variância amostral quando se quer estimador não-viesado de $\\sigma^2$ (use $n-1$).",
+        "Esquecer que, com $\\sigma$ desconhecido e $n$ pequeno, a quantidade $\\tfrac{\\bar X-\\mu}{S/\\sqrt n}$ segue $t_{n-1}$, não a normal padrão."
+      ],
+      "worked": "**Máxima verossimilhança para a Exponencial.** Sejam $X_1,\\dots,X_n$ i.i.d. $\\sim\\text{Exponencial}(\\lambda)$, com $f(x;\\lambda)=\\lambda e^{-\\lambda x}$. A verossimilhança é\n\n$$L(\\lambda)=\\prod_{i=1}^n \\lambda e^{-\\lambda x_i}=\\lambda^n e^{-\\lambda\\sum_i x_i}.$$\n\nA log-verossimilhança é $\\ell(\\lambda)=n\\ln\\lambda-\\lambda\\sum_i x_i$. Derivando e igualando a zero:\n\n$$\\ell'(\\lambda)=\\frac{n}{\\lambda}-\\sum_i x_i=0\\ \\Longrightarrow\\ \\hat\\lambda=\\frac{n}{\\sum_i x_i}=\\frac{1}{\\bar X}.$$\n\nComo $\\ell''(\\lambda)=-n/\\lambda^2<0$, é máximo. O EMV é $\\hat\\lambda=1/\\bar X$ — coerente, já que $E[X]=1/\\lambda$. $\\blacksquare$\n\n**IC para a média (normal, $\\sigma$ conhecido).** Para $X_i\\sim\\mathcal{N}(\\mu,\\sigma^2)$, um IC de $95\\%$ para $\\mu$ é $\\bar X\\pm 1{,}96\\,\\dfrac{\\sigma}{\\sqrt n}$, pois $\\dfrac{\\bar X-\\mu}{\\sigma/\\sqrt n}\\sim\\mathcal{N}(0,1)$ e $P(-1{,}96\\le Z\\le 1{,}96)=0{,}95$.",
+      "exercises": [
+        {
+          "prompt": "Sejam $X_1,\\dots,X_n$ i.i.d. $\\sim\\text{Bernoulli}(p)$. Mostre que o estimador de máxima verossimilhança de $p$ é $\\hat p=\\bar X$.",
+          "hint": "$L(p)=p^{\\sum x_i}(1-p)^{n-\\sum x_i}$; maximize $\\ell(p)$ derivando em $p$.",
+          "difficulty": 3,
+          "solution": "$X_1,\\dots,X_n$ i.i.d. $\\sim\\text{Bernoulli}(p)$, com $P(X_i=x)=p^x(1-p)^{1-x}$, $x\\in\\{0,1\\}$. Seja $t=\\sum_{i=1}^n x_i$ (numero de sucessos).\n\n**Verossimilhanca.**\n$$L(p)=\\prod_{i=1}^n p^{x_i}(1-p)^{1-x_i}=p^{\\,t}(1-p)^{\\,n-t}.$$\n\n**Log-verossimilhanca.**\n$$\\ell(p)=\\ln L(p)=t\\ln p+(n-t)\\ln(1-p).$$\n\n**Maximizacao.** Derive em $p$ e iguale a zero:\n$$\\ell'(p)=\\frac{t}{p}-\\frac{n-t}{1-p}=0\\ \\Longrightarrow\\ t(1-p)=(n-t)p\\ \\Longrightarrow\\ t=np\\ \\Longrightarrow\\ \\hat p=\\frac{t}{n}=\\bar X.$$\n\n**Confirmacao de maximo.** $\\ell''(p)=-\\dfrac{t}{p^2}-\\dfrac{n-t}{(1-p)^2}<0$, entao $\\ell$ e concava e $\\hat p$ e maximo.\n\nPortanto o EMV de $p$ e a proporcao amostral $\\hat p=\\bar X=\\dfrac{1}{n}\\sum_i X_i$. $\\blacksquare$",
+          "steps": [
+            "Escreva a verossimilhanca $L(p)=p^{\\sum x_i}(1-p)^{n-\\sum x_i}$.",
+            "Tome o logaritmo: $\\ell(p)=t\\ln p+(n-t)\\ln(1-p)$, com $t=\\sum x_i$.",
+            "Derive $\\ell'(p)=t/p-(n-t)/(1-p)$ e iguale a zero.",
+            "Resolva para $\\hat p=t/n=\\bar X$ e confirme o maximo por $\\ell''<0$."
+          ]
+        },
+        {
+          "prompt": "Prove que $E[S^2]=\\sigma^2$ para $S^2=\\tfrac{1}{n-1}\\sum(X_i-\\bar X)^2$, justificando a correção de Bessel.",
+          "hint": "Use $\\sum(X_i-\\bar X)^2=\\sum(X_i-\\mu)^2-n(\\bar X-\\mu)^2$ e tome esperança, lembrando $E[(\\bar X-\\mu)^2]=\\sigma^2/n$.",
+          "difficulty": 4,
+          "solution": "Amostra i.i.d. com media $\\mu$ e variancia $\\sigma^2$; $S^2=\\dfrac{1}{n-1}\\sum_{i=1}^n(X_i-\\bar X)^2$. Queremos $E[S^2]=\\sigma^2$.\n\n**Identidade algebrica.** Some e subtraia $\\mu$:\n$$\\sum_{i=1}^n(X_i-\\bar X)^2=\\sum_{i=1}^n(X_i-\\mu)^2-n(\\bar X-\\mu)^2.$$\n(De fato, $\\sum(X_i-\\mu)^2=\\sum(X_i-\\bar X)^2+n(\\bar X-\\mu)^2$ pelo teorema de decomposicao; isole o primeiro termo.)\n\n**Esperanca de cada parcela.**\n- $E[(X_i-\\mu)^2]=\\operatorname{Var}(X_i)=\\sigma^2$, logo $E\\big[\\sum_i(X_i-\\mu)^2\\big]=n\\sigma^2$.\n- $E[(\\bar X-\\mu)^2]=\\operatorname{Var}(\\bar X)=\\dfrac{\\sigma^2}{n}$, logo $E\\big[n(\\bar X-\\mu)^2\\big]=n\\cdot\\dfrac{\\sigma^2}{n}=\\sigma^2$.\n\n**Combinando.**\n$$E\\!\\left[\\sum_i(X_i-\\bar X)^2\\right]=n\\sigma^2-\\sigma^2=(n-1)\\sigma^2.$$\nDividindo por $n-1$:\n$$E[S^2]=\\frac{1}{n-1}\\,(n-1)\\sigma^2=\\sigma^2.\\ \\blacksquare$$\n\nEis a correcao de Bessel: usar $\\bar X$ no lugar de $\\mu$ 'gasta' um grau de liberdade, e o denominador $n-1$ compensa exatamente o vies.",
+          "steps": [
+            "Use a identidade $\\sum(X_i-\\bar X)^2=\\sum(X_i-\\mu)^2-n(\\bar X-\\mu)^2$.",
+            "Tome esperanca: $E[\\sum(X_i-\\mu)^2]=n\\sigma^2$.",
+            "Use $E[(\\bar X-\\mu)^2]=\\operatorname{Var}(\\bar X)=\\sigma^2/n$, logo $E[n(\\bar X-\\mu)^2]=\\sigma^2$.",
+            "Subtraia: $E[\\sum(X_i-\\bar X)^2]=(n-1)\\sigma^2$.",
+            "Divida por $n-1$ para obter $E[S^2]=\\sigma^2$."
+          ]
+        },
+        {
+          "prompt": "Uma amostra de $n=36$ peças tem média $\\bar X=50$ e supõe-se $\\sigma=6$ conhecido. Construa um IC de $95\\%$ para a média $\\mu$.",
+          "hint": "$\\bar X\\pm 1{,}96\\,\\sigma/\\sqrt n=50\\pm 1{,}96\\cdot 6/6=50\\pm 1{,}96$.",
+          "difficulty": 2,
+          "solution": "Amostra $n=36$, media observada $\\bar X=50$, com $\\sigma=6$ **conhecido**. Como $\\sigma$ e conhecido, a quantidade pivotal e $\\dfrac{\\bar X-\\mu}{\\sigma/\\sqrt n}\\sim\\mathcal{N}(0,1)$ (exato se a populacao e normal, aproximado pelo TCL caso contrario).\n\n**Erro-padrao.**\n$$\\frac{\\sigma}{\\sqrt n}=\\frac{6}{\\sqrt{36}}=\\frac{6}{6}=1.$$\n\n**Intervalo de $95\\%$.** Use o quantil $z_{0{,}975}=1{,}96$:\n$$\\bar X\\pm 1{,}96\\cdot\\frac{\\sigma}{\\sqrt n}=50\\pm 1{,}96\\cdot 1=50\\pm 1{,}96,$$\nou seja,\n$$IC_{95\\%}(\\mu)=[48{,}04,\\ 51{,}96].$$\n\n**Interpretacao correta:** o procedimento que gera esse intervalo captura o verdadeiro $\\mu$ em $95\\%$ das amostras; $\\mu$ e fixo, o intervalo e que e aleatorio. $\\blacksquare$",
+          "steps": [
+            "Reconheca $\\sigma$ conhecido: use a pivotal normal $Z=(\\bar X-\\mu)/(\\sigma/\\sqrt n)$.",
+            "Calcule o erro-padrao $\\sigma/\\sqrt n=6/6=1$.",
+            "Aplique $\\bar X\\pm 1{,}96\\cdot\\text{(erro-padrao)}=50\\pm 1{,}96$.",
+            "Escreva o intervalo $[48{,}04,\\ 51{,}96]$ e lembre a interpretacao frequentista."
+          ]
+        },
+        {
+          "prompt": "Compare dois estimadores de $\\sigma^2$: $S^2$ (denominador $n-1$, não-viesado) e $\\hat\\sigma^2=\\tfrac1n\\sum(X_i-\\bar X)^2$ (viesado). Qual o viés de $\\hat\\sigma^2$ e por que ele pode ainda assim ter menor EQM?",
+          "hint": "$E[\\hat\\sigma^2]=\\tfrac{n-1}{n}\\sigma^2$, então o viés é $-\\sigma^2/n$; um estimador viesado pode ter variância menor e compensar no EQM.",
+          "difficulty": 4,
+          "solution": "Comparamos $S^2=\\dfrac{1}{n-1}\\sum(X_i-\\bar X)^2$ (nao-viesado) com $\\hat\\sigma^2=\\dfrac{1}{n}\\sum(X_i-\\bar X)^2$ (denominador $n$).\n\n**Relacao entre eles.** Como $\\sum(X_i-\\bar X)^2=(n-1)S^2$,\n$$\\hat\\sigma^2=\\frac{1}{n}\\sum(X_i-\\bar X)^2=\\frac{n-1}{n}\\,S^2.$$\n\n**Vies de $\\hat\\sigma^2$.** Tomando esperanca e usando $E[S^2]=\\sigma^2$:\n$$E[\\hat\\sigma^2]=\\frac{n-1}{n}\\sigma^2\\ \\Longrightarrow\\ b(\\hat\\sigma^2)=E[\\hat\\sigma^2]-\\sigma^2=\\frac{n-1}{n}\\sigma^2-\\sigma^2=-\\frac{\\sigma^2}{n}.$$\nO vies e negativo: $\\hat\\sigma^2$ **subestima** $\\sigma^2$ em media (por isso o $n$ 'ingenuo' e viesado).\n\n**Por que ainda assim pode ter menor EQM.** Lembre $\\operatorname{EQM}=\\operatorname{Var}+\\text{vies}^2$. Multiplicar $S^2$ pelo fator $c=\\tfrac{n-1}{n}<1$ **reduz** a variancia por $c^2$:\n$$\\operatorname{Var}(\\hat\\sigma^2)=\\left(\\frac{n-1}{n}\\right)^2\\operatorname{Var}(S^2)<\\operatorname{Var}(S^2).$$\nO $\\hat\\sigma^2$ troca um pequeno vies ($-\\sigma^2/n$, que $\\to 0$) por uma variancia menor; para muitas distribuicoes (por exemplo, no caso normal o EQM e minimizado com denominador $n+1$), essa troca resulta em $\\operatorname{EQM}(\\hat\\sigma^2)<\\operatorname{EQM}(S^2)$. Moral: nao-viesamento nao e sinonimo de menor erro quadratico medio. $\\blacksquare$",
+          "steps": [
+            "Escreva $\\hat\\sigma^2=\\tfrac{n-1}{n}S^2$ a partir de $\\sum(X_i-\\bar X)^2=(n-1)S^2$.",
+            "Tome esperanca com $E[S^2]=\\sigma^2$: $E[\\hat\\sigma^2]=\\tfrac{n-1}{n}\\sigma^2$.",
+            "Calcule o vies $b=-\\sigma^2/n$ (subestima $\\sigma^2$).",
+            "Use $\\operatorname{EQM}=\\operatorname{Var}+\\text{vies}^2$ e note que o fator $<1$ reduz a variancia por $c^2$.",
+            "Conclua que a reducao de variancia pode superar o pequeno vies, dando menor EQM."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Viés de um estimador",
+          "back": "$b(\\hat\\theta)=E[\\hat\\theta]-\\theta$; não-viesado se $b=0$."
+        },
+        {
+          "front": "Decomposição do EQM",
+          "back": "$\\operatorname{EQM}(\\hat\\theta)=\\operatorname{Var}(\\hat\\theta)+b(\\hat\\theta)^2$."
+        },
+        {
+          "front": "Por que $n-1$ na variância amostral?",
+          "back": "Correção de Bessel: torna $E[S^2]=\\sigma^2$; usar $\\bar X$ no lugar de $\\mu$ custa um grau de liberdade."
+        },
+        {
+          "front": "Estimador de máxima verossimilhança",
+          "back": "$\\hat\\theta=\\arg\\max_\\theta L(\\theta)$, com $L(\\theta)=\\prod_i f(x_i;\\theta)$; usa-se $\\ell=\\ln L$."
+        },
+        {
+          "front": "EMV da Exponencial$(\\lambda)$",
+          "back": "$\\hat\\lambda=1/\\bar X$."
+        },
+        {
+          "front": "Interpretação correta de um IC de 95%",
+          "back": "O procedimento captura $\\theta$ em $95\\%$ das amostras; $\\theta$ é fixo, o intervalo é aleatório."
+        },
+        {
+          "front": "O que é o p-valor?",
+          "back": "$P(\\text{estatística tão ou mais extrema}\\mid H_0)$; rejeita-se $H_0$ se p-valor $<\\alpha$."
+        },
+        {
+          "front": "Erro tipo I e tipo II",
+          "back": "Tipo I: rejeitar $H_0$ verdadeira (prob. $\\alpha$). Tipo II: não rejeitar $H_0$ falsa (prob. $\\beta$)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Casella & Berger, Statistical Inference, caps. 5-9",
+          "ref": "livro"
+        },
+        {
+          "title": "Bussab & Morettin, Estatística Básica, caps. 10-13",
+          "ref": "livro"
+        },
+        {
+          "title": "MIT OCW 18.05 - Estimation and hypothesis testing",
+          "ref": "curso"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe o vocabulario: populacao, parametro $\\theta$, amostra, estatistica e distribuicao amostral; e a base de toda a inferencia.",
+          "Leia Casella & Berger caps. 5-9 (rigor) e Bussab & Morettin caps. 10-13 (linguagem de concurso) para estimacao, EMV, IC e testes.",
+          "Estude o metodo de maxima verossimilhanca: monte $L(\\theta)$, tome $\\ell=\\ln L$, derive e resolva; refaca os EMV de Bernoulli e Exponencial.",
+          "Entenda vies, variancia e EQM ($\\operatorname{EQM}=\\operatorname{Var}+\\text{vies}^2$) e por que a variancia amostral usa $n-1$ (correcao de Bessel).",
+          "Pratique construir um IC para a media (com $\\sigma$ conhecido, via $Z$; com $\\sigma$ desconhecido e $n$ pequeno, via $t$) e a logica do $p$-valor e erros tipo I/II.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal: seu roteiro de EMV, a interpretacao frequentista correta do IC e a definicao exata de $p$-valor."
+        ],
+        "searchQueries": [
+          "estimador de maxima verossimilhanca exercicios resolvidos passo a passo",
+          "correcao de Bessel n-1 variancia amostral demonstracao nao viesado",
+          "intervalo de confianca media interpretacao frequentista",
+          "erro quadratico medio vies variancia estimador comparacao",
+          "teste de hipoteses p-valor erro tipo I e tipo II definicao",
+          "maximum likelihood estimator consistency asymptotic normality Fisher information"
+        ],
+        "videos": [
+          {
+            "title": "Estimation and hypothesis testing (18.05)",
+            "channel": "MIT OpenCourseWare",
+            "note": "veja estimacao pontual, maxima verossimilhanca, intervalos de confianca e testes"
+          },
+          {
+            "title": "Maximum likelihood estimation, explained",
+            "channel": "StatQuest with Josh Starmer",
+            "note": "assista para a intuicao de maximizar a verossimilhanca com exemplos simples"
+          },
+          {
+            "title": "Inferencia estatistica: estimacao e intervalos de confianca",
+            "channel": "Fernando Fernandes / Estatistica (canais de estatistica em PT-BR)",
+            "note": "boa para a mecanica de IC e teste de hipoteses no nivel de concurso"
+          }
+        ],
+        "articles": [
+          {
+            "title": "George Casella & Roger Berger, Statistical Inference, caps. 5-9 (Properties of a Random Sample; Point Estimation; Interval Estimation; Hypothesis Testing)",
+            "where": "livro"
+          },
+          {
+            "title": "Bussab & Morettin, Estatistica Basica, caps. 10-13 (Inferencia)",
+            "where": "livro (EDUSP/Saraiva)"
+          }
+        ]
+      }
+    }
+  ]
+}

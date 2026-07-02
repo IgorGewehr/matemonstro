@@ -1,0 +1,397 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0b10;
+  --color-panel: #12141d;
+  --color-panel2: #1a1d2a;
+  --color-line: #262a3b;
+  --color-mut: #8a90a6;
+  --color-txt: #e6e8f0;
+  --color-brand: #7c5cff;
+  --color-brand2: #00d3a7;
+  --color-warn: #ffb347;
+  --color-gold: #f6c453;
+  /* Tokens de superfície/texto (todos os temas sobrescrevem) */
+  --color-well: #0e1018; /* campos, editores, previews (inset) */
+  --color-card: #12141d80; /* cartões internos sobre o panel */
+  --color-raise: #181b27; /* hover / selecionado / trilhos */
+  --color-line2: #2c3147; /* borda de chip/btn */
+  --color-txt2: #d7dae6; /* corpo de texto */
+  --color-txt3: #b3b8cc; /* texto secundário */
+  --color-warm: #e9c8b0; /* avisos "quentes" (erros comuns) */
+  --color-scrim: #0c0d14cc; /* barras sticky com blur */
+  --color-panel-hi: #14172180; /* topo do gradiente do .panel */
+  --color-panel-lo: #10121b; /* base do gradiente do .panel */
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: radial-gradient(1200px 800px at 20% -10%, #1b1638 0%, transparent 55%),
+    radial-gradient(1000px 700px at 100% 0%, #07261f 0%, transparent 50%), #0a0b10;
+  color: var(--color-txt);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: #7c5cff55;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Reusable surfaces */
+.panel {
+  background: linear-gradient(180deg, var(--color-panel-hi), var(--color-panel-lo));
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--color-line2);
+  background: var(--color-raise);
+  color: var(--color-txt3);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 9px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid var(--color-line2);
+  background: var(--color-raise);
+  color: var(--color-txt);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.btn:hover {
+  border-color: color-mix(in srgb, var(--color-line2) 55%, var(--color-txt));
+  background: color-mix(in srgb, var(--color-raise) 92%, var(--color-txt));
+}
+.btn-primary {
+  background: linear-gradient(180deg, #8a6bff, #6c4cff);
+  border-color: #6c4cff;
+  color: white;
+  box-shadow: 0 6px 20px -8px #7c5cff;
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg, #9a7dff, #7c5cff);
+}
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background: var(--color-raise);
+}
+
+/* Math content */
+.mathbody {
+  line-height: 1.7;
+  font-size: 15px;
+  color: var(--color-txt2);
+}
+.mathbody p {
+  margin: 0.6em 0;
+}
+.mathbody ul {
+  list-style: disc;
+  padding-left: 1.4em;
+  margin: 0.5em 0;
+}
+.mathbody ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+  margin: 0.5em 0;
+}
+.mathbody strong {
+  color: var(--color-txt);
+}
+.mathbody code {
+  background: var(--color-well);
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  padding: 1px 5px;
+  font-size: 0.9em;
+}
+.mathbody .katex-display {
+  margin: 0.8em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}
+
+/* progress ring helper */
+.ring-track {
+  stroke: var(--color-line);
+}
+
+/* ---------- Callouts matematicos (estilo Obsidian): > [!teorema] Titulo ---------- */
+.callout {
+  --co: var(--color-brand);
+  border: 1px solid color-mix(in srgb, var(--co) 30%, transparent);
+  border-left: 3px solid var(--co);
+  background: color-mix(in srgb, var(--co) 7%, transparent);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 0.8em 0;
+}
+.callout > :last-child {
+  margin-bottom: 0;
+}
+.callout .callout-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.92em;
+  letter-spacing: 0.01em;
+  color: var(--co);
+  margin: 0 0 4px;
+}
+.callout .callout-title::before {
+  content: attr(data-icon);
+  font-weight: 600;
+  opacity: 0.9;
+}
+.callout .callout-title .katex {
+  color: var(--color-txt);
+}
+.callout-definicao { --co: var(--color-brand2); }
+.callout-teorema,
+.callout-lema,
+.callout-proposicao,
+.callout-corolario { --co: var(--color-brand); }
+.callout-demonstracao { --co: var(--color-mut); }
+.callout-exemplo { --co: var(--color-gold); }
+.callout-contraexemplo { --co: #ff6b81; }
+.callout-atencao { --co: var(--color-warn); }
+.callout-intuicao,
+.callout-duvida { --co: #4cc9f0; }
+.callout-resumo,
+.callout-nota { --co: var(--color-brand); }
+/* aninhado (ex.: demonstracao dentro de teorema) fica mais discreto */
+.callout .callout {
+  background: color-mix(in srgb, var(--co) 5%, transparent);
+}
+
+/* ---------- Impressão da cola de revisão (spec 09) ---------- */
+@media print {
+  nav, .no-print { display: none !important; }
+  html, body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  main { padding: 0 !important; max-width: none !important; }
+  .cheatsheet, .cheatsheet .panel {
+    background: #fff !important;
+    color: #111 !important;
+    border-color: #ccc !important;
+    box-shadow: none !important;
+  }
+  .cheatsheet a, .cheatsheet h1, .cheatsheet h2, .cheatsheet h3 { color: #111 !important; }
+  .cheatsheet .chip {
+    background: #fff !important;
+    border-color: #999 !important;
+    color: #333 !important;
+  }
+  .cheatsheet .mathbody { color: #111 !important; }
+  .cheatsheet .mathbody strong { color: #000 !important; }
+}
+
+/* ---------- Celebração / confeti (spec 11) ---------- */
+@keyframes mm-confetti-fall {
+  0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 1; }
+  100% { transform: translate3d(var(--mm-x, 0), 110vh, 0) rotate(720deg); opacity: 0.85; }
+}
+@keyframes mm-toast-in {
+  from { transform: translateY(-14px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.mm-confetti-piece {
+  position: absolute;
+  top: -10vh;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  will-change: transform;
+  animation-name: mm-confetti-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.mm-toast { animation: mm-toast-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* ---------- Modo Foco: imersão (esconde a navegação durante a sessão) ---------- */
+html[data-mm-focus] nav {
+  display: none !important;
+}
+
+/* ---------- Acessibilidade (spec 12) ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Temas (sobrescrevem as CSS vars do @theme) (spec 12) ---------- */
+[data-theme="light"] {
+  color-scheme: light;
+  --color-ink: #f6f7fb;
+  --color-panel: #ffffff;
+  --color-panel2: #eef0f6;
+  --color-line: #d9dde8;
+  --color-mut: #5c6274;
+  --color-txt: #14161f;
+  --color-brand: #6c4cff;
+  --color-brand2: #00b492;
+  --color-well: #ffffff;
+  --color-card: #ffffff;
+  --color-raise: #e8ebf3;
+  --color-line2: #c8cede;
+  --color-txt2: #262b3a;
+  --color-txt3: #4c5265;
+  --color-warm: #9a5b1f;
+  --color-scrim: #f6f7fbe6;
+  --color-panel-hi: #ffffffd9;
+  --color-panel-lo: #ffffff;
+}
+[data-theme="light"] body {
+  background: #f6f7fb;
+  color: #14161f;
+}
+[data-theme="sepia"] {
+  color-scheme: light;
+  --color-ink: #f3e9d6;
+  --color-panel: #fbf3e2;
+  --color-panel2: #efe2c8;
+  --color-line: #d8c6a2;
+  --color-mut: #7a6a4f;
+  --color-txt: #3a2f1e;
+  --color-brand: #a05a2c;
+  --color-brand2: #2f7d5b;
+  --color-well: #fdf8ec;
+  --color-card: #fbf3e2;
+  --color-raise: #efe2c8;
+  --color-line2: #c9b48c;
+  --color-txt2: #43371f;
+  --color-txt3: #5f5138;
+  --color-warm: #8a4f1d;
+  --color-scrim: #f3e9d6e6;
+  --color-panel-hi: #fbf3e2d9;
+  --color-panel-lo: #f9efdb;
+}
+[data-theme="sepia"] body {
+  background: #f3e9d6;
+  color: #3a2f1e;
+}
+
+/* ---------- Notas (Obsidian-like) — spec 08 ---------- */
+.notes-toolbar { }
+.notes-symbol-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 28px;
+  padding: 0 6px;
+  border-radius: 8px;
+  border: 1px solid var(--color-line2);
+  background: var(--color-raise);
+  color: var(--color-txt2);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all .12s ease;
+}
+.notes-symbol-btn:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  background: color-mix(in srgb, var(--color-raise) 92%, var(--color-txt));
+}
+.notes-textarea { caret-color: var(--color-brand); }
+.notes-preview :is(h1,h2,h3) { color: var(--color-txt); }
+.notes-wikilink-menu {
+  position: absolute;
+  z-index: 20;
+  top: 8px;
+  right: 8px;
+  max-width: 240px;
+  max-height: 220px;
+  overflow-y: auto;
+  background: var(--color-well);
+  border: 1px solid var(--color-line2);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px -10px #000a;
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  gap: 2px;
+}
+.notes-wikilink-menu button {
+  text-align: left;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--color-txt2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.notes-wikilink-menu button:hover,
+.notes-wikilink-menu button.is-active {
+  background: var(--color-raise);
+  color: var(--color-txt);
+}
+@media (max-width: 767px) {
+  .notes-split { min-height: 0 !important; }
+}

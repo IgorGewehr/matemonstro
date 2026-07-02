@@ -1,0 +1,157 @@
+{
+  "phases": [
+    {
+      "id": 0,
+      "label": "Fundações",
+      "goal": "A base inquebrável: lógica, demonstração, cálculo e álgebra linear. Aqui você aprende a pensar e a escrever como matemático — sem isso, o resto desaba.",
+      "trackIds": [
+        "fundamentos",
+        "prova",
+        "calculo1",
+        "calculo2",
+        "algebra-linear",
+        "calculo3"
+      ]
+    },
+    {
+      "id": 1,
+      "label": "Núcleo",
+      "goal": "O coração do bacharelado: análise real, álgebra abstrata e topologia, mais as grandes áreas clássicas. É o que decide aprovação em mestrado.",
+      "trackIds": [
+        "analise-real-1",
+        "algebra-abstrata-1",
+        "combinatoria",
+        "teoria-numeros",
+        "analise-real-2",
+        "edo",
+        "analise-complexa",
+        "topologia",
+        "algebra-abstrata-2",
+        "prob-estatistica"
+      ]
+    },
+    {
+      "id": 2,
+      "label": "Avançado / Pré-Pós",
+      "goal": "Nível de pós-graduação: medida, análise funcional, Galois, topologia algébrica, geometria diferencial e além. Aqui você vira um monstro de verdade.",
+      "trackIds": [
+        "medida",
+        "teoria-galois",
+        "geometria-diferencial",
+        "analise-funcional",
+        "topologia-algebrica",
+        "algebra-comutativa",
+        "teoria-representacao",
+        "edp",
+        "logica-conjuntos",
+        "geometria-algebrica",
+        "category-theory"
+      ]
+    }
+  ],
+  "recommendedOrder": [
+    "fundamentos",
+    "prova",
+    "calculo1",
+    "calculo2",
+    "algebra-linear",
+    "calculo3",
+    "analise-real-1",
+    "algebra-abstrata-1",
+    "combinatoria",
+    "teoria-numeros",
+    "analise-real-2",
+    "edo",
+    "analise-complexa",
+    "topologia",
+    "algebra-abstrata-2",
+    "prob-estatistica",
+    "medida",
+    "teoria-galois",
+    "geometria-diferencial",
+    "analise-funcional",
+    "topologia-algebrica",
+    "algebra-comutativa",
+    "teoria-representacao",
+    "edp",
+    "logica-conjuntos",
+    "geometria-algebrica",
+    "category-theory"
+  ],
+  "prelimMap": {
+    "analise": [
+      "analise-real-1",
+      "analise-real-2",
+      "analise-complexa",
+      "medida",
+      "analise-funcional",
+      "edp"
+    ],
+    "algebra": [
+      "algebra-linear",
+      "algebra-abstrata-1",
+      "algebra-abstrata-2",
+      "teoria-galois",
+      "algebra-comutativa",
+      "teoria-numeros",
+      "teoria-representacao"
+    ],
+    "topologiaGeometria": [
+      "topologia",
+      "topologia-algebrica",
+      "geometria-diferencial",
+      "geometria-algebrica"
+    ]
+  },
+  "ifConcursoCore": [
+    "fundamentos",
+    "calculo1",
+    "calculo2",
+    "algebra-linear",
+    "calculo3",
+    "analise-real-1",
+    "combinatoria",
+    "analise-real-2",
+    "edo",
+    "algebra-abstrata-2",
+    "prob-estatistica"
+  ],
+  "milestones": [
+    {
+      "after": "prova",
+      "label": "🧠 Pensador matemático",
+      "youCanNow": "Você lê e escreve demonstrações formais com rigor — indução, contradição, quantificadores."
+    },
+    {
+      "after": "calculo3",
+      "label": "📈 Cálculo dominado",
+      "youCanNow": "Cálculo de uma a várias variáveis no sangue: a base operacional de quase toda a matemática."
+    },
+    {
+      "after": "analise-real-1",
+      "label": "🔬 Analista nascendo",
+      "youCanNow": "ε–δ, sequências, séries, compacidade e conexidade: o vocabulário do rigor."
+    },
+    {
+      "after": "algebra-abstrata-2",
+      "label": "🧩 Algebrista",
+      "youCanNow": "Grupos, anéis e corpos: você enxerga a estrutura por trás dos números."
+    },
+    {
+      "after": "topologia",
+      "label": "🌐 Topólogo",
+      "youCanNow": "Pensa em espaços abstratos, continuidade e compacidade sem depender de coordenadas."
+    },
+    {
+      "after": "analise-funcional",
+      "label": "🎓 Pronto para o mestrado",
+      "youCanNow": "Análise de pós no bolso — você encara os prelims de análise de frente."
+    },
+    {
+      "after": "category-theory",
+      "label": "👑 Visão de cima",
+      "youCanNow": "Enxerga as conexões entre todas as áreas. Monstro da matemática, modo completo."
+    }
+  ],
+  "notes": "Estude na ordem das fases — cada trilha libera a próxima. Faça as revisões espaçadas TODO dia: é o que transforma estudo em memória permanente. Ao fechar cada aula, anote 'o principal' com suas palavras (active recall). Para concurso de IF, priorize o núcleo de concurso; para mestrado, mire os três prelims: análise, álgebra e topologia/geometria."
+}

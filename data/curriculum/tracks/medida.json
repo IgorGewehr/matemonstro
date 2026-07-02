@@ -1,0 +1,1739 @@
+{
+  "id": "medida",
+  "title": "Teoria da Medida e Integração de Lebesgue",
+  "phase": 2,
+  "phaseLabel": "Avançado / Pré-Pós",
+  "tagline": "Refundamos a integração do zero: medir conjuntos quaisquer, integrar funções que Riemann não alcança e ganhar os teoremas de convergência que fazem a análise moderna funcionar.",
+  "summary": "Esta trilha reconstrói a noção de integral sobre o alicerce da teoria da medida. Partimos de $\\sigma$-álgebras e medidas, construímos a medida de Lebesgue em $\\mathbb{R}$ via medida exterior e o critério de Carathéodory, definimos funções mensuráveis e a integral de Lebesgue por aproximação com funções simples, e provamos os três teoremas de convergência (Monótona, Fatou, Dominada) que são o motor de toda a análise contemporânea. Fechamos comparando Lebesgue com Riemann, construindo os espaços $L^p$ (com Hölder, Minkowski e completude de Riesz-Fischer) e introduzindo Fubini-Tonelli e Radon-Nikodym.",
+  "bigPicture": "A integral de Riemann colapsa exatamente onde a matemática moderna mais precisa dela: ela não comuta bem com limites, não torna o espaço de funções integráveis completo e não sabe medir conjuntos complicados. A integral de Lebesgue resolve tudo isso de uma vez. Ela é a linguagem obrigatória da Análise Funcional (espaços $L^p$ e de Hilbert), da Probabilidade rigorosa (uma medida de probabilidade é uma medida de massa total $1$, e a esperança é uma integral de Lebesgue), das EDPs (espaços de Sobolev), da Análise Harmônica (séries e transformada de Fourier) e da Geometria. Em provas de mestrado e exames de admissão (ENA, IMPA, USP, UNICAMP, UFRJ, UFMG) a teoria da medida é tema central: enunciar e aplicar os teoremas de convergência, decidir mensurabilidade, usar Fatou para estimar, manejar $L^p$ e calcular com Fubini são quase garantidos. Em concursos de Instituto Federal (IF) o tema aparece mais raramente e de forma conceitual (medida nula, critério de Lebesgue para integrabilidade de Riemann, ideia de função mensurável), sobretudo em vagas que exigem mestrado/doutorado.",
+  "prereqs": [
+    "analise-real-2",
+    "topologia"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 60,
+  "primaryBooks": [
+    {
+      "title": "Real Analysis: Modern Techniques and Their Applications",
+      "author": "Gerald B. Folland",
+      "note": "O texto-padrão de pós-graduação. Use para $\\sigma$-álgebras, medidas exteriores, integração, teoremas de convergência, $L^p$, produtos e Radon-Nikodym. Rigor e generalidade na medida certa.",
+      "chapters": "caps. 1, 2, 3, 6"
+    },
+    {
+      "title": "Real and Complex Analysis",
+      "author": "Walter Rudin",
+      "note": "Tratamento elegante e enxuto via medidas abstratas e teorema de Riesz; ótimo para integração, $L^p$ e Radon-Nikodym. Exige maturidade.",
+      "chapters": "caps. 1, 2, 3, 6, 7, 8"
+    },
+    {
+      "title": "Medida e Integração",
+      "author": "Pedro J. Fernandez (Projeto Euclides, IMPA)",
+      "note": "Referência brasileira clássica em PT-BR; construção da medida de Lebesgue, funções mensuráveis, integral e teoremas de convergência com demonstrações detalhadas. Excelente primeira leitura no Brasil.",
+      "chapters": "caps. 1-5"
+    },
+    {
+      "title": "Real Analysis",
+      "author": "H. L. Royden & P. Fitzpatrick",
+      "note": "Apresentação progressiva: primeiro Lebesgue na reta, depois medida abstrata. Muito bom para a construção em $\\mathbb{R}$, conjuntos mensuráveis e $L^p$.",
+      "chapters": "Parte I (caps. 1-7) e Parte III"
+    },
+    {
+      "title": "Measure Theory",
+      "author": "Paul R. Halmos",
+      "note": "Clássico rigoroso de medida abstrata e produtos; referência histórica para Carathéodory, medidas produto e teorema de Radon-Nikodym.",
+      "chapters": "caps. I-VI, VII (produtos)"
+    },
+    {
+      "title": "An Introduction to Measure Theory",
+      "author": "Terence Tao (AMS)",
+      "note": "Notas modernas e muito legíveis, com foco na medida de Lebesgue em $\\mathbb{R}^n$ e nos teoremas de convergência; cheio de exercícios resolvidos.",
+      "chapters": "caps. 1-2"
+    },
+    {
+      "title": "Measure and Integral",
+      "author": "R. Wheeden & A. Zygmund",
+      "note": "Complemento forte para medida de Lebesgue, funções mensuráveis e $L^p$, com ênfase em análise real clássica.",
+      "chapters": "caps. 3-8"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.125 Measure and Integration",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Terence Tao - An Introduction to Measure Theory (notas do autor)",
+      "kind": "livro",
+      "ref": "terrytao.wordpress.com / AMS"
+    },
+    {
+      "title": "Folland - notas e errata de Real Analysis",
+      "kind": "texto",
+      "ref": "página do autor (UW)"
+    },
+    {
+      "title": "Videoaulas de Análise/Medida do IMPA (PAPMEM / canal IMPA)",
+      "kind": "video",
+      "ref": "YouTube IMPA"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 2,
+    "mestrado": 5,
+    "note": "Em concursos de IF a teoria da medida raramente é cobrada com profundidade; quando aparece é conceitual: conjunto de medida nula, critério de Lebesgue para integrabilidade de Riemann (uma função limitada é Riemann-integrável sse é contínua quase sempre) e a ideia de função mensurável — sobretudo em vagas que pedem mestrado/doutorado. Em provas de mestrado e exames de admissão é tema central e de altíssima frequência: enunciar com precisão MCT/Fatou/DCT e aplicá-los para justificar troca de limite com integral, decidir mensurabilidade, usar o Lema de Fatou para estimativas, provar desigualdades de Hölder/Minkowski, manejar a completude de $L^p$ e calcular integrais via Fubini-Tonelli. Construção de Carathéodory e Radon-Nikodym caem mais como teoria/demonstração em exames mais exigentes."
+  },
+  "subtopics": [
+    {
+      "id": "medida-01-sigma-algebras-medidas",
+      "title": "Sigma-álgebras e Medidas",
+      "tagline": "A estrutura que diz quais conjuntos podemos medir e a função que lhes atribui tamanho de forma consistente.",
+      "objectives": [
+        "Definir $\\sigma$-álgebra, reconhecer exemplos e contra-exemplos e provar propriedades de fechamento.",
+        "Construir a $\\sigma$-álgebra gerada por uma família e definir a $\\sigma$-álgebra de Borel $\\mathcal{B}(\\mathbb{R})$.",
+        "Definir medida e espaço de medida e classificar medidas em finitas, $\\sigma$-finitas e de probabilidade.",
+        "Demonstrar as propriedades elementares: monotonicidade, subaditividade enumerável e fórmula da diferença.",
+        "Provar a continuidade da medida por baixo e por cima, identificando a hipótese de finitude.",
+        "Exibir os exemplos fundamentais: medida de contagem, medida de Dirac e a ideia de medida de Lebesgue-Stieltjes."
+      ],
+      "keyConcepts": [
+        {
+          "term": "$\\sigma$-álgebra",
+          "statement": "Uma coleção $\\mathcal{A}\\subseteq\\mathcal{P}(X)$ é uma $\\sigma$-álgebra se: (i) $X\\in\\mathcal{A}$; (ii) $E\\in\\mathcal{A}\\Rightarrow E^c\\in\\mathcal{A}$; (iii) $E_1,E_2,\\dots\\in\\mathcal{A}\\Rightarrow\\bigcup_{n=1}^{\\infty}E_n\\in\\mathcal{A}$. Segue que $\\varnothing\\in\\mathcal{A}$ e que $\\mathcal{A}$ é fechada por interseções enumeráveis e diferenças."
+        },
+        {
+          "term": "$\\sigma$-álgebra gerada",
+          "statement": "Dada uma família $\\mathcal{E}\\subseteq\\mathcal{P}(X)$, $\\sigma(\\mathcal{E})$ é a menor $\\sigma$-álgebra que contém $\\mathcal{E}$, ou seja, a interseção de todas as $\\sigma$-álgebras que contêm $\\mathcal{E}$."
+        },
+        {
+          "term": "$\\sigma$-álgebra de Borel",
+          "statement": "$\\mathcal{B}(\\mathbb{R})=\\sigma(\\tau)$, a $\\sigma$-álgebra gerada pelos abertos de $\\mathbb{R}$. Contém abertos, fechados, $F_\\sigma$, $G_\\delta$ e é gerada também pelos intervalos $(a,b)$ ou pelos $(-\\infty,a]$."
+        },
+        {
+          "term": "Medida",
+          "statement": "Uma função $\\mu:\\mathcal{A}\\to[0,\\infty]$ numa $\\sigma$-álgebra é uma medida se $\\mu(\\varnothing)=0$ e vale a aditividade enumerável: para $\\{E_n\\}$ dois a dois disjuntos, $\\mu\\!\\left(\\bigcup_n E_n\\right)=\\sum_n\\mu(E_n)$."
+        },
+        {
+          "term": "Espaço de medida e finitude",
+          "statement": "$(X,\\mathcal{A},\\mu)$ é um espaço de medida. $\\mu$ é finita se $\\mu(X)<\\infty$; de probabilidade se $\\mu(X)=1$; $\\sigma$-finita se $X=\\bigcup_n X_n$ com $\\mu(X_n)<\\infty$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Interseção de $\\sigma$-álgebras",
+          "statement": "A interseção de uma família arbitrária (não vazia) de $\\sigma$-álgebras sobre $X$ é ainda uma $\\sigma$-álgebra. Em particular $\\sigma(\\mathcal{E})$ está bem definida.",
+          "whyItMatters": "Garante a existência da $\\sigma$-álgebra gerada sem precisar construí-la explicitamente — é a mesma técnica de 'menor estrutura contendo' usada para subgrupos, subespaços e fechos gerados."
+        },
+        {
+          "name": "Propriedades elementares da medida",
+          "statement": "Seja $\\mu$ medida em $\\mathcal{A}$. Então: (monotonicidade) $E\\subseteq F\\Rightarrow\\mu(E)\\le\\mu(F)$; (diferença) se ainda $\\mu(E)<\\infty$, então $\\mu(F\\setminus E)=\\mu(F)-\\mu(E)$; (subaditividade enumerável) $\\mu\\!\\left(\\bigcup_n E_n\\right)\\le\\sum_n\\mu(E_n)$ para quaisquer $E_n\\in\\mathcal{A}$.",
+          "whyItMatters": "São as regras de manuseio diárias. A subaditividade (sem hipótese de disjunção) é a desigualdade que mais se usa para estimar a medida de uniões."
+        },
+        {
+          "name": "Continuidade por baixo",
+          "statement": "Se $E_1\\subseteq E_2\\subseteq\\cdots$ é crescente e $E=\\bigcup_n E_n$, então $\\mu(E_n)\\to\\mu(E)$, isto é, $\\mu\\!\\left(\\bigcup_n E_n\\right)=\\lim_n\\mu(E_n)=\\sup_n\\mu(E_n)$.",
+          "whyItMatters": "É a versão 'limite' da aditividade e a ponte que permite passar de aproximações finitas para o objeto-limite; ela está por trás do Teorema da Convergência Monótona."
+        },
+        {
+          "name": "Continuidade por cima",
+          "statement": "Se $E_1\\supseteq E_2\\supseteq\\cdots$ é decrescente, $E=\\bigcap_n E_n$ e $\\mu(E_1)<\\infty$, então $\\mu(E_n)\\to\\mu(E)$.",
+          "whyItMatters": "A hipótese $\\mu(E_1)<\\infty$ é essencial: com a medida de Lebesgue, $E_n=[n,\\infty)$ tem $m(E_n)=\\infty$ para todo $n$, mas $\\bigcap_n E_n=\\varnothing$ tem medida $0$ — mostra exatamente onde a finitude não pode faltar."
+        }
+      ],
+      "summary": "Antes de integrar precisamos decidir quais conjuntos têm 'tamanho'. A resposta é a $\\sigma$-álgebra: uma coleção de subconjuntos de $X$ fechada por complemento e por uniões enumeráveis, garantindo que as operações usuais da análise (limites de conjuntos, $\\liminf$, $\\limsup$) não nos joguem para fora do domínio do que sabemos medir. Como a interseção de $\\sigma$-álgebras é uma $\\sigma$-álgebra, faz sentido falar na menor $\\sigma$-álgebra contendo uma família dada; aplicando isso aos abertos de $\\mathbb{R}$ nasce a $\\sigma$-álgebra de Borel, o domínio natural de quase toda a análise. Sobre uma $\\sigma$-álgebra, uma medida é uma função $\\mu$ a valores em $[0,\\infty]$ que respeita a aditividade enumerável para conjuntos disjuntos — a generalização correta de comprimento, área e probabilidade.\n\nDe apenas dois axiomas ($\\mu(\\varnothing)=0$ e aditividade enumerável) brota toda a aritmética da medida: monotonicidade, fórmula da diferença e subaditividade enumerável (que vale sem disjunção e é a estimativa de uso diário). As propriedades mais poderosas são as duas continuidades: para sequências crescentes a medida 'sobe' até o limite sem restrição; para sequências decrescentes ela 'desce' até o limite desde que algum termo tenha medida finita — e o contra-exemplo $[n,\\infty)$ mostra que essa hipótese é indispensável. Os exemplos a guardar são a medida de contagem (que conta elementos), a medida de Dirac $\\delta_{x_0}$ (massa $1$ concentrada num ponto) e, como meta da próxima aula, a medida de Lebesgue que estende o comprimento de intervalos.",
+      "commonPitfalls": [
+        "Confundir álgebra com $\\sigma$-álgebra: uma álgebra é fechada só por uniões finitas; a $\\sigma$-álgebra exige uniões enumeráveis. Quase tudo na teoria da medida depende do 'enumerável'.",
+        "Aplicar a continuidade por cima sem a hipótese $\\mu(E_1)<\\infty$ (ou $\\mu(E_n)<\\infty$ para algum $n$): o contra-exemplo $E_n=[n,\\infty)$ derruba a conclusão.",
+        "Tentar somar e subtrair medidas infinitas livremente: $\\mu(F\\setminus E)=\\mu(F)-\\mu(E)$ só vale com $\\mu(E)<\\infty$, pois $\\infty-\\infty$ é indefinido.",
+        "Achar que a $\\sigma$-álgebra de Borel é 'todos os subconjuntos': $\\mathcal{B}(\\mathbb{R})$ é estritamente menor que $\\mathcal{P}(\\mathbb{R})$ e existem conjuntos Lebesgue-mensuráveis não borelianos."
+      ],
+      "worked": "**Prova da subaditividade enumerável a partir da aditividade.** Sejam $E_1,E_2,\\dots\\in\\mathcal{A}$ quaisquer (não necessariamente disjuntos). Defina a 'disjuntificação'\n$$F_1=E_1,\\qquad F_n=E_n\\setminus\\bigcup_{k=1}^{n-1}E_k\\quad(n\\ge 2).$$\nCada $F_n\\in\\mathcal{A}$, os $F_n$ são dois a dois disjuntos, $F_n\\subseteq E_n$ e $\\bigcup_n F_n=\\bigcup_n E_n$. Pela aditividade enumerável e pela monotonicidade,\n$$\\mu\\!\\left(\\bigcup_n E_n\\right)=\\mu\\!\\left(\\bigcup_n F_n\\right)=\\sum_n\\mu(F_n)\\le\\sum_n\\mu(E_n).\\qquad\\blacksquare$$\nO truque da disjuntificação reaparece o tempo todo: transforma uma união qualquer numa união disjunta com os mesmos pontos, permitindo usar a aditividade.",
+      "exercises": [
+        {
+          "prompt": "Prove que toda $\\sigma$-álgebra é fechada por interseções enumeráveis e por diferenças $E\\setminus F$.",
+          "hint": "Use as leis de De Morgan: $\\bigcap_n E_n=\\left(\\bigcup_n E_n^c\\right)^c$. Para a diferença, $E\\setminus F=E\\cap F^c$.",
+          "difficulty": 1,
+          "solution": "Seja $\\mathcal{A}$ uma $\\sigma$-algebra sobre $X$.\n\n**Fechamento por intersecoes enumeraveis.** Sejam $E_1,E_2,\\dots\\in\\mathcal{A}$. Pelo axioma (ii), cada $E_n^c\\in\\mathcal{A}$. Pelo axioma (iii), $\\bigcup_{n} E_n^c\\in\\mathcal{A}$. Aplicando (ii) novamente, $\\left(\\bigcup_n E_n^c\\right)^c\\in\\mathcal{A}$. Pela lei de De Morgan,\n$$\\left(\\bigcup_{n} E_n^c\\right)^c=\\bigcap_{n} (E_n^c)^c=\\bigcap_{n} E_n,$$\nlogo $\\bigcap_n E_n\\in\\mathcal{A}$.\n\n**Fechamento por diferencas.** Sejam $E,F\\in\\mathcal{A}$. Por (ii), $F^c\\in\\mathcal{A}$; pela parte anterior (intersecao de dois elementos, um caso da intersecao enumeravel tomando os demais iguais a $X$), $E\\cap F^c\\in\\mathcal{A}$. Mas $E\\setminus F=E\\cap F^c$, portanto $E\\setminus F\\in\\mathcal{A}$. $\\blacksquare$",
+          "steps": [
+            "Lembre que sigma-algebra so garante diretamente complemento e uniao enumeravel; intersecao e diferenca precisam ser deduzidas a partir dessas.",
+            "Para a intersecao, aplique De Morgan: escreva a intersecao como complemento de uma uniao de complementos.",
+            "Passo a passo: complemento de cada E_n (axioma ii), uniao deles (axioma iii), complemento do resultado (axioma ii) — cada operacao permanece em A.",
+            "Para a diferenca, escreva E\\F = E ∩ F^c e use o fechamento por complemento e por intersecao ja provado."
+          ]
+        },
+        {
+          "prompt": "Seja $X$ infinito não enumerável e $\\mathcal{A}=\\{E\\subseteq X: E\\text{ é enumerável ou } E^c\\text{ é enumerável}\\}$. Mostre que $\\mathcal{A}$ é uma $\\sigma$-álgebra e que $\\mu(E)=0$ se $E$ é enumerável, $\\mu(E)=1$ se $E^c$ é enumerável, define uma medida.",
+          "hint": "Para a aditividade, observe que numa união disjunta enumerável no máximo um dos conjuntos pode ter complemento enumerável.",
+          "difficulty": 3,
+          "solution": "Seja $X$ nao enumeravel e $\\mathcal{A}=\\{E\\subseteq X:\\ E\\text{ enumeravel ou }E^c\\text{ enumeravel}\\}$ (a $\\sigma$-algebra 'co-enumeravel').\n\n**$\\mathcal{A}$ e $\\sigma$-algebra.** (i) $X\\in\\mathcal{A}$ pois $X^c=\\varnothing$ e enumeravel. (ii) Se $E\\in\\mathcal{A}$, entao ou $E$ ou $E^c$ e enumeravel; como a definicao e simetrica em $E$ e $E^c$, segue $E^c\\in\\mathcal{A}$. (iii) Seja $\\{E_n\\}\\subseteq\\mathcal{A}$ e $E=\\bigcup_n E_n$. Dois casos: se TODOS os $E_n$ sao enumeraveis, $E$ e uniao enumeravel de enumeraveis, logo enumeravel, e $E\\in\\mathcal{A}$. Caso contrario, algum $E_{n_0}$ tem complemento enumeravel; entao $E^c=\\bigcap_n E_n^c\\subseteq E_{n_0}^c$ e um subconjunto de um enumeravel, logo enumeravel, e $E\\in\\mathcal{A}$. Portanto $\\mathcal{A}$ e $\\sigma$-algebra.\n\n**$\\mu$ e medida.** Defina $\\mu(E)=0$ se $E$ e enumeravel e $\\mu(E)=1$ se $E^c$ e enumeravel. (Como $X$ e nao enumeravel, nenhum conjunto pode ser simultaneamente enumeravel e ter complemento enumeravel, entao $\\mu$ esta bem definida.) Claramente $\\mu(\\varnothing)=0$. Para a aditividade enumeravel, seja $\\{E_n\\}\\subseteq\\mathcal{A}$ dois a dois disjuntos e $E=\\bigsqcup_n E_n$.\n\n- Se todos os $E_n$ sao enumeraveis, entao $E$ e enumeravel e $\\mu(E)=0=\\sum_n 0=\\sum_n\\mu(E_n)$.\n- Se algum $E_{n_0}$ tem complemento enumeravel (logo $\\mu(E_{n_0})=1$), afirmo que ele e o UNICO com essa propriedade: se $m\\ne n_0$, entao $E_m\\subseteq E_{n_0}^c$ (pois sao disjuntos), e $E_{n_0}^c$ e enumeravel, logo $E_m$ e enumeravel e $\\mu(E_m)=0$. Assim $\\sum_n\\mu(E_n)=1$. Por outro lado, $E\\supseteq E_{n_0}$ e $E^c\\subseteq E_{n_0}^c$ e enumeravel, portanto $\\mu(E)=1$. Logo $\\mu(E)=1=\\sum_n\\mu(E_n)$.\n\nEm ambos os casos vale a aditividade enumeravel, e $\\mu$ e uma medida. $\\blacksquare$",
+          "steps": [
+            "Verifique os tres axiomas de sigma-algebra; a chave em (iii) e separar 'todos enumeraveis' de 'algum tem complemento enumeravel' e usar De Morgan no segundo caso.",
+            "Observe que X nao enumeravel garante que enumeravel e co-enumeravel sao exclusivos, tornando mu bem definida (0 ou 1 sem ambiguidade).",
+            "Para a aditividade, monte a uniao disjunta e trate os dois casos: todos enumeraveis (soma 0) ou exatamente um co-enumeravel.",
+            "No segundo caso, prove que so pode haver UM conjunto co-enumeravel entre disjuntos, pois os demais estao contidos no complemento enumeravel dele.",
+            "Conclua mu(E)=soma mu(E_n) em cada caso, fechando a aditividade enumeravel."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo de medida $\\mu$ e de uma sequência decrescente $E_1\\supseteq E_2\\supseteq\\cdots$ com $\\mu(E_n)\\not\\to\\mu\\!\\left(\\bigcap_n E_n\\right)$, e explique qual hipótese da continuidade por cima falha.",
+          "hint": "Tome a medida de Lebesgue (ou de contagem em $\\mathbb{N}$) e $E_n=[n,\\infty)$ (ou $E_n=\\{n,n+1,\\dots\\}$).",
+          "difficulty": 2,
+          "solution": "Tome $X=\\mathbb{R}$ com a medida de Lebesgue $m$ (ou $\\mathbb{N}$ com a medida de contagem) e a sequencia decrescente\n$$E_n=[n,\\infty),\\qquad E_1\\supseteq E_2\\supseteq E_3\\supseteq\\cdots$$\nEntao $m(E_n)=+\\infty$ para todo $n$, logo $\\lim_n m(E_n)=+\\infty$. Por outro lado,\n$$\\bigcap_{n=1}^{\\infty}E_n=\\bigcap_{n=1}^{\\infty}[n,\\infty)=\\varnothing,$$\npois nenhum numero real $x$ satisfaz $x\\ge n$ para TODO $n$. Assim $m\\!\\left(\\bigcap_n E_n\\right)=m(\\varnothing)=0$. Portanto\n$$\\lim_n m(E_n)=\\infty\\ne 0=m\\!\\left(\\bigcap_n E_n\\right).$$\n\n**Qual hipotese falha.** A continuidade por cima exige $\\mu(E_{n_0})<\\infty$ para algum $n_0$ (tipicamente $\\mu(E_1)<\\infty$). Aqui $m(E_n)=\\infty$ para todo $n$, entao a hipotese de finitude NUNCA e satisfeita — e exatamente por isso a conclusao falha. (A prova padrao da continuidade por cima aplica a continuidade por baixo aos conjuntos crescentes $E_1\\setminus E_n$ e usa $\\mu(F\\setminus E)=\\mu(F)-\\mu(E)$, subtracao que so faz sentido quando $\\mu(E_1)<\\infty$.) $\\blacksquare$",
+          "steps": [
+            "Procure uma sequencia encaixada decrescente cuja intersecao seja vazia mas cujos termos tenham medida infinita.",
+            "Use E_n=[n,infinito): cada um tem medida de Lebesgue infinita.",
+            "Calcule a intersecao: nenhum real e maior ou igual a todo n, logo a intersecao e vazia e tem medida 0.",
+            "Confronte: o limite das medidas e infinito, mas a medida da intersecao e 0 — a igualdade falha.",
+            "Identifique a hipotese ausente: a continuidade por cima exige algum E_n com medida finita, o que nunca ocorre aqui."
+          ]
+        },
+        {
+          "prompt": "Mostre que $\\mathcal{B}(\\mathbb{R})$ é gerada pela família $\\{(-\\infty,a]:a\\in\\mathbb{Q}\\}$.",
+          "hint": "Gere intervalos abertos: $(a,b)=\\bigcup_n\\big((-\\infty,b-\\tfrac1n]\\setminus(-\\infty,a]\\big)$ e aproxime $a,b$ por racionais; conclua que essa $\\sigma$-álgebra contém todos os abertos.",
+          "difficulty": 4,
+          "solution": "Seja $\\mathcal{S}=\\sigma\\big(\\{(-\\infty,a]:a\\in\\mathbb{Q}\\}\\big)$. Queremos $\\mathcal{S}=\\mathcal{B}(\\mathbb{R})$.\n\n**$\\mathcal{S}\\subseteq\\mathcal{B}(\\mathbb{R})$.** Cada $(-\\infty,a]$ e fechado, logo boreliano; como $\\mathcal{B}(\\mathbb{R})$ e $\\sigma$-algebra contendo esses geradores, contem a menor $\\sigma$-algebra que os contem, isto e, $\\mathcal{S}\\subseteq\\mathcal{B}(\\mathbb{R})$.\n\n**$\\mathcal{B}(\\mathbb{R})\\subseteq\\mathcal{S}$.** Basta mostrar que todo aberto de $\\mathbb{R}$ pertence a $\\mathcal{S}$, pois $\\mathcal{B}(\\mathbb{R})$ e a menor $\\sigma$-algebra contendo os abertos. Passos:\n\n1. Para $a\\in\\mathbb{Q}$, $(a,\\infty)=\\mathbb{R}\\setminus(-\\infty,a]\\in\\mathcal{S}$ (complemento).\n2. Para $a\\in\\mathbb{R}$ qualquer, tome racionais $a_k\\downarrow a$; entao $(-\\infty,a]=\\bigcap_k(-\\infty,a_k]\\in\\mathcal{S}$ (intersecao enumeravel). Logo $(-\\infty,a]\\in\\mathcal{S}$ para TODO $a\\in\\mathbb{R}$, e por complemento $(a,\\infty)\\in\\mathcal{S}$.\n3. Para $a<b$ reais, $(a,b]=(-\\infty,b]\\setminus(-\\infty,a]\\in\\mathcal{S}$. E $(a,b)=\\bigcup_{k}\\left(a,b-\\tfrac1k\\right]\\in\\mathcal{S}$ (uniao enumeravel), tomando $k$ grande o suficiente.\n4. Todo aberto $U\\subseteq\\mathbb{R}$ e uniao enumeravel de intervalos abertos disjuntos (componentes conexas de $U$; os racionais em $U$ fornecem uma indexacao enumeravel). Cada intervalo aberto esta em $\\mathcal{S}$ por (3), logo $U\\in\\mathcal{S}$.\n\nPortanto $\\mathcal{S}$ contem todos os abertos, donde $\\mathcal{B}(\\mathbb{R})\\subseteq\\mathcal{S}$. Combinando as duas inclusoes, $\\mathcal{S}=\\mathcal{B}(\\mathbb{R})$. $\\blacksquare$",
+          "steps": [
+            "Divida em duas inclusoes; a facil e que os geradores (-infinito,a] com a racional sao fechados, logo borelianos.",
+            "Para a inclusao dificil, a meta e gerar todos os abertos, pois eles geram a sigma-algebra de Borel.",
+            "Gere primeiro (-infinito,a] para a real arbitrario como intersecao de (-infinito,a_k] com a_k racionais decrescendo para a.",
+            "Construa intervalos: (a,b] por diferenca e (a,b) como uniao enumeravel de intervalos (a, b-1/k].",
+            "Use que todo aberto da reta e uniao enumeravel de intervalos abertos (componentes conexas) para concluir que todo aberto esta na sigma-algebra gerada."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Os três axiomas de uma $\\sigma$-álgebra",
+          "back": "(i) $X\\in\\mathcal{A}$; (ii) fechada por complemento; (iii) fechada por uniões enumeráveis. Daí: $\\varnothing\\in\\mathcal{A}$ e fechada por interseções enumeráveis."
+        },
+        {
+          "front": "$\\sigma$-álgebra de Borel $\\mathcal{B}(\\mathbb{R})$",
+          "back": "A menor $\\sigma$-álgebra que contém todos os abertos de $\\mathbb{R}$; equivalentemente, gerada pelos intervalos $(-\\infty,a]$."
+        },
+        {
+          "front": "Definição de medida",
+          "back": "$\\mu:\\mathcal{A}\\to[0,\\infty]$ com $\\mu(\\varnothing)=0$ e aditividade enumerável: $\\mu(\\bigsqcup_n E_n)=\\sum_n\\mu(E_n)$ para disjuntos."
+        },
+        {
+          "front": "Subaditividade enumerável",
+          "back": "$\\mu(\\bigcup_n E_n)\\le\\sum_n\\mu(E_n)$ para conjuntos QUAISQUER (sem precisar serem disjuntos)."
+        },
+        {
+          "front": "Continuidade por baixo",
+          "back": "$E_n\\uparrow E\\Rightarrow\\mu(E_n)\\to\\mu(E)$. Sem hipótese extra."
+        },
+        {
+          "front": "Continuidade por cima (e a hipótese)",
+          "back": "$E_n\\downarrow E$ e $\\mu(E_1)<\\infty\\Rightarrow\\mu(E_n)\\to\\mu(E)$. Sem finitude pode falhar: $[n,\\infty)$."
+        },
+        {
+          "front": "$\\sigma$-finita",
+          "back": "$X=\\bigcup_n X_n$ com $\\mu(X_n)<\\infty$. Ex.: medida de Lebesgue em $\\mathbb{R}$ ($\\mathbb{R}=\\bigcup_n[-n,n]$)."
+        },
+        {
+          "front": "Medida de Dirac $\\delta_{x_0}$",
+          "back": "$\\delta_{x_0}(E)=1$ se $x_0\\in E$, e $0$ caso contrário. Massa $1$ concentrada no ponto $x_0$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Folland, Real Analysis, cap. 1 (Measures)",
+          "ref": "livro"
+        },
+        {
+          "title": "Fernandez, Medida e Integração, cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Aqueca a intuicao de conjuntos: revise uniao, intersecao, complemento, leis de De Morgan e a nocao de familia enumeravel. A teoria da medida e, antes de tudo, algebra de conjuntos fechada por operacoes enumeraveis, entao esse manejo precisa estar automatico.",
+          "Leia Folland cap. 1 (secoes sobre sigma-algebras e measures) OU Fernandez, Medida e Integracao, cap. 1, em PT-BR. Anote os tres axiomas de sigma-algebra e derive voce mesmo que o vazio pertence e que ha fechamento por intersecao enumeravel.",
+          "Prove com lapis e papel as quatro propriedades elementares: monotonicidade, formula da diferenca (com a hipotese de finitude), subaditividade enumeravel (via disjuntificacao) e as duas continuidades. Guarde o contra-exemplo [n,infinito) que quebra a continuidade por cima.",
+          "Colecione os exemplos canonicos: medida de contagem, medida de Dirac e a sigma-algebra de Borel gerada pelos abertos. Verifique em cada um os axiomas para fixar a definicao.",
+          "Assista a uma aula introdutoria de teoria da medida para amarrar a motivacao (por que precisamos restringir os conjuntos mensuraveis) antes de ir para a construcao de Lebesgue.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (os tres axiomas, a tecnica de disjuntificacao e a hipotese exata da continuidade por cima)."
+        ],
+        "searchQueries": [
+          "sigma-algebra definicao propriedades exemplos teoria da medida",
+          "continuidade da medida por cima contra-exemplo [n,infinito)",
+          "subaditividade enumeravel prova disjuntificacao medida",
+          "sigma-algebra de Borel gerada pelos intervalos (-infinito,a]",
+          "measure theory sigma algebra generated Borel proof",
+          "monotone continuity of measure from above below proof"
+        ],
+        "videos": [
+          {
+            "title": "Measure Theory - sigma-algebras e medidas",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Procure a playlist 'Measure Theory' e assista os primeiros videos sobre sigma-algebra, geracao e definicao de medida; e a serie mais didatica e completa disponivel."
+          },
+          {
+            "title": "MIT 18.125 Measure and Integration",
+            "channel": "MIT OpenCourseWare",
+            "note": "Veja as primeiras aulas sobre sigma-algebras, medidas e propriedades de continuidade para o tratamento rigoroso padrao."
+          },
+          {
+            "title": "Aulas de Analise / Medida do IMPA",
+            "channel": "IMPA",
+            "note": "Busque no canal do IMPA (PAPMEM) aulas introdutorias de teoria da medida em PT-BR para a motivacao e os exemplos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Real Analysis, cap. 1 (Measures)",
+            "where": "Gerald B. Folland - texto-padrao de pos-graduacao"
+          },
+          {
+            "title": "Medida e Integracao, cap. 1",
+            "where": "Pedro J. Fernandez (Projeto Euclides, IMPA) - referencia em PT-BR"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medida-02-medida-exterior-lebesgue",
+      "title": "Medida Exterior, Medida de Lebesgue e Conjuntos Mensuráveis",
+      "tagline": "Como dar tamanho a qualquer conjunto da reta e por que o critério de Carathéodory separa os 'bem-comportados'.",
+      "objectives": [
+        "Definir medida exterior abstrata e a medida exterior de Lebesgue $m^*$ em $\\mathbb{R}$ via coberturas por intervalos.",
+        "Provar que $m^*$ é monótona, enumeravelmente subaditiva e invariante por translação, e que $m^*([a,b])=b-a$.",
+        "Enunciar o critério de mensurabilidade de Carathéodory e usá-lo como definição de conjunto mensurável.",
+        "Demonstrar (esboço) o Teorema de Carathéodory: os conjuntos mensuráveis formam uma $\\sigma$-álgebra e $m^*$ restrita a ela é uma medida completa.",
+        "Estabelecer a regularidade da medida de Lebesgue (aproximação por abertos/fechados) e o papel dos conjuntos de medida nula.",
+        "Construir o conjunto de Cantor (medida nula, não enumerável) e o conjunto de Vitali (não mensurável)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Medida exterior",
+          "statement": "$\\mu^*:\\mathcal{P}(X)\\to[0,\\infty]$ com $\\mu^*(\\varnothing)=0$, monótona ($A\\subseteq B\\Rightarrow\\mu^*(A)\\le\\mu^*(B)$) e enumeravelmente subaditiva ($\\mu^*(\\bigcup_n A_n)\\le\\sum_n\\mu^*(A_n)$). Está definida em TODOS os subconjuntos, mas em geral não é aditiva."
+        },
+        {
+          "term": "Medida exterior de Lebesgue",
+          "statement": "$m^*(E)=\\inf\\left\\{\\sum_{k=1}^{\\infty}\\ell(I_k): E\\subseteq\\bigcup_k I_k,\\ I_k\\text{ intervalos abertos}\\right\\}$, onde $\\ell(I)$ é o comprimento de $I$. É o 'menor comprimento total' de uma cobertura de $E$ por intervalos."
+        },
+        {
+          "term": "Mensurabilidade (Carathéodory)",
+          "statement": "$E$ é $\\mu^*$-mensurável se, para TODO conjunto-teste $A$, vale $\\mu^*(A)=\\mu^*(A\\cap E)+\\mu^*(A\\cap E^c)$. Isto é, $E$ 'corta' qualquer $A$ aditivamente."
+        },
+        {
+          "term": "Conjunto de medida nula",
+          "statement": "$N$ tem medida nula se $m^*(N)=0$. Todo subconjunto de um conjunto de medida nula também tem medida nula (completude), e enumeráveis são sempre nulos."
+        },
+        {
+          "term": "Regularidade",
+          "statement": "Para $E$ Lebesgue-mensurável: $m(E)=\\inf\\{m(U):U\\supseteq E\\text{ aberto}\\}=\\sup\\{m(K):K\\subseteq E\\text{ compacto}\\}$. A medida é externa-regular e interna-regular."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Carathéodory",
+          "statement": "Dada uma medida exterior $\\mu^*$ em $X$, a coleção $\\mathcal{M}$ dos conjuntos $\\mu^*$-mensuráveis é uma $\\sigma$-álgebra, e a restrição $\\mu=\\mu^*\\!\\mid_{\\mathcal{M}}$ é uma medida COMPLETA (todo subconjunto de um conjunto de medida nula é mensurável e nulo).",
+          "whyItMatters": "É a máquina universal de construção de medidas: parte de uma noção de 'tamanho exterior' qualquer e produz automaticamente uma $\\sigma$-álgebra e uma medida genuína. A medida de Lebesgue é só um caso particular."
+        },
+        {
+          "name": "Existência e propriedades da medida de Lebesgue",
+          "statement": "$m^*$ é uma medida exterior em $\\mathbb{R}$ com $m^*(I)=\\ell(I)$ para todo intervalo $I$; os intervalos são $m^*$-mensuráveis, logo $\\mathcal{B}(\\mathbb{R})\\subseteq\\mathcal{M}$. A medida de Lebesgue $m=m^*\\!\\mid_{\\mathcal{M}}$ é invariante por translação e $\\sigma$-finita.",
+          "whyItMatters": "Realiza o objetivo central: estende comprimento de intervalos a uma $\\sigma$-álgebra gigantesca de modo enumeravelmente aditivo. A invariância por translação a caracteriza essencialmente."
+        },
+        {
+          "name": "Caracterização da mensurabilidade de Lebesgue",
+          "statement": "$E\\subseteq\\mathbb{R}$ é Lebesgue-mensurável $\\iff$ para todo $\\varepsilon>0$ existe aberto $U\\supseteq E$ com $m^*(U\\setminus E)<\\varepsilon$ $\\iff$ $E=B\\setminus N$ ou $E=B\\cup N$ com $B$ boreliano e $N$ de medida nula.",
+          "whyItMatters": "Traduz a definição abstrata de Carathéodory em algo verificável: ser mensurável é poder ser aproximado por abertos/fechados a menos de medida arbitrariamente pequena. É o critério usado na prática."
+        },
+        {
+          "name": "Existência de conjunto não mensurável (Vitali)",
+          "statement": "Admitindo o Axioma da Escolha, existe $V\\subseteq[0,1]$ que NÃO é Lebesgue-mensurável: escolhendo um representante de cada classe de $x\\sim y\\iff x-y\\in\\mathbb{Q}$, as translações $V+q$ ($q\\in\\mathbb{Q}\\cap[-1,1]$) são disjuntas e cobririam $[0,1]$, gerando $m(V)=0$ e $m(V)>0$ simultaneamente — contradição.",
+          "whyItMatters": "Mostra que NÃO se pode medir todos os subconjuntos de $\\mathbb{R}$ mantendo aditividade enumerável e invariância por translação. Justifica por que a $\\sigma$-álgebra mensurável é necessária — não é um capricho técnico."
+        }
+      ],
+      "summary": "Para medir conjuntos arbitrários começamos por uma estimativa por cima: a medida exterior de Lebesgue $m^*(E)$ é o ínfimo dos comprimentos totais de coberturas de $E$ por intervalos abertos. Essa função está definida em todo subconjunto de $\\mathbb{R}$ e é monótona e enumeravelmente subaditiva — mas não é aditiva em geral, e é exatamente essa falha que precisamos contornar. A ideia genial de Carathéodory é selecionar os conjuntos 'bem-comportados': $E$ é mensurável quando corta qualquer conjunto-teste $A$ de modo aditivo, $m^*(A)=m^*(A\\cap E)+m^*(A\\cap E^c)$. O Teorema de Carathéodory garante que essa coleção $\\mathcal{M}$ é uma $\\sigma$-álgebra e que $m^*$ restrita a ela é uma medida completa — e essa construção é abstrata, funcionando para qualquer medida exterior.\n\nAplicada a $m^*$, a máquina produz a medida de Lebesgue $m$: os intervalos são mensuráveis (logo todos os borelianos), $m$ estende o comprimento, é invariante por translação e $\\sigma$-finita. Na prática, ser mensurável equivale a poder ser aproximado por um aberto por fora (e por um fechado/compacto por dentro) a menos de medida arbitrariamente pequena — a regularidade. Dois exemplos calibram a intuição: o conjunto de Cantor é não enumerável mas tem medida nula (cardinalidade e medida são independentes), e o conjunto de Vitali, construído com o Axioma da Escolha, é não mensurável — prova de que medir TODOS os subconjuntos de $\\mathbb{R}$ com aditividade enumerável e invariância por translação é impossível.",
+      "commonPitfalls": [
+        "Achar que $m^*$ é aditiva: ela só é enumeravelmente SUBaditiva. A aditividade só vale (em geral) sobre conjuntos mensuráveis — é o cerne da construção.",
+        "Inverter o sentido das aproximações: a regularidade externa usa ABERTOS por fora ($U\\supseteq E$) e a interna usa COMPACTOS por dentro ($K\\subseteq E$).",
+        "Concluir 'enumerável' a partir de 'medida nula': o conjunto de Cantor é não enumerável e tem medida nula. Medida nula não implica ser pequeno em cardinalidade.",
+        "Esquecer que o conjunto de Vitali depende do Axioma da Escolha e não é construtível explicitamente; sob ZF + Determinação, todos os conjuntos podem ser mensuráveis."
+      ],
+      "worked": "**O conjunto de Cantor tem medida nula.** Construa $C=\\bigcap_{n\\ge 0}C_n$, onde $C_0=[0,1]$ e $C_{n+1}$ é obtido removendo o terço médio aberto de cada intervalo de $C_n$. Então $C_n$ é união de $2^n$ intervalos fechados, cada um de comprimento $3^{-n}$, logo\n$$m(C_n)=2^n\\cdot 3^{-n}=\\left(\\tfrac{2}{3}\\right)^{n}.$$\nComo $C\\subseteq C_n$ para todo $n$, a monotonicidade dá $m^*(C)\\le\\left(\\tfrac23\\right)^n\\to 0$, portanto $m(C)=0$. Apesar disso, $C$ está em bijeção com $\\{0,2\\}^{\\mathbb{N}}$ (expansões na base $3$ só com dígitos $0$ e $2$), logo $C$ tem a cardinalidade do contínuo. **Conclusão:** um conjunto não enumerável pode ter medida nula. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que $m^*(\\mathbb{Q}\\cap[0,1])=0$ e, mais geralmente, que todo conjunto enumerável tem medida exterior nula.",
+          "hint": "Enumere $\\{q_n\\}$ e cubra $q_n$ por um intervalo de comprimento $\\varepsilon/2^n$; some a série geométrica.",
+          "difficulty": 2,
+          "solution": "Seja $E=\\{q_1,q_2,q_3,\\dots\\}$ um conjunto enumeravel qualquer (por exemplo $\\mathbb{Q}\\cap[0,1]$) e fixe $\\varepsilon>0$. Cubra cada ponto $q_n$ pelo intervalo aberto\n$$I_n=\\left(q_n-\\frac{\\varepsilon}{2^{n+1}},\\ q_n+\\frac{\\varepsilon}{2^{n+1}}\\right),\\qquad \\ell(I_n)=\\frac{\\varepsilon}{2^{n}}.$$\nEntao $E\\subseteq\\bigcup_{n=1}^{\\infty} I_n$, e pela definicao de medida exterior como ínfimo dos comprimentos totais de coberturas,\n$$m^*(E)\\le\\sum_{n=1}^{\\infty}\\ell(I_n)=\\sum_{n=1}^{\\infty}\\frac{\\varepsilon}{2^{n}}=\\varepsilon\\sum_{n=1}^{\\infty}\\frac{1}{2^{n}}=\\varepsilon.$$\nComo $\\varepsilon>0$ e arbitrario e $m^*(E)\\ge 0$, concluimos $m^*(E)=0$. Em particular $m^*(\\mathbb{Q}\\cap[0,1])=0$. $\\blacksquare$",
+          "steps": [
+            "Enumere o conjunto como {q_1,q_2,...}; a chave e cobrir cada ponto por um intervalo cujo comprimento total seja controlado.",
+            "Escolha o n-esimo intervalo com comprimento epsilon/2^n, centrado em q_n, para que a soma seja uma serie geometrica.",
+            "Some: a serie geometrica de razao 1/2 vale epsilon, logo m*(E) <= epsilon.",
+            "Como epsilon > 0 e arbitrario e m* >= 0, conclua m*(E) = 0."
+          ]
+        },
+        {
+          "prompt": "Mostre, direto da definição de Carathéodory, que todo conjunto de medida exterior nula é mensurável.",
+          "hint": "Se $m^*(E)=0$, use $m^*(A\\cap E)\\le m^*(E)=0$ e a subaditividade para obter $m^*(A)\\le m^*(A\\cap E)+m^*(A\\cap E^c)\\le m^*(A)$.",
+          "difficulty": 3,
+          "solution": "Suponha $m^*(E)=0$ e seja $A\\subseteq\\mathbb{R}$ um conjunto-teste qualquer. Queremos verificar o criterio de Caratheodory:\n$$m^*(A)=m^*(A\\cap E)+m^*(A\\cap E^c).$$\n\n**Desigualdade $\\ge$ (sempre vale para $m^*$).** Como $A=(A\\cap E)\\cup(A\\cap E^c)$, a subaditividade enumeravel (aqui, finita) da\n$$m^*(A)\\le m^*(A\\cap E)+m^*(A\\cap E^c).$$\n\n**Desigualdade $\\le$.** Note $A\\cap E\\subseteq E$, logo por monotonicidade $m^*(A\\cap E)\\le m^*(E)=0$, ou seja $m^*(A\\cap E)=0$. Alem disso $A\\cap E^c\\subseteq A$, logo $m^*(A\\cap E^c)\\le m^*(A)$. Somando,\n$$m^*(A\\cap E)+m^*(A\\cap E^c)\\le 0+m^*(A)=m^*(A).$$\n\nAs duas desigualdades dao a igualdade, para todo $A$. Portanto $E$ e $m^*$-mensuravel. (Isto prova, de passagem, que a medida construida por Caratheodory e sempre COMPLETA.) $\\blacksquare$",
+          "steps": [
+            "Lembre que a desigualdade m*(A) <= m*(A∩E)+m*(A∩E^c) vale sempre por subaditividade; falta so a desigualdade reversa.",
+            "Use monotonicidade em A∩E ⊆ E para concluir m*(A∩E)=0 (pois m*(E)=0).",
+            "Use monotonicidade em A∩E^c ⊆ A para concluir m*(A∩E^c) <= m*(A).",
+            "Some as duas estimativas para obter <= m*(A) e feche a igualdade de Caratheodory para todo conjunto-teste A."
+          ]
+        },
+        {
+          "prompt": "Construa um 'conjunto de Cantor gordo' (Smith-Volterra-Cantor) removendo, no passo $n$, intervalos médios de comprimento total que somam menos de $1$, obtendo um conjunto fechado, sem interior, não enumerável e de medida positiva.",
+          "hint": "No passo $n$ remova $2^{n-1}$ intervalos de comprimento $4^{-n}$ cada; a medida removida total é $\\sum_n 2^{n-1}4^{-n}=1/2$, logo o conjunto tem medida $1/2$.",
+          "difficulty": 4,
+          "solution": "**Construcao do conjunto de Smith-Volterra-Cantor (Cantor 'gordo').** Parta de $C_0=[0,1]$. No passo $n\\ge 1$, remova de cada um dos $2^{n-1}$ intervalos de $C_{n-1}$ o intervalo aberto central de comprimento $4^{-n}$, obtendo $C_n$ (uniao de $2^n$ intervalos fechados). Defina $C=\\bigcap_{n\\ge 1}C_n$.\n\n**Medida.** O comprimento total removido e\n$$\\sum_{n=1}^{\\infty}(\\text{n. de intervalos removidos no passo }n)\\times(\\text{comprimento de cada})=\\sum_{n=1}^{\\infty}2^{n-1}\\cdot 4^{-n}=\\sum_{n=1}^{\\infty}\\frac{2^{n-1}}{4^{n}}=\\frac12\\sum_{n=1}^{\\infty}\\left(\\frac12\\right)^{n}=\\frac12\\cdot 1=\\frac12.$$\n(Os intervalos removidos sao dois a dois disjuntos, entao a soma e a medida da uniao removida.) Logo\n$$m(C)=m([0,1])-\\frac12=1-\\frac12=\\frac12>0.$$\n\n**Propriedades topologicas.** $C$ e intersecao de fechados, logo fechado. $C$ nao tem interior: cada $C_n$ e uniao de $2^n$ intervalos de comprimento $\\le 2^{-n}\\to 0$, portanto $C$ nao contem nenhum intervalo (qualquer intervalo de comprimento positivo cabe fora de $C_n$ para $n$ grande). Por fim, $C$ e nao enumeravel: como no Cantor usual, os pontos de $C$ correspondem a escolhas de 'esquerda/direita' em cada passo, dando uma bijecao (ou injecao) de $\\{0,1\\}^{\\mathbb{N}}$ em $C$; logo $C$ tem a cardinalidade do continuo.\n\nAssim $C$ e fechado, sem interior (denso em parte alguma), nao enumeravel e de medida $1/2>0$. $\\blacksquare$",
+          "steps": [
+            "Imite a construcao de Cantor, mas remova no passo n intervalos centrais de comprimento 4^{-n} (menores que o terco), em cada um dos 2^{n-1} intervalos existentes.",
+            "Some a medida removida: 2^{n-1}·4^{-n}, uma serie geometrica que da 1/2.",
+            "Conclua m(C) = 1 - 1/2 = 1/2 > 0.",
+            "Prove que C e fechado (intersecao de fechados) e sem interior (os intervalos de C_n encolhem para comprimento zero, entao C nao contem intervalo).",
+            "Mostre a nao enumerabilidade codificando cada ponto por uma sequencia de escolhas binarias, obtendo cardinalidade do continuo."
+          ]
+        },
+        {
+          "prompt": "Esboce a prova de que o conjunto de Vitali $V\\subseteq[0,1]$ não é mensurável, explicando onde entram a invariância por translação e a aditividade enumerável.",
+          "hint": "Considere $\\bigsqcup_{q\\in\\mathbb{Q}\\cap[-1,1]}(V+q)$; ele contém $[0,1]$ e está contido em $[-1,2]$. Se $V$ fosse mensurável, $\\sum_q m(V)$ seria $0$ ou $\\infty$, contradizendo $1\\le\\sum_q m(V)\\le 3$.",
+          "difficulty": 4,
+          "solution": "**Construcao.** Em $[0,1]$ defina a relacao $x\\sim y\\iff x-y\\in\\mathbb{Q}$. Ela e de equivalencia e particiona $[0,1]$ em classes. Pelo Axioma da Escolha, forme $V$ escolhendo exatamente um representante de cada classe. Seja $Q=\\mathbb{Q}\\cap[-1,1]=\\{q_1,q_2,\\dots\\}$ (enumeravel) e considere as translacoes $V+q_k$.\n\n**Duas propriedades-chave.**\n1. Os conjuntos $V+q_k$ sao dois a dois disjuntos: se $x\\in(V+q_i)\\cap(V+q_j)$, entao $x=v_i+q_i=v_j+q_j$ com $v_i,v_j\\in V$; logo $v_i-v_j=q_j-q_i\\in\\mathbb{Q}$, ou seja $v_i\\sim v_j$, e como $V$ tem um representante por classe, $v_i=v_j$, forcando $q_i=q_j$.\n2. Sanduiche: $[0,1]\\subseteq\\bigsqcup_{k}(V+q_k)\\subseteq[-1,2]$. A inclusao a direita e clara pois $V\\subseteq[0,1]$ e $|q_k|\\le 1$. A da esquerda: dado $x\\in[0,1]$, seu representante $v\\in V$ satisfaz $x-v\\in\\mathbb{Q}$ e $|x-v|\\le 1$, logo $x-v=q_k$ para algum $k$, e $x\\in V+q_k$.\n\n**Contradicao.** Suponha $V$ mensuravel. A medida de Lebesgue e INVARIANTE POR TRANSLACAO, entao $m(V+q_k)=m(V)$ para todo $k$. Pela ADITIVIDADE ENUMERAVEL sobre a uniao disjunta e pela monotonicidade do sanduiche,\n$$1=m([0,1])\\le\\sum_{k=1}^{\\infty}m(V+q_k)=\\sum_{k=1}^{\\infty}m(V)\\le m([-1,2])=3.$$\nMas $\\sum_{k=1}^{\\infty}m(V)$ vale $0$ se $m(V)=0$ e vale $+\\infty$ se $m(V)>0$. Nenhum desses valores esta em $[1,3]$ — contradicao. Logo $V$ NAO e mensuravel. Aqui a invariancia por translacao foi usada para igualar todas as medidas, e a aditividade enumeravel para somar e obter $0$ ou $\\infty$. $\\blacksquare$",
+          "steps": [
+            "Construa V escolhendo, via Axioma da Escolha, um representante de cada classe de x ~ y sse x-y racional em [0,1].",
+            "Prove que as translacoes V+q (q racional em [-1,1]) sao disjuntas, usando que dois pontos de V nunca diferem por racional.",
+            "Estabeleca o sanduiche [0,1] ⊆ uniao dos V+q ⊆ [-1,2].",
+            "Suponha V mensuravel: por invariancia por translacao todas as translacoes tem a mesma medida m(V).",
+            "Some pela aditividade enumeravel: o total e 0 (se m(V)=0) ou infinito (se m(V)>0), mas o sanduiche exige valor entre 1 e 3 — contradicao."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de $m^*(E)$ (Lebesgue exterior)",
+          "back": "$\\inf\\sum_k\\ell(I_k)$ sobre todas as coberturas enumeráveis de $E$ por intervalos abertos $I_k$."
+        },
+        {
+          "front": "Critério de Carathéodory",
+          "back": "$E$ mensurável $\\iff$ $m^*(A)=m^*(A\\cap E)+m^*(A\\cap E^c)$ para TODO conjunto-teste $A$."
+        },
+        {
+          "front": "O que o Teorema de Carathéodory entrega",
+          "back": "Os conjuntos $\\mu^*$-mensuráveis formam uma $\\sigma$-álgebra e $\\mu^*$ restrita a ela é uma medida completa."
+        },
+        {
+          "front": "Caracterização prática de mensurabilidade de Lebesgue",
+          "back": "$\\forall\\varepsilon>0\\ \\exists$ aberto $U\\supseteq E$ com $m^*(U\\setminus E)<\\varepsilon$. Equivalente: $E=$ boreliano $\\triangle$ (medida nula)."
+        },
+        {
+          "front": "Medida do conjunto de Cantor",
+          "back": "$m(C)=0$, mas $C$ é não enumerável (cardinalidade do contínuo)."
+        },
+        {
+          "front": "Conjunto de Vitali",
+          "back": "Subconjunto de $[0,1]$ NÃO mensurável; existe via Axioma da Escolha. Prova que não se pode medir todo subconjunto de $\\mathbb{R}$."
+        },
+        {
+          "front": "$m^*$ é aditiva?",
+          "back": "Não em geral — só é enumeravelmente SUBaditiva. A aditividade vale sobre os conjuntos mensuráveis."
+        },
+        {
+          "front": "Regularidade da medida de Lebesgue",
+          "back": "$m(E)=\\inf\\{m(U):U\\supseteq E$ aberto$\\}=\\sup\\{m(K):K\\subseteq E$ compacto$\\}$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Royden & Fitzpatrick, Real Analysis, caps. 2-3",
+          "ref": "livro"
+        },
+        {
+          "title": "Folland, Real Analysis, cap. 1 (Outer measures, Carathéodory)",
+          "ref": "livro"
+        },
+        {
+          "title": "Tao, An Introduction to Measure Theory, cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe o objetivo: estender o comprimento de intervalos a uma classe grande de conjuntos de forma enumeravelmente aditiva. Releia a definicao de ínfimo, pois medida exterior e um ínfimo sobre coberturas.",
+          "Leia Royden & Fitzpatrick caps. 2-3 (Lebesgue na reta) OU Folland cap. 1 (outer measures, Caratheodory) OU Tao cap. 1. Escreva a definicao de m* e prove monotonicidade e subaditividade enumeravel direto da definicao de ínfimo.",
+          "Estude o criterio de Caratheodory ate entender POR QUE ele seleciona os conjuntos aditivos. Acompanhe o esboco da prova de que os mensuraveis formam uma sigma-algebra e m* restrita e medida completa.",
+          "Construa e memorize os dois exemplos-limite: conjunto de Cantor (medida nula, nao enumeravel) e conjunto de Vitali (nao mensuravel, via Axioma da Escolha). Eles delimitam o que a teoria pode e nao pode fazer.",
+          "Assista a uma aula sobre medida exterior e criterio de Caratheodory para ver a construcao passo a passo e a regularidade (aproximacao por abertos/compactos).",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (definicao de m*, o criterio de Caratheodory e a ideia das construcoes de Cantor e Vitali)."
+        ],
+        "searchQueries": [
+          "medida exterior de Lebesgue definicao coberturas intervalos",
+          "criterio de Caratheodory conjunto mensuravel prova sigma-algebra",
+          "conjunto de Cantor medida nula nao enumeravel demonstracao",
+          "conjunto de Vitali nao mensuravel axioma da escolha",
+          "Lebesgue outer measure Caratheodory criterion proof",
+          "fat Cantor set Smith-Volterra-Cantor positive measure"
+        ],
+        "videos": [
+          {
+            "title": "Measure Theory - outer measure e Caratheodory",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Na playlist de Measure Theory, veja os videos sobre medida exterior, criterio de Caratheodory e construcao da medida de Lebesgue."
+          },
+          {
+            "title": "MIT 18.125 - Lebesgue measure",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre construcao da medida de Lebesgue e conjuntos mensuraveis; bom para o rigor da regularidade."
+          },
+          {
+            "title": "Vitali set / non-measurable set",
+            "channel": "Dr. Peyam",
+            "note": "Explicacao intuitiva da construcao do conjunto de Vitali e por que ele nao pode ser mensuravel."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Real Analysis, caps. 2-3 (Lebesgue Measure)",
+            "where": "H. L. Royden & P. Fitzpatrick - construcao na reta"
+          },
+          {
+            "title": "An Introduction to Measure Theory, cap. 1",
+            "where": "Terence Tao (AMS) - notas modernas com exercicios resolvidos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medida-03-funcoes-mensuraveis",
+      "title": "Funções Mensuráveis",
+      "tagline": "As funções que a integral de Lebesgue consegue ler: estáveis por limites, aproximáveis por funções simples e quase contínuas.",
+      "objectives": [
+        "Definir função mensurável e provar a equivalência dos critérios via pré-imagens de $(a,\\infty)$, $[a,\\infty)$, $(-\\infty,a)$ e dos borelianos.",
+        "Mostrar que mensurabilidade é preservada por somas, produtos, módulos, supremos, ínfimos, $\\limsup$, $\\liminf$ e limites pontuais.",
+        "Definir função simples e provar o Teorema da Aproximação por funções simples (crescente para $f\\ge 0$, uniforme se $f$ limitada).",
+        "Dominar a noção de 'quase sempre' (q.s.) e a relação entre igualdade q.s. e mensurabilidade num espaço completo.",
+        "Enunciar e interpretar os teoremas de Egorov (convergência quase uniforme) e Lusin (quase continuidade).",
+        "Definir convergência em medida e relacioná-la com a convergência q.s."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Função mensurável",
+          "statement": "$f:X\\to\\overline{\\mathbb{R}}$ é $\\mathcal{A}$-mensurável se $f^{-1}((a,\\infty])=\\{x:f(x)>a\\}\\in\\mathcal{A}$ para todo $a\\in\\mathbb{R}$. Equivalente a $f^{-1}(B)\\in\\mathcal{A}$ para todo boreliano $B$."
+        },
+        {
+          "term": "Função simples",
+          "statement": "$s=\\sum_{i=1}^{n}c_i\\,\\chi_{E_i}$ com $c_i\\in\\mathbb{R}$ e $E_i\\in\\mathcal{A}$ disjuntos: assume um número FINITO de valores e é mensurável. $\\chi_E$ é a função indicadora de $E$."
+        },
+        {
+          "term": "Quase sempre (q.s.)",
+          "statement": "Uma propriedade vale q.s. se o conjunto onde falha tem medida nula. Ex.: $f=g$ q.s. significa $\\mu(\\{f\\ne g\\})=0$."
+        },
+        {
+          "term": "Convergência em medida",
+          "statement": "$f_n\\to f$ em medida se, para todo $\\varepsilon>0$, $\\mu(\\{x:|f_n(x)-f(x)|\\ge\\varepsilon\\})\\to 0$ quando $n\\to\\infty$."
+        },
+        {
+          "term": "Convergência quase uniforme",
+          "statement": "$f_n\\to f$ quase uniformemente se, para todo $\\delta>0$, existe $E$ com $\\mu(E)<\\delta$ tal que $f_n\\to f$ uniformemente em $X\\setminus E$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Estabilidade da mensurabilidade",
+          "statement": "Se $f,g$ são mensuráveis (a valores reais), então $f+g$, $fg$, $cf$, $|f|$, $\\max(f,g)$, $\\min(f,g)$ são mensuráveis. Se $(f_n)$ é sequência de mensuráveis, então $\\sup_n f_n$, $\\inf_n f_n$, $\\limsup_n f_n$, $\\liminf_n f_n$ e (quando existe) $\\lim_n f_n$ são mensuráveis.",
+          "whyItMatters": "É a propriedade que torna a classe utilizável: ao contrário da continuidade, a mensurabilidade sobrevive a limites pontuais. Por isso podemos definir integrais como limites sem sair da classe."
+        },
+        {
+          "name": "Teorema da Aproximação por funções simples",
+          "statement": "Se $f\\ge 0$ é mensurável, existe uma sequência de funções simples $0\\le s_1\\le s_2\\le\\cdots$ com $s_n(x)\\uparrow f(x)$ para todo $x$. Se $f$ é também limitada, a convergência é uniforme. Para $f$ qualquer, aplica-se a $f^+$ e $f^-$.",
+          "whyItMatters": "É a pedra fundamental da integral de Lebesgue: define-se a integral primeiro nas funções simples e estende-se por monotonia via este teorema. Sem ele não há integral."
+        },
+        {
+          "name": "Teorema de Egorov",
+          "statement": "Seja $\\mu(X)<\\infty$ e $f_n\\to f$ q.s. (com $f_n,f$ mensuráveis finitas q.s.). Então $f_n\\to f$ quase uniformemente: para todo $\\delta>0$ existe $E$ com $\\mu(E)<\\delta$ e $f_n\\to f$ uniformemente em $X\\setminus E$.",
+          "whyItMatters": "Diz que convergência pontual q.s., num espaço de medida finita, é 'quase' convergência uniforme. É a ponte entre a convergência fraca pontual e o controle uniforme que muitas estimativas exigem. A finitude da medida é essencial."
+        },
+        {
+          "name": "Teorema de Lusin",
+          "statement": "Seja $f:[a,b]\\to\\mathbb{R}$ mensurável (finita q.s.). Para todo $\\varepsilon>0$ existe um fechado $F\\subseteq[a,b]$ com $m([a,b]\\setminus F)<\\varepsilon$ tal que $f\\!\\mid_F$ é contínua.",
+          "whyItMatters": "Formaliza a frase de Littlewood: 'toda função mensurável é quase contínua'. Mostra o quão dóceis são as funções mensuráveis, apesar da definição abstrata."
+        }
+      ],
+      "summary": "Uma função é mensurável quando as pré-imagens de conjuntos simples ($\\{f>a\\}$) pertencem à $\\sigma$-álgebra — basta verificar para os intervalos $(a,\\infty)$, pois isso já implica a mensurabilidade da pré-imagem de qualquer boreliano. O ganho decisivo sobre a continuidade é a estabilidade por operações de limite: somas, produtos, módulos, supremos, ínfimos, $\\limsup$, $\\liminf$ e o limite pontual de funções mensuráveis são todos mensuráveis. É por isso que a classe das funções mensuráveis é o ambiente certo para a integração, que é intrinsecamente um processo de limite.\n\nO Teorema da Aproximação por funções simples é o coração operacional: toda $f\\ge 0$ mensurável é o limite crescente de funções simples, e uniforme se $f$ for limitada. Isso permitirá definir $\\int f$ como o supremo das integrais das simples abaixo de $f$. A teoria ganha textura com 'quase sempre': em medida, modificar $f$ num conjunto de medida nula não muda nada que importe, e duas funções iguais q.s. têm a mesma integral. Por fim, dois teoremas revelam que funções mensuráveis são bem mais dóceis do que a definição sugere: Egorov diz que, em medida finita, convergência pontual q.s. é quase uniforme (controlada fora de um conjunto pequeno), e Lusin diz que toda função mensurável é contínua na restrição a um fechado de medida quase total. Junto com a convergência em medida — mais fraca que a q.s., porém central em probabilidade — eles compõem o vocabulário de convergência da teoria.",
+      "commonPitfalls": [
+        "Pensar que mensurável é o mesmo que contínuo: indicadoras de conjuntos mensuráveis são descontínuas em geral, e limites pontuais de contínuas (que podem ser muito irregulares) ainda são mensuráveis.",
+        "Aplicar Egorov sem a hipótese de medida finita: em $\\mathbb{R}$ com medida de Lebesgue, $f_n=\\chi_{[n,n+1]}\\to 0$ pontualmente mas não quase uniformemente.",
+        "Confundir convergência em medida com convergência q.s.: em medida finita, q.s. $\\Rightarrow$ em medida, mas a recíproca é falsa (ex.: 'máquina de datilografia'/typewriter); em medida só garante uma subsequência convergente q.s.",
+        "Esquecer que a mensurabilidade de $\\lim_n f_n$ exige a existência do limite pontual; sem isso, use $\\limsup$/$\\liminf$, que são sempre mensuráveis."
+      ],
+      "worked": "**$\\sup_n f_n$ é mensurável.** Seja $(f_n)$ sequência de funções mensuráveis e $g=\\sup_n f_n$. Afirmo que, para todo $a\\in\\mathbb{R}$,\n$$\\{x:g(x)>a\\}=\\bigcup_{n=1}^{\\infty}\\{x:f_n(x)>a\\}.$$\nDe fato, $g(x)>a$ significa que o supremo dos $f_n(x)$ excede $a$, o que ocorre se e só se ALGUM $f_n(x)>a$. Cada conjunto $\\{f_n>a\\}$ é mensurável (hipótese) e a união enumerável de mensuráveis é mensurável, logo $\\{g>a\\}\\in\\mathcal{A}$ para todo $a$; portanto $g$ é mensurável. Trocando $\\sup$ por $\\inf$ usa-se $\\{ \\inf_n f_n<a\\}=\\bigcup_n\\{f_n<a\\}$, e daí $\\limsup_n f_n=\\inf_k\\sup_{n\\ge k}f_n$ é mensurável. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que se $f^{-1}((a,\\infty))\\in\\mathcal{A}$ para todo $a$, então $f^{-1}(B)\\in\\mathcal{A}$ para todo boreliano $B$.",
+          "hint": "Mostre que a coleção $\\{B\\subseteq\\mathbb{R}:f^{-1}(B)\\in\\mathcal{A}\\}$ é uma $\\sigma$-álgebra que contém os intervalos $(a,\\infty)$, logo contém $\\mathcal{B}(\\mathbb{R})$.",
+          "difficulty": 2,
+          "solution": "Suponha $f^{-1}((a,\\infty))\\in\\mathcal{A}$ para todo $a\\in\\mathbb{R}$. Considere a colecao\n$$\\mathcal{C}=\\{B\\subseteq\\mathbb{R}:\\ f^{-1}(B)\\in\\mathcal{A}\\}.$$\n\n**$\\mathcal{C}$ e uma $\\sigma$-algebra.** Isso decorre de que a pre-imagem comuta com as operacoes de conjuntos:\n- $\\mathbb{R}\\in\\mathcal{C}$ pois $f^{-1}(\\mathbb{R})=X\\in\\mathcal{A}$.\n- Se $B\\in\\mathcal{C}$, entao $f^{-1}(B^c)=\\big(f^{-1}(B)\\big)^c\\in\\mathcal{A}$, logo $B^c\\in\\mathcal{C}$.\n- Se $B_1,B_2,\\dots\\in\\mathcal{C}$, entao $f^{-1}\\!\\left(\\bigcup_n B_n\\right)=\\bigcup_n f^{-1}(B_n)\\in\\mathcal{A}$, logo $\\bigcup_n B_n\\in\\mathcal{C}$.\n\n**$\\mathcal{C}$ contem os geradores de $\\mathcal{B}(\\mathbb{R})$.** Por hipotese, cada intervalo $(a,\\infty)\\in\\mathcal{C}$. Como a familia $\\{(a,\\infty):a\\in\\mathbb{R}\\}$ gera $\\mathcal{B}(\\mathbb{R})$ (ela gera os $(-\\infty,a]$ por complemento, e dai os abertos), e $\\mathcal{C}$ e uma $\\sigma$-algebra contendo esses geradores, segue\n$$\\mathcal{B}(\\mathbb{R})=\\sigma(\\{(a,\\infty)\\})\\subseteq\\mathcal{C}.$$\n\nPortanto, para todo boreliano $B$, $f^{-1}(B)\\in\\mathcal{A}$. $\\blacksquare$",
+          "steps": [
+            "Nao verifique a condicao para cada boreliano individualmente; colecione todos os B 'bons' em C = {B: f^{-1}(B)∈A} e prove que C e sigma-algebra.",
+            "Use que a pre-imagem comuta com complemento e uniao enumeravel para checar os axiomas de C.",
+            "Observe que os intervalos (a,infinito) estao em C por hipotese e geram a sigma-algebra de Borel.",
+            "Conclua B(R) ⊆ C, ou seja, f^{-1}(B)∈A para todo boreliano B."
+          ]
+        },
+        {
+          "prompt": "Sejam $f,g$ mensuráveis. Prove que $\\{x:f(x)<g(x)\\}$ é mensurável.",
+          "hint": "$\\{f<g\\}=\\bigcup_{q\\in\\mathbb{Q}}\\big(\\{f<q\\}\\cap\\{q<g\\}\\big)$.",
+          "difficulty": 3,
+          "solution": "Sejam $f,g:X\\to\\mathbb{R}$ mensuraveis. Afirmo que\n$$\\{x:f(x)<g(x)\\}=\\bigcup_{q\\in\\mathbb{Q}}\\Big(\\{x:f(x)<q\\}\\cap\\{x:q<g(x)\\}\\Big).$$\n\n**Prova da igualdade.** ($\\subseteq$) Se $f(x)<g(x)$, pela densidade de $\\mathbb{Q}$ existe um racional $q$ com $f(x)<q<g(x)$; entao $x$ pertence ao termo indexado por esse $q$. ($\\supseteq$) Se $x$ esta em algum termo, entao $f(x)<q$ e $q<g(x)$ para algum $q$, logo $f(x)<q<g(x)$ e $f(x)<g(x)$.\n\n**Mensurabilidade.** Cada conjunto $\\{f<q\\}=f^{-1}((-\\infty,q))$ e mensuravel (pois $f$ e mensuravel) e cada $\\{q<g\\}=g^{-1}((q,\\infty))$ e mensuravel. A intersecao de dois mensuraveis e mensuravel, e a UNIAO e ENUMERAVEL (indexada por $\\mathbb{Q}$), logo pertence a $\\mathcal{A}$. Portanto $\\{f<g\\}\\in\\mathcal{A}$. $\\blacksquare$\n\n*(Observacao: como corolario, $\\{f=g\\}=\\{f<g\\}^c\\cap\\{g<f\\}^c$ e $\\{f\\le g\\}$ tambem sao mensuraveis.)*",
+          "steps": [
+            "A dificuldade e que f<g compara duas funcoes; insira um racional entre elas para separar em condicoes sobre f e sobre g isoladamente.",
+            "Escreva {f<g} como uniao, sobre q racional, de {f<q} ∩ {q<g}, justificando pela densidade dos racionais.",
+            "Note que cada {f<q} e {q<g} e mensuravel por f e g serem mensuraveis.",
+            "Conclua: intersecao de mensuraveis e mensuravel, e a uniao e enumeravel (sobre Q), logo o conjunto e mensuravel."
+          ]
+        },
+        {
+          "prompt": "Dê o contra-exemplo 'typewriter' mostrando uma sequência $f_n\\to 0$ em medida em $[0,1]$ que NÃO converge q.s. em ponto algum.",
+          "hint": "Tome indicadoras de intervalos $[j/2^k,(j+1)/2^k]$ percorrendo todos os pares $(k,j)$; a medida do suporte vai a $0$, mas todo $x$ é coberto infinitas vezes.",
+          "difficulty": 3,
+          "solution": "**A 'maquina de datilografia' (typewriter).** Trabalhe em $[0,1]$ com a medida de Lebesgue. Para cada $k\\ge 0$ e cada $j\\in\\{0,1,\\dots,2^k-1\\}$ considere o intervalo\n$$I_{k,j}=\\left[\\frac{j}{2^{k}},\\frac{j+1}{2^{k}}\\right].$$\nEnumere TODOS os pares $(k,j)$ numa unica sequencia $n=1,2,3,\\dots$ (por blocos: primeiro $k=0$, depois os dois de $k=1$, os quatro de $k=2$, etc.) e defina $f_n=\\chi_{I_{k,j}}$ para o par correspondente ao indice $n$.\n\n**$f_n\\to 0$ em medida.** Se $f_n$ corresponde a $I_{k,j}$, entao\n$$\\mu(\\{|f_n|\\ge\\varepsilon\\})\\le\\mu(I_{k,j})=2^{-k}\\quad(0<\\varepsilon\\le1).$$\nA medida do suporte e $2^{-k}$, e $k\\to\\infty$ conforme $n\\to\\infty$ (dentro de cada bloco $k$ ha apenas $2^k$ indices, entao avancar em $n$ forca $k$ a crescer). Logo $\\mu(\\{|f_n|\\ge\\varepsilon\\})\\to 0$: $f_n\\to 0$ em medida.\n\n**$f_n$ nao converge q.s. (na verdade, em ponto algum).** Fixe qualquer $x\\in[0,1]$. Para cada nivel $k$, $x$ pertence a EXATAMENTE um dos intervalos $I_{k,j}$; para esse par, $f_n(x)=1$. Como ha um nivel $k$ para cada $k\\in\\mathbb{N}$, existem infinitos indices $n$ com $f_n(x)=1$. Por outro lado, para cada $k$ ha $2^k-1$ intervalos $I_{k,j'}$ que NAO contem $x$, dando infinitos indices com $f_n(x)=0$. Assim $\\limsup_n f_n(x)=1$ e $\\liminf_n f_n(x)=0$: o limite $\\lim_n f_n(x)$ NAO existe para nenhum $x$.\n\nPortanto $f_n\\to 0$ em medida sem convergir q.s. em ponto algum — a convergencia em medida e estritamente mais fraca (ela so garante uma subsequencia convergente q.s.). $\\blacksquare$",
+          "steps": [
+            "Construa indicadoras de intervalos diadicos I_{k,j}=[j/2^k,(j+1)/2^k], varrendo j de 0 a 2^k-1 em cada nivel k e enumerando todos os pares.",
+            "Para a convergencia em medida, note que o suporte de f_n tem medida 2^{-k}, que vai a zero conforme o indice cresce.",
+            "Para a nao convergencia pontual, fixe x: em cada nivel k, x cai em exatamente um intervalo, logo f_n(x)=1 infinitas vezes.",
+            "Mostre tambem que f_n(x)=0 infinitas vezes (os demais intervalos do nivel), logo limsup=1 e liminf=0.",
+            "Conclua que o limite pontual nao existe em ponto algum, apesar da convergencia em medida."
+          ]
+        },
+        {
+          "prompt": "Use o Teorema da Aproximação para provar que se $f\\ge 0$ é mensurável e $\\varphi:[0,\\infty)\\to[0,\\infty)$ é boreliana, então $\\varphi\\circ f$ é mensurável.",
+          "hint": "Composição de boreliana com mensurável: $(\\varphi\\circ f)^{-1}(B)=f^{-1}(\\varphi^{-1}(B))$ e $\\varphi^{-1}(B)$ é boreliano.",
+          "difficulty": 2,
+          "solution": "Sejam $f:X\\to[0,\\infty)$ mensuravel e $\\varphi:[0,\\infty)\\to[0,\\infty)$ boreliana. Queremos $\\varphi\\circ f$ mensuravel.\n\n**Argumento direto (composicao boreliana $\\circ$ mensuravel).** Para todo boreliano $B\\subseteq[0,\\infty)$,\n$$(\\varphi\\circ f)^{-1}(B)=f^{-1}\\big(\\varphi^{-1}(B)\\big).$$\nComo $\\varphi$ e boreliana, $\\varphi^{-1}(B)$ e um boreliano. Como $f$ e mensuravel, a pre-imagem por $f$ de qualquer boreliano esta em $\\mathcal{A}$ (pelo Exercicio 0 desta lista). Logo $(\\varphi\\circ f)^{-1}(B)\\in\\mathcal{A}$ para todo boreliano $B$, e $\\varphi\\circ f$ e mensuravel.\n\n**Via Teorema da Aproximacao (visao construtiva pedida pelo enunciado).** Toda funcao boreliana $\\varphi\\ge 0$ e limite crescente de funcoes simples borelianas $\\varphi=\\lim_m t_m$, com $t_m=\\sum_i c_i^{(m)}\\chi_{B_i^{(m)}}$, $B_i^{(m)}$ borelianos. Entao\n$$t_m\\circ f=\\sum_i c_i^{(m)}\\,\\chi_{B_i^{(m)}}\\circ f=\\sum_i c_i^{(m)}\\,\\chi_{f^{-1}(B_i^{(m)})}.$$\nCada $\\chi_{f^{-1}(B_i^{(m)})}$ e mensuravel (pois $f^{-1}(B_i^{(m)})\\in\\mathcal{A}$), logo cada $t_m\\circ f$ e uma funcao simples mensuravel. Como $t_m\\uparrow\\varphi$ pontualmente, $t_m\\circ f\\uparrow\\varphi\\circ f$ pontualmente, e o limite pontual de mensuraveis e mensuravel. Portanto $\\varphi\\circ f$ e mensuravel. $\\blacksquare$",
+          "steps": [
+            "Escreva a pre-imagem da composta: (φ∘f)^{-1}(B) = f^{-1}(φ^{-1}(B)).",
+            "Use que φ boreliana implica φ^{-1}(B) boreliano para todo boreliano B.",
+            "Use que f mensuravel implica f^{-1}(boreliano) mensuravel (criterio do Exercicio 0), fechando a mensurabilidade de φ∘f.",
+            "Alternativamente, aproxime φ por simples borelianas t_m crescendo para φ; cada t_m∘f e simples mensuravel e o limite pontual e mensuravel."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de função mensurável",
+          "back": "$\\{x:f(x)>a\\}\\in\\mathcal{A}$ para todo $a\\in\\mathbb{R}$ (equivale a $f^{-1}(B)\\in\\mathcal{A}$ para todo boreliano $B$)."
+        },
+        {
+          "front": "Mensurabilidade sobrevive a quê?",
+          "back": "Somas, produtos, $|f|$, $\\max/\\min$, $\\sup$, $\\inf$, $\\limsup$, $\\liminf$ e limites pontuais. (Diferente da continuidade!)"
+        },
+        {
+          "front": "Função simples",
+          "back": "$s=\\sum_{i=1}^n c_i\\chi_{E_i}$, $E_i\\in\\mathcal{A}$ disjuntos: assume finitos valores e é mensurável."
+        },
+        {
+          "front": "Teorema da Aproximação por simples",
+          "back": "$f\\ge 0$ mensurável $\\Rightarrow$ existem simples $0\\le s_1\\le s_2\\le\\cdots\\uparrow f$ pontualmente (uniforme se $f$ limitada)."
+        },
+        {
+          "front": "Teorema de Egorov (e hipótese-chave)",
+          "back": "Em $\\mu(X)<\\infty$: $f_n\\to f$ q.s. $\\Rightarrow$ quase uniforme (uniforme fora de conjunto de medida $<\\delta$). Falha sem medida finita."
+        },
+        {
+          "front": "Teorema de Lusin",
+          "back": "$f$ mensurável em $[a,b]$ $\\Rightarrow$ para todo $\\varepsilon>0$ há fechado $F$ com $m([a,b]\\setminus F)<\\varepsilon$ e $f\\!\\mid_F$ contínua."
+        },
+        {
+          "front": "Convergência em medida",
+          "back": "$\\forall\\varepsilon>0:\\ \\mu(\\{|f_n-f|\\ge\\varepsilon\\})\\to 0$. Mais fraca que q.s.; só garante subsequência convergente q.s."
+        },
+        {
+          "front": "Igualdade q.s. e integral",
+          "back": "Se $f=g$ q.s., então $f$ e $g$ têm a mesma integral. Conjuntos de medida nula são 'invisíveis' para a integral."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Folland, Real Analysis, cap. 2 (Measurable functions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Royden & Fitzpatrick, Real Analysis, caps. 3 e 5 (Egorov, Lusin)",
+          "ref": "livro"
+        },
+        {
+          "title": "Fernandez, Medida e Integração, cap. 2",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reative a nocao de pre-imagem e suas propriedades (f^{-1} comuta com uniao, intersecao, complemento). Toda a teoria de mensurabilidade se reduz a manipular pre-imagens de conjuntos simples.",
+          "Leia Folland cap. 2 (measurable functions) OU Fernandez cap. 2. Prove a equivalencia dos criterios ({f>a}, {f>=a}, {f<a}, borelianos) mostrando que a colecao {B: f^{-1}(B)∈A} e uma sigma-algebra.",
+          "Demonstre a estabilidade por sup, inf, limsup, liminf e limite pontual (a propriedade que distingue mensurabilidade de continuidade). Depois prove o Teorema da Aproximacao por funcoes simples, degrau essencial para a integral.",
+          "Estude os enunciados de Egorov e Lusin e a nocao de convergencia em medida; entenda o contra-exemplo 'typewriter' que separa convergencia em medida de convergencia q.s.",
+          "Assista a uma aula sobre funcoes mensuraveis e aproximacao por simples para visualizar a construcao das escadas s_n crescendo para f.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (os criterios equivalentes de mensurabilidade, o Teorema da Aproximacao e a hierarquia q.s. / em medida / quase uniforme)."
+        ],
+        "searchQueries": [
+          "funcao mensuravel definicao criterios equivalentes pre-imagem",
+          "teorema aproximacao funcoes simples funcao mensuravel nao negativa",
+          "teorema de Egorov convergencia quase uniforme demonstracao",
+          "teorema de Lusin funcao mensuravel quase continua",
+          "convergence in measure typewriter counterexample almost everywhere",
+          "measurable function sup inf limsup measurable proof"
+        ],
+        "videos": [
+          {
+            "title": "Measure Theory - measurable functions e simple functions",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Assista os videos da playlist sobre funcoes mensuraveis, funcoes simples e aproximacao; muito claros sobre a construcao das escadas."
+          },
+          {
+            "title": "Egorov and Lusin theorems",
+            "channel": "MIT OpenCourseWare",
+            "note": "No curso 18.125, veja as aulas cobrindo modos de convergencia, Egorov e Lusin."
+          },
+          {
+            "title": "Convergence in measure vs almost everywhere",
+            "channel": "Dr. Peyam",
+            "note": "Explicacao dos diferentes modos de convergencia e do contra-exemplo typewriter."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Real Analysis, cap. 2 (Measurable Functions)",
+            "where": "Gerald B. Folland"
+          },
+          {
+            "title": "Real Analysis, caps. 3 e 5 (Egorov, Lusin)",
+            "where": "H. L. Royden & P. Fitzpatrick"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medida-04-integral-lebesgue",
+      "title": "A Integral de Lebesgue",
+      "tagline": "Integrar fatiando o eixo dos valores: das funções simples às integráveis, com aditividade e linearidade reais.",
+      "objectives": [
+        "Definir a integral de uma função simples não negativa e provar sua boa definição e aditividade.",
+        "Definir $\\int f\\,d\\mu$ para $f\\ge 0$ mensurável como supremo das integrais das simples abaixo de $f$.",
+        "Definir função integrável ($\\int|f|\\,d\\mu<\\infty$) e $\\int f\\,d\\mu=\\int f^+\\,d\\mu-\\int f^-\\,d\\mu$.",
+        "Provar as propriedades básicas: monotonicidade, linearidade, $\\left|\\int f\\right|\\le\\int|f|$ e nulidade sobre conjuntos de medida nula.",
+        "Entender a integral como 'área sob o gráfico' medida horizontalmente e a definir a medida $\\nu(E)=\\int_E f\\,d\\mu$.",
+        "Reconhecer o papel de 'q.s.': $\\int|f|\\,d\\mu=0\\iff f=0$ q.s."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Integral de função simples",
+          "statement": "Para $s=\\sum_{i=1}^{n}c_i\\chi_{E_i}\\ge 0$ (representação canônica, $c_i$ distintos), $\\displaystyle\\int s\\,d\\mu=\\sum_{i=1}^{n}c_i\\,\\mu(E_i)$, com a convenção $0\\cdot\\infty=0$."
+        },
+        {
+          "term": "Integral de $f\\ge 0$",
+          "statement": "$\\displaystyle\\int f\\,d\\mu=\\sup\\left\\{\\int s\\,d\\mu:\\ 0\\le s\\le f,\\ s\\text{ simples}\\right\\}\\in[0,\\infty]$. Sempre existe (podendo ser $+\\infty$)."
+        },
+        {
+          "term": "Função integrável",
+          "statement": "$f$ mensurável é integrável ($f\\in L^1$) se $\\int|f|\\,d\\mu<\\infty$. Define-se $\\int f\\,d\\mu=\\int f^+\\,d\\mu-\\int f^-\\,d\\mu$, onde $f^+=\\max(f,0)$, $f^-=\\max(-f,0)$."
+        },
+        {
+          "term": "Integral sobre um conjunto",
+          "statement": "$\\displaystyle\\int_E f\\,d\\mu=\\int f\\,\\chi_E\\,d\\mu$. A função $\\nu(E)=\\int_E f\\,d\\mu$ (com $f\\ge 0$ integrável) é, ela própria, uma medida."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Monotonicidade e nulidade q.s.",
+          "statement": "Se $0\\le f\\le g$ são mensuráveis, então $\\int f\\,d\\mu\\le\\int g\\,d\\mu$. Além disso, para $f\\ge 0$: $\\int f\\,d\\mu=0\\iff f=0$ q.s. Se $\\mu(E)=0$, então $\\int_E f\\,d\\mu=0$.",
+          "whyItMatters": "Conecta a integral à ordem das funções e isola exatamente o que a integral 'não vê': conjuntos de medida nula. É o que permite ignorar valores de $f$ num conjunto nulo."
+        },
+        {
+          "name": "Linearidade da integral",
+          "statement": "Para $f,g$ integráveis e $\\alpha,\\beta\\in\\mathbb{R}$: $\\int(\\alpha f+\\beta g)\\,d\\mu=\\alpha\\int f\\,d\\mu+\\beta\\int g\\,d\\mu$. (A aditividade para $f,g\\ge 0$ usa o Teorema da Convergência Monótona aplicado a aproximações simples.)",
+          "whyItMatters": "Sem linearidade não há cálculo. A aditividade não é óbvia da definição por supremo; ela é uma das primeiras grandes recompensas do Teorema da Convergência Monótona."
+        },
+        {
+          "name": "Desigualdade triangular integral",
+          "statement": "Se $f$ é integrável, então $\\left|\\int f\\,d\\mu\\right|\\le\\int|f|\\,d\\mu$.",
+          "whyItMatters": "É a estimativa de uso universal: controla a integral de $f$ pela integral de $|f|$, base de toda majoração em análise (incluindo a definição da norma de $L^1$)."
+        },
+        {
+          "name": "$\\nu(E)=\\int_E f\\,d\\mu$ é medida",
+          "statement": "Se $f\\ge 0$ é mensurável, então $\\nu(E)=\\int_E f\\,d\\mu$ define uma medida em $\\mathcal{A}$, com $\\nu\\ll\\mu$ (se $\\mu(E)=0$ então $\\nu(E)=0$).",
+          "whyItMatters": "Mostra que integrar é 'redistribuir massa' com densidade $f$; é o protótipo concreto da relação que o Teorema de Radon-Nikodym vai inverter (recuperar a densidade $f$ a partir de $\\nu$ e $\\mu$)."
+        }
+      ],
+      "summary": "A diferença filosófica entre Riemann e Lebesgue é a direção do corte: Riemann particiona o domínio (eixo $x$) e soma alturas; Lebesgue particiona a imagem (eixo $y$) e pergunta 'quanto do domínio leva $f$ a cada faixa de valores' — por isso precisa medir conjuntos. A construção é feita em três degraus. Primeiro, para funções simples não negativas $s=\\sum c_i\\chi_{E_i}$, a integral é a soma $\\sum c_i\\mu(E_i)$, a 'área' óbvia de uma função-escada generalizada. Segundo, para $f\\ge 0$ mensurável, define-se $\\int f$ como o supremo das integrais de todas as simples abaixo de $f$ — bem definida graças ao Teorema da Aproximação. Terceiro, para $f$ qualquer, decompõe-se $f=f^+-f^-$ e diz-se que $f$ é integrável quando $\\int|f|<\\infty$, pondo $\\int f=\\int f^+-\\int f^-$.\n\nDessa construção saem as propriedades que fazem a integral funcionar: monotonicidade, linearidade (cuja aditividade, sutil, repousa no Teorema da Convergência Monótona da próxima aula), e a desigualdade triangular $\\left|\\int f\\right|\\le\\int|f|$. Um ponto conceitual decisivo: $\\int f\\,d\\mu=0$ para $f\\ge 0$ equivale a $f=0$ quase sempre, e qualquer alteração de $f$ num conjunto de medida nula não afeta a integral. Finalmente, fixada $f\\ge 0$, a expressão $\\nu(E)=\\int_E f\\,d\\mu$ é ela própria uma nova medida, absolutamente contínua em relação a $\\mu$ — a semente concreta do Teorema de Radon-Nikodym, que mais adiante recuperará a densidade $f$ a partir das duas medidas.",
+      "commonPitfalls": [
+        "Tentar definir $\\int f$ por aproximação 'por cima' com simples maiores que $f$: a definição correta para $f\\ge 0$ é supremo das simples MENORES ou iguais a $f$.",
+        "Escrever $\\int f=\\int f^+-\\int f^-$ quando AMBAS são infinitas: a integral só está definida se ao menos uma das partes é finita; $f$ é integrável quando ambas são finitas, i.e. $\\int|f|<\\infty$.",
+        "Assumir a aditividade $\\int(f+g)=\\int f+\\int g$ como trivial: para $f,g\\ge 0$ ela exige o Teorema da Convergência Monótona; não decorre diretamente do supremo.",
+        "Confundir 'integral nula' com 'função nula': $\\int_E f=0$ para $f\\ge 0$ só dá $f=0$ q.s. em $E$, não $f\\equiv 0$."
+      ],
+      "worked": "**A função de Dirichlet é Lebesgue-integrável (e Riemann não).** Seja $f=\\chi_{\\mathbb{Q}\\cap[0,1]}$ em $[0,1]$, isto é, $f=1$ nos racionais e $0$ nos irracionais. Como $\\mathbb{Q}\\cap[0,1]$ é mensurável com $m(\\mathbb{Q}\\cap[0,1])=0$, $f$ é uma função simples e\n$$\\int_{[0,1]} f\\,dm=1\\cdot m(\\mathbb{Q}\\cap[0,1])+0\\cdot m([0,1]\\setminus\\mathbb{Q})=1\\cdot 0+0\\cdot 1=0.$$\nLogo $\\int_{[0,1]} f\\,dm=0$. Em contraste, $f$ NÃO é Riemann-integrável: em qualquer partição, a soma superior é $1$ e a inferior é $0$, então as integrais de Darboux não coincidem. Lebesgue integra-a sem esforço porque $f=0$ quase sempre. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que a integral de uma função simples não negativa independe da representação escolhida (boa definição).",
+          "hint": "Reduza duas representações a um refinamento comum dos conjuntos $E_i$ e use a aditividade finita de $\\mu$ sobre os blocos disjuntos.",
+          "difficulty": 3,
+          "solution": "Sejam duas representacoes da mesma funcao simples nao negativa:\n$$s=\\sum_{i=1}^{m}a_i\\,\\chi_{A_i}=\\sum_{j=1}^{n}b_j\\,\\chi_{B_j},$$\ncom $\\{A_i\\}$ e $\\{B_j\\}$ particoes mensuraveis (dois a dois disjuntos, cobrindo o suporte) de $X$. Precisamos $\\sum_i a_i\\mu(A_i)=\\sum_j b_j\\mu(B_j)$.\n\n**Refinamento comum.** Considere os blocos $C_{ij}=A_i\\cap B_j$, mensuraveis e dois a dois disjuntos, com $A_i=\\bigsqcup_j C_{ij}$ e $B_j=\\bigsqcup_i C_{ij}$. Pela aditividade (finita) de $\\mu$,\n$$\\mu(A_i)=\\sum_{j}\\mu(C_{ij}),\\qquad\\mu(B_j)=\\sum_{i}\\mu(C_{ij}).$$\n\n**Igualdade dos coeficientes nos blocos.** Se $C_{ij}\\ne\\varnothing$, tome $x\\in C_{ij}$; entao $s(x)=a_i$ (pois $x\\in A_i$) e $s(x)=b_j$ (pois $x\\in B_j$), logo $a_i=b_j$. Assim, sempre que $\\mu(C_{ij})>0$ (que exige $C_{ij}\\ne\\varnothing$) temos $a_i=b_j$, portanto $a_i\\,\\mu(C_{ij})=b_j\\,\\mu(C_{ij})$ para todos $i,j$ (a igualdade tambem vale trivialmente quando $\\mu(C_{ij})=0$, usando a convencao $0\\cdot\\infty=0$).\n\n**Conclusao.** Reagrupando por dupla soma,\n$$\\sum_i a_i\\mu(A_i)=\\sum_i a_i\\sum_j\\mu(C_{ij})=\\sum_{i,j}a_i\\mu(C_{ij})=\\sum_{i,j}b_j\\mu(C_{ij})=\\sum_j b_j\\sum_i\\mu(C_{ij})=\\sum_j b_j\\mu(B_j).$$\nLogo a integral $\\int s\\,d\\mu=\\sum_i a_i\\mu(A_i)$ nao depende da representacao. $\\blacksquare$",
+          "steps": [
+            "Tome duas representacoes de s por particoes {A_i} e {B_j} e forme o refinamento comum C_{ij}=A_i∩B_j.",
+            "Use aditividade finita de mu para escrever mu(A_i)=soma_j mu(C_{ij}) e mu(B_j)=soma_i mu(C_{ij}).",
+            "Observe que em cada bloco nao vazio C_{ij} os coeficientes coincidem: a_i = b_j (ambos valem s no ponto).",
+            "Expanda as duas somas em soma dupla sobre os blocos e use a_i mu(C_{ij}) = b_j mu(C_{ij}) para igualar os totais."
+          ]
+        },
+        {
+          "prompt": "Mostre que se $f\\ge 0$ é mensurável e $\\int f\\,d\\mu=0$, então $f=0$ q.s.",
+          "hint": "Considere $A_n=\\{f\\ge 1/n\\}$; então $\\tfrac1n\\mu(A_n)\\le\\int f=0$, logo $\\mu(A_n)=0$ e $\\{f>0\\}=\\bigcup_n A_n$ é nulo.",
+          "difficulty": 3,
+          "solution": "Seja $f\\ge 0$ mensuravel com $\\int f\\,d\\mu=0$. Queremos $\\mu(\\{f>0\\})=0$.\n\n**Fatiamento do conjunto onde $f$ e positiva.** Para $n\\ge 1$ ponha $A_n=\\{x:f(x)\\ge 1/n\\}$. Como $f>0\\iff f\\ge 1/n$ para algum $n$,\n$$\\{f>0\\}=\\bigcup_{n=1}^{\\infty}A_n,\\qquad A_1\\subseteq A_2\\subseteq\\cdots$$\n\n**Cada $A_n$ tem medida nula.** A funcao simples $\\tfrac1n\\chi_{A_n}$ satisfaz $0\\le\\tfrac1n\\chi_{A_n}\\le f$, pois em $A_n$ vale $f\\ge 1/n$ e fora dela o lado esquerdo e $0$. Pela monotonicidade da integral,\n$$\\frac1n\\,\\mu(A_n)=\\int\\frac1n\\chi_{A_n}\\,d\\mu\\le\\int f\\,d\\mu=0.$$\nComo $\\tfrac1n>0$, segue $\\mu(A_n)=0$ para todo $n$.\n\n**Conclusao.** Por subaditividade enumeravel (ou continuidade por baixo),\n$$\\mu(\\{f>0\\})=\\mu\\!\\left(\\bigcup_n A_n\\right)\\le\\sum_{n}\\mu(A_n)=0.$$\nLogo $\\mu(\\{f>0\\})=0$, isto e, $f=0$ quase sempre. $\\blacksquare$",
+          "steps": [
+            "Escreva o conjunto {f>0} como uniao crescente dos niveis A_n={f>=1/n}.",
+            "Em cada A_n, minore f pela funcao simples (1/n)·χ_{A_n} e aplique monotonicidade da integral.",
+            "Deduza (1/n)·mu(A_n) <= ∫f = 0, logo mu(A_n)=0 para todo n.",
+            "Use subaditividade enumeravel na uniao dos A_n para concluir mu({f>0})=0, ou seja, f=0 q.s."
+          ]
+        },
+        {
+          "prompt": "Sejam $f$ integrável e $E_n\\in\\mathcal{A}$ com $\\mu(E_n)\\to 0$. Prove a continuidade absoluta da integral: $\\int_{E_n}|f|\\,d\\mu\\to 0$.",
+          "hint": "Trunque $f$ por $M$: $\\int_{E_n}|f|\\le\\int_{|f|>M}|f|+M\\,\\mu(E_n)$; escolha $M$ grande pela integrabilidade e depois $n$ grande.",
+          "difficulty": 4,
+          "solution": "Seja $f$ integravel ($\\int|f|\\,d\\mu<\\infty$) e $E_n\\in\\mathcal{A}$ com $\\mu(E_n)\\to 0$. Queremos $\\int_{E_n}|f|\\,d\\mu\\to 0$.\n\n**Truncamento.** Fixe $\\varepsilon>0$. Para $M>0$, escreva sobre $E_n$:\n$$\\int_{E_n}|f|\\,d\\mu=\\int_{E_n\\cap\\{|f|>M\\}}|f|\\,d\\mu+\\int_{E_n\\cap\\{|f|\\le M\\}}|f|\\,d\\mu\\le\\int_{\\{|f|>M\\}}|f|\\,d\\mu+M\\,\\mu(E_n).$$\n\n**Controle da cauda.** Como $f\\in L^1$, a integral $\\int_{\\{|f|>M\\}}|f|\\,d\\mu\\to 0$ quando $M\\to\\infty$. De fato, $\\{|f|>M\\}\\downarrow\\{|f|=\\infty\\}$ (que tem medida nula, pois $|f|$ e integravel), e $|f|\\chi_{\\{|f|>M\\}}\\le|f|\\in L^1$; pelo Teorema da Convergencia Dominada, $\\int_{\\{|f|>M\\}}|f|\\to 0$. Escolha entao $M$ grande o suficiente para que\n$$\\int_{\\{|f|>M\\}}|f|\\,d\\mu<\\frac{\\varepsilon}{2}.$$\n\n**Controle da parte limitada.** Com esse $M$ fixo, como $\\mu(E_n)\\to 0$, existe $N$ tal que $n\\ge N\\Rightarrow M\\,\\mu(E_n)<\\varepsilon/2$.\n\n**Conclusao.** Para $n\\ge N$,\n$$\\int_{E_n}|f|\\,d\\mu<\\frac{\\varepsilon}{2}+\\frac{\\varepsilon}{2}=\\varepsilon.$$\nComo $\\varepsilon>0$ era arbitrario, $\\int_{E_n}|f|\\,d\\mu\\to 0$. $\\blacksquare$",
+          "steps": [
+            "Fixe epsilon>0 e quebre a integral sobre E_n em duas partes: onde |f|>M e onde |f|<=M.",
+            "Na parte {|f|>M}, use a integrabilidade de f: a cauda ∫_{|f|>M}|f| tende a zero quando M cresce; escolha M com essa integral < epsilon/2.",
+            "Na parte {|f|<=M}, majore por M·mu(E_n), que fica < epsilon/2 para n grande porque mu(E_n)→0.",
+            "Some as duas cotas para obter ∫_{E_n}|f| < epsilon a partir de certo N, concluindo a continuidade absoluta."
+          ]
+        },
+        {
+          "prompt": "Verifique diretamente que $\\nu(E)=\\int_E f\\,d\\mu$ (com $f\\ge 0$) satisfaz $\\nu(\\varnothing)=0$ e a aditividade enumerável.",
+          "hint": "Use $\\chi_{\\bigsqcup_n E_n}=\\sum_n\\chi_{E_n}$ e o Teorema da Convergência Monótona aplicado às somas parciais.",
+          "difficulty": 3,
+          "solution": "Seja $f\\ge 0$ mensuravel e $\\nu(E)=\\int_E f\\,d\\mu=\\int f\\chi_E\\,d\\mu$ para $E\\in\\mathcal{A}$.\n\n**$\\nu(\\varnothing)=0$.** $\\nu(\\varnothing)=\\int f\\chi_\\varnothing\\,d\\mu=\\int 0\\,d\\mu=0$.\n\n**Aditividade enumeravel.** Seja $\\{E_n\\}$ dois a dois disjuntos e $E=\\bigsqcup_{n=1}^{\\infty}E_n$. Como os $E_n$ sao disjuntos, a indicadora da uniao e a soma das indicadoras:\n$$\\chi_E=\\sum_{n=1}^{\\infty}\\chi_{E_n},\\qquad\\text{logo}\\qquad f\\chi_E=\\sum_{n=1}^{\\infty} f\\chi_{E_n}.$$\nAs funcoes $g_n:=f\\chi_{E_n}\\ge 0$ sao mensuraveis e nao negativas. Pelo Teorema da Convergencia Monotona aplicado as somas parciais $S_N=\\sum_{n=1}^{N}g_n\\uparrow\\sum_{n}g_n=f\\chi_E$ (integracao termo a termo de series de termos nao negativos, corolario do MCT),\n$$\\nu(E)=\\int f\\chi_E\\,d\\mu=\\int\\sum_{n=1}^{\\infty} f\\chi_{E_n}\\,d\\mu=\\sum_{n=1}^{\\infty}\\int f\\chi_{E_n}\\,d\\mu=\\sum_{n=1}^{\\infty}\\nu(E_n).$$\nComo $\\nu(\\varnothing)=0$ e vale a aditividade enumeravel, $\\nu$ e uma medida. (Alem disso, se $\\mu(E)=0$ entao $f\\chi_E=0$ q.s. e $\\nu(E)=0$, isto e, $\\nu\\ll\\mu$.) $\\blacksquare$",
+          "steps": [
+            "Verifique ν(∅)=0 diretamente, pois a indicadora do vazio e a funcao nula.",
+            "Para a aditividade, use que a indicadora de uma uniao disjunta e a soma das indicadoras: χ_E = soma χ_{E_n}.",
+            "Escreva f·χ_E como serie de termos nao negativos f·χ_{E_n}.",
+            "Aplique o Teorema da Convergencia Monotona (integracao termo a termo) para trocar integral e somatorio, obtendo ν(E)=soma ν(E_n)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Integral de uma função simples $s=\\sum c_i\\chi_{E_i}\\ge 0$",
+          "back": "$\\int s\\,d\\mu=\\sum_i c_i\\,\\mu(E_i)$, com $0\\cdot\\infty=0$."
+        },
+        {
+          "front": "Definição de $\\int f\\,d\\mu$ para $f\\ge 0$",
+          "back": "$\\sup\\{\\int s\\,d\\mu: 0\\le s\\le f,\\ s$ simples$\\}$."
+        },
+        {
+          "front": "Quando $f$ é integrável?",
+          "back": "Quando $\\int|f|\\,d\\mu<\\infty$. Aí $\\int f=\\int f^+-\\int f^-$ (ambas finitas)."
+        },
+        {
+          "front": "$\\int f\\,d\\mu=0$ com $f\\ge 0$ significa",
+          "back": "$f=0$ quase sempre ($\\mu(\\{f>0\\})=0$)."
+        },
+        {
+          "front": "Desigualdade triangular integral",
+          "back": "$\\left|\\int f\\,d\\mu\\right|\\le\\int|f|\\,d\\mu$."
+        },
+        {
+          "front": "Lebesgue corta qual eixo?",
+          "back": "O eixo dos VALORES (imagem): mede quanto do domínio cai em cada faixa de $f$. Riemann corta o domínio."
+        },
+        {
+          "front": "Integral de $\\chi_{\\mathbb{Q}\\cap[0,1]}$",
+          "back": "$\\int = 0$ (medida dos racionais é nula). Não é Riemann-integrável."
+        },
+        {
+          "front": "$\\nu(E)=\\int_E f\\,d\\mu$ é...",
+          "back": "Uma medida (para $f\\ge 0$), absolutamente contínua em relação a $\\mu$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Folland, Real Analysis, cap. 2 (Integration of nonnegative functions)",
+          "ref": "livro"
+        },
+        {
+          "title": "Rudin, Real and Complex Analysis, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "Fernandez, Medida e Integração, cap. 3",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Amarre o pre-requisito: tenha o Teorema da Aproximacao por funcoes simples fresco na cabeca, pois a integral de f>=0 e definida como supremo das integrais de simples abaixo de f.",
+          "Leia Folland cap. 2 (integration of nonnegative functions) OU Rudin cap. 1 OU Fernandez cap. 3. Siga a construcao em tres degraus: simples nao negativas, f>=0 por supremo, f qualquer via f = f^+ - f^-.",
+          "Prove as propriedades basicas: boa definicao da integral de simples, monotonicidade, o fato de que integral nula (f>=0) equivale a f=0 q.s., e a desigualdade triangular integral. Guarde que a LINEARIDADE plena depende do Teorema da Convergencia Monotona (proxima aula).",
+          "Trabalhe o exemplo de Dirichlet (Lebesgue-integravel, Riemann nao) e entenda ν(E)=∫_E f dμ como uma nova medida — a semente de Radon-Nikodym.",
+          "Assista a uma aula sobre a definicao da integral de Lebesgue para visualizar o corte no eixo dos valores (fatiamento horizontal) contra o corte de Riemann no dominio.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (a construcao em tres degraus, a caracterizacao 'integral nula = nula q.s.' e a ideia de ν(E)=∫_E f dμ ser medida)."
+        ],
+        "searchQueries": [
+          "integral de Lebesgue definicao funcoes simples supremo",
+          "integral nula f>=0 implica f=0 quase sempre demonstracao",
+          "continuidade absoluta da integral integral em E_n medida tende a zero",
+          "funcao de Dirichlet Lebesgue integravel Riemann nao",
+          "Lebesgue integral nonnegative simple functions well defined",
+          "integral over set defines a measure absolutely continuous"
+        ],
+        "videos": [
+          {
+            "title": "Measure Theory - the Lebesgue integral",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Assista os videos da playlist sobre integral de funcoes simples, de funcoes nao negativas e integrabilidade; construcao muito clara."
+          },
+          {
+            "title": "MIT 18.125 - Integration",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre a definicao da integral de Lebesgue e suas propriedades basicas, no estilo Rudin/Folland."
+          },
+          {
+            "title": "Lebesgue vs Riemann integral intuition",
+            "channel": "3Blue1Brown",
+            "note": "Busque a explicacao visual do fatiamento horizontal (eixo dos valores) que caracteriza a ideia de Lebesgue; bom para a intuicao inicial."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Real Analysis, cap. 2 (Integration of nonnegative functions)",
+            "where": "Gerald B. Folland"
+          },
+          {
+            "title": "Medida e Integracao, cap. 3",
+            "where": "Pedro J. Fernandez (Projeto Euclides, IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medida-05-teoremas-convergencia",
+      "title": "Teoremas de Convergência: Monótona, Fatou e Dominada",
+      "tagline": "Os três teoremas que permitem trocar limite com integral — o verdadeiro motivo de a integral de Lebesgue ter vencido.",
+      "objectives": [
+        "Enunciar e provar o Teorema da Convergência Monótona (MCT) e dele deduzir a aditividade de $\\int$ e a integração termo a termo de séries.",
+        "Demonstrar o Lema de Fatou a partir do MCT e usá-lo como ferramenta de estimativa por baixo.",
+        "Enunciar e provar o Teorema da Convergência Dominada (DCT), incluindo a conclusão $\\int|f_n-f|\\to 0$.",
+        "Identificar com precisão as hipóteses de cada teorema e construir contra-exemplos quando elas falham.",
+        "Aplicar os teoremas para justificar continuidade e derivação sob o sinal de integral.",
+        "Reconhecer o Teorema de Beppo Levi e a integração de séries de termos não negativos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Convergência Monótona (MCT)",
+          "statement": "Se $0\\le f_1\\le f_2\\le\\cdots$ são mensuráveis e $f_n\\uparrow f$ pontualmente (q.s.), então $\\int f_n\\,d\\mu\\uparrow\\int f\\,d\\mu$, ou seja $\\lim_n\\int f_n=\\int\\lim_n f_n$."
+        },
+        {
+          "term": "Lema de Fatou",
+          "statement": "Para $f_n\\ge 0$ mensuráveis, $\\displaystyle\\int\\liminf_n f_n\\,d\\mu\\le\\liminf_n\\int f_n\\,d\\mu$. Vale apenas a desigualdade $\\le$, e ela pode ser estrita."
+        },
+        {
+          "term": "Convergência Dominada (DCT)",
+          "statement": "Se $f_n\\to f$ q.s., todas mensuráveis, e existe $g$ integrável com $|f_n|\\le g$ q.s. para todo $n$, então $f$ é integrável, $\\int f_n\\to\\int f$ e ainda $\\int|f_n-f|\\,d\\mu\\to 0$."
+        },
+        {
+          "term": "Função dominante",
+          "statement": "A 'tampa' $g\\ge|f_n|$ integrável que controla toda a sequência. Sua existência é a hipótese central do DCT e impede a 'fuga de massa'."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema da Convergência Monótona (Beppo Levi)",
+          "statement": "Sejam $f_n$ mensuráveis com $0\\le f_1\\le f_2\\le\\cdots$ e $f=\\lim_n f_n$ (q.s.). Então $\\int f\\,d\\mu=\\lim_n\\int f_n\\,d\\mu$. Corolário: para $g_k\\ge 0$, $\\int\\sum_k g_k\\,d\\mu=\\sum_k\\int g_k\\,d\\mu$ (integração termo a termo).",
+          "whyItMatters": "É o teorema-base: dele saem a aditividade da integral, a integração de séries de termos positivos, o Lema de Fatou e, indiretamente, o DCT. A monotonia dispensa qualquer função dominante."
+        },
+        {
+          "name": "Lema de Fatou",
+          "statement": "Para qualquer sequência $f_n\\ge 0$ mensurável, $\\int\\liminf_n f_n\\,d\\mu\\le\\liminf_n\\int f_n\\,d\\mu$.",
+          "whyItMatters": "É a desigualdade-canivete: dá uma cota inferior para a integral do limite mesmo sem convergência monótona ou dominação. A desigualdade pode ser estrita (massa que 'escapa'), e isso é exatamente o que o DCT proíbe."
+        },
+        {
+          "name": "Teorema da Convergência Dominada",
+          "statement": "Se $f_n\\to f$ q.s. e $|f_n|\\le g$ q.s. com $\\int g\\,d\\mu<\\infty$, então $f\\in L^1$, $\\lim_n\\int f_n\\,d\\mu=\\int f\\,d\\mu$ e $\\int|f_n-f|\\,d\\mu\\to 0$.",
+          "whyItMatters": "É o teorema mais usado da análise: autoriza trocar limite e integral sob uma única hipótese verificável (a dominação). Justifica continuidade e derivação sob o sinal de integral, limites de séries de Fourier e quase toda passagem ao limite em $L^1$."
+        },
+        {
+          "name": "Continuidade/derivação sob a integral",
+          "statement": "Seja $F(t)=\\int f(x,t)\\,d\\mu(x)$. Se $t\\mapsto f(x,t)$ é contínua e $|f(x,t)|\\le g(x)$ integrável, então $F$ é contínua. Se $\\partial_t f$ existe e $|\\partial_t f(x,t)|\\le h(x)$ integrável, então $F'(t)=\\int\\partial_t f(x,t)\\,d\\mu(x)$.",
+          "whyItMatters": "É a aplicação prática estrela do DCT: legitima 'derivar dentro da integral', técnica onipresente em EDPs, transformadas e funções especiais (Gama, Fourier, Laplace)."
+        }
+      ],
+      "summary": "Aqui está a razão de ser da integral de Lebesgue. Sob Riemann, trocar $\\lim_n\\int f_n$ por $\\int\\lim_n f_n$ exige convergência uniforme — uma hipótese forte e frequentemente falsa. Lebesgue oferece três teoremas com hipóteses muito mais fracas. O Teorema da Convergência Monótona diz que, para sequências não negativas crescentes, limite e integral simplesmente comutam, sem nenhuma dominação; dele se deduzem a aditividade da integral e a integração termo a termo de séries de termos positivos. O Lema de Fatou, consequência do MCT, fornece sempre uma desigualdade $\\int\\liminf f_n\\le\\liminf\\int f_n$ — útil justamente quando não há monotonia nem dominação; a desigualdade pode ser estrita, sinalizando 'massa que escapa para o infinito'.\n\nO Teorema da Convergência Dominada é o ápice e o mais usado: se $f_n\\to f$ q.s. e todas são controladas por uma mesma função integrável $g$, então pode-se passar o limite para dentro da integral e ainda se tem convergência em $L^1$ ($\\int|f_n-f|\\to 0$). A função dominante é a hipótese que impede a fuga de massa exibida nos contra-exemplos clássicos ($n\\chi_{(0,1/n)}$, 'corcovas' que correm para o infinito). A recompensa prática é imensa: o DCT justifica os teoremas de continuidade e derivação sob o sinal de integral, técnica indispensável para estudar a função Gama, transformadas de Fourier e Laplace, e soluções de EDPs. Saber qual teorema usar — e checar a hipótese exata de cada um — é a habilidade mais cobrada em provas de mestrado.",
+      "commonPitfalls": [
+        "Aplicar o MCT a sequências DEcrescentes ou que não são $\\ge 0$: a monotonia exigida é crescente e não negativa. Para decrescentes use $g-f_n$ ou o DCT.",
+        "Trocar a desigualdade de Fatou por igualdade: Fatou só dá $\\le$, e o exemplo $f_n=n\\chi_{(0,1/n)}$ (com $\\int f_n=1$ mas $f_n\\to 0$) mostra que pode ser estrita.",
+        "Esquecer de exibir a função dominante $g$ INTEGRÁVEL e independente de $n$ no DCT: sem ela o teorema não se aplica, e a conclusão pode falhar (massa escapa).",
+        "Aplicar DCT/derivação sob a integral sem checar a dominação uniforme em $t$ por uma função integrável; a derivabilidade pontual de $f(x,t)$ não basta."
+      ],
+      "worked": "**O contra-exemplo que separa Fatou do DCT.** Em $\\mathbb{R}$ com a medida de Lebesgue, tome $f_n=n\\,\\chi_{(0,1/n)}$. Para cada $x$ fixo, $f_n(x)\\to 0$ (pois para $n>1/x$ já temos $x\\notin(0,1/n)$), logo $f=\\lim_n f_n=0$ q.s. e $\\int f=0$. Porém\n$$\\int f_n\\,dm=n\\cdot m\\big((0,1/n)\\big)=n\\cdot\\tfrac1n=1\\quad\\text{para todo }n.$$\nLogo $\\liminf_n\\int f_n=1>0=\\int\\liminf_n f_n$ — a desigualdade de Fatou é ESTRITA. E o DCT não se aplica: qualquer $g\\ge\\sup_n f_n$ satisfaria $g(x)\\ge 1/x$ perto de $0$, que não é integrável. A 'corcova' de área $1$ fica cada vez mais alta e estreita, escapando para a origem — exatamente a fuga de massa que a hipótese de dominação proíbe. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Use o MCT para provar a integração termo a termo: se $g_k\\ge 0$ são mensuráveis, então $\\int\\sum_{k=1}^\\infty g_k\\,d\\mu=\\sum_{k=1}^\\infty\\int g_k\\,d\\mu$.",
+          "hint": "Aplique o MCT às somas parciais $S_n=\\sum_{k=1}^n g_k$, que crescem para a soma da série.",
+          "difficulty": 2,
+          "solution": "Sejam $g_k\\ge 0$ mensuraveis. Defina as somas parciais\n$$S_N=\\sum_{k=1}^{N}g_k.$$\n\n**Monotonia e limite.** Como cada $g_k\\ge 0$, a sequencia $(S_N)_N$ e nao negativa e CRESCENTE ($S_{N+1}=S_N+g_{N+1}\\ge S_N$), e converge pontualmente para $\\sum_{k=1}^{\\infty}g_k$ (a soma da serie, possivelmente $+\\infty$). Alem disso cada $S_N$ e mensuravel (soma finita de mensuraveis).\n\n**Aplicacao do MCT.** Pelo Teorema da Convergencia Monotona,\n$$\\int\\sum_{k=1}^{\\infty}g_k\\,d\\mu=\\int\\lim_{N}S_N\\,d\\mu=\\lim_{N}\\int S_N\\,d\\mu.$$\n\n**Linearidade finita.** A integral e finitamente aditiva (linearidade para somas finitas de funcoes nao negativas), entao $\\int S_N\\,d\\mu=\\sum_{k=1}^{N}\\int g_k\\,d\\mu$. Passando ao limite,\n$$\\int\\sum_{k=1}^{\\infty}g_k\\,d\\mu=\\lim_{N}\\sum_{k=1}^{N}\\int g_k\\,d\\mu=\\sum_{k=1}^{\\infty}\\int g_k\\,d\\mu.$$\nIsto e a integracao termo a termo de series de termos nao negativos. $\\blacksquare$",
+          "steps": [
+            "Introduza as somas parciais S_N = g_1+...+g_N como sequencia de funcoes.",
+            "Observe que, por g_k>=0, S_N e nao negativa, crescente e converge pontualmente para a soma da serie — exatamente as hipoteses do MCT.",
+            "Aplique o MCT para trocar limite e integral: ∫ lim S_N = lim ∫ S_N.",
+            "Use a linearidade finita da integral em ∫S_N = soma finita de ∫g_k e passe ao limite para obter a igualdade termo a termo."
+          ]
+        },
+        {
+          "prompt": "Calcule $\\displaystyle\\lim_{n\\to\\infty}\\int_0^\\infty \\frac{\\sin(x/n)}{x(1+x^2)}\\,dx$ justificando a passagem ao limite.",
+          "hint": "Note $|\\sin(x/n)/x|\\le 1/n\\cdot$? Melhor: $|\\sin(x/n)|\\le |x/n|$, então $|f_n(x)|\\le \\frac{1}{n(1+x^2)}\\le\\frac{1}{1+x^2}=g$, integrável; aplique DCT, limite $=0$.",
+          "difficulty": 3,
+          "solution": "Seja $f_n(x)=\\dfrac{\\sin(x/n)}{x(1+x^2)}$ em $(0,\\infty)$.\n\n**Limite pontual.** Para cada $x>0$ fixo, $x/n\\to 0$, logo $\\sin(x/n)\\to 0$ e portanto $f_n(x)\\to 0$.\n\n**Dominacao.** Use a desigualdade $|\\sin t|\\le|t|$ com $t=x/n$:\n$$|f_n(x)|=\\frac{|\\sin(x/n)|}{x(1+x^2)}\\le\\frac{x/n}{x(1+x^2)}=\\frac{1}{n(1+x^2)}\\le\\frac{1}{1+x^2}=:g(x).$$\nA funcao dominante $g(x)=\\dfrac{1}{1+x^2}$ e integravel em $(0,\\infty)$:\n$$\\int_0^\\infty\\frac{dx}{1+x^2}=\\big[\\arctan x\\big]_0^\\infty=\\frac{\\pi}{2}<\\infty.$$\n\n**Aplicacao do DCT.** As hipoteses do Teorema da Convergencia Dominada estao satisfeitas ($f_n\\to 0$ pontualmente, $|f_n|\\le g\\in L^1$), logo\n$$\\lim_{n\\to\\infty}\\int_0^\\infty\\frac{\\sin(x/n)}{x(1+x^2)}\\,dx=\\int_0^\\infty\\lim_{n\\to\\infty}f_n(x)\\,dx=\\int_0^\\infty 0\\,dx=0.$$\nO limite vale $\\boxed{0}$. $\\blacksquare$",
+          "steps": [
+            "Calcule o limite pontual: para x fixo, sin(x/n)→0, logo f_n(x)→0.",
+            "Procure uma dominante independente de n: use |sin t|<=|t| com t=x/n para obter |f_n(x)| <= 1/(n(1+x^2)) <= 1/(1+x^2).",
+            "Verifique que g(x)=1/(1+x^2) e integravel em (0,∞), com integral igual a pi/2.",
+            "Aplique o DCT para passar o limite para dentro da integral; como o limite pontual e 0, o resultado e 0."
+          ]
+        },
+        {
+          "prompt": "Prove que $F(t)=\\int_0^\\infty e^{-x}\\cos(tx)\\,dx$ é derivável e que $F'(t)=-\\int_0^\\infty x e^{-x}\\sin(tx)\\,dx$.",
+          "hint": "Domine $|\\partial_t(e^{-x}\\cos(tx))|=|x e^{-x}\\sin(tx)|\\le x e^{-x}=h(x)$, integrável; aplique o teorema de derivação sob a integral.",
+          "difficulty": 3,
+          "solution": "Seja $F(t)=\\displaystyle\\int_0^\\infty e^{-x}\\cos(tx)\\,dx$ e $h(x,t)=e^{-x}\\cos(tx)$.\n\n**A integral esta bem definida.** $|h(x,t)|\\le e^{-x}\\in L^1(0,\\infty)$, logo $F(t)$ e finita para todo $t$.\n\n**Derivada parcial e sua dominacao.** Para $x>0$ fixo, $t\\mapsto h(x,t)$ e derivavel com\n$$\\partial_t h(x,t)=-x\\,e^{-x}\\sin(tx),\\qquad|\\partial_t h(x,t)|=x\\,e^{-x}\\,|\\sin(tx)|\\le x\\,e^{-x}=:H(x).$$\nA dominante $H(x)=x e^{-x}$ e integravel e INDEPENDENTE de $t$:\n$$\\int_0^\\infty x\\,e^{-x}\\,dx=\\Gamma(2)=1<\\infty.$$\n\n**Teorema de derivacao sob a integral.** Como $\\partial_t h$ existe em $t$ e e dominada por $H\\in L^1$ uniformemente em $t$, o teorema de derivacao sob o sinal de integral (consequencia do DCT) garante que $F$ e derivavel e\n$$F'(t)=\\int_0^\\infty\\partial_t h(x,t)\\,dx=-\\int_0^\\infty x\\,e^{-x}\\sin(tx)\\,dx,$$\ncomo se queria. \n\n**Verificacao (opcional).** Calculando explicitamente, $F(t)=\\dfrac{1}{1+t^2}$ (integral classica), donde $F'(t)=-\\dfrac{2t}{(1+t^2)^2}$; e de fato $\\int_0^\\infty x e^{-x}\\sin(tx)\\,dx=\\dfrac{2t}{(1+t^2)^2}$, confirmando a formula. $\\blacksquare$",
+          "steps": [
+            "Confirme que F(t) esta bem definida: |e^{-x}cos(tx)| <= e^{-x}, integravel.",
+            "Calcule a derivada parcial em t do integrando: ∂_t[e^{-x}cos(tx)] = -x e^{-x} sin(tx).",
+            "Domine essa derivada, uniformemente em t, por H(x)=x e^{-x}, que e integravel (integral igual a 1).",
+            "Invoque o teorema de derivacao sob a integral (via DCT) para trocar derivada e integral, obtendo a formula de F'(t)."
+          ]
+        },
+        {
+          "prompt": "Seja $f_n\\to f$ q.s. com $f_n\\ge 0$ e $\\int f_n\\to\\int f<\\infty$. Prove (Scheffé) que $\\int|f_n-f|\\to 0$.",
+          "hint": "Use $(f-f_n)^+\\le f$ e aplique o DCT a $(f-f_n)^+$; depois $\\int|f_n-f|=2\\int(f-f_n)^+-\\int(f-f_n)$.",
+          "difficulty": 4,
+          "solution": "**Teorema de Scheffe.** Sejam $f_n\\ge 0$, $f_n\\to f$ q.s. e $\\int f_n\\,d\\mu\\to\\int f\\,d\\mu<\\infty$ (em particular $f\\in L^1$). Queremos $\\int|f_n-f|\\,d\\mu\\to 0$.\n\n**Parte positiva controlada.** Considere $(f-f_n)^+=\\max(f-f_n,0)$. Como $f_n\\ge 0$, temos $(f-f_n)^+\\le f$; alem disso $(f-f_n)^+\\to 0$ q.s. (pois $f_n\\to f$). A dominante $f$ e integravel. Pelo Teorema da Convergencia Dominada aplicado a $(f-f_n)^+$,\n$$\\int(f-f_n)^+\\,d\\mu\\to 0.$$\n\n**Identidade elementar.** Para numeros reais vale $|a|=2a^+-a$ (pois $a^+=\\max(a,0)$ e $a^+-a^-=a$, $a^++a^-=|a|$). Aplicando a $a=f-f_n$ e integrando,\n$$\\int|f-f_n|\\,d\\mu=2\\int(f-f_n)^+\\,d\\mu-\\int(f-f_n)\\,d\\mu.$$\n\n**Passagem ao limite.** O primeiro termo $\\to 0$ pelo passo anterior. O segundo termo e $\\int f\\,d\\mu-\\int f_n\\,d\\mu\\to 0$ por hipotese. Logo\n$$\\int|f_n-f|\\,d\\mu=\\int|f-f_n|\\,d\\mu\\to 2\\cdot 0-0=0.\\qquad\\blacksquare$$\n\n*(Observacao: a hipotese $\\int f_n\\to\\int f$ e essencial; sem ela, o contra-exemplo $f_n=n\\chi_{(0,1/n)}$ tem $f_n\\to 0$ q.s. mas $\\int|f_n-0|=1\\not\\to 0$.)*",
+          "steps": [
+            "Foque na parte positiva (f - f_n)^+, que satisfaz 0 <= (f-f_n)^+ <= f (pois f_n>=0) e tende a 0 q.s.",
+            "Aplique o DCT a (f-f_n)^+ com dominante f∈L^1 para concluir ∫(f-f_n)^+ → 0.",
+            "Use a identidade |a| = 2a^+ - a com a = f - f_n para escrever ∫|f-f_n| = 2∫(f-f_n)^+ - ∫(f-f_n).",
+            "Passe ao limite: o primeiro termo vai a 0 pelo DCT e o segundo e ∫f - ∫f_n → 0 por hipotese, logo ∫|f_n-f| → 0."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Teorema da Convergência Monótona",
+          "back": "$0\\le f_n\\uparrow f$ $\\Rightarrow$ $\\int f_n\\uparrow\\int f$. Sem necessidade de dominação."
+        },
+        {
+          "front": "Lema de Fatou",
+          "back": "$f_n\\ge 0$ $\\Rightarrow$ $\\int\\liminf f_n\\le\\liminf\\int f_n$. Só $\\le$, pode ser estrita."
+        },
+        {
+          "front": "Teorema da Convergência Dominada",
+          "back": "$f_n\\to f$ q.s. e $|f_n|\\le g\\in L^1$ $\\Rightarrow$ $\\int f_n\\to\\int f$ e $\\int|f_n-f|\\to 0$."
+        },
+        {
+          "front": "Hipótese central do DCT",
+          "back": "Existência de UMA dominante $g$ integrável, $|f_n|\\le g$ q.s., independente de $n$. Impede fuga de massa."
+        },
+        {
+          "front": "Contra-exemplo de Fatou estrito",
+          "back": "$f_n=n\\chi_{(0,1/n)}$: $\\int f_n=1$ mas $f_n\\to 0$ q.s., logo $\\int\\liminf=0<1=\\liminf\\int$."
+        },
+        {
+          "front": "MCT serve para decrescentes?",
+          "back": "Não diretamente. Exige $0\\le f_n$ CRESCENTE. Para decrescentes, use dominação (DCT)."
+        },
+        {
+          "front": "Derivação sob a integral (hipótese)",
+          "back": "$|\\partial_t f(x,t)|\\le h(x)$ integrável $\\Rightarrow$ $\\frac{d}{dt}\\int f\\,d\\mu=\\int\\partial_t f\\,d\\mu$."
+        },
+        {
+          "front": "Beppo Levi (séries positivas)",
+          "back": "$g_k\\ge 0$ $\\Rightarrow$ $\\int\\sum_k g_k=\\sum_k\\int g_k$. Corolário do MCT."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Folland, Real Analysis, cap. 2 (MCT, Fatou, DCT)",
+          "ref": "livro"
+        },
+        {
+          "title": "Rudin, Real and Complex Analysis, cap. 1",
+          "ref": "livro"
+        },
+        {
+          "title": "Fernandez, Medida e Integração, cap. 3",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Relembre a integral de Lebesgue de f>=0 como supremo das simples e a nocao de liminf/limsup de sequencias de funcoes; os tres teoremas vivem sobre esses alicerces.",
+          "Leia Folland cap. 2 (MCT, Fatou, DCT) OU Rudin cap. 1. Prove o MCT, dele deduza o Lema de Fatou (aplicando MCT a g_k=inf_{n>=k} f_n) e do Fatou/MCT deduza o DCT (aplicando Fatou a g+f_n e g-f_n).",
+          "Monte a tabela de hipoteses: MCT (0<=f_n crescente), Fatou (f_n>=0, so desigualdade), DCT (dominacao |f_n|<=g integravel). Para cada teorema, guarde o contra-exemplo que mostra que a hipotese e necessaria (a 'corcova' n·χ_{(0,1/n)}).",
+          "Treine as aplicacoes praticas: troca de limite com integral, continuidade e derivacao sob o sinal de integral (funcao Gama, transformadas). Resolva varios exercicios de calcular limites de integrais justificando a passagem.",
+          "Assista a uma aula sobre MCT/Fatou/DCT com enfase em quando cada um se aplica e nos contra-exemplos de fuga de massa.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (a tabela de hipoteses dos tres teoremas, o contra-exemplo da corcova e o protocolo de derivar sob a integral)."
+        ],
+        "searchQueries": [
+          "teorema da convergencia monotona demonstracao Beppo Levi",
+          "lema de Fatou prova a partir do MCT desigualdade estrita",
+          "teorema da convergencia dominada hipoteses funcao dominante",
+          "derivacao sob o sinal de integral condicao de dominacao exemplo",
+          "monotone dominated convergence Fatou lemma proof",
+          "differentiation under integral sign Gamma function Leibniz rule"
+        ],
+        "videos": [
+          {
+            "title": "Measure Theory - convergence theorems (MCT, Fatou, DCT)",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Assista os videos da playlist sobre os tres teoremas de convergencia; enunciados, provas e contra-exemplos bem organizados."
+          },
+          {
+            "title": "Dominated Convergence Theorem examples",
+            "channel": "Dr. Peyam",
+            "note": "Exemplos praticos de calculo de limites de integrais aplicando o DCT e derivacao sob a integral."
+          },
+          {
+            "title": "MIT 18.125 - convergence theorems",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas com as provas rigorosas de MCT, Fatou e DCT e a deducao encadeada entre eles."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Real Analysis, cap. 2 (MCT, Fatou, DCT)",
+            "where": "Gerald B. Folland"
+          },
+          {
+            "title": "Real and Complex Analysis, cap. 1",
+            "where": "Walter Rudin - tratamento elegante e enxuto"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medida-06-riemann-lebesgue",
+      "title": "Comparação Riemann versus Lebesgue",
+      "tagline": "Quando os dois integrais coincidem, onde Riemann falha e o critério exato de integrabilidade de Riemann.",
+      "objectives": [
+        "Provar que toda função Riemann-integrável em $[a,b]$ é Lebesgue-integrável e que os valores coincidem.",
+        "Enunciar e aplicar o Critério de Lebesgue: $f$ limitada é Riemann-integrável sse é contínua q.s.",
+        "Exibir funções Lebesgue-integráveis que não são Riemann-integráveis (Dirichlet) e discutir o caso impróprio.",
+        "Comparar o comportamento dos dois integrais sob limites e explicar por que Lebesgue completa $L^1$.",
+        "Relacionar integrais impróprias de Riemann com a integral de Lebesgue (quando há e quando não há coincidência)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Oscilação",
+          "statement": "A oscilação de $f$ num ponto $x$ é $\\omega_f(x)=\\lim_{\\delta\\to 0}\\big(\\sup_{|y-x|<\\delta}f(y)-\\inf_{|y-x|<\\delta}f(y)\\big)$. Vale $\\omega_f(x)=0\\iff f$ é contínua em $x$."
+        },
+        {
+          "term": "Conjunto de descontinuidades",
+          "statement": "$D_f=\\{x:\\omega_f(x)>0\\}=\\bigcup_{n}\\{x:\\omega_f(x)\\ge 1/n\\}$. Cada $\\{\\omega_f\\ge 1/n\\}$ é fechado, então $D_f$ é um $F_\\sigma$ (boreliano)."
+        },
+        {
+          "term": "Integrabilidade de Riemann",
+          "statement": "$f$ limitada é Riemann-integrável em $[a,b]$ se as integrais de Darboux inferior e superior coincidem, equivalentemente se $\\inf_P U(f,P)=\\sup_P L(f,P)$."
+        },
+        {
+          "term": "Integral impróprio",
+          "statement": "Limite de integrais de Riemann sobre intervalos crescentes, p.ex. $\\int_0^\\infty=\\lim_{R\\to\\infty}\\int_0^R$. Pode existir (condicionalmente) sem que $f\\in L^1$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Riemann implica Lebesgue (com igualdade)",
+          "statement": "Se $f:[a,b]\\to\\mathbb{R}$ é Riemann-integrável, então $f$ é Lebesgue-mensurável e integrável, e $\\int_a^b f(x)\\,dx=\\int_{[a,b]} f\\,dm$. A integral de Lebesgue estende genuinamente a de Riemann.",
+          "whyItMatters": "Garante que nada se perde ao migrar para Lebesgue: todo cálculo de Riemann continua válido, e o Teorema Fundamental do Cálculo segue utilizável para os casos usuais."
+        },
+        {
+          "name": "Critério de Lebesgue para integrabilidade de Riemann",
+          "statement": "Uma função limitada $f:[a,b]\\to\\mathbb{R}$ é Riemann-integrável se e somente se seu conjunto de descontinuidades $D_f$ tem medida de Lebesgue nula (i.e., $f$ é contínua quase sempre).",
+          "whyItMatters": "É o enunciado que caracteriza COMPLETAMENTE a integrabilidade de Riemann em linguagem de medida — e o resultado desta área que mais aparece em concursos de IF e em provas de análise. Mostra por que a função de Dirichlet (descontínua em todo ponto) falha."
+        },
+        {
+          "name": "Lebesgue não captura impróprios condicionais",
+          "statement": "Existem funções com integral impróprio de Riemann convergente que NÃO são Lebesgue-integráveis. Exemplo: $f(x)=\\dfrac{\\sin x}{x}$ em $[0,\\infty)$ tem $\\int_0^\\infty\\frac{\\sin x}{x}\\,dx=\\frac{\\pi}{2}$ (condicional), mas $\\int_0^\\infty\\left|\\frac{\\sin x}{x}\\right|\\,dx=\\infty$.",
+          "whyItMatters": "Delimita o alcance: a integral de Lebesgue é ABSOLUTA (controla $|f|$). Convergência condicional, típica de integrais impróprios, vive fora de $L^1$ — um ponto de prova clássico que separa os dois conceitos."
+        }
+      ],
+      "summary": "Riemann e Lebesgue não competem: Lebesgue estende Riemann. Toda função Riemann-integrável em $[a,b]$ é Lebesgue-integrável com o mesmo valor, de modo que todo o cálculo elementar (polinômios, exponenciais, o Teorema Fundamental) permanece intacto. A questão fina é caracterizar exatamente quais funções limitadas Riemann sabe integrar, e a resposta é cristalina em linguagem de medida — o Critério de Lebesgue: $f$ limitada é Riemann-integrável se e somente se é contínua quase sempre, isto é, seu conjunto de descontinuidades tem medida nula. A prova passa pela oscilação pontual $\\omega_f$ e pela estrutura $F_\\sigma$ do conjunto de descontinuidades. É esse critério que explica de imediato por que a função de Dirichlet (descontínua em todo ponto, logo $D_f=[0,1]$ de medida $1$) não é Riemann-integrável, embora seja trivialmente Lebesgue-integrável por ser nula q.s.\n\nA superioridade de Lebesgue aparece em três frentes. Primeira: ela integra muito mais funções (limites pontuais q.s. de contínuas, indicadoras de mensuráveis). Segunda: ela comuta com limites sob hipóteses fracas (os teoremas de convergência), enquanto Riemann exige convergência uniforme. Terceira: o espaço $L^1$ das funções Lebesgue-integráveis é completo, ao passo que as Riemann-integráveis não formam um espaço completo com a norma $L^1$ — fato decisivo para a Análise Funcional. Há, contudo, uma fronteira honesta: a integral de Lebesgue é absoluta, então integrais impróprios apenas condicionalmente convergentes, como $\\int_0^\\infty\\frac{\\sin x}{x}\\,dx=\\frac\\pi2$, existem em Riemann impróprio mas escapam de $L^1$, pois $\\int|f|=\\infty$. Saber distinguir convergência absoluta de condicional é exatamente o que separa os dois mundos.",
+      "commonPitfalls": [
+        "Afirmar que 'Lebesgue integra tudo que Riemann integra e mais': verdade para integrais próprios, mas FALSO para impróprios condicionais (ex.: $\\sin x/x$), que Lebesgue não vê por exigir convergência absoluta.",
+        "Confundir 'contínua q.s.' (critério de Riemann) com 'igual q.s. a uma contínua': são condições diferentes — Dirichlet é igual q.s. a $0$ (contínua) mas é descontínua em todo ponto, logo não Riemann-integrável.",
+        "Achar que o conjunto de descontinuidades de uma função pode ser qualquer conjunto: ele é sempre um $F_\\sigma$ — isso restringe quais conjuntos podem ser 'o conjunto de descontinuidades'.",
+        "Usar o Teorema Fundamental do Cálculo de Riemann como se valesse para toda $f\\in L^1$; a versão correta para Lebesgue envolve continuidade absoluta (tema da derivação de Lebesgue)."
+      ],
+      "worked": "**$\\sin x/x$ separa Lebesgue de Riemann impróprio.** Sabe-se que o integral impróprio $\\int_0^\\infty\\frac{\\sin x}{x}\\,dx$ converge (condicionalmente) para $\\frac{\\pi}{2}$. Vejamos que $f(x)=\\frac{\\sin x}{x}\\notin L^1([0,\\infty))$. Em cada intervalo $[k\\pi,(k+1)\\pi]$, $|\\sin x|$ tem integral $2$, e $\\frac{1}{x}\\ge\\frac{1}{(k+1)\\pi}$, logo\n$$\\int_{k\\pi}^{(k+1)\\pi}\\left|\\frac{\\sin x}{x}\\right|\\,dx\\ge\\frac{1}{(k+1)\\pi}\\int_{k\\pi}^{(k+1)\\pi}|\\sin x|\\,dx=\\frac{2}{(k+1)\\pi}.$$\nSomando em $k\\ge 0$ obtém-se a série harmônica (vezes $\\frac{2}{\\pi}$), que diverge:\n$$\\int_0^\\infty\\left|\\frac{\\sin x}{x}\\right|\\,dx\\ge\\frac{2}{\\pi}\\sum_{k=0}^{\\infty}\\frac{1}{k+1}=\\infty.$$\nLogo $f\\notin L^1$: a integral de Lebesgue não está definida, embora o impróprio de Riemann exista. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que a função de Thomae (Riemann), $f(p/q)=1/q$ em frações irredutíveis e $f(x)=0$ nos irracionais, é Riemann-integrável em $[0,1]$ com integral $0$.",
+          "hint": "Pelo critério de Lebesgue: $f$ é descontínua exatamente nos racionais, que têm medida nula; logo é Riemann-integrável, e como $f=0$ q.s., a integral é $0$.",
+          "difficulty": 3,
+          "solution": "A funcao de Thomae em $[0,1]$ e definida por $f(0)=1$, $f(p/q)=1/q$ para fracoes irredutiveis $p/q\\in(0,1]$ com $q\\ge 1$, e $f(x)=0$ para $x$ irracional.\n\n**Descontinuidades de $f$.** Afirmo que $f$ e continua em cada irracional e descontinua em cada racional.\n- Em um racional $r=p/q$: $f(r)=1/q>0$, mas ha irracionais arbitrariamente proximos de $r$ com $f=0$, logo $\\lim$ nao pode ser $1/q$; descontinua.\n- Em um irracional $\\alpha$: $f(\\alpha)=0$. Dado $\\varepsilon>0$, apenas FINITOS racionais em $[0,1]$ tem denominador $q\\le 1/\\varepsilon$ (ha finitas fracoes irredutiveis com denominador limitado). Excluindo uma vizinhanca pequena o suficiente de $\\alpha$ que evite esses finitos pontos, todo $x$ na vizinhanca tem $f(x)<\\varepsilon$ (irracionais dao $0$; racionais restantes tem $q>1/\\varepsilon$, logo $f=1/q<\\varepsilon$). Portanto $\\lim_{x\\to\\alpha}f(x)=0=f(\\alpha)$; continua.\n\n**Conclusao pelo Criterio de Lebesgue.** O conjunto de descontinuidades e $\\mathbb{Q}\\cap[0,1]$, enumeravel, logo de medida de Lebesgue nula. Como $f$ e limitada ($0\\le f\\le 1$) e continua quase sempre, pelo Criterio de Lebesgue $f$ e Riemann-integravel em $[0,1]$.\n\n**Valor da integral.** Como $f=0$ nos irracionais e o conjunto dos racionais tem medida nula, $f=0$ q.s.; logo $\\int_{[0,1]}f\\,dm=0$. Pela coincidencia Riemann/Lebesgue (valida porque $f$ e Riemann-integravel), $\\int_0^1 f(x)\\,dx=0$. $\\blacksquare$",
+          "steps": [
+            "Determine onde f e descontinua: descontinua em todos os racionais (valor positivo isolado entre irracionais onde f=0) e continua em todos os irracionais.",
+            "Prove a continuidade nos irracionais: dado epsilon, so ha finitos racionais com denominador <= 1/epsilon, entao numa vizinhanca pequena f fica < epsilon.",
+            "Aplique o Criterio de Lebesgue: as descontinuidades formam Q∩[0,1], de medida nula, e f e limitada, logo Riemann-integravel.",
+            "Calcule a integral: f=0 q.s. (irracionais), entao a integral de Lebesgue e 0 e, por coincidencia, a de Riemann tambem."
+          ]
+        },
+        {
+          "prompt": "Mostre que o conjunto de descontinuidades de qualquer $f:\\mathbb{R}\\to\\mathbb{R}$ é um $F_\\sigma$.",
+          "hint": "Escreva $D_f=\\bigcup_n\\{x:\\omega_f(x)\\ge 1/n\\}$ e prove que cada conjunto $\\{\\omega_f\\ge 1/n\\}$ é fechado.",
+          "difficulty": 4,
+          "solution": "Seja $f:\\mathbb{R}\\to\\mathbb{R}$ e $\\omega_f(x)=\\lim_{\\delta\\to 0^+}\\Big(\\sup_{|y-x|<\\delta}f(y)-\\inf_{|y-x|<\\delta}f(y)\\Big)$ a oscilacao em $x$ (o limite existe pois a expressao decresce com $\\delta$). Sabemos que $f$ e continua em $x\\iff\\omega_f(x)=0$. Logo o conjunto de descontinuidades e\n$$D_f=\\{x:\\omega_f(x)>0\\}=\\bigcup_{n=1}^{\\infty}F_n,\\qquad F_n=\\Big\\{x:\\omega_f(x)\\ge\\tfrac1n\\Big\\}.$$\n\n**Cada $F_n$ e fechado.** Mostramos que o complemento $\\{x:\\omega_f(x)<1/n\\}$ e aberto. Seja $x_0$ com $\\omega_f(x_0)<1/n$. Pela definicao de $\\omega_f$ como limite (ínfimo em $\\delta$), existe $\\delta>0$ tal que\n$$\\sup_{|y-x_0|<\\delta}f(y)-\\inf_{|y-x_0|<\\delta}f(y)<\\frac1n.$$\nAgora, para qualquer ponto $x_1$ na bola aberta $B(x_0,\\delta/2)$, a bola $B(x_1,\\delta/2)\\subseteq B(x_0,\\delta)$, portanto\n$$\\omega_f(x_1)\\le\\sup_{|y-x_1|<\\delta/2}f-\\inf_{|y-x_1|<\\delta/2}f\\le\\sup_{|y-x_0|<\\delta}f-\\inf_{|y-x_0|<\\delta}f<\\frac1n.$$\nLogo toda a bola $B(x_0,\\delta/2)$ esta contida em $\\{\\omega_f<1/n\\}$, que e portanto aberto. Assim $F_n=\\{\\omega_f\\ge 1/n\\}$ e fechado.\n\n**Conclusao.** $D_f=\\bigcup_n F_n$ e uniao enumeravel de conjuntos fechados, isto e, um $F_\\sigma$. $\\blacksquare$",
+          "steps": [
+            "Use que continuidade em x equivale a oscilacao ω_f(x)=0, logo D_f = {ω_f>0} = uniao dos niveis {ω_f >= 1/n}.",
+            "Reduza a provar que cada nivel F_n = {ω_f >= 1/n} e fechado, mostrando que seu complemento e aberto.",
+            "Dado x_0 com ω_f(x_0)<1/n, escolha delta em que o sup menos o inf de f na bola B(x_0,delta) fica < 1/n.",
+            "Mostre que todo ponto de B(x_0,delta/2) herda oscilacao < 1/n (bola menor contida na maior), logo o complemento e aberto e F_n fechado.",
+            "Conclua que D_f, uniao enumeravel de fechados, e um F_sigma."
+          ]
+        },
+        {
+          "prompt": "Dê um exemplo de sequência $f_n$ de funções Riemann-integráveis em $[0,1]$ com $f_n\\to f$ pontualmente, $f$ limitada, mas $f$ NÃO Riemann-integrável.",
+          "hint": "Enumere $\\mathbb{Q}\\cap[0,1]=\\{q_1,q_2,\\dots\\}$ e tome $f_n=\\chi_{\\{q_1,\\dots,q_n\\}}$; o limite é a função de Dirichlet.",
+          "difficulty": 2,
+          "solution": "Enumere $\\mathbb{Q}\\cap[0,1]=\\{q_1,q_2,q_3,\\dots\\}$ e defina\n$$f_n=\\chi_{\\{q_1,q_2,\\dots,q_n\\}},\\qquad\\text{isto e, }f_n(x)=\\begin{cases}1,&x\\in\\{q_1,\\dots,q_n\\},\\\\0,&\\text{caso contrario.}\\end{cases}$$\n\n**Cada $f_n$ e Riemann-integravel.** $f_n$ e limitada e tem apenas um numero FINITO de descontinuidades (nos pontos $q_1,\\dots,q_n$), conjunto de medida nula; pelo Criterio de Lebesgue, $f_n$ e Riemann-integravel (com $\\int_0^1 f_n=0$).\n\n**Convergencia pontual para Dirichlet.** Para $x\\in[0,1]$: se $x$ e irracional, $f_n(x)=0$ para todo $n$, logo $\\lim_n f_n(x)=0$. Se $x=q_m$ e racional, entao para todo $n\\ge m$ vale $f_n(x)=1$, logo $\\lim_n f_n(x)=1$. Assim\n$$f_n\\to f=\\chi_{\\mathbb{Q}\\cap[0,1]}\\quad\\text{(funcao de Dirichlet)}, \\text{ pontualmente, com }0\\le f\\le 1\\text{ limitada.}$$\n\n**O limite nao e Riemann-integravel.** A funcao de Dirichlet e descontinua em TODO ponto de $[0,1]$ (racionais e irracionais sao ambos densos), logo $D_f=[0,1]$ tem medida $1\\ne 0$; pelo Criterio de Lebesgue, $f$ NAO e Riemann-integravel. (Diretamente: toda soma superior de Darboux vale $1$ e toda inferior vale $0$.)\n\nAssim, $f_n$ Riemann-integraveis, $f_n\\to f$ pontualmente, $f$ limitada, mas $f$ nao Riemann-integravel — ilustrando que a classe Riemann NAO e fechada por limites pontuais. $\\blacksquare$",
+          "steps": [
+            "Enumere os racionais de [0,1] e defina f_n como a indicadora dos n primeiros racionais.",
+            "Justifique que cada f_n e Riemann-integravel: tem finitas descontinuidades (medida nula) e e limitada.",
+            "Calcule o limite pontual: 0 nos irracionais e 1 em cada racional (a partir de certo indice), obtendo a funcao de Dirichlet.",
+            "Mostre que Dirichlet nao e Riemann-integravel: descontinua em todo ponto (D_f=[0,1], medida 1), ou somas de Darboux 1 e 0."
+          ]
+        },
+        {
+          "prompt": "Prove que se $f$ é Riemann-integrável em $[a,b]$ então é Lebesgue-mensurável e as duas integrais coincidem.",
+          "hint": "Tome partições diádicas; as funções escada inferior/superior convergem q.s. a $f$ (pelo critério de Lebesgue) e são dominadas; aplique o DCT às escadas.",
+          "difficulty": 4,
+          "solution": "Seja $f:[a,b]\\to\\mathbb{R}$ Riemann-integravel (em particular limitada, $|f|\\le M$).\n\n**Escadas diadicas.** Para cada $n$, tome a particao uniforme $P_n$ de $[a,b]$ em $2^n$ subintervalos $J_{n,i}$ e defina as funcoes-escada\n$$\\ell_n=\\sum_i\\Big(\\inf_{J_{n,i}}f\\Big)\\chi_{J_{n,i}},\\qquad u_n=\\sum_i\\Big(\\sup_{J_{n,i}}f\\Big)\\chi_{J_{n,i}}.$$\nEntao $\\ell_n\\le f\\le u_n$, ambas sao mensuraveis (funcoes simples, portanto Lebesgue-integraveis), $|\\ell_n|,|u_n|\\le M$, e como $P_{n+1}$ refina $P_n$: $\\ell_n\\le\\ell_{n+1}\\le f\\le u_{n+1}\\le u_n$. Logo $\\ell_n\\uparrow\\ell$ e $u_n\\downarrow u$ com $\\ell\\le f\\le u$.\n\n**Igualdade das integrais de Lebesgue das escadas.** As integrais de Lebesgue $\\int_{[a,b]}\\ell_n\\,dm$ e $\\int_{[a,b]}u_n\\,dm$ coincidem com as somas de Darboux inferior $L(f,P_n)$ e superior $U(f,P_n)$. Como $f$ e Riemann-integravel, escolhendo particoes cada vez mais finas, $L(f,P_n)\\to\\int_a^b f$ e $U(f,P_n)\\to\\int_a^b f$ (mesmo valor $I$).\n\n**DCT nas escadas.** As sequencias $\\ell_n$ e $u_n$ sao dominadas por $M\\in L^1([a,b])$ (intervalo de medida finita). Pelo Teorema da Convergencia Dominada,\n$$\\int_{[a,b]}\\ell\\,dm=\\lim_n\\int\\ell_n\\,dm=I=\\lim_n\\int u_n\\,dm=\\int_{[a,b]}u\\,dm.$$\nLogo $\\int_{[a,b]}(u-\\ell)\\,dm=0$ com $u-\\ell\\ge 0$, donde $u=\\ell$ q.s.; como $\\ell\\le f\\le u$, tambem $f=\\ell=u$ q.s. Em particular $f$ e igual q.s. a uma funcao Lebesgue-mensuravel ($\\ell$), e por completude da medida de Lebesgue $f$ e Lebesgue-mensuravel. Finalmente,\n$$\\int_{[a,b]}f\\,dm=\\int_{[a,b]}\\ell\\,dm=I=\\int_a^b f(x)\\,dx.$$\nPortanto $f$ e Lebesgue-integravel e as duas integrais coincidem. $\\blacksquare$",
+          "steps": [
+            "Aproxime f por funcoes-escada inferior e superior sobre particoes diadicas P_n de [a,b]: ℓ_n <= f <= u_n.",
+            "Note que as integrais de Lebesgue dessas escadas sao exatamente as somas de Darboux inferior e superior de f.",
+            "Use que f e Riemann-integravel para concluir que ambas as somas de Darboux convergem ao mesmo valor I.",
+            "Aplique o DCT (dominante constante M em intervalo finito) as escadas monotonas para obter ∫ℓ = I = ∫u, logo ℓ = u = f q.s.",
+            "Deduza que f e Lebesgue-mensuravel (igual q.s. a ℓ, por completude) e que ∫_{[a,b]} f dm = I coincide com a integral de Riemann."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Critério de Lebesgue (integrabilidade de Riemann)",
+          "back": "$f$ limitada é Riemann-integrável $\\iff$ o conjunto de descontinuidades tem medida nula (contínua q.s.)."
+        },
+        {
+          "front": "Riemann-integrável implica Lebesgue?",
+          "back": "Sim, com o MESMO valor. Lebesgue estende Riemann (para integrais próprios)."
+        },
+        {
+          "front": "Dirichlet $\\chi_{\\mathbb{Q}}$ e Riemann",
+          "back": "Descontínua em todo ponto ($D_f=[0,1]$, medida $1$) $\\Rightarrow$ NÃO Riemann-integrável. Mas é Lebesgue-integrável (integral $0$)."
+        },
+        {
+          "front": "$\\sin x/x$ em $[0,\\infty)$",
+          "back": "Integral impróprio de Riemann $=\\pi/2$ (condicional), mas $\\int|\\,\\cdot\\,|=\\infty$, logo NÃO está em $L^1$."
+        },
+        {
+          "front": "Por que Lebesgue 'vence'?",
+          "back": "Mais funções integráveis; comuta com limites sob hipóteses fracas (MCT/Fatou/DCT); $L^1$ é completo."
+        },
+        {
+          "front": "Conjunto de descontinuidades é sempre...",
+          "back": "Um $F_\\sigma$ (união enumerável de fechados $\\{\\omega_f\\ge 1/n\\}$)."
+        },
+        {
+          "front": "Oscilação $\\omega_f(x)=0$ significa",
+          "back": "$f$ é contínua em $x$."
+        },
+        {
+          "front": "Integral de Lebesgue é absoluta?",
+          "back": "Sim: $f\\in L^1\\iff\\int|f|<\\infty$. Por isso não capta convergência só condicional."
+        }
+      ],
+      "estimatedHours": 5,
+      "resources": [
+        {
+          "title": "Rudin, Principles of Mathematical Analysis, cap. 6 (critério via medida nula)",
+          "ref": "livro"
+        },
+        {
+          "title": "Folland, Real Analysis, sec. 2.3 (Riemann vs Lebesgue)",
+          "ref": "livro"
+        },
+        {
+          "title": "Wheeden & Zygmund, Measure and Integral, cap. 5",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise a integral de Riemann via somas de Darboux (inferior e superior) e a definicao de oscilacao pontual; o criterio de Lebesgue e enunciado nessa linguagem.",
+          "Leia Rudin (Principles), cap. 6, para o criterio via medida nula, e Folland sec. 2.3 (Riemann vs Lebesgue) para a comparacao. Prove que Riemann-integravel implica Lebesgue-integravel com igualdade dos valores.",
+          "Domine o Criterio de Lebesgue: f limitada e Riemann-integravel sse o conjunto de descontinuidades tem medida nula. Estude a estrutura F_sigma desse conjunto via oscilacao e os niveis {ω_f >= 1/n}.",
+          "Colecione os exemplos que separam os conceitos: Dirichlet (Lebesgue sim, Riemann nao), Thomae (Riemann sim, integral 0) e sin(x)/x (Riemann improprio condicional, fora de L^1).",
+          "Assista a uma aula sobre o criterio de Lebesgue para integrabilidade de Riemann e a relacao entre convergencia absoluta e condicional.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (o Criterio de Lebesgue, a estrutura F_sigma das descontinuidades e a fronteira dos improprios condicionais)."
+        ],
+        "searchQueries": [
+          "criterio de Lebesgue integrabilidade de Riemann medida nula continua quase sempre",
+          "funcao de Thomae Riemann integravel demonstracao",
+          "conjunto de descontinuidades F-sigma oscilacao pontual prova",
+          "Riemann integravel implica Lebesgue integravel valores coincidem",
+          "Lebesgue criterion Riemann integrability oscillation proof",
+          "sin(x)/x improper integral not Lebesgue integrable absolute"
+        ],
+        "videos": [
+          {
+            "title": "Lebesgue criterion for Riemann integrability",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Procure os videos sobre a comparacao Riemann-Lebesgue e o criterio de continuidade q.s.; boa apresentacao da oscilacao."
+          },
+          {
+            "title": "Riemann vs Lebesgue integral",
+            "channel": "Michael Penn",
+            "note": "Discussao dos exemplos que separam os dois integrais (Dirichlet, Thomae) com rigor acessivel."
+          },
+          {
+            "title": "Analise Real - integral de Riemann e criterio de integrabilidade",
+            "channel": "IMPA",
+            "note": "Busque no canal do IMPA aulas de analise cobrindo somas de Darboux e o criterio de integrabilidade em PT-BR."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Principles of Mathematical Analysis, cap. 6",
+            "where": "Walter Rudin - criterio via medida nula"
+          },
+          {
+            "title": "Real Analysis, sec. 2.3 (Riemann vs Lebesgue)",
+            "where": "Gerald B. Folland"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medida-07-espacos-lp",
+      "title": "Espaços $L^p$: Hölder, Minkowski e Completude",
+      "tagline": "Funções como vetores de um espaço de Banach: as desigualdades fundamentais e por que $L^p$ é completo.",
+      "objectives": [
+        "Definir a norma $\\|f\\|_p$ e o espaço $L^p(\\mu)$ como classes de equivalência módulo igualdade q.s.",
+        "Provar a desigualdade de Young e dela deduzir a desigualdade de Hölder e a relação entre expoentes conjugados.",
+        "Demonstrar a desigualdade de Minkowski (desigualdade triangular) e concluir que $\\|\\cdot\\|_p$ é norma.",
+        "Provar o Teorema de Riesz-Fischer: $L^p$ é completo (Banach) para $1\\le p\\le\\infty$, e $L^2$ é de Hilbert.",
+        "Definir $L^\\infty$ via supremo essencial e relacionar inclusões entre espaços $L^p$ em medida finita.",
+        "Identificar densidade das funções simples/contínuas em $L^p$ e a dualidade $(L^p)^*=L^q$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Norma $L^p$",
+          "statement": "Para $1\\le p<\\infty$, $\\|f\\|_p=\\left(\\int|f|^p\\,d\\mu\\right)^{1/p}$. Para $p=\\infty$, $\\|f\\|_\\infty=\\operatorname{ess\\,sup}|f|=\\inf\\{M:|f|\\le M\\ \\text{q.s.}\\}$."
+        },
+        {
+          "term": "Espaço $L^p(\\mu)$",
+          "statement": "Conjunto das (classes de equivalência q.s. de) funções mensuráveis com $\\|f\\|_p<\\infty$. Identificar $f$ com $g$ quando $f=g$ q.s. é o que torna $\\|\\cdot\\|_p$ uma norma genuína (e não só seminorma)."
+        },
+        {
+          "term": "Expoentes conjugados",
+          "statement": "$p,q\\in[1,\\infty]$ são conjugados se $\\frac1p+\\frac1q=1$ (com a convenção $1/\\infty=0$). Pares clássicos: $(2,2)$, $(1,\\infty)$, $(3,3/2)$."
+        },
+        {
+          "term": "Supremo essencial",
+          "statement": "$\\operatorname{ess\\,sup} f=\\inf\\{M\\in\\mathbb{R}:\\mu(\\{f>M\\})=0\\}$: o supremo 'ignorando conjuntos de medida nula'."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Desigualdade de Hölder",
+          "statement": "Sejam $p,q$ conjugados ($\\frac1p+\\frac1q=1$). Então para $f\\in L^p$, $g\\in L^q$: $fg\\in L^1$ e $\\displaystyle\\int|fg|\\,d\\mu\\le\\|f\\|_p\\,\\|g\\|_q$. Caso $p=q=2$: desigualdade de Cauchy-Schwarz.",
+          "whyItMatters": "É a desigualdade-mãe da análise: controla o produto pela norma de cada fator. Dela saem Minkowski, a dualidade $L^p$-$L^q$, as inclusões entre espaços e incontáveis estimativas em EDPs e probabilidade."
+        },
+        {
+          "name": "Desigualdade de Minkowski",
+          "statement": "Para $1\\le p\\le\\infty$ e $f,g\\in L^p$: $\\|f+g\\|_p\\le\\|f\\|_p+\\|g\\|_p$.",
+          "whyItMatters": "É a desigualdade triangular que faz de $\\|\\cdot\\|_p$ uma norma. Sem ela $L^p$ não seria sequer um espaço normado, e toda a estrutura geométrica desabaria."
+        },
+        {
+          "name": "Teorema de Riesz-Fischer (completude)",
+          "statement": "Para $1\\le p\\le\\infty$, $L^p(\\mu)$ é completo: toda sequência de Cauchy em $\\|\\cdot\\|_p$ converge na norma a um elemento de $L^p$. Logo $L^p$ é espaço de Banach; $L^2$ é espaço de Hilbert com $\\langle f,g\\rangle=\\int f\\bar g\\,d\\mu$.",
+          "whyItMatters": "É o que faltava em Riemann e a razão de a Análise Funcional viver em $L^p$. A completude permite resolver equações por aproximações sucessivas (ponto fixo, projeções, séries de Fourier convergentes em $L^2$). Sua prova usa o DCT/MCT de forma essencial."
+        },
+        {
+          "name": "Inclusões em medida finita",
+          "statement": "Se $\\mu(X)<\\infty$ e $1\\le p\\le r\\le\\infty$, então $L^r(\\mu)\\subseteq L^p(\\mu)$ e $\\|f\\|_p\\le\\mu(X)^{\\frac1p-\\frac1r}\\|f\\|_r$. (Em medida infinita NÃO há inclusão geral.)",
+          "whyItMatters": "Explica por que em probabilidade ($\\mu(X)=1$) as inclusões $L^\\infty\\subseteq\\cdots\\subseteq L^2\\subseteq L^1$ valem (momentos altos controlam baixos), enquanto em $\\mathbb{R}$ com Lebesgue $L^1$ e $L^2$ são incomparáveis."
+        }
+      ],
+      "summary": "Os espaços $L^p$ transformam funções em vetores de um espaço normado, abrindo a porta da Análise Funcional. A norma $\\|f\\|_p=(\\int|f|^p)^{1/p}$ só é genuína porque trabalhamos com classes de equivalência módulo igualdade q.s. — caso contrário $\\|f\\|_p=0$ não implicaria $f=0$. Toda a estrutura repousa em duas desigualdades. A de Hölder, $\\int|fg|\\le\\|f\\|_p\\|g\\|_q$ para expoentes conjugados, é a ferramenta universal de controle de produtos (com Cauchy-Schwarz como caso $p=q=2$); ela decorre da desigualdade de Young aplicada pontualmente. A de Minkowski, $\\|f+g\\|_p\\le\\|f\\|_p+\\|g\\|_p$, é a desigualdade triangular que faz de $L^p$ um espaço normado de verdade; sua prova padrão usa Hölder.\n\nO resultado central é o Teorema de Riesz-Fischer: $L^p$ é completo. Toda sequência de Cauchy converge na norma a uma função de $L^p$, de modo que $L^p$ é um espaço de Banach e $L^2$, com o produto interno $\\int f\\bar g$, é de Hilbert. Essa completude — herdada da $\\sigma$-aditividade da medida e dos teoremas de convergência — é precisamente o que as funções Riemann-integráveis não tinham, e é a fundação de tudo que se segue: séries de Fourier que convergem em $L^2$, métodos variacionais, espaços de Sobolev. Completam o quadro o espaço $L^\\infty$ definido pelo supremo essencial, as inclusões $L^r\\subseteq L^p$ válidas só em medida finita (a base do controle de momentos em probabilidade), a densidade das funções simples e contínuas, e a dualidade $(L^p)^*=L^q$ que faz de $L^2$ seu próprio dual.",
+      "commonPitfalls": [
+        "Esquecer que $L^p$ é formado por CLASSES de equivalência q.s.: sem isso $\\|\\cdot\\|_p$ é só seminorma (há $f\\ne 0$ com $\\|f\\|_p=0$).",
+        "Aplicar Hölder com expoentes que não são conjugados: é obrigatório $\\frac1p+\\frac1q=1$; usar $p=q=2$ por hábito quando o problema pede outro par.",
+        "Supor $L^p\\subseteq L^q$ ou vice-versa sem hipótese: em medida infinita NÃO há inclusão; $1/x$ em $[1,\\infty)$ está em $L^2$ mas não em $L^1$, e $1/\\sqrt{x}$ em $(0,1)$ está em $L^1$ mas não em $L^2$.",
+        "Confundir convergência em $L^p$ com convergência pontual q.s.: nenhuma implica a outra; convergência em $L^p$ só garante uma SUBSEQUÊNCIA convergente q.s."
+      ],
+      "worked": "**Prova de Minkowski a partir de Hölder ($1<p<\\infty$).** Sejam $f,g\\in L^p$ e $q$ o conjugado de $p$. Escreva\n$$\\|f+g\\|_p^p=\\int|f+g|^p\\le\\int|f|\\,|f+g|^{p-1}+\\int|g|\\,|f+g|^{p-1}.$$\nA cada termo aplique Hölder, notando que $|f+g|^{p-1}\\in L^q$ pois $(p-1)q=p$:\n$$\\int|f|\\,|f+g|^{p-1}\\le\\|f\\|_p\\,\\big\\||f+g|^{p-1}\\big\\|_q=\\|f\\|_p\\,\\|f+g\\|_p^{\\,p/q}.$$\nSomando os dois termos,\n$$\\|f+g\\|_p^p\\le\\big(\\|f\\|_p+\\|g\\|_p\\big)\\,\\|f+g\\|_p^{\\,p/q}.$$\nSe $\\|f+g\\|_p=0$ não há o que provar; senão divida por $\\|f+g\\|_p^{p/q}$ e use $p-\\frac{p}{q}=1$ para obter $\\|f+g\\|_p\\le\\|f\\|_p+\\|g\\|_p$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove a desigualdade de Young: para $a,b\\ge 0$ e conjugados $p,q$, $ab\\le\\frac{a^p}{p}+\\frac{b^q}{q}$, com igualdade sse $a^p=b^q$.",
+          "hint": "Use a concavidade de $\\ln$: $\\ln(ab)=\\frac1p\\ln a^p+\\frac1q\\ln b^q\\le\\ln(\\frac{a^p}{p}+\\frac{b^q}{q})$. Ou minimize $t\\mapsto\\frac{t^p}{p}+\\frac{b^q}{q}-tb$.",
+          "difficulty": 3,
+          "solution": "**Desigualdade de Young.** Para $a,b\\ge 0$ e $p,q>1$ conjugados ($\\frac1p+\\frac1q=1$),\n$$ab\\le\\frac{a^p}{p}+\\frac{b^q}{q},$$\ncom igualdade sse $a^p=b^q$.\n\n**Casos triviais.** Se $a=0$ ou $b=0$, o lado esquerdo e $0$ e o direito e $\\ge 0$: vale, com igualdade sse ambos os termos da direita se anulam de forma compativel (tratados abaixo).\n\n**Caso $a,b>0$ via concavidade do logaritmo.** A funcao $\\ln$ e estritamente concava em $(0,\\infty)$. Como $\\frac1p+\\frac1q=1$ com pesos positivos, aplique a desigualdade de Jensen (concavidade) aos pontos $a^p$ e $b^q$:\n$$\\ln\\!\\left(\\frac1p\\,a^p+\\frac1q\\,b^q\\right)\\ge\\frac1p\\ln(a^p)+\\frac1q\\ln(b^q)=\\ln a+\\ln b=\\ln(ab).$$\nComo $\\ln$ e crescente, isso equivale a\n$$\\frac{a^p}{p}+\\frac{b^q}{q}\\ge ab.$$\n\n**Caso de igualdade.** Por $\\ln$ ser ESTRITAMENTE concava, a igualdade de Jensen ocorre sse os pontos coincidem, isto e, $a^p=b^q$. $\\blacksquare$\n\n*(Alternativa por calculo: fixe $b$ e minimize $\\varphi(t)=\\frac{t^p}{p}+\\frac{b^q}{q}-tb$ em $t\\ge 0$. $\\varphi'(t)=t^{p-1}-b=0$ da $t=b^{1/(p-1)}=b^{q/p}$, e como $(p-1)q=p$ isso e o ponto de minimo, onde $\\varphi=0$; logo $\\varphi(t)\\ge 0$ para todo $t$, com igualdade sse $t^p=b^q$.)*",
+          "steps": [
+            "Descarte os casos a=0 ou b=0, em que a desigualdade e imediata.",
+            "Para a,b>0, use a concavidade estrita de ln e os pesos 1/p, 1/q (que somam 1) via Jensen.",
+            "Escreva ln(a^p/p + b^q/q) >= (1/p)ln(a^p)+(1/q)ln(b^q) = ln(ab) e exponencie.",
+            "Identifique a igualdade: concavidade estrita forca a^p = b^q. (Alternativa: minimizar φ(t)=t^p/p + b^q/q - tb.)"
+          ]
+        },
+        {
+          "prompt": "Deduza Hölder a partir de Young, normalizando $\\|f\\|_p=\\|g\\|_q=1$.",
+          "hint": "Aplique Young pontualmente a $a=|f(x)|$, $b=|g(x)|$ e integre: $\\int|fg|\\le\\frac1p\\int|f|^p+\\frac1q\\int|g|^q=\\frac1p+\\frac1q=1$.",
+          "difficulty": 2,
+          "solution": "**Deducao de Holder a partir de Young.** Sejam $p,q$ conjugados, $f\\in L^p$, $g\\in L^q$. Queremos $\\int|fg|\\,d\\mu\\le\\|f\\|_p\\|g\\|_q$.\n\n**Casos degenerados.** Se $\\|f\\|_p=0$ entao $f=0$ q.s., logo $fg=0$ q.s. e ambos os lados sao $0$; idem se $\\|g\\|_q=0$. Se $\\|f\\|_p=\\infty$ ou $\\|g\\|_q=\\infty$, o lado direito e $+\\infty$ e nada ha a provar. Suponha entao $0<\\|f\\|_p,\\|g\\|_q<\\infty$.\n\n**Normalizacao.** Defina $F=\\dfrac{|f|}{\\|f\\|_p}$ e $G=\\dfrac{|g|}{\\|g\\|_q}$, de modo que $\\|F\\|_p=\\|G\\|_q=1$, ou seja $\\int F^p\\,d\\mu=\\int G^q\\,d\\mu=1$.\n\n**Young pontual + integracao.** Para cada $x$, aplique a desigualdade de Young a $a=F(x)$, $b=G(x)$:\n$$F(x)G(x)\\le\\frac{F(x)^p}{p}+\\frac{G(x)^q}{q}.$$\nIntegrando em $X$:\n$$\\int FG\\,d\\mu\\le\\frac1p\\int F^p\\,d\\mu+\\frac1q\\int G^q\\,d\\mu=\\frac1p\\cdot 1+\\frac1q\\cdot 1=\\frac1p+\\frac1q=1.$$\n\n**Desnormalizacao.** Como $\\int FG\\,d\\mu=\\dfrac{1}{\\|f\\|_p\\|g\\|_q}\\int|fg|\\,d\\mu\\le 1$, multiplicando por $\\|f\\|_p\\|g\\|_q$ obtemos\n$$\\int|fg|\\,d\\mu\\le\\|f\\|_p\\,\\|g\\|_q.$$\nEm particular $fg\\in L^1$. $\\blacksquare$",
+          "steps": [
+            "Elimine os casos triviais (norma zero ou infinita) em que a desigualdade e imediata.",
+            "Normalize definindo F=|f|/||f||_p e G=|g|/||g||_q, de modo que ∫F^p = ∫G^q = 1.",
+            "Aplique a desigualdade de Young pontualmente a F(x), G(x) e integre.",
+            "Use ∫F^p = ∫G^q = 1 e 1/p+1/q=1 para obter ∫FG <= 1, e desnormalize multiplicando por ||f||_p ||g||_q."
+          ]
+        },
+        {
+          "prompt": "Mostre que em $\\mathbb{R}$ com medida de Lebesgue, $L^1$ e $L^2$ são incomparáveis, exibindo $f\\in L^1\\setminus L^2$ e $g\\in L^2\\setminus L^1$.",
+          "hint": "Tente $f(x)=x^{-1/2}\\chi_{(0,1)}$ e $g(x)=x^{-1}\\chi_{(1,\\infty)}$; calcule as integrais de $|f|$, $|f|^2$, $|g|$, $|g|^2$.",
+          "difficulty": 3,
+          "solution": "Trabalhamos em $\\mathbb{R}$ (medida de Lebesgue). Exibimos duas funcoes que separam os espacos.\n\n**$f\\in L^1\\setminus L^2$.** Tome $f(x)=x^{-1/2}\\chi_{(0,1)}(x)$.\n$$\\int_{\\mathbb{R}}|f|\\,dm=\\int_0^1 x^{-1/2}\\,dx=\\big[2x^{1/2}\\big]_0^1=2<\\infty\\ \\Rightarrow\\ f\\in L^1.$$\n$$\\int_{\\mathbb{R}}|f|^2\\,dm=\\int_0^1 x^{-1}\\,dx=\\big[\\ln x\\big]_0^1=+\\infty\\ \\Rightarrow\\ f\\notin L^2.$$\n(A singularidade em $0$ e integravel para expoente $1/2<1$, mas nao para expoente $1$.)\n\n**$g\\in L^2\\setminus L^1$.** Tome $g(x)=x^{-1}\\chi_{(1,\\infty)}(x)$.\n$$\\int_{\\mathbb{R}}|g|^2\\,dm=\\int_1^\\infty x^{-2}\\,dx=\\big[-x^{-1}\\big]_1^\\infty=1<\\infty\\ \\Rightarrow\\ g\\in L^2.$$\n$$\\int_{\\mathbb{R}}|g|\\,dm=\\int_1^\\infty x^{-1}\\,dx=\\big[\\ln x\\big]_1^\\infty=+\\infty\\ \\Rightarrow\\ g\\notin L^1.$$\n(A cauda em $\\infty$ decai como $x^{-2}$, integravel, mas $x^{-1}$ nao.)\n\n**Conclusao.** $f\\in L^1\\setminus L^2$ e $g\\in L^2\\setminus L^1$, logo em $\\mathbb{R}$ (medida infinita) nenhum dos espacos contem o outro: $L^1$ e $L^2$ sao INCOMPARAVEIS. (Isso nao contradiz as inclusoes em medida finita: la vale $L^2\\subseteq L^1$, mas $m(\\mathbb{R})=\\infty$.) $\\blacksquare$",
+          "steps": [
+            "Para achar f em L^1 mas nao L^2, explore uma singularidade integravel na primeira potencia mas nao na segunda: f(x)=x^{-1/2} em (0,1).",
+            "Calcule ∫|f| (finita, =2) e ∫|f|^2 = ∫x^{-1} (diverge por logaritmo) para confirmar f∈L^1\\L^2.",
+            "Para g em L^2 mas nao L^1, use uma cauda no infinito: g(x)=x^{-1} em (1,∞); ∫|g|^2=∫x^{-2} finita, ∫|g|=∫x^{-1} diverge.",
+            "Conclua que nenhum espaco contem o outro em medida infinita — L^1 e L^2 sao incomparaveis."
+          ]
+        },
+        {
+          "prompt": "Esboce a prova de Riesz-Fischer para $L^p$ ($1\\le p<\\infty$): de uma sequência de Cauchy extraia subsequência com $\\|f_{n_{k+1}}-f_{n_k}\\|_p\\le 2^{-k}$ e mostre convergência q.s. e em $L^p$.",
+          "hint": "Defina $G=\\sum_k|f_{n_{k+1}}-f_{n_k}|$; por Minkowski $\\|G\\|_p\\le 1$, logo $G<\\infty$ q.s. (a série converge q.s.); o limite pontual é o candidato, e use Fatou para a convergência em norma.",
+          "difficulty": 4,
+          "solution": "**Esboco da prova de Riesz-Fischer ($1\\le p<\\infty$).** Seja $(f_n)$ de Cauchy em $L^p$. Basta mostrar que uma subsequencia converge em $L^p$ a algum $f\\in L^p$ (uma sequencia de Cauchy com subsequencia convergente converge ao mesmo limite).\n\n**Passo 1 — subsequencia rapida.** Por ser de Cauchy, escolha indices $n_1<n_2<\\cdots$ com\n$$\\|f_{n_{k+1}}-f_{n_k}\\|_p\\le 2^{-k}\\quad(k\\ge 1).$$\n\n**Passo 2 — dominacao pela serie dos incrementos.** Defina\n$$G_N=\\sum_{k=1}^{N}|f_{n_{k+1}}-f_{n_k}|,\\qquad G=\\sum_{k=1}^{\\infty}|f_{n_{k+1}}-f_{n_k}|.$$\nPela desigualdade de Minkowski, $\\|G_N\\|_p\\le\\sum_{k=1}^{N}\\|f_{n_{k+1}}-f_{n_k}\\|_p\\le\\sum_{k=1}^{\\infty}2^{-k}=1$. Como $G_N\\uparrow G$, o Lema de Fatou (ou o MCT aplicado a $G_N^p$) da $\\|G\\|_p\\le 1$, ou seja $\\int G^p\\,d\\mu\\le 1<\\infty$. Logo $G<\\infty$ q.s.\n\n**Passo 3 — convergencia q.s.** Onde $G(x)<\\infty$, a serie $\\sum_k (f_{n_{k+1}}(x)-f_{n_k}(x))$ converge absolutamente, logo a serie telescopica converge; isto significa que $f_{n_k}(x)$ converge (para o valor $f(x):=f_{n_1}(x)+\\sum_{k\\ge 1}(f_{n_{k+1}}(x)-f_{n_k}(x))$). Defina $f=\\lim_k f_{n_k}$ q.s. (e $f=0$ no conjunto nulo restante); $f$ e mensuravel.\n\n**Passo 4 — $f\\in L^p$ e convergencia em norma.** Note $|f_{n_k}|\\le|f_{n_1}|+G$ e $|f|\\le|f_{n_1}|+G\\in L^p$, logo $f\\in L^p$. Para a convergencia em norma, use Fatou em $|f-f_{n_k}|^p$: fixado $k$,\n$$\\|f-f_{n_k}\\|_p^p=\\int\\lim_{j\\to\\infty}|f_{n_j}-f_{n_k}|^p\\,d\\mu\\le\\liminf_{j\\to\\infty}\\|f_{n_j}-f_{n_k}\\|_p^p\\le\\Big(\\sum_{i\\ge k}2^{-i}\\Big)^p=(2^{1-k})^p\\to 0.$$\nLogo $f_{n_k}\\to f$ em $L^p$. Como $(f_n)$ e de Cauchy e tem subsequencia convergente a $f$, toda a sequencia converge a $f$ em $L^p$. Portanto $L^p$ e completo. $\\blacksquare$",
+          "steps": [
+            "Reduza a completude a mostrar que uma subsequencia converge; extraia n_k com ||f_{n_{k+1}}-f_{n_k}||_p <= 2^{-k}.",
+            "Defina G = soma dos incrementos |f_{n_{k+1}}-f_{n_k}| e, por Minkowski + Fatou/MCT, prove ||G||_p <= 1, logo G < ∞ q.s.",
+            "Onde G e finita, a serie telescopica converge absolutamente, definindo o limite pontual f = lim f_{n_k} q.s.",
+            "Mostre f∈L^p (dominado por |f_{n_1}|+G) e use Fatou em |f-f_{n_k}|^p para obter convergencia em norma.",
+            "Conclua: subsequencia convergente + Cauchy implica toda a sequencia converge, logo L^p e completo."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Norma $\\|f\\|_p$ ($1\\le p<\\infty$)",
+          "back": "$\\|f\\|_p=\\left(\\int|f|^p\\,d\\mu\\right)^{1/p}$. Para $p=\\infty$: $\\|f\\|_\\infty=\\operatorname{ess\\,sup}|f|$."
+        },
+        {
+          "front": "Expoentes conjugados",
+          "back": "$\\frac1p+\\frac1q=1$ (com $1/\\infty=0$). Ex.: $(2,2),(1,\\infty),(3,3/2)$."
+        },
+        {
+          "front": "Desigualdade de Hölder",
+          "back": "$\\int|fg|\\le\\|f\\|_p\\|g\\|_q$ para $p,q$ conjugados. Caso $p=q=2$: Cauchy-Schwarz."
+        },
+        {
+          "front": "Desigualdade de Minkowski",
+          "back": "$\\|f+g\\|_p\\le\\|f\\|_p+\\|g\\|_p$. É a desigualdade triangular de $L^p$."
+        },
+        {
+          "front": "Teorema de Riesz-Fischer",
+          "back": "$L^p$ é COMPLETO (Banach) para $1\\le p\\le\\infty$. $L^2$ é de Hilbert."
+        },
+        {
+          "front": "Por que classes de equivalência q.s.?",
+          "back": "Para que $\\|f\\|_p=0\\Rightarrow f=0$ (na classe). Sem isso $\\|\\cdot\\|_p$ é só seminorma."
+        },
+        {
+          "front": "Inclusão $L^r\\subseteq L^p$ ($p\\le r$)",
+          "back": "Vale se $\\mu(X)<\\infty$ (ex.: probabilidade). Em medida infinita NÃO vale em geral."
+        },
+        {
+          "front": "Dual de $L^p$",
+          "back": "$(L^p)^*=L^q$ para $1\\le p<\\infty$ ($\\sigma$-finito). Logo $L^2$ é seu próprio dual (Hilbert)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Folland, Real Analysis, cap. 6 ($L^p$ spaces)",
+          "ref": "livro"
+        },
+        {
+          "title": "Rudin, Real and Complex Analysis, cap. 3 (Hölder, Minkowski, completude)",
+          "ref": "livro"
+        },
+        {
+          "title": "Brezis, Functional Analysis, cap. 4 (complemento sobre $L^p$)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja normas, espacos de Banach e a nocao de sequencia de Cauchy/completude, alem de convexidade/concavidade (para Young). Os espacos L^p sao o encontro da teoria da medida com a analise funcional.",
+          "Leia Folland cap. 6 (L^p spaces) OU Rudin cap. 3. Estabeleca a cadeia logica: Young => Holder => Minkowski => (||.||_p e norma). Prove Young via concavidade do log e deduza Holder normalizando.",
+          "Estude a prova de Minkowski a partir de Holder e depois o Teorema de Riesz-Fischer (completude), cuja demonstracao usa a extracao de subsequencia rapida e o Lema de Fatou / MCT de forma essencial.",
+          "Fixe as sutilezas: L^p sao CLASSES modulo igualdade q.s.; as inclusoes L^r ⊆ L^p so valem em medida finita; em R com Lebesgue L^1 e L^2 sao incomparaveis (guarde os contra-exemplos x^{-1/2} e x^{-1}).",
+          "Assista a uma aula sobre desigualdades de Holder/Minkowski e completude de L^p para ver a mecanica das provas e a geometria de L^2 (Hilbert).",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (a cadeia Young-Holder-Minkowski, o enunciado de Riesz-Fischer e a incomparabilidade L^1/L^2 em medida infinita)."
+        ],
+        "searchQueries": [
+          "desigualdade de Young prova concavidade logaritmo expoentes conjugados",
+          "desigualdade de Holder demonstracao a partir de Young normalizacao",
+          "desigualdade de Minkowski prova via Holder Lp",
+          "teorema de Riesz-Fischer completude Lp demonstracao subsequencia",
+          "Lp spaces Holder Minkowski completeness Riesz-Fischer proof",
+          "L1 L2 incomparable infinite measure counterexample"
+        ],
+        "videos": [
+          {
+            "title": "Functional Analysis - Lp spaces",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Na serie de Analise Funcional / Measure Theory, veja os videos sobre norma L^p, Holder, Minkowski e completude."
+          },
+          {
+            "title": "MIT 18.102 / 18.125 - Lp spaces and completeness",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas com Holder, Minkowski e a prova de Riesz-Fischer no contexto de analise funcional."
+          },
+          {
+            "title": "Holder and Minkowski inequalities",
+            "channel": "Dr. Peyam",
+            "note": "Deducoes passo a passo das desigualdades fundamentais e do caso Cauchy-Schwarz."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Real Analysis, cap. 6 (Lp spaces)",
+            "where": "Gerald B. Folland"
+          },
+          {
+            "title": "Functional Analysis, Sobolev Spaces and PDEs, cap. 4",
+            "where": "Haim Brezis - complemento sobre L^p e dualidade"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medida-08-fubini-radon-nikodym",
+      "title": "Medidas Produto, Fubini-Tonelli e Radon-Nikodym (intro)",
+      "tagline": "Integrar em duas variáveis trocando a ordem com segurança e recuperar densidades a partir de duas medidas.",
+      "objectives": [
+        "Construir a $\\sigma$-álgebra produto e a medida produto $\\mu\\times\\nu$ em espaços $\\sigma$-finitos.",
+        "Enunciar e aplicar o Teorema de Tonelli (para $f\\ge 0$) e o Teorema de Fubini (para $f\\in L^1$) na troca da ordem de integração.",
+        "Reconhecer e construir contra-exemplos em que a troca de ordem FALHA por ausência de não negatividade ou integrabilidade.",
+        "Definir absoluta continuidade $\\nu\\ll\\mu$ e medidas mutuamente singulares $\\nu\\perp\\mu$.",
+        "Enunciar o Teorema de Radon-Nikodym e interpretar a derivada $\\frac{d\\nu}{d\\mu}$ como densidade.",
+        "Enunciar a Decomposição de Lebesgue de uma medida em partes absolutamente contínua e singular."
+      ],
+      "keyConcepts": [
+        {
+          "term": "$\\sigma$-álgebra e medida produto",
+          "statement": "$\\mathcal{A}\\otimes\\mathcal{B}=\\sigma(\\{A\\times B:A\\in\\mathcal{A},B\\in\\mathcal{B}\\})$. Para $\\mu,\\nu$ $\\sigma$-finitas existe ÚNICA medida $\\mu\\times\\nu$ com $(\\mu\\times\\nu)(A\\times B)=\\mu(A)\\,\\nu(B)$."
+        },
+        {
+          "term": "Absoluta continuidade",
+          "statement": "$\\nu\\ll\\mu$ ('$\\nu$ é absolutamente contínua em relação a $\\mu$') se $\\mu(E)=0\\Rightarrow\\nu(E)=0$. Significa que $\\nu$ não 'enxerga' massa onde $\\mu$ não vê."
+        },
+        {
+          "term": "Medidas singulares",
+          "statement": "$\\nu\\perp\\mu$ ('mutuamente singulares') se existe uma partição $X=A\\sqcup B$ com $\\mu(A)=0$ e $\\nu(B)=0$: cada medida vive num pedaço invisível para a outra."
+        },
+        {
+          "term": "Derivada de Radon-Nikodym",
+          "statement": "Quando $\\nu\\ll\\mu$ ($\\mu$ $\\sigma$-finita), a densidade $f=\\frac{d\\nu}{d\\mu}\\ge 0$ é a função (única q.s.) tal que $\\nu(E)=\\int_E f\\,d\\mu$ para todo mensurável $E$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Tonelli",
+          "statement": "Sejam $(X,\\mu),(Y,\\nu)$ $\\sigma$-finitos e $f:X\\times Y\\to[0,\\infty]$ mensurável (no produto). Então $x\\mapsto\\int_Y f(x,y)\\,d\\nu(y)$ e $y\\mapsto\\int_X f(x,y)\\,d\\mu(x)$ são mensuráveis e $\\displaystyle\\int_{X\\times Y} f\\,d(\\mu\\times\\nu)=\\int_X\\!\\!\\int_Y f\\,d\\nu\\,d\\mu=\\int_Y\\!\\!\\int_X f\\,d\\mu\\,d\\nu$.",
+          "whyItMatters": "Para funções NÃO NEGATIVAS sempre se pode trocar a ordem de integração, sem hipótese de integrabilidade — porque tudo está em $[0,\\infty]$ e nada se cancela. É o teste prático: integre $|f|$ por Tonelli para depois decidir Fubini."
+        },
+        {
+          "name": "Teorema de Fubini",
+          "statement": "Se $f\\in L^1(\\mu\\times\\nu)$ (i.e. $\\int|f|\\,d(\\mu\\times\\nu)<\\infty$, o que se testa por Tonelli), então as integrais iteradas existem (q.s.), são integráveis e $\\displaystyle\\int_{X\\times Y} f\\,d(\\mu\\times\\nu)=\\int_X\\!\\!\\int_Y f\\,d\\nu\\,d\\mu=\\int_Y\\!\\!\\int_X f\\,d\\mu\\,d\\nu$.",
+          "whyItMatters": "Autoriza a troca de ordem em integrais duplas para funções integráveis. Combinado com Tonelli ('primeiro teste $\\int|f|<\\infty$, depois troque') é uma das ferramentas de cálculo mais usadas em análise e probabilidade."
+        },
+        {
+          "name": "Teorema de Radon-Nikodym",
+          "statement": "Sejam $\\mu,\\nu$ medidas $\\sigma$-finitas com $\\nu\\ll\\mu$. Então existe uma função mensurável $f\\ge 0$, única a menos de igualdade q.s.-$\\mu$, tal que $\\nu(E)=\\int_E f\\,d\\mu$ para todo $E\\in\\mathcal{A}$. Escreve-se $f=\\frac{d\\nu}{d\\mu}$.",
+          "whyItMatters": "Inverte a operação 'integrar uma densidade': dadas duas medidas compatíveis, recupera a densidade que liga uma à outra. É a base da esperança condicional, dos teoremas de dualidade $L^p$ e da própria definição de densidade de probabilidade."
+        },
+        {
+          "name": "Decomposição de Lebesgue",
+          "statement": "Dadas $\\mu,\\nu$ $\\sigma$-finitas, existe decomposição ÚNICA $\\nu=\\nu_{ac}+\\nu_{s}$ com $\\nu_{ac}\\ll\\mu$ e $\\nu_{s}\\perp\\mu$. A parte $\\nu_{ac}$ tem densidade $\\frac{d\\nu_{ac}}{d\\mu}$ (Radon-Nikodym).",
+          "whyItMatters": "Toda medida se separa, em relação a uma referência $\\mu$, numa parte com densidade e numa parte concentrada onde $\\mu$ não vê (como a medida de Cantor). Estrutura tudo: distribuições contínuas vs. discretas/singulares em probabilidade."
+        }
+      ],
+      "summary": "Para integrar em duas variáveis primeiro construímos o ambiente: a $\\sigma$-álgebra produto e, quando ambas as medidas são $\\sigma$-finitas, a única medida produto $\\mu\\times\\nu$ que vale $\\mu(A)\\nu(B)$ nos retângulos. O par Tonelli-Fubini governa a troca da ordem de integração com uma divisão de trabalho limpa. Tonelli trata funções não negativas e nunca falha: como nada se cancela em $[0,\\infty]$, as integrais iteradas e a integral dupla sempre coincidem, mesmo que valham $+\\infty$. Fubini trata funções integráveis: se $\\int|f|<\\infty$ (condição que se verifica aplicando Tonelli a $|f|$), então as integrais iteradas existem e coincidem com a dupla. O protocolo prático é sempre o mesmo — use Tonelli em $|f|$ para checar a integrabilidade e só então use Fubini para trocar a ordem; pular esse teste é a fonte dos contra-exemplos famosos em que as duas integrais iteradas dão respostas diferentes.\n\nA segunda metade da aula inverte a relação 'integrar uma densidade'. Já vimos que $\\nu(E)=\\int_E f\\,d\\mu$ define uma medida absolutamente contínua em relação a $\\mu$ (nenxerga massa apenas onde $\\mu$ enxerga). O Teorema de Radon-Nikodym afirma a recíproca profunda: se $\\nu\\ll\\mu$ e ambas são $\\sigma$-finitas, então essa densidade $f=\\frac{d\\nu}{d\\mu}$ existe e é única q.s. — recuperamos a 'derivada' de uma medida em relação à outra. Mais geralmente, a Decomposição de Lebesgue quebra qualquer $\\nu$ em uma parte absolutamente contínua (com densidade) e uma parte singular (concentrada onde $\\mu$ não vê, como a medida sobre o conjunto de Cantor). Essas ideias são o alicerce da Probabilidade (densidades, esperança condicional) e da dualidade dos espaços $L^p$ — um fechamento natural para a trilha e a porta de entrada para a pós-graduação.",
+      "commonPitfalls": [
+        "Aplicar Fubini sem antes garantir $\\int|f|\\,d(\\mu\\times\\nu)<\\infty$: para funções que mudam de sinal, a igualdade das integrais iteradas exige integrabilidade absoluta (teste com Tonelli em $|f|$).",
+        "Usar a medida produto sem $\\sigma$-finitude: a unicidade (e por vezes a própria construção) de $\\mu\\times\\nu$ pode falhar fora do caso $\\sigma$-finito (contra-exemplo clássico: Lebesgue $\\times$ contagem).",
+        "Confundir $\\nu\\ll\\mu$ com $\\nu\\le\\mu$: absoluta continuidade é sobre conjuntos de medida NULA ($\\mu(E)=0\\Rightarrow\\nu(E)=0$), não sobre desigualdade de valores.",
+        "Esperar que Radon-Nikodym dê uma densidade quando há parte singular: a medida de Cantor é singular em relação a Lebesgue e NÃO tem densidade; aí o teorema só vale após a Decomposição de Lebesgue."
+      ],
+      "worked": "**A troca de ordem falha sem integrabilidade.** Em $X=Y=\\mathbb{N}$ com a medida de contagem (caso 'série dupla'), considere $a_{m,n}$ dado por $a_{n,n}=1$, $a_{n,n+1}=-1$ e $a_{m,n}=0$ caso contrário. Então, somando primeiro em $n$ (cada linha) e depois em $m$:\n$$\\sum_{m}\\sum_{n}a_{m,n}=\\sum_m(1-1)=0.$$\nMas somando primeiro em $m$ (cada coluna) e depois em $n$, a coluna $n=1$ dá $1$ e cada coluna $n\\ge 2$ dá $0$:\n$$\\sum_{n}\\sum_{m}a_{m,n}=1.$$\nAs duas ordens dão $0\\ne 1$. Não há contradição com Fubini: $\\sum_{m,n}|a_{m,n}|=\\infty$, então $f\\notin L^1$ e a hipótese de Fubini falha. Tonelli aplicado a $|a_{m,n}|$ já avisaria: a integral de $|f|$ é infinita, logo é proibido trocar a ordem. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Use Tonelli para provar que, para $f\\ge 0$ mensurável em $(X,\\mu)$, $\\int_X f\\,d\\mu=\\int_0^\\infty\\mu(\\{x:f(x)>t\\})\\,dt$ (fórmula da distribuição/'layer cake').",
+          "hint": "Escreva $f(x)=\\int_0^\\infty\\chi_{\\{f>t\\}}(x)\\,dt$ e troque a ordem de integração em $X\\times(0,\\infty)$ por Tonelli.",
+          "difficulty": 3,
+          "solution": "**Formula da distribuicao ('layer cake').** Seja $f\\ge 0$ mensuravel em $(X,\\mathcal{A},\\mu)$, $\\mu$ $\\sigma$-finita. Queremos\n$$\\int_X f\\,d\\mu=\\int_0^\\infty\\mu(\\{x:f(x)>t\\})\\,dt.$$\n\n**Representacao por camadas.** Para cada $x$, vale a identidade\n$$f(x)=\\int_0^{f(x)}1\\,dt=\\int_0^\\infty\\chi_{\\{t<f(x)\\}}\\,dt=\\int_0^\\infty\\chi_E(x,t)\\,dt,\\qquad E=\\{(x,t)\\in X\\times(0,\\infty):\\ 0<t<f(x)\\}.$$\nO conjunto $E$ e mensuravel no produto $\\mathcal{A}\\otimes\\mathcal{B}((0,\\infty))$, pois $E=\\{(x,t):f(x)-t>0\\}$ e a pre-imagem de $(0,\\infty)$ pela funcao mensuravel $(x,t)\\mapsto f(x)-t$. Assim $\\chi_E\\ge 0$ e mensuravel no produto.\n\n**Aplicacao de Tonelli.** Como $\\chi_E\\ge 0$ e $\\mu$, a medida de Lebesgue $dt$ sao $\\sigma$-finitas, o Teorema de Tonelli permite integrar em qualquer ordem:\n$$\\int_X f\\,d\\mu=\\int_X\\left(\\int_0^\\infty\\chi_E(x,t)\\,dt\\right)d\\mu(x)=\\int_{X\\times(0,\\infty)}\\chi_E\\,d(\\mu\\times dt)=\\int_0^\\infty\\left(\\int_X\\chi_E(x,t)\\,d\\mu(x)\\right)dt.$$\nA integral interna e\n$$\\int_X\\chi_E(x,t)\\,d\\mu(x)=\\mu(\\{x:f(x)>t\\}).$$\nPortanto\n$$\\int_X f\\,d\\mu=\\int_0^\\infty\\mu(\\{x:f(x)>t\\})\\,dt.\\qquad\\blacksquare$$",
+          "steps": [
+            "Escreva f(x) como a integral em t de 1 no intervalo (0,f(x)), ou seja, f(x)=∫_0^∞ χ_{{t<f(x)}} dt.",
+            "Identifique o conjunto E={(x,t): 0<t<f(x)} e verifique que ele e mensuravel no produto (pre-imagem de (0,∞) por (x,t)→f(x)-t).",
+            "Aplique Tonelli a χ_E >= 0 para trocar a ordem das integracoes em X × (0,∞).",
+            "Reconheca a integral interna em x como μ({f>t}) e conclua a formula da distribuicao."
+          ]
+        },
+        {
+          "prompt": "Calcule $\\displaystyle\\int_0^1\\int_0^1\\frac{x^2-y^2}{(x^2+y^2)^2}\\,dy\\,dx$ e $\\displaystyle\\int_0^1\\int_0^1\\frac{x^2-y^2}{(x^2+y^2)^2}\\,dx\\,dy$, mostrando que dão $\\frac{\\pi}{4}$ e $-\\frac{\\pi}{4}$ e explicando por que Fubini não se aplica.",
+          "hint": "A primitiva interna é $\\mp\\frac{y}{x^2+y^2}$; integre. A discrepância ocorre porque $\\iint|f|=\\infty$ perto da origem.",
+          "difficulty": 4,
+          "solution": "Seja $f(x,y)=\\dfrac{x^2-y^2}{(x^2+y^2)^2}$ em $(0,1)\\times(0,1)$.\n\n**Primitiva chave.** Observe que\n$$\\frac{\\partial}{\\partial y}\\!\\left(\\frac{y}{x^2+y^2}\\right)=\\frac{(x^2+y^2)-y\\cdot 2y}{(x^2+y^2)^2}=\\frac{x^2-y^2}{(x^2+y^2)^2}=f(x,y).$$\n\n**Ordem $dy\\,dx$.** Integrando primeiro em $y\\in(0,1)$:\n$$\\int_0^1 f(x,y)\\,dy=\\left[\\frac{y}{x^2+y^2}\\right]_{y=0}^{y=1}=\\frac{1}{x^2+1}.$$\nDepois em $x$:\n$$\\int_0^1\\!\\!\\int_0^1 f\\,dy\\,dx=\\int_0^1\\frac{dx}{1+x^2}=\\big[\\arctan x\\big]_0^1=\\frac{\\pi}{4}.$$\n\n**Ordem $dx\\,dy$.** Por antissimetria $f(x,y)=-f(y,x)$. Equivalentemente, $\\dfrac{\\partial}{\\partial x}\\!\\left(\\dfrac{x}{x^2+y^2}\\right)=\\dfrac{y^2-x^2}{(x^2+y^2)^2}=-f$, logo integrando primeiro em $x$:\n$$\\int_0^1 f(x,y)\\,dx=-\\left[\\frac{x}{x^2+y^2}\\right]_{x=0}^{x=1}=-\\frac{1}{1+y^2},$$\ne dai\n$$\\int_0^1\\!\\!\\int_0^1 f\\,dx\\,dy=\\int_0^1\\frac{-1}{1+y^2}\\,dy=-\\frac{\\pi}{4}.$$\n\n**Por que Fubini nao se aplica.** As integrais iteradas dao $\\frac{\\pi}{4}\\ne-\\frac{\\pi}{4}$; nao ha contradicao porque $f$ nao e integravel: perto da origem $|f|$ nao tem integral finita. De fato, em coordenadas polares $|f|=\\dfrac{|\\cos^2\\theta-\\sin^2\\theta|}{r^2}=\\dfrac{|\\cos 2\\theta|}{r^2}$ e $dA=r\\,dr\\,d\\theta$, entao $\\iint|f|\\sim\\int_0\\frac{dr}{r}=\\infty$. Como $\\iint|f|\\,d(x,y)=\\infty$, a hipotese do Teorema de Fubini FALHA — e por isso as duas ordens podem (e neste caso devem) discordar. Tonelli aplicado a $|f|$ ja detectaria: $\\int|f|=\\infty$, logo e proibido trocar a ordem. $\\blacksquare$",
+          "steps": [
+            "Reconheca a primitiva: ∂/∂y [ y/(x^2+y^2) ] = (x^2-y^2)/(x^2+y^2)^2 = f.",
+            "Integre na ordem dy dx: a integral interna da 1/(1+x^2), cuja integral em x e arctan(1)=π/4.",
+            "Use a antissimetria f(x,y)=-f(y,x) (ou ∂/∂x[x/(x^2+y^2)]=-f) para a ordem dx dy, obtendo -1/(1+y^2) e integral -π/4.",
+            "Explique a discrepancia: ∫∫|f| diverge perto da origem (em polares, ∫dr/r), logo f∉L^1 e a hipotese de Fubini falha."
+          ]
+        },
+        {
+          "prompt": "Seja $\\nu\\ll\\mu$ com densidade $f=\\frac{d\\nu}{d\\mu}$. Prove a regra da cadeia $\\int g\\,d\\nu=\\int g f\\,d\\mu$ para $g\\ge 0$ mensurável.",
+          "hint": "Verifique para indicadoras ($g=\\chi_E$ dá a definição de $f$), estenda a simples por linearidade e a $g\\ge 0$ por MCT.",
+          "difficulty": 3,
+          "solution": "Seja $\\nu\\ll\\mu$ com densidade $f=\\dfrac{d\\nu}{d\\mu}\\ge 0$, isto e, $\\nu(E)=\\int_E f\\,d\\mu$ para todo $E\\in\\mathcal{A}$. Queremos, para $g\\ge 0$ mensuravel,\n$$\\int g\\,d\\nu=\\int g\\,f\\,d\\mu.$$\nProva por 'escada de aproximacao' (standard machine).\n\n**Passo 1 — indicadoras.** Para $g=\\chi_E$:\n$$\\int\\chi_E\\,d\\nu=\\nu(E)=\\int_E f\\,d\\mu=\\int\\chi_E\\,f\\,d\\mu,$$\nque e exatamente a definicao da densidade. Vale.\n\n**Passo 2 — funcoes simples.** Para $g=\\sum_{i=1}^{n}c_i\\chi_{E_i}$ com $c_i\\ge 0$, por linearidade das integrais (em $\\nu$ e em $\\mu$),\n$$\\int g\\,d\\nu=\\sum_i c_i\\,\\nu(E_i)=\\sum_i c_i\\int\\chi_{E_i}f\\,d\\mu=\\int\\Big(\\sum_i c_i\\chi_{E_i}\\Big)f\\,d\\mu=\\int g\\,f\\,d\\mu.$$\n\n**Passo 3 — $g\\ge 0$ geral via MCT.** Pelo Teorema da Aproximacao, existem simples $0\\le s_k\\uparrow g$. Entao $s_k f\\uparrow gf$ (pois $f\\ge 0$). Aplicando o Teorema da Convergencia Monotona nas duas medidas,\n$$\\int g\\,d\\nu=\\lim_k\\int s_k\\,d\\nu=\\lim_k\\int s_k f\\,d\\mu=\\int g f\\,d\\mu.$$\n\nPortanto $\\int g\\,d\\nu=\\int g\\,f\\,d\\mu$ para toda $g\\ge 0$ mensuravel. (Por decomposicao $g=g^+-g^-$, a formula estende-se a $g$ com $\\int|g|\\,d\\nu<\\infty$, i.e. $gf\\in L^1(\\mu)$.) $\\blacksquare$",
+          "steps": [
+            "Prove primeiro para g = χ_E: a igualdade ∫χ_E dν = ν(E) = ∫_E f dμ e a propria definicao da densidade.",
+            "Estenda a funcoes simples nao negativas por linearidade das integrais em ν e em μ.",
+            "Aproxime g >= 0 por simples s_k crescendo para g (Teorema da Aproximacao); note s_k f cresce para g f.",
+            "Aplique o MCT nas duas medidas para passar ao limite e obter ∫g dν = ∫g f dμ."
+          ]
+        },
+        {
+          "prompt": "Mostre que a medida de Dirac $\\delta_0$ e a medida de Lebesgue $m$ em $\\mathbb{R}$ são mutuamente singulares, e que $\\delta_0$ não é absolutamente contínua em relação a $m$.",
+          "hint": "Particione $\\mathbb{R}=\\{0\\}\\sqcup(\\mathbb{R}\\setminus\\{0\\})$: $m(\\{0\\})=0$ e $\\delta_0(\\mathbb{R}\\setminus\\{0\\})=0$. Para a não-absoluta-continuidade, $m(\\{0\\})=0$ mas $\\delta_0(\\{0\\})=1$.",
+          "difficulty": 2,
+          "solution": "Sejam $\\delta_0$ a medida de Dirac em $0$ ($\\delta_0(E)=1$ se $0\\in E$, senao $0$) e $m$ a medida de Lebesgue em $\\mathbb{R}$.\n\n**Singularidade mutua ($\\delta_0\\perp m$).** Particione $\\mathbb{R}=A\\sqcup B$ com\n$$A=\\{0\\},\\qquad B=\\mathbb{R}\\setminus\\{0\\}.$$\nEntao:\n- $m(A)=m(\\{0\\})=0$ (um ponto tem medida de Lebesgue nula);\n- $\\delta_0(B)=\\delta_0(\\mathbb{R}\\setminus\\{0\\})=0$ (pois $0\\notin B$).\nAssim existe uma particao em que cada medida se anula em um dos blocos: $m$ vive concentrada em $B$ e $\\delta_0$ em $A$. Por definicao, $\\delta_0\\perp m$ (mutuamente singulares).\n\n**Falha da absoluta continuidade ($\\delta_0\\not\\ll m$).** Absoluta continuidade $\\delta_0\\ll m$ exigiria: $m(E)=0\\Rightarrow\\delta_0(E)=0$. Mas tome $E=\\{0\\}$: $m(\\{0\\})=0$ enquanto $\\delta_0(\\{0\\})=1\\ne 0$. Logo a implicacao falha e $\\delta_0$ NAO e absolutamente continua em relacao a $m$.\n\n**Comentario.** Isso e coerente com Radon-Nikodym: se existisse densidade $f=\\frac{d\\delta_0}{dm}$, entao $\\delta_0(E)=\\int_E f\\,dm$; mas $\\delta_0(\\{0\\})=1$ ao passo que $\\int_{\\{0\\}}f\\,dm=0$ (integral sobre um conjunto de medida nula), impossivel. A massa de $\\delta_0$ e singular (concentrada num ponto invisivel para $m$) e nao admite densidade. $\\blacksquare$",
+          "steps": [
+            "Para a singularidade, exiba a particao R = {0} ⊔ (R\\{0}).",
+            "Verifique que m({0})=0 e δ_0(R\\{0})=0, ou seja, cada medida se anula em um bloco — a definicao de mutuamente singulares.",
+            "Para negar a absoluta continuidade, teste E={0}: m(E)=0 mas δ_0(E)=1, violando m(E)=0 ⇒ δ_0(E)=0.",
+            "Conclua (via Radon-Nikodym) que δ_0 nao tem densidade em relacao a m, pois a massa esta concentrada num ponto de medida nula."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Medida produto (existência/unicidade)",
+          "back": "Para $\\mu,\\nu$ $\\sigma$-finitas existe única $\\mu\\times\\nu$ com $(\\mu\\times\\nu)(A\\times B)=\\mu(A)\\nu(B)$."
+        },
+        {
+          "front": "Teorema de Tonelli",
+          "back": "$f\\ge 0$ mensurável ($\\sigma$-finitos) $\\Rightarrow$ integral dupla = ambas iteradas. SEM hipótese de integrabilidade."
+        },
+        {
+          "front": "Teorema de Fubini",
+          "back": "$f\\in L^1(\\mu\\times\\nu)$ $\\Rightarrow$ integral dupla = ambas iteradas. Teste $\\int|f|<\\infty$ por Tonelli antes."
+        },
+        {
+          "front": "Protocolo prático Tonelli/Fubini",
+          "back": "1) Tonelli em $|f|$ para ver se $\\int|f|<\\infty$. 2) Se sim, Fubini permite trocar a ordem."
+        },
+        {
+          "front": "$\\nu\\ll\\mu$ (absoluta continuidade)",
+          "back": "$\\mu(E)=0\\Rightarrow\\nu(E)=0$. Não confundir com $\\nu\\le\\mu$."
+        },
+        {
+          "front": "$\\nu\\perp\\mu$ (singulares)",
+          "back": "Existe $X=A\\sqcup B$ com $\\mu(A)=0$ e $\\nu(B)=0$. Vivem em pedaços disjuntos."
+        },
+        {
+          "front": "Teorema de Radon-Nikodym",
+          "back": "$\\nu\\ll\\mu$, $\\sigma$-finitas $\\Rightarrow$ existe $f=\\frac{d\\nu}{d\\mu}\\ge 0$ única q.s. com $\\nu(E)=\\int_E f\\,d\\mu$."
+        },
+        {
+          "front": "Decomposição de Lebesgue",
+          "back": "$\\nu=\\nu_{ac}+\\nu_s$ único, com $\\nu_{ac}\\ll\\mu$ (tem densidade) e $\\nu_s\\perp\\mu$ (singular)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Folland, Real Analysis, caps. 2.5 (produtos/Fubini) e 3 (Radon-Nikodym)",
+          "ref": "livro"
+        },
+        {
+          "title": "Rudin, Real and Complex Analysis, caps. 7-8",
+          "ref": "livro"
+        },
+        {
+          "title": "Halmos, Measure Theory, cap. VII (produtos) e secs. de Radon-Nikodym",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Reveja a construcao de medidas (Caratheodory) e a nocao de sigma-finitude, alem da integral de f>=0; a medida produto e Radon-Nikodym dependem criticamente de sigma-finitude.",
+          "Leia Folland caps. 2.5 (produtos/Fubini) e 3 (Radon-Nikodym) OU Rudin caps. 7-8. Entenda a construcao de μ×ν nos retangulos e o protocolo Tonelli-antes-de-Fubini (teste ∫|f| por Tonelli, depois troque a ordem por Fubini).",
+          "Estude os enunciados de Tonelli (f>=0, sempre vale) e Fubini (f∈L^1) e memorize o contra-exemplo em que a troca de ordem falha por falta de integrabilidade absoluta.",
+          "Passe para as medidas: defina absoluta continuidade ν≪μ e singularidade ν⊥μ, enuncie Radon-Nikodym (densidade dν/dμ) e a Decomposicao de Lebesgue; conecte com densidades de probabilidade e a medida de Cantor (singular).",
+          "Assista a uma aula sobre Fubini-Tonelli e Radon-Nikodym para ver os exemplos classicos de troca de ordem e a interpretacao da derivada de Radon-Nikodym.",
+          "Volte ao app: resolva os testes deste subtopico e anote aqui o principal (o protocolo Tonelli/Fubini, o contra-exemplo de troca de ordem e os enunciados de Radon-Nikodym e Decomposicao de Lebesgue)."
+        ],
+        "searchQueries": [
+          "teorema de Fubini Tonelli medida produto sigma-finita demonstracao",
+          "contra-exemplo troca de ordem integral dupla Fubini falha",
+          "teorema de Radon-Nikodym absoluta continuidade densidade prova",
+          "decomposicao de Lebesgue medida absolutamente continua singular",
+          "Fubini Tonelli theorem product measure proof",
+          "Radon-Nikodym derivative chain rule change of measure"
+        ],
+        "videos": [
+          {
+            "title": "Measure Theory - product measures, Fubini and Tonelli",
+            "channel": "The Bright Side of Mathematics",
+            "note": "Veja os videos sobre medida produto e os teoremas de Fubini/Tonelli, com os exemplos de troca de ordem."
+          },
+          {
+            "title": "Radon-Nikodym theorem",
+            "channel": "MIT OpenCourseWare",
+            "note": "No 18.125, as aulas sobre absoluta continuidade, Radon-Nikodym e decomposicao de Lebesgue."
+          },
+          {
+            "title": "Fubini's theorem counterexample",
+            "channel": "Michael Penn",
+            "note": "Exemplos em que a troca da ordem de integracao falha e por que a hipotese de integrabilidade e indispensavel."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Real Analysis, caps. 2.5 (Fubini) e 3 (Radon-Nikodym)",
+            "where": "Gerald B. Folland"
+          },
+          {
+            "title": "Real and Complex Analysis, caps. 7-8",
+            "where": "Walter Rudin"
+          }
+        ]
+      }
+    }
+  ]
+}

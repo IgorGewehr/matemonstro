@@ -1,0 +1,1955 @@
+{
+  "id": "topologia",
+  "title": "Topologia Geral",
+  "phase": 1,
+  "phaseLabel": "Núcleo",
+  "tagline": "A linguagem da continuidade: do épsilon-delta à estrutura abstrata de abertos que sustenta toda a matemática moderna.",
+  "summary": "Topologia Geral (ou Topologia de Conjuntos) é o estudo da continuidade, da convergência e da proximidade despidos de qualquer noção de distância. Partimos da pergunta: o que de fato torna uma função contínua? A resposta — pré-imagens de abertos são abertas — leva à definição de espaço topológico como um par $(X,\\tau)$, onde $\\tau$ é uma família de subconjuntos fechada por uniões arbitrárias e interseções finitas. A partir desse único axioma reconstruímos fecho, conexidade, compacidade e separação, e provamos joias como Heine-Borel, Tychonoff e Baire.",
+  "bigPicture": "Topologia é o esqueleto invisível da matemática pura. Análise Real é o caso particular da topologia métrica de $\\mathbb{R}^n$; Análise Funcional vive em espaços de funções com topologias da norma e fraca; Geometria Diferencial precisa de variedades, que são espaços de Hausdorff localmente euclidianos; Álgebra usa a topologia de Zariski e topologias profinitas. Dominar abertos, compacidade e conexidade é o que separa quem decora demonstrações de quem as cria. Para o mestrado em matemática pura, Topologia Geral é disciplina obrigatória na maioria dos programas (USP, IMPA, UNICAMP, UFRJ) e cai pesado em provas de seleção: Hausdorff, compacidade, conexidade e o Teorema de Baire são recorrentes. Em concursos de Instituto Federal o tema aparece de forma mais leve — geralmente embutido na prova de Análise (espaços métricos completos, Heine-Borel, continuidade) — mas saber topologia te dá fluência conceitual que ilumina TODA a prova de matemática avançada.",
+  "prereqs": [
+    "analise-real-1"
+  ],
+  "difficulty": 5,
+  "estimatedHours": 66,
+  "primaryBooks": [
+    {
+      "title": "Topology",
+      "author": "James R. Munkres",
+      "note": "A referência mundial para um primeiro curso. Didático, com demonstrações completas e exercícios graduados. Cobre tudo desta trilha (Parte I) e ainda introduz grupo fundamental (Parte II).",
+      "chapters": "caps. 2 a 9"
+    },
+    {
+      "title": "Espaços Métricos",
+      "author": "Elon Lages Lima",
+      "note": "Clássico do IMPA (Projeto Euclides). Indispensável para a parte métrica: completude, compacidade em espaços métricos, Baire e continuidade. Português, rigoroso e elegante.",
+      "chapters": "caps. 1 a 8"
+    },
+    {
+      "title": "Elementos de Topologia Geral",
+      "author": "Elon Lages Lima",
+      "note": "Texto brasileiro de referência para a topologia geral abstrata (abertos, produto, quociente, separação, Tychonoff). Complementa o lado métrico do outro livro do Elon.",
+      "chapters": "caps. 1 a 7"
+    },
+    {
+      "title": "General Topology",
+      "author": "Stephen Willard",
+      "note": "Mais avançado e enciclopédico; ótimo para aprofundar redes (nets), filtros, axiomas de separação e compactificações. Use como segunda leitura para mestrado.",
+      "chapters": "caps. 1 a 5, 7"
+    },
+    {
+      "title": "Counterexamples in Topology",
+      "author": "Lynn A. Steen, J. Arthur Seebach",
+      "note": "Catálogo de contraexemplos. Essencial para entender por que cada hipótese dos teoremas é necessária e para não cair em armadilhas de prova de mestrado.",
+      "chapters": "consulta por propriedade"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "MIT OCW 18.901 Introduction to Topology",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Munkres, Topology — site do autor com errata",
+      "kind": "livro",
+      "ref": "Munkres Topology 2ed"
+    },
+    {
+      "title": "nLab — verbete general topology",
+      "kind": "referencia",
+      "ref": "ncatlab.org"
+    },
+    {
+      "title": "Topology Without Tears — Sidney A. Morris",
+      "kind": "livro",
+      "ref": "topologywithouttears.net"
+    },
+    {
+      "title": "Canal Bill Kinney / Math at Andrews — Topology (YouTube)",
+      "kind": "video",
+      "ref": "YouTube"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 2,
+    "mestrado": 5,
+    "note": "Em concursos de IF a topologia geral abstrata raramente cai pura; o que aparece, via prova de Análise, é: espaço métrico completo, Heine-Borel em $\\mathbb{R}^n$ (compacto = fechado e limitado), continuidade por sequências, conexidade da reta. Em provas de mestrado é tema central e cobrado com rigor: caracterizar fecho/aberto, provar que continuidade equivale a pré-imagem de aberto ser aberto, mostrar que imagem contínua de compacto é compacto e de conexo é conexo, demonstrar que produto de Hausdorff/compacto é Hausdorff/compacto (Tychonoff), distinguir compacidade de compacidade sequencial, e aplicar o Teorema de Baire (existência de funções contínuas sem derivada, princípio da limitação uniforme). Saber construir contraexemplos (topologia cofinita, ordem dos quadrados, plano de Niemytzki) impressiona a banca."
+  },
+  "subtopics": [
+    {
+      "id": "topologia-01-espacos-topologicos-base-subbase",
+      "title": "Espaços topológicos, base e sub-base",
+      "tagline": "O único axioma que gera tudo: uma família de abertos fechada por uniões arbitrárias e interseções finitas.",
+      "objectives": [
+        "Enunciar a definição de espaço topológico $(X,\\tau)$ e verificar se uma família dada é uma topologia.",
+        "Comparar topologias pela relação de finura (mais fina / mais grossa) e exibir as topologias extremas (discreta e caótica).",
+        "Reconhecer e construir bases e sub-bases, e usar o critério de base para gerar topologias.",
+        "Provar que dois critérios de base geram a mesma topologia e comparar topologias via suas bases.",
+        "Construir exemplos fundamentais: topologia usual de $\\mathbb{R}$, do limite inferior (Sorgenfrey), cofinita e da ordem."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Topologia",
+          "statement": "Uma topologia sobre um conjunto $X$ é uma família $\\tau\\subseteq\\mathcal{P}(X)$ tal que: (i) $\\varnothing,X\\in\\tau$; (ii) toda união $\\bigcup_{i\\in I}U_i$ de elementos de $\\tau$ pertence a $\\tau$ (uniões arbitrárias); (iii) toda interseção finita $U_1\\cap\\cdots\\cap U_n$ de elementos de $\\tau$ pertence a $\\tau$. Os elementos de $\\tau$ são os conjuntos abertos."
+        },
+        {
+          "term": "Comparação de topologias",
+          "statement": "Se $\\tau_1\\subseteq\\tau_2$ dizemos que $\\tau_1$ é mais grossa (coarser) e $\\tau_2$ mais fina (finer). A topologia discreta $\\tau=\\mathcal{P}(X)$ é a mais fina; a caótica/indiscreta $\\tau=\\{\\varnothing,X\\}$ é a mais grossa."
+        },
+        {
+          "term": "Base",
+          "statement": "Uma base $\\mathcal{B}\\subseteq\\mathcal{P}(X)$ é uma coleção tal que: (i) todo ponto de $X$ está em algum $B\\in\\mathcal{B}$; (ii) se $x\\in B_1\\cap B_2$ com $B_1,B_2\\in\\mathcal{B}$, existe $B_3\\in\\mathcal{B}$ com $x\\in B_3\\subseteq B_1\\cap B_2$. A topologia gerada é $\\tau=\\{U: \\forall x\\in U\\ \\exists B\\in\\mathcal{B},\\ x\\in B\\subseteq U\\}$; equivalentemente, os abertos são as uniões de elementos de $\\mathcal{B}$."
+        },
+        {
+          "term": "Sub-base",
+          "statement": "Uma sub-base $\\mathcal{S}$ é qualquer coleção de subconjuntos de $X$ cuja união é $X$. A topologia gerada por $\\mathcal{S}$ é a menor topologia que contém $\\mathcal{S}$; sua base é formada por todas as interseções finitas de elementos de $\\mathcal{S}$ (com a convenção de que a interseção vazia é $X$)."
+        },
+        {
+          "term": "Vizinhança",
+          "statement": "Uma vizinhança de $x$ é qualquer conjunto $N$ que contém um aberto $U$ com $x\\in U\\subseteq N$. Um conjunto é aberto se, e só se, é vizinhança de cada um de seus pontos."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Critério de base (Munkres)",
+          "statement": "Seja $\\mathcal{B}$ uma base de uma topologia $\\tau$ sobre $X$. Então $U\\in\\tau$ se, e somente se, para todo $x\\in U$ existe $B\\in\\mathcal{B}$ com $x\\in B\\subseteq U$. Reciprocamente, qualquer coleção satisfazendo as duas condições de base gera uma única topologia da qual ela é base.",
+          "whyItMatters": "Bases são o modo prático de definir topologias: em vez de listar todos os abertos (impossível em geral), descrevemos uma coleção pequena de \\\"abertos básicos\\\". A topologia usual de $\\mathbb{R}$ tem como base os intervalos abertos $(a,b)$."
+        },
+        {
+          "name": "Comparação via bases",
+          "statement": "Sejam $\\mathcal{B}$ e $\\mathcal{B}'$ bases das topologias $\\tau$ e $\\tau'$ sobre $X$. Então $\\tau\\subseteq\\tau'$ (i.e., $\\tau'$ é mais fina) se, e somente se, para todo $B\\in\\mathcal{B}$ e todo $x\\in B$ existe $B'\\in\\mathcal{B}'$ com $x\\in B'\\subseteq B$.",
+          "whyItMatters": "É o teste algorítmico para decidir, por exemplo, que a topologia de Sorgenfrey (gerada por $[a,b)$) é estritamente mais fina que a usual de $\\mathbb{R}$."
+        },
+        {
+          "name": "Topologia gerada por sub-base",
+          "statement": "Dada qualquer coleção $\\mathcal{S}$ com $\\bigcup\\mathcal{S}=X$, a coleção $\\mathcal{B}$ das interseções finitas de membros de $\\mathcal{S}$ é uma base, e a topologia que ela gera é a menor topologia contendo $\\mathcal{S}$.",
+          "whyItMatters": "Sub-bases permitem definir topologias por \\\"poucas\\\" condições e são a base da definição da topologia produto e da topologia inicial; pré-imagens de abertos por uma família de funções formam uma sub-base natural."
+        }
+      ],
+      "summary": "A revolução conceitual da topologia é perceber que continuidade não exige distância: basta dizer quais conjuntos são abertos. Um espaço topológico $(X,\\tau)$ é um conjunto $X$ com uma família $\\tau$ de abertos satisfazendo três axiomas — contém $\\varnothing$ e $X$, é fechada por uniões arbitrárias e por interseções finitas. A assimetria entre \\\"arbitrárias\\\" e \\\"finitas\\\" é crucial: a interseção infinita $\\bigcap_n(-1/n,1/n)=\\{0\\}$ mostra por que não podemos permitir interseções infinitas de abertos sem destruir a teoria. \\n\\nNa prática nunca exibimos $\\tau$ inteira; descrevemos uma base $\\mathcal{B}$ (cujas uniões são todos os abertos) ou, mais economicamente ainda, uma sub-base $\\mathcal{S}$ (cujas interseções finitas formam uma base). Comparar topologias pela inclusão (\\\"mais fina\\\" = mais abertos) organiza os exemplos: do extremo grosso (caótica) ao extremo fino (discreta). Os exemplos de cabeceira — usual, Sorgenfrey, cofinita, da ordem — devem ser memorizados, pois são a fonte de quase todos os contraexemplos do curso.",
+      "commonPitfalls": [
+        "Permitir interseções infinitas de abertos. Só interseções FINITAS são garantidamente abertas; $\\bigcap_n(-1/n,1/n)=\\{0\\}$ não é aberto na reta usual.",
+        "Confundir base com sub-base: numa base já exigimos a condição de interseção $(x\\in B_1\\cap B_2 \\Rightarrow \\exists B_3\\subseteq B_1\\cap B_2)$; numa sub-base não há essa exigência, ela é recuperada tomando interseções finitas.",
+        "Achar que \\\"mais fina\\\" significa \\\"menos abertos\\\". É o contrário: mais fina = mais abertos = mais conjuntos distinguíveis (a discreta é a mais fina).",
+        "Esquecer de verificar que $\\varnothing$ e $X$ estão em $\\tau$ ao checar se uma família é topologia."
+      ],
+      "worked": "**Exemplo.** Mostremos que $\\mathcal{B}=\\{(a,b): a<b\\}$ é base de uma topologia em $\\mathbb{R}$ e descrevamos os abertos.\n\n*Condição (i):* todo $x\\in\\mathbb{R}$ está em $(x-1,x+1)\\in\\mathcal{B}$. \n*Condição (ii):* se $x\\in(a,b)\\cap(c,d)$, então a interseção é o intervalo $(\\max(a,c),\\min(b,d))$, que contém $x$ e pertence a $\\mathcal{B}$; tome $B_3$ igual a ele. \n\nLogo $\\mathcal{B}$ é base. Um conjunto $U$ é aberto sse, para cada $x\\in U$, existe $(a,b)\\subseteq U$ com $x\\in(a,b)$ — exatamente a topologia usual. \n\n**Sub-base.** A coleção $\\mathcal{S}=\\{(-\\infty,b):b\\in\\mathbb{R}\\}\\cup\\{(a,+\\infty):a\\in\\mathbb{R}\\}$ é sub-base da mesma topologia, pois $(-\\infty,b)\\cap(a,+\\infty)=(a,b)$ recupera todos os intervalos abertos por interseção finita.",
+      "exercises": [
+        {
+          "prompt": "Seja $X=\\{a,b,c\\}$. Decida quais das famílias são topologias: (1) $\\{\\varnothing,\\{a\\},\\{a,b\\},X\\}$; (2) $\\{\\varnothing,\\{a\\},\\{b\\},X\\}$; (3) $\\{\\varnothing,\\{a,b\\},\\{b,c\\},\\{b\\},X\\}$.",
+          "hint": "Cheque os três axiomas. Em (2) calcule $\\{a\\}\\cup\\{b\\}$. Em (3) verifique $\\{a,b\\}\\cap\\{b,c\\}$ e a união.",
+          "difficulty": 2,
+          "solution": "Analisamos cada familia sobre $X=\\{a,b,c\\}$ pelos tres axiomas: (i) $\\varnothing,X\\in\\tau$; (ii) fechada por unioes; (iii) fechada por intersecoes finitas.\n\n**(1) $\\tau_1=\\{\\varnothing,\\{a\\},\\{a,b\\},X\\}$.** Contem $\\varnothing$ e $X$. Unioes: $\\{a\\}\\cup\\{a,b\\}=\\{a,b\\}\\in\\tau_1$; qualquer uniao com $X$ da $X$; com $\\varnothing$ nao altera. Intersecoes: $\\{a\\}\\cap\\{a,b\\}=\\{a\\}\\in\\tau_1$. Todas as combinacoes permanecem na familia. **E topologia.**\n\n**(2) $\\tau_2=\\{\\varnothing,\\{a\\},\\{b\\},X\\}$.** Falha na uniao: $\\{a\\}\\cup\\{b\\}=\\{a,b\\}\\notin\\tau_2$. **Nao e topologia.**\n\n**(3) $\\tau_3=\\{\\varnothing,\\{a,b\\},\\{b,c\\},\\{b\\},X\\}$.** Contem $\\varnothing,X$. Intersecao: $\\{a,b\\}\\cap\\{b,c\\}=\\{b\\}\\in\\tau_3$. Uniao: $\\{a,b\\}\\cup\\{b,c\\}=X\\in\\tau_3$; $\\{b\\}\\cup\\{a,b\\}=\\{a,b\\}$, $\\{b\\}\\cup\\{b,c\\}=\\{b,c\\}$, ambos na familia. Todas as combinacoes fecham. **E topologia.**",
+          "steps": [
+            "Lembre os tres axiomas e teste-os um a um em cada familia; basta UM contraexemplo para descartar.",
+            "Em (1), verifique $\\{a\\}\\cup\\{a,b\\}$ e $\\{a\\}\\cap\\{a,b\\}$ — ambos ja estao na familia.",
+            "Em (2), calcule $\\{a\\}\\cup\\{b\\}=\\{a,b\\}$ e note que nao pertence a $\\tau_2$: falha imediata.",
+            "Em (3), cheque o par critico $\\{a,b\\}\\cap\\{b,c\\}=\\{b\\}$ e $\\{a,b\\}\\cup\\{b,c\\}=X$.",
+            "Conclua: (1) e (3) sao topologias; (2) nao e."
+          ]
+        },
+        {
+          "prompt": "Prove que a interseção de uma família arbitrária de topologias sobre $X$ é uma topologia, mas que a união de duas topologias pode não ser.",
+          "hint": "Para a interseção, verifique os axiomas membro a membro. Para a união, tome em $\\{a,b,c\\}$ as topologias $\\{\\varnothing,\\{a\\},X\\}$ e $\\{\\varnothing,\\{b\\},X\\}$ e olhe $\\{a\\}\\cup\\{b\\}$.",
+          "difficulty": 3,
+          "solution": "**Intersecao e topologia.** Seja $\\{\\tau_j\\}_{j\\in J}$ uma familia de topologias sobre $X$ e $\\tau=\\bigcap_{j}\\tau_j$.\n\n(i) Cada $\\tau_j$ contem $\\varnothing$ e $X$, logo ambos estao na intersecao. (ii) Se $\\{U_i\\}_{i\\in I}\\subseteq\\tau$, entao para cada $j$ tem-se $U_i\\in\\tau_j$ para todo $i$; como $\\tau_j$ e topologia, $\\bigcup_i U_i\\in\\tau_j$. Valendo para todo $j$, $\\bigcup_i U_i\\in\\tau$. (iii) Analogamente, se $U_1,\\dots,U_n\\in\\tau$, entao $U_1\\cap\\cdots\\cap U_n\\in\\tau_j$ para cada $j$, logo esta em $\\tau$. Portanto $\\tau$ e topologia.\n\n**Uniao pode falhar.** Em $X=\\{a,b,c\\}$ tome $\\tau_1=\\{\\varnothing,\\{a\\},X\\}$ e $\\tau_2=\\{\\varnothing,\\{b\\},X\\}$, ambas topologias. Sua uniao e $\\tau_1\\cup\\tau_2=\\{\\varnothing,\\{a\\},\\{b\\},X\\}$. Mas $\\{a\\}\\cup\\{b\\}=\\{a,b\\}\\notin\\tau_1\\cup\\tau_2$: a uniao nao e fechada por unioes, logo nao e topologia.",
+          "steps": [
+            "Para a intersecao, verifique cada axioma 'para todo $j$': o que vale em cada $\\tau_j$ vale na intersecao.",
+            "Uniao arbitraria: se todos os $U_i$ estao em cada $\\tau_j$, sua uniao tambem esta; idem intersecao finita.",
+            "Conclua que $\\bigcap_j\\tau_j$ e topologia.",
+            "Para a uniao, escolha as topologias concorrentes $\\{\\varnothing,\\{a\\},X\\}$ e $\\{\\varnothing,\\{b\\},X\\}$.",
+            "Exiba que $\\{a\\}\\cup\\{b\\}=\\{a,b\\}$ falta na uniao, quebrando o axioma (ii)."
+          ]
+        },
+        {
+          "prompt": "Mostre que a topologia do limite inferior (Sorgenfrey), com base $\\{[a,b):a<b\\}$, é estritamente mais fina que a usual de $\\mathbb{R}$.",
+          "hint": "Use o critério de comparação via bases. Mostre que todo $(a,b)$ é união de $[c,b)$, mas que $[0,1)$ não é aberto na usual.",
+          "difficulty": 3,
+          "solution": "Sejam $\\tau$ a topologia usual (base $\\{(a,b)\\}$) e $\\tau_\\ell$ a de Sorgenfrey (base $\\mathcal{B}_\\ell=\\{[a,b):a<b\\}$).\n\n**$\\tau\\subseteq\\tau_\\ell$.** Pelo criterio de comparacao via bases: dado um basico usual $(a,b)$ e $x\\in(a,b)$, tome $[x,b)\\in\\mathcal{B}_\\ell$; entao $x\\in[x,b)\\subseteq(a,b)$. Logo todo aberto usual e aberto em $\\tau_\\ell$; de fato $(a,b)=\\bigcup_{x\\in(a,b)}[x,b)$.\n\n**A inclusao e estrita.** O conjunto $[0,1)$ pertence a $\\tau_\\ell$ (e um basico). Se estivesse em $\\tau$, seria vizinhanca usual de $0$: existiria $\\varepsilon>0$ com $(-\\varepsilon,\\varepsilon)\\subseteq[0,1)$, impossivel pois $-\\varepsilon/2<0$. Assim $[0,1)\\in\\tau_\\ell\\setminus\\tau$.\n\nPortanto $\\tau\\subsetneq\\tau_\\ell$: a topologia do limite inferior e **estritamente mais fina** que a usual.",
+          "steps": [
+            "Enuncie o criterio: $\\tau\\subseteq\\tau_\\ell$ sse todo basico de $\\tau$ contendo $x$ contem um basico de $\\tau_\\ell$ em torno de $x$.",
+            "Dado $(a,b)\\ni x$, exiba $[x,b)$ com $x\\in[x,b)\\subseteq(a,b)$: prova $\\tau\\subseteq\\tau_\\ell$.",
+            "Para estrita, escolha $[0,1)$, que e $\\tau_\\ell$-aberto.",
+            "Mostre que $[0,1)$ nao e $\\tau$-aberto: $0$ nao tem intervalo $(-\\varepsilon,\\varepsilon)$ contido nele.",
+            "Conclua $\\tau\\subsetneq\\tau_\\ell$."
+          ]
+        },
+        {
+          "prompt": "Na topologia cofinita sobre $\\mathbb{R}$ (abertos = $\\varnothing$ e complementos de conjuntos finitos), descreva todos os abertos e prove que ela é estritamente mais grossa que a usual.",
+          "hint": "Mostre que todo cofinito é aberto na usual, mas $(0,1)$ não é cofinito.",
+          "difficulty": 3,
+          "solution": "Seja $\\tau_{cf}=\\{\\varnothing\\}\\cup\\{U\\subseteq\\mathbb{R}:\\mathbb{R}\\setminus U\\text{ e finito}\\}$ a topologia cofinita e $\\tau$ a usual.\n\n**Descricao dos abertos.** Um conjunto e cofinito-aberto sse e vazio ou seu complementar e finito. Que $\\tau_{cf}$ e topologia: $\\varnothing$ e $\\mathbb{R}$ pertencem; uniao de cofinitos e cofinita pois $\\mathbb{R}\\setminus\\bigcup U_i=\\bigcap(\\mathbb{R}\\setminus U_i)$ e subconjunto de um finito; intersecao FINITA de cofinitos e cofinita pois $\\mathbb{R}\\setminus\\bigcap_{k=1}^n U_k=\\bigcup_{k=1}^n(\\mathbb{R}\\setminus U_k)$ e uniao finita de finitos.\n\n**$\\tau_{cf}\\subseteq\\tau$.** Seja $U$ cofinito nao vazio, com $\\mathbb{R}\\setminus U=\\{p_1,\\dots,p_n\\}$ finito. Como conjuntos finitos sao fechados na usual, $U=\\mathbb{R}\\setminus\\{p_1,\\dots,p_n\\}$ e aberto usual. Logo todo cofinito-aberto e usual-aberto.\n\n**Inclusao estrita.** O intervalo $(0,1)$ e usual-aberto, mas seu complementar $(-\\infty,0]\\cup[1,\\infty)$ e infinito, logo $(0,1)\\notin\\tau_{cf}$. Assim $\\tau_{cf}\\subsetneq\\tau$: a cofinita e **estritamente mais grossa** que a usual.",
+          "steps": [
+            "Descreva os abertos: $\\varnothing$ e todos os $U$ com complementar finito; confira os axiomas via De Morgan.",
+            "Note que uniao de cofinitos e cofinita e intersecao finita de cofinitos e cofinita.",
+            "Mostre $\\tau_{cf}\\subseteq\\tau$: um complementar finito e fechado na usual, logo o cofinito e usual-aberto.",
+            "Para estrita, tome $(0,1)$: usual-aberto mas nao cofinito (complementar infinito).",
+            "Conclua $\\tau_{cf}\\subsetneq\\tau$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Os três axiomas de uma topologia $\\tau$.",
+          "back": "(1) $\\varnothing,X\\in\\tau$; (2) união arbitrária de abertos é aberta; (3) interseção finita de abertos é aberta."
+        },
+        {
+          "front": "Por que interseções só podem ser finitas?",
+          "back": "Porque $\\bigcap_{n\\ge1}(-1/n,1/n)=\\{0\\}$ não é aberto na reta usual: interseções infinitas de abertos podem não ser abertas."
+        },
+        {
+          "front": "O que é uma base de uma topologia?",
+          "back": "Coleção $\\mathcal{B}$ tal que (i) cobre $X$ e (ii) $x\\in B_1\\cap B_2 \\Rightarrow \\exists B_3\\in\\mathcal{B},\\ x\\in B_3\\subseteq B_1\\cap B_2$. Abertos = uniões de elementos de $\\mathcal{B}$."
+        },
+        {
+          "front": "O que é uma sub-base?",
+          "back": "Qualquer coleção $\\mathcal{S}$ com $\\bigcup\\mathcal{S}=X$. A base associada são as interseções finitas de elementos de $\\mathcal{S}$."
+        },
+        {
+          "front": "Topologia discreta vs. caótica.",
+          "back": "Discreta: $\\tau=\\mathcal{P}(X)$ (todos abertos, a mais FINA). Caótica/indiscreta: $\\tau=\\{\\varnothing,X\\}$ (a mais GROSSA)."
+        },
+        {
+          "front": "\\\"Mais fina\\\" significa mais ou menos abertos?",
+          "back": "MAIS abertos. $\\tau_1\\subseteq\\tau_2 \\Rightarrow \\tau_2$ é mais fina. A discreta é a mais fina de todas."
+        },
+        {
+          "front": "Base da topologia usual de $\\mathbb{R}$.",
+          "back": "Os intervalos abertos $(a,b)$ com $a<b$."
+        },
+        {
+          "front": "O que é a topologia cofinita em $X$ infinito?",
+          "back": "Abertos são $\\varnothing$ e os complementos de conjuntos finitos. É a mais grossa que torna pontos fechados (T1)."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Munkres, Topology — caps. 12, 13",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Elementos de Topologia Geral — cap. 1",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia a definicao de espaco topologico e os tres axiomas no Munkres (cap. 12) ou no Elon, Elementos de Topologia Geral (cap. 1); escreva os axiomas de memoria e teste-os na topologia discreta e na caotica.",
+          "Fixe a assimetria 'uniao arbitraria vs. intersecao FINITA' fazendo voce mesmo o contraexemplo $\\bigcap_n(-1/n,1/n)=\\{0\\}$ e explicando por que ele quebraria a teoria se intersecoes infinitas fossem permitidas.",
+          "Estude base e sub-base: prove o criterio de base (as duas condicoes) e refaca a construcao da base a partir de uma sub-base via intersecoes finitas.",
+          "Monte uma tabela dos exemplos de cabeceira (usual, Sorgenfrey/limite inferior, cofinita, da ordem) comparando-os pela finura; use o criterio de comparacao via bases em cada par.",
+          "Assista a uma aula introdutoria de topologia (MIT OCW 18.901 ou Bill Kinney) para consolidar a intuicao geometrica de 'aberto basico'.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (definicao, criterio de base, e por que Sorgenfrey e mais fina que a usual)."
+        ],
+        "searchQueries": [
+          "definicao espaco topologico axiomas abertos base sub-base",
+          "criterio de base Munkres demonstracao topologia gerada",
+          "topologia de Sorgenfrey limite inferior mais fina que usual",
+          "topologia cofinita exemplos abertos fechados",
+          "basis for a topology subbasis finite intersections",
+          "comparing topologies finer coarser criterion basis"
+        ],
+        "videos": [
+          {
+            "title": "Introduction to Topology (curso completo)",
+            "channel": "MIT OpenCourseWare (18.901)",
+            "note": "Assista as primeiras aulas sobre espacos topologicos, base e comparacao de topologias."
+          },
+          {
+            "title": "Topology playlist",
+            "channel": "Bill Kinney (Math at Andrews)",
+            "note": "Videos iniciais definindo topologia, base e sub-base com muitos exemplos resolvidos."
+          },
+          {
+            "title": "What is a topological space?",
+            "channel": "Dr. Peyam",
+            "note": "Explicacao intuitiva dos tres axiomas e da diferenca entre discreta e caotica."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Topology, 2nd ed. — caps. 12 e 13 (Topological Spaces, Basis for a Topology)",
+            "where": "James R. Munkres"
+          },
+          {
+            "title": "Elementos de Topologia Geral — cap. 1",
+            "where": "Elon Lages Lima (Projeto Euclides, IMPA)"
+          },
+          {
+            "title": "Topology Without Tears — caps. 1 e 2 (Topological Spaces, The Euclidean Topology)",
+            "where": "Sidney A. Morris (PDF livre, topologywithouttears.net)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-02-fecho-interior-fronteira",
+      "title": "Fechados, fecho, interior e fronteira",
+      "tagline": "Quatro operadores que codificam toda a topologia: aberto, fechado, denso, fronteira.",
+      "objectives": [
+        "Definir conjunto fechado via complementar e reconhecer os axiomas duais (interseções arbitrárias e uniões finitas de fechados).",
+        "Calcular fecho $\\overline{A}$, interior $A^\\circ$ e fronteira $\\partial A$ e relacioná-los: $\\overline{A}=A^\\circ\\cup\\partial A$.",
+        "Caracterizar o fecho por pontos aderentes e por pontos de acumulação (pontos limite).",
+        "Definir densidade e separabilidade e exibir conjuntos densos (como $\\mathbb{Q}$ em $\\mathbb{R}$).",
+        "Demonstrar e usar os axiomas de fecho de Kuratowski."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Conjunto fechado",
+          "statement": "$F\\subseteq X$ é fechado se $X\\setminus F$ é aberto. A família dos fechados é fechada por interseções arbitrárias e uniões finitas, e contém $\\varnothing$ e $X$ (dualidade de De Morgan)."
+        },
+        {
+          "term": "Fecho (aderência)",
+          "statement": "$\\overline{A}=\\bigcap\\{F:F\\supseteq A,\\ F\\text{ fechado}\\}$ é o menor fechado contendo $A$. Caracterização pontual: $x\\in\\overline{A}$ se, e só se, toda vizinhança de $x$ intersecta $A$."
+        },
+        {
+          "term": "Interior",
+          "statement": "$A^\\circ=\\bigcup\\{U:U\\subseteq A,\\ U\\text{ aberto}\\}$ é o maior aberto contido em $A$. Tem-se $x\\in A^\\circ$ se, e só se, alguma vizinhança de $x$ está contida em $A$. Dualidade: $X\\setminus\\overline{A}=(X\\setminus A)^\\circ$."
+        },
+        {
+          "term": "Ponto de acumulação e fronteira",
+          "statement": "$x$ é ponto de acumulação (limite) de $A$ se toda vizinhança de $x$ contém um ponto de $A$ diferente de $x$; o conjunto deles é $A'$, e $\\overline{A}=A\\cup A'$. A fronteira é $\\partial A=\\overline{A}\\cap\\overline{X\\setminus A}=\\overline{A}\\setminus A^\\circ$."
+        },
+        {
+          "term": "Denso e separável",
+          "statement": "$D$ é denso em $X$ se $\\overline{D}=X$ (equivalentemente, $D$ intersecta todo aberto não vazio). $X$ é separável se possui subconjunto denso enumerável."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Axiomas de fecho de Kuratowski",
+          "statement": "O operador fecho satisfaz: (K1) $\\overline{\\varnothing}=\\varnothing$; (K2) $A\\subseteq\\overline{A}$; (K3) $\\overline{\\overline{A}}=\\overline{A}$ (idempotência); (K4) $\\overline{A\\cup B}=\\overline{A}\\cup\\overline{B}$. Reciprocamente, qualquer operador em $\\mathcal{P}(X)$ com essas quatro propriedades define uma única topologia cujos fechados são os $A$ com $\\overline{A}=A$.",
+          "whyItMatters": "Mostra que a topologia pode ser axiomatizada inteiramente pelo fecho — uma das várias \\\"portas de entrada\\\" equivalentes (abertos, fechados, fecho, interior, vizinhanças). Útil para construir topologias a partir de processos de limite."
+        },
+        {
+          "name": "Caracterização do fecho",
+          "statement": "$x\\in\\overline{A}\\iff$ toda vizinhança aberta de $x$ tem interseção não vazia com $A$. Em espaços com bases enumeráveis de vizinhanças (e.g. métricos), isso equivale a existir uma sequência $(a_n)$ em $A$ com $a_n\\to x$.",
+          "whyItMatters": "Conecta a abstração topológica com a intuição de \\\"aproximar por pontos de $A$\\\" e justifica por que em $\\mathbb{R}^n$ o fecho coincide com limites de sequências."
+        },
+        {
+          "name": "Relações fundamentais",
+          "statement": "Para todo $A$: $X=A^\\circ\\,\\dot\\cup\\,\\partial A\\,\\dot\\cup\\,(X\\setminus A)^\\circ$ (união disjunta), $\\overline{A}=A^\\circ\\cup\\partial A$, e $A$ é aberto $\\iff A=A^\\circ$, $A$ é fechado $\\iff A=\\overline{A}$, $A$ é clopen $\\iff \\partial A=\\varnothing$.",
+          "whyItMatters": "São as identidades operacionais que aparecem em quase toda demonstração de topologia e em provas de mestrado; saber que $\\partial A=\\varnothing$ caracteriza conjuntos clopen é a ponte para conexidade."
+        }
+      ],
+      "summary": "Dual à noção de aberto está a de fechado: $F$ é fechado quando seu complementar é aberto. Por De Morgan, fechados são fechados por interseções arbitrárias e uniões finitas — exatamente o espelho dos axiomas de aberto. A partir daí definimos os dois operadores fundamentais: o fecho $\\overline{A}$, menor fechado que contém $A$, e o interior $A^\\circ$, maior aberto contido em $A$. A caracterização pontual — $x\\in\\overline{A}$ sse toda vizinhança de $x$ \\\"toca\\\" $A$ — é a tradução topológica de \\\"$x$ é aproximável por $A$\\\". \\n\\nA fronteira $\\partial A=\\overline{A}\\setminus A^\\circ$ mede a \\\"casca\\\" de $A$, e a identidade $\\partial A=\\varnothing\\iff A$ é clopen prenuncia a conexidade. Densidade ($\\overline{D}=X$) e separabilidade (denso enumerável) são propriedades de \\\"abundância\\\": $\\mathbb{Q}$ é denso e enumerável em $\\mathbb{R}$, logo $\\mathbb{R}$ é separável. Cuidado com a intuição métrica: em espaços gerais o fecho NÃO é sempre dado por limites de sequências — isso só vale quando há bases enumeráveis de vizinhanças (primeiro-enumeráveis), o que reaparecerá no estudo de redes e filtros.",
+      "commonPitfalls": [
+        "Achar que fecho é sempre dado por limites de sequências. Isso só vale em espaços primeiro-enumeráveis (e.g. métricos); em geral é preciso usar redes ou filtros.",
+        "Confundir ponto de acumulação com ponto do fecho: todo ponto isolado de $A$ está em $\\overline{A}$ mas NÃO é ponto de acumulação. Vale $\\overline{A}=A\\cup A'$.",
+        "Escrever $\\overline{A\\cap B}=\\overline{A}\\cap\\overline{B}$. Em geral só vale $\\subseteq$; o fecho distribui sobre união finita, não sobre interseção.",
+        "Pensar que $\\partial A$ está contido em $A$. A fronteira pode estar inteiramente fora de $A$ (ex.: $A=(0,1)$ tem $\\partial A=\\{0,1\\}\\not\\subseteq A$)."
+      ],
+      "worked": "**Exemplo.** Em $\\mathbb{R}$ usual, calcule $\\overline{A}$, $A^\\circ$ e $\\partial A$ para $A=[0,1)\\cup\\{2\\}$.\n\n*Interior:* o maior aberto dentro de $A$ é $(0,1)$, pois $0$ não tem vizinhança contida em $A$ e $\\{2\\}$ é isolado (nenhuma vizinhança de $2$ cabe em $A$). Logo $A^\\circ=(0,1)$. \n*Fecho:* todo ponto de $[0,1]$ é aderente (toda vizinhança toca $[0,1)$) e $2\\in A\\subseteq\\overline{A}$; assim $\\overline{A}=[0,1]\\cup\\{2\\}$. \n*Fronteira:* $\\partial A=\\overline{A}\\setminus A^\\circ=\\big([0,1]\\cup\\{2\\}\\big)\\setminus(0,1)=\\{0,1,2\\}$. \n\nObserve que $2$ é ponto isolado: está no fecho mas não é ponto de acumulação, então $A'=[0,1]$ e $\\overline{A}=A\\cup A'$ confere.",
+      "exercises": [
+        {
+          "prompt": "Prove que $\\overline{A}=A\\cup A'$, onde $A'$ é o conjunto dos pontos de acumulação de $A$.",
+          "hint": "Mostre as duas inclusões. Para $\\overline{A}\\subseteq A\\cup A'$, tome $x\\in\\overline{A}\\setminus A$ e use a caracterização por vizinhanças.",
+          "difficulty": 3,
+          "solution": "Queremos $\\overline{A}=A\\cup A'$, onde $A'$ e o conjunto dos pontos de acumulacao de $A$.\n\n**($\\supseteq$).** Como $A\\subseteq\\overline{A}$, basta ver $A'\\subseteq\\overline A$: se $x\\in A'$, toda vizinhanca de $x$ contem ponto de $A\\setminus\\{x\\}$, logo intersecta $A$, e pela caracterizacao pontual $x\\in\\overline{A}$. Assim $A\\cup A'\\subseteq\\overline{A}$.\n\n**($\\subseteq$).** Seja $x\\in\\overline{A}$. Se $x\\in A$, ok. Se $x\\notin A$, tome qualquer vizinhanca $U$ de $x$: por $x\\in\\overline{A}$, $U\\cap A\\ne\\varnothing$, e como $x\\notin A$, esse ponto de $A$ e diferente de $x$. Logo toda vizinhanca de $x$ contem ponto de $A\\setminus\\{x\\}$, isto e, $x\\in A'$.\n\nCombinando, $\\overline{A}=A\\cup A'$.",
+          "steps": [
+            "Use a caracterizacao: $x\\in\\overline{A}$ sse toda vizinhanca de $x$ intersecta $A$.",
+            "Mostre $A\\subseteq\\overline{A}$ e $A'\\subseteq\\overline{A}$ (todo ponto de acumulacao toca $A$).",
+            "Para a volta, tome $x\\in\\overline{A}\\setminus A$.",
+            "Como $x\\notin A$, o ponto de $A$ garantido em cada vizinhanca e $\\ne x$, logo $x\\in A'$.",
+            "Combine as inclusoes para concluir a igualdade."
+          ]
+        },
+        {
+          "prompt": "Mostre que $\\overline{A\\cup B}=\\overline{A}\\cup\\overline{B}$ mas exiba $A,B\\subseteq\\mathbb{R}$ com $\\overline{A\\cap B}\\subsetneq\\overline{A}\\cap\\overline{B}$.",
+          "hint": "Para o contraexemplo use $A=\\mathbb{Q}$ e $B=\\mathbb{R}\\setminus\\mathbb{Q}$: $A\\cap B=\\varnothing$ mas $\\overline{A}\\cap\\overline{B}=\\mathbb{R}$.",
+          "difficulty": 3,
+          "solution": "**Igualdade $\\overline{A\\cup B}=\\overline{A}\\cup\\overline{B}$.**\n\n($\\supseteq$) Por monotonia do fecho, $A\\subseteq A\\cup B\\Rightarrow\\overline A\\subseteq\\overline{A\\cup B}$; idem para $B$, logo $\\overline A\\cup\\overline B\\subseteq\\overline{A\\cup B}$.\n\n($\\subseteq$) $\\overline A\\cup\\overline B$ e uniao de dois fechados, logo fechado, e contem $A\\cup B$; como $\\overline{A\\cup B}$ e o MENOR fechado contendo $A\\cup B$, vem $\\overline{A\\cup B}\\subseteq\\overline A\\cup\\overline B$.\n\n**Contraexemplo para intersecao.** Em $\\mathbb{R}$ usual, $A=\\mathbb{Q}$ e $B=\\mathbb{R}\\setminus\\mathbb{Q}$. Entao $A\\cap B=\\varnothing$, logo $\\overline{A\\cap B}=\\varnothing$. Mas $\\overline A=\\overline B=\\mathbb{R}$ (densos), donde $\\overline A\\cap\\overline B=\\mathbb{R}$. Assim $\\varnothing=\\overline{A\\cap B}\\subsetneq\\overline A\\cap\\overline B=\\mathbb{R}$.\n\n(Em geral vale so $\\overline{A\\cap B}\\subseteq\\overline A\\cap\\overline B$, por monotonia.)",
+          "steps": [
+            "Prove $\\supseteq$ por monotonia aplicada a $A\\subseteq A\\cup B$ e $B\\subseteq A\\cup B$.",
+            "Prove $\\subseteq$ notando que $\\overline A\\cup\\overline B$ e fechado e contem $A\\cup B$; use minimalidade.",
+            "Para o contraexemplo, escolha $A=\\mathbb{Q}$, $B=\\mathbb{R}\\setminus\\mathbb{Q}$, disjuntos.",
+            "Calcule $\\overline{A\\cap B}=\\varnothing$ e $\\overline A\\cap\\overline B=\\mathbb{R}$.",
+            "Conclua a inclusao estrita."
+          ]
+        },
+        {
+          "prompt": "Prove que $A$ é clopen (aberto e fechado) se, e somente se, $\\partial A=\\varnothing$.",
+          "hint": "Use $\\partial A=\\overline{A}\\setminus A^\\circ$ e as caracterizações $A$ aberto $\\iff A=A^\\circ$, $A$ fechado $\\iff A=\\overline{A}$.",
+          "difficulty": 2,
+          "solution": "Lembrando $\\partial A=\\overline A\\setminus A^\\circ$ com $A^\\circ\\subseteq A\\subseteq\\overline A$.\n\n**($\\Rightarrow$).** Suponha $A$ clopen. Fechado da $\\overline A=A$; aberto da $A^\\circ=A$. Logo $\\partial A=\\overline A\\setminus A^\\circ=A\\setminus A=\\varnothing$.\n\n**($\\Leftarrow$).** Suponha $\\partial A=\\varnothing$, i.e. $\\overline A\\setminus A^\\circ=\\varnothing$, logo $\\overline A\\subseteq A^\\circ$. Como sempre $A^\\circ\\subseteq A\\subseteq\\overline A$, obtemos a cadeia $A^\\circ\\subseteq A\\subseteq\\overline A\\subseteq A^\\circ$, forcando $A^\\circ=A=\\overline A$. De $A=A^\\circ$ segue $A$ aberto; de $A=\\overline A$ segue $A$ fechado. Portanto $A$ e clopen.\n\nConclusao: $A$ e clopen $\\iff\\partial A=\\varnothing$.",
+          "steps": [
+            "Escreva $\\partial A=\\overline A\\setminus A^\\circ$ e as equivalencias $A$ aberto $\\iff A=A^\\circ$, $A$ fechado $\\iff A=\\overline A$.",
+            "Direta: de clopen, $\\overline A=A=A^\\circ$, logo a diferenca e vazia.",
+            "Volta: de $\\partial A=\\varnothing$ obtenha $\\overline A\\subseteq A^\\circ$.",
+            "Combine com $A^\\circ\\subseteq A\\subseteq\\overline A$ para forcar as tres igualdades.",
+            "Leia $A=A^\\circ$ (aberto) e $A=\\overline A$ (fechado): $A$ e clopen."
+          ]
+        },
+        {
+          "prompt": "Na topologia cofinita sobre um conjunto infinito $X$, determine $\\overline{A}$ para $A$ infinito e para $A$ finito, e conclua que todo subconjunto infinito é denso.",
+          "hint": "Os fechados são $X$ e os conjuntos finitos. O menor fechado contendo $A$ infinito é $X$.",
+          "difficulty": 3,
+          "solution": "Na topologia cofinita sobre um conjunto infinito $X$, os fechados sao exatamente $X$ e os subconjuntos FINITOS.\n\n**Caso $A$ finito.** $A$ ja e fechado, logo $\\overline A=A$.\n\n**Caso $A$ infinito.** $\\overline A$ e o menor fechado contendo $A$. Nenhum fechado finito contem $A$ (infinito), entao o unico fechado que o contem e $X$. Portanto $\\overline A=X$.\n\n**Consequencia (densidade).** Se $A$ e infinito, $\\overline A=X$, ou seja $A$ e denso. Equivalentemente: todo aberto nao vazio $U$ e cofinito, logo infinito; se fosse $A\\cap U=\\varnothing$, entao $A\\subseteq X\\setminus U$ (finito), contradizendo $A$ infinito. Logo $A\\cap U\\ne\\varnothing$ para todo aberto nao vazio: **todo subconjunto infinito e denso** na topologia cofinita.",
+          "steps": [
+            "Identifique os fechados da cofinita: $X$ e os conjuntos finitos.",
+            "Se $A$ e finito, ele proprio e fechado: $\\overline A=A$.",
+            "Se $A$ e infinito, nenhum fechado finito o contem, sobra so $X$: $\\overline A=X$.",
+            "Traduza $\\overline A=X$ como 'A e denso'.",
+            "Confirme: qualquer aberto nao vazio e cofinito e intersecta todo conjunto infinito."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de conjunto fechado.",
+          "back": "$F$ é fechado $\\iff X\\setminus F$ é aberto. Fechados: interseções arbitrárias e uniões finitas."
+        },
+        {
+          "front": "Definição de fecho $\\overline{A}$.",
+          "back": "Menor fechado que contém $A$: $\\overline{A}=\\bigcap\\{F\\supseteq A: F\\text{ fechado}\\}$."
+        },
+        {
+          "front": "Caracterização pontual de $x\\in\\overline{A}$.",
+          "back": "Toda vizinhança de $x$ intersecta $A$ (em métricos: existe $(a_n)\\subseteq A$ com $a_n\\to x$)."
+        },
+        {
+          "front": "Definição de interior $A^\\circ$.",
+          "back": "Maior aberto contido em $A$: $A^\\circ=\\bigcup\\{U\\subseteq A: U\\text{ aberto}\\}$."
+        },
+        {
+          "front": "Fórmula da fronteira $\\partial A$.",
+          "back": "$\\partial A=\\overline{A}\\cap\\overline{X\\setminus A}=\\overline{A}\\setminus A^\\circ$."
+        },
+        {
+          "front": "$\\partial A=\\varnothing$ equivale a quê?",
+          "back": "$A$ é clopen (simultaneamente aberto e fechado)."
+        },
+        {
+          "front": "O que é $A$ denso em $X$?",
+          "back": "$\\overline{A}=X$; equivalentemente $A$ intersecta todo aberto não vazio. Ex.: $\\mathbb{Q}$ em $\\mathbb{R}$."
+        },
+        {
+          "front": "O que é espaço separável?",
+          "back": "Possui subconjunto denso enumerável (ex.: $\\mathbb{R}^n$ via $\\mathbb{Q}^n$)."
+        },
+        {
+          "front": "Os 4 axiomas de Kuratowski do fecho.",
+          "back": "$\\overline{\\varnothing}=\\varnothing$; $A\\subseteq\\overline{A}$; $\\overline{\\overline{A}}=\\overline{A}$; $\\overline{A\\cup B}=\\overline{A}\\cup\\overline{B}$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Munkres, Topology — cap. 17",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Elementos de Topologia Geral — cap. 2",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a dualidade aberto/fechado (De Morgan) no Munkres (cap. 17) e no Elon (cap. 2); escreva os axiomas dos fechados como espelho dos axiomas dos abertos.",
+          "Defina fecho e interior como menor fechado e maior aberto, e prove a dualidade $X\\setminus\\overline{A}=(X\\setminus A)^\\circ$.",
+          "Domine a caracterizacao pontual do fecho ('toda vizinhanca de $x$ toca $A$') e a relacao $\\overline{A}=A\\cup A'$; distinga ponto de acumulacao de ponto isolado.",
+          "Pratique calculos de $\\overline{A}$, $A^\\circ$ e $\\partial A$ em varios exemplos de $\\mathbb{R}$ e em topologias exoticas (cofinita, Sorgenfrey).",
+          "Leia sobre os axiomas de Kuratowski para entender que o fecho por si so axiomatiza a topologia.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (formulas de fronteira, contraexemplo $\\overline{A\\cap B}\\ne\\overline{A}\\cap\\overline{B}$, e caracterizacao de clopen)."
+        ],
+        "searchQueries": [
+          "fecho interior fronteira definicao propriedades topologia",
+          "caracterizacao fecho pontos aderentes acumulacao vizinhanca",
+          "axiomas de Kuratowski operador fecho demonstracao",
+          "conjunto denso separavel exemplos racionais",
+          "closure interior boundary examples topology exercises",
+          "nowhere dense boundary clopen characterization"
+        ],
+        "videos": [
+          {
+            "title": "Topology — Closure, Interior, Boundary",
+            "channel": "Bill Kinney (Math at Andrews)",
+            "note": "Videos sobre fecho, interior, fronteira e pontos limite com exemplos calculados."
+          },
+          {
+            "title": "Closure and interior of a set",
+            "channel": "Dr. Peyam",
+            "note": "Intuicao e definicoes de fecho e interior; bom para fixar a caracterizacao pontual."
+          },
+          {
+            "title": "Introduction to Topology (18.901)",
+            "channel": "MIT OpenCourseWare",
+            "note": "Aulas sobre conjuntos fechados, pontos limite e o operador fecho."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Topology, 2nd ed. — cap. 17 (Closed Sets and Limit Points)",
+            "where": "James R. Munkres"
+          },
+          {
+            "title": "Elementos de Topologia Geral — cap. 2",
+            "where": "Elon Lages Lima"
+          },
+          {
+            "title": "nLab — verbetes 'closure', 'interior', 'Kuratowski closure axioms'",
+            "where": "ncatlab.org"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-03-continuidade-homeomorfismos",
+      "title": "Funções contínuas e homeomorfismos",
+      "tagline": "Continuidade sem épsilon: pré-imagem de aberto é aberto. Homeomorfismo: a igualdade topológica.",
+      "objectives": [
+        "Definir continuidade topológica via pré-imagens de abertos e provar as caracterizações equivalentes (fechados, fecho, vizinhanças).",
+        "Reduzir continuidade a uma sub-base e demonstrar continuidade da composta e da restrição.",
+        "Distinguir continuidade global de continuidade em um ponto e relacioná-las.",
+        "Definir homeomorfismo e reconhecer quando uma bijeção contínua NÃO é homeomorfismo.",
+        "Identificar propriedades e invariantes topológicos preservados por homeomorfismos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Função contínua",
+          "statement": "$f:X\\to Y$ é contínua se $f^{-1}(V)$ é aberto em $X$ para todo aberto $V\\subseteq Y$. Equivalentemente, $f^{-1}(F)$ é fechado para todo fechado $F$, ou $f(\\overline{A})\\subseteq\\overline{f(A)}$ para todo $A\\subseteq X$."
+        },
+        {
+          "term": "Continuidade num ponto",
+          "statement": "$f$ é contínua em $x_0$ se para toda vizinhança $V$ de $f(x_0)$ existe vizinhança $U$ de $x_0$ com $f(U)\\subseteq V$. $f$ é contínua (global) se, e só se, é contínua em todo ponto."
+        },
+        {
+          "term": "Homeomorfismo",
+          "statement": "$f:X\\to Y$ é homeomorfismo se é bijeção contínua com inversa contínua. Então $X$ e $Y$ são topologicamente indistinguíveis (homeomorfos), $X\\cong Y$, e $f$ estabelece bijeção entre as topologias."
+        },
+        {
+          "term": "Aplicação aberta / fechada",
+          "statement": "$f$ é aberta se leva abertos em abertos; fechada se leva fechados em fechados. Uma bijeção contínua é homeomorfismo se, e só se, é aberta (equivalentemente, fechada)."
+        },
+        {
+          "term": "Invariante topológico",
+          "statement": "Propriedade preservada por homeomorfismo (compacidade, conexidade, Hausdorff, separabilidade, cardinalidade, número de componentes). Serve para PROVAR que dois espaços NÃO são homeomorfos."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Critérios equivalentes de continuidade",
+          "statement": "Para $f:X\\to Y$ são equivalentes: (1) $f^{-1}(V)$ é aberto $\\forall V$ aberto; (2) $f^{-1}(F)$ é fechado $\\forall F$ fechado; (3) $f(\\overline{A})\\subseteq\\overline{f(A)}\\ \\forall A\\subseteq X$; (4) $f$ é contínua em cada ponto; (5) $f^{-1}(S)$ é aberto para todo $S$ numa sub-base de $Y$.",
+          "whyItMatters": "O critério (5) reduz drasticamente o trabalho: para verificar continuidade basta testar nos elementos de uma sub-base — é o que torna prática a topologia produto. O critério (3) liga continuidade ao fecho."
+        },
+        {
+          "name": "Lema da colagem (pasting lemma)",
+          "statement": "Sejam $X=A\\cup B$ com $A,B$ ambos fechados (ou ambos abertos), e $f:A\\to Y$, $g:B\\to Y$ contínuas com $f=g$ em $A\\cap B$. Então a função $h:X\\to Y$ que coincide com $f$ em $A$ e $g$ em $B$ é contínua.",
+          "whyItMatters": "É a ferramenta para construir funções contínuas por partes (e.g. caminhos, homotopias). Sem a hipótese \\\"ambos fechados/abertos\\\" a colagem falha."
+        },
+        {
+          "name": "Invariância topológica",
+          "statement": "Se $f:X\\to Y$ é homeomorfismo, então $X$ é compacto/conexo/Hausdorff/separável/$T_i$ se, e somente se, $Y$ o é. Logo, se $X$ tem uma dessas propriedades e $Y$ não, então $X\\not\\cong Y$.",
+          "whyItMatters": "É o método-padrão para distinguir espaços: $[0,1]\\not\\cong(0,1)$ (compacto vs não), $\\mathbb{R}\\not\\cong\\mathbb{R}^2$ (retirar um ponto desconecta um e não o outro), $\\mathbb{R}\\not\\cong S^1$ (idem)."
+        }
+      ],
+      "summary": "O coração da topologia é a definição de continuidade: $f:X\\to Y$ é contínua quando a pré-imagem de todo aberto é aberta. Essa formulação, abstraída do $\\varepsilon$-$\\delta$ da análise, funciona em qualquer espaço topológico e tem várias caras equivalentes — via fechados, via fecho ($f(\\overline{A})\\subseteq\\overline{f(A)}$) e via vizinhanças ponto a ponto. O critério mais poderoso na prática é testar apenas em uma sub-base do contradomínio, o que reduz verificações infinitas a finitas. \\n\\nDuas operações preservam continuidade: composição e restrição; e o lema da colagem permite montar funções contínuas a partir de pedaços compatíveis sobre fechados (ou abertos). A noção de igualdade da topologia é o homeomorfismo: bijeção contínua com inversa contínua. Atenção — bijeção contínua NÃO basta (a inversa pode falhar): $[0,2\\pi)\\to S^1$, $t\\mapsto(\\cos t,\\sin t)$, é bijeção contínua mas não homeomorfismo. Propriedades preservadas por homeomorfismo (compacidade, conexidade, Hausdorff) são invariantes topológicos, a arma para mostrar que dois espaços NÃO são homeomorfos.",
+      "commonPitfalls": [
+        "Acreditar que $f$ contínua leva aberto em aberto. Continuidade é sobre PRÉ-imagens; $f(x)=x^2$ leva o aberto $(-1,1)$ em $[0,1)$, que não é aberto.",
+        "Pensar que toda bijeção contínua é homeomorfismo. É preciso a inversa ser contínua; ver $t\\mapsto(\\cos t,\\sin t)$ de $[0,2\\pi)$ em $S^1$.",
+        "Aplicar o lema da colagem com $A,B$ um aberto e outro fechado, ou com infinitos pedaços fechados. A hipótese (ambos fechados ou ambos abertos, em número finito) é essencial.",
+        "Confundir invariante topológico com invariante métrico: diâmetro e completude NÃO são topológicos (ex.: $(0,1)\\cong\\mathbb{R}$ mas um é limitado e o outro não)."
+      ],
+      "worked": "**Exemplo.** Mostre que $f:\\mathbb{R}\\to\\mathbb{R}$, $f(x)=x^3$, é homeomorfismo, mas que $g:[0,2\\pi)\\to S^1$, $g(t)=(\\cos t,\\sin t)$, é bijeção contínua sem ser homeomorfismo.\n\n*Para $f$:* é bijeção (estritamente crescente, sobrejetora) contínua; a inversa $f^{-1}(y)=y^{1/3}$ também é contínua. Logo $f$ é homeomorfismo e $\\mathbb{R}\\cong\\mathbb{R}$. \n\n*Para $g$:* é bijeção contínua. Mas $S^1$ é compacto e conexo; se $g$ fosse homeomorfismo, $[0,2\\pi)$ seria compacto — falso, pois $[0,2\\pi)$ não é fechado em $\\mathbb{R}$ nem compacto. Logo $g$ não é homeomorfismo. \nDiretamente: $A=[0,\\pi)$ é aberto em $[0,2\\pi)$, mas $g(A)$ não é aberto em $S^1$ (o ponto $(1,0)$ não tem vizinhança em $S^1$ dentro de $g(A)$), logo $g$ não é aplicação aberta.",
+      "exercises": [
+        {
+          "prompt": "Prove que $f:X\\to Y$ é contínua se, e somente se, $f^{-1}(S)$ é aberto para todo $S$ de uma sub-base de $Y$.",
+          "hint": "Pré-imagem comuta com união e interseção: $f^{-1}(\\bigcup V_i)=\\bigcup f^{-1}(V_i)$ e $f^{-1}(\\bigcap V_i)=\\bigcap f^{-1}(V_i)$.",
+          "difficulty": 3,
+          "solution": "Seja $\\mathcal{S}$ uma sub-base de $Y$; queremos: $f:X\\to Y$ continua $\\iff f^{-1}(S)$ aberto para todo $S\\in\\mathcal{S}$.\n\n**($\\Rightarrow$).** Se $f$ e continua, cada $S\\in\\mathcal{S}$ e aberto em $Y$, logo $f^{-1}(S)$ e aberto por definicao.\n\n**($\\Leftarrow$).** Suponha $f^{-1}(S)$ aberto para todo $S\\in\\mathcal{S}$. A base $\\mathcal{B}$ gerada por $\\mathcal{S}$ consiste nas intersecoes finitas $S_1\\cap\\cdots\\cap S_n$. Como a pre-imagem comuta com intersecoes,\n\n$$f^{-1}(S_1\\cap\\cdots\\cap S_n)=f^{-1}(S_1)\\cap\\cdots\\cap f^{-1}(S_n)$$\n\ne intersecao finita de abertos, logo aberta; assim $f^{-1}(B)$ e aberto para todo basico $B$. Um aberto qualquer $V\\subseteq Y$ e uniao de basicos, $V=\\bigcup_\\alpha B_\\alpha$, e como a pre-imagem comuta com unioes, $f^{-1}(V)=\\bigcup_\\alpha f^{-1}(B_\\alpha)$ e aberto. Portanto $f$ e continua.",
+          "steps": [
+            "A direta e imediata: elementos da sub-base sao abertos, logo suas pre-imagens sao abertas.",
+            "Use que $f^{-1}$ comuta com intersecao: $f^{-1}(\\bigcap S_i)=\\bigcap f^{-1}(S_i)$.",
+            "Deduza que pre-imagem de todo basico (intersecao finita de sub-basicos) e aberta.",
+            "Use que $f^{-1}$ comuta com uniao para tratar um aberto geral $V=\\bigcup B_\\alpha$.",
+            "Conclua que $f^{-1}(V)$ e aberto para todo aberto $V$: $f$ e continua."
+          ]
+        },
+        {
+          "prompt": "Demonstre o lema da colagem para dois fechados e dê um contraexemplo quando um conjunto é aberto e o outro fechado.",
+          "hint": "Use que $h^{-1}(F)=(f^{-1}(F))\\cup(g^{-1}(F))$ é união de dois fechados em $X$. Contraexemplo: $f\\equiv0$ em $(-\\infty,0)$ e $g\\equiv1$ em $[0,\\infty)$.",
+          "difficulty": 3,
+          "solution": "**Lema da colagem (dois fechados).** Seja $X=A\\cup B$ com $A,B$ fechados, $f:A\\to Y$ e $g:B\\to Y$ continuas com $f=g$ em $A\\cap B$. Defina $h:X\\to Y$ por $h|_A=f$, $h|_B=g$ (bem definida pela coincidencia em $A\\cap B$).\n\nMostramos que $h^{-1}(F)$ e fechado em $X$ para todo fechado $F\\subseteq Y$. Note que $h^{-1}(F)=f^{-1}(F)\\cup g^{-1}(F)$. Como $f$ e continua, $f^{-1}(F)$ e fechado em $A$; sendo $A$ fechado em $X$, $f^{-1}(F)$ e fechado em $X$; idem $g^{-1}(F)$. Uniao de dois fechados e fechada, logo $h^{-1}(F)$ e fechado. Assim $h$ e continua.\n\n**Contraexemplo (um aberto, um fechado).** Em $X=\\mathbb{R}$, tome $A=(-\\infty,0)$ (aberto) e $B=[0,\\infty)$ (fechado), $f\\equiv0$ em $A$, $g\\equiv1$ em $B$. Aqui $A\\cap B=\\varnothing$, e $h$ e a funcao degrau ($0$ para $x<0$, $1$ para $x\\ge0$). Ela NAO e continua em $0$: $h^{-1}((1/2,3/2))=[0,\\infty)$ nao e aberto em $\\mathbb{R}$. Logo a hipotese 'ambos fechados (ou ambos abertos)' e essencial.",
+          "steps": [
+            "Defina $h$ colando $f$ e $g$; verifique boa definicao usando $f=g$ em $A\\cap B$.",
+            "Estrategia: provar que pre-imagem de fechado e fechada.",
+            "Escreva $h^{-1}(F)=f^{-1}(F)\\cup g^{-1}(F)$.",
+            "Argumente que cada parcela e fechada em $X$; uniao de dois fechados e fechada.",
+            "Para o contraexemplo, use a funcao degrau com $A$ aberto e $B$ fechado e mostre a descontinuidade em $0$."
+          ]
+        },
+        {
+          "prompt": "Mostre que $[0,1]$ e $(0,1)$ não são homeomorfos, e que $\\mathbb{R}$ e $\\mathbb{R}^2$ não são homeomorfos.",
+          "hint": "Para o primeiro, compacidade. Para o segundo, retire um ponto: $\\mathbb{R}\\setminus\\{0\\}$ é desconexo, $\\mathbb{R}^2\\setminus\\{p\\}$ é conexo.",
+          "difficulty": 4,
+          "solution": "**$[0,1]\\not\\cong(0,1)$.** $[0,1]$ e compacto (fechado e limitado, Heine-Borel). $(0,1)$ nao e compacto: a cobertura aberta $\\{(1/n,1-1/n)\\}_{n\\ge3}$ nao admite subcobertura finita. Como compacidade e invariante topologico (imagem continua de compacto e compacta), espacos homeomorfos sao ambos compactos ou ambos nao. Logo $[0,1]\\not\\cong(0,1)$.\n\n**$\\mathbb{R}\\not\\cong\\mathbb{R}^2$.** Suponha um homeomorfismo $\\varphi:\\mathbb{R}\\to\\mathbb{R}^2$ e ponha $p=\\varphi(0)$. A restricao $\\varphi:\\mathbb{R}\\setminus\\{0\\}\\to\\mathbb{R}^2\\setminus\\{p\\}$ ainda seria homeomorfismo. Mas $\\mathbb{R}\\setminus\\{0\\}=(-\\infty,0)\\cup(0,\\infty)$ e desconexo, enquanto $\\mathbb{R}^2\\setminus\\{p\\}$ e conexo (dois pontos ligam-se por poligonal que desvia de $p$). Como conexidade e invariante topologico, contradicao. Logo $\\mathbb{R}\\not\\cong\\mathbb{R}^2$.",
+          "steps": [
+            "Para o primeiro, use compacidade como invariante.",
+            "Mostre que $[0,1]$ e compacto e $(0,1)$ nao (exiba cobertura sem subcobertura finita).",
+            "Para o segundo, suponha homeomorfismo e remova um ponto e sua imagem.",
+            "Compare conexidade: $\\mathbb{R}\\setminus\\{0\\}$ e desconexo, $\\mathbb{R}^2\\setminus\\{p\\}$ e conexo.",
+            "Como conexidade e invariante, chegue a contradicao."
+          ]
+        },
+        {
+          "prompt": "Seja $f:X\\to Y$ contínua e bijetora com $X$ compacto e $Y$ Hausdorff. Prove que $f$ é homeomorfismo.",
+          "hint": "Basta mostrar que $f$ é fechada: fechado em compacto é compacto, imagem contínua de compacto é compacta, compacto em Hausdorff é fechado.",
+          "difficulty": 4,
+          "solution": "Seja $f:X\\to Y$ continua e bijetora, $X$ compacto, $Y$ Hausdorff. Basta provar que $f$ e **fechada**: dai $f^{-1}$ e continua (pois $(f^{-1})^{-1}(C)=f(C)$ e fechado para todo fechado $C$), logo $f$ e homeomorfismo.\n\nSeja $C\\subseteq X$ fechado. **(1)** Fechado de compacto e compacto: $C$ e compacto. **(2)** Imagem continua de compacto e compacta: $f(C)$ e compacto em $Y$. **(3)** Compacto dentro de Hausdorff e fechado: como $Y$ e Hausdorff, $f(C)$ e fechado em $Y$.\n\nPortanto $f$ leva fechados em fechados: e aplicacao fechada. Sendo bijecao continua e fechada, $f$ e homeomorfismo. $\\quad\\blacksquare$",
+          "steps": [
+            "Reduza: para bijecao continua, ser homeomorfismo equivale a ser aplicacao fechada.",
+            "Tome $C\\subseteq X$ fechado; use que fechado em compacto e compacto.",
+            "Aplique 'imagem continua de compacto e compacta' para obter $f(C)$ compacto.",
+            "Use 'compacto em Hausdorff e fechado' para concluir $f(C)$ fechado.",
+            "Logo $f$ e fechada, portanto homeomorfismo."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição topológica de função contínua.",
+          "back": "$f:X\\to Y$ contínua $\\iff f^{-1}(V)$ é aberto para todo aberto $V\\subseteq Y$."
+        },
+        {
+          "front": "Continuidade via fecho.",
+          "back": "$f$ contínua $\\iff f(\\overline{A})\\subseteq\\overline{f(A)}$ para todo $A\\subseteq X$."
+        },
+        {
+          "front": "Basta testar continuidade em quê do contradomínio?",
+          "back": "Numa sub-base (ou base): $f^{-1}(S)$ aberto para todo $S$ na sub-base já garante continuidade."
+        },
+        {
+          "front": "Definição de homeomorfismo.",
+          "back": "Bijeção contínua com inversa contínua. Equivale a bijeção contínua e aberta (ou fechada)."
+        },
+        {
+          "front": "Bijeção contínua é sempre homeomorfismo?",
+          "back": "Não. Ex.: $[0,2\\pi)\\to S^1$, $t\\mapsto(\\cos t,\\sin t)$ é bijeção contínua, mas a inversa não é contínua."
+        },
+        {
+          "front": "O que diz o lema da colagem (pasting lemma)?",
+          "back": "Se $X=A\\cup B$ com $A,B$ ambos fechados (ou ambos abertos) e $f,g$ contínuas coincidem em $A\\cap B$, a função colada é contínua."
+        },
+        {
+          "front": "Dê 3 invariantes topológicos.",
+          "back": "Compacidade, conexidade, Hausdorff (também: separabilidade, número de componentes, cardinalidade)."
+        },
+        {
+          "front": "Critério: bijeção contínua de compacto em Hausdorff.",
+          "back": "É automaticamente homeomorfismo (a inversa é contínua, pois $f$ é fechada)."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Munkres, Topology — caps. 18, 20 (em parte)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Espaços Métricos — cap. 2 (continuidade)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Releia a definicao topologica de continuidade (pre-imagem de aberto e aberto) no Munkres (cap. 18) e compare com a definicao epsilon-delta da Analise.",
+          "Prove as caracterizacoes equivalentes (via fechados, via fecho $f(\\overline A)\\subseteq\\overline{f(A)}$, ponto a ponto) e o criterio de reducao a uma sub-base.",
+          "Estude o lema da colagem (pasting lemma) e teste onde a hipotese 'ambos fechados ou ambos abertos' e usada.",
+          "Domine homeomorfismo e a lista de invariantes topologicos; colecione contraexemplos de bijecao continua que nao e homeomorfismo (ex.: $[0,2\\pi)\\to S^1$).",
+          "Assista a um video conceitual sobre homeomorfismo ('caneca = rosquinha') para fixar a ideia de equivalencia topologica.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (criterio da sub-base, pasting lemma, e uso de invariantes para distinguir espacos)."
+        ],
+        "searchQueries": [
+          "continuidade topologica pre-imagem de aberto demonstracao equivalencias",
+          "pasting lemma lema da colagem demonstracao contraexemplo",
+          "homeomorfismo definicao invariantes topologicos exemplos",
+          "bijecao continua que nao e homeomorfismo circulo",
+          "continuous bijection compact Hausdorff is homeomorphism proof",
+          "topological invariant prove not homeomorphic remove a point"
+        ],
+        "videos": [
+          {
+            "title": "Introduction to Topology — Continuous Functions",
+            "channel": "MIT OpenCourseWare (18.901)",
+            "note": "Aulas sobre continuidade topologica, pasting lemma e homeomorfismos."
+          },
+          {
+            "title": "Homeomorphisms and topological equivalence",
+            "channel": "Dr. Peyam",
+            "note": "Intuicao de homeomorfismo e exemplos de espacos homeomorfos e nao homeomorfos."
+          },
+          {
+            "title": "Topology — Continuity & Homeomorphisms",
+            "channel": "Bill Kinney (Math at Andrews)",
+            "note": "Demonstracoes das caracterizacoes de continuidade e criterios de homeomorfismo."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Topology, 2nd ed. — caps. 18 (Continuous Functions) e 20",
+            "where": "James R. Munkres"
+          },
+          {
+            "title": "Espacos Metricos — cap. 2 (funcoes continuas)",
+            "where": "Elon Lages Lima"
+          },
+          {
+            "title": "nLab — verbetes 'continuous function', 'homeomorphism'",
+            "where": "ncatlab.org"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-04-produto-subespaco-quociente",
+      "title": "Topologia produto, subespaço e quociente",
+      "tagline": "As três construções universais: restringir, multiplicar e colar espaços topológicos.",
+      "objectives": [
+        "Definir a topologia de subespaço (relativa) e reconhecer abertos/fechados relativos.",
+        "Definir a topologia produto via sub-base de projeções e distingui-la da topologia de caixas (box topology).",
+        "Provar a propriedade universal do produto e usá-la para verificar continuidade de aplicações para um produto.",
+        "Definir a topologia quociente e aplicações quocientes; construir colagens (cilindro, toro, faixa de Möbius).",
+        "Reconhecer quando uma aplicação sobrejetora contínua é quociente (aberta, fechada ou compacto-Hausdorff)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Topologia de subespaço",
+          "statement": "Se $A\\subseteq X$, a topologia relativa é $\\tau_A=\\{U\\cap A:U\\in\\tau\\}$. Os abertos de $A$ são traços de abertos de $X$; idem para fechados. Atenção: aberto em $A$ não é necessariamente aberto em $X$."
+        },
+        {
+          "term": "Topologia produto",
+          "statement": "Em $\\prod_{i\\in I}X_i$, é a topologia gerada pela sub-base $\\{\\pi_j^{-1}(U):j\\in I,\\ U\\text{ aberto em }X_j\\}$. Abertos básicos são $\\prod_i U_i$ com $U_i$ aberto e $U_i=X_i$ para todos menos finitos $i$. As projeções $\\pi_j$ são contínuas, abertas e sobrejetoras."
+        },
+        {
+          "term": "Box topology",
+          "statement": "Em $\\prod_i X_i$, gerada pela base $\\{\\prod_i U_i:U_i\\text{ aberto}\\}$ SEM a restrição \\\"quase todos $=X_i$\\\". É mais fina que a produto; coincide com ela em produtos finitos, mas difere em infinitos (e quebra a continuidade de aplicações diagonais)."
+        },
+        {
+          "term": "Topologia quociente",
+          "statement": "Dada $q:X\\to Y$ sobrejetora, a topologia quociente em $Y$ é $\\{V\\subseteq Y:q^{-1}(V)\\text{ é aberto em }X\\}$ — a mais fina que torna $q$ contínua. Para uma relação de equivalência $\\sim$, toma-se $Y=X/\\!\\sim$ com a projeção canônica."
+        },
+        {
+          "term": "Aplicação quociente",
+          "statement": "$q:X\\to Y$ sobrejetora contínua é quociente se $V$ aberto $\\iff q^{-1}(V)$ aberto. Toda sobrejeção contínua aberta ou fechada é quociente; uma sobrejeção contínua de compacto em Hausdorff é quociente (fechada)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Propriedade universal do produto",
+          "statement": "Uma aplicação $f:Z\\to\\prod_{i\\in I}X_i$ é contínua se, e somente se, cada componente $\\pi_i\\circ f:Z\\to X_i$ é contínua. A topologia produto é a ÚNICA com essa propriedade.",
+          "whyItMatters": "É o que justifica a definição \\\"econômica\\\" do produto (e não a box): garante que multiplicar espaços se comporte funtorialmente e que continuidade se verifique coordenada a coordenada. Base da prova de Tychonoff."
+        },
+        {
+          "name": "Propriedade universal do quociente",
+          "statement": "Seja $q:X\\to Y$ quociente. Uma aplicação $g:Y\\to Z$ é contínua se, e somente se, $g\\circ q:X\\to Z$ é contínua. Em particular, $f:X\\to Z$ contínua que é constante nas fibras de $q$ induz uma única $\\bar f:Y\\to Z$ contínua com $\\bar f\\circ q=f$.",
+          "whyItMatters": "É a ferramenta para definir funções contínuas sobre espaços colados (toro, garrafa de Klein): basta defini-las no espaço de cima respeitando a relação de equivalência."
+        },
+        {
+          "name": "Subespaço de Hausdorff/métrico",
+          "statement": "Todo subespaço de um espaço Hausdorff é Hausdorff, e todo subespaço de um espaço metrizável é metrizável (com a métrica restrita). A propriedade de subespaço é hereditária para $T_0,T_1,T_2,T_3$ e metrizabilidade.",
+          "whyItMatters": "Permite herdar boas propriedades automaticamente; em contraste, normalidade ($T_4$) e compacidade NÃO são hereditárias para subespaços arbitrários — um ponto fino cobrado em mestrado."
+        }
+      ],
+      "summary": "Três construções universais geram quase todos os espaços novos. A topologia de subespaço dota $A\\subseteq X$ dos traços $U\\cap A$ dos abertos de $X$; é a maneira canônica de ver, por exemplo, $S^1\\subseteq\\mathbb{R}^2$. A topologia produto em $\\prod X_i$ é gerada pelas pré-imagens das projeções e tem abertos básicos que restringem apenas FINITAS coordenadas — sutileza que a distingue da box topology e que é exatamente a condição para valer a propriedade universal (continuidade coordenada a coordenada) e o teorema de Tychonoff. \\n\\nA topologia quociente inverte a lógica: dada uma sobrejeção $q:X\\to Y$, declara aberto em $Y$ tudo cuja pré-imagem é aberta em $X$ — a topologia mais fina que torna $q$ contínua. Com ela colamos espaços: identificando bordas de um quadrado obtemos cilindro, toro, faixa de Möbius e garrafa de Klein. A propriedade universal do quociente é a chave operacional: funções contínuas no espaço colado correspondem a funções no espaço original constantes nas fibras. Nem toda boa propriedade sobrevive: subespaço preserva Hausdorff e metrizabilidade, mas quociente pode destruir Hausdorff.",
+      "commonPitfalls": [
+        "Achar que aberto no subespaço $A$ é aberto em $X$. Só vale se $A$ for aberto em $X$. Ex.: $[0,1/2)$ é aberto em $[0,1]$ mas não em $\\mathbb{R}$.",
+        "Confundir topologia produto com box topology em produtos infinitos. Na produto, abertos básicos restringem só finitas coordenadas; a box é estritamente mais fina e quebra a propriedade universal.",
+        "Supor que o quociente de um espaço Hausdorff é Hausdorff. Falso: colar $\\mathbb{R}$ identificando $x\\sim x$ exceto fundindo dois pontos pode gerar espaço não-Hausdorff (reta com origem dupla).",
+        "Pensar que toda sobrejeção contínua é quociente. É preciso a condição \\\"$V$ aberto $\\iff q^{-1}(V)$ aberto\\\"; sobrejeções contínuas que não são abertas nem fechadas podem falhar."
+      ],
+      "worked": "**Exemplo: o toro como quociente.** Seja $X=[0,1]\\times[0,1]$ e $\\sim$ a relação que identifica $(0,y)\\sim(1,y)$ e $(x,0)\\sim(x,1)$. Mostre que $X/\\!\\sim\\ \\cong T^2=S^1\\times S^1$.\n\nDefina $f:X\\to S^1\\times S^1$ por $f(x,y)=\\big((\\cos2\\pi x,\\sin2\\pi x),(\\cos2\\pi y,\\sin2\\pi y)\\big)$. \n$f$ é contínua e sobrejetora; suas fibras são exatamente as classes de $\\sim$ (pois $f(x,y)=f(x',y')\\iff x-x'\\in\\mathbb{Z}$ e $y-y'\\in\\mathbb{Z}$, que em $[0,1]^2$ é a identificação dada). \nComo $X=[0,1]^2$ é compacto e $S^1\\times S^1$ é Hausdorff, $f$ é aplicação quociente (sobrejeção contínua de compacto em Hausdorff é fechada). \nPela propriedade universal, $f$ induz $\\bar f:X/\\!\\sim\\,\\to S^1\\times S^1$ contínua e bijetora; sendo de compacto em Hausdorff, $\\bar f$ é homeomorfismo. Logo $X/\\!\\sim\\,\\cong T^2$.",
+      "exercises": [
+        {
+          "prompt": "Prove que se $A\\subseteq X$ é aberto, então todo aberto do subespaço $A$ é aberto em $X$; mostre por contraexemplo que isso falha se $A$ não for aberto.",
+          "hint": "Aberto de $A$ é $U\\cap A$ com $U$ aberto em $X$; se $A$ é aberto, $U\\cap A$ é aberto em $X$. Contraexemplo: $A=[0,1]$.",
+          "difficulty": 2,
+          "solution": "**Se $A$ e aberto em $X$, todo aberto de $A$ e aberto em $X$.** Um aberto do subespaco $A$ tem a forma $W=U\\cap A$ com $U$ aberto em $X$. Como $A$ e aberto em $X$ e a intersecao de dois abertos e aberta, $W=U\\cap A$ e aberto em $X$.\n\n**Contraexemplo quando $A$ nao e aberto.** Tome $X=\\mathbb{R}$ e $A=[0,1]$ (nao aberto em $\\mathbb{R}$). O conjunto $[0,1/2)$ e aberto no subespaco $A$, pois $[0,1/2)=(-1/2,1/2)\\cap[0,1]$ com $(-1/2,1/2)$ aberto em $\\mathbb{R}$. Contudo $[0,1/2)$ NAO e aberto em $\\mathbb{R}$: o ponto $0$ nao possui intervalo $(-\\varepsilon,\\varepsilon)\\subseteq[0,1/2)$. Logo a conclusao falha sem a hipotese '$A$ aberto'.",
+          "steps": [
+            "Escreva um aberto relativo de $A$ como $U\\cap A$ com $U$ aberto em $X$.",
+            "Se $A$ e aberto em $X$, use que intersecao de abertos e aberta: $U\\cap A$ e aberto em $X$.",
+            "Para o contraexemplo, tome $A=[0,1]$, que nao e aberto em $\\mathbb{R}$.",
+            "Mostre que $[0,1/2)=(-1/2,1/2)\\cap[0,1]$ e aberto em $A$.",
+            "Verifique que $[0,1/2)$ nao e aberto em $\\mathbb{R}$ (ponto $0$ sem vizinhanca contida nele)."
+          ]
+        },
+        {
+          "prompt": "Demonstre a propriedade universal do produto: $f:Z\\to\\prod X_i$ é contínua sse cada $\\pi_i\\circ f$ é contínua.",
+          "hint": "Use que $\\{\\pi_i^{-1}(U)\\}$ é sub-base do produto e que basta testar continuidade na sub-base.",
+          "difficulty": 3,
+          "solution": "Seja $\\prod_{i\\in I}X_i$ com a topologia produto e projecoes $\\pi_i$. Queremos: $f:Z\\to\\prod_i X_i$ continua $\\iff$ cada $\\pi_i\\circ f:Z\\to X_i$ continua.\n\n**($\\Rightarrow$).** As projecoes $\\pi_i$ sao continuas (pois $\\pi_i^{-1}(U)$ e sub-basico). Composta de continuas e continua, logo $\\pi_i\\circ f$ e continua.\n\n**($\\Leftarrow$).** Suponha cada $\\pi_i\\circ f$ continua. A topologia produto tem sub-base $\\mathcal{S}=\\{\\pi_i^{-1}(U):i\\in I,\\ U\\text{ aberto em }X_i\\}$; basta testar continuidade nela. Ora,\n\n$$f^{-1}\\big(\\pi_i^{-1}(U)\\big)=(\\pi_i\\circ f)^{-1}(U),$$\n\naberto em $Z$ por continuidade de $\\pi_i\\circ f$. Como vale para todo sub-basico, $f$ e continua.\n\nA unicidade: se duas topologias no produto satisfazem essa propriedade, aplicando-a a $f=\\mathrm{id}$ em ambos os sentidos conclui-se que coincidem.",
+          "steps": [
+            "Lembre que $\\{\\pi_i^{-1}(U)\\}$ e sub-base do produto e que basta testar continuidade na sub-base.",
+            "Direta: projecoes sao continuas, entao $\\pi_i\\circ f$ e composta de continuas.",
+            "Volta: calcule $f^{-1}(\\pi_i^{-1}(U))=(\\pi_i\\circ f)^{-1}(U)$.",
+            "Note que esse conjunto e aberto por hipotese, para todo sub-basico.",
+            "Conclua continuidade de $f$ e comente a unicidade da topologia produto."
+          ]
+        },
+        {
+          "prompt": "Em $\\mathbb{R}^\\omega=\\prod_{n\\ge1}\\mathbb{R}$, mostre que a aplicação diagonal $\\Delta(t)=(t,t,t,\\dots)$ é contínua na topologia produto mas NÃO na box topology.",
+          "hint": "Na box, tome o aberto $\\prod_n(-1/n,1/n)$ e mostre que $\\Delta^{-1}$ dele não é aberto (não contém intervalo em torno de $0$).",
+          "difficulty": 4,
+          "solution": "Seja $\\Delta:\\mathbb{R}\\to\\mathbb{R}^\\omega$, $\\Delta(t)=(t,t,t,\\dots)$.\n\n**Continua na topologia produto.** Cada componente e $\\pi_n\\circ\\Delta(t)=t$, a identidade de $\\mathbb{R}$, continua. Pela propriedade universal do produto, $\\Delta$ e continua.\n\n**Nao continua na box topology.** Considere o aberto da box $U=\\prod_{n\\ge1}(-1/n,1/n)$. Temos $\\Delta(0)=(0,0,\\dots)\\in U$. Se $\\Delta$ fosse continua em $0$, $\\Delta^{-1}(U)$ seria vizinhanca de $0$, contendo algum $(-\\delta,\\delta)$ com $\\delta>0$. Mas $\\Delta(t)\\in U$ exige $|t|<1/n$ para TODO $n$, o que forca $t=0$. Logo $\\Delta^{-1}(U)=\\{0\\}$, que nao contem intervalo algum: nao e aberto. Portanto $\\Delta$ nao e continua na box topology.\n\nIsso ilustra por que a box e 'fina demais': quebra a continuidade da diagonal.",
+          "steps": [
+            "Escreva as componentes $\\pi_n\\circ\\Delta(t)=t$.",
+            "Na produto, cada componente e a identidade (continua), logo $\\Delta$ e continua pela propriedade universal.",
+            "Na box, escolha o aberto $U=\\prod_n(-1/n,1/n)$, que contem $\\Delta(0)$.",
+            "Mostre que $\\Delta(t)\\in U$ exige $|t|<1/n$ para todo $n$, logo $t=0$.",
+            "Conclua $\\Delta^{-1}(U)=\\{0\\}$, nao aberto: $\\Delta$ nao e continua na box."
+          ]
+        },
+        {
+          "prompt": "Seja $X=\\mathbb{R}$ e $\\sim$ identifique todos os inteiros num único ponto. O quociente $\\mathbb{R}/\\mathbb{Z}$ (com essa identificação) é Hausdorff? E homeomorfo a um buquê de circunferências?",
+          "hint": "Verifique se o ponto-classe $[\\mathbb{Z}]$ e um ponto próximo podem ser separados; pense na vizinhança de $[\\mathbb{Z}]$ como união de intervalos em torno de cada inteiro.",
+          "difficulty": 4,
+          "solution": "Seja $Y=\\mathbb{R}/\\mathbb{Z}$ o quociente que identifica TODOS os inteiros num unico ponto $p=[\\mathbb{Z}]$, com projecao $q:\\mathbb{R}\\to Y$ e topologia quociente ($V$ aberto sse $q^{-1}(V)$ aberto).\n\n**Vizinhancas de $p$.** Um aberto $V\\ni p$ tem $q^{-1}(V)$ aberto contendo $\\mathbb{Z}$; logo contem um intervalo $(n-\\varepsilon_n,n+\\varepsilon_n)$ em torno de CADA inteiro $n$ simultaneamente. Nao existe vizinhanca de $p$ que 'controle' um so laco: toda vizinhanca mexe em todos os inteiros de uma vez.\n\n**Hausdorff, mas nao primeiro-enumeravel em $p$.** Pontos sao fechados e o espaco e $T_2$ (dois pontos distintos, ao menos um nao sendo $p$, separam-se por intervalos). Porem $p$ NAO possui base enumeravel de vizinhancas: dada qualquer sequencia $V_1,V_2,\\dots$ de vizinhancas de $p$, escolhendo em cada inteiro $n$ um raio $\\varepsilon_n$ menor que o da $n$-esima vizinhanca constroi-se uma vizinhanca $W$ de $p$ que nao contem nenhum $V_k$ (argumento diagonal). Assim $Y$ nao e primeiro-enumeravel em $p$, logo **nao e metrizavel**.\n\n**Buque (wedge) de circunferencias?** A intuicao 'cada $[n,n+1]$ vira um laco preso a $p$' sugere o buque enumeravel $\\bigvee_{n} S^1$. Porem, com a topologia CW do buque, existe vizinhanca de $p$ que encolhe cada laco INDEPENDENTEMENTE, ao passo que em $\\mathbb{R}/\\mathbb{Z}$ toda vizinhanca de $p$ contem quase todo laco 'por inteiro' proximo de $p$. As topologias em $p$ diferem, entao $\\mathbb{R}/\\mathbb{Z}$ NAO e homeomorfo ao buque CW $\\bigvee_n S^1$ — e o contraste classico com o brinco havaiano (Hawaiian earring). Este ponto fino (a topologia local em $p$) e exatamente o que se cobra.",
+          "steps": [
+            "Descreva a topologia: $V$ aberto sse $q^{-1}(V)$ aberto; toda vizinhanca de $p$ contem um intervalo em cada inteiro.",
+            "Analise vizinhancas de $p$: nenhuma controla um so laco isoladamente.",
+            "Mostre por argumento diagonal que $p$ nao tem base enumeravel: $Y$ nao e primeiro-enumeravel (embora Hausdorff), logo nao metrizavel.",
+            "Compare com o buque CW $\\bigvee_n S^1$: la cada laco encolhe independentemente numa vizinhanca de $p$.",
+            "Conclua que as topologias em $p$ diferem: $\\mathbb{R}/\\mathbb{Z}$ nao e homeomorfo ao buque CW (fenomeno do brinco havaiano)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Topologia de subespaço em $A\\subseteq X$.",
+          "back": "$\\tau_A=\\{U\\cap A: U\\in\\tau\\}$ — os abertos relativos são traços de abertos de $X$."
+        },
+        {
+          "front": "Abertos básicos da topologia produto $\\prod_i X_i$.",
+          "back": "$\\prod_i U_i$ com $U_i$ aberto e $U_i=X_i$ para TODOS menos finitos índices."
+        },
+        {
+          "front": "Produto vs box topology.",
+          "back": "Box: $\\prod U_i$ sem restrição de coordenadas. É mais fina; coincidem em produtos finitos, diferem em infinitos."
+        },
+        {
+          "front": "Propriedade universal do produto.",
+          "back": "$f:Z\\to\\prod X_i$ é contínua $\\iff$ cada $\\pi_i\\circ f$ é contínua."
+        },
+        {
+          "front": "Topologia quociente de $q:X\\to Y$ sobre.",
+          "back": "$V$ aberto em $Y \\iff q^{-1}(V)$ aberto em $X$. É a mais fina que torna $q$ contínua."
+        },
+        {
+          "front": "Propriedade universal do quociente.",
+          "back": "Para $q$ quociente: $g:Y\\to Z$ contínua $\\iff g\\circ q$ contínua."
+        },
+        {
+          "front": "Quando uma sobrejeção contínua é quociente?",
+          "back": "Se for aberta, ou fechada; em particular toda sobrejeção contínua de compacto em Hausdorff é quociente."
+        },
+        {
+          "front": "Hausdorff é hereditário? E preservado por quociente?",
+          "back": "Hereditário para subespaços: SIM. Preservado por quociente: NÃO (reta com origem dupla)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Munkres, Topology — caps. 16, 19, 22",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Elementos de Topologia Geral — caps. 3, 4",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a topologia de subespaco no Munkres (cap. 16): abertos relativos $U\\cap A$, e quando 'aberto em $A$' e 'aberto em $X$' coincidem.",
+          "Estude a topologia produto (cap. 19) via sub-base de projecoes e contraste com a box topology; entenda por que so a produto satisfaz a propriedade universal.",
+          "Prove a propriedade universal do produto (continuidade coordenada a coordenada) e use-a nos exemplos.",
+          "Estude a topologia quociente (cap. 22) e construa colagens classicas (cilindro, toro, faixa de Mobius, garrafa de Klein) identificando bordas de um quadrado.",
+          "Assista a videos sobre construcao do toro/garrafa de Klein como quociente para fixar a intuicao das identificacoes.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (propriedade universal do produto e do quociente, produto vs box, e quando quociente destroi Hausdorff)."
+        ],
+        "searchQueries": [
+          "topologia de subespaco abertos relativos exemplos",
+          "topologia produto vs box topology propriedade universal",
+          "topologia quociente aplicacao quociente construcao toro",
+          "reta com origem dupla quociente nao Hausdorff",
+          "product topology universal property continuity coordinatewise proof",
+          "quotient topology gluing torus Klein bottle Mobius"
+        ],
+        "videos": [
+          {
+            "title": "Introduction to Topology — Product & Quotient Spaces",
+            "channel": "MIT OpenCourseWare (18.901)",
+            "note": "Aulas sobre subespaco, produto, box topology e quociente."
+          },
+          {
+            "title": "The torus as a quotient space",
+            "channel": "Dr. Peyam",
+            "note": "Visualizacao da colagem do quadrado para formar o toro; util para a propriedade universal do quociente."
+          },
+          {
+            "title": "Topology — Subspace/Product/Quotient",
+            "channel": "Bill Kinney (Math at Andrews)",
+            "note": "Demonstracoes das propriedades universais e exemplos de identificacao."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Topology, 2nd ed. — caps. 16, 19, 22",
+            "where": "James R. Munkres"
+          },
+          {
+            "title": "Elementos de Topologia Geral — caps. 3 e 4",
+            "where": "Elon Lages Lima"
+          },
+          {
+            "title": "nLab — verbetes 'product topology', 'quotient topology', 'subspace topology'",
+            "where": "ncatlab.org"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-05-conexidade",
+      "title": "Conexidade e conexidade por caminhos",
+      "tagline": "Quando um espaço não se parte em dois: a topologia do \"pedaço único\" e o TVI generalizado.",
+      "objectives": [
+        "Definir espaço conexo (sem cisão por abertos / sem clopen próprio) e provar a conexidade dos intervalos de $\\mathbb{R}$.",
+        "Provar que imagem contínua de conexo é conexa e deduzir o Teorema do Valor Intermediário topológico.",
+        "Definir componentes conexas e mostrar que particionam o espaço em fechados.",
+        "Definir conexidade por caminhos e provar que ela implica conexidade.",
+        "Exibir o contraexemplo clássico (seno do topólogo) que é conexo mas não conexo por caminhos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Espaço conexo",
+          "statement": "$X$ é conexo se não existe cisão: não há abertos $U,V$ não vazios, disjuntos, com $U\\cup V=X$. Equivalentemente, os únicos subconjuntos clopen de $X$ são $\\varnothing$ e $X$."
+        },
+        {
+          "term": "Conjunto conexo",
+          "statement": "$A\\subseteq X$ é conexo se é conexo na topologia de subespaço. Se $A$ é conexo e $A\\subseteq B\\subseteq\\overline{A}$, então $B$ é conexo; em particular $\\overline{A}$ é conexo."
+        },
+        {
+          "term": "Componente conexa",
+          "statement": "A componente conexa de $x$ é a união de todos os conexos que contêm $x$ — o maior conexo contendo $x$. As componentes formam uma partição de $X$ em conjuntos fechados (nem sempre abertos)."
+        },
+        {
+          "term": "Conexidade por caminhos",
+          "statement": "$X$ é conexo por caminhos se para todos $x,y\\in X$ existe caminho contínuo $\\gamma:[0,1]\\to X$ com $\\gamma(0)=x$, $\\gamma(1)=y$. Implica conexidade, mas não é equivalente."
+        },
+        {
+          "term": "Localmente conexo / por caminhos",
+          "statement": "$X$ é localmente conexo (por caminhos) se todo ponto tem base de vizinhanças conexas (por caminhos). Em espaços localmente conexos por caminhos, conexo $\\Rightarrow$ conexo por caminhos."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Conexidade de intervalos e TVI",
+          "statement": "Um subconjunto de $\\mathbb{R}$ é conexo se, e somente se, é um intervalo (possivelmente degenerado ou infinito). Consequência (TVI topológico): se $f:X\\to\\mathbb{R}$ é contínua e $X$ é conexo, então $f(X)$ é um intervalo; em particular $f$ assume todo valor entre dois valores que assume.",
+          "whyItMatters": "Generaliza o Teorema do Valor Intermediário do Cálculo a qualquer domínio conexo e mostra a potência da conexidade: ela é o invariante por trás de \\\"a função não pula valores\\\"."
+        },
+        {
+          "name": "Preservação por continuidade e união",
+          "statement": "Se $f:X\\to Y$ é contínua e $X$ conexo, então $f(X)$ é conexo. Se $\\{A_i\\}$ são conexos com um ponto comum (ou interseção não vazia dois a dois encadeada), então $\\bigcup_i A_i$ é conexo.",
+          "whyItMatters": "São as duas regras de construção: conexidade é invariante topológico (logo distingue espaços) e se propaga por uniões com ponto comum, permitindo montar conexos grandes a partir de pequenos."
+        },
+        {
+          "name": "Caminhos implica conexo; recíproca falsa",
+          "statement": "Todo espaço conexo por caminhos é conexo. A recíproca é falsa: o seno do topólogo $S=\\{(x,\\sin(1/x)):0<x\\le1\\}\\cup(\\{0\\}\\times[-1,1])$ é conexo mas não conexo por caminhos.",
+          "whyItMatters": "Marca a fronteira precisa entre as duas noções — pergunta clássica de prova de mestrado — e mostra que o fecho de um conexo por caminhos pode perder a conexidade por caminhos."
+        }
+      ],
+      "summary": "Conexidade formaliza a ideia de \\\"um só pedaço\\\": $X$ é conexo quando não pode ser partido em dois abertos não vazios disjuntos, ou seja, quando seus únicos clopen são $\\varnothing$ e $X$. O resultado fundador é que os conexos de $\\mathbb{R}$ são exatamente os intervalos, do qual brota o Teorema do Valor Intermediário em sua forma topológica: imagem contínua de conexo é conexa, logo uma função real contínua num conexo não pula valores. Conexidade é, portanto, um invariante topológico — é o que distingue $\\mathbb{R}$ de $\\mathbb{R}^2$ (retire um ponto) e $[0,1]$ de um par de pontos. \\n\\nAs componentes conexas particionam o espaço em pedaços maximais, sempre fechados. Uma noção mais geométrica e forte é a conexidade por caminhos: poder ligar quaisquer dois pontos por um caminho contínuo. Ela implica conexidade, mas a recíproca falha — o exemplo canônico é o seno do topólogo, conexo (é fecho de um conexo) mas sem caminho ligando a haste vertical ao gráfico oscilante. As duas noções coincidem em espaços localmente conexos por caminhos, como variedades e abertos de $\\mathbb{R}^n$, o que explica por que no Cálculo nunca sentimos a diferença.",
+      "commonPitfalls": [
+        "Confundir conexo com conexo por caminhos. Caminhos $\\Rightarrow$ conexo, mas não o contrário (seno do topólogo).",
+        "Achar que componentes conexas são sempre abertas. São sempre fechadas, mas só abertas quando o espaço é localmente conexo (em $\\mathbb{Q}$ as componentes são pontos, fechados não abertos).",
+        "Pensar que $A,B$ conexos disjuntos têm união desconexa sempre. Se $\\overline{A}\\cap B\\neq\\varnothing$ (ou vice-versa) a união pode ser conexa.",
+        "Usar TVI exigindo domínio em $\\mathbb{R}$. O que importa é o domínio ser CONEXO; o contradomínio é que precisa ser $\\mathbb{R}$ (ou ordenado) para falar de \\\"valor intermediário\\\"."
+      ],
+      "worked": "**Exemplo: o seno do topólogo é conexo mas não conexo por caminhos.** Seja $G=\\{(x,\\sin(1/x)):0<x\\le1\\}$ e $S=G\\cup(\\{0\\}\\times[-1,1])$.\n\n*Conexo:* $G$ é imagem contínua do intervalo $(0,1]$, logo conexo. Além disso $S=\\overline{G}$ (todo ponto $(0,y)$ com $|y|\\le1$ é limite de pontos de $G$, pois $\\sin(1/x)$ oscila e atinge todo valor em $[-1,1]$). Como fecho de conexo é conexo, $S$ é conexo. \n\n*Não conexo por caminhos:* suponha $\\gamma:[0,1]\\to S$ contínuo com $\\gamma(0)\\in\\{0\\}\\times[-1,1]$ e $\\gamma(1)\\in G$. Seja $t_0=\\sup\\{t:\\gamma(t)\\in\\{0\\}\\times[-1,1]\\}$. Perto de $t_0$ a primeira coordenada de $\\gamma$ tende a $0$ por valores positivos, forçando a segunda coordenada $\\sin(1/x)$ a oscilar entre $-1$ e $1$ — contradiz a continuidade de $\\gamma$ em $t_0$. Logo não há tal caminho.",
+      "exercises": [
+        {
+          "prompt": "Prove que $[0,1]$ é conexo (sem usar que intervalos são conexos como fato dado).",
+          "hint": "Suponha cisão $[0,1]=U\\cup V$ com $0\\in U$. Considere $s=\\sup\\{x:[0,x]\\subseteq U\\}$ e derive contradição examinando se $s\\in U$ ou $s\\in V$.",
+          "difficulty": 3,
+          "solution": "Suponha, por absurdo, uma cisao $[0,1]=U\\cup V$ com $U,V$ abertos (em $[0,1]$) nao vazios, disjuntos, e digamos $0\\in U$. Como $U,V$ sao tambem fechados (cada um e complementar do outro), considere\n\n$$s=\\sup\\{x\\in[0,1]:[0,x]\\subseteq U\\}.$$\n\nO conjunto e nao vazio ($0$ pertence, $U$ aberto contendo $0$) e limitado por $1$, logo $s$ existe. Como $[0,s)\\subseteq U$ e $U$ e fechado, o limite $s\\in U$.\n\nSe $s<1$: sendo $U$ aberto e $s\\in U$, existe $\\delta>0$ com $[s,s+\\delta)\\subseteq U$ (em $[0,1]$). Entao $[0,s+\\delta/2]\\subseteq U$, contradizendo $s=\\sup$.\n\nLogo $s=1$ e $1\\in U$. Mas entao, $U$ aberto e $1\\in U$ da $(1-\\delta,1]\\subseteq U$; junto com $[0,1]\\subseteq U$ isso forca $V=\\varnothing$, contra $V\\ne\\varnothing$. Portanto nao ha cisao: $[0,1]$ e conexo. $\\quad\\blacksquare$",
+          "steps": [
+            "Suponha uma cisao $[0,1]=U\\cup V$ (abertos disjuntos nao vazios) com $0\\in U$; note que $U,V$ sao clopen.",
+            "Defina $s=\\sup\\{x:[0,x]\\subseteq U\\}$ e justifique que existe.",
+            "Use que $U$ e fechado para concluir $s\\in U$.",
+            "Use que $U$ e aberto para empurrar $s$ a direita se $s<1$, contradizendo o sup.",
+            "Conclua $s=1$ e $1\\in U$; deduza $V=\\varnothing$, contradicao. Logo $[0,1]$ e conexo."
+          ]
+        },
+        {
+          "prompt": "Mostre que se $A$ é conexo e $A\\subseteq B\\subseteq\\overline{A}$, então $B$ é conexo. Conclua que $\\overline{A}$ é conexo.",
+          "hint": "Uma cisão de $B$ por abertos relativos induziria, por restrição, uma cisão de $A$; use a densidade de $A$ em $B$.",
+          "difficulty": 3,
+          "solution": "Seja $A$ conexo e $A\\subseteq B\\subseteq\\overline A$ (fecho no ambiente $X$; trabalhamos na topologia de subespaco de $B$).\n\nSuponha, por absurdo, uma cisao de $B$: abertos $U,V$ de $B$, nao vazios, disjuntos, com $B=U\\cup V$. Restringindo a $A$, $U\\cap A$ e $V\\cap A$ sao abertos em $A$, disjuntos, de uniao $A$. Como $A$ e conexo, um deles e vazio; digamos $V\\cap A=\\varnothing$, isto e $A\\subseteq U$.\n\nTome $y\\in V$ (existe, $V\\ne\\varnothing$). Como $B\\subseteq\\overline A$, $y\\in\\overline A$, logo toda vizinhanca de $y$ (em $B$) intersecta $A$. Mas $V$ e vizinhanca aberta de $y$ em $B$ com $V\\cap A=\\varnothing$ — contradicao.\n\nPortanto $B$ nao admite cisao: e conexo. Tomando $B=\\overline A$, em particular **$\\overline A$ e conexo**.",
+          "steps": [
+            "Suponha uma cisao $B=U\\cup V$ por abertos relativos nao vazios disjuntos.",
+            "Restrinja a $A$: $U\\cap A$ e $V\\cap A$ formam cisao de $A$, logo um e vazio (conexidade de $A$).",
+            "Digamos $A\\subseteq U$, ou seja $V\\cap A=\\varnothing$.",
+            "Tome $y\\in V\\subseteq B\\subseteq\\overline A$: toda vizinhanca de $y$ toca $A$, mas $V$ nao — contradicao.",
+            "Conclua que $B$ e conexo; caso $B=\\overline A$, o fecho e conexo."
+          ]
+        },
+        {
+          "prompt": "Determine as componentes conexas de $\\mathbb{Q}$ (subespaço de $\\mathbb{R}$) e conclua que $\\mathbb{Q}$ é totalmente desconexo, com componentes fechadas não abertas.",
+          "hint": "Entre dois racionais distintos há um irracional, que produz uma cisão por clopen; as componentes são pontos.",
+          "difficulty": 3,
+          "solution": "Trabalhamos em $\\mathbb{Q}$ com a topologia de subespaco de $\\mathbb{R}$.\n\n**Componentes sao pontos.** Seja $C\\subseteq\\mathbb{Q}$ com dois pontos $p<q$. Entre eles ha um irracional $\\alpha\\in(p,q)$. Os conjuntos\n\n$$U=(-\\infty,\\alpha)\\cap\\mathbb{Q},\\qquad V=(\\alpha,\\infty)\\cap\\mathbb{Q}$$\n\nsao abertos em $\\mathbb{Q}$, disjuntos, com $U\\cup V=\\mathbb{Q}$ (pois $\\alpha\\notin\\mathbb{Q}$), e $p\\in U$, $q\\in V$. Restritos a $C$ dao uma cisao com ambos os lados nao vazios: $C$ e desconexo. Logo nenhum conexo tem dois pontos, e as componentes sao os **unitarios** $\\{r\\}$. Assim $\\mathbb{Q}$ e **totalmente desconexo**.\n\n**Fechadas, nao abertas.** Cada $\\{r\\}$ e fechado (componentes sempre sao; alem disso $\\mathbb{Q}$ e $T_1$). Mas $\\{r\\}$ nao e aberto: todo aberto relativo nao vazio contem $(r-\\varepsilon,r+\\varepsilon)\\cap\\mathbb{Q}$, com infinitos racionais $\\ne r$. Logo as componentes sao fechadas e nao abertas — coerente com $\\mathbb{Q}$ nao ser localmente conexo.",
+          "steps": [
+            "Tome um conexo $C\\subseteq\\mathbb{Q}$ com dois pontos $p<q$.",
+            "Insira um irracional $\\alpha\\in(p,q)$ e forme a cisao $U=(-\\infty,\\alpha)\\cap\\mathbb{Q}$, $V=(\\alpha,\\infty)\\cap\\mathbb{Q}$.",
+            "Conclua que $C$ e desconexo, logo as componentes sao unitarias: $\\mathbb{Q}$ totalmente desconexo.",
+            "Argumente que cada $\\{r\\}$ e fechado.",
+            "Mostre que $\\{r\\}$ nao e aberto (todo aberto relativo contem infinitos racionais)."
+          ]
+        },
+        {
+          "prompt": "Prove que um aberto conexo de $\\mathbb{R}^n$ é conexo por caminhos (na verdade por poligonais).",
+          "hint": "Fixe $x_0$ e mostre que o conjunto dos pontos ligáveis a $x_0$ por poligonal é aberto E fechado em $U$, logo é todo $U$.",
+          "difficulty": 4,
+          "solution": "Seja $U\\subseteq\\mathbb{R}^n$ aberto e conexo, e fixe $x_0\\in U$. Defina\n\n$$P=\\{x\\in U:\\text{existe poligonal em }U\\text{ ligando }x_0\\text{ a }x\\}.$$\n\nMostraremos que $P$ e aberto e fechado em $U$; como $x_0\\in P$, $P\\ne\\varnothing$, e por conexidade de $U$ seguira $P=U$.\n\n**$P$ e aberto.** Seja $x\\in P$. Como $U$ e aberto, existe bola $B(x,r)\\subseteq U$. Toda $y\\in B(x,r)$ liga-se a $x$ pelo segmento $[x,y]\\subseteq B(x,r)\\subseteq U$; concatenando com a poligonal de $x_0$ a $x$, obtemos poligonal de $x_0$ a $y$. Logo $B(x,r)\\subseteq P$.\n\n**$P$ e fechado em $U$.** Seja $x\\in U$ aderente a $P$. Tome $B(x,r)\\subseteq U$; existe $y\\in P\\cap B(x,r)$. Ha poligonal de $x_0$ a $y$, e $[y,x]\\subseteq B(x,r)\\subseteq U$ completa uma poligonal de $x_0$ a $x$. Logo $x\\in P$.\n\nSendo $P$ nao vazio, aberto e fechado no conexo $U$, temos $P=U$: $U$ e conexo por poligonais (em particular por caminhos). $\\quad\\blacksquare$",
+          "steps": [
+            "Fixe $x_0\\in U$ e defina $P=$ conjunto dos pontos ligaveis a $x_0$ por poligonal em $U$.",
+            "Note $x_0\\in P$, logo $P\\ne\\varnothing$; a estrategia e mostrar $P$ clopen em $U$.",
+            "Abertura: numa bola $B(x,r)\\subseteq U$ com $x\\in P$, todo $y$ liga-se por segmento e concatenacao.",
+            "Fechamento: se $x\\in\\overline P\\cap U$, pegue $y\\in P$ proximo na bola e complete a poligonal ate $x$.",
+            "Por conexidade de $U$, $P=U$: $U$ e conexo por poligonais."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de espaço conexo.",
+          "back": "Não admite cisão por dois abertos não vazios disjuntos; equivalentemente, os únicos clopen são $\\varnothing$ e $X$."
+        },
+        {
+          "front": "Os conexos de $\\mathbb{R}$ são exatamente quais?",
+          "back": "Os intervalos (incluindo pontos, semirretas e $\\mathbb{R}$)."
+        },
+        {
+          "front": "Imagem contínua de conexo é...?",
+          "back": "Conexa. (Daí o TVI: $f$ contínua num conexo, com valores em $\\mathbb{R}$, tem imagem intervalo.)"
+        },
+        {
+          "front": "As componentes conexas são sempre abertas? Fechadas?",
+          "back": "Sempre fechadas; abertas só se o espaço for localmente conexo. Em $\\mathbb{Q}$ são pontos (fechados, não abertos)."
+        },
+        {
+          "front": "Conexo por caminhos: definição.",
+          "back": "Quaisquer $x,y$ ligados por $\\gamma:[0,1]\\to X$ contínuo com $\\gamma(0)=x,\\gamma(1)=y$."
+        },
+        {
+          "front": "Relação entre conexo e conexo por caminhos.",
+          "back": "Caminhos $\\Rightarrow$ conexo. Recíproca FALSA (seno do topólogo)."
+        },
+        {
+          "front": "O que é o seno do topólogo e que propriedade ilustra?",
+          "back": "$\\{(x,\\sin(1/x)):0<x\\le1\\}\\cup(\\{0\\}\\times[-1,1])$: conexo mas NÃO conexo por caminhos."
+        },
+        {
+          "front": "Quando conexo equivale a conexo por caminhos?",
+          "back": "Em espaços localmente conexos por caminhos (ex.: abertos de $\\mathbb{R}^n$, variedades)."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Munkres, Topology — caps. 23, 24, 25",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Espaços Métricos — cap. 5 (conexidade)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a definicao de conexidade (sem cisao / clopen trivial) no Munkres (cap. 23) e no Elon, Espacos Metricos (cap. 5).",
+          "Prove que os conexos de $\\mathbb{R}$ sao exatamente os intervalos e deduza o TVI topologico (imagem continua de conexo e conexa).",
+          "Estude componentes conexas (particao em fechados) e a relacao 'se $A$ conexo e $A\\subseteq B\\subseteq\\overline A$ entao $B$ conexo'.",
+          "Estude conexidade por caminhos e prove que ela implica conexidade; entenda a coincidencia em espacos localmente conexos por caminhos.",
+          "Trabalhe o seno do topologo assistindo a um video que o visualize; refaca o argumento de por que nao ha caminho ligando a haste ao grafico.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (conexidade de $[0,1]$ via supremo, componentes de $\\mathbb{Q}$, e seno do topologo)."
+        ],
+        "searchQueries": [
+          "conexidade espaco topologico definicao cisao clopen",
+          "intervalos sao os conexos de R teorema do valor intermediario topologico",
+          "componentes conexas Q totalmente desconexo",
+          "seno do topologo conexo nao conexo por caminhos demonstracao",
+          "path connected implies connected proof topologist sine curve",
+          "open connected subset of R^n is path connected polygonal"
+        ],
+        "videos": [
+          {
+            "title": "Introduction to Topology — Connectedness",
+            "channel": "MIT OpenCourseWare (18.901)",
+            "note": "Conexidade, TVI topologico e conexidade por caminhos."
+          },
+          {
+            "title": "The Topologist's Sine Curve",
+            "channel": "Bill Kinney (Math at Andrews)",
+            "note": "Visualiza e prova por que o seno do topologo e conexo mas nao conexo por caminhos."
+          },
+          {
+            "title": "Connectedness in topology",
+            "channel": "Dr. Peyam",
+            "note": "Intuicao de 'um so pedaco' e exemplos de espacos conexos e desconexos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Topology, 2nd ed. — caps. 23, 24, 25",
+            "where": "James R. Munkres"
+          },
+          {
+            "title": "Espacos Metricos — cap. 5 (conexidade)",
+            "where": "Elon Lages Lima"
+          },
+          {
+            "title": "Counterexamples in Topology — Topologist's Sine Curve",
+            "where": "L. A. Steen & J. A. Seebach"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-06-compacidade-tychonoff",
+      "title": "Compacidade, Heine-Borel e Tychonoff",
+      "tagline": "Toda cobertura aberta admite subcobertura finita: a generalização suprema de \"fechado e limitado\".",
+      "objectives": [
+        "Definir compacidade por coberturas abertas e pela propriedade da interseção finita (PIF).",
+        "Provar que imagem contínua de compacto é compacta e que compacto em Hausdorff é fechado.",
+        "Demonstrar Heine-Borel em $\\mathbb{R}^n$ e o teorema de Weierstrass (atinge máximo/mínimo).",
+        "Distinguir compacidade, compacidade sequencial e compacidade por pontos limite, e saber quando coincidem.",
+        "Enunciar o teorema de Tychonoff e compreender seu papel e sua relação com o Axioma da Escolha."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Compacidade",
+          "statement": "$X$ é compacto se toda cobertura aberta $\\{U_i\\}_{i\\in I}$ de $X$ admite subcobertura finita $U_{i_1}\\cup\\cdots\\cup U_{i_n}=X$. Para $K\\subseteq X$, compacidade de $K$ é a do subespaço (coberturas por abertos de $X$ admitem subcobertura finita)."
+        },
+        {
+          "term": "Propriedade da Interseção Finita (PIF)",
+          "statement": "$X$ é compacto se, e só se, toda família de fechados com a PIF (toda subfamília finita tem interseção não vazia) tem interseção total não vazia. É a versão dual, por complementação, da definição por coberturas."
+        },
+        {
+          "term": "Compacidade sequencial",
+          "statement": "$X$ é sequencialmente compacto se toda sequência tem subsequência convergente. Em espaços metrizáveis, compacto $\\iff$ sequencialmente compacto $\\iff$ compacto por pontos limite $\\iff$ completo e totalmente limitado. Em geral, nenhuma implica a outra."
+        },
+        {
+          "term": "Localmente compacto",
+          "statement": "$X$ é localmente compacto se todo ponto tem uma vizinhança com fecho compacto. $\\mathbb{R}^n$ é localmente compacto; admite compactificação de Alexandroff (de um ponto) $X^+=X\\cup\\{\\infty\\}$."
+        },
+        {
+          "term": "Totalmente limitado",
+          "statement": "Num espaço métrico, $A$ é totalmente limitado se para todo $\\varepsilon>0$ pode ser coberto por finitas bolas de raio $\\varepsilon$. É a peça que falta para que \\\"completo\\\" vire \\\"compacto\\\"."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Heine-Borel",
+          "statement": "Em $\\mathbb{R}^n$ (com a topologia usual), $K$ é compacto se, e somente se, $K$ é fechado e limitado.",
+          "whyItMatters": "É o teorema que conecta a definição abstrata à intuição de Cálculo/Análise. ATENÇÃO: a equivalência \\\"fechado e limitado = compacto\\\" só vale em $\\mathbb{R}^n$ (mais geralmente em métricos completos: compacto = completo + totalmente limitado); falha em dimensão infinita."
+        },
+        {
+          "name": "Compacidade e continuidade",
+          "statement": "(a) Imagem contínua de compacto é compacta. (b) Subconjunto fechado de compacto é compacto. (c) Compacto dentro de Hausdorff é fechado. (d) (Weierstrass) Função contínua $f:K\\to\\mathbb{R}$ com $K$ compacto não vazio atinge máximo e mínimo.",
+          "whyItMatters": "Pilar das aplicações: garante existência de extremos (otimização), que bijeção contínua de compacto em Hausdorff é homeomorfismo, e que funções contínuas em compactos são uniformemente contínuas (caso métrico)."
+        },
+        {
+          "name": "Tychonoff",
+          "statement": "O produto $\\prod_{i\\in I}X_i$ (topologia produto) de uma família arbitrária de espaços compactos é compacto. O resultado é equivalente ao Axioma da Escolha (Kelley).",
+          "whyItMatters": "É um dos teoremas mais profundos da topologia geral; sustenta a compacidade fraca-* (Banach-Alaoglu) em Análise Funcional e a existência de ultrafiltros/compactificações. Sua prova usa filtros/ultrafiltros ou o lema de Alexander da sub-base."
+        }
+      ],
+      "summary": "Compacidade é a propriedade de finitude topológica: toda cobertura aberta tem subcobertura finita. Embora abstrata, ela encapsula tudo o que torna $[a,b]$ tão poderoso na Análise. As três consequências de ouro são: imagem contínua de compacto é compacta (logo compacidade é invariante topológico), compacto dentro de Hausdorff é fechado, e — coroando — o teorema de Weierstrass de que funções contínuas em compactos atingem máximo e mínimo. A versão dual por PIF (famílias de fechados com interseções finitas não vazias têm interseção total não vazia) é a forma mais útil em demonstrações de existência. \\n\\nO teorema de Heine-Borel ancora a teoria em $\\mathbb{R}^n$: compacto = fechado e limitado. Mas é uma armadilha confundir isso com a definição: em dimensão infinita a bola fechada unitária NÃO é compacta, e a caracterização correta em métricos é \\\"completo e totalmente limitado\\\". Compacidade tem primas — sequencial e por pontos limite — que coincidem com ela em espaços metrizáveis mas divergem em geral. O ápice é Tychonoff: produto arbitrário de compactos é compacto, resultado equivalente ao Axioma da Escolha e motor da Análise Funcional moderna (Banach-Alaoglu) e das compactificações.",
+      "commonPitfalls": [
+        "Achar que \\\"fechado e limitado = compacto\\\" em qualquer espaço. Só vale em $\\mathbb{R}^n$; em $\\ell^2$ a bola fechada unitária é fechada, limitada e NÃO compacta.",
+        "Confundir compacidade com compacidade sequencial. São equivalentes em métricos, mas em geral nenhuma implica a outra (ex.: $[0,1]^{[0,1]}$ é compacto não sequencialmente compacto).",
+        "Esquecer a hipótese Hausdorff em \\\"compacto é fechado\\\". Na topologia cofinita infinita todo subconjunto é compacto, mas nem todos são fechados.",
+        "Aplicar Tychonoff com a box topology. Tychonoff vale na topologia PRODUTO; na box o produto infinito de compactos pode não ser compacto."
+      ],
+      "worked": "**Exemplo: $[0,1]$ é compacto (subcobertura finita direta).** Seja $\\mathcal{U}$ cobertura aberta de $[0,1]$. Defina\n$$A=\\{x\\in[0,1]: [0,x]\\text{ admite subcobertura finita de }\\mathcal{U}\\}.$$\n$A\\neq\\varnothing$ ($0\\in A$, pois $\\{0\\}$ está em algum $U\\in\\mathcal{U}$). Seja $s=\\sup A$. Existe $U_0\\in\\mathcal{U}$ com $s\\in U_0$, logo $(s-\\delta,s+\\delta)\\subseteq U_0$ para algum $\\delta>0$. \nComo $s=\\sup A$, existe $x\\in A$ com $x>s-\\delta$; uma subcobertura finita de $[0,x]$ mais $U_0$ cobre $[0,\\min(s+\\delta/2,1)]$. \nIsso mostra que $s\\in A$ e que, se $s<1$, pontos à direita de $s$ também estariam em $A$ — contradizendo $s=\\sup A$. Logo $s=1$ e $1\\in A$: $[0,1]$ tem subcobertura finita, é compacto. (Este é o coração da prova de Heine-Borel.)",
+      "exercises": [
+        {
+          "prompt": "Prove que imagem contínua de compacto é compacta e deduza o teorema de Weierstrass (atinge máx/mín).",
+          "hint": "Para a imagem, puxe uma cobertura de $f(X)$ para uma cobertura de $X$ via $f^{-1}$. Para Weierstrass, $f(K)\\subseteq\\mathbb{R}$ é compacto, logo fechado e limitado, logo contém seu sup e inf.",
+          "difficulty": 3,
+          "solution": "**Imagem continua de compacto e compacta.** Seja $f:X\\to Y$ continua com $X$ compacto. Seja $\\{V_\\alpha\\}$ cobertura aberta de $f(X)$. Entao $\\{f^{-1}(V_\\alpha)\\}$ e cobertura aberta de $X$ (continuidade). Por compacidade, $X=f^{-1}(V_{\\alpha_1})\\cup\\cdots\\cup f^{-1}(V_{\\alpha_n})$. Aplicando $f$, $f(X)\\subseteq V_{\\alpha_1}\\cup\\cdots\\cup V_{\\alpha_n}$: subcobertura finita, logo $f(X)$ e compacto.\n\n**Weierstrass.** Seja $f:K\\to\\mathbb{R}$ continua, $K$ compacto nao vazio. Por (a), $f(K)$ e compacto em $\\mathbb{R}$, logo (Heine-Borel) fechado e limitado. Limitado da $M=\\sup f(K)$ e $m=\\inf f(K)$ finitos; fechado da $M,m\\in f(K)$ (sup e inf de fechado limitado sao aderentes, logo pertencem). Assim existem $x_M,x_m\\in K$ com $f(x_M)=M$, $f(x_m)=m$: $f$ atinge maximo e minimo. $\\quad\\blacksquare$",
+          "steps": [
+            "Tome uma cobertura aberta $\\{V_\\alpha\\}$ de $f(X)$ e puxe-a por $f^{-1}$.",
+            "Use continuidade: $\\{f^{-1}(V_\\alpha)\\}$ cobre $X$, que e compacto.",
+            "Extraia subcobertura finita e aplique $f$ para cobrir $f(X)$ com finitos $V_{\\alpha_i}$.",
+            "Para Weierstrass, note $f(K)$ compacto em $\\mathbb{R}$, logo fechado e limitado.",
+            "Conclua que $\\sup$ e $\\inf$ de $f(K)$ sao atingidos."
+          ]
+        },
+        {
+          "prompt": "Prove que todo subconjunto compacto de um espaço de Hausdorff é fechado.",
+          "hint": "Para $x\\notin K$, use Hausdorff para separar $x$ de cada $k\\in K$ por abertos; cubra $K$ e extraia subcobertura finita para obter vizinhança de $x$ disjunta de $K$.",
+          "difficulty": 3,
+          "solution": "Seja $Y$ Hausdorff e $K\\subseteq Y$ compacto; provamos que $K$ e fechado, exibindo $Y\\setminus K$ aberto.\n\nFixe $x\\in Y\\setminus K$. Para cada $k\\in K$, como $Y$ e Hausdorff e $x\\ne k$, existem abertos disjuntos $U_k\\ni x$ e $W_k\\ni k$. Os $\\{W_k\\}_{k\\in K}$ cobrem $K$; por compacidade, $K\\subseteq W_{k_1}\\cup\\cdots\\cup W_{k_n}$.\n\nPonha $U=U_{k_1}\\cap\\cdots\\cap U_{k_n}$ (aberto, $x\\in U$). Se $z\\in K$, entao $z\\in W_{k_j}$ para algum $j$; como $U\\subseteq U_{k_j}$ e $U_{k_j}\\cap W_{k_j}=\\varnothing$, segue $z\\notin U$. Logo $U\\cap K=\\varnothing$, isto e $U\\subseteq Y\\setminus K$.\n\nAssim todo $x\\in Y\\setminus K$ tem vizinhanca contida em $Y\\setminus K$: este e aberto e $K$ e fechado. $\\quad\\blacksquare$",
+          "steps": [
+            "Fixe $x\\notin K$ e, para cada $k\\in K$, use Hausdorff para obter abertos disjuntos $U_k\\ni x$, $W_k\\ni k$.",
+            "Cubra $K$ com os $W_k$ e extraia subcobertura finita $W_{k_1},\\dots,W_{k_n}$.",
+            "Forme $U=\\bigcap_{j=1}^n U_{k_j}$, aberto contendo $x$ (intersecao finita).",
+            "Mostre $U\\cap K=\\varnothing$ usando $U_{k_j}\\cap W_{k_j}=\\varnothing$.",
+            "Conclua que $Y\\setminus K$ e aberto, logo $K$ e fechado."
+          ]
+        },
+        {
+          "prompt": "Mostre que a bola fechada unitária de $\\ell^2$ não é compacta exibindo uma sequência sem subsequência convergente.",
+          "hint": "Tome os vetores da base canônica $e_n$; calcule $\\|e_n-e_m\\|=\\sqrt{2}$ para $n\\neq m$, logo nenhuma subsequência é de Cauchy.",
+          "difficulty": 4,
+          "solution": "Seja $(e_n)_{n\\ge1}$ a base canonica de $\\ell^2$ ($e_n$ tem $1$ na $n$-esima coordenada, $0$ nas demais). Cada $\\|e_n\\|_2=1$, logo $e_n$ esta na bola fechada unitaria $\\overline B=\\{x:\\|x\\|\\le1\\}$.\n\nPara $n\\ne m$,\n\n$$\\|e_n-e_m\\|_2=\\Big(\\textstyle\\sum_k|(e_n-e_m)_k|^2\\Big)^{1/2}=\\sqrt{1^2+(-1)^2}=\\sqrt2.$$\n\nQuaisquer dois termos distintos distam $\\sqrt2$. Uma sequencia convergente e de Cauchy, com termos arbitrariamente proximos; mas qualquer subsequencia $(e_{n_k})$ mantem $\\|e_{n_j}-e_{n_k}\\|=\\sqrt2$ para $j\\ne k$, jamais Cauchy, logo nao converge.\n\nAssim $(e_n)$ nao tem subsequencia convergente: $\\overline B$ nao e sequencialmente compacta e, sendo $\\ell^2$ metrico (onde compacto $\\iff$ sequencialmente compacto), $\\overline B$ **nao e compacta**. E a falha de Heine-Borel em dimensao infinita (fechada e limitada, mas nao totalmente limitada).",
+          "steps": [
+            "Considere a base canonica $(e_n)$; cada $e_n$ esta na bola fechada unitaria.",
+            "Calcule $\\|e_n-e_m\\|=\\sqrt2$ para $n\\ne m$.",
+            "Note que toda subsequencia mantem distancia $\\sqrt2$ entre termos distintos.",
+            "Conclua que nenhuma subsequencia e de Cauchy, logo nenhuma converge.",
+            "Em espaco metrico, ausencia de subsequencia convergente implica nao compacidade."
+          ]
+        },
+        {
+          "prompt": "Enuncie a caracterização por PIF e use-a para provar que a interseção de uma cadeia decrescente de compactos não vazios (em Hausdorff) é não vazia.",
+          "hint": "Os $K_n$ formam família de fechados (em $K_1$) com a PIF; aplique a definição dual de compacidade a $K_1$.",
+          "difficulty": 4,
+          "solution": "**Caracterizacao por PIF.** $X$ e compacto sse toda familia $\\{F_i\\}_{i\\in I}$ de fechados com a Propriedade da Intersecao Finita (toda subfamilia finita tem intersecao nao vazia) satisfaz $\\bigcap_i F_i\\ne\\varnothing$. (E a definicao por coberturas complementada: $U_i=X\\setminus F_i$; nenhuma subfamilia finita dos $U_i$ cobre $X$ sse toda intersecao finita dos $F_i$ e nao vazia.)\n\n**Aplicacao (cadeia decrescente).** Seja $Y$ Hausdorff e $K_1\\supseteq K_2\\supseteq\\cdots$ compactos nao vazios. Em Hausdorff cada $K_n$ e fechado; em particular todos sao fechados dentro do compacto $K_1$.\n\nA familia $\\{K_n\\}$ tem a PIF: uma subfamilia finita $K_{n_1},\\dots,K_{n_r}$ tem intersecao $K_{\\max n_j}\\ne\\varnothing$ (cadeia decrescente). Aplicando a caracterizacao por PIF ao compacto $K_1$,\n\n$$\\bigcap_{n\\ge1}K_n\\ne\\varnothing.$$\n\nLogo a intersecao de uma cadeia decrescente de compactos nao vazios (num Hausdorff) e nao vazia. $\\quad\\blacksquare$",
+          "steps": [
+            "Enuncie a PIF e sua equivalencia com compacidade por complementacao ($U_i=X\\setminus F_i$).",
+            "No problema, use que em Hausdorff cada compacto $K_n$ e fechado, logo fechado em $K_1$.",
+            "Verifique a PIF: intersecao finita $K_{n_1}\\cap\\cdots\\cap K_{n_r}=K_{\\max n_j}\\ne\\varnothing$.",
+            "Aplique a caracterizacao por PIF ao compacto $K_1$.",
+            "Conclua $\\bigcap_n K_n\\ne\\varnothing$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Definição de espaço compacto.",
+          "back": "Toda cobertura aberta admite subcobertura finita."
+        },
+        {
+          "front": "Heine-Borel: enunciado e onde vale.",
+          "back": "Em $\\mathbb{R}^n$: $K$ compacto $\\iff K$ fechado e limitado. Só vale em $\\mathbb{R}^n$ (não em dimensão infinita)."
+        },
+        {
+          "front": "Imagem contínua de compacto é...?",
+          "back": "Compacta. (Daí Weierstrass: contínua em compacto atinge máximo e mínimo.)"
+        },
+        {
+          "front": "Compacto dentro de Hausdorff é...?",
+          "back": "Fechado. (A hipótese Hausdorff é essencial.)"
+        },
+        {
+          "front": "Caracterização de compacto em espaço métrico.",
+          "back": "Completo E totalmente limitado; equivale a sequencialmente compacto e a compacto por pontos limite."
+        },
+        {
+          "front": "Propriedade da Interseção Finita (PIF).",
+          "back": "$X$ compacto $\\iff$ toda família de fechados com interseções finitas não vazias tem interseção total não vazia."
+        },
+        {
+          "front": "Teorema de Tychonoff.",
+          "back": "Produto arbitrário (topologia produto) de compactos é compacto. Equivale ao Axioma da Escolha."
+        },
+        {
+          "front": "A bola fechada unitária de $\\ell^2$ é compacta?",
+          "back": "Não: $(e_n)$ tem $\\|e_n-e_m\\|=\\sqrt2$, sem subsequência convergente. Compacidade falha em dimensão infinita."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Munkres, Topology — caps. 26, 27, 28, 37 (Tychonoff)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Espaços Métricos — cap. 8 (compacidade)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a definicao de compacidade por coberturas abertas no Munkres (cap. 26) e a versao dual por PIF; escreva as duas e prove a equivalencia por complementacao.",
+          "Prove as tres consequencias de ouro: imagem continua de compacto e compacta, fechado em compacto e compacto, compacto em Hausdorff e fechado; deduza Weierstrass.",
+          "Estude Heine-Borel em $\\mathbb{R}^n$ e a caracterizacao metrica 'completo + totalmente limitado'; entenda por que falha em dimensao infinita.",
+          "Distinga compacidade, compacidade sequencial e por pontos limite; veja quando coincidem (metricos) e os contraexemplos.",
+          "Leia o enunciado de Tychonoff (cap. 37) e sua relacao com o Axioma da Escolha; assista a uma aula que esboce a prova via ultrafiltros ou lema de Alexander.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (imagem/Weierstrass, compacto em Hausdorff e fechado, bola de $\\ell^2$ nao compacta, PIF)."
+        ],
+        "searchQueries": [
+          "compacidade cobertura aberta subcobertura finita definicao",
+          "Heine-Borel demonstracao fechado e limitado R^n",
+          "imagem continua de compacto e compacta Weierstrass demonstracao",
+          "propriedade da intersecao finita PIF compacidade dual",
+          "Tychonoff theorem proof ultrafilters axiom of choice",
+          "unit ball l2 not compact sequence e_n no convergent subsequence"
+        ],
+        "videos": [
+          {
+            "title": "Introduction to Topology — Compactness",
+            "channel": "MIT OpenCourseWare (18.901)",
+            "note": "Compacidade, Heine-Borel, Tychonoff e consequencias."
+          },
+          {
+            "title": "Compactness playlist",
+            "channel": "Bill Kinney (Math at Andrews)",
+            "note": "Coberturas, PIF, compacidade sequencial e Tychonoff com demonstracoes."
+          },
+          {
+            "title": "Why is [0,1] compact? / Heine-Borel",
+            "channel": "Dr. Peyam",
+            "note": "Intuicao da compacidade e prova de Heine-Borel; bom antes dos exercicios."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Topology, 2nd ed. — caps. 26, 27, 28 e 37 (Tychonoff)",
+            "where": "James R. Munkres"
+          },
+          {
+            "title": "Espacos Metricos — cap. 8 (compacidade)",
+            "where": "Elon Lages Lima"
+          },
+          {
+            "title": "Counterexamples in Topology — compacidade vs. compacidade sequencial",
+            "where": "L. A. Steen & J. A. Seebach"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-07-separacao-hausdorff",
+      "title": "Axiomas de separação: de Hausdorff a Urysohn",
+      "tagline": "Quanto a topologia consegue separar pontos e fechados — a escada T0, T1, T2, T3, T4.",
+      "objectives": [
+        "Enunciar os axiomas $T_0,T_1,T_2,T_3,T_4$ e situar Hausdorff e regularidade/normalidade na hierarquia.",
+        "Provar que $T_1$ equivale a pontos serem fechados e que Hausdorff garante unicidade de limites.",
+        "Demonstrar que todo compacto Hausdorff é normal e que métrico implica normal.",
+        "Enunciar e compreender o lema de Urysohn e o teorema de extensão de Tietze.",
+        "Reconhecer que separação é hereditária para $T_0$–$T_3$ mas não para normalidade."
+      ],
+      "keyConcepts": [
+        {
+          "term": "$T_0$, $T_1$, $T_2$ (Hausdorff)",
+          "statement": "$T_0$: para $x\\neq y$, algum aberto contém um e não o outro. $T_1$: para $x\\neq y$, existe aberto contendo $x$ e não $y$ (e vice-versa) — equivale a pontos fechados. $T_2$ (Hausdorff): $x\\neq y$ admitem abertos disjuntos $U\\ni x$, $V\\ni y$."
+        },
+        {
+          "term": "Regular e $T_3$",
+          "statement": "$X$ é regular se ponto e fechado disjuntos podem ser separados por abertos disjuntos. $T_3 = $ regular $+$ $T_1$. Implica $T_2$."
+        },
+        {
+          "term": "Normal e $T_4$",
+          "statement": "$X$ é normal se dois fechados disjuntos podem ser separados por abertos disjuntos. $T_4 = $ normal $+$ $T_1$. Implica $T_3$. Hierarquia: $T_4\\Rightarrow T_3\\Rightarrow T_2\\Rightarrow T_1\\Rightarrow T_0$."
+        },
+        {
+          "term": "Unicidade de limites",
+          "statement": "Em espaço Hausdorff, toda sequência (e toda rede) tem no máximo um limite. A recíproca para sequências vale em espaços primeiro-enumeráveis; para redes, vale sempre."
+        },
+        {
+          "term": "Metrizável",
+          "statement": "$X$ é metrizável se sua topologia provém de alguma métrica. Todo metrizável é normal ($T_4$) e perfeitamente normal; o teorema de metrização de Urysohn dá condições suficientes (regular, $T_1$, segundo-enumerável)."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Hausdorff e unicidade / compactos",
+          "statement": "Se $X$ é Hausdorff: (i) limites de sequências/redes são únicos; (ii) todo subconjunto compacto é fechado; (iii) dois compactos disjuntos podem ser separados por abertos disjuntos. Em particular, todo espaço compacto Hausdorff é normal ($T_4$).",
+          "whyItMatters": "Hausdorff é o limiar mínimo para que a topologia se comporte como esperamos (limites únicos, compactos fechados). \\\"Compacto Hausdorff é normal\\\" é a porta de entrada para o lema de Urysohn nesses espaços."
+        },
+        {
+          "name": "Lema de Urysohn",
+          "statement": "$X$ é normal se, e somente se, para quaisquer fechados disjuntos $A,B$ existe função contínua $f:X\\to[0,1]$ com $f|_A\\equiv0$ e $f|_B\\equiv1$. (A função separa $A$ de $B$ continuamente.)",
+          "whyItMatters": "É o resultado central de separação: converte separação por abertos em separação por FUNÇÕES contínuas, base de partições da unidade, do teorema de metrização e de Tietze. Surpreende por construir uma função sem métrica."
+        },
+        {
+          "name": "Extensão de Tietze",
+          "statement": "Se $X$ é normal e $A\\subseteq X$ é fechado, toda função contínua $f:A\\to\\mathbb{R}$ (ou $\\to[a,b]$) admite extensão contínua $F:X\\to\\mathbb{R}$ com $F|_A=f$.",
+          "whyItMatters": "Garante que funções definidas em fechados se estendem a todo o espaço — ferramenta essencial em análise e geometria (construir objetos globais a partir de locais). Equivale ao lema de Urysohn em espaços normais."
+        }
+      ],
+      "summary": "Os axiomas de separação medem o quão fina é a topologia para distinguir pontos e fechados, formando uma escada: $T_0$ (pontos topologicamente distinguíveis) $\\subset T_1$ (pontos fechados) $\\subset T_2$ (Hausdorff: pontos separados por abertos disjuntos) $\\subset T_3$ (regular $+$ $T_1$) $\\subset T_4$ (normal $+$ $T_1$). Hausdorff é o patamar decisivo: garante unicidade de limites e que compactos sejam fechados — sem ele a topologia admite patologias (a cofinita infinita é $T_1$ mas não $T_2$). \\n\\nNo topo, normalidade ($T_4$) destrava os dois grandes teoremas: o lema de Urysohn, que caracteriza espaços normais pela existência de funções contínuas separando fechados ($f=0$ num, $f=1$ no outro), e o teorema de extensão de Tietze, que estende funções contínuas de um fechado para todo o espaço. Esses resultados são a ponte da topologia para a análise: partições da unidade, metrização e construções globais nascem deles. Pontos finos cobrados em mestrado: compacto Hausdorff é automaticamente normal; métrico é normal; mas normalidade NÃO é hereditária nem preservada por produtos (o plano de Sorgenfrey $S\\times S$ é o contraexemplo famoso).",
+      "commonPitfalls": [
+        "Supor que todo espaço é Hausdorff. Topologia quociente e cofinita frequentemente não são; sem $T_2$ limites podem não ser únicos.",
+        "Achar que $T_1$ implica $T_2$. A cofinita infinita é $T_1$ (pontos fechados) mas não Hausdorff (dois abertos não vazios sempre se intersectam).",
+        "Pensar que normalidade é hereditária ou multiplicativa. Subespaços de normais podem não ser normais, e o produto de normais pode falhar (reta de Sorgenfrey ao quadrado).",
+        "Confundir regular com Hausdorff. Regular sozinho não implica $T_1$; é a combinação regular $+$ $T_1$ ($=T_3$) que sobe a escada."
+      ],
+      "worked": "**Exemplo: todo espaço métrico é normal.** Seja $(X,d)$ métrico e $A,B$ fechados disjuntos.\n\nPara $x\\in A$, como $x\\notin B$ (fechado), existe $r_x>0$ com $B(x,r_x)\\cap B=\\varnothing$. Analogamente para $y\\in B$ existe $s_y>0$ com $B(y,s_y)\\cap A=\\varnothing$. Defina\n$$U=\\bigcup_{x\\in A}B\\!\\left(x,\\tfrac{r_x}{2}\\right),\\qquad V=\\bigcup_{y\\in B}B\\!\\left(y,\\tfrac{s_y}{2}\\right).$$\n$U,V$ são abertos com $A\\subseteq U$, $B\\subseteq V$. Se houvesse $z\\in U\\cap V$, então $z\\in B(x,r_x/2)$ e $z\\in B(y,s_y/2)$ para certos $x\\in A,y\\in B$; supondo $r_x\\le s_y$, teríamos $d(x,y)\\le d(x,z)+d(z,y)<r_x/2+s_y/2\\le s_y$, logo $x\\in B(y,s_y)$, contradizendo $B(y,s_y)\\cap A=\\varnothing$. Assim $U\\cap V=\\varnothing$ e $X$ é normal.\n\nUma alternativa elegante usa $f(z)=\\dfrac{d(z,A)}{d(z,A)+d(z,B)}$, contínua com $f|_A=0$, $f|_B=1$ (Urysohn explícito).",
+      "exercises": [
+        {
+          "prompt": "Prove que $X$ é $T_1$ se, e somente se, todo subconjunto unitário $\\{x\\}$ é fechado.",
+          "hint": "$\\{x\\}$ fechado $\\iff X\\setminus\\{x\\}$ aberto $\\iff$ todo $y\\neq x$ tem vizinhança evitando $x$.",
+          "difficulty": 2,
+          "solution": "Queremos: $X$ e $T_1$ $\\iff$ todo unitario $\\{x\\}$ e fechado.\n\n**($\\Rightarrow$).** Suponha $X$ $T_1$. Fixe $x$; mostramos $X\\setminus\\{x\\}$ aberto. Para cada $y\\ne x$, por $T_1$ existe aberto $U_y$ com $y\\in U_y$ e $x\\notin U_y$. Entao $X\\setminus\\{x\\}=\\bigcup_{y\\ne x}U_y$ e uniao de abertos, logo aberto; assim $\\{x\\}$ e fechado.\n\n**($\\Leftarrow$).** Suponha todo unitario fechado. Dados $x\\ne y$, $U=X\\setminus\\{y\\}$ e aberto, contem $x$ e nao $y$; simetricamente $V=X\\setminus\\{x\\}$ e aberto, contem $y$ e nao $x$. Isso e a condicao $T_1$.\n\nLogo $X$ e $T_1$ sse os pontos sao fechados. $\\quad\\blacksquare$",
+          "steps": [
+            "Traduza: $\\{x\\}$ fechado $\\iff X\\setminus\\{x\\}$ aberto.",
+            "Direta: para cada $y\\ne x$, use $T_1$ para achar aberto $U_y\\ni y$ com $x\\notin U_y$.",
+            "Escreva $X\\setminus\\{x\\}=\\bigcup_{y\\ne x}U_y$, uniao de abertos, logo $\\{x\\}$ fechado.",
+            "Volta: dado $x\\ne y$, tome $U=X\\setminus\\{y\\}$ e $V=X\\setminus\\{x\\}$, ambos abertos.",
+            "Verifique que eles realizam a condicao $T_1$."
+          ]
+        },
+        {
+          "prompt": "Mostre que a topologia cofinita sobre um conjunto infinito é $T_1$ mas não Hausdorff.",
+          "hint": "Pontos são fechados (complemento cofinito). Dois abertos não vazios são cofinitos, e dois cofinitos sempre se intersectam (em conjunto infinito).",
+          "difficulty": 3,
+          "solution": "Seja $X$ infinito com a topologia cofinita.\n\n**$T_1$.** Cada $\\{x\\}$ e finito, logo fechado (complementar cofinito e aberto). Pela caracterizacao anterior, $X$ e $T_1$.\n\n**Nao Hausdorff.** Sejam $x\\ne y$ e suponha abertos disjuntos $U\\ni x$, $V\\ni y$. Sendo nao vazios, ambos sao cofinitos: $X\\setminus U$ e $X\\setminus V$ finitos. Entao\n\n$$X\\setminus(U\\cap V)=(X\\setminus U)\\cup(X\\setminus V)$$\n\ne finito (uniao de dois finitos). Como $X$ e infinito, $U\\cap V$ e infinito, em particular nao vazio — contradiz a disjuncao. Portanto nao ha abertos disjuntos separando $x,y$: $X$ nao e Hausdorff.\n\nAssim a cofinita infinita e $T_1$ mas nao $T_2$: $T_1\\not\\Rightarrow T_2$.",
+          "steps": [
+            "Mostre $T_1$: pontos sao finitos, logo fechados.",
+            "Para negar $T_2$, suponha abertos disjuntos $U\\ni x$, $V\\ni y$.",
+            "Note que abertos nao vazios sao cofinitos: $X\\setminus U$, $X\\setminus V$ finitos.",
+            "Calcule $X\\setminus(U\\cap V)=(X\\setminus U)\\cup(X\\setminus V)$, finito.",
+            "Como $X$ e infinito, $U\\cap V\\ne\\varnothing$: contradicao, logo nao e Hausdorff."
+          ]
+        },
+        {
+          "prompt": "Prove que todo espaço compacto e Hausdorff é normal.",
+          "hint": "Primeiro mostre regular (separe ponto de fechado usando compacidade do fechado). Depois repita o argumento para separar dois fechados (compactos) disjuntos.",
+          "difficulty": 4,
+          "solution": "Seja $X$ compacto e Hausdorff.\n\n**Etapa 1 — regularidade (ponto vs. fechado).** Sejam $x\\in X$ e $F$ fechado com $x\\notin F$. Como $X$ e compacto e $F$ fechado, $F$ e compacto. Para cada $y\\in F$, Hausdorff da abertos disjuntos $U_y\\ni x$, $W_y\\ni y$. Os $\\{W_y\\}$ cobrem $F$; por compacidade $F\\subseteq W_{y_1}\\cup\\cdots\\cup W_{y_n}=:W$. Ponha $U=U_{y_1}\\cap\\cdots\\cap U_{y_n}$ (aberto, $x\\in U$). Entao $U\\cap W=\\varnothing$, e $U\\ni x$, $W\\supseteq F$ sao abertos disjuntos. Logo $X$ e regular.\n\n**Etapa 2 — normalidade (dois fechados).** Sejam $A,B$ fechados disjuntos (ambos compactos). Para cada $a\\in A$, pela Etapa 1 separamos $a$ do fechado $B$ por abertos disjuntos $U_a\\ni a$, $V_a\\supseteq B$. Os $\\{U_a\\}$ cobrem $A$; extraia $A\\subseteq U_{a_1}\\cup\\cdots\\cup U_{a_m}=:U$. Ponha $V=V_{a_1}\\cap\\cdots\\cap V_{a_m}$ (aberto, $B\\subseteq V$). Se $z\\in U$, entao $z\\in U_{a_i}$ para algum $i$, e como $U_{a_i}\\cap V_{a_i}=\\varnothing$ e $V\\subseteq V_{a_i}$, $z\\notin V$. Logo $U\\cap V=\\varnothing$, com $A\\subseteq U$, $B\\subseteq V$: $X$ e normal. $\\quad\\blacksquare$",
+          "steps": [
+            "Primeiro separe ponto de fechado (regularidade): o fechado $F$ e compacto.",
+            "Use Hausdorff em cada $y\\in F$ e compacidade para obter cobertura finita $W$ e vizinhanca $U$ de $x$ disjunta dela.",
+            "Agora separe dois fechados $A,B$ (compactos).",
+            "Para cada $a\\in A$, aplique regularidade para separar $a$ de $B$; cubra $A$ por finitos $U_{a_i}$.",
+            "Tome $U=\\bigcup U_{a_i}$ e $V=\\bigcap V_{a_i}$, abertos disjuntos com $A\\subseteq U$, $B\\subseteq V$: normal."
+          ]
+        },
+        {
+          "prompt": "Use a função distância para dar uma prova direta do lema de Urysohn em espaços métricos, exibindo $f:X\\to[0,1]$ contínua com $f|_A=0$, $f|_B=1$.",
+          "hint": "Tome $f(x)=\\dfrac{d(x,A)}{d(x,A)+d(x,B)}$ e verifique que o denominador nunca se anula quando $A,B$ são fechados disjuntos.",
+          "difficulty": 3,
+          "solution": "Seja $(X,d)$ metrico e $A,B$ fechados disjuntos nao vazios. Use $d(x,C)=\\inf_{c\\in C}d(x,c)$, que e $1$-Lipschitz ($|d(x,C)-d(y,C)|\\le d(x,y)$), logo continua, e satisfaz $d(x,C)=0\\iff x\\in\\overline C$.\n\nDefina\n\n$$f(x)=\\frac{d(x,A)}{d(x,A)+d(x,B)}.$$\n\n**Denominador nao se anula.** Se $d(x,A)+d(x,B)=0$, entao $d(x,A)=d(x,B)=0$, logo $x\\in\\overline A=A$ e $x\\in\\overline B=B$, donde $x\\in A\\cap B=\\varnothing$, absurdo. Portanto o denominador e $>0$ e $f$ e continua (quociente de continuas).\n\n**Valores.** $0\\le f\\le1$. Se $x\\in A$: $d(x,A)=0$, logo $f(x)=0$. Se $x\\in B$: $d(x,B)=0$ e $d(x,A)>0$, logo $f(x)=1$.\n\nAssim $f:X\\to[0,1]$ e continua com $f|_A\\equiv0$, $f|_B\\equiv1$: a funcao de Urysohn explicita (em particular todo metrico e normal). $\\quad\\blacksquare$",
+          "steps": [
+            "Introduza $d(x,C)=\\inf_{c\\in C}d(x,c)$; use que e continua e $=0\\iff x\\in\\overline C$.",
+            "Defina $f(x)=d(x,A)/(d(x,A)+d(x,B))$.",
+            "Mostre que o denominador nao se anula, usando $A,B$ fechados disjuntos.",
+            "Conclua continuidade de $f$ e $0\\le f\\le1$.",
+            "Verifique $f|_A=0$ e $f|_B=1$: e a funcao de Urysohn."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Axioma $T_1$ equivale a quê?",
+          "back": "Todo ponto $\\{x\\}$ é fechado."
+        },
+        {
+          "front": "Definição de espaço Hausdorff ($T_2$).",
+          "back": "Para $x\\neq y$ existem abertos disjuntos $U\\ni x$, $V\\ni y$."
+        },
+        {
+          "front": "Por que Hausdorff importa?",
+          "back": "Garante unicidade de limites de sequências/redes e que todo compacto seja fechado."
+        },
+        {
+          "front": "Espaço normal: definição.",
+          "back": "Dois fechados disjuntos podem ser separados por abertos disjuntos ($T_4$ = normal + $T_1$)."
+        },
+        {
+          "front": "Hierarquia dos axiomas de separação.",
+          "back": "$T_4\\Rightarrow T_3\\Rightarrow T_2\\Rightarrow T_1\\Rightarrow T_0$."
+        },
+        {
+          "front": "Lema de Urysohn.",
+          "back": "$X$ normal $\\iff$ fechados disjuntos $A,B$ têm $f:X\\to[0,1]$ contínua com $f|_A=0$, $f|_B=1$."
+        },
+        {
+          "front": "Teorema de extensão de Tietze.",
+          "back": "Em normal, função contínua num fechado $A$ se estende continuamente a todo $X$."
+        },
+        {
+          "front": "Métrico e compacto-Hausdorff são normais?",
+          "back": "Sim, ambos. Mas normalidade NÃO é hereditária nem multiplicativa (Sorgenfrey$^2$)."
+        },
+        {
+          "front": "$T_1$ implica $T_2$?",
+          "back": "Não. A topologia cofinita infinita é $T_1$ mas não Hausdorff."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Munkres, Topology — caps. 31, 32, 33, 35 (Tietze)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Elementos de Topologia Geral — cap. 6",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a escada $T_0,T_1,T_2,T_3,T_4$ no Munkres (caps. 31, 32) e no Elon (cap. 6); memorize $T_4\\Rightarrow T_3\\Rightarrow T_2\\Rightarrow T_1\\Rightarrow T_0$.",
+          "Prove que $T_1$ equivale a pontos fechados e que Hausdorff garante unicidade de limites; colecione o contraexemplo cofinita ($T_1$ mas nao $T_2$).",
+          "Prove que compacto Hausdorff e normal e que todo metrico e normal (via $d(x,A)$).",
+          "Estude o lema de Urysohn e o teorema de Tietze (caps. 33, 35): entenda como separacao por abertos vira separacao por funcoes.",
+          "Assista a uma aula sobre o lema de Urysohn para acompanhar a construcao da funcao por diadicos; note onde a normalidade entra.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal ($T_1\\iff$ pontos fechados, cofinita $T_1$ nao $T_2$, compacto Hausdorff normal, Urysohn em metricos)."
+        ],
+        "searchQueries": [
+          "axiomas de separacao T0 T1 T2 T3 T4 hierarquia definicoes",
+          "T1 equivale pontos fechados demonstracao",
+          "topologia cofinita T1 mas nao Hausdorff exemplo",
+          "compacto Hausdorff e normal demonstracao",
+          "Urysohn lemma proof normal space continuous function",
+          "Tietze extension theorem statement proof normal space"
+        ],
+        "videos": [
+          {
+            "title": "Introduction to Topology — Separation Axioms & Urysohn",
+            "channel": "MIT OpenCourseWare (18.901)",
+            "note": "Axiomas de separacao, lema de Urysohn e Tietze."
+          },
+          {
+            "title": "Separation axioms playlist",
+            "channel": "Bill Kinney (Math at Andrews)",
+            "note": "T0-T4 com exemplos e demonstracao do lema de Urysohn."
+          },
+          {
+            "title": "Hausdorff spaces and separation",
+            "channel": "Dr. Peyam",
+            "note": "Intuicao de Hausdorff, unicidade de limites e contraexemplos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Topology, 2nd ed. — caps. 31, 32, 33 (Urysohn) e 35 (Tietze)",
+            "where": "James R. Munkres"
+          },
+          {
+            "title": "Elementos de Topologia Geral — cap. 6",
+            "where": "Elon Lages Lima"
+          },
+          {
+            "title": "Counterexamples in Topology — plano de Sorgenfrey (normalidade nao e multiplicativa)",
+            "where": "L. A. Steen & J. A. Seebach"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-08-espacos-metricos-completude",
+      "title": "Espaços métricos, completude e metrização",
+      "tagline": "A topologia onde a distância volta: Cauchy, completude, completamento e o teorema do ponto fixo.",
+      "objectives": [
+        "Definir métrica, bolas e a topologia induzida, e reconhecer métricas equivalentes.",
+        "Definir sequência de Cauchy e espaço métrico completo; distinguir completude de fechamento.",
+        "Caracterizar compacidade métrica como completude $+$ total limitação.",
+        "Construir/entender o completamento de um espaço métrico e exemplos ($\\mathbb{Q}\\to\\mathbb{R}$).",
+        "Enunciar e aplicar o teorema do ponto fixo de Banach (contrações)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Métrica e topologia induzida",
+          "statement": "$d:X\\times X\\to[0,\\infty)$ com $d(x,y)=0\\iff x=y$, simetria $d(x,y)=d(y,x)$ e desigualdade triangular $d(x,z)\\le d(x,y)+d(y,z)$. As bolas abertas $B(x,r)=\\{y:d(x,y)<r\\}$ formam base da topologia métrica."
+        },
+        {
+          "term": "Métricas equivalentes",
+          "statement": "$d_1,d_2$ são topologicamente equivalentes se induzem a mesma topologia; são uniformemente/forte equivalentes se $\\alpha\\,d_1\\le d_2\\le\\beta\\,d_1$ para constantes $0<\\alpha\\le\\beta$. Em $\\mathbb{R}^n$ todas as normas são fortemente equivalentes."
+        },
+        {
+          "term": "Sequência de Cauchy e completude",
+          "statement": "$(x_n)$ é de Cauchy se $\\forall\\varepsilon>0\\ \\exists N$ tal que $m,n\\ge N\\Rightarrow d(x_m,x_n)<\\varepsilon$. $X$ é completo se toda sequência de Cauchy converge em $X$. Completude NÃO é invariante topológico ($\\mathbb{R}\\cong(0,1)$, um completo o outro não)."
+        },
+        {
+          "term": "Totalmente limitado",
+          "statement": "$A$ é totalmente limitado se para todo $\\varepsilon>0$ admite cobertura finita por bolas de raio $\\varepsilon$ (uma $\\varepsilon$-rede finita). É estritamente mais forte que limitado em dimensão infinita."
+        },
+        {
+          "term": "Completamento",
+          "statement": "Todo espaço métrico $(X,d)$ admite um completamento $(\\hat X,\\hat d)$: completo, contendo uma cópia isométrica densa de $X$, único a menos de isometria. Construção via classes de equivalência de sequências de Cauchy."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Compacto = completo + totalmente limitado",
+          "statement": "Um espaço métrico $X$ é compacto se, e somente se, é completo e totalmente limitado; e isso equivale a ser sequencialmente compacto. Em $\\mathbb{R}^n$ reduz-se a Heine-Borel (fechado e limitado).",
+          "whyItMatters": "É a caracterização correta de compacidade métrica, que explica POR QUE Heine-Borel falha em dimensão infinita: a bola fechada é completa e limitada, mas não totalmente limitada."
+        },
+        {
+          "name": "Ponto fixo de Banach (contrações)",
+          "statement": "Seja $(X,d)$ métrico completo e $T:X\\to X$ uma contração: $d(Tx,Ty)\\le k\\,d(x,y)$ com $0\\le k<1$. Então $T$ tem um único ponto fixo $x^*$, e para todo $x_0$ a iteração $x_{n+1}=Tx_n$ converge a $x^*$ com $d(x_n,x^*)\\le\\frac{k^n}{1-k}d(x_1,x_0)$.",
+          "whyItMatters": "Motor de teoremas de existência e unicidade: Picard-Lindelöf (EDOs), função implícita/inversa, equações integrais. A completude é a hipótese que NÃO pode ser dispensada."
+        },
+        {
+          "name": "Completamento (existência e unicidade)",
+          "statement": "Para todo métrico $(X,d)$ existe um espaço completo $(\\hat X,\\hat d)$ e uma isometria $\\iota:X\\to\\hat X$ com $\\iota(X)$ denso em $\\hat X$; tal $\\hat X$ é único a menos de isometria que fixa $X$.",
+          "whyItMatters": "Formaliza a construção de $\\mathbb{R}$ a partir de $\\mathbb{Q}$ (Cantor) e dá sentido a espaços como $L^p$ (completamento de funções contínuas); é a maneira canônica de \\\"preencher buracos\\\"."
+        }
+      ],
+      "summary": "Espaços métricos são o elo entre a topologia abstrata e a análise concreta: uma métrica $d$ devolve a noção de distância, e suas bolas geram a topologia. Muitos conceitos topológicos ganham aqui forma sequencial — fecho por limites, continuidade por sequências, Hausdorff automático — porque métricos são primeiro-enumeráveis. A noção nova e decisiva é a de Cauchy: sequências cujos termos se aproximam entre si. Quando toda Cauchy converge, o espaço é completo. Atenção crucial: completude é propriedade MÉTRICA, não topológica — $(0,1)$ e $\\mathbb{R}$ são homeomorfos, mas só um é completo. \\n\\nDois teoremas dominam o tema. Primeiro, a caracterização de compacidade: em métricos, compacto $\\iff$ completo $+$ totalmente limitado, que esclarece por que a bola unitária de dimensão infinita (completa e limitada, mas não totalmente limitada) não é compacta. Segundo, o teorema do ponto fixo de Banach: contrações em espaços completos têm ponto fixo único, atingido por iteração — a engrenagem por trás de Picard-Lindelöf, do teorema da função implícita e de incontáveis argumentos de existência. Por fim, todo métrico se mergulha densamente num completamento único, generalizando a construção de $\\mathbb{R}$ a partir de $\\mathbb{Q}$.",
+      "commonPitfalls": [
+        "Confundir completude com ser fechado. Fechado é relativo a um espaço ambiente; completude é intrínseca. $\\mathbb{Q}$ não é completo, mas é fechado em si mesmo.",
+        "Achar que completude é invariante topológico. Não é: $(0,1)\\cong\\mathbb{R}$ via homeomorfismo, mas $(0,1)$ não é completo.",
+        "Esquecer $k<1$ estrito no teorema de Banach. Com $k=1$ (isometria/contração fraca) pode não haver ponto fixo: $x\\mapsto x+1$ em $\\mathbb{R}$.",
+        "Confundir limitado com totalmente limitado. Em dimensão infinita a bola fechada é limitada mas não totalmente limitada, e por isso não é compacta."
+      ],
+      "worked": "**Exemplo: aplicação do ponto fixo de Banach a uma equação.** Mostre que $x=\\frac{1}{3}\\cos x$ tem solução única em $\\mathbb{R}$.\n\nDefina $T:\\mathbb{R}\\to\\mathbb{R}$ por $T(x)=\\tfrac13\\cos x$. Como $\\mathbb{R}$ é completo e, pelo TVM,\n$$|T(x)-T(y)|=\\tfrac13|\\cos x-\\cos y|\\le\\tfrac13|x-y|,$$\n$T$ é contração com $k=\\tfrac13<1$. Pelo teorema de Banach, existe único $x^*$ com $T(x^*)=x^*$, isto é, $x^*=\\tfrac13\\cos x^*$. \nAlém disso a iteração $x_{n+1}=\\tfrac13\\cos x_n$ a partir de qualquer $x_0$ converge a $x^*$, com erro $|x_n-x^*|\\le\\dfrac{(1/3)^n}{1-1/3}|x_1-x_0|$ — convergência geométrica garantida.",
+      "exercises": [
+        {
+          "prompt": "Prove que toda sequência de Cauchy que possui subsequência convergente é convergente (para o mesmo limite).",
+          "hint": "Use a desigualdade triangular: aproxime $x_n$ do limite via um termo da subsequência com índice grande.",
+          "difficulty": 2,
+          "solution": "Seja $(x_n)$ de Cauchy em $(X,d)$ e suponha que uma subsequencia $(x_{n_k})$ converge a $L$. Mostramos $x_n\\to L$.\n\nSeja $\\varepsilon>0$. Por Cauchy, existe $N_1$ com $m,n\\ge N_1\\Rightarrow d(x_m,x_n)<\\varepsilon/2$. Por $x_{n_k}\\to L$, existe $K$ com $k\\ge K\\Rightarrow d(x_{n_k},L)<\\varepsilon/2$.\n\nEscolha $k\\ge K$ com $n_k\\ge N_1$ (possivel, $n_k\\to\\infty$). Entao para todo $n\\ge N_1$:\n\n$$d(x_n,L)\\le d(x_n,x_{n_k})+d(x_{n_k},L)<\\frac{\\varepsilon}{2}+\\frac{\\varepsilon}{2}=\\varepsilon.$$\n\nComo $\\varepsilon$ e arbitrario, $x_n\\to L$. $\\quad\\blacksquare$",
+          "steps": [
+            "Fixe $\\varepsilon>0$ e use Cauchy: termos com indices $\\ge N_1$ distam menos de $\\varepsilon/2$.",
+            "Use a convergencia da subsequencia: $d(x_{n_k},L)<\\varepsilon/2$ para $k$ grande.",
+            "Escolha $k$ com $n_k\\ge N_1$ e $k\\ge K$ simultaneamente.",
+            "Aplique a triangular $d(x_n,L)\\le d(x_n,x_{n_k})+d(x_{n_k},L)$.",
+            "Some as duas metades para obter $d(x_n,L)<\\varepsilon$; conclua $x_n\\to L$."
+          ]
+        },
+        {
+          "prompt": "Demonstre o teorema do ponto fixo de Banach: existência (a iteração é de Cauchy) e unicidade.",
+          "hint": "Mostre $d(x_{n+1},x_n)\\le k^n d(x_1,x_0)$, some a série geométrica para ver que $(x_n)$ é Cauchy; use completude. Unicidade: se $Tx=x$, $Ty=y$, então $d(x,y)\\le k\\,d(x,y)$.",
+          "difficulty": 4,
+          "solution": "Seja $(X,d)$ completo e $T:X\\to X$ contracao: $d(Tx,Ty)\\le k\\,d(x,y)$, $0\\le k<1$. Fixe $x_0$ e $x_{n+1}=Tx_n$.\n\n**Existencia.** Por inducao $d(x_{n+1},x_n)\\le k^n d(x_1,x_0)$. Para $m>n$:\n\n$$d(x_m,x_n)\\le\\sum_{j=n}^{m-1}d(x_{j+1},x_j)\\le\\sum_{j=n}^{m-1}k^j d(x_1,x_0)\\le\\frac{k^n}{1-k}\\,d(x_1,x_0).$$\n\nComo $k^n\\to0$, $(x_n)$ e de Cauchy; por completude $x_n\\to x^*$. Como $T$ e continua (contracao e $1$-Lipschitz), passando ao limite em $x_{n+1}=Tx_n$ vem $x^*=Tx^*$.\n\n**Unicidade.** Se $Tx=x$, $Ty=y$, entao $d(x,y)=d(Tx,Ty)\\le k\\,d(x,y)$, logo $(1-k)d(x,y)\\le0$; como $1-k>0$, $d(x,y)=0$, i.e. $x=y$.\n\n**Estimativa.** Fazendo $m\\to\\infty$ acima, $d(x_n,x^*)\\le\\dfrac{k^n}{1-k}\\,d(x_1,x_0)$: convergencia geometrica. $\\quad\\blacksquare$",
+          "steps": [
+            "Estabeleca $d(x_{n+1},x_n)\\le k^n d(x_1,x_0)$ por inducao usando a contracao.",
+            "Estime $d(x_m,x_n)$ somando a serie geometrica: $\\le\\frac{k^n}{1-k}d(x_1,x_0)$.",
+            "Conclua que $(x_n)$ e de Cauchy e, por completude, converge a $x^*$.",
+            "Passe ao limite em $x_{n+1}=Tx_n$ (T continua) para obter $Tx^*=x^*$.",
+            "Unicidade: de $d(x,y)\\le k\\,d(x,y)$ com $k<1$ segue $x=y$."
+          ]
+        },
+        {
+          "prompt": "Prove que um subespaço $A$ de um espaço métrico completo $X$ é completo se, e somente se, $A$ é fechado em $X$.",
+          "hint": "($\\Leftarrow$) Cauchy em $A$ converge em $X$; o limite está em $\\overline A=A$. ($\\Rightarrow$) Se $x\\in\\overline A$, há sequência em $A$ convergindo a $x$, que é Cauchy, logo converge em $A$.",
+          "difficulty": 3,
+          "solution": "Seja $X$ metrico completo e $A\\subseteq X$.\n\n**($\\Leftarrow$) $A$ fechado $\\Rightarrow A$ completo.** Seja $(a_n)$ de Cauchy em $A$; e de Cauchy em $X$, completo, logo $a_n\\to x\\in X$. Como $A$ e fechado e $(a_n)\\subseteq A$, o limite $x\\in\\overline A=A$. Logo $(a_n)$ converge em $A$: $A$ e completo.\n\n**($\\Rightarrow$) $A$ completo $\\Rightarrow A$ fechado.** Seja $x\\in\\overline A$. Em metrico o fecho e sequencial: existe $(a_n)\\subseteq A$ com $a_n\\to x$. Toda convergente e Cauchy, logo $(a_n)$ e de Cauchy em $A$; por completude converge a $a\\in A$. Por unicidade do limite (metrico e Hausdorff), $a=x$, logo $x\\in A$. Assim $\\overline A\\subseteq A$: $A$ e fechado.\n\nConclusao: $A$ completo $\\iff A$ fechado em $X$. $\\quad\\blacksquare$",
+          "steps": [
+            "($\\Leftarrow$) Tome Cauchy em $A$; ela converge em $X$ (completo).",
+            "Use que $A$ fechado captura o limite: $x\\in\\overline A=A$; logo $A$ completo.",
+            "($\\Rightarrow$) Tome $x\\in\\overline A$ e uma sequencia $(a_n)\\subseteq A$ com $a_n\\to x$.",
+            "Ela e de Cauchy; por completude de $A$ converge em $A$, e por unicidade o limite e $x$.",
+            "Conclua $x\\in A$, logo $\\overline A=A$ e $A$ e fechado."
+          ]
+        },
+        {
+          "prompt": "Mostre que a bola fechada de $\\ell^2$ é completa e limitada mas não totalmente limitada, e relacione com a falha de compacidade.",
+          "hint": "Os $e_n$ distam $\\sqrt2$; nenhuma cobertura finita por bolas de raio $1/2$ pode conter todos eles, logo não é totalmente limitada.",
+          "difficulty": 4,
+          "solution": "Seja $\\overline B=\\{x\\in\\ell^2:\\|x\\|\\le1\\}$ e $(e_n)$ a base canonica.\n\n**Completa.** $\\ell^2$ e Banach (completo), e $\\overline B$ e fechado (pre-imagem de $[0,1]$ pela norma continua). Fechado em completo e completo, logo $\\overline B$ e completa.\n\n**Limitada.** $\\|x\\|\\le1$ para todo $x\\in\\overline B$.\n\n**Nao totalmente limitada.** Suponha uma $\\tfrac12$-rede finita: bolas $B(c_1,1/2),\\dots,B(c_N,1/2)$ cobrindo $\\overline B$. Os infinitos $e_n\\in\\overline B$ dariam, por casa dos pombos, dois deles $e_n,e_m$ na mesma bola $B(c_i,1/2)$; entao\n\n$$\\sqrt2=\\|e_n-e_m\\|\\le\\|e_n-c_i\\|+\\|c_i-e_m\\|<\\tfrac12+\\tfrac12=1,$$\n\nabsurdo. Logo nenhuma $\\tfrac12$-rede finita existe: $\\overline B$ nao e totalmente limitada.\n\n**Relacao com compacidade.** Em metricos, compacto $\\iff$ completo $+$ totalmente limitado. $\\overline B$ e completa e limitada mas nao totalmente limitada, logo nao e compacta — o mecanismo exato da falha de Heine-Borel em dimensao infinita. $\\quad\\blacksquare$",
+          "steps": [
+            "Mostre que $\\overline B$ e fechada em $\\ell^2$ completo, logo completa.",
+            "Note que $\\overline B$ e limitada (norma $\\le1$).",
+            "Suponha uma $\\tfrac12$-rede finita cobrindo $\\overline B$.",
+            "Por casa dos pombos, dois $e_n,e_m$ caem na mesma bola de raio $1/2$; mas $\\|e_n-e_m\\|=\\sqrt2>1$: absurdo.",
+            "Conclua nao totalmente limitada, logo nao compacta (falha de Heine-Borel em dim. infinita)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Os três axiomas de uma métrica.",
+          "back": "$d(x,y)=0\\iff x=y$; simetria $d(x,y)=d(y,x)$; triangular $d(x,z)\\le d(x,y)+d(y,z)$ (e $d\\ge0$)."
+        },
+        {
+          "front": "Definição de sequência de Cauchy.",
+          "back": "$\\forall\\varepsilon>0\\,\\exists N:\\ m,n\\ge N\\Rightarrow d(x_m,x_n)<\\varepsilon$."
+        },
+        {
+          "front": "Espaço métrico completo.",
+          "back": "Toda sequência de Cauchy converge (no próprio espaço)."
+        },
+        {
+          "front": "Completude é invariante topológico?",
+          "back": "NÃO. $(0,1)\\cong\\mathbb{R}$, mas $(0,1)$ não é completo. Completude é propriedade métrica."
+        },
+        {
+          "front": "Compacto em espaço métrico equivale a...?",
+          "back": "Completo + totalmente limitado (= sequencialmente compacto)."
+        },
+        {
+          "front": "Teorema do ponto fixo de Banach.",
+          "back": "Contração ($k<1$) em espaço completo tem único ponto fixo, atingido por iteração."
+        },
+        {
+          "front": "Por que precisamos de $k<1$ estrito?",
+          "back": "Com $k=1$ pode não haver ponto fixo: $x\\mapsto x+1$ em $\\mathbb{R}$ é isometria sem ponto fixo."
+        },
+        {
+          "front": "O que é o completamento de $(X,d)$?",
+          "back": "Espaço completo $\\hat X$ contendo cópia isométrica densa de $X$, único a menos de isometria (ex.: $\\mathbb{R}=\\widehat{\\mathbb{Q}}$)."
+        },
+        {
+          "front": "Subespaço de completo é completo quando?",
+          "back": "Se, e somente se, é fechado no espaço ambiente."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Elon, Espaços Métricos — caps. 1, 3, 7, 8",
+          "ref": "livro"
+        },
+        {
+          "title": "Munkres, Topology — caps. 20, 21, 43 (completos)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Revise metrica, bolas e topologia induzida no Elon, Espacos Metricos (caps. 1, 3); relembre que metricos sao primeiro-enumeraveis (fecho por sequencias).",
+          "Estude sequencia de Cauchy e completude (cap. 7); grave o contraste completude (metrica) vs. fechamento (relativo) e vs. invariante topologico.",
+          "Prove a caracterizacao 'compacto = completo + totalmente limitado' e conecte com Heine-Borel e a falha em dimensao infinita.",
+          "Estude e demonstre o teorema do ponto fixo de Banach; veja aplicacoes (Picard-Lindelof, funcao implicita).",
+          "Estude a construcao do completamento via classes de sequencias de Cauchy, usando $\\mathbb{Q}\\to\\mathbb{R}$ como modelo; assista a um video sobre isso.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (Cauchy + subseq. convergente => convergente, Banach, subespaco completo <=> fechado, bola de $\\ell^2$)."
+        ],
+        "searchQueries": [
+          "espaco metrico completo sequencia de Cauchy definicao exemplos",
+          "teorema do ponto fixo de Banach contracao demonstracao",
+          "compacto metrico completo totalmente limitado equivalencia",
+          "completamento espaco metrico construcao sequencias de Cauchy",
+          "Banach fixed point theorem proof contraction mapping Picard",
+          "subspace complete iff closed complete metric space proof"
+        ],
+        "videos": [
+          {
+            "title": "Analise / Espacos Metricos — Completude e Cauchy",
+            "channel": "Matematica Universitaria (aulas de analise)",
+            "note": "Sequencias de Cauchy, completude e exemplos em PT-BR."
+          },
+          {
+            "title": "Banach Fixed Point Theorem",
+            "channel": "Dr. Peyam",
+            "note": "Demonstracao do teorema da contracao e aplicacoes; bom para o exercicio 2."
+          },
+          {
+            "title": "Metric spaces & completeness",
+            "channel": "Bill Kinney (Math at Andrews)",
+            "note": "Completude, totalmente limitado e caracterizacao de compacidade metrica."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Espacos Metricos — caps. 1, 3, 7, 8",
+            "where": "Elon Lages Lima (Projeto Euclides, IMPA)"
+          },
+          {
+            "title": "Topology, 2nd ed. — caps. 20, 21, 43 (Complete Metric Spaces)",
+            "where": "James R. Munkres"
+          },
+          {
+            "title": "Principles of Mathematical Analysis — cap. 3 (sequencias de Cauchy, completude)",
+            "where": "Walter Rudin"
+          }
+        ]
+      }
+    },
+    {
+      "id": "topologia-09-teorema-de-baire",
+      "title": "Categoria e o Teorema de Baire",
+      "tagline": "Espaços completos são \"grossos\": não são união enumerável de conjuntos magros — e isso prova existências impossíveis de exibir.",
+      "objectives": [
+        "Definir conjunto raro (nunca-denso), magro (1ª categoria) e gordo (2ª categoria / residual).",
+        "Enunciar o Teorema de Baire para métricos completos e para localmente compactos Hausdorff.",
+        "Demonstrar a versão para métricos completos via bolas encaixadas.",
+        "Aplicar Baire para mostrar que $\\mathbb{R}$ não é enumerável e que existem funções contínuas sem derivada.",
+        "Conhecer as consequências em Análise Funcional (limitação uniforme, aplicação aberta)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Conjunto raro (nowhere dense)",
+          "statement": "$A$ é raro se $\\overline{A}$ tem interior vazio: $(\\overline{A})^\\circ=\\varnothing$. Equivalentemente, $\\overline{A}$ não contém nenhum aberto não vazio. Ex.: $\\mathbb{Z}$ em $\\mathbb{R}$, o conjunto de Cantor."
+        },
+        {
+          "term": "Magro (1ª categoria) e gordo (2ª)",
+          "statement": "$A$ é magro (de 1ª categoria) se é união enumerável de conjuntos raros. Caso contrário é de 2ª categoria. Um conjunto é residual (comagro) se seu complementar é magro."
+        },
+        {
+          "term": "Espaço de Baire",
+          "statement": "$X$ é um espaço de Baire se toda interseção enumerável de abertos densos é densa — equivalentemente, $X$ não é magro em si mesmo (nenhuma união enumerável de fechados de interior vazio cobre $X$)."
+        },
+        {
+          "term": "$G_\\delta$ e $F_\\sigma$",
+          "statement": "$G_\\delta$ = interseção enumerável de abertos; $F_\\sigma$ = união enumerável de fechados. Em métricos completos, um $G_\\delta$ denso é residual (gordo); $\\mathbb{Q}$ é $F_\\sigma$ magro e os irracionais são $G_\\delta$ residual."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Baire",
+          "statement": "Todo espaço métrico completo é um espaço de Baire: a interseção de uma família enumerável de abertos densos é densa. Equivalentemente, um métrico completo não é união enumerável de conjuntos raros (não é magro em si mesmo). O mesmo vale para todo espaço localmente compacto de Hausdorff.",
+          "whyItMatters": "É um princípio de existência por abundância: se uma propriedade vale num $G_\\delta$ denso, então vale em pontos \\\"genéricos\\\". Sustenta três pilares da Análise Funcional: Banach-Steinhaus, aplicação aberta e gráfico fechado."
+        },
+        {
+          "name": "Consequências clássicas",
+          "statement": "(a) $\\mathbb{R}$ (e qualquer métrico completo sem pontos isolados) é não enumerável. (b) $\\mathbb{Q}$ não é um $G_\\delta$ em $\\mathbb{R}$. (c) Existe (genericamente) função contínua em $[0,1]$ que não é derivável em ponto algum — as deriváveis em algum ponto formam um conjunto magro em $C[0,1]$.",
+          "whyItMatters": "Demonstra existência de objetos \\\"patológicos\\\" SEM exibi-los: o argumento de Baire prova que eles são a regra, não a exceção. É a forma topológica do método probabilístico."
+        },
+        {
+          "name": "Banach-Steinhaus (limitação uniforme)",
+          "statement": "Seja $\\{T_i\\}_{i\\in I}$ uma família de operadores lineares contínuos de um espaço de Banach $X$ num normado $Y$. Se $\\sup_i\\|T_i x\\|<\\infty$ para cada $x$ (limitação pontual), então $\\sup_i\\|T_i\\|<\\infty$ (limitação uniforme).",
+          "whyItMatters": "Aplicação estrela do Teorema de Baire em Análise Funcional: limitação pontual implica limitação em norma — usado em séries de Fourier (existência de função contínua cuja série de Fourier diverge num ponto) e em toda a teoria de operadores."
+        }
+      ],
+      "summary": "O Teorema de Baire formaliza a intuição de que espaços completos são \\\"grossos\\\": não podem ser cobertos por uma quantidade enumerável de conjuntos \\\"finos\\\". Os conceitos-chave são raro (fecho com interior vazio), magro (união enumerável de raros, de 1ª categoria) e residual (complementar de magro). O enunciado: num métrico completo (ou num localmente compacto Hausdorff), a interseção enumerável de abertos densos é densa; equivalentemente, o espaço não é magro em si mesmo. A prova canônica encaixa bolas fechadas de raios decrescentes e usa a completude para capturar um ponto na interseção de todos os abertos densos. \\n\\nO poder do teorema é existencial: ele prova que objetos existem mostrando que formam um conjunto residual, sem nunca exibi-los. Assim deduzimos que $\\mathbb{R}$ é não enumerável, que $\\mathbb{Q}$ não é $G_\\delta$, e — espetacularmente — que a função contínua \\\"típica\\\" em $[0,1]$ não tem derivada em ponto algum (as deriváveis formam um conjunto magro). Em Análise Funcional, Baire é o motor dos três teoremas fundamentais sobre espaços de Banach: Banach-Steinhaus (limitação uniforme), aplicação aberta e gráfico fechado. Por isso o Teorema de Baire é uma das pontes mais importantes entre topologia e o resto da matemática — e cai com frequência em provas de mestrado.",
+      "commonPitfalls": [
+        "Aplicar Baire sem completude (ou sem local compacidade Hausdorff). $\\mathbb{Q}$ é métrico mas não completo, e de fato É magro em si mesmo: união enumerável dos pontos (cada um raro).",
+        "Confundir magro com \\\"medida nula\\\" ou com enumerável. São noções independentes: existe conjunto magro de medida total e conjunto de medida nula de 2ª categoria.",
+        "Achar que interseção enumerável de abertos densos é aberta. Ela é densa (e $G_\\delta$), mas em geral não é aberta — os irracionais são $G_\\delta$ denso, não aberto.",
+        "Supor que \\\"existe função contínua sem derivada\\\" requer construção explícita. Baire prova que elas são genéricas; a construção de Weierstrass é apenas uma testemunha."
+      ],
+      "worked": "**Exemplo: $\\mathbb{R}$ é não enumerável, via Baire.** Suponha, por absurdo, $\\mathbb{R}=\\{x_1,x_2,x_3,\\dots\\}$ enumerável.\n\nCada conjunto $\\{x_n\\}$ é fechado de interior vazio, logo raro. Então\n$$\\mathbb{R}=\\bigcup_{n\\ge1}\\{x_n\\}$$\nseria união enumerável de conjuntos raros, isto é, $\\mathbb{R}$ seria magro em si mesmo. \nMas $\\mathbb{R}$ é métrico completo, logo um espaço de Baire, que NÃO é magro em si mesmo. Contradição. Portanto $\\mathbb{R}$ é não enumerável. \n\nDe modo equivalente: os abertos densos $U_n=\\mathbb{R}\\setminus\\{x_n\\}$ teriam interseção $\\bigcap_n U_n=\\varnothing$, contrariando que em espaço de Baire tal interseção é densa (em particular não vazia).",
+      "exercises": [
+        {
+          "prompt": "Prove o Teorema de Baire para espaços métricos completos usando bolas encaixadas.",
+          "hint": "Dados abertos densos $U_n$ e um aberto $W$, construa recursivamente bolas fechadas $\\overline{B}_n\\subseteq U_n\\cap B_{n-1}$ com raios $\\to0$; a completude dá um ponto na interseção, que cai em $W\\cap\\bigcap U_n$.",
+          "difficulty": 4,
+          "solution": "Seja $(X,d)$ metrico completo, $\\{U_n\\}_{n\\ge1}$ abertos densos, e $W\\subseteq X$ aberto nao vazio arbitrario. Mostramos $W\\cap\\bigcap_n U_n\\ne\\varnothing$ (isso da a densidade de $\\bigcap_n U_n$).\n\n**Bolas encaixadas.** Como $U_1$ e denso, $U_1\\cap W\\ne\\varnothing$ e aberto; escolha $x_1$ e $r_1\\in(0,1)$ com $\\overline B(x_1,r_1)\\subseteq U_1\\cap W$. Indutivamente, dado $\\overline B(x_n,r_n)$, por densidade de $U_{n+1}$ o conjunto $U_{n+1}\\cap B(x_n,r_n)$ e aberto nao vazio; escolha $x_{n+1}$ e $r_{n+1}\\in(0,r_n/2)$ com\n\n$$\\overline B(x_{n+1},r_{n+1})\\subseteq U_{n+1}\\cap B(x_n,r_n).$$\n\nAssim $\\overline B(x_1,r_1)\\supseteq\\overline B(x_2,r_2)\\supseteq\\cdots$ e $r_n<2^{-(n-1)}\\to0$.\n\n**Ponto na interseccao.** Para $m>n$, $x_m\\in\\overline B(x_n,r_n)$, logo $d(x_m,x_n)\\le r_n\\to0$: $(x_n)$ e de Cauchy. Por completude $x_n\\to x$. Cada $\\overline B(x_n,r_n)$ e fechada e contem $x_m$ para $m\\ge n$, logo contem o limite: $x\\in\\overline B(x_n,r_n)$ para todo $n$.\n\nPortanto $x\\in\\overline B(x_1,r_1)\\subseteq W$ e $x\\in\\overline B(x_n,r_n)\\subseteq U_n$ para todo $n$. Logo $x\\in W\\cap\\bigcap_n U_n\\ne\\varnothing$. Como $W$ era arbitrario, $\\bigcap_n U_n$ e densa: $X$ e Baire. $\\quad\\blacksquare$",
+          "steps": [
+            "Fixe abertos densos $U_n$ e um aberto nao vazio $W$; objetivo: $W\\cap\\bigcap U_n\\ne\\varnothing$.",
+            "Use densidade de $U_1$ para achar bola fechada $\\overline B(x_1,r_1)\\subseteq U_1\\cap W$.",
+            "Recursivamente, encaixe $\\overline B(x_{n+1},r_{n+1})\\subseteq U_{n+1}\\cap B(x_n,r_n)$ com $r_n\\to0$.",
+            "Mostre que $(x_n)$ e de Cauchy e converge (completude) a um ponto $x$ em todas as bolas.",
+            "Conclua $x\\in W\\cap\\bigcap_n U_n$, logo a interseccao e densa."
+          ]
+        },
+        {
+          "prompt": "Mostre que $\\mathbb{Q}$ não é um $G_\\delta$ em $\\mathbb{R}$.",
+          "hint": "Se $\\mathbb{Q}=\\bigcap U_n$ com $U_n$ abertos (densos), combine com os abertos densos $\\mathbb{R}\\setminus\\{q\\}$, $q\\in\\mathbb{Q}$, e aplique Baire para chegar a uma contradição.",
+          "difficulty": 4,
+          "solution": "Suponha, por absurdo, $\\mathbb{Q}=\\bigcap_{n\\ge1}U_n$ com $U_n$ abertos. Como $\\mathbb{Q}\\subseteq U_n$ e $\\mathbb{Q}$ e denso, cada $U_n$ contem um denso, logo $U_n$ e denso.\n\nEnumere $\\mathbb{Q}=\\{q_1,q_2,\\dots\\}$ e considere os abertos densos $V_m=\\mathbb{R}\\setminus\\{q_m\\}$ (remover um ponto mantem densidade).\n\nA familia $\\{U_n\\}\\cup\\{V_m\\}$ e enumeravel, de abertos densos. Por Baire (em $\\mathbb{R}$, completo), sua interseccao e densa, logo nao vazia. Mas\n\n$$\\Big(\\bigcap_n U_n\\Big)\\cap\\Big(\\bigcap_m V_m\\Big)=\\mathbb{Q}\\cap(\\mathbb{R}\\setminus\\mathbb{Q})=\\varnothing,$$\n\npois $\\bigcap_n U_n=\\mathbb{Q}$ e $\\bigcap_m V_m=\\mathbb{R}\\setminus\\mathbb{Q}$. Contradicao. Portanto $\\mathbb{Q}$ NAO e $G_\\delta$ em $\\mathbb{R}$. $\\quad\\blacksquare$",
+          "steps": [
+            "Suponha $\\mathbb{Q}=\\bigcap_n U_n$ com $U_n$ abertos; note que cada $U_n$ e denso (contem $\\mathbb{Q}$).",
+            "Enumere os racionais e forme os abertos densos $V_m=\\mathbb{R}\\setminus\\{q_m\\}$.",
+            "Junte as duas familias enumeraveis de abertos densos.",
+            "Por Baire, a interseccao deveria ser densa (nao vazia).",
+            "Mas ela e $\\mathbb{Q}\\cap(\\mathbb{R}\\setminus\\mathbb{Q})=\\varnothing$: contradicao, logo $\\mathbb{Q}$ nao e $G_\\delta$."
+          ]
+        },
+        {
+          "prompt": "Seja $f:[0,\\infty)\\to\\mathbb{R}$ contínua com $\\lim_{n\\to\\infty}f(nx)=0$ para todo $x>0$. Prove que $\\lim_{t\\to\\infty}f(t)=0$.",
+          "hint": "Aplique Baire aos conjuntos fechados $F_N=\\{x:|f(nx)|\\le\\varepsilon\\ \\forall n\\ge N\\}$; algum $F_N$ tem interior, e use a estrutura multiplicativa.",
+          "difficulty": 5,
+          "solution": "Seja $f:[0,\\infty)\\to\\mathbb{R}$ continua com $\\lim_{n\\to\\infty}f(nx)=0$ para todo $x>0$. Queremos $\\lim_{t\\to\\infty}f(t)=0$.\n\nFixe $\\varepsilon>0$ e defina, para $N\\in\\mathbb{N}$,\n\n$$F_N=\\{x\\ge1:|f(nx)|\\le\\varepsilon\\ \\text{para todo }n\\ge N\\}=\\bigcap_{n\\ge N}\\{x\\ge1:|f(nx)|\\le\\varepsilon\\}.$$\n\nCada $\\{x:|f(nx)|\\le\\varepsilon\\}$ e fechado (pre-imagem de $[-\\varepsilon,\\varepsilon]$ pela continua $x\\mapsto f(nx)$), logo $F_N$ e fechado em $[1,\\infty)$. Pela hipotese, para cada $x\\ge1$ existe $N$ com $x\\in F_N$; assim $[1,\\infty)=\\bigcup_N F_N$.\n\nComo $[1,\\infty)$ e completo, por Baire algum $F_{N_0}$ tem interior nao vazio: existe $[a,b]\\subseteq F_{N_0}$ com $1\\le a<b$. Entao $|f(t)|\\le\\varepsilon$ para todo $t\\in\\bigcup_{n\\ge N_0}[na,nb]$.\n\nQuando $nb\\ge(n+1)a$, isto e $n\\ge\\dfrac{a}{b-a}$, os intervalos $[na,nb]$ passam a se sobrepor, cobrindo todo $[n_1 a,\\infty)$ para algum $n_1$. Logo existe $T$ com $|f(t)|\\le\\varepsilon$ para todo $t\\ge T$.\n\nComo $\\varepsilon$ e arbitrario, $\\lim_{t\\to\\infty}f(t)=0$. $\\quad\\blacksquare$",
+          "steps": [
+            "Fixe $\\varepsilon>0$ e defina os fechados $F_N=\\{x\\ge1:|f(nx)|\\le\\varepsilon\\ \\forall n\\ge N\\}$.",
+            "Verifique que cada $F_N$ e fechado e que $[1,\\infty)=\\bigcup_N F_N$ pela hipotese.",
+            "Aplique Baire: algum $F_{N_0}$ contem um intervalo $[a,b]$.",
+            "Traduza: $|f(t)|\\le\\varepsilon$ em $\\bigcup_{n\\ge N_0}[na,nb]$.",
+            "Mostre que esses intervalos cobrem $[T,\\infty)$ (pois $nb\\ge(n+1)a$ eventualmente); conclua $f(t)\\to0$."
+          ]
+        },
+        {
+          "prompt": "Esboce por que o conjunto das funções de $C[0,1]$ deriváveis em ALGUM ponto é magro (1ª categoria).",
+          "hint": "Defina $E_n=\\{f:\\exists x,\\ |f(x+h)-f(x)|\\le n|h|\\ \\forall h\\}$, mostre que cada $E_n$ é fechado de interior vazio em $C[0,1]$ (perturbe por dentes de serra), e que as deriváveis em algum ponto estão em $\\bigcup_n E_n$.",
+          "difficulty": 5,
+          "solution": "Em $C[0,1]$ com a norma do sup $\\|f\\|=\\max_x|f(x)|$ (espaco de Banach). Para $n\\in\\mathbb{N}$ defina\n\n$$E_n=\\Big\\{f\\in C[0,1]:\\exists\\,x_0\\in[0,1]\\ \\text{com}\\ |f(x)-f(x_0)|\\le n|x-x_0|\\ \\forall x\\Big\\}.$$\n\nSe $f$ e derivavel em algum $x_0$, a razao incremental e limitada perto de $x_0$ e, ajustando $n$, $f\\in E_n$ para $n$ grande. Logo as funcoes derivaveis em algum ponto estao em $\\bigcup_n E_n$.\n\n**$E_n$ e fechado.** Se $f_k\\to f$ uniformemente, $f_k\\in E_n$ com testemunhas $x_k$, por compacidade de $[0,1]$ tome $x_k\\to x_0$; a estimativa $|f_k(x)-f_k(x_k)|\\le n|x-x_k|$ passa ao limite (uniforme + continuidade), dando $f\\in E_n$.\n\n**$E_n$ tem interior vazio.** Dado $f\\in E_n$ e $\\varepsilon>0$, aproxime $f$ uniformemente por uma poligonal $g$ ($\\|f-g\\|<\\varepsilon/2$) e some um 'dente de serra' $\\psi$ com $\\|\\psi\\|<\\varepsilon/2$ e inclinacao $>2n$ em toda parte. Entao $\\|f-(g+\\psi)\\|<\\varepsilon$, mas $g+\\psi$ tem inclinacoes $>n$ em todo ponto, logo $g+\\psi\\notin E_n$. Assim toda bola em torno de $f$ escapa de $E_n$: interior vazio.\n\nLogo cada $E_n$ e fechado de interior vazio (raro), e $\\bigcup_n E_n$ e magro. Como $C[0,1]$ e Banach, por Baire nao e magro em si mesmo; portanto o complementar — as continuas SEM derivada em ponto algum — e residual (denso), em particular nao vazio. As funcoes continuas 'tipicas' nao tem derivada em ponto algum. $\\quad\\blacksquare$",
+          "steps": [
+            "Defina $E_n$ (uma inclinacao global $\\le n$ em algum ponto) e note que derivavel em algum ponto $\\Rightarrow f\\in\\bigcup_n E_n$.",
+            "Mostre $E_n$ fechado usando convergencia uniforme e compacidade de $[0,1]$ para o ponto testemunha.",
+            "Mostre interior vazio: perturbe $f$ por um dente de serra pequeno de inclinacao $>2n$, saindo de $E_n$.",
+            "Conclua que cada $E_n$ e raro, logo $\\bigcup_n E_n$ e magro.",
+            "Por Baire, $C[0,1]$ nao e magro: o complementar (sem derivada em ponto algum) e residual, logo generico."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Conjunto raro (nowhere dense): definição.",
+          "back": "$(\\overline{A})^\\circ=\\varnothing$: o fecho não contém nenhum aberto não vazio (ex.: $\\mathbb{Z}$, Cantor)."
+        },
+        {
+          "front": "Conjunto magro (1ª categoria).",
+          "back": "União enumerável de conjuntos raros. De 2ª categoria = não magro."
+        },
+        {
+          "front": "Enunciado do Teorema de Baire.",
+          "back": "Em métrico completo (ou localmente compacto Hausdorff), interseção enumerável de abertos densos é densa; o espaço não é magro em si mesmo."
+        },
+        {
+          "front": "Por que $\\mathbb{Q}$ não contraria Baire?",
+          "back": "$\\mathbb{Q}$ não é completo; de fato é magro em si mesmo (união enumerável de pontos, cada um raro)."
+        },
+        {
+          "front": "Baire prova que $\\mathbb{R}$ é...?",
+          "back": "Não enumerável (senão seria união enumerável de pontos raros, logo magro)."
+        },
+        {
+          "front": "O que é um conjunto residual / comagro?",
+          "back": "Complementar de magro; num espaço de Baire é denso. Ex.: os irracionais em $\\mathbb{R}$ ($G_\\delta$ denso)."
+        },
+        {
+          "front": "Aplicação de Baire em $C[0,1]$.",
+          "back": "A função contínua genérica não tem derivada em ponto algum; as deriváveis em algum ponto formam conjunto magro."
+        },
+        {
+          "front": "Banach-Steinhaus (limitação uniforme).",
+          "back": "Em Banach, limitação pontual de uma família de operadores lineares contínuos $\\Rightarrow$ limitação uniforme em norma. Prova via Baire."
+        },
+        {
+          "front": "Magro implica medida nula?",
+          "back": "Não. Magro e medida nula são independentes (há magro de medida total)."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Munkres, Topology — cap. 48 (Baire)",
+          "ref": "livro"
+        },
+        {
+          "title": "Elon, Espaços Métricos — cap. 7 (Baire)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude as definicoes de raro (nowhere dense), magro (1a categoria) e residual no Munkres (cap. 48) e no Elon, Espacos Metricos (cap. 7).",
+          "Enuncie o Teorema de Baire nas duas versoes (metricos completos e localmente compactos Hausdorff) e a formulacao por interseccao de abertos densos.",
+          "Demonstre a versao para metricos completos pela construcao de bolas fechadas encaixadas com raios decrescentes.",
+          "Estude as consequencias classicas: $\\mathbb{R}$ nao enumeravel, $\\mathbb{Q}$ nao e $G_\\delta$, funcao continua generica sem derivada; e as aplicacoes em Analise Funcional (Banach-Steinhaus).",
+          "Assista a uma aula sobre Baire e suas aplicacoes para consolidar a ideia de 'existencia por abundancia'.",
+          "Resolva os testes deste subtopico aqui no app e anote o principal (prova por bolas encaixadas, $\\mathbb{Q}$ nao $G_\\delta$, e o esboco de $C[0,1]$)."
+        ],
+        "searchQueries": [
+          "teorema de Baire espaco metrico completo demonstracao bolas encaixadas",
+          "conjunto raro magro residual primeira categoria definicao",
+          "Q nao e G-delta em R prova Baire",
+          "funcao continua sem derivada generica Baire C[0,1]",
+          "Baire category theorem proof nested closed balls",
+          "Banach-Steinhaus uniform boundedness principle Baire proof"
+        ],
+        "videos": [
+          {
+            "title": "The Baire Category Theorem",
+            "channel": "Dr. Peyam",
+            "note": "Enunciado, intuicao e aplicacoes do teorema de Baire."
+          },
+          {
+            "title": "Functional Analysis — Baire & Uniform Boundedness",
+            "channel": "MIT OpenCourseWare / Bill Kinney",
+            "note": "Baire e os tres teoremas de Banach (Steinhaus, aplicacao aberta, grafico fechado)."
+          },
+          {
+            "title": "Nowhere differentiable continuous functions",
+            "channel": "Michael Penn",
+            "note": "Contexto sobre funcoes continuas sem derivada, ligado ao argumento de categoria."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Topology, 2nd ed. — cap. 48 (Baire Spaces)",
+            "where": "James R. Munkres"
+          },
+          {
+            "title": "Espacos Metricos — cap. 7 (Teorema de Baire)",
+            "where": "Elon Lages Lima"
+          },
+          {
+            "title": "Real and Complex Analysis / Functional Analysis — Baire e Banach-Steinhaus",
+            "where": "Walter Rudin"
+          }
+        ]
+      }
+    }
+  ]
+}

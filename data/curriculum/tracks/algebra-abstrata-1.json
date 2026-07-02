@@ -1,0 +1,1966 @@
+{
+  "id": "algebra-abstrata-1",
+  "title": "Álgebra Abstrata I (Grupos)",
+  "phase": 1,
+  "phaseLabel": "Núcleo",
+  "tagline": "A teoria que captura a ideia de simetria: dos axiomas de grupo aos teoremas de Sylow, o vocabulário comum de toda a álgebra moderna.",
+  "summary": "Esta trilha constrói a teoria dos grupos do zero, com rigor de matemático. Partimos dos axiomas e de uma galeria viva de exemplos ($\\mathbb{Z}_n$, $S_n$, $D_n$, $GL_n$, $U(n)$), passamos por subgrupos, ordem, grupos cíclicos e o teorema de Lagrange, dominamos homomorfismos, subgrupos normais, grupos quociente e os três teoremas de isomorfismo, e culminamos nas ferramentas estruturais pesadas: ações de grupo, equação de classes, teoremas de Sylow e a classificação dos grupos abelianos finitos. É a base de toda a álgebra de pós-graduação.",
+  "bigPicture": "A teoria dos grupos é a linguagem matemática da simetria, e é o primeiro lugar onde o aluno aprende a pensar estruturalmente: estudar objetos pelas relações que preservam, e não por suas fórmulas. Grupos aparecem em todo canto da matemática e da física — grupos de Galois decidem quais equações têm solução por radicais; grupos de Lie organizam a geometria diferencial e a mecânica quântica; o grupo fundamental classifica espaços topológicos; teoria de representações conecta grupos à álgebra linear. Em concursos de Instituto Federal (IF), os tópicos básicos — definição e exemplos, subgrupos, grupos cíclicos, Lagrange, homomorfismos e grupos quociente — caem com regularidade no eixo de 'estruturas algébricas'. Em provas de mestrado (ENA/Exame Nacional de Acesso, exames de admissão de IMPA, USP, UNICAMP, UFRJ, UFMG), a teoria dos grupos é presença obrigatória: Lagrange e suas consequências, teoremas de isomorfismo, ações de grupo, equação de classes, os teoremas de Sylow (com aplicações de não simplicidade e classificação) e o teorema de estrutura dos grupos abelianos finitos formam o esqueleto da maioria das questões de álgebra.",
+  "prereqs": [
+    "prova",
+    "algebra-linear"
+  ],
+  "difficulty": 4,
+  "estimatedHours": 63,
+  "primaryBooks": [
+    {
+      "title": "Abstract Algebra",
+      "author": "David S. Dummit & Richard M. Foote",
+      "note": "Referência enciclopédica e padrão de pós-graduação nos EUA. Use a Parte I inteira: definições, ações, Sylow e abelianos finitos com exposição completa.",
+      "chapters": "caps. 1-6"
+    },
+    {
+      "title": "Topics in Algebra",
+      "author": "I. N. Herstein",
+      "note": "Clássico elegante e enxuto; demonstrações belíssimas de Lagrange, Cayley, isomorfismos e Sylow. Excelente para fixar o raciocínio.",
+      "chapters": "cap. 2"
+    },
+    {
+      "title": "Contemporary Abstract Algebra",
+      "author": "Joseph A. Gallian",
+      "note": "Texto mais didático, com enorme banco de exercícios no estilo que cai em concurso de IF; ótimo para construir intuição e velocidade.",
+      "chapters": "caps. 1-11, 24-25"
+    },
+    {
+      "title": "Elementos de Álgebra",
+      "author": "Arnaldo Garcia & Yves Lequain (IMPA, Projeto Euclides)",
+      "note": "Referência brasileira rigorosa em PT-BR; tratamento completo de grupos, ações e Sylow no nível de mestrado nacional.",
+      "chapters": "caps. sobre Grupos"
+    },
+    {
+      "title": "Introdução à Álgebra",
+      "author": "Adilson Gonçalves (IMPA/SBM, Projeto Euclides)",
+      "note": "Clássico brasileiro; cobre grupos, anéis e corpos com a notação e o estilo cobrados em provas de mestrado no Brasil.",
+      "chapters": "caps. de Grupos"
+    },
+    {
+      "title": "A First Course in Abstract Algebra",
+      "author": "John B. Fraleigh",
+      "note": "Introdução suave e bem motivada; bom para a primeira passada pelos grupos cíclicos, permutações e classes laterais.",
+      "chapters": "Seções I-III"
+    }
+  ],
+  "freeResources": [
+    {
+      "title": "Harvard Abstract Algebra (Benedict Gross, E-222)",
+      "kind": "video",
+      "ref": "Harvard Extension / YouTube"
+    },
+    {
+      "title": "MIT OCW 18.701 Algebra I (Emil Artin / Michael Artin)",
+      "kind": "curso",
+      "ref": "ocw.mit.edu"
+    },
+    {
+      "title": "Socratica - Abstract Algebra",
+      "kind": "video",
+      "ref": "YouTube"
+    },
+    {
+      "title": "Aulas de Álgebra do IMPA (PAPMEM / canal IMPA)",
+      "kind": "video",
+      "ref": "YouTube IMPA"
+    },
+    {
+      "title": "Visual Group Theory (Nathan Carter)",
+      "kind": "livro",
+      "ref": "MAA / material de apoio"
+    }
+  ],
+  "examRelevance": {
+    "ifConcurso": 3,
+    "mestrado": 5,
+    "note": "Em concursos de IF, o eixo de 'estruturas algébricas' cobra o básico: definição e exemplos de grupos, subgrupos, grupos cíclicos, ordem de elemento, teorema de Lagrange, homomorfismos e grupos quociente; Sylow raramente aparece. Em provas de mestrado é tema central e recorrente: demonstrar Lagrange e consequências, os três teoremas de isomorfismo, ações de grupo e a equação de classes, os três teoremas de Sylow com aplicações típicas (todo grupo de ordem 15 é cíclico, nenhum grupo de ordem 30 ou 56 é simples), e o teorema de estrutura dos grupos abelianos finitos (contar e listar os grupos abelianos de uma dada ordem)."
+  },
+  "subtopics": [
+    {
+      "id": "algebra-abstrata-1-01-grupos-exemplos",
+      "title": "Grupos: Definição, Exemplos e Propriedades Básicas",
+      "tagline": "Quatro axiomas que codificam simetria — e a galeria de exemplos que dá vida à teoria.",
+      "objectives": [
+        "Enunciar com precisão os axiomas de grupo e reconhecer quando uma operação binária define (ou não) um grupo.",
+        "Construir e manipular os exemplos fundamentais: $(\\mathbb{Z},+)$, $(\\mathbb{Z}_n,+)$, $U(n)$, $S_n$, $D_n$, $GL_n(\\mathbb{R})$ e o grupo de Klein.",
+        "Demonstrar a unicidade do elemento neutro e do inverso e as leis de cancelamento.",
+        "Provar identidades algébricas básicas como $(ab)^{-1}=b^{-1}a^{-1}$ e $(a^{-1})^{-1}=a$.",
+        "Ler e construir a tábua de Cayley de um grupo finito e distinguir grupos abelianos de não abelianos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Grupo",
+          "statement": "Um par $(G,\\ast)$ com operação $\\ast:G\\times G\\to G$ que é associativa, possui elemento neutro $e$ ($e\\ast a=a\\ast e=a$) e na qual todo $a$ tem inverso $a^{-1}$ ($a\\ast a^{-1}=a^{-1}\\ast a=e$)."
+        },
+        {
+          "term": "Grupo abeliano",
+          "statement": "Grupo em que a operação é comutativa: $a\\ast b=b\\ast a$ para todos $a,b\\in G$. Homenagem a Niels Abel."
+        },
+        {
+          "term": "Ordem do grupo",
+          "statement": "$|G|$ é a cardinalidade do conjunto $G$; o grupo é finito se $|G|<\\infty$."
+        },
+        {
+          "term": "Grupo diedral $D_n$",
+          "statement": "Grupo das simetrias do polígono regular de $n$ lados, com $|D_n|=2n$, gerado por uma rotação $r$ de ordem $n$ e uma reflexão $s$ de ordem $2$ com a relação $srs=r^{-1}$."
+        },
+        {
+          "term": "Grupo das unidades $U(n)$",
+          "statement": "$U(n)=\\{\\,\\bar a\\in\\mathbb{Z}_n:\\gcd(a,n)=1\\,\\}$ com a multiplicação módulo $n$; é grupo abeliano de ordem $\\varphi(n)$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Unicidade do neutro e do inverso",
+          "statement": "Em um grupo $G$, o elemento neutro é único e cada elemento possui um único inverso.",
+          "whyItMatters": "Garante que as notações $e$ e $a^{-1}$ são bem definidas; sem unicidade, toda a teoria perderia sentido."
+        },
+        {
+          "name": "Leis de cancelamento",
+          "statement": "Em um grupo, $ab=ac\\Rightarrow b=c$ (cancelamento à esquerda) e $ba=ca\\Rightarrow b=c$ (à direita).",
+          "whyItMatters": "É a razão pela qual cada linha e cada coluna da tábua de Cayley é uma permutação dos elementos: nenhum elemento se repete."
+        },
+        {
+          "name": "Inverso do produto e do inverso",
+          "statement": "Para todos $a,b\\in G$: $(ab)^{-1}=b^{-1}a^{-1}$ e $(a^{-1})^{-1}=a$.",
+          "whyItMatters": "A inversão de produtos inverte a ordem — fonte de muitos erros em grupos não abelianos. É a versão algébrica de 'tirar as meias antes dos sapatos'."
+        }
+      ],
+      "summary": "Um grupo é o objeto algébrico mínimo que captura a noção de simetria reversível: um conjunto munido de uma operação associativa, com um elemento neutro e inversos para todos os seus elementos. Esses quatro axiomas, aparentemente modestos, bastam para forçar uma estrutura riquíssima. As primeiras consequências formais — unicidade do neutro, unicidade do inverso e as leis de cancelamento — são provadas diretamente dos axiomas e mostram o estilo da disciplina: tudo é deduzido, nada é assumido por analogia com os números. A não comutatividade é a regra, não a exceção; por isso $(ab)^{-1}=b^{-1}a^{-1}$ inverte a ordem dos fatores.\n\nO poder da definição vem da sua generalidade. Os inteiros sob adição, as classes de resto $\\mathbb{Z}_n$, as unidades $U(n)$, as matrizes invertíveis $GL_n(\\mathbb{R})$, as permutações $S_n$, as simetrias $D_n$ de um polígono — todos obedecem aos mesmos axiomas e, portanto, compartilham todos os teoremas que provarmos abstratamente. A tábua de Cayley organiza um grupo finito numa matriz de multiplicação; o cancelamento garante que ela é um quadrado latino (cada elemento aparece exatamente uma vez por linha e por coluna). Já nesta aula encontramos o fato de que existem, a menos de isomorfismo, exatamente dois grupos de ordem $4$: o cíclico $\\mathbb{Z}_4$ e o grupo de Klein $V$ — primeira pista de que classificar grupos é um problema profundo.",
+      "commonPitfalls": [
+        "Esquecer de verificar o fechamento da operação (que $a\\ast b$ ainda pertence a $G$) antes de declarar que algo é um grupo.",
+        "Supor comutatividade sem justificativa: em geral $ab\\neq ba$, e $(ab)^{-1}=a^{-1}b^{-1}$ é FALSO; o correto é $b^{-1}a^{-1}$.",
+        "Confundir $(\\mathbb{Z}_n,+)$ (sempre grupo, todo elemento invertível) com $(\\mathbb{Z}_n,\\cdot)$ (não é grupo, pois $0$ e os divisores de $n$ não têm inverso); o grupo multiplicativo correto é $U(n)$.",
+        "Achar que todo conjunto com uma operação 'natural' é grupo: $(\\mathbb{N},+)$ não é (sem inversos) e $(\\mathbb{Z},\\cdot)$ não é (sem inversos para $|a|>1$)."
+      ],
+      "worked": "**Os dois grupos de ordem 4.** Vamos exibir as tábuas de Cayley de $\\mathbb{Z}_4=\\{0,1,2,3\\}$ (soma mod 4) e do grupo de Klein $V=\\{e,a,b,c\\}$.\n\nEm $\\mathbb{Z}_4$, o elemento $1$ satisfaz $1+1=2$, $1+1+1=3$, $1+1+1+1=0$: existe um elemento de ordem $4$. A tábua é cíclica.\n\nNo grupo de Klein $V$, definimos $a^2=b^2=c^2=e$ e $ab=c$, $bc=a$, $ca=b$ (a operação é comutativa). Todo elemento $\\neq e$ tem ordem $2$.\n\n**Conclusão:** $\\mathbb{Z}_4$ e $V$ não são isomorfos, pois $\\mathbb{Z}_4$ tem um elemento de ordem $4$ e $V$ não tem nenhum. Logo existem (pelo menos) dois grupos essencialmente diferentes de ordem $4$ — de fato, exatamente dois. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre que o conjunto $G=\\{a\\in\\mathbb{R}:a\\neq -1\\}$ com a operação $a\\ast b=a+b+ab$ é um grupo abeliano. Identifique o neutro e o inverso de cada elemento.",
+          "hint": "Note que $a\\ast b+1=(a+1)(b+1)$; o neutro é $0$ e o inverso de $a$ é $\\frac{-a}{1+a}$. A bijeção $a\\mapsto a+1$ transforma $\\ast$ em multiplicação.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** $(G,\\ast)$ com $G=\\{a\\in\\mathbb{R}:a\\neq-1\\}$ e $a\\ast b=a+b+ab$ e grupo abeliano.\n\n**Ideia central.** Note a identidade\n$$a\\ast b+1=a+b+ab+1=(a+1)(b+1).$$\nLogo a aplicacao $\\varphi:G\\to\\mathbb{R}^{\\ast},\\ \\varphi(a)=a+1$ satisfaz $\\varphi(a\\ast b)=(a+1)(b+1)=\\varphi(a)\\varphi(b)$, e e uma bijecao (pois $a\\neq-1\\iff a+1\\neq0$). Assim $\\ast$ e simplesmente a multiplicacao de $\\mathbb{R}^{\\ast}$ transportada para $G$, e todas as propriedades de grupo seguem. Verifiquemos diretamente:\n\n**Fechamento.** Se $a,b\\neq-1$, entao $a+1\\neq0$ e $b+1\\neq0$, donde $(a+1)(b+1)\\neq0$, isto e, $a\\ast b+1\\neq0$ e $a\\ast b\\neq-1$. Logo $a\\ast b\\in G$.\n\n**Associatividade.** $\\varphi((a\\ast b)\\ast c)=\\varphi(a)\\varphi(b)\\varphi(c)=\\varphi(a\\ast(b\\ast c))$; como $\\varphi$ e injetora, $(a\\ast b)\\ast c=a\\ast(b\\ast c)$.\n\n**Neutro.** $a\\ast 0=a+0+a\\cdot0=a$ e $0\\ast a=a$; logo $e=0$ (e $0\\neq-1$, entao $0\\in G$).\n\n**Inverso.** Resolvendo $a\\ast b=0$: $a+b+ab=0\\Rightarrow b(1+a)=-a\\Rightarrow b=\\dfrac{-a}{1+a}$, bem definido pois $a\\neq-1$. Alem disso $b\\neq-1$, pois $\\dfrac{-a}{1+a}=-1\\Rightarrow -a=-1-a\\Rightarrow 0=-1$, absurdo. Assim $a^{-1}=\\dfrac{-a}{1+a}\\in G$.\n\n**Comutatividade.** $a\\ast b=a+b+ab=b+a+ba=b\\ast a$.\n\nPortanto $(G,\\ast)$ e grupo abeliano, com neutro $0$ e inverso $a^{-1}=\\dfrac{-a}{1+a}$. $\\blacksquare$",
+          "steps": [
+            "Calcule $a\\ast b+1$ e observe que ele fatora como $(a+1)(b+1)$ - essa e a chave de tudo.",
+            "Use essa fatoracao para provar o fechamento: se $a+1$ e $b+1$ sao nao nulos, o produto tambem e, logo $a\\ast b\\neq-1$.",
+            "Defina $\\varphi(a)=a+1$ e verifique $\\varphi(a\\ast b)=\\varphi(a)\\varphi(b)$; isso transporta a associatividade da multiplicacao real.",
+            "Ache o neutro resolvendo $a\\ast e=a$, obtendo $e=0$.",
+            "Ache o inverso resolvendo $a\\ast b=0$, obtendo $b=-a/(1+a)$, e cheque que ele pertence a $G$.",
+            "Conclua a comutatividade pela simetria de $a+b+ab$."
+          ]
+        },
+        {
+          "prompt": "Prove que se todo elemento $g$ de um grupo $G$ satisfaz $g^2=e$, então $G$ é abeliano.",
+          "hint": "De $g^2=e$ segue $g=g^{-1}$. Aplique isso a $ab$: $(ab)^{-1}=ab$, e use $(ab)^{-1}=b^{-1}a^{-1}=ba$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Se todo $g\\in G$ satisfaz $g^2=e$, entao $G$ e abeliano.\n\n**Passo 1: cada elemento e seu proprio inverso.** De $g^2=e$ segue $g=g^{-1}$ para todo $g\\in G$ (multiplique $g\\cdot g=e$ por $g^{-1}$ a esquerda).\n\n**Passo 2: aplique a $ab$.** Sejam $a,b\\in G$. Como $ab\\in G$, tambem $(ab)^2=e$, ou seja $(ab)^{-1}=ab$.\n\n**Passo 3: use a regra do inverso do produto.** Sempre vale $(ab)^{-1}=b^{-1}a^{-1}$. Pelo Passo 1, $b^{-1}=b$ e $a^{-1}=a$, logo\n$$ab=(ab)^{-1}=b^{-1}a^{-1}=ba.$$\n\nComo $a,b$ eram arbitrarios, $G$ e abeliano. $\\blacksquare$\n\n*Observacao.* Tais grupos sao exatamente os espacos vetoriais sobre $\\mathbb{F}_2$; a menos de isomorfismo sao os $(\\mathbb{Z}_2)^n$.",
+          "steps": [
+            "De $g^2=e$ deduza $g=g^{-1}$ para todo elemento.",
+            "Aplique a hipotese ao elemento $ab$: $(ab)^2=e$, isto e, $(ab)^{-1}=ab$.",
+            "Lembre a identidade universal $(ab)^{-1}=b^{-1}a^{-1}$.",
+            "Substitua $a^{-1}=a$ e $b^{-1}=b$ para obter $ab=ba$ e conclua."
+          ]
+        },
+        {
+          "prompt": "Escreva a tábua de Cayley do grupo diedral $D_3$ (simetrias do triângulo equilátero) usando os geradores $r$ (rotação) e $s$ (reflexão) com $r^3=s^2=e$ e $srs=r^{-1}$. Verifique que $|D_3|=6$ e que ele não é abeliano.",
+          "hint": "Os seis elementos são $e,r,r^2,s,rs,r^2s$. Use $sr=r^{-1}s=r^2s$ para reduzir todo produto à forma $r^i s^j$.",
+          "difficulty": 3,
+          "solution": "**Elementos.** Com $r^3=e$, $s^2=e$ e $srs=r^{-1}=r^2$, todo produto se reduz a $r^i s^j$ com $i\\in\\{0,1,2\\}$, $j\\in\\{0,1\\}$. Os seis elementos sao\n$$e,\\ r,\\ r^2,\\ s,\\ rs,\\ r^2s,$$\nlogo $|D_3|=6$.\n\n**Regra de comutacao.** De $srs=r^2$ vem $sr=r^2s$, e em geral $sr^i=r^{-i}s=r^{3-i}s$. Isso permite empurrar todo $s$ para a direita.\n\n**Tabua de Cayley** (entrada = linha $\\cdot$ coluna):\n\n| $\\cdot$ | $e$ | $r$ | $r^2$ | $s$ | $rs$ | $r^2s$ |\n|---|---|---|---|---|---|---|\n| $e$ | $e$ | $r$ | $r^2$ | $s$ | $rs$ | $r^2s$ |\n| $r$ | $r$ | $r^2$ | $e$ | $rs$ | $r^2s$ | $s$ |\n| $r^2$ | $r^2$ | $e$ | $r$ | $r^2s$ | $s$ | $rs$ |\n| $s$ | $s$ | $r^2s$ | $rs$ | $e$ | $r^2$ | $r$ |\n| $rs$ | $rs$ | $s$ | $r^2s$ | $r$ | $e$ | $r^2$ |\n| $r^2s$ | $r^2s$ | $rs$ | $s$ | $r^2$ | $r$ | $e$ |\n\n*Exemplo de calculo:* $s\\cdot r=sr=r^2s$; $s\\cdot(rs)=(sr)s=r^2s\\cdot s=r^2s^2=r^2$; $(rs)(rs)=r(sr)s=r(r^2s)s=r^3s^2=e$.\n\n**Nao abeliano.** $rs\\neq sr$, pois $rs$ e um dos geradores da forma $r^1s$, enquanto $sr=r^2s$; explicitamente $rs\\neq r^2s$ ja que $r\\neq r^2$. Logo $D_3$ nao e abeliano. Cada linha e coluna contem cada elemento exatamente uma vez (quadrado latino), como exige o cancelamento. $\\blacksquare$",
+          "steps": [
+            "Liste os 6 elementos na forma normal $r^i s^j$ usando $r^3=s^2=e$.",
+            "Deduza a regra de comutacao $sr=r^2s$ (e $sr^i=r^{3-i}s$) a partir de $srs=r^{-1}$.",
+            "Preencha a tabua reduzindo cada produto a forma $r^i s^j$ com essa regra.",
+            "Confira que |D_3|=6 e que cada linha/coluna e uma permutacao dos elementos.",
+            "Exiba $rs\\neq sr$ para concluir que o grupo nao e abeliano."
+          ]
+        },
+        {
+          "prompt": "Em um grupo finito $G$, prove que cada linha da tábua de Cayley é uma permutação dos elementos de $G$ (quadrado latino).",
+          "hint": "A linha de $a$ é a função $x\\mapsto ax$; mostre que ela é injetora pelo cancelamento e, sendo $G$ finito, também sobrejetora.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** Em um grupo finito $G$, a linha da tabua indexada por $a\\in G$ e uma permutacao dos elementos de $G$.\n\n**Montagem.** A linha de $a$ e a lista $(ax)_{x\\in G}$, isto e, a imagem da funcao $L_a:G\\to G$, $L_a(x)=ax$ (translacao a esquerda).\n\n**Injetividade.** Se $L_a(x)=L_a(y)$, entao $ax=ay$; pela lei de cancelamento a esquerda, $x=y$. Logo $L_a$ e injetora.\n\n**Sobrejetividade.** Como $G$ e finito e $L_a:G\\to G$ e injetora de um conjunto finito nele mesmo, $L_a$ e automaticamente sobrejetora. (Alternativamente, dado $b\\in G$, $x=a^{-1}b$ satisfaz $L_a(x)=b$.)\n\n**Conclusao.** $L_a$ e bijecao de $G$, portanto a linha de $a$ lista cada elemento de $G$ exatamente uma vez: e uma permutacao. O mesmo argumento com $R_a(x)=xa$ vale para colunas. Assim a tabua e um quadrado latino. $\\blacksquare$",
+          "steps": [
+            "Identifique a linha de $a$ com a funcao $x\\mapsto ax$.",
+            "Prove que essa funcao e injetora usando a lei de cancelamento a esquerda.",
+            "Use a finitude de $G$ (injetora em conjunto finito implica sobrejetora) para obter bijecao.",
+            "Conclua que a linha contem cada elemento exatamente uma vez; repita para colunas."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Os quatro axiomas de grupo",
+          "back": "Fechamento + associatividade, existência de neutro $e$, e existência de inverso para todo elemento."
+        },
+        {
+          "front": "Grupo abeliano",
+          "back": "Grupo cuja operação é comutativa: $ab=ba$ para todos $a,b$."
+        },
+        {
+          "front": "$(ab)^{-1}=?$",
+          "back": "$(ab)^{-1}=b^{-1}a^{-1}$ — a inversão troca a ordem dos fatores."
+        },
+        {
+          "front": "Lei de cancelamento",
+          "back": "$ab=ac\\Rightarrow b=c$ e $ba=ca\\Rightarrow b=c$ (válidas em todo grupo)."
+        },
+        {
+          "front": "Ordem de $D_n$",
+          "back": "$|D_n|=2n$: $n$ rotações e $n$ reflexões; relação $srs=r^{-1}$."
+        },
+        {
+          "front": "Ordem de $U(n)$",
+          "back": "$|U(n)|=\\varphi(n)$ (função de Euler); são as classes $\\bar a$ com $\\gcd(a,n)=1$."
+        },
+        {
+          "front": "Grupos de ordem 4 (a menos de isomorfismo)",
+          "back": "Exatamente dois: o cíclico $\\mathbb{Z}_4$ e o de Klein $V\\cong\\mathbb{Z}_2\\times\\mathbb{Z}_2$."
+        },
+        {
+          "front": "$(\\mathbb{Z}_n,\\cdot)$ é grupo?",
+          "back": "Não — $0$ e os divisores de $n$ não têm inverso. O grupo multiplicativo é $U(n)$."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 1 (Introduction to Groups)",
+          "ref": "livro"
+        },
+        {
+          "title": "Gallian, caps. 1-2 (Groups, Definitions and Examples)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Álgebra (Grupos: definição e exemplos)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Leia a definicao de grupo em Dummit & Foote cap. 1 (ou Gallian caps. 1-2) e escreva os quatro axiomas com suas proprias palavras, marcando onde cada exemplo ($\\mathbb{Z}$, $\\mathbb{Z}_n$, $S_n$, $D_n$, $GL_n$) usa ou viola cada axioma.",
+          "Prove voce mesmo, sem olhar, a unicidade do neutro, a unicidade do inverso e as leis de cancelamento; so depois compare com o livro.",
+          "Construa a mao as tabuas de Cayley de $\\mathbb{Z}_4$ e do grupo de Klein $V$ e verifique a propriedade de quadrado latino em cada linha e coluna.",
+          "Assista a uma aula introdutoria (Socratica ou Ferretto) para fixar a intuicao de simetria e a distincao abeliano/nao abeliano.",
+          "Faca 8-10 exercicios de 'e grupo ou nao?' em Gallian, sempre checando fechamento primeiro.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (os axiomas, $(ab)^{-1}=b^{-1}a^{-1}$ e os dois grupos de ordem 4)."
+        ],
+        "searchQueries": [
+          "definicao de grupo axiomas exemplos algebra abstrata",
+          "grupo diedral Dn simetrias poligono tabua de Cayley",
+          "grupo de Klein Z4 dois grupos de ordem 4",
+          "leis de cancelamento unicidade do inverso grupo demonstracao",
+          "group theory abstract algebra group axioms examples",
+          "U(n) grupo das unidades funcao de Euler phi"
+        ],
+        "videos": [
+          {
+            "title": "Abstract Algebra - Groups",
+            "channel": "Socratica",
+            "note": "Serie curta e visual; assista aos videos 'Group Definition' e 'Group Examples' para fixar os axiomas."
+          },
+          {
+            "title": "Introducao a Grupos / Estruturas Algebricas",
+            "channel": "O Professor Ferretto",
+            "note": "Explicacao em PT-BR bem didatica dos axiomas e primeiros exemplos."
+          },
+          {
+            "title": "Group theory, abstraction, and the 196,883-dimensional monster",
+            "channel": "3Blue1Brown",
+            "note": "Assista para ganhar a intuicao geometrica de que grupo = simetria."
+          },
+          {
+            "title": "Abstract Algebra (E-222)",
+            "channel": "Harvard - Benedict Gross",
+            "note": "Primeiras aulas cobrem definicao e exemplos com rigor; otimo para nivel de mestrado."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 1 (Introduction to Groups)",
+            "where": "Livro de David S. Dummit & Richard M. Foote"
+          },
+          {
+            "title": "Contemporary Abstract Algebra, caps. 1-2",
+            "where": "Livro de Joseph A. Gallian"
+          },
+          {
+            "title": "Elementos de Algebra (Grupos: definicao e exemplos)",
+            "where": "Livro de Arnaldo Garcia & Yves Lequain (IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-1-02-subgrupos-ciclicos",
+      "title": "Subgrupos, Ordem de Elemento e Grupos Cíclicos",
+      "tagline": "As peças internas de um grupo e os grupos mais simples possíveis: aqueles gerados por um único elemento.",
+      "objectives": [
+        "Aplicar os critérios de subgrupo (um passo e o critério para subconjuntos finitos) para decidir se $H\\subseteq G$ é subgrupo.",
+        "Definir a ordem de um elemento e relacioná-la com a ordem do subgrupo cíclico que ele gera.",
+        "Provar que $a^k=e$ se e somente se $\\mathrm{ord}(a)\\mid k$ e calcular $\\mathrm{ord}(a^k)$.",
+        "Classificar os grupos cíclicos: todo cíclico é isomorfo a $\\mathbb{Z}$ ou a $\\mathbb{Z}_n$.",
+        "Determinar todos os subgrupos de um grupo cíclico finito e contar seus geradores via $\\varphi$."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Subgrupo",
+          "statement": "$H\\subseteq G$ é subgrupo ($H\\le G$) se é não vazio, fechado pela operação e fechado por inversos; equivalentemente, $H$ é ele próprio um grupo com a operação de $G$."
+        },
+        {
+          "term": "Subgrupo gerado / cíclico",
+          "statement": "$\\langle a\\rangle=\\{a^k:k\\in\\mathbb{Z}\\}$ é o menor subgrupo contendo $a$. Um grupo é cíclico se $G=\\langle a\\rangle$ para algum $a$, chamado gerador."
+        },
+        {
+          "term": "Ordem de um elemento",
+          "statement": "$\\mathrm{ord}(a)$ é o menor inteiro positivo $n$ com $a^n=e$ (e $\\infty$ se não existir); vale $\\mathrm{ord}(a)=|\\langle a\\rangle|$."
+        },
+        {
+          "term": "Centro do grupo",
+          "statement": "$Z(G)=\\{z\\in G:zg=gz\\ \\forall g\\in G\\}$ é um subgrupo abeliano; mede o quanto $G$ é comutativo."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Critério do subgrupo (um passo)",
+          "statement": "Um subconjunto não vazio $H\\subseteq G$ é subgrupo se e somente se $ab^{-1}\\in H$ sempre que $a,b\\in H$.",
+          "whyItMatters": "Reduz a verificação de subgrupo a uma única condição, em vez de checar fechamento e inversos separadamente. Para $H$ finito, basta o fechamento."
+        },
+        {
+          "name": "Caracterização via ordem",
+          "statement": "Se $\\mathrm{ord}(a)=n$, então $a^k=e\\iff n\\mid k$, e $\\langle a\\rangle=\\{e,a,\\dots,a^{n-1}\\}$ tem exatamente $n$ elementos distintos.",
+          "whyItMatters": "Transforma perguntas sobre potências num grupo em aritmética de divisibilidade — a ponte entre álgebra e teoria dos números."
+        },
+        {
+          "name": "Ordem de uma potência",
+          "statement": "Se $\\mathrm{ord}(a)=n$, então $\\mathrm{ord}(a^k)=\\dfrac{n}{\\gcd(n,k)}$. Em particular $a^k$ gera $\\langle a\\rangle$ se e somente se $\\gcd(n,k)=1$.",
+          "whyItMatters": "Permite achar todos os geradores de um grupo cíclico e a ordem de qualquer elemento sem testar potência por potência."
+        },
+        {
+          "name": "Classificação dos grupos cíclicos",
+          "statement": "Todo grupo cíclico infinito é isomorfo a $(\\mathbb{Z},+)$ e todo grupo cíclico de ordem $n$ é isomorfo a $(\\mathbb{Z}_n,+)$. Subgrupos de cíclicos são cíclicos; em $\\mathbb{Z}_n$, para cada divisor $d\\mid n$ existe um único subgrupo de ordem $d$.",
+          "whyItMatters": "Encerra completamente o estudo dos grupos cíclicos: a menos de isomorfismo só existe $\\mathbb{Z}$ e $\\mathbb{Z}_n$. É o primeiro teorema de classificação da disciplina."
+        }
+      ],
+      "summary": "Subgrupos são os 'subobjetos' da teoria: subconjuntos que herdam a estrutura de grupo. O critério de um passo ($ab^{-1}\\in H$) condensa todas as exigências numa só verificação, e para subconjuntos finitos o mero fechamento já basta. A partir de um único elemento $a$ formamos $\\langle a\\rangle$, o subgrupo cíclico gerado por ele; a sua cardinalidade é precisamente a ordem de $a$, o que amarra um conceito geométrico (quantos passos para voltar ao início) a um conceito algébrico (o tamanho de um subgrupo). A relação $a^k=e\\iff \\mathrm{ord}(a)\\mid k$ é o cavalo de batalha de toda manipulação de potências.\n\nOs grupos cíclicos são os mais simples e estão completamente classificados: a menos de isomorfismo, há apenas $\\mathbb{Z}$ (infinito) e $\\mathbb{Z}_n$ (finito de ordem $n$). Sua aritmética interna é transparente: a ordem de $a^k$ vale $n/\\gcd(n,k)$, de modo que os geradores de $\\mathbb{Z}_n$ são exatamente as classes $\\bar k$ com $\\gcd(k,n)=1$, num total de $\\varphi(n)$. Mais ainda, a estrutura de subgrupos de $\\mathbb{Z}_n$ espelha exatamente a estrutura de divisores de $n$: cada divisor $d$ produz um e um só subgrupo de ordem $d$. Esse dicionário entre subgrupos e divisores é o protótipo de teoremas de correspondência que reencontraremos adiante.",
+      "commonPitfalls": [
+        "Esquecer de verificar que $H$ é não vazio (basta checar $e\\in H$) antes de aplicar o critério do subgrupo.",
+        "Confundir a ordem do GRUPO $|G|$ com a ordem de um ELEMENTO $\\mathrm{ord}(a)$ — são conceitos distintos, embora relacionados por Lagrange.",
+        "Calcular $\\mathrm{ord}(a^k)$ como $n/k$ em vez de $n/\\gcd(n,k)$: o erro só não aparece quando $k\\mid n$.",
+        "Supor que todo grupo abeliano é cíclico — falso: o grupo de Klein $V$ é abeliano mas não cíclico (nenhum elemento tem ordem $4$)."
+      ],
+      "worked": "**Subgrupos e geradores de $\\mathbb{Z}_{12}$.** Tome $G=\\langle a\\rangle$ cíclico de ordem $12$ (pense em $a=\\bar 1\\in\\mathbb{Z}_{12}$).\n\n*Ordem de uma potência.* $\\mathrm{ord}(a^8)=\\dfrac{12}{\\gcd(12,8)}=\\dfrac{12}{4}=3$. De fato $a^8,a^{16}=a^4,a^{24}=e$.\n\n*Geradores.* $a^k$ gera $G$ exatamente quando $\\gcd(k,12)=1$, isto é, $k\\in\\{1,5,7,11\\}$: são $\\varphi(12)=4$ geradores.\n\n*Todos os subgrupos.* Os divisores de $12$ são $1,2,3,4,6,12$, e para cada $d\\mid 12$ há um único subgrupo de ordem $d$, a saber $\\langle a^{12/d}\\rangle$:\n$$\\{e\\},\\ \\langle a^6\\rangle,\\ \\langle a^4\\rangle,\\ \\langle a^3\\rangle,\\ \\langle a^2\\rangle,\\ G,$$\nde ordens $1,2,3,4,6,12$. O reticulado de subgrupos é idêntico ao reticulado de divisores de $12$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Prove que a interseção de uma família qualquer de subgrupos de $G$ é um subgrupo. Mostre, com um exemplo em $\\mathbb{Z}$, que a UNIÃO de dois subgrupos em geral não é subgrupo.",
+          "hint": "Para a interseção use o critério de um passo. Para a união, tome $2\\mathbb{Z}\\cup 3\\mathbb{Z}$ e some $2+3=5$.",
+          "difficulty": 2,
+          "solution": "**Parte 1: a intersecao de subgrupos e subgrupo.** Seja $\\{H_i\\}_{i\\in I}$ uma familia de subgrupos de $G$ e $H=\\bigcap_{i\\in I}H_i$.\n\n- $H\\neq\\emptyset$: cada $H_i$ contem $e$, logo $e\\in H$.\n- Criterio de um passo: sejam $a,b\\in H$. Para cada $i$, $a,b\\in H_i$ e, como $H_i\\le G$, $ab^{-1}\\in H_i$. Valendo para todo $i$, $ab^{-1}\\in\\bigcap_i H_i=H$.\n\nLogo $H\\le G$. $\\blacksquare$\n\n**Parte 2: a uniao nao e, em geral, subgrupo.** Em $(\\mathbb{Z},+)$ tome $H_1=2\\mathbb{Z}$ e $H_2=3\\mathbb{Z}$, ambos subgrupos. Entao $2\\in H_1$ e $3\\in H_2$, logo $2,3\\in H_1\\cup H_2$, mas\n$$2+3=5\\notin 2\\mathbb{Z}\\cup 3\\mathbb{Z},$$\npois $5$ nao e multiplo de $2$ nem de $3$. Assim $H_1\\cup H_2$ nao e fechado pela operacao e nao e subgrupo. $\\blacksquare$\n\n*Observacao.* Uma uniao $H_1\\cup H_2$ e subgrupo se e somente se $H_1\\subseteq H_2$ ou $H_2\\subseteq H_1$.",
+          "steps": [
+            "Para a intersecao, verifique $e\\in H$ e depois aplique o criterio de um passo em cada $H_i$ simultaneamente.",
+            "Conclua que $ab^{-1}$ pertence a todos os $H_i$, logo a intersecao.",
+            "Para a uniao, escolha $2\\mathbb{Z}$ e $3\\mathbb{Z}$ em $\\mathbb{Z}$.",
+            "Some $2+3=5$ e mostre que o resultado escapa da uniao, quebrando o fechamento."
+          ]
+        },
+        {
+          "prompt": "Sejam $a,b$ elementos de um grupo abeliano com $\\mathrm{ord}(a)=m$, $\\mathrm{ord}(b)=n$ e $\\gcd(m,n)=1$. Prove que $\\mathrm{ord}(ab)=mn$.",
+          "hint": "Mostre que $(ab)^{mn}=e$ e que se $(ab)^k=e$ então $m\\mid k$ e $n\\mid k$; use $\\gcd(m,n)=1$ para concluir $mn\\mid k$.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** Em grupo abeliano, se $\\mathrm{ord}(a)=m$, $\\mathrm{ord}(b)=n$ e $\\gcd(m,n)=1$, entao $\\mathrm{ord}(ab)=mn$.\n\n**Passo 1: $(ab)^{mn}=e$.** Como $G$ e abeliano, $(ab)^{mn}=a^{mn}b^{mn}=(a^m)^n(b^n)^m=e^n e^m=e$. Logo $\\mathrm{ord}(ab)\\mid mn$.\n\n**Passo 2: seja $k=\\mathrm{ord}(ab)$.** Entao $(ab)^k=e$, isto e, $a^k=b^{-k}$. Vamos mostrar que $m\\mid k$ e $n\\mid k$.\n\nDe $a^k=b^{-k}$ elevo a $n$: $a^{kn}=b^{-kn}=(b^n)^{-k}=e$, logo $m\\mid kn$. Como $\\gcd(m,n)=1$, segue $m\\mid k$. Simetricamente, elevando a $m$: $b^{km}=a^{-km}=(a^m)^{-k}=e$, logo $n\\mid km$ e, por $\\gcd(m,n)=1$, $n\\mid k$.\n\n**Passo 3: concluir.** De $m\\mid k$ e $n\\mid k$ com $\\gcd(m,n)=1$ vem $mn\\mid k$. Combinando com $k\\mid mn$ do Passo 1, obtemos $k=mn$. Portanto $\\mathrm{ord}(ab)=mn$. $\\blacksquare$\n\n*Aviso.* A comutatividade e essencial: em grupos nao abelianos o resultado falha.",
+          "steps": [
+            "Use a comutatividade para expandir $(ab)^{mn}=a^{mn}b^{mn}$ e mostre que da $e$; logo $\\mathrm{ord}(ab)\\mid mn$.",
+            "Ponha $k=\\mathrm{ord}(ab)$ e escreva $(ab)^k=e$ como $a^k=b^{-k}$.",
+            "Eleve essa igualdade a $n$ para forcar $m\\mid kn$ e use $\\gcd(m,n)=1$ para obter $m\\mid k$.",
+            "Repita elevando a $m$ para obter $n\\mid k$.",
+            "Combine $m\\mid k$, $n\\mid k$ e $\\gcd(m,n)=1$ em $mn\\mid k$, e feche com $k\\mid mn$."
+          ]
+        },
+        {
+          "prompt": "Determine todos os geradores e todos os subgrupos de $\\mathbb{Z}_{18}$, indicando a ordem de cada subgrupo.",
+          "hint": "Geradores: $\\gcd(k,18)=1$. Subgrupos: um para cada divisor de $18$ ($1,2,3,6,9,18$), gerado por $18/d$.",
+          "difficulty": 2,
+          "solution": "Seja $\\mathbb{Z}_{18}=\\langle 1\\rangle$, ciclico de ordem $18$. Escrevemos os elementos como classes $\\bar k$.\n\n**Geradores.** $\\bar k$ gera $\\mathbb{Z}_{18}$ sse $\\gcd(k,18)=1$. Os $k\\in\\{1,\\dots,17\\}$ coprimos com $18=2\\cdot3^2$ sao\n$$\\{1,5,7,11,13,17\\},$$\ntotalizando $\\varphi(18)=\\varphi(2)\\varphi(9)=1\\cdot6=6$ geradores.\n\n**Subgrupos.** Para cada divisor $d\\mid 18$ ha um unico subgrupo de ordem $d$, a saber $\\langle \\overline{18/d}\\rangle$. Os divisores de $18$ sao $1,2,3,6,9,18$:\n\n| ordem $d$ | gerador $\\overline{18/d}$ | subgrupo |\n|---|---|---|\n| $1$ | $\\bar 0$ | $\\{\\bar0\\}$ |\n| $2$ | $\\bar 9$ | $\\{\\bar0,\\bar9\\}$ |\n| $3$ | $\\bar 6$ | $\\{\\bar0,\\bar6,\\overline{12}\\}$ |\n| $6$ | $\\bar 3$ | $\\{\\bar0,\\bar3,\\bar6,\\bar9,\\overline{12},\\overline{15}\\}$ |\n| $9$ | $\\bar 2$ | $\\{\\bar0,\\bar2,\\bar4,\\dots,\\overline{16}\\}$ |\n| $18$ | $\\bar 1$ | $\\mathbb{Z}_{18}$ |\n\nO reticulado de subgrupos e isomorfo ao reticulado de divisores de $18$. $\\blacksquare$",
+          "steps": [
+            "Fatore $18=2\\cdot3^2$ e identifique os $\\bar k$ com $\\gcd(k,18)=1$ como geradores.",
+            "Conte-os: sao $\\varphi(18)=6$ geradores.",
+            "Liste os divisores de $18$: cada um da exatamente um subgrupo.",
+            "Para o divisor $d$, tome o gerador $\\overline{18/d}$ e escreva o subgrupo de ordem $d$."
+          ]
+        },
+        {
+          "prompt": "Prove que todo subgrupo de um grupo cíclico é cíclico.",
+          "hint": "Seja $G=\\langle a\\rangle$ e $H\\le G$ não trivial. Tome o menor $d>0$ com $a^d\\in H$ e mostre, por divisão euclidiana do expoente, que $H=\\langle a^d\\rangle$.",
+          "difficulty": 4,
+          "solution": "**Teorema.** Todo subgrupo de um grupo ciclico e ciclico.\n\n**Montagem.** Seja $G=\\langle a\\rangle$ e $H\\le G$. Se $H=\\{e\\}$, entao $H=\\langle e\\rangle$ e ciclico. Suponha $H\\neq\\{e\\}$.\n\n**Escolha do gerador.** Todo elemento de $H$ tem a forma $a^k$. Seja\n$$d=\\min\\{k>0:a^k\\in H\\},$$\nque existe pois $H$ contem algum $a^m\\neq e$ e, sendo grupo, tambem $a^{-m}$; logo ha expoentes positivos. Afirmo $H=\\langle a^d\\rangle$.\n\n**Uma inclusao.** Como $a^d\\in H$ e $H$ e subgrupo, $\\langle a^d\\rangle\\subseteq H$.\n\n**Outra inclusao (divisao euclidiana).** Tome $a^k\\in H$ qualquer. Divida $k=qd+r$ com $0\\le r<d$. Entao\n$$a^r=a^{k-qd}=a^k(a^d)^{-q}\\in H,$$\npois $a^k\\in H$ e $a^d\\in H$. Pela minimalidade de $d$ e $0\\le r<d$, so pode ser $r=0$. Logo $k=qd$ e $a^k=(a^d)^q\\in\\langle a^d\\rangle$.\n\n**Conclusao.** $H=\\langle a^d\\rangle$ e ciclico. $\\blacksquare$\n\n*Corolario.* Em $\\mathbb{Z}_n$, o menor tal $d$ divide $n$, o que recupera a correspondencia subgrupos $\\leftrightarrow$ divisores.",
+          "steps": [
+            "Reduza ao caso $H\\neq\\{e\\}$ (o trivial e obviamente ciclico).",
+            "Defina $d$ como o menor expoente positivo com $a^d\\in H$ e justifique que existe.",
+            "Mostre $\\langle a^d\\rangle\\subseteq H$ imediatamente.",
+            "Para a inclusao inversa, tome $a^k\\in H$ e divida $k$ por $d$ com resto.",
+            "Use a minimalidade de $d$ para forcar resto zero, concluindo $a^k\\in\\langle a^d\\rangle$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Critério do subgrupo (um passo)",
+          "back": "$H\\neq\\emptyset$ e $a,b\\in H\\Rightarrow ab^{-1}\\in H$. (Para $H$ finito basta o fechamento.)"
+        },
+        {
+          "front": "Ordem de um elemento",
+          "back": "Menor $n>0$ com $a^n=e$; igual a $|\\langle a\\rangle|$. Vale $a^k=e\\iff \\mathrm{ord}(a)\\mid k$."
+        },
+        {
+          "front": "$\\mathrm{ord}(a^k)$ se $\\mathrm{ord}(a)=n$",
+          "back": "$\\mathrm{ord}(a^k)=\\dfrac{n}{\\gcd(n,k)}$."
+        },
+        {
+          "front": "Quando $a^k$ gera $\\langle a\\rangle$ (ordem $n$)?",
+          "back": "Exatamente quando $\\gcd(k,n)=1$."
+        },
+        {
+          "front": "Quantos geradores tem $\\mathbb{Z}_n$?",
+          "back": "$\\varphi(n)$, os $\\bar k$ com $\\gcd(k,n)=1$."
+        },
+        {
+          "front": "Classificação dos grupos cíclicos",
+          "back": "Infinito $\\cong\\mathbb{Z}$; de ordem $n$ $\\cong\\mathbb{Z}_n$. Subgrupo de cíclico é cíclico."
+        },
+        {
+          "front": "Subgrupos de $\\mathbb{Z}_n$",
+          "back": "Um único para cada divisor $d\\mid n$, de ordem $d$, gerado por $\\bar{n/d}$."
+        },
+        {
+          "front": "Centro $Z(G)$",
+          "back": "$\\{z:zg=gz\\ \\forall g\\}$; subgrupo abeliano. $G$ abeliano $\\iff Z(G)=G$."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 2 (Subgroups) e seções de grupos cíclicos",
+          "ref": "livro"
+        },
+        {
+          "title": "Gallian, caps. 3-4 (Finite Groups; Cyclic Groups)",
+          "ref": "livro"
+        },
+        {
+          "title": "Herstein, Topics in Algebra, cap. 2 (subgrupos)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude o criterio de um passo ($ab^{-1}\\in H$) em Gallian cap. 3 e refaca a demonstracao de que ele equivale aos tres axiomas de subgrupo.",
+          "Estude ordem de elemento e a formula $\\mathrm{ord}(a^k)=n/\\gcd(n,k)$; teste-a numericamente em $\\mathbb{Z}_{12}$ e $\\mathbb{Z}_{18}$.",
+          "Prove por conta propria que todo subgrupo de um grupo ciclico e ciclico (algoritmo da divisao no expoente) - e o teorema-chave.",
+          "Assista a videos sobre grupos ciclicos e o reticulado de subgrupos de $\\mathbb{Z}_n$ (Socratica / Michael Penn).",
+          "Liste todos os subgrupos e geradores de dois ou tres $\\mathbb{Z}_n$ ate dominar a correspondencia com divisores.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (criterio de subgrupo, formula da ordem de potencia, classificacao dos ciclicos)."
+        ],
+        "searchQueries": [
+          "criterio de subgrupo um passo demonstracao",
+          "ordem de elemento grupo ciclico formula n/gcd(n,k)",
+          "subgrupos de Zn correspondencia divisores geradores phi",
+          "todo subgrupo de grupo ciclico e ciclico demonstracao",
+          "cyclic groups subgroup lattice generators",
+          "centro de um grupo Z(G) definicao propriedades"
+        ],
+        "videos": [
+          {
+            "title": "Cyclic Groups / Subgroups",
+            "channel": "Socratica",
+            "note": "Videos 'Cyclic Groups' e 'Subgroups' explicam geradores e o criterio de subgrupo com exemplos."
+          },
+          {
+            "title": "Abstract Algebra - cyclic groups and generators",
+            "channel": "Michael Penn",
+            "note": "Aulas com demonstracoes completas da estrutura de subgrupos de grupos ciclicos."
+          },
+          {
+            "title": "Grupos Ciclicos e Ordem de Elemento",
+            "channel": "Matematica Universitaria",
+            "note": "Tratamento em PT-BR de ordem de elemento e subgrupos ciclicos."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Contemporary Abstract Algebra, caps. 3-4 (Finite Groups; Cyclic Groups)",
+            "where": "Livro de Joseph A. Gallian"
+          },
+          {
+            "title": "Abstract Algebra, cap. 2 (Subgroups) e secao de grupos ciclicos",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Topics in Algebra, cap. 2 (subgrupos)",
+            "where": "Livro de I. N. Herstein"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-1-03-permutacoes",
+      "title": "Grupos de Permutação, $S_n$ e o Teorema de Cayley",
+      "tagline": "As simetrias por excelência: decompor permutações em ciclos, medir paridade e descobrir que todo grupo é, no fundo, um grupo de permutações.",
+      "objectives": [
+        "Operar com permutações de $S_n$ em notação de ciclos e calcular composições e inversos.",
+        "Decompor toda permutação em ciclos disjuntos e em transposições.",
+        "Definir o sinal de uma permutação e provar que paridade é bem definida.",
+        "Calcular a ordem de uma permutação como o mmc dos comprimentos de seus ciclos.",
+        "Identificar o grupo alternado $A_n$ e demonstrar o Teorema de Cayley."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Grupo simétrico $S_n$",
+          "statement": "Conjunto de todas as bijeções de $\\{1,\\dots,n\\}$ em si mesmo, com a composição; $|S_n|=n!$. É não abeliano para $n\\ge 3$."
+        },
+        {
+          "term": "Ciclo e transposição",
+          "statement": "Um $k$-ciclo $(a_1\\,a_2\\,\\cdots\\,a_k)$ envia $a_1\\mapsto a_2\\mapsto\\cdots\\mapsto a_k\\mapsto a_1$ e fixa o resto; uma transposição é um $2$-ciclo."
+        },
+        {
+          "term": "Sinal / paridade",
+          "statement": "$\\mathrm{sgn}(\\sigma)=(-1)^{m}$, onde $m$ é o número de transposições em qualquer fatoração de $\\sigma$; $\\sigma$ é par se $\\mathrm{sgn}=+1$ e ímpar se $\\mathrm{sgn}=-1$."
+        },
+        {
+          "term": "Grupo alternado $A_n$",
+          "statement": "Subgrupo das permutações pares de $S_n$; $|A_n|=n!/2$ para $n\\ge 2$ e $A_n$ é normal em $S_n$ de índice $2$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Decomposição em ciclos disjuntos",
+          "statement": "Toda permutação de $S_n$ se escreve como produto de ciclos disjuntos, único a menos da ordem dos fatores. Ciclos disjuntos comutam.",
+          "whyItMatters": "É a forma canônica de uma permutação: dela se leem imediatamente a ordem, o sinal e a classe de conjugação (estrutura de ciclos)."
+        },
+        {
+          "name": "Sinal é homomorfismo bem definido",
+          "statement": "A paridade do número de transposições de uma fatoração não depende da fatoração; $\\mathrm{sgn}:S_n\\to\\{+1,-1\\}$ é um homomorfismo sobrejetor para $n\\ge 2$.",
+          "whyItMatters": "Sem a boa definição da paridade, $A_n$ nem existiria; este é o resultado técnico que sustenta toda a teoria de determinantes e de grupos alternados."
+        },
+        {
+          "name": "Ordem de uma permutação",
+          "statement": "A ordem de $\\sigma$ é o mínimo múltiplo comum dos comprimentos dos ciclos de sua decomposição em ciclos disjuntos.",
+          "whyItMatters": "Dá um algoritmo imediato para a ordem de qualquer permutação, e mostra como a aritmética (mmc) controla a estrutura algébrica."
+        },
+        {
+          "name": "Teorema de Cayley",
+          "statement": "Todo grupo $G$ é isomorfo a um subgrupo de $\\mathrm{Sym}(G)$. Se $|G|=n$, então $G$ é isomorfo a um subgrupo de $S_n$.",
+          "whyItMatters": "Mostra que os grupos de permutação são universais: estudar grupos abstratos é, em princípio, estudar grupos concretos de bijeções. Justifica historicamente por que a teoria começou com permutações."
+        }
+      ],
+      "summary": "O grupo simétrico $S_n$ reúne todas as bijeções de um conjunto finito e é o exemplo central de grupo não abeliano. A notação de ciclos torna o cálculo concreto: toda permutação se fatora, de modo essencialmente único, em ciclos disjuntos — que comutam entre si — e cada ciclo se fatora em transposições. Embora o número de transposições não seja único, sua PARIDADE é, e isso define o sinal $\\mathrm{sgn}(\\sigma)$, um homomorfismo de $S_n$ sobre $\\{\\pm1\\}$. O núcleo desse homomorfismo é o grupo alternado $A_n$, formado pelas permutações pares, de índice $2$ em $S_n$.\n\nA estrutura de ciclos é um cartão de identidade da permutação: a ordem de $\\sigma$ é o mmc dos comprimentos dos seus ciclos, e (como veremos em conjugação) duas permutações são conjugadas em $S_n$ exatamente quando têm a mesma estrutura de ciclos. O ponto alto é o Teorema de Cayley: todo grupo, por mais abstrato que pareça, é isomorfo a um grupo de permutações — basta fazer cada elemento $g$ agir por multiplicação à esquerda $x\\mapsto gx$, que é uma bijeção de $G$. Assim, $S_n$ não é apenas um exemplo entre outros: é o ambiente universal onde todo grupo finito de ordem $n$ pode ser realizado concretamente.",
+      "commonPitfalls": [
+        "Trocar a ordem de composição: em muitos livros $\\sigma\\tau$ significa 'primeiro $\\tau$, depois $\\sigma$' (composição de funções) — fixe uma convenção e seja consistente.",
+        "Somar comprimentos de ciclos em vez de tomar o MMC ao calcular a ordem de uma permutação.",
+        "Tentar decompor em ciclos disjuntos esquecendo de incluir os ciclos de comprimento que se sobrepõem: ciclos disjuntos não compartilham símbolos.",
+        "Achar que $A_n$ é simples para todo $n$ — $A_n$ é simples apenas para $n\\ge 5$; $A_3\\cong\\mathbb{Z}_3$ e $A_4$ tem o subgrupo normal de Klein."
+      ],
+      "worked": "**Estrutura de ciclos, sinal e ordem.** Seja $\\sigma\\in S_7$ dada, em notação de duas linhas, por\n$$\\sigma=\\begin{pmatrix}1&2&3&4&5&6&7\\\\ 3&5&6&7&2&1&4\\end{pmatrix}.$$\n\n*Ciclos disjuntos.* Seguindo as imagens: $1\\to3\\to6\\to1$ dá $(1\\,3\\,6)$; $2\\to5\\to2$ dá $(2\\,5)$; $4\\to7\\to4$ dá $(4\\,7)$. Logo\n$$\\sigma=(1\\,3\\,6)(2\\,5)(4\\,7).$$\n\n*Ordem.* Comprimentos $3,2,2$; logo $\\mathrm{ord}(\\sigma)=\\mathrm{mmc}(3,2,2)=6$.\n\n*Sinal.* Um $k$-ciclo é produto de $k-1$ transposições, então tem sinal $(-1)^{k-1}$. Assim $\\mathrm{sgn}(\\sigma)=(-1)^{2}\\cdot(-1)^{1}\\cdot(-1)^{1}=(+1)(-1)(-1)=+1$: $\\sigma$ é PAR, logo $\\sigma\\in A_7$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Escreva $\\sigma=(1\\,2\\,3\\,4\\,5)$ e $\\tau=(1\\,3)(2\\,4)$ em $S_5$ e calcule $\\sigma\\tau$, $\\tau\\sigma$ e $\\sigma^{-1}$. Verifique que $\\sigma\\tau\\neq\\tau\\sigma$.",
+          "hint": "Componha avaliando ponto a ponto. O inverso de um ciclo é o ciclo escrito ao contrário: $\\sigma^{-1}=(1\\,5\\,4\\,3\\,2)$.",
+          "difficulty": 2,
+          "solution": "Usamos a convencao de composicao de funcoes: $(\\sigma\\tau)(x)=\\sigma(\\tau(x))$ (primeiro $\\tau$, depois $\\sigma$).\n\nEm $S_5$: $\\sigma=(1\\,2\\,3\\,4\\,5)$ envia $1\\to2\\to3\\to4\\to5\\to1$; $\\tau=(1\\,3)(2\\,4)$ envia $1\\leftrightarrow3$, $2\\leftrightarrow4$, $5\\to5$.\n\n**Calculo de $\\sigma\\tau$** (aplique $\\tau$, depois $\\sigma$):\n$$1\\xrightarrow{\\tau}3\\xrightarrow{\\sigma}4,\\quad 2\\to4\\to5,\\quad 3\\to1\\to2,\\quad 4\\to2\\to3,\\quad 5\\to5\\to1.$$\nLogo $\\sigma\\tau=(1\\,4\\,3\\,2\\,5)$.\n\n**Calculo de $\\tau\\sigma$** (aplique $\\sigma$, depois $\\tau$):\n$$1\\xrightarrow{\\sigma}2\\xrightarrow{\\tau}4,\\quad 2\\to3\\to1,\\quad 3\\to4\\to2,\\quad 4\\to5\\to5,\\quad 5\\to1\\to3.$$\nLogo $\\tau\\sigma=(1\\,4\\,5\\,3\\,2)$.\n\n**Inverso.** $\\sigma^{-1}=(1\\,5\\,4\\,3\\,2)$ (escrever o ciclo ao contrario).\n\n**Nao comutam.** $\\sigma\\tau=(1\\,4\\,3\\,2\\,5)$ e $\\tau\\sigma=(1\\,4\\,5\\,3\\,2)$; por exemplo $(\\sigma\\tau)(2)=5$ mas $(\\tau\\sigma)(2)=1$. Logo $\\sigma\\tau\\neq\\tau\\sigma$. $\\blacksquare$",
+          "steps": [
+            "Fixe a convencao (aqui $\\sigma\\tau$ = primeiro $\\tau$, depois $\\sigma$) e escreva as regras de $\\sigma$ e $\\tau$ ponto a ponto.",
+            "Calcule $\\sigma\\tau$ avaliando cada $x$ primeiro por $\\tau$, depois por $\\sigma$, e leia o ciclo resultante.",
+            "Calcule $\\tau\\sigma$ na ordem oposta.",
+            "Escreva $\\sigma^{-1}$ invertendo o ciclo de $\\sigma$.",
+            "Compare $\\sigma\\tau$ e $\\tau\\sigma$ em um ponto para exibir a nao comutatividade."
+          ]
+        },
+        {
+          "prompt": "Prove que toda permutação de $S_n$ ($n\\ge 2$) é um produto de transposições e que $A_n$ é gerado pelos $3$-ciclos.",
+          "hint": "Para a primeira parte, decomponha em ciclos e cada ciclo em transposições. Para a segunda, mostre que um produto de duas transposições é um $3$-ciclo ou um produto de dois $3$-ciclos.",
+          "difficulty": 4,
+          "solution": "**Parte A: toda permutacao e produto de transposicoes.** Seja $\\pi\\in S_n$, $n\\ge2$. Pela decomposicao em ciclos disjuntos, basta escrever cada ciclo como produto de transposicoes. Um $k$-ciclo satisfaz\n$$(a_1\\,a_2\\,\\cdots\\,a_k)=(a_1\\,a_k)(a_1\\,a_{k-1})\\cdots(a_1\\,a_2),$$\nproduto de $k-1$ transposicoes (verifica-se aplicando ambos os lados a cada $a_i$). Como todo $\\pi$ e produto de ciclos, e produto de transposicoes. (Se $\\pi=e$, escreva $e=(1\\,2)(1\\,2)$.) $\\blacksquare$\n\n**Parte B: $A_n$ e gerado pelos $3$-ciclos.** Um elemento de $A_n$ e produto de um numero PAR de transposicoes; agrupe-as em pares. Basta mostrar que o produto de duas transposicoes e produto de $3$-ciclos. Ha dois casos:\n\n1. *Compartilham um simbolo:* $(a\\,b)(a\\,c)=(a\\,c\\,b)$, um $3$-ciclo (com $b\\neq c$).\n2. *Disjuntas:* $(a\\,b)(c\\,d)=(a\\,b)(b\\,c)\\cdot(b\\,c)(c\\,d)=(a\\,c\\,b)(b\\,d\\,c)$, produto de dois $3$-ciclos.\n\n(Se as duas transposicoes forem iguais, o produto e $e=(1\\,2\\,3)^3$.) Logo todo elemento de $A_n$ e produto de $3$-ciclos, e como $3$-ciclos sao pares, $\\langle 3\\text{-ciclos}\\rangle=A_n$ (para $n\\ge3$). $\\blacksquare$",
+          "steps": [
+            "Decomponha a permutacao em ciclos disjuntos e escreva cada $k$-ciclo como $k-1$ transposicoes via a formula $(a_1\\cdots a_k)=(a_1 a_k)\\cdots(a_1 a_2)$.",
+            "Para $A_n$, observe que uma permutacao par usa um numero par de transposicoes; agrupe-as em pares.",
+            "Trate o par de transposicoes que compartilham um simbolo: $(a b)(a c)=(a c b)$.",
+            "Trate o par de transposicoes disjuntas escrevendo-o como produto de dois $3$-ciclos.",
+            "Conclua que os $3$-ciclos geram $A_n$."
+          ]
+        },
+        {
+          "prompt": "Qual é a maior ordem possível de um elemento de $S_7$? Exiba uma permutação que a realize.",
+          "hint": "Maximize o mmc dos comprimentos de ciclos com soma $\\le 7$. Compare partições de $7$: $3+4$ dá $\\mathrm{mmc}=12$.",
+          "difficulty": 3,
+          "solution": "A ordem de uma permutacao e o mmc dos comprimentos de seus ciclos disjuntos, cujos comprimentos somam no maximo $7$ (os simbolos usados). Queremos maximizar $\\mathrm{mmc}$ sobre as particoes de $7$ (completando com pontos fixos quando necessario).\n\nComparando particoes de $7$:\n\n| particao | mmc |\n|---|---|\n| $7$ | $7$ |\n| $6+1$ | $6$ |\n| $5+2$ | $10$ |\n| $4+3$ | $\\mathbf{12}$ |\n| $5+1+1$ | $5$ |\n| $3+2+2$ | $6$ |\n| $4+2+1$ | $4$ |\n| $3+3+1$ | $3$ |\n| $2+2+2+1$ | $2$ |\n\nO maximo e $\\mathrm{mmc}(4,3)=12$, obtido pela particao $4+3$.\n\n**Realizacao.** $\\sigma=(1\\,2\\,3\\,4)(5\\,6\\,7)$ tem ciclos de comprimentos $4$ e $3$, logo $\\mathrm{ord}(\\sigma)=\\mathrm{mmc}(4,3)=12$.\n\n**Resposta:** a maior ordem em $S_7$ e $\\boxed{12}$. $\\blacksquare$",
+          "steps": [
+            "Lembre que a ordem = mmc dos comprimentos dos ciclos, e que a soma dos comprimentos e no maximo $7$.",
+            "Liste as particoes relevantes de $7$ e calcule o mmc de cada uma.",
+            "Identifique $4+3$ como o mmc maximo, igual a $12$.",
+            "Exiba $(1\\,2\\,3\\,4)(5\\,6\\,7)$ como permutacao que realiza a ordem $12$."
+          ]
+        },
+        {
+          "prompt": "Demonstre o Teorema de Cayley construindo, para cada $g\\in G$, a permutação $\\lambda_g:x\\mapsto gx$, e mostrando que $g\\mapsto\\lambda_g$ é um homomorfismo injetor de $G$ em $\\mathrm{Sym}(G)$.",
+          "hint": "Verifique que $\\lambda_g$ é bijeção (inverso $\\lambda_{g^{-1}}$), que $\\lambda_{gh}=\\lambda_g\\lambda_h$, e que o núcleo é trivial pois $\\lambda_g=\\mathrm{id}\\Rightarrow g=e$.",
+          "difficulty": 3,
+          "solution": "**Teorema de Cayley.** Todo grupo $G$ e isomorfo a um subgrupo de $\\mathrm{Sym}(G)$.\n\n**Construcao.** Para cada $g\\in G$ defina $\\lambda_g:G\\to G$, $\\lambda_g(x)=gx$.\n\n**$\\lambda_g$ e bijecao.** $\\lambda_{g^{-1}}$ e inversa: $\\lambda_g(\\lambda_{g^{-1}}(x))=g(g^{-1}x)=x$ e vice-versa. Logo $\\lambda_g\\in\\mathrm{Sym}(G)$.\n\n**$\\Lambda:g\\mapsto\\lambda_g$ e homomorfismo.** Para todos $g,h,x$,\n$$\\lambda_{gh}(x)=(gh)x=g(hx)=\\lambda_g(\\lambda_h(x))=(\\lambda_g\\circ\\lambda_h)(x),$$\nlogo $\\lambda_{gh}=\\lambda_g\\circ\\lambda_h$, isto e, $\\Lambda(gh)=\\Lambda(g)\\Lambda(h)$.\n\n**$\\Lambda$ e injetor.** Se $\\lambda_g=\\mathrm{id}$, entao $g=g\\cdot e=\\lambda_g(e)=e$; logo $\\ker\\Lambda=\\{e\\}$.\n\n**Conclusao.** Pelo Primeiro Teorema de Isomorfismo, $G\\cong\\mathrm{im}\\,\\Lambda\\le\\mathrm{Sym}(G)$. Se $|G|=n$, entao $\\mathrm{Sym}(G)\\cong S_n$, logo $G$ e isomorfo a um subgrupo de $S_n$. $\\blacksquare$",
+          "steps": [
+            "Defina, para cada $g$, a translacao a esquerda $\\lambda_g(x)=gx$.",
+            "Mostre que $\\lambda_g$ e bijecao exibindo $\\lambda_{g^{-1}}$ como inversa.",
+            "Verifique $\\lambda_{gh}=\\lambda_g\\circ\\lambda_h$, ou seja, que $g\\mapsto\\lambda_g$ e homomorfismo.",
+            "Calcule o nucleo: $\\lambda_g=\\mathrm{id}\\Rightarrow g=e$, logo injetor.",
+            "Aplique o Primeiro Teorema de Isomorfismo para concluir $G\\cong\\mathrm{im}\\,\\Lambda\\le\\mathrm{Sym}(G)$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Ordem de $S_n$",
+          "back": "$|S_n|=n!$; não abeliano para $n\\ge 3$."
+        },
+        {
+          "front": "Ordem de uma permutação",
+          "back": "MMC dos comprimentos dos ciclos disjuntos."
+        },
+        {
+          "front": "Sinal de um $k$-ciclo",
+          "back": "$(-1)^{k-1}$ (um $k$-ciclo é produto de $k-1$ transposições)."
+        },
+        {
+          "front": "O que é $A_n$?",
+          "back": "Permutações pares; $|A_n|=n!/2$; normal em $S_n$ de índice $2$ (núcleo de $\\mathrm{sgn}$)."
+        },
+        {
+          "front": "Quando $A_n$ é simples?",
+          "back": "Para $n\\ge 5$. ($A_4$ não é: tem o subgrupo normal de Klein.)"
+        },
+        {
+          "front": "Ciclos disjuntos",
+          "back": "Não compartilham símbolos; comutam entre si; a decomposição é única a menos da ordem."
+        },
+        {
+          "front": "Teorema de Cayley",
+          "back": "Todo grupo de ordem $n$ é isomorfo a um subgrupo de $S_n$ (ação por multiplicação à esquerda)."
+        },
+        {
+          "front": "Permutações conjugadas em $S_n$",
+          "back": "Têm a mesma estrutura de ciclos (mesmos comprimentos)."
+        }
+      ],
+      "estimatedHours": 7,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 1.3 e 3.5 (Symmetric/Alternating groups)",
+          "ref": "livro"
+        },
+        {
+          "title": "Gallian, caps. 5-6 (Permutation Groups; Isomorphisms / Cayley)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Álgebra (grupos de permutação)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Fixe UMA convencao de composicao (aqui: $\\sigma\\tau$ = primeiro $\\tau$, depois $\\sigma$) e treine multiplicar permutacoes em notacao de ciclos ate ficar automatico.",
+          "Estude a decomposicao em ciclos disjuntos e a fatoracao em transposicoes em Dummit & Foote 1.3 / Gallian cap. 5.",
+          "Entenda a boa definicao do sinal (paridade) e por que $A_n$ tem indice 2; refaca a prova.",
+          "Assista a uma aula sobre $S_n$, ciclos e o Teorema de Cayley (Socratica / Mathologer sobre permutacoes).",
+          "Pratique: calcule ordem, sinal e estrutura de ciclos de varias permutacoes de $S_6$ e $S_7$.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (ordem = mmc dos ciclos, sinal do $k$-ciclo, Teorema de Cayley)."
+        ],
+        "searchQueries": [
+          "decomposicao em ciclos disjuntos permutacao Sn",
+          "sinal de permutacao paridade transposicoes bem definido",
+          "ordem de uma permutacao mmc comprimentos dos ciclos",
+          "teorema de Cayley todo grupo subgrupo de Sn demonstracao",
+          "alternating group An generated by 3-cycles proof",
+          "grupo simetrico Sn nao abeliano notacao de ciclos"
+        ],
+        "videos": [
+          {
+            "title": "Symmetric Groups / Permutations",
+            "channel": "Socratica",
+            "note": "Videos sobre $S_n$, notacao de ciclos e paridade; base solida para calcular composicoes."
+          },
+          {
+            "title": "Permutation groups and Cayley's theorem",
+            "channel": "Michael Penn",
+            "note": "Demonstracoes de decomposicao em ciclos, sinal e Teorema de Cayley."
+          },
+          {
+            "title": "Grupos de Permutacao / Grupo Simetrico",
+            "channel": "Matematica Universitaria",
+            "note": "Explicacao em PT-BR de ciclos, transposicoes e ordem de permutacao."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, caps. 1.3 e 3.5 (Symmetric and Alternating groups)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Contemporary Abstract Algebra, caps. 5-6 (Permutation Groups; Cayley)",
+            "where": "Livro de Joseph A. Gallian"
+          },
+          {
+            "title": "Elementos de Algebra (grupos de permutacao)",
+            "where": "Livro de Garcia & Lequain (IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-1-04-cosets-lagrange",
+      "title": "Classes Laterais e o Teorema de Lagrange",
+      "tagline": "Particionar um grupo pelas cópias de um subgrupo — e arrancar daí o teorema mais usado da disciplina.",
+      "objectives": [
+        "Definir classes laterais à esquerda e à direita e provar que elas particionam o grupo.",
+        "Mostrar que todas as classes laterais de $H$ têm a mesma cardinalidade $|H|$.",
+        "Enunciar e demonstrar o Teorema de Lagrange e definir o índice $[G:H]$.",
+        "Deduzir as consequências: a ordem de um elemento divide $|G|$, $a^{|G|}=e$ e grupos de ordem prima são cíclicos.",
+        "Aplicar Lagrange à teoria dos números via os teoremas de Euler e de Fermat."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Classe lateral à esquerda",
+          "statement": "Para $H\\le G$ e $a\\in G$, $aH=\\{ah:h\\in H\\}$. Analogamente, $Ha=\\{ha:h\\in H\\}$ é a classe à direita."
+        },
+        {
+          "term": "Índice",
+          "statement": "$[G:H]$ é o número de classes laterais (à esquerda) de $H$ em $G$; quando finito, é o mesmo para classes à esquerda e à direita."
+        },
+        {
+          "term": "Partição por classes",
+          "statement": "As classes laterais de $H$ formam uma partição de $G$: duas classes são iguais ou disjuntas, e $aH=bH\\iff a^{-1}b\\in H$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema de Lagrange",
+          "statement": "Se $G$ é finito e $H\\le G$, então $|G|=[G:H]\\cdot|H|$. Em particular, $|H|$ divide $|G|$.",
+          "whyItMatters": "É o teorema mais aplicado da teoria finita de grupos: restringe drasticamente os tamanhos possíveis de subgrupos e de ordens de elementos, base de quase toda contagem em grupos."
+        },
+        {
+          "name": "Ordem de elemento divide a ordem do grupo",
+          "statement": "Para todo $a$ num grupo finito $G$, $\\mathrm{ord}(a)\\mid |G|$ e portanto $a^{|G|}=e$.",
+          "whyItMatters": "Consequência imediata de Lagrange aplicado a $\\langle a\\rangle$; é o que generaliza os teoremas de Fermat e Euler para grupos arbitrários."
+        },
+        {
+          "name": "Grupos de ordem prima",
+          "statement": "Se $|G|=p$ é primo, então $G$ é cíclico e, portanto, isomorfo a $\\mathbb{Z}_p$. Em particular, $G$ não tem subgrupos próprios não triviais.",
+          "whyItMatters": "Primeira classificação por ordem: existe um único grupo de cada ordem prima. Mostra como Lagrange força estrutura."
+        },
+        {
+          "name": "Teorema de Euler (e Fermat)",
+          "statement": "Se $\\gcd(a,n)=1$, então $a^{\\varphi(n)}\\equiv 1\\pmod n$. Em particular (Fermat), se $p$ é primo e $p\\nmid a$, então $a^{p-1}\\equiv 1\\pmod p$.",
+          "whyItMatters": "É Lagrange aplicado ao grupo $U(n)$, de ordem $\\varphi(n)$: a aritmética modular vira um corolário da teoria dos grupos. Fundamento de criptografia (RSA)."
+        }
+      ],
+      "summary": "Fixado um subgrupo $H\\le G$, a relação $a\\sim b\\iff a^{-1}b\\in H$ é de equivalência, e suas classes são exatamente as classes laterais à esquerda $aH$. Logo as classes laterais PARTICIONAM o grupo: cada elemento pertence a uma e só uma delas. O segundo ingrediente é que a multiplicação à esquerda por $a$ é uma bijeção $H\\to aH$, de modo que TODAS as classes têm o mesmo número de elementos, igual a $|H|$. Juntando partição e equicardinalidade, o grupo finito $G$ se decompõe em $[G:H]$ blocos de tamanho $|H|$, o que dá imediatamente a fórmula $|G|=[G:H]\\,|H|$: o Teorema de Lagrange.\n\nA força de Lagrange está em suas consequências. A ordem de qualquer elemento divide $|G|$, pois é a ordem do subgrupo cíclico que ele gera; daí $a^{|G|}=e$ sempre. Se $|G|$ é primo, não há espaço para subgrupos próprios, e qualquer elemento $\\neq e$ já gera o grupo todo — logo $G\\cong\\mathbb{Z}_p$. Aplicando tudo isso ao grupo multiplicativo $U(n)$, de ordem $\\varphi(n)$, recuperamos de graça os teoremas de Euler e de Fermat. Uma advertência essencial: a RECÍPROCA de Lagrange é falsa — um divisor de $|G|$ não precisa ser ordem de algum subgrupo; o exemplo padrão é $A_4$, com $12$ elementos e nenhum subgrupo de ordem $6$. Recuperar parcelas dessa recíproca é justamente o que os teoremas de Cauchy e Sylow farão mais adiante.",
+      "commonPitfalls": [
+        "Acreditar na recíproca de Lagrange: se $d\\mid |G|$, NÃO há garantia de subgrupo de ordem $d$ (contra-exemplo: $A_4$ não tem subgrupo de ordem $6$).",
+        "Confundir classe lateral com subgrupo: $aH$ só é subgrupo quando $a\\in H$ (e então $aH=H$); em geral $aH$ nem contém o neutro.",
+        "Misturar $aH$ com $Ha$ em grupo não abeliano: as classes à esquerda e à direita podem ser conjuntos diferentes (ainda que em igual número).",
+        "Usar Lagrange para concluir que um elemento de ordem $d\\mid|G|$ existe — isso é Cauchy/Sylow, não Lagrange."
+      ],
+      "worked": "**Todo grupo de ordem prima é cíclico.** Seja $|G|=p$ primo e tome $a\\in G$ com $a\\neq e$.\n\nO subgrupo $\\langle a\\rangle$ tem ordem $\\mathrm{ord}(a)>1$. Por Lagrange, $\\mathrm{ord}(a)\\mid p$. Como $p$ é primo, os únicos divisores são $1$ e $p$; descartado o $1$ (pois $a\\neq e$), resta $\\mathrm{ord}(a)=p$.\n\nLogo $|\\langle a\\rangle|=p=|G|$, e como $\\langle a\\rangle\\subseteq G$ com a mesma cardinalidade finita, $\\langle a\\rangle=G$. Portanto $G$ é cíclico, gerado por qualquer elemento não trivial, e $G\\cong\\mathbb{Z}_p$. $\\blacksquare$\n\n*Corolário aritmético (Fermat):* aplicando $a^{|G|}=e$ ao grupo $U(p)$ de ordem $p-1$, obtemos $a^{p-1}\\equiv 1\\pmod p$ para $p\\nmid a$.",
+      "exercises": [
+        {
+          "prompt": "Sejam $K\\le H\\le G$ com $G$ finito. Prove a multiplicatividade do índice: $[G:K]=[G:H]\\,[H:K]$.",
+          "hint": "Use Lagrange três vezes: $[G:K]=|G|/|K|$, $[G:H]=|G|/|H|$, $[H:K]=|H|/|K|$ e multiplique.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** Se $K\\le H\\le G$ com $G$ finito, entao $[G:K]=[G:H]\\,[H:K]$.\n\n**Prova via Lagrange.** Como $G$ e finito, tambem $H$ e $K$ o sao, e Lagrange da\n$$[G:K]=\\frac{|G|}{|K|},\\qquad [G:H]=\\frac{|G|}{|H|},\\qquad [H:K]=\\frac{|H|}{|K|}.$$\nMultiplicando as duas ultimas:\n$$[G:H]\\,[H:K]=\\frac{|G|}{|H|}\\cdot\\frac{|H|}{|K|}=\\frac{|G|}{|K|}=[G:K].$$\n$\\blacksquare$\n\n*Observacao.* A identidade $[G:K]=[G:H][H:K]$ vale mesmo sem finitude (cada classe de $H$ em $G$ se parte em $[H:K]$ classes de $K$), mas com $G$ finito a conta acima e imediata.",
+          "steps": [
+            "Escreva cada indice como quociente de ordens usando Lagrange.",
+            "Multiplique $[G:H]$ por $[H:K]$.",
+            "Cancele $|H|$ para obter $|G|/|K|=[G:K]$."
+          ]
+        },
+        {
+          "prompt": "Prove que um grupo de ordem $4$ é abeliano. Conclua que, a menos de isomorfismo, há apenas $\\mathbb{Z}_4$ e o grupo de Klein.",
+          "hint": "Por Lagrange, as ordens dos elementos só podem ser $1,2,4$. Separe os casos 'existe elemento de ordem 4' e 'todo elemento tem ordem $\\le 2$' (use o exercício $g^2=e\\Rightarrow$ abeliano).",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Todo grupo $G$ de ordem $4$ e abeliano, e a menos de isomorfismo so ha $\\mathbb{Z}_4$ e o grupo de Klein $V$.\n\n**Ordens possiveis.** Por Lagrange, a ordem de cada elemento divide $4$, logo pertence a $\\{1,2,4\\}$; so $e$ tem ordem $1$.\n\n**Caso 1: existe $a$ com $\\mathrm{ord}(a)=4$.** Entao $\\langle a\\rangle$ tem $4$ elementos $=|G|$, logo $G=\\langle a\\rangle\\cong\\mathbb{Z}_4$, ciclico e abeliano.\n\n**Caso 2: todo elemento $\\neq e$ tem ordem $2$.** Entao $g^2=e$ para todo $g$; ja provamos que isso forca $G$ abeliano (de $(ab)^{-1}=ab$ vem $ab=b^{-1}a^{-1}=ba$). Escrevendo $G=\\{e,a,b,c\\}$ com $a^2=b^2=c^2=e$: o produto $ab$ nao pode ser $e$ (senao $b=a^{-1}=a$), nem $a$ (senao $b=e$), nem $b$ (senao $a=e$); logo $ab=c$. Analogamente $ba=c$, $bc=a$, $ca=b$. Essa e exatamente a tabua do grupo de Klein $V\\cong\\mathbb{Z}_2\\times\\mathbb{Z}_2$.\n\n**Conclusao.** Em ambos os casos $G$ e abeliano, e $G\\cong\\mathbb{Z}_4$ ou $G\\cong V$. Como $\\mathbb{Z}_4$ tem elemento de ordem $4$ e $V$ nao, eles nao sao isomorfos: sao exatamente os dois grupos de ordem $4$. $\\blacksquare$",
+          "steps": [
+            "Use Lagrange para limitar as ordens dos elementos a $\\{1,2,4\\}$.",
+            "No caso com elemento de ordem 4, conclua $G\\cong\\mathbb{Z}_4$.",
+            "No caso restante, todo elemento satisfaz $g^2=e$; use isso para garantir que $G$ e abeliano.",
+            "Deduza a tabua forcando $ab=c$, etc., identificando o grupo de Klein.",
+            "Distinga $\\mathbb{Z}_4$ de $V$ pela existencia de elemento de ordem 4."
+          ]
+        },
+        {
+          "prompt": "Mostre que $A_4$ não possui subgrupo de ordem $6$, exibindo um contra-exemplo à recíproca de Lagrange.",
+          "hint": "Um subgrupo de índice $2$ seria normal e conteria todos os quadrados; conte os $3$-ciclos de $A_4$ (são $8$) e mostre que todos seriam forçados a estar nele, gerando mais que $6$ elementos.",
+          "difficulty": 5,
+          "solution": "**Afirmacao.** $A_4$ (ordem $12$) nao possui subgrupo de ordem $6$; isto refuta a reciproca de Lagrange, pois $6\\mid 12$.\n\n**Prova por contradicao.** Suponha $H\\le A_4$ com $|H|=6$. Entao $[A_4:H]=2$, logo $H$ e normal em $A_4$ (indice $2$).\n\n**Quadrados forcam os $3$-ciclos em $H$.** Como $[A_4:H]=2$, o quociente $A_4/H\\cong\\mathbb{Z}_2$ tem ordem $2$, logo $(gH)^2=H$, isto e, $g^2\\in H$ para todo $g\\in A_4$. Seja $\\sigma$ um $3$-ciclo qualquer; entao $\\sigma^2$ tambem e um $3$-ciclo e $\\sigma=\\sigma^4=(\\sigma^2)^2$. Como $\\sigma$ e um quadrado, $\\sigma\\in H$.\n\n**Contagem.** $A_4$ possui $8$ elementos de ordem $3$ (os $3$-ciclos). Pelo argumento acima, todos os $8$ pertencem a $H$. Mas entao $|H|\\ge 8+1=9>6$ (contando tambem $e$), contradizendo $|H|=6$.\n\n**Conclusao.** Nao existe subgrupo de ordem $6$ em $A_4$. $\\blacksquare$",
+          "steps": [
+            "Suponha, por absurdo, um subgrupo $H$ de ordem 6; note que ele tem indice 2, logo e normal.",
+            "Como $A_4/H\\cong\\mathbb{Z}_2$, conclua que $g^2\\in H$ para todo $g$.",
+            "Mostre que todo $3$-ciclo $\\sigma$ e um quadrado ($\\sigma=(\\sigma^2)^2$), logo esta em $H$.",
+            "Conte os $8$ tres-ciclos de $A_4$ e some o neutro para obter $\\ge9>6$ elementos em $H$.",
+            "Obtenha a contradicao e conclua a falsidade da reciproca de Lagrange."
+          ]
+        },
+        {
+          "prompt": "Use o teorema de Euler para calcular o último dígito de $7^{2026}$ (isto é, $7^{2026}\\bmod 10$).",
+          "hint": "$\\varphi(10)=4$ e $\\gcd(7,10)=1$, logo $7^4\\equiv 1\\pmod{10}$. Reduza o expoente $2026$ módulo $4$.",
+          "difficulty": 2,
+          "solution": "**Objetivo:** calcular $7^{2026}\\bmod 10$, isto e, o ultimo digito de $7^{2026}$.\n\n**Teorema de Euler.** Como $\\gcd(7,10)=1$ e $\\varphi(10)=\\varphi(2)\\varphi(5)=1\\cdot4=4$, temos\n$$7^{4}\\equiv 1\\pmod{10}.$$\n\n**Reducao do expoente.** Divida $2026$ por $4$: $2026=4\\cdot506+2$, resto $2$. Entao\n$$7^{2026}=(7^{4})^{506}\\cdot 7^{2}\\equiv 1^{506}\\cdot 7^2=49\\equiv 9\\pmod{10}.$$\n\n**Resposta:** o ultimo digito de $7^{2026}$ e $\\boxed{9}$. $\\blacksquare$\n\n*Confira:* as potencias de $7$ mod $10$ ciclam $7,9,3,1,7,9,\\dots$ com periodo $4$; o expoente $2026\\equiv2$ cai no segundo termo do ciclo, que e $9$.",
+          "steps": [
+            "Verifique $\\gcd(7,10)=1$ e calcule $\\varphi(10)=4$.",
+            "Aplique Euler: $7^4\\equiv1\\pmod{10}$.",
+            "Reduza $2026$ modulo $4$, obtendo resto $2$.",
+            "Calcule $7^{2026}\\equiv7^2=49\\equiv9\\pmod{10}$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Classe lateral à esquerda",
+          "back": "$aH=\\{ah:h\\in H\\}$. Vale $aH=bH\\iff a^{-1}b\\in H$."
+        },
+        {
+          "front": "Por que as classes têm o mesmo tamanho?",
+          "back": "$h\\mapsto ah$ é bijeção $H\\to aH$, logo $|aH|=|H|$."
+        },
+        {
+          "front": "Teorema de Lagrange",
+          "back": "$G$ finito, $H\\le G$ $\\Rightarrow |G|=[G:H]\\,|H|$; em particular $|H|\\mid|G|$."
+        },
+        {
+          "front": "Índice $[G:H]$",
+          "back": "Número de classes laterais de $H$ em $G$; igual a $|G|/|H|$ quando finito."
+        },
+        {
+          "front": "Consequência de Lagrange sobre elementos",
+          "back": "$\\mathrm{ord}(a)\\mid|G|$ e $a^{|G|}=e$."
+        },
+        {
+          "front": "Grupo de ordem prima $p$",
+          "back": "É cíclico, $\\cong\\mathbb{Z}_p$, sem subgrupos próprios não triviais."
+        },
+        {
+          "front": "Recíproca de Lagrange é verdadeira?",
+          "back": "Não. $A_4$ tem ordem $12$ mas nenhum subgrupo de ordem $6$."
+        },
+        {
+          "front": "Teorema de Euler",
+          "back": "$\\gcd(a,n)=1\\Rightarrow a^{\\varphi(n)}\\equiv1\\pmod n$ (Lagrange em $U(n)$)."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 3.2 (Lagrange's Theorem)",
+          "ref": "livro"
+        },
+        {
+          "title": "Gallian, cap. 7 (Cosets and Lagrange's Theorem)",
+          "ref": "livro"
+        },
+        {
+          "title": "Herstein, Topics in Algebra, cap. 2 (Lagrange, Euler, Fermat)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a relacao de equivalencia $a\\sim b\\iff a^{-1}b\\in H$ e prove que suas classes sao as classes laterais $aH$ (Gallian cap. 7).",
+          "Refaca a demonstracao de Lagrange: particao + equicardinalidade $\\Rightarrow |G|=[G:H]\\,|H|$.",
+          "Derive as consequencias: $\\mathrm{ord}(a)\\mid|G|$, $a^{|G|}=e$, ordem prima $\\Rightarrow$ ciclico, e os teoremas de Euler/Fermat via $U(n)$.",
+          "Estude o contra-exemplo $A_4$ (sem subgrupo de ordem 6) para entender que a reciproca de Lagrange e falsa.",
+          "Assista a uma aula sobre classes laterais e Lagrange (Socratica / Ferretto) e resolva exercicios de aritmetica modular via Euler.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (Lagrange, suas consequencias e a falsidade da reciproca)."
+        ],
+        "searchQueries": [
+          "classes laterais particao teorema de Lagrange demonstracao",
+          "teorema de Lagrange consequencias ordem elemento divide ordem grupo",
+          "teorema de Euler Fermat via teoria de grupos U(n)",
+          "reciproca de Lagrange falsa A4 sem subgrupo ordem 6",
+          "coset Lagrange theorem index [G:H] proof",
+          "grupo de ordem prima e ciclico demonstracao"
+        ],
+        "videos": [
+          {
+            "title": "Cosets and Lagrange's Theorem",
+            "channel": "Socratica",
+            "note": "Explica classes laterais, particao e o enunciado de Lagrange com exemplos concretos."
+          },
+          {
+            "title": "Lagrange's theorem and consequences",
+            "channel": "Michael Penn",
+            "note": "Demonstracao completa e aplicacoes a ordem de elementos e Euler/Fermat."
+          },
+          {
+            "title": "Teorema de Lagrange / Classes Laterais",
+            "channel": "Matematica Universitaria",
+            "note": "Aula em PT-BR com a prova e consequencias."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 3.2 (Lagrange's Theorem)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Contemporary Abstract Algebra, cap. 7 (Cosets and Lagrange's Theorem)",
+            "where": "Livro de Joseph A. Gallian"
+          },
+          {
+            "title": "Topics in Algebra, cap. 2 (Lagrange, Euler, Fermat)",
+            "where": "Livro de I. N. Herstein"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-1-05-homomorfismos-quociente",
+      "title": "Homomorfismos, Subgrupos Normais e Grupos Quociente",
+      "tagline": "As funções que respeitam a estrutura, os subgrupos que se deixam quocientar e a construção que produz novos grupos a partir de antigos.",
+      "objectives": [
+        "Definir homomorfismo e isomorfismo de grupos e demonstrar suas propriedades elementares.",
+        "Calcular núcleo e imagem e usar $\\ker\\varphi=\\{e\\}$ como critério de injetividade.",
+        "Caracterizar subgrupos normais por $gNg^{-1}=N$ e mostrar que todo núcleo é normal.",
+        "Construir o grupo quociente $G/N$ e provar que a operação $(aN)(bN)=abN$ está bem definida exatamente quando $N$ é normal.",
+        "Identificar a projeção canônica $\\pi:G\\to G/N$ e reconhecer subgrupos de índice $2$ como sempre normais."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Homomorfismo",
+          "statement": "Função $\\varphi:G\\to H$ com $\\varphi(ab)=\\varphi(a)\\varphi(b)$ para todos $a,b$. Automaticamente $\\varphi(e_G)=e_H$ e $\\varphi(a^{-1})=\\varphi(a)^{-1}$."
+        },
+        {
+          "term": "Núcleo e imagem",
+          "statement": "$\\ker\\varphi=\\{g\\in G:\\varphi(g)=e_H\\}\\le G$ e $\\mathrm{im}\\,\\varphi=\\varphi(G)\\le H$. O homomorfismo é injetor $\\iff\\ker\\varphi=\\{e_G\\}$."
+        },
+        {
+          "term": "Subgrupo normal",
+          "statement": "$N\\trianglelefteq G$ se $gNg^{-1}=N$ para todo $g\\in G$; equivalentemente, $gN=Ng$ (toda classe à esquerda é classe à direita)."
+        },
+        {
+          "term": "Grupo quociente",
+          "statement": "Para $N\\trianglelefteq G$, $G/N$ é o conjunto das classes $aN$ com a operação $(aN)(bN)=abN$; é um grupo de ordem $[G:N]$ quando finito."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Propriedades de homomorfismos",
+          "statement": "Se $\\varphi:G\\to H$ é homomorfismo: $\\varphi(e_G)=e_H$; $\\varphi(a^{-1})=\\varphi(a)^{-1}$; $\\varphi(a^n)=\\varphi(a)^n$; $\\ker\\varphi$ é subgrupo de $G$ e $\\mathrm{im}\\,\\varphi$ é subgrupo de $H$.",
+          "whyItMatters": "São as regras básicas que tornam homomorfismos manipuláveis; a ordem de $\\varphi(a)$ divide a de $a$, controlando para onde elementos podem ir."
+        },
+        {
+          "name": "Núcleos são exatamente os subgrupos normais",
+          "statement": "O núcleo de qualquer homomorfismo é um subgrupo normal; reciprocamente, todo subgrupo normal $N$ é o núcleo da projeção canônica $\\pi:G\\to G/N$, $\\pi(a)=aN$.",
+          "whyItMatters": "Estabelece a equivalência conceitual entre 'ser núcleo' e 'ser normal', a razão pela qual normalidade é a hipótese certa para quocientar."
+        },
+        {
+          "name": "Boa definição do quociente",
+          "statement": "A operação $(aN)(bN)=abN$ em classes laterais está bem definida se e somente se $N$ é normal em $G$. Nesse caso $G/N$ é um grupo com neutro $N$ e inverso $(aN)^{-1}=a^{-1}N$.",
+          "whyItMatters": "É a justificativa técnica da construção do quociente: sem normalidade, multiplicar classes seria ambíguo. Quocientar é a operação que 'colapsa' $N$ a um ponto."
+        },
+        {
+          "name": "Índice 2 implica normal",
+          "statement": "Todo subgrupo $H\\le G$ com $[G:H]=2$ é normal em $G$.",
+          "whyItMatters": "Critério rápido e muito usado: explica por que $A_n\\trianglelefteq S_n$ e $SL_n\\trianglelefteq GL_n$ sem nenhuma conta de conjugação."
+        }
+      ],
+      "summary": "Homomorfismos são as funções que preservam a operação, e por isso são o jeito certo de comparar grupos: $\\varphi(ab)=\\varphi(a)\\varphi(b)$. Delas seguem automaticamente $\\varphi(e)=e$, $\\varphi(a^{-1})=\\varphi(a)^{-1}$ e o fato de a ordem de $\\varphi(a)$ dividir a de $a$. Dois invariantes capturam o comportamento de $\\varphi$: o núcleo $\\ker\\varphi$ (o que é esmagado até o neutro) e a imagem (o que é alcançado). O núcleo mede a injetividade — $\\varphi$ é injetor exatamente quando $\\ker\\varphi$ é trivial — e tem uma propriedade especial: é sempre um subgrupo NORMAL.\n\nNormalidade ($gNg^{-1}=N$) é precisamente a condição que faz a multiplicação de classes laterais $(aN)(bN)=abN$ ficar bem definida, permitindo construir o grupo quociente $G/N$. Esse é o salto conceitual da disciplina: a partir de $G$ e de um subgrupo normal $N$, fabricamos um grupo novo cujos elementos são classes inteiras de $G$, com $N$ colapsado ao neutro. A projeção $\\pi:G\\to G/N$ é o homomorfismo sobrejetor canônico, com núcleo exatamente $N$ — fechando o círculo: núcleos e subgrupos normais são a mesma coisa. Como atalho prático, todo subgrupo de índice $2$ é automaticamente normal, o que entrega de imediato $A_n\\trianglelefteq S_n$ e $SL_n(\\mathbb{R})\\trianglelefteq GL_n(\\mathbb{R})$.",
+      "commonPitfalls": [
+        "Pensar que todo subgrupo é normal: em grupos não abelianos isso falha (em $S_3$, um subgrupo gerado por uma transposição não é normal).",
+        "Tentar formar $G/H$ com $H$ não normal: a operação em classes fica mal definida e não há grupo quociente.",
+        "Confundir $\\ker\\varphi=\\{e\\}$ (injetividade) com sobrejetividade — são condições independentes; isomorfismo exige as duas.",
+        "Achar que $G/N$ 'é' um subconjunto de $G$: seus elementos são CLASSES laterais, não elementos de $G$; $|G/N|=[G:N]$."
+      ],
+      "worked": "**O determinante e o quociente $GL_n/SL_n$.** Considere $\\det:GL_n(\\mathbb{R})\\to\\mathbb{R}^{\\ast}$.\n\nComo $\\det(AB)=\\det(A)\\det(B)$, o determinante é um homomorfismo de grupos. Ele é sobrejetor (para qualquer $c\\neq 0$, a matriz diagonal $\\mathrm{diag}(c,1,\\dots,1)$ tem determinante $c$).\n\nSeu núcleo é\n$$\\ker(\\det)=\\{A:\\det A=1\\}=SL_n(\\mathbb{R}),$$\nque é, portanto, um subgrupo NORMAL de $GL_n(\\mathbb{R})$.\n\nDuas matrizes ficam na mesma classe lateral de $SL_n$ exatamente quando têm o mesmo determinante. Assim, a classe de $A$ é identificada pelo número $\\det A\\in\\mathbb{R}^{\\ast}$, e a multiplicação de classes corresponde à multiplicação desses determinantes. Antecipando o próximo subtópico, isso diz que $GL_n(\\mathbb{R})/SL_n(\\mathbb{R})\\cong\\mathbb{R}^{\\ast}$. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Seja $\\varphi:G\\to H$ homomorfismo. Prove que $\\varphi$ é injetor se e somente se $\\ker\\varphi=\\{e_G\\}$.",
+          "hint": "Se $\\varphi(a)=\\varphi(b)$, então $\\varphi(a^{-1}b)=e_H$, logo $a^{-1}b\\in\\ker\\varphi$. Use a hipótese.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** Um homomorfismo $\\varphi:G\\to H$ e injetor se e somente se $\\ker\\varphi=\\{e_G\\}$.\n\n**($\\Rightarrow$)** Suponha $\\varphi$ injetor. Se $x\\in\\ker\\varphi$, entao $\\varphi(x)=e_H=\\varphi(e_G)$; por injetividade $x=e_G$. Logo $\\ker\\varphi=\\{e_G\\}$.\n\n**($\\Leftarrow$)** Suponha $\\ker\\varphi=\\{e_G\\}$. Se $\\varphi(a)=\\varphi(b)$, entao\n$$\\varphi(a^{-1}b)=\\varphi(a)^{-1}\\varphi(b)=e_H,$$\nlogo $a^{-1}b\\in\\ker\\varphi=\\{e_G\\}$, ou seja $a^{-1}b=e_G$ e $a=b$. Portanto $\\varphi$ e injetor. $\\blacksquare$\n\n*Comentario.* Usamos apenas $\\varphi(a^{-1}b)=\\varphi(a)^{-1}\\varphi(b)$, propriedade valida em qualquer homomorfismo.",
+          "steps": [
+            "Para a ida, use injetividade em $\\varphi(x)=e_H=\\varphi(e_G)$ para forcar $x=e_G$.",
+            "Para a volta, suponha $\\varphi(a)=\\varphi(b)$ e reescreva como $\\varphi(a^{-1}b)=e_H$.",
+            "Conclua $a^{-1}b\\in\\ker\\varphi=\\{e_G\\}$, logo $a=b$."
+          ]
+        },
+        {
+          "prompt": "Prove que se $N\\trianglelefteq G$ e $H\\le G$, então $NH=\\{nh:n\\in N,h\\in H\\}$ é subgrupo de $G$. Dê um exemplo mostrando que sem normalidade $NH$ pode não ser subgrupo.",
+          "hint": "Use $hN=Nh$ para reescrever produtos. Em $S_3$, tome dois subgrupos de ordem $2$ e mostre que o produto tem $4$ elementos, impossível por Lagrange.",
+          "difficulty": 4,
+          "solution": "**Parte A: $NH$ e subgrupo quando $N\\trianglelefteq G$.** Seja $NH=\\{nh:n\\in N,h\\in H\\}$.\n\n- $e=ee\\in NH$, logo nao vazio.\n- Fechamento: dados $n_1h_1,n_2h_2\\in NH$, usamos normalidade. Como $N\\trianglelefteq G$, $h_1 N=N h_1$, entao $h_1 n_2=n_2' h_1$ para algum $n_2'\\in N$. Assim\n$$(n_1h_1)(n_2h_2)=n_1(h_1n_2)h_2=n_1 n_2' (h_1h_2)\\in NH,$$\npois $n_1n_2'\\in N$ e $h_1h_2\\in H$.\n- Inversos: $(nh)^{-1}=h^{-1}n^{-1}$. De novo $h^{-1}n^{-1}=n''h^{-1}$ para algum $n''\\in N$ (normalidade), logo $(nh)^{-1}\\in NH$.\n\nPortanto $NH\\le G$. $\\blacksquare$\n\n**Parte B: sem normalidade $NH$ pode falhar.** Em $S_3$ tome $H=\\langle(1\\,2)\\rangle=\\{e,(1\\,2)\\}$ e $K=\\langle(1\\,3)\\rangle=\\{e,(1\\,3)\\}$, ambos de ordem $2$ e nenhum normal. O conjunto\n$$HK=\\{e,(1\\,2),(1\\,3),(1\\,2)(1\\,3)\\}=\\{e,(1\\,2),(1\\,3),(1\\,3\\,2)\\}$$\ntem $4$ elementos. Mas $4\\nmid 6=|S_3|$, logo por Lagrange $HK$ nao pode ser subgrupo. (De fato $(1\\,2)(1\\,3)=(1\\,3\\,2)$ tem ordem $3$, e o subgrupo gerado por $H\\cup K$ seria todo $S_3$, escapando de $HK$.) $\\blacksquare$",
+          "steps": [
+            "Verifique que $NH$ contem $e$ e nao e vazio.",
+            "Para o fechamento, use $hN=Nh$ (normalidade) para mover o elemento de $N$ para a esquerda no produto.",
+            "Para inversos, aplique $(nh)^{-1}=h^{-1}n^{-1}$ e novamente a normalidade.",
+            "Para o contra-exemplo, tome dois subgrupos de ordem 2 em $S_3$.",
+            "Conte que o produto tem 4 elementos e use Lagrange ($4\\nmid6$) para mostrar que nao e subgrupo."
+          ]
+        },
+        {
+          "prompt": "Mostre que o centro $Z(G)$ é sempre normal e descreva o quociente $G/Z(G)$ quando $G$ é abeliano.",
+          "hint": "Para todo $z\\in Z(G)$ e $g\\in G$, $gzg^{-1}=z$. Se $G$ é abeliano, $Z(G)=G$ e o quociente é trivial.",
+          "difficulty": 2,
+          "solution": "**Parte A: $Z(G)$ e normal.** Por definicao $Z(G)=\\{z\\in G:zg=gz\\ \\forall g\\}$. Primeiro, $Z(G)\\le G$ (contem $e$; se $z_1,z_2$ comutam com tudo, $z_1z_2^{-1}$ tambem). Para a normalidade, dado $z\\in Z(G)$ e $g\\in G$,\n$$gzg^{-1}=zgg^{-1}=z\\in Z(G),$$\nusando $gz=zg$. Logo $gZ(G)g^{-1}\\subseteq Z(G)$ para todo $g$, e $Z(G)\\trianglelefteq G$.\n\n**Parte B: $G/Z(G)$ quando $G$ e abeliano.** Se $G$ e abeliano, entao todo elemento comuta com todos, logo $Z(G)=G$. Assim\n$$G/Z(G)=G/G=\\{G\\},$$\no grupo trivial (um unico elemento, a classe $eG=G$). $\\blacksquare$\n\n*Observacao.* Vale a reciproca: se $G/Z(G)$ e ciclico, entao $G$ e abeliano (e $Z(G)=G$) - um lema muito util em problemas de $p$-grupos.",
+          "steps": [
+            "Confirme que $Z(G)$ e subgrupo (contem $e$ e e fechado).",
+            "Para $z\\in Z(G)$, calcule $gzg^{-1}=zgg^{-1}=z$ usando que $z$ comuta com $g$.",
+            "Conclua $gZ(G)g^{-1}=Z(G)$, logo normal.",
+            "Se $G$ e abeliano, note $Z(G)=G$ e portanto $G/Z(G)$ e trivial."
+          ]
+        },
+        {
+          "prompt": "Prove que todo subgrupo de índice $2$ é normal e use isso para concluir que $A_n\\trianglelefteq S_n$.",
+          "hint": "Se $[G:H]=2$, há só duas classes à esquerda ($H$ e $G\\setminus H$) e duas à direita; conclua $gH=Hg$ para todo $g$. Aplique a $H=A_n$.",
+          "difficulty": 3,
+          "solution": "**Afirmacao.** Se $[G:H]=2$, entao $H\\trianglelefteq G$; em particular $A_n\\trianglelefteq S_n$.\n\n**Prova.** Como $[G:H]=2$, ha exatamente duas classes laterais a esquerda: $H$ e $G\\setminus H$ (a segunda porque as classes particionam $G$). Analogamente, ha duas classes a direita: $H$ e $G\\setminus H$.\n\nTome $g\\in G$. Dois casos:\n- Se $g\\in H$, entao $gH=H=Hg$.\n- Se $g\\notin H$, entao $gH\\neq H$, logo $gH=G\\setminus H$; do mesmo modo $Hg=G\\setminus H$. Portanto $gH=Hg$.\n\nEm ambos os casos $gH=Hg$ para todo $g$, isto e, $H\\trianglelefteq G$. $\\blacksquare$\n\n**Aplicacao a $A_n$.** O sinal $\\mathrm{sgn}:S_n\\to\\{\\pm1\\}$ e homomorfismo sobrejetor (para $n\\ge2$) com nucleo $A_n$, logo $[S_n:A_n]=2$. Pelo resultado acima, $A_n\\trianglelefteq S_n$. (Alternativamente, $A_n$ ja e nucleo de um homomorfismo, portanto normal.) $\\blacksquare$",
+          "steps": [
+            "Observe que indice 2 da exatamente duas classes a esquerda: $H$ e $G\\setminus H$.",
+            "Faca o mesmo para classes a direita.",
+            "Trate o caso $g\\in H$ ($gH=H=Hg$) e o caso $g\\notin H$ ($gH=G\\setminus H=Hg$).",
+            "Conclua $gH=Hg$ para todo $g$, logo $H$ normal.",
+            "Aplique a $H=A_n$, que tem indice 2 em $S_n$."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Homomorfismo de grupos",
+          "back": "$\\varphi(ab)=\\varphi(a)\\varphi(b)$; daí $\\varphi(e)=e$ e $\\varphi(a^{-1})=\\varphi(a)^{-1}$."
+        },
+        {
+          "front": "Critério de injetividade",
+          "back": "$\\varphi$ injetor $\\iff \\ker\\varphi=\\{e_G\\}$."
+        },
+        {
+          "front": "Subgrupo normal (definição)",
+          "back": "$N\\trianglelefteq G$ se $gNg^{-1}=N$ para todo $g$, isto é, $gN=Ng$."
+        },
+        {
+          "front": "Núcleos vs normais",
+          "back": "Todo núcleo é normal; todo normal é núcleo (da projeção $\\pi:G\\to G/N$)."
+        },
+        {
+          "front": "Quando $G/N$ é grupo?",
+          "back": "Exatamente quando $N\\trianglelefteq G$; aí $(aN)(bN)=abN$ é bem definida."
+        },
+        {
+          "front": "Ordem de $G/N$",
+          "back": "$|G/N|=[G:N]=|G|/|N|$ (no caso finito)."
+        },
+        {
+          "front": "Índice 2 implica...",
+          "back": "Normal. (Ex.: $A_n\\trianglelefteq S_n$, $SL_n\\trianglelefteq GL_n$.)"
+        },
+        {
+          "front": "Projeção canônica",
+          "back": "$\\pi:G\\to G/N$, $\\pi(a)=aN$; sobrejetora com $\\ker\\pi=N$."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 3.1 e 3.3 (Quotient Groups and Homomorphisms)",
+          "ref": "livro"
+        },
+        {
+          "title": "Gallian, caps. 9-10 (Normal Subgroups, Factor Groups, Homomorphisms)",
+          "ref": "livro"
+        },
+        {
+          "title": "Adilson Gonçalves, Introdução à Álgebra (homomorfismos e quocientes)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a definicao de homomorfismo e as propriedades derivadas ($\\varphi(e)=e$, $\\varphi(a^{-1})=\\varphi(a)^{-1}$) em Gallian caps. 9-10.",
+          "Domine nucleo e imagem e prove o criterio de injetividade $\\ker\\varphi=\\{e\\}$.",
+          "Estude normalidade ($gNg^{-1}=N$) e prove que a operacao $(aN)(bN)=abN$ so e bem definida quando $N$ e normal.",
+          "Verifique exemplos-chave: $\\det:GL_n\\to\\mathbb{R}^*$ com nucleo $SL_n$, e subgrupos de indice 2 sempre normais.",
+          "Assista a videos sobre subgrupos normais e grupos quociente (Socratica / Michael Penn).",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (nucleo = normal, boa definicao do quociente, indice 2 implica normal)."
+        ],
+        "searchQueries": [
+          "homomorfismo de grupos nucleo imagem propriedades",
+          "subgrupo normal gNg^-1=N grupo quociente bem definido",
+          "grupo quociente G/N operacao classes laterais demonstracao",
+          "subgrupo de indice 2 e normal demonstracao",
+          "normal subgroup quotient group well defined proof",
+          "projecao canonica pi G/N nucleo N"
+        ],
+        "videos": [
+          {
+            "title": "Normal Subgroups and Quotient Groups",
+            "channel": "Socratica",
+            "note": "Explica normalidade e a construcao do quociente com exemplos claros."
+          },
+          {
+            "title": "Homomorphisms, kernels and quotient groups",
+            "channel": "Michael Penn",
+            "note": "Demonstracoes de que nucleos sao normais e da boa definicao de $G/N$."
+          },
+          {
+            "title": "Homomorfismos e Grupos Quociente",
+            "channel": "Matematica Universitaria",
+            "note": "Tratamento em PT-BR de homomorfismos, nucleo, imagem e quociente."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, caps. 3.1 e 3.3 (Quotient Groups and Homomorphisms)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Contemporary Abstract Algebra, caps. 9-10 (Normal Subgroups, Factor Groups, Homomorphisms)",
+            "where": "Livro de Joseph A. Gallian"
+          },
+          {
+            "title": "Introducao a Algebra (homomorfismos e quocientes)",
+            "where": "Livro de Adilson Goncalves (IMPA/SBM)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-1-06-teoremas-isomorfismo",
+      "title": "Os Teoremas de Isomorfismo",
+      "tagline": "Quatro teoremas que mecanizam o cálculo de quocientes e revelam a anatomia de qualquer homomorfismo.",
+      "objectives": [
+        "Demonstrar o Primeiro Teorema de Isomorfismo e usá-lo para identificar quocientes concretos.",
+        "Enunciar e aplicar o Segundo Teorema (do diamante) e o Terceiro Teorema de Isomorfismo.",
+        "Usar o Teorema da Correspondência para descrever os subgrupos de $G/N$.",
+        "Reconhecer que todo homomorfismo se fatora como sobrejeção seguida de injeção (fatoração canônica).",
+        "Resolver problemas calculando $G/\\ker\\varphi\\cong\\mathrm{im}\\,\\varphi$ em exemplos clássicos."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Fatoração canônica",
+          "statement": "Todo homomorfismo $\\varphi:G\\to H$ se escreve como $\\varphi=\\iota\\circ\\bar\\varphi\\circ\\pi$, onde $\\pi:G\\to G/\\ker\\varphi$ é a projeção, $\\bar\\varphi$ é um isomorfismo sobre a imagem e $\\iota$ é a inclusão."
+        },
+        {
+          "term": "Produto de subgrupos $HN$",
+          "statement": "Se $H\\le G$ e $N\\trianglelefteq G$, então $HN=\\{hn:h\\in H,n\\in N\\}$ é subgrupo de $G$, com $N\\trianglelefteq HN$."
+        },
+        {
+          "term": "Teorema da Correspondência",
+          "statement": "Para $N\\trianglelefteq G$, há uma bijeção, que preserva inclusões e normalidade, entre os subgrupos de $G$ que contêm $N$ e os subgrupos de $G/N$, dada por $K\\mapsto K/N$."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Primeiro Teorema de Isomorfismo",
+          "statement": "Se $\\varphi:G\\to H$ é homomorfismo, então $G/\\ker\\varphi\\cong\\mathrm{im}\\,\\varphi$, via $g\\,\\ker\\varphi\\mapsto\\varphi(g)$.",
+          "whyItMatters": "É o resultado mais usado para identificar quocientes: em vez de analisar $G/N$ diretamente, exibe-se um homomorfismo com núcleo $N$ e calcula-se a imagem. Mecaniza o reconhecimento de quocientes."
+        },
+        {
+          "name": "Segundo Teorema (do diamante)",
+          "statement": "Se $H\\le G$ e $N\\trianglelefteq G$, então $HN\\le G$, $H\\cap N\\trianglelefteq H$ e $H/(H\\cap N)\\cong HN/N$.",
+          "whyItMatters": "Relaciona quocientes de um subgrupo com quocientes do grupo todo; é a ferramenta para comparar 'fatias' diferentes da estrutura e aparece em demonstrações de Sylow."
+        },
+        {
+          "name": "Terceiro Teorema de Isomorfismo",
+          "statement": "Se $N\\trianglelefteq G$ e $M\\trianglelefteq G$ com $N\\le M$, então $M/N\\trianglelefteq G/N$ e $(G/N)/(M/N)\\cong G/M$.",
+          "whyItMatters": "Formaliza o 'cancelamento' de quocientes: quocientar por etapas dá o mesmo que quocientar de uma vez. Indispensável em argumentos indutivos sobre séries de subgrupos."
+        },
+        {
+          "name": "Teorema da Correspondência (Reticulado)",
+          "statement": "A aplicação $K\\mapsto K/N$ é uma bijeção entre os subgrupos de $G$ contendo $N$ e os subgrupos de $G/N$; ela preserva inclusões, índices e leva subgrupos normais em normais.",
+          "whyItMatters": "Permite ler toda a estrutura de subgrupos de um quociente a partir da de $G$, e vice-versa — essencial para analisar grupos simples e séries de composição."
+        }
+      ],
+      "summary": "Os teoremas de isomorfismo transformam a construção abstrata do quociente em uma ferramenta de cálculo. O Primeiro Teorema é o coração: qualquer homomorfismo $\\varphi$ fatora-se canonicamente como 'colapsar o núcleo, depois mergulhar a imagem', e formalmente $G/\\ker\\varphi\\cong\\mathrm{im}\\,\\varphi$. Na prática, para entender um quociente $G/N$ buscamos um homomorfismo natural cujo núcleo seja $N$ e cuja imagem seja reconhecível — assim provamos, por exemplo, $\\mathbb{R}/\\mathbb{Z}\\cong S^1$ e $GL_n/SL_n\\cong\\mathbb{R}^{\\ast}$ sem manipular classes laterais explicitamente.\n\nOs outros três teoremas completam o kit. O Segundo (do diamante) compara o quociente de um subgrupo $H$ por $H\\cap N$ com o quociente $HN/N$, sendo o instrumento padrão para somar uma 'fatia' $H$ a um normal $N$. O Terceiro diz que quocientes se cancelam em cadeia: $(G/N)/(M/N)\\cong G/M$, o que sustenta argumentos por indução em séries de subgrupos. E o Teorema da Correspondência estabelece um dicionário perfeito entre os subgrupos de $G/N$ e os subgrupos de $G$ que contêm $N$, preservando inclusões, índices e normalidade. Juntos, esses teoremas são o motor algébrico que torna possível analisar grupos via seus quocientes, e reaparecem em toda a álgebra — de anéis e módulos à teoria de Galois.",
+      "commonPitfalls": [
+        "Esquecer de verificar que a imagem é o que se pensa: $G/\\ker\\varphi\\cong\\mathrm{im}\\,\\varphi$, e não necessariamente $\\cong H$ inteiro (só se $\\varphi$ for sobrejetor).",
+        "No Segundo Teorema, exigir que AMBOS $H$ e $N$ sejam normais — só $N$ precisa ser normal em $G$; $H$ é um subgrupo qualquer.",
+        "Aplicar o Terceiro Teorema sem a inclusão $N\\le M$ ou sem ambos serem normais em $G$.",
+        "Pensar que a correspondência vale para todos os subgrupos de $G$ — ela só enxerga os que CONTÊM $N$."
+      ],
+      "worked": "**O grupo do círculo via Primeiro Teorema.** Defina $\\varphi:(\\mathbb{R},+)\\to S^1$ por $\\varphi(x)=e^{2\\pi i x}$, onde $S^1=\\{z\\in\\mathbb{C}:|z|=1\\}$ é o grupo multiplicativo do círculo.\n\n*Homomorfismo:* $\\varphi(x+y)=e^{2\\pi i(x+y)}=e^{2\\pi i x}e^{2\\pi i y}=\\varphi(x)\\varphi(y)$.\n\n*Sobrejetor:* todo $z\\in S^1$ é $e^{2\\pi i\\theta}$ para algum $\\theta\\in\\mathbb{R}$.\n\n*Núcleo:* $\\varphi(x)=1\\iff e^{2\\pi i x}=1\\iff x\\in\\mathbb{Z}$, logo $\\ker\\varphi=\\mathbb{Z}$.\n\nPelo Primeiro Teorema de Isomorfismo,\n$$\\mathbb{R}/\\mathbb{Z}\\;\\cong\\;\\mathrm{im}\\,\\varphi=S^1.$$\nIsto é, a reta com os inteiros colapsados é precisamente o círculo. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Use o Primeiro Teorema de Isomorfismo para provar que $GL_n(\\mathbb{R})/SL_n(\\mathbb{R})\\cong\\mathbb{R}^{\\ast}$.",
+          "hint": "Tome $\\varphi=\\det$, mostre que é homomorfismo sobrejetor e que $\\ker(\\det)=SL_n(\\mathbb{R})$.",
+          "difficulty": 2,
+          "solution": "**Afirmacao.** $GL_n(\\mathbb{R})/SL_n(\\mathbb{R})\\cong\\mathbb{R}^{\\ast}$.\n\n**Passo 1: o determinante e homomorfismo.** $\\det:GL_n(\\mathbb{R})\\to\\mathbb{R}^{\\ast}$ satisfaz $\\det(AB)=\\det(A)\\det(B)$, e $\\det(A)\\neq0$ para $A$ invertivel, logo o contradominio $\\mathbb{R}^{\\ast}=\\mathbb{R}\\setminus\\{0\\}$ e correto.\n\n**Passo 2: sobrejetor.** Dado $c\\in\\mathbb{R}^{\\ast}$, a matriz $D=\\mathrm{diag}(c,1,\\dots,1)$ e invertivel e $\\det(D)=c$. Logo $\\det$ e sobrejetor.\n\n**Passo 3: nucleo.** $\\ker(\\det)=\\{A\\in GL_n(\\mathbb{R}):\\det A=1\\}=SL_n(\\mathbb{R})$.\n\n**Passo 4: Primeiro Teorema de Isomorfismo.** Como $\\det$ e homomorfismo sobrejetor com nucleo $SL_n(\\mathbb{R})$,\n$$GL_n(\\mathbb{R})/SL_n(\\mathbb{R})=GL_n/\\ker(\\det)\\cong\\mathrm{im}(\\det)=\\mathbb{R}^{\\ast}.$$\n$\\blacksquare$",
+          "steps": [
+            "Verifique que $\\det$ e homomorfismo de $GL_n$ em $\\mathbb{R}^*$ via $\\det(AB)=\\det A\\det B$.",
+            "Mostre que e sobrejetor usando matrizes diagonais $\\mathrm{diag}(c,1,\\dots,1)$.",
+            "Identifique o nucleo como $SL_n$ (determinante 1).",
+            "Aplique o Primeiro Teorema de Isomorfismo para concluir $GL_n/SL_n\\cong\\mathbb{R}^*$."
+          ]
+        },
+        {
+          "prompt": "Seja $G$ cíclico de ordem $n$ e $d\\mid n$. Identifique, via o Terceiro Teorema, o quociente $G/H$ onde $H$ é o único subgrupo de ordem $d$, e mostre que é cíclico de ordem $n/d$.",
+          "hint": "Escreva $G=\\mathbb{Z}_n$ e $H=d\\mathbb{Z}_n$ (ordem $n/d$? cuide). Use que quociente de cíclico é cíclico e calcule a ordem por Lagrange.",
+          "difficulty": 3,
+          "solution": "**Contexto.** $G$ ciclico de ordem $n$; $d\\mid n$; $H$ e o unico subgrupo de ordem $d$. Queremos identificar $G/H$.\n\n**Passo 1: $H$ e normal.** $G$ e ciclico, logo abeliano, logo todo subgrupo e normal. Assim $G/H$ e um grupo, de ordem $[G:H]=n/d$ (Lagrange).\n\n**Passo 2: quociente de ciclico e ciclico.** Se $G=\\langle a\\rangle$, entao $G/H=\\langle aH\\rangle$, pois toda classe $a^kH=(aH)^k$. Logo $G/H$ e ciclico de ordem $n/d$, portanto $G/H\\cong\\mathbb{Z}_{n/d}$.\n\n**Via Primeiro/Terceiro Teorema.** Modele $G=\\mathbb{Z}_n$. O unico subgrupo de ordem $d$ e $H=\\langle \\overline{n/d}\\rangle$. A composta $\\mathbb{Z}\\to\\mathbb{Z}_n\\to\\mathbb{Z}_n/H$ e sobrejetora com nucleo $=\\{k\\in\\mathbb{Z}:\\bar k\\in H\\}=\\tfrac{n}{d}\\mathbb{Z}$. Pelo Primeiro Teorema,\n$$\\mathbb{Z}_n/H\\cong\\mathbb{Z}\\big/\\tfrac{n}{d}\\mathbb{Z}=\\mathbb{Z}_{n/d}.$$\n\n**Conclusao.** $G/H\\cong\\mathbb{Z}_{n/d}$, ciclico de ordem $n/d$. $\\blacksquare$",
+          "steps": [
+            "Note que $G$ ciclico e abeliano, logo $H$ e normal e $|G/H|=n/d$.",
+            "Mostre que $G/H$ e gerado por $aH$, portanto ciclico.",
+            "Modele $G=\\mathbb{Z}_n$ e $H=\\langle\\overline{n/d}\\rangle$, o subgrupo de ordem $d$.",
+            "Use a composta $\\mathbb{Z}\\to\\mathbb{Z}_n/H$ com nucleo $(n/d)\\mathbb{Z}$ e o Primeiro Teorema para obter $\\mathbb{Z}_{n/d}$."
+          ]
+        },
+        {
+          "prompt": "Aplique o Segundo Teorema de Isomorfismo em $G=S_3$ com $N=A_3$ (ordem 3) e $H=\\langle(1\\,2)\\rangle$ (ordem 2). Calcule $H\\cap N$, $HN$ e verifique a fórmula do diamante.",
+          "hint": "$H\\cap N=\\{e\\}$, então $H/(H\\cap N)\\cong H$ de ordem 2; mostre que $HN=S_3$ e $HN/N$ tem ordem $6/3=2$.",
+          "difficulty": 3,
+          "solution": "**Dados.** $G=S_3$, $N=A_3=\\{e,(1\\,2\\,3),(1\\,3\\,2)\\}$ (ordem $3$, normal em $S_3$ por indice $2$), $H=\\langle(1\\,2)\\rangle=\\{e,(1\\,2)\\}$ (ordem $2$).\n\n**Passo 1: $H\\cap N$.** O unico elemento comum e $e$ (transposicao vs. $3$-ciclos). Logo $H\\cap N=\\{e\\}$, de ordem $1$.\n\n**Passo 2: $HN$.** $HN=\\{hn:h\\in H,n\\in N\\}$. Como $N\\trianglelefteq S_3$, $HN\\le S_3$. Sua ordem e\n$$|HN|=\\frac{|H|\\,|N|}{|H\\cap N|}=\\frac{2\\cdot3}{1}=6=|S_3|,$$\nlogo $HN=S_3$.\n\n**Passo 3: verificar o diamante.** O Segundo Teorema afirma $H/(H\\cap N)\\cong HN/N$. Aqui:\n$$H/(H\\cap N)=H/\\{e\\}\\cong H,\\quad |H|=2;$$\n$$HN/N=S_3/A_3,\\quad |S_3/A_3|=\\frac{6}{3}=2.$$\nAmbos tem ordem $2$, logo ambos $\\cong\\mathbb{Z}_2$ (unico grupo de ordem $2$). A formula $H/(H\\cap N)\\cong HN/N$ se confirma. $\\blacksquare$",
+          "steps": [
+            "Calcule $H\\cap N$: so o neutro, ordem 1.",
+            "Calcule $|HN|=|H||N|/|H\\cap N|=6$, logo $HN=S_3$.",
+            "Identifique $H/(H\\cap N)\\cong H$ de ordem 2.",
+            "Identifique $HN/N=S_3/A_3$ de ordem 2 e confirme o isomorfismo do diamante."
+          ]
+        },
+        {
+          "prompt": "Prove o Primeiro Teorema de Isomorfismo: dado um homomorfismo $\\varphi:G\\to H$, mostre que $\\bar\\varphi(g\\ker\\varphi)=\\varphi(g)$ está bem definida, é homomorfismo, é injetora e tem imagem $\\mathrm{im}\\,\\varphi$.",
+          "hint": "Boa definição e injetividade usam $g\\ker\\varphi=g'\\ker\\varphi\\iff g^{-1}g'\\in\\ker\\varphi\\iff\\varphi(g)=\\varphi(g')$.",
+          "difficulty": 4,
+          "solution": "**Primeiro Teorema de Isomorfismo.** Seja $\\varphi:G\\to H$ homomorfismo, $K=\\ker\\varphi$. Define-se $\\bar\\varphi:G/K\\to H$ por $\\bar\\varphi(gK)=\\varphi(g)$.\n\n**1. Boa definicao.** Se $gK=g'K$, entao $g^{-1}g'\\in K$, logo $\\varphi(g^{-1}g')=e_H$, isto e, $\\varphi(g)^{-1}\\varphi(g')=e_H$ e $\\varphi(g)=\\varphi(g')$. Assim $\\bar\\varphi(gK)=\\bar\\varphi(g'K)$ nao depende do representante.\n\n**2. Homomorfismo.**\n$$\\bar\\varphi(gK\\cdot g'K)=\\bar\\varphi(gg'K)=\\varphi(gg')=\\varphi(g)\\varphi(g')=\\bar\\varphi(gK)\\bar\\varphi(g'K).$$\n\n**3. Injetividade.** Se $\\bar\\varphi(gK)=e_H$, entao $\\varphi(g)=e_H$, logo $g\\in K$ e $gK=K$, o neutro de $G/K$. Assim $\\ker\\bar\\varphi=\\{K\\}$ e $\\bar\\varphi$ e injetora.\n\n**4. Imagem.** $\\mathrm{im}\\,\\bar\\varphi=\\{\\varphi(g):g\\in G\\}=\\mathrm{im}\\,\\varphi$.\n\n**Conclusao.** $\\bar\\varphi$ e isomorfismo de $G/K$ sobre $\\mathrm{im}\\,\\varphi$, isto e,\n$$G/\\ker\\varphi\\cong\\mathrm{im}\\,\\varphi.$$\n$\\blacksquare$\n\n*Observacao.* A cadeia $gK=g'K\\iff g^{-1}g'\\in K\\iff\\varphi(g)=\\varphi(g')$ serve simultaneamente para a boa definicao e para a injetividade.",
+          "steps": [
+            "Defina $\\bar\\varphi(gK)=\\varphi(g)$ e mostre a boa definicao via $gK=g'K\\iff g^{-1}g'\\in\\ker\\varphi$.",
+            "Verifique que $\\bar\\varphi$ e homomorfismo usando a operacao de classes $(gK)(g'K)=gg'K$.",
+            "Prove a injetividade: $\\bar\\varphi(gK)=e_H\\Rightarrow g\\in\\ker\\varphi\\Rightarrow gK=K$.",
+            "Identifique a imagem de $\\bar\\varphi$ com $\\mathrm{im}\\,\\varphi$ e conclua o isomorfismo."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Primeiro Teorema de Isomorfismo",
+          "back": "$\\varphi:G\\to H\\Rightarrow G/\\ker\\varphi\\cong\\mathrm{im}\\,\\varphi$."
+        },
+        {
+          "front": "Estratégia para calcular $G/N$",
+          "back": "Achar homomorfismo $\\varphi$ com $\\ker\\varphi=N$; então $G/N\\cong\\mathrm{im}\\,\\varphi$."
+        },
+        {
+          "front": "Segundo Teorema (diamante)",
+          "back": "$H\\le G$, $N\\trianglelefteq G$ $\\Rightarrow H/(H\\cap N)\\cong HN/N$."
+        },
+        {
+          "front": "Terceiro Teorema de Isomorfismo",
+          "back": "$N\\le M$, ambos $\\trianglelefteq G$ $\\Rightarrow (G/N)/(M/N)\\cong G/M$."
+        },
+        {
+          "front": "Teorema da Correspondência",
+          "back": "Bijeção entre subgrupos de $G/N$ e subgrupos de $G$ que contêm $N$ ($K\\mapsto K/N$), preservando inclusão e normalidade."
+        },
+        {
+          "front": "Hipótese do Segundo Teorema",
+          "back": "Só $N$ precisa ser normal; $H$ é subgrupo qualquer."
+        },
+        {
+          "front": "$\\mathbb{R}/\\mathbb{Z}\\cong$ ?",
+          "back": "$S^1$ (grupo do círculo), via $x\\mapsto e^{2\\pi i x}$."
+        },
+        {
+          "front": "Fatoração canônica de $\\varphi$",
+          "back": "$\\varphi=\\iota\\circ\\bar\\varphi\\circ\\pi$: projeção, isomorfismo sobre a imagem, inclusão."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 3.3 (Isomorphism Theorems)",
+          "ref": "livro"
+        },
+        {
+          "title": "Gallian, cap. 10 (Group Homomorphisms)",
+          "ref": "livro"
+        },
+        {
+          "title": "Herstein, Topics in Algebra, cap. 2 (homomorphism theorems)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude o Primeiro Teorema de Isomorfismo em Dummit & Foote 3.3 e refaca a prova da boa definicao de $\\bar\\varphi$.",
+          "Estude o Segundo (diamante), o Terceiro e o Teorema da Correspondencia, atentando as hipoteses de normalidade de cada um.",
+          "Pratique a estrategia 'ache um homomorfismo com nucleo $N$' para calcular quocientes concretos ($GL_n/SL_n$, $\\mathbb{R}/\\mathbb{Z}$).",
+          "Assista a uma serie sobre os teoremas de isomorfismo (Michael Penn / Socratica).",
+          "Resolva 6-8 exercicios de identificacao de quocientes e de aplicacao do diamante.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (os quatro teoremas e suas hipoteses)."
+        ],
+        "searchQueries": [
+          "primeiro teorema de isomorfismo G/ker cong im demonstracao",
+          "segundo teorema de isomorfismo diamante H/(H cap N) cong HN/N",
+          "terceiro teorema de isomorfismo (G/N)/(M/N) cong G/M",
+          "teorema da correspondencia reticulado subgrupos quociente",
+          "isomorphism theorems groups first second third proof",
+          "GL_n SL_n quociente determinante R* isomorfismo"
+        ],
+        "videos": [
+          {
+            "title": "The Isomorphism Theorems",
+            "channel": "Michael Penn",
+            "note": "Serie que demonstra os tres teoremas de isomorfismo com exemplos calculados."
+          },
+          {
+            "title": "First Isomorphism Theorem",
+            "channel": "Socratica",
+            "note": "Explicacao intuitiva do primeiro teorema e da fatoracao canonica."
+          },
+          {
+            "title": "Teoremas de Isomorfismo",
+            "channel": "Matematica Universitaria",
+            "note": "Aula em PT-BR cobrindo os teoremas e aplicacoes a quocientes."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 3.3 (Isomorphism Theorems)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Contemporary Abstract Algebra, cap. 10 (Group Homomorphisms)",
+            "where": "Livro de Joseph A. Gallian"
+          },
+          {
+            "title": "Topics in Algebra, cap. 2 (homomorphism theorems)",
+            "where": "Livro de I. N. Herstein"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-1-07-acoes-de-grupo",
+      "title": "Ações de Grupo, Órbitas e a Equação de Classes",
+      "tagline": "Pôr um grupo para agir sobre um conjunto: a técnica que conta simetrias e prova teoremas que a álgebra pura não alcança sozinha.",
+      "objectives": [
+        "Definir ação de grupo e traduzi-la como homomorfismo $G\\to\\mathrm{Sym}(X)$.",
+        "Definir órbita e estabilizador e demonstrar o Teorema Órbita-Estabilizador.",
+        "Aplicar a ação por conjugação para obter classes de conjugação e a equação de classes.",
+        "Demonstrar o Teorema de Cauchy e que todo $p$-grupo tem centro não trivial.",
+        "Usar o Lema de Burnside para contar órbitas em problemas de coloração e simetria."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Ação de grupo",
+          "statement": "Uma ação de $G$ em $X$ é $G\\times X\\to X$, $(g,x)\\mapsto g\\cdot x$, com $e\\cdot x=x$ e $(gh)\\cdot x=g\\cdot(h\\cdot x)$; equivale a um homomorfismo $G\\to\\mathrm{Sym}(X)$."
+        },
+        {
+          "term": "Órbita e estabilizador",
+          "statement": "$\\mathrm{Orb}(x)=\\{g\\cdot x:g\\in G\\}$ e $G_x=\\mathrm{Stab}(x)=\\{g\\in G:g\\cdot x=x\\}\\le G$. As órbitas particionam $X$."
+        },
+        {
+          "term": "Classe de conjugação",
+          "statement": "Para a ação de $G$ sobre si por conjugação ($g\\cdot x=gxg^{-1}$), a órbita de $x$ é sua classe de conjugação e o estabilizador é o centralizador $C_G(x)$."
+        },
+        {
+          "term": "Ponto fixo",
+          "statement": "$X^g=\\{x\\in X:g\\cdot x=x\\}$ é o conjunto dos pontos fixados por $g$; central no Lema de Burnside."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema Órbita-Estabilizador",
+          "statement": "Para uma ação de $G$ em $X$ e $x\\in X$, existe bijeção entre $\\mathrm{Orb}(x)$ e as classes laterais $G/G_x$; em particular $|\\mathrm{Orb}(x)|=[G:G_x]$.",
+          "whyItMatters": "É o princípio de contagem central da teoria: converte o tamanho de uma órbita num índice de subgrupo, ligando geometria (órbitas) à aritmética (Lagrange)."
+        },
+        {
+          "name": "Equação de classes",
+          "statement": "Para um grupo finito $G$, $|G|=|Z(G)|+\\sum_i [G:C_G(x_i)]$, onde a soma percorre representantes das classes de conjugação com mais de um elemento.",
+          "whyItMatters": "Decompõe $|G|$ em parcelas que são divisores de $|G|$ maiores que $1$; é o argumento de contagem que prova fatos profundos sobre $p$-grupos e centros."
+        },
+        {
+          "name": "Teorema de Cauchy",
+          "statement": "Se $p$ é primo e $p\\mid|G|$, então $G$ possui um elemento (e portanto um subgrupo) de ordem $p$.",
+          "whyItMatters": "Recupera uma parte da recíproca de Lagrange para ordens primas e é o degrau indispensável para a existência de subgrupos de Sylow."
+        },
+        {
+          "name": "Centro de $p$-grupo é não trivial",
+          "statement": "Se $|G|=p^n$ com $n\\ge 1$, então $Z(G)\\neq\\{e\\}$. Em particular, todo grupo de ordem $p^2$ é abeliano.",
+          "whyItMatters": "Mostra que $p$-grupos têm muita comutatividade interna; é a base da estrutura dos $p$-grupos e de inúmeras classificações por ordem pequena."
+        }
+      ],
+      "summary": "Uma ação de grupo é a formalização precisa da ideia de 'simetrias atuando sobre objetos': $G$ permuta os elementos de um conjunto $X$ de modo compatível com sua operação. Equivalentemente, uma ação é um homomorfismo $G\\to\\mathrm{Sym}(X)$. Dois objetos surgem de cada ponto $x$: sua órbita (tudo o que $x$ pode virar) e seu estabilizador (o que fixa $x$). O Teorema Órbita-Estabilizador amarra os dois com Lagrange: $|\\mathrm{Orb}(x)|=[G:G_x]$. Esse é, talvez, o princípio de contagem mais fértil da álgebra finita — tamanhos de órbitas são sempre divisores de $|G|$.\n\nA ação mais importante é a de $G$ sobre si mesmo por conjugação. Suas órbitas são as classes de conjugação, e os estabilizadores são os centralizadores; os pontos fixos por TODA a ação são exatamente os elementos do centro $Z(G)$. Contando $G$ pela partição em classes de conjugação obtemos a equação de classes $|G|=|Z(G)|+\\sum[G:C_G(x_i)]$, em que cada termo da soma é um divisor de $|G|$ maior que $1$. Desse simples balanço aritmético brotam teoremas notáveis: o centro de todo $p$-grupo é não trivial (logo grupos de ordem $p^2$ são abelianos) e, via uma ação engenhosa sobre $p$-uplas, o Teorema de Cauchy garante elementos de ordem $p$ sempre que $p$ divide $|G|$ — o primeiro passo rumo aos teoremas de Sylow. Para problemas de contagem concreta, o Lema de Burnside fornece o número de órbitas como a média do número de pontos fixos, resolvendo questões de colorações inequivalentes sob simetria.",
+      "commonPitfalls": [
+        "Esquecer de verificar os dois axiomas da ação ($e\\cdot x=x$ e $(gh)\\cdot x=g\\cdot(h\\cdot x)$); só o segundo não basta.",
+        "Confundir centralizador $C_G(x)$ (fixa o elemento $x$ por conjugação) com normalizador $N_G(H)$ (fixa o subgrupo $H$ como conjunto).",
+        "Na equação de classes, incluir as classes de tamanho $1$ na somatória: elas já estão contadas dentro de $|Z(G)|$.",
+        "Aplicar o Lema de Burnside contando elementos fixos errado: $X^g$ são os pontos de $X$ fixados por $g$, não os elementos $g$ que fixam um ponto."
+      ],
+      "worked": "**O centro de um $p$-grupo é não trivial.** Seja $|G|=p^n$, $n\\ge 1$, e considere a ação de $G$ sobre si mesmo por conjugação.\n\nA equação de classes é\n$$|G|=|Z(G)|+\\sum_i [G:C_G(x_i)],$$\nonde a soma percorre representantes das classes de conjugação não centrais (tamanho $>1$).\n\nPara cada tal $x_i$, o centralizador $C_G(x_i)$ é um subgrupo próprio (senão $x_i\\in Z(G)$), logo $[G:C_G(x_i)]>1$. Por Lagrange esse índice divide $|G|=p^n$, então é uma potência positiva de $p$; em particular $p\\mid[G:C_G(x_i)]$.\n\nComo $p\\mid|G|$ e $p$ divide cada parcela da soma, segue que $p$ divide $|Z(G)|=|G|-\\sum_i[G:C_G(x_i)]$. Mas $e\\in Z(G)$, então $|Z(G)|\\ge 1$; sendo divisível por $p$, temos $|Z(G)|\\ge p>1$. Portanto $Z(G)\\neq\\{e\\}$. $\\blacksquare$\n\n*Corolário:* todo grupo de ordem $p^2$ é abeliano (se $Z(G)$ tivesse ordem $p$, $G/Z(G)$ seria cíclico, forçando $G$ abeliano, contradição).",
+      "exercises": [
+        {
+          "prompt": "Prove o Teorema Órbita-Estabilizador exibindo a bijeção $gG_x\\mapsto g\\cdot x$ entre $G/G_x$ e $\\mathrm{Orb}(x)$.",
+          "hint": "Boa definição e injetividade: $gG_x=hG_x\\iff h^{-1}g\\in G_x\\iff g\\cdot x=h\\cdot x$. Sobrejetividade é imediata.",
+          "difficulty": 3,
+          "solution": "**Teorema Orbita-Estabilizador.** Para uma acao de $G$ em $X$ e $x\\in X$, a aplicacao\n$$\\Phi:G/G_x\\to\\mathrm{Orb}(x),\\qquad \\Phi(gG_x)=g\\cdot x,$$\ne uma bijecao; em particular $|\\mathrm{Orb}(x)|=[G:G_x]$. (Aqui $G_x=\\{g:g\\cdot x=x\\}$ e o estabilizador.)\n\n**1. $G_x$ e subgrupo.** $e\\cdot x=x$, e se $g\\cdot x=x$, $h\\cdot x=x$ entao $(gh^{-1})\\cdot x=g\\cdot(h^{-1}\\cdot x)=g\\cdot x=x$; logo $G_x\\le G$ e $G/G_x$ faz sentido como conjunto de classes.\n\n**2. Boa definicao e injetividade (simultaneas).** Vale a cadeia\n$$gG_x=hG_x\\iff h^{-1}g\\in G_x\\iff (h^{-1}g)\\cdot x=x\\iff g\\cdot x=h\\cdot x.$$\nA ida garante que $\\Phi$ nao depende do representante (boa definicao); a volta garante injetividade.\n\n**3. Sobrejetividade.** Todo elemento de $\\mathrm{Orb}(x)$ e da forma $g\\cdot x=\\Phi(gG_x)$.\n\n**Conclusao.** $\\Phi$ e bijecao, logo $|\\mathrm{Orb}(x)|=|G/G_x|=[G:G_x]$. $\\blacksquare$",
+          "steps": [
+            "Verifique que $G_x$ e subgrupo, para que $G/G_x$ faca sentido.",
+            "Escreva a cadeia $gG_x=hG_x\\iff h^{-1}g\\in G_x\\iff g\\cdot x=h\\cdot x$.",
+            "Leia a ida como boa definicao e a volta como injetividade de $\\Phi$.",
+            "Mostre a sobrejetividade (todo ponto da orbita e $g\\cdot x$) e conclua $|\\mathrm{Orb}(x)|=[G:G_x]$."
+          ]
+        },
+        {
+          "prompt": "Determine as classes de conjugação de $S_4$ e use-as para escrever a equação de classes de $S_4$ (ordem 24).",
+          "hint": "Classes em $S_n$ = estruturas de ciclos: tipos $1^4, 2\\,1^2, 2^2, 3\\,1, 4$. Conte os elementos de cada tipo; a soma deve dar $24$.",
+          "difficulty": 4,
+          "solution": "Em $S_n$ duas permutacoes sao conjugadas sse tem a mesma estrutura de ciclos. Para $S_4$ (ordem $24$) as estruturas de ciclos e suas contagens sao:\n\n| tipo de ciclos | representante | numero de elementos |\n|---|---|---|\n| $1^4$ | $e$ | $1$ |\n| $2\\,1^2$ | $(1\\,2)$ | $\\binom{4}{2}=6$ |\n| $2^2$ | $(1\\,2)(3\\,4)$ | $\\tfrac{1}{2}\\binom{4}{2}=3$ |\n| $3\\,1$ | $(1\\,2\\,3)$ | $\\binom{4}{3}\\cdot2=8$ |\n| $4$ | $(1\\,2\\,3\\,4)$ | $3!=6$ |\n\nSoma: $1+6+3+8+6=24$. $\\checkmark$\n\n**Centro.** $Z(S_4)=\\{e\\}$, ou seja $|Z(S_4)|=1$ (a unica classe de tamanho $1$).\n\n**Equacao de classes.** Somando os tamanhos das classes de conjugacao:\n$$24=\\underbrace{1}_{Z(S_4)}+\\underbrace{6}_{2\\,1^2}+\\underbrace{3}_{2^2}+\\underbrace{8}_{3\\,1}+\\underbrace{6}_{4}.$$\nNa forma $|G|=|Z(G)|+\\sum_i[G:C_G(x_i)]$: $24=1+(6+3+8+6)$. $\\blacksquare$",
+          "steps": [
+            "Lembre que classes de conjugacao em $S_n$ = estruturas de ciclos.",
+            "Liste os cinco tipos de ciclos para $n=4$.",
+            "Conte os elementos de cada tipo (transposicoes 6, duplas 3, tres-ciclos 8, quatro-ciclos 6, identidade 1).",
+            "Verifique que a soma da 24 e escreva a equacao de classes $24=1+6+3+8+6$."
+          ]
+        },
+        {
+          "prompt": "Demonstre o Teorema de Cauchy fazendo $\\mathbb{Z}_p$ agir por rotação cíclica no conjunto $X=\\{(a_1,\\dots,a_p)\\in G^p:a_1a_2\\cdots a_p=e\\}$.",
+          "hint": "Note $|X|=|G|^{p-1}$, divisível por $p$. As órbitas têm tamanho $1$ ou $p$; pontos fixos são as $p$-uplas constantes $(a,\\dots,a)$ com $a^p=e$. Conte módulo $p$.",
+          "difficulty": 5,
+          "solution": "**Teorema de Cauchy.** Se $p$ e primo e $p\\mid|G|$, entao $G$ tem elemento de ordem $p$.\n\n**Conjunto.** Seja\n$$X=\\{(a_1,\\dots,a_p)\\in G^p:a_1a_2\\cdots a_p=e\\}.$$\nAs primeiras $p-1$ coordenadas sao livres, e a ultima fica determinada por $a_p=(a_1\\cdots a_{p-1})^{-1}$. Logo $|X|=|G|^{p-1}$, que e divisivel por $p$ (pois $p\\mid|G|$).\n\n**Acao de $\\mathbb{Z}_p$.** $\\mathbb{Z}_p$ age por rotacao ciclica: $1\\cdot(a_1,\\dots,a_p)=(a_2,\\dots,a_p,a_1)$. Isto preserva $X$, pois se $a_1\\cdots a_p=e$ entao $a_2\\cdots a_p a_1=a_1^{-1}(a_1\\cdots a_p)a_1=e$.\n\n**Tamanhos de orbita.** Como $|\\mathbb{Z}_p|=p$ e primo, cada orbita tem tamanho $1$ ou $p$ (divisor de $p$). Uma orbita tem tamanho $1$ exatamente quando a $p$-upla e constante: $(a,a,\\dots,a)$ com $a^p=e$.\n\n**Contagem mod $p$.** Seja $f$ o numero de pontos fixos (orbitas de tamanho $1$). Particionando $X$:\n$$|X|=f+p\\cdot(\\text{n de orbitas de tamanho }p).$$\nComo $p\\mid|X|$, segue $p\\mid f$. Ora, $(e,\\dots,e)$ e ponto fixo, entao $f\\ge1$; logo $f\\ge p\\ge2$. Assim existe $a\\neq e$ com $(a,\\dots,a)\\in X$, isto e, $a^p=e$ com $a\\neq e$. Como $p$ e primo, $\\mathrm{ord}(a)=p$. $\\blacksquare$",
+          "steps": [
+            "Defina $X$ como as $p$-uplas com produto $e$ e conte $|X|=|G|^{p-1}$, divisivel por $p$.",
+            "Faca $\\mathbb{Z}_p$ agir por rotacao ciclica e verifique que preserva $X$.",
+            "Argumente que cada orbita tem tamanho 1 ou $p$; tamanho 1 = upla constante com $a^p=e$.",
+            "Escreva $|X|=f+p\\cdot(\\dots)$ e conclua $p\\mid f$.",
+            "Como $(e,\\dots,e)$ e ponto fixo, $f\\ge p$, garantindo $a\\neq e$ com $a^p=e$, logo ordem $p$."
+          ]
+        },
+        {
+          "prompt": "De quantas maneiras distintas se pode colorir os vértices de um quadrado com 2 cores, considerando iguais as colorações que diferem por uma rotação do quadrado (grupo $\\mathbb{Z}_4$)?",
+          "hint": "Burnside: média de pontos fixos. $\\mathrm{id}$ fixa $2^4=16$; rotações de $90^\\circ$ e $270^\\circ$ fixam $2$; rotação de $180^\\circ$ fixa $2^2=4$. Média $=(16+2+4+2)/4=6$.",
+          "difficulty": 3,
+          "solution": "**Problema.** Colorir os $4$ vertices de um quadrado com $2$ cores, identificando coloracoes que diferem por uma rotacao (grupo $G=\\mathbb{Z}_4=\\{\\mathrm{id},\\rho,\\rho^2,\\rho^3\\}$, rotacoes de $0^\\circ,90^\\circ,180^\\circ,270^\\circ$).\n\n**Lema de Burnside.** Numero de orbitas $=\\dfrac{1}{|G|}\\sum_{g\\in G}|X^g|$, onde $X$ = conjunto das $2^4=16$ coloracoes e $X^g$ as fixadas por $g$.\n\n**Pontos fixos de cada rotacao.** Uma coloracao e fixada por $g$ sse e constante em cada ciclo da permutacao que $g$ induz nos vertices:\n- $\\mathrm{id}$: $4$ ciclos (cada vertice), $|X^{\\mathrm{id}}|=2^4=16$.\n- $\\rho$ ($90^\\circ$): um unico $4$-ciclo $(1\\,2\\,3\\,4)$, todos os vertices iguais: $|X^{\\rho}|=2^1=2$.\n- $\\rho^2$ ($180^\\circ$): dois $2$-ciclos $(1\\,3)(2\\,4)$: $|X^{\\rho^2}|=2^2=4$.\n- $\\rho^3$ ($270^\\circ$): um $4$-ciclo: $|X^{\\rho^3}|=2^1=2$.\n\n**Media.**\n$$\\frac{16+2+4+2}{4}=\\frac{24}{4}=6.$$\n\n**Resposta:** ha $\\boxed{6}$ coloracoes distintas a menos de rotacao. $\\blacksquare$",
+          "steps": [
+            "Identifique o grupo $\\mathbb{Z}_4$ das rotacoes e o conjunto das $2^4=16$ coloracoes.",
+            "Enuncie Burnside: numero de orbitas = media de pontos fixos.",
+            "Para cada rotacao, conte os pontos fixos como $2^{(\\text{n de ciclos nos vertices})}$.",
+            "Some $16+2+4+2=24$ e divida por 4 para obter 6."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Axiomas de uma ação",
+          "back": "$e\\cdot x=x$ e $(gh)\\cdot x=g\\cdot(h\\cdot x)$. Equivale a $G\\to\\mathrm{Sym}(X)$."
+        },
+        {
+          "front": "Teorema Órbita-Estabilizador",
+          "back": "$|\\mathrm{Orb}(x)|=[G:G_x]$ — tamanho da órbita = índice do estabilizador."
+        },
+        {
+          "front": "Conjugação: órbita e estabilizador",
+          "back": "Órbita = classe de conjugação; estabilizador = centralizador $C_G(x)$."
+        },
+        {
+          "front": "Equação de classes",
+          "back": "$|G|=|Z(G)|+\\sum_i[G:C_G(x_i)]$ (classes não centrais)."
+        },
+        {
+          "front": "Teorema de Cauchy",
+          "back": "$p\\mid|G|$ primo $\\Rightarrow$ existe elemento de ordem $p$."
+        },
+        {
+          "front": "Centro de $p$-grupo",
+          "back": "Se $|G|=p^n$, $n\\ge1$, então $Z(G)\\neq\\{e\\}$."
+        },
+        {
+          "front": "Grupo de ordem $p^2$",
+          "back": "É sempre abeliano ($\\cong\\mathbb{Z}_{p^2}$ ou $\\mathbb{Z}_p\\times\\mathbb{Z}_p$)."
+        },
+        {
+          "front": "Lema de Burnside",
+          "back": "Número de órbitas $=\\dfrac{1}{|G|}\\sum_{g\\in G}|X^g|$ (média de pontos fixos)."
+        }
+      ],
+      "estimatedHours": 8,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 4.1-4.3 (Group Actions; Class Equation)",
+          "ref": "livro"
+        },
+        {
+          "title": "Gallian, cap. 24-25 (Sylow / Conjugacy contexto)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Álgebra (ações de grupo)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude a definicao de acao e sua equivalencia com $G\\to\\mathrm{Sym}(X)$ em Dummit & Foote 4.1.",
+          "Refaca a prova do Teorema Orbita-Estabilizador e da equacao de classes; entenda que os pontos fixos da conjugacao formam $Z(G)$.",
+          "Estude as aplicacoes: centro de $p$-grupo nao trivial, grupo de ordem $p^2$ abeliano, e o Teorema de Cauchy via acao de $\\mathbb{Z}_p$.",
+          "Aprenda o Lema de Burnside e resolva problemas de coloracao/contagem sob simetria.",
+          "Assista a videos sobre acoes de grupo e Burnside (Michael Penn / Mathologer sobre contagem de colares).",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (orbita-estabilizador, equacao de classes, Cauchy, Burnside)."
+        ],
+        "searchQueries": [
+          "acao de grupo orbita estabilizador teorema demonstracao",
+          "equacao de classes grupo centro Z(G) conjugacao",
+          "teorema de Cauchy demonstracao acao Zp p-uplas",
+          "centro de p-grupo nao trivial ordem p^2 abeliano",
+          "Burnside lemma counting colorings orbits examples",
+          "group action homomorphism Sym(X) class equation"
+        ],
+        "videos": [
+          {
+            "title": "Group Actions and the Orbit-Stabilizer Theorem",
+            "channel": "Michael Penn",
+            "note": "Demonstra orbita-estabilizador e a equacao de classes com aplicacoes."
+          },
+          {
+            "title": "Burnside's lemma / counting with symmetry",
+            "channel": "Mathologer",
+            "note": "Aplicacao visual do Lema de Burnside a colares e coloracoes."
+          },
+          {
+            "title": "Acoes de Grupo e Equacao das Classes",
+            "channel": "Matematica Universitaria",
+            "note": "Tratamento em PT-BR de acoes, orbitas e equacao de classes."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, caps. 4.1-4.3 (Group Actions; Class Equation)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Contemporary Abstract Algebra, caps. 24-25 (Sylow / Conjugacy)",
+            "where": "Livro de Joseph A. Gallian"
+          },
+          {
+            "title": "Elementos de Algebra (acoes de grupo)",
+            "where": "Livro de Garcia & Lequain (IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-1-08-sylow",
+      "title": "Os Teoremas de Sylow",
+      "tagline": "A recíproca parcial de Lagrange para potências de primos — e a maquinaria que classifica grupos de ordem pequena.",
+      "objectives": [
+        "Definir $p$-grupo e $p$-subgrupo de Sylow de um grupo finito.",
+        "Enunciar os três teoremas de Sylow (existência, conjugação e número).",
+        "Usar Sylow III para determinar o número $n_p$ de $p$-subgrupos de Sylow.",
+        "Aplicar Sylow para provar a não simplicidade de grupos de ordens dadas.",
+        "Classificar grupos de certas ordens (por exemplo, todo grupo de ordem 15 é cíclico)."
+      ],
+      "keyConcepts": [
+        {
+          "term": "$p$-grupo",
+          "statement": "Grupo finito cuja ordem é uma potência de um primo $p$; equivalentemente, todo elemento tem ordem potência de $p$."
+        },
+        {
+          "term": "$p$-subgrupo de Sylow",
+          "statement": "Se $|G|=p^n m$ com $p\\nmid m$, um $p$-Sylow é um subgrupo de ordem $p^n$ (a maior potência de $p$ que divide $|G|$)."
+        },
+        {
+          "term": "Número de Sylow $n_p$",
+          "statement": "$n_p$ é a quantidade de $p$-subgrupos de Sylow de $G$; vale $n_p=[G:N_G(P)]$ para qualquer $p$-Sylow $P$."
+        },
+        {
+          "term": "Normalizador",
+          "statement": "$N_G(P)=\\{g\\in G:gPg^{-1}=P\\}$ é o maior subgrupo de $G$ no qual $P$ é normal."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Primeiro Teorema de Sylow (existência)",
+          "statement": "Se $|G|=p^n m$ com $p\\nmid m$, então $G$ possui um subgrupo de ordem $p^k$ para cada $0\\le k\\le n$; em particular, existe pelo menos um $p$-subgrupo de Sylow (de ordem $p^n$).",
+          "whyItMatters": "É a recíproca de Lagrange para potências de primos: garante a existência de subgrupos que Lagrange apenas permitia. Sem ele, a estrutura fina dos grupos finitos seria inacessível."
+        },
+        {
+          "name": "Segundo Teorema de Sylow (conjugação)",
+          "statement": "Todos os $p$-subgrupos de Sylow de $G$ são conjugados entre si, e todo $p$-subgrupo de $G$ está contido em algum $p$-Sylow.",
+          "whyItMatters": "Implica que um $p$-Sylow é único (normal) se e somente se $n_p=1$; transforma perguntas sobre normalidade em contagem de conjugados."
+        },
+        {
+          "name": "Terceiro Teorema de Sylow (número)",
+          "statement": "O número $n_p$ de $p$-subgrupos de Sylow satisfaz $n_p\\equiv 1\\pmod p$ e $n_p\\mid m$ (divide o índice $[G:P]$).",
+          "whyItMatters": "É a ferramenta computacional: frequentemente força $n_p=1$, provando que um $p$-Sylow é normal e que o grupo se decompõe. Base de quase todas as provas de não simplicidade."
+        },
+        {
+          "name": "Critério de não simplicidade via Sylow",
+          "statement": "Se para algum primo $p\\mid|G|$ as condições $n_p\\equiv1\\pmod p$ e $n_p\\mid m$ forçam $n_p=1$, então o $p$-Sylow é normal e $G$ não é simples (para $|G|$ não primo).",
+          "whyItMatters": "É o método padrão em provas de mestrado: dada uma ordem, analisar os $n_p$ possíveis costuma exibir um subgrupo normal próprio."
+        }
+      ],
+      "summary": "Os teoremas de Sylow são o ápice da teoria elementar dos grupos finitos: eles recuperam, para potências de primos, a recíproca de Lagrange que falha em geral. Escrevendo $|G|=p^n m$ com $p\\nmid m$, um $p$-subgrupo de Sylow é um subgrupo da maior ordem $p^n$ possível. O Primeiro Teorema garante que tais subgrupos existem (e mais: existem subgrupos de toda ordem $p^k$ intermediária). O Segundo afirma que todos os $p$-Sylow são conjugados — logo qualquer um deles é levado em outro por conjugação — e que todo $p$-subgrupo cabe dentro de algum Sylow. O Terceiro fornece restrições aritméticas decisivas sobre o número $n_p$ desses subgrupos: $n_p\\equiv 1\\pmod p$ e $n_p\\mid m$.\n\nA combinação dessas três informações é uma máquina de produzir subgrupos normais. Como um $p$-Sylow é normal exatamente quando $n_p=1$ (Segundo Teorema), basta mostrar, via as congruências do Terceiro, que $n_p$ só pode valer $1$ para concluir normalidade. Esse é o roteiro de praticamente toda questão de classificação por ordem: por exemplo, em ordem $15=3\\cdot 5$, força-se $n_3=n_5=1$, ambos os Sylow são normais e de ordens coprimas, e o grupo é forçosamente $\\mathbb{Z}_3\\times\\mathbb{Z}_5\\cong\\mathbb{Z}_{15}$. Da mesma forma se prova que nenhum grupo de ordem $30$, $56$ ou $200$ é simples. Sylow é, na prática, o teorema mais cobrado em provas de mestrado dentro da teoria dos grupos.",
+      "commonPitfalls": [
+        "Confundir as duas condições de Sylow III: são $n_p\\equiv 1\\pmod p$ E $n_p\\mid m$ (o índice), simultaneamente — usar só uma delas perde informação.",
+        "Achar que um $p$-Sylow é sempre normal: ele é normal se e somente se $n_p=1$; em $S_4$ há vários $2$-Sylow.",
+        "Esquecer que 'subgrupo de Sylow' usa a MAIOR potência de $p$ que divide $|G|$; um subgrupo de ordem $p$ qualquer não é necessariamente de Sylow.",
+        "Concluir que $G$ é produto direto dos seus Sylow sem checar que eles são normais E têm interseção trivial (ordens coprimas)."
+      ],
+      "worked": "**Todo grupo de ordem 15 é cíclico.** Seja $|G|=15=3\\cdot 5$.\n\n*Contagem de $3$-Sylow.* Por Sylow III, $n_3\\equiv 1\\pmod 3$ e $n_3\\mid 5$. Os divisores de $5$ são $1$ e $5$; entre eles, só $n_3=1$ satisfaz $n_3\\equiv1\\pmod3$ (pois $5\\equiv 2$). Logo $n_3=1$: há um único $3$-Sylow $P$, que é normal.\n\n*Contagem de $5$-Sylow.* $n_5\\equiv 1\\pmod 5$ e $n_5\\mid 3$. Divisores de $3$: $1,3$; só $n_5=1$ satisfaz a congruência. Logo $n_5=1$: o $5$-Sylow $Q$ é normal.\n\n*Produto direto.* $P\\cong\\mathbb{Z}_3$ e $Q\\cong\\mathbb{Z}_5$ são normais; $P\\cap Q=\\{e\\}$ (ordens coprimas, por Lagrange) e $|PQ|=\\frac{|P||Q|}{|P\\cap Q|}=15=|G|$, logo $G=PQ$. Como ambos são normais com interseção trivial, $G\\cong P\\times Q\\cong\\mathbb{Z}_3\\times\\mathbb{Z}_5$.\n\nFinalmente, como $\\gcd(3,5)=1$, o Teorema Chinês dos Restos dá $\\mathbb{Z}_3\\times\\mathbb{Z}_5\\cong\\mathbb{Z}_{15}$. Portanto $G$ é cíclico. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Mostre que todo grupo de ordem $p^2q$ (com $p,q$ primos distintos) tem um subgrupo de Sylow normal. Em seguida, prove que nenhum grupo de ordem $p^2q$ é simples.",
+          "hint": "Analise $n_p$ e $n_q$ separadamente; mostre que ao menos um deles é forçado a ser $1$ pelas condições de Sylow III, exibindo um subgrupo normal próprio.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** Seja $|G|=p^2q$ com $p,q$ primos distintos. Entao $G$ tem um $p$-Sylow normal ou um $q$-Sylow normal; em particular $G$ nao e simples.\n\nEscrevemos $n_p,n_q$ para os numeros de Sylow. Por Sylow III: $n_p\\equiv1\\pmod p$ com $n_p\\mid q$; e $n_q\\equiv1\\pmod q$ com $n_q\\mid p^2$.\n\n**Caso A: $p>q$.** Entao $n_p\\mid q$ da $n_p\\in\\{1,q\\}$; mas $0<q<p$ implica $q\\not\\equiv1\\pmod p$. Logo $n_p=1$: o $p$-Sylow (ordem $p^2$) e normal.\n\n**Caso B: $p<q$.** Entao $n_q\\mid p^2$ da $n_q\\in\\{1,p,p^2\\}$, com $n_q\\equiv1\\pmod q$. Como $0<p<q$, $p\\not\\equiv1\\pmod q$; resta $p^2$. Se $p^2\\not\\equiv1\\pmod q$, entao $n_q=1$ e o $q$-Sylow e normal. Se $p^2\\equiv1\\pmod q$, poderia haver $n_q=p^2$; nesse caso os $p^2$ subgrupos de Sylow de ordem $q$ (primo) intersectam-se trivialmente e contribuem $p^2(q-1)$ elementos de ordem $q$. Sobram $p^2q-p^2(q-1)=p^2$ elementos, exatamente o necessario para um unico $p$-Sylow (ordem $p^2$); logo $n_p=1$ e o $p$-Sylow e normal.\n\n**Conclusao.** Em todos os casos ha um Sylow normal proprio (ordem $p^2$ ou $q$, ambas $\\neq1,|G|$), logo $G$ nao e simples. $\\blacksquare$",
+          "steps": [
+            "Escreva $|G|=p^2q$ e as restricoes de Sylow III sobre $n_p$ e $n_q$.",
+            "No caso $p>q$, use $n_p\\mid q$ e a congruencia para forcar $n_p=1$.",
+            "No caso $p<q$, analise $n_q\\in\\{1,p,p^2\\}$ com $n_q\\equiv1\\pmod q$.",
+            "Se $n_q=p^2$, conte $p^2(q-1)$ elementos de ordem $q$ e mostre que sobram apenas $p^2$, forcando $n_p=1$.",
+            "Conclua que sempre existe Sylow normal proprio, logo $G$ nao e simples."
+          ]
+        },
+        {
+          "prompt": "Prove que nenhum grupo de ordem $56=2^3\\cdot 7$ é simples.",
+          "hint": "Considere $n_7\\in\\{1,8\\}$. Se $n_7=8$, conte os elementos de ordem $7$ ($8\\cdot 6=48$); sobram apenas $8$ elementos, o que força um único $2$-Sylow ($n_2=1$), logo normal.",
+          "difficulty": 5,
+          "solution": "**Afirmacao.** Nenhum grupo de ordem $56=2^3\\cdot7$ e simples.\n\n**$7$-Sylow.** Por Sylow III, $n_7\\equiv1\\pmod7$ e $n_7\\mid8$. Os divisores de $8$ congruentes a $1$ mod $7$ sao $n_7\\in\\{1,8\\}$.\n\n**Caso $n_7=1$.** O unico $7$-Sylow e normal; $G$ nao e simples.\n\n**Caso $n_7=8$.** Cada $7$-Sylow tem ordem $7$ (primo), e dois deles distintos intersectam-se em $\\{e\\}$ (a intersecao seria subgrupo proprio de um grupo de ordem prima). Assim os $8$ subgrupos de Sylow contribuem\n$$8\\cdot(7-1)=48$$\nelementos distintos de ordem $7$.\n\nSobram $56-48=8$ elementos de $G$ que NAO tem ordem $7$. Um $2$-Sylow tem ordem $2^3=8$ e e formado por elementos de ordem potencia de $2$ (nenhum de ordem $7$); logo cabe exatamente nesses $8$ elementos restantes. Isso forca um unico $2$-Sylow, isto e, $n_2=1$, portanto o $2$-Sylow e normal.\n\n**Conclusao.** Em ambos os casos existe um Sylow normal proprio, logo $G$ nao e simples. $\\blacksquare$",
+          "steps": [
+            "Aplique Sylow III ao primo 7: $n_7\\in\\{1,8\\}$.",
+            "Se $n_7=1$, o $7$-Sylow e normal e acabou.",
+            "Se $n_7=8$, conte os elementos de ordem 7: $8\\cdot6=48$.",
+            "Note que sobram $56-48=8$ elementos, exatamente o tamanho de um $2$-Sylow, forcando $n_2=1$.",
+            "Conclua que ha sempre um Sylow normal proprio, logo o grupo nao e simples."
+          ]
+        },
+        {
+          "prompt": "Determine, a menos de isomorfismo, todos os grupos de ordem $p$ e de ordem $2p$ (com $p$ primo ímpar), usando Sylow e Cauchy.",
+          "hint": "Ordem $p$: cíclico. Ordem $2p$: existe elemento $a$ de ordem $p$ (Cauchy) gerando subgrupo normal de índice $2$; um elemento $b$ de ordem $2$ age por conjugação, dando $\\mathbb{Z}_{2p}$ ou $D_p$.",
+          "difficulty": 5,
+          "solution": "**Ordem $p$.** Por Lagrange, um elemento $\\neq e$ tem ordem dividindo $p$ primo, logo ordem $p$, e gera $G$. Assim $G\\cong\\mathbb{Z}_p$: unico grupo de ordem $p$.\n\n**Ordem $2p$ ($p$ primo impar).** Seja $|G|=2p$.\n\n*Subgrupo normal de ordem $p$.* Por Cauchy existe $a$ com $\\mathrm{ord}(a)=p$; $\\langle a\\rangle$ tem indice $2$, logo e normal. Chame $N=\\langle a\\rangle\\cong\\mathbb{Z}_p$.\n\n*Elemento de ordem 2.* Por Cauchy existe $b$ com $\\mathrm{ord}(b)=2$. Como $b\\notin N$ (senao $2\\mid p$), $G=N\\cup bN=\\{a^i,\\,a^i b:0\\le i<p\\}$.\n\n*Acao por conjugacao.* Como $N\\trianglelefteq G$, $bab^{-1}\\in N$, digamos $bab^{-1}=a^k$. De $b^2=e$: $a=b^2ab^{-2}=b(a^k)b^{-1}=a^{k^2}$, logo $k^2\\equiv1\\pmod p$. As solucoes sao $k\\equiv1$ ou $k\\equiv-1\\pmod p$.\n\n- $k\\equiv1$: $ba=ab$, $G$ abeliano; $\\mathrm{ord}(ab)=2p$ (ordens coprimas), logo $G\\cong\\mathbb{Z}_{2p}$.\n- $k\\equiv-1$: $bab^{-1}=a^{-1}$, exatamente a relacao diedral: $G\\cong D_p$.\n\n**Conclusao.** A menos de isomorfismo, ha um grupo de ordem $p$ ($\\mathbb{Z}_p$) e dois de ordem $2p$: $\\mathbb{Z}_{2p}$ e $D_p$. $\\blacksquare$",
+          "steps": [
+            "Ordem $p$: por Lagrange qualquer elemento nao trivial gera, logo $G\\cong\\mathbb{Z}_p$.",
+            "Ordem $2p$: use Cauchy para achar $a$ de ordem $p$; $\\langle a\\rangle$ tem indice 2, logo normal.",
+            "Use Cauchy para achar $b$ de ordem 2 e escreva $G=\\{a^i,a^ib\\}$.",
+            "Da normalidade, $bab^{-1}=a^k$ com $k^2\\equiv1\\pmod p$, dando $k\\equiv\\pm1$.",
+            "Interprete $k=1$ como $\\mathbb{Z}_{2p}$ e $k=-1$ como $D_p$."
+          ]
+        },
+        {
+          "prompt": "Quantos $p$-subgrupos de Sylow pode ter um grupo de ordem $12=2^2\\cdot 3$? Liste os valores possíveis de $n_2$ e $n_3$.",
+          "hint": "$n_3\\equiv1\\pmod3$ e $n_3\\mid4$ dá $n_3\\in\\{1,4\\}$; $n_2\\equiv1\\pmod2$ e $n_2\\mid3$ dá $n_2\\in\\{1,3\\}$. (No $A_4$, $n_3=4$ e $n_2=1$.)",
+          "difficulty": 3,
+          "solution": "**Ordem $12=2^2\\cdot3$.** Aqui $p=2$ da $m=3$; $p=3$ da $m=4$.\n\n**$n_3$ (numero de $3$-Sylow).** Sylow III: $n_3\\equiv1\\pmod3$ e $n_3\\mid4$. Divisores de $4$: $1,2,4$; os $\\equiv1\\pmod3$ sao $1$ e $4$. Logo\n$$n_3\\in\\{1,4\\}.$$\n\n**$n_2$ (numero de $2$-Sylow).** Sylow III: $n_2\\equiv1\\pmod2$ (impar) e $n_2\\mid3$. Divisores de $3$: $1,3$, ambos impares. Logo\n$$n_2\\in\\{1,3\\}.$$\n\n**Observacoes.** Nao podem $n_3=4$ e $n_2=3$ simultaneamente: $n_3=4$ ja consome $4\\cdot2=8$ elementos de ordem $3$, sobrando $4$ elementos para um unico $2$-Sylow ($n_2=1$). Exemplos concretos: em $A_4$, $n_3=4$ e $n_2=1$; em $\\mathbb{Z}_{12}$, $n_3=n_2=1$; em $D_6$, $n_3=1$ e $n_2=3$. $\\blacksquare$",
+          "steps": [
+            "Fatore $12=2^2\\cdot3$ e identifique $m=3$ para $p=2$ e $m=4$ para $p=3$.",
+            "Aplique Sylow III a $n_3$: $\\equiv1\\pmod3$ e divide 4, dando $n_3\\in\\{1,4\\}$.",
+            "Aplique Sylow III a $n_2$: impar e divide 3, dando $n_2\\in\\{1,3\\}$.",
+            "Observe que $n_3=4$ forca $n_2=1$ por contagem, e cite exemplos ($A_4$, $D_6$, $\\mathbb{Z}_{12}$)."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "$p$-subgrupo de Sylow",
+          "back": "Subgrupo de ordem $p^n$, onde $p^n$ é a maior potência de $p$ que divide $|G|=p^n m$."
+        },
+        {
+          "front": "Sylow I (existência)",
+          "back": "Existe subgrupo de ordem $p^k$ para todo $0\\le k\\le n$; em particular há $p$-Sylow."
+        },
+        {
+          "front": "Sylow II (conjugação)",
+          "back": "Todos os $p$-Sylow são conjugados; todo $p$-subgrupo cabe em algum Sylow."
+        },
+        {
+          "front": "Sylow III (número)",
+          "back": "$n_p\\equiv1\\pmod p$ e $n_p\\mid m$ (índice). Também $n_p=[G:N_G(P)]$."
+        },
+        {
+          "front": "$p$-Sylow normal $\\iff$ ?",
+          "back": "$\\iff n_p=1$ (único $p$-Sylow)."
+        },
+        {
+          "front": "Roteiro de não simplicidade",
+          "back": "Achar primo $p$ com $n_p$ forçado a $1$ por Sylow III $\\Rightarrow$ Sylow normal próprio."
+        },
+        {
+          "front": "Grupo de ordem 15",
+          "back": "É cíclico: $n_3=n_5=1$, ambos Sylow normais, $G\\cong\\mathbb{Z}_3\\times\\mathbb{Z}_5\\cong\\mathbb{Z}_{15}$."
+        },
+        {
+          "front": "Normalizador $N_G(P)$",
+          "back": "Maior subgrupo onde $P$ é normal; $n_p=[G:N_G(P)]$."
+        }
+      ],
+      "estimatedHours": 9,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 4.5 (Sylow's Theorems)",
+          "ref": "livro"
+        },
+        {
+          "title": "Herstein, Topics in Algebra, cap. 2 (Sylow theorems)",
+          "ref": "livro"
+        },
+        {
+          "title": "Garcia & Lequain, Elementos de Álgebra (Teoremas de Sylow)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude os enunciados dos tres teoremas de Sylow em Dummit & Foote 4.5; memorize as duas condicoes de Sylow III ($n_p\\equiv1\\pmod p$ e $n_p\\mid m$).",
+          "Acompanhe pelo menos uma demonstracao completa de Sylow I (via acao/contagem) para nao usar os teoremas como caixa-preta.",
+          "Treine o roteiro de nao simplicidade: dada a ordem, liste os $n_p$ possiveis e force algum a ser 1.",
+          "Refaca as classificacoes classicas (ordem 15 ciclico; ordens 30, 56 nao simples) resolvendo-as sozinho.",
+          "Assista a videos sobre os teoremas de Sylow e aplicacoes (Michael Penn tem uma serie boa).",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (os tres teoremas, o roteiro de nao simplicidade e os exemplos-chave)."
+        ],
+        "searchQueries": [
+          "teoremas de Sylow existencia conjugacao numero enunciado",
+          "Sylow III n_p congruente 1 mod p divide m aplicacao",
+          "prova de nao simplicidade grupo ordem 56 Sylow",
+          "classificacao grupos de ordem 2p Dp Z2p Sylow Cauchy",
+          "Sylow theorems proof group actions normalizer",
+          "grupo de ordem 15 ciclico Sylow demonstracao"
+        ],
+        "videos": [
+          {
+            "title": "The Sylow Theorems",
+            "channel": "Michael Penn",
+            "note": "Serie que enuncia e demonstra os tres teoremas e resolve aplicacoes de nao simplicidade."
+          },
+          {
+            "title": "Sylow theorems and applications",
+            "channel": "MIT OpenCourseWare 18.703",
+            "note": "Exemplos de contagem de $n_p$ e classificacao de grupos de ordem pequena."
+          },
+          {
+            "title": "Teoremas de Sylow",
+            "channel": "Matematica Universitaria",
+            "note": "Tratamento em PT-BR dos enunciados e aplicacoes tipicas de mestrado."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 4.5 (Sylow's Theorems)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Topics in Algebra, cap. 2 (Sylow theorems)",
+            "where": "Livro de I. N. Herstein"
+          },
+          {
+            "title": "Elementos de Algebra (Teoremas de Sylow)",
+            "where": "Livro de Garcia & Lequain (IMPA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "algebra-abstrata-1-09-abelianos-finitos",
+      "title": "Estrutura dos Grupos Abelianos Finitos",
+      "tagline": "O teorema de classificação que fecha o caso abeliano: todo grupo abeliano finito é um produto de cíclicos, de forma única.",
+      "objectives": [
+        "Enunciar o Teorema Fundamental dos Grupos Abelianos Finitos nas formas de fatores invariantes e de divisores elementares.",
+        "Converter entre as duas formas e listar todos os grupos abelianos de uma dada ordem.",
+        "Usar a decomposição primária e o Teorema Chinês dos Restos para grupos cíclicos.",
+        "Contar o número de grupos abelianos de ordem $n$ via partições dos expoentes primos.",
+        "Calcular o número de elementos de cada ordem em um grupo abeliano finito dado."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Fatores invariantes",
+          "statement": "Forma $\\mathbb{Z}_{d_1}\\times\\cdots\\times\\mathbb{Z}_{d_k}$ com $d_1\\mid d_2\\mid\\cdots\\mid d_k$ e $d_1>1$; os $d_i$ são unicamente determinados pelo grupo."
+        },
+        {
+          "term": "Divisores elementares",
+          "statement": "Forma como produto de cíclicos de ordem potência de primo $\\mathbb{Z}_{p^{a}}$; o multiconjunto dessas potências é único e determina o grupo."
+        },
+        {
+          "term": "Decomposição primária",
+          "statement": "Todo grupo abeliano finito é o produto direto de seus subgrupos de Sylow (componentes $p$-primárias), um para cada primo que divide a ordem."
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Teorema Fundamental (forma divisores elementares)",
+          "statement": "Todo grupo abeliano finito $G$ é isomorfo a um produto direto de grupos cíclicos de ordem potência de primo, $G\\cong\\prod_i\\mathbb{Z}_{p_i^{a_i}}$, e o multiconjunto das potências $p_i^{a_i}$ é unicamente determinado por $G$.",
+          "whyItMatters": "Classifica COMPLETAMENTE os grupos abelianos finitos: dois deles são isomorfos se e somente se têm os mesmos divisores elementares. Encerra o problema no caso abeliano."
+        },
+        {
+          "name": "Teorema Fundamental (forma fatores invariantes)",
+          "statement": "Todo grupo abeliano finito é isomorfo a $\\mathbb{Z}_{d_1}\\times\\cdots\\times\\mathbb{Z}_{d_k}$ com $d_1\\mid d_2\\mid\\cdots\\mid d_k$, $d_1>1$, sendo os $d_i$ (fatores invariantes) unicamente determinados; tem-se $d_k=\\exp(G)$ e $\\prod d_i=|G|$.",
+          "whyItMatters": "Dá uma forma canônica única para comparar grupos; o maior fator $d_k$ é o expoente do grupo, ligando a estrutura à ordem máxima de um elemento."
+        },
+        {
+          "name": "Critério chinês para cíclicos",
+          "statement": "$\\mathbb{Z}_m\\times\\mathbb{Z}_n\\cong\\mathbb{Z}_{mn}$ se e somente se $\\gcd(m,n)=1$.",
+          "whyItMatters": "É a regra que permite passar de fatores invariantes a divisores elementares e vice-versa, e explica por que produtos de cíclicos coprimos são cíclicos."
+        },
+        {
+          "name": "Contagem por partições",
+          "statement": "Se $|G|=p_1^{e_1}\\cdots p_r^{e_r}$, o número de grupos abelianos de ordem $|G|$, a menos de isomorfismo, é $\\prod_{j=1}^{r}P(e_j)$, onde $P(e)$ é o número de partições de $e$.",
+          "whyItMatters": "Converte um problema de classificação algébrica num problema combinatório elementar: contar grupos abelianos vira contar partições."
+        }
+      ],
+      "summary": "Enquanto a classificação de todos os grupos finitos é um problema imenso (e, em certo sentido, intratável), o caso abeliano está completamente resolvido. O Teorema Fundamental dos Grupos Abelianos Finitos afirma que todo grupo abeliano finito se decompõe, de modo essencialmente único, como produto direto de grupos cíclicos. Há duas formas canônicas equivalentes: a de divisores elementares (fatores cíclicos de ordem potência de primo, $\\mathbb{Z}_{p^a}$) e a de fatores invariantes ($\\mathbb{Z}_{d_1}\\times\\cdots\\times\\mathbb{Z}_{d_k}$ com $d_1\\mid\\cdots\\mid d_k$). O Teorema Chinês dos Restos ($\\mathbb{Z}_m\\times\\mathbb{Z}_n\\cong\\mathbb{Z}_{mn}$ quando $\\gcd(m,n)=1$) é o dicionário que traduz uma forma na outra.\n\nA decomposição primária mostra que cada grupo abeliano finito é o produto de suas componentes $p$-primárias (seus subgrupos de Sylow, todos normais por comutatividade). Assim, classificar grupos abelianos de ordem $n=p_1^{e_1}\\cdots p_r^{e_r}$ se reduz a, para cada primo $p_j$, escolher uma partição do expoente $e_j$ — o que dá um total de $\\prod_j P(e_j)$ grupos não isomorfos. Esse é um resultado de rara elegância: um problema de álgebra pura vira contagem de partições. Na prática, o teorema permite listar explicitamente todos os grupos abelianos de uma dada ordem, comparar dois grupos via seus invariantes e contar quantos elementos de cada ordem cada um possui — exatamente o tipo de questão que aparece em provas de mestrado.",
+      "commonPitfalls": [
+        "Misturar as duas formas: nos fatores invariantes exige-se $d_1\\mid d_2\\mid\\cdots$; nos divisores elementares os fatores são potências de primos, sem relação de divisibilidade entre primos distintos.",
+        "Aplicar $\\mathbb{Z}_m\\times\\mathbb{Z}_n\\cong\\mathbb{Z}_{mn}$ sem a hipótese $\\gcd(m,n)=1$: $\\mathbb{Z}_2\\times\\mathbb{Z}_2\\not\\cong\\mathbb{Z}_4$.",
+        "Contar grupos abelianos de ordem $n$ esquecendo de tomar o PRODUTO sobre os primos das partições dos expoentes (e não a soma).",
+        "Confundir expoente do grupo (ordem máxima de um elemento, $=d_k$) com a ordem do grupo $|G|=\\prod d_i$."
+      ],
+      "worked": "**Todos os grupos abelianos de ordem 360.** Fatorando, $360=2^3\\cdot 3^2\\cdot 5^1$.\n\n*Partições dos expoentes.* $P(3)=3$ (partições de $3$: $3$, $2{+}1$, $1{+}1{+}1$), $P(2)=2$ ($2$, $1{+}1$), $P(1)=1$ ($1$). Logo há $3\\cdot 2\\cdot 1=6$ grupos abelianos de ordem $360$.\n\n*Lista (divisores elementares).* Para $p=2$: $\\mathbb{Z}_8$, ou $\\mathbb{Z}_4\\times\\mathbb{Z}_2$, ou $\\mathbb{Z}_2^3$. Para $p=3$: $\\mathbb{Z}_9$ ou $\\mathbb{Z}_3\\times\\mathbb{Z}_3$. Para $p=5$: $\\mathbb{Z}_5$. As $6$ combinações são os $6$ grupos.\n\n*Forma de fatores invariantes (um exemplo).* Tome a componente $\\mathbb{Z}_4\\times\\mathbb{Z}_2$ (em $2$), $\\mathbb{Z}_9$ (em $3$), $\\mathbb{Z}_5$ (em $5$). Agrupando os maiores fatores de cada primo: $d_2=\\mathrm{mmc}(4,9,5)=180$ e o fator restante é $\\mathbb{Z}_2$, logo\n$$\\mathbb{Z}_2\\times\\mathbb{Z}_{180},\\qquad 2\\mid 180,\\quad 2\\cdot 180=360.$$\nEsta é a forma canônica de fatores invariantes desse grupo. $\\blacksquare$",
+      "exercises": [
+        {
+          "prompt": "Liste, a menos de isomorfismo, todos os grupos abelianos de ordem $144=2^4\\cdot 3^2$ e diga quantos são.",
+          "hint": "Número $=P(4)\\cdot P(2)=5\\cdot 2=10$. Para $p=2$ use as $5$ partições de $4$; para $p=3$ as $2$ partições de $2$.",
+          "difficulty": 3,
+          "solution": "**Ordem $144=2^4\\cdot3^2$.** O numero de grupos abelianos de ordem $n=\\prod p_j^{e_j}$ e $\\prod_j P(e_j)$, onde $P$ e a funcao particao. Aqui\n$$P(4)\\cdot P(2)=5\\cdot2=10.$$\nLogo ha $\\boxed{10}$ grupos abelianos de ordem $144$ (a menos de isomorfismo).\n\n**Componente $2$-primaria** (partes de $4$: $4;\\ 3{+}1;\\ 2{+}2;\\ 2{+}1{+}1;\\ 1{+}1{+}1{+}1$):\n$$\\mathbb{Z}_{16};\\quad \\mathbb{Z}_8\\times\\mathbb{Z}_2;\\quad \\mathbb{Z}_4\\times\\mathbb{Z}_4;\\quad \\mathbb{Z}_4\\times\\mathbb{Z}_2\\times\\mathbb{Z}_2;\\quad \\mathbb{Z}_2\\times\\mathbb{Z}_2\\times\\mathbb{Z}_2\\times\\mathbb{Z}_2.$$\n\n**Componente $3$-primaria** (partes de $2$: $2;\\ 1{+}1$):\n$$\\mathbb{Z}_9;\\quad \\mathbb{Z}_3\\times\\mathbb{Z}_3.$$\n\n**Os $10$ grupos** sao todas as combinacoes (componente-$2$) $\\times$ (componente-$3$): $5\\times2=10$. Por exemplo $\\mathbb{Z}_{16}\\times\\mathbb{Z}_9\\cong\\mathbb{Z}_{144}$ (ciclico) e $\\mathbb{Z}_2^4\\times\\mathbb{Z}_3^2$ no outro extremo. $\\blacksquare$",
+          "steps": [
+            "Fatore $144=2^4\\cdot3^2$.",
+            "Conte via particoes: $P(4)=5$ e $P(2)=2$, produto $=10$.",
+            "Liste as 5 decomposicoes da componente $2$-primaria (partes de 4).",
+            "Liste as 2 decomposicoes da componente $3$-primaria (partes de 2).",
+            "Combine as duas listas ($5\\times2=10$) para obter todos os grupos."
+          ]
+        },
+        {
+          "prompt": "Escreva $\\mathbb{Z}_4\\times\\mathbb{Z}_6$ na forma de divisores elementares e na forma de fatores invariantes.",
+          "hint": "$\\mathbb{Z}_6\\cong\\mathbb{Z}_2\\times\\mathbb{Z}_3$. Divisores elementares: $\\mathbb{Z}_4\\times\\mathbb{Z}_2\\times\\mathbb{Z}_3$. Fatores invariantes: agrupe os maiores, $\\mathbb{Z}_2\\times\\mathbb{Z}_{12}$.",
+          "difficulty": 3,
+          "solution": "**Grupo:** $\\mathbb{Z}_4\\times\\mathbb{Z}_6$, ordem $24$.\n\n**Forma de divisores elementares.** Como $\\gcd(2,3)=1$, o Teorema Chines dos Restos da $\\mathbb{Z}_6\\cong\\mathbb{Z}_2\\times\\mathbb{Z}_3$. Logo\n$$\\mathbb{Z}_4\\times\\mathbb{Z}_6\\cong\\mathbb{Z}_4\\times\\mathbb{Z}_2\\times\\mathbb{Z}_3.$$\nOs divisores elementares (potencias de primos) sao $\\{4,2\\}$ para $p=2$ e $\\{3\\}$ para $p=3$.\n\n**Forma de fatores invariantes.** Agrupamos, para cada primo, os fatores em ordem decrescente e combinamos os maiores de cada primo:\n- maiores: $2^2=4$ (de $p=2$) e $3$ (de $p=3$) $\\Rightarrow d_2=\\mathrm{mmc}(4,3)=12$;\n- restantes: $2^1=2$ (de $p=2$) $\\Rightarrow d_1=2$.\n\nAssim\n$$\\mathbb{Z}_4\\times\\mathbb{Z}_6\\cong\\mathbb{Z}_2\\times\\mathbb{Z}_{12},\\qquad 2\\mid12,\\quad 2\\cdot12=24.$$\nEsta e a forma de fatores invariantes ($d_1=2\\mid d_2=12$). Confere: $\\mathbb{Z}_2\\times\\mathbb{Z}_{12}\\cong\\mathbb{Z}_2\\times\\mathbb{Z}_4\\times\\mathbb{Z}_3$, os mesmos divisores elementares. $\\blacksquare$",
+          "steps": [
+            "Use o Teorema Chines para quebrar $\\mathbb{Z}_6\\cong\\mathbb{Z}_2\\times\\mathbb{Z}_3$.",
+            "Escreva os divisores elementares: $\\mathbb{Z}_4\\times\\mathbb{Z}_2\\times\\mathbb{Z}_3$.",
+            "Para fatores invariantes, combine os maiores fatores de cada primo: $\\mathrm{mmc}(4,3)=12$.",
+            "O fator restante $\\mathbb{Z}_2$ da $d_1=2$, com $2\\mid12$; conclua $\\mathbb{Z}_2\\times\\mathbb{Z}_{12}$."
+          ]
+        },
+        {
+          "prompt": "Prove que um grupo abeliano finito é cíclico se e somente se, para cada primo $p$, há no máximo um fator cíclico de ordem potência de $p$ (equivalentemente, os fatores invariantes se reduzem a um só).",
+          "hint": "Use o Teorema Chinês dos Restos: $\\prod\\mathbb{Z}_{p_i^{a_i}}$ com primos distintos é cíclico; se houver dois fatores com o mesmo primo, existe $\\mathbb{Z}_p\\times\\mathbb{Z}_p$ como subgrupo, sem elemento de ordem $p^2$ necessária.",
+          "difficulty": 4,
+          "solution": "**Afirmacao.** Um grupo abeliano finito $G$ e ciclico se e somente se, para cada primo $p$, ha no maximo um fator ciclico de ordem potencia de $p$ na sua decomposicao em divisores elementares (equivalentemente, os fatores invariantes se reduzem a um so, $G\\cong\\mathbb{Z}_{d_k}$).\n\nEscreva $G\\cong\\prod_i\\mathbb{Z}_{p_i^{a_i}}$ (divisores elementares).\n\n**($\\Leftarrow$)** Se ha no maximo um fator por primo, os primos $p_i$ envolvidos sao distintos dois a dois. Pelo Teorema Chines dos Restos aplicado repetidamente ($\\gcd$ par a par $=1$),\n$$\\prod_i\\mathbb{Z}_{p_i^{a_i}}\\cong\\mathbb{Z}_{\\prod_i p_i^{a_i}}=\\mathbb{Z}_{|G|},$$\nque e ciclico.\n\n**($\\Rightarrow$)** Contrapositiva: suponha que algum primo $p$ apareca em dois fatores, isto e, $G$ tem $\\mathbb{Z}_{p^{a}}\\times\\mathbb{Z}_{p^{b}}$ como fator direto ($a,b\\ge1$). Entao $G$ contem o subgrupo $\\mathbb{Z}_p\\times\\mathbb{Z}_p$ (tome os elementos de ordem $p$ em cada fator). Nesse subgrupo todo elemento nao nulo tem ordem $p$, logo ha $p^2-1$ elementos de ordem $p$; em particular ha mais de um subgrupo de ordem $p$. Mas um grupo ciclico $\\mathbb{Z}_n$ tem, para cada divisor $d$, um UNICO subgrupo de ordem $d$. Ter dois subgrupos distintos de ordem $p$ impede $G$ de ser ciclico. Logo se $G$ e ciclico, nao ha primo repetido. $\\blacksquare$",
+          "steps": [
+            "Escreva $G$ em divisores elementares $\\prod\\mathbb{Z}_{p_i^{a_i}}$.",
+            "Se os primos sao distintos (no maximo um fator por primo), aplique o Teorema Chines para juntar tudo em $\\mathbb{Z}_{|G|}$: ciclico.",
+            "Na volta (contrapositiva), suponha dois fatores com o mesmo primo, gerando $\\mathbb{Z}_p\\times\\mathbb{Z}_p$ dentro de $G$.",
+            "Mostre que $\\mathbb{Z}_p\\times\\mathbb{Z}_p$ tem varios subgrupos de ordem $p$, impossivel num ciclico (unicidade por divisor)."
+          ]
+        },
+        {
+          "prompt": "Quantos elementos de ordem $2$ existem em $\\mathbb{Z}_4\\times\\mathbb{Z}_2$? E em $\\mathbb{Z}_8$? Use isso para confirmar que os dois grupos não são isomorfos.",
+          "hint": "Em $\\mathbb{Z}_4\\times\\mathbb{Z}_2$, conte os $(a,b)$ com $2(a,b)=0$: são $(0,0),(2,0),(0,1),(2,1)$, ou seja $3$ de ordem $2$. Em $\\mathbb{Z}_8$ só há um elemento de ordem $2$ (o $4$).",
+          "difficulty": 3,
+          "solution": "Um elemento $g$ tem ordem $2$ sse $2g=0$ e $g\\neq0$ (notacao aditiva). Contamos as solucoes de $2g=0$ em cada grupo.\n\n**Em $\\mathbb{Z}_4\\times\\mathbb{Z}_2$.** $2(a,b)=(2a,2b)=(0,0)$ exige $2a\\equiv0\\pmod4$ (isto e $a\\in\\{0,2\\}$) e $2b\\equiv0\\pmod2$ (todo $b\\in\\{0,1\\}$). Solucoes:\n$$(0,0),\\ (2,0),\\ (0,1),\\ (2,1)\\quad(4\\text{ solucoes}).$$\nDescontando $(0,0)$, ha $\\boxed{3}$ elementos de ordem $2$.\n\n**Em $\\mathbb{Z}_8$.** $2a\\equiv0\\pmod8$ exige $a\\in\\{0,4\\}$. Descontando $0$, ha $\\boxed{1}$ elemento de ordem $2$ (o $4$).\n\n**Conclusao.** $\\mathbb{Z}_4\\times\\mathbb{Z}_2$ tem $3$ elementos de ordem $2$ e $\\mathbb{Z}_8$ tem apenas $1$. O numero de elementos de uma dada ordem e invariante por isomorfismo; como esses numeros diferem, os grupos NAO sao isomorfos. $\\blacksquare$\n\n*Nota estrutural.* Ambos tem ordem $8$ e sao abelianos, mas seus divisores elementares diferem ($\\{4,2\\}$ vs $\\{8\\}$); a contagem de elementos de ordem $2$ e a testemunha concreta dessa diferenca.",
+          "steps": [
+            "Traduza 'ordem 2' em: $2g=0$ e $g\\neq0$ (notacao aditiva).",
+            "Em $\\mathbb{Z}_4\\times\\mathbb{Z}_2$, resolva $2(a,b)=(0,0)$ coordenada a coordenada e conte 4 solucoes (3 nao nulas).",
+            "Em $\\mathbb{Z}_8$, resolva $2a\\equiv0\\pmod8$ e ache 2 solucoes (1 nao nula).",
+            "Como o numero de elementos de ordem 2 e invariante e difere (3 vs 1), conclua que os grupos nao sao isomorfos."
+          ]
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Teorema Fundamental (abelianos finitos)",
+          "back": "Todo grupo abeliano finito é produto direto de cíclicos, de forma única (divisores elementares ou fatores invariantes)."
+        },
+        {
+          "front": "Fatores invariantes",
+          "back": "$\\mathbb{Z}_{d_1}\\times\\cdots\\times\\mathbb{Z}_{d_k}$ com $d_1\\mid d_2\\mid\\cdots\\mid d_k$; únicos. $\\prod d_i=|G|$, $d_k=\\exp(G)$."
+        },
+        {
+          "front": "Divisores elementares",
+          "back": "Produto de $\\mathbb{Z}_{p^a}$ (potências de primos); multiconjunto único."
+        },
+        {
+          "front": "$\\mathbb{Z}_m\\times\\mathbb{Z}_n\\cong\\mathbb{Z}_{mn}$ quando?",
+          "back": "Se e somente se $\\gcd(m,n)=1$ (Teorema Chinês dos Restos)."
+        },
+        {
+          "front": "Nº de grupos abelianos de ordem $n$",
+          "back": "$\\prod_j P(e_j)$, onde $n=\\prod p_j^{e_j}$ e $P$ é a função partição."
+        },
+        {
+          "front": "Grupos abelianos de ordem $p^2$",
+          "back": "Dois: $\\mathbb{Z}_{p^2}$ e $\\mathbb{Z}_p\\times\\mathbb{Z}_p$ ($P(2)=2$)."
+        },
+        {
+          "front": "$\\mathbb{Z}_4\\times\\mathbb{Z}_2$ vs $\\mathbb{Z}_8$",
+          "back": "Não isomorfos: o primeiro tem $3$ elementos de ordem $2$; o segundo, só $1$."
+        },
+        {
+          "front": "Decomposição primária",
+          "back": "Grupo abeliano finito = produto direto de suas componentes $p$-primárias (Sylow)."
+        }
+      ],
+      "estimatedHours": 6,
+      "resources": [
+        {
+          "title": "Dummit & Foote, cap. 5.2 (Fundamental Theorem of Finite Abelian Groups)",
+          "ref": "livro"
+        },
+        {
+          "title": "Gallian, cap. 11 (Fundamental Theorem of Finite Abelian Groups)",
+          "ref": "livro"
+        },
+        {
+          "title": "Adilson Gonçalves, Introdução à Álgebra (grupos abelianos finitos)",
+          "ref": "livro"
+        }
+      ],
+      "studyRoadmap": {
+        "steps": [
+          "Estude o Teorema Fundamental dos Grupos Abelianos Finitos nas duas formas (fatores invariantes e divisores elementares) em Dummit & Foote 5.2 / Gallian cap. 11.",
+          "Pratique a conversao entre as formas usando o Teorema Chines dos Restos ($\\mathbb{Z}_m\\times\\mathbb{Z}_n\\cong\\mathbb{Z}_{mn}$ com $\\gcd=1$).",
+          "Aprenda a contar grupos abelianos de ordem $n$ via produto das particoes $\\prod_j P(e_j)$.",
+          "Treine calcular o numero de elementos de cada ordem para distinguir grupos nao isomorfos.",
+          "Assista a videos sobre o teorema de estrutura (Michael Penn) e resolva listagens de grupos abelianos de varias ordens.",
+          "Resolva os testes deste subtopico no app e anote aqui o principal (as duas formas canonicas, contagem por particoes e distincao por elementos de cada ordem)."
+        ],
+        "searchQueries": [
+          "teorema fundamental grupos abelianos finitos fatores invariantes",
+          "divisores elementares fatores invariantes conversao exemplos",
+          "numero de grupos abelianos de ordem n particoes P(e)",
+          "teorema chines dos restos Zm x Zn cong Zmn gcd",
+          "finite abelian groups structure theorem invariant factors",
+          "contar elementos de ordem d grupo abeliano finito"
+        ],
+        "videos": [
+          {
+            "title": "Fundamental Theorem of Finite Abelian Groups",
+            "channel": "Michael Penn",
+            "note": "Enuncia as duas formas e mostra como listar todos os grupos de uma dada ordem."
+          },
+          {
+            "title": "Classifying finite abelian groups",
+            "channel": "Socratica",
+            "note": "Intuicao sobre decomposicao em ciclicos e o papel do Teorema Chines dos Restos."
+          },
+          {
+            "title": "Grupos Abelianos Finitos - Teorema de Estrutura",
+            "channel": "Matematica Universitaria",
+            "note": "Tratamento em PT-BR com exemplos de contagem por particoes."
+          }
+        ],
+        "articles": [
+          {
+            "title": "Abstract Algebra, cap. 5.2 (Fundamental Theorem of Finite Abelian Groups)",
+            "where": "Livro de Dummit & Foote"
+          },
+          {
+            "title": "Contemporary Abstract Algebra, cap. 11",
+            "where": "Livro de Joseph A. Gallian"
+          },
+          {
+            "title": "Introducao a Algebra (grupos abelianos finitos)",
+            "where": "Livro de Adilson Goncalves (IMPA/SBM)"
+          }
+        ]
+      }
+    }
+  ]
+}
