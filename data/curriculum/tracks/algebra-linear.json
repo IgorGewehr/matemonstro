@@ -667,9 +667,7 @@
           "ref": "livro"
         }
       ],
-      "prereqs": [
-        "algebra-linear-01-vetores-espacos"
-      ],
+      "prereqs": [],
       "studyRoadmap": {
         "steps": [
           "Releia a definição de matriz e das operações e escreva à mão, sem olhar, as fórmulas de $(A+B)_{ij}$, $(\\lambda A)_{ij}$, $(AB)_{ij}$ e $(A^T)_{ij}$.",
@@ -987,8 +985,7 @@
         }
       ],
       "prereqs": [
-        "algebra-linear-01-sistemas-eliminacao-gaussiana",
-        "algebra-linear-02-matrizes-operacoes-produto"
+        "algebra-linear-02-matrizes-operacoes"
       ],
       "studyRoadmap": {
         "steps": [
@@ -2255,7 +2252,7 @@
         }
       ],
       "prereqs": [
-        "algebra-linear-05-espacos-vetoriais",
+        "algebra-linear-05-espacos-vetoriais-axiomas",
         "algebra-linear-06-subespacos"
       ],
       "studyRoadmap": {
@@ -2570,7 +2567,6 @@
         }
       ],
       "prereqs": [
-        "algebra-linear-01-vetores-espacos",
         "algebra-linear-02-matrizes-operacoes"
       ],
       "studyRoadmap": {
@@ -2889,8 +2885,8 @@
         }
       ],
       "prereqs": [
-        "algebra-linear-07-espacos-vetoriais",
-        "algebra-linear-08-dependencia-linear"
+        "algebra-linear-05-espacos-vetoriais-axiomas",
+        "algebra-linear-08-dependencia-independencia-linear"
       ],
       "studyRoadmap": {
         "steps": [
@@ -3506,8 +3502,8 @@
         }
       ],
       "prereqs": [
-        "algebra-linear-09-espacos-vetoriais",
-        "algebra-linear-10-base-dimensao"
+        "algebra-linear-05-espacos-vetoriais-axiomas",
+        "algebra-linear-09-base-dimensao"
       ],
       "studyRoadmap": {
         "steps": [
@@ -5089,9 +5085,8 @@
         }
       ],
       "prereqs": [
-        "algebra-linear-espacos-vetoriais",
-        "algebra-linear-bases-e-dimensao",
-        "algebra-linear-independencia-linear"
+        "algebra-linear-05-espacos-vetoriais-axiomas",
+        "algebra-linear-08-dependencia-independencia-linear"
       ],
       "studyRoadmap": {
         "steps": [
@@ -5396,10 +5391,7 @@
           "ref": "livro"
         }
       ],
-      "prereqs": [
-        "algebra-linear-15-produto-interno-espacos-euclidianos",
-        "algebra-linear-16-ortogonalidade-bases-ortonormais"
-      ],
+      "prereqs": [],
       "studyRoadmap": {
         "steps": [
           "Revise produto interno, norma e ortogonalidade em $\\mathbb{R}^n$; garanta que sabe calcular $\\operatorname{proj}_u v$ com fluência.",
@@ -5784,6 +5776,80 @@
             "where": "cap. 3.1-3.2 (Jordan) e cap. 4.1 (Hermitian/symmetric, spectral)"
           }
         ]
+      }
+    }
+  ],
+  "examBank": [
+    {
+      "prompt": "Considere o sistema linear\n$$\\begin{cases} x + y + z = 6 \\\\ 2x - y + z = 3 \\\\ x + 2y - z = 2 \\end{cases}$$\nEscreva a matriz aumentada, resolva por eliminação de Gauss e classifique o sistema segundo o Teorema de Rouché-Capelli.",
+      "solution": "Matriz aumentada: $[A\\,|\\,b]=\\left[\\begin{array}{ccc|c}1&1&1&6\\\\2&-1&1&3\\\\1&2&-1&2\\end{array}\\right]$.\n\nAplique $L_2\\to L_2-2L_1$ e $L_3\\to L_3-L_1$:\n$$\\left[\\begin{array}{ccc|c}1&1&1&6\\\\0&-3&-1&-9\\\\0&1&-2&-4\\end{array}\\right].$$\nAgora $L_2\\to L_2+3L_3$:\n$$\\left[\\begin{array}{ccc|c}1&1&1&6\\\\0&0&-7&-21\\\\0&1&-2&-4\\end{array}\\right].$$\nDa segunda linha: $-7z=-21\\Rightarrow z=3$. Da terceira: $y-2z=-4\\Rightarrow y=-4+6=2$. Da primeira: $x=6-y-z=6-2-3=1$.\n\nSurgem $3$ pivôs, logo $\\operatorname{posto}(A)=\\operatorname{posto}([A|b])=3=n$ (número de incógnitas). Pelo Teorema de Rouché-Capelli o sistema é possível e determinado (SPD), com solução única $(x,y,z)=(1,2,3)$.",
+      "difficulty": 1,
+      "answer": "Sistema possível e determinado (SPD); solução única $(x,y,z)=(1,2,3)$.",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Seja $A=\\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & k & 6 \\\\ 1 & 3 & k \\end{pmatrix}$, com $k\\in\\mathbb{R}$. Determine todos os valores de $k$ para os quais $A$ é invertível e explique, pelo Teorema da Matriz Invertível, o que ocorre com o sistema homogêneo $Ax=\\mathbf{0}$ nos valores excepcionais.",
+      "solution": "Expandindo o determinante pela primeira linha:\n$$\\det A = 1\\cdot\\det\\begin{pmatrix}k&6\\\\3&k\\end{pmatrix} - 2\\cdot\\det\\begin{pmatrix}2&6\\\\1&k\\end{pmatrix} + 3\\cdot\\det\\begin{pmatrix}2&k\\\\1&3\\end{pmatrix}.$$\nIsto é\n$$\\det A=(k^2-18) - 2(2k-6) + 3(6-k) = k^2-18-4k+12+18-3k = k^2-7k+12=(k-3)(k-4).$$\nPelo critério de invertibilidade, $A$ é invertível se, e somente se, $\\det A\\neq 0$, ou seja, $k\\neq 3$ e $k\\neq 4$.\n\nPara $k=3$ ou $k=4$ tem-se $\\det A=0$. Pelo Teorema da Matriz Invertível, as afirmações ''$A$ é invertível'' e ''$Ax=\\mathbf 0$ só tem a solução trivial'' são equivalentes; como $A$ é singular nesses casos, o sistema homogêneo $Ax=\\mathbf 0$ admite soluções não triviais (infinitas).",
+      "difficulty": 2,
+      "answer": "$A$ é invertível $\\iff k\\neq 3$ e $k\\neq 4$. Para $k=3$ ou $k=4$, $\\det A=0$: $A$ é singular e $Ax=\\mathbf 0$ tem soluções não triviais.",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "No espaço $\\mathbb{R}^4$, considere $v_1=(1,2,0,1)$, $v_2=(2,3,1,0)$ e $v_3=(1,1,1,-1)$. Decida se $\\{v_1,v_2,v_3\\}$ é linearmente independente, determine $\\dim\\big(\\operatorname{span}\\{v_1,v_2,v_3\\}\\big)$ e exiba uma base desse subespaço.",
+      "solution": "Dispondo os vetores como linhas e escalonando:\n$$\\begin{pmatrix}1&2&0&1\\\\2&3&1&0\\\\1&1&1&-1\\end{pmatrix}\\xrightarrow[L_3\\to L_3-L_1]{L_2\\to L_2-2L_1}\\begin{pmatrix}1&2&0&1\\\\0&-1&1&-2\\\\0&-1&1&-2\\end{pmatrix}\\xrightarrow{L_3\\to L_3-L_2}\\begin{pmatrix}1&2&0&1\\\\0&-1&1&-2\\\\0&0&0&0\\end{pmatrix}.$$\nO posto da matriz é $2<3$, logo o conjunto é linearmente dependente. De fato, verifica-se diretamente que $v_2-v_1=(1,1,1,-1)=v_3$, ou seja, $v_3=v_2-v_1$ — uma relação de dependência não trivial.\n\nComo $v_1$ e $v_2$ não são múltiplos um do outro, eles são L.I.; portanto $\\dim\\operatorname{span}\\{v_1,v_2,v_3\\}=2$ e uma base é $\\{v_1,v_2\\}$.",
+      "difficulty": 2,
+      "answer": "Conjunto L.D. (pois $v_3=v_2-v_1$); $\\dim\\operatorname{span}=2$; uma base é $\\{v_1,v_2\\}$.",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Seja $A=\\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$.\n\n(a) Determine os autovalores e uma base de autovetores;\n(b) exiba $P$ invertível e $D$ diagonal com $P^{-1}AP=D$;\n(c) deduza uma fórmula fechada para $A^n$, $n\\ge 1$.",
+      "solution": "(a) Polinômio característico:\n$$\\det(A-\\lambda I)=\\det\\begin{pmatrix}4-\\lambda&1\\\\2&3-\\lambda\\end{pmatrix}=(4-\\lambda)(3-\\lambda)-2=\\lambda^2-7\\lambda+10=(\\lambda-2)(\\lambda-5).$$\nAutovalores $\\lambda_1=5$ e $\\lambda_2=2$.\nPara $\\lambda=5$: $A-5I=\\begin{pmatrix}-1&1\\\\2&-2\\end{pmatrix}$, logo $-x+y=0$ e um autovetor é $(1,1)$.\nPara $\\lambda=2$: $A-2I=\\begin{pmatrix}2&1\\\\2&1\\end{pmatrix}$, logo $2x+y=0$ e um autovetor é $(1,-2)$.\n\n(b) Como há dois autovalores distintos, os autovetores são L.I. e $A$ é diagonalizável:\n$$P=\\begin{pmatrix}1&1\\\\1&-2\\end{pmatrix},\\qquad D=\\begin{pmatrix}5&0\\\\0&2\\end{pmatrix},\\qquad P^{-1}AP=D.$$\n\n(c) De $A=PDP^{-1}$ segue $A^n=PD^nP^{-1}$. Como $\\det P=-3$, temos $P^{-1}=\\dfrac{1}{3}\\begin{pmatrix}2&1\\\\1&-1\\end{pmatrix}$ e $D^n=\\begin{pmatrix}5^n&0\\\\0&2^n\\end{pmatrix}$. Logo\n$$A^n=\\begin{pmatrix}1&1\\\\1&-2\\end{pmatrix}\\begin{pmatrix}5^n&0\\\\0&2^n\\end{pmatrix}\\dfrac{1}{3}\\begin{pmatrix}2&1\\\\1&-1\\end{pmatrix}=\\dfrac{1}{3}\\begin{pmatrix}2\\cdot5^n+2^n & 5^n-2^n\\\\ 2\\cdot5^n-2\\cdot2^n & 5^n+2\\cdot2^n\\end{pmatrix}.$$\nEm $n=1$ isso devolve $\\dfrac13\\begin{pmatrix}12&3\\\\6&9\\end{pmatrix}=\\begin{pmatrix}4&1\\\\2&3\\end{pmatrix}=A$, confirmando a fórmula.",
+      "difficulty": 3,
+      "answer": "Autovalores $5$ e $2$; $P=\\begin{pmatrix}1&1\\\\1&-2\\end{pmatrix}$, $D=\\begin{pmatrix}5&0\\\\0&2\\end{pmatrix}$; $A^n=\\dfrac{1}{3}\\begin{pmatrix}2\\cdot5^n+2^n & 5^n-2^n\\\\ 2(5^n-2^n) & 5^n+2\\cdot2^n\\end{pmatrix}$.",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Seja $T:\\mathbb{R}^4\\to\\mathbb{R}^3$ dada por $T(x,y,z,w)=(x+2y+z,\\ 2x+4y+z+w,\\ x+2y+w)$. Determine bases para $\\ker T$ e $\\operatorname{Im} T$ e verifique o Teorema do Núcleo e da Imagem (posto-nulidade).",
+      "solution": "A matriz de $T$ na base canônica é $A=\\begin{pmatrix}1&2&1&0\\\\2&4&1&1\\\\1&2&0&1\\end{pmatrix}$.\n\nEscalonando com $L_2\\to L_2-2L_1$ e $L_3\\to L_3-L_1$:\n$$\\begin{pmatrix}1&2&1&0\\\\0&0&-1&1\\\\0&0&-1&1\\end{pmatrix}\\xrightarrow{L_3\\to L_3-L_2}\\begin{pmatrix}1&2&1&0\\\\0&0&-1&1\\\\0&0&0&0\\end{pmatrix}.$$\nHá pivôs nas colunas $1$ e $3$, logo $\\operatorname{posto}(A)=\\dim\\operatorname{Im}T=2$.\n\nImagem: gerada pelas colunas de $A$ correspondentes aos pivôs, ou seja $\\operatorname{Im}T=\\operatorname{span}\\{(1,2,1),(1,1,0)\\}$.\n\nNúcleo: as equações do sistema reduzido são $x+2y+z=0$ e $-z+w=0$. Tomando $y$ e $w$ como variáveis livres: $z=w$ e $x=-2y-w$, donde\n$$(x,y,z,w)=y(-2,1,0,0)+w(-1,0,1,1).$$\nAssim $\\ker T=\\operatorname{span}\\{(-2,1,0,0),\\,(-1,0,1,1)\\}$, de dimensão $2$.\n\nVerificação (posto-nulidade): $\\dim\\ker T+\\dim\\operatorname{Im}T=2+2=4=\\dim\\mathbb{R}^4$.",
+      "difficulty": 3,
+      "answer": "$\\ker T=\\operatorname{span}\\{(-2,1,0,0),(-1,0,1,1)\\}$ (dim $2$); $\\operatorname{Im}T=\\operatorname{span}\\{(1,2,1),(1,1,0)\\}$ (dim $2$); $2+2=4=\\dim\\mathbb R^4$.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Em $\\mathbb{R}^3$ com o produto interno usual, seja $W=\\operatorname{span}\\{(1,1,1),(0,1,1)\\}$.\n\n(a) Aplique o processo de Gram-Schmidt para obter uma base ortogonal de $W$;\n(b) calcule a projeção ortogonal de $b=(0,1,0)$ sobre $W$;\n(c) obtenha a distância de $b$ a $W$.",
+      "solution": "(a) Sejam $a_1=(1,1,1)$ e $a_2=(0,1,1)$. Gram-Schmidt:\n$$w_1=a_1=(1,1,1);$$\n$$w_2=a_2-\\frac{\\langle a_2,w_1\\rangle}{\\langle w_1,w_1\\rangle}\\,w_1=(0,1,1)-\\frac{2}{3}(1,1,1)=\\left(-\\tfrac23,\\tfrac13,\\tfrac13\\right).$$\nMultiplicando por $3$ (o que não altera a direção), tomamos $w_2=(-2,1,1)$. Confere-se $\\langle w_1,w_2\\rangle=-2+1+1=0$.\n\n(b) Como $\\{w_1,w_2\\}$ é ortogonal,\n$$\\operatorname{proj}_W b=\\frac{\\langle b,w_1\\rangle}{\\langle w_1,w_1\\rangle}w_1+\\frac{\\langle b,w_2\\rangle}{\\langle w_2,w_2\\rangle}w_2=\\frac{1}{3}(1,1,1)+\\frac{1}{6}(-2,1,1)=\\left(0,\\tfrac12,\\tfrac12\\right).$$\n\n(c) O erro é $b-\\operatorname{proj}_W b=(0,\\tfrac12,-\\tfrac12)$, que é ortogonal a $W$ (Teorema da melhor aproximação: $w_1\\cdot e=w_2\\cdot e=0$). Portanto\n$$d(b,W)=\\|b-\\operatorname{proj}_W b\\|=\\sqrt{0+\\tfrac14+\\tfrac14}=\\sqrt{\\tfrac12}=\\frac{\\sqrt2}{2}.$$",
+      "difficulty": 4,
+      "answer": "Base ortogonal $\\{(1,1,1),(-2,1,1)\\}$; $\\operatorname{proj}_W b=(0,\\tfrac12,\\tfrac12)$; $d(b,W)=\\dfrac{\\sqrt2}{2}$.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Considere a forma quadrática $q(x,y,z)=2x^2+2y^2+2z^2+2xy+2xz+2yz$, cuja matriz simétrica associada é $A=\\begin{pmatrix}2&1&1\\\\1&2&1\\\\1&1&2\\end{pmatrix}$.\n\n(a) Diagonalize $A$ ortogonalmente, exibindo os autovalores e uma base ortonormal de autovetores;\n(b) escreva $q$ na forma reduzida (eixos principais) e classifique-a;\n(c) confirme a classificação pelo Critério de Sylvester.",
+      "solution": "(a) $A$ é simétrica, logo pelo Teorema Espectral é ortogonalmente diagonalizável. Note que $A=I+J$, onde $J$ é a matriz $3\\times3$ formada só por $1$'s. Os autovalores de $J$ são $3,0,0$; portanto os de $A$ são $\\lambda=4$ (simples) e $\\lambda=1$ (duplo).\n\nPara $\\lambda=4$: resolvendo $(A-4I)v=0$ obtém-se a direção $(1,1,1)$.\nPara $\\lambda=1$: $(A-I)v=0$ equivale a $x+y+z=0$ (um plano); uma base ortogonal desse plano é $(1,-1,0)$ e $(1,1,-2)$.\n\nNormalizando, uma base ortonormal de autovetores é\n$$u_1=\\tfrac{1}{\\sqrt3}(1,1,1),\\quad u_2=\\tfrac{1}{\\sqrt2}(1,-1,0),\\quad u_3=\\tfrac{1}{\\sqrt6}(1,1,-2).$$\nCom $P=[\\,u_1\\ u_2\\ u_3\\,]$ (matriz ortogonal), tem-se $P^{T}AP=\\operatorname{diag}(4,1,1)$.\n\n(b) Nos eixos principais (com $x'=u_1\\cdot(x,y,z)$, etc.) a forma reduz-se a\n$$q=4x'^2+y'^2+z'^2.$$\nComo todos os autovalores são positivos, $q$ é definida positiva.\n\n(c) Critério de Sylvester (menores principais líderes): $D_1=2>0$, $D_2=\\det\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}=3>0$ e $D_3=\\det A=4>0$. Como $D_1,D_2,D_3>0$, $q$ é definida positiva, confirmando (b).",
+      "difficulty": 4,
+      "answer": "Autovalores $4$ (simples) e $1$ (duplo); nos eixos principais $q=4x'^2+y'^2+z'^2$; forma definida positiva (menores $2,3,4>0$).",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Determine todas as matrizes $A\\in M_2(\\mathbb{R})$ que satisfazem $A^2=-I$, onde $I$ é a identidade $2\\times 2$. (Sugestão: analise a possibilidade de autovalores reais e use o Teorema de Cayley-Hamilton.)",
+      "solution": "Seja $A\\in M_2(\\mathbb R)$ com $A^2=-I$.\n\nPasso 1 (nenhum autovalor real). Se $Av=\\lambda v$ com $v\\neq 0$ e $\\lambda\\in\\mathbb R$, então $A^2v=\\lambda^2 v$; mas $A^2v=-v$, logo $\\lambda^2=-1$, impossível em $\\mathbb R$. Assim $A$ não tem autovalores reais. Em particular $A$ não é um múltiplo escalar de $I$, pois $(cI)^2=c^2I=-I$ exigiria $c^2=-1$.\n\nPasso 2 (Cayley-Hamilton). O polinômio característico de $A$ é $p(\\lambda)=\\lambda^2-(\\operatorname{tr}A)\\lambda+\\det A$, e $p(A)=0$:\n$$A^2-(\\operatorname{tr}A)A+(\\det A)I=0.$$\nComo $A^2=-I$, isso dá $(\\operatorname{tr}A)\\,A=(\\det A-1)I$. Se fosse $\\operatorname{tr}A\\neq 0$, então $A$ seria um múltiplo escalar de $I$, contradizendo o Passo 1. Logo $\\operatorname{tr}A=0$, e daí $\\det A-1=0$, isto é, $\\det A=1$.\n\nPasso 3 (recíproca). Se $\\operatorname{tr}A=0$ e $\\det A=1$, por Cayley-Hamilton $A^2-0\\cdot A+1\\cdot I=0$, ou seja, $A^2=-I$.\n\nConclusão. As soluções são exatamente as matrizes de traço $0$ e determinante $1$:\n$$A=\\begin{pmatrix}a&b\\\\c&-a\\end{pmatrix},\\qquad \\det A=-a^2-bc=1\\ \\Longleftrightarrow\\ a^2+bc=-1.$$\nPor exemplo, $\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ (rotação de $90^\\circ$) satisfaz a equação.",
+      "difficulty": 5,
+      "answer": "Exatamente as matrizes de traço $0$ e determinante $1$: $A=\\begin{pmatrix}a&b\\\\c&-a\\end{pmatrix}$ com $a^2+bc=-1$. Nenhuma matriz escalar serve.",
+      "source": {
+        "exam": "Estilo Putnam"
       }
     }
   ]

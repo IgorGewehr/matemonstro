@@ -43,7 +43,7 @@ function exIndex(exKey: string): number {
 export default function RevisarErrosPage() {
   // attempts / recordAttempt vêm da fundação de dados (spec 01);
   // isLeech / retrievability vêm do FSRS-lite (spec 02).
-  const { ready, cards, gradeCard, attempts, recordAttempt, progress } = useApp();
+  const { ready, cards, gradeCard, attempts, recordAttempt, progress, settings } = useApp();
   const [queue, setQueue] = useState<QItem[] | null>(null);
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -199,7 +199,7 @@ export default function RevisarErrosPage() {
           {revealed && (
             <div className="grid grid-cols-4 gap-2 mt-4">
               {GRADES.map((x) => {
-                const preview = previewReview(card, x.g, Date.now());
+                const preview = previewReview(card, x.g, Date.now(), { requestRetention: settings?.requestRetention });
                 return (
                   <button
                     key={x.g}

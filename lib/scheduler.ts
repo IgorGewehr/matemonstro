@@ -28,6 +28,15 @@ export function statusOf(progress: Map<string, Progress>, subId: string) {
   return progress.get(subId)?.status ?? "todo";
 }
 
+// Fila de revisao do dia, ja com o teto de maxReviewsPerDay aplicado. Fonte
+// UNICA usada pela home, pelo badge da Nav, pela notificacao e pela pagina
+// /revisar — assim todas mostram exatamente o mesmo numero. O excedente
+// continua vencido e reaparece amanha.
+export function cappedDueCards(cards: Card[], settings: Settings, now: number): Card[] {
+  const max = Math.max(0, Math.floor(settings.maxReviewsPerDay ?? DEFAULT_MAX_REVIEWS));
+  return dueCards(cards, now).slice(0, max);
+}
+
 // Uma trilha esta "liberada" se todos os pre-requisitos estiverem 100% concluidos.
 export function trackUnlocked(track: Track, progress: Map<string, Progress>): boolean {
   for (const pid of track.prereqs) {
@@ -202,9 +211,7 @@ export function todayPlan(
 ): TodayPlan {
   // Teto de revisoes/dia: o excedente e cortado da fila de hoje e reaparece
   // amanha (continua vencido), evitando que picos de revisao zerem o estudo novo.
-  const maxReviews = Math.max(0, Math.floor(settings.maxReviewsPerDay ?? DEFAULT_MAX_REVIEWS));
-  const allDue = dueCards(cards, now);
-  const reviews = allDue.slice(0, maxReviews);
+  const reviews = cappedDueCards(cards, settings, now);
   const reviewMinutes = Math.ceil(reviews.length * MIN_PER_REVIEW);
   const budget = Math.max(0, settings.minutesPerDay - reviewMinutes);
 

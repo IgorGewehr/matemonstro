@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useApp } from "@/components/AppState";
-import { dueCards } from "@/lib/srs";
+import { cappedDueCards } from "@/lib/scheduler";
 import { notifyDueReviews } from "@/lib/notify";
 
 /**
@@ -46,7 +46,7 @@ export default function ServiceWorkerRegister() {
   useEffect(() => {
     if (!ready || notified.current) return;
     if (!settings.notifications) return;
-    const due = dueCards(cards, Date.now()).length;
+    const due = cappedDueCards(cards, settings, Date.now()).length;
     if (due <= 0) return;
     notified.current = true;
     notifyDueReviews(due);

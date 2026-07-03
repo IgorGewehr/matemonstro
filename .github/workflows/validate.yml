@@ -1,0 +1,26 @@
+# Portao de qualidade do conteudo: roda o validador do curriculo em todo push/PR.
+# Falha se qualquer trilha tiver id duplicado, prereq quebrado, campo fora do
+# schema ou figura malformada (ver scripts/validate-curriculum.mjs).
+name: validate-curriculum
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/curriculum/**"
+      - "scripts/validate-curriculum.mjs"
+      - ".github/workflows/validate.yml"
+  pull_request:
+    paths:
+      - "data/curriculum/**"
+      - "scripts/validate-curriculum.mjs"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/validate-curriculum.mjs

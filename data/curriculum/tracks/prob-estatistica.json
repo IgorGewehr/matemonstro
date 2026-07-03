@@ -500,7 +500,34 @@
             "where": "PDF livre (AMS / dartmouth.edu)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "(sens*x)/(sens*x + (1-spec)*(1-x))",
+          "domain": [
+            0,
+            1
+          ],
+          "params": [
+            {
+              "name": "sens",
+              "min": 0.5,
+              "max": 1,
+              "default": 0.99,
+              "step": 0.01
+            },
+            {
+              "name": "spec",
+              "min": 0.5,
+              "max": 1,
+              "default": 0.95,
+              "step": 0.01
+            }
+          ],
+          "caption": "Chance de doença dado teste positivo vs. prevalência: a falácia da taxa-base."
+        }
+      ]
     },
     {
       "id": "prob-estatistica-03-variaveis-aleatorias",
@@ -705,7 +732,35 @@
             "where": "PDF livre em probabilitybook.net"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "1/(1+exp(-x))",
+          "domain": [
+            -6,
+            6
+          ],
+          "caption": "Função de distribuição acumulada Fₓ: não-decrescente, com limites 0 e 1."
+        },
+        {
+          "kind": "riemann",
+          "expr": "exp(-(x^2)/2)/sqrt(2*pi)",
+          "domain": [
+            -3,
+            3
+          ],
+          "params": [
+            {
+              "name": "n",
+              "min": 2,
+              "max": 40,
+              "default": 10
+            }
+          ],
+          "caption": "Probabilidade é área sob a densidade: a soma de Riemann aproxima P(a≤X≤b)."
+        }
+      ]
     },
     {
       "id": "prob-estatistica-04-distribuicoes-classicas",
@@ -908,7 +963,52 @@
             "where": "livro (EDUSP)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "exp(-((x-mu)^2)/(2*sig^2))/(sig*sqrt(2*pi))",
+          "domain": [
+            -6,
+            6
+          ],
+          "params": [
+            {
+              "name": "mu",
+              "min": -3,
+              "max": 3,
+              "default": 0,
+              "step": 0.1
+            },
+            {
+              "name": "sig",
+              "min": 0.3,
+              "max": 2.5,
+              "default": 1,
+              "step": 0.1
+            }
+          ],
+          "caption": "Densidade Normal: μ desloca o centro, σ controla a largura do sino."
+        },
+        {
+          "kind": "plot2d",
+          "expr": "lam*exp(-lam*x)",
+          "domain": [
+            0,
+            6
+          ],
+          "params": [
+            {
+              "name": "lam",
+              "min": 0.2,
+              "max": 3,
+              "default": 1,
+              "step": 0.1
+            }
+          ],
+          "caption": "Densidade Exponencial de taxa λ: decaimento sem memória."
+        }
+      ]
     },
     {
       "id": "prob-estatistica-05-esperanca-variancia-momentos",
@@ -1116,7 +1216,30 @@
             "where": "livro"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^2",
+          "domain": [
+            -3,
+            3
+          ],
+          "overlay": [
+            "2*a*x - a^2"
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": -2.5,
+              "max": 2.5,
+              "default": 1,
+              "step": 0.1
+            }
+          ],
+          "caption": "Jensen: a convexa fica acima de toda tangente, logo E[g(X)] ≥ g(E[X])."
+        }
+      ]
     },
     {
       "id": "prob-estatistica-06-vetores-aleatorios",
@@ -1324,7 +1447,27 @@
             "where": "livro"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "max(0, 1 - abs(x-1))",
+          "domain": [
+            -0.5,
+            2.5
+          ],
+          "caption": "Convolução de duas uniformes: a soma X+Y tem densidade triangular."
+        },
+        {
+          "kind": "plot2d",
+          "expr": "x^2",
+          "domain": [
+            -3,
+            3
+          ],
+          "caption": "Covariância zero, dependência total (Y=X², X simétrica): correlação só vê o linear."
+        }
+      ]
     },
     {
       "id": "prob-estatistica-07-lgn-tcl",
@@ -1528,7 +1671,27 @@
             "where": "livro"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "1/sqrt(x)",
+          "domain": [
+            1,
+            50
+          ],
+          "caption": "Lei dos Grandes Números: o desvio-padrão da média amostral encolhe como 1/√n."
+        },
+        {
+          "kind": "plot2d",
+          "expr": "exp(-(x^2)/2)/sqrt(2*pi)",
+          "domain": [
+            -4,
+            4
+          ],
+          "caption": "Teorema Central do Limite: a soma padronizada tende ao sino Normal."
+        }
+      ]
     },
     {
       "id": "prob-estatistica-08-inferencia",
@@ -1733,6 +1896,101 @@
             "where": "livro (EDUSP/Saraiva)"
           }
         ]
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^h*(1-x)^(10-h)",
+          "domain": [
+            0,
+            1
+          ],
+          "params": [
+            {
+              "name": "h",
+              "min": 0,
+              "max": 10,
+              "default": 7,
+              "step": 1
+            }
+          ],
+          "caption": "Verossimilhança de Bernoulli: o pico é a estimativa de máxima verossimilhança p̂ = h/10."
+        }
+      ]
+    }
+  ],
+  "formulaSheet": "## Probabilidade: identidades de conjuntos e contagem\n\n- Espaço equiprovável: $P(A)=\\dfrac{|A|}{|\\Omega|}=\\dfrac{\\#\\text{favoráveis}}{\\#\\text{possíveis}}$.\n- Complementar: $P(A^c)=1-P(A)$; e $P(\\varnothing)=0$, $0\\le P(A)\\le 1$.\n- Monotonicidade / diferença: se $A\\subseteq B$ então $P(A)\\le P(B)$ e $P(B\\setminus A)=P(B)-P(A)$; em geral $P(B\\setminus A)=P(B)-P(A\\cap B)$.\n- União de dois: $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$; disjuntos $\\Rightarrow P(A\\cup B)=P(A)+P(B)$.\n- Inclusão-exclusão:\n$$P\\!\\left(\\bigcup_{i=1}^{n}A_i\\right)=\\sum_i P(A_i)-\\sum_{i<j}P(A_i\\cap A_j)+\\sum_{i<j<k}P(A_i\\cap A_j\\cap A_k)-\\cdots+(-1)^{n+1}P\\!\\left(\\bigcap_{i=1}^{n}A_i\\right).$$\n- Cota de Boole (subaditividade): $P\\!\\left(\\bigcup_n A_n\\right)\\le\\sum_n P(A_n)$.\n- Continuidade: $A_n\\uparrow A\\Rightarrow P(A_n)\\to P(A)$; $A_n\\downarrow A\\Rightarrow P(A_n)\\to P(A)$.\n\n## Probabilidade condicional, Bayes e independência\n\n- Condicional: $P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}$ para $P(B)>0$; logo $P(A\\cap B)=P(A\\mid B)\\,P(B)$.\n- Regra do produto (cadeia): $P(A_1\\cap\\cdots\\cap A_n)=P(A_1)\\,P(A_2\\mid A_1)\\,P(A_3\\mid A_1\\cap A_2)\\cdots P(A_n\\mid A_1\\cap\\cdots\\cap A_{n-1})$.\n- Probabilidade total (partição $\\{B_i\\}$ de $\\Omega$): $P(A)=\\displaystyle\\sum_{i}P(A\\mid B_i)\\,P(B_i)$.\n- Bayes: $P(B_j\\mid A)=\\dfrac{P(A\\mid B_j)\\,P(B_j)}{\\sum_i P(A\\mid B_i)\\,P(B_i)}$   (posterior $\\propto$ verossimilhança $\\times$ prior).\n- Critério de independência: $A\\perp B\\iff P(A\\cap B)=P(A)P(B)\\iff P(A\\mid B)=P(A)$.\n- Mútua: para todo subconjunto de índices $I$, $P\\!\\left(\\bigcap_{i\\in I}A_i\\right)=\\prod_{i\\in I}P(A_i)$ — independência par a par **não** basta.\n- Fecho por complemento: $A\\perp B\\Rightarrow (A,B^c),\\,(A^c,B),\\,(A^c,B^c)$ também independentes.\n\n## Variáveis aleatórias: FDA, massa e densidade\n\n- FDA: $F_X(x)=P(X\\le x)$ — não-decrescente, contínua à direita, $F(-\\infty)=0$, $F(+\\infty)=1$.\n- Átomo (salto): $P(X=x)=F_X(x)-F_X(x^-)$; intervalo: $P(a<X\\le b)=F_X(b)-F_X(a)$.\n- Discreta: $p_X(x_i)=P(X=x_i)$, $\\sum_i p_X(x_i)=1$, $F_X(x)=\\sum_{x_i\\le x}p_X(x_i)$ (escada).\n- Contínua: $F_X(x)=\\int_{-\\infty}^{x}f_X(t)\\,dt$, $f_X(x)=F_X'(x)$ (onde derivável), $P(X=a)=0$, $P(a<X\\le b)=\\int_a^b f_X$.\n- Transformação monótona $Y=g(X)$: $f_Y(y)=f_X\\!\\big(g^{-1}(y)\\big)\\left|\\dfrac{d}{dy}g^{-1}(y)\\right|$ no suporte de $Y$.\n\n## Distribuições clássicas\n\n| Distribuição | $p_X(k)$ ou $f_X(x)$ | $E[X]$ | $\\operatorname{Var}(X)$ |\n|---|---|---|---|\n| Bernoulli$(p)$ | $p^{x}(1-p)^{1-x},\\ x\\in\\{0,1\\}$ | $p$ | $p(1-p)$ |\n| Binomial$(n,p)$ | $\\binom{n}{k}p^k(1-p)^{n-k}$ | $np$ | $np(1-p)$ |\n| Geométrica$(p),\\ k\\ge 1$ | $(1-p)^{k-1}p$ | $\\dfrac{1}{p}$ | $\\dfrac{1-p}{p^2}$ |\n| Poisson$(\\lambda)$ | $e^{-\\lambda}\\dfrac{\\lambda^k}{k!}$ | $\\lambda$ | $\\lambda$ |\n| Exponencial$(\\lambda),\\ x\\ge 0$ | $\\lambda e^{-\\lambda x}$ | $\\dfrac{1}{\\lambda}$ | $\\dfrac{1}{\\lambda^2}$ |\n| Normal$(\\mu,\\sigma^2)$ | $\\dfrac{1}{\\sigma\\sqrt{2\\pi}}\\exp\\!\\left(-\\dfrac{(x-\\mu)^2}{2\\sigma^2}\\right)$ | $\\mu$ | $\\sigma^2$ |\n\n- FDA exponencial: $F(x)=1-e^{-\\lambda x}$, $x\\ge 0$.\n- Falta de memória (exponencial e geométrica): $P(X>s+t\\mid X>s)=P(X>t)$.\n- Aproximação Poisson $\\to$ Binomial ($n$ grande, $p$ pequeno, $np\\to\\lambda$): $\\binom{n}{k}p^k(1-p)^{n-k}\\approx e^{-\\lambda}\\dfrac{\\lambda^k}{k!}$ com $\\lambda=np$.\n- Estabilidade da Normal: $aX+b\\sim\\mathcal N(a\\mu+b,\\,a^2\\sigma^2)$; soma de normais independentes é normal.\n- Padronização: $Z=\\dfrac{X-\\mu}{\\sigma}\\sim\\mathcal N(0,1)$; $\\Phi(x)=P(Z\\le x)$, com $\\Phi(-x)=1-\\Phi(x)$.\n\n## Esperança, variância, momentos e desigualdades\n\n- LOTUS: $E[g(X)]=\\sum_i g(x_i)\\,p_X(x_i)$ (discreta) ou $\\int g(x)f_X(x)\\,dx$ (contínua).\n- Linearidade (sempre, mesmo dependentes): $E[aX+bY+c]=aE[X]+bE[Y]+c$.\n- Variância: $\\operatorname{Var}(X)=E[X^2]-(E[X])^2\\ge 0$; $\\operatorname{Var}(aX+b)=a^2\\operatorname{Var}(X)$; $\\sigma_X=\\sqrt{\\operatorname{Var}(X)}$.\n- Momentos: $E[X^k]$ (bruto), $E[(X-\\mu)^k]$ (central); fgm $M_X(t)=E[e^{tX}]$ com $E[X^k]=M_X^{(k)}(0)$ (determina a lei).\n- Markov ($X\\ge 0$, $a>0$): $P(X\\ge a)\\le\\dfrac{E[X]}{a}$.\n- Chebyshev: $P\\big(|X-\\mu|\\ge k\\big)\\le\\dfrac{\\operatorname{Var}(X)}{k^2}$; com $k=t\\sigma$: $\\le\\dfrac{1}{t^2}$.\n- Jensen: $\\varphi$ convexa $\\Rightarrow \\varphi(E[X])\\le E[\\varphi(X)]$ (côncava inverte). Ex.: $(E[X])^2\\le E[X^2]$.\n\n## Vetores aleatórios, covariância e esperança condicional\n\n- Marginal: $f_X(x)=\\int f_{X,Y}(x,y)\\,dy$; análogo discreto $p_X(x)=\\sum_y p_{X,Y}(x,y)$.\n- Independência: $f_{X,Y}=f_X\\,f_Y$ (a conjunta fatora) $\\iff F_{X,Y}(x,y)=F_X(x)F_Y(y)$.\n- Covariância: $\\operatorname{Cov}(X,Y)=E[XY]-E[X]E[Y]$; bilinear, $\\operatorname{Cov}(X,X)=\\operatorname{Var}(X)$.\n- Correlação: $\\rho(X,Y)=\\dfrac{\\operatorname{Cov}(X,Y)}{\\sigma_X\\sigma_Y}\\in[-1,1]$; $|\\rho|=1\\iff Y$ afim de $X$.\n- Variância da soma: $\\operatorname{Var}(X+Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y)+2\\operatorname{Cov}(X,Y)$; independentes $\\Rightarrow$ soma das variâncias.\n- Independência $\\Rightarrow E[XY]=E[X]E[Y]$ e $\\operatorname{Cov}=0$ (recíproca falsa: $\\operatorname{Cov}=0$ não implica independência).\n- Convolução ($X\\perp Y$ contínuas): $f_{X+Y}(s)=\\int_{-\\infty}^{\\infty}f_X(x)\\,f_Y(s-x)\\,dx$.\n- Densidade condicional: $f_{X\\mid Y}(x\\mid y)=\\dfrac{f_{X,Y}(x,y)}{f_Y(y)}$; $E[X\\mid Y=y]=\\int x\\,f_{X\\mid Y}(x\\mid y)\\,dx$.\n- Torre: $E[X]=E\\big[E[X\\mid Y]\\big]$; mais geral $E\\big[g(Y)X\\big]=E\\big[g(Y)\\,E[X\\mid Y]\\big]$.\n\n## Lei dos Grandes Números e Teorema Central do Limite\n\n- Média amostral ($X_i$ i.i.d., média $\\mu$, variância $\\sigma^2$): $\\bar X_n=\\tfrac1n\\sum_{i=1}^n X_i$, com $E[\\bar X_n]=\\mu$ e $\\operatorname{Var}(\\bar X_n)=\\dfrac{\\sigma^2}{n}$.\n- LFGN: $\\bar X_n\\xrightarrow{P}\\mu$;  LForte: $\\bar X_n\\xrightarrow{q.c.}\\mu$.\n- Soma padronizada ($S_n=\\sum X_i$): $Z_n=\\dfrac{S_n-n\\mu}{\\sigma\\sqrt n}=\\dfrac{\\bar X_n-\\mu}{\\sigma/\\sqrt n}$.\n- TCL: $Z_n\\xrightarrow{d}\\mathcal N(0,1)$; na prática $P\\!\\left(\\dfrac{S_n-n\\mu}{\\sigma\\sqrt n}\\le x\\right)\\approx\\Phi(x)$ e $\\bar X_n\\approx\\mathcal N(\\mu,\\sigma^2/n)$.\n- Aproximação normal da Binomial ($X\\sim\\text{Bin}(n,p)$, soma de Bernoulli): $P(X\\le k)\\approx\\Phi\\!\\left(\\dfrac{k-np}{\\sqrt{np(1-p)}}\\right)$ (correção de continuidade: use $k\\pm 0{,}5$).\n\n## Introdução à inferência estatística\n\n- Viés: $b(\\hat\\theta)=E[\\hat\\theta]-\\theta$ (não-viesado $\\iff b=0$); Erro quadrático médio: $\\operatorname{EQM}(\\hat\\theta)=\\operatorname{Var}(\\hat\\theta)+b(\\hat\\theta)^2$.\n- Estimadores usuais: $\\bar X=\\tfrac1n\\sum X_i$ (não-viesado para $\\mu$); $S^2=\\dfrac{1}{n-1}\\sum_{i=1}^n(X_i-\\bar X)^2$ (não-viesado para $\\sigma^2$, correção de Bessel — denominador $n$ subestima).\n- Verossimilhança: $L(\\theta)=\\prod_{i=1}^n f(x_i;\\theta)$, log-verossimilhança $\\ell(\\theta)=\\ln L=\\sum_i\\ln f(x_i;\\theta)$; EMV: $\\hat\\theta=\\arg\\max_\\theta\\ell(\\theta)$, resolvendo $\\dfrac{\\partial\\ell}{\\partial\\theta}=0$.\n- Caso normal ($X_i\\sim\\mathcal N(\\mu,\\sigma^2)$ i.i.d.): $\\bar X\\sim\\mathcal N(\\mu,\\sigma^2/n)$; com $\\sigma$ conhecido $Z=\\dfrac{\\bar X-\\mu}{\\sigma/\\sqrt n}\\sim\\mathcal N(0,1)$; com $\\sigma$ desconhecido $T=\\dfrac{\\bar X-\\mu}{S/\\sqrt n}\\sim t_{\\,n-1}$.\n- Intervalo de confiança para $\\mu$ (nível $1-\\alpha$): $\\sigma$ conhecido $\\bar X\\pm z_{\\alpha/2}\\dfrac{\\sigma}{\\sqrt n}$; $\\sigma$ desconhecido $\\bar X\\pm t_{\\,n-1,\\,\\alpha/2}\\dfrac{S}{\\sqrt n}$.\n- EMV assintótico (sob regularidade): consistente $\\hat\\theta\\xrightarrow{P}\\theta$ e $\\sqrt n(\\hat\\theta-\\theta)\\xrightarrow{d}\\mathcal N\\!\\big(0,\\,I(\\theta)^{-1}\\big)$, com $I(\\theta)$ a informação de Fisher.",
+  "examBank": [
+    {
+      "prompt": "Em uma turma de matemática, $60\\%$ dos alunos gostam de Álgebra (evento $A$), $50\\%$ gostam de Análise (evento $B$) e $30\\%$ gostam das duas disciplinas ($A\\cap B$). Sorteia-se um aluno ao acaso.\n\n(a) Qual a probabilidade de o aluno gostar de pelo menos uma das duas disciplinas?\n\n(b) Qual a probabilidade de o aluno não gostar de nenhuma delas?",
+      "solution": "Trabalhamos no espaço de probabilidade da turma, com $P(A)=0{,}60$, $P(B)=0{,}50$ e $P(A\\cap B)=0{,}30$.\n\n**(a) Pelo menos uma disciplina.** Aplicamos o princípio da inclusão-exclusão para dois eventos:\n$$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)=0{,}60+0{,}50-0{,}30=0{,}80.$$\nSubtraímos $P(A\\cap B)$ porque os alunos que gostam das duas foram contados em $P(A)$ e também em $P(B)$.\n\n**(b) Nenhuma disciplina.** O evento \"não gostar de nenhuma\" é o complementar de $A\\cup B$. Pela propriedade do complementar dos axiomas de Kolmogorov:\n$$P\\big((A\\cup B)^c\\big)=1-P(A\\cup B)=1-0{,}80=0{,}20.$$\n\nLogo $80\\%$ dos alunos gostam de ao menos uma disciplina e $20\\%$ não gostam de nenhuma. $\\blacksquare$",
+      "difficulty": 1,
+      "answer": "(a) $P(A\\cup B)=0{,}80$ (80%);  (b) $0{,}20$ (20%).",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "O tempo de vida (em horas) de um componente eletrônico segue distribuição Normal com média $\\mu=800$ e desvio-padrão $\\sigma=50$. Usando os valores tabelados $\\Phi(1)=0{,}8413$ e $\\Phi(2)=0{,}9772$ (onde $\\Phi$ é a FDA da Normal padrão), determine a probabilidade de um componente durar:\n\n(a) mais de $850$ horas;\n\n(b) entre $700$ e $850$ horas.",
+      "solution": "Seja $X\\sim\\mathcal{N}(800,\\,50^2)$. Padronizamos com $Z=\\dfrac{X-\\mu}{\\sigma}=\\dfrac{X-800}{50}\\sim\\mathcal{N}(0,1)$.\n\n**(a) $P(X>850)$.** O valor $850$ corresponde a\n$$z=\\frac{850-800}{50}=1,\\qquad\\text{logo}\\qquad P(X>850)=P(Z>1)=1-\\Phi(1)=1-0{,}8413=0{,}1587.$$\n\n**(b) $P(700<X<850)$.** Padronizando os dois extremos:\n$$z_1=\\frac{700-800}{50}=-2,\\qquad z_2=\\frac{850-800}{50}=1.$$\nAssim\n$$P(700<X<850)=P(-2<Z<1)=\\Phi(1)-\\Phi(-2).$$\nPela simetria da Normal padrão, $\\Phi(-2)=1-\\Phi(2)=1-0{,}9772=0{,}0228$. Portanto\n$$P(700<X<850)=0{,}8413-0{,}0228=0{,}8185.$$\n\nEntão $\\approx 15{,}87\\%$ dos componentes duram mais de $850$ h e $\\approx 81{,}85\\%$ duram entre $700$ e $850$ h. $\\blacksquare$",
+      "difficulty": 2,
+      "answer": "(a) $\\approx 0{,}1587$ (15,87%);  (b) $\\approx 0{,}8185$ (81,85%).",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Uma fábrica produz certo item em três máquinas. A máquina I responde por $50\\%$ da produção e tem taxa de defeito de $2\\%$; a máquina II responde por $30\\%$ e tem taxa de $3\\%$; a máquina III responde por $20\\%$ e tem taxa de $5\\%$. Um item é retirado ao acaso da produção total.\n\n(a) Qual a probabilidade de o item ser defeituoso?\n\n(b) Dado que o item retirado é defeituoso, qual a probabilidade de ter sido produzido pela máquina III?",
+      "solution": "Sejam $M_1,M_2,M_3$ os eventos \"o item veio da máquina I, II, III\" e $D$ o evento \"o item é defeituoso\". Os dados fornecem\n$$P(M_1)=0{,}50,\\;P(M_2)=0{,}30,\\;P(M_3)=0{,}20,\\qquad P(D\\mid M_1)=0{,}02,\\;P(D\\mid M_2)=0{,}03,\\;P(D\\mid M_3)=0{,}05.$$\n\n**(a) Lei da probabilidade total.** Como $M_1,M_2,M_3$ formam uma partição do espaço amostral:\n$$P(D)=\\sum_{i=1}^{3}P(M_i)\\,P(D\\mid M_i)=0{,}50\\cdot 0{,}02+0{,}30\\cdot 0{,}03+0{,}20\\cdot 0{,}05.$$\n$$P(D)=0{,}010+0{,}009+0{,}010=0{,}029.$$\n\n**(b) Teorema de Bayes.** Invertemos o condicionamento:\n$$P(M_3\\mid D)=\\frac{P(M_3)\\,P(D\\mid M_3)}{P(D)}=\\frac{0{,}20\\cdot 0{,}05}{0{,}029}=\\frac{0{,}010}{0{,}029}=\\frac{10}{29}\\approx 0{,}3448.$$\n\nAssim, $2{,}9\\%$ da produção é defeituosa e, entre os itens defeituosos, cerca de $34{,}5\\%$ vieram da máquina III (que, apesar de produzir só $20\\%$ do total, concentra defeitos por ter a maior taxa). $\\blacksquare$",
+      "difficulty": 3,
+      "answer": "(a) $P(D)=0{,}029$ (2,9%);  (b) $P(M_3\\mid D)=\\dfrac{10}{29}\\approx 0{,}3448$ (34,48%).",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Seja $X$ uma variável aleatória contínua com função densidade\n$$f_X(x)=\\begin{cases} c\\,x^2, & 0\\le x\\le 2,\\\\[2pt] 0, & \\text{caso contrário.}\\end{cases}$$\n(a) Determine a constante $c$.\n\n(b) Calcule $P(X\\le 1)$.\n\n(c) Seja $Y=X^3$. Obtenha a densidade $f_Y(y)$ de $Y$ e identifique a distribuição de $Y$.",
+      "solution": "**(a) Normalização.** A densidade deve integrar $1$ sobre o suporte:\n$$\\int_0^2 c\\,x^2\\,dx=c\\cdot\\frac{x^3}{3}\\Big|_0^2=c\\cdot\\frac{8}{3}=1\\;\\Longrightarrow\\; c=\\frac{3}{8}.$$\n\n**(b) Probabilidade acumulada.** Integramos até $1$:\n$$P(X\\le 1)=\\int_0^1 \\frac{3}{8}x^2\\,dx=\\frac{3}{8}\\cdot\\frac{1}{3}=\\frac{1}{8}=0{,}125.$$\n\n**(c) Mudança de variável $Y=g(X)=X^3$.** A função $g(x)=x^3$ é estritamente crescente em $[0,2]$, logo é monótona e invertível, com $x=g^{-1}(y)=y^{1/3}$. Quando $x$ varia em $[0,2]$, $y=x^3$ varia em $[0,8]$. A jacobiana é\n$$\\frac{dx}{dy}=\\frac{d}{dy}\\,y^{1/3}=\\frac{1}{3}\\,y^{-2/3}.$$\nPela fórmula de mudança de variável no caso monótono, para $0\\le y\\le 8$:\n$$f_Y(y)=f_X\\!\\big(y^{1/3}\\big)\\left|\\frac{dx}{dy}\\right|=\\frac{3}{8}\\big(y^{1/3}\\big)^2\\cdot\\frac{1}{3}\\,y^{-2/3}=\\frac{3}{8}\\,y^{2/3}\\cdot\\frac{1}{3}\\,y^{-2/3}=\\frac{1}{8}.$$\nComo $f_Y(y)=\\tfrac18$ é constante em $[0,8]$ (e $\\int_0^8 \\tfrac18\\,dy=1$), concluímos que $Y\\sim\\text{Uniforme}(0,8)$. $\\blacksquare$",
+      "difficulty": 3,
+      "answer": "(a) $c=\\dfrac{3}{8}$;  (b) $P(X\\le 1)=\\dfrac{1}{8}$;  (c) $f_Y(y)=\\dfrac{1}{8}$ em $[0,8]$, isto é, $Y\\sim\\text{Uniforme}(0,8)$.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Uma variável aleatória $X$ tem média $\\mu=50$ e variância $\\sigma^2=25$.\n\n(a) Use a desigualdade de Chebyshev para obter um limitante superior para $P(|X-50|\\ge 15)$.\n\n(b) Suponha ainda que $X\\ge 0$. Use a desigualdade de Markov para obter um limitante superior para $P(X\\ge 200)$.",
+      "solution": "**(a) Desigualdade de Chebyshev.** Para qualquer $k>0$,\n$$P\\big(|X-\\mu|\\ge k\\big)\\le\\frac{\\sigma^2}{k^2}.$$\nCom $\\mu=50$, $\\sigma^2=25$ e $k=15$:\n$$P(|X-50|\\ge 15)\\le\\frac{25}{15^2}=\\frac{25}{225}=\\frac{1}{9}\\approx 0{,}1111.$$\n\n**(b) Desigualdade de Markov.** Para $X\\ge 0$ e $a>0$,\n$$P(X\\ge a)\\le\\frac{E[X]}{a}.$$\nComo $E[X]=\\mu=50$ e $a=200$:\n$$P(X\\ge 200)\\le\\frac{50}{200}=\\frac{1}{4}=0{,}25.$$\n\nObservação: esses limitantes valem para qualquer distribuição com esses momentos, por isso costumam ser \"folgados\" — o valor real da probabilidade pode ser bem menor. $\\blacksquare$",
+      "difficulty": 3,
+      "answer": "(a) $P(|X-50|\\ge 15)\\le \\dfrac{1}{9}\\approx 0{,}111$;  (b) $P(X\\ge 200)\\le \\dfrac{1}{4}=0{,}25$.",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Seja $X$ uma variável aleatória que assume os valores $-1$, $0$ e $1$, cada um com probabilidade $\\tfrac{1}{3}$. Defina $Y=X^2$.\n\n(a) Calcule $\\operatorname{Cov}(X,Y)$.\n\n(b) $X$ e $Y$ são independentes? Justifique.\n\nO que este exemplo ilustra?",
+      "solution": "**(a) Covariância.** Precisamos de $E[X]$, $E[Y]$ e $E[XY]$.\n$$E[X]=\\tfrac13(-1)+\\tfrac13(0)+\\tfrac13(1)=0.$$\nComo $Y=X^2$, temos $E[Y]=E[X^2]=\\tfrac13(1)+\\tfrac13(0)+\\tfrac13(1)=\\tfrac23$.\n\nPara $E[XY]$, note que $XY=X\\cdot X^2=X^3$, e $X^3$ assume os mesmos valores $-1,0,1$ (pois $(-1)^3=-1$, $0^3=0$, $1^3=1$):\n$$E[XY]=E[X^3]=\\tfrac13(-1)+\\tfrac13(0)+\\tfrac13(1)=0.$$\nLogo\n$$\\operatorname{Cov}(X,Y)=E[XY]-E[X]\\,E[Y]=0-0\\cdot\\tfrac23=0.$$\nAs variáveis são **descorrelacionadas**.\n\n**(b) Independência.** Testamos a fatoração da probabilidade conjunta num par de valores. Tome $X=0$ e $Y=0$. Como $Y=0\\iff X=0$, o evento conjunto é $\\{X=0\\}$:\n$$P(X=0,\\,Y=0)=P(X=0)=\\tfrac13.$$\nPor outro lado, $P(X=0)=\\tfrac13$ e $P(Y=0)=P(X=0)=\\tfrac13$, então\n$$P(X=0)\\,P(Y=0)=\\tfrac13\\cdot\\tfrac13=\\tfrac19\\ne\\tfrac13=P(X=0,\\,Y=0).$$\nA fatoração falha, portanto $X$ e $Y$ **não** são independentes (de fato, $Y$ é função determinística de $X$).\n\n**Conclusão.** O exemplo mostra que **descorrelação não implica independência**: covariância nula só captura ausência de relação linear, e aqui a dependência é puramente não-linear ($Y=X^2$). $\\blacksquare$",
+      "difficulty": 4,
+      "answer": "(a) $\\operatorname{Cov}(X,Y)=0$;  (b) não são independentes ($P(X=0,Y=0)=\\tfrac13\\ne\\tfrac19$). Ilustra que descorrelação não implica independência.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Uma máquina enche pacotes cujo peso individual tem média $\\mu=500$ g e desvio-padrão $\\sigma=20$ g, de forma independente entre pacotes. Toma-se uma amostra de $n=100$ pacotes e considera-se o peso médio amostral $\\bar X=\\frac{1}{100}\\sum_{i=1}^{100}X_i$.\n\nUsando o Teorema Central do Limite e $\\Phi(2{,}5)=0{,}9938$, aproxime a probabilidade de $\\bar X$ exceder $505$ g.",
+      "solution": "**Distribuição aproximada da média amostral.** Pelo Teorema Central do Limite (Lindeberg-Lévy), para $n$ grande a média amostral de variáveis i.i.d. é aproximadamente Normal:\n$$\\bar X\\;\\overset{\\text{aprox.}}{\\sim}\\;\\mathcal{N}\\!\\left(\\mu,\\;\\frac{\\sigma^2}{n}\\right).$$\nAqui $\\mu=500$ e a variância da média é\n$$\\frac{\\sigma^2}{n}=\\frac{20^2}{100}=\\frac{400}{100}=4\\;\\Longrightarrow\\; \\text{desvio-padrão de }\\bar X=\\sqrt{4}=2\\text{ g}.$$\n\n**Padronização.** O valor $505$ corresponde a\n$$z=\\frac{\\bar x-\\mu}{\\sigma/\\sqrt{n}}=\\frac{505-500}{2}=2{,}5.$$\nLogo\n$$P(\\bar X>505)\\approx P(Z>2{,}5)=1-\\Phi(2{,}5)=1-0{,}9938=0{,}0062.$$\n\nOu seja, a probabilidade de o peso médio de $100$ pacotes ultrapassar $505$ g é de apenas $\\approx 0{,}62\\%$. $\\blacksquare$",
+      "difficulty": 4,
+      "answer": "$P(\\bar X>505)\\approx P(Z>2{,}5)=1-0{,}9938=0{,}0062$ ($\\approx 0{,}62\\%$).",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Sejam $X_1,\\dots,X_n$ uma amostra aleatória i.i.d. da distribuição Exponencial de parâmetro $\\lambda>0$, com densidade $f(x;\\lambda)=\\lambda e^{-\\lambda x}$ para $x\\ge 0$.\n\n(a) Obtenha o estimador de máxima verossimilhança (EMV) $\\hat\\lambda$ de $\\lambda$.\n\n(b) O estimador $\\hat\\lambda$ é não-viesado? Use o fato de que, para $n\\ge 2$, $E\\!\\left[\\dfrac{1}{\\bar X}\\right]=\\dfrac{n}{n-1}\\,\\lambda$.\n\n(c) Proponha uma modificação de $\\hat\\lambda$ que seja não-viesada.",
+      "solution": "**(a) EMV.** A função de verossimilhança do vetor observado é\n$$L(\\lambda)=\\prod_{i=1}^{n}\\lambda e^{-\\lambda x_i}=\\lambda^{n}\\exp\\!\\Big(-\\lambda\\sum_{i=1}^{n}x_i\\Big).$$\nTomando o logaritmo (log-verossimilhança):\n$$\\ell(\\lambda)=n\\ln\\lambda-\\lambda\\sum_{i=1}^{n}x_i.$$\nDerivando em $\\lambda$ e igualando a zero:\n$$\\ell'(\\lambda)=\\frac{n}{\\lambda}-\\sum_{i=1}^{n}x_i=0\\;\\Longrightarrow\\;\\lambda=\\frac{n}{\\sum_{i=1}^{n}x_i}=\\frac{1}{\\bar x}.$$\nComo $\\ell''(\\lambda)=-\\,n/\\lambda^2<0$, trata-se de um máximo. Portanto\n$$\\boxed{\\;\\hat\\lambda=\\frac{1}{\\bar X}=\\frac{n}{\\sum_{i=1}^{n}X_i}\\;}$$\n\n**(b) Viés.** Usando a identidade dada,\n$$E[\\hat\\lambda]=E\\!\\left[\\frac{1}{\\bar X}\\right]=\\frac{n}{n-1}\\,\\lambda\\neq\\lambda\\quad(n\\ge 2).$$\nComo $\\dfrac{n}{n-1}>1$, o EMV **superestima** $\\lambda$ em média; o viés é\n$$E[\\hat\\lambda]-\\lambda=\\left(\\frac{n}{n-1}-1\\right)\\lambda=\\frac{\\lambda}{n-1}.$$\nLogo $\\hat\\lambda$ **não é não-viesado** (embora seja assintoticamente não-viesado, pois o viés $\\to 0$ quando $n\\to\\infty$).\n\n**(c) Correção.** Basta multiplicar por $\\dfrac{n-1}{n}$ para cancelar o fator. Defina\n$$\\tilde\\lambda=\\frac{n-1}{n}\\,\\hat\\lambda=\\frac{n-1}{\\sum_{i=1}^{n}X_i}.$$\nEntão\n$$E[\\tilde\\lambda]=\\frac{n-1}{n}\\cdot\\frac{n}{n-1}\\,\\lambda=\\lambda,$$\nde modo que $\\tilde\\lambda$ é um estimador não-viesado de $\\lambda$. $\\blacksquare$",
+      "difficulty": 5,
+      "answer": "(a) $\\hat\\lambda=\\dfrac{1}{\\bar X}=\\dfrac{n}{\\sum X_i}$;  (b) não: $E[\\hat\\lambda]=\\dfrac{n}{n-1}\\lambda$ (viés positivo $\\tfrac{\\lambda}{n-1}$);  (c) $\\tilde\\lambda=\\dfrac{n-1}{n}\\hat\\lambda=\\dfrac{n-1}{\\sum X_i}$ é não-viesado.",
+      "source": {
+        "exam": "Nível de mestrado"
       }
     }
   ]

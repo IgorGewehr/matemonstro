@@ -283,7 +283,36 @@
             "where": "Livro (Coleção Matemática Universitária): tratamento rigoroso de primeira ordem"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "vectorfield",
+          "expr": "1, x - y",
+          "caption": "Campo de direções: cada curva integral segue as setas do campo.",
+          "domain": [
+            -5,
+            5
+          ]
+        },
+        {
+          "kind": "plot2d",
+          "expr": "20 + 60*exp(-k*x)",
+          "caption": "Resfriamento de Newton: a temperatura decai exponencialmente até o ambiente.",
+          "domain": [
+            0,
+            5
+          ],
+          "params": [
+            {
+              "name": "k",
+              "min": 0.1,
+              "max": 2,
+              "default": 0.6,
+              "step": 0.1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "edo-02-exatas-fatores-integrantes-substituicoes",
@@ -484,7 +513,18 @@
             "where": "Notas de aula online (tutorial.math.lamar.edu)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "vectorfield",
+          "expr": "y, -x",
+          "caption": "Equação exata: as trajetórias são as curvas de nível de F(x,y).",
+          "domain": [
+            -5,
+            5
+          ]
+        }
+      ]
     },
     {
       "id": "edo-03-existencia-unicidade-picard",
@@ -700,7 +740,36 @@
             "where": "Livro: dependência contínua das condições iniciais e teoria qualitativa"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "exp(x)",
+          "caption": "Iteradas de Picard: as somas parciais convergem para a solução e^x.",
+          "domain": [
+            -2,
+            2
+          ],
+          "overlay": [
+            "1",
+            "1+x",
+            "1+x+x^2/2",
+            "1+x+x^2/2+x^3/6"
+          ]
+        },
+        {
+          "kind": "plot2d",
+          "expr": "x^2/4",
+          "caption": "Sem Lipschitz: duas soluções partem do mesmo ponto (não unicidade).",
+          "domain": [
+            0,
+            4
+          ],
+          "overlay": [
+            "0"
+          ]
+        }
+      ]
     },
     {
       "id": "edo-04-edos-lineares-ordem-n",
@@ -915,7 +984,38 @@
             "where": "Notas de aula online (tutorial.math.lamar.edu)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "exp(-a*x)*cos(b*x)",
+          "caption": "Solução típica: oscilação amortecida presa ao envelope e^{-ax}.",
+          "domain": [
+            0,
+            10
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": 0,
+              "max": 1,
+              "default": 0.3,
+              "step": 0.05
+            },
+            {
+              "name": "b",
+              "min": 1,
+              "max": 6,
+              "default": 3,
+              "step": 0.5
+            }
+          ],
+          "overlay": [
+            "exp(-a*x)",
+            "-exp(-a*x)"
+          ]
+        }
+      ]
     },
     {
       "id": "edo-05-sistemas-lineares-exponencial-matriz",
@@ -1130,7 +1230,18 @@
             "where": "Livro: visão geométrica de fluxos lineares e da exponencial"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "vectorfield",
+          "expr": "x, 2*y",
+          "caption": "Autovalores reais positivos: nó instável, e^{At} afasta as trajetórias.",
+          "domain": [
+            -5,
+            5
+          ]
+        }
+      ]
     },
     {
       "id": "edo-06-estabilidade-plano-fase",
@@ -1345,7 +1456,27 @@
             "where": "Livro: capítulo dedicado a plano de fase e estabilidade"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "vectorfield",
+          "expr": "a*x - y, x + a*y",
+          "caption": "Varie a: espiral estável (a<0), centro (a=0) e espiral instável (a>0).",
+          "domain": [
+            -5,
+            5
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": -1,
+              "max": 1,
+              "default": -0.3,
+              "step": 0.1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "edo-07-series-de-potencias-frobenius",
@@ -1551,7 +1682,24 @@
             "where": "Notas de aula online (tutorial.math.lamar.edu)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "cos(x)",
+          "caption": "Solução em série: as somas parciais convergem dentro do raio de Fuchs.",
+          "domain": [
+            -4,
+            4
+          ],
+          "overlay": [
+            "1",
+            "1-x^2/2",
+            "1-x^2/2+x^4/24",
+            "1-x^2/2+x^4/24-x^6/720"
+          ]
+        }
+      ]
     },
     {
       "id": "edo-08-transformada-de-laplace",
@@ -1764,6 +1912,119 @@
             "where": "Notas de aula online (tutorial.math.lamar.edu), com tabela e exemplos"
           }
         ]
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "(sign(x - a) + 1)/2",
+          "caption": "Degrau de Heaviside u(t-a): liga a força no instante t=a.",
+          "domain": [
+            0,
+            5
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": 0.5,
+              "max": 4,
+              "default": 2,
+              "step": 0.5
+            }
+          ]
+        },
+        {
+          "kind": "plot2d",
+          "expr": "exp(-s*x)",
+          "caption": "Núcleo e^{-st} da transformada: s maior dá mais peso ao início.",
+          "domain": [
+            0,
+            5
+          ],
+          "params": [
+            {
+              "name": "s",
+              "min": 0.2,
+              "max": 2,
+              "default": 1,
+              "step": 0.2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "formulaSheet": "## EDOs de 1ª ordem: separáveis e lineares\n\n- **Separável** $y'=g(x)h(y)$: integre $\\displaystyle\\int\\frac{dy}{h(y)}=\\int g(x)\\,dx+C$. Some as soluções de equilíbrio dos zeros de $h(y)=0$ (podem ser singulares, perdidas na divisão).\n- **Linear** $y'+p(x)y=q(x)$: fator integrante $\\mu(x)=e^{\\int p(x)\\,dx}$ transforma o lado esquerdo em $(\\mu y)'=\\mu q$, logo\n$$y=\\frac{1}{\\mu(x)}\\left(\\int \\mu(x)\\,q(x)\\,dx+C\\right),\\qquad \\mu(x)=e^{\\int p\\,dx}.$$\n- Estrutura: $y=y_h+y_p$, com $y_h=Ce^{-\\int p\\,dx}$.\n\n## Exatas, fatores integrantes e substituições\n\n- **Critério de exatidão** de $M\\,dx+N\\,dy=0$: $\\dfrac{\\partial M}{\\partial y}=\\dfrac{\\partial N}{\\partial x}$. Solução implícita $F(x,y)=C$ com\n$$F=\\int M\\,dx+\\varphi(y),\\quad \\text{e }\\varphi'(y)\\text{ vem de }F_y=N.$$\n- **Fator integrante** para tornar exata:\n  - se $\\dfrac{M_y-N_x}{N}=f(x)$ (só de $x$): $\\mu(x)=e^{\\int f(x)\\,dx}$;\n  - se $\\dfrac{N_x-M_y}{M}=g(y)$ (só de $y$): $\\mu(y)=e^{\\int g(y)\\,dy}$.\n- **Homogênea** ($f(tx,ty)=f(x,y)$): $v=\\dfrac{y}{x}$, $y'=v+xv'\\Rightarrow x\\,v'=f(1,v)-v$ (separável).\n- **Bernoulli** $y'+p\\,y=q\\,y^{n}$ ($n\\neq0,1$): $v=y^{1-n}\\Rightarrow v'+(1-n)p\\,v=(1-n)q$ (linear).\n\n## Existência, unicidade e estimativas\n\n- **Forma integral** do PVI: $\\varphi(x)=y_0+\\displaystyle\\int_{x_0}^{x}f(t,\\varphi(t))\\,dt$.\n- **Lipschitz** via derivada: $L=\\sup_R|f_y|$, então $|f(x,y_1)-f(x,y_2)|\\le L|y_1-y_2|$.\n- **Raio de Picard** no retângulo $R=\\{|x-x_0|\\le a,\\ |y-y_0|\\le b\\}$: $M=\\max_R|f|$, solução única em $[x_0-h,x_0+h]$ com\n$$h=\\min\\left\\{a,\\ \\frac{b}{M}\\right\\}.$$\n- **Iteração de Picard**: $\\varphi_0=y_0,\\ \\varphi_{k+1}(x)=y_0+\\int_{x_0}^x f(t,\\varphi_k)\\,dt$.\n- **Grönwall**: se $u(x)\\le\\alpha+\\int_{x_0}^x\\beta(t)u(t)\\,dt$ com $\\beta\\ge0$, então $u(x)\\le\\alpha\\,e^{\\int_{x_0}^x\\beta(t)\\,dt}$.\n\n## EDOs lineares de ordem $n$ com coeficientes constantes\n\n- **Equação característica** de $y^{(n)}+a_{n-1}y^{(n-1)}+\\cdots+a_0y=0$: substitua $y=e^{rx}$ para obter $r^n+a_{n-1}r^{n-1}+\\cdots+a_0=0$. Soluções por tipo de raiz:\n  - real simples $r$: $e^{rx}$;\n  - real com multiplicidade $m$: $e^{rx},\\,xe^{rx},\\dots,x^{m-1}e^{rx}$;\n  - par complexo $\\alpha\\pm\\beta i$: $e^{\\alpha x}\\cos\\beta x,\\ e^{\\alpha x}\\sin\\beta x$ (com mult. $m$, multiplique por $1,x,\\dots,x^{m-1}$).\n- **Coeficientes a determinar** (palpite $y_p$): para $g=e^{ax}P_k(x)$ tente $x^{s}e^{ax}(A_k x^k+\\cdots+A_0)$; para $g=e^{ax}\\big(P\\cos\\beta x+Q\\sin\\beta x\\big)$ tente $x^{s}e^{ax}(\\cdots\\cos\\beta x+\\cdots\\sin\\beta x)$; onde $s$ = multiplicidade de $a$ (resp. $a+\\beta i$) como raiz da característica (0 se não for raiz).\n- **Fórmula de Abel** ($y''+p\\,y'+q\\,y=0$): $W(x)=W(x_0)\\,e^{-\\int_{x_0}^x p(t)\\,dt}$; em ordem $n$ troque $p$ por $a_{n-1}$.\n- **Redução de ordem** (conhecida $y_1$): $y_2=y_1\\displaystyle\\int\\frac{e^{-\\int p\\,dx}}{y_1^{2}}\\,dx$.\n- **Variação de parâmetros** ($y''+p\\,y'+q\\,y=g$, $W=W(y_1,y_2)$):\n$$y_p=-y_1\\int\\frac{y_2\\,g}{W}\\,dx+y_2\\int\\frac{y_1\\,g}{W}\\,dx,\\qquad u_1'y_1+u_2'y_2=0,\\ \\ u_1'y_1'+u_2'y_2'=g.$$\n\n## Sistemas lineares e exponencial de matriz $e^{At}$\n\n- **PVI**: $x'=Ax\\Rightarrow x(t)=e^{A(t-t_0)}x_0$. Propriedades: $\\frac{d}{dt}e^{At}=Ae^{At}$, $e^{A(t+s)}=e^{At}e^{As}$, $(e^{At})^{-1}=e^{-At}$; $e^{(A+B)t}=e^{At}e^{Bt}$ **só se** $AB=BA$.\n- **Autovalores** ($Av=\\lambda v$): $x(t)=e^{\\lambda t}v$. Diagonalizável $A=PDP^{-1}$: $e^{At}=P\\,\\mathrm{diag}(e^{\\lambda_i t})\\,P^{-1}$.\n- **Par complexo** $\\lambda=\\alpha+\\beta i$, $v=a+ib$: duas soluções reais\n$$e^{\\alpha t}\\big(a\\cos\\beta t-b\\sin\\beta t\\big),\\qquad e^{\\alpha t}\\big(a\\sin\\beta t+b\\cos\\beta t\\big).$$\n- **Bloco de Jordan / nilpotente**: $e^{At}=e^{\\lambda t}\\sum_{k\\ge0}\\frac{(A-\\lambda I)^k t^k}{k!}$; se $A^m=0$ a série trunca. Caso $2\\times2$ com autovalor duplo defectivo: $e^{At}=e^{\\lambda t}\\big(I+(A-\\lambda I)t\\big)$. Entradas de $e^{Jt}$: $t^{j}e^{\\lambda t}/j!$.\n- **Variação de parâmetros** ($x'=Ax+g$): $\\displaystyle x(t)=e^{A(t-t_0)}x_0+\\int_{t_0}^{t}e^{A(t-s)}g(s)\\,ds$.\n\n## Sistemas autônomos: plano de fase e estabilidade\n\n- **Autovalores $2\\times2$** com $T=\\mathrm{tr}\\,A$, $D=\\det A$: $\\lambda=\\dfrac{T\\pm\\sqrt{T^2-4D}}{2}$; discriminante $\\Delta=T^2-4D$.\n- **Classificação linear** (equilíbrio na origem de $x'=Ax$):\n  - $D<0$: **sela** (instável);\n  - $D>0,\\ \\Delta>0$: **nó** ($T<0$ estável, $T>0$ instável);\n  - $D>0,\\ \\Delta<0$: **foco/espiral** ($T<0$ estável, $T>0$ instável);\n  - $D>0,\\ T=0$: **centro** (imaginários puros).\n- **Estabilidade**: assintoticamente estável $\\iff$ todo $\\mathrm{Re}\\,\\lambda_i<0$ (no $2\\times2$: $T<0$ e $D>0$); instável se algum $\\mathrm{Re}\\,\\lambda>0$.\n- **Linearização**: perto de $x^*$ ($F(x^*)=0$), $x'\\approx J(x^*)(x-x^*)$ com Jacobiana $J=DF(x^*)$; válida se $x^*$ é hiperbólico (nenhum $\\mathrm{Re}\\,\\lambda=0$).\n- **Lyapunov**: $V(x^*)=0$, $V>0$ ao redor; $\\dot V=\\nabla V\\cdot F\\le0\\Rightarrow$ estável; $\\dot V<0\\Rightarrow$ assint. estável.\n\n## Séries de potências e método de Frobenius\n\n- **Ponto ordinário** de $y''+P y'+Q y=0$ ($P,Q$ analíticas): $y=\\sum_{n\\ge0}a_n(x-x_0)^n$; substitua e iguale coeficientes para obter a recorrência de $a_n$ ($a_0,a_1$ livres). Raio $\\ge$ distância a singularidade mais próxima de $P,Q$ no plano complexo.\n- **Ponto singular regular** ($(x-x_0)P$ e $(x-x_0)^2Q$ analíticas): $y=(x-x_0)^r\\sum a_n(x-x_0)^n$, $a_0\\neq0$. **Equação indicial**\n$$r(r-1)+p_0\\,r+q_0=0,\\quad p_0=\\lim_{x\\to x_0}(x-x_0)P,\\quad q_0=\\lim_{x\\to x_0}(x-x_0)^2Q.$$\n- **Segunda solução** (raízes $r_1\\ge r_2$): se $r_1-r_2\\notin\\mathbb{Z}$, mesma forma com $r_2$; se $r_1=r_2$ ou $r_1-r_2\\in\\mathbb{Z}_{>0}$, pode surgir termo $\\ln(x-x_0)$: $y_2=Cy_1\\ln(x-x_0)+(x-x_0)^{r_2}\\sum b_n(x-x_0)^n$.\n\n## Transformada de Laplace\n\n- **Definição** e linearidade: $\\mathcal{L}\\{f\\}(s)=\\displaystyle\\int_0^\\infty e^{-st}f(t)\\,dt=F(s)$.\n- **Tabela** ($s$ no domínio de convergência):\n$$\\mathcal{L}\\{1\\}=\\frac1s,\\quad \\mathcal{L}\\{t^n\\}=\\frac{n!}{s^{n+1}},\\quad \\mathcal{L}\\{e^{at}\\}=\\frac{1}{s-a},$$\n$$\\mathcal{L}\\{\\cos bt\\}=\\frac{s}{s^2+b^2},\\quad \\mathcal{L}\\{\\sin bt\\}=\\frac{b}{s^2+b^2},\\quad \\mathcal{L}\\{\\cosh bt\\}=\\frac{s}{s^2-b^2},\\quad \\mathcal{L}\\{\\sinh bt\\}=\\frac{b}{s^2-b^2}.$$\n- **Derivada** (algebriza o PVI): $\\mathcal{L}\\{f'\\}=sF(s)-f(0)$, $\\mathcal{L}\\{f''\\}=s^2F(s)-s f(0)-f'(0)$, geral $\\mathcal{L}\\{f^{(n)}\\}=s^nF-s^{n-1}f(0)-\\cdots-f^{(n-1)}(0)$.\n- **Translações**: $\\mathcal{L}\\{e^{at}f(t)\\}=F(s-a)$;$\\quad$ $\\mathcal{L}\\{u_c(t)f(t-c)\\}=e^{-cs}F(s)$ (Heaviside $u_c$).\n- **Derivada em $s$**: $\\mathcal{L}\\{t^n f(t)\\}=(-1)^n F^{(n)}(s)$.\n- **Convolução**: $(f*g)(t)=\\displaystyle\\int_0^t f(\\tau)g(t-\\tau)\\,d\\tau$, com $\\mathcal{L}\\{f*g\\}=F(s)G(s)$, i.e. $\\mathcal{L}^{-1}\\{FG\\}=f*g$.",
+  "examBank": [
+    {
+      "prompt": "Considere a equação diferencial $x\\,y' + 2y = 4x^{2}$, definida para $x>0$, com a condição inicial $y(1)=2$.\n\n(a) Classifique a equação e escreva-a na forma padrão.\n(b) Determine o fator integrante e resolva o problema de valor inicial.",
+      "solution": "**(a) Classificação.** Trata-se de uma EDO **linear de primeira ordem**. Como $x>0$, dividimos por $x$ para obter a forma padrão $y'+p(x)y=q(x)$:\n$$y' + \\frac{2}{x}\\,y = 4x, \\qquad p(x)=\\frac{2}{x},\\quad q(x)=4x.$$\n\n**(b) Fator integrante.** Usamos $\\mu(x)=e^{\\int p(x)\\,dx}$:\n$$\\mu(x)=e^{\\int \\frac{2}{x}\\,dx}=e^{2\\ln x}=x^{2}.$$\nMultiplicando a equação por $\\mu(x)=x^{2}$, o lado esquerdo torna-se a derivada de um produto:\n$$\\big(x^{2}y\\big)' = x^{2}\\cdot 4x = 4x^{3}.$$\nIntegrando ambos os lados:\n$$x^{2}y = x^{4}+C \\;\\Longrightarrow\\; y(x) = x^{2} + \\frac{C}{x^{2}}.$$\n\n**Condição inicial.** Impondo $y(1)=2$:\n$$1 + C = 2 \\;\\Longrightarrow\\; C = 1.$$\nLogo a solução do PVI é $y(x)=x^{2}+\\dfrac{1}{x^{2}}$.\n\n**Verificação.** $y'=2x-2x^{-3}$ e $x y'+2y = 2x^{2}-2x^{-2}+2x^{2}+2x^{-2}=4x^{2}$. $\\checkmark$",
+      "difficulty": 1,
+      "answer": "$y(x) = x^{2} + \\dfrac{1}{x^{2}}$.",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Considere a equação de primeira ordem na forma diferencial\n$$\\big(x^{2}+y^{2}+x\\big)\\,dx + xy\\,dy = 0, \\qquad x>0.$$\n(a) Mostre que a equação **não** é exata.\n(b) Encontre um fator integrante que dependa apenas de $x$ e resolva a equação (solução na forma implícita).",
+      "solution": "Escrevemos $M\\,dx+N\\,dy=0$ com $M=x^{2}+y^{2}+x$ e $N=xy$.\n\n**(a) Teste de exatidão.**\n$$\\frac{\\partial M}{\\partial y}=2y, \\qquad \\frac{\\partial N}{\\partial x}=y.$$\nComo $M_y\\neq N_x$, a forma **não é exata**.\n\n**(b) Fator integrante $\\mu(x)$.** Calculamos\n$$\\frac{M_y-N_x}{N}=\\frac{2y-y}{xy}=\\frac{1}{x},$$\nque depende só de $x$. Logo existe fator integrante\n$$\\mu(x)=e^{\\int \\frac{1}{x}\\,dx}=x.$$\nMultiplicando por $\\mu=x$:\n$$\\underbrace{\\big(x^{3}+xy^{2}+x^{2}\\big)}_{M^{*}}\\,dx+\\underbrace{x^{2}y}_{N^{*}}\\,dy=0.$$\nAgora $M^{*}_y=2xy=N^{*}_x$, portanto é **exata**.\n\n**Função potencial.** Buscamos $F(x,y)$ com $F_x=M^{*}$, $F_y=N^{*}$. De $F_y=x^{2}y$:\n$$F(x,y)=\\frac{x^{2}y^{2}}{2}+g(x).$$\nDerivando em $x$ e igualando a $M^{*}$:\n$$xy^{2}+g'(x)=x^{3}+xy^{2}+x^{2} \\;\\Longrightarrow\\; g'(x)=x^{3}+x^{2} \\;\\Longrightarrow\\; g(x)=\\frac{x^{4}}{4}+\\frac{x^{3}}{3}.$$\n\n**Solução geral (implícita).**\n$$\\frac{x^{2}y^{2}}{2}+\\frac{x^{4}}{4}+\\frac{x^{3}}{3}=C.$$\nMultiplicando por $12$: $\\;6x^{2}y^{2}+3x^{4}+4x^{3}=C_1$.",
+      "difficulty": 3,
+      "answer": "$\\mu(x)=x$; solução implícita $\\;\\dfrac{x^{2}y^{2}}{2}+\\dfrac{x^{4}}{4}+\\dfrac{x^{3}}{3}=C\\;$ (equiv. $6x^{2}y^{2}+3x^{4}+4x^{3}=C$).",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Considere o problema de valor inicial\n$$y'=3\\,y^{2/3}, \\qquad y(0)=0.$$\n(a) Exiba pelo menos duas soluções distintas deste PVI (de fato, uma família com infinitas soluções).\n(b) Qual hipótese do Teorema de Picard–Lindelöf falha aqui? Justifique. O que ainda garante existência?\n(c) Prove, usando o Lema de Grönwall, que se $f(t,y)$ é contínua e **Lipschitz** na variável $y$ (com constante $L$), então o PVI $y'=f(t,y),\\,y(t_0)=y_0$ tem **no máximo uma** solução.",
+      "solution": "**(a) Não unicidade.** A função nula $\\varphi_0\\equiv 0$ satisfaz o PVI. Também $\\varphi(x)=x^{3}$ o satisfaz, pois $\\varphi'=3x^{2}$ e $3\\varphi^{2/3}=3\\,(x^{3})^{2/3}=3x^{2}$. Mais geralmente, para cada $a\\ge 0$ defina\n$$\\varphi_a(x)=\\begin{cases}0, & x\\le a,\\\\ (x-a)^{3}, & x>a.\\end{cases}$$\nEm $x\\le a$ vale $\\varphi_a'=0=3\\varphi_a^{2/3}$; em $x>a$, $\\varphi_a'=3(x-a)^{2}=3\\varphi_a^{2/3}$; e em $x=a$ a derivada é contínua (vale $0$ dos dois lados). Assim $\\varphi_a\\in C^{1}$ resolve o PVI para todo $a\\ge 0$: há **infinitas** soluções.\n\n**(b) Hipótese que falha.** Picard–Lindelöf exige que $f(x,y)=3y^{2/3}$ seja **Lipschitz em $y$** numa vizinhança de $(0,0)$. Mas\n$$\\frac{|f(y)-f(0)|}{|y-0|}=\\frac{3y^{2/3}}{y}=3\\,y^{-1/3}\\xrightarrow[y\\to 0^{+}]{}\\infty,$$\nlogo nenhuma constante de Lipschitz existe perto de $y=0$ (a derivada $\\partial_y f=2y^{-1/3}$ explode). Falha a condição de Lipschitz, e por isso a unicidade se perde. Como $f$ é **contínua**, o **Teorema de Peano** ainda garante existência (local) de ao menos uma solução — mas não unicidade.\n\n**(c) Unicidade via Grönwall.** Sejam $y_1,y_2$ soluções com $y_1(t_0)=y_2(t_0)=y_0$. Pela forma integral equivalente,\n$$y_i(t)=y_0+\\int_{t_0}^{t} f(s,y_i(s))\\,ds.$$\nDefina $u(t)=|y_1(t)-y_2(t)|\\ge 0$. Para $t\\ge t_0$,\n$$u(t)\\le \\int_{t_0}^{t}\\big|f(s,y_1(s))-f(s,y_2(s))\\big|\\,ds \\le L\\int_{t_0}^{t} u(s)\\,ds.$$\nAplicando o **Lema de Grönwall** com termo constante nulo ($u(t)\\le 0+L\\int_{t_0}^t u$): $u(t)\\le 0\\cdot e^{L(t-t_0)}=0$. Como $u\\ge 0$, segue $u\\equiv 0$, isto é, $y_1\\equiv y_2$. (Para $t\\le t_0$ o argumento é análogo com $|t-t_0|$.) Logo a solução é **única**. $\\blacksquare$",
+      "difficulty": 5,
+      "answer": "(a) $y\\equiv 0$, $y=x^{3}$ e a família $\\varphi_a$ ($a\\ge0$); (b) falha a condição de Lipschitz de $f$ em $y=0$ — Peano garante existência, não unicidade; (c) Grönwall dá $|y_1-y_2|\\le L\\int|y_1-y_2|\\Rightarrow y_1\\equiv y_2$.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Considere a equação de Euler $x^{2}y''-x\\,y'+y=0$, com $x>0$, para a qual $y_1(x)=x$ é solução.\n\n(a) Usando a Fórmula de Abel, determine o Wronskiano $W(x)$ (a menos de constante).\n(b) A partir de $W$, obtenha uma segunda solução $y_2$ linearmente independente e escreva a solução geral.",
+      "solution": "**Forma padrão.** Dividindo por $x^{2}$:\n$$y''-\\frac{1}{x}y'+\\frac{1}{x^{2}}y=0,\\qquad p(x)=-\\frac{1}{x}.$$\n\n**(a) Fórmula de Abel.** Para $y''+p\\,y'+q\\,y=0$, o Wronskiano satisfaz $W(x)=C\\exp\\!\\big(-\\int p\\,dx\\big)$:\n$$W(x)=C\\exp\\!\\left(\\int \\frac{1}{x}\\,dx\\right)=C\\,e^{\\ln x}=C\\,x.$$\nTomamos $C=1$, isto é, $W(x)=x$. (Como $W\\neq 0$ em $x>0$, quaisquer duas soluções com esse Wronskiano são L.I.)\n\n**(b) Segunda solução por Abel/redução de ordem.** Por definição, $W=y_1y_2'-y_1'y_2=x\\,y_2'-y_2$. Igualando a $W=x$:\n$$x\\,y_2'-y_2=x \\;\\Longrightarrow\\; y_2'-\\frac{1}{x}y_2=1.$$\nEsta é linear de primeira ordem em $y_2$; fator integrante $\\mu=e^{-\\int \\frac{1}{x}dx}=\\frac{1}{x}$:\n$$\\left(\\frac{y_2}{x}\\right)'=\\frac{1}{x} \\;\\Longrightarrow\\; \\frac{y_2}{x}=\\ln x + D \\;\\Longrightarrow\\; y_2 = x\\ln x + Dx.$$\nO termo $Dx$ é múltiplo de $y_1$; descartando-o, tomamos $y_2(x)=x\\ln x$.\n\n**Verificação.** $y_2'=\\ln x+1$, $y_2''=1/x$, e\n$$x^{2}\\cdot\\frac{1}{x}-x(\\ln x+1)+x\\ln x = x - x\\ln x - x + x\\ln x = 0.\\;\\checkmark$$\n\n**Solução geral.** $\\;y(x)=c_1\\,x + c_2\\,x\\ln x.$",
+      "difficulty": 3,
+      "answer": "$W(x)=Cx$; segunda solução $y_2=x\\ln x$; solução geral $y=c_1 x + c_2\\,x\\ln x$.",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Seja o sistema linear $\\mathbf{x}'=A\\mathbf{x}$ com\n$$A=\\begin{pmatrix} 3 & -1 \\\\ 1 & 1 \\end{pmatrix}.$$\n(a) Calcule a exponencial de matriz $e^{At}$.\n(b) Resolva o PVI com $\\mathbf{x}(0)=\\begin{pmatrix}1\\\\0\\end{pmatrix}$.",
+      "solution": "**Autovalores.** $\\det(A-\\lambda I)=(3-\\lambda)(1-\\lambda)-(-1)(1)=\\lambda^{2}-4\\lambda+4=(\\lambda-2)^{2}$. Há um autovalor **duplo** $\\lambda=2$; a matriz é defectiva (não diagonalizável).\n\n**Decomposição nilpotente.** Seja $N=A-2I=\\begin{pmatrix}1&-1\\\\1&-1\\end{pmatrix}$. Então\n$$N^{2}=\\begin{pmatrix}1&-1\\\\1&-1\\end{pmatrix}\\begin{pmatrix}1&-1\\\\1&-1\\end{pmatrix}=\\begin{pmatrix}0&0\\\\0&0\\end{pmatrix},$$\nou seja, $N$ é nilpotente. Como $A=2I+N$ e $2I$ comuta com $N$:\n$$e^{At}=e^{2It}\\,e^{Nt}=e^{2t}\\big(I+Nt\\big),$$\npois a série de $e^{Nt}$ trunca em $N^{2}=0$. Logo\n$$e^{At}=e^{2t}\\begin{pmatrix}1+t & -t \\\\ t & 1-t\\end{pmatrix}.$$\n\n**(b) PVI.** $\\mathbf{x}(t)=e^{At}\\mathbf{x}(0)=e^{2t}\\begin{pmatrix}1+t & -t\\\\ t & 1-t\\end{pmatrix}\\begin{pmatrix}1\\\\0\\end{pmatrix}=e^{2t}\\begin{pmatrix}1+t\\\\ t\\end{pmatrix}.$\n\n**Verificação.** Com $x_1=e^{2t}(1+t)$, $x_2=e^{2t}t$: $x_1'=e^{2t}(2t+3)$ e $3x_1-x_2=e^{2t}(3+2t)\\,\\checkmark$; $x_2'=e^{2t}(2t+1)$ e $x_1+x_2=e^{2t}(1+2t)\\,\\checkmark$.",
+      "difficulty": 4,
+      "answer": "$e^{At}=e^{2t}\\begin{pmatrix}1+t & -t\\\\ t & 1-t\\end{pmatrix}$;\\quad $\\mathbf{x}(t)=e^{2t}\\begin{pmatrix}1+t\\\\ t\\end{pmatrix}$.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Considere o sistema autônomo não linear\n$$\\dot{x}=y-x^{2}, \\qquad \\dot{y}=x-y.$$\n(a) Encontre todos os pontos de equilíbrio.\n(b) Classifique cada equilíbrio quanto ao tipo e à estabilidade via linearização, justificando por que o Teorema de Hartman–Grobman se aplica.",
+      "solution": "**(a) Equilíbrios.** Impomos $\\dot x=\\dot y=0$: $y=x^{2}$ e $x=y$. Substituindo, $x=x^{2}\\Rightarrow x(x-1)=0$, logo $x=0$ ou $x=1$. Os equilíbrios são\n$$P_0=(0,0), \\qquad P_1=(1,1).$$\n\n**Matriz Jacobiana.** Com $f=y-x^{2}$, $g=x-y$:\n$$J(x,y)=\\begin{pmatrix} f_x & f_y \\\\ g_x & g_y \\end{pmatrix}=\\begin{pmatrix} -2x & 1 \\\\ 1 & -1 \\end{pmatrix}.$$\n\n**(b) Classificação.**\n\n*Em $P_0=(0,0)$:* $J=\\begin{pmatrix}0&1\\\\1&-1\\end{pmatrix}$, com $\\operatorname{tr}=-1$ e $\\det=-1<0$. Determinante negativo $\\Rightarrow$ autovalores reais de sinais opostos ($\\lambda=\\tfrac{-1\\pm\\sqrt5}{2}$, isto é, $\\approx 0{,}62$ e $\\approx -1{,}62$). Portanto $P_0$ é um **ponto de sela** — **instável**.\n\n*Em $P_1=(1,1)$:* $J=\\begin{pmatrix}-2&1\\\\1&-1\\end{pmatrix}$, com $\\operatorname{tr}=-3<0$, $\\det=(-2)(-1)-1=1>0$ e discriminante $\\operatorname{tr}^2-4\\det=9-4=5>0$. Dois autovalores reais e negativos ($\\lambda=\\tfrac{-3\\pm\\sqrt5}{2}\\approx -0{,}38,\\,-2{,}62$). Logo $P_1$ é um **nó estável** — **assintoticamente estável**.\n\n**Hartman–Grobman.** Em ambos os equilíbrios nenhum autovalor tem parte real nula (são **hiperbólicos**), de modo que o Teorema de Hartman–Grobman garante que, localmente, o retrato de fase do sistema não linear é topologicamente conjugado ao do sistema linearizado. Assim a classificação acima (sela em $P_0$, nó estável em $P_1$) é válida para o sistema original.",
+      "difficulty": 4,
+      "answer": "Equilíbrios $(0,0)$ e $(1,1)$. $(0,0)$: sela (instável), pois $\\det J=-1<0$. $(1,1)$: nó assintoticamente estável, pois $\\operatorname{tr}J=-3<0$, $\\det J=1>0$. Ambos hiperbólicos $\\Rightarrow$ Hartman–Grobman aplica-se.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Determine a solução em série de potências em torno de $x_0=0$ do problema de valor inicial\n$$y''+x\\,y'+y=0, \\qquad y(0)=1,\\; y'(0)=0.$$\nObtenha a relação de recorrência entre os coeficientes e, se possível, reconheça a função elementar somada pela série.",
+      "solution": "**Ponto ordinário.** Os coeficientes $1$, $x$ e $1$ são analíticos em $x_0=0$; pelo teorema de existência em ponto ordinário há solução analítica com raio de convergência infinito. Escrevemos $y=\\sum_{n\\ge 0}a_n x^{n}$.\n\n**Substituição.**\n$$y''=\\sum_{n\\ge 0}(n+2)(n+1)a_{n+2}x^{n},\\quad x y'=\\sum_{n\\ge 0} n\\,a_n x^{n},\\quad y=\\sum_{n\\ge 0}a_n x^{n}.$$\nSomando e igualando a zero cada coeficiente de $x^{n}$:\n$$(n+2)(n+1)a_{n+2}+n\\,a_n+a_n=0 \\;\\Longrightarrow\\; (n+2)(n+1)a_{n+2}=-(n+1)a_n.$$\nDividindo por $(n+1)$, obtemos a **recorrência**\n$$\\boxed{\\,a_{n+2}=-\\frac{a_n}{\\,n+2\\,}\\,}.$$\n\n**Condições iniciais.** $a_0=y(0)=1$ e $a_1=y'(0)=0$. Como $a_1=0$, todos os coeficientes ímpares se anulam. Para os pares, com $a_0=1$:\n$$a_2=-\\frac{1}{2},\\quad a_4=-\\frac{a_2}{4}=\\frac{1}{8},\\quad a_6=-\\frac{a_4}{6}=-\\frac{1}{48},\\;\\dots$$\nEm geral, $a_{2k}=\\dfrac{(-1)^{k}}{2\\cdot4\\cdots(2k)}=\\dfrac{(-1)^{k}}{2^{k}\\,k!}$.\n\n**Soma da série.**\n$$y(x)=\\sum_{k\\ge 0}\\frac{(-1)^{k}}{2^{k}k!}x^{2k}=\\sum_{k\\ge 0}\\frac{1}{k!}\\left(-\\frac{x^{2}}{2}\\right)^{k}=e^{-x^{2}/2}.$$\n\n**Verificação.** Para $y=e^{-x^2/2}$: $y'=-x\\,e^{-x^2/2}$, $y''=(x^2-1)e^{-x^2/2}$, e $y''+xy'+y=(x^2-1-x^2+1)e^{-x^2/2}=0$. $\\checkmark$",
+      "difficulty": 3,
+      "answer": "Recorrência $a_{n+2}=-\\dfrac{a_n}{n+2}$, com $a_{2k}=\\dfrac{(-1)^k}{2^k k!}$ e ímpares nulos; soma $y(x)=e^{-x^{2}/2}$.",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Usando a transformada de Laplace, resolva o problema de valor inicial\n$$y''-3y'+2y=e^{3t}, \\qquad y(0)=0,\\; y'(0)=0.$$",
+      "solution": "**Algebrização.** Seja $Y(s)=\\mathcal{L}\\{y\\}$. Usando $\\mathcal{L}\\{y''\\}=s^{2}Y-sy(0)-y'(0)$, $\\mathcal{L}\\{y'\\}=sY-y(0)$ e as condições nulas, além de $\\mathcal{L}\\{e^{3t}\\}=\\dfrac{1}{s-3}$:\n$$s^{2}Y-3sY+2Y=\\frac{1}{s-3}.$$\nFatorando $s^{2}-3s+2=(s-1)(s-2)$:\n$$Y(s)=\\frac{1}{(s-1)(s-2)(s-3)}.$$\n\n**Frações parciais.** Escrevemos $Y=\\dfrac{A}{s-1}+\\dfrac{B}{s-2}+\\dfrac{C}{s-3}$. Pelo método da cobertura:\n$$A=\\frac{1}{(1-2)(1-3)}=\\frac{1}{2},\\quad B=\\frac{1}{(2-1)(2-3)}=-1,\\quad C=\\frac{1}{(3-1)(3-2)}=\\frac{1}{2}.$$\n\n**Transformada inversa.** Como $\\mathcal{L}^{-1}\\{(s-a)^{-1}\\}=e^{at}$:\n$$y(t)=\\frac{1}{2}e^{t}-e^{2t}+\\frac{1}{2}e^{3t}.$$\n\n**Verificação das condições.** $y(0)=\\tfrac12-1+\\tfrac12=0\\,\\checkmark$; $y'(t)=\\tfrac12 e^{t}-2e^{2t}+\\tfrac32 e^{3t}$, logo $y'(0)=\\tfrac12-2+\\tfrac32=0\\,\\checkmark$. Substituindo, verifica-se ainda $y''-3y'+2y=e^{3t}$.",
+      "difficulty": 2,
+      "answer": "$y(t)=\\dfrac{1}{2}e^{t}-e^{2t}+\\dfrac{1}{2}e^{3t}$.",
+      "source": {
+        "exam": "Estilo concurso IF"
       }
     }
   ]

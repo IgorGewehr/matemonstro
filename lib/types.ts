@@ -56,8 +56,11 @@ export interface Figure {
   kind: "plot2d" | "vectorfield" | "riemann" | "series" | "parametric";
   expr: string;
   domain?: [number, number];
-  params?: { name: string; min: number; max: number; default: number }[];
+  params?: { name: string; min: number; max: number; default: number; step?: number }[];
   caption?: string;
+  // Curvas extras (mesma variavel de expr) desenhadas em traco fino sobreposto:
+  // reta tangente, assintotas, somas parciais de Taylor, funcao de comparacao.
+  overlay?: string[];
 }
 
 export interface StudyRoadmap {

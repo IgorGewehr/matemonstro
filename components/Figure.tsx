@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type ReactElement } from "react";
 import type { Figure as FigureData } from "@/lib/types";
+import Markdown from "@/components/Markdown";
 
 // Componente de figuras LEVE e sem dependencias: um mini-plotter em SVG puro.
 // Suporta poucos tipos de figura (plot2d/riemann/series/parametric/vectorfield),
@@ -109,7 +110,7 @@ export default function Figure({ figure }: { figure: FigureData }) {
                 type="range"
                 min={p.min}
                 max={p.max}
-                step={(p.max - p.min) / 100 || 1}
+                step={p.step ?? (p.name === "n" ? 1 : (p.max - p.min) / 100 || 1)}
                 value={vals[p.name]}
                 onChange={(e) => setVals((v) => ({ ...v, [p.name]: Number(e.target.value) }))}
                 className="flex-1 accent-[var(--color-brand)]"
@@ -120,7 +121,7 @@ export default function Figure({ figure }: { figure: FigureData }) {
       )}
       {figure.caption && (
         <figcaption className="mt-2 text-xs text-[var(--color-mut)] text-center italic">
-          {figure.caption}
+          <Markdown className="inline">{figure.caption}</Markdown>
         </figcaption>
       )}
     </figure>
@@ -242,6 +243,11 @@ function renderFigure(
   const f = compile(figure.expr, ["x", ...paramNames]);
   if (!f) return null;
 
+  // Curvas extras (tangente, assintotas, somas parciais…) na mesma variavel x.
+  const overlays = (figure.overlay ?? [])
+    .map((ex) => compile(ex, ["x", ...paramNames]))
+    .filter((g): g is Fn => !!g);
+
   if (kind === "series") {
     // sequencia a_n = f(n) para n inteiro no dominio
     const n0 = Math.ceil(a);
@@ -289,6 +295,22 @@ function renderFigure(
     pen = true;
   }
 
+  // Tracos das curvas sobrepostas (mesma escala do grafico principal; clipadas).
+  const overlayPaths = overlays.map((g) => {
+    let od = "";
+    let pen = false;
+    for (let i = 0; i <= N; i++) {
+      const y = g(xs[i], ...paramVals);
+      if (!Number.isFinite(y) || y < ymin || y > ymax) {
+        pen = false;
+        continue;
+      }
+      od += `${pen ? "L" : "M"}${sx(xs[i]).toFixed(1)},${sy(y).toFixed(1)} `;
+      pen = true;
+    }
+    return od;
+  });
+
   let rects: ReactElement[] = [];
   if (kind === "riemann") {
     const nRect = Math.max(2, Math.round(paramNames.includes("n") ? paramVals[paramNames.indexOf("n")] : 8));
@@ -318,6 +340,11 @@ function renderFigure(
     <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={figure.caption ?? "grafico"}>
       <Axes sx={sx} sy={sy} a={a} b={b} ymin={ymin} ymax={ymax} />
       {rects}
+      {overlayPaths.map((od, k) =>
+        od ? (
+          <path key={k} d={od} fill="none" stroke="var(--color-mut)" strokeWidth={1.3} strokeDasharray="4 3" />
+        ) : null
+      )}
       <path d={d} fill="none" stroke="#00d3a7" strokeWidth={2} />
     </svg>
   );

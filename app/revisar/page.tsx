@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useApp } from "@/components/AppState";
+import { useCelebrate } from "@/components/Celebrate";
+import { XP } from "@/lib/gamification";
 import {
   dueCards,
   dueSoon,
@@ -11,6 +13,7 @@ import {
   review as previewReview,
   type Grade,
 } from "@/lib/srs";
+import { cappedDueCards } from "@/lib/scheduler";
 import { getSubRef } from "@/lib/curriculum";
 import Markdown from "@/components/Markdown";
 
@@ -55,12 +58,16 @@ export default function RevisarPage() {
   const [revealed, setRevealed] = useState(false);
   const [predicted, setPredicted] = useState<Predicted | undefined>(undefined);
   const [done, setDone] = useState(0);
+  const { celebrate } = useCelebrate();
+  const celebratedRef = useRef(false);
 
   const calibration = !!settings?.calibration;
 
   useEffect(() => {
     if (ready && queue === null) {
-      const ordered = burySiblings(dueCards(cards, Date.now()));
+      // Teto diario de revisoes: o excedente fica vencido para amanha (mesma
+      // fila que a home/badge/notificacao mostram — fonte unica em scheduler).
+      const ordered = burySiblings(cappedDueCards(cards, settings, Date.now()));
       setQueue(ordered.map((c) => c.id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -72,6 +79,18 @@ export default function RevisarPage() {
   const currentId = queue ? queue[idx] : undefined;
   const card = currentId ? cards.find((c) => c.id === currentId) : undefined;
   const finished = queue !== null && (idx >= queue.length || !card);
+
+  // Confete ao fechar a sessao (uma vez), reforcando o ato mais importante do dia.
+  useEffect(() => {
+    if (finished && done > 0 && !celebratedRef.current) {
+      celebratedRef.current = true;
+      celebrate({
+        kind: "generic",
+        title: "Revisão fechada! 🎯",
+        message: `+${done * XP.perReview} XP · ${done} cartões que você não vai esquecer tão cedo.`,
+      });
+    }
+  }, [finished, done, celebrate]);
 
   async function grade(g: Grade) {
     if (!card) return;
@@ -121,15 +140,25 @@ export default function RevisarPage() {
   if (!ready || queue === null) return <div className="text-[var(--color-mut)]">Carregando…</div>;
 
   if (finished) {
+    // Cartões ainda vencidos = excedente cortado pelo teto do dia (voltam amanhã).
+    const overflow = dueCards(cards, Date.now()).length;
+    const cap = settings?.maxReviewsPerDay ?? 120;
     return (
       <div className="grid place-items-center min-h-[60vh]">
         <div className="panel p-8 text-center max-w-md">
-          <div className="text-5xl mb-3">🎉</div>
-          <h1 className="text-xl font-bold">Revisões em dia!</h1>
+          <div className="text-5xl mb-3">{overflow > 0 ? "✅" : "🎉"}</div>
+          <h1 className="text-xl font-bold">{overflow > 0 ? "Teto do dia batido!" : "Revisões em dia!"}</h1>
           <p className="text-[var(--color-mut)] text-sm mt-2">
             {done > 0 ? `Você revisou ${done} cartões nesta sessão.` : "Nenhum cartão vence agora."}
-            {soon > 0 && ` ${soon} cartões vencem nos próximos 3 dias.`}
+            {overflow > 0
+              ? ` Ainda há ${overflow} vencidos além do teto de ${cap}/dia — eles voltam amanhã (ajuste o teto em Ajustes).`
+              : soon > 0 && ` ${soon} cartões vencem nos próximos 3 dias.`}
           </p>
+          {done > 0 && (
+            <div className="chip mt-4 mx-auto w-fit !text-[#00d3a7] !border-[#00d3a7]">
+              +{done * XP.perReview} XP nesta sessão
+            </div>
+          )}
           <div className="flex gap-2 justify-center mt-5">
             <Link href="/" className="btn">Voltar ao Hoje</Link>
             {errorCount > 0 ? (
@@ -209,7 +238,7 @@ export default function RevisarPage() {
       {revealed && (
         <div className="grid grid-cols-4 gap-2 mt-4">
           {GRADES.map((x) => {
-            const preview = previewReview(card!, x.g, Date.now());
+            const preview = previewReview(card!, x.g, Date.now(), { requestRetention: settings?.requestRetention });
             return (
               <button
                 key={x.g}

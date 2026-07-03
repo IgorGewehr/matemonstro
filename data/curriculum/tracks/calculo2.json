@@ -427,7 +427,26 @@
             "where": "cap. 19, deducao da tecnica e formulas de reducao"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "riemann",
+          "expr": "x*sin(x)",
+          "domain": [
+            0,
+            3.1416
+          ],
+          "params": [
+            {
+              "name": "n",
+              "min": 2,
+              "max": 30,
+              "default": 10
+            }
+          ],
+          "caption": "Área sob $x\\sin x$ em $[0,\\pi]$ vale $\\pi$: a integral definida resolvida por partes."
+        }
+      ]
     },
     {
       "id": "calculo2-02-integrais-trigonometricas",
@@ -688,10 +707,7 @@
           "ref": "livro"
         }
       ],
-      "prereqs": [
-        "calculo2-01-integracao-por-substituicao",
-        "calculo1-11-derivadas-trigonometricas"
-      ],
+      "prereqs": [],
       "studyRoadmap": {
         "steps": [
           "Monte uma tabela-decisao: para $\\int\\sin^m\\cos^n$ e para $\\int\\tan^m\\sec^n$, escreva em uma folha 'se tal expoente e impar/par -> guarde tal fator -> substitua tal variavel'. Decore essa arvore de decisao antes de calcular qualquer coisa.",
@@ -745,7 +761,21 @@
             "where": "Secao 'Integrals Involving Trig Functions': tabela de estrategias e exemplos completos"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sin(x)^2",
+          "domain": [
+            0,
+            6.2832
+          ],
+          "overlay": [
+            "1/2"
+          ],
+          "caption": "$\\sin^2 x$ oscila em torno da média $\\tfrac12$; por isso $\\int_0^\\pi\\sin^2 x\\,dx=\\tfrac{\\pi}{2}$."
+        }
+      ]
     },
     {
       "id": "calculo2-03-substituicao-trigonometrica",
@@ -1056,7 +1086,18 @@
             "where": "Capitulo de tecnicas de integracao: substituicoes trigonometricas e integrais de secante"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sqrt(4 - x^2)",
+          "domain": [
+            -2.2,
+            2.2
+          ],
+          "caption": "$\\sqrt{4-x^2}$ é o semicírculo de raio $2$; a substituição $x=2\\sin\\theta$ elimina a raiz."
+        }
+      ]
     },
     {
       "id": "calculo2-04-fracoes-parciais",
@@ -1416,7 +1457,22 @@
             "where": "cap. 19, decomposicao em fracoes parciais e argumento de existencia/unicidade"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "1/(x*(x+1))",
+          "domain": [
+            0.3,
+            5
+          ],
+          "overlay": [
+            "1/x",
+            "-1/(x+1)"
+          ],
+          "caption": "$\\frac{1}{x(x+1)}=\\frac1x-\\frac1{x+1}$: a função é a soma de dois blocos elementares."
+        }
+      ]
     },
     {
       "id": "calculo2-05-integrais-improprias",
@@ -1677,8 +1733,7 @@
       ],
       "prereqs": [
         "calculo1-15-integral-riemann",
-        "calculo1-04-limites-laterais-infinitos",
-        "calculo2-01-integral-partes"
+        "calculo1-04-limites-laterais-infinitos"
       ],
       "studyRoadmap": {
         "steps": [
@@ -1733,7 +1788,21 @@
             "where": "Integrais improprias: definicao, integral-p e testes de comparacao para convergencia"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "1/x^2",
+          "domain": [
+            0.5,
+            10
+          ],
+          "overlay": [
+            "1/x"
+          ],
+          "caption": "Caudas de $1/x^p$: $\\int_1^\\infty x^{-2}$ tem área finita (converge); $\\int_1^\\infty x^{-1}$ diverge."
+        }
+      ]
     },
     {
       "id": "calculo2-06-sequencias",
@@ -2061,7 +2130,33 @@
             "where": "Cap. 2 — Sequences and Series (Order Limit Theorem, Monotone Convergence, Bolzano-Weierstrass, Cauchy)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "(1 + 1/x)^x",
+          "domain": [
+            1,
+            30
+          ],
+          "overlay": [
+            "e"
+          ],
+          "caption": "$(1+\\tfrac1n)^n\\to e$: sequência crescente e limitada, logo convergente."
+        },
+        {
+          "kind": "series",
+          "expr": "x^(1/x)",
+          "domain": [
+            1,
+            30
+          ],
+          "overlay": [
+            "1"
+          ],
+          "caption": "$\\sqrt[n]{n}=n^{1/n}$ sobe, atinge o pico perto de $n=3$ e depois decresce para $1$."
+        }
+      ]
     },
     {
       "id": "calculo2-07-series-teste-divergencia",
@@ -2397,7 +2492,18 @@
             "where": "Capitulo de series numericas: definicao, serie geometrica, criterio do termo geral e serie harmonica"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "1/x",
+          "domain": [
+            1,
+            30
+          ],
+          "caption": "$\\tfrac1n\\to0$, mas $\\sum\\tfrac1n$ diverge: tender a zero é necessário, não suficiente."
+        }
+      ]
     },
     {
       "id": "calculo2-08-series-geometricas-telescopicas",
@@ -2663,7 +2769,6 @@
         }
       ],
       "prereqs": [
-        "calculo2-07-sequencias-limites",
         "calculo1-04-limites-laterais-infinitos"
       ],
       "studyRoadmap": {
@@ -2719,7 +2824,30 @@
             "where": "Capitulo de series numericas: definicao por somas parciais e series geometricas"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "(1 - r^x)/(1 - r)",
+          "domain": [
+            1,
+            15
+          ],
+          "params": [
+            {
+              "name": "r",
+              "min": 0.1,
+              "max": 0.9,
+              "default": 0.5,
+              "step": 0.05
+            }
+          ],
+          "overlay": [
+            "1/(1-r)"
+          ],
+          "caption": "Somas parciais de $\\sum r^{\\,n}$ sobem em degraus até $\\frac{1}{1-r}$."
+        }
+      ]
     },
     {
       "id": "calculo2-09-testes-comparacao",
@@ -2974,8 +3102,8 @@
         }
       ],
       "prereqs": [
-        "calculo2-07-sequencias",
-        "calculo2-08-series-geometricas-teste-divergencia",
+        "calculo2-06-sequencias",
+        "calculo2-07-series-teste-divergencia",
         "calculo2-05-integrais-improprias"
       ],
       "studyRoadmap": {
@@ -3031,7 +3159,26 @@
             "where": "Unit on Series: integral test, p-series e comparison tests (notas e problemas resolvidos)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "riemann",
+          "expr": "1/x^2",
+          "domain": [
+            1,
+            10
+          ],
+          "params": [
+            {
+              "name": "n",
+              "min": 2,
+              "max": 30,
+              "default": 9
+            }
+          ],
+          "caption": "Teste da integral: os retângulos $\\sum 1/n^2$ e a área $\\int 1/x^2$ convergem juntos."
+        }
+      ]
     },
     {
       "id": "calculo2-10-testes-razao-raiz",
@@ -3300,10 +3447,7 @@
           "ref": "livro"
         }
       ],
-      "prereqs": [
-        "calculo2-08-series-comparacao",
-        "calculo2-09-series-alternadas-convergencia-absoluta"
-      ],
+      "prereqs": [],
       "studyRoadmap": {
         "steps": [
           "Escreva num cartao os DOIS enunciados lado a lado (razao e raiz) com as tres conclusoes ($L<1$, $L>1$, $L=1$) e a regra de escolha: fatorial/potencia -> razao; expoente $n$ -> raiz. Decore antes de calcular qualquer serie.",
@@ -3357,7 +3501,18 @@
             "where": "Capitulo 3: Teoremas 3.33 (root test com limsup) e 3.34 (ratio test), e a relacao entre eles"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "x^2/2^x",
+          "domain": [
+            1,
+            20
+          ],
+          "caption": "$n^2/2^n\\to0$: a razão tende a $\\tfrac12<1$ e a série converge como uma geométrica."
+        }
+      ]
     },
     {
       "id": "calculo2-11-series-alternadas",
@@ -3608,8 +3763,7 @@
         }
       ],
       "prereqs": [
-        "calculo2-08-series-testes-comparacao",
-        "calculo2-09-teste-integral-p-series",
+        "calculo2-09-testes-comparacao",
         "calculo2-10-testes-razao-raiz"
       ],
       "studyRoadmap": {
@@ -3660,7 +3814,18 @@
             "where": "Seção sobre séries alternadas e critério de Leibniz"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "(-1)^(x+1)/x",
+          "domain": [
+            1,
+            20
+          ],
+          "caption": "Harmônica alternada: os sinais trocam e $|a_n|=\\tfrac1n$ decresce a $0$ (Leibniz)."
+        }
+      ]
     },
     {
       "id": "calculo2-12-series-potencias",
@@ -3972,7 +4137,21 @@
             "where": "Cap. 11 - Séries de potências, teorema de Cauchy-Hadamard e teoremas de derivação/integração"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "1/(1-x)",
+          "domain": [
+            -1.9,
+            0.9
+          ],
+          "overlay": [
+            "1 + x + x^2 + x^3 + x^4 + x^5"
+          ],
+          "caption": "$\\sum x^n$ acompanha $\\frac{1}{1-x}$ só dentro de $|x|<1$; fora do raio, diverge."
+        }
+      ]
     },
     {
       "id": "calculo2-13-taylor-maclaurin",
@@ -4242,8 +4421,7 @@
       ],
       "prereqs": [
         "calculo2-06-sequencias",
-        "calculo2-11-series-potencias",
-        "calculo1-08-derivadas-ordem-superior"
+        "calculo2-12-series-potencias"
       ],
       "studyRoadmap": {
         "steps": [
@@ -4303,7 +4481,23 @@
             "where": "Cap. 7 'Polynomial Approximations to Functions': Teorema de Taylor com resto e aplicacoes"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sin(x)",
+          "domain": [
+            -6.5,
+            6.5
+          ],
+          "overlay": [
+            "x",
+            "x - x^3/6",
+            "x - x^3/6 + x^5/120"
+          ],
+          "caption": "Polinômios de Taylor de $\\sin x$ em $0$: cada grau abraça a curva por mais tempo."
+        }
+      ]
     },
     {
       "id": "calculo2-14-aplicacoes-series",
@@ -4632,7 +4826,21 @@
             "where": "Cap. 11 - series infinitas: teoremas de integracao e derivacao termo a termo, resto de Taylor"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "exp(-(x^2))",
+          "domain": [
+            -2.5,
+            2.5
+          ],
+          "overlay": [
+            "1 - x^2 + x^4/2 - x^6/6"
+          ],
+          "caption": "$e^{-x^2}$ e sua série de Maclaurin: integra-se termo a termo o que não tem primitiva elementar."
+        }
+      ]
     },
     {
       "id": "calculo2-15-curvas-parametricas",
@@ -4907,7 +5115,7 @@
       "prereqs": [
         "calculo1-08-regras-derivacao",
         "calculo1-09-regra-cadeia",
-        "calculo2-14-coordenadas-polares"
+        "calculo2-16-coordenadas-polares"
       ],
       "studyRoadmap": {
         "steps": [
@@ -4967,7 +5175,27 @@
             "where": "Secao de curvas parametrizadas e comprimento de arco (vetor tangente e integral da norma da derivada)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "parametric",
+          "expr": "t - sin(t), 1 - cos(t)",
+          "domain": [
+            0,
+            12.566
+          ],
+          "caption": "Cicloide: o rastro de um ponto na borda de uma roda que rola sem escorregar."
+        },
+        {
+          "kind": "parametric",
+          "expr": "sin(3*t), cos(2*t)",
+          "domain": [
+            0,
+            6.2832
+          ],
+          "caption": "Figura de Lissajous: uma curva que se autointersecta, impossível como $y=f(x)$."
+        }
+      ]
     },
     {
       "id": "calculo2-16-coordenadas-polares",
@@ -5291,6 +5519,101 @@
             "where": "Coordenadas polares: conversao, esboco de curvas, area e comprimento"
           }
         ]
+      },
+      "figures": [
+        {
+          "kind": "parametric",
+          "expr": "(1 + cos(t))*cos(t), (1 + cos(t))*sin(t)",
+          "domain": [
+            0,
+            6.2832
+          ],
+          "caption": "Cardioide $r=1+\\cos\\theta$: equação simples em polares, expressão feia em cartesianas."
+        },
+        {
+          "kind": "parametric",
+          "expr": "cos(3*t)*cos(t), cos(3*t)*sin(t)",
+          "domain": [
+            0,
+            3.1416
+          ],
+          "caption": "Rosácea $r=\\cos(3\\theta)$: três pétalas percorridas uma única vez em $[0,\\pi]$."
+        }
+      ]
+    }
+  ],
+  "formulaSheet": "## Integração por Partes\n\n- Fórmula: $\\displaystyle\\int u\\,dv = uv - \\int v\\,du$;  definida: $\\displaystyle\\int_a^b u\\,dv = \\big[uv\\big]_a^b - \\int_a^b v\\,du$\n- Escolha de $u$ por **LIATE**: **L**ogarítmica → **I**nversa trig. → **A**lgébrica → **T**rigonométrica → **E**xponencial (a primeira classe presente vira $u$; o resto, com $dx$, vira $dv$).\n- Transcendente isolada ($dv=dx$, $v=x$): $\\displaystyle\\int f\\,dx = x\\,f(x) - \\int x\\,f'(x)\\,dx$.\n- Primitivas úteis:\n  - $\\displaystyle\\int \\ln x\\,dx = x\\ln x - x + C$\n  - $\\displaystyle\\int \\arctan x\\,dx = x\\arctan x - \\tfrac12\\ln(1+x^2) + C$\n  - $\\displaystyle\\int \\operatorname{arcsen} x\\,dx = x\\operatorname{arcsen} x + \\sqrt{1-x^2} + C$\n- Recorrências:\n  - $\\displaystyle\\int x^n e^x\\,dx = x^n e^x - n\\int x^{n-1}e^x\\,dx$\n  - $\\displaystyle\\int \\sec^n x\\,dx = \\frac{\\sec^{n-2}x\\,\\tan x}{n-1} + \\frac{n-2}{n-1}\\int \\sec^{n-2}x\\,dx$\n- **Caso cíclico** ($\\int e^{ax}\\sin bx\\,dx$, $\\int e^{ax}\\cos bx\\,dx$): aplique partes 2× com a mesma política $\\Rightarrow$ reaparece $I$: resolva $I = (\\text{termos}) \\pm kI$ e só então some $+C$.\n\n## Integrais Trigonométricas\n\n- Pitagóricas: $\\sin^2x+\\cos^2x=1$;  $1+\\tan^2x=\\sec^2x$;  $1+\\cot^2x=\\csc^2x$.\n- Ângulo metade (baixa grau): $\\sin^2x=\\dfrac{1-\\cos 2x}{2}$,  $\\cos^2x=\\dfrac{1+\\cos 2x}{2}$.\n- $\\displaystyle\\int \\sin^m x\\cos^n x\\,dx$: se $n$ ímpar → guarde $\\cos x\\,dx$, $u=\\sin x$; se $m$ ímpar → guarde $\\sin x\\,dx$, $u=\\cos x$; se ambos pares → ângulo metade.\n- $\\displaystyle\\int \\tan^m x\\sec^n x\\,dx$: se $n$ **par** → guarde $\\sec^2x\\,dx$, $u=\\tan x$; se $m$ **ímpar** → guarde $\\sec x\\tan x\\,dx$, $u=\\sec x$.\n- $\\displaystyle\\int \\tan x\\,dx = \\ln|\\sec x| + C$;  $\\displaystyle\\int \\sec x\\,dx = \\ln|\\sec x+\\tan x| + C$.\n- Redução: $\\displaystyle\\int \\tan^n x\\,dx = \\frac{\\tan^{n-1}x}{n-1} - \\int \\tan^{n-2}x\\,dx$.\n- Produto-para-soma:\n  - $\\sin A\\cos B = \\tfrac12\\big[\\sin(A-B)+\\sin(A+B)\\big]$\n  - $\\sin A\\sin B = \\tfrac12\\big[\\cos(A-B)-\\cos(A+B)\\big]$\n  - $\\cos A\\cos B = \\tfrac12\\big[\\cos(A-B)+\\cos(A+B)\\big]$\n- Ortogonalidade ($m\\neq n$ inteiros): $\\displaystyle\\int_{-\\pi}^{\\pi}\\!\\!\\sin mx\\sin nx\\,dx=\\int_{-\\pi}^{\\pi}\\!\\!\\cos mx\\cos nx\\,dx=\\int_{-\\pi}^{\\pi}\\!\\!\\sin mx\\cos nx\\,dx=0$; se $m=n$, as duas primeiras valem $\\pi$.\n\n## Substituição Trigonométrica\n\n| Raiz | Substituição | $dx$ | Raiz vira |\n|---|---|---|---|\n| $\\sqrt{a^2-x^2}$ | $x=a\\sin\\theta$ | $a\\cos\\theta\\,d\\theta$ | $a\\cos\\theta$ |\n| $\\sqrt{a^2+x^2}$ | $x=a\\tan\\theta$ | $a\\sec^2\\theta\\,d\\theta$ | $a\\sec\\theta$ |\n| $\\sqrt{x^2-a^2}$ | $x=a\\sec\\theta$ | $a\\sec\\theta\\tan\\theta\\,d\\theta$ | $a\\tan\\theta$ |\n\n- Completar quadrado (para trinômios): $ax^2+bx+c = a\\big(x+\\tfrac{b}{2a}\\big)^2 + \\big(c-\\tfrac{b^2}{4a}\\big)$; depois $u=x+\\tfrac{b}{2a}$.\n- Retorno a $x$: monte o triângulo retângulo (ex.: $\\sin\\theta=\\tfrac{x}{a}\\Rightarrow\\cos\\theta=\\tfrac{\\sqrt{a^2-x^2}}{a}$, $\\tan\\theta=\\tfrac{x}{\\sqrt{a^2-x^2}}$).\n- Recorrentes: $\\displaystyle\\int \\cos^2\\theta\\,d\\theta = \\frac{\\theta}{2}+\\frac{\\sin 2\\theta}{4}+C$;  $\\displaystyle\\int \\sec^3\\theta\\,d\\theta = \\tfrac12\\big(\\sec\\theta\\tan\\theta + \\ln|\\sec\\theta+\\tan\\theta|\\big)+C$.\n\n## Frações Parciais\n\n- Só decompõe se **própria** ($\\deg P<\\deg Q$); se imprópria, divida antes: $\\dfrac{P}{Q}=S(x)+\\dfrac{R}{Q}$.\n- Montagem: cada $(x-a)^k \\to \\displaystyle\\sum_{l=1}^{k}\\frac{A_l}{(x-a)^l}$; cada $(x^2+bx+c)^m$ irredutível ($b^2-4c<0$) $\\to \\displaystyle\\sum_{l=1}^{m}\\frac{B_l x + C_l}{(x^2+bx+c)^l}$. Total de constantes $=\\deg Q$.\n- **Heaviside** (fator linear simples, $Q=(x-a)H(x)$): $A=\\dfrac{P(a)}{H(a)}$.\n- Blocos: $\\displaystyle\\int\\frac{A}{x-a}\\,dx = A\\ln|x-a|$;  $\\displaystyle\\int\\frac{A}{(x-a)^k}\\,dx = \\frac{A}{1-k}(x-a)^{1-k}$ ($k\\ge 2$).\n- Bloco quadrático ($u=x+\\tfrac b2$, $\\alpha=\\sqrt{c-\\tfrac{b^2}{4}}$): usa $\\displaystyle\\int\\frac{du}{u^2+\\alpha^2}=\\frac1\\alpha\\arctan\\frac u\\alpha$ e $\\displaystyle\\int\\frac{u\\,du}{u^2+\\alpha^2}=\\frac12\\ln(u^2+\\alpha^2)$. Fórmula fechada:\n$$\\int\\frac{Bx+C}{x^2+bx+c}\\,dx = \\frac{B}{2}\\ln(x^2+bx+c) + \\frac{2C-Bb}{2\\alpha}\\arctan\\!\\frac{x+\\tfrac b2}{\\alpha} + K.$$\n\n## Integrais Impróprias\n\n- Tipo I: $\\displaystyle\\int_a^{\\infty} f = \\lim_{b\\to\\infty}\\int_a^{b} f$.  Tipo II (singularidade em $b$): $\\displaystyle\\int_a^{b} f = \\lim_{t\\to b^-}\\int_a^{t} f$.\n- **Integral-p no infinito**: $\\displaystyle\\int_1^{\\infty} x^{-p}\\,dx$ converge $\\iff p>1$; vale $\\dfrac{1}{p-1}$.\n- **Integral-p na origem**: $\\displaystyle\\int_0^{1} x^{-p}\\,dx$ converge $\\iff p<1$; vale $\\dfrac{1}{1-p}$ (desigualdade **invertida**!).\n- Comparação direta ($0\\le f\\le g$): $\\int g$ conv. $\\Rightarrow \\int f$ conv.;  $\\int f$ div. $\\Rightarrow \\int g$ div.\n- Comparação no limite ($f,g>0$, $L=\\lim f/g$): $0<L<\\infty \\Rightarrow$ mesmo caráter.\n- Convergência absoluta: $\\int|f|$ conv. $\\Rightarrow \\int f$ conv., com $\\big|\\int f\\big|\\le\\int|f|$.\n\n## Sequências\n\n- Álgebra dos limites (soma, produto, quociente com $B\\neq0$) e **Confronto**: $b_n\\le a_n\\le c_n$, $b_n,c_n\\to L \\Rightarrow a_n\\to L$.\n- Função real associada (L'Hôpital): $f(n)=a_n$ e $\\lim_{x\\to\\infty}f(x)=L \\Rightarrow a_n\\to L$.\n- $e=\\displaystyle\\lim_{n\\to\\infty}\\Big(1+\\tfrac1n\\Big)^n=\\sum_{k=0}^{\\infty}\\tfrac{1}{k!}$;  mais geral, $\\Big(1+\\tfrac xn\\Big)^n\\to e^x$.\n- Limites-padrão: $\\sqrt[n]{n}\\to 1$,  $\\sqrt[n]{c}\\to 1$ ($c>0$),  $\\sqrt[n]{P(n)}\\to 1$ (polinômio positivo).\n- Recursiva $a_{n+1}=f(a_n)$ ($f$ contínua, já provada convergente): o limite satisfaz o ponto fixo $L=f(L)$.\n\n## Séries — resultados-base\n\n- **Teste da Divergência**: $a_n\\not\\to 0 \\Rightarrow \\sum a_n$ diverge. ($a_n\\to 0$ **não** garante convergência.)\n- Geométrica: $\\displaystyle\\sum_{n=0}^{\\infty}ar^n$ converge $\\iff |r|<1$, valendo $\\dfrac{a}{1-r}$; parcial $s_N=a\\dfrac{1-r^{N+1}}{1-r}$. Identifique $r=\\tfrac{a_{n+1}}{a_n}$ e $a=$ 1º termo somado.\n- Telescópica: $a_n=b_n-b_{n+1}\\Rightarrow s_N=b_1-b_{N+1}$; soma $=b_1-\\lim b_{N+1}$. Frações parciais revelam a estrutura (ex.: $\\tfrac{1}{n(n+1)}=\\tfrac1n-\\tfrac1{n+1}$, soma $=1$).\n- Harmônica $\\sum\\tfrac1n$ **diverge**; $s_N\\approx \\ln N+\\gamma$, $\\gamma\\approx 0{,}5772$.\n- Linearidade: $\\sum(\\alpha a_n+\\beta b_n)=\\alpha A+\\beta B$; finitos termos não mudam o caráter (mudam só o valor).\n\n## Teste da Integral, Séries-p e Comparação\n\n- **Teste da Integral** ($f$ positiva, contínua, decrescente, $a_n=f(n)$): $\\sum a_n$ e $\\int_1^{\\infty}f$ têm o **mesmo destino** (valores em geral diferem).\n- **Série-p**: $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n^p}$ converge $\\iff p>1$.\n- Comparação direta ($0\\le a_n\\le b_n$): $\\sum b_n$ conv. $\\Rightarrow \\sum a_n$ conv.; ($a_n\\ge b_n$): $\\sum b_n$ div. $\\Rightarrow \\sum a_n$ div.\n- Comparação no limite ($a_n,b_n>0$, $\\lim\\tfrac{a_n}{b_n}=L$, $0<L<\\infty$): convergem/divergem juntas.\n- Escolha de $b_n$ pelo **termo dominante**: $a_n=\\dfrac{3n^2-n}{2n^4+5}\\sim\\dfrac{3}{2n^2}$ → compare com $1/n^2$.\n- Estimativa do resto: $\\displaystyle\\int_{N+1}^{\\infty}\\! f \\le R_N \\le \\int_{N}^{\\infty}\\! f$.\n\n## Testes da Razão e da Raiz\n\n- **Razão (d'Alembert)**: $L=\\lim\\big|\\tfrac{a_{n+1}}{a_n}\\big|$ → $L<1$ conv. absoluta; $L>1$ ou $\\infty$ diverge; $L=1$ inconclusivo.\n- **Raiz (Cauchy)**: $L=\\lim\\sqrt[n]{|a_n|}$ (geral $\\limsup$) → mesma regra; é **estritamente mais forte** que a razão.\n- Convergência absoluta $\\Rightarrow$ convergência. Se a razão decide, a raiz decide igual ($\\lim\\big|\\tfrac{a_{n+1}}{a_n}\\big|=L \\Rightarrow \\lim\\sqrt[n]{|a_n|}=L$).\n- $L=1$ é inconclusivo porque $\\sum\\tfrac1{n^2}$ (conv.) e $\\sum\\tfrac1n$ (div.) têm ambos $L=1$.\n\n## Séries Alternadas e Convergência Absoluta\n\n- **Leibniz**: $b_n>0$, decrescente, $b_n\\to 0 \\Rightarrow \\sum(-1)^{n-1}b_n$ converge.\n- Erro de truncamento: $|s-s_N|\\le b_{N+1}$, com o sinal do **primeiro termo omitido**.\n- Absoluta ($\\sum|a_n|$ conv.) $\\Rightarrow$ conv.; **condicional** = $\\sum a_n$ conv. mas $\\sum|a_n|$ div.\n- Protótipo: $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n}=\\ln 2$ (condicional). Rearranjo (Riemann): condicional pode somar qualquer $L$.\n\n## Séries de Potências\n\n- $\\displaystyle\\sum_{n=0}^{\\infty} c_n(x-a)^n$: converge (absoluto) em $|x-a|<R$, diverge em $|x-a|>R$; **bordas** $x=a\\pm R$ testadas à parte.\n- Raio: $\\dfrac{1}{R}=\\limsup_{n\\to\\infty}\\sqrt[n]{|c_n|}$ (Cauchy-Hadamard);  na prática $R=\\lim\\Big|\\dfrac{c_n}{c_{n+1}}\\Big|=\\dfrac{1}{L}$ com $L=\\lim\\big|\\tfrac{c_{n+1}}{c_n}\\big|$.\n- Termo a termo, **mesmo $R$**: $f'(x)=\\displaystyle\\sum_{n\\ge1} n\\,c_n(x-a)^{n-1}$,  $\\displaystyle\\int_a^x f = \\sum_{n\\ge0}\\frac{c_n}{n+1}(x-a)^{n+1}$.\n- Coeficientes únicos: $c_n=\\dfrac{f^{(n)}(a)}{n!}$.\n\n## Taylor, Maclaurin e o Resto\n\n- $P_n(x)=\\displaystyle\\sum_{k=0}^{n}\\frac{f^{(k)}(a)}{k!}(x-a)^k$;  série $=\\displaystyle\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(a)}{n!}(x-a)^n$ (Maclaurin: $a=0$).\n- **Resto de Lagrange**: $R_n(x)=\\dfrac{f^{(n+1)}(\\xi)}{(n+1)!}(x-a)^{n+1}$, $\\xi$ entre $a$ e $x$. Converge a $f$ $\\iff R_n\\to 0$.\n- Cota prática de erro: $|R_n(x)|\\le\\dfrac{M}{(n+1)!}\\,|x-a|^{n+1}$, com $M=\\max|f^{(n+1)}|$.\n- **Expansões fundamentais**:\n  - $e^x=\\displaystyle\\sum_{n\\ge0}\\frac{x^n}{n!}$ (todo $\\mathbb{R}$)\n  - $\\sin x=\\displaystyle\\sum_{n\\ge0}\\frac{(-1)^n x^{2n+1}}{(2n+1)!}$,  $\\cos x=\\displaystyle\\sum_{n\\ge0}\\frac{(-1)^n x^{2n}}{(2n)!}$\n  - $\\dfrac{1}{1-x}=\\displaystyle\\sum_{n\\ge0}x^n$ ($|x|<1$)\n  - $\\ln(1+x)=\\displaystyle\\sum_{n\\ge1}\\frac{(-1)^{n-1}x^n}{n}$ ($-1<x\\le 1$)\n  - $(1+x)^k=\\displaystyle\\sum_{n\\ge0}\\binom{k}{n}x^n$ ($|x|<1$),  $\\binom{k}{n}=\\dfrac{k(k-1)\\cdots(k-n+1)}{n!}$\n- Manipulação (no raio comum): substituir $x\\mapsto g(x)$; produto de Cauchy $c_n=\\displaystyle\\sum_{k=0}^{n}a_k b_{n-k}$; integrar termo a termo.\n- Integrais sem primitiva elementar: $\\operatorname{erf}(x)=\\dfrac{2}{\\sqrt\\pi}\\displaystyle\\sum_{n\\ge0}\\frac{(-1)^n x^{2n+1}}{n!\\,(2n+1)}$,  $\\operatorname{Si}(x)=\\displaystyle\\sum_{n\\ge0}\\frac{(-1)^n x^{2n+1}}{(2n+1)!\\,(2n+1)}$.\n\n## Curvas Parametrizadas\n\n- Tangente: $\\dfrac{dy}{dx}=\\dfrac{y'(t)}{x'(t)}$ ($x'\\neq0$). Horizontal se $y'=0,\\,x'\\neq0$; vertical se $x'=0,\\,y'\\neq0$.\n- Concavidade: $\\dfrac{d^2y}{dx^2}=\\dfrac{x'(t)\\,y''(t)-y'(t)\\,x''(t)}{\\big(x'(t)\\big)^3}$  (**não** é $y''/x''$).\n- Área sob o traço: $A=\\displaystyle\\int_{\\alpha}^{\\beta} y(t)\\,x'(t)\\,dt$.\n- Comprimento de arco: $L=\\displaystyle\\int_{\\alpha}^{\\beta}\\sqrt{x'(t)^2+y'(t)^2}\\,dt$;  elemento $ds=\\sqrt{x'^2+y'^2}\\,dt$.\n- Superfície de revolução (eixo $x$, $y\\ge0$): $S=\\displaystyle\\int_{\\alpha}^{\\beta}2\\pi\\,y(t)\\sqrt{x'^2+y'^2}\\,dt$; (eixo $y$, $x\\ge0$): troque $y$ por $x$.\n- Cicloide $x=r(t-\\sin t),\\ y=r(1-\\cos t)$: um arco tem base $2\\pi r$, altura $2r$, **área $3\\pi r^2$**, **comprimento $8r$**; cúspides em $t=2k\\pi$.\n\n## Coordenadas Polares\n\n- Conversão: $x=r\\cos\\theta,\\ y=r\\sin\\theta$;  $r^2=x^2+y^2,\\ \\tan\\theta=\\tfrac yx$ (fixe $\\theta$ pelo quadrante).\n- Área varrida: $A=\\dfrac{1}{2}\\displaystyle\\int_{\\alpha}^{\\beta}[f(\\theta)]^2\\,d\\theta=\\dfrac12\\int_{\\alpha}^{\\beta} r^2\\,d\\theta$.\n- Área entre curvas ($0\\le r_{int}\\le r_{ext}$): $A=\\dfrac{1}{2}\\displaystyle\\int_{\\alpha}^{\\beta}\\big(r_{ext}^2-r_{int}^2\\big)\\,d\\theta$.\n- Tangente: $\\dfrac{dy}{dx}=\\dfrac{r'\\sin\\theta+r\\cos\\theta}{r'\\cos\\theta-r\\sin\\theta}$, com $r'=\\tfrac{dr}{d\\theta}$.\n- Comprimento de arco: $L=\\displaystyle\\int_{\\alpha}^{\\beta}\\sqrt{[f(\\theta)]^2+[f'(\\theta)]^2}\\,d\\theta$.\n- Tangente na origem: se $f(\\theta_0)=0$ e $f'(\\theta_0)\\neq0$, a reta $\\theta=\\theta_0$ é tangente ali.",
+  "examBank": [
+    {
+      "prompt": "Calcule a integral indefinida $$\\int x\\,e^{2x}\\,dx.$$",
+      "solution": "Aplicamos integração por partes, $\\int u\\,dv = uv - \\int v\\,du$. Pela regra LIATE, a parte algébrica $x$ deve ser derivada; escolhemos então:\n$$u = x,\\qquad dv = e^{2x}\\,dx \\;\\Rightarrow\\; du = dx,\\qquad v = \\tfrac{1}{2}e^{2x}.$$\nLogo\n$$\\int x\\,e^{2x}\\,dx = x\\cdot\\tfrac{1}{2}e^{2x} - \\int \\tfrac{1}{2}e^{2x}\\,dx = \\tfrac{x}{2}e^{2x} - \\tfrac{1}{4}e^{2x} + C.$$\nColocando $\\tfrac14 e^{2x}$ em evidência,\n$$\\int x\\,e^{2x}\\,dx = \\frac{e^{2x}}{4}\\,(2x-1) + C.$$\n**Verificação:** derivando $\\dfrac{e^{2x}}{4}(2x-1)$ obtemos $\\dfrac{2e^{2x}}{4}(2x-1) + \\dfrac{e^{2x}}{4}\\cdot 2 = e^{2x}\\!\\left(\\tfrac{2x-1}{2} + \\tfrac12\\right) = x\\,e^{2x}$, que é o integrando. $\\checkmark$",
+      "difficulty": 1,
+      "answer": "$\\dfrac{e^{2x}}{4}(2x-1) + C$",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Calcule $$\\int \\frac{x-5}{x^2-x-6}\\,dx.$$",
+      "solution": "O denominador fatora como $x^2 - x - 6 = (x-3)(x+2)$. Como o grau do numerador ($1$) é menor que o do denominador ($2$), decompomos em frações parciais:\n$$\\frac{x-5}{(x-3)(x+2)} = \\frac{A}{x-3} + \\frac{B}{x+2}.$$\nMultiplicando por $(x-3)(x+2)$: $\\; x-5 = A(x+2) + B(x-3)$.\n\nUsando o método de cobertura de Heaviside:\n- Fazendo $x=3$: $\\;3-5 = A(3+2) \\Rightarrow -2 = 5A \\Rightarrow A = -\\tfrac{2}{5}$.\n- Fazendo $x=-2$: $\\;-2-5 = B(-2-3) \\Rightarrow -7 = -5B \\Rightarrow B = \\tfrac{7}{5}$.\n\nPortanto\n$$\\int \\frac{x-5}{x^2-x-6}\\,dx = -\\frac{2}{5}\\int\\frac{dx}{x-3} + \\frac{7}{5}\\int\\frac{dx}{x+2} = -\\frac{2}{5}\\ln|x-3| + \\frac{7}{5}\\ln|x+2| + C.$$\n(Conferência: $A+B = 1$ = coeficiente de $x$, e $2A-3B = -5$ = termo constante do numerador.)",
+      "difficulty": 2,
+      "answer": "$-\\dfrac{2}{5}\\ln|x-3| + \\dfrac{7}{5}\\ln|x+2| + C$",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Calcule $$\\int \\frac{dx}{\\left(x^2+9\\right)^{3/2}}.$$",
+      "solution": "O radicando tem a forma $a^2+x^2$ com $a=3$, então usamos a **substituição tangente** $x = 3\\tan\\theta$, com $-\\tfrac{\\pi}{2}<\\theta<\\tfrac{\\pi}{2}$. Assim $dx = 3\\sec^2\\theta\\,d\\theta$ e\n$$x^2+9 = 9\\tan^2\\theta + 9 = 9\\sec^2\\theta \\;\\Rightarrow\\; (x^2+9)^{3/2} = 27\\sec^3\\theta,$$\nonde $\\sec\\theta>0$ no intervalo escolhido. Substituindo:\n$$\\int \\frac{3\\sec^2\\theta}{27\\sec^3\\theta}\\,d\\theta = \\frac{1}{9}\\int \\frac{d\\theta}{\\sec\\theta} = \\frac{1}{9}\\int \\cos\\theta\\,d\\theta = \\frac{1}{9}\\sin\\theta + C.$$\nVoltando a $x$: no triângulo retângulo com cateto oposto $x$, cateto adjacente $3$ e hipotenusa $\\sqrt{x^2+9}$, temos $\\sin\\theta = \\dfrac{x}{\\sqrt{x^2+9}}$. Logo\n$$\\int \\frac{dx}{(x^2+9)^{3/2}} = \\frac{x}{9\\sqrt{x^2+9}} + C.$$",
+      "difficulty": 3,
+      "answer": "$\\dfrac{x}{9\\sqrt{x^2+9}} + C$",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Mostre que a integral imprópria $$\\int_2^{\\infty} \\frac{dx}{x\\,(\\ln x)^2}$$ converge e determine o seu valor.",
+      "solution": "É uma integral imprópria de **Tipo I** (intervalo infinito), definida como $\\displaystyle\\lim_{t\\to\\infty}\\int_2^{t} \\frac{dx}{x(\\ln x)^2}$.\n\nFazemos a substituição $u = \\ln x$, de modo que $du = \\dfrac{dx}{x}$. Os limites transformam-se: quando $x=2$, $u=\\ln 2$; quando $x=t$, $u=\\ln t$. Então, para $t>2$,\n$$\\int_2^{t} \\frac{dx}{x(\\ln x)^2} = \\int_{\\ln 2}^{\\ln t} \\frac{du}{u^2} = \\left[-\\frac{1}{u}\\right]_{\\ln 2}^{\\ln t} = \\frac{1}{\\ln 2} - \\frac{1}{\\ln t}.$$\nTomando o limite $t\\to\\infty$, temos $\\dfrac{1}{\\ln t}\\to 0$, portanto\n$$\\int_2^{\\infty} \\frac{dx}{x(\\ln x)^2} = \\lim_{t\\to\\infty}\\left(\\frac{1}{\\ln 2} - \\frac{1}{\\ln t}\\right) = \\frac{1}{\\ln 2}.$$\nO limite é finito, logo a integral **converge**. (Após a substituição recaímos numa integral-$p$ $\\int du/u^{p}$ com $p=2>1$, que de fato converge.) Valor: $\\dfrac{1}{\\ln 2}$.",
+      "difficulty": 3,
+      "answer": "Converge; o valor é $\\dfrac{1}{\\ln 2}$.",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Determine se a série $$\\sum_{n=1}^{\\infty} \\frac{n!}{n^n}$$ converge ou diverge.",
+      "solution": "Os termos $a_n = \\dfrac{n!}{n^n}$ são positivos e envolvem fatorial e potência, situação ideal para o **Teste da Razão** (d'Alembert). Calculamos a razão:\n$$\\frac{a_{n+1}}{a_n} = \\frac{(n+1)!}{(n+1)^{n+1}}\\cdot\\frac{n^n}{n!} = \\frac{(n+1)\\,n^n}{(n+1)^{n+1}} = \\frac{n^n}{(n+1)^n} = \\left(\\frac{n}{n+1}\\right)^n = \\frac{1}{\\left(1+\\frac{1}{n}\\right)^n}.$$\nComo $\\left(1+\\tfrac1n\\right)^n \\to e$ quando $n\\to\\infty$, segue que\n$$L = \\lim_{n\\to\\infty}\\frac{a_{n+1}}{a_n} = \\frac{1}{e} \\approx 0{,}368 < 1.$$\nPelo Teste da Razão, como $L<1$, a série **converge** (e, sendo de termos positivos, converge absolutamente).",
+      "difficulty": 3,
+      "answer": "Converge, pois $L=\\dfrac{1}{e}<1$ (Teste da Razão).",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Considere a série $$\\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^p},\\qquad p\\in\\mathbb{R}.$$ Determine, em função de $p$, para quais valores a série converge absolutamente, converge condicionalmente ou diverge. Justifique cada regime.",
+      "solution": "Analisamos três faixas de valores de $p$.\n\n**(1) Convergência absoluta.** A série dos módulos é $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$, uma **série-$p$**, que converge se, e somente se, $p>1$. Logo, para $p>1$ a série dada converge **absolutamente**.\n\n**(2) Caso $0 < p \\le 1$.** Aqui a série dos módulos $\\sum 1/n^p$ diverge (série-$p$ com $p\\le 1$), então não há convergência absoluta. Contudo, a série é alternada e o termo $b_n = \\dfrac{1}{n^p}$ é positivo, **decrescente** e tende a $0$. Pelo **Teste de Leibniz** (série alternada), a série converge. A convergência é, portanto, **condicional**.\n\n**(3) Caso $p \\le 0$.** Escrevendo $p=-q$ com $q\\ge 0$, temos $|a_n| = n^{q}$. Para $p=0$ o termo geral é $(-1)^n$ (não tende a $0$); para $p<0$ ele cresce em módulo. Em ambos os casos $a_n \\not\\to 0$, e pelo **Teste da Divergência** (condição necessária) a série **diverge**.\n\n**Resumo:**\n$$\\begin{cases} \\text{converge absolutamente}, & p>1,\\\\[3pt] \\text{converge condicionalmente}, & 0<p\\le 1,\\\\[3pt] \\text{diverge}, & p\\le 0. \\end{cases}$$",
+      "difficulty": 4,
+      "answer": "Absoluta se $p>1$; condicional se $0<p\\le 1$; diverge se $p\\le 0$.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Determine o raio e o intervalo de convergência da série de potências $$\\sum_{n=1}^{\\infty} \\frac{(x-2)^n}{n\\,3^n},$$ analisando cuidadosamente os extremos do intervalo.",
+      "solution": "Seja $a_n = \\dfrac{(x-2)^n}{n\\,3^n}$. Pelo **Teste da Razão**,\n$$\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{|x-2|^{n+1}}{(n+1)\\,3^{n+1}}\\cdot\\frac{n\\,3^n}{|x-2|^n} = \\frac{|x-2|}{3}\\cdot\\frac{n}{n+1} \\;\\xrightarrow[n\\to\\infty]{}\\; \\frac{|x-2|}{3}.$$\nA série converge absolutamente quando $\\dfrac{|x-2|}{3}<1$, ou seja $|x-2|<3$. Logo o **raio de convergência** é $R=3$, e a série converge no intervalo aberto $(-1,\\,5)$; resta testar os extremos.\n\n**Extremo $x=5$:** $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{3^n}{n\\,3^n} = \\sum_{n=1}^{\\infty} \\frac{1}{n}$, a série harmônica, que **diverge**.\n\n**Extremo $x=-1$:** $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n\\,3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n}$, a série harmônica alternada, que **converge** (Teste de Leibniz).\n\nIncluindo o extremo que converge e excluindo o que diverge, o **intervalo de convergência** é $[-1,\\,5)$.",
+      "difficulty": 4,
+      "answer": "$R=3$; intervalo de convergência $[-1,\\,5)$.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Usando uma série de Maclaurin conhecida, calcule a soma exata da série $$\\sum_{n=0}^{\\infty} \\frac{(-1)^n}{3^n\\,(2n+1)}.$$",
+      "solution": "Partimos da série de Maclaurin do arco-tangente:\n$$\\arctan x = \\sum_{n=0}^{\\infty} \\frac{(-1)^n\\,x^{2n+1}}{2n+1},\\qquad |x|\\le 1.$$\nDividindo ambos os lados por $x$ (para $x\\neq 0$):\n$$\\frac{\\arctan x}{x} = \\sum_{n=0}^{\\infty} \\frac{(-1)^n\\,x^{2n}}{2n+1}.$$\nQueremos que $x^{2n} = \\left(\\tfrac13\\right)^n$, isto é, $x^2 = \\tfrac13$, o que dá $x = \\dfrac{1}{\\sqrt3}$. Esse valor satisfaz $|x|\\le 1$, garantindo a validade da expansão. Substituindo:\n$$\\sum_{n=0}^{\\infty} \\frac{(-1)^n}{3^n(2n+1)} = \\frac{\\arctan\\!\\left(\\frac{1}{\\sqrt3}\\right)}{\\frac{1}{\\sqrt3}} = \\sqrt3\\;\\arctan\\!\\left(\\frac{1}{\\sqrt3}\\right).$$\nComo $\\tan\\dfrac{\\pi}{6} = \\dfrac{1}{\\sqrt3}$, temos $\\arctan\\!\\left(\\tfrac{1}{\\sqrt3}\\right) = \\dfrac{\\pi}{6}$. Portanto\n$$\\sum_{n=0}^{\\infty} \\frac{(-1)^n}{3^n(2n+1)} = \\sqrt3\\cdot\\frac{\\pi}{6} = \\frac{\\pi\\sqrt3}{6} = \\frac{\\pi}{2\\sqrt3} \\approx 0{,}9069.$$\n(Conferência numérica das somas parciais: $1 - \\tfrac19 + \\tfrac{1}{45} - \\tfrac{1}{189} + \\cdots \\approx 0{,}906$, coerente com o valor obtido.)",
+      "difficulty": 5,
+      "answer": "$\\dfrac{\\pi\\sqrt3}{6} = \\dfrac{\\pi}{2\\sqrt3}$",
+      "source": {
+        "exam": "Estilo Putnam"
       }
     }
   ]

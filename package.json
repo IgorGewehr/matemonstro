@@ -5,7 +5,7 @@
   "description": "Guia de estudos interativo de matematica: da base ao mestrado em matematica pura.",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run bundle && next build",
+    "build": "npm run validate && npm run bundle && next build",
     "start": "next start",
     "lint": "next lint",
     "bundle": "node scripts/bundle-curriculum.mjs",

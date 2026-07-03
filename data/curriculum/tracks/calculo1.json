@@ -377,7 +377,21 @@
             "where": "cap. 2.1 e 2.2"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "(x^2 - 1)/(x - 1)",
+          "domain": [
+            -1,
+            3
+          ],
+          "overlay": [
+            "x + 1"
+          ],
+          "caption": "Perto de x=1 a funcao tende a 2, mesmo sem estar definida ali."
+        }
+      ]
     },
     {
       "id": "calculo1-02-epsilon-delta",
@@ -687,7 +701,31 @@
             "where": "Cap. 3: definicao de limite, ponto de acumulacao e exemplos com $\\delta=\\min\\{1,\\varepsilon/k\\}$"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "2*x + 1",
+          "domain": [
+            0,
+            2
+          ],
+          "params": [
+            {
+              "name": "eps",
+              "min": 0.1,
+              "max": 2,
+              "default": 1,
+              "step": 0.2
+            }
+          ],
+          "overlay": [
+            "3 + eps",
+            "3 - eps"
+          ],
+          "caption": "A faixa de meia-largura epsilon em torno de L=3: o desafio a vencer com delta."
+        }
+      ]
     },
     {
       "id": "calculo1-03-algebra-limites",
@@ -996,7 +1034,34 @@
             "where": "Cap. 5 (Limits): demonstracoes das leis algebricas e do Teorema do Confronto"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^2*sin(1/x)",
+          "domain": [
+            -0.6,
+            0.6
+          ],
+          "overlay": [
+            "x^2",
+            "-(x^2)"
+          ],
+          "caption": "Confronto: x^2 sen(1/x) fica preso entre mais e menos x^2 e e forcado a 0."
+        },
+        {
+          "kind": "plot2d",
+          "expr": "sin(x)/x",
+          "domain": [
+            -9,
+            9
+          ],
+          "overlay": [
+            "1"
+          ],
+          "caption": "Limite fundamental: sen(x)/x se aproxima de 1 quando x tende a 0."
+        }
+      ]
     },
     {
       "id": "calculo1-04-limites-laterais-infinitos",
@@ -1258,10 +1323,7 @@
           "ref": "livro"
         }
       ],
-      "prereqs": [
-        "calculo1-03-limites-definicao-epsilon-delta",
-        "calculo1-02-funcoes-graficos"
-      ],
+      "prereqs": [],
       "studyRoadmap": {
         "steps": [
           "Reescreva do zero as tres definicoes $\\varepsilon$-$\\delta$ (lateral direita, lateral esquerda, no infinito) e a definicao de limite infinito com $N$; sublinhe a diferenca entre a condicao $a<x<a+\\delta$, $a-\\delta<x<a$ e $x>M$.",
@@ -1315,7 +1377,30 @@
             "where": "Capitulo 5 (Limits): definicoes laterais e o exemplo de nao-existencia por oscilacao"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sin(1/x)",
+          "domain": [
+            -0.5,
+            0.5
+          ],
+          "caption": "Oscilacao sem fim perto de 0: o limite de sen(1/x) nao existe."
+        },
+        {
+          "kind": "plot2d",
+          "expr": "2*x^2/(x^2 + 1)",
+          "domain": [
+            -8,
+            8
+          ],
+          "overlay": [
+            "2"
+          ],
+          "caption": "Assintota horizontal y=2: o limite no infinito estabiliza."
+        }
+      ]
     },
     {
       "id": "calculo1-05-continuidade",
@@ -1580,7 +1665,6 @@
         }
       ],
       "prereqs": [
-        "calculo1-03-limites-definicao",
         "calculo1-04-limites-laterais-infinitos"
       ],
       "studyRoadmap": {
@@ -1636,7 +1720,18 @@
             "where": "Capitulo de continuidade: continuidade das elementares e exemplos de descontinuidade"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "abs(x)/x",
+          "domain": [
+            -3,
+            3
+          ],
+          "caption": "Descontinuidade de salto: os limites laterais valem -1 e +1."
+        }
+      ]
     },
     {
       "id": "calculo1-06-tvi-weierstrass",
@@ -1912,8 +2007,7 @@
         }
       ],
       "prereqs": [
-        "calculo1-05-continuidade",
-        "calculo1-04-limites-laterais-infinito"
+        "calculo1-05-continuidade"
       ],
       "studyRoadmap": {
         "steps": [
@@ -1968,7 +2062,30 @@
             "where": "Cap. 2, secao 2.1 (Metodo da Bisseccao): algoritmo, convergencia e cota de erro"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^3 - x - 1",
+          "domain": [
+            -1.5,
+            2
+          ],
+          "params": [
+            {
+              "name": "d",
+              "min": -2.5,
+              "max": 4.5,
+              "default": 1,
+              "step": 0.2
+            }
+          ],
+          "overlay": [
+            "d"
+          ],
+          "caption": "TVI: para todo nivel d entre f(a) e f(b) existe um c com f(c)=d."
+        }
+      ]
     },
     {
       "id": "calculo1-07-derivada-definicao",
@@ -2278,7 +2395,30 @@
             "where": "cap. 9 (Derivadas), definicao rigorosa e aproximacao linear"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^2",
+          "domain": [
+            -3,
+            3
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": -3,
+              "max": 3,
+              "default": 1,
+              "step": 0.2
+            }
+          ],
+          "overlay": [
+            "2*a*x - a^2"
+          ],
+          "caption": "A reta tangente a y=x^2: sua inclinacao 2a e a derivada no ponto a."
+        }
+      ]
     },
     {
       "id": "calculo1-08-regras-derivacao",
@@ -2860,7 +3000,7 @@
         }
       ],
       "prereqs": [
-        "calculo1-07-definicao-derivada",
+        "calculo1-07-derivada-definicao",
         "calculo1-08-regras-derivacao"
       ],
       "studyRoadmap": {
@@ -2916,7 +3056,18 @@
             "where": "cap. 7, regra da cadeia e derivadas de funcoes compostas"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sin(x^2)",
+          "domain": [
+            -4,
+            4
+          ],
+          "caption": "Regra da cadeia: em sen(x^2) a frequencia cresce com x, via derivada interna 2x."
+        }
+      ]
     },
     {
       "id": "calculo1-10-implicita-taxas",
@@ -3176,8 +3327,8 @@
         }
       ],
       "prereqs": [
-        "calculo1-08-regra-cadeia",
-        "calculo1-07-regras-derivacao"
+        "calculo1-09-regra-cadeia",
+        "calculo1-08-regras-derivacao"
       ],
       "studyRoadmap": {
         "steps": [
@@ -3241,7 +3392,34 @@
             "where": "Lecture notes / Unit 2: implicit differentiation e related rates"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "parametric",
+          "expr": "a*cos(t), b*sin(t)",
+          "domain": [
+            0,
+            6.2832
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": 1,
+              "max": 3,
+              "default": 2,
+              "step": 0.2
+            },
+            {
+              "name": "b",
+              "min": 1,
+              "max": 3,
+              "default": 1.5,
+              "step": 0.2
+            }
+          ],
+          "caption": "Elipse x^2/a^2 + y^2/b^2 = 1: uma curva definida implicitamente em x e y."
+        }
+      ]
     },
     {
       "id": "calculo1-11-tvm",
@@ -3504,9 +3682,9 @@
         }
       ],
       "prereqs": [
-        "calculo1-10-continuidade-tvi-weierstrass",
-        "calculo1-08-derivada-definicao",
-        "calculo1-09-regras-derivacao"
+        "calculo1-06-tvi-weierstrass",
+        "calculo1-07-derivada-definicao",
+        "calculo1-08-regras-derivacao"
       ],
       "studyRoadmap": {
         "steps": [
@@ -3561,7 +3739,22 @@
             "where": "Capitulo do Teorema do Valor Medio: aplicacoes a monotonicidade e desigualdades"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^2",
+          "domain": [
+            -2,
+            3
+          ],
+          "overlay": [
+            "x + 2",
+            "x - 0.25"
+          ],
+          "caption": "TVM: existe c onde a tangente e paralela a secante (ambas tracejadas)."
+        }
+      ]
     },
     {
       "id": "calculo1-12-lhopital",
@@ -3880,7 +4073,21 @@
             "where": "Capitulo sobre o significado da derivada e problemas com o TVM de Cauchy e L'Hopital"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "exp(x)",
+          "domain": [
+            0,
+            6
+          ],
+          "overlay": [
+            "x^3"
+          ],
+          "caption": "Hierarquia de crescimento: a exponencial ultrapassa qualquer potencia."
+        }
+      ]
     },
     {
       "id": "calculo1-13-otimizacao",
@@ -4147,9 +4354,7 @@
         }
       ],
       "prereqs": [
-        "calculo1-05-continuidade",
-        "calculo1-10-derivada-regras",
-        "calculo1-12-crescimento-concavidade"
+        "calculo1-05-continuidade"
       ],
       "studyRoadmap": {
         "steps": [
@@ -4204,7 +4409,18 @@
             "where": "Cap. 11 (Significance of the Derivative): Teorema de Fermat e a teoria de maximos e minimos"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x*(10 - 2*x)^2",
+          "domain": [
+            0,
+            5
+          ],
+          "caption": "Volume da caixa aberta: maximo num unico ponto critico interior."
+        }
+      ]
     },
     {
       "id": "calculo1-14-tracado-curvas",
@@ -4527,7 +4743,33 @@
             "where": "cap. 4, secoes sobre concavidade, pontos de inflexao e esboco de graficos"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^3 - 3*x",
+          "domain": [
+            -3,
+            3
+          ],
+          "overlay": [
+            "3*x^2 - 3"
+          ],
+          "caption": "f e f-linha: onde f-linha (tracejada) muda de sinal estao os extremos de f."
+        },
+        {
+          "kind": "plot2d",
+          "expr": "x + 1/x",
+          "domain": [
+            -5,
+            5
+          ],
+          "overlay": [
+            "x"
+          ],
+          "caption": "Assintota obliqua y=x e assintota vertical em x=0."
+        }
+      ]
     },
     {
       "id": "calculo1-15-integral-riemann",
@@ -4858,7 +5100,26 @@
             "where": "Capitulo da integral de Riemann: definicao, integrabilidade das continuas e propriedades"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "riemann",
+          "expr": "x^2",
+          "domain": [
+            0,
+            2
+          ],
+          "params": [
+            {
+              "name": "n",
+              "min": 2,
+              "max": 30,
+              "default": 8
+            }
+          ],
+          "caption": "Somas de Riemann: mais retangulos, melhor a aproximacao da area."
+        }
+      ]
     },
     {
       "id": "calculo1-16-tfc",
@@ -5196,7 +5457,21 @@
             "where": "capitulo do TFC (primeira e segunda formas) e derivacao de integrais de limite variavel"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sin(x)",
+          "domain": [
+            0,
+            6.2832
+          ],
+          "overlay": [
+            "1 - cos(x)"
+          ],
+          "caption": "TFC: a area acumulada F=1-cos x cresce onde sen x e positiva, e F-linha = f."
+        }
+      ]
     },
     {
       "id": "calculo1-17-tecnicas-integracao",
@@ -5474,8 +5749,7 @@
         }
       ],
       "prereqs": [
-        "calculo1-09-regra-cadeia",
-        "calculo1-16-teorema-fundamental-calculo"
+        "calculo1-09-regra-cadeia"
       ],
       "studyRoadmap": {
         "steps": [
@@ -5806,7 +6080,6 @@
         }
       ],
       "prereqs": [
-        "calculo1-16-integral-definida-tfc",
         "calculo1-17-tecnicas-integracao"
       ],
       "studyRoadmap": {
@@ -5871,6 +6144,95 @@
             "where": "Unit 4: Applications of integration (areas, volumes, arc length)"
           }
         ]
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^2",
+          "domain": [
+            -0.3,
+            1.5
+          ],
+          "overlay": [
+            "x"
+          ],
+          "caption": "Area entre y=x (topo) e y=x^2 (base) no intervalo de 0 a 1."
+        }
+      ]
+    }
+  ],
+  "formulaSheet": "## Limites — leis e cálculo\n\n- **Leis algébricas** (com $\\lim f=L$, $\\lim g=M$ finitos): $\\lim(f\\pm g)=L\\pm M$; $\\lim(cf)=cL$; $\\lim(fg)=LM$; $\\lim\\frac{f}{g}=\\frac{L}{M}$ se $M\\ne0$; $\\lim f^n=L^n$; $\\lim\\sqrt[n]{f}=\\sqrt[n]{L}$.\n- **Substituição direta:** vale para polinômios, racionais (onde $q(a)\\ne0$), raízes, $\\sin,\\cos,\\exp,\\ln$ — tente primeiro; só falha em forma indeterminada.\n- **Limites trigonométricos** (com $x$ em radianos):\n$$\\lim_{x\\to0}\\frac{\\sin x}{x}=1,\\qquad \\lim_{x\\to0}\\frac{1-\\cos x}{x}=0,\\qquad \\lim_{x\\to0}\\frac{1-\\cos x}{x^2}=\\tfrac12.$$\n- **Confronto (sanduíche):** se $g(x)\\le f(x)\\le h(x)$ perto de $a$ e $\\lim g=\\lim h=L$, então $\\lim f=L$. Uso típico: fator oscilante $\\times$ algo $\\to0$.\n- **Sete formas indeterminadas:** $\\frac00,\\ \\frac{\\infty}{\\infty},\\ 0\\cdot\\infty,\\ \\infty-\\infty,\\ 1^{\\infty},\\ 0^0,\\ \\infty^0$.\n- **Formas determinadas** (NÃO indeterminadas): $\\frac{k}{0^+}=+\\infty$, $\\frac{k}{0^-}=-\\infty$ ($k>0$); $\\frac{k}{\\infty}=0$; $\\infty+\\infty=\\infty$; $\\infty\\cdot\\infty=\\infty$. Atenção: $\\frac{5}{0}$ não é $\\frac00$.\n- **Técnicas para $\\frac00$:** fatorar e cancelar $(x-a)$; racionalizar por conjugado via $(u-v)(u+v)=u^2-v^2$.\n\n## Limites no infinito e assíntotas\n\n- **Potências:** $\\displaystyle\\lim_{x\\to\\pm\\infty}\\frac{c}{x^k}=0$ para todo inteiro $k\\ge1$.\n- **Racional $\\frac{a_mx^m+\\cdots}{b_nx^n+\\cdots}$** (divida por $x^n$): se $m<n\\to0$; se $m=n\\to\\frac{a_m}{b_n}$; se $m>n\\to\\pm\\infty$.\n- **Assíntota horizontal** $y=L$: $\\lim_{x\\to\\pm\\infty}f(x)=L$. **Vertical** $x=a$: algum limite lateral em $a$ é $\\pm\\infty$ (zero do denominador que não cancela).\n- **Sinal em limites laterais infinitos:** determine se o denominador $\\to0^+$ ou $0^-$; $\\frac{1}{0^+}=+\\infty$, $\\frac{1}{0^-}=-\\infty$.\n- $\\displaystyle\\lim_{x\\to0}\\sin\\!\\left(\\tfrac1x\\right)$ não existe (oscilação).\n\n## Continuidade e descontinuidades\n\n- **Critério:** $f$ contínua em $a$ $\\iff$ $f(a)$ existe, $\\lim_{x\\to a}f(x)$ existe e $\\lim_{x\\to a}f(x)=f(a)$.\n- **Classificação** (com $L^-=\\lim_{x\\to a^-}f$, $L^+=\\lim_{x\\to a^+}f$):\n  - **Removível:** $L^-=L^+=L$ finito, mas $f(a)$ ausente ou $\\ne L$ — corrige-se pondo $f(a):=L$.\n  - **Salto (1ª espécie):** $L^-,L^+$ finitos, $L^-\\ne L^+$; salto $=L^+-L^-$.\n  - **Essencial (2ª espécie):** algum lateral é $\\pm\\infty$ ou não existe.\n\n## Derivada — definição e linearização\n\n- **Quociente de Newton:** $\\displaystyle f'(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}=\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}$.\n- **Reta tangente:** $y=f(a)+f'(a)(x-a)$. **Tangente vertical** quando o quociente $\\to\\pm\\infty$ (ex.: $x^{1/3}$ em $0$).\n- **Linearização:** $L(x)=f(a)+f'(a)(x-a)$, com $f(a+h)=f(a)+f'(a)h+o(h)$.\n- Derivável em $a$ $\\Rightarrow$ contínua em $a$ (recíproca falsa: $|x|$ em $0$). $f'(a)$ existe $\\iff$ derivadas laterais coincidem.\n\n## Tabela de derivadas\n\n$$\\frac{d}{dx}x^n=nx^{n-1},\\quad \\frac{d}{dx}e^x=e^x,\\quad \\frac{d}{dx}\\ln x=\\frac1x\\ (x>0)$$\n$$(\\sin x)'=\\cos x,\\quad (\\cos x)'=-\\sin x,\\quad (\\tan x)'=\\sec^2x=1+\\tan^2x$$\n- **Linearidade:** $(af+bg)'=af'+bg'$.\n- **Produto:** $(fg)'=f'g+fg'$ (não é $f'g'$).\n- **Quociente:** $\\left(\\dfrac{f}{g}\\right)'=\\dfrac{f'g-fg'}{g^2}$ (a ordem importa).\n- **Inversa:** $\\left(f^{-1}\\right)'(y_0)=\\dfrac{1}{f'\\!\\big(f^{-1}(y_0)\\big)}$, onde $f'\\ne0$.\n\n## Regra da cadeia\n\n- **Pontual:** $(f\\circ g)'(a)=f'\\!\\big(g(a)\\big)\\,g'(a)$ — derivada externa avaliada no ponto **interno** $g(a)$.\n- **Leibniz:** $\\dfrac{dy}{dx}=\\dfrac{dy}{du}\\cdot\\dfrac{du}{dx}$. **Três camadas:** $\\big(f(g(h(x)))\\big)'=f'(g(h))\\,g'(h)\\,h'(x)$.\n- **Versões generalizadas:**\n$$\\frac{d}{dx}[g(x)]^n=n[g(x)]^{n-1}g'(x),\\quad \\frac{d}{dx}e^{g}=e^{g}g',\\quad \\frac{d}{dx}\\ln g=\\frac{g'}{g}.$$\n- **Diferenciação logarítmica** ($y=f^{g}$, $f>0$): $\\ y'=f^{g}\\!\\left(g'\\ln f+g\\dfrac{f'}{f}\\right)$.\n\n## Derivação implícita e taxas relacionadas\n\n- Derive ambos os lados em $x$: cada termo com $y$ ganha fator $\\frac{dy}{dx}$; termos só em $x$ derivam normal; isole $\\frac{dy}{dx}$.\n- **Fórmula (TFI 2D):** $\\ \\dfrac{dy}{dx}=-\\dfrac{\\partial F/\\partial x}{\\partial F/\\partial y}$ (onde $F_y\\ne0$).\n- **Reta tangente à curva implícita:** $y-y_0=m(x-x_0)$ com $m=\\frac{dy}{dx}\\big|_{(x_0,y_0)}$; tangente vertical $x=x_0$ quando $\\frac{dy}{dx}\\to\\infty$.\n- **Taxas relacionadas — roteiro:** (1) figura e variáveis, (2) relação válida em **todo** instante, (3) derivar em $t$ pela cadeia, (4) só então substituir valores numéricos. Só substitua antes de derivar o que é genuinamente constante.\n\n## TVM e monotonia\n\n- **TVM (Lagrange):** existe $c\\in(a,b)$ com $\\ f(b)-f(a)=f'(c)(b-a)$, i.e. $f'(c)=\\frac{f(b)-f(a)}{b-a}$. **Rolle:** caso $f(a)=f(b)$ dá $f'(c)=0$.\n- **Derivada nula $\\Rightarrow$ constante** num intervalo. Duas primitivas diferem por constante.\n- **Monotonia:** $f'>0$ em $I\\Rightarrow f$ estritamente crescente; $f'<0\\Rightarrow$ decrescente; $f'\\ge0\\iff$ não-decrescente.\n- **Teste da 1ª derivada** em ponto crítico $c$: $+\\to-$ máximo local; $-\\to+$ mínimo local; sem troca de sinal, não é extremo.\n\n## Regra de L'Hôpital e crescimento\n\n- **Sob $\\frac00$ ou $\\frac{\\infty}{\\infty}$** (com $g'\\ne0$ perto de $a$ e $\\lim\\frac{f'}{g'}$ existente): $\\displaystyle\\lim_{x\\to a}\\frac{f(x)}{g(x)}=\\lim_{x\\to a}\\frac{f'(x)}{g'(x)}$. Vale para $a$ finito, $\\pm\\infty$ e laterais. Implicação de mão única.\n- **Reduções:** $0\\cdot\\infty\\to\\frac{f}{1/g}$ ou $\\frac{g}{1/f}$; $\\infty-\\infty\\to$ denominador comum ou conjugado; $0^0,\\infty^0,1^\\infty$: use $y=e^{g\\ln f}$, calcule $L=\\lim g\\ln f$ e $\\lim y=e^{L}$.\n- **Cauchy:** $\\dfrac{f(b)-f(a)}{g(b)-g(a)}=\\dfrac{f'(c)}{g'(c)}$ (motor de L'Hôpital).\n- **Hierarquia** ($x\\to+\\infty$, $a>0,p>0,b>1$): $\\ (\\ln x)^a\\prec x^p\\prec b^x$, logo $\\displaystyle\\lim\\frac{(\\ln x)^a}{x^p}=0$, $\\displaystyle\\lim\\frac{x^p}{b^x}=0$.\n\n## Otimização\n\n- **Pontos críticos:** interiores com $f'(c)=0$ ou $f'(c)$ inexistente — únicos candidatos interiores a extremo.\n- **Extremos absolutos em $[a,b]$** ($f$ contínua): avalie $f$ nos pontos críticos de $(a,b)$ **e** nos extremos $a,b$; maior/menor valor vence.\n- **Teste da 2ª derivada:** $f'(c)=0$ e $f''(c)>0\\Rightarrow$ mínimo local; $f''(c)<0\\Rightarrow$ máximo local; $f''(c)=0$ inconclusivo (use a 1ª derivada).\n- **Domínio do modelo:** imponha restrições físicas/geométricas (ex.: recorte de quinas $0<x<a/2$).\n\n## Traçado de curvas: concavidade e assíntotas\n\n- **Concavidade:** $f''>0\\Rightarrow$ côncava para cima; $f''<0\\Rightarrow$ para baixo. **Inflexão** onde a concavidade muda: exige $f''(c)=0$ ou $f''(c)$ inexistente (mas $f''(c)=0$ sozinho não basta — ex.: $x^4$).\n- **Assíntota oblíqua** $y=mx+b$ ($m\\ne0$):\n$$m=\\lim_{x\\to\\pm\\infty}\\frac{f(x)}{x},\\qquad b=\\lim_{x\\to\\pm\\infty}\\big[f(x)-mx\\big]$$\nambos finitos. Se há assíntota horizontal num lado, não há oblíqua nesse lado.\n\n## Integral de Riemann — propriedades\n\n- **Soma de Riemann:** $S(f,P,\\xi)=\\sum_{i=1}^{n}f(\\xi_i)\\,\\Delta x_i$, com $\\|P\\|=\\max_i\\Delta x_i$.\n- **Critério de integrabilidade:** $\\forall\\varepsilon>0\\ \\exists P$ com $U(f,P)-L(f,P)<\\varepsilon$. Integráveis: contínuas e monótonas em $[a,b]$.\n- **Linearidade e monotonia:** $\\int_a^b(\\alpha f+\\beta g)=\\alpha\\int_a^b f+\\beta\\int_a^b g$; se $f\\le g$ então $\\int_a^b f\\le\\int_a^b g$.\n- **Aditividade:** $\\int_a^b f=\\int_a^c f+\\int_c^b f$. **Estimativas:** $\\left|\\int_a^b f\\right|\\le\\int_a^b|f|$ e, se $m\\le f\\le M$, $\\ m(b-a)\\le\\int_a^b f\\le M(b-a)$.\n- **Área com sinal:** $\\int_a^b f$ conta $f>0$ positivo, $f<0$ negativo; área geométrica $=\\int_a^b|f|$.\n\n## Teorema Fundamental do Cálculo\n\n- **Parte 1:** $\\displaystyle\\frac{d}{dx}\\int_a^x f(t)\\,dt=f(x)$ ($f$ contínua).\n- **Parte 2 (Newton–Leibniz):** $\\displaystyle\\int_a^b f(x)\\,dx=G(b)-G(a)=\\big[G(x)\\big]_a^b$, para qualquer primitiva $G$.\n- **Regra de Leibniz (limites variáveis):** $\\displaystyle\\frac{d}{dx}\\int_{u(x)}^{v(x)}f(t)\\,dt=f(v(x))\\,v'(x)-f(u(x))\\,u'(x)$.\n- **TVM para integrais:** existe $c\\in[a,b]$ com $\\int_a^b f=f(c)(b-a)$; valor médio $f(c)=\\frac{1}{b-a}\\int_a^b f$.\n\n## Integração — imediatas e técnicas\n\n$$\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C\\ (n\\ne-1),\\qquad \\int\\frac{dx}{x}=\\ln|x|+C,\\qquad \\int e^x\\,dx=e^x+C$$\n$$\\int\\cos x\\,dx=\\sin x+C,\\quad \\int\\sin x\\,dx=-\\cos x+C,\\quad \\int\\sec^2x\\,dx=\\tan x+C$$\n- **Substituição:** $u=g(x)$, $du=g'(x)\\,dx$: $\\displaystyle\\int f(g(x))g'(x)\\,dx=\\int f(u)\\,du$. Na definida, troque os limites: $\\int_a^b\\to\\int_{g(a)}^{g(b)}$.\n- **Por partes:** $\\displaystyle\\int u\\,dv=uv-\\int v\\,du$. Prioridade de $u$ por **LIATE** (Logarítmica, Inversa trig., Algébrica, Trigonométrica, Exponencial).\n- **Recorrência:** integrais cíclicas (ex.: $\\int e^x\\sin x\\,dx$) resolvem-se como equação $I=(\\cdots)-I$.\n- **Reduções:** $\\displaystyle\\int\\sin^nx\\,dx=-\\frac{\\sin^{n-1}x\\cos x}{n}+\\frac{n-1}{n}\\int\\sin^{n-2}x\\,dx$; $\\displaystyle\\int\\sec^nx\\,dx=\\frac{\\sec^{n-2}x\\tan x}{n-1}+\\frac{n-2}{n-1}\\int\\sec^{n-2}x\\,dx$.\n\n## Aplicações da integral\n\n- **Área entre curvas** ($f\\ge g$): $\\displaystyle A=\\int_a^b[f(x)-g(x)]\\,dx$; em $y$: $\\displaystyle A=\\int_c^d[x_{\\text{dir}}(y)-x_{\\text{esq}}(y)]\\,dy$.\n- **Volumes de revolução:**\n$$\\text{discos: } V=\\pi\\!\\int_a^b[f(x)]^2\\,dx,\\qquad \\text{anéis: } V=\\pi\\!\\int_a^b\\!\\big[R(x)^2-r(x)^2\\big]\\,dx$$\n$$\\text{cascas cilíndricas: } V=2\\pi\\!\\int_a^b x\\,h(x)\\,dx.$$\nCuidado: é $R^2-r^2$, não $(R-r)^2$.\n- **Seções (Cavalieri):** $\\displaystyle V=\\int_a^b A(x)\\,dx$. **Pappus:** $V=2\\pi\\,\\bar d\\,A$ ($\\bar d$ = distância do centroide ao eixo).\n- **Comprimento de arco** ($ds=\\sqrt{1+(y')^2}\\,dx$): $\\displaystyle L=\\int_a^b\\sqrt{1+[f'(x)]^2}\\,dx$; para $x=g(y)$: $\\displaystyle L=\\int_c^d\\sqrt{1+[g'(y)]^2}\\,dy$.",
+  "examBank": [
+    {
+      "prompt": "Calcule o limite\n$$\\lim_{x\\to 4}\\frac{\\sqrt{x}-2}{x^2-16}.$$",
+      "solution": "Ao substituir $x=4$ obtemos a indeterminação $\\dfrac{0}{0}$, pois $\\sqrt{4}-2=0$ e $4^2-16=0$.\n\n**Racionalização do numerador.** Multiplicamos numerador e denominador pelo conjugado $\\sqrt{x}+2$:\n$$\\sqrt{x}-2=\\frac{(\\sqrt{x}-2)(\\sqrt{x}+2)}{\\sqrt{x}+2}=\\frac{x-4}{\\sqrt{x}+2}.$$\n\n**Fatoração do denominador.** $x^2-16=(x-4)(x+4)$. Logo,\n$$\\frac{\\sqrt{x}-2}{x^2-16}=\\frac{\\dfrac{x-4}{\\sqrt{x}+2}}{(x-4)(x+4)}=\\frac{1}{(\\sqrt{x}+2)(x+4)}.$$\n\nO fator $x-4$, responsável pela indeterminação, foi cancelado. Agora a substituição é direta:\n$$\\lim_{x\\to4}\\frac{1}{(\\sqrt{x}+2)(x+4)}=\\frac{1}{(\\sqrt{4}+2)(4+4)}=\\frac{1}{4\\cdot 8}=\\frac{1}{32}.$$",
+      "difficulty": 1,
+      "answer": "$\\dfrac{1}{32}$",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Calcule a integral definida\n$$\\int_{1}^{e}\\ln x\\,dx$$\nusando integração por partes.",
+      "solution": "**Escolha das partes.** Tomamos $u=\\ln x$ e $dv=dx$, de modo que $du=\\dfrac{1}{x}\\,dx$ e $v=x$.\n\n**Aplicando a fórmula** $\\displaystyle\\int u\\,dv=uv-\\int v\\,du$:\n$$\\int \\ln x\\,dx = x\\ln x-\\int x\\cdot\\frac{1}{x}\\,dx = x\\ln x-\\int 1\\,dx = x\\ln x - x + C.$$\n\n**Avaliação nos limites** de $1$ a $e$:\n$$\\int_1^e \\ln x\\,dx = \\big[x\\ln x - x\\big]_1^e = (e\\ln e - e)-(1\\cdot\\ln 1 - 1).$$\n\nComo $\\ln e=1$ e $\\ln 1=0$:\n$$=(e\\cdot 1 - e)-(0-1)=0-(-1)=1.$$",
+      "difficulty": 2,
+      "answer": "$1$",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "A curva $x^3+y^3=6xy$ (fólio de Descartes) passa pelo ponto $(3,3)$. Determine a equação da reta tangente à curva nesse ponto.",
+      "solution": "**Verificação de que o ponto pertence à curva:** $3^3+3^3=54$ e $6\\cdot3\\cdot3=54$, logo $(3,3)$ satisfaz a equação.\n\n**Derivação implícita.** Derivamos ambos os lados em relação a $x$, tratando $y=y(x)$; usamos a regra da cadeia em $y^3$ e a regra do produto em $6xy$:\n$$3x^2+3y^2\\,y'=6y+6x\\,y'.$$\n\n**Isolamento de $y'$:**\n$$3y^2\\,y'-6x\\,y'=6y-3x^2\\;\\Longrightarrow\\; y'(3y^2-6x)=6y-3x^2\\;\\Longrightarrow\\; y'=\\frac{6y-3x^2}{3y^2-6x}=\\frac{2y-x^2}{y^2-2x}.$$\n\n**Coeficiente angular no ponto $(3,3)$:**\n$$y'(3,3)=\\frac{2\\cdot3-3^2}{3^2-2\\cdot3}=\\frac{6-9}{9-6}=\\frac{-3}{3}=-1.$$\n\n**Reta tangente** com coeficiente angular $-1$ passando por $(3,3)$:\n$$y-3=-1\\,(x-3)\\;\\Longrightarrow\\; y=-x+6.$$",
+      "difficulty": 2,
+      "answer": "$y=-x+6$ (equivalentemente $x+y=6$)",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Calcule\n$$\\lim_{x\\to 0}\\left(\\cos x\\right)^{1/x^2}.$$",
+      "solution": "A expressão tem a forma indeterminada $1^{\\infty}$. Chamamos $L=\\displaystyle\\lim_{x\\to0}(\\cos x)^{1/x^2}$ e, como o logaritmo é contínuo e positivo perto de $0$, tomamos o $\\ln$:\n$$\\ln L=\\lim_{x\\to0}\\frac{\\ln(\\cos x)}{x^2}.$$\n\nQuando $x\\to0$, $\\ln(\\cos x)\\to\\ln 1=0$ e $x^2\\to0$: indeterminação $\\dfrac{0}{0}$. Aplicamos a **Regra de L'Hôpital**:\n$$\\lim_{x\\to0}\\frac{\\ln(\\cos x)}{x^2}=\\lim_{x\\to0}\\frac{\\dfrac{d}{dx}\\ln(\\cos x)}{\\dfrac{d}{dx}\\,x^2}=\\lim_{x\\to0}\\frac{-\\dfrac{\\sin x}{\\cos x}}{2x}=\\lim_{x\\to0}\\frac{-\\tan x}{2x}.$$\n\nUsando o limite fundamental $\\displaystyle\\lim_{x\\to0}\\frac{\\tan x}{x}=1$:\n$$\\ln L=-\\frac12\\lim_{x\\to0}\\frac{\\tan x}{x}=-\\frac12.$$\n\nPortanto\n$$L=e^{-1/2}=\\frac{1}{\\sqrt{e}}.$$",
+      "difficulty": 3,
+      "answer": "$e^{-1/2}=\\dfrac{1}{\\sqrt{e}}$",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Deseja-se fabricar uma lata cilíndrica fechada (com tampa e fundo) de volume $250\\pi\\ \\text{cm}^3$. Determine o raio $r$ e a altura $h$ que minimizam a área total de material (superfície lateral mais as duas bases) e justifique que se trata de um mínimo.",
+      "solution": "**Vínculo do volume.** O volume fixa a relação entre $r$ e $h$:\n$$V=\\pi r^2 h=250\\pi \\;\\Longrightarrow\\; r^2 h=250 \\;\\Longrightarrow\\; h=\\frac{250}{r^2}.$$\n\n**Função a minimizar.** A área total é a das duas bases mais a lateral:\n$$A=2\\pi r^2+2\\pi r h.$$\nSubstituindo $h=\\dfrac{250}{r^2}$:\n$$A(r)=2\\pi r^2+2\\pi r\\cdot\\frac{250}{r^2}=2\\pi r^2+\\frac{500\\pi}{r},\\qquad r>0.$$\n\n**Ponto crítico.** Derivamos e igualamos a zero:\n$$A'(r)=4\\pi r-\\frac{500\\pi}{r^2}=0\\;\\Longrightarrow\\;4\\pi r=\\frac{500\\pi}{r^2}\\;\\Longrightarrow\\;4r^3=500\\;\\Longrightarrow\\;r^3=125\\;\\Longrightarrow\\;r=5.$$\n\nEntão $h=\\dfrac{250}{5^2}=\\dfrac{250}{25}=10$.\n\n**Justificativa de mínimo.** Como\n$$A''(r)=4\\pi+\\frac{1000\\pi}{r^3}>0\\quad\\text{para todo }r>0,$$\na função é convexa e o único ponto crítico é de mínimo global. A área mínima vale\n$$A(5)=2\\pi\\cdot25+\\frac{500\\pi}{5}=50\\pi+100\\pi=150\\pi\\ \\text{cm}^2.$$\n(Observe que $h=10=2r$: a altura ótima iguala o diâmetro.)",
+      "difficulty": 3,
+      "answer": "$r=5\\ \\text{cm}$ e $h=10\\ \\text{cm}$ (área mínima $150\\pi\\ \\text{cm}^2$)",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Usando a definição $\\varepsilon$-$\\delta$ de limite, demonstre que\n$$\\lim_{x\\to 2}\\left(x^2+3x\\right)=10.$$",
+      "solution": "Devemos mostrar que, para todo $\\varepsilon>0$, existe $\\delta>0$ tal que\n$$0<|x-2|<\\delta\\;\\Longrightarrow\\;\\big|(x^2+3x)-10\\big|<\\varepsilon.$$\n\n**Análise preliminar.** Fatoramos o alvo:\n$$x^2+3x-10=(x-2)(x+5),\\qquad\\text{logo}\\qquad \\big|(x^2+3x)-10\\big|=|x-2|\\,|x+5|.$$\nÉ preciso controlar o fator $|x+5|$. Impomos provisoriamente $\\delta\\le 1$. Então $|x-2|<1$ implica $1<x<3$, donde $6<x+5<8$ e, em particular, $|x+5|<8$. Assim,\n$$\\big|(x^2+3x)-10\\big|=|x-2|\\,|x+5|<8\\,|x-2|.$$\nPara tornar isso menor que $\\varepsilon$, basta exigir $|x-2|<\\dfrac{\\varepsilon}{8}$.\n\n**Escolha de $\\delta$.** Dado $\\varepsilon>0$, tome\n$$\\delta=\\min\\left\\{1,\\;\\frac{\\varepsilon}{8}\\right\\}.$$\n\n**Verificação.** Se $0<|x-2|<\\delta$, então $\\delta\\le 1$ garante $|x+5|<8$, e $\\delta\\le\\dfrac{\\varepsilon}{8}$ garante $|x-2|<\\dfrac{\\varepsilon}{8}$. Combinando:\n$$\\big|(x^2+3x)-10\\big|=|x-2|\\,|x+5|<8\\cdot\\frac{\\varepsilon}{8}=\\varepsilon.$$\nComo $\\varepsilon>0$ era arbitrário, o limite está demonstrado. $\\blacksquare$",
+      "difficulty": 4,
+      "answer": "Demonstração concluída tomando $\\delta=\\min\\left\\{1,\\dfrac{\\varepsilon}{8}\\right\\}$, pois $|(x^2+3x)-10|=|x-2|\\,|x+5|<8\\,|x-2|<\\varepsilon$.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Seja $R$ a região do plano limitada pelas curvas $y=x^2$ e $y=2x$. Calcule o volume do sólido obtido pela rotação de $R$ em torno do eixo $x$.",
+      "solution": "**Interseções das curvas:**\n$$x^2=2x\\;\\Longrightarrow\\;x^2-2x=0\\;\\Longrightarrow\\;x(x-2)=0\\;\\Longrightarrow\\;x=0\\ \\text{ou}\\ x=2.$$\nEm $[0,2]$ vale $2x\\ge x^2$ (por exemplo, em $x=1$: $2\\ge 1$), então a reta $y=2x$ está por cima e a parábola $y=x^2$ por baixo.\n\n**Método das arruelas (washers).** Ao girar em torno do eixo $x$, cada seção transversal é um anel de raio externo $R_{\\text{ext}}=2x$ e raio interno $R_{\\text{int}}=x^2$. A área do anel é $\\pi\\big(R_{\\text{ext}}^2-R_{\\text{int}}^2\\big)$, logo\n$$V=\\pi\\int_0^2\\Big[(2x)^2-(x^2)^2\\Big]\\,dx=\\pi\\int_0^2\\big(4x^2-x^4\\big)\\,dx.$$\n\n**Aplicando o Teorema Fundamental do Cálculo:**\n$$V=\\pi\\left[\\frac{4x^3}{3}-\\frac{x^5}{5}\\right]_0^2=\\pi\\left(\\frac{4\\cdot8}{3}-\\frac{32}{5}\\right)=\\pi\\left(\\frac{32}{3}-\\frac{32}{5}\\right).$$\n\n**Simplificação:**\n$$V=\\pi\\cdot 32\\left(\\frac{1}{3}-\\frac{1}{5}\\right)=\\pi\\cdot32\\cdot\\frac{2}{15}=\\frac{64\\pi}{15}.$$",
+      "difficulty": 4,
+      "answer": "$V=\\dfrac{64\\pi}{15}$",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Seja $f:[a,b]\\to\\mathbb{R}$ contínua em $[a,b]$ e derivável em $(a,b)$, com $f(a)=f(b)=0$. Prove que, para todo número real $\\lambda$, existe $c\\in(a,b)$ tal que\n$$f'(c)=\\lambda\\,f(c).$$",
+      "solution": "A ideia é introduzir um **fator integrante** que transforme a condição $f'=\\lambda f$ na anulação da derivada de uma função auxiliar, permitindo aplicar o **Teorema de Rolle**.\n\n**Função auxiliar.** Defina\n$$g(x)=e^{-\\lambda x}f(x).$$\nComo $x\\mapsto e^{-\\lambda x}$ é derivável em toda a reta e $f$ é contínua em $[a,b]$ e derivável em $(a,b)$, o produto $g$ é contínuo em $[a,b]$ e derivável em $(a,b)$.\n\n**Valores nos extremos.**\n$$g(a)=e^{-\\lambda a}f(a)=e^{-\\lambda a}\\cdot 0=0,\\qquad g(b)=e^{-\\lambda b}f(b)=0.$$\nLogo $g(a)=g(b)=0$.\n\n**Teorema de Rolle.** Sendo $g$ contínua em $[a,b]$, derivável em $(a,b)$ e com $g(a)=g(b)$, existe $c\\in(a,b)$ tal que $g'(c)=0$.\n\n**Cálculo de $g'$** (regra do produto e da cadeia):\n$$g'(x)=-\\lambda e^{-\\lambda x}f(x)+e^{-\\lambda x}f'(x)=e^{-\\lambda x}\\big(f'(x)-\\lambda f(x)\\big).$$\n\n**Conclusão.** Em $x=c$:\n$$0=g'(c)=e^{-\\lambda c}\\big(f'(c)-\\lambda f(c)\\big).$$\nComo $e^{-\\lambda c}\\neq 0$ para todo $c$, segue que $f'(c)-\\lambda f(c)=0$, isto é,\n$$f'(c)=\\lambda f(c).\\qquad\\blacksquare$$",
+      "difficulty": 5,
+      "answer": "Existe $c\\in(a,b)$ com $f'(c)=\\lambda f(c)$, obtido aplicando o Teorema de Rolle a $g(x)=e^{-\\lambda x}f(x)$.",
+      "source": {
+        "exam": "Estilo Putnam"
       }
     }
   ]

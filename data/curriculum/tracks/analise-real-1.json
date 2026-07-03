@@ -282,7 +282,18 @@
             "where": "Elon Lages Lima, Colecao Matematica Universitaria (IMPA)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "1 - 1/x",
+          "domain": [
+            1,
+            20
+          ],
+          "caption": "O conjunto {1 − 1/n : n ≥ 1} tem supremo 1, que não é máximo — nunca é atingido."
+        }
+      ]
     },
     {
       "id": "analise-real-1-02-completude-r",
@@ -489,7 +500,21 @@
             "where": "Elon Lages Lima, IMPA"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^2",
+          "domain": [
+            0,
+            2
+          ],
+          "overlay": [
+            "2"
+          ],
+          "caption": "A completude garante o ponto onde x² = 2: existe √2, ausente em ℚ."
+        }
+      ]
     },
     {
       "id": "analise-real-1-03-sequencias-limites",
@@ -699,7 +724,27 @@
             "where": "Elon Lages Lima, IMPA"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "1/x",
+          "domain": [
+            1,
+            20
+          ],
+          "caption": "aₙ = 1/n → 0: dado ε > 0, todos os termos com n > 1/ε ficam abaixo de ε."
+        },
+        {
+          "kind": "series",
+          "expr": "(1 + 1/x)^x",
+          "domain": [
+            1,
+            40
+          ],
+          "caption": "A sequência monótona (1 + 1/n)ⁿ é limitada e converge para e ≈ 2,718."
+        }
+      ]
     },
     {
       "id": "analise-real-1-04-subsequencias-bw-cauchy",
@@ -908,7 +953,18 @@
             "where": "Elon Lages Lima, IMPA"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "cos(pi*x) * (1 - 1/x)",
+          "domain": [
+            1,
+            24
+          ],
+          "caption": "Sequência limitada oscilando: termos pares → +1 e ímpares → −1 (Bolzano-Weierstrass)."
+        }
+      ]
     },
     {
       "id": "analise-real-1-05-series",
@@ -1122,7 +1178,18 @@
             "where": "Elon Lages Lima, IMPA"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "1 - (1/2)^x",
+          "domain": [
+            1,
+            12
+          ],
+          "caption": "Somas parciais de Σ 1/2ᵏ valem 1 − (1/2)ⁿ e convergem para 1."
+        }
+      ]
     },
     {
       "id": "analise-real-1-06-topologia-reta",
@@ -1541,7 +1608,18 @@
             "where": "Elon Lages Lima, IMPA"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sin(1/x)",
+          "domain": [
+            -0.5,
+            0.5
+          ],
+          "caption": "sin(1/x) oscila infinitamente perto de 0: o limite não existe (descontinuidade essencial)."
+        }
+      ]
     },
     {
       "id": "analise-real-1-08-compacidade-conexidade",
@@ -1754,7 +1832,30 @@
             "where": "Elon Lages Lima, IMPA"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^3 - x - 1",
+          "domain": [
+            -2,
+            2
+          ],
+          "overlay": [
+            "c"
+          ],
+          "params": [
+            {
+              "name": "c",
+              "min": -7,
+              "max": 5,
+              "default": 0,
+              "step": 0.5
+            }
+          ],
+          "caption": "Valor intermediário: para todo c entre f(−2) e f(2), a reta y = c corta o gráfico."
+        }
+      ]
     },
     {
       "id": "analise-real-1-09-continuidade-uniforme",
@@ -1963,6 +2064,92 @@
             "where": "Elon Lages Lima, IMPA"
           }
         ]
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sin(x^2)",
+          "domain": [
+            0,
+            6
+          ],
+          "caption": "sin(x²) é contínua, mas não uniformemente: as oscilações aceleram e nenhum δ único serve."
+        }
+      ]
+    }
+  ],
+  "formulaSheet": "## Supremo e ínfimo — manipulação\n\n- Dualidade: $\\inf A=-\\sup(-A)$ e $\\sup A=-\\inf(-A)$, com $-A=\\{-a:a\\in A\\}$.\n- Máximo/mínimo: $\\max A$ existe $\\iff \\sup A\\in A$ (dualmente para $\\min$ e $\\inf$).\n- Provar $s=\\sup A$ (critério $\\varepsilon$ operacional): (i) $a\\le s\\ \\forall a\\in A$; (ii) $\\forall\\varepsilon>0\\ \\exists a\\in A:\\ a>s-\\varepsilon$. Dual para o ínfimo: $\\exists a\\in A:\\ a<\\inf A+\\varepsilon$.\n- Monotonicidade: $A\\subseteq B\\Rightarrow \\sup A\\le\\sup B$ e $\\inf A\\ge\\inf B$.\n- Translação e escala: $\\sup(A+t)=\\sup A+t$; para $c>0$, $\\sup(cA)=c\\sup A$; para $c<0$, $\\sup(cA)=c\\inf A$.\n- Soma de conjuntos: $\\sup(A+B)=\\sup A+\\sup B$ e $\\inf(A+B)=\\inf A+\\inf B$.\n\n## Completude e propriedade arquimediana\n\n- Arquimediano: $\\forall x\\in\\mathbb{R}\\ \\exists n\\in\\mathbb{N}:\\ n>x$; equivalente a $\\inf\\{1/n:n\\ge1\\}=0$.\n- Parte inteira: para todo $x$ existe único $\\lfloor x\\rfloor\\in\\mathbb{Z}$ com $\\lfloor x\\rfloor\\le x<\\lfloor x\\rfloor+1$.\n- Racional entre $a<b$ (construção): tome $n>\\dfrac{1}{b-a}$ e $q=\\dfrac{\\lfloor na\\rfloor+1}{n}$; então $a<q<b$.\n- Raízes: para $y>0$ e $n\\in\\mathbb{N}$ existe único $x>0$ com $x^{n}=y$, isto é $x=y^{1/n}$.\n- Intervalos encaixados: se $I_n=[a_n,b_n]$ decresce, $\\bigcap_n I_n=[\\sup_n a_n,\\ \\inf_n b_n]\\ne\\varnothing$; se $b_n-a_n\\to0$, então $\\bigcap_n I_n=\\{\\ell\\}$ com $\\ell=\\lim a_n=\\lim b_n$.\n\n## Sequências — limites de referência\n\nLimites notáveis (memorize para a prova):\n$$\\lim_{n\\to\\infty} r^{n}=\\begin{cases}0,&|r|<1\\\\[2pt] 1,&r=1\\\\[2pt] +\\infty,&r>1\\end{cases}\\qquad \\lim_{n\\to\\infty} n^{1/n}=1,\\qquad \\lim_{n\\to\\infty} a^{1/n}=1\\ (a>0).$$\n\n- Crescimento comparado: $\\displaystyle\\lim_{n\\to\\infty}\\frac{n^{k}}{r^{n}}=0\\ (|r|>1),\\quad \\lim_{n\\to\\infty}\\frac{r^{n}}{n!}=0,\\quad \\lim_{n\\to\\infty}\\frac{n!}{n^{n}}=0,\\quad \\lim_{n\\to\\infty}\\frac{\\ln n}{n}=0.$\n- Exponencial: $\\displaystyle\\lim_{n\\to\\infty}\\Big(1+\\frac{x}{n}\\Big)^{n}=e^{x}$; em particular $(1+1/n)^{n}\\to e$.\n\nLimite superior e inferior:\n$$\\limsup_{n} x_n=\\inf_{n\\ge1}\\ \\sup_{k\\ge n} x_k,\\qquad \\liminf_{n} x_n=\\sup_{n\\ge1}\\ \\inf_{k\\ge n} x_k.$$\n\n- Sempre $\\liminf x_n\\le\\limsup x_n$; a sequência converge $\\iff$ ambos são iguais e finitos (e o valor comum é $\\lim x_n$).\n- Subaditividade: $\\limsup(x_n+y_n)\\le\\limsup x_n+\\limsup y_n$ e $\\liminf(x_n+y_n)\\ge\\liminf x_n+\\liminf y_n$.\n\n## Séries — testes e formas fechadas\n\n- Termo geral (necessário): $\\sum a_n$ converge $\\Rightarrow a_n\\to0$; logo $a_n\\not\\to0\\Rightarrow$ diverge.\n- Geométrica: $\\displaystyle\\sum_{n=0}^{N} r^{n}=\\frac{1-r^{N+1}}{1-r}$, e para $|r|<1$: $\\displaystyle\\sum_{n=0}^{\\infty} r^{n}=\\frac{1}{1-r},\\quad \\sum_{n=k}^{\\infty} r^{n}=\\frac{r^{k}}{1-r}.$\n- $p$-série (escala de comparação): $\\displaystyle\\sum_{n\\ge1}\\frac{1}{n^{p}}$ converge $\\iff p>1$; em particular a harmônica ($p=1$) diverge.\n- Comparação: $0\\le a_n\\le b_n$; $\\sum b_n$ converge $\\Rightarrow\\sum a_n$ converge; $\\sum a_n$ diverge $\\Rightarrow\\sum b_n$ diverge.\n- Comparação no limite: se $\\displaystyle\\lim \\frac{a_n}{b_n}=c\\in(0,\\infty)$ (termos positivos), as duas séries têm o mesmo caráter.\n- Razão: $\\displaystyle L=\\lim\\Big|\\frac{a_{n+1}}{a_n}\\Big|$ — $L<1$ converge (absolutamente), $L>1$ diverge, $L=1$ inconclusivo.\n- Raiz: $\\displaystyle L=\\limsup\\sqrt[n]{|a_n|}$ — $L<1$ converge (absolutamente), $L>1$ diverge, $L=1$ inconclusivo.\n- Alternada (Leibniz): $b_n\\downarrow0\\Rightarrow \\sum(-1)^{n+1}b_n$ converge, com erro de truncamento $\\big|S-s_N\\big|\\le b_{N+1}$.\n- Absoluta $\\Rightarrow$ convergente: $\\sum|a_n|<\\infty\\Rightarrow\\sum a_n$ converge (a recíproca falha).\n\n## Topologia da reta — identidades de conjuntos\n\n- Fecho: $\\overline{A}=A\\cup A'$, onde $A'$ é o conjunto dos pontos de acumulação. Interior: $\\operatorname{int}A=\\big(\\overline{A^{c}}\\big)^{c}$.\n- Fronteira: $\\partial A=\\overline{A}\\setminus\\operatorname{int}A=\\overline{A}\\cap\\overline{A^{c}}$.\n- $A$ aberto $\\iff \\operatorname{int}A=A\\iff A^{c}$ fechado; $A$ fechado $\\iff \\overline{A}=A\\iff A^{c}$ aberto.\n- Estabilidade: união qualquer de abertos é aberta e interseção finita de abertos é aberta (dualmente para fechados).\n- Aderência sequencial: $x\\in\\overline{A}\\iff \\exists\\,(x_n)\\subseteq A$ com $x_n\\to x$.\n\n## Limites e continuidade — critérios\n\n- Limite por laterais: $\\displaystyle\\lim_{x\\to a}f(x)=L\\iff \\lim_{x\\to a^{-}}f(x)=\\lim_{x\\to a^{+}}f(x)=L$.\n- Heine (sequencial): $f$ contínua em $a\\iff\\big(x_n\\to a\\Rightarrow f(x_n)\\to f(a)\\big)$. Para provar descontinuidade, exiba $x_n\\to a$ com $f(x_n)\\not\\to f(a)$.\n- Descontinuidades: removível ($\\lim_{x\\to a}f$ existe, mas $\\ne f(a)$); de salto ($f(a^{-}),f(a^{+})$ existem e diferem); essencial (algum limite lateral não existe).\n- Localizar raiz (TVI): $f$ contínua em $[a,b]$ com $f(a)\\,f(b)<0\\Rightarrow\\exists\\,c\\in(a,b):\\ f(c)=0$.\n- Extremos (Weierstrass): $f$ contínua em $[a,b]$ atinge máximo e mínimo; em particular é limitada.\n- Compacto em $\\mathbb{R}$: $K$ compacto $\\iff K$ fechado e limitado (Heine–Borel).\n\n## Continuidade uniforme — critérios operacionais\n\n- Lipschitz $\\Rightarrow$ uniforme: se $|f(x)-f(y)|\\le L\\,|x-y|$, basta tomar $\\delta=\\varepsilon/L$.\n- Compacto: $f$ contínua em $[a,b]$ (ou em qualquer compacto) $\\Rightarrow$ uniformemente contínua (Heine–Cantor).\n- Provar que NÃO é uniforme: exiba $(x_n),(y_n)$ com $|x_n-y_n|\\to0$ mas $|f(x_n)-f(y_n)|\\ge c>0$.\n- Preserva Cauchy: $f$ uniformemente contínua e $(x_n)$ de Cauchy $\\Rightarrow (f(x_n))$ de Cauchy (útil para descartar extensão).\n\n## Ferramentas — desigualdades\n\n- Triangular: $|x+y|\\le|x|+|y|$; geral $\\big|\\sum_i x_i\\big|\\le\\sum_i|x_i|$.\n- Triangular reversa: $\\big||x|-|y|\\big|\\le|x-y|$.\n- Bernoulli: $(1+x)^{n}\\ge 1+nx$ para $x\\ge-1$ e $n\\in\\mathbb{N}$.\n- Média aritmética–geométrica: $\\sqrt{ab}\\le\\dfrac{a+b}{2}$ para $a,b\\ge0$.",
+  "examBank": [
+    {
+      "prompt": "Considere o conjunto $$A=\\left\\{\\frac{2n-1}{n+1}\\ :\\ n\\in\\mathbb{N}\\right\\},\\qquad \\mathbb{N}=\\{1,2,3,\\dots\\}.$$ Determine, justificando, $\\sup A$ e $\\inf A$, e decida se $A$ possui máximo e mínimo.",
+      "solution": "**Reescrita do termo geral.** Para $a_n=\\dfrac{2n-1}{n+1}$, note que $2n-1=2(n+1)-3$, logo\n$$a_n=2-\\frac{3}{n+1}.$$\n\n**Monotonicidade.** Como $n\\mapsto \\dfrac{3}{n+1}$ é estritamente decrescente e positiva, a sequência $(a_n)$ é **estritamente crescente**. Assim o menor valor é $a_1=2-\\frac{3}{2}=\\frac12$, que pertence a $A$.\n\n**Mínimo e ínfimo.** Sendo $a_1=\\tfrac12$ o menor elemento e $a_1\\in A$, temos $\\min A=\\inf A=\\dfrac12$.\n\n**Cota superior.** Como $\\dfrac{3}{n+1}>0$, vale $a_n<2$ para todo $n$; logo $2$ é cota superior de $A$.\n\n**$2$ é a menor cota superior.** Dado $\\varepsilon>0$, pela propriedade arquimediana existe $n$ com $n+1>\\dfrac{3}{\\varepsilon}$, ou seja $\\dfrac{3}{n+1}<\\varepsilon$, donde $a_n=2-\\dfrac{3}{n+1}>2-\\varepsilon$. Portanto nenhum número menor que $2$ é cota superior, e $\\sup A=2$.\n\n**Máximo.** Como $2\\notin A$ (nunca atingido) e $\\sup A=2$, o conjunto **não possui máximo**.\n\n**Conclusão.** $\\inf A=\\min A=\\dfrac12$ e $\\sup A=2$, sem máximo.",
+      "difficulty": 1,
+      "answer": "$\\inf A=\\min A=\\tfrac12$; $\\sup A=2$; existe mínimo, mas não existe máximo.",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Classifique cada série abaixo como convergente ou divergente, justificando com um teste de convergência adequado:\n$$\\text{(a)}\\ \\sum_{n=1}^{\\infty}\\frac{n!}{n^{n}},\\qquad \\text{(b)}\\ \\sum_{n=2}^{\\infty}\\frac{1}{n\\ln n},\\qquad \\text{(c)}\\ \\sum_{n=1}^{\\infty}\\frac{(-1)^{n}\\,n}{n^{2}+1}.$$\nNo caso (c), diga também se a convergência é absoluta ou condicional.",
+      "solution": "**(a) Teste da razão.** Com $a_n=\\dfrac{n!}{n^n}>0$,\n$$\\frac{a_{n+1}}{a_n}=\\frac{(n+1)!}{(n+1)^{n+1}}\\cdot\\frac{n^n}{n!}=\\frac{(n+1)\\,n^n}{(n+1)^{n+1}}=\\left(\\frac{n}{n+1}\\right)^{n}=\\frac{1}{\\left(1+\\frac1n\\right)^{n}}\\xrightarrow[n\\to\\infty]{}\\frac1e.$$\nComo $\\frac1e<1$, a série **converge**.\n\n**(b) Teste da integral.** A função $f(x)=\\dfrac{1}{x\\ln x}$ é positiva e decrescente para $x\\ge2$, e\n$$\\int_{2}^{R}\\frac{dx}{x\\ln x}=\\big[\\ln(\\ln x)\\big]_{2}^{R}=\\ln(\\ln R)-\\ln(\\ln2)\\xrightarrow[R\\to\\infty]{}+\\infty.$$\nLogo a integral diverge e, pelo teste da integral, a série **diverge**.\n\n**(c) Teste de Leibniz.** Seja $b_n=\\dfrac{n}{n^2+1}>0$. Então $b_n\\to0$, e $b_n$ é decrescente: para $x\\ge1$, $\\dfrac{d}{dx}\\dfrac{x}{x^2+1}=\\dfrac{1-x^2}{(x^2+1)^2}\\le0$. Pelo critério de Leibniz, a série **converge**.\nA convergência é **condicional**: como $\\dfrac{n}{n^2+1}\\ge\\dfrac{n}{2n^2}=\\dfrac{1}{2n}$ para $n\\ge1$, a série dos módulos $\\sum \\dfrac{n}{n^2+1}$ diverge por comparação com a harmônica.",
+      "difficulty": 2,
+      "answer": "(a) converge (razão $\\to 1/e<1$); (b) diverge (teste da integral); (c) converge condicionalmente.",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Defina a sequência por $a_1=\\sqrt{2}$ e $a_{n+1}=\\sqrt{2+a_n}$ para $n\\ge1$. Prove que $(a_n)$ converge e calcule seu limite.",
+      "solution": "**Limitação superior por $2$ (indução).** Vale $a_1=\\sqrt2<2$. Se $a_n<2$, então $a_{n+1}=\\sqrt{2+a_n}<\\sqrt{2+2}=2$. Logo $0<a_n<2$ para todo $n$.\n\n**Monotonicidade (crescente).** Como todos os termos são positivos,\n$$a_{n+1}^2-a_n^2=(2+a_n)-a_n^2=-(a_n^2-a_n-2)=-(a_n-2)(a_n+1).$$\nPara $0<a_n<2$ tem-se $a_n-2<0$ e $a_n+1>0$, logo $-(a_n-2)(a_n+1)>0$, isto é $a_{n+1}^2>a_n^2$, e como $a_{n+1},a_n>0$, segue $a_{n+1}>a_n$. A sequência é estritamente crescente.\n\n**Convergência.** Sendo crescente e limitada superiormente, pelo **Teorema da Convergência Monótona** existe $L=\\lim a_n$, com $L\\le2$.\n\n**Valor do limite.** Passando ao limite em $a_{n+1}=\\sqrt{2+a_n}$ (a raiz é contínua) obtemos $L=\\sqrt{2+L}$, logo $L^2=2+L$, ou seja $L^2-L-2=(L-2)(L+1)=0$. Como $L\\ge0$, resta $L=2$.",
+      "difficulty": 3,
+      "answer": "$(a_n)$ é crescente e limitada por $2$, logo converge, e $\\lim a_n=2$.",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Usando a **propriedade arquimediana** de $\\mathbb{R}$ (para todo $x>0$ existe $n\\in\\mathbb{N}$ com $n>x$), prove:\n(a) $\\inf\\left\\{\\dfrac1n : n\\in\\mathbb{N}\\right\\}=0$;\n(b) (densidade de $\\mathbb{Q}$) dados reais $a<b$, existe um racional $r$ com $a<r<b$.",
+      "solution": "**(a)** O número $0$ é cota inferior do conjunto $S=\\{1/n:n\\in\\mathbb N\\}$, pois $1/n>0$ para todo $n$. Resta ver que é a **maior** cota inferior. Suponha, por absurdo, que exista uma cota inferior $\\varepsilon>0$; então $\\dfrac1n\\ge\\varepsilon$ para todo $n$, ou seja $n\\le\\dfrac1\\varepsilon$ para todo $n\\in\\mathbb N$. Isso contradiz a propriedade arquimediana (que garante algum $n>1/\\varepsilon$). Logo nenhuma cota inferior é positiva, e $\\inf S=0$.\n\n**(b)** Como $b-a>0$, pela propriedade arquimediana existe $q\\in\\mathbb N$ com $q>\\dfrac{1}{b-a}$, isto é $qb-qa>1$. Tome $p=\\lfloor qa\\rfloor+1\\in\\mathbb Z$. Então\n$$qa<p\\le qa+1<qb,$$\nonde a primeira desigualdade vem de $\\lfloor qa\\rfloor\\le qa<\\lfloor qa\\rfloor+1=p$, a do meio de $\\lfloor qa\\rfloor\\le qa$, e a última de $qa+1<qb$. Dividindo por $q>0$, obtemos $a<\\dfrac{p}{q}<b$. Logo $r=\\dfrac pq\\in\\mathbb Q$ satisfaz $a<r<b$. $\\blacksquare$",
+      "difficulty": 3,
+      "answer": "(a) $\\inf\\{1/n\\}=0$: qualquer $\\varepsilon>0$ falha como cota inferior por arquimediana. (b) $r=\\dfrac{\\lfloor qa\\rfloor+1}{q}$ com $q>\\tfrac1{b-a}$ cumpre $a<r<b$.",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Seja $(a_n)$ uma sequência real e $0<k<1$ uma constante tais que\n$$|a_{n+1}-a_n|\\le k\\,|a_n-a_{n-1}|\\qquad\\text{para todo }n\\ge2.$$\nProve que $(a_n)$ é de Cauchy e conclua que $(a_n)$ converge.",
+      "solution": "**Estimativa dos incrementos.** Seja $C=|a_2-a_1|$. Por indução, $|a_{n+1}-a_n|\\le k^{\\,n-1}C$: o caso $n=1$ é a igualdade $C=k^0C$; e se vale para $n-1$, então $|a_{n+1}-a_n|\\le k|a_n-a_{n-1}|\\le k\\cdot k^{\\,n-2}C=k^{\\,n-1}C$.\n\n**Estimativa das diferenças (desigualdade triangular).** Para $m>n$,\n$$|a_m-a_n|\\le\\sum_{j=n}^{m-1}|a_{j+1}-a_j|\\le C\\sum_{j=n}^{m-1}k^{\\,j-1}=C\\,k^{\\,n-1}\\,\\frac{1-k^{\\,m-n}}{1-k}\\le \\frac{C\\,k^{\\,n-1}}{1-k}.$$\n\n**É de Cauchy.** Como $0<k<1$, temos $k^{\\,n-1}\\to0$; logo, dado $\\varepsilon>0$, existe $N$ com $\\dfrac{C\\,k^{\\,N-1}}{1-k}<\\varepsilon$. Para quaisquer $m>n\\ge N$,\n$$|a_m-a_n|\\le\\frac{C\\,k^{\\,n-1}}{1-k}\\le\\frac{C\\,k^{\\,N-1}}{1-k}<\\varepsilon.$$\nPortanto $(a_n)$ satisfaz o **critério de Cauchy**.\n\n**Conclusão.** Como $\\mathbb{R}$ é completo, toda sequência de Cauchy converge; logo $(a_n)$ converge. $\\blacksquare$",
+      "difficulty": 4,
+      "answer": "Os incrementos decaem como $k^{\\,n-1}$, dando $|a_m-a_n|\\le \\dfrac{C\\,k^{\\,n-1}}{1-k}\\to0$; logo $(a_n)$ é de Cauchy e, por completude de $\\mathbb{R}$, converge.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "(a) Prove, **pela definição $\\varepsilon$–$\\delta$**, que $f(x)=x^2$ é contínua em todo ponto $a\\in\\mathbb{R}$.\n(b) Usando o **critério de Heine** (sequencial), prove que $g(x)=\\sin\\!\\left(\\dfrac1x\\right)$, definida para $x\\ne0$, não possui limite quando $x\\to0$; conclua que $g$ não admite extensão contínua a $x=0$.",
+      "solution": "**(a)** Fixe $a\\in\\mathbb R$ e $\\varepsilon>0$. Para $|x-a|<1$ vale $|x|<|a|+1$, logo\n$$|x^2-a^2|=|x-a|\\,|x+a|\\le|x-a|\\,(|x|+|a|)<|x-a|\\,(2|a|+1).$$\nTome $\\delta=\\min\\left\\{1,\\dfrac{\\varepsilon}{2|a|+1}\\right\\}$. Se $|x-a|<\\delta$, então $|x^2-a^2|<\\delta\\,(2|a|+1)\\le\\varepsilon$. Como $\\varepsilon>0$ era arbitrário, $f$ é contínua em $a$.\n\n**(b)** Tome duas sequências que tendem a $0$:\n$$x_n=\\frac{1}{n\\pi}\\to0,\\qquad y_n=\\frac{1}{2\\pi n+\\frac{\\pi}{2}}\\to0.$$\nEntão $g(x_n)=\\sin(n\\pi)=0\\to0$, enquanto $g(y_n)=\\sin\\!\\left(2\\pi n+\\tfrac\\pi2\\right)=1\\to1$. Duas sequências com o mesmo limite $0$ produzem limites diferentes das imagens; pelo critério de Heine, $\\lim_{x\\to0}g(x)$ **não existe**. Consequentemente, não há valor que se possa atribuir a $g(0)$ tornando $g$ contínua em $0$.",
+      "difficulty": 3,
+      "answer": "(a) $\\delta=\\min\\{1,\\varepsilon/(2|a|+1)\\}$ garante $|x^2-a^2|<\\varepsilon$; (b) $x_n=1/(n\\pi)$ dá imagem $0$ e $y_n=1/(2\\pi n+\\pi/2)$ dá imagem $1$, logo não há limite em $0$ e não existe extensão contínua.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Seja $f:[a,b]\\to[a,b]$ contínua.\n(a) Prove que $f$ possui um ponto fixo, isto é, existe $c\\in[a,b]$ com $f(c)=c$.\n(b) Prove que a imagem $f([a,b])$ é um intervalo fechado e limitado.",
+      "solution": "**(a) (Teorema do Valor Intermediário).** Defina $h(x)=f(x)-x$, contínua em $[a,b]$. Como $f(a)\\in[a,b]$, temos $f(a)\\ge a$, logo $h(a)=f(a)-a\\ge0$. Como $f(b)\\in[a,b]$, temos $f(b)\\le b$, logo $h(b)=f(b)-b\\le0$. Se $h(a)=0$ ou $h(b)=0$, já temos ponto fixo. Caso contrário $h(a)>0>h(b)$; pelo TVI existe $c\\in(a,b)$ com $h(c)=0$, ou seja $f(c)=c$.\n\n**(b) (Compacidade e conexidade).** O intervalo $[a,b]$ é **compacto** (Heine–Borel) e **conexo**. Como $f$ é contínua:\n\n- a continuidade preserva compacidade, logo $f([a,b])$ é compacto, isto é, fechado e limitado;\n- a continuidade preserva conexidade, e os conexos de $\\mathbb{R}$ são exatamente os intervalos, logo $f([a,b])$ é um intervalo.\n\nAlém disso, pelo Teorema de Weierstrass $f$ atinge um mínimo $m$ e um máximo $M$ em $[a,b]$. Combinando, $f([a,b])=[m,M]$, um intervalo fechado e limitado. $\\blacksquare$",
+      "difficulty": 4,
+      "answer": "(a) $h(x)=f(x)-x$ tem $h(a)\\ge0\\ge h(b)$, e o TVI dá $f(c)=c$. (b) $[a,b]$ é compacto e conexo, então a imagem é compacta e conexa, isto é, $f([a,b])=[m,M]$, com $m,M$ o mínimo e o máximo (Weierstrass).",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Seja $f:[0,+\\infty)\\to\\mathbb{R}$ contínua com $\\displaystyle\\lim_{x\\to+\\infty}f(x)=L$ (limite finito). Prove que $f$ é uniformemente contínua em $[0,+\\infty)$.",
+      "solution": "Seja $\\varepsilon>0$. Vamos exibir um $\\delta>0$ que sirva simultaneamente perto da origem e no infinito.\n\n**Controle na cauda.** Como $\\lim_{x\\to+\\infty}f(x)=L$, existe $M>0$ tal que $|f(x)-L|<\\dfrac{\\varepsilon}{2}$ sempre que $x\\ge M$. Assim, para quaisquer $x,y\\ge M$,\n$$|f(x)-f(y)|\\le|f(x)-L|+|L-f(y)|<\\frac{\\varepsilon}{2}+\\frac{\\varepsilon}{2}=\\varepsilon.$$\n\n**Controle no compacto.** O intervalo $[0,\\,M+1]$ é compacto e $f$ é contínua nele; pelo **Teorema de Heine–Cantor**, $f$ é uniformemente contínua em $[0,M+1]$. Logo existe $\\delta_1>0$ tal que\n$$x,y\\in[0,M+1],\\ |x-y|<\\delta_1\\ \\Rightarrow\\ |f(x)-f(y)|<\\varepsilon.$$\n\n**Escolha de $\\delta$.** Tome $\\delta=\\min\\{\\delta_1,\\,1\\}$ e sejam $x,y\\ge0$ com $|x-y|<\\delta$; suponha $x<y$.\n\n- Se $y\\le M+1$: então $x,y\\in[0,M+1]$ e $|x-y|<\\delta\\le\\delta_1$, donde $|f(x)-f(y)|<\\varepsilon$.\n- Se $y> M+1$: como $|x-y|<\\delta\\le1$, temos $x>y-1>M$; assim $x,y\\ge M$ e, pela estimativa da cauda, $|f(x)-f(y)|<\\varepsilon$.\n\nEm ambos os casos $|f(x)-f(y)|<\\varepsilon$. Portanto $f$ é uniformemente contínua em $[0,+\\infty)$. $\\blacksquare$",
+      "difficulty": 5,
+      "answer": "Divide-se o domínio no compacto $[0,M+1]$ (Heine–Cantor fornece $\\delta_1$) e na cauda $x\\ge M$ (onde o limite $L$ controla as oscilações via $|f(x)-f(y)|<\\varepsilon$); com $\\delta=\\min\\{\\delta_1,1\\}$ os dois casos se encaixam, logo $f$ é uniformemente contínua.",
+      "source": {
+        "exam": "Nível de mestrado"
       }
     }
   ]

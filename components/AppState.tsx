@@ -34,7 +34,8 @@ import {
 } from "@/lib/store";
 import { getSubRef, loadCurriculum } from "@/lib/curriculum";
 import { trackProgress } from "@/lib/scheduler";
-import { newCard, review as srsReview, type Grade } from "@/lib/srs";
+import { computeXp, levelFor } from "@/lib/gamification";
+import { newCard, review as srsReview, DAY, type Grade } from "@/lib/srs";
 import { useAuth } from "@/components/auth/AuthProvider";
 import {
   pullState,
@@ -394,6 +395,24 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener("online", handleOnline);
   }, [authUserId]);
 
+  // Celebracao de level-up: detecta subida de nivel de XP a partir de QUALQUER
+  // mutacao (subtopico, revisao, anotacao) num unico ponto. O XP e derivado, sem
+  // schema novo. O ref evita celebrar na hidratacao inicial (prev = null).
+  const prevLevelRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!ready) return;
+    const info = levelFor(computeXp({ progress, cards, log, settings }));
+    const prev = prevLevelRef.current;
+    prevLevelRef.current = info.level;
+    if (prev !== null && info.level > prev && typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("mm:celebrate", {
+          detail: { type: "levelup", levelName: info.name, level: info.level },
+        })
+      );
+    }
+  }, [ready, progress, cards, log, settings]);
+
   // Marca um item como modificado (meta + outbox) e, se logado e online,
   // agenda o push com debounce. Chamado de toda mutacao local abaixo.
   function queueSync(domain: string, itemKey: string, updatedAt: number) {
@@ -431,11 +450,31 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     const ref = getSubRef(subId);
     if (!ref) return;
     const now = Date.now();
+
+    // Escalonamento de cartoes novos: em vez de despejar todos os flashcards do
+    // subtopico vencendo AGORA (pico de revisao no dia seguinte), respeita a cota
+    // newCardsPerDay contando os cartoes novos que JA vencem hoje em toda a base.
+    // O excedente vence nos proximos dias. A pagina de estudo mostra os flashcards
+    // direto (nao filtra por 'due'), entao isto so suaviza a fila de /revisar.
+    const quota = Math.max(1, Math.floor(settings.newCardsPerDay ?? 15));
+    const startOfDay = new Date(now);
+    startOfDay.setHours(0, 0, 0, 0);
+    const endOfToday = startOfDay.getTime() + DAY;
+    let newDueToday = 0;
+    for (const c of cards) {
+      const isNew = c.state === "new" || (c.reps ?? 0) === 0;
+      if (isNew && c.due < endOfToday) newDueToday++;
+    }
+
     const fresh: Card[] = [];
     ref.sub.flashcards.forEach((fc, i) => {
       const id = `${subId}::${i}`;
       if (!cardIds.current.has(id)) {
-        fresh.push(newCard(subId, ref.track.id, fc, i, now));
+        const card = newCard(subId, ref.track.id, fc, i, now);
+        const slot = newDueToday + fresh.length; // posicao entre os novos de hoje
+        const dayOffset = Math.floor(slot / quota);
+        card.due = dayOffset === 0 ? now : now + dayOffset * DAY;
+        fresh.push(card);
         cardIds.current.add(id);
       }
     });
@@ -516,7 +555,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   async function gradeCard(card: Card, grade: Grade) {
     const now = Date.now();
-    const updated = srsReview(card, grade, now);
+    // Meta de retencao do usuario (settings.requestRetention) enfim chega ao
+    // agendador: era um knob persistido/sincronizado mas nunca aplicado.
+    const updated = srsReview(card, grade, now, { requestRetention: settings.requestRetention });
     await putCard(updated);
     queueSync("cards", updated.id, now);
     setCards((prev) => prev.map((c) => (c.id === updated.id ? updated : c)));

@@ -1262,9 +1262,8 @@
         }
       ],
       "prereqs": [
-        "fundamentos-01-conjuntos",
-        "fundamentos-02-produto-cartesiano",
-        "fundamentos-03-funcoes"
+        "fundamentos-03-conjuntos",
+        "fundamentos-05-funcoes"
       ],
       "studyRoadmap": {
         "steps": [
@@ -1635,7 +1634,30 @@
             "where": "Secoes 'Functions' e 'Inverses and Composites'"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^3 - 3*x",
+          "domain": [
+            -2.5,
+            2.5
+          ],
+          "overlay": [
+            "c"
+          ],
+          "params": [
+            {
+              "name": "c",
+              "min": -3,
+              "max": 3,
+              "default": 1,
+              "step": 0.1
+            }
+          ],
+          "caption": "Teste da reta horizontal: onde $y=c$ corta 3 vezes, $f$ nao e injetora."
+        }
+      ]
     },
     {
       "id": "fundamentos-06-inducao",
@@ -1949,7 +1971,21 @@
             "where": "Secoes 5.1-5.3 (Mathematical Induction, Strong Induction and Well-Ordering, Recursive Definitions)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "2^x",
+          "domain": [
+            0,
+            5
+          ],
+          "overlay": [
+            "x"
+          ],
+          "caption": "$2^n>n$: a exponencial supera a reta para todo $n\\ge 1$ (prova por inducao)."
+        }
+      ]
     },
     {
       "id": "fundamentos-07-cardinalidade",
@@ -2275,7 +2311,18 @@
             "where": "Capitulo 7, 'Infinite Sets' (equinumerosity, Cantor-Schroder-Bernstein, teorema de Cantor)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "series",
+          "expr": "(-1)^x * floor(x/2)",
+          "domain": [
+            1,
+            11
+          ],
+          "caption": "Enumeracao de $\\mathbb{Z}$: a bijecao $\\mathbb{N}\\to\\mathbb{Z}$ em ziguezague $0,1,-1,2,-2,\\dots$"
+        }
+      ]
     },
     {
       "id": "fundamentos-08-reais",
@@ -2536,9 +2583,7 @@
         }
       ],
       "prereqs": [
-        "fundamentos-01-logica",
-        "fundamentos-02-conjuntos",
-        "fundamentos-07-racionais"
+        "fundamentos-03-conjuntos"
       ],
       "studyRoadmap": {
         "steps": [
@@ -2588,7 +2633,21 @@
             "where": "cap. 2 (R e um corpo ordenado completo; propriedade arquimediana e densidade)"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^2",
+          "domain": [
+            0,
+            2
+          ],
+          "overlay": [
+            "2"
+          ],
+          "caption": "$\\sqrt{2}=\\sup\\{x:x^2<2\\}$: a completude garante o corte onde $x^2=2$."
+        }
+      ]
     },
     {
       "id": "fundamentos-09-equacoes-inequacoes",
@@ -2925,7 +2984,39 @@
             "where": "Secoes de inequacoes do 2 grau, inequacoes-produto/quociente e equacoes e inequacoes modulares"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "x^2 - x - 2",
+          "domain": [
+            -3,
+            4
+          ],
+          "caption": "Sinal do trinomio: positivo fora das raizes $-1$ e $2$, negativo entre elas."
+        },
+        {
+          "kind": "plot2d",
+          "expr": "abs(x - c)",
+          "domain": [
+            -5,
+            5
+          ],
+          "overlay": [
+            "2"
+          ],
+          "params": [
+            {
+              "name": "c",
+              "min": -3,
+              "max": 3,
+              "default": 1,
+              "step": 0.1
+            }
+          ],
+          "caption": "$|x-c|$ e a distancia ate $c$: as solucoes de $|x-c|<2$ formam um intervalo."
+        }
+      ]
     },
     {
       "id": "fundamentos-10-exponencial-logaritmo",
@@ -3245,7 +3336,31 @@
             "where": "Capitulo sobre funcoes exponencial e logaritmica"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "a^x",
+          "domain": [
+            -3,
+            3
+          ],
+          "overlay": [
+            "log(x)/log(a)",
+            "x"
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": 1.2,
+              "max": 3,
+              "default": 2,
+              "step": 0.1
+            }
+          ],
+          "caption": "$a^x$ e sua inversa $\\log_a x$ espelhadas na reta $y=x$."
+        }
+      ]
     },
     {
       "id": "fundamentos-11-polinomios",
@@ -3578,7 +3693,27 @@
             "where": "Secoes de polinomios, relacoes entre coeficientes e raizes"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "(x - a)*(x - 1)*(x + 2)",
+          "domain": [
+            -4,
+            4
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": -3,
+              "max": 3,
+              "default": 2,
+              "step": 0.1
+            }
+          ],
+          "caption": "$a$ e raiz $\\iff (x-a)$ e fator: mover a raiz desliza o corte no eixo $x$."
+        }
+      ]
     },
     {
       "id": "fundamentos-12-trig-angulos-circulo",
@@ -3855,9 +3990,7 @@
           "ref": "livro"
         }
       ],
-      "prereqs": [
-        "fundamentos-11-funcoes-basicas"
-      ],
+      "prereqs": [],
       "studyRoadmap": {
         "steps": [
           "Comece pela MEDIDA: entenda o radiano como $\\theta=\\tfrac{s}{r}$ e treine converter graus↔radianos ate que $30^\\circ,45^\\circ,60^\\circ,90^\\circ,180^\\circ,270^\\circ,360^\\circ$ virem $\\tfrac{\\pi}{6},\\tfrac{\\pi}{4},\\tfrac{\\pi}{3},\\tfrac{\\pi}{2},\\pi,\\tfrac{3\\pi}{2},2\\pi$ de imediato.",
@@ -3913,7 +4046,18 @@
             "where": "Apendice D (Trigonometria): radianos, circulo unitario e identidades fundamentais"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "parametric",
+          "expr": "cos(t), sin(t)",
+          "domain": [
+            0,
+            6.2832
+          ],
+          "caption": "Circulo trigonometrico: $P(\\theta)=(\\cos\\theta,\\sin\\theta)$ sobre $x^2+y^2=1$."
+        }
+      ]
     },
     {
       "id": "fundamentos-13-trig-funcoes-graficos",
@@ -4174,9 +4318,7 @@
           "ref": "livro"
         }
       ],
-      "prereqs": [
-        "fundamentos-12-trigonometria-circulo-identidades"
-      ],
+      "prereqs": [],
       "studyRoadmap": {
         "steps": [
           "Revise o circulo trigonometrico: para cada $x$, saiba localizar $(\\cos x,\\sin x)$ e ler sinal por quadrante. Isso e a fonte de TODAS as propriedades das funcoes.",
@@ -4225,7 +4367,51 @@
             "where": "Capitulo sobre funcoes seno, cosseno e tangente"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "a*sin(b*x + c) + d",
+          "domain": [
+            -6.3,
+            6.3
+          ],
+          "overlay": [
+            "sin(x)"
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": 0.2,
+              "max": 3,
+              "default": 1,
+              "step": 0.1
+            },
+            {
+              "name": "b",
+              "min": 0.5,
+              "max": 3,
+              "default": 1,
+              "step": 0.1
+            },
+            {
+              "name": "c",
+              "min": 0,
+              "max": 6.28,
+              "default": 0,
+              "step": 0.1
+            },
+            {
+              "name": "d",
+              "min": -2,
+              "max": 2,
+              "default": 0,
+              "step": 0.1
+            }
+          ],
+          "caption": "$y=a\\sin(bx+c)+d$: amplitude $|a|$, periodo $2\\pi/|b|$, fase e deslocamento $d$."
+        }
+      ]
     },
     {
       "id": "fundamentos-14-trig-identidades",
@@ -4483,7 +4669,7 @@
         }
       ],
       "prereqs": [
-        "fundamentos-13-trig-circulo"
+        "fundamentos-12-trig-angulos-circulo"
       ],
       "studyRoadmap": {
         "steps": [
@@ -4538,7 +4724,22 @@
             "where": "Apendice D (Trigonometria): identidades usadas em substituicao trigonometrica"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sin(x)^2 + cos(x)^2",
+          "domain": [
+            -6.3,
+            6.3
+          ],
+          "overlay": [
+            "sin(x)^2",
+            "cos(x)^2"
+          ],
+          "caption": "$\\sin^2 x+\\cos^2 x=1$: as duas parcelas oscilam mas a soma e constante."
+        }
+      ]
     },
     {
       "id": "fundamentos-15-trig-adicao-arcos",
@@ -4860,7 +5061,38 @@
             "where": "Capitulo de Trigonometria, secao de formulas de adicao e multiplicacao de arcos"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "a*sin(x) + b*cos(x)",
+          "domain": [
+            -6.3,
+            6.3
+          ],
+          "overlay": [
+            "sqrt(a^2 + b^2)",
+            "-sqrt(a^2 + b^2)"
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": -3,
+              "max": 3,
+              "default": 2,
+              "step": 0.1
+            },
+            {
+              "name": "b",
+              "min": -3,
+              "max": 3,
+              "default": 1,
+              "step": 0.1
+            }
+          ],
+          "caption": "$a\\sin x+b\\cos x=R\\sin(x+\\varphi)$: a soma e uma unica senoide de amplitude $R=\\sqrt{a^2+b^2}$."
+        }
+      ]
     },
     {
       "id": "fundamentos-16-trig-equacoes",
@@ -5118,7 +5350,7 @@
         }
       ],
       "prereqs": [
-        "fundamentos-15-trig-identidades",
+        "fundamentos-14-trig-identidades",
         "fundamentos-08-reais",
         "fundamentos-09-equacoes-inequacoes"
       ],
@@ -5176,7 +5408,30 @@
             "where": "Capitulo sobre funcoes trigonometricas e suas equacoes"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sin(x)",
+          "domain": [
+            -6.3,
+            6.3
+          ],
+          "overlay": [
+            "a"
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": -1.2,
+              "max": 1.2,
+              "default": 0.5,
+              "step": 0.05
+            }
+          ],
+          "caption": "$\\sin x=a$: cada cruzamento e uma solucao — infinitas, repetidas a cada $2\\pi$."
+        }
+      ]
     },
     {
       "id": "fundamentos-17-trig-leis-senos-cossenos",
@@ -5501,7 +5756,34 @@
             "where": "Capitulo de trigonometria no triangulo e aplicacoes"
           }
         ]
-      }
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "sqrt(a^2 + b^2 - 2*a*b*cos(x))",
+          "domain": [
+            0,
+            3.15
+          ],
+          "params": [
+            {
+              "name": "a",
+              "min": 1,
+              "max": 4,
+              "default": 3,
+              "step": 0.1
+            },
+            {
+              "name": "b",
+              "min": 1,
+              "max": 4,
+              "default": 2,
+              "step": 0.1
+            }
+          ],
+          "caption": "Lei dos cossenos: o lado $c$ cresce de $|a-b|$ ($C=0$) ate $a+b$ ($C=\\pi$)."
+        }
+      ]
     },
     {
       "id": "fundamentos-18-trig-inversas",
@@ -5820,6 +6102,96 @@
             "where": "Capitulo de funcoes trigonometricas e suas inversas"
           }
         ]
+      },
+      "figures": [
+        {
+          "kind": "plot2d",
+          "expr": "atan(x)",
+          "domain": [
+            -8,
+            8
+          ],
+          "overlay": [
+            "pi/2",
+            "-pi/2"
+          ],
+          "caption": "$\\arctan$: dominio $\\mathbb{R}$, imagem $(-\\pi/2,\\pi/2)$ com assintotas $y=\\pm\\pi/2$."
+        }
+      ]
+    }
+  ],
+  "formulaSheet": "## Lógica e quantificadores\n\n- Condicional: $p\\to q\\equiv\\neg p\\vee q$; negação $\\neg(p\\to q)\\equiv p\\wedge\\neg q$; contrapositiva $p\\to q\\equiv\\neg q\\to\\neg p$.\n- De Morgan: $\\neg(p\\wedge q)\\equiv\\neg p\\vee\\neg q$ e $\\neg(p\\vee q)\\equiv\\neg p\\wedge\\neg q$.\n- Bicondicional: $p\\leftrightarrow q\\equiv(p\\to q)\\wedge(q\\to p)$.\n- Negação de quantificadores: $\\neg\\,\\forall x\\,P(x)\\equiv\\exists x\\,\\neg P(x)$ e $\\neg\\,\\exists x\\,P(x)\\equiv\\forall x\\,\\neg P(x)$. Numa cadeia, troque cada $\\forall\\leftrightarrow\\exists$ e negue o núcleo.\n- Quantificação restrita: \"todo $x$ em $A$\" $\\equiv\\forall x\\,(x\\in A\\to Q(x))$; \"algum $x$ em $A$\" $\\equiv\\exists x\\,(x\\in A\\wedge Q(x))$.\n- Um único contraexemplo refuta $\\forall x\\,P(x)$ (não refuta um $\\exists$).\n- Troca: $\\exists y\\,\\forall x\\,P(x,y)\\Rightarrow\\forall x\\,\\exists y\\,P(x,y)$; a recíproca é falsa em geral.\n\n## Conjuntos\n\n- Igualdade por dupla inclusão: $A=B\\iff A\\subseteq B\\ \\wedge\\ B\\subseteq A$.\n- Operações: $A\\setminus B=\\{x\\in A:x\\notin B\\}$, $A^c=U\\setminus A$; $A\\cup A^c=U$, $A\\cap A^c=\\varnothing$, $(A^c)^c=A$.\n- De Morgan: $(A\\cup B)^c=A^c\\cap B^c$ e $(A\\cap B)^c=A^c\\cup B^c$; geral $\\big(\\bigcup_i A_i\\big)^c=\\bigcap_i A_i^c$.\n- Distributividade: $A\\cap(B\\cup C)=(A\\cap B)\\cup(A\\cap C)$ e $A\\cup(B\\cap C)=(A\\cup B)\\cap(A\\cap C)$.\n- Cardinalidades: $|\\mathcal P(A)|=2^{|A|}$ e $|A\\times B|=|A|\\cdot|B|$.\n- Sempre $\\varnothing\\subseteq A$ e $A\\subseteq A$; cuidado com $\\varnothing\\ne\\{\\varnothing\\}$ ($|\\{\\varnothing\\}|=1$).\n\n## Relações e ordem\n\n- $R\\subseteq A\\times B$; há $2^{|A||B|}$ relações (conjuntos finitos).\n- Equivalência = reflexiva + simétrica + transitiva. Classes: $[a]=[b]\\iff aRb$; senão $[a]\\cap[b]=\\varnothing$. As classes formam uma partição de $A$.\n- Ordem parcial = reflexiva + antissimétrica + transitiva; total acrescenta a comparabilidade $\\forall a,b\\,(a\\preceq b\\vee b\\preceq a)$.\n- Simétrica e antissimétrica ao mesmo tempo $\\iff R\\subseteq\\Delta_A$ (só a diagonal).\n- Congruência: $a\\equiv b\\pmod n\\iff n\\mid(a-b)$; exatamente $n$ classes $[0],\\dots,[n-1]$.\n\n## Funções\n\n- Injetora: $f(a)=f(b)\\Rightarrow a=b$. Sobrejetora: $f(A)=B$. Bijetora = injetora + sobrejetora.\n- Inversível $\\iff$ bijetora; então $(f^{-1})^{-1}=f$ e $(g\\circ f)^{-1}=f^{-1}\\circ g^{-1}$.\n- Inversa à esquerda existe $\\iff$ injetora; inversa à direita $\\iff$ sobrejetora.\n- Composição: $f,g$ injetoras $\\Rightarrow g\\circ f$ injetora (idem sobrejetoras); $g\\circ f$ injetora $\\Rightarrow f$ injetora; $g\\circ f$ sobrejetora $\\Rightarrow g$ sobrejetora.\n- Imagem inversa comuta com tudo: $f^{-1}\\big(\\bigcup Y_i\\big)=\\bigcup f^{-1}(Y_i)$, $f^{-1}\\big(\\bigcap Y_i\\big)=\\bigcap f^{-1}(Y_i)$, $f^{-1}(B\\setminus Y)=A\\setminus f^{-1}(Y)$.\n- Imagem direta: $f(X_1\\cup X_2)=f(X_1)\\cup f(X_2)$, mas $f(X_1\\cap X_2)\\subseteq f(X_1)\\cap f(X_2)$ (igualdade sempre $\\iff f$ injetora).\n\n## Indução e recorrências\n\n- Estrutura: base $P(n_0)$ + passo $P(k)\\Rightarrow P(k+1)$ (forte: $P(n_0)\\wedge\\cdots\\wedge P(k)\\Rightarrow P(k+1)$).\n- Boa Ordenação (PBO): todo $S\\subseteq\\mathbb N$ não vazio tem mínimo; equivale à indução. Base da técnica do menor contraexemplo / descida infinita.\n- Soma de Gauss: $\\sum_{i=1}^n i=\\dfrac{n(n+1)}{2}$.\n- Bernoulli: $(1+x)^n\\ge 1+nx$ para $n\\ge0$ inteiro e $x\\ge-1$.\n- Divisibilidade: $n^3-n$ é divisível por $6$ para todo $n\\ge0$.\n\n## Cardinalidade\n\n- $|A|=|B|\\iff$ existe bijeção; $|A|\\le|B|\\iff$ existe injeção $A\\to B$.\n- Cantor–Schröder–Bernstein: injeções $A\\to B$ e $B\\to A\\Rightarrow|A|=|B|$.\n- Cantor: $|A|<|\\mathcal P(A)|$; para $A$ finito $|\\mathcal P(A)|=2^{|A|}$.\n- Enumeráveis ($\\sim\\mathbb N$, $\\aleph_0$): $\\mathbb Z$, $\\mathbb N\\times\\mathbb N$, $\\mathbb Q$ e união enumerável de enumeráveis. Pareamento de Cantor: $\\pi(m,n)=\\dfrac{(m+n)(m+n+1)}{2}+n$.\n- $\\mathbb R$ não é enumerável: $\\aleph_0<\\mathfrak c$, com $\\mathfrak c=|\\mathbb R|=|\\mathcal P(\\mathbb N)|=2^{\\aleph_0}$.\n\n## Números reais (corpo ordenado completo)\n\n- Valor absoluto: $|x|=\\max\\{x,-x\\}=\\sqrt{x^2}$; $|xy|=|x|\\,|y|$; $\\left|\\dfrac{x}{y}\\right|=\\dfrac{|x|}{|y|}$.\n- Desigualdade triangular: $|x+y|\\le|x|+|y|$ e $\\big||x|-|y|\\big|\\le|x-y|$.\n- Supremo (menor cota superior), caracterização $\\varepsilon$: $s=\\sup A\\iff s$ é cota superior e $\\forall\\varepsilon>0\\ \\exists a\\in A:\\ a>s-\\varepsilon$. Vale $\\inf A=-\\sup(-A)$.\n- Completude: todo $A\\ne\\varnothing$ limitado superiormente tem $\\sup A\\in\\mathbb R$.\n- Arquimediana: $\\forall x\\ \\exists n\\in\\mathbb N:\\ n>x$ (equiv. $\\forall\\varepsilon>0\\ \\exists n:\\ 1/n<\\varepsilon$).\n- Densidade: entre quaisquer $a<b$ reais existe $q\\in\\mathbb Q$.\n\n## Equações, inequações e módulo\n\n- Multiplicar/dividir uma inequação por $k$: mantém o sinal se $k>0$, inverte se $k<0$. Elevar ao quadrado pode criar raízes estranhas.\n- Fórmula quadrática:\n\n$$x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a},\\qquad \\Delta=b^2-4ac$$\n\ncom $\\Delta>0$ duas raízes reais, $\\Delta=0$ raiz dupla $-\\tfrac{b}{2a}$, $\\Delta<0$ nenhuma real.\n- Girard (2º grau): $x_1+x_2=-\\dfrac{b}{a}$, $x_1x_2=\\dfrac{c}{a}$, e $ax^2+bx+c=a(x-x_1)(x-x_2)$.\n- Sinal do trinômio: sinal de $a$ fora das raízes, sinal de $-a$ entre elas; se $\\Delta<0$, sinal de $a$ em toda a reta.\n- Quadro de sinais (produto/quociente): raízes do numerador entram (desigualdade não estrita); raízes do denominador são sempre excluídas.\n- Módulo (com $a>0$): $|X|=a\\iff X=\\pm a$; $|X|<a\\iff -a<X<a$; $|X|>a\\iff X<-a\\ \\vee\\ X>a$.\n- Distância: $|x-a|<r\\iff x\\in(a-r,a+r)$; $|x-a|>r\\iff x\\in(-\\infty,a-r)\\cup(a+r,\\infty)$.\n\n## Potências, exponencial e logaritmo\n\n- Potências ($a,b\\ne0$, $m,n\\in\\mathbb Z$): $a^ma^n=a^{m+n}$, $\\dfrac{a^m}{a^n}=a^{m-n}$, $(a^m)^n=a^{mn}$, $(ab)^n=a^nb^n$, $a^0=1$, $a^{-n}=\\dfrac{1}{a^n}$.\n- Radicais: $a^{p/q}=\\sqrt[q]{a^p}$ (para $a>0$); $\\sqrt[n]{a^n}=|a|$ quando $n$ é par.\n- Exponencial $a^x$ ($a>0,\\ a\\ne1$): crescente se $a>1$, decrescente se $0<a<1$; injetora: $a^u=a^v\\iff u=v$.\n- Logaritmo (inversa): $y=\\log_a x\\iff a^y=x$; $a^{\\log_a x}=x$ e $\\log_a(a^y)=y$.\n- Leis: $\\log_a(xy)=\\log_a x+\\log_a y$, $\\log_a\\dfrac{x}{y}=\\log_a x-\\log_a y$, $\\log_a(x^r)=r\\log_a x$.\n- Mudança de base: $\\log_a x=\\dfrac{\\log_b x}{\\log_b a}=\\dfrac{\\ln x}{\\ln a}$; $\\log_a b=\\dfrac{1}{\\log_b a}$.\n\n## Polinômios\n\n- Grau: $\\deg(pq)=\\deg p+\\deg q$ e $\\deg(p+q)\\le\\max(\\deg p,\\deg q)$.\n- Divisão euclidiana: existem únicos $q,r$ com $p=q\\,d+r$ e ($r=0$ ou $\\deg r<\\deg d$).\n- Teorema do resto: o resto de $p(x)$ por $(x-a)$ é $p(a)$; use Briot-Ruffini para dividir por $(x-a)$.\n- Fator (D'Alembert): $p(a)=0\\iff(x-a)\\mid p(x)$; grau $n\\Rightarrow$ no máximo $n$ raízes distintas.\n- Multiplicidade $m$: $(x-a)^m\\mid p$ e $(x-a)^{m+1}\\nmid p$; equiv. $p(a)=\\cdots=p^{(m-1)}(a)=0$ e $p^{(m)}(a)\\ne0$.\n- Raízes racionais: se $\\tfrac{s}{t}$ (irredutível) é raiz de $p\\in\\mathbb Z[x]$, então $s\\mid a_0$ e $t\\mid a_n$ (mônico $\\Rightarrow$ raízes racionais são inteiras e dividem $a_0$).\n- Fatoração completa em $\\mathbb C$: $p(x)=a_n\\prod_{i=1}^n(x-r_i)$ (com multiplicidade).\n- Girard: $\\sum_i r_i=-\\dfrac{a_{n-1}}{a_n}$, $\\prod_i r_i=(-1)^n\\dfrac{a_0}{a_n}$, $e_k=(-1)^k\\dfrac{a_{n-k}}{a_n}$.\n\n## Trigonometria — círculo, identidades e valores\n\n- Radianos: $180^\\circ=\\pi$ rad, $1^\\circ=\\dfrac{\\pi}{180}$ rad. Arco $s=r\\theta$; setor $A=\\dfrac12 r^2\\theta$.\n- $P(\\theta)=(\\cos\\theta,\\sin\\theta)$; $\\tan\\theta=\\dfrac{\\sin\\theta}{\\cos\\theta}$, $\\cot\\theta=\\dfrac{\\cos\\theta}{\\sin\\theta}$, $\\sec\\theta=\\dfrac{1}{\\cos\\theta}$, $\\csc\\theta=\\dfrac{1}{\\sin\\theta}$.\n- Pitagóricas: $\\sin^2\\theta+\\cos^2\\theta=1$, $1+\\tan^2\\theta=\\sec^2\\theta$, $1+\\cot^2\\theta=\\csc^2\\theta$.\n- Paridade: $\\cos(-\\theta)=\\cos\\theta$ (par); $\\sin,\\tan$ ímpares. Períodos: $2\\pi$ para $\\sin,\\cos$; $\\pi$ para $\\tan,\\cot$.\n- Sinais por quadrante (ASTC): I todas $+$; II só $\\sin,\\csc$; III só $\\tan,\\cot$; IV só $\\cos,\\sec$.\n- Notáveis: $\\sin30^\\circ=\\cos60^\\circ=\\tfrac12$; $\\sin45^\\circ=\\cos45^\\circ=\\tfrac{\\sqrt2}{2}$; $\\sin60^\\circ=\\cos30^\\circ=\\tfrac{\\sqrt3}{2}$.\n\n## Trigonometria — gráficos e senoides\n\n- $y=a\\sin(bx+c)+d$ (idem $\\cos$): amplitude $|a|$, período $\\dfrac{2\\pi}{|b|}$, deslocamento de fase $-\\dfrac{c}{b}$, linha média $y=d$, valores em $[d-|a|,\\,d+|a|]$. Para $\\tan$: período $\\dfrac{\\pi}{|b|}$.\n- Zeros/extremos: $\\sin x=0\\iff x=k\\pi$; $\\cos x=0\\iff x=\\tfrac{\\pi}{2}+k\\pi$; máx de $\\sin$ em $\\tfrac{\\pi}{2}+2k\\pi$, de $\\cos$ em $2k\\pi$.\n- Redução harmônica: $a\\sin\\theta+b\\cos\\theta=R\\sin(\\theta+\\varphi)$ com $R=\\sqrt{a^2+b^2}$, $\\cos\\varphi=\\tfrac{a}{R}$, $\\sin\\varphi=\\tfrac{b}{R}$.\n\n## Trigonometria — adição, arco duplo, arco metade\n\n- Adição: $\\sin(a\\pm b)=\\sin a\\cos b\\pm\\cos a\\sin b$; $\\cos(a\\pm b)=\\cos a\\cos b\\mp\\sin a\\sin b$; $\\tan(a\\pm b)=\\dfrac{\\tan a\\pm\\tan b}{1\\mp\\tan a\\tan b}$.\n- Arco duplo: $\\sin2\\theta=2\\sin\\theta\\cos\\theta$; $\\cos2\\theta=\\cos^2\\theta-\\sin^2\\theta=1-2\\sin^2\\theta=2\\cos^2\\theta-1$; $\\tan2\\theta=\\dfrac{2\\tan\\theta}{1-\\tan^2\\theta}$.\n- Rebaixamento: $\\sin^2\\theta=\\dfrac{1-\\cos2\\theta}{2}$, $\\cos^2\\theta=\\dfrac{1+\\cos2\\theta}{2}$.\n- Arco metade: $\\sin\\dfrac\\theta2=\\pm\\sqrt{\\dfrac{1-\\cos\\theta}{2}}$, $\\cos\\dfrac\\theta2=\\pm\\sqrt{\\dfrac{1+\\cos\\theta}{2}}$, $\\tan\\dfrac\\theta2=\\dfrac{1-\\cos\\theta}{\\sin\\theta}=\\dfrac{\\sin\\theta}{1+\\cos\\theta}$.\n- Soma-produto: $\\sin p+\\sin q=2\\sin\\tfrac{p+q}{2}\\cos\\tfrac{p-q}{2}$; $\\cos p+\\cos q=2\\cos\\tfrac{p+q}{2}\\cos\\tfrac{p-q}{2}$; $\\cos p-\\cos q=-2\\sin\\tfrac{p+q}{2}\\sin\\tfrac{p-q}{2}$.\n- Produto-soma: $\\cos a\\cos b=\\tfrac12[\\cos(a-b)+\\cos(a+b)]$; $\\sin a\\sin b=\\tfrac12[\\cos(a-b)-\\cos(a+b)]$; $\\sin a\\cos b=\\tfrac12[\\sin(a+b)+\\sin(a-b)]$.\n\n## Trigonometria — equações\n\n- $\\sin x=\\sin\\alpha\\iff x=\\alpha+2k\\pi\\ \\text{ou}\\ x=\\pi-\\alpha+2k\\pi$.\n- $\\cos x=\\cos\\alpha\\iff x=\\pm\\alpha+2k\\pi$.\n- $\\tan x=\\tan\\alpha\\iff x=\\alpha+k\\pi$.\n- Existência: $\\sin x=a$ e $\\cos x=a$ têm solução $\\iff|a|\\le1$; $\\tan x=a$ para todo $a\\in\\mathbb R$.\n- Linear: $a\\sin x+b\\cos x=c$ vira $\\sin(x+\\varphi)=\\tfrac{c}{R}$ com $R=\\sqrt{a^2+b^2}$; há solução $\\iff|c|\\le R$.\n\n## Triângulos (leis dos senos e dos cossenos)\n\n- Notação: lados $a,b,c$ opostos a $A,B,C$; sempre $A+B+C=180^\\circ$.\n- Lei dos senos: $\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=2R$.\n- Lei dos cossenos: $c^2=a^2+b^2-2ab\\cos C$ (recupera Pitágoras se $C=90^\\circ$).\n- Área: $S=\\dfrac12 ab\\sin C=\\dfrac{abc}{4R}=\\sqrt{p(p-a)(p-b)(p-c)}$ (Heron), com $p=\\dfrac{a+b+c}{2}$.\n- Existência do triângulo: $a<b+c$, $b<a+c$, $c<a+b$.\n- Caso ambíguo (LLA): $\\sin B=\\dfrac{b\\sin A}{a}$ — se $>1$ não há triângulo, $=1$ um, $<1$ até dois ($B$ e $180^\\circ-B$, filtrados por $A+B<180^\\circ$).\n\n## Funções trigonométricas inversas\n\n- Ramos principais: $\\arcsin:[-1,1]\\to[-\\tfrac\\pi2,\\tfrac\\pi2]$; $\\arccos:[-1,1]\\to[0,\\pi]$; $\\arctan:\\mathbb R\\to(-\\tfrac\\pi2,\\tfrac\\pi2)$.\n- Cancelamento direto: $\\sin(\\arcsin x)=x$ e $\\cos(\\arccos x)=x$ ($x\\in[-1,1]$), $\\tan(\\arctan x)=x$; o reverso $\\arcsin(\\sin\\theta)=\\theta$ só vale se $\\theta$ está no ramo.\n- Complementar: $\\arcsin x+\\arccos x=\\dfrac\\pi2$.\n- Composições mistas: $\\cos(\\arcsin x)=\\sqrt{1-x^2}$; $\\cos(\\arctan x)=\\dfrac{1}{\\sqrt{1+x^2}}$, $\\sin(\\arctan x)=\\dfrac{x}{\\sqrt{1+x^2}}$.",
+  "examBank": [
+    {
+      "prompt": "Seja $U$ um conjunto universo e $A,B\\subseteq U$; escreva $\\overline{X}=U\\setminus X$ para o complementar.\n\n**(a)** Prove, por dupla inclusão, a lei de De Morgan $\\overline{A\\cup B}=\\overline{A}\\cap\\overline{B}$.\n\n**(b)** Como aplicação, tome $U=\\{1,2,\\dots,10\\}$, $A=\\{\\text{múltiplos de }2\\}$ e $B=\\{\\text{múltiplos de }3\\}$. Determine $\\overline{A\\cup B}$ e confirme explicitamente a igualdade da parte (a).",
+      "solution": "**(a) Dupla inclusão.**\n\n$(\\subseteq)$ Seja $x\\in\\overline{A\\cup B}$. Então $x\\in U$ e $x\\notin A\\cup B$, isto é, *não* é verdade que ($x\\in A$ ou $x\\in B$). Pela lei de De Morgan da lógica, isso equivale a: $x\\notin A$ **e** $x\\notin B$, ou seja $x\\in\\overline{A}$ e $x\\in\\overline{B}$. Logo $x\\in\\overline{A}\\cap\\overline{B}$.\n\n$(\\supseteq)$ Seja $x\\in\\overline{A}\\cap\\overline{B}$. Então $x\\in U$, $x\\notin A$ e $x\\notin B$; assim não ocorre $x\\in A$ nem $x\\in B$, portanto $x\\notin A\\cup B$ e $x\\in\\overline{A\\cup B}$.\n\nAs duas inclusões dão a igualdade $\\overline{A\\cup B}=\\overline{A}\\cap\\overline{B}$. $\\blacksquare$\n\n**(b)** Temos $A=\\{2,4,6,8,10\\}$ e $B=\\{3,6,9\\}$, logo $A\\cup B=\\{2,3,4,6,8,9,10\\}$ e\n$$\\overline{A\\cup B}=U\\setminus(A\\cup B)=\\{1,5,7\\}.$$\nPor outro lado $\\overline{A}=\\{1,3,5,7,9\\}$ (os ímpares) e $\\overline{B}=\\{1,2,4,5,7,8,10\\}$, donde\n$$\\overline{A}\\cap\\overline{B}=\\{1,5,7\\}.$$\nOs dois conjuntos coincidem, confirmando a lei de De Morgan neste caso concreto.",
+      "difficulty": 1,
+      "answer": "$\\overline{A\\cup B}=\\{1,5,7\\}=\\overline{A}\\cap\\overline{B}$; a igualdade geral segue por dupla inclusão.",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Sejam $f\\colon A\\to B$ e $g\\colon B\\to C$ funções, e considere a composta $g\\circ f\\colon A\\to C$.\n\n**(a)** Prove que se $g\\circ f$ é injetiva, então $f$ é injetiva.\n\n**(b)** Prove que se $g\\circ f$ é sobrejetiva, então $g$ é sobrejetiva.\n\n**(c)** Exiba um exemplo com conjuntos finitos em que $g\\circ f$ é bijetiva, mas $f$ **não** é sobrejetiva e $g$ **não** é injetiva (mostrando que as recíprocas de (a) e (b) falham).",
+      "solution": "**(a)** Sejam $a_1,a_2\\in A$ com $f(a_1)=f(a_2)$. Aplicando $g$ a ambos os lados,\n$$g(f(a_1))=g(f(a_2))\\quad\\Longrightarrow\\quad (g\\circ f)(a_1)=(g\\circ f)(a_2).$$\nComo $g\\circ f$ é injetiva, segue $a_1=a_2$. Logo $f$ é injetiva. $\\blacksquare$\n\n**(b)** Seja $c\\in C$. Como $g\\circ f$ é sobrejetiva, existe $a\\in A$ com $(g\\circ f)(a)=c$, isto é, $g\\big(f(a)\\big)=c$. Tomando $b=f(a)\\in B$, temos $g(b)=c$. Como $c$ era arbitrário, $g$ é sobrejetiva. $\\blacksquare$\n\n**(c)** Tome $A=C=\\{1\\}$, $B=\\{1,2\\}$, e defina\n$$f(1)=1,\\qquad g(1)=1,\\ g(2)=1.$$\nEntão $g\\circ f\\colon\\{1\\}\\to\\{1\\}$ leva $1\\mapsto 1$: é a identidade, logo bijetiva. Contudo $f$ não é sobrejetiva (pois $2\\notin\\operatorname{Im}f=\\{1\\}$) e $g$ não é injetiva (pois $g(1)=g(2)=1$ com $1\\neq 2$). Isso mostra que as hipóteses de (a) e (b) **não** podem ser reforçadas para bijeção de $f$ ou de $g$.",
+      "difficulty": 2,
+      "answer": "(a) e (b) provados diretamente; contraexemplo às recíprocas: $A=C=\\{1\\}$, $B=\\{1,2\\}$, $f(1)=1$, $g(1)=g(2)=1$.",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Prove, por indução matemática, que $6\\mid n^{3}+5n$ para todo inteiro $n\\ge 0$ (ou seja, $n^{3}+5n$ é múltiplo de $6$).\n\nNa passagem de indução, deixe explícito onde entra o fato de o produto de dois inteiros consecutivos ser par.",
+      "solution": "**Base** $(n=0)$: $0^{3}+5\\cdot 0=0=6\\cdot 0$, logo $6\\mid 0$. (Verifica-se também em $n=1$: $1+5=6$.)\n\n**Hipótese de indução:** suponha, para certo $k\\ge 0$, que $6\\mid k^{3}+5k$.\n\n**Passo:** vamos mostrar que $6\\mid (k+1)^{3}+5(k+1)$. Expandindo,\n$$(k+1)^{3}+5(k+1)=k^{3}+3k^{2}+3k+1+5k+5=\\big(k^{3}+5k\\big)+3k^{2}+3k+6.$$\nAgrupando os três últimos termos, $3k^{2}+3k+6=3k(k+1)+6$, de modo que\n$$(k+1)^{3}+5(k+1)=\\underbrace{\\big(k^{3}+5k\\big)}_{6\\,\\mid\\,\\cdot\\ \\text{(HI)}}+\\underbrace{3k(k+1)}_{6\\,\\mid\\,\\cdot}+\\underbrace{6}_{6\\,\\mid\\,\\cdot}.$$\nO primeiro somando é múltiplo de $6$ pela hipótese. No segundo, $k(k+1)$ é produto de **dois inteiros consecutivos**, logo é par, isto é $2\\mid k(k+1)$; multiplicando por $3$ obtemos $6\\mid 3k(k+1)$. E claramente $6\\mid 6$. Como a soma de múltiplos de $6$ é múltiplo de $6$, concluímos $6\\mid (k+1)^{3}+5(k+1)$.\n\nPelo princípio da indução, $6\\mid n^{3}+5n$ para todo $n\\ge 0$. $\\blacksquare$",
+      "difficulty": 3,
+      "answer": "A propriedade vale para todo $n\\ge 0$; o passo usa $(k+1)^3+5(k+1)=(k^3+5k)+3k(k+1)+6$, com $k(k+1)$ par garantindo $6\\mid 3k(k+1)$.",
+      "source": {
+        "exam": "Estilo ENADE"
+      }
+    },
+    {
+      "prompt": "Considere o polinômio $p(x)=2x^{3}-3x^{2}-3x+2$.\n\n**(a)** Usando o teorema das raízes racionais, liste os candidatos a raiz racional e encontre **todas** as raízes de $p$.\n\n**(b)** Escreva $p(x)$ como produto de fatores de coeficientes inteiros.\n\n**(c)** Verifique as relações de Girard para a soma e para o produto das raízes.",
+      "solution": "**(a)** Se a fração irredutível $\\tfrac{r}{s}$ é raiz de $p$, então $r\\mid 2$ (termo independente) e $s\\mid 2$ (coeficiente líder). Os candidatos são\n$$\\pm 1,\\ \\pm 2,\\ \\pm\\tfrac{1}{2}.$$\nTestando:\n$$p(2)=16-12-6+2=0,\\qquad p(-1)=-2-3+3+2=0,$$\n$$p\\!\\left(\\tfrac12\\right)=2\\cdot\\tfrac18-3\\cdot\\tfrac14-3\\cdot\\tfrac12+2=\\tfrac14-\\tfrac34-\\tfrac32+2=0.$$\nEncontramos três raízes distintas de um polinômio de grau $3$; portanto são todas: $\\;x\\in\\left\\{2,\\,-1,\\,\\tfrac12\\right\\}.$\n\n**(b)** Com essas raízes e o líder $2$,\n$$p(x)=2\\,(x-2)(x+1)\\!\\left(x-\\tfrac12\\right)=(x-2)(x+1)(2x-1).$$\n*Conferência:* o produto dos termos líderes é $x\\cdot x\\cdot 2x=2x^{3}$ e o produto dos termos constantes é $(-2)(1)(-1)=2$, coincidindo com $p$.\n\n**(c)** Para $ax^{3}+bx^{2}+cx+d$ com $a=2,\\,b=-3,\\,c=-3,\\,d=2$, Girard dá soma $=-\\tfrac{b}{a}$, soma dois a dois $=\\tfrac{c}{a}$ e produto $=-\\tfrac{d}{a}$.\n$$\\text{Soma: } 2+(-1)+\\tfrac12=\\tfrac32=-\\tfrac{-3}{2}=-\\tfrac{b}{a}.\\ \\checkmark$$\n$$\\text{Produto: } 2\\cdot(-1)\\cdot\\tfrac12=-1=-\\tfrac{2}{2}=-\\tfrac{d}{a}.\\ \\checkmark$$\n$$\\text{(Dois a dois: } 2(-1)+2\\cdot\\tfrac12+(-1)\\tfrac12=-2+1-\\tfrac12=-\\tfrac32=\\tfrac{c}{a}.\\ \\checkmark)$$",
+      "difficulty": 3,
+      "answer": "Raízes $\\{2,\\,-1,\\,\\tfrac12\\}$; $\\,p(x)=(x-2)(x+1)(2x-1)$; soma $=\\tfrac32=-b/a$, produto $=-1=-d/a$.",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Em um triângulo $ABC$, os lados $a=BC$ e $b=CA$ medem $a=7$ e $b=8$, e o ângulo $C$ (compreendido entre eles) mede $60^{\\circ}$.\n\n**(a)** Calcule o lado $c=AB$ pela lei dos cossenos.\n\n**(b)** Calcule a área $S$ do triângulo.\n\n**(c)** Calcule o raio $R$ da circunferência circunscrita, pela lei dos senos estendida.",
+      "solution": "**(a)** Lei dos cossenos: $c^{2}=a^{2}+b^{2}-2ab\\cos C$. Como $\\cos 60^{\\circ}=\\tfrac12$,\n$$c^{2}=49+64-2\\cdot 7\\cdot 8\\cdot\\tfrac12=113-56=57\\ \\Longrightarrow\\ c=\\sqrt{57}.$$\n\n**(b)** Área por dois lados e o ângulo entre eles, com $\\sin 60^{\\circ}=\\tfrac{\\sqrt3}{2}$:\n$$S=\\tfrac12\\,ab\\sin C=\\tfrac12\\cdot 7\\cdot 8\\cdot\\tfrac{\\sqrt3}{2}=28\\cdot\\tfrac{\\sqrt3}{2}=14\\sqrt3.$$\n\n**(c)** Lei dos senos estendida: $\\dfrac{c}{\\sin C}=2R$, logo\n$$R=\\frac{c}{2\\sin C}=\\frac{\\sqrt{57}}{2\\cdot\\frac{\\sqrt3}{2}}=\\frac{\\sqrt{57}}{\\sqrt3}=\\sqrt{\\frac{57}{3}}=\\sqrt{19}.$$\n*Confirmação alternativa* via $R=\\dfrac{abc}{4S}$:\n$$R=\\frac{7\\cdot 8\\cdot\\sqrt{57}}{4\\cdot 14\\sqrt3}=\\frac{56\\sqrt{57}}{56\\sqrt3}=\\sqrt{19}.$$",
+      "difficulty": 3,
+      "answer": "$c=\\sqrt{57}$, $\\ S=14\\sqrt3$, $\\ R=\\sqrt{19}$.",
+      "source": {
+        "exam": "Estilo concurso IF"
+      }
+    },
+    {
+      "prompt": "Considere o conjunto $A=\\left\\{\\dfrac{n}{n+1}:n\\in\\mathbb{N}\\right\\}$, onde $\\mathbb{N}=\\{1,2,3,\\dots\\}$.\n\n**(a)** Mostre que $\\dfrac12=\\min A=\\inf A$.\n\n**(b)** Mostre que $\\sup A=1$ e que $1\\notin A$ (o supremo não é atingido). Ao provar que $1$ é a **menor** das cotas superiores, indique claramente onde a propriedade arquimediana é usada.",
+      "solution": "É cômodo escrever, para $n\\in\\mathbb{N}$,\n$$\\frac{n}{n+1}=1-\\frac{1}{n+1}.$$\n\n**(a)** Para todo $n\\ge 1$ tem-se $n+1\\ge 2$, logo $\\frac{1}{n+1}\\le\\frac12$ e portanto $\\frac{n}{n+1}=1-\\frac{1}{n+1}\\ge\\frac12$, com **igualdade** exatamente em $n=1$. Assim $\\frac12$ é cota inferior de $A$ e pertence a $A$ (é o valor em $n=1$). Um elemento do conjunto que também é cota inferior é o mínimo, e o mínimo, quando existe, é o ínfimo. Logo $\\frac12=\\min A=\\inf A$.\n\n**(b)** *Cota superior.* Para todo $n$, $\\frac{n}{n+1}=1-\\frac{1}{n+1}<1$, então $1$ é cota superior de $A$. Além disso $1\\notin A$: a igualdade $\\frac{n}{n+1}=1$ exigiria $n=n+1$, impossível.\n\n*$1$ é a menor cota superior.* Seja $M<1$ qualquer; mostraremos que $M$ **não** é cota superior, exibindo $n$ com $\\frac{n}{n+1}>M$. Essa desigualdade equivale a\n$$1-\\frac{1}{n+1}>M\\ \\Longleftrightarrow\\ \\frac{1}{n+1}<1-M.$$\nComo $1-M>0$, a **propriedade arquimediana** garante a existência de $n\\in\\mathbb{N}$ tal que $n+1>\\dfrac{1}{1-M}$, ou seja $\\dfrac{1}{n+1}<1-M$. Para esse $n$ vale $\\frac{n}{n+1}>M$, logo $M$ não é cota superior. Portanto nenhum número menor que $1$ é cota superior, e $1$ é a menor delas: $\\sup A=1$ (não atingido). $\\blacksquare$",
+      "difficulty": 4,
+      "answer": "$\\inf A=\\min A=\\tfrac12$ (atingido em $n=1$); $\\sup A=1$ e $1\\notin A$. A propriedade arquimediana fornece $n$ com $\\tfrac{1}{n+1}<1-M$ para todo $M<1$.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Seja $S=\\{0,1\\}^{\\mathbb{N}}$ o conjunto de todas as sequências $x=(x_1,x_2,x_3,\\dots)$ com cada $x_k\\in\\{0,1\\}$.\n\n**(a)** Prove, pelo argumento da diagonal de Cantor, que $S$ **não** é enumerável.\n\n**(b)** Explique por que esse resultado implica que $\\mathbb{R}$ não é enumerável, exibindo uma injeção de $S$ em $\\mathbb{R}$.",
+      "solution": "**(a)** Suponha, por absurdo, que $S$ seja enumerável. Então existe uma enumeração\n$$S=\\{s^{(1)},s^{(2)},s^{(3)},\\dots\\},\\qquad s^{(k)}=\\big(s^{(k)}_1,s^{(k)}_2,s^{(k)}_3,\\dots\\big).$$\nDefinimos a sequência **diagonal invertida** $d=(d_1,d_2,d_3,\\dots)$ por\n$$d_k=1-s^{(k)}_k\\in\\{0,1\\}\\qquad(k\\in\\mathbb{N}).$$\nComo cada $d_k\\in\\{0,1\\}$, temos $d\\in S$. Mas, por construção, para todo $k$ vale $d_k\\neq s^{(k)}_k$; logo $d$ difere de $s^{(k)}$ na $k$-ésima coordenada e $d\\neq s^{(k)}$ **para todo** $k$. Assim $d$ não aparece na enumeração, contradizendo que a lista continha *todos* os elementos de $S$. Logo $S$ não é enumerável. $\\blacksquare$\n\n**(b)** Considere $\\varphi\\colon S\\to\\mathbb{R}$ dada por\n$$\\varphi(x)=\\sum_{k=1}^{\\infty}\\frac{2x_k}{3^{k}}\\in[0,1].$$\nCada termo usa apenas os dígitos $0$ e $2$ na base $3$; é fato clássico que, na base $3$ restrita aos dígitos $\\{0,2\\}$, a representação é **única** (a imagem é o conjunto de Cantor). Portanto sequências distintas produzem somas distintas, isto é, $\\varphi$ é injetiva, e $S$ tem a cardinalidade de um subconjunto de $\\mathbb{R}$.\n\nSe $\\mathbb{R}$ fosse enumerável, todo subconjunto seu também seria — em particular $\\varphi(S)$, que está em bijeção com $S$. Isso tornaria $S$ enumerável, contradizendo (a). Logo $\\mathbb{R}$ não é enumerável.",
+      "difficulty": 4,
+      "answer": "$S$ não é enumerável (a diagonal $d_k=1-s^{(k)}_k$ escapa de toda lista); como $\\varphi(x)=\\sum 2x_k/3^k$ injeta $S$ em $\\mathbb{R}$, também $\\mathbb{R}$ não é enumerável.",
+      "source": {
+        "exam": "Nível de mestrado"
+      }
+    },
+    {
+      "prompt": "Para cada inteiro $n\\ge 1$, seja $x_n=(2+\\sqrt{3})^{\\,n}$. Prove que a parte inteira $\\lfloor x_n\\rfloor$ é **sempre** um número ímpar.\n\n*(Sugestão: estude o número conjugado $(2-\\sqrt{3})^{\\,n}$.)*",
+      "solution": "Defina o conjugado $y_n=(2-\\sqrt{3})^{\\,n}$ e a soma\n$$a_n=x_n+y_n=(2+\\sqrt{3})^{\\,n}+(2-\\sqrt{3})^{\\,n}.$$\n\n**Passo 1 — recorrência.** Os números $2\\pm\\sqrt{3}$ são as raízes de $t^{2}-4t+1=0$, pois sua soma é $4$ e seu produto é $(2+\\sqrt{3})(2-\\sqrt{3})=4-3=1$. Cada raiz satisfaz $t^{2}=4t-1$; multiplicando por $t^{\\,n-1}$ e somando as duas identidades conjugadas obtém-se\n$$a_{n+1}=4a_n-a_{n-1}\\qquad(n\\ge 1),$$\ncom valores iniciais $a_0=2$ e $a_1=(2+\\sqrt{3})+(2-\\sqrt{3})=4$.\n\n**Passo 2 — $a_n$ é inteiro par (indução).** Os casos $a_0=2$ e $a_1=4$ são inteiros pares. Suponha $a_{n-1}$ e $a_n$ inteiros pares; então $a_{n+1}=4a_n-a_{n-1}$ é inteiro e, módulo $2$, $a_{n+1}\\equiv 4a_n-a_{n-1}\\equiv 0-0\\equiv 0$, logo par. Por indução (com dois passos-base), $a_n$ é um inteiro par para todo $n\\ge 0$.\n\n**Passo 3 — localizar $x_n$.** Como $\\sqrt{3}\\approx 1{,}732$, temos $0<2-\\sqrt{3}<1$, e portanto $0<y_n=(2-\\sqrt{3})^{\\,n}<1$ para todo $n\\ge 1$. Assim\n$$x_n=a_n-y_n,\\qquad a_n\\in\\mathbb{Z},\\quad 0<y_n<1,$$\ndonde $a_n-1<x_n<a_n$. Isso significa exatamente que $\\lfloor x_n\\rfloor=a_n-1$.\n\n**Passo 4 — paridade.** Como $a_n$ é par, $\\lfloor x_n\\rfloor=a_n-1$ é ímpar, para todo $n\\ge 1$. $\\blacksquare$\n\n*Verificação:* $a_1,a_2,a_3=4,14,52$, dando $\\lfloor x_n\\rfloor=3,13,51$ — todos ímpares, como $(2+\\sqrt3)^1\\approx3{,}73$, $(2+\\sqrt3)^2\\approx13{,}93$, $(2+\\sqrt3)^3\\approx51{,}98$ confirmam.",
+      "difficulty": 5,
+      "answer": "$\\lfloor(2+\\sqrt3)^n\\rfloor=a_n-1$, onde $a_n=(2+\\sqrt3)^n+(2-\\sqrt3)^n$ satisfaz $a_{n+1}=4a_n-a_{n-1}$, $a_0=2,a_1=4$, e é par; logo a parte inteira é ímpar para todo $n\\ge1$.",
+      "source": {
+        "exam": "Estilo Putnam"
       }
     }
   ]

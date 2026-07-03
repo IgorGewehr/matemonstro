@@ -174,6 +174,132 @@ export default function ConfigPage() {
         </div>
       </section>
 
+      <section className="panel p-5 space-y-5">
+        <div>
+          <h2 className="font-bold">Ritmo de aprendizado</h2>
+          <p className="text-xs text-[var(--color-mut)] mt-1">
+            Como o motor de repetição espaçada agenda revisões e distribui o estudo. Os padrões são bons — mexa quando
+            quiser mais durabilidade (reta final) ou menos carga (fase tranquila).
+          </p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold mb-1">Meta de retenção</label>
+          <div className="flex items-center gap-3">
+            <input
+              type="range"
+              min={0.8}
+              max={0.97}
+              step={0.01}
+              value={settings.requestRetention ?? 0.9}
+              onChange={(e) => updateSettings({ requestRetention: Number(e.target.value) })}
+              className="flex-1 accent-[var(--color-brand)]"
+              aria-label="Meta de retenção"
+            />
+            <span className="chip w-16 justify-center">{Math.round((settings.requestRetention ?? 0.9) * 100)}%</span>
+          </div>
+          <p className="text-xs text-[var(--color-mut)] mt-1">
+            Quão bem você quer lembrar quando um cartão vence. Mais alto fixa mais forte, mas exige mais revisões; mais
+            baixo alivia a fila e aceita esquecer um pouco mais. Afeta só os próximos agendamentos.
+          </p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold mb-1">Trilhas em paralelo</label>
+          <div className="flex gap-1.5 flex-wrap">
+            {[1, 2, 3, 4].map((n) => (
+              <button
+                key={n}
+                onClick={() => updateSettings({ parallelTracks: n })}
+                className={`btn !px-3 ${(settings.parallelTracks ?? 2) === n ? "btn-primary" : ""}`}
+                aria-pressed={(settings.parallelTracks ?? 2) === n}
+              >
+                {n}
+              </button>
+            ))}
+          </div>
+          <p className="text-xs text-[var(--color-mut)] mt-1">
+            Quantos assuntos o plano do dia intercala ao mesmo tempo. Intercalar (2–3) fixa melhor que esgotar uma
+            trilha antes de tocar a próxima.
+          </p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold mb-1">Cartões novos por dia</label>
+          <div className="flex items-center gap-3">
+            <input
+              type="range"
+              min={5}
+              max={40}
+              step={5}
+              value={settings.newCardsPerDay ?? 15}
+              onChange={(e) => updateSettings({ newCardsPerDay: Number(e.target.value) })}
+              className="flex-1 accent-[var(--color-brand)]"
+              aria-label="Cartões novos por dia"
+            />
+            <span className="chip w-16 justify-center">{settings.newCardsPerDay ?? 15}</span>
+          </div>
+          <p className="text-xs text-[var(--color-mut)] mt-1">
+            Teto de flashcards inéditos introduzidos por dia. Começar um subtópico não despeja tudo de uma vez — o
+            excedente entra nos dias seguintes, evitando picos de revisão.
+          </p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold mb-1">Teto de revisões por dia</label>
+          <div className="flex items-center gap-3">
+            <input
+              type="range"
+              min={20}
+              max={300}
+              step={10}
+              value={settings.maxReviewsPerDay ?? 120}
+              onChange={(e) => updateSettings({ maxReviewsPerDay: Number(e.target.value) })}
+              className="flex-1 accent-[var(--color-brand)]"
+              aria-label="Teto de revisões por dia"
+            />
+            <span className="chip w-16 justify-center">{settings.maxReviewsPerDay ?? 120}</span>
+          </div>
+          <p className="text-xs text-[var(--color-mut)] mt-1">
+            Limite da fila de revisão de hoje. O que passar disso continua vencido e reaparece amanhã — a fila nunca
+            vira uma montanha impagável.
+          </p>
+        </div>
+
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1">
+            <div className="text-sm font-semibold">Intercalar trilhas</div>
+            <p className="text-xs text-[var(--color-mut)] mt-0.5">
+              Alterna entre trilhas liberadas no plano do dia (recomendado) em vez de seguir uma fila linear.
+            </p>
+          </div>
+          <button
+            onClick={() => updateSettings({ interleave: !(settings.interleave ?? true) })}
+            className={`btn shrink-0 ${(settings.interleave ?? true) ? "btn-primary" : ""}`}
+            aria-pressed={settings.interleave ?? true}
+          >
+            {(settings.interleave ?? true) ? "Ativado" : "Desativado"}
+          </button>
+        </div>
+
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1">
+            <div className="text-sm font-semibold">Prever antes de revelar</div>
+            <p className="text-xs text-[var(--color-mut)] mt-0.5">
+              Na revisão, você diz “vou lembrar / talvez / não” antes de ver o verso. Treina metacognição e mede sua
+              calibração (quanto você superestima a própria memória).
+            </p>
+          </div>
+          <button
+            onClick={() => updateSettings({ calibration: !(settings.calibration ?? false) })}
+            className={`btn shrink-0 ${(settings.calibration ?? false) ? "btn-primary" : ""}`}
+            aria-pressed={settings.calibration ?? false}
+          >
+            {(settings.calibration ?? false) ? "Ativado" : "Desativado"}
+          </button>
+        </div>
+      </section>
+
       <section className="panel p-5 space-y-4">
         <div>
           <h2 className="font-bold">Aparência</h2>

@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useApp } from "./AppState";
-import { dueCards, isLeech } from "@/lib/srs";
+import { isLeech } from "@/lib/srs";
+import { cappedDueCards } from "@/lib/scheduler";
 import AccountButton from "@/components/auth/AccountButton";
 
 type Item = { href: string; label: string; icon: string };
@@ -35,9 +36,9 @@ const groups: { title: string | null; items: Item[] }[] = [
 
 export default function Nav() {
   const pathname = usePathname();
-  const { cards, attempts, ready } = useApp();
+  const { cards, attempts, settings, ready } = useApp();
   const now = Date.now();
-  const due = ready ? dueCards(cards, now).length : 0;
+  const due = ready ? cappedDueCards(cards, settings, now).length : 0;
 
   const errCards = ready ? cards.filter(isLeech).length : 0;
   const latestByEx = new Map<string, { grade: string; ts: number }>();

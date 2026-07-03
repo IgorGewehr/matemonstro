@@ -14,7 +14,7 @@ import React, {
 } from "react";
 import { index, getTrack } from "@/lib/curriculum";
 
-type CelebrateKind = "subtopic" | "track" | "generic";
+type CelebrateKind = "subtopic" | "track" | "levelup" | "generic";
 
 interface CelebrateInput {
   kind?: CelebrateKind;
@@ -22,6 +22,8 @@ interface CelebrateInput {
   message?: string;
   trackId?: string;
   trackTitle?: string;
+  levelName?: string;
+  level?: number;
 }
 
 interface Celebration {
@@ -43,10 +45,12 @@ const CONFETTI_COLORS = ["#7c5cff", "#00d3a7", "#f6c453", "#ff6b6b", "#ffb347", 
 
 // Detalhe do evento 'mm:celebrate' (contrato definido pela spec 01).
 interface CelebrateEventDetail {
-  type?: "subtopic" | "track";
+  type?: "subtopic" | "track" | "levelup";
   subId?: string;
   trackId?: string;
   trackTitle?: string;
+  levelName?: string;
+  level?: number;
 }
 
 function buildCelebration(input: CelebrateInput, id: number): Celebration {
@@ -66,6 +70,17 @@ function buildCelebration(input: CelebrateInput, id: number): Celebration {
       emoji: "🏆",
       title: `Trilha concluida — ${title}!`,
       message,
+      pieces: 80,
+    };
+  }
+  if (kind === "levelup") {
+    const name = input.levelName ?? "novo nivel";
+    return {
+      id,
+      kind,
+      emoji: "⭐",
+      title: `Novo nivel — ${name}!`,
+      message: input.message ?? `O monstro cresceu. Voce agora e ${name}.`,
       pieces: 80,
     };
   }
@@ -99,16 +114,20 @@ export function Celebrate({ children }: { children: React.ReactNode }) {
     const c = buildCelebration(input, seq.current);
     setActive(c);
     if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => setActive(null), c.kind === "track" ? 6500 : 4500);
+    timer.current = setTimeout(() => setActive(null), c.kind === "track" || c.kind === "levelup" ? 6500 : 4500);
   }, []);
 
   useEffect(() => {
     function onCelebrate(ev: Event) {
       const detail = (ev as CustomEvent<CelebrateEventDetail>).detail ?? {};
+      const kind: CelebrateKind =
+        detail.type === "track" ? "track" : detail.type === "levelup" ? "levelup" : "subtopic";
       celebrate({
-        kind: detail.type === "track" ? "track" : "subtopic",
+        kind,
         trackId: detail.trackId,
         trackTitle: detail.trackTitle,
+        levelName: detail.levelName,
+        level: detail.level,
       });
     }
     window.addEventListener("mm:celebrate", onCelebrate as EventListener);
