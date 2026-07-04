@@ -15,8 +15,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useApp } from "./AppState";
 import { useFocusTrap } from "@/lib/useFocusTrap";
+import { ambience, AMBIENCE_SCENES, type AmbienceScene } from "@/lib/ambience";
 
 type Phase = "idle" | "armed" | "running" | "done" | "break";
+
+const SOUND_KEY = "mm:foco-som"; // "none" | AmbienceScene
 
 const BREAK_MIN = 5;
 
@@ -61,6 +64,37 @@ export default function FocusSession() {
   const [minutes, setMinutes] = useState(25);
   const [remaining, setRemaining] = useState(0);
   const [loggedMin, setLoggedMin] = useState(0);
+  // Som ambiente generativo (lib/ambience): preferência persistida; o toggle
+  // ♪ do pill vale só para a sessão atual.
+  const [scene, setScene] = useState<AmbienceScene | "none">("none");
+  const [soundOn, setSoundOn] = useState(true);
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(SOUND_KEY);
+      if (saved === "none" || AMBIENCE_SCENES.some((s) => s.id === saved)) {
+        setScene(saved as AmbienceScene | "none");
+      }
+    } catch {
+      /* ignora */
+    }
+  }, []);
+  function chooseScene(next: AmbienceScene | "none") {
+    setScene(next);
+    try {
+      localStorage.setItem(SOUND_KEY, next);
+    } catch {
+      /* ignora */
+    }
+  }
+  // O som vive exatamente enquanto a sessão roda (fade suave nas pontas).
+  useEffect(() => {
+    if (phase === "running" && scene !== "none" && soundOn) {
+      ambience().start(scene);
+      return () => ambience().stop();
+    }
+    ambience().stop();
+  }, [phase, scene, soundOn]);
+  useEffect(() => () => ambience().stop(0.2), []);
   const endRef = useRef(0);
   const startRef = useRef(0);
   const titleRef = useRef<string>("");
@@ -181,7 +215,7 @@ export default function FocusSession() {
           <h2 className="text-lg font-bold">Sessão de foco</h2>
           <p className="text-sm text-[var(--color-mut)] mt-1 mb-1">Uma coisa só, sem trocar de aba:</p>
           <p className="font-semibold text-[15px] mb-4 truncate" title={label}>{label}</p>
-          <div className="flex justify-center gap-2 mb-5">
+          <div className="flex justify-center gap-2 mb-4">
             {[25, 50].map((m) => (
               <button
                 key={m}
@@ -192,6 +226,30 @@ export default function FocusSession() {
                 {m} min
               </button>
             ))}
+          </div>
+          <div className="mb-5">
+            <div className="text-[11px] uppercase tracking-wide text-[var(--color-mut)] mb-1.5">
+              Som ambiente <span className="normal-case">(gerado por matemática, offline)</span>
+            </div>
+            <div className="flex justify-center gap-1.5 flex-wrap">
+              <button
+                onClick={() => chooseScene("none")}
+                aria-pressed={scene === "none"}
+                className={`chip !px-3 !py-1 text-xs ${scene === "none" ? "!border-[var(--color-brand)] !text-[var(--color-brand)]" : ""}`}
+              >
+                Silêncio
+              </button>
+              {AMBIENCE_SCENES.map((s) => (
+                <button
+                  key={s.id}
+                  onClick={() => chooseScene(s.id)}
+                  aria-pressed={scene === s.id}
+                  className={`chip !px-3 !py-1 text-xs ${scene === s.id ? "!border-[var(--color-brand)] !text-[var(--color-brand)]" : ""}`}
+                >
+                  ♪ {s.label}
+                </button>
+              ))}
+            </div>
           </div>
           <button className="btn btn-primary w-full !py-3" onClick={begin} autoFocus>
             ◉ Começar {minutes} min
@@ -251,6 +309,16 @@ export default function FocusSession() {
           style={{ width: `${pct}%`, background: isBreak ? "var(--color-brand2)" : "var(--color-brand)" }}
         />
       </span>
+      {!isBreak && scene !== "none" && (
+        <button
+          className={`text-sm leading-none transition-colors ${soundOn ? "text-[var(--color-brand)]" : "text-[var(--color-mut)] opacity-50"}`}
+          onClick={() => setSoundOn((v) => !v)}
+          title={soundOn ? "Silenciar som ambiente" : "Religar som ambiente"}
+          aria-pressed={soundOn}
+        >
+          ♪
+        </button>
+      )}
       {isBreak ? (
         <button className="text-xs text-[var(--color-mut)] hover:text-[var(--color-txt)]" onClick={() => setPhase("idle")}>
           encerrar
