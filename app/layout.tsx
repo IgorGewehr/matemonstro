@@ -31,17 +31,17 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0c0d14",
-  colorScheme: "dark",
+  themeColor: "#f6f7fb",
+  colorScheme: "light",
 };
 
 // Script inline: aplica o tema salvo (localStorage 'mm:theme') ANTES da
-// hidratação para evitar flash de cor. Fallback 'dark'.
-const themeInit = `try{var t=localStorage.getItem('mm:theme')||'dark';document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}`;
+// hidratação para evitar flash de cor. Fallback 'light' (tema padrao).
+const themeInit = `try{var t=localStorage.getItem('mm:theme')||'light';document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" data-theme="dark">
+    <html lang="pt-BR" data-theme="light">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>

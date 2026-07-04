@@ -9,6 +9,7 @@
   --color-txt: #e6e8f0;
   --color-brand: #7c5cff;
   --color-brand2: #00d3a7;
+  --grad-brand: linear-gradient(90deg, var(--color-brand), var(--color-brand2));
   --color-warn: #ffb347;
   --color-gold: #f6c453;
   /* Tokens de superfície/texto (todos os temas sobrescrevem) */
@@ -47,7 +48,7 @@ a {
 }
 
 ::selection {
-  background: #7c5cff55;
+  background: color-mix(in srgb, var(--color-brand) 33%, transparent);
 }
 
 /* Scrollbar */
@@ -101,13 +102,13 @@ a {
   background: color-mix(in srgb, var(--color-raise) 92%, var(--color-txt));
 }
 .btn-primary {
-  background: linear-gradient(180deg, #8a6bff, #6c4cff);
-  border-color: #6c4cff;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-brand) 82%, white), var(--color-brand));
+  border-color: var(--color-brand);
   color: white;
-  box-shadow: 0 6px 20px -8px #7c5cff;
+  box-shadow: 0 6px 20px -8px var(--color-brand);
 }
 .btn-primary:hover {
-  background: linear-gradient(180deg, #9a7dff, #7c5cff);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-brand) 70%, white), color-mix(in srgb, var(--color-brand) 92%, white));
 }
 .btn-ghost {
   background: transparent;
@@ -293,8 +294,8 @@ html[data-mm-focus] nav {
   --color-line: #d9dde8;
   --color-mut: #5c6274;
   --color-txt: #14161f;
-  --color-brand: #6c4cff;
-  --color-brand2: #00b492;
+  --color-brand: #2f5fd0;
+  --color-brand2: #00926f;
   --color-well: #ffffff;
   --color-card: #ffffff;
   --color-raise: #e8ebf3;

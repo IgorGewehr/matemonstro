@@ -41,7 +41,7 @@ interface CelebrateCtx {
 
 const Ctx = createContext<CelebrateCtx | null>(null);
 
-const CONFETTI_COLORS = ["#7c5cff", "#00d3a7", "#f6c453", "#ff6b6b", "#ffb347", "#e6e8f0"];
+const CONFETTI_COLORS = ["var(--color-brand)", "var(--color-brand2)", "#f6c453", "#ff6b6b", "#ffb347", "#e6e8f0"];
 
 // Cor do glifo de destaque no toast, por tipo de celebracao (troco/insignia em
 // dourado, conclusao de subtopico em verde — mesma paleta usada nos chips do

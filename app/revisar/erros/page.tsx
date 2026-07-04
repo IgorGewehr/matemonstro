@@ -18,7 +18,7 @@ import type { ExerciseAttempt } from "@/lib/types";
 const GRADES: { g: Grade; label: string; color: string; key: string }[] = [
   { g: "errei", label: "Errei", color: "#ff6b6b", key: "1" },
   { g: "dificil", label: "Difícil", color: "#f6c453", key: "2" },
-  { g: "bom", label: "Bom", color: "#7c5cff", key: "3" },
+  { g: "bom", label: "Bom", color: "var(--color-brand)", key: "3" },
   { g: "facil", label: "Fácil", color: "#00d3a7", key: "4" },
 ];
 

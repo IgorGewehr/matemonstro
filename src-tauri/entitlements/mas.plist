@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Entitlements do build Mac App Store (exigem App Sandbox).
+     Sob sandbox, o vault padrão vive no CONTAINER do app
+     (~/Library/Containers/com.matemonstro.desktop/Data/Documents/Matemonstro) —
+     transparente para o código, que usa documentDir(). "Trocar pasta" via
+     dialog nativo funciona na sessão (user-selected read-write); persistir a
+     escolha entre relaunches exigiria security-scoped bookmarks (limitação
+     documentada em APPSTORE.md — o build .dmg direto não tem essa restrição). -->
+<plist version="1.0">
+<dict>
+  <key>com.apple.security.app-sandbox</key>
+  <true/>
+  <key>com.apple.security.files.user-selected.read-write</key>
+  <true/>
+  <key>com.apple.security.network.client</key>
+  <true/>
+  <key>com.apple.application-identifier</key>
+  <string>79435F9XT5.com.matemonstro.desktop</string>
+  <key>com.apple.developer.team-identifier</key>
+  <string>79435F9XT5</string>
+</dict>
+</plist>

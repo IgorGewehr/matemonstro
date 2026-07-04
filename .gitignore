@@ -30,3 +30,6 @@ next-env.d.ts
 # ícones mobile gerados pelo `tauri icon` (não usamos Android/iOS)
 /src-tauri/icons/android
 /src-tauri/icons/ios
+# credenciais Apple (provisioning profile do build Mac App Store)
+/src-tauri/embedded.provisionprofile
+/dist-mas

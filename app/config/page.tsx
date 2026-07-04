@@ -15,8 +15,8 @@ import type { Settings } from "@/lib/types";
 type Theme = NonNullable<Settings["theme"]>;
 
 const THEMES: { id: Theme; label: string; glyph: string }[] = [
-  { id: "dark", label: "Escuro", glyph: "●" },
   { id: "light", label: "Claro", glyph: "○" },
+  { id: "dark", label: "Escuro", glyph: "●" },
   { id: "sepia", label: "Sépia", glyph: "◇" },
 ];
 

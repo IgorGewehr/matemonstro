@@ -252,7 +252,7 @@ export default function ProvasPage() {
         </div>
       </div>
       <div className="h-1 w-full rounded bg-[var(--color-raise)] overflow-hidden">
-        <div className="h-full" style={{ width: `${pct}%`, background: "linear-gradient(90deg,#7c5cff,#00d3a7)" }} />
+        <div className="h-full" style={{ width: `${pct}%`, background: "var(--grad-brand)" }} />
       </div>
 
       <div className="panel p-6" style={{ borderLeft: "3px solid var(--color-brand)" }}>

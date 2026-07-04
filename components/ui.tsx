@@ -10,7 +10,7 @@ export function ProgressBar({ pct, className }: { pct: number; className?: strin
         className="h-full rounded-full transition-[width] duration-500 ease-out"
         style={{
           width: `${Math.max(0, Math.min(100, pct))}%`,
-          background: "linear-gradient(90deg,#7c5cff,#00d3a7)",
+          background: "var(--grad-brand)",
         }}
       />
     </div>
@@ -39,7 +39,7 @@ export function Ring({ pct, size = 56, label }: { pct: number; size?: number; la
         />
         <defs>
           <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#7c5cff" />
+            <stop offset="0%" stopColor="var(--color-brand)" />
             <stop offset="100%" stopColor="#00d3a7" />
           </linearGradient>
         </defs>
@@ -114,5 +114,5 @@ export function LevelBar({ xp, className }: { xp: number; className?: string }) 
 }
 
 export function phaseColor(phase: number): string {
-  return phase === 0 ? "#00d3a7" : phase === 1 ? "#7c5cff" : "#f6c453";
+  return phase === 0 ? "var(--color-brand2)" : phase === 1 ? "var(--color-brand)" : "#f6c453";
 }

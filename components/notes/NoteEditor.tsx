@@ -96,6 +96,26 @@ export default function NoteEditor({
   const [linkSel, setLinkSel] = useState(0);
   const [pendingSelection, setPendingSelection] = useState<{ start: number; end: number } | null>(null);
   const [templatesOpen, setTemplatesOpen] = useState(false);
+  // Barra de fórmulas retrátil: fechada por padrão (3 linhas de botões comiam
+  // o espaço do editor); a preferência persiste.
+  const [toolbarOpen, setToolbarOpen] = useState(false);
+  useEffect(() => {
+    try {
+      setToolbarOpen(localStorage.getItem("mm:notas-toolbar") === "on");
+    } catch {
+      /* ignora */
+    }
+  }, []);
+  function toggleToolbar() {
+    setToolbarOpen((v) => {
+      try {
+        localStorage.setItem("mm:notas-toolbar", v ? "off" : "on");
+      } catch {
+        /* ignora */
+      }
+      return !v;
+    });
+  }
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -343,19 +363,31 @@ export default function NoteEditor({
         className="w-full rounded-lg bg-[var(--color-well)] border border-[var(--color-line)] px-3 py-1.5 text-xs outline-none focus:border-[var(--color-brand)]"
       />
 
-      <FormulaToolbar
-        textareaRef={textareaRef}
-        value={body}
-        onInsert={(next, s, en) => {
-          setBody(next);
-          setPendingSelection({ start: s, end: en });
-        }}
-      />
+      <div className="flex items-center gap-2 min-w-0">
+        <button
+          className={`btn !py-1 !px-2.5 text-xs shrink-0 ${toolbarOpen ? "!border-[var(--color-brand)] !text-[var(--color-brand)]" : ""}`}
+          onClick={toggleToolbar}
+          aria-expanded={toolbarOpen}
+          title="Barra de fórmulas LaTeX"
+        >
+          ∑ Fórmulas {toolbarOpen ? "▴" : "▾"}
+        </button>
+        <p className="text-[11px] text-[var(--color-mut)] truncate">
+          Ctrl+B negrito · Ctrl+M fórmula · <code>[[</code> liga notas e aulas ·{" "}
+          <code>&gt; [!teorema]</code> destaca
+        </p>
+      </div>
 
-      <p className="text-[11px] text-[var(--color-mut)]">
-        Ctrl+B negrito · Ctrl+M fórmula · <code>[[</code> liga notas e aulas do currículo ·{" "}
-        <code>&gt; [!teorema]</code> cria um bloco destacado
-      </p>
+      {toolbarOpen && (
+        <FormulaToolbar
+          textareaRef={textareaRef}
+          value={body}
+          onInsert={(next, s, en) => {
+            setBody(next);
+            setPendingSelection({ start: s, end: en });
+          }}
+        />
+      )}
 
       <div className="notes-split flex-1 grid md:grid-cols-2 gap-3 min-h-[320px]">
         <div className="relative">

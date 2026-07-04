@@ -189,7 +189,7 @@ function renderFigure(
       return (
         <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={figure.caption ?? "figura"}>
           <Axes sx={sx} sy={sy} a={xmin} b={xmax} ymin={ymin} ymax={ymax} />
-          <path d={d} fill="none" stroke="#7c5cff" strokeWidth={2} />
+          <path d={d} fill="none" stroke="var(--color-brand)" strokeWidth={2} />
         </svg>
       );
     }
@@ -264,7 +264,7 @@ function renderFigure(
         {ns.map((n, i) => (
           <g key={n}>
             <line x1={sx(n)} y1={sy(0)} x2={sx(n)} y2={sy(ys[i])} stroke="var(--color-line2)" strokeWidth={1} />
-            <circle cx={sx(n)} cy={sy(ys[i])} r={2.6} fill="#7c5cff" />
+            <circle cx={sx(n)} cy={sy(ys[i])} r={2.6} fill="var(--color-brand)" />
           </g>
         ))}
       </svg>
@@ -328,8 +328,8 @@ function renderFigure(
           y={yTop}
           width={Math.max(0, sx(x1) - sx(x0) - 1)}
           height={Math.max(0, yBot - yTop)}
-          fill="#7c5cff33"
-          stroke="#7c5cff"
+          fill="color-mix(in srgb, var(--color-brand) 20%, transparent)"
+          stroke="var(--color-brand)"
           strokeWidth={0.8}
         />
       );

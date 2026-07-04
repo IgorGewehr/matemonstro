@@ -147,7 +147,7 @@ export default function Nav() {
       <div className={`hidden md:flex items-center mb-3 ${rail ? "justify-center" : "justify-between px-3"}`}>
         <Link href="/" className="flex items-center gap-2 group" aria-label="Início">
           <span
-            className="grid place-items-center w-8 h-8 rounded-xl bg-gradient-to-br from-[#7c5cff] to-[#00d3a7] text-black font-black text-lg"
+            className="grid place-items-center w-8 h-8 rounded-xl bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand2)] text-black font-black text-lg"
             aria-hidden="true"
           >
             ∑

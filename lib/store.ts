@@ -56,7 +56,7 @@ export const defaultSettings: Settings = {
   streakFreezes: 0,
   lastStreakDay: undefined,
   goal: undefined,
-  theme: "dark",
+  theme: "light",
 };
 
 export interface Snapshot {

@@ -112,9 +112,23 @@ export interface TextEditResult {
   selectionEnd: number;
 }
 
+/** O ponto `pos` esta dentro de um trecho de matematica ($...$ ou $$...$$)?
+ * Heuristica: conta os `$` nao-escapados antes de `pos` — impar = dentro. */
+export function insideMath(value: string, pos: number): boolean {
+  let count = 0;
+  for (let i = 0; i < pos && i < value.length; i++) {
+    if (value[i] === "$" && value[i - 1] !== "\\") count++;
+  }
+  return count % 2 === 1;
+}
+
 /**
  * Insere um snippet em `value` no lugar da selecao [selectionStart, selectionEnd)
  * e devolve o novo texto + a posicao de cursor a aplicar no <textarea>.
+ *
+ * Se o ponto de insercao NAO estiver dentro de $...$, o LaTeX e embrulhado
+ * automaticamente em `$...$` — sem isso a pre-visualizacao mostraria o comando
+ * cru (\sqrt{} etc.), que era exatamente a confusao do editor antigo.
  */
 export function insertLatexSnippet(
   value: string,
@@ -124,10 +138,24 @@ export function insertLatexSnippet(
 ): TextEditResult {
   const before = value.slice(0, selectionStart);
   const after = value.slice(selectionEnd);
-  const next = before + snippet.latex + after;
-  const offset = "cursorOffset" in snippet && snippet.cursorOffset !== undefined
-    ? snippet.cursorOffset
-    : snippet.latex.length;
+
+  const needsWrap = !insideMath(value, selectionStart);
+  const raw = snippet.latex;
+  // No embrulho, espacos das bordas ficam FORA dos cifroes ("\pm " → "$\pm$ ").
+  const trailing = needsWrap && raw.endsWith(" ") ? " " : "";
+  const core = needsWrap ? raw.trimEnd() : raw;
+  const inserted = needsWrap ? `$${core}$${trailing}` : raw;
+
+  const next = before + inserted + after;
+  const hasPlaceholder = "cursorOffset" in snippet && snippet.cursorOffset !== undefined;
+  let offset: number;
+  if (hasPlaceholder) {
+    // cursor no placeholder, deslocado pelo "$" de abertura quando embrulhado
+    offset = (snippet as LatexSnippet).cursorOffset! + (needsWrap ? 1 : 0);
+  } else {
+    // sem placeholder: cursor depois de TUDO (fora do "$" de fechamento)
+    offset = inserted.length;
+  }
   const cursor = selectionStart + offset;
   return { value: next, selectionStart: cursor, selectionEnd: cursor };
 }

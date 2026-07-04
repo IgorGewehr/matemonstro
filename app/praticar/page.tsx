@@ -249,7 +249,7 @@ export default function PraticarPage() {
         </div>
       </div>
       <div className="h-1 w-full rounded bg-[var(--color-raise)] mb-4 overflow-hidden">
-        <div className="h-full" style={{ width: `${pct}%`, background: "linear-gradient(90deg,#7c5cff,#00d3a7)" }} />
+        <div className="h-full" style={{ width: `${pct}%`, background: "var(--grad-brand)" }} />
       </div>
 
       <div className="text-xs text-[var(--color-mut)] mb-2">

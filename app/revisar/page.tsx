@@ -20,7 +20,7 @@ import Markdown from "@/components/Markdown";
 const GRADES: { g: Grade; label: string; color: string; key: string }[] = [
   { g: "errei", label: "Errei", color: "#ff6b6b", key: "1" },
   { g: "dificil", label: "Difícil", color: "#f6c453", key: "2" },
-  { g: "bom", label: "Bom", color: "#7c5cff", key: "3" },
+  { g: "bom", label: "Bom", color: "var(--color-brand)", key: "3" },
   { g: "facil", label: "Fácil", color: "#00d3a7", key: "4" },
 ];
 
@@ -199,7 +199,7 @@ export default function RevisarPage() {
         </div>
       </div>
       <div className="h-1 w-full rounded bg-[var(--color-raise)] mb-6 overflow-hidden">
-        <div className="h-full" style={{ width: `${pct}%`, background: "linear-gradient(90deg,#7c5cff,#00d3a7)" }} />
+        <div className="h-full" style={{ width: `${pct}%`, background: "var(--grad-brand)" }} />
       </div>
 
       <div

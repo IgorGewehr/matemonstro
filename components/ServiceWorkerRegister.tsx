@@ -37,7 +37,7 @@ export default function ServiceWorkerRegister() {
   // espelha em localStorage para o script inline do layout evitar flash.
   useEffect(() => {
     if (!ready) return;
-    const theme = settings.theme ?? "dark";
+    const theme = settings.theme ?? "light";
     document.documentElement.dataset.theme = theme;
     try {
       localStorage.setItem("mm:theme", theme);

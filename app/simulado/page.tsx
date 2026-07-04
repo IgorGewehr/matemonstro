@@ -238,7 +238,7 @@ export default function SimuladoPage() {
                 className="w-7 h-7 rounded-lg text-xs font-bold border transition-colors"
                 style={{
                   borderColor: i === cursor ? "var(--color-brand)" : "#2c3147",
-                  background: answers[i]?.trim() ? "#7c5cff33" : "transparent",
+                  background: answers[i]?.trim() ? "color-mix(in srgb, var(--color-brand) 20%, transparent)" : "transparent",
                   color: i === cursor ? "var(--color-brand)" : "var(--color-mut)",
                 }}
               >

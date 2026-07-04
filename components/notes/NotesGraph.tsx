@@ -310,7 +310,7 @@ export default function NotesGraph() {
 
       <div className="absolute bottom-3 left-3 z-10 flex items-center gap-3 text-[11px] text-[var(--color-mut)] pointer-events-none">
         <span className="inline-flex items-center gap-1.5">
-          <span className="inline-block w-2.5 h-2.5 rounded-full border" style={{ borderColor: "#7c5cff", background: "#7c5cff33" }} />
+          <span className="inline-block w-2.5 h-2.5 rounded-full border" style={{ borderColor: "var(--color-brand)", background: "color-mix(in srgb, var(--color-brand) 20%, transparent)" }} />
           nota
         </span>
         <span className="inline-flex items-center gap-1.5">
@@ -347,7 +347,7 @@ export default function NotesGraph() {
                 y1={pa.y}
                 x2={pb.x}
                 y2={pb.y}
-                stroke={active ? "#7c5cff" : "var(--color-line2)"}
+                stroke={active ? "var(--color-brand)" : "var(--color-line2)"}
                 strokeWidth={active ? 1.8 : 1.2}
                 strokeOpacity={dim ? 0.12 : active ? 0.9 : 0.55}
               />
@@ -356,7 +356,7 @@ export default function NotesGraph() {
           {nodes.map((node, i) => {
             const p = posOf(i);
             const isAula = node.kind === "aula";
-            const color = isAula ? "#00d3a7" : degree[i] >= 3 ? "#f6c453" : "#7c5cff";
+            const color = isAula ? "var(--color-brand2)" : degree[i] >= 3 ? "#f6c453" : "var(--color-brand)";
             const r = R + Math.min(10, degree[i] * 1.5);
             const opacity = dimmed(i) ? 0.15 : 1;
             const labelLeft = p.x > W - 160; // rótulo pra esquerda perto da borda direita

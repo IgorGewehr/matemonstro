@@ -69,7 +69,7 @@ export default function Dashboard() {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mm-stagger">
         <Stat value={`${overall.done}/${overall.total}`} label="subtópicos concluídos" />
-        <Stat value={plan.reviews.length} label="revisões para hoje" accent={plan.reviews.length ? "#7c5cff" : undefined} />
+        <Stat value={plan.reviews.length} label="revisões para hoje" accent={plan.reviews.length ? "var(--color-brand)" : undefined} />
         <Stat
           value={streakInfo.count}
           label={

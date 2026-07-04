@@ -39,7 +39,7 @@ export default function DailyNoteCard() {
     >
       <span
         className="grid place-items-center w-10 h-10 rounded-xl text-lg shrink-0"
-        style={{ background: "#7c5cff22", color: "var(--color-brand)" }}
+        style={{ background: "color-mix(in srgb, var(--color-brand) 13%, transparent)", color: "var(--color-brand)" }}
         aria-hidden="true"
       >
         ✎
