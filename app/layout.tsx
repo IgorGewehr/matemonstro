@@ -3,6 +3,7 @@ import "./globals.css";
 import "katex/dist/katex.min.css";
 import { AppProvider } from "@/components/AppState";
 import Nav from "@/components/Nav";
+import StudyBar from "@/components/StudyBar";
 import SkipLink from "@/components/SkipLink";
 import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 import CommandPalette from "@/components/CommandPalette";
@@ -57,13 +58,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Celebrate>
                 <div className="min-h-screen md:flex">
                   <Nav />
-                  <main
-                    id="conteudo"
-                    tabIndex={-1}
-                    className="flex-1 min-w-0 px-4 py-6 md:px-10 md:py-10 max-w-5xl mx-auto w-full"
-                  >
-                    {children}
-                  </main>
+                  <div className="flex-1 min-w-0 flex flex-col">
+                    <StudyBar />
+                    <main
+                      id="conteudo"
+                      tabIndex={-1}
+                      className="flex-1 min-w-0 px-4 py-6 md:px-10 md:py-10 max-w-5xl mx-auto w-full"
+                    >
+                      {children}
+                    </main>
+                  </div>
                 </div>
                 <Onboarding />
               </Celebrate>

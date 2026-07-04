@@ -255,7 +255,8 @@ a {
 .mm-toast { animation: mm-toast-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
 
 /* ---------- Modo Foco: imersão (esconde a navegação durante a sessão) ---------- */
-html[data-mm-focus] nav {
+html[data-mm-focus] nav,
+html[data-mm-focus] .mm-studybar {
   display: none !important;
 }
 
