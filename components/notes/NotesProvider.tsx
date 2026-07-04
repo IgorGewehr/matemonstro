@@ -14,12 +14,18 @@
 //
 // Contrato consumido por components/notes/{NoteList,NoteEditor,Backlinks,
 // NotesGraph,SubtopicNotes}.tsx e app/notas/**: useNotes() devolve
-// { notes, ready, create, update, remove, get }.
+// { notes, ready, create, update, remove, get, folders, createFolder,
+// removeFolder, moveNote }. Pastas (Note.folder, string tipo "A/B", normalizada
+// via lib/notes.ts normalizeFolder): no fs-repo sao subdiretorios reais do
+// vault (interop Obsidian); no IDB sao so metadado (sem I/O de arquivos). O
+// servidor (/api/notes) NAO conhece folder — toda vez que uma versao vinda do
+// servidor e adotada, o folder LOCAL da nota correspondente e preservado.
 
 import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import type { Note } from "@/lib/types";
 import type { NotesRepo } from "@/lib/notes-repo";
 import { idbNotesRepo } from "@/lib/notes-repo-idb";
+import { normalizeFolder } from "@/lib/notes";
 import { isTauri } from "@/lib/platform";
 import { useAuth } from "@/components/auth/AuthProvider";
 
@@ -121,9 +127,18 @@ export interface NotesCtx {
   notes: Note[];
   ready: boolean;
   create: (input?: CreateNoteInput) => Promise<Note>;
-  update: (id: string, patch: Partial<Pick<Note, "title" | "body" | "tags" | "subtopicId">>) => Promise<Note | undefined>;
+  update: (
+    id: string,
+    patch: Partial<Pick<Note, "title" | "body" | "tags" | "subtopicId" | "folder">>
+  ) => Promise<Note | undefined>;
   remove: (id: string) => Promise<void>;
   get: (id: string) => Note | undefined;
+  /** Todas as pastas conhecidas (com notas + vazias), ordenadas. */
+  folders: string[];
+  createFolder: (path: string) => Promise<void>;
+  removeFolder: (path: string) => Promise<void>;
+  /** Wrapper de update() só para o campo folder (null = raiz do vault). */
+  moveNote: (id: string, folder: string | null) => Promise<void>;
 }
 
 const Ctx = createContext<NotesCtx | null>(null);
@@ -132,10 +147,20 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
   const { user, ready: authReady } = useAuth();
   const [notes, setNotes] = useState<Note[]>([]);
   const [ready, setReady] = useState(false);
+  const [folders, setFolders] = useState<string[]>([]);
   const notesRef = useRef<Note[]>([]);
   notesRef.current = notes;
   // Repo de persistência: IDB por default; trocado pelo fs no boot desktop.
   const repoRef = useRef<NotesRepo>(idbNotesRepo);
+
+  async function refreshFolders(): Promise<void> {
+    try {
+      const list = await repoRef.current.listFolders();
+      setFolders(list);
+    } catch (e) {
+      console.warn("Falha ao carregar pastas", e);
+    }
+  }
 
   // Carrega o storage local (funciona deslogado/offline; e a fonte de verdade
   // ate uma sincronizacao bem-sucedida trocar o que for necessario). No Tauri,
@@ -152,6 +177,7 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
       const all = await repoRef.current.list();
       if (!alive) return;
       setNotes(all.filter((n) => !n.deleted));
+      await refreshFolders();
     })()
       .catch((e) => {
         console.error("Falha ao carregar notas locais", e);
@@ -175,6 +201,7 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
       try {
         const fresh = await repoRef.current.rescan?.();
         if (fresh) setNotes(fresh.filter((n) => !n.deleted));
+        await refreshFolders();
       } catch (e) {
         console.warn("Falha no rescan do vault", e);
       } finally {
@@ -219,7 +246,8 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
               }
               final.set(local.id, local);
             } else {
-              final.set(local.id, server);
+              // Servidor nao conhece folder: preserva o valor LOCAL da nota.
+              final.set(local.id, { ...server, folder: local.folder ?? null });
             }
             continue;
           }
@@ -234,7 +262,7 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
             final.set(local.id, local); // sem rede: tenta de novo na proxima sincronizacao
             continue;
           }
-          let synced = dtoToNote(created);
+          let synced = dtoToNote(created, { folder: local.folder ?? null });
           if (local.tags.length > 0) {
             const withTags = await apiUpdate(synced.id, {
               title: synced.title,
@@ -243,7 +271,7 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
               subtopicId: synced.subtopicId,
               updatedAt: synced.updatedAt,
             });
-            if (withTags) synced = dtoToNote(withTags);
+            if (withTags) synced = dtoToNote(withTags, { folder: local.folder ?? null });
             else synced = { ...synced, tags: local.tags };
           }
           await repoRef.current.remove(local.id); // o id local (gerado no cliente) da lugar ao id do servidor
@@ -279,6 +307,7 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
       createdAt: now,
       updatedAt: now,
       deleted: false,
+      folder: null,
     };
     await repoRef.current.put(note);
     setNotes((prev) => [...prev, note]);
@@ -286,7 +315,8 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
     if (user) {
       const created = await apiCreate({ title: note.title, body: note.body, subtopicId: note.subtopicId });
       if (created) {
-        let synced = dtoToNote(created);
+        // Servidor nao conhece folder: preserva o valor LOCAL da nota (raiz, aqui).
+        let synced = dtoToNote(created, { folder: note.folder ?? null });
         if (note.tags.length > 0) {
           const withTags = await apiUpdate(synced.id, {
             title: synced.title,
@@ -295,7 +325,7 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
             subtopicId: synced.subtopicId,
             updatedAt: synced.updatedAt,
           });
-          synced = withTags ? dtoToNote(withTags) : { ...synced, tags: note.tags };
+          synced = withTags ? dtoToNote(withTags, { folder: note.folder ?? null }) : { ...synced, tags: note.tags };
         }
         // Troca o id gerado no cliente pelo id definitivo do servidor.
         await repoRef.current.remove(localId);
@@ -309,12 +339,13 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
 
   async function update(
     id: string,
-    patch: Partial<Pick<Note, "title" | "body" | "tags" | "subtopicId">>
+    patch: Partial<Pick<Note, "title" | "body" | "tags" | "subtopicId" | "folder">>
   ): Promise<Note | undefined> {
     const current = notesRef.current.find((n) => n.id === id);
     if (!current) return undefined;
     const now = Date.now();
     let merged: Note = { ...current, ...patch, updatedAt: now };
+    if (patch.folder !== undefined) merged.folder = normalizeFolder(patch.folder);
     await repoRef.current.put(merged);
     setNotes((prev) => prev.map((n) => (n.id === id ? merged : n)));
 
@@ -327,9 +358,12 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
         updatedAt: now,
       });
       if (dto) {
-        // Se o servidor tinha uma versao mais nova (LWW), adota-a; senao, o dto
-        // reflete exatamente o que acabamos de enviar.
-        const reconciled = dtoToNote(dto, dto.updatedAt > now ? undefined : { tags: merged.tags });
+        // Servidor nao conhece folder: preserva o valor LOCAL da nota. Se o
+        // servidor tinha uma versao mais nova (LWW), adota-a (menos folder);
+        // senao, o dto reflete exatamente o que acabamos de enviar.
+        const extra: Partial<Note> = { folder: merged.folder ?? null };
+        if (!(dto.updatedAt > now)) extra.tags = merged.tags;
+        const reconciled = dtoToNote(dto, extra);
         if (reconciled.updatedAt !== merged.updatedAt) {
           await repoRef.current.put(reconciled);
           merged = reconciled;
@@ -338,6 +372,21 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
       }
     }
     return merged;
+  }
+
+  async function moveNote(id: string, folder: string | null): Promise<void> {
+    await update(id, { folder });
+    await refreshFolders();
+  }
+
+  async function createFolder(path: string): Promise<void> {
+    await repoRef.current.createFolder(path);
+    await refreshFolders();
+  }
+
+  async function removeFolder(path: string): Promise<void> {
+    await repoRef.current.removeFolder(path);
+    await refreshFolders();
   }
 
   async function remove(id: string): Promise<void> {
@@ -363,9 +412,9 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
   }
 
   const value = useMemo<NotesCtx>(
-    () => ({ notes, ready, create, update, remove, get }),
+    () => ({ notes, ready, create, update, remove, get, folders, createFolder, removeFolder, moveNote }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [notes, ready]
+    [notes, ready, folders]
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

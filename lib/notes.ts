@@ -131,6 +131,31 @@ export function renderWikilinksToMarkdown(
   });
 }
 
+// ---- Pastas (estilo Obsidian) ----
+
+const MAX_FOLDER_DEPTH = 4;
+
+/**
+ * Normaliza um caminho de pasta: trim, remove "/" nas pontas, colapsa "//",
+ * proibe segmentos "." e "..", proibe prefixo ".trash"/".matemonstro"
+ * (reservados pelo app) e limita a 4 niveis. Retorna null para vazio/invalido
+ * (raiz do vault).
+ */
+export function normalizeFolder(input: string | null | undefined): string | null {
+  if (!input) return null;
+  const collapsed = input.trim().replace(/\/+/g, "/").replace(/^\/+|\/+$/g, "");
+  if (!collapsed) return null;
+  const segments = collapsed
+    .split("/")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (segments.length === 0 || segments.length > MAX_FOLDER_DEPTH) return null;
+  if (segments.some((s) => s === "." || s === "..")) return null;
+  const first = segments[0].toLowerCase();
+  if (first === ".trash" || first === ".matemonstro") return null;
+  return segments.join("/");
+}
+
 // ---- Busca full-text simples (titulo + corpo) ----
 
 /** Busca simples por termos (case-insensitive) em titulo (peso maior) e corpo; devolve notas ordenadas por relevancia. */
@@ -157,4 +182,74 @@ export function searchNotes(notes: Note[], query: string): Note[] {
   }
   scored.sort((a, b) => b.score - a.score || b.note.updatedAt - a.note.updatedAt);
   return scored.map((s) => s.note);
+}
+
+// ---- Links sugeridos: titulos de outras notas citados no corpo, ainda sem [[...]] ----
+
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/** Faixas [inicio, fim) ja ocupadas por [[titulo]] no corpo (para nao sugerir o que ja esta ligado). */
+function wikilinkRanges(body: string): Array<[number, number]> {
+  const ranges: Array<[number, number]> = [];
+  const re = new RegExp(WIKILINK_RE);
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(body))) {
+    ranges.push([m.index, m.index + m[0].length]);
+  }
+  return ranges;
+}
+
+export interface LinkSuggestion {
+  noteId: string;
+  title: string;
+  /** Posicao (no corpo) da primeira ocorrencia do titulo fora de um [[...]] existente. */
+  index: number;
+}
+
+/**
+ * Sugere ate 5 notas para ligar: titulos de OUTRAS notas (>=3 caracteres) que
+ * aparecem como palavra/frase inteira no corpo de `note`, mas que ainda nao
+ * estao dentro de um [[...]]. Usado pelo editor para oferecer "Ligar: [Titulo]"
+ * sem depender do usuario digitar [[ ]] manualmente. Custo O(notas x corpo),
+ * aceitavel ate ~1000 notas.
+ */
+export function suggestLinks(note: Note, notes: Note[]): LinkSuggestion[] {
+  const body = note.body ?? "";
+  if (!body.trim()) return [];
+  const ranges = wikilinkRanges(body);
+  const inRange = (idx: number) => ranges.some(([s, e]) => idx >= s && idx < e);
+
+  const out: LinkSuggestion[] = [];
+  const seenTitles = new Set<string>();
+  for (const cand of notes) {
+    if (cand.deleted || cand.id === note.id) continue;
+    const title = (cand.title ?? "").trim();
+    const key = title.toLowerCase();
+    if (title.length < 3 || seenTitles.has(key)) continue;
+
+    let re: RegExp;
+    try {
+      re = new RegExp(`(?<![\\p{L}\\p{N}_])${escapeRegExp(title)}(?![\\p{L}\\p{N}_])`, "giu");
+    } catch {
+      continue; // ambiente sem suporte a lookbehind unicode: ignora este candidato
+    }
+
+    let found: RegExpExecArray | null;
+    let hit: RegExpExecArray | null = null;
+    while ((found = re.exec(body))) {
+      if (!inRange(found.index)) {
+        hit = found;
+        break;
+      }
+      if (found[0].length === 0) re.lastIndex += 1;
+    }
+    if (hit) {
+      out.push({ noteId: cand.id, title, index: hit.index });
+      seenTitles.add(key);
+    }
+  }
+  out.sort((a, b) => a.index - b.index);
+  return out.slice(0, 5);
 }

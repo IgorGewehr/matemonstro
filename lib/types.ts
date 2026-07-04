@@ -247,4 +247,7 @@ export interface Note {
   createdAt: number;
   updatedAt: number;
   deleted?: boolean;
+  // Aditivo (pastas, estilo Obsidian): caminho normalizado, ex. "Analise/Limites".
+  // null/undefined = raiz do vault. Ver normalizeFolder em lib/notes.ts.
+  folder?: string | null;
 }

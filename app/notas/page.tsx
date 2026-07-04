@@ -67,12 +67,13 @@ export default function NotasPage() {
         </div>
         <div className="flex items-center gap-2">
           <button
-            className="btn text-sm hidden md:inline-flex"
             onClick={toggleList}
             aria-pressed={!showList}
+            aria-label={showList ? "Esconder a lista de notas" : "Mostrar a lista de notas"}
             title={showList ? "Esconder a lista (escrita imersiva)" : "Mostrar a lista de notas"}
+            className="hidden md:grid place-items-center w-8 h-8 rounded-full border border-[var(--color-line2)] text-[var(--color-mut)] hover:text-[var(--color-txt)] hover:border-[var(--color-brand)] transition-colors mm-lift"
           >
-            {showList ? "⟨ Lista" : "⟩ Lista"}
+            <span aria-hidden="true">{showList ? "⟨" : "⟩"}</span>
           </button>
           <Link href="/notas/grafo" className="btn text-sm">
             ❖ Grafo
@@ -89,12 +90,16 @@ export default function NotasPage() {
       </div>
 
       <div
-        className={`grid gap-4 items-stretch flex-1 min-h-0 ${
-          showList ? "md:grid-cols-[280px_minmax(0,1fr)]" : "md:grid-cols-[minmax(0,1fr)]"
+        className={`grid gap-4 items-stretch flex-1 min-h-0 transition-[grid-template-columns] duration-300 ease-out ${
+          showList ? "md:grid-cols-[280px_minmax(0,1fr)]" : "md:grid-cols-[0px_minmax(0,1fr)]"
         }`}
       >
-        {/* Mobile: lista sempre empilhada (h-48); desktop: coluna retrátil. */}
-        <div className={`min-h-0 h-48 md:h-full ${showList ? "" : "md:hidden"}`}>
+        {/* Mobile: lista sempre empilhada (h-48); desktop: coluna retrátil (largura anima, opacidade acompanha). */}
+        <div
+          className={`min-h-0 h-48 md:h-full md:overflow-hidden md:min-w-0 transition-opacity duration-150 ${
+            showList ? "opacity-100" : "md:opacity-0 md:pointer-events-none"
+          }`}
+        >
           <NoteList selectedId={selectedId} onSelect={setSelectedId} />
         </div>
         <div className="min-h-0 h-full">

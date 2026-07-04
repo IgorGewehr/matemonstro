@@ -25,26 +25,33 @@ export default function Backlinks({ note }: { note: Note }) {
   return (
     <div className="space-y-2">
       {backlinks.length > 0 && (
-        <div className="flex flex-wrap gap-1.5">
-          {backlinks.map((n) => (
-            <Link
-              key={n.id}
-              href={noteHref(n.id)}
-              className="chip transition-colors hover:!border-[var(--color-brand)] hover:!text-[var(--color-brand)]"
-            >
-              ← {n.title || "Sem título"}
-            </Link>
-          ))}
+        <div className="space-y-1.5">
+          <p className="text-[11px] text-[var(--color-mut)]">
+            {backlinks.length} nota{backlinks.length === 1 ? "" : "s"} referencia
+            {backlinks.length === 1 ? "" : "m"} esta
+          </p>
+          <div className="flex flex-wrap gap-1.5 mm-stagger">
+            {backlinks.map((n) => (
+              <Link
+                key={n.id}
+                href={noteHref(n.id)}
+                className="chip mm-lift transition-colors hover:!border-[var(--color-brand)] hover:!text-[var(--color-brand)]"
+              >
+                ← {n.title || "Sem título"}
+                {n.folder && <span className="text-[10px] opacity-70">· {n.folder}</span>}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
       {lessons.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 items-center">
+        <div className="flex flex-wrap gap-1.5 items-center mm-stagger">
           <span className="text-[11px] text-[var(--color-mut)]">Aulas citadas:</span>
           {lessons.map((ref) => (
             <Link
               key={ref.sub.id}
               href={subHref(ref)}
-              className="chip transition-colors hover:!border-[var(--color-brand2)] hover:!text-[var(--color-brand2)]"
+              className="chip mm-lift transition-colors hover:!border-[var(--color-brand2)] hover:!text-[var(--color-brand2)]"
             >
               ▤ {ref.sub.title}
             </Link>

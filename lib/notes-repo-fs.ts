@@ -20,6 +20,7 @@ import {
   writeTextFile,
   mkdir,
   rename,
+  remove as removePath,
   stat,
   exists,
 } from "@tauri-apps/plugin-fs";
@@ -27,14 +28,22 @@ import { documentDir, join } from "@tauri-apps/api/path";
 import { load, type Store } from "@tauri-apps/plugin-store";
 import type { Note } from "./types";
 import type { NotesRepo } from "./notes-repo";
+import { normalizeFolder } from "./notes";
 import { serializeNote, parseNoteMd, slugFilename } from "./note-md";
 
 const STORE_FILE = "settings.json"; // app-data do Tauri — FORA do webview
 const VAULT_KEY = "vaultPath";
 const DEBOUNCE_MS = 500;
+const MAX_FOLDER_DEPTH = 4;
+// Nomes de diretorio ignorados na varredura (reservados do app / dotfolders,
+// interop com Obsidian que tambem usa .obsidian/ etc.).
+function isIgnoredDir(name: string): boolean {
+  return name.startsWith(".");
+}
 
 interface FileMeta {
-  filename: string; // relativo à raiz do vault, ex.: "Minha nota.md"
+  dir: string; // pasta normalizada (posix, "" = raiz), relativa ao vault
+  filename: string; // so o nome do arquivo (sem diretorio), ex.: "Minha nota.md"
   mtime: number;
   extra: string[]; // linhas de frontmatter desconhecidas (preservadas)
 }
@@ -83,6 +92,14 @@ async function uniqueFilename(dir: string, title: string): Promise<string> {
   return name;
 }
 
+/** Caminho absoluto do subdiretório correspondente a uma pasta normalizada ("" = raiz). */
+async function folderAbsPath(root: string, folder: string): Promise<string> {
+  if (!folder) return root;
+  let p = root;
+  for (const seg of folder.split("/")) p = await join(p, seg);
+  return p;
+}
+
 async function writeAtomic(dir: string, filename: string, content: string): Promise<void> {
   const tmp = await join(dir, `${filename}.tmp`);
   const dst = await join(dir, filename);
@@ -95,15 +112,32 @@ async function flushOne(id: string): Promise<void> {
   if (!p) return;
   pending.delete(id);
   clearTimeout(p.timer);
-  const dir = await ensureVault();
+  const root = await ensureVault();
+  const folder = normalizeFolder(p.note.folder ?? null) ?? "";
+  const targetDir = await folderAbsPath(root, folder);
+  if (folder && !(await exists(targetDir))) await mkdir(targetDir, { recursive: true });
+
   let m = meta.get(id);
   if (!m) {
-    m = { filename: await uniqueFilename(dir, p.note.title), mtime: 0, extra: [] };
+    m = { dir: folder, filename: await uniqueFilename(targetDir, p.note.title), mtime: 0, extra: [] };
     meta.set(id, m);
+  } else if (m.dir !== folder) {
+    // A pasta mudou: RENAME atomico do arquivo antigo para o novo diretorio
+    // (colisao de nome no destino resolvida por pasta, via uniqueFilename).
+    const oldDir = await folderAbsPath(root, m.dir);
+    const oldAbs = await join(oldDir, m.filename);
+    const newFilename = (await exists(await join(targetDir, m.filename)))
+      ? await uniqueFilename(targetDir, p.note.title)
+      : m.filename;
+    if (await exists(oldAbs)) {
+      await rename(oldAbs, await join(targetDir, newFilename));
+    }
+    m.dir = folder;
+    m.filename = newFilename;
   }
-  await writeAtomic(dir, m.filename, serializeNote(p.note, m.extra));
+  await writeAtomic(targetDir, m.filename, serializeNote(p.note, m.extra));
   try {
-    const st = await stat(await join(dir, m.filename));
+    const st = await stat(await join(targetDir, m.filename));
     m.mtime = st.mtime ? new Date(st.mtime).getTime() : Date.now();
   } catch {
     m.mtime = Date.now();
@@ -120,29 +154,76 @@ if (typeof window !== "undefined") {
   window.addEventListener("beforeunload", () => void flushAll());
 }
 
-async function readVault(): Promise<Note[]> {
-  const dir = await ensureVault();
-  const entries = await readDir(dir);
-  const notes: Note[] = [];
-  const seenIds = new Set<string>();
-  meta.clear();
+/** Varre um (sub)diretório recursivamente (ignora .trash, .matemonstro e dotfolders; profundidade máx. 4). */
+async function collectNotes(
+  root: string,
+  folder: string,
+  notes: Note[],
+  seenIds: Set<string>
+): Promise<void> {
+  const abs = await folderAbsPath(root, folder);
+  let entries: Awaited<ReturnType<typeof readDir>>;
+  try {
+    entries = await readDir(abs);
+  } catch (err) {
+    console.warn(`Vault: falha ao ler diretorio ${folder || "(raiz)"}`, err);
+    return;
+  }
   for (const e of entries) {
-    if (!e.isFile || !e.name || !e.name.toLowerCase().endsWith(".md")) continue;
+    if (!e.name) continue;
+    if (e.isDirectory) {
+      if (isIgnoredDir(e.name)) continue;
+      const child = folder ? `${folder}/${e.name}` : e.name;
+      if (child.split("/").length > MAX_FOLDER_DEPTH) continue;
+      await collectNotes(root, child, notes, seenIds);
+      continue;
+    }
+    if (!e.isFile || !e.name.toLowerCase().endsWith(".md")) continue;
     try {
-      const full = await join(dir, e.name);
+      const full = await join(abs, e.name);
       const [st, content] = await Promise.all([stat(full), readTextFile(full)]);
       const mtime = st.mtime ? new Date(st.mtime).getTime() : Date.now();
       const { note, extra } = parseNoteMd(e.name, content, mtime);
-      // Colisão de id (arquivo copiado à mão): o segundo vira f:<nome> para não sumir.
-      if (seenIds.has(note.id)) note.id = `f:${e.name.replace(/\.md$/i, "")}`;
+      // Colisão de id (arquivo copiado à mão, ou mesmo id em pastas distintas):
+      // o segundo vira f:<caminho> para não sumir.
+      if (seenIds.has(note.id)) {
+        note.id = `f:${(folder ? `${folder}/` : "") + e.name.replace(/\.md$/i, "")}`;
+      }
       seenIds.add(note.id);
-      meta.set(note.id, { filename: e.name, mtime, extra });
+      note.folder = folder || null;
+      meta.set(note.id, { dir: folder, filename: e.name, mtime, extra });
       notes.push(note);
     } catch (err) {
-      console.warn(`Vault: falha ao ler ${e.name} (pulado)`, err);
+      console.warn(`Vault: falha ao ler ${folder ? `${folder}/` : ""}${e.name} (pulado)`, err);
     }
   }
+}
+
+async function readVault(): Promise<Note[]> {
+  const root = await ensureVault();
+  const notes: Note[] = [];
+  const seenIds = new Set<string>();
+  meta.clear();
+  await collectNotes(root, "", notes, seenIds);
   return notes;
+}
+
+/** Varre subpastas (só diretórios) recursivamente, mesmas regras de collectNotes. */
+async function collectFolders(root: string, folder: string, out: Set<string>): Promise<void> {
+  const abs = await folderAbsPath(root, folder);
+  let entries: Awaited<ReturnType<typeof readDir>>;
+  try {
+    entries = await readDir(abs);
+  } catch {
+    return;
+  }
+  for (const e of entries) {
+    if (!e.isDirectory || !e.name || isIgnoredDir(e.name)) continue;
+    const child = folder ? `${folder}/${e.name}` : e.name;
+    if (child.split("/").length > MAX_FOLDER_DEPTH) continue;
+    out.add(child);
+    await collectFolders(root, child, out);
+  }
 }
 
 export const fsNotesRepo: NotesRepo = {
@@ -167,12 +248,14 @@ export const fsNotesRepo: NotesRepo = {
     }
     const m = meta.get(id);
     if (!m) return;
-    const dir = await ensureVault();
-    const src = await join(dir, m.filename);
+    const root = await ensureVault();
+    const srcDir = await folderAbsPath(root, m.dir);
+    const src = await join(srcDir, m.filename);
     if (await exists(src)) {
-      let dst = await join(dir, ".trash", m.filename);
+      // .trash/ é sempre achatado (sem subpastas), convenção Obsidian.
+      let dst = await join(root, ".trash", m.filename);
       if (await exists(dst)) {
-        dst = await join(dir, ".trash", m.filename.replace(/\.md$/i, `-${Date.now()}.md`));
+        dst = await join(root, ".trash", m.filename.replace(/\.md$/i, `-${Date.now()}.md`));
       }
       await rename(src, dst);
     }
@@ -183,6 +266,32 @@ export const fsNotesRepo: NotesRepo = {
   async rescan(): Promise<Note[] | null> {
     await flushAll(); // escritas nossas pendentes primeiro (LWW honesto)
     return readVault();
+  },
+
+  async listFolders(): Promise<string[]> {
+    const root = await ensureVault();
+    const set = new Set<string>();
+    await collectFolders(root, "", set);
+    return [...set].sort((a, b) => a.localeCompare(b));
+  },
+
+  async createFolder(path: string): Promise<void> {
+    const norm = normalizeFolder(path);
+    if (!norm) throw new Error("Caminho de pasta invalido");
+    const root = await ensureVault();
+    const abs = await folderAbsPath(root, norm);
+    await mkdir(abs, { recursive: true });
+  },
+
+  async removeFolder(path: string): Promise<void> {
+    const norm = normalizeFolder(path);
+    if (!norm) return;
+    const root = await ensureVault();
+    const abs = await folderAbsPath(root, norm);
+    if (!(await exists(abs))) return;
+    const entries = await readDir(abs);
+    if (entries.length > 0) throw new Error("Pasta nao esta vazia");
+    await removePath(abs);
   },
 };
 

@@ -4,7 +4,7 @@
 // Markdown comprime pouco e as notas são pequenas; simplicidade > bytes.
 
 import type { Note } from "./types";
-import { allTagsOf } from "./notes";
+import { allTagsOf, normalizeFolder } from "./notes";
 import { slugFilename } from "./note-md";
 
 // ---- CRC-32 (tabela padrão, polinômio 0xEDB88320) ----
@@ -127,15 +127,18 @@ export function buildZip(files: VaultFile[]): Blob {
 // slugFilename mudou-se para lib/note-md.ts (fonte \u00fanica: o vault em disco do
 // desktop usa a mesma fun\u00e7\u00e3o para nomear arquivos).
 
-/** Converte as notas vivas em arquivos .md (frontmatter + corpo intacto), com nomes únicos. */
+/** Converte as notas vivas em arquivos .md (frontmatter + corpo intacto), com nomes únicos por pasta. */
 export function notesToVaultFiles(notes: Note[]): VaultFile[] {
   const used = new Map<string, number>();
   const out: VaultFile[] = [];
   const live = notes.filter((n) => !n.deleted);
   for (const n of live) {
+    const folder = normalizeFolder(n.folder ?? null);
+    const dirPrefix = folder ? `${folder}/` : "";
     let base = slugFilename(n.title);
-    const count = used.get(base.toLowerCase()) ?? 0;
-    used.set(base.toLowerCase(), count + 1);
+    const dedupeKey = `${dirPrefix}${base}`.toLowerCase();
+    const count = used.get(dedupeKey) ?? 0;
+    used.set(dedupeKey, count + 1);
     if (count > 0) base = `${base} ${count + 1}`;
 
     const tags = allTagsOf(n);
@@ -150,7 +153,11 @@ export function notesToVaultFiles(notes: Note[]): VaultFile[] {
       "",
     ].join("\n");
 
-    out.push({ name: `${base}.md`, content: front + (n.body ?? "") + "\n", mtime: n.updatedAt });
+    out.push({
+      name: `${dirPrefix}${base}.md`,
+      content: front + (n.body ?? "") + "\n",
+      mtime: n.updatedAt,
+    });
   }
   return out;
 }

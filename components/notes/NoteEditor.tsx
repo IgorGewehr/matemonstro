@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboa
 import Markdown from "@/components/Markdown";
 import FormulaToolbar from "./FormulaToolbar";
 import { useNotes } from "./NotesProvider";
-import { allTagsOf } from "@/lib/notes";
+import { allTagsOf, suggestLinks, type LinkSuggestion } from "@/lib/notes";
 import { renderNoteMarkdown, curriculumLinkCandidates } from "@/lib/notes-curriculum";
 import { NOTE_TEMPLATES } from "@/lib/note-templates";
 import type { Note } from "@/lib/types";
@@ -162,6 +162,12 @@ export default function NoteEditor({
     return trimmed ? trimmed.split(/\s+/).length : 0;
   }, [body]);
 
+  // Links sugeridos: titulos de outras notas citados no corpo, ainda sem [[...]].
+  const linkSuggestions = useMemo<LinkSuggestion[]>(
+    () => (note ? suggestLinks({ ...note, title, body, tags }, notes) : []),
+    [note, title, body, tags, notes]
+  );
+
   // Debounce: só persiste depois de um período sem digitar.
   useEffect(() => {
     if (!note) return;
@@ -180,14 +186,24 @@ export default function NoteEditor({
   const wikilinkCandidates = useMemo<LinkCandidate[]>(() => {
     if (!linkQuery) return [];
     const q = linkQuery.query.trim().toLowerCase();
+    const currentFolder = note?.folder ?? null;
     const noteCands: LinkCandidate[] = notes
       .filter((n) => n.id !== noteId && !n.deleted)
       .filter((n) => !q || n.title.toLowerCase().includes(q))
+      // Ranking: notas da mesma pasta da nota atual primeiro, depois por recencia.
+      .slice()
+      .sort((a, b) => {
+        const aSame = (a.folder ?? null) === currentFolder;
+        const bSame = (b.folder ?? null) === currentFolder;
+        if (aSame !== bSame) return aSame ? -1 : 1;
+        return b.updatedAt - a.updatedAt;
+      })
       .slice(0, 6)
       .map((n) => ({
         key: `n-${n.id}`,
         kind: "nota" as const,
         label: n.title || "Sem título",
+        detail: n.folder || undefined,
         insert: n.title || "Sem título",
       }));
     // Aulas do currículo entram com 2+ caracteres (evita listar o currículo inteiro).
@@ -223,6 +239,19 @@ export default function NoteEditor({
     setBody(next);
     setLinkQuery(null);
     setPendingSelection({ start: cursor, end: cursor });
+  }
+
+  // Envolve a primeira ocorrencia sugerida em [[...]] (preservando o texto
+  // original como esta, so muda a caixa se necessario) e persiste de imediato.
+  async function acceptLinkSuggestion(s: LinkSuggestion) {
+    const matched = body.slice(s.index, s.index + s.title.length);
+    if (!matched) return;
+    const next = body.slice(0, s.index) + "[[" + matched + "]]" + body.slice(s.index + matched.length);
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    setBody(next);
+    setSaved(false);
+    const persisted = await update(noteId, { title, body: next, tags });
+    if (persisted) setSaved(true);
   }
 
   function insertTemplate(templateBody: string) {
@@ -424,7 +453,7 @@ export default function NoteEditor({
                 >
                   <span>{c.label}</span>
                   <span className="block text-[10px] text-[var(--color-mut)]">
-                    {c.kind === "aula" ? `aula · ${c.detail}` : "nota"}
+                    {c.kind === "aula" ? `aula · ${c.detail}` : c.detail ? `nota · ${c.detail}` : "nota"}
                   </span>
                 </button>
               ))}
@@ -435,6 +464,23 @@ export default function NoteEditor({
           <Markdown>{body ? renderNoteMarkdown(body, notes) : "*A pré-visualização aparece aqui…*"}</Markdown>
         </div>
       </div>
+
+      {linkSuggestions.length > 0 && (
+        <div className="flex flex-wrap items-center gap-1.5 text-[11px] text-[var(--color-mut)]">
+          <span>Ligar:</span>
+          {linkSuggestions.map((s) => (
+            <button
+              key={s.noteId}
+              type="button"
+              onClick={() => acceptLinkSuggestion(s)}
+              className="chip !py-0.5 !px-2 mm-lift transition-colors hover:!border-[var(--color-brand)] hover:!text-[var(--color-brand)]"
+              title={`Ligar a "${s.title}"`}
+            >
+              {s.title}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="flex items-center justify-between text-[11px] text-[var(--color-mut)]">
         <span>
