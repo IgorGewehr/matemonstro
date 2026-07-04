@@ -5,6 +5,7 @@
 
 import type { Note } from "./types";
 import { allTagsOf } from "./notes";
+import { slugFilename } from "./note-md";
 
 // ---- CRC-32 (tabela padrão, polinômio 0xEDB88320) ----
 const CRC_TABLE = (() => {
@@ -123,17 +124,8 @@ export function buildZip(files: VaultFile[]): Blob {
   return new Blob([cat(...chunks, new Uint8Array(0)), centralBytes, eocd], { type: "application/zip" });
 }
 
-function slugFilename(title: string): string {
-  const s = (title || "nota")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    // travess\u00f5es viram h\u00edfen: unzip antigos (macOS/Windows) engasgam com eles no nome
-    .replace(/[\u2014\u2013]/g, "-")
-    .replace(/[\\/:*?"<>|#^[\]]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-  return s || "nota";
-}
+// slugFilename mudou-se para lib/note-md.ts (fonte \u00fanica: o vault em disco do
+// desktop usa a mesma fun\u00e7\u00e3o para nomear arquivos).
 
 /** Converte as notas vivas em arquivos .md (frontmatter + corpo intacto), com nomes únicos. */
 export function notesToVaultFiles(notes: Note[]): VaultFile[] {

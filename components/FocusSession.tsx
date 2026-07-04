@@ -176,7 +176,7 @@ export default function FocusSession() {
         aria-modal="true"
         aria-label="Sessão de foco"
       >
-        <div ref={modalRef} className="panel w-full max-w-sm p-6 text-center" onMouseDown={(e) => e.stopPropagation()}>
+        <div ref={modalRef} className="panel w-full max-w-sm p-6 text-center mm-pop" onMouseDown={(e) => e.stopPropagation()}>
           <div className="text-4xl mb-2" aria-hidden="true">◉</div>
           <h2 className="text-lg font-bold">Sessão de foco</h2>
           <p className="text-sm text-[var(--color-mut)] mt-1 mb-1">Uma coisa só, sem trocar de aba:</p>
@@ -208,7 +208,7 @@ export default function FocusSession() {
   if (phase === "done") {
     return (
       <div className="fixed inset-0 z-[150] grid place-items-center p-4 bg-black/70 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Sessão concluída">
-        <div ref={modalRef} className="panel w-full max-w-sm p-6 text-center">
+        <div ref={modalRef} className="panel w-full max-w-sm p-6 text-center mm-pop">
           <div className="text-4xl mb-2" aria-hidden="true">◉</div>
           <h2 className="text-lg font-bold">{loggedMin} min de foco de verdade</h2>
           <p className="text-sm text-[var(--color-mut)] mt-1 mb-5">
@@ -234,7 +234,7 @@ export default function FocusSession() {
   const pct = Math.max(0, Math.min(100, (remaining / total) * 100));
   return (
     <div
-      className="fixed top-3 left-1/2 -translate-x-1/2 z-[150] panel !rounded-full px-4 py-2 flex items-center gap-3 shadow-2xl"
+      className="fixed top-3 left-1/2 -translate-x-1/2 z-[150] panel !rounded-full px-4 py-2 flex items-center gap-3 shadow-2xl mm-pop"
       role="timer"
       aria-label={isBreak ? "Pausa" : `Foco: ${label}`}
     >

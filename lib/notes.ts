@@ -4,6 +4,13 @@
 
 import type { Note } from "./types";
 
+// ---- Rota canonica de uma nota ----
+// /notas/[id] virou /notas/nota?id= (ids de runtime nao pre-renderizam no
+// export estatico do desktop). TODO link para nota passa por aqui.
+export function noteHref(id: string): string {
+  return `/notas/nota?id=${encodeURIComponent(id)}`;
+}
+
 // ---- Wikilinks: [[Titulo]] ou [[Titulo|Rotulo]] (case-insensitive, casamento por titulo) ----
 
 const WIKILINK_RE = /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g;
@@ -117,7 +124,7 @@ export function renderWikilinksToMarkdown(
     if (!title) return whole; // [[ ]] placeholder de template: mantém literal
     const label = alias?.trim() || title;
     const target = findNoteByTitle(title, notes);
-    if (target) return `[${label}](/notas/${target.id})`;
+    if (target) return `[${label}](${noteHref(target.id)})`;
     const extra = resolveExtra?.(title);
     if (extra) return `[${alias?.trim() || extra.label || title}](${extra.href})`;
     return `*${label}*`;

@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useNotes } from "./NotesProvider";
 import { dailyTitle, dailyTemplate, findDailyNote } from "@/lib/daily";
+import { noteHref } from "@/lib/notes";
 
 export default function DailyNoteCard() {
   const router = useRouter();
@@ -18,13 +19,13 @@ export default function DailyNoteCard() {
   async function open() {
     if (busy) return;
     if (existing) {
-      router.push(`/notas/${existing.id}`);
+      router.push(noteHref(existing.id));
       return;
     }
     setBusy(true);
     try {
       const n = await create({ title: dailyTitle(), body: dailyTemplate(), tags: ["diario"] });
-      router.push(`/notas/${n.id}`);
+      router.push(noteHref(n.id));
     } finally {
       setBusy(false);
     }
@@ -34,7 +35,7 @@ export default function DailyNoteCard() {
     <button
       onClick={open}
       disabled={!ready || busy}
-      className="panel p-4 w-full text-left flex items-center gap-4 transition-colors hover:border-[var(--color-brand)] group"
+      className="panel p-4 w-full text-left flex items-center gap-4 mm-lift hover:border-[var(--color-brand)] group"
     >
       <span
         className="grid place-items-center w-10 h-10 rounded-xl text-lg shrink-0"

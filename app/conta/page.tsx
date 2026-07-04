@@ -92,7 +92,7 @@ export default function ContaPage() {
 
   if (!user) {
     return (
-      <div className="max-w-md mx-auto panel p-8 text-center mt-10">
+      <div className="max-w-md mx-auto panel p-8 text-center mt-10 mm-enter">
         <div className="text-4xl mb-3">●</div>
         <h1 className="text-lg font-bold">Você não está logado</h1>
         <p className="text-sm text-[var(--color-mut)] mt-2 mb-4">
@@ -195,7 +195,7 @@ export default function ContaPage() {
     "rounded-xl border border-[var(--color-line)] bg-[var(--color-well)] px-3 py-2 text-sm outline-none focus:border-[var(--color-brand)] w-full";
 
   return (
-    <div className="max-w-2xl mx-auto space-y-5 pb-10">
+    <div className="max-w-2xl mx-auto space-y-5 pb-10 mm-enter">
       <header>
         <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">● Conta & segurança</h1>
         <p className="text-[var(--color-mut)] text-sm mt-1">
@@ -294,7 +294,7 @@ export default function ContaPage() {
             </button>
           )}
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2 mm-stagger">
           {sessions.map((s) => (
             <div key={s.idPrefix} className="flex items-center gap-3 text-sm">
               <span aria-hidden="true" className={s.current ? "text-[var(--color-brand2)]" : "text-[var(--color-mut)]"}>

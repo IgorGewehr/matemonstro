@@ -7,7 +7,7 @@ export function ProgressBar({ pct, className }: { pct: number; className?: strin
   return (
     <div className={`h-2 w-full rounded-full bg-[var(--color-raise)] overflow-hidden ${className ?? ""}`}>
       <div
-        className="h-full rounded-full transition-all"
+        className="h-full rounded-full transition-[width] duration-500 ease-out"
         style={{
           width: `${Math.max(0, Math.min(100, pct))}%`,
           background: "linear-gradient(90deg,#7c5cff,#00d3a7)",
@@ -104,7 +104,9 @@ export function LevelBar({ xp, className }: { xp: number; className?: string }) 
             {lv.xpInto}/{lv.span} XP <span className="opacity-60">→ {lv.next}</span>
           </>
         ) : (
-          <>{lv.xp} XP • nível máximo 👹</>
+          <>
+            {lv.xp} XP • nível máximo <span className="text-[var(--color-gold)]">✦</span>
+          </>
         )}
       </div>
     </div>

@@ -39,12 +39,12 @@ export default function Dashboard() {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 mm-enter">
       <header className="flex items-end justify-between flex-wrap gap-3">
         <div>
           <div className="chip mb-2">Hoje • {new Date(now).toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}</div>
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-            Bora virar um monstro da matemática. 🦾
+            Bora virar um monstro da matemática.
           </h1>
         </div>
         <div className="flex items-center gap-3">
@@ -54,8 +54,8 @@ export default function Dashboard() {
       </header>
 
       {!settings.onboarded && (
-        <Link href="/config" className="panel p-4 flex items-center gap-3 hover:border-[var(--color-brand)] transition-colors">
-          <span className="text-2xl">⚙</span>
+        <Link href="/config" className="panel p-4 flex items-center gap-3 hover:border-[var(--color-brand)] transition-colors mm-lift">
+          <span className="text-2xl text-[var(--color-mut)]">⚙</span>
           <div className="flex-1">
             <div className="font-semibold">Configure seu tempo de estudo</div>
             <div className="text-xs text-[var(--color-mut)]">
@@ -67,11 +67,11 @@ export default function Dashboard() {
       )}
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mm-stagger">
         <Stat value={`${overall.done}/${overall.total}`} label="subtópicos concluídos" />
         <Stat value={plan.reviews.length} label="revisões para hoje" accent={plan.reviews.length ? "#7c5cff" : undefined} />
         <Stat
-          value={`${streakInfo.count}🔥`}
+          value={streakInfo.count}
           label={
             streakInfo.status === "at-risk"
               ? "dias seguidos — estude hoje"
@@ -120,7 +120,7 @@ export default function Dashboard() {
         </div>
 
         {plan.reviews.length > 0 && (
-          <Link href="/revisar" className="flex items-center gap-3 p-3 rounded-xl bg-[var(--color-card)] border border-[var(--color-line)] hover:border-[var(--color-brand)] transition-colors mb-3">
+          <Link href="/revisar" className="flex items-center gap-3 p-3 rounded-xl bg-[var(--color-card)] border border-[var(--color-line)] hover:border-[var(--color-brand)] transition-colors mb-3 mm-lift">
             <span className="text-xl">↻</span>
             <div className="flex-1">
               <div className="font-semibold">Revisão espaçada — {plan.reviews.length} cartões</div>
@@ -135,13 +135,13 @@ export default function Dashboard() {
             Tudo concluído por aqui. Explore as <Link href="/trilhas" className="text-[var(--color-brand)]">trilhas</Link>.
           </p>
         ) : (
-          <div className="space-y-2">
+          <div className="space-y-2 mm-stagger">
             <div className="text-xs uppercase tracking-wide text-[var(--color-mut)] mb-1">Estudar</div>
             {plan.study.map((item) => (
               <Link
                 key={item.ref.sub.id}
                 href={`/estudar/${item.ref.track.id}/${item.ref.sub.id}`}
-                className="flex items-center gap-3 p-3 rounded-xl bg-[var(--color-card)] border border-[var(--color-line)] hover:border-[var(--color-brand)] transition-colors"
+                className="flex items-center gap-3 p-3 rounded-xl bg-[var(--color-card)] border border-[var(--color-line)] hover:border-[var(--color-brand)] transition-colors mm-lift"
               >
                 <span className="w-1.5 h-10 rounded-full" style={{ background: phaseColor(item.ref.track.phase) }} />
                 <div className="flex-1 min-w-0">
@@ -168,7 +168,7 @@ export default function Dashboard() {
         </section>
       )}
 
-      <div className="grid md:grid-cols-2 gap-3">
+      <div className="grid md:grid-cols-2 gap-3 mm-stagger">
         <div className="panel p-5">
           <div className="text-sm font-semibold mb-2">Progresso geral</div>
           <ProgressBar pct={overall.pct} />
@@ -176,14 +176,14 @@ export default function Dashboard() {
             {overall.done} de {overall.total} subtópicos • {Math.round(proj.remainingHours)}h restantes de {Math.round(totalCurriculumHours())}h totais
           </div>
         </div>
-        <Link href="/plano" className="panel p-5 hover:border-[var(--color-brand)] transition-colors">
+        <Link href="/plano" className="panel p-5 hover:border-[var(--color-brand)] transition-colors mm-lift">
           <div className="text-sm font-semibold mb-1">Ritmo</div>
           <div className="text-xs text-[var(--color-mut)] leading-relaxed">
             {proj.weeklyHours.toFixed(1)}h/semana • faltam ~{Math.ceil(proj.weeksLeft)} semanas no ritmo atual.
             {settings.goalDate && proj.onTrack === false && (
               <span className="text-[#ff8080]"> Acelere para bater sua meta.</span>
             )}
-            {settings.goalDate && proj.onTrack && <span className="text-[var(--color-brand2)]"> No ritmo para a meta. 💪</span>}
+            {settings.goalDate && proj.onTrack && <span className="text-[var(--color-brand2)]"> No ritmo para a meta.</span>}
           </div>
           <div className="mt-2 text-[var(--color-brand)] text-sm">Ver plano completo →</div>
         </Link>

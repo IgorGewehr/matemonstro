@@ -30,6 +30,22 @@ npm run dev      # http://localhost:3000
 - **Conteúdo do currículo**: `data/curriculum/tracks/*.json` (uma trilha por arquivo) + `data/curriculum/index.json` (plano/fases). O `npm run bundle` junta tudo em `lib/curriculum-data.json`.
 - **Seu progresso, anotações e revisões**: ficam só no seu navegador (IndexedDB). Exporte um backup em **Ajustes** de vez em quando.
 
+## App desktop (macOS e Windows)
+
+O Matemonstro também é um app desktop **offline-first** (Tauri 2 + export estático do mesmo código-base):
+
+- **Notas como arquivos `.md` reais** num vault local (padrão `~/Documents/Matemonstro`), com frontmatter e `[[wikilinks]]` — abra a pasta direto no Obsidian. Deleções vão para `.trash/`; edições externas aparecem ao focar a janela.
+- **Snapshot diário do progresso** em `vault/.matemonstro/backups/` (retém 7), restaurável em Ajustes.
+- 100% offline: currículo, SRS, simulados, provas — tudo local. Sem login no desktop (v1).
+
+```bash
+npm run desktop:dev     # dev com hot reload no webview nativo
+npm run desktop:build   # gera .app/.dmg em src-tauri/target/release/bundle/
+```
+
+Instaladores (mac universal + Windows NSIS) são gerados pelo GitHub Actions em tags `v*` (`.github/workflows/desktop.yml`).
+Sem assinatura na v1: no macOS use Ajustes → Privacidade e Segurança → "Abrir Mesmo Assim"; no Windows, SmartScreen → "Mais informações" → "Executar assim mesmo".
+
 ## Editar / expandir o currículo
 
 Cada arquivo em `data/curriculum/tracks/` segue o mesmo esquema (veja qualquer um deles).
@@ -37,4 +53,4 @@ Edite, crie novos, e rode `npm run validate` e depois `npm run bundle`.
 
 ## Stack
 
-Next.js 15 (App Router) · React 19 · TypeScript · Tailwind v4 · IndexedDB (`idb`) · KaTeX.
+Next.js 15 (App Router) · React 19 · TypeScript · Tailwind v4 · IndexedDB (`idb`) · KaTeX · Tauri 2 (desktop).

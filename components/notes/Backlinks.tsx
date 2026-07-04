@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useNotes } from "./NotesProvider";
-import { getBacklinks } from "@/lib/notes";
+import { getBacklinks, noteHref } from "@/lib/notes";
 import { curriculumRefsOf, subHref } from "@/lib/notes-curriculum";
 import { useCurriculumReady } from "@/lib/useCurriculum";
 import type { Note } from "@/lib/types";
@@ -29,8 +29,8 @@ export default function Backlinks({ note }: { note: Note }) {
           {backlinks.map((n) => (
             <Link
               key={n.id}
-              href={`/notas/${n.id}`}
-              className="chip hover:!border-[var(--color-brand)] hover:!text-[var(--color-brand)]"
+              href={noteHref(n.id)}
+              className="chip transition-colors hover:!border-[var(--color-brand)] hover:!text-[var(--color-brand)]"
             >
               ← {n.title || "Sem título"}
             </Link>
@@ -44,7 +44,7 @@ export default function Backlinks({ note }: { note: Note }) {
             <Link
               key={ref.sub.id}
               href={subHref(ref)}
-              className="chip hover:!border-[var(--color-brand2)] hover:!text-[var(--color-brand2)]"
+              className="chip transition-colors hover:!border-[var(--color-brand2)] hover:!text-[var(--color-brand2)]"
             >
               ▤ {ref.sub.title}
             </Link>

@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 import { useNotes } from "@/components/notes/NotesProvider";
 import { getSubRef } from "@/lib/curriculum";
+import { noteHref } from "@/lib/notes";
 
 function snippet(body: string, len = 90): string {
   const plain = (body || "")
@@ -57,7 +58,7 @@ export default function SubtopicNotes({ subId, trackId }: { subId: string; track
       tags: [trackId].filter(Boolean),
       subtopicId: subId,
     });
-    if (note?.id) router.push(`/notas/${note.id}`);
+    if (note?.id) router.push(noteHref(note.id));
     else router.push("/notas");
   }
 
@@ -65,7 +66,7 @@ export default function SubtopicNotes({ subId, trackId }: { subId: string; track
     <section className="panel p-5">
       <div className="flex items-center justify-between mb-3">
         <h2 className="font-bold">
-          🗒️ Notas deste subtópico{items.length > 0 ? ` (${items.length})` : ""}
+          Notas deste subtópico{items.length > 0 ? ` (${items.length})` : ""}
         </h2>
         <Link href="/notas" className="text-xs text-[var(--color-mut)] hover:text-[var(--color-txt)]">
           Ver todas →
@@ -82,12 +83,12 @@ export default function SubtopicNotes({ subId, trackId }: { subId: string; track
       )}
 
       {items.length > 0 && (
-        <ul className="space-y-2 mb-3">
+        <ul className="space-y-2 mb-3 mm-stagger">
           {items.map((n) => (
             <li key={n.id}>
               <Link
-                href={`/notas/${n.id}`}
-                className="block p-3 rounded-xl bg-[var(--color-card)] border border-[var(--color-line)] hover:border-[var(--color-brand)] transition-colors"
+                href={noteHref(n.id)}
+                className="block p-3 rounded-xl bg-[var(--color-card)] border border-[var(--color-line)] hover:border-[var(--color-brand)] mm-lift"
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-medium truncate">{n.title || "Sem título"}</span>

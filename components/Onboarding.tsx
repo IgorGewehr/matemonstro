@@ -15,19 +15,19 @@ type Goal = "base" | "if" | "mestrado";
 const GOALS: { id: Goal; emoji: string; title: string; desc: string }[] = [
   {
     id: "base",
-    emoji: "🌱",
+    emoji: "○",
     title: "Comecar do zero",
     desc: "Reconstruir a base com calma, da aritmetica ao calculo.",
   },
   {
     id: "if",
-    emoji: "🏛️",
+    emoji: "▤",
     title: "Concurso / IF",
     desc: "Foco no que mais cai em concurso de professor e institutos federais.",
   },
   {
     id: "mestrado",
-    emoji: "🎓",
+    emoji: "∫",
     title: "Mestrado",
     desc: "Preparar analise, algebra e topologia para prova de ingresso.",
   },
@@ -129,7 +129,7 @@ export default function Onboarding() {
         className="panel w-full max-w-lg p-6 md:p-7"
       >
         <div className="flex items-center justify-between mb-4">
-          <div className="chip">Bem-vindo ao Matemonstro 🦾</div>
+          <div className="chip">Bem-vindo ao Matemonstro</div>
           <button type="button" onClick={skip} className="btn btn-ghost !px-2 !py-1 text-sm text-[var(--color-mut)]">
             Pular
           </button>
@@ -204,7 +204,8 @@ export default function Onboarding() {
               ))}
             </div>
             <p className="text-xs text-[var(--color-mut)] mt-3">
-              Os {7 - days} dias de folga nao quebram sua sequencia. 🔥
+              Os {7 - days} dias de folga nao quebram sua sequencia.{" "}
+              <span className="text-[var(--color-warm)]">Δ</span>
             </p>
           </div>
         )}
@@ -226,7 +227,7 @@ export default function Onboarding() {
                   startTrack === null ? "!border-[var(--color-brand)]" : ""
                 }`}
               >
-                <span className="text-xl">🧭</span>
+                <span className="text-xl text-[var(--color-brand)]">▸</span>
                 <div className="flex-1">
                   <div className="font-semibold">Seguir a ordem recomendada</div>
                   <div className="text-xs text-[var(--color-mut)]">Deixa o app escolher o primeiro passo.</div>
@@ -241,7 +242,7 @@ export default function Onboarding() {
                     startTrack === t.id ? "!border-[var(--color-brand)]" : ""
                   }`}
                 >
-                  <span className="text-xl">📘</span>
+                  <span className="text-xl text-[var(--color-mut)]">□</span>
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold truncate">{t.title}</div>
                     <div className="text-xs text-[var(--color-mut)] truncate">

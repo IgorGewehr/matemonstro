@@ -3,6 +3,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { AuthUser } from "@/lib/authClient";
 import * as authClient from "@/lib/authClient";
+import { isTauri } from "@/lib/platform";
 
 interface AuthCtx {
   user: AuthUser | null;
@@ -23,6 +24,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
 
   const refresh = useCallback(async () => {
+    if (isTauri()) return; // desktop v1: 100% deslogado, sem chamadas de auth
     try {
       const { user: u } = await authClient.me();
       setUser(u);
@@ -32,6 +34,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    // Desktop (Tauri): nao existe servidor de auth — o app e local-first e
+    // 100% deslogado na v1. user=null tambem mata todo o codigo de sync
+    // (AppState/NotesProvider) sem precisar de guards espalhados.
+    if (isTauri()) {
+      setUser(null);
+      setReady(true);
+      return;
+    }
     let alive = true;
     authClient
       .me()

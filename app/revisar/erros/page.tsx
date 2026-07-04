@@ -138,8 +138,10 @@ export default function RevisarErrosPage() {
   if (queue.length === 0 || finished) {
     return (
       <div className="grid place-items-center min-h-[60vh]">
-        <div className="panel p-8 text-center max-w-md">
-          <div className="text-5xl mb-3">{queue.length === 0 ? "🧹" : "💪"}</div>
+        <div className="panel p-8 text-center max-w-md mm-pop">
+          <div className="text-4xl mb-3 text-[var(--color-brand)] font-bold">
+            {queue.length === 0 ? "✓" : "✦"}
+          </div>
           <h1 className="text-xl font-bold">
             {queue.length === 0 ? "Nada para treinar aqui" : "Sessão de erros concluída!"}
           </h1>
@@ -164,9 +166,9 @@ export default function RevisarErrosPage() {
   const pct = Math.round((idx / total) * 100);
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto mm-enter">
       <div className="flex items-center justify-between mb-4 text-sm">
-        <span className="text-[#ff6b6b] font-semibold">🔥 Modo erros — {idx + 1} de {total}</span>
+        <span className="text-[#ff6b6b] font-semibold">Modo erros — {idx + 1} de {total}</span>
         {ref && (
           <Link href={`/estudar/${ref.track.id}/${ref.sub.id}`} className="chip hover:border-[var(--color-brand)]">
             {ref.sub.title}
@@ -188,23 +190,23 @@ export default function RevisarErrosPage() {
           >
             <div className="text-lg"><Markdown>{card.front}</Markdown></div>
             {revealed ? (
-              <>
+              <div className="w-full mm-pop">
                 <div className="my-5 w-full border-t border-[var(--color-line)]" />
                 <div className="text-[var(--color-txt2)]"><Markdown>{card.back}</Markdown></div>
-              </>
+              </div>
             ) : (
               <div className="mt-6 text-xs text-[var(--color-mut)]">clique ou aperte espaço para revelar</div>
             )}
           </div>
           {revealed && (
-            <div className="grid grid-cols-4 gap-2 mt-4">
+            <div className="grid grid-cols-4 gap-2 mt-4 mm-pop">
               {GRADES.map((x) => {
                 const preview = previewReview(card, x.g, Date.now(), { requestRetention: settings?.requestRetention });
                 return (
                   <button
                     key={x.g}
                     onClick={() => gradeCardItem(x.g)}
-                    className="btn flex-col !py-3 hover:!border-current"
+                    className="btn flex-col !py-3 hover:!border-current transition-colors"
                     style={{ color: x.color }}
                   >
                     <span className="font-bold">{x.label}</span>
@@ -229,7 +231,7 @@ export default function RevisarErrosPage() {
         <div className="mt-5 space-y-3">
           {pitfalls.length > 0 && (
             <div className="panel p-4">
-              <div className="text-sm font-semibold text-[var(--color-warm)] mb-2">⚠️ Por que eu costumo errar isto</div>
+              <div className="text-sm font-semibold text-[var(--color-warm)] mb-2">Por que eu costumo errar isto</div>
               <ul className="space-y-1.5">
                 {pitfalls.map((c, i) => (
                   <li key={i} className="flex gap-2 text-sm text-[var(--color-warm)]">
@@ -243,7 +245,7 @@ export default function RevisarErrosPage() {
           {keyPoints && (
             <details className="panel p-4">
               <summary className="text-sm font-semibold cursor-pointer select-none text-[var(--color-brand)]">
-                📝 Minhas anotações (o principal)
+                ✎ Minhas anotações (o principal)
               </summary>
               <div className="mt-2 text-sm"><Markdown>{keyPoints}</Markdown></div>
             </details>
@@ -306,7 +308,7 @@ function ExerciseCard({
                 <button
                   key={x.g}
                   onClick={() => onGrade(x.g)}
-                  className="btn flex-col !py-3 hover:!border-current"
+                  className="btn flex-col !py-3 hover:!border-current transition-colors"
                   style={{ color: x.color }}
                 >
                   <span className="font-bold">{x.label}</span>

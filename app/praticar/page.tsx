@@ -105,7 +105,7 @@ export default function PraticarPage() {
   // ---- Tela de configuração / entrada da deck ----
   if (queue === null) {
     return (
-      <div className="max-w-3xl mx-auto space-y-6">
+      <div className="max-w-3xl mx-auto space-y-6 mm-enter">
         <header>
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">✎ Banco de prática</h1>
           <p className="text-[var(--color-mut)] mt-1 text-sm">
@@ -116,7 +116,7 @@ export default function PraticarPage() {
           </p>
         </header>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mm-stagger">
           <StatCard value={stats.totalAttempts} label="Tentativas" />
           <StatCard value={`${Math.round(stats.accuracy * 100)}%`} label="Acerto" accent="#00d3a7" />
           <StatCard value={stats.streak} label="Sequência" accent="#f6c453" />
@@ -206,8 +206,13 @@ export default function PraticarPage() {
     const total = session.acertei + session.quase + session.errei;
     return (
       <div className="grid place-items-center min-h-[60vh]">
-        <div className="panel p-8 text-center max-w-md">
-          <div className="text-5xl mb-3">{session.errei === 0 && total > 0 ? "🏆" : "✎"}</div>
+        <div className="panel p-8 text-center max-w-md mm-pop">
+          <div
+            className="text-4xl mb-3 font-bold"
+            style={{ color: session.errei === 0 && total > 0 ? "#f6c453" : "var(--color-brand)" }}
+          >
+            {session.errei === 0 && total > 0 ? "✦" : "✎"}
+          </div>
           <h1 className="text-xl font-bold">Prática concluída!</h1>
           <p className="text-[var(--color-mut)] text-sm mt-2">
             {total > 0
@@ -230,7 +235,7 @@ export default function PraticarPage() {
   const hasSolution = !!(item.solution || (item.steps && item.steps.length));
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto mm-enter">
       <div className="flex items-center justify-between mb-3 text-sm gap-2">
         <span className="text-[var(--color-mut)]">{idx + 1} de {total}</span>
         <div className="flex items-center gap-1.5 flex-wrap justify-end">
@@ -301,12 +306,12 @@ export default function PraticarPage() {
       </div>
 
       {revealed && (
-        <div className="grid grid-cols-3 gap-2 mt-4">
+        <div className="grid grid-cols-3 gap-2 mt-4 mm-pop">
           {GRADES.map((x) => (
             <button
               key={x.g}
               onClick={() => grade(x.g)}
-              className="btn flex-col !py-3 hover:!border-current"
+              className="btn flex-col !py-3 hover:!border-current transition-colors"
               style={{ color: x.color }}
             >
               <span className="font-bold">{x.label}</span>

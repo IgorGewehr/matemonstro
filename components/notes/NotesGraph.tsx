@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useNotes } from "./NotesProvider";
-import { parseWikilinks, findNoteByTitle } from "@/lib/notes";
+import { parseWikilinks, findNoteByTitle, noteHref } from "@/lib/notes";
 import { findSubRefByWikilink, subHref } from "@/lib/notes-curriculum";
 import { useCurriculumReady } from "@/lib/useCurriculum";
 import type { Note } from "@/lib/types";
@@ -90,7 +90,7 @@ function buildGraph(live: Note[]): { nodes: GraphNode[]; edges: [number, number]
     id: n.id,
     kind: "nota",
     label: n.title || "Sem título",
-    href: `/notas/${n.id}`,
+    href: noteHref(n.id),
   }));
   const idxById = new Map(nodes.map((n, i) => [n.id, i]));
 
@@ -279,7 +279,7 @@ export default function NotesGraph() {
   const dimmed = (i: number) => hover !== null && i !== hover && !adjacency[hover].has(i);
 
   return (
-    <div className="panel p-2 relative">
+    <div className="panel p-2 relative mm-enter">
       <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
         <button
           className="btn !py-1 !px-2.5 text-xs"

@@ -14,7 +14,7 @@ import React, {
 } from "react";
 import { index, getTrack } from "@/lib/curriculum";
 
-type CelebrateKind = "subtopic" | "track" | "levelup" | "generic";
+type CelebrateKind = "subtopic" | "track" | "levelup" | "insignia" | "generic";
 
 interface CelebrateInput {
   kind?: CelebrateKind;
@@ -43,9 +43,20 @@ const Ctx = createContext<CelebrateCtx | null>(null);
 
 const CONFETTI_COLORS = ["#7c5cff", "#00d3a7", "#f6c453", "#ff6b6b", "#ffb347", "#e6e8f0"];
 
+// Cor do glifo de destaque no toast, por tipo de celebracao (troco/insignia em
+// dourado, conclusao de subtopico em verde — mesma paleta usada nos chips do
+// app; levelup/generic ficam na cor de texto padrao).
+const EMOJI_ACCENT: Record<CelebrateKind, string> = {
+  track: "text-[var(--color-gold)]",
+  insignia: "text-[var(--color-gold)]",
+  levelup: "",
+  subtopic: "text-[var(--color-brand2)]",
+  generic: "",
+};
+
 // Detalhe do evento 'mm:celebrate' (contrato definido pela spec 01).
 interface CelebrateEventDetail {
-  type?: "subtopic" | "track" | "levelup";
+  type?: "subtopic" | "track" | "levelup" | "insignia";
   subId?: string;
   trackId?: string;
   trackTitle?: string;
@@ -67,10 +78,23 @@ function buildCelebration(input: CelebrateInput, id: number): Celebration {
     return {
       id,
       kind,
-      emoji: "🏆",
+      emoji: "✦",
       title: `Trilha concluida — ${title}!`,
       message,
       pieces: 80,
+    };
+  }
+  if (kind === "insignia") {
+    const name = input.levelName ?? "nova insígnia";
+    return {
+      id,
+      kind,
+      emoji: "✦",
+      title: `Insígnia conquistada — ${name}!`,
+      message:
+        input.message ??
+        `Você agora é um Matemático Nível ${input.level ?? "?"}. Veja sua insígnia em Conquistas.`,
+      pieces: 110,
     };
   }
   if (kind === "levelup") {
@@ -78,7 +102,7 @@ function buildCelebration(input: CelebrateInput, id: number): Celebration {
     return {
       id,
       kind,
-      emoji: "⭐",
+      emoji: "✦",
       title: `Novo nivel — ${name}!`,
       message: input.message ?? `O monstro cresceu. Voce agora e ${name}.`,
       pieces: 80,
@@ -88,7 +112,7 @@ function buildCelebration(input: CelebrateInput, id: number): Celebration {
     return {
       id,
       kind,
-      emoji: "✅",
+      emoji: "✓",
       title: "Subtopico concluido!",
       message: input.message ?? "Mais um pedaco dominado. Anota o principal e segue o baile.",
       pieces: 36,
@@ -97,7 +121,7 @@ function buildCelebration(input: CelebrateInput, id: number): Celebration {
   return {
     id,
     kind: "generic",
-    emoji: "🎉",
+    emoji: "✦",
     title: input.title ?? "Boa!",
     message: input.message ?? "",
     pieces: 44,
@@ -114,14 +138,23 @@ export function Celebrate({ children }: { children: React.ReactNode }) {
     const c = buildCelebration(input, seq.current);
     setActive(c);
     if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => setActive(null), c.kind === "track" || c.kind === "levelup" ? 6500 : 4500);
+    timer.current = setTimeout(
+      () => setActive(null),
+      c.kind === "track" || c.kind === "levelup" || c.kind === "insignia" ? 6500 : 4500
+    );
   }, []);
 
   useEffect(() => {
     function onCelebrate(ev: Event) {
       const detail = (ev as CustomEvent<CelebrateEventDetail>).detail ?? {};
       const kind: CelebrateKind =
-        detail.type === "track" ? "track" : detail.type === "levelup" ? "levelup" : "subtopic";
+        detail.type === "track"
+          ? "track"
+          : detail.type === "levelup"
+            ? "levelup"
+            : detail.type === "insignia"
+              ? "insignia"
+              : "subtopic";
       celebrate({
         kind,
         trackId: detail.trackId,
@@ -193,9 +226,11 @@ function CelebrationOverlay({
       <div className="absolute inset-x-0 top-4 flex justify-center px-4">
         <div
           role="status"
-          className="mm-toast panel p-4 pr-3 max-w-sm w-full flex items-start gap-3 pointer-events-auto shadow-2xl border-[var(--color-brand)]"
+          className="mm-pop panel p-4 pr-3 max-w-sm w-full flex items-start gap-3 pointer-events-auto shadow-2xl border-[var(--color-brand)]"
         >
-          <span className="text-2xl leading-none">{celebration.emoji}</span>
+          <span className={`text-2xl leading-none ${EMOJI_ACCENT[celebration.kind]}`}>
+            {celebration.emoji}
+          </span>
           <div className="flex-1 min-w-0">
             <div className="font-bold">{celebration.title}</div>
             {celebration.message && (

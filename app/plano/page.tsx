@@ -21,14 +21,14 @@ export default function PlanoPage() {
     if (!t) return null;
     const tp = trackProgress(t, progress);
     return (
-      <Link href={`/trilha/${id}`} className="chip hover:border-[var(--color-brand)]" style={{ borderColor: tp.pct === 100 ? "#00d3a7" : undefined }}>
+      <Link href={`/trilha/${id}`} className="chip hover:border-[var(--color-brand)] mm-lift" style={{ borderColor: tp.pct === 100 ? "#00d3a7" : undefined }}>
         {tp.pct === 100 ? "✓ " : ""}{t.title}
       </Link>
     );
   }
 
   return (
-    <div className="space-y-7">
+    <div className="space-y-7 mm-enter">
       <header>
         <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">O Plano</h1>
         <p className="text-[var(--color-mut)] text-sm mt-1">
@@ -61,30 +61,34 @@ export default function PlanoPage() {
       </section>
 
       {/* Fases */}
-      {index.phases.map((ph) => (
-        <section key={ph.id} className="panel p-5">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="w-2.5 h-2.5 rounded-full" style={{ background: phaseColor(ph.id) }} />
-            <h2 className="font-bold">{ph.label}</h2>
-          </div>
-          <p className="text-sm text-[var(--color-mut)] mb-3">{ph.goal}</p>
-          <div className="flex flex-wrap gap-2">
-            {ph.trackIds.map((id) => <TrackChip key={id} id={id} />)}
-          </div>
-        </section>
-      ))}
+      <div className="space-y-7 mm-stagger">
+        {index.phases.map((ph) => (
+          <section key={ph.id} className="panel p-5">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="w-2.5 h-2.5 rounded-full" style={{ background: phaseColor(ph.id) }} />
+              <h2 className="font-bold">{ph.label}</h2>
+            </div>
+            <p className="text-sm text-[var(--color-mut)] mb-3">{ph.goal}</p>
+            <div className="flex flex-wrap gap-2">
+              {ph.trackIds.map((id) => <TrackChip key={id} id={id} />)}
+            </div>
+          </section>
+        ))}
+      </div>
 
       {/* Milestones */}
       {index.milestones?.length > 0 && (
         <section>
-          <h2 className="font-bold mb-3">🏆 Marcos</h2>
-          <div className="space-y-2">
+          <h2 className="font-bold mb-3">Marcos</h2>
+          <div className="space-y-2 mm-stagger">
             {index.milestones.map((m, i) => {
               const t = getTrack(m.after);
               const reached = t ? trackProgress(t, progress).pct === 100 : false;
               return (
                 <div key={i} className={`panel p-4 flex gap-3 ${reached ? "border-[var(--color-brand2)]" : ""}`}>
-                  <span className="text-xl">{reached ? "✅" : "⬜"}</span>
+                  <span className={`text-xl ${reached ? "text-[var(--color-brand2)]" : "text-[var(--color-mut)]"}`}>
+                    {reached ? "✓" : "○"}
+                  </span>
                   <div>
                     <div className="font-semibold">{m.label}</div>
                     <div className="text-sm text-[var(--color-mut)]">{m.youCanNow}</div>
@@ -98,7 +102,7 @@ export default function PlanoPage() {
 
       {/* Prelims de mestrado */}
       <section className="panel p-5">
-        <h2 className="font-bold mb-1">🎓 Áreas de prova de mestrado (prelims)</h2>
+        <h2 className="font-bold mb-1">Áreas de prova de mestrado (prelims)</h2>
         <p className="text-xs text-[var(--color-mut)] mb-3">As grandes frentes que toda banca cobra. Domine as três.</p>
         <div className="space-y-3">
           <PrelimRow label="Análise" ids={index.prelimMap.analise} TrackChip={TrackChip} />
@@ -110,7 +114,7 @@ export default function PlanoPage() {
       {/* Concurso IF */}
       {index.ifConcursoCore?.length > 0 && (
         <section className="panel p-5 border-[var(--color-line2)]">
-          <h2 className="font-bold mb-1 text-[var(--color-gold)]">⚡ Núcleo para concurso de IF</h2>
+          <h2 className="font-bold mb-1 text-[var(--color-gold)]">Núcleo para concurso de IF</h2>
           <p className="text-xs text-[var(--color-mut)] mb-3">O que mais cai em provas de Instituto Federal — prioridade se um edital estiver chegando.</p>
           <div className="flex flex-wrap gap-2">
             {index.ifConcursoCore.map((id) => <TrackChip key={id} id={id} />)}

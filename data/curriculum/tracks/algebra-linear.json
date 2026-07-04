@@ -416,7 +416,8 @@
             "where": "cap. 1-2, seção do teorema de Rouché-Capelli"
           }
         ]
-      }
+      },
+      "history": "O método que hoje leva o nome de Gauss é, com folga, o algoritmo mais antigo desta trilha: o capítulo 8 do clássico chinês *Jiuzhang Suanshu* (*Nove Capítulos sobre a Arte Matemática*), compilado entre os séculos II a.C. e I d.C., já resolvia sistemas lineares de várias incógnitas dispondo os coeficientes em colunas num tabuleiro de varetas de contagem e eliminando-os sistematicamente — o escalonamento moderno, incluindo o manejo de números negativos, quase dois mil anos antes da Europa. **Carl Friedrich Gauss** (1777–1855), diretor do observatório de Göttingen e figura tão dominante que ficou conhecido como *princeps mathematicorum*, empregou a eliminação em escala industrial por volta de 1810, ao reduzir os enormes sistemas de equações normais que surgiam em seus cálculos astronômicos e geodésicos. Ele nunca reivindicou o método como seu: o rótulo \"eliminação de Gauss\" só se consolidou no século XX, quando os primeiros computadores exigiram nomear os algoritmos de resolução de $Ax=b$. E há uma pegadinha histórica embutida no nome da variante Gauss–Jordan: o Jordan em questão não é o célebre Camille Jordan, e sim **Wilhelm Jordan**, geodesista alemão que publicou o procedimento em seu manual de topografia em 1888, para uso prático de agrimensores. Poucos conceitos matemáticos têm biografia tão democrática: nascido na burocracia agrária chinesa, batizado na astronomia alemã e universalizado pela computação."
     },
     {
       "id": "algebra-linear-02-matrizes-operacoes",
@@ -722,7 +723,8 @@
             "where": "Capítulo sobre operações com matrizes e propriedades algébricas"
           }
         ]
-      }
+      },
+      "history": "O termo \"matriz\" foi cunhado em 1850 por **James Joseph Sylvester**, a partir do latim para \"útero\": para ele, o arranjo retangular era o objeto que \"gera\" determinantes menores. Mas foi seu amigo **Arthur Cayley** quem, em *A Memoir on the Theory of Matrices* (1858), transformou a tabela de números em objeto algébrico de pleno direito: definiu soma, produto por escalar e, crucialmente, o produto de matrizes de modo a codificar a composição de substituições lineares — é por isso que a regra \"linha por coluna\" é o que é. Cayley, que passou catorze anos exercendo advocacia em Londres enquanto publicava centenas de artigos antes de obter uma cátedra em Cambridge, registrou desde o início a estranheza fundamental $AB\\neq BA$ e enunciou o teorema de Cayley–Hamilton, verificando-o para matrizes $2\\times 2$ e $3\\times 3$ e declarando desnecessário o trabalho de uma prova formal no caso geral. A história reservou às matrizes uma reviravolta espetacular: em 1925, Werner Heisenberg formulou a mecânica quântica manipulando tabelas de números cuja multiplicação não comutava, sem saber que aquilo já existia — foi Max Born quem reconheceu ali o produto de matrizes de Cayley, e a teoria ficou conhecida como \"mecânica matricial\". Uma álgebra inventada para organizar substituições acabou descrevendo os átomos."
     },
     {
       "id": "algebra-linear-03-inversa-matrizes-elementares",
@@ -1035,7 +1037,8 @@
             "where": "Notas da Lecture 3 sobre inversas e matrizes elementares"
           }
         ]
-      }
+      },
+      "history": "A fórmula fechada da inversa via adjugada, $A^{-1}=\\frac{1}{\\det A}\\,\\operatorname{adj}(A)$, já aparece no memoir de 1858 de Cayley, mas a leitura moderna deste subtópico — eliminação como produto de matrizes elementares e a fatoração $A=LU$ — é filha dos primeiros computadores. No fim dos anos 1940 temia-se que inverter matrizes grandes fosse numericamente inviável: uma análise pessimista de Harold Hotelling sugeria que os erros de arredondamento na eliminação poderiam crescer de forma explosiva com a ordem da matriz. **John von Neumann** e Herman Goldstine enfrentaram o problema em 1947 num artigo célebre sobre inversão de matrizes de ordem alta, e **Alan Turing** (1912–1954), veterano do trabalho secreto de criptoanálise em Bletchley Park, publicou em 1948 *Rounding-off Errors in Matrix Processes*, onde apresentou a decomposição LU como registro matricial dos passos da eliminação e introduziu a noção de número de condição de uma matriz. A conclusão tranquilizadora — na prática, a eliminação com pivoteamento é estável — abriu caminho para a álgebra linear computacional. É um caso raro em que a teoria de um objeto do século XIX (a inversa) foi refeita no século XX sob pressão de uma pergunta nova: não \"existe $A^{-1}$?\", mas \"podemos calculá-la sem afogá-la em erros de arredondamento?\"."
     },
     {
       "id": "algebra-linear-04-determinantes",
@@ -1361,7 +1364,8 @@
             "where": "cap. 5 (definicao por multilinearidade alternada e formula de Leibniz)"
           }
         ]
-      }
+      },
+      "history": "Os determinantes são mais velhos que as matrizes por mais de um século e meio — a teoria se desenvolveu, historicamente, de trás para frente. No Japão do período Edo, **Seki Takakazu** (c. 1642–1708), matemático em grande parte autodidata que serviu como funcionário de contas de senhores feudais, desenvolveu em 1683 procedimentos equivalentes a determinantes para eliminar incógnitas de sistemas de equações polinomiais. Na Europa, **Gottfried Wilhelm Leibniz** descreveu a mesma ideia numa carta a l'Hôpital em 1693, usando inclusive uma notação de índices duplos muito próxima da nossa $a_{ij}$ — mas a carta só foi publicada no século XIX e não influenciou ninguém. A regra de resolver sistemas por quocientes de determinantes apareceu em 1750 num apêndice do genebrino Gabriel Cramer, e o nome \"determinante\" vem de Gauss (1801, no contexto de formas quadráticas). Foi **Augustin-Louis Cauchy** quem, num extenso memoir de 1812 apresentado quando tinha 23 anos, organizou a teoria em forma moderna e provou o resultado estrutural central, $\\det(AB)=\\det(A)\\det(B)$. Quando Cayley definiu matrizes em 1858, os determinantes já eram uma disciplina madura à sua espera."
     },
     {
       "id": "algebra-linear-05-espacos-vetoriais-axiomas",
@@ -1688,7 +1692,8 @@
             "where": "Cap. 3: solucoes de EDOs lineares homogeneas de 2a ordem e principio da superposicao"
           }
         ]
-      }
+      },
+      "history": "A definição axiomática que abre esta aula tem certidão de nascimento: 1888, quando o italiano **Giuseppe Peano** — o mesmo dos axiomas dos números naturais e da curva que preenche o quadrado — publicou o *Calcolo geometrico*, destilando as ideias de Grassmann numa lista de axiomas para o que chamou de \"sistemas lineares\", essencialmente idêntica à que você estuda hoje, com direito a exemplos de dimensão infinita como espaços de polinômios. O feito passou quase despercebido por três décadas: a comunidade só adotou a abstração quando **Hermann Weyl** reapresentou os axiomas em *Raum, Zeit, Materie* (1918) para formular a relatividade geral, e **Stefan Banach**, em sua tese de doutorado do início dos anos 1920, os tomou como alicerce dos espaços normados que hoje levam seu nome. A lição histórica é curiosa: os oito axiomas não foram descobertos aos poucos, mas propostos prontos por um lógico obsessivo — e ignorados até que a física e a análise precisassem deles. Peano, aliás, levava o formalismo além da matemática: criou uma língua auxiliar internacional, o *latino sine flexione*, na qual chegou a publicar trabalhos. A verificação de que $\\mathbb{R}^n$, matrizes, polinômios e funções satisfazem os mesmos axiomas é exatamente o tipo de unificação que ele buscava."
     },
     {
       "id": "algebra-linear-06-subespacos",
@@ -2003,7 +2008,8 @@
             "where": "Capítulo de Subespaços Vetoriais — critério e soma direta com exercícios em PT-BR"
           }
         ]
-      }
+      },
+      "history": "A ideia de olhar não para um subespaço isolado, mas para a estrutura formada por todos eles — com as operações $\\cap$ e $+$ — remonta a **Richard Dedekind** (1831–1916), último orientando de doutorado de Gauss, que passou a maior parte da carreira modestamente no politécnico de Braunschweig, sua cidade natal, recusando cátedras mais prestigiosas. Estudando módulos e ideais na teoria dos números, Dedekind isolou por volta de 1900 a lei modular: se $A\\subseteq C$, então $A+(B\\cap C)=(A+B)\\cap C$. Os subespaços vetoriais satisfazem essa lei, mas não a distributividade plena — três retas distintas pela origem no plano dão $(U+V)\\cap W=W$, enquanto $(U\\cap W)+(V\\cap W)=\\{0\\}$. Essa falha, que parece uma curiosidade técnica, ganhou papel de protagonista em 1936, quando **Garrett Birkhoff** e **John von Neumann** propuseram que o reticulado de subespaços fechados de um espaço de Hilbert é a \"lógica\" da mecânica quântica: proposições sobre um sistema quântico se combinam como subespaços, não como conjuntos, e a não distributividade reflete a impossibilidade de medir simultaneamente certas grandezas. O critério prosaico dos três itens que você verifica nesta aula é a porta de entrada de uma estrutura com consequências físicas."
     },
     {
       "id": "algebra-linear-07-combinacao-linear-span",
@@ -2303,7 +2309,8 @@
             "where": "Seção de spanning and subspaces"
           }
         ]
-      }
+      },
+      "history": "Combinação linear, geração e span nasceram juntos num dos livros mais rejeitados da história da matemática: *Die lineale Ausdehnungslehre* (1844), de **Hermann Grassmann** (1809–1877), professor de ensino médio em Stettin, na Prússia, sem formação universitária formal em matemática — estudara teologia. Ali já estão, em plena generalidade, as expressões $\\alpha_1 v_1+\\cdots+\\alpha_k v_k$, o subespaço gerado por um conjunto de vetores e a noção de dimensão, décadas antes de qualquer outro autor. O estilo, porém, era tão filosófico e denso que quase ninguém conseguiu ler: Möbius declinou de resenhar o livro, e um parecer frio de Kummer sobre um trabalho posterior enterrou de vez as esperanças de Grassmann de obter uma cátedra universitária. Amargurado com a indiferença dos matemáticos, ele redirecionou sua energia para a linguística sânscrita — seu dicionário do *Rig-Veda* é usado por indólogos até hoje, e existe uma \"lei de Grassmann\" em fonologia histórica. A reabilitação matemática veio postumamente, sobretudo quando Peano construiu sua axiomatização de 1888 declaradamente sobre a *Ausdehnungslehre*. Cada vez que você escreve $\\operatorname{span}\\{v_1,\\dots,v_k\\}$, está usando a ideia central de um livro que passou décadas encalhado."
     },
     {
       "id": "algebra-linear-08-dependencia-independencia-linear",
@@ -2633,7 +2640,8 @@
             "where": "Seção 3.2, wronskiano e independência linear de soluções"
           }
         ]
-      }
+      },
+      "history": "O teste clássico de independência para funções vem das equações diferenciais: o wronskiano, $W(f,g)=fg'-f'g$, assim batizado em 1882 pelo historiador de determinantes Thomas Muir em homenagem a **Józef Maria Hoëné-Wroński** (1776–1853), personagem improvável — filósofo polonês radicado na França, místico messiânico convencido de ter descoberto o princípio do \"Absoluto\", cuja obra mistura lampejos matemáticos genuínos com metafísica impenetrável, e que morreu na pobreza. Por décadas circulou nos textos a afirmação de que wronskiano identicamente nulo implicaria dependência linear — até que **Giuseppe Peano**, caçador implacável de enunciados imprecisos, publicou em 1889 o contraexemplo definitivo: $f(x)=x^2$ e $g(x)=x\\,|x|$ têm $W(f,g)\\equiv 0$ em toda a reta, mas são linearmente independentes. O episódio é um pequeno monumento à moral desta aula: dependência linear é uma condição global sobre coeficientes fixos, e atalhos pontuais podem enganar. A noção abstrata de independência para vetores quaisquer, vale registrar, já constava da *Ausdehnungslehre* de Grassmann (1844), muito antes de a comunidade estar pronta para ela."
     },
     {
       "id": "algebra-linear-09-base-dimensao",
@@ -2936,7 +2944,8 @@
             "where": "Capítulo sobre Base e Dimensão"
           }
         ]
-      }
+      },
+      "history": "O fato de que duas bases quaisquer de um espaço vetorial têm o mesmo número de elementos — o que torna $\\dim V$ bem definida — repousa no lema da troca, cuja forma canônica aparece no artigo *Algebraische Theorie der Körper* (1910) de **Ernst Steinitz** (1871–1928), texto fundador da teoria abstrata de corpos que o próprio autor dizia ter sido inspirado pelos números p-ádicos de Hensel; a ideia da troca, como tanta coisa em álgebra linear, já estava esboçada em Grassmann. Em dimensão infinita a história fica mais delicada e mais interessante: **Georg Hamel** mostrou em 1905, usando o recém-formulado axioma da escolha de Zermelo, que $\\mathbb{R}$ admite uma base como espaço vetorial sobre $\\mathbb{Q}$ — as chamadas bases de Hamel, cuja existência se demonstra sem que jamais se consiga exibir uma concretamente. E a dependência do axioma da escolha não é preguiça de demonstração: em 1984, Andreas Blass provou que o enunciado \"todo espaço vetorial tem base\" é logicamente equivalente ao próprio axioma da escolha. Ou seja, o teorema mais tranquilizador desta aula, em dimensão finita, esconde uma das afirmações mais carregadas de teoria dos conjuntos quando os espaços crescem."
     },
     {
       "id": "algebra-linear-10-coordenadas-mudanca-base",
@@ -3246,7 +3255,8 @@
             "where": "Notas da Lecture sobre change of basis e matriz de transformacao em nova base"
           }
         ]
-      }
+      },
+      "history": "Traduzir geometria em listas de números tem data de estreia pública: 1637, quando **René Descartes** publicou *La Géométrie* como apêndice do *Discurso do Método* — e, de forma independente, **Pierre de Fermat** já fazia o mesmo num manuscrito que circulava desde cerca de 1636, publicado apenas postumamente, fiel ao seu hábito de quase nunca publicar. Conta a lenda, possivelmente apócrifa, que Descartes teria concebido as coordenadas acamado, observando uma mosca no teto e percebendo que sua posição podia ser descrita pelas distâncias às paredes. Curiosamente, nem Descartes nem Fermat usavam dois eixos fixos perpendiculares nem coordenadas negativas como hoje: o sistema \"cartesiano\" de nossos livros é uma padronização posterior. A percepção que dá nome a esta aula — a de que coordenadas dependem de uma escolha de base, e que trocar de base é aplicar uma matriz invertível, $[v]_{B'}=P^{-1}[v]_{B}$ — amadureceu no século XIX, com as substituições lineares na teoria das formas quadráticas de Gauss e seus sucessores. Descartes não viveu para ver nada disso: aceitou em 1649 o convite da rainha Cristina da Suécia, que exigia aulas de filosofia às cinco da manhã no inverno de Estocolmo — rotina brutal para quem tinha o hábito de meditar na cama até tarde — e morreu de pneumonia poucos meses depois."
     },
     {
       "id": "algebra-linear-11-transformacoes-lineares",
@@ -3553,7 +3563,8 @@
             "where": "Capitulo sobre Transformacoes Lineares e o teorema da determinacao por uma base"
           }
         ]
-      }
+      },
+      "history": "A identidade $T(\\alpha u+\\beta v)=\\alpha\\,T(u)+\\beta\\,T(v)$ foi, durante muito tempo, uma propriedade percebida caso a caso, não um conceito: o princípio da superposição já guiava Daniel Bernoulli e Euler no problema da corda vibrante no século XVIII, e as \"substituições lineares\" organizavam a teoria das formas de Gauss. A elevação a conceito autônomo veio por duas frentes no fim do século XIX: **Giuseppe Peano** definiu aplicações lineares entre seus \"sistemas lineares\" já na axiomatização de 1888, e **Vito Volterra** (1860–1940), catedrático em Pisa aos 23 anos, começou na década de 1880 a tratar operações como \"derivar\" e \"integrar\" como funções entre espaços de funções — o embrião da análise funcional, onde o operador é o objeto de estudo, não a fórmula. É essa mudança de olhar que a aula pede: a derivada $D(af+bg)=a\\,Df+b\\,Dg$ é um vetor de um espaço de operadores, tão legítimo quanto uma matriz. Volterra, aliás, protagonizou um dos gestos mais dignos da matemática do século XX: em 1931 foi um dos pouquíssimos professores universitários italianos — cerca de uma dúzia, entre mais de mil — a recusar o juramento de fidelidade ao regime fascista, perdendo a cátedra e sendo progressivamente excluído das instituições científicas do país."
     },
     {
       "id": "algebra-linear-12-nucleo-imagem-posto-nulidade",
@@ -3869,7 +3880,8 @@
             "where": "secao 4.6 (Rank) e 2.9 (Dimension and Rank)"
           }
         ]
-      }
+      },
+      "history": "O vocabulário desta aula tem autores identificáveis. O \"posto\" (*Rang*) foi definido em 1878 por **Ferdinand Georg Frobenius** — produto da rigorosa escola de Weierstrass em Berlim, à qual retornaria anos depois como catedrático — em termos de menores não nulos, nos seus trabalhos sobre formas bilineares. Já a \"nulidade\" é criação de **James Joseph Sylvester** (1884), que provou a respectiva \"lei da nulidade\", $\\operatorname{nul}(AB)\\le\\operatorname{nul}(A)+\\operatorname{nul}(B)$. Sylvester foi o grande batizador da álgebra do século XIX — cunhou também \"matriz\", \"invariante\", \"discriminante\" e \"jacobiano\" — e reivindicou para si, com imodéstia assumida, o título de \"Adão matemático\", por ter dado nome a mais criaturas da razão matemática do que qualquer contemporâneo. Barrado no início da carreira em Cambridge por ser judeu, aos 62 anos ele atravessou o Atlântico para montar o programa de matemática da recém-fundada Johns Hopkins, onde criou o *American Journal of Mathematics*, primeiro periódico duradouro de pesquisa matemática dos Estados Unidos. O enunciado limpo que você usa hoje, $\\dim V=\\dim\\ker T+\\dim\\operatorname{im}\\,T$, é a destilação axiomática do século XX dessas ideias nascidas em linguagem de determinantes."
     },
     {
       "id": "algebra-linear-13-matriz-de-transformacao",
@@ -4185,7 +4197,8 @@
             "where": "Seção 5.4 (matrizes de transformações lineares; matrizes semelhantes)"
           }
         ]
-      }
+      },
+      "history": "No século XIX, matriz e substituição linear eram praticamente sinônimos — Cayley definiu as operações com matrizes justamente para espelhar a composição de substituições, e ninguém separava o operador de sua tabela de números. A distinção conceitual que esta aula ensina — a transformação é o objeto, a matriz é seu retrato numa base, e retratos em bases diferentes se relacionam por semelhança, $[T]_{B'}=P^{-1}[T]_{B}\\,P$ — só virou pedagogia dominante no século XX, e tem um divulgador principal: **Paul Halmos** (1916–2006), húngaro emigrado aos Estados Unidos aos 13 anos, que trabalhou como assistente de John von Neumann no Institute for Advanced Study. Seu livro *Finite-Dimensional Vector Spaces* (1942), crescido dessa convivência, ensinou gerações a pensar \"operadores primeiro, matrizes depois\", tratando a álgebra linear como um curso preparatório de análise funcional em dimensão finita. Halmos, um dos grandes estilistas da escrita matemática, também popularizou o símbolo de fim de demonstração $\\blacksquare$ — apelidado de \"halmos\" — e a abreviação \"iff\". A moral histórica do subtópico é a dele: quem confunde o operador com a matriz fica refém da base que escolheu."
     },
     {
       "id": "algebra-linear-14-autovalores-autovetores",
@@ -4514,7 +4527,8 @@
             "where": "Secao 6.2: valores caracteristicos, subespacos caracteristicos e multiplicidades"
           }
         ]
-      }
+      },
+      "history": "Autovalores nasceram no céu e nos corpos rígidos, mais de um século antes de existir a palavra. **Leonhard Euler**, estudando a rotação de corpos rígidos em meados do século XVIII, encontrou os eixos principais de inércia — direções privilegiadas que a dinâmica não mistura. **Joseph-Louis Lagrange**, que se tornara professor na escola de artilharia de Turim ainda adolescente, chegou na década de 1770 à \"equação secular\" ao analisar as perturbações mútuas e lentas das órbitas planetárias: o nome vem de *saeculum*, século, porque os efeitos só se acumulam ao longo de séculos — e essa equação é exatamente a nossa característica, $\\det(A-\\lambda I)=0$, com outro nome e outra roupa. Cauchy provou em 1829 que, no caso simétrico, todas as raízes são reais, resultado que hoje enunciamos como \"matrizes simétricas têm autovalores reais\". O prefixo \"eigen-\" (\"próprio\", em alemão) foi consagrado por **David Hilbert** por volta de 1904, em seus trabalhos sobre equações integrais; no inglês, o híbrido teimoso \"eigenvalue\" acabou derrotando as alternativas vernáculas \"proper value\" e \"characteristic value\", e o português ficou com a tradução honesta: autovalor. Poucos conceitos ilustram tão bem como uma pergunta astronômica — o sistema solar é estável? — pode se cristalizar num objeto de álgebra pura."
     },
     {
       "id": "algebra-linear-15-diagonalizacao",
@@ -4831,7 +4845,8 @@
             "where": "Capítulo sobre Operadores Diagonalizáveis e Polinômio Minimal"
           }
         ]
-      }
+      },
+      "history": "A diagonalização carrega a memória de um erro famoso. Na teoria das pequenas oscilações e da estabilidade do sistema solar, Lagrange e Laplace acreditavam que autovalores repetidos na equação secular produziriam termos crescentes no tempo — logo, instabilidade — e contorciam argumentos para excluir raízes múltiplas. **Karl Weierstrass** desmontou a crença em 1858: no caso simétrico dos problemas mecânicos, a diagonalização funciona mesmo com autovalores repetidos, e a suposta instabilidade era um artefato de manipulações formais descuidadas. Weierstrass sabia o valor da paciência — passara cerca de catorze anos como professor de escola na província prussiana, ensinando de matemática a caligrafia e ginástica, antes que um artigo sobre funções abelianas publicado em 1854 o catapultasse para Berlim. Em 1868 ele completou o quadro com a teoria dos divisores elementares, que decide exatamente quando existe a fatoração $A=PDP^{-1}$ e classifica o que acontece quando não existe, abrindo a porta para as formas canônicas. A lição histórica é a mesma da aula: diagonalizabilidade não é um luxo estético — nasceu como a diferença entre um sistema físico estável e um que (aparentemente) explodia."
     },
     {
       "id": "algebra-linear-16-produto-interno-norma-ortogonalidade",
@@ -5136,7 +5151,8 @@
             "where": "Cap. 8, secoes sobre produtos internos e Cauchy-Schwarz"
           }
         ]
-      }
+      },
+      "history": "A desigualdade central desta aula tem três nomes e três datas. **Augustin-Louis Cauchy**, no *Cours d'analyse* de 1821 — o livro com que tentou refundar a análise sobre rigor, para desespero de alunos e colegas da École Polytechnique —, provou a versão para somas finitas; seu ex-aluno russo **Viktor Bunyakovsky** publicou a versão integral em 1859, um quarto de século antes de **Hermann Amandus Schwarz**, cuja demonstração da década de 1880 consagrou o nome no Ocidente. Por isso a literatura russa chama, com justiça cronológica, de desigualdade de Cauchy–Bunyakovsky aquilo que escrevemos como $|\\langle u,v\\rangle|\\le\\|u\\|\\,\\|v\\|$. A geometria abstrata de produto interno floresceu nos anos 1900 com os trabalhos de Hilbert sobre equações integrais, e foi John von Neumann quem, por volta de 1929, axiomatizou o espaço de Hilbert abstrato — motivado pela mecânica quântica, cuja formulação matemática rigorosa publicou em 1932. Conta-se, em anedota famosa mas de fonte incerta, que o próprio Hilbert teria perguntado a um palestrante em Göttingen: \"mas afinal, o que é exatamente um espaço de Hilbert?\". Verdadeira ou não, a história captura algo real: a estrutura que leva seu nome foi abstraída por outros a partir do que ele fazia concretamente."
     },
     {
       "id": "algebra-linear-17-gram-schmidt-projecoes-minimos-quadrados",
@@ -5440,7 +5456,8 @@
             "where": "Lectures 7-8 (QR) e 11 (least squares)"
           }
         ]
-      }
+      },
+      "history": "Os mínimos quadrados protagonizaram uma das disputas de prioridade mais amargas do início do século XIX. **Adrien-Marie Legendre** publicou o método em 1805, num apêndice sobre a determinação de órbitas de cometas, com o nome que pegou: *méthode des moindres quarrés*. **Carl Friedrich Gauss** — já célebre desde 1801, quando previu onde reencontrar o asteroide Ceres, perdido no clarão do Sol semanas após a descoberta — afirmou em 1809 que usava o método desde 1795, e o fundamentou probabilisticamente ligando-o à distribuição dos erros que hoje chamamos de gaussiana. Legendre protestou por escrito, indignado com a reivindicação retroativa, e a relação entre os dois nunca se recuperou; historiadores modernos tendem a aceitar que Gauss de fato o usava antes, mas que a publicação — e portanto o mérito público — foi de Legendre. A engrenagem algébrica do método são as equações normais, $A^{\\top}A\\,\\hat{x}=A^{\\top}b$, que é exatamente a projeção ortogonal de $b$ sobre o espaço-coluna de $A$. Já o processo de ortogonalização homenageia **Jørgen Pedersen Gram**, matemático dinamarquês que fez carreira como atuário de companhia de seguros e o empregou em trabalhos dos anos 1880, e **Erhard Schmidt**, aluno de Hilbert que lhe deu a formulação moderna em 1907 — embora Laplace já tivesse usado um procedimento equivalente no século anterior. É um retrato fiel do tema: ideias de astrônomos, geodesistas e atuários, unificadas pela geometria da projeção."
     },
     {
       "id": "algebra-linear-18-espectral-formas-quadraticas-jordan",
@@ -5776,7 +5793,8 @@
             "where": "cap. 3.1-3.2 (Jordan) e cap. 4.1 (Hermitian/symmetric, spectral)"
           }
         ]
-      }
+      },
+      "history": "A forma canônica desta aula leva o nome de **Camille Jordan** (1838–1922), engenheiro formado pela École Polytechnique que por anos conciliou a profissão com a pesquisa, e que não deve ser confundido com Wilhelm Jordan, o geodesista da eliminação de Gauss–Jordan. Ele publicou sua forma canônica no monumental *Traité des substitutions et des équations algébriques* (1870), o livro que difundiu a teoria de Galois — mas Weierstrass havia chegado a resultados essencialmente equivalentes em 1868, pela via dos divisores elementares, e em 1874 estourou uma disputa pública de prioridade entre Jordan e **Leopold Kronecker**, travada em notas ácidas nos periódicos de Paris e Berlim, opondo também dois estilos: o cálculo canônico à francesa contra a teoria de invariantes à berlinense. Para formas quadráticas, o marco anterior é a lei da inércia de Sylvester (1852): a assinatura de $x^{\\top}Ax$ — quantos quadrados positivos e negativos — não depende da mudança linear de variáveis usada para diagonalizar. Quanto ao teorema espectral, $A=QDQ^{\\top}$, o termo \"espectro\" foi escolhido por Hilbert nos anos 1900 para seus operadores integrais, décadas antes de a mecânica quântica revelar que os espectros de operadores autoadjuntos explicam, literalmente, os espectros de emissão dos átomos — coincidência terminológica que, segundo relatos posteriores, o próprio Hilbert considerava espantosa. Fechar a trilha aqui é apropriado: espectral, inércia e Jordan são as três respostas do século XIX à mesma pergunta — qual é a forma mais simples a que um operador pode ser reduzido?"
     }
   ],
   "examBank": [

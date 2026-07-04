@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useApp } from "@/components/AppState";
 import { cappedDueCards } from "@/lib/scheduler";
 import { notifyDueReviews } from "@/lib/notify";
+import { isTauri } from "@/lib/platform";
 
 /**
  * Registra o service worker (PWA/offline) e, ao abrir o app com "Lembretes de
@@ -15,9 +16,12 @@ export default function ServiceWorkerRegister() {
   const { ready, cards, settings } = useApp();
   const notified = useRef(false);
 
-  // Registro do SW (uma vez).
+  // Registro do SW (uma vez). No desktop (Tauri) o offline é nativo — um SW
+  // só causaria staleness de assets; não registra. (Efeitos de tema abaixo
+  // continuam valendo nos dois alvos.)
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (isTauri()) return;
     if (!("serviceWorker" in navigator)) return;
     const onLoad = () => {
       navigator.serviceWorker

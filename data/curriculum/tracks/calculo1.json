@@ -391,7 +391,8 @@
           ],
           "caption": "Perto de x=1 a funcao tende a 2, mesmo sem estar definida ali."
         }
-      ]
+      ],
+      "history": "A intuição de limite é muito mais antiga que o cálculo: no século V a.C., **Zenão de Eleia** já explorava, em paradoxos como o de Aquiles e a tartaruga, o desconforto de percorrer infinitas etapas cada vez menores e ainda assim chegar a algum lugar. Dois milênios depois, **Isaac Newton** fundou seu cálculo sobre as \"razões primeiras e últimas\" de quantidades evanescentes — uma noção de tendência que ele nunca definiu com precisão. A fragilidade ficou exposta em 1734, quando o bispo **George Berkeley**, no panfleto *O Analista*, zombou dos infinitésimos chamando-os de \"fantasmas de quantidades defuntas\", uma crítica tecnicamente certeira que os matemáticos levaram um século para responder. Foi **Jean le Rond d'Alembert** — abandonado recém-nascido nos degraus da capela parisiense de Saint-Jean-le-Rond, de onde tirou o nome — quem defendeu na *Encyclopédie*, por volta de 1754, que a teoria dos limites era a \"verdadeira metafísica\" do cálculo. A resposta completa só veio no século XIX, quando Cauchy e Weierstrass transformaram essa intuição de tendência na definição rigorosa que você verá na próxima aula."
     },
     {
       "id": "calculo1-02-epsilon-delta",
@@ -725,7 +726,8 @@
           ],
           "caption": "A faixa de meia-largura epsilon em torno de L=3: o desafio a vencer com delta."
         }
-      ]
+      ],
+      "history": "A definição que hoje parece burocrática levou dois séculos para nascer. **Bernard Bolzano** esboçou uma formulação aritmética de limite e continuidade já em 1817, mas publicou em Praga, longe dos grandes centros, e quase ninguém o leu. Foi **Augustin-Louis Cauchy**, no *Cours d'analyse* (1821) da École Polytechnique, quem colocou o limite no centro da análise; os símbolos $\\varepsilon$ e $\\delta$ aparecem em suas demonstrações por volta de 1823, e diz-se que o $\\varepsilon$ evocaria a palavra francesa *erreur*, o erro máximo tolerado. A forma final, com quantificadores explícitos — para todo $\\varepsilon>0$ existe $\\delta>0$ tal que $0<|x-a|<\\delta$ implica $|f(x)-L|<\\varepsilon$ — é obra de **Karl Weierstrass**, que passou quase quinze anos como professor de ginásio na província prussiana antes de conquistar uma cátedra em Berlim. Weierstrass publicava pouco: sua definição se espalhou pela Europa por meio das notas de aula de seus alunos, e só apareceu em livro em 1872, num texto de Eduard Heine que credita explicitamente as lições do mestre."
     },
     {
       "id": "calculo1-03-algebra-limites",
@@ -1061,7 +1063,8 @@
           ],
           "caption": "Limite fundamental: sen(x)/x se aproxima de 1 quando x tende a 0."
         }
-      ]
+      ],
+      "history": "O teorema do confronto é a destilação moderna do mais antigo método rigoroso para lidar com processos infinitos: a exaustão. No século III a.C., **Arquimedes de Siracusa** espremeu a circunferência entre polígonos inscritos e circunscritos de 96 lados e obteve $3\\tfrac{10}{71} < \\pi < 3\\tfrac{1}{7}$ — um confronto executado à mão, sem álgebra e sem notação decimal. O limite fundamental $\\lim_{x\\to 0}\\frac{\\sin x}{x}=1$, provado exatamente por esse tipo de sanduíche geométrico entre corda, arco e tangente, é herdeiro direto dessa comparação grega. Já a álgebra de limites e a classificação das formas indeterminadas são conquistas do século XIX: **Cauchy** as sistematizou no *Cours d'analyse* de 1821, transformando o cálculo de limites de arte caso a caso em rotina operacional. Segundo os relatos antigos, Arquimedes morreu por espada de um soldado romano no saque de Siracusa, em 212 a.C. — conta a tradição, possivelmente embelezada, que absorto em suas figuras geométricas."
     },
     {
       "id": "calculo1-04-limites-laterais-infinitos",
@@ -1400,7 +1403,8 @@
           ],
           "caption": "Assintota horizontal y=2: o limite no infinito estabiliza."
         }
-      ]
+      ],
+      "history": "O símbolo $\\infty$ tem certidão de nascimento precisa: foi introduzido em 1655 por **John Wallis**, professor em Oxford que servira como decifrador de códigos do Parlamento durante a guerra civil inglesa. Wallis manipulava o infinito com ousadia em sua *Arithmetica infinitorum* (1656), obra que o jovem Newton estudou avidamente. As assíntotas, porém, são muito mais antigas: **Apolônio de Perga** já tratava, por volta de 200 a.C., em seu tratado sobre as cônicas, das retas de que a hipérbole se aproxima sem nunca tocar — a própria palavra vem do grego *asymptōtos*, \"que não coincide\". A distinção cuidadosa entre limites laterais e a domesticação dos limites infinitos, por sua vez, só se tornaram possíveis com o aparato $\\varepsilon$-$\\delta$ do século XIX; antes disso, escrever $\\lim_{x\\to a^+}$ e $\\lim_{x\\to a^-}$ separadamente nem fazia sentido formal. É uma inversão curiosa da história: o desenho da assíntota precedeu em dois mil anos a definição do que significa \"aproximar-se para sempre\"."
     },
     {
       "id": "calculo1-05-continuidade",
@@ -1731,7 +1735,8 @@
           ],
           "caption": "Descontinuidade de salto: os limites laterais valem -1 e +1."
         }
-      ]
+      ],
+      "history": "A continuidade parecia tão óbvia que ninguém a definia — até que **Bernard Bolzano** (1817) e **Augustin-Louis Cauchy** (1821) perceberam, de forma independente, que sem definição precisa nenhum teorema sobre funções contínuas poderia ser demonstrado. Cauchy, católico fervoroso e monarquista que preferiu o exílio a jurar lealdade ao rei Luís Filipe após a revolução de 1830, foi também protagonista do erro mais instrutivo da história da análise: em 1821 ele \"demonstrou\" que uma série convergente de funções contínuas tem soma contínua. Em 1826, o jovem norueguês **Niels Henrik Abel** observou, numa nota de rodapé célebre, que o suposto teorema \"sofre exceções\": a série $\\sin x-\\tfrac{1}{2}\\sin 2x+\\tfrac{1}{3}\\sin 3x-\\cdots$, feita de funções contínuas, tem soma que dá saltos nos múltiplos ímpares de $\\pi$. O diagnóstico completo exigiu décadas e uma ideia nova — a convergência uniforme, isolada ao longo do século XIX e consagrada por Weierstrass. A lição histórica é a mesma da aula: continuidade é propriedade delicada, e a intuição do \"gráfico sem levantar o lápis\" engana até os maiores."
     },
     {
       "id": "calculo1-06-tvi-weierstrass",
@@ -2085,7 +2090,8 @@
           ],
           "caption": "TVI: para todo nivel d entre f(a) e f(b) existe um c com f(c)=d."
         }
-      ]
+      ],
+      "history": "O Teorema do Valor Intermediário parecia evidente demais para precisar de prova — e foi exatamente contra isso que **Bernard Bolzano**, padre e professor em Praga afastado de sua cátedra em 1819 por sermões considerados subversivos pelas autoridades austríacas, se rebelou. Seu opúsculo de 1817 traz a tese no próprio título: uma \"prova puramente analítica\" de que toda função contínua que troca de sinal em $[a,b]$ se anula em algum ponto, sem apelo a desenhos ou à ideia de movimento. Para isso, Bolzano precisou de um princípio de completude dos números reais, antecipando o resultado hoje chamado de teorema de Bolzano-Weierstrass. Já o teorema dos valores extremos é criação de **Karl Weierstrass**, que o demonstrou em suas lendárias preleções de Berlim na década de 1860; como publicava pouco, o resultado circulou pela Europa em cadernos de alunos antes de chegar aos livros. Juntos, os dois teoremas marcam o momento em que a análise deixou de confiar na figura e passou a exigir que até o \"óbvio\" fosse deduzido da estrutura de $\\mathbb{R}$."
     },
     {
       "id": "calculo1-07-derivada-definicao",
@@ -2418,7 +2424,8 @@
           ],
           "caption": "A reta tangente a y=x^2: sua inclinacao 2a e a derivada no ponto a."
         }
-      ]
+      ],
+      "history": "A derivada nasceu duas vezes, quase simultaneamente. **Isaac Newton** desenvolveu seu \"método das fluxões\" por volta de 1665-1666, quando a peste bubônica fechou Cambridge e o obrigou a se refugiar na fazenda da família em Woolsthorpe — ele escrevia $\\dot{x}$ para a taxa de variação de uma quantidade que \"flui\" no tempo. **Gottfried Wilhelm Leibniz** chegou às mesmas ideias de forma independente na década de 1670 e publicou primeiro, em 1684, com a notação $\\frac{dy}{dx}$ que usamos até hoje. A disputa de prioridade que se seguiu envenenou a matemática europeia por décadas: em 1712 a Royal Society nomeou uma comissão para julgar o caso e concluiu em favor de Newton — que era o presidente da Sociedade e, sabe-se hoje, redigiu ele próprio boa parte do relatório. Um epílogo mostra por que a definição por limite importa: em 1872, **Karl Weierstrass** exibiu uma função contínua em toda a reta e derivável em nenhum ponto, $f(x)=\\sum_{n=0}^{\\infty} a^n\\cos(b^n\\pi x)$, demolindo a intuição de que continuidade quase implica suavidade. Charles Hermite escreveria mais tarde, em carta a Stieltjes, que se afastava \"com pavor e horror dessa praga lamentável de funções sem derivada\"."
     },
     {
       "id": "calculo1-08-regras-derivacao",
@@ -2734,7 +2741,8 @@
             "where": "cap. 10, teoremas 2-7 (linearidade, produto, quociente, inversa)"
           }
         ]
-      }
+      },
+      "history": "As regras de derivação são, em essência, obra de **Gottfried Wilhelm Leibniz** — diplomata, filósofo, jurista e inventor de uma máquina de calcular, talvez o último sábio universal. Seus manuscritos de novembro de 1675 registram um tropeço encantador: Leibniz testou a conjectura \"natural\" $d(xy)=dx\\,dy$, verificou num exemplo que ela falha e em pouco tempo chegou à forma correta, $d(xy)=x\\,dy+y\\,dx$ — a regra do produto, até hoje chamada de regra de Leibniz. As regras do produto e do quociente foram publicadas em 1684 na *Acta Eruditorum*, no artigo *Nova methodus pro maximis et minimis*, a primeira exposição impressa do cálculo diferencial. O texto tinha meia dúzia de páginas e era tão comprimido que Johann Bernoulli, relembrando o esforço que ele e o irmão Jakob fizeram para decifrá-lo, o descreveria como \"mais um enigma do que uma explicação\". Fica o consolo histórico: a confusão que estudantes cometem até hoje, achar que $(fg)'=f'g'$, enganou por um instante o próprio inventor do cálculo."
     },
     {
       "id": "calculo1-09-regra-cadeia",
@@ -3067,7 +3075,8 @@
           ],
           "caption": "Regra da cadeia: em sen(x^2) a frequencia cresce com x, via derivada interna 2x."
         }
-      ]
+      ],
+      "history": "A regra da cadeia é curiosamente difícil de datar: **Gottfried Wilhelm Leibniz** já a usava na prática em manuscritos da década de 1670, ao derivar expressões como $\\sqrt{a+bz+cz^2}$ decompondo-as em etapas, e sua notação $\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx}$ é tão sugestiva que a regra parece demonstrar-se sozinha — os diferenciais \"cancelam\", ainda que essa manipulação não constitua prova. Como teorema enunciado e demonstrado com rigor, ela só se estabilizou no século XIX, com a aritmetização da análise. Sua generalização para derivadas de ordem superior tem história singular: a fórmula que organiza as derivadas $n$-ésimas de $f(g(x))$ leva o nome de **Francesco Faà di Bruno**, matemático e padre italiano que a publicou na década de 1850, dedicou a vida a obras de caridade em Turim e foi beatificado pelo papa João Paulo II em 1988. Trata-se, provavelmente, do único beato católico cuja fama matemática vem de uma fórmula de cálculo diferencial."
     },
     {
       "id": "calculo1-10-implicita-taxas",
@@ -3419,7 +3428,8 @@
           ],
           "caption": "Elipse x^2/a^2 + y^2/b^2 = 1: uma curva definida implicitamente em x e y."
         }
-      ]
+      ],
+      "history": "A derivação implícita tem um campo de batalha fundador: o folium $x^3+y^3=3axy$. Em 1638, **René Descartes** — ex-soldado que morreria em 1650 no inverno de Estocolmo, dando aulas de filosofia à rainha Cristina da Suécia de madrugada — travava uma polêmica com **Pierre de Fermat** sobre métodos de tangentes e propôs, por intermédio de Mersenne, essa curva como desafio, convencido de que o método de Fermat fracassaria. Fermat resolveu o problema sem grande dificuldade, e a correspondência dessa disputa é um dos episódios mais ácidos da matemática do século XVII. A técnica que usamos hoje — derivar a equação termo a termo tratando $y$ como função de $x$ — descende dos diferenciais de Leibniz, que colocam $dx$ e $dy$ em pé de igualdade, sem exigir que a curva seja gráfico de função. Já os problemas de taxas relacionadas são invenção didática mais recente: consolidaram-se nos livros-texto de cálculo do século XIX como forma de treinar a regra da cadeia em contexto físico."
     },
     {
       "id": "calculo1-11-tvm",
@@ -3754,7 +3764,8 @@
           ],
           "caption": "TVM: existe c onde a tangente e paralela a secante (ambas tracejadas)."
         }
-      ]
+      ],
+      "history": "O teorema que abre esta aula carrega uma ironia saborosa: **Michel Rolle**, que provou em 1691 a versão polinomial do resultado que leva seu nome, era um dos críticos mais ferozes do cálculo infinitesimal, que ele teria atacado na Académie des Sciences como uma coleção de falácias engenhosas. O nome \"teorema de Rolle\" só foi cunhado no século XIX, quando o resultado — já estendido a funções deriváveis quaisquer — virou peça central da análise. O Teorema do Valor Médio em sua forma moderna, $f(b)-f(a)=f'(c)(b-a)$, aparece na obra de **Joseph-Louis Lagrange**, matemático nascido em Turim que sucedeu Euler na Academia de Berlim — conta-se que o convite dizia que \"o maior rei da Europa\", Frederico, o Grande, desejava ter \"o maior matemático da Europa\" em sua corte. Lagrange o publicou na *Théorie des fonctions analytiques* (1797), dentro de um programa ambicioso de fundar todo o cálculo em séries de potências — programa que fracassou. Foi **Cauchy**, nos anos 1820, quem inverteu os papéis: o TVM deixou de ser curiosidade e virou a ponte lógica que sustenta o edifício da análise, exatamente o papel que desempenha nesta aula."
     },
     {
       "id": "calculo1-12-lhopital",
@@ -4087,7 +4098,8 @@
           ],
           "caption": "Hierarquia de crescimento: a exponencial ultrapassa qualquer potencia."
         }
-      ]
+      ],
+      "history": "Esta é a regra com o caso de autoria mais famoso da matemática. Em 1694, o marquês **Guillaume de l'Hôpital**, nobre parisiense apaixonado por matemática, fechou um acordo com **Johann Bernoulli**, então jovem e sem posição estável: uma pensão anual de 300 libras em troca da comunicação exclusiva de suas descobertas. A regra para formas $\\frac{0}{0}$ apareceu em 1696 na *Analyse des infiniment petits* do marquês — o primeiro livro-texto de cálculo da história — sem crédito específico a Bernoulli, embora o prefácio agradecesse genericamente aos irmãos Bernoulli e a Leibniz. Morto l'Hôpital em 1704, Johann passou a reivindicar a regra e foi tratado com ceticismo por gerações; a publicação da correspondência entre os dois, já no século XX, confirmou o acordo e lhe deu razão. O nome, porém, já tinha se fixado — e até hoje alguns autores insistem, por justiça histórica, em chamá-la de \"regra de Bernoulli\"."
     },
     {
       "id": "calculo1-13-otimizacao",
@@ -4420,7 +4432,8 @@
           ],
           "caption": "Volume da caixa aberta: maximo num unico ponto critico interior."
         }
-      ]
+      ],
+      "history": "Antes de a derivada existir, otimizar já era necessidade prática. Em 1615, **Johannes Kepler** publicou a *Nova stereometria doliorum vinariorum* (\"Nova estereometria dos barris de vinho\"), motivado por uma desconfiança doméstica: ao comprar vinho para seu casamento em Linz, achou suspeito o método do mercador de medir o volume do barril com uma única vara — e, estudando as proporções ótimas, notou que perto do máximo o volume quase não varia, o germe do critério $f'(x)=0$. O passo decisivo foi de **Pierre de Fermat**, jurista em Toulouse que fazia matemática nas horas vagas e quase nada publicou em vida: seu *Methodus ad disquirendam maximam et minimam*, que circulou por volta de 1636-1638, comparava $f(x+e)$ com $f(x)$, dividia por $e$ e depois descartava $e$ — na prática, resolver $f'(x)=0$ décadas antes de a derivada ser definida. Fermat ainda mostrou, por volta de 1662, que a lei da refração da luz decorre de um princípio de tempo mínimo, sugerindo que a própria natureza resolve problemas de otimização. Não por acaso, matemáticos do porte de Lagrange e Laplace viam em Fermat um verdadeiro inventor do cálculo diferencial."
     },
     {
       "id": "calculo1-14-tracado-curvas",
@@ -4769,7 +4782,8 @@
           ],
           "caption": "Assintota obliqua y=x e assintota vertical em x=0."
         }
-      ]
+      ],
+      "history": "O exemplo mais célebre da história do traçado de curvas nasceu de um erro de tradução. **Maria Gaetana Agnesi**, prodígio milanesa que ainda criança dominava vários idiomas, publicou em 1748 as *Instituzioni analitiche*, um dos primeiros livros-texto completos de cálculo e o primeiro escrito por uma mulher; o papa Bento XIV a nomeou em 1750 para a cátedra de matemática de Bolonha. Entre as curvas que ela estudou está a *versiera*, $y=\\frac{8a^3}{x^2+4a^2}$ — um caso perfeito para esta aula, com máximo, dois pontos de inflexão e assíntota horizontal $y=0$. Ao vertê-la para o inglês, o tradutor John Colson confundiu *la versiera* com *l'avversiera* (\"a feiticeira\"), e a curva entrou para sempre na literatura como *witch of Agnesi*, a \"bruxa de Agnesi\". Agnesi abandonou a matemática poucos anos depois e dedicou o resto da vida aos pobres e doentes de Milão. Seu livro, porém, ajudou a fixar exatamente o roteiro que você segue aqui: domínio, crescimento, concavidade, assíntotas — e só então o desenho."
     },
     {
       "id": "calculo1-15-integral-riemann",
@@ -5119,7 +5133,8 @@
           ],
           "caption": "Somas de Riemann: mais retangulos, melhor a aproximacao da area."
         }
-      ]
+      ],
+      "history": "O símbolo $\\int$ nasceu num manuscrito de **Gottfried Wilhelm Leibniz** datado de 29 de outubro de 1675: um S alongado, inicial de *summa*, pois a integral era literalmente uma soma. Mas por mais de um século integrou-se sem definir o que era integrar: a integral era simplesmente a antiderivada. **Augustin-Louis Cauchy** rompeu com isso em 1823, definindo $\\int_a^b f(x)\\,dx$ como limite de somas para funções contínuas. O passo decisivo veio de **Bernhard Riemann** — filho de um pastor luterano, tímido e de saúde frágil, morto de tuberculose aos 39 anos na Itália: em sua tese de habilitação de 1854, sobre a representação de funções por séries trigonométricas (problema herdado da teoria do calor de Fourier), ele definiu a integral para funções muito gerais e perguntou exatamente quais funções são integráveis. O trabalho só foi publicado após sua morte, por iniciativa de Dedekind. As somas superiores e inferiores que estruturam esta aula são o refinamento de **Gaston Darboux** (1875) — a ponto de a \"integral de Riemann\" ensinada hoje ser, tecnicamente, a de Darboux."
     },
     {
       "id": "calculo1-16-tfc",
@@ -5471,7 +5486,8 @@
           ],
           "caption": "TFC: a area acumulada F=1-cos x cresce onde sen x e positiva, e F-linha = f."
         }
-      ]
+      ],
+      "history": "O Teorema Fundamental teve uma pré-história geométrica: **Isaac Barrow**, professor de Newton em Cambridge que em 1669 renunciou à cátedra lucasiana — assumida em seguida pelo próprio Newton —, demonstrou nas *Lectiones Geometricae* (1670) uma versão puramente geométrica do vínculo entre o problema das tangentes e o das quadraturas; **James Gregory** obteve resultado semelhante na mesma época. Mas foram **Newton** e **Leibniz** que transformaram esse vínculo em máquina de calcular: perceber que $\\int_a^b f(x)\\,dx = F(b)-F(a)$ para qualquer primitiva $F$ reduziu dois mil anos de quadraturas engenhosas, feitas caso a caso desde Arquimedes, a um algoritmo de poucas linhas. É por isso que se diz que o cálculo \"começa\" com eles, e não com os muitos precursores: eles viram que tangentes e áreas eram operações inversas e exploraram isso sistematicamente. A versão rigorosa que você estuda — com hipóteses explícitas de continuidade e integrabilidade — é do século XIX: **Cauchy** demonstrou o teorema para funções contínuas em 1823, e a formulação com a integral de Riemann revelou as sutilezas que obrigam a separar com cuidado as partes 1 e 2."
     },
     {
       "id": "calculo1-17-tecnicas-integracao",
@@ -5813,7 +5829,8 @@
             "where": "cap. 19, deducao das duas tecnicas e formulas de reducao"
           }
         ]
-      }
+      },
+      "history": "A própria palavra \"integral\" nasceu junto com essas técnicas: foi empregada em texto impresso pela primeira vez por **Jakob Bernoulli**, em 1690, na *Acta Eruditorum*; Leibniz preferia falar em *calculus summatorius*, mas acabou aceitando a expressão *calculus integralis*. A substituição é o triunfo da notação de Leibniz: escrever $du = u'(x)\\,dx$ e trocar variáveis como se manipulássemos frações funciona porque os diferenciais foram desenhados para isso. Já a integração por partes, $\\int u\\,dv = uv - \\int v\\,du$, costuma ter sua primeira publicação creditada a **Brook Taylor** — o mesmo das séries de Taylor —, no *Methodus incrementorum* de 1715. O grande laboratório dessas técnicas, porém, foi a rivalidade feroz entre Jakob e seu irmão mais novo, **Johann Bernoulli**, que disputavam publicamente quem integrava o quê: quando Jakob propôs em 1690 o problema da catenária (a forma do cabo suspenso), Johann o resolveu e, décadas depois, ainda se gabava em carta de tê-lo feito em uma noite enquanto o irmão penava. Boa parte do repertório clássico de integrais resolvidas que herdamos vem dessas disputas de família."
     },
     {
       "id": "calculo1-18-aplicacoes-integral",
@@ -6158,7 +6175,8 @@
           ],
           "caption": "Area entre y=x (topo) e y=x^2 (base) no intervalo de 0 a 1."
         }
-      ]
+      ],
+      "history": "Somar fatias infinitesimais é ideia antiquíssima. **Arquimedes** obteve o volume da esfera, $V=\\frac{4}{3}\\pi r^3$, e tinha tanto orgulho da razão 2:3 entre a esfera e o cilindro circunscrito que pediu a figura gravada em seu túmulo — **Cícero** conta ter encontrado e restaurado o túmulo, já coberto de mato, quando serviu como magistrado na Sicília em 75 a.C. O método heurístico de Arquimedes, que \"pesava\" fatias numa alavanca imaginária, ficou perdido por séculos: só reapareceu em 1906, quando o filólogo Johan Heiberg identificou o tratado *O Método* sob as orações de um palimpsesto — pergaminho que, em 1998, foi leiloado por cerca de dois milhões de dólares. A justificativa sistemática do fatiamento veio com **Bonaventura Cavalieri**, discípulo de Galileu, cujo princípio dos indivisíveis (1635) é o ancestral direto do método das seções transversais desta aula. Já o comprimento de arco tem história de superação: Descartes escrevera na *Géométrie* que a razão exata entre retas e curvas não poderia ser conhecida pela mente humana, mas em 1657 o inglês **William Neile**, com cerca de vinte anos, retificou a parábola semicúbica $y^2=x^3$ — a primeira curva algébrica a ter seu comprimento calculado exatamente."
     }
   ],
   "formulaSheet": "## Limites — leis e cálculo\n\n- **Leis algébricas** (com $\\lim f=L$, $\\lim g=M$ finitos): $\\lim(f\\pm g)=L\\pm M$; $\\lim(cf)=cL$; $\\lim(fg)=LM$; $\\lim\\frac{f}{g}=\\frac{L}{M}$ se $M\\ne0$; $\\lim f^n=L^n$; $\\lim\\sqrt[n]{f}=\\sqrt[n]{L}$.\n- **Substituição direta:** vale para polinômios, racionais (onde $q(a)\\ne0$), raízes, $\\sin,\\cos,\\exp,\\ln$ — tente primeiro; só falha em forma indeterminada.\n- **Limites trigonométricos** (com $x$ em radianos):\n$$\\lim_{x\\to0}\\frac{\\sin x}{x}=1,\\qquad \\lim_{x\\to0}\\frac{1-\\cos x}{x}=0,\\qquad \\lim_{x\\to0}\\frac{1-\\cos x}{x^2}=\\tfrac12.$$\n- **Confronto (sanduíche):** se $g(x)\\le f(x)\\le h(x)$ perto de $a$ e $\\lim g=\\lim h=L$, então $\\lim f=L$. Uso típico: fator oscilante $\\times$ algo $\\to0$.\n- **Sete formas indeterminadas:** $\\frac00,\\ \\frac{\\infty}{\\infty},\\ 0\\cdot\\infty,\\ \\infty-\\infty,\\ 1^{\\infty},\\ 0^0,\\ \\infty^0$.\n- **Formas determinadas** (NÃO indeterminadas): $\\frac{k}{0^+}=+\\infty$, $\\frac{k}{0^-}=-\\infty$ ($k>0$); $\\frac{k}{\\infty}=0$; $\\infty+\\infty=\\infty$; $\\infty\\cdot\\infty=\\infty$. Atenção: $\\frac{5}{0}$ não é $\\frac00$.\n- **Técnicas para $\\frac00$:** fatorar e cancelar $(x-a)$; racionalizar por conjugado via $(u-v)(u+v)=u^2-v^2$.\n\n## Limites no infinito e assíntotas\n\n- **Potências:** $\\displaystyle\\lim_{x\\to\\pm\\infty}\\frac{c}{x^k}=0$ para todo inteiro $k\\ge1$.\n- **Racional $\\frac{a_mx^m+\\cdots}{b_nx^n+\\cdots}$** (divida por $x^n$): se $m<n\\to0$; se $m=n\\to\\frac{a_m}{b_n}$; se $m>n\\to\\pm\\infty$.\n- **Assíntota horizontal** $y=L$: $\\lim_{x\\to\\pm\\infty}f(x)=L$. **Vertical** $x=a$: algum limite lateral em $a$ é $\\pm\\infty$ (zero do denominador que não cancela).\n- **Sinal em limites laterais infinitos:** determine se o denominador $\\to0^+$ ou $0^-$; $\\frac{1}{0^+}=+\\infty$, $\\frac{1}{0^-}=-\\infty$.\n- $\\displaystyle\\lim_{x\\to0}\\sin\\!\\left(\\tfrac1x\\right)$ não existe (oscilação).\n\n## Continuidade e descontinuidades\n\n- **Critério:** $f$ contínua em $a$ $\\iff$ $f(a)$ existe, $\\lim_{x\\to a}f(x)$ existe e $\\lim_{x\\to a}f(x)=f(a)$.\n- **Classificação** (com $L^-=\\lim_{x\\to a^-}f$, $L^+=\\lim_{x\\to a^+}f$):\n  - **Removível:** $L^-=L^+=L$ finito, mas $f(a)$ ausente ou $\\ne L$ — corrige-se pondo $f(a):=L$.\n  - **Salto (1ª espécie):** $L^-,L^+$ finitos, $L^-\\ne L^+$; salto $=L^+-L^-$.\n  - **Essencial (2ª espécie):** algum lateral é $\\pm\\infty$ ou não existe.\n\n## Derivada — definição e linearização\n\n- **Quociente de Newton:** $\\displaystyle f'(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}=\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}$.\n- **Reta tangente:** $y=f(a)+f'(a)(x-a)$. **Tangente vertical** quando o quociente $\\to\\pm\\infty$ (ex.: $x^{1/3}$ em $0$).\n- **Linearização:** $L(x)=f(a)+f'(a)(x-a)$, com $f(a+h)=f(a)+f'(a)h+o(h)$.\n- Derivável em $a$ $\\Rightarrow$ contínua em $a$ (recíproca falsa: $|x|$ em $0$). $f'(a)$ existe $\\iff$ derivadas laterais coincidem.\n\n## Tabela de derivadas\n\n$$\\frac{d}{dx}x^n=nx^{n-1},\\quad \\frac{d}{dx}e^x=e^x,\\quad \\frac{d}{dx}\\ln x=\\frac1x\\ (x>0)$$\n$$(\\sin x)'=\\cos x,\\quad (\\cos x)'=-\\sin x,\\quad (\\tan x)'=\\sec^2x=1+\\tan^2x$$\n- **Linearidade:** $(af+bg)'=af'+bg'$.\n- **Produto:** $(fg)'=f'g+fg'$ (não é $f'g'$).\n- **Quociente:** $\\left(\\dfrac{f}{g}\\right)'=\\dfrac{f'g-fg'}{g^2}$ (a ordem importa).\n- **Inversa:** $\\left(f^{-1}\\right)'(y_0)=\\dfrac{1}{f'\\!\\big(f^{-1}(y_0)\\big)}$, onde $f'\\ne0$.\n\n## Regra da cadeia\n\n- **Pontual:** $(f\\circ g)'(a)=f'\\!\\big(g(a)\\big)\\,g'(a)$ — derivada externa avaliada no ponto **interno** $g(a)$.\n- **Leibniz:** $\\dfrac{dy}{dx}=\\dfrac{dy}{du}\\cdot\\dfrac{du}{dx}$. **Três camadas:** $\\big(f(g(h(x)))\\big)'=f'(g(h))\\,g'(h)\\,h'(x)$.\n- **Versões generalizadas:**\n$$\\frac{d}{dx}[g(x)]^n=n[g(x)]^{n-1}g'(x),\\quad \\frac{d}{dx}e^{g}=e^{g}g',\\quad \\frac{d}{dx}\\ln g=\\frac{g'}{g}.$$\n- **Diferenciação logarítmica** ($y=f^{g}$, $f>0$): $\\ y'=f^{g}\\!\\left(g'\\ln f+g\\dfrac{f'}{f}\\right)$.\n\n## Derivação implícita e taxas relacionadas\n\n- Derive ambos os lados em $x$: cada termo com $y$ ganha fator $\\frac{dy}{dx}$; termos só em $x$ derivam normal; isole $\\frac{dy}{dx}$.\n- **Fórmula (TFI 2D):** $\\ \\dfrac{dy}{dx}=-\\dfrac{\\partial F/\\partial x}{\\partial F/\\partial y}$ (onde $F_y\\ne0$).\n- **Reta tangente à curva implícita:** $y-y_0=m(x-x_0)$ com $m=\\frac{dy}{dx}\\big|_{(x_0,y_0)}$; tangente vertical $x=x_0$ quando $\\frac{dy}{dx}\\to\\infty$.\n- **Taxas relacionadas — roteiro:** (1) figura e variáveis, (2) relação válida em **todo** instante, (3) derivar em $t$ pela cadeia, (4) só então substituir valores numéricos. Só substitua antes de derivar o que é genuinamente constante.\n\n## TVM e monotonia\n\n- **TVM (Lagrange):** existe $c\\in(a,b)$ com $\\ f(b)-f(a)=f'(c)(b-a)$, i.e. $f'(c)=\\frac{f(b)-f(a)}{b-a}$. **Rolle:** caso $f(a)=f(b)$ dá $f'(c)=0$.\n- **Derivada nula $\\Rightarrow$ constante** num intervalo. Duas primitivas diferem por constante.\n- **Monotonia:** $f'>0$ em $I\\Rightarrow f$ estritamente crescente; $f'<0\\Rightarrow$ decrescente; $f'\\ge0\\iff$ não-decrescente.\n- **Teste da 1ª derivada** em ponto crítico $c$: $+\\to-$ máximo local; $-\\to+$ mínimo local; sem troca de sinal, não é extremo.\n\n## Regra de L'Hôpital e crescimento\n\n- **Sob $\\frac00$ ou $\\frac{\\infty}{\\infty}$** (com $g'\\ne0$ perto de $a$ e $\\lim\\frac{f'}{g'}$ existente): $\\displaystyle\\lim_{x\\to a}\\frac{f(x)}{g(x)}=\\lim_{x\\to a}\\frac{f'(x)}{g'(x)}$. Vale para $a$ finito, $\\pm\\infty$ e laterais. Implicação de mão única.\n- **Reduções:** $0\\cdot\\infty\\to\\frac{f}{1/g}$ ou $\\frac{g}{1/f}$; $\\infty-\\infty\\to$ denominador comum ou conjugado; $0^0,\\infty^0,1^\\infty$: use $y=e^{g\\ln f}$, calcule $L=\\lim g\\ln f$ e $\\lim y=e^{L}$.\n- **Cauchy:** $\\dfrac{f(b)-f(a)}{g(b)-g(a)}=\\dfrac{f'(c)}{g'(c)}$ (motor de L'Hôpital).\n- **Hierarquia** ($x\\to+\\infty$, $a>0,p>0,b>1$): $\\ (\\ln x)^a\\prec x^p\\prec b^x$, logo $\\displaystyle\\lim\\frac{(\\ln x)^a}{x^p}=0$, $\\displaystyle\\lim\\frac{x^p}{b^x}=0$.\n\n## Otimização\n\n- **Pontos críticos:** interiores com $f'(c)=0$ ou $f'(c)$ inexistente — únicos candidatos interiores a extremo.\n- **Extremos absolutos em $[a,b]$** ($f$ contínua): avalie $f$ nos pontos críticos de $(a,b)$ **e** nos extremos $a,b$; maior/menor valor vence.\n- **Teste da 2ª derivada:** $f'(c)=0$ e $f''(c)>0\\Rightarrow$ mínimo local; $f''(c)<0\\Rightarrow$ máximo local; $f''(c)=0$ inconclusivo (use a 1ª derivada).\n- **Domínio do modelo:** imponha restrições físicas/geométricas (ex.: recorte de quinas $0<x<a/2$).\n\n## Traçado de curvas: concavidade e assíntotas\n\n- **Concavidade:** $f''>0\\Rightarrow$ côncava para cima; $f''<0\\Rightarrow$ para baixo. **Inflexão** onde a concavidade muda: exige $f''(c)=0$ ou $f''(c)$ inexistente (mas $f''(c)=0$ sozinho não basta — ex.: $x^4$).\n- **Assíntota oblíqua** $y=mx+b$ ($m\\ne0$):\n$$m=\\lim_{x\\to\\pm\\infty}\\frac{f(x)}{x},\\qquad b=\\lim_{x\\to\\pm\\infty}\\big[f(x)-mx\\big]$$\nambos finitos. Se há assíntota horizontal num lado, não há oblíqua nesse lado.\n\n## Integral de Riemann — propriedades\n\n- **Soma de Riemann:** $S(f,P,\\xi)=\\sum_{i=1}^{n}f(\\xi_i)\\,\\Delta x_i$, com $\\|P\\|=\\max_i\\Delta x_i$.\n- **Critério de integrabilidade:** $\\forall\\varepsilon>0\\ \\exists P$ com $U(f,P)-L(f,P)<\\varepsilon$. Integráveis: contínuas e monótonas em $[a,b]$.\n- **Linearidade e monotonia:** $\\int_a^b(\\alpha f+\\beta g)=\\alpha\\int_a^b f+\\beta\\int_a^b g$; se $f\\le g$ então $\\int_a^b f\\le\\int_a^b g$.\n- **Aditividade:** $\\int_a^b f=\\int_a^c f+\\int_c^b f$. **Estimativas:** $\\left|\\int_a^b f\\right|\\le\\int_a^b|f|$ e, se $m\\le f\\le M$, $\\ m(b-a)\\le\\int_a^b f\\le M(b-a)$.\n- **Área com sinal:** $\\int_a^b f$ conta $f>0$ positivo, $f<0$ negativo; área geométrica $=\\int_a^b|f|$.\n\n## Teorema Fundamental do Cálculo\n\n- **Parte 1:** $\\displaystyle\\frac{d}{dx}\\int_a^x f(t)\\,dt=f(x)$ ($f$ contínua).\n- **Parte 2 (Newton–Leibniz):** $\\displaystyle\\int_a^b f(x)\\,dx=G(b)-G(a)=\\big[G(x)\\big]_a^b$, para qualquer primitiva $G$.\n- **Regra de Leibniz (limites variáveis):** $\\displaystyle\\frac{d}{dx}\\int_{u(x)}^{v(x)}f(t)\\,dt=f(v(x))\\,v'(x)-f(u(x))\\,u'(x)$.\n- **TVM para integrais:** existe $c\\in[a,b]$ com $\\int_a^b f=f(c)(b-a)$; valor médio $f(c)=\\frac{1}{b-a}\\int_a^b f$.\n\n## Integração — imediatas e técnicas\n\n$$\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C\\ (n\\ne-1),\\qquad \\int\\frac{dx}{x}=\\ln|x|+C,\\qquad \\int e^x\\,dx=e^x+C$$\n$$\\int\\cos x\\,dx=\\sin x+C,\\quad \\int\\sin x\\,dx=-\\cos x+C,\\quad \\int\\sec^2x\\,dx=\\tan x+C$$\n- **Substituição:** $u=g(x)$, $du=g'(x)\\,dx$: $\\displaystyle\\int f(g(x))g'(x)\\,dx=\\int f(u)\\,du$. Na definida, troque os limites: $\\int_a^b\\to\\int_{g(a)}^{g(b)}$.\n- **Por partes:** $\\displaystyle\\int u\\,dv=uv-\\int v\\,du$. Prioridade de $u$ por **LIATE** (Logarítmica, Inversa trig., Algébrica, Trigonométrica, Exponencial).\n- **Recorrência:** integrais cíclicas (ex.: $\\int e^x\\sin x\\,dx$) resolvem-se como equação $I=(\\cdots)-I$.\n- **Reduções:** $\\displaystyle\\int\\sin^nx\\,dx=-\\frac{\\sin^{n-1}x\\cos x}{n}+\\frac{n-1}{n}\\int\\sin^{n-2}x\\,dx$; $\\displaystyle\\int\\sec^nx\\,dx=\\frac{\\sec^{n-2}x\\tan x}{n-1}+\\frac{n-2}{n-1}\\int\\sec^{n-2}x\\,dx$.\n\n## Aplicações da integral\n\n- **Área entre curvas** ($f\\ge g$): $\\displaystyle A=\\int_a^b[f(x)-g(x)]\\,dx$; em $y$: $\\displaystyle A=\\int_c^d[x_{\\text{dir}}(y)-x_{\\text{esq}}(y)]\\,dy$.\n- **Volumes de revolução:**\n$$\\text{discos: } V=\\pi\\!\\int_a^b[f(x)]^2\\,dx,\\qquad \\text{anéis: } V=\\pi\\!\\int_a^b\\!\\big[R(x)^2-r(x)^2\\big]\\,dx$$\n$$\\text{cascas cilíndricas: } V=2\\pi\\!\\int_a^b x\\,h(x)\\,dx.$$\nCuidado: é $R^2-r^2$, não $(R-r)^2$.\n- **Seções (Cavalieri):** $\\displaystyle V=\\int_a^b A(x)\\,dx$. **Pappus:** $V=2\\pi\\,\\bar d\\,A$ ($\\bar d$ = distância do centroide ao eixo).\n- **Comprimento de arco** ($ds=\\sqrt{1+(y')^2}\\,dx$): $\\displaystyle L=\\int_a^b\\sqrt{1+[f'(x)]^2}\\,dx$; para $x=g(y)$: $\\displaystyle L=\\int_c^d\\sqrt{1+[g'(y)]^2}\\,dy$.",

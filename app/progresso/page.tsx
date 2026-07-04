@@ -37,7 +37,7 @@ export default function ProgressoPage() {
   const proj = projectFinish(progress, settings, now);
 
   return (
-    <div className="space-y-7">
+    <div className="space-y-7 mm-enter">
       <header>
         <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">Progresso</h1>
         <p className="text-[var(--color-mut)] text-sm mt-1">
@@ -91,7 +91,7 @@ export default function ProgressoPage() {
       {/* 3 — Saúde da memória */}
       <section className="panel p-5">
         <h2 className="font-bold text-lg mb-4">Saúde da memória</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mm-stagger">
           <Stat
             value={`${Math.round(stats.matureRatio * 100)}%`}
             label={`cartões maduros (${stats.mature}/${stats.total})`}

@@ -67,7 +67,7 @@ export default function CurriculumMap() {
   });
 
   return (
-    <div className="overflow-auto panel p-2" style={{ maxHeight: "72vh" }}>
+    <div className="overflow-auto panel p-2 mm-enter-slow" style={{ maxHeight: "72vh" }}>
       <svg width={W} height={H} style={{ display: "block", minWidth: W }}>
         <defs>
           <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
@@ -144,7 +144,7 @@ export default function CurriculumMap() {
                 {truncate(t.title, 21)}
               </text>
               <text x={12} y={38} fontSize={10} fill="var(--color-mut)">
-                {st.kind === "done" ? "✓ concluída" : st.kind === "locked" ? "🔒 bloqueada" : isNext ? "▶ próximo passo" : `${tp.done}/${tp.total} aulas`}
+                {st.kind === "done" ? "✓ concluída" : st.kind === "locked" ? "✕ bloqueada" : isNext ? "▶ próximo passo" : `${tp.done}/${tp.total} aulas`}
               </text>
               {/* barra de progresso */}
               <rect x={12} y={46} width={NW - 24} height={4} rx={2} fill="var(--color-raise)" />

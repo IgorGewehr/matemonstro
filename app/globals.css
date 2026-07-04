@@ -395,3 +395,63 @@ html[data-mm-focus] nav {
 @media (max-width: 767px) {
   .notes-split { min-height: 0 !important; }
 }
+
+/* ---- Animações do design system (onda 8) ----------------------------------
+   Micro-animações sóbrias e consistentes. REGRA: componentes usam ESTAS
+   classes; keyframes novos entram só aqui. Tudo respeita reduced-motion. */
+
+@keyframes mm-fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mm-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes mm-pop {
+  0% { opacity: 0; transform: scale(0.92); }
+  70% { transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes mm-shine {
+  from { transform: translateX(-130%) skewX(-18deg); }
+  to { transform: translateX(230%) skewX(-18deg); }
+}
+
+/* Entrada de seção/página (aplicar no container). */
+.mm-enter { animation: mm-fade-up 0.28s ease-out both; }
+.mm-enter-slow { animation: mm-fade-up 0.4s ease-out both; }
+/* Stagger para listas/grids: filhos diretos entram em cascata sutil. */
+.mm-stagger > * { animation: mm-fade-up 0.3s ease-out both; }
+.mm-stagger > *:nth-child(2) { animation-delay: 0.04s; }
+.mm-stagger > *:nth-child(3) { animation-delay: 0.08s; }
+.mm-stagger > *:nth-child(4) { animation-delay: 0.12s; }
+.mm-stagger > *:nth-child(5) { animation-delay: 0.16s; }
+.mm-stagger > *:nth-child(6) { animation-delay: 0.2s; }
+.mm-stagger > *:nth-child(n + 7) { animation-delay: 0.24s; }
+
+/* Hover-lift para cards/painéis clicáveis. */
+.mm-lift { transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out; }
+.mm-lift:hover { transform: translateY(-2px); box-shadow: 0 6px 24px -12px rgb(0 0 0 / 0.5); }
+
+/* Pop para itens que aparecem (modais, conquistas desbloqueadas). */
+.mm-pop { animation: mm-pop 0.24s ease-out both; }
+
+/* Brilho varrendo (insígnia conquistada, destaque raro). Container precisa de
+   position:relative + overflow:hidden. */
+.mm-shine { position: relative; overflow: hidden; }
+.mm-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(105deg, transparent, rgb(255 255 255 / 0.18), transparent);
+  animation: mm-shine 2.6s ease-in-out 0.6s infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-enter, .mm-enter-slow, .mm-stagger > *, .mm-pop { animation: none; }
+  .mm-lift, .mm-lift:hover { transition: none; transform: none; }
+  .mm-shine::after { animation: none; display: none; }
+}

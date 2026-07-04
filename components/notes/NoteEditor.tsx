@@ -296,7 +296,7 @@ export default function NoteEditor({
     );
 
   return (
-    <div className="notes-editor panel p-4 flex flex-col gap-3 h-full">
+    <div className="notes-editor panel p-4 flex flex-col gap-3 h-full mm-enter">
       <div className="flex items-center gap-2">
         <input
           value={title}
@@ -316,7 +316,7 @@ export default function NoteEditor({
             ≔ Template
           </button>
           {templatesOpen && (
-            <div className="notes-wikilink-menu !top-9 !right-0 !max-w-[300px]" role="menu">
+            <div className="notes-wikilink-menu !top-9 !right-0 !max-w-[300px] mm-pop" role="menu">
               {NOTE_TEMPLATES.map((t) => (
                 <button key={t.id} type="button" role="menuitem" onClick={() => insertTemplate(t.body)}>
                   <span className="font-semibold">
@@ -329,10 +329,10 @@ export default function NoteEditor({
           )}
         </div>
         <button className="btn !py-1.5 !px-2.5 text-xs" onClick={handleExport} title="Exportar .md">
-          ⬇ .md
+          .md
         </button>
         <button className="btn !py-1.5 !px-2.5 text-xs" onClick={handleDelete} title="Excluir nota">
-          🗑
+          ✕
         </button>
       </div>
 
@@ -379,7 +379,7 @@ export default function NoteEditor({
             className="notes-textarea w-full h-full min-h-[300px] rounded-xl bg-[var(--color-well)] border border-[var(--color-line)] p-3 text-sm font-mono outline-none focus:border-[var(--color-brand)] resize-none"
           />
           {linkQuery && wikilinkCandidates.length > 0 && (
-            <div className="notes-wikilink-menu" role="listbox" aria-label="Sugestões de link">
+            <div className="notes-wikilink-menu mm-pop" role="listbox" aria-label="Sugestões de link">
               {wikilinkCandidates.map((c, i) => (
                 <button
                   key={c.key}

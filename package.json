@@ -10,9 +10,17 @@
     "lint": "next lint",
     "bundle": "node scripts/bundle-curriculum.mjs",
     "validate": "node scripts/validate-curriculum.mjs",
+    "build:desktop": "node scripts/build-desktop.mjs",
+    "tauri": "tauri",
+    "desktop:dev": "tauri dev",
+    "desktop:build": "tauri build",
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@tauri-apps/api": "^2.11.1",
+    "@tauri-apps/plugin-dialog": "^2.7.1",
+    "@tauri-apps/plugin-fs": "^2.5.1",
+    "@tauri-apps/plugin-store": "^2.4.3",
     "better-sqlite3": "^12.11.1",
     "drizzle-orm": "^0.45.2",
     "idb": "^8.0.0",
@@ -28,6 +36,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
+    "@tauri-apps/cli": "^2.11.4",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",

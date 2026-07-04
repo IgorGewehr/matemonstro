@@ -9,14 +9,15 @@ import {
   requestNotificationPermission,
 } from "@/lib/notify";
 import { toAnkiTsv, ankiFileName, ankiCardCount } from "@/lib/anki-export";
+import VaultSettings from "@/components/VaultSettings";
 import type { Settings } from "@/lib/types";
 
 type Theme = NonNullable<Settings["theme"]>;
 
 const THEMES: { id: Theme; label: string; glyph: string }[] = [
-  { id: "dark", label: "Escuro", glyph: "🌑" },
-  { id: "light", label: "Claro", glyph: "☀️" },
-  { id: "sepia", label: "Sépia", glyph: "📜" },
+  { id: "dark", label: "Escuro", glyph: "●" },
+  { id: "light", label: "Claro", glyph: "○" },
+  { id: "sepia", label: "Sépia", glyph: "◇" },
 ];
 
 function applyTheme(theme: Theme) {
@@ -117,7 +118,7 @@ export default function ConfigPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-xl">
+    <div className="space-y-6 max-w-xl mm-enter">
       <header>
         <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">Ajustes</h1>
         <p className="text-[var(--color-mut)] text-sm mt-1">O plano de hoje e as projeções se adaptam a isto.</p>
@@ -334,7 +335,7 @@ export default function ConfigPage() {
             aria-pressed={settings.notifications}
             disabled={!notifSupported}
           >
-            {settings.notifications ? "🔔 Ativado" : "🔕 Ativar lembretes"}
+            {settings.notifications ? "Ativado" : "Ativar lembretes"}
           </button>
           {!notifSupported && (
             <span className="text-xs text-[var(--color-mut)]">Não suportado neste navegador.</span>
@@ -361,7 +362,7 @@ export default function ConfigPage() {
           <>
             <div className="flex gap-2 flex-wrap items-center">
               <button className="btn" onClick={() => exportAnki()}>
-                ⬇ Currículo todo ({ankiCardCount()})
+                Currículo todo ({ankiCardCount()})
               </button>
             </div>
             <div className="flex gap-2 flex-wrap items-center">
@@ -379,12 +380,14 @@ export default function ConfigPage() {
                 ))}
               </select>
               <button className="btn" disabled={!ankiTrack} onClick={() => exportAnki(ankiTrack)}>
-                ⬇ Exportar trilha{ankiTrack ? ` (${ankiCardCount(ankiTrack)})` : ""}
+                Exportar trilha{ankiTrack ? ` (${ankiCardCount(ankiTrack)})` : ""}
               </button>
             </div>
           </>
         )}
       </section>
+
+      <VaultSettings />
 
       <section className="panel p-5 space-y-3">
         <h2 className="font-bold">Backup dos dados</h2>
@@ -392,8 +395,8 @@ export default function ConfigPage() {
           Seu progresso, anotações e revisões ficam só neste navegador (IndexedDB). Exporte de vez em quando para não perder.
         </p>
         <div className="flex gap-2 flex-wrap">
-          <button className="btn" onClick={doExport}>⬇ Exportar JSON</button>
-          <button className="btn" onClick={() => fileRef.current?.click()}>⬆ Importar JSON</button>
+          <button className="btn" onClick={doExport}>Exportar JSON</button>
+          <button className="btn" onClick={() => fileRef.current?.click()}>Importar JSON</button>
           <input
             ref={fileRef}
             type="file"

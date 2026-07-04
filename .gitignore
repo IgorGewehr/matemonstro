@@ -22,3 +22,11 @@ next-env.d.ts
 # (lib/curriculum-meta.json É versionado: o typecheck importa ele)
 /public/curriculum-data.json
 /lib/curriculum-data.json
+
+# alvo desktop (Tauri)
+/.desktop-excluded-api
+/src-tauri/target
+/src-tauri/gen/schemas
+# ícones mobile gerados pelo `tauri icon` (não usamos Android/iOS)
+/src-tauri/icons/android
+/src-tauri/icons/ios

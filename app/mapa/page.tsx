@@ -27,16 +27,16 @@ export default function MapaPage() {
   ];
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 mm-enter">
       <header>
-        <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">🧠 Mapa do conhecimento</h1>
+        <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">Mapa do conhecimento</h1>
         <p className="text-[var(--color-mut)] text-sm mt-1">
           Seu cérebro matemático em árvore: cada trilha ligada aos seus pré-requisitos. Siga as setas — o que
           brilha e pulsa é seu próximo passo. Clique num nó para abrir a trilha.
         </p>
       </header>
 
-      <div className="grid sm:grid-cols-3 gap-3">
+      <div className="grid sm:grid-cols-3 gap-3 mm-stagger">
         <div className="panel p-4">
           <div className="text-2xl font-bold">{done}/{tracks.length}</div>
           <div className="text-xs text-[var(--color-mut)]">trilhas concluídas</div>
@@ -46,13 +46,13 @@ export default function MapaPage() {
           <div className="text-xs text-[var(--color-mut)]">do currículo total</div>
         </div>
         {next ? (
-          <Link href={`/trilha/${next.id}`} className="panel p-4 hover:border-[var(--color-brand)] transition-colors">
+          <Link href={`/trilha/${next.id}`} className="panel p-4 hover:border-[var(--color-brand)] transition-colors mm-lift">
             <div className="text-xs text-[var(--color-brand)] mb-0.5">▶ próximo passo</div>
             <div className="font-bold leading-tight text-sm">{next.title}</div>
           </Link>
         ) : (
           <div className="panel p-4">
-            <div className="text-sm font-bold text-[var(--color-brand2)]">Tudo liberado! 🎉</div>
+            <div className="text-sm font-bold text-[var(--color-brand2)]">Tudo liberado!</div>
           </div>
         )}
       </div>
@@ -64,7 +64,7 @@ export default function MapaPage() {
           </span>
         ))}
         <span className="flex items-center gap-1.5">✓ concluída</span>
-        <span className="flex items-center gap-1.5">🔒 bloqueada (falta pré-requisito)</span>
+        <span className="flex items-center gap-1.5">✕ bloqueada (falta pré-requisito)</span>
       </div>
 
       <CurriculumMap />

@@ -22,6 +22,7 @@ import {
   proofNoteBody,
   type ProofRubric,
 } from "@/lib/proofs";
+import { noteHref } from "@/lib/notes";
 import {
   buildPracticeQueue,
   gradePractice,
@@ -125,7 +126,7 @@ export default function ProvasPage() {
       subtopicId: current.subId !== current.trackId ? current.subId : null,
     });
     setSavedNote(true);
-    router.prefetch(`/notas/${n.id}`);
+    router.prefetch(noteHref(n.id));
   }
 
   if (!ready) return <div className="text-[var(--color-mut)]">Carregando…</div>;
@@ -133,7 +134,7 @@ export default function ProvasPage() {
   // ---- Tela de entrada ----
   if (queue === null) {
     return (
-      <div className="max-w-3xl mx-auto space-y-6">
+      <div className="max-w-3xl mx-auto space-y-6 mm-enter">
         <header>
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">∎ Treino de demonstração</h1>
           <p className="text-[var(--color-mut)] mt-1 text-sm">
@@ -143,7 +144,7 @@ export default function ProvasPage() {
           </p>
         </header>
 
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-3 mm-stagger">
           <StatCard value={proofStats.total} label="Provas escritas" />
           <StatCard
             value={proofStats.total ? `${Math.round((proofStats.solid / proofStats.total) * 100)}%` : "—"}
@@ -209,8 +210,8 @@ export default function ProvasPage() {
     const total = session.acertei + session.quase + session.errei;
     return (
       <div className="grid place-items-center min-h-[60vh]">
-        <div className="panel p-8 text-center max-w-md">
-          <div className="text-5xl mb-3">∎</div>
+        <div className="panel p-8 text-center max-w-md mm-pop">
+          <div className="text-4xl mb-3 text-[var(--color-brand)] font-bold">∎</div>
           <h1 className="text-xl font-bold">Sessão de provas concluída</h1>
           <p className="text-[var(--color-mut)] text-sm mt-2">
             {total > 0
@@ -238,7 +239,7 @@ export default function ProvasPage() {
   const hasReference = !!(item.solution || (item.steps && item.steps.length));
 
   return (
-    <div className="max-w-4xl mx-auto space-y-4 pb-10">
+    <div className="max-w-4xl mx-auto space-y-4 pb-10 mm-enter">
       <div className="flex items-center justify-between text-sm gap-2">
         <span className="text-[var(--color-mut)]">{idx + 1} de {total}</span>
         <div className="flex items-center gap-1.5">

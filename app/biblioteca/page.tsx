@@ -29,7 +29,7 @@ export default function BibliotecaPage() {
   }
 
   return (
-    <div className="space-y-5 pb-10">
+    <div className="space-y-5 pb-10 mm-enter">
       <header>
         <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">≔ Biblioteca de resultados</h1>
         <p className="text-[var(--color-mut)] text-sm mt-1">
@@ -95,7 +95,7 @@ export default function BibliotecaPage() {
         {q.trim() ? ` para “${q.trim()}”` : ""}
       </p>
 
-      <div className="space-y-3">
+      <div className="space-y-3 mm-stagger">
         {visible.map((e, i) => (
           <article key={`${e.subId}-${e.kind}-${e.name}-${i}`} className="panel p-4">
             <div className="flex items-start justify-between gap-3 flex-wrap">

@@ -40,7 +40,7 @@ defCallout("demonstracao", "Demonstração", "∎", "demonstração", "prova", "
 defCallout("exemplo", "Exemplo", "✎", "example", "ex");
 defCallout("contraexemplo", "Contraexemplo", "⊘", "counterexample");
 defCallout("intuicao", "Intuição", "∿", "intuição", "ideia", "idea", "insight");
-defCallout("atencao", "Atenção", "⚠", "atenção", "cuidado", "warning", "erro");
+defCallout("atencao", "Atenção", "△", "atenção", "cuidado", "warning", "erro");
 defCallout("duvida", "Dúvida", "?", "dúvida", "pergunta", "question");
 defCallout("resumo", "Resumo", "§", "summary", "tldr");
 defCallout("nota", "Nota", "✦", "note", "info", "obs");

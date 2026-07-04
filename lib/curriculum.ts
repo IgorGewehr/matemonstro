@@ -116,7 +116,14 @@ async function doLoad(): Promise<boolean> {
   }
 
   try {
-    const res = await fetch(`/curriculum-data.json?v=${encodeURIComponent(curriculumVersion)}`);
+    // No desktop (Tauri) o bundle vem do asset protocol local: sem SW/CDN não
+    // há cache HTTP a furar, e query string em protocolo custom é terreno
+    // instável — busca o caminho puro.
+    const { isTauri } = await import("./platform");
+    const url = isTauri()
+      ? "/curriculum-data.json"
+      : `/curriculum-data.json?v=${encodeURIComponent(curriculumVersion)}`;
+    const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = (await res.json()) as Curriculum;
     if (!data?.tracks?.length) throw new Error("bundle vazio");

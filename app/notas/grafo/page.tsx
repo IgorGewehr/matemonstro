@@ -5,7 +5,7 @@ import NotesGraph from "@/components/notes/NotesGraph";
 
 export default function NotesGraphPage() {
   return (
-    <div className="space-y-4 pb-10">
+    <div className="space-y-4 pb-10 mm-enter">
       <div className="flex items-center justify-between text-sm">
         <Link href="/notas" className="text-[var(--color-mut)] hover:text-[var(--color-txt)]">
           ← Todas as notas

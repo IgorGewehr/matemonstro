@@ -40,7 +40,7 @@ export default function Heatmap({ data }: { data: HeatmapData }) {
   }
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto mm-enter-slow">
       <svg
         width={width}
         height={height}

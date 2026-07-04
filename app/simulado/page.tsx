@@ -126,7 +126,7 @@ export default function SimuladoPage() {
   // ---- Configuração ----
   if (phase === "config") {
     return (
-      <div className="max-w-3xl mx-auto space-y-6">
+      <div className="max-w-3xl mx-auto space-y-6 mm-enter">
         <header>
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">◷ Simulado</h1>
           <p className="text-[var(--color-mut)] mt-1 text-sm">
@@ -193,7 +193,7 @@ export default function SimuladoPage() {
         {history.length > 0 && (
           <section className="panel p-5">
             <h2 className="font-bold mb-3 text-sm">Histórico</h2>
-            <div className="space-y-2">
+            <div className="space-y-2 mm-stagger">
               {history.slice(0, 8).map((h) => {
                 const pct = h.total ? Math.round((h.certas / h.total) * 100) : 0;
                 const color = pct >= 70 ? "#00d3a7" : pct >= 50 ? "#f6c453" : "#ff6b6b";
@@ -223,7 +223,7 @@ export default function SimuladoPage() {
     const fracLeft = totalSecRef.current ? remaining / totalSecRef.current : 0;
     const clockColor = fracLeft < 0.1 ? "#ff6b6b" : fracLeft < 0.25 ? "#f6c453" : "var(--color-txt)";
     return (
-      <div className="max-w-3xl mx-auto space-y-4 pb-10">
+      <div className="max-w-3xl mx-auto space-y-4 pb-10 mm-enter">
         <div className="panel p-3 sticky top-3 z-20 backdrop-blur bg-[var(--color-scrim)] flex items-center gap-3 flex-wrap">
           <span className="font-mono text-2xl font-bold tabular-nums" style={{ color: clockColor }} aria-live="off">
             {formatClock(remaining)}
@@ -284,7 +284,7 @@ export default function SimuladoPage() {
   // ---- Correção ----
   if (phase === "review") {
     return (
-      <div className="max-w-3xl mx-auto space-y-4 pb-10">
+      <div className="max-w-3xl mx-auto space-y-4 pb-10 mm-enter">
         <header className="panel p-5">
           <h1 className="text-xl font-extrabold">Correção — seja honesto</h1>
           <p className="text-sm text-[var(--color-mut)] mt-1">
@@ -327,7 +327,7 @@ export default function SimuladoPage() {
                     key={g}
                     onClick={() => setGrades((gr) => ({ ...gr, [i]: g }))}
                     aria-pressed={grades[i] === g}
-                    className="chip !py-1"
+                    className="chip !py-1 transition-colors"
                     style={grades[i] === g ? { borderColor: color, color } : undefined}
                   >
                     {label}
@@ -356,7 +356,7 @@ export default function SimuladoPage() {
   const color = pct >= 70 ? "#00d3a7" : pct >= 50 ? "#f6c453" : "#ff6b6b";
   return (
     <div className="grid place-items-center min-h-[60vh]">
-      <div className="panel p-8 text-center max-w-md w-full">
+      <div className="panel p-8 text-center max-w-md w-full mm-pop">
         <div className="text-5xl font-extrabold mb-1" style={{ color }}>{pct}%</div>
         <h1 className="text-lg font-bold">Simulado registrado</h1>
         {last && (

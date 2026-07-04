@@ -86,7 +86,7 @@ export default function RevisarPage() {
       celebratedRef.current = true;
       celebrate({
         kind: "generic",
-        title: "Revisão fechada! 🎯",
+        title: "Revisão fechada!",
         message: `+${done * XP.perReview} XP · ${done} cartões que você não vai esquecer tão cedo.`,
       });
     }
@@ -145,8 +145,13 @@ export default function RevisarPage() {
     const cap = settings?.maxReviewsPerDay ?? 120;
     return (
       <div className="grid place-items-center min-h-[60vh]">
-        <div className="panel p-8 text-center max-w-md">
-          <div className="text-5xl mb-3">{overflow > 0 ? "✅" : "🎉"}</div>
+        <div className="panel p-8 text-center max-w-md mm-pop">
+          <div
+            className="text-4xl mb-3 font-bold"
+            style={{ color: overflow > 0 ? "var(--color-brand)" : "#00d3a7" }}
+          >
+            {overflow > 0 ? "✓" : "✦"}
+          </div>
           <h1 className="text-xl font-bold">{overflow > 0 ? "Teto do dia batido!" : "Revisões em dia!"}</h1>
           <p className="text-[var(--color-mut)] text-sm mt-2">
             {done > 0 ? `Você revisou ${done} cartões nesta sessão.` : "Nenhum cartão vence agora."}
@@ -177,7 +182,7 @@ export default function RevisarPage() {
   const pct = Math.round((idx / total) * 100);
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto mm-enter">
       <div className="flex items-center justify-between mb-4 text-sm">
         <span className="text-[var(--color-mut)]">{idx + 1} de {total}</span>
         <div className="flex items-center gap-2">
@@ -207,10 +212,10 @@ export default function RevisarPage() {
       >
         <div className="text-lg"><Markdown>{card!.front}</Markdown></div>
         {revealed ? (
-          <>
+          <div className="w-full mm-pop">
             <div className="my-5 w-full border-t border-[var(--color-line)]" />
             <div className="text-[var(--color-txt2)]"><Markdown>{card!.back}</Markdown></div>
-          </>
+          </div>
         ) : calibration ? (
           <div className="mt-6 w-full">
             <div className="text-xs text-[var(--color-mut)] mb-2">Antes de ver: você vai lembrar?</div>
@@ -219,7 +224,7 @@ export default function RevisarPage() {
                 <button
                   key={x.p}
                   onClick={() => reveal(x.p)}
-                  className="btn !py-2 hover:!border-current"
+                  className="btn !py-2 hover:!border-current transition-colors"
                   style={{ color: x.color }}
                 >
                   {x.label}
@@ -236,14 +241,14 @@ export default function RevisarPage() {
       </div>
 
       {revealed && (
-        <div className="grid grid-cols-4 gap-2 mt-4">
+        <div className="grid grid-cols-4 gap-2 mt-4 mm-pop">
           {GRADES.map((x) => {
             const preview = previewReview(card!, x.g, Date.now(), { requestRetention: settings?.requestRetention });
             return (
               <button
                 key={x.g}
                 onClick={() => grade(x.g)}
-                className="btn flex-col !py-3 hover:!border-current"
+                className="btn flex-col !py-3 hover:!border-current transition-colors"
                 style={{ color: x.color }}
               >
                 <span className="font-bold">{x.label}</span>

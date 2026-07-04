@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useApp } from "./AppState";
 import { searchSubtopics, searchTerms } from "@/lib/search";
 import { useNotes } from "@/components/notes/NotesProvider";
-import { searchNotes } from "@/lib/notes";
+import { searchNotes, noteHref } from "@/lib/notes";
 import { dailyTitle, dailyTemplate, findDailyNote } from "@/lib/daily";
 import { useFocusTrap } from "@/lib/useFocusTrap";
 import { useCurriculumReady } from "@/lib/useCurriculum";
@@ -142,11 +142,11 @@ export default function CommandPalette() {
           close();
           const existing = findDailyNote(notes);
           if (existing) {
-            router.push(`/notas/${existing.id}`);
+            router.push(noteHref(existing.id));
             return;
           }
           const n = await createNote({ title: dailyTitle(), body: dailyTemplate(), tags: ["diario"] });
-          router.push(`/notas/${n.id}`);
+          router.push(noteHref(n.id));
         },
       },
       { key: "a-notas", group: "Acoes", label: "Minhas notas", badge: "≣", run: () => go("/notas") },
@@ -185,7 +185,7 @@ export default function CommandPalette() {
           label: note.title || "Sem título",
           sub: (note.body || "").replace(/\s+/g, " ").slice(0, 60) || "nota vazia",
           badge: "≣",
-          run: () => go(`/notas/${note.id}`),
+          run: () => go(noteHref(note.id)),
         });
       }
       for (const hit of searchSubtopics(q, 20)) {
@@ -217,7 +217,7 @@ export default function CommandPalette() {
         run: async () => {
           close();
           const n = await createNote({ title: newTitle, body: "" });
-          router.push(`/notas/${n.id}`);
+          router.push(noteHref(n.id));
         },
       });
     }
@@ -276,7 +276,7 @@ export default function CommandPalette() {
     >
       <div
         ref={panelRef}
-        className="panel w-full max-w-xl overflow-hidden shadow-2xl"
+        className="panel w-full max-w-xl overflow-hidden shadow-2xl mm-pop"
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--color-line)]">

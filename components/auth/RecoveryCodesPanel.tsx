@@ -47,7 +47,7 @@ export default function RecoveryCodesPanel({ codes, email }: { codes: string[]; 
 
   return (
     <div className="mt-4">
-      <div className="grid grid-cols-2 gap-2 p-4 rounded-xl bg-[var(--color-well)] border border-[var(--color-line)]">
+      <div className="grid grid-cols-2 gap-2 p-4 rounded-xl bg-[var(--color-well)] border border-[var(--color-line)] mm-pop">
         {codes.map((c) => (
           <code key={c} className="font-mono text-sm text-center tracking-wider text-[var(--color-txt)]">
             {c}
@@ -59,7 +59,7 @@ export default function RecoveryCodesPanel({ codes, email }: { codes: string[]; 
           {copied ? "✓ Copiado" : "Copiar"}
         </button>
         <button type="button" className="btn flex-1 text-sm" onClick={download}>
-          ⬇ Baixar .txt
+          Baixar .txt
         </button>
       </div>
     </div>

@@ -7,9 +7,30 @@ import NoteEditor from "@/components/notes/NoteEditor";
 import { useNotes } from "@/components/notes/NotesProvider";
 import { buildZip, notesToVaultFiles, vaultFileName } from "@/lib/vault-export";
 
+const LIST_KEY = "mm:notas-lista"; // "on" | "off"
+
 export default function NotasPage() {
   const { notes, ready } = useNotes();
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
+  // Coluna da lista retrátil: escrita imersiva usa a largura inteira.
+  const [showList, setShowList] = useState(true);
+  useEffect(() => {
+    try {
+      setShowList(localStorage.getItem(LIST_KEY) !== "off");
+    } catch {
+      /* ignora */
+    }
+  }, []);
+  function toggleList() {
+    setShowList((v) => {
+      try {
+        localStorage.setItem(LIST_KEY, v ? "off" : "on");
+      } catch {
+        /* ignora */
+      }
+      return !v;
+    });
+  }
 
   const live = useMemo(() => notes.filter((n) => !n.deleted), [notes]);
 
@@ -35,15 +56,24 @@ export default function NotasPage() {
   }
 
   return (
-    <div className="space-y-4 pb-10">
-      <div className="flex items-center justify-between flex-wrap gap-2">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">🗒 Notas</h1>
-          <p className="text-[var(--color-mut)] text-sm mt-1">
-            Um Obsidian pra matemático: markdown + LaTeX ao vivo, [[wikilinks]] e grafo.
+    <div className="flex flex-col h-[calc(100vh-6.5rem)] md:h-[calc(100vh-5.5rem)] -mb-4 mm-enter">
+      <div className="flex items-center justify-between flex-wrap gap-2 pb-3">
+        <div className="flex items-center gap-3 min-w-0">
+          <h1 className="text-xl md:text-2xl font-extrabold tracking-tight">Notas</h1>
+          <p className="hidden lg:block text-[var(--color-mut)] text-xs truncate">
+            Markdown + LaTeX ao vivo, [[wikilinks]] e grafo — {live.length}{" "}
+            {live.length === 1 ? "nota" : "notas"}
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <button
+            className="btn text-sm hidden md:inline-flex"
+            onClick={toggleList}
+            aria-pressed={!showList}
+            title={showList ? "Esconder a lista (escrita imersiva)" : "Mostrar a lista de notas"}
+          >
+            {showList ? "⟨ Lista" : "⟩ Lista"}
+          </button>
           <Link href="/notas/grafo" className="btn text-sm">
             ❖ Grafo
           </Link>
@@ -53,16 +83,21 @@ export default function NotasPage() {
             disabled={live.length === 0}
             title="Um .md por nota, wikilinks preservados — abre direto no Obsidian"
           >
-            ⬇ Vault (.zip)
+            Vault
           </button>
         </div>
       </div>
 
-      <div className="grid md:grid-cols-[280px_1fr] gap-4 items-start" style={{ minHeight: "70vh" }}>
-        <div className="md:sticky md:top-4" style={{ height: "72vh" }}>
+      <div
+        className={`grid gap-4 items-stretch flex-1 min-h-0 ${
+          showList ? "md:grid-cols-[280px_minmax(0,1fr)]" : "md:grid-cols-[minmax(0,1fr)]"
+        }`}
+      >
+        {/* Mobile: lista sempre empilhada (h-48); desktop: coluna retrátil. */}
+        <div className={`min-h-0 h-48 md:h-full ${showList ? "" : "md:hidden"}`}>
           <NoteList selectedId={selectedId} onSelect={setSelectedId} />
         </div>
-        <div style={{ height: "72vh" }}>
+        <div className="min-h-0 h-full">
           {selectedId ? (
             <NoteEditor noteId={selectedId} onDeleted={() => setSelectedId(undefined)} />
           ) : (

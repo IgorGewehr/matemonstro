@@ -35,6 +35,7 @@ import {
 import { getSubRef, loadCurriculum } from "@/lib/curriculum";
 import { trackProgress } from "@/lib/scheduler";
 import { computeXp, levelFor } from "@/lib/gamification";
+import { computeInsignias } from "@/lib/insignias";
 import { newCard, review as srsReview, DAY, type Grade } from "@/lib/srs";
 import { useAuth } from "@/components/auth/AuthProvider";
 import {
@@ -413,6 +414,29 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
   }, [ready, progress, cards, log, settings]);
 
+  // Celebracao de insignia (Matematico Nivel 1-5): mesma mecanica do level-up —
+  // derivado puro do progresso, observado num unico ponto, ref evita disparo na
+  // hidratacao. Dispara quando TODAS as trilhas das camadas 1..k fecham.
+  const prevInsigniaRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!ready) return;
+    const { mathematicianLevel, tiers } = computeInsignias(progress);
+    const prev = prevInsigniaRef.current;
+    prevInsigniaRef.current = mathematicianLevel;
+    if (prev !== null && mathematicianLevel > prev && typeof window !== "undefined") {
+      const tier = tiers.find((t) => t.level === mathematicianLevel);
+      window.dispatchEvent(
+        new CustomEvent("mm:celebrate", {
+          detail: {
+            type: "insignia",
+            level: mathematicianLevel,
+            levelName: tier?.name ?? `Matemático Nível ${mathematicianLevel}`,
+          },
+        })
+      );
+    }
+  }, [ready, progress]);
+
   // Marca um item como modificado (meta + outbox) e, se logado e online,
   // agenda o push com debounce. Chamado de toda mutacao local abaixo.
   function queueSync(domain: string, itemKey: string, updatedAt: number) {
@@ -421,6 +445,13 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     );
     if (authUserId) schedulerRef.current.schedule();
   }
+
+  // Desktop: snapshot diário do estado em vault/.matemonstro/backups/ (a
+  // função é no-op fora do Tauri e nunca lança).
+  useEffect(() => {
+    if (!ready) return;
+    import("@/lib/state-backup").then((m) => m.maybeBackupState());
+  }, [ready]);
 
   useEffect(() => {
     let alive = true;

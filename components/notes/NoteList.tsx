@@ -69,7 +69,7 @@ export default function NoteList({
         </div>
       )}
 
-      <div className="flex-1 overflow-y-auto -mx-1 px-1 space-y-1">
+      <div className="flex-1 overflow-y-auto -mx-1 px-1 space-y-1 mm-stagger">
         {!ready && <p className="text-xs text-[var(--color-mut)] px-2">Carregando…</p>}
         {ready && filtered.length === 0 && (
           <p className="text-xs text-[var(--color-mut)] px-2">Nenhuma nota ainda. Crie a primeira!</p>
@@ -78,7 +78,7 @@ export default function NoteList({
           <button
             key={n.id}
             onClick={() => onSelect(n.id)}
-            className={`w-full text-left rounded-xl px-3 py-2 transition-colors border ${
+            className={`w-full text-left rounded-xl px-3 py-2 transition-all duration-200 border ${
               selectedId === n.id
                 ? "bg-[var(--color-raise)] border-[var(--color-brand)]"
                 : "border-transparent hover:bg-[var(--color-raise)]"
