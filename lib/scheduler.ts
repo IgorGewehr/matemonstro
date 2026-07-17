@@ -38,7 +38,11 @@ export function cappedDueCards(cards: Card[], settings: Settings, now: number): 
 }
 
 // Uma trilha esta "liberada" se todos os pre-requisitos estiverem 100% concluidos.
+// Excecao: a Fase 3 (Quant Finance) tem ACESSO LIVRE — voce pode estudar qualquer
+// topico quant imediatamente, sem concluir a base pura antes. A ordem recomendada
+// ainda guia o plano do dia (Quant fica no fim); isto so libera a navegacao manual.
 export function trackUnlocked(track: Track, progress: Map<string, Progress>): boolean {
+  if (track.phase === 3) return true;
   for (const pid of track.prereqs) {
     const pt = getTrack(pid);
     if (!pt) continue;
