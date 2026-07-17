@@ -26,6 +26,7 @@ export const XP = {
   perReview: 2,
   perStreakDay: 10,
   perNotedSub: 20, // anotar "o principal" (keyPoints) e o nucleo do app
+  perStudyDay: 15, // APARECER conta: cada dia estudado (mesmo 5 min) rende XP
 } as const;
 
 const MATURE_INTERVAL = 21; // dias — cartao "maduro"
@@ -61,6 +62,7 @@ export interface GamStats {
   reviewCount: number; // total de revisoes ao longo do tempo (soma de reps)
   matureCards: number;
   studyDays: number;
+  totalMinutes: number; // minutos somados na vida toda (valoriza sessoes curtas)
   streak: number;
   tracksComplete: number;
   phasesComplete: number;
@@ -95,6 +97,9 @@ export function computeStats(input: GamInput, now: number = Date.now()): GamStat
     if ((c.interval || 0) >= MATURE_INTERVAL) matureCards++;
   }
 
+  let totalMinutes = 0;
+  for (const e of log.values()) totalMinutes += e.minutes || 0;
+
   let tracksComplete = 0;
   for (const t of tracks) {
     const tp = trackProgress(t, progress);
@@ -117,6 +122,7 @@ export function computeStats(input: GamInput, now: number = Date.now()): GamStat
     reviewCount,
     matureCards,
     studyDays: log.size,
+    totalMinutes,
     // Fonte unica de verdade do streak: a mesma logica "honesta" exibida na home.
     streak: settings ? computeStreak(log, settings, now).count : studyStreak(log, now),
     tracksComplete,
@@ -134,7 +140,8 @@ export function computeXp(input: GamInput, now: number = Date.now()): number {
     s.doneSubs * XP.perSubtopicDone +
     s.reviewCount * XP.perReview +
     s.streak * XP.perStreakDay +
-    s.notedSubs * XP.perNotedSub
+    s.notedSubs * XP.perNotedSub +
+    s.studyDays * XP.perStudyDay
   );
 }
 
@@ -208,11 +215,39 @@ export interface AchievementDef {
 // do mais facil ao mais raro).
 export const ACHIEVEMENTS: AchievementDef[] = [
   {
+    id: "first-day",
+    title: "No placar",
+    desc: "Estudou pela primeira vez — o comeco de tudo.",
+    icon: "•",
+    check: (s) => s.studyDays >= 1,
+  },
+  {
     id: "first-sub",
     title: "Primeiro passo",
     desc: "Concluiu o primeiro subtopico.",
     icon: "▸",
     check: (s) => s.doneSubs >= 1,
+  },
+  {
+    id: "days-3",
+    title: "Trinca de presenca",
+    desc: "Estudou em 3 dias — o habito comeca a nascer.",
+    icon: "▪",
+    check: (s) => s.studyDays >= 3,
+  },
+  {
+    id: "min-30",
+    title: "Meia hora somada",
+    desc: "30 minutos acumulados, pedacinho por pedacinho.",
+    icon: "◔",
+    check: (s) => s.totalMinutes >= 30,
+  },
+  {
+    id: "streak-3",
+    title: "Tres seguidos",
+    desc: "3 dias seguidos de estudo.",
+    icon: "Δ",
+    check: (s) => s.streak >= 3,
   },
   {
     id: "noted-5",
@@ -234,6 +269,27 @@ export const ACHIEVEMENTS: AchievementDef[] = [
     desc: "100 revisoes espacadas feitas.",
     icon: "≡",
     check: (s) => s.reviewCount >= 100,
+  },
+  {
+    id: "min-120",
+    title: "Duas horas, gota a gota",
+    desc: "120 minutos acumulados em sessoes que somaram.",
+    icon: "◑",
+    check: (s) => s.totalMinutes >= 120,
+  },
+  {
+    id: "days-10",
+    title: "Dez dias no jogo",
+    desc: "Estudou em 10 dias distintos.",
+    icon: "❉",
+    check: (s) => s.studyDays >= 10,
+  },
+  {
+    id: "min-600",
+    title: "Dez horas somadas",
+    desc: "600 minutos acumulados — a prova de que pouco vira muito.",
+    icon: "●",
+    check: (s) => s.totalMinutes >= 600,
   },
   {
     id: "streak-7",

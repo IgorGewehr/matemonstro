@@ -55,6 +55,8 @@ export const defaultSettings: Settings = {
   calibration: false,
   streakFreezes: 0,
   lastStreakDay: undefined,
+  dailyGoalTier: "casual",
+  reviewGoalPerDay: 10,
   goal: undefined,
   theme: "light",
 };

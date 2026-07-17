@@ -64,6 +64,13 @@ export function newCard(
 
 export interface ReviewOpts {
   requestRetention?: number;
+  /**
+   * Fator global de escala de intervalo (spec Quant: calibracao personalizada).
+   * 1 = comportamento padrao. <1 encurta intervalos (usuario esquece mais rapido),
+   * >1 alonga. Calibrado por lib/fsrs-optimize.ts a partir do historico real e
+   * aplicado opt-in via settings.fsrsIntervalScale. NAO altera stability/difficulty.
+   */
+  intervalScale?: number;
 }
 
 // ---- Helpers puros -----------------------------------------------------------
@@ -113,9 +120,14 @@ function fuzzFactor(id: string): number {
  * Intervalo (em dias, fracionario) para atingir a retencao desejada dado S.
  * t = S * ln(rr)/ln(0.9). Aplica fuzz ±5% determinístico por card.id.
  */
-function scheduleDays(stability: number, rr: number, id: string): number {
+function scheduleDays(
+  stability: number,
+  rr: number,
+  id: string,
+  scale = 1
+): number {
   const base = (stability * Math.log(rr)) / Math.log(0.9);
-  return Math.max(0.5, base * fuzzFactor(id));
+  return Math.max(0.5, base * scale * fuzzFactor(id));
 }
 
 /** Retrievability atual R = 0.9^(diasDecorridos/S). */
@@ -186,6 +198,7 @@ export function review(
   opts?: ReviewOpts
 ): Card {
   const rr = opts?.requestRetention ?? DEFAULT_RETENTION;
+  const scale = opts?.intervalScale ?? 1;
   const rating = GRADE_RATING[grade];
   const state = effectiveState(card);
   const ease = nextEase(card.ease, grade);
@@ -235,7 +248,7 @@ export function review(
 
     // Gradua para review.
     const s = rating === 4 ? 4 : 1;
-    const days = scheduleDays(s, rr, card.id);
+    const days = scheduleDays(s, rr, card.id, scale);
     return {
       ...card,
       ease,
@@ -272,7 +285,7 @@ export function review(
     }
 
     // Acertou: volta a review com a estabilidade (ja reduzida), NAO reseta.
-    const days = scheduleDays(s, rr, card.id);
+    const days = scheduleDays(s, rr, card.id, scale);
     return {
       ...card,
       ease,
@@ -313,7 +326,7 @@ export function review(
   const r = retrievability(card, now);
   const nd = nextDifficulty(d, rating);
   const ns = nextStability(s, nd, r, rating);
-  const days = scheduleDays(ns, rr, card.id);
+  const days = scheduleDays(ns, rr, card.id, scale);
   return {
     ...card,
     ease,

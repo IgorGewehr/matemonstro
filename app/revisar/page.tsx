@@ -56,6 +56,7 @@ export default function RevisarPage() {
   const [queue, setQueue] = useState<string[] | null>(null);
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
+  const [showDeriv, setShowDeriv] = useState(false);
   const [predicted, setPredicted] = useState<Predicted | undefined>(undefined);
   const [done, setDone] = useState(0);
   const { celebrate } = useCelebrate();
@@ -112,6 +113,7 @@ export default function RevisarPage() {
     setQueue(nextQueue);
     setIdx((i) => i + 1);
     setRevealed(false);
+    setShowDeriv(false);
     setPredicted(undefined);
   }
 
@@ -178,6 +180,7 @@ export default function RevisarPage() {
   }
 
   const ref = getSubRef(card!.subId);
+  const worked = ref?.sub?.worked;
   const total = queue.length;
   const pct = Math.round((idx / total) * 100);
 
@@ -215,6 +218,21 @@ export default function RevisarPage() {
           <div className="w-full mm-pop">
             <div className="my-5 w-full border-t border-[var(--color-line)]" />
             <div className="text-[var(--color-txt2)]"><Markdown>{card!.back}</Markdown></div>
+            {worked && (
+              <div className="mt-5 w-full text-left">
+                <button
+                  onClick={() => setShowDeriv((v) => !v)}
+                  className="text-[11px] text-[var(--color-mut)] underline hover:text-[var(--color-brand)]"
+                >
+                  {showDeriv ? "Ocultar a dedução" : "📐 Rever a dedução deste conceito"}
+                </button>
+                {showDeriv && (
+                  <div className="mt-3 rounded-xl bg-[var(--color-well)] border border-[var(--color-line)] p-4 text-sm text-[var(--color-txt2)]">
+                    <Markdown>{worked}</Markdown>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         ) : calibration ? (
           <div className="mt-6 w-full">

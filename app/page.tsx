@@ -8,6 +8,8 @@ import { Ring, Stat, ProgressBar, phaseColor, LevelBar } from "@/components/ui";
 import { computeXp } from "@/lib/gamification";
 import { computeStreak } from "@/lib/streak";
 import DailyNoteCard from "@/components/notes/DailyNoteCard";
+import MomentumCard from "@/components/MomentumCard";
+import { reviewGoal } from "@/lib/dailygoal";
 
 export default function Dashboard() {
   const { ready, progress, cards, settings, log } = useApp();
@@ -32,6 +34,10 @@ export default function Dashboard() {
   const proj = projectFinish(progress, settings, now);
   const xp = computeXp({ progress, cards, log, settings }, now);
   const streakInfo = computeStreak(log, settings, now);
+  const revGoal = reviewGoal(settings);
+  const reviewsDoneToday = log.get(new Date(now).toISOString().slice(0, 10))?.reviews ?? 0;
+  const revTarget = Math.min(revGoal, plan.reviews.length);
+  const revMet = reviewsDoneToday >= revGoal;
   const nextMilestone = index?.milestones?.find((m) => {
     const t = getTrack(m.after);
     if (!t) return false;
@@ -65,6 +71,8 @@ export default function Dashboard() {
           <span className="btn btn-primary">Começar →</span>
         </Link>
       )}
+
+      <MomentumCard />
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mm-stagger">
@@ -123,10 +131,16 @@ export default function Dashboard() {
           <Link href="/revisar" className="flex items-center gap-3 p-3 rounded-xl bg-[var(--color-card)] border border-[var(--color-line)] hover:border-[var(--color-brand)] transition-colors mb-3 mm-lift">
             <span className="text-xl">↻</span>
             <div className="flex-1">
-              <div className="font-semibold">Revisão espaçada — {plan.reviews.length} cartões</div>
-              <div className="text-xs text-[var(--color-mut)]">Memória primeiro. ~{plan.reviewMinutes} min para fixar o que já viu.</div>
+              <div className="font-semibold">
+                {revMet ? "Meta de revisão batida ✓" : `Revise ${revTarget} hoje`}
+              </div>
+              <div className="text-xs text-[var(--color-mut)]">
+                {plan.reviews.length > revGoal
+                  ? `Memória primeiro. +${plan.reviews.length - revGoal} esperando, sem pressa · ~${plan.reviewMinutes} min.`
+                  : `Memória primeiro. ~${plan.reviewMinutes} min para fixar o que já viu.`}
+              </div>
             </div>
-            <span className="btn btn-primary">Revisar →</span>
+            <span className="btn btn-primary">{revMet ? "Revisar mais →" : "Revisar →"}</span>
           </Link>
         )}
 

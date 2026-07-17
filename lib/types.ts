@@ -198,6 +198,12 @@ export interface Settings {
   maxReviewsPerDay?: number; // spec 03
   newCardsPerDay?: number; // spec 03
   calibration?: boolean; // spec 06
+  fsrsIntervalScale?: number; // spec quant: escala de intervalo calibrada (lib/fsrs-optimize.ts), opt-in
+  // ---- Motivacao / meta minima (spec motivacao) ----
+  dailyGoalTier?: "basico" | "casual" | "regular" | "serio" | "intenso"; // meta minima nomeada (piso que "conta")
+  reviewGoalPerDay?: number; // alvo pequeno de revisoes/dia (anti-backlog assustador), default 10
+  anchorText?: string; // habit-stacking: "depois do cafe" (gatilho do usuario)
+  anchorTime?: string; // "HH:MM" do gatilho
   goal?: "base" | "if" | "mestrado"; // spec 11
   streakFreezes?: number; // spec 11
   lastStreakDay?: string; // spec 11 (YYYY-MM-DD)

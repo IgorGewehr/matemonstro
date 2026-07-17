@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useApp } from "@/components/AppState";
+import { calibrateFsrs } from "@/lib/fsrs-optimize";
+import { TIERS } from "@/lib/dailygoal";
 import { tracks as allTracks, isReady } from "@/lib/curriculum";
 import {
   notificationsSupported,
@@ -32,7 +34,7 @@ function applyTheme(theme: Theme) {
 }
 
 export default function ConfigPage() {
-  const { ready, settings, updateSettings, exportData, importData, wipe } = useApp();
+  const { ready, settings, updateSettings, exportData, importData, wipe, events } = useApp();
   const fileRef = useRef<HTMLInputElement>(null);
   const [msg, setMsg] = useState("");
   const [perm, setPerm] = useState<NotificationPermission>("default");
@@ -48,7 +50,29 @@ export default function ConfigPage() {
     if (ready && settings.theme) applyTheme(settings.theme);
   }, [ready, settings.theme]);
 
+  // Calibracao FSRS: reproduz o modelo sobre o historico real (store 'events') e
+  // sugere um fator de intervalo personalizado. Hook antes de qualquer early-return.
+  const cal = useMemo(
+    () => calibrateFsrs(events ?? [], settings.requestRetention ?? 0.9),
+    [events, settings.requestRetention]
+  );
+
   if (!ready) return <div className="text-[var(--color-mut)]">Carregando…</div>;
+
+  const scaleNow = settings.fsrsIntervalScale ?? 1;
+
+  function applyQuantPreset() {
+    updateSettings({
+      interleave: true,
+      parallelTracks: 3,
+      requestRetention: 0.92,
+      newCardsPerDay: 10,
+      maxReviewsPerDay: 150,
+      goal: "mestrado",
+      onboarded: true,
+    });
+    setMsg("Preset Quant aplicado: intercalação alta, retenção 92%, foco em mestrado.");
+  }
 
   const goalStr = settings.goalDate ? new Date(settings.goalDate).toISOString().slice(0, 10) : "";
   const theme: Theme = settings.theme ?? "dark";
@@ -177,6 +201,80 @@ export default function ConfigPage() {
 
       <section className="panel p-5 space-y-5">
         <div>
+          <h2 className="font-bold">Meta do dia</h2>
+          <p className="text-xs text-[var(--color-mut)] mt-1">
+            A meta que <strong>conta</strong> — baixa de propósito, para ser impossível de falhar. Bateu o mínimo, o dia
+            está salvo e a sequência segura. Comece pequeno; o resto vem por inércia.
+          </p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold mb-1">Meta mínima</label>
+          <div className="flex gap-1.5 flex-wrap">
+            {TIERS.map((t) => {
+              const active = (settings.dailyGoalTier ?? "casual") === t.id;
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => updateSettings({ dailyGoalTier: t.id, onboarded: true })}
+                  className={`btn !px-3 !py-2 flex-col ${active ? "btn-primary" : ""}`}
+                  aria-pressed={active}
+                >
+                  <span className="text-sm font-semibold">{t.label}</span>
+                  <span className="text-[10px] text-[var(--color-mut)]">{t.blurb}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold mb-1">Meta de revisão do dia</label>
+          <div className="flex gap-1.5 flex-wrap">
+            {[5, 10, 15, 20, 30].map((n) => (
+              <button
+                key={n}
+                onClick={() => updateSettings({ reviewGoalPerDay: n })}
+                className={`btn !px-3 ${(settings.reviewGoalPerDay ?? 10) === n ? "btn-primary" : ""}`}
+                aria-pressed={(settings.reviewGoalPerDay ?? 10) === n}
+              >
+                {n}
+              </button>
+            ))}
+          </div>
+          <p className="text-xs text-[var(--color-mut)] mt-1">
+            Um alvo pequeno e fixo em vez do total de atrasados. Bater a meta é a vitória do dia; o excedente espera sem pressa.
+          </p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold mb-1">Gatilho de estudo (opcional)</label>
+          <p className="text-xs text-[var(--color-mut)] mb-2">
+            "Depois de [uma rotina que você já tem], eu estudo 2 min." Amarrar o estudo a um hábito existente é o jeito
+            mais confiável de não esquecer de começar.
+          </p>
+          <div className="flex gap-2 flex-wrap items-center">
+            <span className="text-sm text-[var(--color-mut)]">Depois de</span>
+            <input
+              type="text"
+              value={settings.anchorText ?? ""}
+              placeholder="o café da manhã…"
+              onChange={(e) => updateSettings({ anchorText: e.target.value })}
+              className="rounded-xl bg-[var(--color-well)] border border-[var(--color-line)] p-2.5 text-sm outline-none focus:border-[var(--color-brand)] flex-1 min-w-[10rem]"
+            />
+            <span className="text-sm text-[var(--color-mut)]">às</span>
+            <input
+              type="time"
+              value={settings.anchorTime ?? ""}
+              onChange={(e) => updateSettings({ anchorTime: e.target.value })}
+              className="rounded-xl bg-[var(--color-well)] border border-[var(--color-line)] p-2.5 text-sm outline-none focus:border-[var(--color-brand)]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="panel p-5 space-y-5">
+        <div>
           <h2 className="font-bold">Ritmo de aprendizado</h2>
           <p className="text-xs text-[var(--color-mut)] mt-1">
             Como o motor de repetição espaçada agenda revisões e distribui o estudo. Os padrões são bons — mexa quando
@@ -299,6 +397,88 @@ export default function ConfigPage() {
             {(settings.calibration ?? false) ? "Ativado" : "Desativado"}
           </button>
         </div>
+      </section>
+
+      <section className="panel p-5 space-y-4">
+        <div>
+          <h2 className="font-bold">Preset Quant Finance</h2>
+          <p className="text-xs text-[var(--color-mut)] mt-1">
+            Um clique configura o motor para conteúdo denso de mestrado/doutorado: alta intercalação (discriminar
+            contexto entre Itô, GARCH e otimização), retenção 92%, ritmo de cartões novos mais conservador e meta de
+            mestrado. Você pode reajustar tudo depois.
+          </p>
+        </div>
+        <button className="btn btn-primary" onClick={applyQuantPreset}>
+          Aplicar preset Quant
+        </button>
+      </section>
+
+      <section className="panel p-5 space-y-4">
+        <div>
+          <h2 className="font-bold">Calibração FSRS (personalizada)</h2>
+          <p className="text-xs text-[var(--color-mut)] mt-1">
+            Reproduz o modelo de repetição sobre o seu histórico real de revisões e mede se ele está acertando o seu
+            esquecimento. Do desvio, deriva um fator de intervalo só seu. Requer o histórico gravado — ative{" "}
+            <strong>Prever antes de revelar</strong> acima para acumular dados.
+          </p>
+        </div>
+
+        {!cal.enoughData ? (
+          <p className="text-xs text-[var(--color-mut)]">
+            Dados insuficientes: <strong>{cal.sampleSize}/30</strong> revisões espaçadas registradas
+            {cal.cardsCovered > 0 && ` (${cal.cardsCovered} cartões)`}. Continue revisando com a previsão ativada e volte aqui.
+          </p>
+        ) : (
+          <>
+            <div className="grid grid-cols-2 gap-3 text-sm">
+              <div className="rounded-xl bg-[var(--color-well)] border border-[var(--color-line)] p-3">
+                <div className="text-[var(--color-mut)] text-xs">Retenção prevista × real</div>
+                <div className="font-bold mt-0.5">
+                  {Math.round(cal.predictedRecall * 100)}% → {Math.round(cal.observedRecall * 100)}%
+                </div>
+              </div>
+              <div className="rounded-xl bg-[var(--color-well)] border border-[var(--color-line)] p-3">
+                <div className="text-[var(--color-mut)] text-xs">Erro de calibração</div>
+                <div className="font-bold mt-0.5">{Math.round(cal.calibrationError * 100)} pts</div>
+              </div>
+            </div>
+            <p className="text-xs text-[var(--color-mut)]">
+              {cal.recommendedIntervalScale !== null && cal.recommendedIntervalScale < 1
+                ? `Você esquece um pouco mais rápido que o modelo prevê — recomendo encurtar os intervalos para ${Math.round(
+                    cal.recommendedIntervalScale * 100
+                  )}% (fator ${cal.recommendedIntervalScale.toFixed(2)}).`
+                : cal.recommendedIntervalScale !== null && cal.recommendedIntervalScale > 1
+                ? `Sua memória segura mais que o modelo prevê — dá para alongar os intervalos para ${Math.round(
+                    cal.recommendedIntervalScale * 100
+                  )}% (fator ${cal.recommendedIntervalScale.toFixed(2)}) e revisar menos.`
+                : "Seu esquecimento bate com o modelo — nenhum ajuste necessário."}{" "}
+              Fator atual: <strong>{scaleNow.toFixed(2)}×</strong>.
+            </p>
+            <div className="flex gap-2 flex-wrap">
+              <button
+                className="btn btn-primary"
+                disabled={cal.recommendedIntervalScale === null}
+                onClick={() => {
+                  updateSettings({ fsrsIntervalScale: cal.recommendedIntervalScale ?? 1 });
+                  setMsg(`Calibração aplicada: intervalos em ${cal.recommendedIntervalScale?.toFixed(2)}×.`);
+                }}
+              >
+                Aplicar calibração
+              </button>
+              {scaleNow !== 1 && (
+                <button
+                  className="btn"
+                  onClick={() => {
+                    updateSettings({ fsrsIntervalScale: 1 });
+                    setMsg("Calibração restaurada ao padrão (1,00×).");
+                  }}
+                >
+                  Restaurar padrão
+                </button>
+              )}
+            </div>
+          </>
+        )}
       </section>
 
       <section className="panel p-5 space-y-4">

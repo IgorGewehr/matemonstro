@@ -11,6 +11,8 @@ import { useMemo } from "react";
 import { useApp } from "./AppState";
 import { getSubRef } from "@/lib/curriculum";
 import { computeStreak } from "@/lib/streak";
+import { computeMomentum } from "@/lib/momentum";
+import { effectiveDailyGoal } from "@/lib/dailygoal";
 
 function todayKey(): string {
   return new Date().toISOString().slice(0, 10);
@@ -39,8 +41,16 @@ export default function StudyBar() {
     };
   }, [ready, progress]);
 
+  // Meta MÍNIMA (o que "conta"), não o plano cheio: alcançável de propósito, e
+  // reduzida automaticamente na reentrada. É o alvo que reduz a fricção de começar.
+  const goal = useMemo(() => {
+    if (!ready) return { floorMin: 5, label: "", reduced: false };
+    const mom = computeMomentum(log, settings);
+    return effectiveDailyGoal(settings, mom.score, mom.comeback);
+  }, [ready, log, settings]);
   const todayMin = ready ? (log.get(todayKey())?.minutes ?? 0) : 0;
-  const goalMin = Math.max(1, settings.minutesPerDay || 60);
+  const goalMin = Math.max(1, goal.floorMin);
+  const hit = todayMin >= goalMin;
   const pct = Math.max(0, Math.min(100, Math.round((todayMin / goalMin) * 100)));
   const streak = ready ? computeStreak(log, settings).count : 0;
 
@@ -77,12 +87,22 @@ export default function StudyBar() {
       <div className="ml-auto flex items-center gap-4 shrink-0">
         <div
           className="flex items-center gap-2 text-xs text-[var(--color-mut)]"
-          title={`${todayMin} de ${goalMin} minutos de estudo hoje`}
+          title={
+            hit
+              ? `Meta mínima do dia batida (${todayMin} min)`
+              : `${todayMin} de ${goalMin} min — a meta mínima${goal.reduced ? " (reduzida: modo reentrada)" : ""}`
+          }
         >
           <span>
-            <span className="tabular-nums font-semibold text-[var(--color-txt)]">{todayMin}</span>
-            <span aria-hidden="true">/</span>
-            {goalMin} min
+            {hit ? (
+              <span className="font-semibold text-[#00d3a7]">✓ meta do dia</span>
+            ) : (
+              <>
+                <span className="tabular-nums font-semibold text-[var(--color-txt)]">{todayMin}</span>
+                <span aria-hidden="true">/</span>
+                {goalMin} min{goal.reduced ? " · leve" : ""}
+              </>
+            )}
           </span>
           <span
             className="w-14 h-1 rounded-full bg-[var(--color-raise)] overflow-hidden"
@@ -105,6 +125,10 @@ export default function StudyBar() {
             <span className="tabular-nums font-semibold">{streak}</span>
           </span>
         )}
+
+        <Link href="/relampago" className="btn !py-1 !px-3 text-xs" title="Estudo relâmpago (~2 min) — o jeito mais fácil de começar">
+          <span className="text-[var(--color-brand)]" aria-hidden="true">⚡</span> 2 min
+        </Link>
 
         <button className="btn !py-1 !px-3 text-xs" onClick={startFocus} title="Sessão de foco (25 ou 50 min)">
           <span className="text-[var(--color-brand)]" aria-hidden="true">◉</span> Foco

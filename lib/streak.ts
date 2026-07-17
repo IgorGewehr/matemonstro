@@ -115,6 +115,28 @@ export function computeStreak(
 }
 
 /**
+ * Melhor sequencia ja alcancada ("recorde"), na MESMA logica honesta do streak
+ * atual. Anti "what-the-hell effect" (Polivy & Herman): uma quebra NUNCA deve ler
+ * como "0/fracasso" — o recorde continua de pe e o que foi construido nao some.
+ * Log e pequeno (single-user), entao avaliar o streak "como se fosse" cada dia
+ * registrado e pegar o maximo (O(D^2)) e barato. Funcao PURA.
+ */
+export function bestStreak(
+  log: Map<string, StudyLogEntry>,
+  settings: Settings,
+  now: number = Date.now()
+): number {
+  let best = computeStreak(log, settings, now).count; // inclui o streak atual/pendente
+  for (const key of log.keys()) {
+    const ts = Date.parse(key + "T12:00:00.000Z");
+    if (!Number.isFinite(ts) || ts > now) continue;
+    const c = computeStreak(log, settings, ts).count;
+    if (c > best) best = c;
+  }
+  return best;
+}
+
+/**
  * Reconciliacao diaria de freeze tokens (idempotente por dia via lastStreakDay).
  * Retorna um patch de Settings a ser persistido com updateSettings, ou null se
  * ja foi feito hoje / nada mudou. Ganha 1 token a cada 7 dias de sequencia.

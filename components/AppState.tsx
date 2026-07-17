@@ -588,7 +588,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     const now = Date.now();
     // Meta de retencao do usuario (settings.requestRetention) enfim chega ao
     // agendador: era um knob persistido/sincronizado mas nunca aplicado.
-    const updated = srsReview(card, grade, now, { requestRetention: settings.requestRetention });
+    const updated = srsReview(card, grade, now, {
+      requestRetention: settings.requestRetention,
+      intervalScale: settings.fsrsIntervalScale,
+    });
     await putCard(updated);
     queueSync("cards", updated.id, now);
     setCards((prev) => prev.map((c) => (c.id === updated.id ? updated : c)));
