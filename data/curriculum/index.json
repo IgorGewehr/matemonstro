@@ -47,6 +47,23 @@
         "geometria-algebrica",
         "category-theory"
       ]
+    },
+    {
+      "id": 3,
+      "label": "Quant Finance",
+      "goal": "A ponte da matemática pura para o mercado: não-arbitragem, otimização de carteira, cálculo estocástico, Black-Scholes, Monte Carlo, séries temporais, risco e ML em produção. Aqui você vira autoridade quant — e constrói os motores dos seus ERPs financeiros.",
+      "trackIds": [
+        "quant-mercados",
+        "quant-otimizacao",
+        "quant-processos",
+        "quant-ito",
+        "quant-derivativos",
+        "quant-montecarlo",
+        "quant-numerico",
+        "quant-series",
+        "quant-risco",
+        "quant-ml"
+      ]
     }
   ],
   "recommendedOrder": [
@@ -76,7 +93,17 @@
     "edp",
     "logica-conjuntos",
     "geometria-algebrica",
-    "category-theory"
+    "category-theory",
+    "quant-mercados",
+    "quant-otimizacao",
+    "quant-processos",
+    "quant-ito",
+    "quant-derivativos",
+    "quant-montecarlo",
+    "quant-numerico",
+    "quant-series",
+    "quant-risco",
+    "quant-ml"
   ],
   "prelimMap": {
     "analise": [
@@ -151,6 +178,26 @@
       "after": "category-theory",
       "label": "Visão de cima",
       "youCanNow": "Enxerga as conexões entre todas as áreas. Monstro da matemática, modo completo."
+    },
+    {
+      "after": "quant-mercados",
+      "label": "Fluência de mercado",
+      "youCanNow": "Precifica renda fixa, forwards e opções por não-arbitragem — e enxerga a medida neutra ao risco surgir no modelo binomial."
+    },
+    {
+      "after": "quant-ito",
+      "label": "Cálculo estocástico no sangue",
+      "youCanNow": "Domina a integral de Itô, o lema de Itô, SDEs e Girsanov — a linguagem em que os preços se movem."
+    },
+    {
+      "after": "quant-derivativos",
+      "label": "Precificador",
+      "youCanNow": "Deduz Black-Scholes por hedge dinâmico, calcula as gregas e entende a superfície de volatilidade."
+    },
+    {
+      "after": "quant-ml",
+      "label": "Quant completo",
+      "youCanNow": "Do rigor matemático à produção: modela risco (VaR/ES), valida sem vazamento e leva modelos ao ERP. Autoridade em Quant Finance."
     }
   ],
   "notes": "Estude na ordem das fases — cada trilha libera a próxima. Faça as revisões espaçadas TODO dia: é o que transforma estudo em memória permanente. Ao fechar cada aula, anote 'o principal' com suas palavras (active recall). Para concurso de IF, priorize o núcleo de concurso; para mestrado, mire os três prelims: análise, álgebra e topologia/geometria."
